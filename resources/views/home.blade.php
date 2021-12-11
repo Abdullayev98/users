@@ -41,6 +41,7 @@
                 <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Найти задания</a>
 
                 <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Исполнители</a>
+                <a href="/home/profile" class="font-medium text-gray-500 hover:text-gray-900">profil</a>
 <!--
                 <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Мои заказы</a>
 -->
