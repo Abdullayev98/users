@@ -15,7 +15,9 @@ use App\Http\Controllers\NewsController;
 |
 */
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get('/news', [NewsController::class, 'home']);
 
 Route::group(['prefix' => 'admin'], function () {
