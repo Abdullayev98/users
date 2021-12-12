@@ -29,5 +29,11 @@ class Controller extends BaseController
     public function performers(){
         return view('performer');
     }
+    public function profile_cash(){
+        return view('/profile/cash');
+    }  
+    public function profile_settings(){
+        return view('/profile/settings');
+    }
 
 }
