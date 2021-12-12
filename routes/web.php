@@ -29,7 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
 
