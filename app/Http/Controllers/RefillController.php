@@ -13,7 +13,11 @@ class RefillController extends Controller
 public function ref(Request $request){
 
     if($request->get("paymethod") == 'Click'){
+
+
+
       return redirect()->to("https://my.click.uz/services/pay?service_id=1111&merchant_id=1111&amount=1111.00&transaction_param=1111&return_url=http://teampro.uz");
+
       }
 
     if($request->get("paymethod") == 'PayMe'){
@@ -78,6 +82,8 @@ public function complete(Request $request){
     $merchant_confirm_id = $new_complete->id;
     $error = $new_complete->error;
     $error_note = $new_complete->error_note;
+
+    $balance = WalletBalance::where('id', $merchant_trans_id);
 
     WalletBalance::where('id', $merchant_trans_id)->update(['status_pay' => 1]);
 

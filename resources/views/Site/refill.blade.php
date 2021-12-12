@@ -15,7 +15,7 @@
 
 
   <div class="container m-5 p-5">
-  <form action="/" method="GET">
+  <form action="/ref" method="GET">
 
   <hr>
 <h5>Способ оплаты</h5>
