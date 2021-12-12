@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConversationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,8 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.index");
+    Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating");
+    Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("appeal.close");
+    Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send");
 });
