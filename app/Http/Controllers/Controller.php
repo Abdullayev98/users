@@ -15,7 +15,7 @@ class Controller extends BaseController
         return view('home');
     }
     public function home_profile(){
-        return view('/Profile/profile');
+        return view('/profile/profile');
     }
     public function task_create(){
         return view('/create/name');
@@ -23,4 +23,11 @@ class Controller extends BaseController
     public function location_create(){
         return view('/create/location');
     }
+    public function task_search(){
+        return view('task/search');
+    }
+    public function performers(){
+        return view('performer');
+    }
+
 }
