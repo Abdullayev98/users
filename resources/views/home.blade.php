@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="hidden w-full md:inline-block md:ml-32 md:pr-4 lg:space-x-8 md:space-x-6 pt-0 mb-6">
-                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Создать задание</a>
+                <a href="/create/task" class="font-medium text-gray-500 hover:text-gray-900">Создать задание</a>
 
                 <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Найти задания</a>
 

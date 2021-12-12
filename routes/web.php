@@ -36,3 +36,6 @@ Route::get('/home', function () {
 Route::get('/home/profile', function() {
     return view('/Profile/profile');
 });
+Route::get('/create/task', function() {
+    return view('/create/create');
+});
