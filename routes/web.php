@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', [HomeController::class, 'home']);
 
-Route::get('/home/profile', function() {
-    return view('/Profile/profile');
-});
+Route::get('/home/profile', [HomeController::class, 'profile']);
