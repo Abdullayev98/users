@@ -42,59 +42,14 @@
                         <li class="inline mr-10"><a href="/home/cash" class=" text-2xl font-bold underline" onclick="changeAtiveTab(event,'tab-cash')">Счет</a></li>
                         <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-options')">Тарифы</a></li>
                         <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Страхование</a></li>
-                        <li class="inline mr-10 float-right"><a href="/" class="text-black text-xl"><i
+                        <li class="inline mr-10 float-right"><a href="/profile/settings" class="text-black text-xl"><i
                                     class="black fas fa-cogs absolute"></i></a></li>
                         <hr>
                     </ul>
-                    {{-- "men haqimda" start --}}
-                    <div class="about-me hidden absolute" id="tab-profile">
-                        <div class="about-a-bit mt-10">
-                            <h4 class="inline font-bold text-lg">Немного о себе</h4>
-                            <span class="ml-10">
-                                <i class="fas fa-pencil-alt inline text-gray-300"></i>
-                                <p class="inline text-gray-300 cursor-pointer">Редактировать</p>
-                            </span>
-                            <p class="mt-3 w-4/5">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book.</p>
-                        </div>
-                        <h4 class="font-bold text-lg mt-5">Примеры работ</h4>
-                        <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
-
-                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 relative">
-                                <div class="rounded-xl shadow-lg relative object-center">
-                                    <img class="rounded-t-xl z-10 relative"
-                                        src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg">
-                                    <div class="w-full bg-gray-700 hover:bg-gray-500 relative z-40 rounded-b-xl h-10">
-                                        <p class="inline ml-4 text-white">text for jobs</p>
-                                        <i class="inline fas fa-camera float-right text-white text-xl mr-3 my-1"><span
-                                                class="text-sm"> 1</span> </i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 relative">
-                                <div class="rounded-xl shadow-lg relative object-center">
-                                    <img class="rounded-t-xl z-10 relative"
-                                        src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg">
-                                    <div class="w-full bg-gray-700 hover:bg-gray-500 relative z-40 rounded-b-xl h-10">
-                                        <p class="inline ml-4 text-white">text for jobs</p>
-                                        <i class="inline fas fa-camera float-right text-white text-xl mr-3 my-1"><span
-                                                class="text-sm"> 1</span></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 relative hover:bg-gray-100 cursor-pointer">
-                                <div class="rounded-xl ring-1 ring-gray-300 relative object-center w-full h-56">
-                                    <i class="fas fa-plus-circle text-gray-300 text-9xl text-center mt-10 w-full"></i>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- "men haqimda" end --}}
-                    {{-- hisob --}} <div class="cash block absolute w-full" id="tab-cash">
+                    {{-- "about-me" start --}}
+                    
+                    {{-- "about-me" end --}}
+                    {{-- cash --}} <div class="cash block absolute w-full" id="tab-cash">
                         <div class="head mt-5">
                             <h2 class="font-bold text-xl">Ваш баланс 0 &#36;</h2>
                             <p class="inline">Пополнить счет на</p>
@@ -143,13 +98,13 @@
 
                         </div>
                     </div>
-                    {{-- hisob end --}}
+                    {{-- cash end --}}
                 </div>
 
             </div>
 
 
-            {{-- o`ng tomon ispolnitel --}}
+            {{--right-side-bar--}}
             <div
                 class="col-span-1 mx-2 inline-block absolute w-1/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto lg:visible xl:visible md:visible  sm:invisible">
                 <div class="mt-6 ml-4">
@@ -236,7 +191,7 @@
                     </div>
                 </div>
             </div>
-            {{-- tugashi o'ng tomon ispolnitel --}}
+            {{-- right side bar end--}}
         </div>
 
 
@@ -245,37 +200,7 @@
     </div>
 
     
-    <script>
-        let modal = document.getElementById("my-modal");
-
-        let btn = document.getElementById("open-btn");
-
-        let button = document.getElementById("ok-btn");
-        
-        let closebtn = document.getElementById("close-btn");
-
-        closebtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-        // We want the modal to close when the OK button is clicked
-        button.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
      
 
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-
 @endsection
