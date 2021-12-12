@@ -134,6 +134,29 @@
             </div>
         </div>
 
+<main>
+  <div class="container text-center">
+    <div class="text-2xl text-center">
+      Более 2 300 000 исполнителей
+    </div>
+    <div class="text-md text-center">
+      готовы помочь вам в решении самых разнообразных задач
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="text-center">
+        <div class="">
+          Курьерские услуги
+        </div>
+        <div class="">
+          Ремонт и строительство
+        </div>
+        <div class="">
+          Грузоперевозки
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
     <script>
         // Grabs all the Elements by their IDs which we had given them
