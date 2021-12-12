@@ -46,4 +46,4 @@ Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare');
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
->>>>>>> 836341b3b43c93a3dbc80f8ee2fffd092e6aa2de
+
