@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html lang="{{setting('language','en')}}" dir="ltr">
 <head>
@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
 <body>
-=======
+
 @extends('layouts.app')
->>>>>>> 07bae70cb9c36b9fdc8511373010c3218103d516
+
 
 @section('content')
 
@@ -105,6 +105,4 @@
             }
         }
     </script>
-
-
 @endsection

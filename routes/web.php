@@ -16,11 +16,6 @@ use TCG\Voyager\Voyager;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::get('/messages/chat/{id}', [MessageController::class, 'showChat'])->name("conversation.index");
@@ -29,7 +24,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/{id}', [MessageController::class, 'send'])->name("conversation.send");
 });
 
-Route::get('/home', [Controller::class, 'home'])->name('home');
+Route::get('/', [Controller::class, 'home'])->name('home');
 Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
 Route::get('/task/create', [Controller::class, 'task_create'])->name('task.create');
 Route::get('/task/search', [Controller::class, 'task_search'])->name('task.search');
