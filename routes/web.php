@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Voyager;
@@ -28,17 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/{id}', [MessageController::class, 'send'])->name("conversation.send");
 });
 
-
-Route::get('/home', function () {
-    return view('home');
-});
-
-Route::get('/home/profile', function() {
-    return view('/Profile/profile');
-});
-Route::get('/create/task', function() {
-    return view('/create/name');
-});
-Route::get('/create/location', function() {
-    return view('/create/location');
-});
+Route::get('/home', [Controller::class, 'home'])->name('home');
+Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
+Route::get('/task/create', [Controller::class, 'task_create'])->name('task.create');
+Route::get('/location/create', [Controller::class, 'location_create'])->name('location.create');
