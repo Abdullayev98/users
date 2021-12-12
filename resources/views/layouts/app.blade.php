@@ -25,6 +25,10 @@
 
 
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 
 @yield("javasript")
 </html>

@@ -18,7 +18,7 @@
         <div class="hidden w-full md:inline-block md:ml-32 md:pr-4 lg:space-x-8 md:space-x-6">
             <a href="{{route('task.create.name')}}" class="font-medium text-gray-500/25 hover:text-gray-500/25 focus:outline-none">Создать задание</a>
 
-            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Найти задания</a>
+            <a href="#" class="font-medium delete-task  text-gray-500 hover:text-gray-900">Найти задания</a>
 
             <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Исполнители</a>
             <!--
@@ -72,7 +72,7 @@
     let btn = document.getElementById("open-btn");
 
     let button = document.getElementById("ok-btn");
-    
+
     let closebtn = document.getElementById("close-btn");
 
     closebtn.onclick = function() {

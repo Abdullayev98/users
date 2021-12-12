@@ -33,7 +33,7 @@
                     <div class="py-4 w-1/2 mx-auto px-auto text-center text-3xl texl-bold">
                         Чем вам помочь?
                     </div>
-                    <form action="" method="post">
+                    <form action="{{route('task.create.name')}}" method="post">
                         @csrf
 
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
@@ -43,7 +43,7 @@
                                 </label>
                                 <input
                                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
-                                    id="username" type="text" placeholder="Например, нужен курьер на несколько доставок">
+                                    id="username" type="text" placeholder="Например, нужен курьер на несколько доставок" required name="name">
                                 {{--                            <div id="content" class="mt-4" style="display:none;">--}}
                                 {{--                                <label class="block text-left w-full mx-auto">--}}
                                 {{--                                    <select class="form-select block w-5/12 float-left mt-1">--}}
@@ -186,6 +186,7 @@
 {{--    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>--}}
 
 
+    <!-- This example requires Tailwind CSS v2.0+ -->
 
 
 
@@ -199,10 +200,24 @@
 
 
     <script>
-        $("#showContent").click(function (){
-            $(this).addClass("hidden")
-            $("#content").removeClass("hidden")
+
+
+        $(".delete-task").click(function (){
+            Swal.fire({
+                title: 'Введённые данные будут потеряны. <br> Удалить задание?',
+                showDenyButton: true,
+                confirmButtonText: 'Продожить',
+                denyButtonText: `Удалить`,
+                cancelButtonText: `Отмена`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.close()
+                } else if (result.isDenied) {
+                }
+            })
         })
+
     </script>
 
 @endsection
