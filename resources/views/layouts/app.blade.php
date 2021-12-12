@@ -11,6 +11,7 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.min.css')}}">
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 </head>
 <body>
 
@@ -22,6 +23,8 @@
 
 </body>
 
-<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+
 <script src="https://cdn.tailwindcss.com"></script>
+
+@yield("javasript")
 </html>
