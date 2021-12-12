@@ -66,3 +66,30 @@
 {{-- pay modal end --}}
 
 
+<script>
+    let modal = document.getElementById("my-modal");
+
+    let btn = document.getElementById("open-btn");
+
+    let button = document.getElementById("ok-btn");
+    
+    let closebtn = document.getElementById("close-btn");
+
+    closebtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    // We want the modal to close when the OK button is clicked
+    button.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
