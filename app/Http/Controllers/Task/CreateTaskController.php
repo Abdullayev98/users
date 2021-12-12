@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use TCG\Voyager\Models\Category;
 
-class CreateTastController extends VoyagerBaseController
+class CreateTaskController extends VoyagerBaseController
 {
     //
 
