@@ -34,8 +34,8 @@
                 <button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">
                   A
                 </button>
-                <input class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
-                <button class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
+                <input id="suggest" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
+                <button id="mpshow" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
                   <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                 </button>
             </div>
@@ -97,29 +97,40 @@ $("#addinput").on("click" ,"#remove_inputs" , function(){
 <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU" type="text/javascript">
 </script>
 <script type="text/javascript">
-  ymaps.ready(init);
 
-function init () {
+ymaps.ready(init);
+
+function init() {
+    var suggestView1 = new ymaps.SuggestView('suggest');
+    
     var myMap = new ymaps.Map('map', {
-            center: [41.068725, 69.027005],
-            zoom: 16
-        }),
-
-        myPlacemark1 = new ymaps.Placemark([41.068725, 69.027005], {
-            balloonContent: 'Маленькая иконка'
-        }, {
-            iconLayout: 'default#image',
-            iconImageClipRect: [[0,0], [0, 0]],
-            iconImageHref: "http://labs.google.com/ridefinder/images/mm_20_red.png",
-            iconImageSize: [12, 15],
-            iconImageOffset: [0, -0],
-        }
-
-        );
-
-    myMap.geoObjects.add(myPlacemark1)
+        center: [55.74, 37.58],
+        zoom: 15,
+        controls: []
+    });
+    var searchControl = new ymaps.control.SearchControl({
         
+
+    });
+    myMap.controls.add(searchControl);
+    
+
+    $("#mpshow").click(function(){
+          
+  
+    searchControl.search(document.getElementById('suggest').value);
+  
+
+});
+  
 }
+
+
+
+
+    
+
+
 
 </script>
 
