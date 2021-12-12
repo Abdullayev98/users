@@ -15,49 +15,49 @@ body {
     overflow: hidden;
 }
 body {
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-*{
-    margin: 0;
-    padding: 0;
-}
-.rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.rate:not(:checked) > label:before {
-    content: '★ ';
-}
-.rate > input:checked ~ label {
-    color: #ffc700;
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: #deb217;
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
-}
-
-/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  }
+  *{
+      margin: 0;
+      padding: 0;
+  }
+  .rate {
+      float: left;
+      height: 46px;
+      padding: 0 10px;
+  }
+  .rate:not(:checked) > input {
+      position:absolute;
+      top:-9999px;
+  }
+  .rate:not(:checked) > label {
+      float:right;
+      width:1em;
+      overflow:hidden;
+      white-space:nowrap;
+      cursor:pointer;
+      font-size:30px;
+      color:#ccc;
+  }
+  .rate:not(:checked) > label:before {
+      content: '★ ';
+  }
+  .rate > input:checked ~ label {
+      color: #ffc700;    
+  }
+  .rate:not(:checked) > label:hover,
+  .rate:not(:checked) > label:hover ~ label {
+      color: #deb217;  
+  }
+  .rate > input:checked + label:hover,
+  .rate > input:checked + label:hover ~ label,
+  .rate > input:checked ~ label:hover,
+  .rate > input:checked ~ label:hover ~ label,
+  .rate > label:hover ~ input:checked ~ label {
+      color: #c59b08;
+  }
+  
+  /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
 *,
 *:before,
 *:after {
@@ -295,15 +295,15 @@ h4 {
 
 
 @media screen and (min-width: 300px) and (max-width: 900px) {
-    .right { display: none;}   /* hide it elsewhere */
-    .wrap1 {
-        opacity: 1;
-    }
+.right { display: none;}   /* hide it elsewhere */
+.wrap1 {
+  opacity: 1;
+}
 }
 @media screen and (min-width: 300px) and (max-width: 900px) {
-    .buttonDis { display: show;}
+.buttonDis { display: show;}
 
-    /* hide it elsewhere */}
+/* hide it elsewhere */}
 
 
 
@@ -311,9 +311,9 @@ h4 {
 .stars input {
     position: absolute;
     clip: rect(0, 0, 0, 0);
-}
-
-.stars label {
+  }
+  
+  .stars label {
     box-sizing: border-box;
     display: inline-block;
     margin-right: 6px;
@@ -322,17 +322,17 @@ h4 {
     background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='transparent' stroke='slategray' stroke-width='38' d='M259.216 29.942L330.27 173.92l158.89 23.087L374.185 309.08l27.145 158.23-142.114-74.698-142.112 74.698 27.146-158.23L29.274 197.007l158.89-23.088z' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     font-size: 0;
     cursor: pointer;
-}
-
-.stars input:nth-child(1):checked ~ label:nth-of-type(-n + 1),
-.stars input:nth-child(2):checked ~ label:nth-of-type(-n + 2),
-.stars input:nth-child(3):checked ~ label:nth-of-type(-n + 3),
-.stars input:nth-child(4):checked ~ label:nth-of-type(-n + 4),
-.stars input:nth-child(5):checked ~ label:nth-of-type(-n + 5) {
+  }
+  
+  .stars input:nth-child(1):checked ~ label:nth-of-type(-n + 1),
+  .stars input:nth-child(2):checked ~ label:nth-of-type(-n + 2),
+  .stars input:nth-child(3):checked ~ label:nth-of-type(-n + 3),
+  .stars input:nth-child(4):checked ~ label:nth-of-type(-n + 4),
+  .stars input:nth-child(5):checked ~ label:nth-of-type(-n + 5) {
     background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='yellow' stroke='slategray' stroke-width='38' d='M259.216 29.942L330.27 173.92l158.89 23.087L374.185 309.08l27.145 158.23-142.114-74.698-142.112 74.698 27.146-158.23L29.274 197.007l158.89-23.088z' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-}
-
-/*
-  PRESENTATION ONLY
-  Everything below this line is unnecessary
-*/
+  }
+  
+  /* 
+    PRESENTATION ONLY
+    Everything below this line is unnecessary
+  */

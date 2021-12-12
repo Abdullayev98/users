@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
-use TCG\Voyager\Voyager;
+use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +16,18 @@ use TCG\Voyager\Voyager;
 |
 */
 
+
+Route::get('/news', [NewsController::class, 'home']);
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-    Route::get('/messages/chat/{id}', [MessageController::class, 'showChat'])->name("conversation.index");
-    Route::post('/messages/chat/close/{message}', [MessageController::class, 'close'])->name("appeal.close");
-    Route::post('/messages/chat/{id}', [MessageController::class, 'send'])->name("conversation.send");
+    Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.index");
+    Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating");
+    Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("appeal.close");
+    Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send");
 });
 
-Route::get('/', [Controller::class, 'home'])->name('home');
-Route::get('/performers', [Controller::class, 'performers'])->name('performers');
-Route::get('/location/create', [Controller::class, 'location_create'])->name('location.create');
+
+Route::get('/home', [HomeController::class, 'home']);
+
+Route::get('/home/profile', [HomeController::class, 'profile']);
