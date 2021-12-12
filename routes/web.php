@@ -26,3 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/home/profile', function() {
+    return view('/Profile/profile');
+});
