@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,9 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get('/news', [NewsController::class, 'home']);
 
 Route::group(['prefix' => 'admin'], function () {
@@ -28,7 +29,21 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/home', function () {
+    return view('home');
+});
 
-Route::get('/home/profile', [HomeController::class, 'profile']);
+Route::get('/home/profile', function() {
+    return view('/Profile/profile');
+});
 
+Route::get('/refill', function() {
+    return view('/Site/refill');
+});
+
+Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
+
+Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare');
+
+Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
+>>>>>>> 836341b3b43c93a3dbc80f8ee2fffd092e6aa2de
