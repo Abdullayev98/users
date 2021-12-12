@@ -1,0 +1,174 @@
+.b-dialog-queue_portal__1hK8a, .b-dialog-queue_queue__3GU_w {
+    z-index: 10002;
+    position: absolute;
+}
+.RoundedModalWrapper_page__bukel {
+    position: fixed;
+    z-index: 10002;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.RoundedModalWrapper_layout__2eZJv {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    display: table;
+}
+.RoundedModalWrapper_wrapper__3ErvJ {
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    padding: 48px 0;
+    vertical-align: middle;
+}
+.SignInModal_container__3eZg0 {
+    max-width: 440px !important;
+    padding: 56px 0 72px;
+}
+.RoundedModalWrapper_inner__ClEgr {
+    margin: 0 auto;
+    min-width: 200px;
+    transition: width .3s ease-out;
+    position: relative;
+    background: #fff;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 50%);
+}
+.RoundedModalWrapper_inner__ClEgr {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    max-width: 600px;
+    background: #fff;
+    box-shadow: 0 40px 80px rgb(0 0 0 / 60%);
+    border-radius: 20px;
+    text-align: center;
+    color: #000;
+    position: relative;
+}
+.SignInModal_socialItems__1YhsO {
+    margin-left: -8px;
+    overflow: hidden;
+}
+.SignInModal_signin__jiBxW {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: latoregular,sans-serif;
+    line-height: 24px;
+    font-size: 16px;
+    letter-spacing: .2px;
+    width: 304px;
+    margin: 0 auto;
+    position: relative;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    -webkit-box-lines: single;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    justify-content: space-between;
+    min-height: 540px;
+}
+.SignInModal_social__1l329 {
+    margin-bottom: 28px;
+}
+.SignInModal_signin__jiBxW {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: latoregular,sans-serif;
+    line-height: 24px;
+    font-size: 16px;
+    letter-spacing: .2px;
+    width: 304px;
+    margin: 0 auto;
+    position: relative;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    -webkit-box-lines: single;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    justify-content: space-between;
+    min-height: 540px;
+}
+.RoundedModalWrapper_inner__ClEgr {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    max-width: 600px;
+    background: #fff;
+    box-shadow: 0 40px 80px rgb(0 0 0 / 60%);
+    border-radius: 20px;
+    text-align: center;
+    color: #000;
+    position: relative;
+}
+.SignInModal_socialTitle__1H72B {
+    font-family: latobold,sans-serif;
+    line-height: 24px;
+    font-size: 18px;
+    letter-spacing: .2px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.SignInModal_socialItem__28Bxf {
+    float: left;
+    margin: 0 0 12px 8px;
+}
+.SignInModal_Vk__2CZWa {
+    display: block;
+    position: relative;
+    height: 40px;
+    width: 70px;
+    border-radius: 8px;
+    background-color: #4d75a3;
+}
+.SignInModal_Vk__2CZWa:after {
+    background-image: url(/_next/static/media/vk.102ec53….svg);
+}
+.SignInModal_Vk__2CZWa:after, .SignInModal_Vk__2CZWa:hover:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.SignInModal_Vk__2CZWa:after {
+    z-index: 2;
+    background: 50% 50% no-repeat;
+}
+
+.SignInModal_Fb__6_lmQ:after {
+    background-image: url(/_next/static/media/fb.01e3581….svg);
+}
+.SignInModal_Fb__6_lmQ {
+    display: block;
+    position: relative;
+    height: 40px;
+    width: 70px;
+    border-radius: 8px;
+    background-color: #4d75a3;
+}
+.SignInModal_Fb__6_lmQ:after, .SignInModal_Fb__6_lmQ:hover:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.SignInModal_Fb__6_lmQ:after {
+    z-index: 2;
+    background: 50% 50% no-repeat;
+}
