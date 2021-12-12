@@ -15,7 +15,7 @@ class Controller extends BaseController
         return view('home');
     }
     public function home_profile(){
-        return view('/Profile/profile');
+        return view('/profile/profile');
     }
     public function task_create(){
         return view('/create/name');
