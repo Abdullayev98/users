@@ -19,8 +19,27 @@ class CreateTastController extends VoyagerBaseController
 
 
         return view("create.name", compact('categories', 'current_category','child_categories'));
+    }
 
+    public function location_create(){
+        return view('create.location');
+    }
 
+    public function custom(){
+        return view('create.custom');
+    }
+
+    public function date(){
+        return view('create.date');
+    }
+    public function budget(){
+        return view('create.budget');
+    }
+    public function notes(){
+        return view('create.notes');
+    }
+    public function contacts(){
+        return view('create.contacts');
     }
 
 
