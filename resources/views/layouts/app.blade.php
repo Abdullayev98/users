@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.min.css')}}">
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('js/jquery/jquery.min.js')}}"></script>
 </head>
 <body>
 
