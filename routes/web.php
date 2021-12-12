@@ -29,7 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/{id}', [MessageController::class, 'send'])->name("conversation.send");
 });
 
-Route::delete('/home', [Controller::class, 'home'])->name('home');
-Route::delete('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
-Route::delete('/task/create', [Controller::class, 'task_create'])->name('task.create');
-Route::delete('/location/create', [Controller::class, 'location_create'])->name('location.create');
+Route::get('/home', [Controller::class, 'home'])->name('home');
+Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
+Route::get('/task/create', [Controller::class, 'task_create'])->name('task.create');
+Route::get('/location/create', [Controller::class, 'location_create'])->name('location.create');
