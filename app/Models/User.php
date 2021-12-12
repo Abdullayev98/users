@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Message;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends \TCG\Voyager\Models\User
@@ -21,6 +22,8 @@ class User extends \TCG\Voyager\Models\User
         'name',
         'email',
         'password',
+        'text',
+        'status'
     ];
 
     /**
@@ -41,4 +44,7 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function appeals(){
+        return $this->hasMany(Message::class);
+    }
 }

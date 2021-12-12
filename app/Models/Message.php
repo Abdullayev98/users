@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
+
 
 class Message extends Model
 {
-    use HasFactory;
     protected $table = "messages";
     protected $fillable = [
         'status'
@@ -16,6 +14,10 @@ class Message extends Model
     public function userObject()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    public function actionObject()
+    {
+        return $this->belongsTo(Action::class, 'type', 'id');
     }
     // protected $fillable = ["messages"];
     public function scopeCurrentUser($query)
