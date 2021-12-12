@@ -24,7 +24,7 @@
                     <a href="#">
                         <img class="h-6 w-auto sm:h-10" src="https://assets.youdo.com/_next/static/media/logo.68780febe8ce798e440ca5786b505cd5.svg">
                     </a>
-                    <div class="-mr-2 flex items-center md:hidden">
+                    <div class="mr-2 flex items-center md:hidden">
                         <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
 
                             <!-- Heroicon name: outline/menu -->
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden w-full md:inline-block md:ml-32 md:pr-4 lg:space-x-8 md:space-x-6">
+            <div class="hidden w-full md:inline-block md:ml-32 md:pr-4 lg:space-x-8 md:space-x-6 pt-0 mb-6">
                 <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Создать задание</a>
 
                 <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Найти задания</a>
@@ -47,7 +47,7 @@
 {{--                <p class="text-center inline float-right md:float-none  "><a href="#" class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">регистрация</a></p>--}}
 
             </div>
-            <p class="w-full text-right inline float-right md:float-none"><a href="#" class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">Регистрация</a></p>
+            <p class="w-full text-right inline float-right md:float-none mb-6"><a href="#" class="font-medium hover:text-yellow-500" id="open-btn">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">Регистрация</a></p>
         </nav>
     </div>
 
@@ -64,7 +64,7 @@
 
 <div class="bg-[url('https://assets.youdo.com/next/_next/static/images/frame-51209c6822214bfb9166eb41c4dec591.jpg')] bg-center bg-cover h-96 ">
     <div class="container-lg mx-auto">
-        <main class="xl:mx-96 lg:mx-60 xl:mx-96 md:mx-48 sm:mx-32 ">
+        <main class="xl:mx-96 lg:mx-60 md:mx-48 sm:mx-32">
             <div class="text-center pt-32">
                 <h1 class="font-semibold text-white text-3xl lg:text-5xl md:text-4xl">
                     <span class="block xl:block">Освободим вас от забот</span>
@@ -72,10 +72,11 @@
                 <p class="mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-sm md:mt-2 mb-3">
                     Поможем найти надежного исполнителя для любых задач
                 </p>
-                <div class="w-full mx-auto">
-                    <div class="flew w-full  bg-white hover:shadow-[0_5px_30px_-0_rgba(255,138,0,4)] transition duration-200 rounded-md mx-auto">
-                        <input type="text" placeholder="Например, составить иск" class="w-2/3 md: focus:outline-none sm:left-24 rounded-md text-black md:text-md md:pl-2 sm:w-1/2 py-2.5">
-                        <button type="submit" class="float-right border bg-yellow-500  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mt-0.5 mr-1 md:text-md md:pb-1 text-white">
+                <div class="w-3/4 mx-auto">
+                <div class="flew w-full bg-white hover:shadow-[0_5px_30px_-0_rgba(255,138,0,4)] transition duration-200 rounded-md mx-auto">
+                    {{--                        <input type="text" placeholder="Например, составить иск" class="w-2/3 md: focus:outline-none sm:left-24 rounded-md text-black md:text-md md:pl-2 sm:w-1/2 py-2.5">--}}
+                        <input type="text" placeholder="Например, составить иск" class="w-auto md:left-32 focus:outline-none sm:left-24 rounded-md text-black md:text-md md:pl-2 sm:w-2/3 py-2.5">
+                        <button type="submit" class="float-right border bg-yellow-500  border-transparent font-medium  rounded-md text-white px-3.5 py-1 mr-1 mt-1 md:text-md md:pb-1 text-white">
                             Заказать услугу
                         </button>
                     </div>
@@ -88,9 +89,74 @@
     </div>
 </div>
 
+    <div
+        class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+        id="my-modal">
+
+        <!--modal content-->
+        <div
+            class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white"
+        >
+            <div class="mt-3 text-center">
+                <div
+                    class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100"
+                >
+                    <svg
+                        class="h-6 w-6 text-green-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M5 13l4 4L19 7"
+                        ></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Successful!</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+                        Account has been successfully registered!
+                    </p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button
+                        id="ok-btn"
+                        class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
+                    >
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
 
 
+    <script>
+        // Grabs all the Elements by their IDs which we had given them
+        let modal = document.getElementById("my-modal");
 
+        let btn = document.getElementById("open-btn");
+
+        let button = document.getElementById("ok-btn");
+
+        // We want the modal to open when the Open button is clicked
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        // We want the modal to close when the OK button is clicked
+        button.onclick = function() {
+            modal.style.display = "none";
+        }
+        // The modal will close when the user clicks anywhere outside the modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
     <script>
         window.replainSettings = { id: '38d8d3f0-b690-4857-a153-f1e5e8b462a8' };
@@ -114,6 +180,7 @@
                         'sabzirang': '#ff8a00',
                     },
                 }
+            }
         }
     </script>
 
