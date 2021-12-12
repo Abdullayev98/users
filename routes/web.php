@@ -36,3 +36,13 @@ Route::get('/home', function () {
 Route::get('/home/profile', function() {
     return view('/Profile/profile');
 });
+
+Route::get('/refill', function() {
+    return view('/Site/refill');
+});
+
+Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
+
+Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare');
+
+Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
