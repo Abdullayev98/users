@@ -19,7 +19,6 @@ use TCG\Voyager\Voyager;
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::get('/messages/chat/{id}', [MessageController::class, 'showChat'])->name("conversation.index");
-//    Route::post('/messages/chat/rate/{message}', [MessageController::class, 'rating'])->name("conversation.rating");
     Route::post('/messages/chat/close/{message}', [MessageController::class, 'close'])->name("appeal.close");
     Route::post('/messages/chat/{id}', [MessageController::class, 'send'])->name("conversation.send");
 });
