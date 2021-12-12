@@ -24,4 +24,6 @@
 
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script src="https://cdn.tailwindcss.com"></script>
+
+@yield("javasript")
 </html>
