@@ -9,19 +9,16 @@
     <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css" rel="stylesheet"/>
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.min.css')}}">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<ваш API-ключ>" type="text/javascript"></script>
+<script src="icon_customImage.js" type="text/javascript"></script>
 </head>
 <style>
-  .btn {
-    @apply font-bold py-2 px-4 rounded;
-  }
-  .btn-blue {
-    @apply bg-blue-500 text-white;
-  }
-  .btn-blue:hover {
-    @apply bg-blue-700;
-  }
+   #map {
+        width: 100%; height: 100%; padding: 0; margin: 0;
+    }
 </style>
 <body>
 
@@ -109,39 +106,55 @@
     </div>
   </div>
 </div>
-
-<div class="mx-auto w-3/4 my-16">
-<div class="grid grid-cols-3 h-full">
+<!-- <form class="" action="" method="post"> -->
+<div class="mx-auto w-2/3 my-16">
+<div class="grid grid-cols-3">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-          Поможем найти исполнителя для вашего задания
+      Ищем исполнителя для задания " "
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-      Задание заполнено на 14%
+      Задание заполнено на 29%
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200 w-3/4 mx-auto ">
-        <div style="width: 14%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+        <div style="width: 29%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
-    <div class="shadow-lg w-3/4 h-96 mx-auto my-4 rounded-2xl	w-full">
+    <div class="shadow-lg w-full mx-auto mt-4 h-full rounded-2xl	w-full">
       <div class="py-4 w-1/2 mx-auto px-auto text-center text-3xl texl-bold">
-        Чем вам помочь?
+        Где выполнить задание?
+      </div>
+      <div class="py-4 w-1/2 mx-auto px-auto text-center text-sm texl-bold">
+        Укажите адрес или место, чтобы найти исполнителя рядом с вами.
       </div>
       <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
         <div class="mb-4">
-          <label class="block text-[#5f5869] text-sm mb-2" for="username">
-            Название задания
-          </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Например, нужен курьер на несколько доставок">
+          <div id="formulario">
+          <div class="flex items-center rounded-lg border shadow-xl py-2">
+              <button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">
+                A
+              </button>
+              <input class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
+              <button class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
+                <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
+              </button>
+          </div>
+          </div>
           <div class="mt-4">
-            <label class="text-sm mb-2">
-              Подкатегория <span class="underline hover:text-[#5f5869]">Другая посылка</span>
-            </label>
+            <button type="button" onClick="addInput();" class="w-full border-dashed border border-[#000] rounded-lg h-12 text-center" name="button">
+              <svg class="h-4 w-4 text-gray-500 float-left"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span >Добавить ещё адрес</span>
+             </button>
+             <div id="map"></div>
           </div>
         </div>
+        <a href="/create/task"><input type="submit" class="bg-inherit border border-[#000] float-left w-1/3 ml-5 my-4 text-black font-bold py-2 px-4 rounded" name="" value="Назад"></a>
+        <input type="submit" class="bg-[#6fc727] hover:bg-[#5ab82e] w-1/2 float-right ml-5 my-4 text-white font-bold py-2 px-4 rounded" name="" value="Далее">
       </div>
-      <input type="submit" class="bg-[#6fc727] hover:bg-[#5ab82e] w-11/12 ml-5 my-4 text-white font-bold py-2 px-4 rounded" name="" value="Далее">
     </div>
   </div>
   <div class="col-span">
@@ -154,17 +167,39 @@
   <p><a href="#" class="text-blue-500 hover:text-[#ffa200] hover:underline text-xs">Как выбрать надежного исполнителя?</a></p>
   <p><a href="#" class="text-blue-500 hover:text-[#ffa200] hover:underline text-xs">Как не выбрать исполнителем мошенника?</a></p>
     </div>
-
-
-
-
-
-
   </div>
 </div>
 </div>
+<!-- </form> -->
 
+<script>
 
+  function addInput(){
+    var newdiv = document.createElement('div');
+    //newdiv.id = dynamicInput[counter];
+    newdiv.outerHTML = '';
+    document.getElementById('formulario').appendChild(newdiv);
+  }
+
+  function removeInput(btn){
+      btn.parentNode.remove();
+  }
+
+</script>
+  <script>
+  let content = document.getElementById("content")
+let show = document.getElementById("showContent")
+let hide = document.getElementById("hideContent")
+
+show.addEventListener("click", () => {
+  content.style.display = "block"
+  show.style.display = "none"
+})
+
+hide.addEventListener("click", () => {
+  content.style.display = "none"
+})
+  </script>
 
     <script>
         window.replainSettings = { id: '38d8d3f0-b690-4857-a153-f1e5e8b462a8' };
@@ -199,6 +234,7 @@
 
 
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('js/maps.js')}}"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 

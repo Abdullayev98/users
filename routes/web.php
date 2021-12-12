@@ -37,5 +37,8 @@ Route::get('/home/profile', function() {
     return view('/Profile/profile');
 });
 Route::get('/create/task', function() {
-    return view('/create/create');
+    return view('/create/name');
+});
+Route::get('/create/location', function() {
+    return view('/create/location');
 });
