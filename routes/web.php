@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('/home', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home']);
 
 Route::get('/home/profile', [HomeController::class, 'profile']);
+
