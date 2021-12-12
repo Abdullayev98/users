@@ -26,3 +26,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("appeal.close");
     Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send");
 });
+
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/home/profile', function() {
+    return view('/Profile/profile');
+});
