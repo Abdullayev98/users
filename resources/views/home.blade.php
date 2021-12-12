@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{setting('language','en')}}" dir="ltr">
 <head>
@@ -12,7 +11,6 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
 <body>
 
