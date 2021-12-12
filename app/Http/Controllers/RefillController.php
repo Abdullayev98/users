@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Prepare;
 use App\Models\Complete;
 use App\Models\WalletBalance;
+use App\Models\All_transaction;
 
 class RefillController extends Controller
 {
@@ -13,7 +14,20 @@ class RefillController extends Controller
 public function ref(Request $request){
 
     if($request->get("paymethod") == 'Click'){
-      return redirect()->to("https://my.click.uz/services/pay?service_id=1111&merchant_id=1111&amount=1111.00&transaction_param=1111&return_url=http://teampro.uz");
+
+        $new_article = All_transaction::create([
+
+            'user_id'=> $request->get("user_id"),
+            'amount'=> $request->get("amount"),
+            'method'=> "Click",
+
+        ]);
+
+        $amount = $request->get("amount");
+        $article_id = $new_article->id;
+
+      return redirect()->to("https://my.click.uz/services/pay?service_id=1111&merchant_id=1111&amount=$amount.00&transaction_param=$article_id&return_url=http://teampro.uz");
+
       }
 
     if($request->get("paymethod") == 'PayMe'){
@@ -79,7 +93,22 @@ public function complete(Request $request){
     $error = $new_complete->error;
     $error_note = $new_complete->error_note;
 
-    WalletBalance::where('id', $merchant_trans_id)->update(['status_pay' => 1]);
+    $user = All_transaction::where('id', $merchant_trans_id)->first();
+
+    $balance = WalletBalance::where('user_id', $user->id)->first();
+
+    if(count($balance)){
+    $summa = $balance->balance + $user->amount;
+    }else{
+        WalletBalance::create([
+            'user_id'=> $user->id,
+            'amount'=> $user->amount,
+        ]);
+        $summa = $user->amount;
+    }
+
+    WalletBalance::where('user_id', $user->id)->update(['balance' => $summa]);
+    All_transaction::where('id', $merchant_trans_id)->update(['status' => 1]);
 
     return ['click_trans_id' => $click_trans_id,'merchant_trans_id' => $merchant_trans_id,'merchant_confirm_id' => $merchant_confirm_id,'error' => $error,'error_note' => $error_note];
 
