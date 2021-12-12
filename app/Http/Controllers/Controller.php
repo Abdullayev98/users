@@ -23,4 +23,11 @@ class Controller extends BaseController
     public function location_create(){
         return view('/create/location');
     }
+    public function task_search(){
+        return view('task/search');
+    }
+    public function performers(){
+        return view('performer');
+    }
+
 }

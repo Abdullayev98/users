@@ -17,11 +17,11 @@
             </div>
         </div>
         <div class="hidden w-full md:inline-block md:ml-32 md:pr-4 lg:space-x-8 md:space-x-6">
-            <a class="font-medium text-gray-500/25 hover:text-gray-500/25 focus:outline-none">Создать задание</a>
+            <a href="{{route('task.create')}}" class="font-medium text-gray-500/25 hover:text-gray-500/25 focus:outline-none">Создать задание</a>
 
-            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Найти задания</a>
+            <a href="{{route('task.search')}}" class="font-medium text-gray-500 hover:text-gray-900">Найти задания</a>
 
-            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Исполнители</a>
+            <a href="{{route('performers')}}" class="font-medium text-gray-500 hover:text-gray-900">Исполнители</a>
             <!--
                             <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Мои заказы</a>
             -->

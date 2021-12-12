@@ -32,4 +32,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/home', [Controller::class, 'home'])->name('home');
 Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
 Route::get('/task/create', [Controller::class, 'task_create'])->name('task.create');
+Route::get('/task/search', [Controller::class, 'task_search'])->name('task.search');
+
+Route::get('/performers', [Controller::class, 'performers'])->name('performers');
 Route::get('/location/create', [Controller::class, 'location_create'])->name('location.create');
