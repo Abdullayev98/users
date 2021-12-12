@@ -38,8 +38,8 @@
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 relative">
                     <ul class="relative w-9/10">
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-2xl font-bold underline" onclick="changeAtiveTab(event,'tab-profile')">Обо мне</a></li>
-                        <li class="inline mr-10"><a href="/profile/cash" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-cash')">Счет</a></li>
+                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-profile')">Обо мне</a></li>
+                        <li class="inline mr-10"><a href="/home/cash" class=" text-2xl font-bold underline" onclick="changeAtiveTab(event,'tab-cash')">Счет</a></li>
                         <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-options')">Тарифы</a></li>
                         <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Страхование</a></li>
                         <li class="inline mr-10 float-right"><a href="/" class="text-black text-xl"><i
@@ -47,7 +47,7 @@
                         <hr>
                     </ul>
                     {{-- "men haqimda" start --}}
-                    <div class="about-me block absolute" id="tab-profile">
+                    <div class="about-me hidden absolute" id="tab-profile">
                         <div class="about-a-bit mt-10">
                             <h4 class="inline font-bold text-lg">Немного о себе</h4>
                             <span class="ml-10">
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     {{-- "men haqimda" end --}}
-                    {{-- hisob --}} <div class="cash hidden absolute w-full" id="tab-cash">
+                    {{-- hisob --}} <div class="cash block absolute w-full" id="tab-cash">
                         <div class="head mt-5">
                             <h2 class="font-bold text-xl">Ваш баланс 0 &#36;</h2>
                             <p class="inline">Пополнить счет на</p>
