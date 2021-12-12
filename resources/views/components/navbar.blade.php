@@ -25,12 +25,12 @@
                             <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Мои заказы</a>
             -->
             {{--                <p class="text-center inline float-right md:float-none  "><a href="#" class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">регистрация</a></p>--}}
-            <button
-             class="text-green-300 rounded-md w-36 absolute right-44  text-base font-medium hover:text-green-700 inline-block"
-             id="open-btn">
-                 <i class="fas fa-wallet inline-block"></i>
-                 <span class="inline-block">пополнить</span>
-             </button>
+{{--            <button--}}
+{{--             class="text-green-300 rounded-md w-36 absolute right-44  text-base font-medium hover:text-green-700 inline-block"--}}
+{{--             id="open-btn">--}}
+{{--                 <i class="fas fa-wallet inline-block"></i>--}}
+{{--                 <span class="inline-block">пополнить</span>--}}
+{{--             </button>--}}
         </div>
         <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6"><a href="/home/profile" class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">Регистрация</a></p>
     </nav>
@@ -47,7 +47,7 @@
                     </h3>
                 </div>
                 <input class="ml-3 mt-10 w-30 h-20 ring-1 rounded-xl ring-gray-100" type='number' />
-                
+
                 <p class="text-sm leading-6 text-gray-400">Сумма пополнения, минимум — 60 000сум</p>
                 <div class="mt-2 px-7 py-3">
                     <input type="checkbox" class="w-5 h-5 rounded-md inline-block "/>
@@ -66,3 +66,30 @@
 {{-- pay modal end --}}
 
 
+<script>
+    let modal = document.getElementById("my-modal");
+
+    let btn = document.getElementById("open-btn");
+
+    let button = document.getElementById("ok-btn");
+    
+    let closebtn = document.getElementById("close-btn");
+
+    closebtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    // We want the modal to close when the OK button is clicked
+    button.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
