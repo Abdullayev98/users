@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<!-- <html lang="{{setting('language','en')}}" dir="ltr"> -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{setting('app_name')}} | {{setting('app_short_description')}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{{$app_logo ?? ''}}"/>
+    <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles.min.css')}}">
+</head>
+<body>
+>>>>>>> f74f9623bd08ddbf707532f7f00f279fb9afb801
 
 @extends('layouts.app')
 
@@ -194,9 +213,9 @@
           </div>
         </div>
       </div>
-      <div class="w-11/12 mx-auto">
-        <div class="grid grid-cols-2 mx-auto">
-          <div class="w-2/3 mx-auto mt-32">
+      <div class="w-full mx-auto lg:shadow-xl">
+        <div class="grid grid-cols-2 mx-auto h-auto">
+          <div class="w-2/3 ml-auto mt-52">
               <h4 class="text-3xl">Персональный помощник в вашем кармане</h4>
               <p class="text-md mt-8">Скачайте наше приложение и пользуйтесь YouDo, где бы вы ни находились.</p>
                   <button type="button" class="w-3/10 bg-[#000] rounded-md mt-8"><img src="https://assets.youdo.com/_next/static/media/ios.d3a42dd0816a046400b4bb7d2b11067f.svg" alt=""> </button>
@@ -207,6 +226,19 @@
             <img src="https://assets.youdo.com/next/_next/static/images/download_hand-13ced686918d5e0b8a92914b8cc87aaf.png" class="relative float-right bottom-24" alt="">
           </div>
         </div>
+      </div>
+      <div class="container mx-auto">
+        <div class="w-2/3 mx-auto mt-16 text-center">
+          <h1 class="text-4xl">Новые публикации <a href=""><span class="text-[#4099fb] hover:text-[#ff280c] underline">в блоге</span></a></h1>
+        </div>
+          <div class="grid grid-cols-3 mx-auto">
+            <div class="col-span-2">
+                <img src="https://content0.youdo.com/zi.ashx?i=d36fd188a176881f" alt="">
+            </div>
+            <div>
+              <img src="https://content9.youdo.com/zi.ashx?i=cf53596d9aeb5742" alt="">
+            </div>
+          </div>
       </div>
     </main>
     <script>
