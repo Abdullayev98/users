@@ -295,37 +295,157 @@
         <h1 class="text-4xl">Что заказывают на «Юду» прямо сейчас</h1>
       </div>
         <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-32">
-          <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-96 blog1 mt-8">
-            <div class="w-full overflow-y-scroll w-full h-96">
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
-              <div class="w-full border-b-2 h-24 hover:bg-blue-500">alkwdlwakm</div>
+          <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
+            <div class="w-full overflow-y-scroll w-full h-screen">
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
+              <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                <div class="icon pt-4">
+                  <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                </div>
+                <div class="mx-auto w-2/3">
+                  <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                    Оценить консультацию по телефону.
+                  </a>
+                  <p class="text-sm mt-4">
+                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="">
-              <button type="button" class=" bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Показать все задания</button>
+            <div class="mt-4">
+              <button type="button" class=" bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">Показать все задания</button>
             </div>
           </div>
-          <div class="w-full md:col-span-1 col-span-2">
-            <div class="md:w-11/12 w-full h-1/3 my-8 bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-executors-d40b155c145cdfa2d0f387a2baef5430.jpg')]">
+          <div class="w-full md:col-span-1 h-full col-span-2">
+            <div class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-executors-d40b155c145cdfa2d0f387a2baef5430.jpg')]">
               <div class="w-full h-full bg-[#00000066] text-center">
                 <i class="fas fa-user text-[#84e879] text-5xl pt-8"></i>
                 <p class="text-4xl text-[#fff]">Как стать исполнителем</p>
               </div>
             </div>
-            <div class="md:w-11/12 w-full h-1/3 my-8 bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
+            <div class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
               <div class="w-full h-full bg-[#00000066] text-center">
                 <i class="fas fa-shield-alt text-[#8ae2ed] text-5xl pt-8"></i>
                 <p class="text-4xl text-[#fff]">Как стать исполнителем</p>
               </div>
             </div>
-            <div class="md:w-11/12 w-full h-1/3 my-8 bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
+            <div class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
               <div class="w-full h-full bg-[#00000066] text-center">
                 <p class="text-5xl pt-8 text-[#ffc730]">Надежные исполнители для бизнеса</p>
               </div>
@@ -382,5 +502,11 @@
                 }
             }
         }
+    </script>
+    <script>
+    setInterval(function(){
+      var elem = document.getElementById('scrollbar');
+      elem.scrollTop = elem.scrollHeight;
+    }, 5000);
     </script>
 @endsection
