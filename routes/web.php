@@ -15,9 +15,7 @@ use App\Http\Controllers\NewsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/performers', function () { return view('Performers.performers'); });
 
@@ -38,13 +36,19 @@ Route::get('/', function () {
 
 Route::get('/home/profile', [HomeController::class, 'profile']);
 
+
+Route::get('/terms', function () {
+    return view('terms.terms');
+});
+
 Route::get('/refill', function() {
     return view('/Site/refill');
 });
+
+Route::get('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
 
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 
 Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare');
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
-
