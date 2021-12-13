@@ -1,31 +1,117 @@
 @extends("layouts.app")
 
 @section("content")
-<div class="mx-auto w-9/12 my-16">
-    <div class="flex flex-row my-4">
-        <a href="#" class="mr-4" data-tab="all">Все задания</a>
-        <a href="#" data-tab="recommended">Рекомендованные</a>
-    </div>
-    <div class="h-1 w-full bg-gray-300"></div>
 
-    <div class="grid grid-cols-3 gap-x-10">
-        <div class="col-span-2">
-            <div class="w-full bg-gray-200 mt-5">
-                <div class="px-5 py-5">
-                    <form action="">
-                        <div class="flex flex-row">
-                            <input id="suggest" class="appearance-none w-full text-gray-700 border border-black rounded mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
-                            <button id="mpshow" class="bg-green-500 px-4 py-1 rounded">Найти</button>
+<div class="mx-auto w-9/12 my-16">
+
+        <div class="border-b-4">
+            <!-- Tabs -->
+            <ul id="tabs" class="inline-flex w-full">
+                <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">Все задания</a></li>
+                <li class="font-semibold rounded-t pb-3"><a href="#second">Рекомендованные</a></li>
+            </ul>
+        </div>
+
+            <!-- Tab Contents -->
+            <div id="tab-contents">
+                <div id="first">
+
+                    <div class="grid grid-cols-3 gap-x-10">
+                        <div class="col-span-2">
+                            <div class="w-full bg-gray-200 mt-5">
+                                <div class="px-5 py-5">
+{{--                                    <form action="">--}}
+                                    <div class="grid grid-cols-4 gap-4 mb-3">
+
+                                        <div class="inline-flex w-full col-span-4">
+                                            <input id="suggest" class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
+                                            <button id="mpshow" class="bg-green-500 px-4 py-1 rounded">Найти</button>
+                                        </div>
+
+                                        <div class="col-span-2">
+                                            <label class="text-xs">Город, адрес, метро, район...</label>
+                                            <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text">
+                                        </div>
+
+                                        <div class="">
+                                            <label class="text-xs">Радиус поиска</label>
+{{--                                            <input tabindex="0" aria-autocomplete="list" class="border border-black rounded text-gray-700 py-1" value="">--}}
+                                            <select class="w-full border border-black rounded text-gray-700 py-1">
+                                                <option selected></option>
+                                                <option value="1">5 km</option>
+                                                <option value="2">10 km</option>
+                                                <option value="3">15 km</option>
+                                                <option value="4">20 km</option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="ml-3">
+                                            <label class="text-xs">Стоимость заданий от</label>
+                                            <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." value="">
+                                        </div>
+
+
+                                                    <ul class="inline-flex flex-wrap w-full col-span-3">
+                                                        <li class="mr-5">
+                                                            <input class="" type="checkbox" id="" value=""></span>
+                                                            <label class="" for="">Удалённая работа</label>
+
+                                                        </li>
+                                                        <li class="mr-5">
+                                                                <input class="" type="checkbox" id="" value="">
+                                                                <label class="" for="">Задания без откликов</label>
+                                                        </li>
+                                                        <li class="mr-5">
+                                                                <input class="" type="checkbox" id="" value="">
+                                                                <label class="" for="">Только вакансии</label>
+                                                        </li>
+                                                        <li class="mr-5">
+                                                                <input class="" type="checkbox" id="" value="">
+                                                                <label class="" for="">Сделка без риска</label>
+                                                        </li>
+                                                        <li class="mr-5">
+                                                                    <input class="" type="checkbox" id="" value="">
+                                                                    <label class="" for="">Бизнес-задания</label>
+                                                        </li>
+                                                    </ul>
+                                    </div>
+{{--                                        </form>--}}
+
+
+
+
+                                </div>
+                            </div>
                         </div>
-                    </form>
+                        <div class="w-50 mt-5">
+                            <div id="map" class="w-full h-2/3"></div>
+                            <x-faq/>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="second" class="hidden">
+
                 </div>
             </div>
-        </div>
-        <div class="w-50 mt-5">
-            <div id="map" class="w-full h-2/3"></div>
-            <x-faq/>
-        </div>
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 @endsection
 
@@ -48,6 +134,37 @@
                 searchControl.search(document.getElementById('suggest').value);
             });
         }
+    </script>
+
+    <script>
+        let tabsContainer = document.querySelector("#tabs");
+
+        let tabTogglers = tabsContainer.querySelectorAll("a");
+        console.log(tabTogglers);
+
+        tabTogglers.forEach(function(toggler) {
+            toggler.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                let tabName = this.getAttribute("href");
+
+                let tabContents = document.querySelector("#tab-contents");
+
+                for (let i = 0; i < tabContents.children.length; i++) {
+
+                    tabTogglers[i].parentElement.classList.remove("border-orange-400", "border-b",  "opacity-100");  tabContents.children[i].classList.remove("hidden");
+                    if ("#" + tabContents.children[i].id === tabName) {
+                        continue;
+                    }
+                    tabContents.children[i].classList.add("hidden");
+
+                }
+                e.target.parentElement.classList.add("border-orange-400", "border-b-4", "opacity-100");
+            });
+        });
+
+        document.getElementById("default-tab").click();
+
     </script>
 
 @endsection
