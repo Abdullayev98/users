@@ -48,7 +48,7 @@
                             </button>
                             <ul
                                 class="bg-white border rounded-sm absolute top-0 right-0
-  transition duration-150 ease-in-out origin-top-left h-full w-100"
+  transition duration-150 ease-in-out origin-top-left w-100"
                             >
 
                                 @foreach(\TCG\Voyager\Models\Category::query()->where("parent_id",$category->id)->get() as $category2)
