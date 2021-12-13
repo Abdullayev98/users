@@ -95,7 +95,8 @@
 {{--                 <span class="inline-block">пополнить</span>--}}
 {{--             </button>--}}
         </div>
-        <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6"><a href="/home/profile" class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">Регистрация</a></p>
+{{--        <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6"><a href="/home/profile" class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">Регистрация</a></p>--}}
+                <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6"><a href="#" class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">Регистрация</a></p>
     </nav>
 {{-- pay modal start --}}
     <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">

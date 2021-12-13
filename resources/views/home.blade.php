@@ -34,12 +34,15 @@
     </div>
 </div>
 
-    <div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
-        <!--modal content-->
-        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-            @include('profile.login')
-        </div>
-    </div>
+{{--Login modal--}}
+
+{{--    <div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">--}}
+{{--        <!--modal content-->--}}
+{{--        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">--}}
+{{--            @include('profile.login')--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
     <main>
       <div class="container text-center mx-auto mt-8 px-16">
           <div class="text-3xl font-bold text-center">
