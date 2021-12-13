@@ -81,7 +81,7 @@
                 .scale-0 { transform: scale(0) }
                 .min-w-32 { min-width: 8rem }
             </style>
-            <a href="#" class="font-medium delete-task  text-gray-500 hover:text-gray-900">Найти задания</a>
+            <a href="{{route('task.search')}}" class="font-medium delete-task  text-gray-500 hover:text-gray-900">Найти задания</a>
 
             <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Исполнители</a>
             <!--
