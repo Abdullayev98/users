@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{setting('language','en')}}" dir="ltr">
+<html lang="en" dir="ltr">
+<!-- <html lang="{{setting('language','en')}}" dir="ltr"> -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
