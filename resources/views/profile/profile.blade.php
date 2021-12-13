@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ setting('language', 'en') }}" dir="ltr">
+@extends("layouts.app")
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ setting('app_name') }} | {{ setting('app_short_description') }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="{{ $app_logo ?? '' }}" />
-    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600" rel="stylesheet">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+@section("content")
 
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}">
-</head>
-
-<body>
-
-    <div class="container sticky mx-auto">
-        <x-navbar/>
+        <div class="container sticky mx-auto">
 
 
         <div class="grid grid-cols-3 grid-flow-row mt-10 inline-block">
@@ -54,16 +38,16 @@
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 relative">
                     <ul class="relative w-9/10">
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-lg">Обо мне</a></li>
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-lg">Счет</a></li>
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-lg">Тарифы</a></li>
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-lg">Страхование</a></li>
-                        <li class="inline mr-10 float-right"><a href="/" class="text-black text-xl"><i
+                        <li class="inline mr-10"><a href="/home/profile" class=" text-2xl font-bold underline">Обо мне</a></li>
+                        <li class="inline mr-10"><a href="/profile/cash" class=" text-xl font-bold">Счет</a></li>
+                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Тарифы</a></li>
+                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Страхование</a></li>
+                        <li class="inline mr-10 float-right"><a href="/profile/settings" class="text-black text-xl"><i
                                     class="black fas fa-cogs absolute"></i></a></li>
                         <hr>
                     </ul>
-                    {{-- "men haqimda" start --}}
-                    <div class="about-me visible absolute">
+{{-- BOUT-ME start --}}
+                    <div class="about-me block absolute" id="tab-profile">
                         <div class="about-a-bit mt-10">
                             <h4 class="inline font-bold text-lg">Немного о себе</h4>
                             <span class="ml-10">
@@ -109,63 +93,10 @@
                             </div>
                         </div>
                     </div>
-                    {{-- "men haqimda" end --}}
-                    {{-- hisob --}} <div class="cash invisible absolute w-full">
-                        <div class="head mt-5">
-                            <h2 class="font-bold text-xl">Ваш баланс 0 &#36;</h2>
-                            <p class="inline">Пополнить счет на</p>
-                            <input class="inline rounded-xl ml-3 w-20 h-10 ring-1" type='number' />
-                            <span class="ml-1 text-xl">&#36;</span>
-                            <button type="submit"
-                                class="inline h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 ml-10 w-40">Пополнить
-                                счет</button>
-                        </div>
-                        <div class="relative mt-10 p-5 bg-gray-100 w-full block">
-                            <h2 class="inline-block font-bold text-xl">История операций</h2>
-                            <label class="text-left inline-block w-1/2">
-                                <select class="form-select block w-36 h-10 rounded-xl ring-1 ring-black ml-5">
-                                    <option>за месяц</option>
-                                    <option>за неделю</option>
-                                    <option>за год</option>
-                                    <option>за период</option>
-                                </select>
-                            </label>
-                            <ul class="mt-5">
-                                <li class="inline ml-5"><a href="/home/profile">Все операции</a></li>
-                                <li class="inline ml-5 underline text-[#0091e6]"><a href="/home/profile">Пополнения
-                                        счета</a></li>
-                                <li class="inline ml-5 underline text-[#0091e6]"><a href="/home/profile">Списания со
-                                        счета</a></li>
-                            </ul>
-                            <p class="italic ml-5 mt-3">За данный период транзакций не было</p>
-                        </div>
-                        <div class="FAQ reltive block w-full mt-5">
-                            <h2 class="font-bold text-xl">Частые вопросы</h2>
-                            <h4 class="font-bold text-md mt-2">Условия работы с YouDo.</h4>
-                            <p>YouDo списывает с исполнителей фиксированную оплату за возможность оставлять к заданиям
-                                отклики с контактными данными. Стоимость одного отклика зависит от категории заданий и
-                                начинается от 20 рублей. Оплата за отклики не возвращается.</p>
-                            <h4 class="font-bold text-md mt-2">Какая минимальная сумма для пополнения счета?</h4>
-                            <p>400 рублей.</p>
-                            <h4 class="font-bold text-md mt-2">Как сделать возврат денег со своего счета в YouDo?</h4>
-                            <p><a href="/home/profile" class="text-blue-500">Оформить запрос на возврат денег</a> -
-                                кликните по этой ссылке и укажите сумму, которую вы хотите вернуть. Как правило, деньги
-                                перечисляются на тот же счет, с которого производилось пополнение баланса в YouDo, в
-                                течение 5 рабочих дней с учетом комиссии платежной системы.</p>
-                            <h3 class="font-bold text-lg mt-2">Если у вас остались вопросы об условиях работы с YouDo,
-                                посмотрите это обучающее видео:</h3>
-                            <iframe class="w-full mb-10 h-96" src="https://www.youtube.com/embed/Js_5Pal4bOE">
-                            </iframe>
-
-                        </div>
-                    </div>
-                    {{-- hisob end --}}
+{{-- about-me end --}}
                 </div>
-
             </div>
-
-
-            {{-- o`ng tomon ispolnitel --}}
+{{-- right-side-bar --}}
             <div
                 class="col-span-1 mx-2 inline-block absolute w-1/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto lg:visible xl:visible md:visible  sm:invisible">
                 <div class="mt-6 ml-4">
@@ -254,42 +185,5 @@
             </div>
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
-
-
-
-
     </div>
-
-    
-    <script>
-        let modal = document.getElementById("my-modal");
-
-        let btn = document.getElementById("open-btn");
-
-        let button = document.getElementById("ok-btn");
-        
-        let closebtn = document.getElementById("close-btn");
-
-        closebtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-        // We want the modal to close when the OK button is clicked
-        button.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-</body>
-
-</html>
+@endsection

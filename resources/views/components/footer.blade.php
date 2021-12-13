@@ -1,4 +1,3 @@
-@section('footer')
 
 <div class="mx-24">
     <footer class="h-auto md:pt-9">
@@ -79,5 +78,3 @@
         </div>
     </footer>
 </div>
-
-@endsection
