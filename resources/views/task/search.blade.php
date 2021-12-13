@@ -1,12 +1,12 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="mx-auto w-9/12 my-16">
-        <div class="flex flex-row my-4">
-            <a href="#" class="mr-4" data-tab="all">Все задания</a>
-            <a href="#" data-tab="recommended">Рекомендованные</a>
-        </div>
-        <div class="h-1 w-full bg-gray-300"></div>
+<div class="mx-auto w-9/12 my-16">
+    <div class="flex flex-row my-4">
+        <a href="#" class="mr-4" data-tab="all">Все задания</a>
+        <a href="#" data-tab="recommended">Рекомендованные</a>
+    </div>
+    <div class="h-1 w-full bg-gray-300"></div>
 
     <div class="grid grid-cols-3 gap-x-10">
         <div class="col-span-2">
@@ -21,17 +21,12 @@
                 </div>
             </div>
         </div>
-
-
-    <div class="w-50 mt-5">
-        <div id="map" class="w-full h-full"></div>
-        <x-faq/>
-    </div>
-
+        <div class="w-50 mt-5">
+            <div id="map" class="w-full h-2/3"></div>
+            <x-faq/>
+        </div>
     </div>
 </div>
-
-
 @endsection
 
 @section("javasript")
