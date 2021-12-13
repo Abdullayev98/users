@@ -33,9 +33,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/home/profile', function() {
-    return view('/Profile/profile');
-});
+Route::get('/home/profile', [HomeController::class, 'profile']);
 
 Route::get('/refill', function() {
     return view('/Site/refill');
