@@ -95,9 +95,9 @@
 {{--                 <span class="inline-block">пополнить</span>--}}
 {{--             </button>--}}
         </div>
-        <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6" ><a  href="#" id='open-btn' class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" id="open-btn"  class="font-medium hover:text-yellow-500">Регистрация</a></p>
+        <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6" ><a  href="#" id='open-btn' class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" id="open-btn2"  class="font-medium hover:text-yellow-500">Регистрация</a></p>
     </nav>
-{{-- register start --}}
+{{-- login start --}}
     <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full" id="my-modal">
         <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
@@ -141,8 +141,47 @@
             </div>
         </div>
     </div>
-{{-- register end --}}
+{{-- login end --}}
 
+{{-- register start --}}
+<div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full" id="my-modal2">
+    <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
+        <div class="mt-3 text-center">
+            <button type="submit" id="close-btn2" class="px-4 py-4  rounded-md w-100 h-16 absolute right-4 top-4 ">
+                <i class="fas fa-times text-2xl text-gray-600"></i>
+            </button>
+            <div class="mx-auto flex items-center justify-center w-full">
+                <h3 class="font-bold text-2xl block mb-4">
+                    Войти через:
+                </h3>
+            </div>
+            <div class="mt-4">
+                <button class="w-80 h-12 rounded-lg bg-red-500 text-gray-200 uppercase font-semibold hover:bg-red-700 text-gray-100 transition mb-4"> Google</button>
+                <button class="w-80 h-12 rounded-lg bg-blue-500 text-gray-200 uppercase font-semibold hover:bg-blue-700 text-gray-100 transition mb-4"> Facebook</button>
+            </div>
+            <div class="mx-auto flex items-center justify-center w-full">
+                <h3 class="font-bold text-2xl block mb-4 mt-4">
+                    Войти по электронной почте
+                </h3>
+            </div>
+                <div>
+                    <div class="mb-4">
+                        <label class="block text-gray-500  text-sm " for="username">
+                            Электронная почта
+                        </label>
+                        <input class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" id="username" type="text" >
+                      </div>
+                  </div>
+                    <button id="ok-btn" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">Войти</button>
+                    <p class="text-sky-500 text-lg mb-4"><a href="#">Забыли пароль?</a></p>
+
+                    <p class="text-lg mb-4">Еще не с нами?<a class="text-sky-500" href="#">Зарегистрируйтесь</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- register end --}}
 
 {{-- pay modal start --}}
 <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal1">
@@ -177,7 +216,7 @@
 
 
 <script>
-    //register start
+    //login start
     let modal = document.getElementById("my-modal");
 
     let btn = document.getElementById("open-btn");
@@ -203,7 +242,35 @@
             modal.style.display = "none";
         }
     }
-    //register end
+    //login end
+
+    //register start
+        let modal2 = document.getElementById("my-modal2");
+
+        let btn2 = document.getElementById("open-btn2");
+
+        let button2 = document.getElementById("ok-btn2");
+
+        let closebtn2 = document.getElementById("close-btn2");
+
+        closebtn2.onclick = function() {
+            modal2.style.display = "none";
+        }
+
+        btn2.onclick = function() {
+            modal2.style.display = "block";
+        }
+        // We want the modal to close when the OK button is clicked
+        button2.onclick = function() {
+            modal2.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+            }
+        }
+    // register end
 
     //pay modal start
         let modal1 = document.getElementById("my-modal1");
