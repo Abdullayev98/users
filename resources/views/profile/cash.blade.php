@@ -38,65 +38,73 @@
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 relative">
                     <ul class="relative w-9/10">
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-2xl font-bold underline">Обо мне</a></li>
-                        <li class="inline mr-10"><a href="/profile/cash" class=" text-xl font-bold">Счет</a></li>
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Тарифы</a></li>
+                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-profile')">Обо мне</a></li>
+                        <li class="inline mr-10"><a href="/home/cash" class=" text-2xl font-bold underline" onclick="changeAtiveTab(event,'tab-cash')">Счет</a></li>
+                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-options')">Тарифы</a></li>
                         <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Страхование</a></li>
                         <li class="inline mr-10 float-right"><a href="/profile/settings" class="text-black text-xl"><i
                                     class="black fas fa-cogs absolute"></i></a></li>
                         <hr>
                     </ul>
-{{-- BOUT-ME start --}}
-                    <div class="about-me block absolute" id="tab-profile">
-                        <div class="about-a-bit mt-10">
-                            <h4 class="inline font-bold text-lg">Немного о себе</h4>
-                            <span class="ml-10">
-                                <i class="fas fa-pencil-alt inline text-gray-300"></i>
-                                <p class="inline text-gray-300 cursor-pointer">Редактировать</p>
-                            </span>
-                            <p class="mt-3 w-4/5">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book.</p>
+                    {{-- "about-me" start --}}
+                    
+                    {{-- "about-me" end --}}
+                    {{-- cash --}} <div class="cash block absolute w-full" id="tab-cash">
+                        <div class="head mt-5">
+                            <h2 class="font-bold text-xl">Ваш баланс 0 &#36;</h2>
+                            <p class="inline">Пополнить счет на</p>
+                            <input class="inline rounded-xl ml-3 w-20 h-10 ring-1" type='number' />
+                            <span class="ml-1 text-xl">&#36;</span>
+                            <button type="submit"
+                                class="inline h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 ml-10 w-40">Пополнить
+                                счет</button>
                         </div>
-                        <h4 class="font-bold text-lg mt-5">Примеры работ</h4>
-                        <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
+                        <div class="relative mt-10 p-5 bg-gray-100 w-full block">
+                            <h2 class="inline-block font-bold text-xl">История операций</h2>
+                            <label class="text-left inline-block w-1/2">
+                                <select class="form-select block w-36 h-10 rounded-xl ring-1 ring-black ml-5">
+                                    <option>за месяц</option>
+                                    <option>за неделю</option>
+                                    <option>за год</option>
+                                    <option>за период</option>
+                                </select>
+                            </label>
+                            <ul class="mt-5">
+                                <li class="inline ml-5"><a href="/home/profile">Все операции</a></li>
+                                <li class="inline ml-5 underline text-[#0091e6]"><a href="/home/profile">Пополнения
+                                        счета</a></li>
+                                <li class="inline ml-5 underline text-[#0091e6]"><a href="/home/profile">Списания со
+                                        счета</a></li>
+                            </ul>
+                            <p class="italic ml-5 mt-3">За данный период транзакций не было</p>
+                        </div>
+                        <div class="FAQ reltive block w-full mt-5">
+                            <h2 class="font-bold text-xl">Частые вопросы</h2>
+                            <h4 class="font-bold text-md mt-2">Условия работы с YouDo.</h4>
+                            <p>YouDo списывает с исполнителей фиксированную оплату за возможность оставлять к заданиям
+                                отклики с контактными данными. Стоимость одного отклика зависит от категории заданий и
+                                начинается от 20 рублей. Оплата за отклики не возвращается.</p>
+                            <h4 class="font-bold text-md mt-2">Какая минимальная сумма для пополнения счета?</h4>
+                            <p>400 рублей.</p>
+                            <h4 class="font-bold text-md mt-2">Как сделать возврат денег со своего счета в YouDo?</h4>
+                            <p><a href="/home/profile" class="text-blue-500">Оформить запрос на возврат денег</a> -
+                                кликните по этой ссылке и укажите сумму, которую вы хотите вернуть. Как правило, деньги
+                                перечисляются на тот же счет, с которого производилось пополнение баланса в YouDo, в
+                                течение 5 рабочих дней с учетом комиссии платежной системы.</p>
+                            <h3 class="font-bold text-lg mt-2">Если у вас остались вопросы об условиях работы с YouDo,
+                                посмотрите это обучающее видео:</h3>
+                            <iframe class="w-full mb-10 h-96" src="https://www.youtube.com/embed/Js_5Pal4bOE">
+                            </iframe>
 
-                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 relative">
-                                <div class="rounded-xl shadow-lg relative object-center">
-                                    <img class="rounded-t-xl z-10 relative"
-                                        src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg">
-                                    <div class="w-full bg-gray-700 hover:bg-gray-500 relative z-40 rounded-b-xl h-10">
-                                        <p class="inline ml-4 text-white">text for jobs</p>
-                                        <i class="inline fas fa-camera float-right text-white text-xl mr-3 my-1"><span
-                                                class="text-sm"> 1</span> </i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 relative">
-                                <div class="rounded-xl shadow-lg relative object-center">
-                                    <img class="rounded-t-xl z-10 relative"
-                                        src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg">
-                                    <div class="w-full bg-gray-700 hover:bg-gray-500 relative z-40 rounded-b-xl h-10">
-                                        <p class="inline ml-4 text-white">text for jobs</p>
-                                        <i class="inline fas fa-camera float-right text-white text-xl mr-3 my-1"><span
-                                                class="text-sm"> 1</span></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 relative hover:bg-gray-100 cursor-pointer">
-                                <div class="rounded-xl ring-1 ring-gray-300 relative object-center w-full h-56">
-                                    <i class="fas fa-plus-circle text-gray-300 text-9xl text-center mt-10 w-full"></i>
-
-                                </div>
-                            </div>
                         </div>
                     </div>
-{{-- about-me end --}}
+                    {{-- cash end --}}
                 </div>
+
             </div>
-{{-- right-side-bar --}}
+
+
+            {{--right-side-bar--}}
             <div
                 class="col-span-1 mx-2 inline-block absolute w-1/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto lg:visible xl:visible md:visible  sm:invisible">
                 <div class="mt-6 ml-4">
@@ -183,7 +191,16 @@
                     </div>
                 </div>
             </div>
-            {{-- tugashi o'ng tomon ispolnitel --}}
+            {{-- right side bar end--}}
         </div>
+
+
+
+
     </div>
+
+    
+     
+
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 @endsection
