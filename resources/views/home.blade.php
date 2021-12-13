@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <!-- <html lang="{{setting('language','en')}}" dir="ltr"> -->
@@ -16,7 +15,6 @@
     <link rel="stylesheet" href="{{asset('css/styles.min.css')}}">
 </head>
 <body>
->>>>>>> f74f9623bd08ddbf707532f7f00f279fb9afb801
 
 @extends('layouts.app')
 
