@@ -152,7 +152,7 @@
             </button>
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4">
-                    Войти через:
+                    Быстрая регистрация через:
                 </h3>
             </div>
             <div class="mt-4">
@@ -161,7 +161,7 @@
             </div>
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4 mt-4">
-                    Войти по электронной почте
+                    Или по электронной почте
                 </h3>
             </div>
                 <div>
@@ -172,10 +172,10 @@
                         <input class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" id="username" type="text" >
                       </div>
                   </div>
-                    <button id="ok-btn" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">Войти</button>
-                    <p class="text-sky-500 text-lg mb-4"><a href="#">Забыли пароль?</a></p>
+                    <button id="ok-btn" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">Зарегистрироваться</button>
+                   
 
-                    <p class="text-lg mb-4">Еще не с нами?<a class="text-sky-500" href="#">Зарегистрируйтесь</a></p>
+                    <p class="text-lg mb-4">Уже зарегистрированы?<a class="text-sky-500" href="#"> Войдите</a></p>
                 </div>
             </div>
         </div>
