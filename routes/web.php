@@ -35,6 +35,11 @@ Route::get('/', function () {
 
 Route::get('/home/profile', [HomeController::class, 'profile']);
 
+
+Route::get('/terms', function () {
+    return view('terms.terms');
+});
+
 Route::get('/refill', function() {
     return view('/Site/refill');
 });
