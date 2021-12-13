@@ -238,6 +238,13 @@
           </div>
       </div>
     </main>
+
+
+
+
+
+
+
     <script>
         // Grabs all the Elements by their IDs which we had given them
         let modal = document.getElementById("my-modal");

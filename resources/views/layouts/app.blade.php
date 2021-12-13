@@ -19,6 +19,12 @@
     <x-footer/>
 
 
+<div>
+    @yield('footer')
+</div>
+
+
+
 
 </body>
 
