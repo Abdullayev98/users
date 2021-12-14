@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Task\SearchTaskController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/task-search', [Controller::class, 'task_search'])->name('task.search');
+Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('task.search');

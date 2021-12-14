@@ -14,7 +14,8 @@ class SearchTaskController extends VoyagerBaseController
         $tasks = new Task();
 
 //        return view("task/search", compact('tasks', paginate(50)));
-          return view("task/search", ['tasks'=>$tasks->paginate(50)]);
+//        dd($tasks);
+          return view('task.search', ['tasks'=>$tasks->paginate(50)]);
     }
 
 
