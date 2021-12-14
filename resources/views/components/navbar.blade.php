@@ -136,8 +136,8 @@
              <form action="">
                 @csrf
                     <div class="mt-4">
-                        <a class="px-4 py-2 bg-blue-600 w-90 h-12 rounded text-xl m-4" href="{{url('login/facebook')}}">Facebook</a>
-                        <a class="px-4 py-2 bg-red-600 w-90 h-12 rounded text-xl m-4" href="{{url('login/google')}}">Google</a>
+                        <a class="px-4 py-2 bg-blue-600 text-[#fff] hover:bg-blue-700  h-12 rounded text-xl m-4" href="{{url('login/facebook')}}">Facebook</a>
+                        <a class="px-5 py-2 bg-red-600 text-[#fff] hover:bg-red-700  h-12 rounded text-xl m-4" href="{{url('login/google')}}">Google</a>
                      </div>
                      <div class="mx-auto flex items-center justify-center w-full">
                          <h3 class="font-bold text-2xl block mb-4 mt-4">
@@ -186,8 +186,8 @@
            <form action="">
                @csrf
                 <div class="mt-4">
-                    <a class="px-4 py-2 bg-blue-600 w-90 h-12 rounded text-xl m-4" href="{{url('login/facebook')}}">Facebook</a>
-                    <a class="px-4 py-2 bg-red-600 w-90 h-12 rounded text-xl m-4" href="{{url('login/google')}}">Google</a>
+                    <a class="px-4 py-2 bg-blue-600 text-[#fff] hover:bg-blue-700  h-12 rounded text-xl m-4" href="{{url('login/facebook')}}">Facebook</a>
+                        <a class="px-5 py-2 bg-red-600 text-[#fff] hover:bg-red-700  h-12 rounded text-xl m-4" href="{{url('login/google')}}">Google</a>
                 </div>
                 <div class="mx-auto flex items-center justify-center w-full">
                     <h3 class="font-bold text-2xl block mb-4 mt-4">
