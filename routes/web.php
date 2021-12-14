@@ -15,9 +15,10 @@ use App\Http\Controllers\NewsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/performers', function () { return view('Performers.performers'); });
+
 Route::get('/news', [NewsController::class, 'home']);
 
 Route::group(['prefix' => 'admin'], function () {
@@ -44,9 +45,10 @@ Route::get('/refill', function() {
     return view('/Site/refill');
 });
 
+Route::get('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
+
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 
 Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare');
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
-
