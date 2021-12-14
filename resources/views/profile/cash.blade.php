@@ -36,6 +36,7 @@
                     </div>
                 </figure>
                 {{-- user ma'lumotlari tugashi --}}
+<<<<<<< .mine
                 <div class="content mt-20 ">
                     <div class="grid grid-cols-10 menutab">
                         <ul class=" col-span-9 " id="tabs">
@@ -43,11 +44,23 @@
                             <li class="inline mr-10"><a href="/profile/cash" class=" text-xl font-bold">Счет</a></li>
                             <li class="inline mr-10"><a href="#third" class=" text-xl font-bold">Тарифы</a></li>
                             <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Страхование</a></li>
+=======
+                <div class="content mt-20 relative">
+                    <ul class="relative w-9/10">
+                        <li class="inline mr-10"><a href="{{route('home.profile')}}" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-profile')">Обо мне</a></li>
+                        <li class="inline mr-10"><a href="{{route('profile.cash')}}" class=" text-2xl font-bold underline" onclick="changeAtiveTab(event,'tab-cash')">Счет</a></li>
+                        <li class="inline mr-10"><a href="{{route('home.profile')}}" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-options')">Тарифы</a></li>
+                        <li class="inline mr-10"><a href="{{route('home.profile')}}" class=" text-xl font-bold">Страхование</a></li>
+                        <li class="inline mr-10 float-right"><a href="/profile/settings" class="text-black text-xl"><i
+>>>>>>> .theirs
                         </ul>
                         <div class="col-span-1  " ><a href="/profile/settings"><i class="fas fa-user-cog text-3xl"></i></a></div>
 
                     </div>
                                 <hr>
+                                    class="black fas fa-cogs absolute"></i></a></li>
+                        <hr>
+                    </ul>
                     {{-- "about-me" start --}}
 
                     {{-- "about-me" end --}}
