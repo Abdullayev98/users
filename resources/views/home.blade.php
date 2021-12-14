@@ -294,7 +294,7 @@
       <div class="w-full my-16">
         <h1 class="text-4xl">Что заказывают на «Юду» прямо сейчас</h1>
       </div>
-        <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-32">
+        <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-72">
           <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
             <div class="w-full overflow-y-scroll w-full h-screen">
               <div class="w-full border-b-2 h-28 hover:bg-blue-100">
@@ -433,7 +433,7 @@
             </div>
           </div>
           <div class="w-full md:col-span-1 h-full col-span-2">
-            <div class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-executors-d40b155c145cdfa2d0f387a2baef5430.jpg')]">
+            <div class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-executors-d40b155c145cdfa2d0f387a2baef5430.jpg')]">
               <div class="w-full h-full bg-[#00000066] text-center">
                 <i class="fas fa-user text-[#84e879] text-5xl pt-8"></i>
                 <p class="text-4xl text-[#fff]">Как стать исполнителем</p>
@@ -442,7 +442,7 @@
             <div class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
               <div class="w-full h-full bg-[#00000066] text-center">
                 <i class="fas fa-shield-alt text-[#8ae2ed] text-5xl pt-8"></i>
-                <p class="text-4xl text-[#fff]">Как стать исполнителем</p>
+                <p class="text-4xl text-[#fff]">Безопасность и гарантии</p>
               </div>
             </div>
             <div class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
