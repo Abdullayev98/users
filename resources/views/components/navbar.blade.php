@@ -39,13 +39,10 @@
                                 </span>
                             </button>
                             <ul
-<<<<<<< HEAD
-                                class="bg-white border rounded-sm absolute top-0 right-0 transition duration-150 ease-in-out origin-top-left h-full w-100">
-=======
+
                                 class="bg-white border rounded-sm absolute top-0 right-0
   transition duration-150 ease-in-out origin-top-left w-100"
                             >
->>>>>>> c99e49277dea7fe17ac31e1fb00f54f1a430d377
 
                                 @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
                                     <li class="rounded-sm">
@@ -265,11 +262,14 @@
 
 
 
+@section("javascript")
+
+
+
     <script>
         let modal = document.getElementById("my-modal");
-<script>
-    //login start
-    let modal = document.getElementById("my-modal");
+        //login start
+        let modal = document.getElementById("my-modal");
 
 
         let btn = document.getElementById("open-btn");
@@ -296,10 +296,9 @@
                 modal.style.display = "none";
             }
         }
-    </script>
-    //login end
+        //login end
 
-    //register start
+        //register start
         let modal2 = document.getElementById("my-modal2");
 
         let btn2 = document.getElementById("open-btn2");
@@ -325,9 +324,9 @@
                 modal2.style.display = "none";
             }
         }
-    // register end
+        // register end
 
-    //pay modal start
+        //pay modal start
         let modal1 = document.getElementById("my-modal1");
 
         let btn1 = document.getElementById("open-btn1");
@@ -353,7 +352,8 @@
                 modal1.style.display = "none";
             }
         }
-    // pay modal end
+        // pay modal end
 
-</script>
+        // </script>
 
+@endsection
