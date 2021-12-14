@@ -29,7 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send");
 });
 
-
+Route::view('/faq','faq.faq');
 Route::get('/', function () {
     return view('home');
 });
