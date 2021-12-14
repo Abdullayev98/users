@@ -88,13 +88,38 @@
                                     <!-- Tabs -->
                                     <ul id="tabs" class="inline-flex w-full">
                                         <li class="font-semibold rounded-t mr-5">Сортировать</li>
-                                        <li class="hover:text-red-500 mr-4"><a href="#datesort">по дате публикации</a></li>
-                                        <li class="hover:text-red-500 mr-4"><a href="#fastsort">по срочности</a></li>
+                                        <li class="bg-[#f8f7ee] mr-4"><a href="#datesort">по дате публикации</a></li>
+                                        <li class="underline decoration-dotted mr-4"><a href="#fastsort">по срочности</a></li>
                                         <li class="hover:text-red-500 mr-4"><a href="#geosort">по удалённости</a></li>
                                     </ul>
                                 </div>
 
-
+                                <div id="scrollbar" class="w-full h-screen blog1">
+                                  <div class="w-full overflow-y-scroll w-full h-screen">
+                                    <div class="w-full border hover:bg-blue-100">
+                                      <div class="w-11/12 h-12 m-4">
+                                        <div class="float-left w-9/12">
+                                          <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                                            Оценить консультацию по телефону.
+                                          </a>
+                                          <p class="text-sm ml-12mt-4">
+                                            ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                                          </p>
+                                        </div><div class="float-right w-1/4 text-right">
+                                          <a href="#" class="text-lg">100 000 sum</a><p class="text-sm ml-12mt-4">Спортмастер</p>
+                                          <p class="text-sm ml-12mt-4">Нет отзывов</p>
+                                        </div>
+                                      </div>
+                                      <div class="w-11/12 h-12 m-4">
+                                        <div class="mx-auto w-9/12">
+                                          <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Вакансия</button>
+                                          <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Бесплатный отклик</button>
+                                          <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥Промо</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
 
 
                                 @foreach($tasks as $task)
@@ -111,8 +136,7 @@
                     </div>
 
                 </div>
-
-                <div id="second" class="hidden">
+             <div id="second" class="hidden">
 
 
                 </div>

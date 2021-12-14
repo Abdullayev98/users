@@ -19,11 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//User Routes
 Route::get('users', [UserAPIController::class, 'index']);
 Route::post('login', [UserAPIController::class, 'login']);
 Route::post('register', [UserAPIController::class, 'register']);
 Route::put('update/{id}', [UserAPIController::class, 'update']);
 Route::get('logout', [UserAPIController::class, 'logout']);
 Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
+
 
