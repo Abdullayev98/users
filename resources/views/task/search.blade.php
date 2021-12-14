@@ -4,7 +4,7 @@
 
 <div class="mx-auto w-9/12 my-16">
 
-        <div class="border-b-4">
+        <div class="border-b">
             <!-- Tabs -->
             <ul id="tabs" class="inline-flex w-full">
                 <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">Все задания</a></li>
@@ -43,7 +43,6 @@
                                                 <option value="3">15 km</option>
                                                 <option value="4">20 km</option>
                                             </select>
-
                                         </div>
 
                                         <div class="ml-3">
@@ -51,30 +50,34 @@
                                             <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." value="">
                                         </div>
 
-
-                                                    <ul class="inline-flex flex-wrap w-full col-span-3">
-                                                        <li class="mr-5">
-                                                            <input class="" type="checkbox" id="" value=""></span>
-                                                            <label class="" for="">Удалённая работа</label>
-
-                                                        </li>
-                                                        <li class="mr-5">
-                                                                <input class="" type="checkbox" id="" value="">
-                                                                <label class="" for="">Задания без откликов</label>
-                                                        </li>
-                                                        <li class="mr-5">
-                                                                <input class="" type="checkbox" id="" value="">
-                                                                <label class="" for="">Только вакансии</label>
-                                                        </li>
-                                                        <li class="mr-5">
-                                                                <input class="" type="checkbox" id="" value="">
-                                                                <label class="" for="">Сделка без риска</label>
-                                                        </li>
-                                                        <li class="mr-5">
-                                                                    <input class="" type="checkbox" id="" value="">
-                                                                    <label class="" for="">Бизнес-задания</label>
-                                                        </li>
-                                                    </ul>
+                                        <ul class="inline-flex flex-wrap w-full col-span-3">
+                                            <div class="col-span-1 mr-5">
+                                                <li>
+                                                    <input class="" type="checkbox" id="" value=""></span>
+                                                    <label class="" for="">Удалённая работа</label>
+                                                </li>
+                                                <li>
+                                                    <input class="" type="checkbox" id="" value="">
+                                                    <label class="" for="">Задания без откликов</label>
+                                                </li>
+                                            </div>
+                                            <div class="col-span-1 mr-5">
+                                                <li>
+                                                    <input class="" type="checkbox" id="" value="">
+                                                    <label class="" for="">Только вакансии</label>
+                                                </li>
+                                                <li>
+                                                    <input class="" type="checkbox" id="" value="">
+                                                    <label class="" for="">Сделка без риска</label>
+                                                </li>
+                                            </div>
+                                            <div class="col-span-1 mr-5">
+                                                <li>
+                                                    <input class="" type="checkbox" id="" value="">
+                                                    <label class="" for="">Бизнес-задания</label>
+                                                </li>
+                                            </div>
+                                        </ul>
                                     </div>
 {{--                                        </form>--}}
 
@@ -83,14 +86,23 @@
 
                                 </div>
                             </div>
+
+                            <div>
+                                @foreach($tasks as $task)
+                                @endforeach
+                            </div>
+
                         </div>
-                        <div class="w-50 mt-5">
-                            <div id="map" class="w-full h-2/3"></div>
+                        <div class="w-full h-full mt-5">
+                            <div id="map" class="h-40 my-5 rounded-lg w-full"></div>
+                            <div class="w-full h-full">
                             <x-faq/>
+                            </div>
                         </div>
                     </div>
 
                 </div>
+
                 <div id="second" class="hidden">
 
                 </div>

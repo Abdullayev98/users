@@ -1,5 +1,6 @@
-<div class="col-span">
+<div class="my-0">
     <div class=" text-left text-2xl text-[#5f5869] w-11/12 ml-4">
+{{--        <div class=" text-left text-[#5f5869] ml-4">--}}
         Частые вопросы
         <p><a href="#" class="text-blue-500 hover:text-[#ffa200] hover:underline text-xs">Сколько откликов я получу?</a></p>
         <p><a href="#" class="text-blue-500 hover:text-[#ffa200] hover:underline text-xs">Обязательно ли выбирать исполнителя?</a></p>
