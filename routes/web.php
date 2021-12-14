@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
-
+use App\Http\Controllers\SocialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +52,9 @@ Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare');
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
+
+Route::get('login/facebook',[SocialController::class,'facebookRedirect']);
+Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook']);
+
+Route::get('login/google',[SocialController::class,'googleRedirect']);
+Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']);

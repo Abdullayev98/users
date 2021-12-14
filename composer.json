@@ -11,6 +11,7 @@
         "joy/voyager-api": "^1.0",
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
+        "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
         "realrashid/sweet-alert": "^4.1",
         "tcg/voyager": "^1.5"
