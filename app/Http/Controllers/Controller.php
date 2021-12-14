@@ -24,14 +24,14 @@ class Controller extends BaseController
         return view('/create/location');
     }
     public function task_search(){
-        return view('task/search');
+        return view('task/search2');
     }
     public function performers(){
         return view('performer');
     }
     public function profile_cash(){
         return view('/profile/cash');
-    }  
+    }
     public function profile_settings(){
         return view('/profile/settings');
     }
