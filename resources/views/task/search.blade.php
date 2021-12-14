@@ -18,7 +18,7 @@
 
                     <div class="grid grid-cols-3 gap-x-10">
                         <div class="col-span-2">
-                            <div class="w-full bg-gray-200 mt-5">
+                            <div class="w-full bg-[#f8f7ee] my-5">
                                 <div class="px-5 py-5">
 {{--                                    <form action="">--}}
                                     <div class="grid grid-cols-4 gap-4 mb-3">
@@ -80,14 +80,23 @@
                                         </ul>
                                     </div>
 {{--                                        </form>--}}
-
-
-
-
                                 </div>
                             </div>
 
                             <div>
+                                <div class="border-b">
+                                    <!-- Tabs -->
+                                    <ul id="tabs" class="inline-flex w-full">
+                                        <li class="font-semibold rounded-t mr-5">Сортировать</li>
+                                        <li class="hover:text-red-500 mr-4"><a href="#datesort">по дате публикации</a></li>
+                                        <li class="hover:text-red-500 mr-4"><a href="#fastsort">по срочности</a></li>
+                                        <li class="hover:text-red-500 mr-4"><a href="#geosort">по удалённости</a></li>
+                                    </ul>
+                                </div>
+
+
+
+
                                 @foreach($tasks as $task)
                                 @endforeach
                             </div>
@@ -105,23 +114,10 @@
 
                 <div id="second" class="hidden">
 
+
                 </div>
+
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </div>
@@ -171,7 +167,7 @@
                     tabContents.children[i].classList.add("hidden");
 
                 }
-                e.target.parentElement.classList.add("border-orange-400", "border-b-4", "opacity-100");
+                e.target.parentElement.classList.add("border-orange-400", "border-b-2", "opacity-100");
             });
         });
 

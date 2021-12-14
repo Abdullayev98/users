@@ -118,7 +118,7 @@
             {{-- <span class="inline-block">пополнить</span> --}}
             {{-- </button> --}}
         </div>
-        
+
         <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6" ><a  href="#" id='open-btn' class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" id="open-btn2"  class="font-medium hover:text-yellow-500">Регистрация</a></p>
 
     </nav>
