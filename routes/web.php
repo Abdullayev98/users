@@ -39,6 +39,12 @@ Route::get('/home/profile', [HomeController::class, 'profile']);
 Route::get('/terms', function () {
     return view('terms.terms');
 });
+Route::get('/offer-tasks', function () {
+    return view('task.offertasks');
+});
+Route::get('/my-tasks', function () {
+    return view('task.mytasks');
+});
 
 Route::get('/refill', function() {
     return view('/Site/refill');
