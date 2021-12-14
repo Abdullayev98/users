@@ -52,6 +52,10 @@ Route::get('/refill', function() {
     return view('/Site/refill');
 });
 
+Route::get('/contacts', function() {
+    return view('contacts.contacts');
+});
+
 Route::get('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
 
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
