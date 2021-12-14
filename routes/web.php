@@ -58,3 +58,4 @@ Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare');
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
+Route::post('/profile', "App\Http\Controllers\ProfileController@profileData")->name('profile.data');
