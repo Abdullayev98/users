@@ -167,6 +167,7 @@
     </div>
 {{-- login end --}}
 
+
 {{-- register start --}}
 <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full" id="my-modal2">
     <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
