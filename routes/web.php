@@ -42,10 +42,8 @@ Route::get('/terms', function () {
 Route::get('/offer-tasks', function () {
     return view('task.offertasks');
 });
-Route::get('/my-tasks', function () {
-    return view('task.mytasks');
-});
 
+Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('my.tasks');
 Route::get('/refill', function() {
     return view('/Site/refill');
 });
