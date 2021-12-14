@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
-
+use App\Http\Controllers\SocialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,9 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [Controller::class, 'home']);
 
 Route::get('/home/profile', [HomeController::class, 'profile']);
 
@@ -40,7 +39,11 @@ Route::get('/home/profile', [HomeController::class, 'profile']);
 Route::get('/terms', function () {
     return view('terms.terms');
 });
+Route::get('/offer-tasks', function () {
+    return view('task.offertasks');
+});
 
+Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('my.tasks');
 Route::get('/refill', function() {
     return view('/Site/refill');
 });
@@ -56,3 +59,9 @@ Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare');
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
+
+Route::get('login/facebook',[SocialController::class,'facebookRedirect']);
+Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook']);
+
+Route::get('login/google',[SocialController::class,'googleRedirect']);
+Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']);

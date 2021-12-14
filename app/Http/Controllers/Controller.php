@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -12,7 +13,8 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function home(){
-        return view('home');
+        $tasks  =  Task::latest()->paginate(15);
+        return view('home',compact('tasks'));
     }
     public function home_profile(){
         return view('/profile/profile');
@@ -34,6 +36,10 @@ class Controller extends BaseController
     }
     public function profile_settings(){
         return view('/profile/settings');
+    }
+    public function my_tasks(){
+        $tasks = Task::where('user_id', auth()->id());
+        return view('/task/mytasks',compact('tasks'));
     }
 
 }

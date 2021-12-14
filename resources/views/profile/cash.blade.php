@@ -15,7 +15,7 @@
                         <i class="far fa-eye"></i>
                         <span>15 просмотров профиля</span>
                     </div>
-                    <h2 class="font-bold text-lg">Здравствуйте, Цезар!</h2>
+                    <h2 class="font-bold text-2xl">Здравствуйте, Цезар!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
                             src="https://data.whicdn.com/images/322027365/original.jpg?t=1541703413" alt="" width="384"
@@ -25,7 +25,7 @@
                             <span>Изменить фото</span>
                         </button>
                     </div>
-                    <div class="inline-block absolute ml-3 mt-1">
+                    <div class="inline-block  ml-3 mt-1">
                         <p class="inline-block text-m mr-2">34 год</p>
                         <span class="inline-block">
                             <i class="fas fa-map-marker-alt"></i>
@@ -35,21 +35,23 @@
                         <p class="mt-4">Оценка: 3.6 </p>
                     </div>
                 </figure>
-                {{-- user ma'lumotlari tugashi --}}
-                <div class="content mt-20 relative">
-                    <ul class="relative w-9/10">
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-profile')">Обо мне</a></li>
-                        <li class="inline mr-10"><a href="/home/cash" class=" text-2xl font-bold underline" onclick="changeAtiveTab(event,'tab-cash')">Счет</a></li>
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-options')">Тарифы</a></li>
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Страхование</a></li>
-                        <li class="inline mr-10 float-right"><a href="/profile/settings" class="text-black text-xl"><i
-                                    class="black fas fa-cogs absolute"></i></a></li>
+
+                <div class="content  mt-20 ">
+                    <div class="grid grid-cols-10 flex justify-left">
+                        <ul class=" col-span-9">
+                            <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" >Обо мне</a></li>
+                            <li class="inline mr-10"><a href="/profile/cash" class=" text-2xl font-bold underline" >Счет</a></li>
+                            <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" >Тарифы</a></li>
+                            <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Страхование</a></li>
+                        </ul>
+                            <div class="col-span-1  " ><a href="/profile/settings"><i class="fas fa-user-cog text-3xl"></i></a></div>
+                        </div>
                         <hr>
-                    </ul>
+
                     {{-- "about-me" start --}}
-                    
+
                     {{-- "about-me" end --}}
-                    {{-- cash --}} <div class="cash block absolute w-full" id="tab-cash">
+                    {{-- cash --}} <div class="cash block  w-full" id="tab-cash">
                         <div class="head mt-5">
                             <h2 class="font-bold text-xl">Ваш баланс 0 &#36;</h2>
                             <p class="inline">Пополнить счет на</p>
@@ -106,7 +108,7 @@
 
             {{--right-side-bar--}}
             <div
-                class="col-span-1 mx-2 inline-block absolute w-1/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto lg:visible xl:visible md:visible  sm:invisible">
+                class="col-span-1 mx-2 inline-block  w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto lg:visible xl:visible md:visible  sm:invisible">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
                     <p>на YouDo с 12 сентября 2021 г.</p>
@@ -199,8 +201,8 @@
 
     </div>
 
-    
-     
+
+
 
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 @endsection
