@@ -120,17 +120,11 @@
         </div>
 
         <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6" ><a  href="#" id='open-btn' class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" id="open-btn2"  class="font-medium hover:text-yellow-500">Регистрация</a></p>
-
     </nav>
 {{-- login start --}}
     <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full" id="my-modal">
         <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
-
-                <button type="submit" id="close-btn"
-                    class="px-4 py-4 bg-gray-300 rounded-md w-100 h-16 absolute right-4 top-4 hover:bg-gray-500">
-                    <i class="fas fa-times text-white text-3xl w-full"></i>
-
                 <button type="submit" id="close-btn" class="px-4 py-4  rounded-md w-100 h-16 absolute right-4 top-4 ">
                     <i class="fas fa-times text-2xl text-gray-600"></i>
                 </button>
@@ -165,20 +159,6 @@
                         <button id="ok-btn" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">Войти</button>
                         <p class="text-sky-500 text-lg mb-4"><a href="#">Забыли пароль?</a></p>
 
-
-                <p class="text-sm leading-6 text-gray-400">Сумма пополнения, минимум — 60 000сум</p>
-                <div class="mt-2 px-7 py-3">
-                    <input type="checkbox" class="w-5 h-5 rounded-md inline-block " />
-                    <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 15 000 сум</p>
-                </div>
-                <div class="items-center px-4 py-3">
-                    <button id="ok-btn"
-                        class="px-4 py-2 bg-green-500 text-white text-xl font-medium rounded-md w-2/5 h-16  shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
-                        К оплате x сум
-                    </button>
-                    <p>* — Порядок выплаты, ограничения и полные условия определены в <a href="/home/oferta"
-                            class="cursor-pointer text-sm text-blue-400 underline">Оферте</a></p>
-
                         <p class="text-lg mb-4">Еще не с нами?<a class="text-sky-500" href="#">Зарегистрируйтесь</a></p>
                     </div>
                 </div>
@@ -196,7 +176,7 @@
             </button>
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4">
-                    Быстрая регистрация через:
+                    Войти через:
                 </h3>
             </div>
             <div class="mt-4">
@@ -205,7 +185,7 @@
             </div>
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4 mt-4">
-                    Или по электронной почте
+                    Войти по электронной почте
                 </h3>
             </div>
                 <div>
@@ -216,8 +196,10 @@
                         <input class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" id="username" type="text" >
                       </div>
                   </div>
-                    <button id="ok-btn" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">Зарегистрироваться</button>
-                    <p class="text-lg mb-4">Уже зарегистрированы?<a class="text-sky-500" href="#"> Войдите</a></p>
+                    <button id="ok-btn" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">Войти</button>
+                    <p class="text-sky-500 text-lg mb-4"><a href="#">Забыли пароль?</a></p>
+
+                    <p class="text-lg mb-4">Еще не с нами?<a class="text-sky-500" href="#">Зарегистрируйтесь</a></p>
                 </div>
             </div>
         </div>
@@ -257,56 +239,36 @@
 {{-- pay modal end --}}
 
 
-
-@section("javascript")
-
-
-
-    <script>
-        let modal = document.getElementById("my-modal");
-        //login start
-        let modal = document.getElementById("my-modal");
-
-
-        let btn = document.getElementById("open-btn");
-
-        let button = document.getElementById("ok-btn");
-
-        let closebtn = document.getElementById("close-btn");
-
-        closebtn.onclick = function() {
+<script>
+    //login start
+    let modal = document.getElementById("my-modal");
+    let btn = document.getElementById("open-btn");
+    let button = document.getElementById("ok-btn");
+    let closebtn = document.getElementById("close-btn");
+    closebtn.onclick = function() {
+        modal.style.display = "none";
+    }
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    // We want the modal to close when the OK button is clicked
+    button.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
             modal.style.display = "none";
         }
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-        // We want the modal to close when the OK button is clicked
-        button.onclick = function() {
-            modal.style.display = "none";
-        }
-
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        //login end
-
-        //register start
+    }
+    //login end
+    //register start
         let modal2 = document.getElementById("my-modal2");
-
         let btn2 = document.getElementById("open-btn2");
-
         let button2 = document.getElementById("ok-btn2");
-
         let closebtn2 = document.getElementById("close-btn2");
-
         closebtn2.onclick = function() {
             modal2.style.display = "none";
         }
-
         btn2.onclick = function() {
             modal2.style.display = "block";
         }
@@ -314,27 +276,20 @@
         button2.onclick = function() {
             modal2.style.display = "none";
         }
-
         window.onclick = function(event) {
             if (event.target == modal2) {
                 modal2.style.display = "none";
             }
         }
-        // register end
-
-        //pay modal start
+    // register end
+    //pay modal start
         let modal1 = document.getElementById("my-modal1");
-
         let btn1 = document.getElementById("open-btn1");
-
         let button1 = document.getElementById("ok-btn1");
-
         let closebtn1 = document.getElementById("close-btn1");
-
         closebtn1.onclick = function() {
             modal1.style.display = "none";
         }
-
         btn1.onclick = function() {
             modal1.style.display = "block";
         }
@@ -342,14 +297,10 @@
         button1.onclick = function() {
             modal1.style.display = "none";
         }
-
         window.onclick = function(event) {
             if (event.target == modal1) {
                 modal1.style.display = "none";
             }
         }
-        // pay modal end
-
-        // </script>
-
-@endsection
+    // pay modal end
+</script>
