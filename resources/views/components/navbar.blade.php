@@ -173,8 +173,6 @@
                       </div>
                   </div>
                     <button id="ok-btn" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">Зарегистрироваться</button>
-                   
-
                     <p class="text-lg mb-4">Уже зарегистрированы?<a class="text-sky-500" href="#"> Войдите</a></p>
                 </div>
             </div>
