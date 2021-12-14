@@ -43,6 +43,10 @@ Route::get('/offer-tasks', function () {
     return view('task.offertasks');
 });
 
+Route::get('/verification', function () {
+    return view('create.verification');
+});
+
 Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('my.tasks');
 Route::get('/refill', function() {
     return view('/Site/refill');
@@ -56,8 +60,10 @@ Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
 
+//social login facebook
 Route::get('login/facebook',[SocialController::class,'facebookRedirect']);
 Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook']);
 
+//social login google
 Route::get('login/google',[SocialController::class,'googleRedirect']);
 Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']);
