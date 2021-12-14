@@ -38,16 +38,16 @@
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 relative">
                     <ul class="relative w-9/10">
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-profile')">Обо мне</a></li>
-                        <li class="inline mr-10"><a href="/home/cash" class=" text-2xl font-bold underline" onclick="changeAtiveTab(event,'tab-cash')">Счет</a></li>
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-options')">Тарифы</a></li>
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Страхование</a></li>
+                        <li class="inline mr-10"><a href="{{route('home.profile')}}" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-profile')">Обо мне</a></li>
+                        <li class="inline mr-10"><a href="{{route('profile.cash')}}" class=" text-2xl font-bold underline" onclick="changeAtiveTab(event,'tab-cash')">Счет</a></li>
+                        <li class="inline mr-10"><a href="{{route('home.profile')}}" class=" text-xl font-bold" onclick="changeAtiveTab(event,'tab-options')">Тарифы</a></li>
+                        <li class="inline mr-10"><a href="{{route('home.profile')}}" class=" text-xl font-bold">Страхование</a></li>
                         <li class="inline mr-10 float-right"><a href="/profile/settings" class="text-black text-xl"><i
                                     class="black fas fa-cogs absolute"></i></a></li>
                         <hr>
                     </ul>
                     {{-- "about-me" start --}}
-                    
+
                     {{-- "about-me" end --}}
                     {{-- cash --}} <div class="cash block absolute w-full" id="tab-cash">
                         <div class="head mt-5">
@@ -199,8 +199,8 @@
 
     </div>
 
-    
-     
+
+
 
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 @endsection
