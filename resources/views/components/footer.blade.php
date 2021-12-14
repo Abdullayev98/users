@@ -1,5 +1,5 @@
 
-<div class="mx-24 hidden">
+<div class="">
     <footer class="h-auto md:pt-9">
         <div class="flex flex-row md:mb-8 border-b-2 border-[#d9dbe0]">
             <div class="flex md:pb-10">
