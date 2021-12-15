@@ -1,4 +1,5 @@
 <?php
+namespace App\Services\Paynet;
 /**
  * Created by PhpStorm.
  * User: yura_sultonov
