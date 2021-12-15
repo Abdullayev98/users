@@ -15,16 +15,32 @@
                         <i class="far fa-eye"></i>
                         <span>15 просмотров профиля</span>
                     </div>
-                    <h2 class="font-bold text-2xl">Здравствуйте, Цезар!</h2>
+                    <h2 class="font-bold text-2xl">Здравствуйте, {{$user->name}}!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
-                            src="https://data.whicdn.com/images/322027365/original.jpg?t=1541703413" alt="" width="384"
+                            src="{{asset($user->avatar)}}" alt="" width="384"
                             height="512">
-                        <button class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
-                            <i class="fas fa-camera"></i>
-                            <span>Изменить фото</span>
-                        </button>
+                        <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
+                            <form action="" enctype="multipart/form-data">
+                                <input type="file" id="file" name="avatar" class="hidden">
+                                <label for="file">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Изменить фото</span>
+                                </label>
+                            </form>
+                        </div>
                     </div>
+                    {{-- <div class="relative inline-block object-center  w-40 h-50">
+                        <img class="rounded-min mx-left overflow-hidden"
+                            src="{{asset($user->avatar)}}" alt="" width="384"
+                            height="512">
+                                <button class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button" onclick="openpopup()">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Изменить фото</span>
+                                </button>
+                        
+                    </div> --}}
+
                     <div class="inline-block  ml-3 mt-1">
                         <p class="inline-block text-m mr-2">34 год</p>
                         <span class="inline-block">
@@ -95,7 +111,7 @@
                     <p>на YouDo с 12 сентября 2021 г.</p>
                 </div>
                 <div class="contacts  ">
-                    <div class="ml-4 h-20 grid grid-cols-4">
+                    {{-- <div class="ml-4 h-20 grid grid-cols-4">
                         <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
                             style="background-color: orange;">
                             <i class="fas fa-phone-alt text-white"></i>
@@ -104,7 +120,7 @@
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
                             <p class="font-bold text-black block ">+998xx xxx-xx-xx</p>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
                         <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
                             style="background-color: #0091E6;">
@@ -112,10 +128,10 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Email</h5>
-                            <p class="font-bold text-black block ">user@yandex.ru</p>
+                            <p class="font-bold text-black block ">{{ $user->email}}</p>
                         </div>
                     </div>
-                    <div class="telefon ml-4 h-20 grid grid-cols-4">
+                    {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                         <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
                             style="background-color: #4285F4;">
                             <i class="fab fa-google text-white"></i>
@@ -124,7 +140,7 @@
                             <h5 class="font-bold text-black block mt-2">Google</h5>
                             <p class="font-bold text-black block ">Подтвержден</p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <p class="mx-5 my-4">Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных
                     сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.</p>
@@ -137,7 +153,7 @@
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
                 </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
                         <i class="far fa-envelope text-white"></i>
                     </div>
@@ -145,17 +161,19 @@
                         <h5 class="font-bold text-black block mt-2 text-md">mail.ru</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div>
+                </div> --}}
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-facebook-f text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">Facebook</h5>
-                        <a href="#" class=" block text-sm">Привязать</a>
+                        @foreach ($user->Socials as $social)
+                            <h5 class="font-bold text-black block mt-2 text-md">Facebook </h5>
+                            <a href="{{$social->social_link}}" class=" block text-sm">{{$social->social_name}}</a> 
+                        @endforeach
                     </div>
                 </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-twitter text-white"></i>
                     </div>
@@ -173,7 +191,7 @@
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>

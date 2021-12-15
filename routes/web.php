@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,7 @@ Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare');
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
-Route::post('/profile', "App\Http\Controllers\ProfileController@profileData")->name('profile.data');
+
+Route::get('/profile1', [ProfileController::class, 'profileData']);
+Route::get('/updateuserphoto', [ProfileController::class, 'updatephoto'])->name('editphoto');
+Route::put('/updateuserphoto', [ProfileController::class, 'update']);
