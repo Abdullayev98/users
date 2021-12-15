@@ -16,6 +16,8 @@ Route::prefix("profile")->group(function(){
     Route::get('/login', [Controller::class, 'profile_login'])->name('profile.login');
 });
 
+Route::get('/geotaskshint', [Controller::class, 'geotaskshint'])->name('geotaskshint');
+
 Route::prefix("task")->group(function (){
 
     Route::prefix("create")->group(function (){
