@@ -25,16 +25,16 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'avatar' => 'nullable|image'
+            'avatar' => 'image'
         ]);
         $user= User::find($id);
         $data = $request->all();
 
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
-            $data['avatar'] = $request->file('thumbnail')->store("images/");
+            $data['avatar'] = $request->file('avatar')->store("images/users");
         }
         $user->update($data);
-        return  redirect()->route('profile.profile');
+        return  redirect()->route('userprofile');
     }   
 }

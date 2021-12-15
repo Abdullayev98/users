@@ -18,17 +18,26 @@
                     <h2 class="font-bold text-2xl">Здравствуйте, {{$user->name}}!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
-                            src="{{asset($user->avatar)}}" alt="" width="384"
+                            src="{{asset("Avatars/{$user->avatar}")}}" alt="" width="384"
                             height="512">
-                        <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
-                            <form action="" enctype="multipart/form-data">
-                                <input type="file" id="file" name="avatar" class="hidden">
+                        <form action="{{route('updatephoto' ,['id' => 1])}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
+                                <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
                                 <label for="file">
                                     <i class="fas fa-camera"></i>
                                     <span>Изменить фото</span>
                                 </label>
-                            </form>
-                        </div>
+                            </div>
+
+                            <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="button" onclick="fileadd()">
+                                <input type="submit" id="sub1" class="hidden">
+                                <label for="sub1">
+                                    <i class="fas fa-save"></i>
+                                    <span>добавлять фото</span>
+                                </label>
+                            </div>
+                        </form>
                     </div>
                     {{-- <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
@@ -195,4 +204,15 @@
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
+    <script>
+        function fileupdate(){
+            var x = document.getElementById("button");
+                x.style.display = "block";
+       
+        }
+        function fileadd(){
+            var x = document.getElementById("button");
+                x.style.display = "none";
+        }
+    </script>
 @endsection

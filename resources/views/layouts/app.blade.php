@@ -34,9 +34,4 @@
 <link rel="stylesheet" href="sweetalert2.min.css">
 
 @yield("javasript")
-<script>
-   function openpopup(){
-    window.open('updateuserphoto', 'width=200,height=200');
-   }
-</script>
 </html>
