@@ -1,4 +1,6 @@
-Options +FollowSymLinks
-IndexIgnore */*
-RewriteEngine on
-RewriteRule (.*) /public/$1
+<IfModule mod_rewrite.c>
+    RewriteEngine On        
+  RewriteCond %{HTTPS} !=on    
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule ^(.*)$ public/ [L]
+</IfModule>
