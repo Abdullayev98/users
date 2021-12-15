@@ -210,7 +210,7 @@
 
       <div class="grid md:grid-cols-3 grid-cols-2 container mx-auto">
           <div class="col-span-2">
-            <iframe class="rounded-lg" width="670" height="370" src="https://www.youtube.com/embed/FgV0PmpJFh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="rounded-lg h-full w-5/6" src="https://www.youtube.com/embed/FgV0PmpJFh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="col-span-2 md:col-span-1 md:mt-0 mt-8">
             <p class=" text-lg">YouDo помогает мне оставаться свободным. Несмотря на то, что график плотный, я решаю сам, не кто-то мне говорит, когда мне встать, куда приехать, что сделать.</p>
@@ -223,6 +223,22 @@
           </div>
       </div>
 
+
+        <div class="grid md:grid-cols-3 grid-cols-1 container mx-auto  mt-32 mb-32 ">
+            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg h-64 w-90">
+                <p class="text-lg">Открыла для себя такую штуку, как сервис YouDo. Выполняешь задания — платят. Отличная замена обычной «работе на работе» ради денег</p>
+                <a class="text-lg text-slate-400 hover:text-cyan-400 underline" href="#">Читать дальше</a>
+            </div>
+            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg ml-4 mr-4 md:mt-0 mt-8">
+                <p class="text-lg">Очень крутой сервис, напоминает Uber. Удобно пользоваться, особенно со стороны заказчика — быстро и дешево решаются любые сложные</p>
+                <a class="text-lg text-slate-400 hover:text-cyan-400 underline" href="#">Читать дальше</a>
+            </div>
+            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg md:mt-0 mt-8">
+              <p class="text-lg">Начала потихоньку зарабатывать на поездку. Я остановилась на сайте YouDo. Там есть много интересных предложений и сама система сайта</p>
+              <a class="text-lg text-slate-400 hover:text-cyan-400 underline" href="#">Читать дальше</a>
+            </div>
+        </div>
+
       <div class="grid md:grid-cols-3 grid-cols-2 container mx-auto mt-16 mb-16">
         <div class="col-span-2 md:col-span-1 md:mt-0 mt-8 md:block hidden">
           <p class=" text-lg">Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с YouDo.</p>
@@ -234,11 +250,11 @@
           </div>
         </div>
         <div class="col-span-2 md:block hidden mx-auto mr-8 ">
-          <iframe class="rounded-lg" width="670" height="370" src="https://www.youtube.com/embed/M6QCnnVSfzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe class="rounded-lg h-full" width="640" src="https://www.youtube.com/embed/M6QCnnVSfzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <div class="col-span-2 md:hidden block mx-auto mr-8 ">
-          <iframe class="rounded-lg" width="670" height="370" src="https://www.youtube.com/embed/M6QCnnVSfzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe class="rounded-lg h-full" width="640" src="https://www.youtube.com/embed/M6QCnnVSfzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-span-2 md:col-span-1 md:mt-0 mt-8 md:hidden block">
           <p class="mt-6 text-lg">Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с YouDo.</p>
