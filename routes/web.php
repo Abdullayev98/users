@@ -77,4 +77,6 @@ Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']);
 
 Route::view('/faq','faq.faq');
 
-Route::view('/rewievs','rewievs.review');
+Route::view('/reviews','rewievs.review');
+
+Route::view('/reviews','reviews.authors_review');
