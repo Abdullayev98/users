@@ -76,3 +76,5 @@ Route::get('login/google',[SocialController::class,'googleRedirect']);
 Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']);
 
 Route::view('/faq','faq.faq');
+
+Route::view('/rewievs','rewievs.review');
