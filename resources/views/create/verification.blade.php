@@ -35,6 +35,45 @@
         </div>
     </div>
 
+        <div class="zakza w-9/12 mx-auto text-center font-serif mb-32 mt-32">
+          <div class="info">
+              <h2 class="zakaz_title font-sans text-5xl pb-8 font-bold">Как получить заказ</h2>
+              <p class="zakaz_text font-sans text-xl pb-16 font-medium">На YouDo исполнители сами выбирают заказы и клиентов. Это просто.</p>
+              <div class="process grid lg:grid-cols-5 grid-cols-1 items-center">
+                  <div class="info ">
+                      <div>
+                      <p class="process_number text-[#9e69c7] text-[56px] pb-[22px]">1</p>
+                      <p class="process_text text-lg text-black">Станьте исполнителем и заполните профиль</p>
+                      </div>
+                  </div>
+                  <div>
+                      <img class="object-cover lg:block hidden   w-10/12 shrink" src="https://assets.youdo.com/_next/static/media/arrow.35c0a4c2bd4bf776be97bd4bb7a66db9.svg" alt="">
+                  </div>
+                  <div class="info ">
+                      <div>
+                          <p class="process_number text-[#9e69c7] text-[56px] pb-[22px]">2</p>
+                          <p class="process_text text-lg text-black">Выберите задание и откликнитесь на него</p>
+                      </div>
+                  </div>
+                  <div>
+                      <img class="object-cover lg:block hidden   w-10/12 shrink" src="https://assets.youdo.com/_next/static/media/arrow.35c0a4c2bd4bf776be97bd4bb7a66db9.svg" alt="">
+                  </div>
+                  <div class="info ">
+                      <div>
+                          <p class="process_number text-[#9e69c7] text-[56px] pb-[22px]">3</p>
+                          <p class="process_text text-lg text-black">Получите оплату сразу же после выполнения задания</p>
+                      </div>
+                  </div>
+
+
+              </div>
+          </div>
+          <div class="mt-16">
+              <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">СТАТЬ ИСПОЛНИТЕЛЕМ</a>
+          </div>
+      </div>
+
+
     {{-- 1 --}}
     <div class="grid md:grid-cols-3 grid-cols-2 container mx-auto">
         <div class="col-span-2 ">
