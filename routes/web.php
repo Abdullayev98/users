@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VoyagerUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,6 @@ use App\Http\Controllers\HomeController;
 */
 
 
-Route::get('/news', [NewsController::class, 'home']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -25,9 +25,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating");
     Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("appeal.close");
     Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send");
+    Route::get("users/activitiy/{user}", [VoyagerUserController::class, "activity"])->name("users.activity");
 });
 
 
+Route::get('/news', [NewsController::class, 'home']);
 Route::get('/home', [HomeController::class, 'home']);
-
 Route::get('/home/profile', [HomeController::class, 'profile']);
