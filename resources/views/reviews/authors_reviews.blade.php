@@ -28,7 +28,7 @@
                     <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Реклама на сервисе</a>
                 </li>
                 <li>
-                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Контакты</a>
+                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">Контакты</a>
                 </li>
                 <li>
                     <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Вакансии</a>
