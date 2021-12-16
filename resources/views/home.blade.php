@@ -361,7 +361,7 @@
                                     <a href="#" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->name}}
                                     </a>
-                                    <p class="text-sm mt-4">
+                                    <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
                                         {{$task->description}}
                                     </p>
                                 </div>

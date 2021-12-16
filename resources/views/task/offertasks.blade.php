@@ -51,10 +51,12 @@
                                     </div>
                                   </div>
                                 </div>
+
                                 <!-- If page is empty -->
                                 <div class="w-1/2 mx-auto">
                                   <img src="https://css-static.youdo.com/assets/71201/i/become-an-executor-c1a1be93104435115c3e2d317aa61be6.svg" alt="">
                                 </div>
+
                             </div>
 
                         </div>
