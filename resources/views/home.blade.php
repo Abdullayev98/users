@@ -371,10 +371,11 @@
 
                     </div>
                     <div class="mt-4">
-                        <button type="button"
+                        <button type="button" onclick="myFunctionesse()"
                                 class=" bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">
                             Показать все задания
                         </button>
+
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">
@@ -461,5 +462,11 @@
             var elem = document.getElementById('scrollbar');
             elem.scrollTop = elem.scrollHeight;
         }, 5000);
+    </script>
+    <script>
+    function myFunctionesse() {
+      var elems = document.getElementsByClassName("chat");
+        elems.style.display = "block";
+    }
     </script>
 @endsection

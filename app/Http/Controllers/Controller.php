@@ -38,7 +38,10 @@ class Controller extends BaseController
         return view('/profile/settings');
     }
     public function geotaskshint(){
-        return view('/components/geotaskshint');
+        return view('/staticpages/geotaskshint');
+    }
+    public function security(){
+        return view('/staticpages/security');
     }
     public function my_tasks(){
         $tasks = Task::where('user_id', auth()->id());
