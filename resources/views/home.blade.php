@@ -426,7 +426,7 @@
         }
     </script>
 
-    <script>
+    <!-- <script>
         window.replainSettings = {id: '38d8d3f0-b690-4857-a153-f1e5e8b462a8'};
         (function (u) {
             var s = document.createElement('script');
@@ -436,8 +436,7 @@
             var x = document.getElementsByTagName('script')[0];
             x.parentNode.insertBefore(s, x);
         })('https://widget.replain.cc/dist/client.js');
-    </script>
-
+    </script> -->
     <script>
         tailwind.config = {
             module.exports = {
@@ -461,5 +460,11 @@
             var elem = document.getElementById('scrollbar');
             elem.scrollTop = elem.scrollHeight;
         }, 5000);
+    </script>
+    <script>
+    function myFunctionesse() {
+      var elems = document.getElementsByClassName("chat");
+        elems.style.display = "block";
+    }
     </script>
 @endsection
