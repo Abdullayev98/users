@@ -16,7 +16,7 @@
                     <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Награды и рейтинг</a>
                 </li>
                 <li class="mt-5">
-                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Отзывы исполнителей</a>
+                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/reviews">Отзывы исполнителей</a>
                 </li>
                 <li>
                     <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/">Отзывы заказчиков</a>
@@ -37,7 +37,7 @@
         </div>
         <div class="md:w-8/12 mt-8">
             <h1 class="text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] pb-2 font-semibold">
-                Отзывы исполнителей о YouDo
+                Отзывы заказчиков о YouDo
             </h1>
             <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">Ежедневно на просторах интернета мы встречаем десятки отзывов наших пользователей о YouDo. Самые яркие и эмоциональные из них собираются на этой странице. Рады поделиться ими с вами!</p>
             <ul class="pt-[20px]">

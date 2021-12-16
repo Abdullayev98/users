@@ -9,7 +9,7 @@
                     <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/verification">Как&nbsp;стать&nbsp;исполнителем</a><br>
                     <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/faq">Частые вопросы</a><br>
                     <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/contacts">Контакты</a><br>
-                    <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#">Отзывы заказчиков</a><br>
+                    <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/author-reviews">Отзывы заказчиков</a><br>
                 </div>
                 <div class="mb-5 md:w-2/12 md:float-left -mt-5 md:m-0">
                     <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#">YouDo для бизнеса</a><br>
@@ -47,6 +47,3 @@
     </div>
     <p class="inline text-[2rem] leading-[2]">заданий уже создано <span>в этих категориях</span></p>
 </div>
-
-
-

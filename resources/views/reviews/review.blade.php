@@ -16,10 +16,10 @@
                     <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Награды и рейтинг</a>
                 </li>
                 <li class="mt-5">
-                    <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="">Отзывы исполнителей</a>
+                    <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/rewievs">Отзывы исполнителей</a>
                 </li>
                 <li>
-                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Отзывы заказчиков</a>
+                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/author-reviews">Отзывы заказчиков</a>
                 </li>
                 <li>
                     <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">СМИ о нас</a>
