@@ -47,3 +47,6 @@
     </div>
     <p class="inline text-[2rem] leading-[2]">заданий уже создано <span>в этих категориях</span></p>
 </div>
+
+
+
