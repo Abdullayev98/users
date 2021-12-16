@@ -11,6 +11,7 @@
                 <button class="navbar-burger flex items-center text-yellow-500 p-3">
                     <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <title>Mobile menu</title>
+                        
                         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                     </svg>
                 </button>
@@ -54,78 +55,6 @@
                     <div class="pt-6">
                         <p class="w-4/12 text-right inline-block float-right text-gray-500 md:float-none mt-6 mb-6"><a href="#" id='open-btn' class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или <a href="#" id="open-btn2" class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a></p>
 
-<<<<<<< HEAD
-            <style>
-                /* since nested groupes are not supported we have to use
-                   regular css for the nested dropdowns
-                */
-                li>ul {
-                    transform: translatex(100%) scale(0)
-                }
-
-                li:hover>ul {
-                    transform: translatex(101%) scale(1)
-                }
-
-                li>button svg {
-                    transform: rotate(-90deg)
-                }
-
-                li:hover>button svg {
-                    transform: rotate(-270deg)
-                }
-
-                /* Below styles fake what can be achieved with the tailwind config
-                   you need to add the group-hover variant to scale and define your custom
-                   min width style.
-                     See https://codesandbox.io/s/tailwindcss-multilevel-dropdown-y91j7?file=/index.html
-                     for implementation with config file
-                */
-                .group:hover .group-hover\:scale-100 {
-                    transform: scale(1)
-                }
-
-                .group:hover .group-hover\:-rotate-180 {
-                    transform: rotate(180deg)
-                }
-
-                .scale-0 {
-                    transform: scale(0)
-                }
-
-                .min-w-32 {
-                    min-width: 8rem
-                }
-
-            </style>
-            <a href="{{ route('task.search') }}"
-                class="font-medium delete-task  text-gray-500 hover:text-red-500">Найти задания</a>
-
-            <a href="/performerse" class="font-medium text-gray-500 hover:text-red-500">Исполнители</a>
-            <!--
-                            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Мои заказы</a>
-            -->
-            {{-- <p class="text-center inline float-right md:float-none  "><a href="#" class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">регистрация</a></p> --}}
-            {{-- <button --}}
-            {{-- class="text-green-300 rounded-md w-36 absolute right-44  text-base font-medium hover:text-green-700 inline-block" --}}
-            {{-- id="open-btn"> --}}
-            {{-- <i class="fas fa-wallet inline-block"></i> --}}
-            {{-- <span class="inline-block">пополнить</span> --}}
-            {{-- </button> --}}
-        </div>
-
-        <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6" >
-            <a  href="{{ route('login') }}" class="font-medium hover:text-yellow-500">Вход</a> 
-            или 
-            <a href="{{ route('register') }}" class="font-medium hover:text-yellow-500">Регистрация</a>
-            <a href="{{ route('logout') }}" class="btn btn-danger">Sign-out</a>
-        </p>
-    </nav>
-{{-- login start --}}
-    {{-- <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full" id="my-modal">
-        <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
-            <div class="mt-3 text-center">
-=======
                     </div>
                     <p class="my-4 text-xs text-center text-gray-400">
                         <span>Copyright © 2021</span>
@@ -224,7 +153,18 @@
          </button> --}}
     </div>
 
-    <p class="w-4/12 invisible hidden lg:block md:visible text-right inline-block float-right text-gray-500 md:float-none mt-6 mb-6"><a href="#" id='open-btn' class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или <a href="#" id="open-btn2" class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a></p>
+    <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6" >
+        <a  href="{{ route('login') }}" class="font-medium hover:text-yellow-500">
+            Вход
+        </a> 
+            или 
+        <a href="{{ route('register') }}" class="font-medium hover:text-yellow-500">
+            Регистрация
+        </a>
+        <a href="{{ route('logout') }}" class="btn btn-danger">
+            Sign-out
+        </a>
+    </p>
 
 </nav>
 {{-- login start --}}
@@ -235,7 +175,6 @@
             <button type="submit" id="close-btn" class="px-4 py-4 bg-gray-300 rounded-md w-100 h-16 absolute right-4 top-4 hover:bg-gray-500">
                 <i class="fas fa-times text-white text-3xl w-full"></i>
 
->>>>>>> 65654adbb46551a518a35b620a14f7ba80328065
                 <button type="submit" id="close-btn" class="px-4 py-4  rounded-md w-100 h-16 absolute right-4 top-4 ">
                     <i class="fas fa-times text-2xl text-gray-600"></i>
                 </button>
@@ -285,17 +224,13 @@
                     <p class="text-lg mb-4">Еще не с нами?<a class="text-sky-500" href="#">Зарегистрируйтесь</a></p>
                 </div>
         </div>
-<<<<<<< HEAD
-    </div> --}}
-=======
     </div>
 </div>
 </div>
->>>>>>> 65654adbb46551a518a35b620a14f7ba80328065
 {{-- login end --}}
 
 {{-- register start --}}
-{{-- <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full" id="my-modal2">
+<div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full" id="my-modal2">
     <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
         <div class="mt-3 text-center">
             <button type="submit" id="close-btn2" class="px-4 py-4  rounded-md w-100 h-16 absolute right-4 top-4 ">
@@ -315,30 +250,6 @@
                     Или по электронной почте
                 </h3>
             </div>
-<<<<<<< HEAD
-            <form action="#">
-                <div>
-                    <div class="mb-4">
-                        <label class="block text-gray-500  text-sm " for="username">
-                            Электронная почта
-                        </label>
-                        <input class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" id="username" type="text" >
-                        <label class="block text-gray-500  text-sm " for="username">
-                            Электронная почта
-                        </label>
-                        <input class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" id="username" type="text" >
-                    </div>
-                </div>
-                <button id="ok-btn" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">
-                    Войти
-                </button>
-            </form>
-            <p class="text-sky-500 text-lg mb-4"><a href="#">Забыли пароль?</a></p>
-            <p class="text-lg mb-4">Еще не с нами?<a class="text-sky-500" href="#">Зарегистрируйтесь</a></p>
-        </div>
-    </div>
-</div> --}}
-=======
             <div>
                 <div class="mb-4">
                     <label class="block text-gray-500  text-sm " for="username">
@@ -354,7 +265,6 @@
 </div>
 </div>
 </div>
->>>>>>> 65654adbb46551a518a35b620a14f7ba80328065
 {{-- register end --}}
 
 {{-- pay modal start --}}

@@ -26,9 +26,10 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
+        $tasks = Task::all();
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return view('home',compact('tasks'))
                         ->withSuccess('Logged-in');
         }
         return redirect("login")->withSuccess('Credentials are wrong.');
