@@ -166,7 +166,7 @@
 
 
 
-  
+
         <div class="text-center mt-48 mb-16">
           <h1 class="font-bold text-5xl">Условия сотрудничества с YouDo</h1>
           <p class="text-xl mt-8 font-medium">Сервис не берёт комиссию за выполненный заказ. <br>
@@ -210,7 +210,7 @@
 
       <div class="grid md:grid-cols-3 grid-cols-2 container mx-auto">
           <div class="col-span-2">
-            <iframe class="rounded-lg h-full w-5/6" src="https://www.youtube.com/embed/FgV0PmpJFh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="rounded-lg h-full w-5/6 mx-auto" src="https://www.youtube.com/embed/FgV0PmpJFh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="col-span-2 md:col-span-1 md:mt-0 mt-8">
             <p class=" text-lg">YouDo помогает мне оставаться свободным. Несмотря на то, что график плотный, я решаю сам, не кто-то мне говорит, когда мне встать, куда приехать, что сделать.</p>
@@ -254,7 +254,7 @@
         </div>
 
         <div class="col-span-2 md:hidden block mx-auto mr-8 ">
-          <iframe class="rounded-lg h-full" width="640" src="https://www.youtube.com/embed/M6QCnnVSfzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe class="rounded-lg h-full w-full" src="https://www.youtube.com/embed/M6QCnnVSfzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-span-2 md:col-span-1 md:mt-0 mt-8 md:hidden block">
           <p class="mt-6 text-lg">Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с YouDo.</p>
