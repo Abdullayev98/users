@@ -51,7 +51,7 @@
         </div>
     </div>
     <main>
-        <div class="container md:text-center text-left mx-auto mt-8 md:px-16 px-4">
+        <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
             <div class="text-3xl font-bold text-center">
                 Более 2 300 000 исполнителей
             </div>
@@ -59,93 +59,101 @@
                 готовы помочь вам в решении самых разнообразных задач
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 w-full">
+            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
                 <div class="text-gray-500 text-lg my-8">
+                    <a href="/task/create?category_id={{ $category2->id }}" class="hover:text-[#ffa200]">
+                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]"></i> {{ $category2->name }}
+                    </a>
+                </div>
+                @endforeach
+
+                <!-- <div class="text-gray-500 text-lg my-8 hover:text-[#ffa200]">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-truck-loading text-gray-500 hover:text-[#ffa200]"></i> Курьерские услуги
+                        <i class="fas fa-hammer text-gray-500 hover:text-[#ffa200]"></i> Ремонт и строительство
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-hammer text-gray-500"></i> Ремонт и строительство
+                        <i class="fas fa-shipping-fast text-gray-500 hover:text-[#ffa200]"></i> Грузоперевозки
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-shipping-fast text-gray-500"></i> Грузоперевозки
+                        <i class="fas fa-soap text-gray-500 hover:text-[#ffa200]"></i> Уброка и помощ по хозяйству
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-soap text-gray-500"></i> Уброка и помощ по хозяйству
+                        <i class="fas fa-hands-helping text-gray-500 hover:text-[#ffa200]"></i> Виртуальный помощник
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-hands-helping text-gray-500"></i> Виртуальный помощник
+                        <i class="fas fa-tv text-gray-500 hover:text-[#ffa200]"></i> Компьютерная помощь 
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-tv text-gray-500"></i> Компьютерная помощь 
+                        <i class="fas fa-mug-hot text-gray-500 hover:text-[#ffa200]"></i> Мероприятия и промоакции
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-mug-hot text-gray-500"></i> Мероприятия и промоакции
+                        <i class="fas fa-drafting-compass text-gray-500 hover:text-[#ffa200]"></i> Дизайн
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-mug-hot text-gray-500"></i> Дизайн
+                        <i class="fas fa-laptop-code text-gray-500 hover:text-[#ffa200]"></i> Разработка ПО
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-mug-hot text-gray-500"></i> Разработка ПО
+                        <i class="fas fa-camera-retro text-gray-500 hover:text-[#ffa200]"></i> Фото, видео и аудио
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-camera-retro text-gray-500"></i> Фото, видео и аудио
+                        <i class="fas fa-wallet text-gray-500 hover:text-[#ffa200]"></i> Финансовый советник
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa- text-gray-500"></i> Финансовый советник
+                        <i class="fas fa-chalkboard text-gray-500 hover:text-[#ffa200]"></i> Установка и ремонт техники
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-camera-retro text-gray-500"></i> Установка и ремонт техники
+                        <i class="fas fa-infinity text-gray-500 hover:text-[#ffa200]"></i> Красота и здаровье
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-camera-retro text-gray-500"></i> Красота и здаровье
+                        <i class="fas fa-tools text-gray-500 hover:text-[#ffa200]"></i> Ремонт цифровой техники
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-camera-retro text-gray-500"></i> Ремонт цифровой техники
+                        <i class="fas fa-car-side text-gray-500 hover:text-[#ffa200]"></i> Ремонт транспорта
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-camera-retro text-gray-500"></i> Юридическая и бухгалтерская помощь
+                        <i class="fas fa-balance-scale-right text-gray-500 hover:text-[#ffa200]"></i> Юридическая и бухгалтерская помощь
                     </a>
                 </div>
                 <div class="text-gray-500 text-lg my-8">
                     <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-camera-retro text-gray-500"></i> Репетиторы и обучение
+                        <i class="fas fa-book-open text-gray-500 hover:text-[#ffa200]"></i> Репетиторы и обучение
                     </a>
-                </div>
-                <div class="md:col-span-3 col-span-1">
-                    <a href="">
+                </div> -->
+                <div class="md:col-span-3 text-center col-span-1">
+                    <a href="#">
                         <button type="button" class="border hover:border-[#000] rounded-md w-64 h-12">Посмотреть все
                             услуги
                         </button>
                     </a>
-                </div>
+                </div> 
             </div>
             <div class="grid md:grid-cols-4 grid-cols-2 mt-8">
                 <div class="text-center">
