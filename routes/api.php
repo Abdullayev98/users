@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\UserAPIController;
+use App\Http\Controllers\API\PaymentAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,6 @@ Route::put('update/{id}', [UserAPIController::class, 'update']);
 Route::get('logout', [UserAPIController::class, 'logout']);
 Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
 
+// Paynet service
+Route::post('paynet', [PaymentAPIController::class, 'index']);
 

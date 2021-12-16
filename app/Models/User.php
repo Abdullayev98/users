@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Message;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
 class User extends \TCG\Voyager\Models\User
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +28,7 @@ class User extends \TCG\Voyager\Models\User
         'text',
         'status',
         'facebook_id',
+        'avatar',
         'google_id',
     ];
 
@@ -48,5 +52,8 @@ class User extends \TCG\Voyager\Models\User
     ];
     public function appeals(){
         return $this->hasMany(Message::class);
+    }
+    public function Socials(){
+        return $this->hasMany(Social::class);
     }
 }
