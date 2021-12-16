@@ -52,37 +52,6 @@
                     </ul>
                 </div>
                 <div class="mt-auto">
-                    <div class="pt-6">
-                        @if (Route::has('login'))
-                            @auth
-                                <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 mr-6">
-                                    <button href="#" class="font-medium hover:text-yellow-500">
-                                        <i class="far fa-bell"></i>
-                                    </button>
-                                    <button href="#" class="font-medium hover:text-yellow-500">
-                                        <i class="far fa-user"></i>
-                                    </button>
-                                </p>
-                            @else
-                                <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6">
-                                    <a href="{{ route('login') }}" class="font-medium hover:text-yellow-500">
-                                        Вход
-                                    </a>
-                                    или
-                                    <a href="{{ route('register') }}" class="font-medium hover:text-yellow-500">
-                                        Регистрация
-                                    </a>
-                                    <a href="{{ route('logout') }}" class="btn btn-danger">
-                                        Sign-out
-                                    </a>
-                                </p>
-                            @endauth
-                        @endif
-
-                    </div>
-                    <p class="my-4 text-xs text-center text-gray-400">
-                        <span>Copyright © 2021</span>
-                    </p>
                 </div>
             </nav>
         </div>
@@ -140,12 +109,6 @@
                 transform: rotate(-270deg)
             }
 
-            /* Below styles fake what can be achieved with the tailwind config
-               you need to add the group-hover variant to scale and define your custom
-               min width style.
-                 See https://codesandbox.io/s/tailwindcss-multilevel-dropdown-y91j7?file=/index.html
-                 for implementation with config file
-            */
             .group:hover .group-hover\:scale-100 {
                 transform: scale(1)
             }
@@ -165,16 +128,7 @@
         <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200]">Найти задания</a>
 
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
-        {{--<!--
-                        <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Мои заказы</a>
-        -->
-         <p class="text-center inline float-right md:float-none  "><a href="#" class="font-medium hover:text-yellow-500">Вход</a> или <a href="#" class="font-medium hover:text-yellow-500">регистрация</a></p>
-         <button
-         class="text-green-300 rounded-md w-36 absolute right-44  text-base font-medium hover:text-green-700 inline-block"
-         id="open-btn">
-         <i class="fas fa-wallet inline-block"></i>
-         <span class="inline-block">пополнить</span>
-         </button> --}}
+   
     </div>
     @if (Route::has('login'))
         @auth
@@ -206,10 +160,10 @@
 
 
 {{-- pay modal start --}}
-<div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal1">
+<div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
     <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
         <div class="mt-3 text-center">
-            <button type="submit" id="close-btn1" class="px-4 py-4 bg-gray-300 rounded-md w-100 h-16 absolute right-4 top-4 hover:bg-gray-500">
+            <button type="submit" id="close-btn" class="px-4 py-4 bg-gray-300 rounded-md w-100 h-16 absolute right-4 top-4 hover:bg-gray-500">
                 <i class="fas fa-times text-white text-3xl w-full"></i>
             </button>
             <div class="mx-auto flex items-center justify-center w-full">
@@ -225,7 +179,7 @@
                 <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 15 000 сум</p>
             </div>
             <div class="items-center px-4 py-3">
-                <button id="ok-btn1" class="px-4 py-2 bg-green-500 text-white text-xl font-medium rounded-md w-2/5 h-16  shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
+                <button id="ok-btn" class="px-4 py-2 bg-green-500 text-white text-xl font-medium rounded-md w-2/5 h-16  shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
                     К оплате x сум
                 </button>
                 <p>* — Порядок выплаты, ограничения и полные условия определены в <a href="/home/oferta" class="cursor-pointer text-sm text-blue-400 underline">Оферте</a></p>
@@ -284,10 +238,8 @@
 
 
     <script>
+        //pay modal start
         let modal = document.getElementById("my-modal");
-        //login start
-        let modal = document.getElementById("my-modal");
-
 
         let btn = document.getElementById("open-btn");
 
@@ -307,66 +259,9 @@
             modal.style.display = "none";
         }
 
-
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
-            }
-        }
-        //login end
-
-        //register start
-        let modal2 = document.getElementById("my-modal2");
-
-        let btn2 = document.getElementById("open-btn2");
-
-        let button2 = document.getElementById("ok-btn2");
-
-        let closebtn2 = document.getElementById("close-btn2");
-
-        closebtn2.onclick = function() {
-            modal2.style.display = "none";
-        }
-
-        btn2.onclick = function() {
-            modal2.style.display = "block";
-        }
-        // We want the modal to close when the OK button is clicked
-        button2.onclick = function() {
-            modal2.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal2) {
-                modal2.style.display = "none";
-            }
-        }
-        // register end
-
-        //pay modal start
-        let modal1 = document.getElementById("my-modal1");
-
-        let btn1 = document.getElementById("open-btn1");
-
-        let button1 = document.getElementById("ok-btn1");
-
-        let closebtn1 = document.getElementById("close-btn1");
-
-        closebtn1.onclick = function() {
-            modal1.style.display = "none";
-        }
-
-        btn1.onclick = function() {
-            modal1.style.display = "block";
-        }
-        // We want the modal to close when the OK button is clicked
-        button1.onclick = function() {
-            modal1.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal1) {
-                modal1.style.display = "none";
             }
         }
         // pay modal end
