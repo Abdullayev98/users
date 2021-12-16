@@ -1,18 +1,11 @@
 <?php
-
-namespace services;
+namespace App\Services\Paynet\Services;
 
 use DateTime;
-use models\paynet\GenericParam;
-use models\paynet\TransactionStatement;
-use models\Transaction;
+use App\Services\Paynet\Models\GenericParam;
+use App\Services\Paynet\Models\TransactionStatement;
+use App\Services\Paynet\Transactions\Transaction;
 
-/**
- * Created by PhpStorm.
- * User: yura_sultonov
- * Date: 5/23/19
- * Time: 11:30 PM
- */
 class PaymentService
 {
 

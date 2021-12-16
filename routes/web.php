@@ -18,7 +18,7 @@ use App\Http\Controllers\SocialController;
 
 
 
-Route::get('/performers', function () { return view('Performers.performers'); });
+Route::get('/performers', function () { return view('Performers.performersnew'); });
 
 Route::get('/news', [NewsController::class, 'home']);
 

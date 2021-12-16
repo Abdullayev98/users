@@ -468,7 +468,7 @@
 {{-----------------------------------------------------------------------------------}}
 
         <div class="flex flex-col basis-2/3">
-            <div class="bg-gray-100 flex flex-row h-40 mb-10">
+            <div class="bg-gray-100 flex flex-row h-40 mb-10" style="width: 700px;">
                 <div class="flex flex-col relative">
                     <div class="flex flex-row font-bold text-2xl m-4">
                         <p>Курьерские услуги: рейтинг исполнителей</p>
@@ -525,14 +525,14 @@
                         <p class="text-sm text-gray-500 my-3">Был на сайте 9 мин. назад</p>
                     </div>
                     <div>
-                        <p class="text-lg" style="width: 500px;">
+                        <p class="text-base" style="width: 500px;">
                             Добрый день! В штате опытные и проверенные курьеры . 
                             На практике прошли все виды курьерских доставок . 
                             За всех курьеров несу материальную ответственность . Способы опл…
                         </p>
                     </div>
                     <div>
-                        <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 text-white">Предложить задание</button>
+                        <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 text-white mt-3">Предложить задание</button>
                     </div>
                 </div>
             </div>

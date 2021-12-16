@@ -133,7 +133,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
     </wsdl:binding>
     <wsdl:service name="ProviderWebService">
         <wsdl:port name="ProviderWebServicePort" binding="tns:ProviderWebServiceBinding">
-            <soap:address location="https://youdo.teampro.uz/payment/paynet"/>
+            <soap:address location="https://youdo.teampro.uz/api/paynet"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
