@@ -52,17 +52,6 @@
                     </ul>
                 </div>
                 <div class="mt-auto">
-                    <div class="pt-6">
-                        <p class="w-4/12 text-right inline-block float-right text-gray-500 md:float-none mt-6 mb-6">
-                            <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или 
-                            <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
-                            <a href="{{ route('logout') }}" class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Sign-out</a>
-                        </p>
-
-                    </div>
-                    <p class="my-4 text-xs text-center text-gray-400">
-                        <span>Copyright © 2021</span>
-                    </p>
                 </div>
             </nav>
         </div>
@@ -141,13 +130,32 @@
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
    
     </div>
-
-    <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6" >
-        <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или 
-        <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
-        <a href="{{ route('logout') }}" class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ml-2">Sign-out</a>
-    </p>
-
+    @if (Route::has('login'))
+        @auth
+            <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 mr-6">
+                <button href="#" class="font-medium hover:text-yellow-500 mr-3">
+                    <i class="far fa-bell"></i>
+                </button>
+                <button href="#" class="font-medium hover:text-yellow-500 mr-3">
+                    <i class="far fa-user"></i>
+                </button>
+                <a href="{{ route('logout') }}" class="btn btn-danger">
+                    Sign-out
+                </a>
+            </p>
+        @else
+            <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6">
+                <a href="{{ route('login') }}" class="font-medium hover:text-yellow-500">
+                    Вход
+                </a>
+                или
+                <a href="{{ route('register') }}" class="font-medium hover:text-yellow-500">
+                    Регистрация
+                </a>
+            </p>
+        @endauth
+    @endif
+    
 </nav>
 
 
