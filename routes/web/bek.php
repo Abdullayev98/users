@@ -16,8 +16,12 @@ Route::prefix("profile")->group(function(){
     Route::get('/login', [Controller::class, 'profile_login'])->name('profile.login');
 });
 
+// this routes was added from Bekzod
+
 Route::get('/geotaskshint', [Controller::class, 'geotaskshint'])->name('geotaskshint');
 Route::get('/security', [Controller::class, 'security'])->name('security');
+// end of the routes which added Bekzod
+
 
 Route::prefix("task")->group(function (){
 

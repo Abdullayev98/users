@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="col-span-3">
                                     <div class="ring-1 ring-gray-300 text-center py-5 rounded-xl col-span-3 w-64">
-                                        <a href="#" class="text-2xl">
+                                        <a href="/contacts" class="text-2xl">
                                             Перейти в контакты
                                         </a>
                                     </div>
