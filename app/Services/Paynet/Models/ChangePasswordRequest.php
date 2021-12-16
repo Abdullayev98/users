@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yura_sultonov
- * Date: 5/23/19
- * Time: 6:42 PM
- */
-
-namespace models\paynet;
-
+namespace App\Services\Paynet\Models;
 
 class ChangePasswordRequest extends GenericRequest
 {
