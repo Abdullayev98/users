@@ -51,7 +51,7 @@
         </div>
     </div>
     <main>
-        <div class="container md:text-center text-left mx-auto mt-8 md:px-16 px-4">
+        <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
             <div class="text-3xl font-bold text-center">
                 Более 2 300 000 исполнителей
             </div>
@@ -91,7 +91,7 @@
                         <i class="fas fa-camera-retro text-gray-500"></i> Фото, видео и аудио
                     </a>
                 </div> -->
-                <div class="md:col-span-3 col-span-1">
+                <div class="md:col-span-3 text-center col-span-1">
                     <a href="">
                         <button type="button" class="border hover:border-[#000] rounded-md w-64 h-12">Посмотреть все
                             услуги
