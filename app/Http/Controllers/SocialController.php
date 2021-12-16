@@ -19,7 +19,7 @@ class SocialController extends Controller
         $findUser = User::where('facebook_id',$user->id)->first();
         if($findUser){
             Auth::login($findUser);
-            return redirect('/dashboard');
+            return redirect('/');
         }else{
             $new_user = new User();
             $new_user->name = $user->name;
@@ -28,7 +28,7 @@ class SocialController extends Controller
             $new_user->password = bcrypt('123456');
             $new_user->save();
             Auth::login($new_user);
-            return redirect('/dashboard');
+            return redirect('/');
         }
     }
 
@@ -43,7 +43,7 @@ class SocialController extends Controller
         $findUser = User::where('google_id',$user->id)->first();
         if($findUser){
             Auth::login($findUser);
-            return redirect('/home');
+            return redirect('/');
         }else{
             $new_user = new User();
             $new_user->name = $user->name;
@@ -52,7 +52,7 @@ class SocialController extends Controller
             $new_user->password = bcrypt('123456');
             $new_user->save();
             Auth::login($new_user);
-            return redirect('/dashboard');
+            return redirect('/');
         }
     }
 }
