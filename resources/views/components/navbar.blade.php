@@ -56,7 +56,7 @@
                         <p class="w-4/12 text-right inline-block float-right text-gray-500 md:float-none mt-6 mb-6">
                             <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или 
                             <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
-                            <a href="{{ route('logout') }}" class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Sign-out</a>
+                            <a href="{{ route('logout') }}" class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Выход</a>
                         </p>
 
                     </div>
@@ -142,10 +142,10 @@
    
     </div>
 
-    <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6" >
+    <p class="w-full  text-right float-right md:float-none mt-6 mb-6 md:inline-block hidden " >
         <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или 
         <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
-        <a href="{{ route('logout') }}" class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ml-2">Sign-out</a>
+        <a href="{{ route('logout') }}" class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ml-2">Выход</a>
     </p>
 
 </nav>
