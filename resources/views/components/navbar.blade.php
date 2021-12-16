@@ -130,49 +130,72 @@
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
    
     </div>
-<<<<<<< HEAD
-
-    <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6" >
-        <a  href="{{ route('login') }}" class="font-medium hover:text-yellow-500">
-            Вход
-        </a> 
-            или 
-        <a href="{{ route('register') }}" class="font-medium hover:text-yellow-500">
-            Регистрация
-        </a>
-        <a href="{{ route('logout') }}" class="btn btn-danger">
-            Sign-out
-        </a>
-    </p>
-
-   
-
-
-</nav>
-{{-- login start --}}
-<div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full" id="my-modal">
-    <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
-        <div class="mt-3 text-center">
-
-            <button type="submit" id="close-btn" class="px-4 py-4 bg-gray-300 rounded-md w-100 h-16 absolute right-4 top-4 hover:bg-gray-500">
-                <i class="fas fa-times text-white text-3xl w-full"></i>
-
-                <button type="submit" id="close-btn" class="px-4 py-4  rounded-md w-100 h-16 absolute right-4 top-4 ">
-                    <i class="fas fa-times text-2xl text-gray-600"></i>
-=======
     @if (Route::has('login'))
         @auth
             <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 mr-6">
                 <button href="#" class="font-medium hover:text-yellow-500 mr-3">
-                    <i class="far fa-bell"></i>
->>>>>>> c41836928d14641c59999431399779399c7380c3
+                    
+                <!-- component -->
+            <!-- This is an example component -->
+            <div class="max-w-lg mx-auto">
+    
+                  <button type="button" data-dropdown-toggle="dropdown1"><i class="far fa-bell"></i></button>
+
+              <!-- Dropdown menu -->
+           <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"           id="dropdown1">
+              <div class="px-4 py-3">
+                 <span class="block text-sm">Уведомления</span>
+              </div>
+              <ul class="py-1" aria-labelledby="dropdown1">
+               <li>
+               <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Осталось только установит пароль</a>
+               </li>
+            <li>
+                <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
+            </li>
+             <ul class="py-1" aria-labelledby="dropdown1">
+             <li>
+            <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Отметить все как прочитанное</a>
+         </li>
+        </ul>
+    </div>
+
+    
+</div>
+
+
                 </button>
                 <button href="#" class="font-medium hover:text-yellow-500 mr-3">
-                    <i class="far fa-user"></i>
+
+                  
+                <!-- component -->
+            <!-- This is an example component -->
+            <div class="max-w-lg mx-auto">
+    
+                  <button type="button" data-dropdown-toggle="dropdown"><i class="far fa-user"></i></button>
+
+              <!-- Dropdown menu -->
+           <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"           id="dropdown">
+              <div class="px-4 py-3">
+                 <span class="block text-sm">Профиль</span>
+              </div>
+              <ul class="py-1" aria-labelledby="dropdown">
+               <li>
+               <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Настройки</a>
+               </li>
+               <ul class="py-1" aria-labelledby="dropdown">
+            <li>
+                <a href="{{ route('logout') }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Выход</a>
+            </li>
+             <ul class="py-1" aria-labelledby="dropdown">
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+</div>
+
                 </button>
-                <a href="{{ route('logout') }}" class="btn btn-danger">
-                    Sign-out
-                </a>
+                
             </p>
         @else
             <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6">
