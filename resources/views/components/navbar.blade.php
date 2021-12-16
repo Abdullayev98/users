@@ -166,6 +166,15 @@
         </a>
     </p>
 
+    <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6">
+    <a  href="#" class="font-medium hover:text-yellow-500">
+            <i class="fal fa-bell"></i>
+        </a> 
+        <a href="#" class="font-medium hover:text-yellow-500">
+             <i class="fad fa-user-circle"></i>
+        </a>
+    </p>
+
 </nav>
 {{-- login start --}}
 <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full" id="my-modal">
