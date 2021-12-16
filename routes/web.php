@@ -55,6 +55,9 @@ Route::get('/refill', function() {
 Route::get('/contacts', function() {
     return view('contacts.contacts');
 });
+Route::get('/choose-task', function() {
+    return view('task.choosetasks');
+});
 
 Route::get('/terms/doc', function() {
     return view('terms.pdf');

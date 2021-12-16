@@ -52,6 +52,17 @@
                     </ul>
                 </div>
                 <div class="mt-auto">
+                    <div class="pt-6">
+                        <p class="w-4/12 text-right inline-block float-right text-gray-500 md:float-none mt-6 mb-6">
+                            <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или 
+                            <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
+                            <a href="{{ route('logout') }}" class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Выход</a>
+                        </p>
+
+                    </div>
+                    <p class="my-4 text-xs text-center text-gray-400">
+                        <span>Copyright © 2021</span>
+                    </p>
                 </div>
             </nav>
         </div>
@@ -130,6 +141,7 @@
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
    
     </div>
+
     @if (Route::has('login'))
         @auth
             <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 mr-6">
@@ -210,6 +222,15 @@
         @endauth
     @endif
     
+
+
+    <p class="w-full  text-right float-right md:float-none mt-6 mb-6 lg:inline-block hidden " >
+        <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или 
+        <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
+        <a href="{{ route('logout') }}" class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ml-2">Выход</a>
+    </p>
+
+
 </nav>
 
 
