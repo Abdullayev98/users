@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yura_sultonov
- * Date: 5/23/19
- * Time: 11:46 PM
- */
-
-namespace models;
-
+namespace App\Services\Paynet\Transactions;
 
 class TransactionStatus
 {

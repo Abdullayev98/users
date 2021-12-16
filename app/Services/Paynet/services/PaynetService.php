@@ -1,29 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yura_sultonov
- * Date: 5/22/19
- * Time: 9:51 PM
- */
-
-namespace services;
+namespace App\Services\Paynet\Services;
 
 use Constants;
-use models\paynet\CancelTransactionRequest;
-use models\paynet\CancelTransactionResponse;
-use models\paynet\ChangePasswordRequest;
-use models\paynet\CheckTransactionRequest;
-use models\paynet\CheckTransactionResponse;
-use models\paynet\GenericRequest;
-use models\paynet\GenericResponse;
-use models\paynet\GetInformationRequest;
-use models\paynet\GetInformationResponse;
-use models\paynet\GetStatementRequest;
-use models\paynet\GetStatementResponse;
-use models\paynet\PerformTransactionRequest;
-use models\paynet\PerformTransactionResponse;
-use models\paynet\Statuses;
-use models\TransactionStatus;
+use App\Services\Paynet\Models\CancelTransactionRequest;
+use App\Services\Paynet\Models\CancelTransactionResponse;
+use App\Services\Paynet\Models\ChangePasswordRequest;
+use App\Services\Paynet\Models\CheckTransactionRequest;
+use App\Services\Paynet\Models\CheckTransactionResponse;
+use App\Services\Paynet\Models\GenericRequest;
+use App\Services\Paynet\Models\GenericResponse;
+use App\Services\Paynet\Models\GetInformationRequest;
+use App\Services\Paynet\Models\GetInformationResponse;
+use App\Services\Paynet\Models\GetStatementRequest;
+use App\Services\Paynet\Models\GetStatementResponse;
+use App\Services\Paynet\Models\PerformTransactionRequest;
+use App\Services\Paynet\Models\PerformTransactionResponse;
+use App\Services\Paynet\Models\Statuses;
+use App\Services\Paynet\Transactions\TransactionStatus;
 
 class PaynetService
 {

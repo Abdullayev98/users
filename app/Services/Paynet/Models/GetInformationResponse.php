@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yura_sultonov
- * Date: 5/23/19
- * Time: 3:25 PM
- */
-
-namespace models\paynet;
-
+namespace App\Services\Paynet\Models;
 
 class GetInformationResponse extends GenericResponse
 {

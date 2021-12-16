@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yura_sultonov
- * Date: 5/23/19
- * Time: 3:10 PM
- */
-
-namespace models\paynet;
-
+namespace App\Services\Paynet\Models;
 
 use DateTime;
 
