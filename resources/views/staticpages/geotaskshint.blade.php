@@ -74,6 +74,17 @@
                 <img src="https://assets.youdo.com/next/_next/static/images/task_complete-3b15890cc07d8a0317d3382194fe5ebf.jpg" class="mx-auto"/>
             </div>
         </div>
+        <div class="w-4/5 mx-auto mt-20">
+            <hr>
+        </div>
+        <div class="grid grid-cols-2 w-4/5 mx-auto my-20">
+            <div class="w-4/5 mx-auto text-center py-5 col-span-1 h-auto rounded-xl bg-green-600 hover:bg-green-500">
+                <a href="/task/create" class="text-4xl text-white">Создать задание</a>
+            </div>
+            <div class="col-span-1 py-auto py-5">
+                <p>Может быть вы хотите стать <a href="/verification" class="text-blue-500 underline hover:text-orange-400">исполнителем YouDo?</a></p>
+            </div>
+        </div>
 
 
 </div>
