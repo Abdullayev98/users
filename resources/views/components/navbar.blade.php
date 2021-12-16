@@ -2,7 +2,7 @@
 <nav class="relative flex items-center mx-6 md:w-10/12 md:mx-auto justify-between  lg:justify-start font-[sans-serif]" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
         <div class="flex items-center justify-between w-full md:w-auto">
-            <a href="#">
+            <a href="/">
                 <img src="{{asset('/images/logo.png')}}" class="overflow-hidden h-16 py-2" alt="" />
             </a>
         </div>
@@ -11,6 +11,7 @@
                 <button class="navbar-burger flex items-center text-yellow-500 p-3">
                     <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <title>Mobile menu</title>
+                        
                         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                     </svg>
                 </button>
@@ -139,7 +140,7 @@
         </style>
         <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200]">Найти задания</a>
 
-        <a href="#" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
+        <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
         {{--<!--
                         <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Мои заказы</a>
         -->
