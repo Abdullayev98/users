@@ -4,21 +4,23 @@
     <div class="container w-full">
         <div class="sub-container flex flex-row p-9 text-color-[#222]">
             <div class="basis-4/6 flex flex-row">
-                <div class="basis-5/6 flex flex-col">  
+                <div class="basis-5/6 flex flex-col">
                     <div class="basis-[100%] flex flex-row">
                         <div class="text-left basis-1/2 pb-[72px]">
                             <div class="text-[50px] font-bold pb-[32px]">
                                 Контакты
-                            </div>    
+                            </div>
                             <div class="pb-[24px]">
                                 Наша служба поддержки работает каждый день.
                                 Ответим на любые вопросы и пожелания в чате.
-                            </div>  
+                            </div>
                             <div>
-                                <button type="submit" class="text-white bg-[#6fc727] hover:bg-[#5ab82e] focus:ring-4 focus:ring-[#6fc727] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Напмсать в поддержку</button>                            
-                            </div>              
+                              <a href="#replain-link">
+                                <button type="submit" class="text-white bg-[#6fc727] hover:bg-[#5ab82e] focus:ring-4 focus:ring-[#6fc727] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Напмсать в поддержку</button>
+                                </a>
+                            </div>
                         </div>
-                    </div>                  
+                    </div>
                     <div class="basis-[100%] flex flex-row">
                         <div class="text-left grid grid-cols-2 gap-2">
                             <div class="pb-[48px]">
