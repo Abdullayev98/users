@@ -20,6 +20,7 @@ Route::prefix("profile")->group(function(){
 
 Route::get('/geotaskshint', [Controller::class, 'geotaskshint'])->name('geotaskshint');
 Route::get('/security', [Controller::class, 'security'])->name('security');
+Route::get('/badges', [Controller::class, 'badges'])->name('badges');
 // end of the routes which added Bekzod
 
 

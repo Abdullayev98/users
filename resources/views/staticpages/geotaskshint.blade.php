@@ -74,7 +74,7 @@
                 <img src="https://assets.youdo.com/next/_next/static/images/task_complete-3b15890cc07d8a0317d3382194fe5ebf.jpg" class="mx-auto"/>
             </div>
         </div>
-        <div class="w-4/5 mx-auto mt-20">
+        <div class="w-4/5 mx-auto mt-20">badges
             <hr>
         </div>
         <div class="grid grid-cols-2 w-4/5 mx-auto my-20">
