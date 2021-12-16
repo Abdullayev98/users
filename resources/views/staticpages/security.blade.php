@@ -7,8 +7,8 @@
         <div class="grid grid-cols-5 justify-center">
             <div class="col-span-1 mt-7">
                 <ul class="mb-5">
-                    <li><a  href="/geotaskshint" class="hover:text-red-500 text-md font-bold cursor-pointer">Как это работает</a></li>
-                    <li><a  href="/security" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">Безопасность и гарантии</a></li>
+                    <li><a  href="/geotaskshint" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">Как это работает</a></li>
+                    <li><a  href="/security" class="hover:text-red-500 text-md font-bold cursor-pointer">Безопасность и гарантии</a></li>
                     <li><a  href="/badges" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">Награды и рейтинг</a></li>
                 </ul>
                 <ul class="mb-5">
@@ -35,7 +35,7 @@
                             <div class="col-span-3 bg-no-repeat mt-20" style="background-image: url('https://assets.youdo.com/_next/static/media/sbr-screen.a2f6a92627c5306e984799eec1143662.png')">
 
                             </div>
-                            
+
                             <div class="col-span-7 p-5">
                                 <h3 class="text-2xl mb-5">Сделка без риска</h3>
                                 <p class="w-full">Сервис «<a href="#" class="text-blue-500 hover:text-red-500">Сделка без риска</a>» позволяет безопасно оплачивать задания и получать деньги на банковскую карту. В момент выбора исполнителя оплата резервируется на специальном счете и хранится там до успешного завершения работ.</p>

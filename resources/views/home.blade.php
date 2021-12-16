@@ -371,11 +371,10 @@
 
                     </div>
                     <div class="mt-4">
-                        <button type="button" onclick="myFunctionesse()"
+                        <button type="button"
                                 class=" bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">
                             Показать все задания
                         </button>
-
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">
@@ -427,7 +426,7 @@
         }
     </script>
 
-    <script>
+    <!-- <script>
         window.replainSettings = {id: '38d8d3f0-b690-4857-a153-f1e5e8b462a8'};
         (function (u) {
             var s = document.createElement('script');
@@ -437,8 +436,7 @@
             var x = document.getElementsByTagName('script')[0];
             x.parentNode.insertBefore(s, x);
         })('https://widget.replain.cc/dist/client.js');
-    </script>
-
+    </script> -->
     <script>
         tailwind.config = {
             module.exports = {

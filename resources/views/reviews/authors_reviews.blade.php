@@ -7,13 +7,13 @@
         <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8">
             <ul>
                 <li>
-                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Как это работает</a>
+                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">Как это работает</a>
                 </li>
                 <li>
-                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Безопасность и гарантии</a>
+                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">Безопасность и гарантии</a>
                 </li>
                 <li>
-                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Награды и рейтинг</a>
+                    <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">Награды и рейтинг</a>
                 </li>
                 <li class="mt-5">
                     <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/reviews">Отзывы исполнителей</a>
