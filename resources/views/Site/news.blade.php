@@ -7,7 +7,6 @@
     <p class="text-xl">{{$last2->text}}</p>
 </div>
 @foreach($news as $new)
-
 <div class="w-full">
     <div class="m-2 bg-white rounded-lg shadow-xl lg:flex lg:max-w-11/12">
         <img src="{{asset('storage/'.$new->img)}}" alt="Image Not Found"
