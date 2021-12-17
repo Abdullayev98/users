@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<link rel="stylesheet" href="{{asset('css/budget.css')}}">
 <!-- Information section -->
 <x-roadmap/>
 <!-- <form class="" action="" method="post"> -->
@@ -29,14 +29,17 @@
       <div class="py-4 mx-auto  text-left ">
         <div class="mb-4">
           <div id="formulario" class="flex flex-col gap-y-4">
-            <div class="relative pt-1">
-              <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
-                <div
-                  style="width: 30%"
-                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"
-                ></div>
-              </div>
-            </div>
+            <div class="cube">
+              <div class="a"></div>
+          <div id="slider-range-min"></div>
+          </div>
+          <input type="text" id="amount">
+          </div>
+          <div class="w-full">
+            <input type="checkbox" name="" value=""> Я использую YouDo для бизнеса, нужны закрывающие документы
+            <p class="text-sm ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
+            <input type="checkbox" name="" value=""> Отдаю предпочтение застрахованным исполнителям
+            <p class="text-sm ml-4">В случае ущерба страховая возместит вам до 100 000 руб. Это бесплатно</p>
           </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
@@ -44,12 +47,9 @@
                  Назад
                </button>
                <input type="submit"
-                               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                               name="" value="Далее">
-
+              class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+              name="" value="Далее">
              </div>
-
-
           </div>
         </div>
       </div>
@@ -62,9 +62,26 @@
 </div>
 <!-- </form> -->
 
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 @endsection
 
 @section("javasript")
+<script>
+$(function(){
+$("#slider-range-min").slider({
+range:"min",
+value:5,
+min:100000,
+max:500000,
+slide:function(event,ui){
+$("#amount").val(""+ui.value+" Сум");
+$(".a").width(ui.value/5000+"%");
+}
+});
+$(".ui-slider-handle").text("");
+$("#amount").val(""+$("#slider-range-min").slider("value")+" сум");
+});
+</script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
 @endsection
