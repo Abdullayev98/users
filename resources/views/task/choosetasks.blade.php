@@ -8,7 +8,7 @@
             @foreach($categories as $category)
                 <button type="button"
                         class="bg-inherit hover:bg-[#ffebad] border py-1 rounded-full px-4 my-4 text-gray-500 text-xs">
-                    <i class="fas fa-shipping-fast"></i>
+                    <i class="fas {{ $category->ico }}"></i>
                     <a href="{{route('categories',['id'=>$category->id])}}">
                         {{$category->name}}
                     </a>

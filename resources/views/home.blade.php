@@ -92,7 +92,7 @@
                     </a>
                 </div> -->
                 <div class="md:col-span-3 text-center col-span-1">
-                    <a href="">
+                    <a href="/categories/1">
                         <button type="button" class="border hover:border-[#000] rounded-md w-64 h-12">Посмотреть все
                             услуги
                         </button>
