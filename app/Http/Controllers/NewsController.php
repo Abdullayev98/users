@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogNew;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
     public function home()
     {
         $news = BlogNew::all();
-        return view("Site.news",compact("news"));
+        $last2 = DB::table('blog_new')->orderBy('id', 'DESC')->first();
+        return view("Site.news",compact("news", "last2"));
     }
     public function upload(Request $request)
     {
