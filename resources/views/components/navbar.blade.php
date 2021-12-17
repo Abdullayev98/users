@@ -151,23 +151,23 @@
             <!-- This is an example component -->
             <div class="max-w-lg mx-auto">
     
-                  <button type="button" data-dropdown-toggle="dropdown1"><i class="far fa-bell"></i></button>
+                  <button type="button" data-dropdown-toggle="dropdown1"><i class="text-2xl text-slate-400 hover:text-orange-500 far fa-bell"></i></button>
 
               <!-- Dropdown menu -->
            <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"           id="dropdown1">
               <div class="px-4 py-3">
-                 <span class="block text-sm">Уведомления</span>
+                 <span class="block text-base font-bold">Уведомления</span>
               </div>
               <ul class="py-1" aria-labelledby="dropdown1">
                <li>
-               <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Осталось только установит пароль</a>
+               <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i> Осталось только установит пароль</a>
                </li>
-            <li>
-                <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
-            </li>
+               <li>
+               <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
+               </li>
              <ul class="py-1" aria-labelledby="dropdown1">
              <li>
-            <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Отметить все как прочитанное</a>
+            <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">Отметить все как прочитанное</a>
          </li>
         </ul>
     </div>
@@ -184,20 +184,20 @@
             <!-- This is an example component -->
             <div class="max-w-lg mx-auto">
     
-                  <button type="button" data-dropdown-toggle="dropdown"><i class="far fa-user"></i></button>
+                  <button type="button" data-dropdown-toggle="dropdown"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i></button>
 
               <!-- Dropdown menu -->
            <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"           id="dropdown">
               <div class="px-4 py-3">
-                 <a href="/profile1"  class="block text-sm">Профиль</a>
+                 <a href="/profile1"  class="block text-base hover:bg-gray-100 text-gray-700">Профиль</a>
               </div>
               <ul class="py-1" aria-labelledby="dropdown">
                <li>
-               <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Настройки</a>
+               <a href="/profile/settings" class="text-base hover:bg-gray-100 text-gray-700 block px-4 py-2">Настройки</a>
                </li>
                <ul class="py-1" aria-labelledby="dropdown">
             <li>
-                <a href="{{ route('logout') }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Выход</a>
+                <a href="{{ route('logout') }}" class="text-base hover:bg-gray-100 text-gray-700 block px-4 py-2">Выход</a>
             </li>
              <ul class="py-1" aria-labelledby="dropdown">
         </ul>
