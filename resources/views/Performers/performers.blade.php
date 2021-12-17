@@ -22,8 +22,8 @@
                 <div class="bg-white max-w-xl mx-auto" x-data="{selected:1}">
                     <ul class="shadow-box">    
                         
-
-{{--------------------------|    Курьерские услуги     |-----------------------------}}
+{{-----------------------------------------------------------------------------------}}
+{{--                            Курьерские услуги                                  --}}
 
                         <li class="relative">
                             <button type="button" class="mb-4 text-left font-bold text-blue-500" @click="selected !== 1 ? selected = 1 : selected = null; style='text-black-700'">

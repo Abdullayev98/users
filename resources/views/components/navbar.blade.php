@@ -52,6 +52,17 @@
                     </ul>
                 </div>
                 <div class="mt-auto">
+                    <div class="pt-6">
+                        <p class="w-4/12 text-right inline-block float-right text-gray-500 md:float-none mt-6 mb-6">
+                            <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или 
+                            <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
+                            <a href="{{ route('logout') }}" class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Выход</a>
+                        </p>
+
+                    </div>
+                    <p class="my-4 text-xs text-center text-gray-400">
+                        <span>Copyright © 2021</span>
+                    </p>
                 </div>
             </nav>
         </div>
@@ -130,18 +141,73 @@
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
    
     </div>
+
     @if (Route::has('login'))
         @auth
             <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 mr-6">
                 <button href="#" class="font-medium hover:text-yellow-500 mr-3">
-                    <i class="far fa-bell"></i>
+                    
+                <!-- component -->
+            <!-- This is an example component -->
+            <div class="max-w-lg mx-auto">
+    
+                  <button type="button" data-dropdown-toggle="dropdown1"><i class="far fa-bell"></i></button>
+
+              <!-- Dropdown menu -->
+           <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"           id="dropdown1">
+              <div class="px-4 py-3">
+                 <span class="block text-sm">Уведомления</span>
+              </div>
+              <ul class="py-1" aria-labelledby="dropdown1">
+               <li>
+               <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Осталось только установит пароль</a>
+               </li>
+            <li>
+                <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
+            </li>
+             <ul class="py-1" aria-labelledby="dropdown1">
+             <li>
+            <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Отметить все как прочитанное</a>
+         </li>
+        </ul>
+    </div>
+
+    
+</div>
+
+
                 </button>
                 <button href="#" class="font-medium hover:text-yellow-500 mr-3">
-                    <i class="far fa-user"></i>
+
+                  
+                <!-- component -->
+            <!-- This is an example component -->
+            <div class="max-w-lg mx-auto">
+    
+                  <button type="button" data-dropdown-toggle="dropdown"><i class="far fa-user"></i></button>
+
+              <!-- Dropdown menu -->
+           <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"           id="dropdown">
+              <div class="px-4 py-3">
+                 <a href="/profile1"  class="block text-sm">Профиль</a>
+              </div>
+              <ul class="py-1" aria-labelledby="dropdown">
+               <li>
+               <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Настройки</a>
+               </li>
+               <ul class="py-1" aria-labelledby="dropdown">
+            <li>
+                <a href="{{ route('logout') }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Выход</a>
+            </li>
+             <ul class="py-1" aria-labelledby="dropdown">
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+</div>
+
                 </button>
-                <a href="{{ route('logout') }}" class="btn btn-danger">
-                    Sign-out
-                </a>
+                
             </p>
         @else
             <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6">
@@ -156,6 +222,15 @@
         @endauth
     @endif
     
+
+
+    <!-- <p class="w-full  text-right float-right md:float-none mt-6 mb-6 lg:inline-block hidden " >
+        <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или 
+        <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
+        <a href="{{ route('logout') }}" class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ml-2">Выход</a>
+    </p> -->
+
+
 </nav>
 
 

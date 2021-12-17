@@ -17,9 +17,9 @@
                     Завершение регистрации
                 </h3>
             </div>
-            <div>
-                <form action="{{ route('user.registration') }}" method="POST">
-                    @csrf
+            <form action="{{ route('user.registration') }}" method="POST">
+                @csrf
+                <div>
                     <div class="mb-4">
                         <label class="block text-gray-500 text-sm" for="name">
                             Имя Фамилия
@@ -49,11 +49,11 @@
                         @endif
 
                     </div>
-                </form>
-            </div>
-            <button type="submit" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">
-                Зарегистрация
-            </button>
+                </div>
+                <button type="submit" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">
+                    Зарегистрация
+                </button>
+            </form>
         </div>
 
 @endsection
