@@ -26,7 +26,7 @@ public function ref(Request $request){
         $amount = $request->get("amount");
         $article_id = $new_article->id;
 
-      return redirect()->to("https://my.click.uz/services/pay?service_id=1111&merchant_id=1111&amount=$amount.00&transaction_param=$article_id&return_url=http://teampro.uz");
+      return redirect()->to("https://my.click.uz/services/pay?service_id=19839&merchant_id=14364&amount=$amount.00&transaction_param=$article_id&return_url=https://youdo.teampro.uz");
 
       }
 
