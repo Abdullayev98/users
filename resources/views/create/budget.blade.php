@@ -35,6 +35,12 @@
           </div>
           <input type="text" id="amount">
           </div>
+          <div class="w-full">
+            <input type="checkbox" name="" value=""> Я использую YouDo для бизнеса, нужны закрывающие документы
+            <p class="text-sm ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
+            <input type="checkbox" name="" value=""> Отдаю предпочтение застрахованным исполнителям
+            <p class="text-sm ml-4">В случае ущерба страховая возместит вам до 100 000 руб. Это бесплатно</p>
+          </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
               <button type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
@@ -43,10 +49,7 @@
                <input type="submit"
               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
               name="" value="Далее">
-
              </div>
-
-
           </div>
         </div>
       </div>
