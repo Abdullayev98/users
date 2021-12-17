@@ -208,37 +208,114 @@
 
                 </button>
                 
+                <div>
+                    <a href="#" onclick="toggleModal('modal-id')">
+                        <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-8  HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
+                    </a>
+                </div>
+
             </p>
         @else
             <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6">
-                <a href="{{ route('login') }}" class="font-medium hover:text-yellow-500">
-                    Вход
-                </a>
-                или
-                <a href="{{ route('register') }}" class="font-medium hover:text-yellow-500">
-                    Регистрация
-                </a>
+                 <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или 
+                 <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
             </p>
         @endauth
     @endif
     
 
 
-    <!-- <p class="w-full  text-right float-right md:float-none mt-6 mb-6 lg:inline-block hidden " >
-        <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или 
-        <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
-        <a href="{{ route('logout') }}" class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ml-2">Выход</a>
-    </p> -->
-
-
 </nav>
 
 
 {{-- pay modal start --}}
-<div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
+
+
+  <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
+    <div class="relative w-auto my-6 mx-auto max-w-3xl">
+      <!--content-->
+      <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--header-->
+        <div class=" text-center p-6  rounded-t">
+            <button type="submit"  onclick="toggleModal('modal-id')" class="rounded-md w-100 h-16 absolute top-1 right-4">
+                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+              </button>
+            <h3 class="font-medium text-3xl block mt-6">
+                На какую сумму хотите пополнить <br> кошелёк?
+            </h3>
+        </div>
+        <!--body-->
+          <div class="text-center h-96">
+            <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
+                <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="6"  id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="400">
+            </div>
+            <p class="text-sm mt-2 leading-6 text-gray-400">Сумма пополнения, минимум — 400 ₽</p>
+
+         <div class="mt-8">
+            <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " />
+            <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 100 ₽</p>
+         </div>
+         <p class="text-center mt-4  text-gray-400 m-8">
+            Если вы заболеете и не сможете работать, ООО «Страховая компания "Манго"» <br> выплатит вам до 500 ₽ за каждый день болезни. *
+         </p>
+
+         <div class="mt-16">
+            <a class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" ></a>
+          </div>
+
+          </div>
+       
+      </div>
+    </div>
+  </div>
+  <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+  <script type="text/javascript">
+    function toggleModal(modalID){
+      document.getElementById(modalID).classList.toggle("hidden");
+      document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+      document.getElementById(modalID).classList.toggle("flex");
+      document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+    }
+    function borderColor() {
+        var element = document.getElementById("demo");
+        element.classList.add("border-amber-500");
+        }
+        function inputFunction() {
+        var x = document.getElementById("myText").value;
+        document.getElementById("button").innerHTML ="К оплате " + x +"₽";
+        }
+        function checkFunction() {
+        var x = document.getElementById("myText").value;
+        var checkBox = document.getElementById("myCheck");
+        if (checkBox.checked == true){
+            document.getElementById("button").innerHTML ="К оплате " + sum(x,100) +"₽";
+        } else {
+            document.getElementById("button").innerHTML ="К оплате " + x  +"₽";
+        }
+        }
+        function validate(evt) {
+        var theEvent = evt || window.event;
+
+        // Handle paste
+        if (theEvent.type === 'paste') {
+            key = event.clipboardData.getData('text/plain');
+        } else {
+        // Handle key press
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode(key);
+        }
+        var regex = /[0-9]|\./;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+
+  </script>
+{{-- <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
     <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
         <div class="mt-3 text-center">
-            <button type="submit" id="close-btn" class="px-4 py-4 bg-gray-300 rounded-md w-100 h-16 absolute right-4 top-4 hover:bg-gray-500">
+            <button type="submit"  id="close-btn" class="px-4 py-4 bg-gray-300 rounded-md w-100 h-16 absolute right-4 top-4 hover:bg-gray-500">
                 <i class="fas fa-times text-white text-3xl w-full"></i>
             </button>
             <div class="mx-auto flex items-center justify-center w-full">
@@ -261,7 +338,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 {{-- pay modal end --}}
 
 <script>
@@ -305,15 +382,8 @@
             }
         }
     });
-</script>
 
-
-
-@section("javascript")
-
-
-    <script>
-        //pay modal start
+      //pay modal start
         let modal = document.getElementById("my-modal");
 
         let btn = document.getElementById("open-btn");
@@ -339,9 +409,13 @@
                 modal.style.display = "none";
             }
         }
-        // pay modal end
+      // pay modal end
 
-        //
-    </script>
+</script>
+
+
+
+@section("javascript")
+
 
 @endsection
