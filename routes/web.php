@@ -18,7 +18,7 @@ use App\Http\Controllers\SocialController;
 
 
 
-Route::get('/performers', function () { return view('Performers.performers'); });
+Route::get('/performers', function () { return view('Performers.performersnew'); });
 
 Route::get('/news', [NewsController::class, 'home']);
 
@@ -56,6 +56,10 @@ Route::get('/contacts', function() {
     return view('contacts.contacts');
 });
 
+Route::get('/choose-task', function() {
+    return view('task.choosetasks');
+});
+
 Route::get('/terms/doc', function() {
     return view('terms.pdf');
 });
@@ -74,3 +78,9 @@ Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook
 //social login google
 Route::get('login/google',[SocialController::class,'googleRedirect']);
 Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']);
+
+Route::view('/faq','faq.faq');
+
+Route::view('/reviews','reviews.review');
+
+Route::view('/author-reviews','reviews.authors_reviews');

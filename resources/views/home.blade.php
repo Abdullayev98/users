@@ -51,7 +51,7 @@
         </div>
     </div>
     <main>
-        <div class="container md:text-center text-left mx-auto mt-8 md:px-16 px-4">
+        <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
             <div class="text-3xl font-bold text-center">
                 Более 2 300 000 исполнителей
             </div>
@@ -59,12 +59,14 @@
                 готовы помочь вам в решении самых разнообразных задач
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 w-full">
+            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
                 <div class="text-gray-500 text-lg my-8">
-                    <a href="#" class="hover:text-[#ffa200]">
-                        <i class="fas fa-truck-loading text-gray-500 hover:text-[#ffa200]"></i> Курьерские услуги
+                    <a href="/task/create?category_id={{ $category2->id }}" class="">
+                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]"> {{ $category2->name }} </i>
                     </a>
                 </div>
-                <div class="text-gray-500 text-lg my-8">
+                @endforeach
+                <!-- <div class="text-gray-500 text-lg my-8">
                     <a href="#">
                         <i class="fas fa-hammer text-gray-500"></i> Ремонт и строительство
                     </a>
@@ -88,8 +90,8 @@
                     <a href="#">
                         <i class="fas fa-camera-retro text-gray-500"></i> Фото, видео и аудио
                     </a>
-                </div>
-                <div class="md:col-span-3 col-span-1">
+                </div> -->
+                <div class="md:col-span-3 text-center col-span-1">
                     <a href="">
                         <button type="button" class="border hover:border-[#000] rounded-md w-64 h-12">Посмотреть все
                             услуги
@@ -361,7 +363,7 @@
                                     <a href="#" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->name}}
                                     </a>
-                                    <p class="text-sm mt-4">
+                                    <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
                                         {{$task->description}}
                                     </p>
                                 </div>
@@ -426,7 +428,7 @@
         }
     </script>
 
-    <script>
+    <!-- <script>
         window.replainSettings = {id: '38d8d3f0-b690-4857-a153-f1e5e8b462a8'};
         (function (u) {
             var s = document.createElement('script');
@@ -436,8 +438,7 @@
             var x = document.getElementsByTagName('script')[0];
             x.parentNode.insertBefore(s, x);
         })('https://widget.replain.cc/dist/client.js');
-    </script>
-
+    </script> -->
     <script>
         tailwind.config = {
             module.exports = {
@@ -461,5 +462,11 @@
             var elem = document.getElementById('scrollbar');
             elem.scrollTop = elem.scrollHeight;
         }, 5000);
+    </script>
+    <script>
+    function myFunctionesse() {
+      var elems = document.getElementsByClassName("chat");
+        elems.style.display = "block";
+    }
     </script>
 @endsection
