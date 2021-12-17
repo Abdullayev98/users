@@ -61,7 +61,7 @@
             <div class="grid md:grid-cols-3 grid-cols-1 w-full">
             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
                 <div class="text-gray-500 text-lg my-8">
-                    <a href="/task/create?category_id={{ $category2->id }}" class="">
+                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="">
                         <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]"> {{ $category2->name }} </i>
                     </a>
                 </div>
