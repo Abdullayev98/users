@@ -84,3 +84,7 @@ Route::view('/faq','faq.faq');
 Route::view('/reviews','reviews.review');
 
 Route::view('/author-reviews','reviews.authors_reviews');
+
+Route::view('/press','reviews.CMI');
+
+Route::view('/vacancies','reviews.vacancies');
