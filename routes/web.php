@@ -88,3 +88,6 @@ Route::view('/author-reviews','reviews.authors_reviews');
 Route::view('/press','reviews.CMI');
 
 Route::view('/vacancies','reviews.vacancies');
+
+Route::view('/business','business.business');
+

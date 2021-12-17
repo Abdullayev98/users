@@ -160,7 +160,7 @@
               </div>
               <ul class="py-1" aria-labelledby="dropdown1">
                <li>
-               <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i> Осталось только установит пароль</a>
+               <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>Осталось только установить пароль</a>
                </li>
                <li>
                <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
@@ -189,15 +189,15 @@
               <!-- Dropdown menu -->
            <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"           id="dropdown">
               <div class="px-4 py-3">
-                 <a href="/profile1"  class="block text-base hover:bg-gray-100 text-gray-700">Профиль</a>
+                 <a href="/profile1"  class="block text-base text-gray-700 hover:text-orange-500">Профиль</a>
               </div>
               <ul class="py-1" aria-labelledby="dropdown">
                <li>
-               <a href="/profile/settings" class="text-base hover:bg-gray-100 text-gray-700 block px-4 py-2">Настройки</a>
+               <a href="/profile/settings" class="text-base text-gray-700 hover:text-orange-500 block px-4 py-2">Настройки</a>
                </li>
                <ul class="py-1" aria-labelledby="dropdown">
             <li>
-                <a href="{{ route('logout') }}" class="text-base hover:bg-gray-100 text-gray-700 block px-4 py-2">Выход</a>
+                <a href="{{ route('logout') }}" class="text-base text-gray-700 hover:text-orange-500 block px-4 py-2">Выход</a>
             </li>
              <ul class="py-1" aria-labelledby="dropdown">
         </ul>
