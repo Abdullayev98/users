@@ -16,7 +16,7 @@
     <div class="w-full text-center my-4 text-[#5f5869]">
       Задание заполнено на 57%
     </div>
-    <div class="relative pt-1">
+    <div class="pt-1">
       <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
         <div style="width: 57%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
