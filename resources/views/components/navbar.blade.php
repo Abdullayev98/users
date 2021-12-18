@@ -299,18 +299,15 @@
               </div>
             </div>
           </div>
-<<<<<<< HEAD
 
       </div>
     </div>
   </div>
   <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
-=======
           <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal1-id-backdrop"></div>
     </form>
   
   
->>>>>>> 3c8d0275ab367fa777ebf145dc25482b0775efd0
   <script type="text/javascript">
     function toggleModal(){
       document.getElementById("modal-id").classList.toggle("hidden");
