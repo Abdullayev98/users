@@ -18,9 +18,9 @@
                     <h2 class="font-bold text-2xl">Здравствуйте, {{$user->name}}!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
-                            src="{{asset("Avatars/{$user->avatar}")}}" alt="" width="384"
+                            src='{{asset("Avatars/{$user->avatar}")}}' alt="image" width="384"
                             height="512">
-                        <form action="{{route('updatephoto' ,['id' => 1])}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('updatephoto', $user->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
                                 <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
