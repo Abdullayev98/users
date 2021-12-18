@@ -18,6 +18,7 @@ class FaqsController extends Controller
          public function questions()
         {
           
+            
             return view('faq.faq-ans'); 
 
         }

@@ -248,7 +248,7 @@
                     <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="6" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="400">
                 </div>
                 <p class="text-sm mt-2 leading-6 text-gray-400">Сумма пополнения, минимум — 100 ₽</p>
-
+    
              <div class="mt-8">
                 <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " />
                 <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 100 ₽</p>
@@ -256,13 +256,13 @@
              <p class="text-center mt-4  text-gray-400 m-8">
                 Если вы заболеете и не сможете работать, ООО «Страховая компания "Манго"» <br> выплатит вам до 500 ₽ за каждый день болезни. *
              </p>
-
+    
              <div class="mt-16">
                 <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >К оплате 400 ₽</a>
               </div>
-
+    
               </div>
-
+           
           </div>
         </div>
       </div>
@@ -279,7 +279,7 @@
                         Как удобнее оплатить?
                     </h3>
                 </div>
-
+                 
                 <div class="container mt-8">
                     <div>
                     <a href="#"><img src="{{asset('/images/payme.png')}}" class="mx-auto w-48 h-18" alt="Payme"> </a>
@@ -292,10 +292,10 @@
                     </div>
                 </div>
 
-
-
+              
+        
                   </div>
-
+               
               </div>
             </div>
           </div>
@@ -304,10 +304,10 @@
     </div>
   </div>
   <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
-
           <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal1-id-backdrop"></div>
     </form>
-
+  
+  
   <script type="text/javascript">
     function toggleModal(){
       document.getElementById("modal-id").classList.toggle("hidden");
@@ -337,7 +337,7 @@
             document.getElementById('button').classList.add("bg-gray-500");
             document.getElementById('button').classList.remove("hover:bg-lime-600");
             document.getElementById("button").innerHTML ="К оплате " + x +"₽";
-        }else{
+        }else{          
            document.getElementById('button').setAttribute("onclick","toggleModal1();");
            document.getElementById('button').classList.remove("bg-gray-500");
             document.getElementById('button').classList.add("bg-lime-500");
@@ -416,7 +416,7 @@
         }
     });
 
-
+    
 
 </script>
 

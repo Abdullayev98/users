@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+select#categories {
+   border:0px;!important
+   outline:0px;!important
+}
 
+</style>
     <div class="flex flex-row container mx-auto mx-40 my-8">
 
 {{-----------------------------------------------------------------------------------}}
@@ -22,10 +33,10 @@
                     @foreach($categories as $category)
                         @if ($category->parent_id == NULL)     
                             <label for="categories"></label>
-                            <select name="categories" id="categories" class="relative">
+                            <select name="categories" id="categories" class="relative focus:outline-none mt-4 text-[#4099fb] cursor-pointer text-lg active:text-red-600">
                                 <option value="{{ $category->id }}">
-                                    <div class="flex items-center justify-between mb-4">
-                                        <span class="text-left font-bold text-blue-500 focus:text-[#000]">
+                                    <div class="flex items-center justify-between mb-4 ">
+                                        <span class="text-left font-bold text-blue-500  ">
                                             {{$category->name}}				
                                         </span>
                                     </div>		

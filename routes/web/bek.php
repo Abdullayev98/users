@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+// this routes was added from Bekzod
 Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
 
 Route::prefix("profile")->group(function(){
@@ -16,8 +17,13 @@ Route::prefix("profile")->group(function(){
     Route::get('/login', [Controller::class, 'profile_login'])->name('profile.login');
 });
 
+
 Route::get('/geotaskshint', [Controller::class, 'geotaskshint'])->name('geotaskshint');
 Route::get('/security', [Controller::class, 'security'])->name('security');
+Route::get('/badges', [Controller::class, 'badges'])->name('badges');
+
+// end of the routes which added Bekzod
+
 
 Route::prefix("task")->group(function (){
 

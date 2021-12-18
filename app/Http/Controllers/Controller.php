@@ -33,6 +33,7 @@ class Controller extends BaseController
     public function performers(){
         return view('performer');
     }
+
     public function profile_cash(){
         return view('/profile/cash');
     }
@@ -44,6 +45,9 @@ class Controller extends BaseController
     }
     public function security(){
         return view('/staticpages/security');
+    }
+    public function badges(){
+        return view('/staticpages/badges');
     }
     public function my_tasks(){
         $tasks = Task::where('user_id', auth()->id());
