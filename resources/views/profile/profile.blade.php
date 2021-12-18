@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="baatton" onclick="fileadd()">
-                                    <input type="submit" id="sub1" >
+                                    <input type="submit" id="sub1" class="hidden" >
                                     <label for="sub1">
                                         <i class="fas fa-save"></i>
                                         <span>добавлять фото</span>
@@ -217,7 +217,7 @@
         }
         function fileadd(){
           var x = document.getElementById("baatton");
-          
+
                 x.classList.add("hidden");
         }
 
