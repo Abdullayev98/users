@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\PerformersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ use App\Http\Controllers\SocialController;
 
 
 
-Route::get('/performers', function () { return view('Performers.performers'); });
+Route::get('/performers', [PerformersController::class, 'service']);
 
 Route::get('/news', [NewsController::class, 'home']);
 
@@ -88,3 +89,6 @@ Route::view('/author-reviews','reviews.authors_reviews');
 Route::view('/press','reviews.CMI');
 
 Route::view('/vacancies','reviews.vacancies');
+
+Route::view('/business','business.business');
+

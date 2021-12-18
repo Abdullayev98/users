@@ -2,37 +2,40 @@
 
 @section("content")
 
-        <div class="container sticky mx-auto">
+        <div class="container md:w-4/5 p-5 w-full mx-auto">
 
 
         <div class="grid grid-cols-3 grid-flow-row mt-10 inline-block">
 
 
             {{-- user ma'lumotlari --}}
-            <div class="col-span-2 px-2 mx-3">
+            <div class="col-span-2 mx-3">
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
                         <span>15 просмотров профиля</span>
                     </div>
+                    <br>
                     <h2 class="font-bold text-2xl">Здравствуйте, Цезар!</h2>
-                    <div class="relative inline-block object-center  w-40 h-50">
-                        <img class="rounded-min mx-left overflow-hidden"
-                            src="https://data.whicdn.com/images/322027365/original.jpg?t=1541703413" alt="" width="384"
-                            height="512">
-                        <button class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
-                            <i class="fas fa-camera"></i>
-                            <span>Изменить фото</span>
-                        </button>
-                    </div>
-                    <div class="inline-block  ml-3 mt-1">
-                        <p class="inline-block text-m mr-2">34 год</p>
-                        <span class="inline-block">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p class="inline-block text-m">Москва город</p>
-                        </span>
-                        <p class="mt-2">Создал <a href="#"><span>1</span></span> задание</a></p>
-                        <p class="mt-4">Оценка: 3.6 </p>
+                    <div class="grid grid-cols-3">
+                        <div class="col-span-1 object-center w-40 h-50">
+                            <img class="rounded-min mx-left overflow-hidden"
+                                src="https://data.whicdn.com/images/322027365/original.jpg?t=1541703413" alt="" width="384"
+                                height="512">
+                            <button class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
+                                <i class="fas fa-camera"></i>
+                                <span>Изменить фото</span>
+                            </button>
+                        </div>
+                        <div class="sm:col-span-1 col-span-3 md:ml-3 mt-1">
+                            <p class="inline-block text-m mr-2">34 год</p>
+                            <span class="inline-block">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p class="inline-block text-m">Москва город</p>
+                            </span>
+                            <p class="mt-2">Создал <a href="#"><span>1</span></span> задание</a></p>
+                            <p class="mt-4">Оценка: 3.6 </p>
+                        </div>
                     </div>
                 </figure>
 
@@ -108,7 +111,7 @@
 
             {{--right-side-bar--}}
             <div
-                class="col-span-1 mx-2 inline-block  w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto lg:visible xl:visible md:visible  sm:invisible">
+                class="md:col-span-1 col-span-3 mx-2 inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto ">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
                     <p>на YouDo с 12 сентября 2021 г.</p>

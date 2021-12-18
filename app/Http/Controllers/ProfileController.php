@@ -18,11 +18,6 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
         return view('profile.profile', compact('user'));
     }
-    // public function updatephoto($id)
-    // // {
-    // //     $user = User::find($id);
-    // //     return view('profile.changephoto', compact('user'));
-    // // }
     public function update(Request $request, $id)
     {
         $request->validate([

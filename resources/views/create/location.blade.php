@@ -9,12 +9,12 @@
 <div class="grid grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-      Ищем исполнителя для задания " "
+      Ищем исполнителя для задания "{{$task->name}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
       Задание заполнено на 29%
     </div>
-    <div class="relative pt-1">
+    <div class=" pt-1">
       <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
         <div style="width: 29%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
