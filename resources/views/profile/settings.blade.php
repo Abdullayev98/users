@@ -5,11 +5,11 @@
     <div class="container mx-auto">
 
 
-        <div class="grid grid-cols-3 grid-flow-row mt-10 inline-block">
+        <div class="grid grid-cols-3 grid-flow-row mt-10">
 
 
             {{-- user ma'lumotlari --}}
-            <div class="col-span-2 px-2 mx-3 relative">
+            <div class="col-span-2 px-2 mx-3">
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
@@ -57,10 +57,10 @@
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->
                             <ul id="tabs" class="inline-flex w-full px-1 pt-2 ">
-                            <li class="px-4 py-2 -mb-px font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
-                            <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
-                            <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
-                            <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Безопасность</a></li>
+                                <li class="px-4 py-2 ring-1 ring-gray-200 rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
+                                <li class="px-4 py-2 ring-1 ring-gray-200 rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
+                                <li class="px-4 py-2 ring-1 ring-gray-200 rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
+                                <li class="px-4 py-2 ring-1 ring-gray-200 rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Безопасность</a></li>
                             </ul>
 
 <!-- Tab Contents -->
@@ -255,7 +255,7 @@
             </div>
 {{-- right side bar --}}
             <div
-                class="col-span-1 mx-2 inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto lg:visible xl:visible md:visible  sm:invisible">
+                class="md:col-span-1 col-span-3  mx-2 inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
                     <p>на YouDo с 12 сентября 2021 г.</p>
