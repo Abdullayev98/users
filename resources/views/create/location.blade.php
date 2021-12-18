@@ -9,11 +9,7 @@
 <div class="grid grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-<<<<<<< HEAD
       Ищем исполнителя для задания "{{session()->get('task.name')}}" 
-=======
-      Ищем исполнителя для задания "{{$task->name}}"
->>>>>>> ba56263b7a2e50dfd40a3c89ba374f9cc26d6355
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
       Задание заполнено на 29%
