@@ -69,7 +69,7 @@
               </div>
           </div>
           <div class="mt-16">
-              <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">СТАТЬ ИСПОЛНИТЕЛЕМ</a>
+            <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Стать исполнителем</a>
           </div>
       </div>
 

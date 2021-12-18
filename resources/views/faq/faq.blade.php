@@ -12,6 +12,7 @@
    
 
 </head>
+{{-- {{dd($fc)}} --}}
 <body class="bg-slate-200">
     <section class="bg-[#494A4C] py-8">
         <div class="lg:w-8/12 mx-auto w-10/12">
@@ -42,7 +43,7 @@
         <div class="w-10/12 lg:w-8/12 mx-auto md:flex flex-row justify-center items-center bg-white py-5 px-8 rounded-md shadow-lg shadow-indigo-300/40">
             <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20 md:m-5 mx-auto ">
             <div class="px-6 py-3">
-                <h4 class="text-[#515254] text-[18px] mb-1">Как пользоваться сервисом</h4>
+                <a href="/questions"><h4 class="text-[#515254] text-[18px] mb-1">Как пользоваться сервисом</h4></a>
                 <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">Рассказываем, как заказать услугу или стать исполнителем, а ещё как общаться на сервисе. Новым исполнителям: как взять первое задание и начать зарабатывать. И немного о самых важных правилах площадки. </p>
                 <div class="flex flex-row items-center">
                     <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
@@ -86,7 +87,7 @@
 <script>
     $(function() {
     $("#inp").focus(function(){
-        $("svg").removeClass("text-white");
+        $("svg").toggleClass("text-white");
         $("svg").addClass("text-black");
     });
 });

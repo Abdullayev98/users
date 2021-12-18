@@ -32,7 +32,7 @@ class UserController extends Controller
             return view('home',compact('tasks'))
                         ->withSuccess('Logged-in');
         }
-        return redirect("login")->withSuccess('Credentials are wrong.');
+        return view('login')->withSuccess('Credentials are wrong.');
     }
 
 
