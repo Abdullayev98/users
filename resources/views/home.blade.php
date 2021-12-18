@@ -51,7 +51,7 @@
         </div>
     </div>
     <main>
-        <div class="container md:text-center text-left mx-auto mt-8 md:px-16 px-4">
+        <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
             <div class="text-3xl font-bold text-center">
                 Более 2 300 000 исполнителей
             </div>
@@ -61,7 +61,7 @@
             <div class="grid md:grid-cols-3 grid-cols-1 w-full">
             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
                 <div class="text-gray-500 text-lg my-8">
-                    <a href="/task/create?category_id={{ $category2->id }}" class="">
+                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="">
                         <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]"> {{ $category2->name }} </i>
                     </a>
                 </div>
@@ -91,8 +91,8 @@
                         <i class="fas fa-camera-retro text-gray-500"></i> Фото, видео и аудио
                     </a>
                 </div> -->
-                <div class="md:col-span-3 col-span-1">
-                    <a href="">
+                <div class="md:col-span-3 text-center col-span-1">
+                    <a href="/categories/1">
                         <button type="button" class="border hover:border-[#000] rounded-md w-64 h-12">Посмотреть все
                             услуги
                         </button>
@@ -158,7 +158,7 @@
                     <div class="text-left">
                         <h3 class="text-4xl my-8">1.Создайте задание</h3>
                         <h5 class="text-2xl my-8">Опишите своими словами задачу, которую требуется выполнить.</h5>
-                        <a href="#"><h5 class="text-2xl text-blue-400 underline hover:text-red-500">Создать задание</h5>
+                        <a href="/task/create?category_id=22"><h5 class="text-2xl text-blue-400 underline hover:text-red-500">Создать задание</h5>
                         </a>
                     </div>
                     <div class="text-left my-16 md:block hidden">
@@ -277,7 +277,7 @@
         <div class="w-full lg:shadow-xl">
             <div class="container mx-auto md:w-2/3 w-11/12">
                 <div class="w-2/3 mx-auto my-16 text-center">
-                    <h1 class="text-4xl">Новые публикации <a href=""><span
+                    <h1 class="text-4xl">Новые публикации <a href="/news"><span
                                 class="text-[#4099fb] hover:text-[#ff280c] underline">в блоге</span></a></h1>
                 </div>
                 <div class="grid md:grid-cols-3 grid-cols-2 mx-auto">

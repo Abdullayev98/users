@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         return view('auth.signin');
-    }  
+    }
 
     public function createSignin(Request $request)
     {
@@ -32,7 +32,7 @@ class UserController extends Controller
             return view('home',compact('tasks'))
                         ->withSuccess('Logged-in');
         }
-        return redirect("login")->withSuccess('Credentials are wrong.');
+        return view('login')->withSuccess('Credentials are wrong.');
     }
 
 
@@ -40,10 +40,10 @@ class UserController extends Controller
     {
         return view('auth.signup');
     }
-      
+
 
     public function customSignup(Request $request)
-    {  
+    {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -62,8 +62,8 @@ class UserController extends Controller
         'email' => $data['email'],
         'password' => Hash::make($data['password'])
       ]);
-    }    
-    
+    }
+
 
     public function dashboardView()
     {
@@ -72,12 +72,12 @@ class UserController extends Controller
         }
         return redirect("login")->withSuccess('Access is not permitted');
     }
-    
+
 
     public function logout() {
         Session::flush();
         Auth::logout();
-        return Redirect('login');
+        return Redirect('/');
     }
 
     /**

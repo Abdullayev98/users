@@ -26,7 +26,7 @@ public function ref(Request $request){
         $amount = $request->get("amount");
         $article_id = $new_article->id;
 
-      return redirect()->to("https://my.click.uz/services/pay?service_id=1111&merchant_id=1111&amount=$amount.00&transaction_param=$article_id&return_url=http://teampro.uz");
+      return redirect()->to("https://my.click.uz/services/pay?service_id=19839&merchant_id=14364&amount=$amount.00&transaction_param=$article_id&return_url=https://youdo.teampro.uz");
 
       }
 
@@ -95,9 +95,9 @@ public function complete(Request $request){
 
     $user = All_transaction::where('id', $merchant_trans_id)->first();
 
-    $balance = WalletBalance::where('user_id', $user->id)->first();
+    $balance = WalletBalance::where('user_id', $user->user_id)->first();
 
-    if(count($balance)){
+    if(isset($balance)){
     $summa = $balance->balance + $user->amount;
     }else{
         WalletBalance::create([
@@ -107,8 +107,8 @@ public function complete(Request $request){
         $summa = $user->amount;
     }
 
-    WalletBalance::where('user_id', $user->id)->update(['balance' => $summa]);
-    All_transaction::where('id', $merchant_trans_id)->update(['status' => 1]);
+    WalletBalance::where('user_id', $user->user_id)->update(['balance' => $summa]);
+    All_transaction::where('id', $user->id)->update(['status' => 1]);
 
     return ['click_trans_id' => $click_trans_id,'merchant_trans_id' => $merchant_trans_id,'merchant_confirm_id' => $merchant_confirm_id,'error' => $error,'error_note' => $error_note];
 

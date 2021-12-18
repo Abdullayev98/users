@@ -11,7 +11,7 @@
                 <button class="navbar-burger flex items-center text-yellow-500 p-3">
                     <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <title>Mobile menu</title>
-                        
+
                         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                     </svg>
                 </button>
@@ -54,7 +54,7 @@
                 <div class="mt-auto">
                     <div class="pt-6">
                         <p class="w-4/12 text-right inline-block float-right text-gray-500 md:float-none mt-6 mb-6">
-                            <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или 
+                            <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или
                             <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
                             <a href="{{ route('logout') }}" class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Выход</a>
                         </p>
@@ -67,7 +67,7 @@
             </nav>
         </div>
     </div>
-    <div class="hidden w-full lg:inline-block xl:ml-24 lg:ml-12 md:pr-4 lg:space-x-8 md:space-x-6">
+    <div class="hidden w-full lg:inline-block xl:ml-12 lg:ml-12 md:pr-4 lg:space-x-8 md:space-x-6">
         <div class="group inline-block">
             <button class="font-medium text-gray-500 hover:text-[#ffa200] focus:outline-none">
                 <span class="pr-1  font-[sans-serif] flex-1">Создать задание</span>
@@ -139,47 +139,240 @@
         <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200]">Найти задания</a>
 
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
-   
+
     </div>
 
-    <p class="w-full  text-right float-right md:float-none mt-6 mb-6 lg:inline-block hidden " >
-        <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или 
-        <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
-        <a href="{{ route('logout') }}" class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ml-2">Выход</a>
-    </p>
+    @if (Route::has('login'))
+        @auth
+            <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 mr-6">
+                <button href="#" class="font-medium hover:text-yellow-500 mr-3">
+
+                <!-- component -->
+            <!-- This is an example component -->
+            <div class="max-w-lg mx-auto">
+
+                  <button type="button" data-dropdown-toggle="dropdown1"><i class="text-2xl text-slate-400 hover:text-orange-500 far fa-bell"></i></button>
+
+              <!-- Dropdown menu -->
+           <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"           id="dropdown1">
+              <div class="px-4 py-3">
+                 <span class="block text-base font-bold">Уведомления</span>
+              </div>
+              <ul class="py-1" aria-labelledby="dropdown1">
+               <li>
+               <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>Осталось только установить пароль</a>
+               </li>
+               <li>
+               <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
+               </li>
+             <ul class="py-1" aria-labelledby="dropdown1">
+             <li>
+            <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">Отметить все как прочитанное</a>
+         </li>
+        </ul>
+    </div>
+
+
+</div>
+
+
+                </button>
+                <button href="#" class="font-medium hover:text-yellow-500 mr-3">
+
+
+                <!-- component -->
+            <!-- This is an example component -->
+            <div class="max-w-lg mx-auto">
+
+                  <button type="button" data-dropdown-toggle="dropdown"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i></button>
+
+              <!-- Dropdown menu -->
+           <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"           id="dropdown">
+              <div class="px-4 py-3">
+                 <a href="/profile1"  class="block text-base text-gray-700 hover:text-orange-500">Профиль</a>
+              </div>
+              <ul class="py-1" aria-labelledby="dropdown">
+               <li>
+               <a href="/profile/settings" class="text-base text-gray-700 hover:text-orange-500 block px-4 py-2">Настройки</a>
+               </li>
+               <ul class="py-1" aria-labelledby="dropdown">
+            <li>
+                <a href="{{ route('logout') }}" class="text-base text-gray-700 hover:text-orange-500 block px-4 py-2">Выход</a>
+            </li>
+             <ul class="py-1" aria-labelledby="dropdown">
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+</div>
+
+                </button>
+
+                <div>
+                    <a href="#" onclick="toggleModal()">
+                        <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-8  HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
+                    </a>
+                </div>
+
+            </p>
+        @else
+            <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6">
+                 <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или
+                 <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
+            </p>
+        @endauth
+    @endif
+
+
 
 </nav>
 
 
 {{-- pay modal start --}}
-<div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
-    <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
-        <div class="mt-3 text-center">
-            <button type="submit" id="close-btn" class="px-4 py-4 bg-gray-300 rounded-md w-100 h-16 absolute right-4 top-4 hover:bg-gray-500">
-                <i class="fas fa-times text-white text-3xl w-full"></i>
-            </button>
-            <div class="mx-auto flex items-center justify-center w-full">
-                <h3 class="font-bold text-4xl block">
-                    На какую сумму хотите пополнить кошелёк?
+
+
+  <form action="">
+    <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
+        <div class="relative w-auto my-6 mx-auto max-w-3xl" id="modal11">
+          <div class="border-0 rounded-lg shadow-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <div class=" text-center p-6  rounded-t">
+                <button type="submit"  onclick="toggleModal()" class="rounded-md w-100 h-16 absolute top-1 right-4">
+                    <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                  </button>
+                <h3 class="font-medium text-3xl block mt-6">
+                    На какую сумму хотите пополнить <br> кошелёк?
                 </h3>
             </div>
-            <input class="ml-3 mt-10 w-30 h-20 ring-1 rounded-xl ring-gray-100" type='number' />
-
-            <p class="text-sm leading-6 text-gray-400">Сумма пополнения, минимум — 60 000сум</p>
-            <div class="mt-2 px-7 py-3">
-                <input type="checkbox" class="w-5 h-5 rounded-md inline-block " />
-                <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 15 000 сум</p>
-            </div>
-            <div class="items-center px-4 py-3">
-                <button id="ok-btn" class="px-4 py-2 bg-green-500 text-white text-xl font-medium rounded-md w-2/5 h-16  shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
-                    К оплате x сум
-                </button>
-                <p>* — Порядок выплаты, ограничения и полные условия определены в <a href="/home/oferta" class="cursor-pointer text-sm text-blue-400 underline">Оферте</a></p>
-            </div>
+              <div class="text-center h-96">
+                <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
+                    <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="6" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="400">
+                </div>
+                <p class="text-sm mt-2 leading-6 text-gray-400">Сумма пополнения, минимум — 100 ₽</p>
+    
+             <div class="mt-8">
+                <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " />
+                <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 100 ₽</p>
+             </div>
+             <p class="text-center mt-4  text-gray-400 m-8">
+                Если вы заболеете и не сможете работать, ООО «Страховая компания "Манго"» <br> выплатит вам до 500 ₽ за каждый день болезни. *
+             </p>
+    
+             <div class="mt-16">
+                <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >К оплате 400 ₽</a>
+              </div>
+    
+              </div>
+           
+          </div>
         </div>
+      </div>
+      <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+
+        <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id1">
+            <div class="relative w-auto my-6 mx-auto max-w-3xl">
+              <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <div class=" text-center p-6  rounded-t">
+                    <button type="submit"  onclick="toggleModal1()" class="rounded-md w-100 h-16 absolute top-1 right-4">
+                        <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                      </button>
+                    <h3 class="font-medium text-3xl block mt-6">
+                        Как удобнее оплатить?
+                    </h3>
+                </div>
+                 
+                <div class="container mt-8">
+                    <div>
+                    <a href="#"><img src="{{asset('/images/payme.png')}}" class="mx-auto w-48 h-18" alt="Payme"> </a>
+                    </div>
+                    <div>
+                        <a href="#"><img src="{{asset('/images/click.jpg')}}" class="mx-auto w-96 h-48" alt="Click"></a>
+                    </div>
+                    <div>
+                       <a href="#"><img src="{{asset('/images/paynet.jpg')}}" class="mx-auto w-64 h-18 mb-8" alt="Paynet"></a>
+                    </div>
+                </div>
+
+              
+        
+                  </div>
+               
+              </div>
+            </div>
+          </div>
+
+      </div>
     </div>
-</div>
-{{-- pay modal end --}}
+  </div>
+  <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+          <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal1-id-backdrop"></div>
+    </form>
+  
+  
+  <script type="text/javascript">
+    function toggleModal(){
+      document.getElementById("modal-id").classList.toggle("hidden");
+      document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
+      document.getElementById("modal-id").classList.toggle("flex");
+      document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
+    }
+    function toggleModal1(){
+        var element = document.getElementById("modal-id-backdrop");
+        element.classList.add("hidden");
+        var element2 = document.getElementById("modal-id");
+        element2.classList.add("hidden");
+      document.getElementById("modal-id1").classList.toggle("hidden");
+      document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
+      document.getElementById("modal-id1").classList.toggle("flex");
+      document.getElementById("modal-id1" + "-backdrop").classList.toggle("flex");
+    }
+    function borderColor() {
+        var element = document.getElementById("demo");
+        element.classList.add("border-amber-500");
+        }
+        function inputFunction() {
+        var x = document.getElementById("myText").value;
+        if(x < 100){
+            document.getElementById('button').removeAttribute("onclick");
+            document.getElementById('button').classList.remove("bg-lime-500");
+            document.getElementById('button').classList.add("bg-gray-500");
+            document.getElementById('button').classList.remove("hover:bg-lime-600");
+            document.getElementById("button").innerHTML ="К оплате " + x +"₽";
+        }else{          
+           document.getElementById('button').setAttribute("onclick","toggleModal1();");
+           document.getElementById('button').classList.remove("bg-gray-500");
+            document.getElementById('button').classList.add("bg-lime-500");
+            document.getElementById('button').classList.add("hover:bg-lime-600");
+           document.getElementById("button").innerHTML ="К оплате " + x +"₽";
+        }
+        }
+        function checkFunction() {
+        var x = document.getElementById("myText").value;
+        var checkBox = document.getElementById("myCheck");
+        if (checkBox.checked == true){
+            document.getElementById("button").innerHTML ="К оплате " +  (parseInt(x) + 100) +"₽";
+        } else {
+            document.getElementById("button").innerHTML ="К оплате " + x  +"₽";
+        }
+        }
+        function validate(evt) {
+        var theEvent = evt || window.event;
+
+        // Handle paste
+        if (theEvent.type === 'paste') {
+            key = event.clipboardData.getData('text/plain');
+        } else {
+        // Handle key press
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode(key);
+        }
+        var regex = /[0-9]|\./;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+
+  </script>
 
 <script>
     // Burger menus
@@ -222,43 +415,14 @@
             }
         }
     });
+
+    
+
 </script>
 
 
 
 @section("javascript")
 
-
-    <script>
-        //pay modal start
-        let modal = document.getElementById("my-modal");
-
-        let btn = document.getElementById("open-btn");
-
-        let button = document.getElementById("ok-btn");
-
-        let closebtn = document.getElementById("close-btn");
-
-        closebtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-        // We want the modal to close when the OK button is clicked
-        button.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        // pay modal end
-
-        //
-    </script>
 
 @endsection
