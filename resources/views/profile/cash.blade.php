@@ -27,7 +27,7 @@
                                 <span>Изменить фото</span>
                             </button>
                         </div>
-                        <div class="sm:col-span-1 col-span-3 md:ml-3 mt-1">
+                        <div class="sm:col-span-1 col-span-3 md:ml-3 md:mt-1 mt-5">
                             <p class="inline-block text-m mr-2">34 год</p>
                             <span class="inline-block">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -100,7 +100,7 @@
                                 течение 5 рабочих дней с учетом комиссии платежной системы.</p>
                             <h3 class="font-bold text-lg mt-2">Если у вас остались вопросы об условиях работы с YouDo,
                                 посмотрите это обучающее видео:</h3>
-                            <iframe class="w-full h-fit" src="https://www.youtube.com/embed/Js_5Pal4bOE">
+                            <iframe class="w-full h-auto" src="https://www.youtube.com/embed/Js_5Pal4bOE">
                             </iframe>
 
                         </div>
@@ -112,7 +112,7 @@
 
 
             {{--right-side-bar--}}
-            <div class="md:col-span-1 col-span-3 mx-2 inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto ">
+            <div class="md:col-span-1 col-span-3 md:mx-2 mx-auto md:mt-0 mt-5 inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto ">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
                     <p>на YouDo с 12 сентября 2021 г.</p>
