@@ -210,14 +210,16 @@
         </div>
     </div>
     <script>
+
         function fileupdate(){
             var x = document.getElementById("buttons");
                 x.style.display = "block";
 
         }
         function fileadd(){
-            var x = document.getElementById("button");
-                x.style.display = "none";
+          var x = document.getElementById("baatton");
+          
+                x.classList.add("hidden");
         }
 
     </script>
