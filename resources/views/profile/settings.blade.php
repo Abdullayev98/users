@@ -5,11 +5,11 @@
     <div class="container mx-auto">
 
 
-        <div class="grid grid-cols-3 grid-flow-row mt-10">
+        <div class="grid grid-cols-3  grid-flow-row mt-10">
 
 
             {{-- user ma'lumotlari --}}
-            <div class="col-span-2 px-2 mx-3">
+            <div class="md:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
@@ -39,13 +39,14 @@
                 <div class="content mt-20 ">
                 <div class="grid grid-cols-10">
                     <ul class=" col-span-9 ">
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-2xl font-bold">Обо мне</a></li>
-                        <li class="inline mr-10"><a href="/profile/cash" class=" text-xl font-bold">Счет</a></li>
-                        <li class="inline mr-10"><a href="/profile" class=" text-xl font-bold">Тарифы</a></li>
-                        <li class="inline mr-10"><a href="/home/profile" class=" text-xl font-bold">Страхование</a></li>
-                    </ul>
-                    <div class="col-span-1  " ><a href="/profile/settings"><i class="fas fa-user-cog text-3xl"></i></a></div>
+                        <li class="inline md:mr-5 mr-1"><a href="/home/profile" class=" text-[14px] md:text-[18px]">Обо мне</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px]">Счет</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Тарифы</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/home/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li>
+                        <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">Настройки</a></li>
 
+                    </ul>
+                    <div class="md:col-span-1 md:block hidden" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl" ></i></a></div>
                 </div>
 
                 <hr>
@@ -56,11 +57,11 @@
 <!-- settings form TABS -->
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->
-                            <ul id="tabs" class="inline-flex w-full px-1 pt-2 ">
-                                <li class="px-4 py-2 ring-1 ring-gray-200 rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
-                                <li class="px-4 py-2 ring-1 ring-gray-200 rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
-                                <li class="px-4 py-2 ring-1 ring-gray-200 rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
-                                <li class="px-4 py-2 ring-1 ring-gray-200 rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Безопасность</a></li>
+                            <ul id="tabs" class="md:inline-flex block w-full px-1 pt-2">
+                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
+                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
+                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
+                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Безопасность</a></li>
                             </ul>
 
 <!-- Tab Contents -->
@@ -262,7 +263,7 @@
                 </div>
                 <div class="contacts relative ">
                     <div class="ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
+                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 rounded-xl col-span-1"
                             style="background-color: orange;">
                             <i class="fas fa-phone-alt text-white"></i>
                         </div>
@@ -272,7 +273,7 @@
                         </div>
                     </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
+                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 rounded-xl col-span-1"
                             style="background-color: #0091E6;">
                             <i class="far fa-envelope text-white"></i>
                         </div>
@@ -282,7 +283,7 @@
                         </div>
                     </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
+                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 rounded-xl col-span-1"
                             style="background-color: #4285F4;">
                             <i class="fab fa-google text-white"></i>
                         </div>
@@ -295,7 +296,7 @@
                 <p class="mx-5 my-4">Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных
                     сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.</p>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="fas fa-fingerprint text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
@@ -304,7 +305,7 @@
                     </div>
                 </div>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="far fa-envelope text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
@@ -313,7 +314,7 @@
                     </div>
                 </div>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-facebook-f text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
@@ -322,7 +323,7 @@
                     </div>
                 </div>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-twitter text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
@@ -331,7 +332,7 @@
                     </div>
                 </div>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-apple text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
