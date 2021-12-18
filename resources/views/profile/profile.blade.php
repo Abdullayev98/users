@@ -32,8 +32,8 @@
                                     </label>
                                 </div>
 
-                                <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="button" onclick="fileadd()">
-                                    <input type="submit" id="sub1" class="hidden">
+                                <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="baatton" onclick="fileadd()">
+                                    <input type="submit" id="sub1" >
                                     <label for="sub1">
                                         <i class="fas fa-save"></i>
                                         <span>добавлять фото</span>
@@ -210,14 +210,15 @@
         </div>
     </div>
     <script>
-        function fileupdate(){
-            var x = document.getElementById("button");
-                x.style.display = "block";
 
+        function fileupdate(){
+          var x = document.getElementById("baatton");
+                x.classList.remove("hidden");
         }
         function fileadd(){
-            var x = document.getElementById("button");
-                x.style.display = "none";
+          var x = document.getElementById("baatton");
+          
+                x.classList.add("hidden");
         }
 
     </script>

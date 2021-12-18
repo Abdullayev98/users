@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Social;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -14,14 +15,11 @@ class ProfileController extends Controller
     {
         // $email = 'admin@admin.com';
         // $user = User::whereEmail($email)->first();
-        $user = User::find(1);
+        $user = User::find(Auth::user()->id);
+        // dd($user->id);
         return view('profile.profile', compact('user'));
     }
-    public function updatephoto($id)
-    {
-        $user = User::find($id);
-        return view('profile.changephoto', compact('user'));
-    }
+    
     public function update(Request $request, $id)
     {
         $request->validate([
