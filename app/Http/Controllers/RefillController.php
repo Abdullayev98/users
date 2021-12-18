@@ -97,7 +97,7 @@ public function complete(Request $request){
 
     $balance = WalletBalance::where('user_id', $user->user_id)->first();
 
-    if(count($balance)){
+    if(isset($balance)){
     $summa = $balance->balance + $user->amount;
     }else{
         WalletBalance::create([
