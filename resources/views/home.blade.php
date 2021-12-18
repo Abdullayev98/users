@@ -158,7 +158,7 @@
                     <div class="text-left">
                         <h3 class="text-4xl my-8">1.Создайте задание</h3>
                         <h5 class="text-2xl my-8">Опишите своими словами задачу, которую требуется выполнить.</h5>
-                        <a href="#"><h5 class="text-2xl text-blue-400 underline hover:text-red-500">Создать задание</h5>
+                        <a href="/task/create?category_id=22"><h5 class="text-2xl text-blue-400 underline hover:text-red-500">Создать задание</h5>
                         </a>
                     </div>
                     <div class="text-left my-16 md:block hidden">
@@ -277,7 +277,7 @@
         <div class="w-full lg:shadow-xl">
             <div class="container mx-auto md:w-2/3 w-11/12">
                 <div class="w-2/3 mx-auto my-16 text-center">
-                    <h1 class="text-4xl">Новые публикации <a href=""><span
+                    <h1 class="text-4xl">Новые публикации <a href="/news"><span
                                 class="text-[#4099fb] hover:text-[#ff280c] underline">в блоге</span></a></h1>
                 </div>
                 <div class="grid md:grid-cols-3 grid-cols-2 mx-auto">
