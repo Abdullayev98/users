@@ -20,7 +20,7 @@
                         <img class="rounded-min mx-left overflow-hidden"
                             src="{{asset("Avatars/{$user->avatar}")}}" alt="" width="384"
                             height="512">
-                        <form action="{{route('updatephoto' ,['id' => 1])}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('updatephoto' ,['id' => $user->id])}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
                                 <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
@@ -30,7 +30,7 @@
                                 </label>
                             </div>
 
-                            <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="button" onclick="fileadd()">
+                            <div class="rounded-md bg-green-500 w-40 mt-2 px-2" type="button" id="button" onclick="fileadd()">
                                 <input type="submit" id="sub1" class="hidden">
                                 <label for="sub1">
                                     <i class="fas fa-save"></i>
@@ -208,7 +208,6 @@
         function fileupdate(){
             var x = document.getElementById("button");
                 x.style.display = "block";
-       
         }
         function fileadd(){
             var x = document.getElementById("button");
