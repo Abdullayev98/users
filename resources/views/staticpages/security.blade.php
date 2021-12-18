@@ -9,7 +9,7 @@
                 <ul class="mb-5">
                     <li><a  href="/geotaskshint" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">Как это работает</a></li>
                     <li><a  href="/security" class="hover:text-red-500 text-md font-bold cursor-pointer">Безопасность и гарантии</a></li>
-                    <li><a  href="/badges" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">Награды и рейтинг</a></li>
+                    <li><a  href="/" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">Награды и рейтинг</a></li>
                 </ul>
                 <ul class="mb-5">
                     <li><a  href="/reviews" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">Отзывы исполнителей</a></li>
@@ -63,7 +63,7 @@
                                 <h3 class="text-2xl mb-5">Отзывы и рейтинг</h3>
                                 <p class="w-full">После завершения работы мы просим заказчика и исполнителя поделиться отзывами. Отзывы о каждом пользователе можно увидеть в его профиле. Мы проверяем их достоверность и блокируем исполнителей, которые оказывают некачественные услуги или оставляют недостоверные отзывы.</p>
                                 <p class="mt-5">Кроме отзывов оценить уровень исполнителей помогает рейтинг, который рассчитывается в каждой категории заданий. Самых активных исполнителей мы награждаем специальными значками за различные достижения.</p>
-                                <a href="/badges" class="text-blue-500 hover:text-red-500 mt-5">Подробнее о рейтинге и наградах исполнителей</a>
+                                <a href="/" class="text-blue-500 hover:text-red-500 mt-5">Подробнее о рейтинге и наградах исполнителей</a>
                             </div>
                         </div>
                         <div class="w-full mt-10">
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="col-span-3">
                                     <div class="ring-1 ring-gray-300 text-center py-5 rounded-xl col-span-3 w-64">
-                                        <a href="#" class="text-2xl">
+                                        <a href="/contacts" class="text-2xl">
                                             Перейти в контакты
                                         </a>
                                     </div>

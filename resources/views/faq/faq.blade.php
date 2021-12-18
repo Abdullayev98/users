@@ -76,7 +76,7 @@
     </section>
 
     <footer class="bg-white w-full flex flex-col p-8 justify-center items-center">
-        <a href="/home"><img src="{{asset("images/logo.png")}}" alt="" class="w-32 mb-4"></a>
+        <h2>YouDo.com</h2>
         <p>Мы используем Intercom</p>
     </footer>
 
