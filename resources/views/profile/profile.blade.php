@@ -212,13 +212,8 @@
     <script>
 
         function fileupdate(){
-<<<<<<< HEAD
-            var x = document.getElementById("button");
-                x.style.display = "block";
-=======
           var x = document.getElementById("baatton");
                 x.classList.remove("hidden");
->>>>>>> ba56263b7a2e50dfd40a3c89ba374f9cc26d6355
         }
         function fileadd(){
           var x = document.getElementById("baatton");
