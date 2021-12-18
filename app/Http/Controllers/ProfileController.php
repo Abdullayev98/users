@@ -13,13 +13,9 @@ class ProfileController extends Controller
 
     public function profileData()
     {
-        // $email = 'admin@admin.com';
-        // $user = User::whereEmail($email)->first();
         $user = User::find(Auth::user()->id);
-        // dd($user->id);
         return view('profile.profile', compact('user'));
     }
-    
     public function update(Request $request, $id)
     {
         $request->validate([
