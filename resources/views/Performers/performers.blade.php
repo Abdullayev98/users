@@ -7,11 +7,6 @@
   -moz-appearance: none;
   appearance: none;
 }
-select#categories {
-   border:0px;!important
-   outline:0px;!important
-}
-
 </style>
     <div class="flex flex-row container mx-auto mx-40 my-8">
 

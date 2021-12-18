@@ -4,145 +4,179 @@
 
 <div class="mx-auto w-9/12 my-16">
 
-        <div class="border-b">
-            <!-- Tabs -->
-            <ul id="tabs" class="inline-flex w-full">
-                <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">Все задания</a></li>
-                <li class="font-semibold rounded-t pb-3"><a href="#second">Рекомендованные</a></li>
-            </ul>
-        </div>
+    <div class="border-b">
+    <!-- Tabs -->
+        <ul id="tabs" class="inline-flex w-full">
+            <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">Все задания</a></li>
+            <li class="font-semibold rounded-t pb-3"><a href="#second">Рекомендованные</a></li>
+        </ul>
+    </div>
 
-            <!-- Tab Contents -->
-            <div id="tab-contents">
-                <div id="first">
+    <!-- Tab Contents -->
+    <div id="tab-contents">
+        <div id="first">
 
-                    <div class="grid grid-cols-3 gap-x-10">
-                        <div class="col-span-2">
-                            <div class="w-full bg-[#f8f7ee] my-5">
-                                <div class="px-5 py-5">
-{{--                                    <form action="">--}}
-                                    <div class="grid grid-cols-4 gap-4 mb-3">
+            <div class="grid grid-cols-3 gap-x-10">
+                <div class="col-span-2">
+                    <div class="w-full bg-[#f8f7ee] my-5">
+                        <div class="px-5 py-5">
+{{--                            <form action="">--}}
+                            <div class="grid grid-cols-4 gap-4 mb-3">
 
-                                        <div class="inline-flex w-full col-span-4">
-                                            <input id="suggest" class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
-                                            <button id="mpshow" class="bg-green-500 px-4 py-1 rounded">Найти</button>
-                                        </div>
-
-                                        <div class="col-span-2">
-                                            <label class="text-xs">Город, адрес, метро, район...</label>
-                                            <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text">
-                                        </div>
-
-                                        <div class="">
-                                            <label class="text-xs">Радиус поиска</label>
-{{--                                            <input tabindex="0" aria-autocomplete="list" class="border border-black rounded text-gray-700 py-1" value="">--}}
-                                            <select class="w-full border border-black rounded text-gray-700 py-1">
-                                                <option selected></option>
-                                                <option value="1">5 km</option>
-                                                <option value="2">10 km</option>
-                                                <option value="3">15 km</option>
-                                                <option value="4">20 km</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="ml-3">
-                                            <label class="text-xs">Стоимость заданий от</label>
-                                            <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." value="">
-                                        </div>
-
-                                        <ul class="inline-flex flex-wrap w-full col-span-3">
-                                            <div class="col-span-1 mr-5">
-                                                <li>
-                                                    <input class="" type="checkbox" id="" value=""></span>
-                                                    <label class="" for="">Удалённая работа</label>
-                                                </li>
-                                                <li>
-                                                    <input class="" type="checkbox" id="" value="">
-                                                    <label class="" for="">Задания без откликов</label>
-                                                </li>
-                                            </div>
-                                            <div class="col-span-1 mr-5">
-                                                <li>
-                                                    <input class="" type="checkbox" id="" value="">
-                                                    <label class="" for="">Только вакансии</label>
-                                                </li>
-                                                <li>
-                                                    <input class="" type="checkbox" id="" value="">
-                                                    <label class="" for="">Сделка без риска</label>
-                                                </li>
-                                            </div>
-                                            <div class="col-span-1 mr-5">
-                                                <li>
-                                                    <input class="" type="checkbox" id="" value="">
-                                                    <label class="" for="">Бизнес-задания</label>
-                                                </li>
-                                            </div>
-                                        </ul>
-                                    </div>
-{{--                                        </form>--}}
+                                <div class="inline-flex w-full col-span-4">
+                                    <input id="suggest" class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
+                                    <button id="mpshow" class="bg-green-500 px-4 py-1 rounded">Найти</button>
                                 </div>
+
+                                <div class="col-span-2">
+                                    <label class="text-xs">Город, адрес, метро, район...</label>
+                                    <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text">
+                                </div>
+
+                                <div class="">
+                                    <label class="text-xs">Радиус поиска</label>
+{{--                                    <input tabindex="0" aria-autocomplete="list" class="border border-black rounded text-gray-700 py-1" value="">--}}
+                                    <select class="w-full border border-black rounded text-gray-700 py-1">
+                                        <option selected></option>
+                                        <option value="1">5 km</option>
+                                        <option value="2">10 km</option>
+                                        <option value="3">15 km</option>
+                                        <option value="4">20 km</option>
+                                    </select>
+                                </div>
+
+                                <div class="ml-3">
+                                    <label class="text-xs">Стоимость заданий от</label>
+                                    <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." value="">
+                                </div>
+
+                                <ul class="inline-flex flex-wrap w-full col-span-3">
+                                    <div class="col-span-1 mr-5">
+                                        <li>
+                                            <input class="" type="checkbox" id="" value=""></span>
+                                            <label class="" for="">Удалённая работа</label>
+                                        </li>
+                                        <li>
+                                            <input class="" type="checkbox" id="" value="">
+                                            <label class="" for="">Задания без откликов</label>
+                                        </li>
+                                    </div>
+                                    <div class="col-span-1 mr-5">
+                                        <li>
+                                            <input class="" type="checkbox" id="" value="">
+                                            <label class="" for="">Только вакансии</label>
+                                        </li>
+                                        <li>
+                                            <input class="" type="checkbox" id="" value="">
+                                            <label class="" for="">Сделка без риска</label>
+                                        </li>
+                                    </div>
+                                    <div class="col-span-1 mr-5">
+                                        <li>
+                                            <input class="" type="checkbox" id="" value="">
+                                            <label class="" for="">Бизнес-задания</label>
+                                        </li>
+                                    </div>
+                                </ul>
                             </div>
+{{--                                </form>--}}
+                        </div>
+                    </div>
 
-                            <div>
-                                <div class="border-b">
-                                    <!-- Tabs -->
-                                    <ul id="tabs" class="inline-flex w-full">
-                                        <li class="font-semibold rounded-t mr-5">Сортировать</li>
-                                        <li class="bg-[#f8f7ee] mr-4"><a href="#datesort">по дате публикации</a></li>
-                                        <li class="underline decoration-dotted mr-4"><a href="#fastsort">по срочности</a></li>
-                                        <li class="hover:text-red-500 mr-4"><a href="#geosort">по удалённости</a></li>
-                                    </ul>
+                    <div>
+                        <div class="border-b">
+                            <!-- Tabs -->
+                            <ul id="tabs" class="inline-flex w-full">
+                                <li class="font-semibold rounded-t mr-5">Сортировать</li>
+                                <li class="bg-[#f8f7ee] mr-4"><a href="#datesort">по дате публикации</a></li>
+                                <li class="underline decoration-dotted mr-4"><a href="#fastsort">по срочности</a></li>
+                                <li class="hover:text-red-500 mr-4"><a href="#geosort">по удалённости</a></li>
+                            </ul>
+                        </div>
+
+                        <div id="scrollbar" class="w-full h-screen blog1">
+                          <div class="w-full overflow-y-scroll w-full h-screen">
+                            <div class="w-full border hover:bg-blue-100">
+                              <div class="w-11/12 h-12 m-4">
+                                <div class="float-left w-9/12">
+                                  <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                                    Оценить консультацию по телефону.
+                                  </a>
+                                  <p class="text-sm ml-12mt-4">
+                                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                                  </p>
+                                </div><div class="float-right w-1/4 text-right">
+                                  <a href="#" class="text-lg">100 000 sum</a><p class="text-sm ml-12mt-4">Спортмастер</p>
+                                  <p class="text-sm ml-12mt-4">Нет отзывов</p>
                                 </div>
+                              </div>
+                              <div class="w-11/12 h-12 m-4">
+                                <div class="mx-auto w-9/12">
+                                  <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Вакансия</button>
+                                  <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Бесплатный отклик</button>
+                                  <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥Промо</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
-                                <div id="scrollbar" class="w-full h-screen blog1">
-                                  <div class="w-full overflow-y-scroll w-full h-screen">
-                                    <div class="w-full border hover:bg-blue-100">
-                                      <div class="w-11/12 h-12 m-4">
-                                        <div class="float-left w-9/12">
-                                          <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-lg text-blue-400 hover:text-red-400">
-                                            Оценить консультацию по телефону.
-                                          </a>
-                                          <p class="text-sm ml-12mt-4">
-                                            ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
-                                          </p>
-                                        </div><div class="float-right w-1/4 text-right">
-                                          <a href="#" class="text-lg">100 000 sum</a><p class="text-sm ml-12mt-4">Спортмастер</p>
-                                          <p class="text-sm ml-12mt-4">Нет отзывов</p>
+                        @foreach($tasks as $task)
+                        @endforeach
+
+                    </div>
+
+                </div>
+                <div class="w-full h-full mt-5">
+                    <div id="map" class="h-40 my-5 rounded-lg w-full"></div>
+                    <div class="w-full h-full">
+
+                        <div class="max-w-lg mx-auto">
+
+                            <button class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-3" type="button"><input type="checkbox" class="mr-1"/> Все категории</button>
+
+                            <div class="w-full my-4">
+                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+                                    <div x-data={show:false} class="rounded-sm">
+                                        <div class="border border-b-0 bg-gray-100 px-10 py-1" id="headingOne">
+                                            <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                                                <svg class=" w-4 h-4 ml-2 rotate-[180deg]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </button>
+                                            <button class=" font-medium rounded-lg text-sm text-center inline-flex items-left" type="button">
+                                                <input type="checkbox" class="mr-1"/>
+                                                {{$category->name}}
+                                            </button>
                                         </div>
-                                      </div>
-                                      <div class="w-11/12 h-12 m-4">
-                                        <div class="mx-auto w-9/12">
-                                          <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Вакансия</button>
-                                          <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Бесплатный отклик</button>
-                                          <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥Промо</button>
+                                        <div x-show="show" class="border border-b-0 px-10 py-1">
+                                            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+
+                                                <div>
+                                                    <button class="font-medium rounded-lg text-sm text-center inline-flex items-center" type="button"><input type="checkbox" class="mr-1"/> {{$category2->name}} </button>
+                                                </div>
+
+                                            @endforeach
                                         </div>
-                                      </div>
                                     </div>
-                                  </div>
-                                </div>
-
-
-                                @foreach($tasks as $task)
                                 @endforeach
                             </div>
 
                         </div>
-                        <div class="w-full h-full mt-5">
-                            <div id="map" class="h-40 my-5 rounded-lg w-full"></div>
-                            <div class="w-full h-full">
-                            <x-faq/>
-                            </div>
-                        </div>
+
+                        <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+
+
                     </div>
-
                 </div>
-             <div id="second" class="hidden">
-
-
-                </div>
-
             </div>
 
+        </div>
+
+        <div id="second" class="hidden">
+        </div>
+
+    </div>
 
 </div>
 @endsection
@@ -198,5 +232,27 @@
         document.getElementById("default-tab").click();
 
     </script>
+
+    <!--   start script on click   -->
+
+    <script>
+        function myFunction() {
+            var div = document.getElementById("myDIV");
+            var click = document.getElementById("click");
+
+            div.style.display = "block";
+            click.style.display = "none";
+        }
+
+        function myFunctions() {
+            var div2 = document.getElementById("myDIV2");
+            var click2 = document.getElementById("click2");
+
+            div2.style.display = "block";
+            click2.style.display = "none";
+        }
+    </script>
+
+    <!--   end  script on click   -->
 
 @endsection
