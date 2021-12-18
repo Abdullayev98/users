@@ -11,7 +11,7 @@
                 <button class="navbar-burger flex items-center text-yellow-500 p-3">
                     <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <title>Mobile menu</title>
-                        
+
                         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                     </svg>
                 </button>
@@ -54,7 +54,7 @@
                 <div class="mt-auto">
                     <div class="pt-6">
                         <p class="w-4/12 text-right inline-block float-right text-gray-500 md:float-none mt-6 mb-6">
-                            <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или 
+                            <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или
                             <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
                             <a href="{{ route('logout') }}" class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Выход</a>
                         </p>
@@ -67,7 +67,7 @@
             </nav>
         </div>
     </div>
-    <div class="hidden w-full lg:inline-block xl:ml-24 lg:ml-12 md:pr-4 lg:space-x-8 md:space-x-6">
+    <div class="hidden w-full lg:inline-block xl:ml-12 lg:ml-12 md:pr-4 lg:space-x-8 md:space-x-6">
         <div class="group inline-block">
             <button class="font-medium text-gray-500 hover:text-[#ffa200] focus:outline-none">
                 <span class="pr-1  font-[sans-serif] flex-1">Создать задание</span>
@@ -139,18 +139,18 @@
         <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200]">Найти задания</a>
 
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
-   
+
     </div>
 
     @if (Route::has('login'))
         @auth
             <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 mr-6">
                 <button href="#" class="font-medium hover:text-yellow-500 mr-3">
-                    
+
                 <!-- component -->
             <!-- This is an example component -->
             <div class="max-w-lg mx-auto">
-    
+
                   <button type="button" data-dropdown-toggle="dropdown1"><i class="text-2xl text-slate-400 hover:text-orange-500 far fa-bell"></i></button>
 
               <!-- Dropdown menu -->
@@ -172,18 +172,18 @@
         </ul>
     </div>
 
-    
+
 </div>
 
 
                 </button>
                 <button href="#" class="font-medium hover:text-yellow-500 mr-3">
 
-                  
+
                 <!-- component -->
             <!-- This is an example component -->
             <div class="max-w-lg mx-auto">
-    
+
                   <button type="button" data-dropdown-toggle="dropdown"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i></button>
 
               <!-- Dropdown menu -->
@@ -207,7 +207,7 @@
 </div>
 
                 </button>
-                
+
                 <div>
                     <a href="#" onclick="toggleModal('modal-id')">
                         <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-8  HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
@@ -217,12 +217,12 @@
             </p>
         @else
             <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6">
-                 <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или 
+                 <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или
                  <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
             </p>
         @endauth
     @endif
-    
+
 
 
 </nav>
@@ -264,7 +264,7 @@
           </div>
 
           </div>
-       
+
       </div>
     </div>
   </div>
