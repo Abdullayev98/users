@@ -234,7 +234,7 @@
   <form action="">
     <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
         <div class="relative w-auto my-6 mx-auto max-w-3xl" id="modal11">
-          <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+          <div class="border-0 rounded-lg shadow-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
             <div class=" text-center p-6  rounded-t">
                 <button type="submit"  onclick="toggleModal()" class="rounded-md w-100 h-16 absolute top-1 right-4">
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
@@ -288,7 +288,7 @@
                         <a href="#"><img src="{{asset('/images/click.jpg')}}" class="mx-auto w-96 h-48" alt="Click"></a>
                     </div>
                     <div>
-                       <a href="#"><img src="{{asset('/images/paynet.jpg')}}" class="mx-auto w-64 h-18" alt="Paynet"></a>
+                       <a href="#"><img src="{{asset('/images/paynet.jpg')}}" class="mx-auto w-64 h-18 mb-8" alt="Paynet"></a>
                     </div>
                 </div>
 
