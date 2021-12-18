@@ -17,41 +17,6 @@
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl">Здравствуйте, {{$user->name}}!</h2>
-<<<<<<< HEAD
-                    <div class="relative inline-block object-center  w-40 h-50">
-                        <img class="rounded-min mx-left overflow-hidden"
-                            src="{{asset("Avatars/{$user->avatar}")}}" alt="" width="384"
-                            height="512">
-                        <form action="{{route('updatephoto' ,['id' => $user->id])}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
-                                <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
-                                <label for="file">
-                                    <i class="fas fa-camera"></i>
-                                    <span>Изменить фото</span>
-                                </label>
-                            </div>
-
-                            <div class="rounded-md bg-green-500 w-40 mt-2 px-2" type="button" id="button" onclick="fileadd()">
-                                <input type="submit" id="sub1" class="hidden">
-                                <label for="sub1">
-                                    <i class="fas fa-save"></i>
-                                    <span>добавлять фото</span>
-                                </label>
-                            </div>
-                        </form>
-                    </div>
-                    {{-- <div class="relative inline-block object-center  w-40 h-50">
-                        <img class="rounded-min mx-left overflow-hidden"
-                            src="{{asset($user->avatar)}}" alt="" width="384"
-                            height="512">
-                                <button class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button" onclick="openpopup()">
-                                    <i class="fas fa-camera"></i>
-                                    <span>Изменить фото</span>
-                                </button>
-                        
-                    </div> --}}
-=======
                     <div class="grid grid-cols-3">
                         <div class="col-span-1 object-center  w-40 h-50">
                             <img class="rounded-min mx-left overflow-hidden"
@@ -84,7 +49,6 @@
                                         <i class="fas fa-camera"></i>
                                         <span>Изменить фото</span>
                                     </button>
->>>>>>> ba56263b7a2e50dfd40a3c89ba374f9cc26d6355
 
                         </div> --}}
 
