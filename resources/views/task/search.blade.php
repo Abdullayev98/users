@@ -94,19 +94,24 @@
                             </ul>
                         </div>
 
-                        <div id="scrollbar" class="w-full h-screen blog1">
-                          <div class="w-full overflow-y-scroll w-full h-screen">
+
+                        <div id="scrollbar" class="w-full h-full blog1">
+{{--                          <div class="w-full overflow-y-scroll w-full h-screen">--}}
+                            @foreach($tasks as $task)
                             <div class="w-full border hover:bg-blue-100">
                               <div class="w-11/12 h-12 m-4">
                                 <div class="float-left w-9/12">
                                   <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-lg text-blue-400 hover:text-red-400">
-                                    Оценить консультацию по телефону.
+                                        {{$task->name}}
                                   </a>
                                   <p class="text-sm ml-12mt-4">
-                                    ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                                      {{$task->address}}
+{{--                                      {{$task->description}}--}}
                                   </p>
-                                </div><div class="float-right w-1/4 text-right">
-                                  <a href="#" class="text-lg">100 000 sum</a><p class="text-sm ml-12mt-4">Спортмастер</p>
+                                </div>
+                                  <div class="float-right w-1/4 text-right">
+                                  <a href="#" class="text-lg">{{$task->budget}} sum</a>
+                                      <p class="text-sm ml-12mt-4">Спортмастер</p>
                                   <p class="text-sm ml-12mt-4">Нет отзывов</p>
                                 </div>
                               </div>
@@ -118,38 +123,47 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
+{{--                          </div>--}}
+                            @endforeach
+                            {{$tasks->links()}}
                         </div>
 
-                        @foreach($tasks as $task)
-                        @endforeach
+
+
+
+
+
 
                     </div>
 
                 </div>
                 <div class="w-full h-full mt-5">
-                    <div id="map" class="h-40 my-5 rounded-lg w-full"></div>
+                    <div id="map" class="h-40 my-5 rounded-lg w-full">
+
+{{--                        <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>--}}
+
+                    </div>
                     <div class="w-full h-full">
 
                         <div class="max-w-lg mx-auto">
 
-                            <button class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-3" type="button"><input type="checkbox" class="mr-1"/> Все категории</button>
+                            <button class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5" type="button"><input type="checkbox" class="mr-1"/> Все категории</button>
 
-                            <div class="w-full my-4">
+                            <div class="w-full my-1">
                                 @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                                     <div x-data={show:false} class="rounded-sm">
-                                        <div class="border border-b-0 bg-gray-100 px-10 py-1" id="headingOne">
+                                        <div class="border border-b-0 bg-gray-100" id="headingOne">
                                             <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
-                                                <svg class=" w-4 h-4 ml-2 rotate-[180deg]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                 </svg>
                                             </button>
-                                            <button class=" font-medium rounded-lg text-sm text-center inline-flex items-left" type="button">
+                                            <button class="font-medium rounded-lg text-sm text-center inline-flex items-center" type="button">
                                                 <input type="checkbox" class="mr-1"/>
                                                 {{$category->name}}
                                             </button>
                                         </div>
-                                        <div x-show="show" class="border border-b-0 px-10 py-1">
+                                        <div x-show="show" class="border border-b-0 px-8 py-1">
                                             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                                 <div>
@@ -231,28 +245,11 @@
 
         document.getElementById("default-tab").click();
 
+
+        $(".rotate").click(function(){
+            $(this).toggleClass("rotate-[360deg]");
+        });
+
     </script>
-
-    <!--   start script on click   -->
-
-    <script>
-        function myFunction() {
-            var div = document.getElementById("myDIV");
-            var click = document.getElementById("click");
-
-            div.style.display = "block";
-            click.style.display = "none";
-        }
-
-        function myFunctions() {
-            var div2 = document.getElementById("myDIV2");
-            var click2 = document.getElementById("click2");
-
-            div2.style.display = "block";
-            click2.style.display = "none";
-        }
-    </script>
-
-    <!--   end  script on click   -->
 
 @endsection
