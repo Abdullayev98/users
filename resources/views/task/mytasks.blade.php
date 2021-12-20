@@ -76,7 +76,8 @@
                             <div class="w-full scroll-smooth hover:scroll-auto w-full h-screen">
                                 <img src="https://css-static.youdo.com/assets/71201/i/become-an-executor-c1a1be93104435115c3e2d317aa61be6.svg" alt="">
                             @foreach($tasks as $task)
-                                @if (($task->count()) == 0)
+                                @if ($task->count() != 0)
+                                    {{$task->count()}}
                                     <!-- If page is empty -->
                                         {{--                                        <div class="w-1/2 mx-auto my-auto">--}}
                                         {{--                    <img src="{{asset('has.svg')}}" alt="">--}}

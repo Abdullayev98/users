@@ -20,6 +20,9 @@ use App\Http\Controllers\PerformersController;
 
 
 Route::get('/performers', [PerformersController::class, 'service']);
+Route::get('/performers/executors-courier', function () {
+    return view('Performers/executors-courier');
+});
 
 Route::get('/news', [NewsController::class, 'home']);
 

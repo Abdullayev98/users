@@ -7,11 +7,6 @@
   -moz-appearance: none;
   appearance: none;
 }
-select#categories {
-   border:0px;!important
-   outline:0px;!important
-}
-
 </style>
     <div class="flex flex-row container mx-auto mx-40 my-8">
 
@@ -97,7 +92,7 @@ select#categories {
             
             <div class="flex flex-row">
                 <div class="m-10">
-                    <img class="rounded-lg w-40 h-40" src="{{ asset('images/user1.jpg') }}" alt="user">
+                    <img class="rounded-lg w-40 h-40" src="https://avatar.youdo.com/get.userAvatar?AvatarId=7441787&AvatarType=H180W180" alt="user">
                     <div class="flex flex-row">
                         <p>Отзывы:</p>
                         <i class="far fa-thumbs-up m-1 text-gray-400"></i>    5128
@@ -113,7 +108,7 @@ select#categories {
                 </div>
                 <div class="my-10">
                     <div class="flex flex-row">
-                        <p class="text-3xl underline text-blue-500">Денис Б.</p>
+                       <a href="/performers/executors-courier"> <p class="text-3xl underline text-blue-500">Борис К.</p></a>
                         <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}">
