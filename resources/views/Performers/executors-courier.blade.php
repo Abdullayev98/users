@@ -30,7 +30,9 @@
                             <span>Документы подтверждены</span>
                         </div>
                         <div class="text-gray-500 text-base mt-4">
+                          @if($performer->age != null)
                             <span>{{$performer->age}} лет</span>
+                            @endif
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Санкт-Петербург</span>
                         </div>
@@ -165,7 +167,7 @@
                     </div>
                 </div>
                 <div class="mt-8">
-                    <h1 class="text-3xl font-medium">Новые публикации <br><a href="#" class="text-blue-500 hover:text-red-600"> в блоге</a></h1>
+                    <h1 class="text-3xl font-medium">Новые публикации <br><a href="/news" class="text-blue-500 hover:text-red-600"> в блоге</a></h1>
                     <img class="mt-4 rounded-xl " src="https://content0.youdo.com/zi.ashx?i=d36fd188a176881f" alt="#">
                     <h1 class="mt-4 font-medium text-xl text-gray-700">Из фрилансера в CEO Digital-агентства</h1>
                     <p class="mt-2 font-normal text-base text-gray-700">Вдохновляющая видео-история <br> исполнителя Александра</p>
