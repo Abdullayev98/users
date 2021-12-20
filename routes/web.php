@@ -44,15 +44,9 @@ Route::get('/verification', [Controller::class, 'verification'])->name('verifica
 Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('my.tasks');
 Route::get('/refill', [Controller::class, 'refill'])->name('refill');
 Route::get('/contacts', [Controller::class, 'contacts'])->name('contacts');
+Route::get('/choose-task', [Controller::class, 'choose_task'])->name('choose.task');
+Route::get('/terms/doc', [Controller::class, 'terms_doc'])->name('terms.doc');
 
-
-Route::get('/choose-task', function() {
-    return view('task.choosetasks');
-});
-
-Route::get('/terms/doc', function() {
-    return view('terms.pdf');
-});
 Route::get('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
 
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');

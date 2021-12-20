@@ -73,6 +73,12 @@ class Controller extends BaseController
     public function contacts(){
         return view('contacts.contacts');
     }
+    public function choose_task(){
+        return view('task.choosetasks');
+    }
+    public function terms_doc(){
+        return view('terms.pdf');
+    }
 
 
 }
