@@ -15,6 +15,7 @@
                         <i class="far fa-eye"></i>
                         <span>15 просмотров профиля</span>
                     </div>
+                    <br>
                     <h2 class="font-bold text-lg">Здравствуйте, Цезар!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
@@ -38,12 +39,12 @@
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 ">
                 <div class="grid grid-cols-10">
-                    <ul class=" col-span-9 ">
+                    <ul class=" md:col-span-9 col-span-10 md:items-left sitems-center">
                         <li class="inline md:mr-5 mr-1"><a href="/home/profile" class=" text-[14px] md:text-[18px]">Обо мне</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px]">Счет</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Тарифы</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/home/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li>
-                        <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">Настройки</a></li>
+                        <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">Настройки</a></li>
 
                     </ul>
                     <div class="md:col-span-1 md:block hidden" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl" ></i></a></div>
@@ -57,7 +58,7 @@
 <!-- settings form TABS -->
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->
-                            <ul id="tabs" class="md:inline-flex block w-full px-1 pt-2">
+                            <ul id="tabs" class="md:inline-flex block w-full flex-center px-1 pt-2">
                                 <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
                                 <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
                                 <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
@@ -68,33 +69,37 @@
                             <div id="tab-contents" class="w-full">
                                 <div id="first" class="p-4 w-full">
 {{-- settings/ first tab -> base settings start --}}
-                                    <div class="flex justify-left items-center w-full">
-                                        <div class="w-3/5 m-4">
+                                    <div class="flex justify-left w-full">
+                                        <div class="md:w-3/5 w-full md:m-4 m-0">
                                             <h1 class="block w-3/5 text-left text-gray-800 text-3xl font-bold mb-6">Личные данные</h1>
-                                            <form action="/" method="post">
-                                                <div class="flex flex-col mb-4">
-                                                    <label class="mb-2 text-md text-gray-400" for="first_name">Имя</label>
-                                                    <input class="rounded-xl border py-2 px-3 text-grey-900" type="text" name="first_name" id="first_name">
+                                            <form action="/" class="w-full" method="post">
+                                                <div class="w-full mb-4">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="first_name">Имя</label>
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="first_name" id="first_name">
                                                 </div>
-                                                <div class="flex flex-col mb-4">
-                                                    <label class="mb-2 text-md text-gray-400" for="last_name">Фамилия</label>
-                                                    <input class="rounded-xl border py-2 px-3 text-grey-900" type="text" name="last_name" id="last_name">
+                                                <div class="w-full mb-4">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="last_name">Фамилия</label>
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="last_name" id="last_name">
                                                 </div>
-                                                <div class="flex flex-col mb-4">
-                                                    <label class="mb-2 text-md text-gray-400" for="email">Email</label>
-                                                    <input class="rounded-xl border py-2 px-3 text-grey-900" type="email" name="email" id="email">
+                                                <div class="w-full block w-full mb-4">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="email">Email</label>
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="email" name="email" id="email">
                                                 </div>
-                                                <div class="flex flex-col mb-4">
-                                                    <label class="mb-2 text-md text-gray-400" for="Date">Дата рождения</label>
-                                                    <input class="rounded-xl border py-2 px-3 text-grey-900" type="date" name="date" id="date">
+                                                <div class="w-full block w-full mb-4">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="email">Phone number</label>
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="number" name="number" id="number">
                                                 </div>
-                                                <div class="flex flex-col mb-4">
-                                                    <label class="mb-2 text-md text-gray-400" for="textarea">Другие сведения</label>
-                                                    <textarea class="border rounded-xl py-2 px-3 text-grey-900" name="textarea" id="textarea"></textarea>
+                                                <div class="w-full block w-full mb-4">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="Date">Дата рождения</label>
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="date" name="date" id="date">
                                                 </div>
-                                                <div class="flex flex-col mb-4">
-                                                    <label class="mb-2 text-md text-gray-400" for="Select">Город</label>
-                                                    <select class="border rounded-xl py-2 px-3 text-grey-900">
+                                                <div class="w-full block w-full mb-4">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="textarea">Другие сведения</label>
+                                                    <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900" name="textarea" id="textarea"></textarea>
+                                                </div>
+                                                <div class="w-full block w-full mb-4">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="Select">Город</label>
+                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900">
                                                         <option>Ташкент</option>
                                                         <option>Jakarta</option>
                                                         <option>Bandung</option>
@@ -102,7 +107,9 @@
                                                     </select>
                                                 </div>
 
-                                                <button class="block w-2/5 bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl" type="submit">Сохранить</button>
+                                                <a href="#" class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" type="submit">Сохранить</a>
+                                                <hr>
+                                                <a href="#" class="block md:w-3/5 w-full text-center hover:bg-gray-300 mt-5 uppercase text-lg p-4 rounded-xl" type="submit">Удалить профиль</a>
                                             </form>
                                         </div>
                                     </div>
@@ -110,14 +117,17 @@
                                 </div>
                                 <div id="second" class="hidden p-4">
 {{-- settings/ second tab -> enable notification start --}}
-                                    <div class="w-4/5 mt-5">
+                                    <div class="md:w-4/5 w-full mt-5">
                                         <h3 class="font-bold text-3xl">Получать уведомления:</h3>
-                                        <input type="checkbox" class="w-5 h-5 mt-8 inline-block"/>
-                                        <span class="inline-block ml-2">Системные уведомления</span>
-
-                                        <input type="checkbox" class="w-5 ml-10 h-5 mt-8 inline-block"/>
-                                        <span class="inline-block ml-2">Я хочу получать новости сайта</span>
-                                        <button class="block w-1/4 mt-10 bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl" type="submit">Сохранить</button>
+                                        <div class="grid grid-cols-10 mt-5">
+                                            <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
+                                            <span class="col-span-9 ml-2">Системные уведомления</span>
+                                        </div>
+                                        <div class="grid grid-cols-10 mt-5">
+                                            <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
+                                            <span class="col-span-9 ml-2">Я хочу получать новости сайта</span>
+                                        </div>
+                                        <button class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl" type="submit">Сохранить</button>
                                     </div>
 {{-- settings/ second tab -> enable notification end --}}
                                 </div>
@@ -256,7 +266,7 @@
             </div>
 {{-- right side bar --}}
             <div
-                class="md:col-span-1 col-span-3  mx-2 inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
+                class="md:col-span-1 col-span-3  md:mx-2 mx-auto inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
                     <p>на YouDo с 12 сентября 2021 г.</p>
@@ -269,7 +279,7 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
-                            <p class="font-bold text-black block ">+998xx xxx-xx-xx</p>
+                            <p class="text-black text-sm block ">+998xx xxx-xx-xx</p>
                         </div>
                     </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -279,7 +289,7 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Email</h5>
-                            <p class="font-bold text-black block ">user@yandex.ru</p>
+                            <p class="text-black text-sm block ">user@yandex.ru</p>
                         </div>
                     </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -289,7 +299,7 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Google</h5>
-                            <p class="font-bold text-black block ">Подтвержден</p>
+                            <p class="text-black text-sm block ">Подтвержден</p>
                         </div>
                     </div>
                 </div>

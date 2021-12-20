@@ -23,8 +23,7 @@ class CreateTaskController extends VoyagerBaseController
         $categories = Category::query()->where("parent_id", null)->get();
         $current_parent_category = Category::find($current_category->parent_id);
         $child_categories = Category::query()->where("parent_id", $current_parent_category->id)->get();
-
-
+        
         return view("create.name", compact('categories', 'current_category','child_categories', 'current_parent_category'));
     }
 

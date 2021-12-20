@@ -7,11 +7,6 @@
   -moz-appearance: none;
   appearance: none;
 }
-select#categories {
-   border:0px;!important
-   outline:0px;!important
-}
-
 </style>
     <div class="flex flex-row container mx-auto mx-40 my-8">
 
@@ -24,30 +19,30 @@ select#categories {
                 <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url(images/like.png);">
                 </div>
                 <div class="basis-1/2 text-xs text-gray-700 text-left my-auto">
-                    Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.   
+                    Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.
                 </div>
             </div>
 
             <div>
                 <div class="bg-white max-w-xl mx-auto">
                     @foreach($categories as $category)
-                        @if ($category->parent_id == NULL)     
+                        @if ($category->parent_id == NULL)
                             <label for="categories"></label>
                             <select name="categories" id="categories" class="relative focus:outline-none mt-4 text-[#4099fb] cursor-pointer text-lg active:text-red-600">
                                 <option value="{{ $category->id }}">
                                     <div class="flex items-center justify-between mb-4 ">
                                         <span class="text-left font-bold text-blue-500  ">
-                                            {{$category->name}}				
+                                            {{$category->name}}
                                         </span>
-                                    </div>		
+                                    </div>
                                 </option>
-                                
+
                                 @foreach($child_categories as $child_category)
                                     @if ($category->id == $child_category->parent_id)
                                         <option value="{{ $child_category->id }}">
                                             <div>
                                                 <div class="ml-4 text-blue-500">
-                                                    <a href="#" class="hover:text-[#ff0000]">{{ $child_category->name }}</a>  
+                                                    <a href="#" class="hover:text-[#ff0000]">{{ $child_category->name }}</a>
                                                 </div>
                                             </div>
                                         </option>
@@ -69,7 +64,7 @@ select#categories {
                 <div class="flex flex-col relative">
                     <div class="flex flex-row font-bold text-2xl m-4">
                         <p>Курьерские услуги: рейтинг исполнителей</p>
-                    </div> 
+                    </div>
                     <div class="flex flex-row m-4 absolute bottom-0 left-0">
                         <div class="form-check flex flex-row mr-6">
                             <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-yellow-600 checked:border-yellow-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="verified">
@@ -94,10 +89,11 @@ select#categories {
                     </div>
                 </div>
             </div>
-            
+              @foreach($performers as $performer)
+              @if ($performer->role_id == 2)
             <div class="flex flex-row">
                 <div class="m-10">
-                    <img class="rounded-lg w-40 h-40" src="{{ asset('images/user1.jpg') }}" alt="user">
+                    <img class="rounded-lg w-40 h-40" src="{{asset($performer->avatar)}}" alt="user">
                     <div class="flex flex-row">
                         <p>Отзывы:</p>
                         <i class="far fa-thumbs-up m-1 text-gray-400"></i>    5128
@@ -113,18 +109,22 @@ select#categories {
                 </div>
                 <div class="my-10">
                     <div class="flex flex-row">
-                        <p class="text-3xl underline text-blue-500">Денис Б.</p>
+                       <a href="{{route('performers.executors',['id'=>$performer->id])}}"> <p class="text-3xl underline text-blue-500">{{$performer->name}}</p></a>
                         <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}">
                     </div>
                     <div>
-                        <p class="text-sm text-gray-500 my-3">Был на сайте 9 мин. назад</p>
+                      @if($performer->active_status == 1)
+                        <p class="text-sm text-gray-500 my-3">Онлайн</p>
+                        @else
+                        <p class="text-sm text-gray-500 my-3">Офлайн</p>
+                        @endif
                     </div>
                     <div>
                         <p class="text-base" style="width: 500px;">
-                            Добрый день! В штате опытные и проверенные курьеры . 
-                            На практике прошли все виды курьерских доставок . 
+                            Добрый день! В штате опытные и проверенные курьеры .
+                            На практике прошли все виды курьерских доставок .
                             За всех курьеров несу материальную ответственность . Способы опл…
                         </p>
                     </div>
@@ -133,6 +133,8 @@ select#categories {
                     </div>
                 </div>
             </div>
+            @endif
+            @endforeach
         </div>
     </div>
 @endsection
