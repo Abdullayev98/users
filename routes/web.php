@@ -35,7 +35,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::group(['prefix' => 'performers'], function () {
-    Voyager::routes();
     Route::get('/', [PerformersController::class, 'service']);
     Route::get('/{id}', [PerformersController::class, 'performer'])->name("performers.executors");
 });
