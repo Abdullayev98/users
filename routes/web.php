@@ -93,13 +93,8 @@ Route::view('/press','reviews.CMI');
 
 Route::view('/vacancies','reviews.vacancies');
 
-<<<<<<< HEAD
 
 Route::group(['prefix' => 'blog'], function () {
     Route::get('/', [NewsController::class, 'home']);
     Route::get('/{id}', [NewsController::class, 'get'])->name("Site.blog");
 });
-=======
-Route::view('/business','business.business');
-
->>>>>>> 994997ab83d3ee5dbf2397e61846aca9fa6e3ee4

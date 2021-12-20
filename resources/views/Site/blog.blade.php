@@ -53,12 +53,8 @@
 <div id="expand"></div>
 </div>
 -->
-<<<<<<< HEAD
 @foreach($blog as $block)
 <div id="header" class="bg-[url('{{asset($block->img)}}')] bg-cover bg-center h-screen">
-=======
-<div id="header" class="bg-[url('https://thumb.tildacdn.com/tild6433-3464-4536-a334-633535623739/-/format/webp/theme-photos-Cl-OpYW.jpg')] bg-cover bg-center h-screen">
->>>>>>> 994997ab83d3ee5dbf2397e61846aca9fa6e3ee4
     <div class="bg-[rgba(0,0,0,.4)] h-screen">
         <div class="md:w-[250px] mx-auto py-5">
             <a href="/">

@@ -6,12 +6,14 @@
 </style>
 <!-- Information section -->
 <x-roadmap/>
-<!-- <form class="" action="" method="post"> -->
+<form class="" action="{{route('task.create.budget')}}" method="post">
+  @csrf
+
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-      Ищем исполнителя для задания " "
+      Ищем исполнителя для задания "{{$name}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
       Задание заполнено на 57%
@@ -33,15 +35,15 @@
           <div id="formulario" class="flex flex-col gap-y-4">
 
             <div class="flex items-center rounded-lg border py-1">
-                  <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none" aria-label="Default select example">
-                      <option selected>Начать работу</option>
-                      <option value="1">Закончить работу</option>
-                      <option value="2">Указать период</option>
+                  <select name="start[]" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none" aria-label="Default select example">
+                      <option selected value="Начать работу">Начать работу</option>
+                      <option value="Закончить работу">Закончить работу</option>
+                      <option value="Указать период">Указать период</option>
                   </select>
             </div>
             <div class="flex items-center rounded-lg border py-1">
-              <input type="date" name="" value="" class="mx-auto">
-              <input type="time" name="" value="">
+              <input type="date" name="date" value="" class="mx-auto">
+              <input type="time" name="time" value="">
             </div>
           </div>
           <div class="mt-4">
@@ -66,7 +68,10 @@
   </div>
 </div>
 </div>
-<!-- </form> -->
+<input type="text" name="name" value="{{$name}}" hidden>
+<input  hidden type="text" name="cat_id" value="{{$category}}">
+<input  hidden type="text" name="location" value="{{$location}}">
+</form>
 
 
 @endsection
