@@ -79,4 +79,4 @@ Route::view('/press','reviews.CMI');
 
 Route::view('/vacancies','reviews.vacancies');
 
-Route::view('/business','business.business');
+Route::view('/blog','Site.blog');
