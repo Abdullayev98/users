@@ -20,7 +20,8 @@ class SearchTaskController extends VoyagerBaseController
     }
 
     public function my_tasks(){
-        $tasks = Task::where('user_id', auth()->id());
+//        $tasks = Task::where('providers_id', auth()->id());
+        $tasks = Task::where('providers_id', auth()->id());
 //        dd($tasks);
         return view('/task/mytasks',compact('tasks'));
     }

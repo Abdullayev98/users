@@ -111,7 +111,7 @@
     </div>
 </div>
 
-<div class="w-full md:w-[800px] mx-auto bg-[#d9effb] md:rounded-[30px] md:mt-20 mt-12">
+<div class="w-full md:w-[800px] lg:w-[900px] xl:w-[1100px] mx-auto bg-[#d9effb] md:rounded-[30px] md:mt-20 mt-12">
     <div class="lg:text-[34px] text-[28px] md:text-[28px] font-bold text-center pt-12">
         Выберите удобный формат работы
     </div>
@@ -146,7 +146,7 @@
 
 <div class="w-10/12 md:w-full hidden lg:block  mx-auto overflow-hidden md:mt-[80px]">
     <div class="md:relative">
-        <div class="md:relative z-10 lg:-ml-24 float-left md:-right-[210px] md:max-w-[400px]">
+        <div class="md:relative z-10 lg:-ml-24 float-left md:-right-[310px] md:max-w-[400px]">
             <h1 class="md:text-[2.5rem] text-[2rem] md:w-[450px] font-bold  text-center md:text-left">Платите самозанятым без ограничений 24/7</h1>
             <div class="mt-8">
                 <div class="mb-8">
@@ -163,7 +163,7 @@
                 </div>
             </div>
         </div>
-        <div class="md:relative md:-right-[240px]">
+        <div class="md:relative md:-right-[400px]">
             <img class="w-[60%]" src="https://thumb.tildacdn.com/tild3332-3961-4536-b864-653962313732/-/format/webp/31.png" alt="">
         </div>
     </div>
@@ -336,8 +336,42 @@
             <div class="text-[16px] md:text-[20px] py-5">
                 Знаете компании, которым мы можем помочь в работе с самозанятыми? Предложите им сотрудничество с YouDo за вознаграждение.
             </div>
-            <div class="md:py-8 py-6">
-                <a type="button" href="#contact" class="text-white md:text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] md:py-3 md:px-8 py-2 px-4">Больше вебинаров</a>
+            <div x-data="{ showModal : false }" class="md:py-8 py-6">
+                <!--
+            <a type="button" href="#contact" class="text-white md:text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] md:py-3 md:px-8 py-2 px-4">
+                Стать портнером
+            </a>
+-->
+                <!-- Button -->
+                <button @click="showModal = !showModal" class="text-white md:text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] md:py-3 md:px-8 py-2 px-4">Стать портнером</button>
+
+                <!-- Modal Background -->
+                <div x-show="showModal" class="fixed flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-40 left-0 right-0 top-0 bottom-0" x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+                    <!-- Modal -->
+                    <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-10/12 h-[650px] md:w-4/12 mx-10" @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
+                        <div class="mx-auto pl-10 my-10 rounded-[20px] text-black">
+                            <table>
+                                <thead>
+                                <div class="text-[2rem] text-[1.8rem] md:w-[500px] font-bold font-['Radiance,sans-serif,Noto Sans']">Оставить заявку</div>
+                                </thead>
+                                <tbody>
+                                <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="" type="text" placeholder="Имя">
+                                <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="" type="email" placeholder="Email">
+                                <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="" type="text" placeholder="Номер телефона">
+                                <textarea class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12 h-[150px] " name="" type="text" placeholder="Название компании"></textarea>
+                                </tbody>
+                                <div class="py-8">
+                                    <a type="button" href="#contact" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-3 md:px-8 text-center">Оставить заявку</a>
+                                </div>
+                                <div class="text-right space-x-5">
+                                    <button @click="showModal = !showModal" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">Закрыть</button>
+                                </div>
+                            </table>
+                        </div>
+                        <!-- Buttons -->
+
+                    </div>
+                </div>
             </div>
         </div>
         <div class="md:w-[400px] ml-24 py-8 hidden md:block">
@@ -345,6 +379,8 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 <div id="contact" class="overflow-hidden mx-auto md:mt-16 md:pb-48">
     <div class="md:relative flex">
