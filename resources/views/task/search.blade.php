@@ -2,6 +2,7 @@
 
 @section("content")
 
+
 <div class="mx-auto w-9/12 my-16">
 
     <div class="border-b">
@@ -138,10 +139,15 @@
 
                 </div>
                 <div class="w-full h-full mt-5">
-                    <div id="map" class="h-40 my-5 rounded-lg w-full">
+                    <div>
+                        <div id="map" class="h-40 my-5 rounded-lg w-full">
 
-{{--                        <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>--}}
+                            <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту">
+                                <span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span>
+                                <span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span>
+                            </div>
 
+                        </div>
                     </div>
                     <div class="w-full h-full">
 

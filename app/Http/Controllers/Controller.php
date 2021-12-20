@@ -58,5 +58,27 @@ class Controller extends BaseController
         $child_categories= DB::table('categories')->where('parent_id',$id)->get();
         return view('task/choosetasks',compact('child_categories','categories'));
     }
+    public function terms(){
+        return view('terms.terms');
+    }
+    public function offer_tasks(){
+        return view('task.offertasks');
+    }
+    public function verification(){
+        return view('create.verification');
+    }
+    public function refill(){
+        return view('/Site/refill');
+    }
+    public function contacts(){
+        return view('contacts.contacts');
+    }
+    public function choose_task(){
+        return view('task.choosetasks');
+    }
+    public function terms_doc(){
+        return view('terms.pdf');
+    }
+
 
 }
