@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Models\Category;
 
@@ -17,9 +19,6 @@ class Controller extends BaseController
     public function home(){
         $tasks  =  Task::latest()->paginate(15);
         return view('home',compact('tasks'));
-    }
-    public function home_profile(){
-        return view('/profile/profile');
     }
     public function task_create(){
         return view('/create/name');

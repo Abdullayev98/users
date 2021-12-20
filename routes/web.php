@@ -37,7 +37,7 @@ Route::group(['prefix' => 'performers'], function () {
 });
 Route::get('/', [Controller::class, 'home']);
 
-Route::get('/home/profile', [HomeController::class, 'profile']);
+Route::get('/home/profile', [HomeController::class, 'profile'])->middleware('auth');
 Route::get('/terms', [Controller::class, 'terms'])->name('terms');
 Route::get('/offer-tasks', [Controller::class, 'offer_tasks'])->name('offer.tasks');
 Route::get('/verification', [Controller::class, 'verification'])->name('verification');

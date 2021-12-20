@@ -348,20 +348,20 @@
                 <!-- Modal Background -->
                 <div x-show="showModal" class="fixed flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-40 left-0 right-0 top-0 bottom-0" x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                     <!-- Modal -->
-                    <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-10/12 h-[650px] md:w-4/12 mx-10" @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
-                        <div class="mx-auto pl-10 my-10 rounded-[20px] text-black">
+                    <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-10/12 h-[450px] md:h-[650px] md:w-4/12 mx-10" @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
+                        <div class="mx-auto pl-10 md:my-10 rounded-[20px] text-black">
                             <table>
                                 <thead>
-                                <div class="text-[2rem] text-[1.8rem] md:w-[500px] font-bold font-['Radiance,sans-serif,Noto Sans']">Оставить заявку</div>
+                                <div class="md:text-[2rem] text-[1.5rem] md:w-[500px] font-bold font-['Radiance,sans-serif,Noto Sans']">Оставить заявку</div>
                                 </thead>
                                 <tbody>
-                                <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="" type="text" placeholder="Имя">
-                                <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="" type="email" placeholder="Email">
-                                <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="" type="text" placeholder="Номер телефона">
-                                <textarea class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12 h-[150px] " name="" type="text" placeholder="Название компании"></textarea>
+                                <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-2 md:my-4 py-1 md:py-3 px-5 w-10/12" name="" type="text" placeholder="Имя">
+                                <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-2 md:my-4 py-1 md:py-3 px-5 w-10/12" name="" type="email" placeholder="Email">
+                                <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-2 md:my-4 py-1 md:py-3 px-5 w-10/12" name="" type="text" placeholder="Номер телефона">
+                                <textarea class="outline-none bg-[#f5f5f5] rounded-[20px] block my-2 md:my-4 py-1 md:py-3 px-5 w-10/12 h-[80px] md:h-[150px] " name="" type="text" placeholder="Название компании"></textarea>
                                 </tbody>
-                                <div class="py-8">
-                                    <a type="button" href="#contact" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-3 md:px-8 text-center">Оставить заявку</a>
+                                <div class="md:py-8 py-4">
+                                    <button type="submit" class="text-white w-10/12 md:text-[18px] text-[14px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-3 md:px-8 text-center">Оставить заявку</button>
                                 </div>
                                 <div class="text-right space-x-5">
                                     <button @click="showModal = !showModal" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">Закрыть</button>

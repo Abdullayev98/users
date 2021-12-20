@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
 
 Route::prefix("task")->group(function (){
 
