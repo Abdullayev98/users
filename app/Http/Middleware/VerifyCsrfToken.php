@@ -13,7 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
 
-        '/paycom',
         '/prepare',
         '/complete'
 

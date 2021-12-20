@@ -22,10 +22,11 @@
         <div class="grid grid-cols-3 mt-8">
             @foreach($child_categories as $category)
                 <div class="w-full text-left">
-                    <a href="/task/create?category_id={{ $category->id }}"
+                    <a href="{{url('task/create',['id'=>$category->id])}}"
                        class="py-4 text-gray-500 hover:text-[#ffa200] hover:underline">{{$category->name}}</a>
                 </div>
             @endforeach
+
         </div>
     </div>
 @endsection

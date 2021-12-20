@@ -13,9 +13,10 @@
         }
     </style>
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
-    <div class="bg-[url('https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp')] bg-center bg-cover h-96 ">
-        <div class="container-lg mx-auto bg-[url('https://assets.youdo.com/_next/static/media/pattern-dotted.981ffff613107988cc581a30c07a5551.svg')] bg-repeat h-96 ">
-            <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
+    <div
+        class="bg-[url('https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp')] bg-center bg-cover h-96 ">
+        <div class="container-lg mx-auto">
+            <main class="xl:mx-96 lg:mx-60 md:mx-48 sm:mx-32">
                 <div class="text-center pt-32">
                     <h1 class="font-semibold text-white text-3xl lg:text-5xl md:text-4xl">
                         <span class="block xl:block">Освободим вас от забот</span>
@@ -23,16 +24,18 @@
                     <p class="mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-sm md:mt-2 mb-3">
                         Поможем найти надежного исполнителя для любых задач
                     </p>
-                    <div class="w-full mx-auto">
-                        <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
+                    <div class="w-3/4 mx-auto">
+                        <div
+                            class="flew w-full bg-white hover:shadow-[0_5px_30px_-0_rgba(255,138,0,4)] transition duration-200 rounded-md mx-auto">
+                            {{--                        <input type="text" placeholder="Например, составить иск" class="w-2/3 md: focus:outline-none sm:left-24 rounded-md text-black md:text-md md:pl-2 sm:w-1/2 py-2.5">--}}
                             <input type="text" placeholder="Например, составить иск"
-                                   class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
+                                   class="w-auto md:left-32 focus:outline-none sm:left-24 rounded-md text-black md:text-md md:pl-2 sm:w-2/3 py-2.5">
                             <button type="submit"
-                                    class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
+                                    class="float-right border bg-yellow-500  border-transparent font-medium  rounded-md text-white px-3.5 py-1 mr-1 mt-1 md:text-md md:pb-1 text-white">
                                 Заказать услугу
                             </button>
                         </div>
-                        <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
+                        <div class="text-left mt-2 text-gray-700 underline-offset-1 text-sm">
                             Например: <a href="#" class="hover:text-slate-400">повесить кондиционер</a>
                         </div>
                     </div>

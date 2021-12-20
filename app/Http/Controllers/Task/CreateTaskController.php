@@ -18,12 +18,23 @@ class CreateTaskController extends VoyagerBaseController
         if (!$current_category){
             return back();
         }
+<<<<<<< HEAD
         // $task = new Task();
         // $task->id = $request->current_category;
         // $task->status = 0;
         // $task->save();
 
         return view("create.name", compact( 'current_category'));
+=======
+
+
+        $categories = Category::query()->where("parent_id", null)->get();
+        $current_parent_category = Category::find($current_category->parent_id);
+        $child_categories = Category::query()->where("parent_id", $current_parent_category->id)->get();
+
+
+        return view("create.name", compact('categories', 'current_category','child_categories', 'current_parent_category'));
+>>>>>>> 994997ab83d3ee5dbf2397e61846aca9fa6e3ee4
     }
 
     public function task_add(Request $request){
@@ -31,6 +42,7 @@ class CreateTaskController extends VoyagerBaseController
         $request->validate([
             'name'=>"required"
         ]);
+<<<<<<< HEAD
         $name = $request->input('name');
         $cat_id = $request->input('cat_id');
         // $task = new Task();
@@ -38,6 +50,16 @@ class CreateTaskController extends VoyagerBaseController
         // $task->status = 0;
         // $task->save();
         return view("create.location", compact('name','cat_id'));
+=======
+
+        $task = new Task();
+        $task->name = $request->name;
+        $task->status = 0;
+        $task->save();
+        session()->put('task', $task);
+        session()->put('categroy_id', $request->category_id);
+        return redirect()->route("task.create.address", $request->category_id);
+>>>>>>> 994997ab83d3ee5dbf2397e61846aca9fa6e3ee4
 
     }
 

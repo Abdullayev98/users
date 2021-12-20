@@ -53,8 +53,12 @@
 <div id="expand"></div>
 </div>
 -->
+<<<<<<< HEAD
 @foreach($blog as $block)
 <div id="header" class="bg-[url('{{asset($block->img)}}')] bg-cover bg-center h-screen">
+=======
+<div id="header" class="bg-[url('https://thumb.tildacdn.com/tild6433-3464-4536-a334-633535623739/-/format/webp/theme-photos-Cl-OpYW.jpg')] bg-cover bg-center h-screen">
+>>>>>>> 994997ab83d3ee5dbf2397e61846aca9fa6e3ee4
     <div class="bg-[rgba(0,0,0,.4)] h-screen">
         <div class="md:w-[250px] mx-auto py-5">
             <a href="/">
@@ -90,8 +94,8 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[24px] md:text-[32px] font-bold">Съесть много фастфуда</a>
-            <p class="text-[16px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Тоже считаете, что можете бесконечно есть бургеры с картошечкой? Тогда вот шанс стать звездой YouTube и заработать!</p>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Съесть много фастфуда</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Тоже считаете, что можете бесконечно есть бургеры с картошечкой? Тогда вот шанс стать звездой YouTube и заработать!</p>
             <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
         </div>
     </div>
@@ -102,8 +106,8 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[32px] font-bold">Прогнать крысу из-под кресла</a>
-            <p class="text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">В московской квартире — крыса Шрёдингера. Нужен смельчак, который прогонит хвостатого непрошеного гостя.</p>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Прогнать крысу из-под кресла</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">В московской квартире — крыса Шрёдингера. Нужен смельчак, который прогонит хвостатого непрошеного гостя.</p>
             <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
         </div>
     </div>
@@ -114,8 +118,8 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[32px] font-bold">Поехать в Испанию с бабушкой</a>
-            <p class="text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Нескучный отдых на берегу моря рядом с боевой бабушкой, изучавшей ядерную физику и поющей в хоре.</p>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Поехать в Испанию с бабушкой</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Нескучный отдых на берегу моря рядом с боевой бабушкой, изучавшей ядерную физику и поющей в хоре.</p>
             <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
         </div>
     </div>
@@ -126,8 +130,8 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[32px] font-bold">Украсть Рождество</a>
-            <p class="text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Разыскивается зелёный, но добрый похититель Рождества, который не будет разбивать детские сердечки, а вдохновит их перед праздниками.</p>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Украсть Рождество</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Разыскивается зелёный, но добрый похититель Рождества, который не будет разбивать детские сердечки, а вдохновит их перед праздниками.</p>
             <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
         </div>
     </div>
@@ -138,8 +142,8 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[32px] font-bold">Построить баню в Бразилии</a>
-            <p class="text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Специалисты по строительству бань ликуют: нашелся заказчик за рубежом. Ola, Бразилия!</p>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Построить баню в Бразилии</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Специалисты по строительству бань ликуют: нашелся заказчик за рубежом. Ola, Бразилия!</p>
             <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
         </div>
     </div>
