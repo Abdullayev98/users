@@ -18,11 +18,12 @@ class CreateTaskController extends VoyagerBaseController
         if (!$current_category){
             return back();
         }
-        $task = new Task();
-        $task->category_id = $request->current_category;
-        $task->status = 0;
-        $task->save();
-
+        // $task = new Task();
+        // $task->id = $request->current_category;
+        // $task->status = 0;
+        // $task->save();
+        // Session::flash('cat_id', $request);
+        $value = $request->session()->get('category_id');
         return view("create.name", compact( 'current_category',));
     }
 

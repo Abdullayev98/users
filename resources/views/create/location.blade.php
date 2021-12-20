@@ -12,7 +12,7 @@
       Ищем исполнителя для задания "{{session()->get('task.name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-      Задание заполнено на 29%
+      Задание заполнено на 29% 
     </div>
     <div class=" pt-1">
       <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -60,7 +60,7 @@
               <button type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                  Назад
                </button>
-               
+
                <input type="submit" class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" name="" value="Далее">
 
              </div>
