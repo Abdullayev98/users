@@ -27,6 +27,8 @@ Route::post('register', [UserAPIController::class, 'register']);
 Route::put('update/{id}', [UserAPIController::class, 'update']);
 Route::get('logout', [UserAPIController::class, 'logout']);
 Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
+Route::get('login/google/callback',[UserAPIController::class,'loginWithGoogle']);
+Route::get('login/facebook/callback',[UserAPIController::class,'loginWithFacebook']);
 
 // Paynet service
 Route::post('paynet', [PaymentAPIController::class, 'index']);
