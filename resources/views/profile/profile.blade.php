@@ -32,13 +32,11 @@
                                     </label>
                                 </div>
 
-<<<<<<< HEAD
+
                                 <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="baatton" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden" >
-=======
                                 <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
->>>>>>> dc5343781d1b0252c71164cd54084d525a5cebc7
                                     <label for="sub1">
                                         <i class="fas fa-save"></i>
                                         <span>добавлять фото</span>
