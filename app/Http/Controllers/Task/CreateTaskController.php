@@ -114,7 +114,7 @@ class CreateTaskController extends VoyagerBaseController
       $phone = $request->input('phone');
       $data=array('name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$data,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
       DB::table('tasks')->insert($data);
-      return redirect('/');
+      return redirect('/')->with('success','Задание успешно добавлено!');
     }
 
 
