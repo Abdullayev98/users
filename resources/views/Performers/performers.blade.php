@@ -90,10 +90,10 @@
                 </div>
             </div>
               @foreach($performers as $performer)
-              @if ($performer->id == 2)
+              @if ($performer->role_id == 2)
             <div class="flex flex-row">
                 <div class="m-10">
-                    <img class="rounded-lg w-40 h-40" src="https://avatar.youdo.com/get.userAvatar?AvatarId=7441787&AvatarType=H180W180" alt="user">
+                    <img class="rounded-lg w-40 h-40" src="{{asset($performer->avatar)}}" alt="user">
                     <div class="flex flex-row">
                         <p>Отзывы:</p>
                         <i class="far fa-thumbs-up m-1 text-gray-400"></i>    5128
@@ -115,7 +115,11 @@
                         <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}">
                     </div>
                     <div>
-                        <p class="text-sm text-gray-500 my-3">Был на сайте 9 мин. назад</p>
+                      @if($performer->active_status == 1)
+                        <p class="text-sm text-gray-500 my-3">Онлайн</p>
+                        @else
+                        <p class="text-sm text-gray-500 my-3">Офлайн</p>
+                        @endif
                     </div>
                     <div>
                         <p class="text-base" style="width: 500px;">
