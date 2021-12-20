@@ -34,6 +34,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send");
 });
 
+Route::group(['prefix' => 'performers'], function () {
+    Route::get('/', [PerformersController::class, 'service']);
+    Route::get('/{id}', [PerformersController::class, 'performer'])->name("performers.executors");
+});
+
 
 Route::get('/', [Controller::class, 'home']);
 
@@ -94,4 +99,3 @@ Route::view('/press','reviews.CMI');
 Route::view('/vacancies','reviews.vacancies');
 
 Route::view('/business','business.business');
-

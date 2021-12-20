@@ -25,16 +25,12 @@
                             <form action="{{route('updatephoto' ,$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
-                                    <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
+                                    <input type="file" id="file" name="avatar" class="hidden" onclick="fileupdate()">
                                     <label for="file">
                                         <i class="fas fa-camera"></i>
                                         <span>Изменить фото</span>
                                     </label>
                                 </div>
-
-
-                                <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="baatton" onclick="fileadd()">
-                                    <input type="submit" id="sub1" class="hidden" >
                                 <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
                                     <label for="sub1">
