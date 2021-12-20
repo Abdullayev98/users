@@ -27,6 +27,10 @@ Route::post('register', [UserAPIController::class, 'register']);
 Route::put('update/{id}', [UserAPIController::class, 'update']);
 Route::get('logout', [UserAPIController::class, 'logout']);
 Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
+Route::post('login/google',[UserAPIController::class,'loginWithGoogle']);
+Route::post('login/facebook',[UserAPIController::class,'loginWithFacebook']);
+
+
 
 // Paynet service
 Route::post('paynet', [PaymentAPIController::class, 'index']);
