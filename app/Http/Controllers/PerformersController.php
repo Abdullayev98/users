@@ -14,8 +14,7 @@ class PerformersController extends Controller
         return view('Performers/performers',compact('child_categories','categories','performers'));
     }
     public function performer($id){
-        $performers = DB::table('users')->where('id',$id);
-        dd($performers);
+        $performers = DB::table('users')->where('id',$id)->get();
         return view('Performers/executors-courier',compact('performers'));
     }
 

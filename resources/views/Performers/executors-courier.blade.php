@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-
+@foreach($performers as $performer)
     <div class="container mx-auto">
         <div class="grid grid-cols-3  grid-flow-row mt-10">
         {{-- left sidebar start --}}
@@ -13,7 +13,7 @@
                     </div>
                    <div>
                        <p class="text-lg text-gray-500">Был на сайте 1 ч. 8 мин. назад</p>
-                       <h1 class="text-3xl font-bold ">{{$performers->name}}</h1>
+                       <h1 class="text-3xl font-bold ">{{$performer->name}}</h1>
                    </div>
 
                    <div class="flex w-full mt-6">
@@ -168,5 +168,5 @@
         {{-- right sidebar end --}}
         </div>
     </div>
-
+@endforeach
 @endsection
