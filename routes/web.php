@@ -56,12 +56,18 @@ Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
 
 //social login facebook
-Route::get('login/facebook',[SocialController::class,'facebookRedirect']);
-Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook']);
+Route::group(['prefix' => 'login/facebook'], function () {
+    Route::get('/',[SocialController::class,'facebookRedirect']);
+    Route::get('/callback',[SocialController::class,'loginWithFacebook']);
+
+});
+
 
 //social login google
-Route::get('login/google',[SocialController::class,'googleRedirect']);
-Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']);
+Route::group(['prefix' => 'login/google'], function () {
+    Route::get('/',[SocialController::class,'googleRedirect']);
+    Route::get('/callback',[SocialController::class,'loginWithGoogle']);
+});
 
 Route::view('/faq','faq.faq');
 
