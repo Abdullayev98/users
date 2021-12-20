@@ -25,13 +25,12 @@
                             <form action="{{route('updatephoto' ,$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
-                                    <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
+                                    <input type="file" id="file" name="avatar" class="hidden" onclick="fileupdate()">
                                     <label for="file">
                                         <i class="fas fa-camera"></i>
                                         <span>Изменить фото</span>
                                     </label>
                                 </div>
-
                                 <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
                                     <label for="sub1">
@@ -119,7 +118,7 @@
             </div>
 {{-- right-side-bar --}}
             <div
-                class="md:col-span-1 col-span-3 mx-2 inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
+                class="md:col-span-1 col-span-3 md:mx-2 mx-auto inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
                     <p>на YouDo с 12 сентября 2021 г.</p>
@@ -218,7 +217,7 @@
         }
         function fileadd(){
           var x = document.getElementById("baatton");
-          
+
                 x.classList.add("hidden");
         }
 
