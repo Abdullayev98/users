@@ -18,7 +18,7 @@
 <body>
 
 <header class="h-[140px]" id="header">
-    <div class="md:flex md:justify-between grid-col-1 md:col-2 md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1300px] mx-auto">
+    <div class="md:flex md:justify-between grid-col-1 md:col-2 md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1100px] mx-auto">
         <div class="w-full md:float-left md:w-4/12 pt-8">
             <a href="/">
                 <img src="https://thumb.tildacdn.com/tild3432-3336-4166-a139-306139383666/-/resize/310x/-/format/webp/logo.png" alt="" class="w-[170px] mx-auto md:m-0">
@@ -29,7 +29,7 @@
         </div>
     </div>
 </header>
-<div class="xl:max-w-[1300px] overflow-hidden">
+<div class="xl:max-w-full overflow-hidden md:-mb-96 lg:m-0">
     <div class="md:max-w-[1100px] mx-auto xl:py-16">
         <div class="md:relative z-10">
             <div class="max-h-[100px] hidden md:block ml-8 xl:m-0">
@@ -69,7 +69,7 @@
     </div>
 </div>
 
-<div class="md:relative lg:-top-[400px] hidden lg:block">
+<div class="md:relative lg:-top-[300px] hidden lg:block">
     <div class="md:relative">
         <img class="w-[60%] md:-mt-[100px] md:-ml-40" src="https://thumb.tildacdn.com/tild6363-3339-4562-b837-643138343233/-/format/webp/21.png" alt="">
     </div>
@@ -349,7 +349,7 @@
 <div id="contact" class="overflow-hidden mx-auto md:mt-16 md:pb-48">
     <div class="md:relative flex">
         <div class="md:relative hidden lg:block md:-ml-36">
-            <img src="72.png" alt="">
+            <img src="{{asset('/images/72.png')}}" alt="">
         </div>
         <div class="md:relative top-24 mx-auto lg:m-0">
             <h1 class="text-[2rem] md:text-[2.5rem] w-[500px] text-center md:text-left md:w-[500px] font-bold font-['Radiance,sans-serif,Noto Sans']">Давайте поговорим</h1>
