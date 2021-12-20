@@ -12,13 +12,17 @@
                         <span>2105 просмотров профиля</span>
                     </div>
                    <div>
-                       <p class="text-lg text-gray-500">Был на сайте 1 ч. 8 мин. назад</p>
+                     @if($performer->active_status == 1)
+                       <p class="text-lg text-gray-500">Онлайн</p>
+                       @else
+                       <p class="text-lg text-gray-500">Офлайн</p>
+                       @endif
                        <h1 class="text-3xl font-bold ">{{$performer->name}}</h1>
                    </div>
 
                    <div class="flex w-full mt-6">
                     <div class="flex-initial w-1/3">
-                      <img class="h-56 w-56" src="https://avatar.youdo.com/get.userAvatar?AvatarId=7441787&AvatarType=H180W180" alt="#">
+                      <img class="h-56 w-56" src="{{asset($performer->avatar)}}" alt="#">
                     </div>
                     <div class="flex-initial w-2/3 lg:ml-0 ml-6">
                         <div class="font-medium text-lg">
@@ -26,7 +30,7 @@
                             <span>Документы подтверждены</span>
                         </div>
                         <div class="text-gray-500 text-base mt-4">
-                            <span>20 лет</span>
+                            <span>{{$performer->age}} лет</span>
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Санкт-Петербург</span>
                         </div>
@@ -44,7 +48,7 @@
                              <img class="h-20 mt-6 ml-4" src="{{ asset('images/icon_bag.png') }}">
                          </div>
                          <div>
-                             <a href="#"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
+                             <a href="/chatify/{{$performer->id}}"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
                                 Задать вопрос
                               </button></a>
                          </div>
@@ -120,7 +124,11 @@
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Телефон</h2>
+                                @if($performer->phone_verified_at != null)
                                 <p>Подтвержден</p>
+                                @else
+                                <p>Не подтвержден</p>
+                                @endif
                             </div>
                         </div>
                         <div class="flex w-full mt-4">
@@ -129,7 +137,11 @@
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Email</h2>
+                                @if($performer->email_verified_at != null)
                                 <p>Подтвержден</p>
+                                @else
+                                <p>Не подтвержден</p>
+                                @endif
                             </div>
                         </div>
                         <div class="flex w-full mt-4">
