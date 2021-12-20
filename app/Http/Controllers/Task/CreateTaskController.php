@@ -27,9 +27,10 @@ class CreateTaskController extends VoyagerBaseController
 
     public function task_add(Request $request){
 
-        $name = $request->input('name');
-        $category = $request->input('cat_id');
-        return view('create.location', compact('name','category'));
+        $data = $request->input();
+        $request->session()->put('name', $data['name']);
+        $request->session()->put('cat_id', $data['cat_id']);
+        return view('create.location');
 
     }
 
@@ -50,69 +51,52 @@ class CreateTaskController extends VoyagerBaseController
     // }
 
     public function date(Request $request){
-      $name = $request->input('name');
-      $category = $request->input('cat_id');
-      $location = $request->input('location');
-      return view('create.date', compact('name','category','location'));
+      $data = $request->input();
+      $request->session()->put('location', $data['location']);
+      return view('create.date');
         // return view('create.date');
     }
     public function budget(Request $request){
-      $name = $request->input('name');
-      $category = $request->input('cat_id');
-      $location = $request->input('location');
+
       $date = $request->input('date');
       $time = $request->input('time');
       $data = $date." ".$time;
-      // $start = $request->start;
       $start = $request->get('start');
       $starrt = implode(" ",$start);
-      // dd($starrt);
-      return view('create.budget', compact('name','category','location','data','starrt'));
+      $request->session()->put('data', $data);
+      $request->session()->put('start', $starrt);
+      return view('create.budget');
         // return view('create.budget');
     }
     public function notes(Request $request){
-      $name = $request->input('name');
-      $category = $request->input('cat_id');
-      $location = $request->input('location');
-      $date = $request->input('date');
-      $time = $request->input('time');
-      $data = $request->input('data');
-      $start = $request->input('start');
-      $amount = $request->input('amount');
-      $business = $request->input('business');
-      $insurance = $request->input('insurance');
-      return view('create.notes', compact('name','category','location','data','start','amount','business','insurance'));
+      $data = $request->input();
+      $request->session()->put('amount', $data['amount']);
+      $request->session()->put('business', $data['business']);
+      $request->session()->put('insurance', $data['insurance']);
+      return view('create.notes');
         // return view('create.notes');
     }
     public function contacts(Request $request){
-      $name = $request->input('name');
-      $category = $request->input('cat_id');
-      $location = $request->input('location');
-      $data = $request->input('data');
-      $start = $request->input('start');
-      $amount = $request->input('amount');
-      $business = $request->input('business');
-      $insurance = $request->input('insurance');
-      $description = $request->input('description');
-      $secret = $request->input('secret');
-      $docs = $request->input('docs');
-      return view('create.contacts', compact('name','category','location','data','start','amount','business','insurance','description','secret','docs'));
+      $data = $request->input();
+      $request->session()->put('description', $data['description']);
+      $request->session()->put('secret', $data['secret']);
+      $request->session()->put('docs', $data['docs']);
+      return view('create.contacts');
     }
 
     public function create(Request $request){
-      $name = $request->input('name');
-      $category = $request->input('cat_id');
-      $location = $request->input('location');
-      $data = $request->input('data');
-      $start = $request->input('start');
-      $amount = $request->input('amount');
-      $business = $request->input('business');
-      $insurance = $request->input('insurance');
-      $description = $request->input('description');
-      $secret = $request->input('secret');
-      $docs = $request->input('docs');
-      $phone = $request->input('phone');
-      $data=array('name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$data,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
+      $phone       = $request->input('phone');
+      $datay        = $request->input();
+      $request->session()->put('phone', $datay['phone']);
+      $name        = session()->pull('name');
+      $category    = session()->pull('cat_id');
+      $location    = session()->pull('location');
+      $date        = session()->pull('data');
+      $start       = session()->pull('start');
+      $amount      = session()->pull('amount');
+      $description = session()->pull('description');
+      $secret      = session()->pull('secret');
+      $data=array('name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
       DB::table('tasks')->insert($data);
       return redirect('/')->with('success','Задание успешно добавлено!');
     }

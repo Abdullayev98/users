@@ -10,7 +10,7 @@
 <div class="grid grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-      Ищем исполнителя для задания "{{$name}}"
+      Ищем исполнителя для задания "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
       Задание заполнено на 71%
@@ -61,11 +61,6 @@
   </div>
 </div>
 </div>
-<input type="text" name="name" value="{{$name}}" hidden>
-<input  hidden type="text" name="cat_id" value="{{$category}}">
-<input  hidden type="text" name="location" value="{{$location}}">
-<input  hidden type="text" name="data" value="{{$data}}">
-<input  hidden type="text" name="start" value="{{$starrt}}">
 </form>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

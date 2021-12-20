@@ -46,6 +46,9 @@
                                     id="username" type="text" placeholder="Например, нужен курьер на несколько доставок" required name="name">
                                     <input type="text" hidden name="cat_id" value="{{$current_category->id}}">
                             </div>
+                            <div class="hidden">
+                              <input type="text" name="cat_id" value="{{$current_category->id}}" hidden>
+                            </div>
                         </div>
                         <input type="submit"
                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-11/12 ml-5 my-4 cursor-pointer text-white font-bold py-5 px-5 rounded"
