@@ -20,6 +20,9 @@ use App\Http\Controllers\PerformersController;
 
 
 Route::get('/performers', [PerformersController::class, 'service']);
+Route::get('/performers/executors-courier', function () {
+    return view('Performers/executors-courier');
+});
 
 Route::get('/news', [NewsController::class, 'home']);
 
@@ -29,6 +32,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating");
     Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("appeal.close");
     Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send");
+});
+
+Route::group(['prefix' => 'performers'], function () {
+    Route::get('/', [PerformersController::class, 'service']);
+    Route::get('/{id}', [PerformersController::class, 'performer'])->name("performers.executors");
 });
 
 
@@ -91,4 +99,3 @@ Route::view('/press','reviews.CMI');
 Route::view('/vacancies','reviews.vacancies');
 
 Route::view('/business','business.business');
-
