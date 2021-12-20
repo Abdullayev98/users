@@ -9,10 +9,10 @@
 <div class="grid grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-      Ищем исполнителя для задания "{{session()->get('task.name')}}"
+      Ищем исполнителя для задания "{{$name}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-      Задание заполнено на 29% 
+      Задание заполнено на 29%
     </div>
     <div class=" pt-1">
       <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">

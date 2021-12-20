@@ -22,9 +22,8 @@ class CreateTaskController extends VoyagerBaseController
         // $task->id = $request->current_category;
         // $task->status = 0;
         // $task->save();
-        // Session::flash('cat_id', $request);
-        $value = $request->session()->get('category_id');
-        return view("create.name", compact( 'current_category',));
+
+        return view("create.name", compact( 'current_category'));
     }
 
     public function task_add(Request $request){
@@ -32,12 +31,13 @@ class CreateTaskController extends VoyagerBaseController
         $request->validate([
             'name'=>"required"
         ]);
-
-        $task = new Task();
-        $task->name = $request->name;
-        $task->status = 0;
-        $task->save();
-        return redirect()->route("task.create.address", $request->category_id);
+        $name = $request->input('name');
+        $cat_id = $request->input('cat_id');
+        // $task = new Task();
+        // $task->name = $request->name;
+        // $task->status = 0;
+        // $task->save();
+        return view("create.location", compact('name','cat_id'));
 
     }
 

@@ -38,11 +38,12 @@
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
                             <div class="mb-4">
                                 <label class="block text-[#5f5869] text-sm mb-2" for="username">
-                                    Название задания 
+                                    Название задания
                                 </label>
                                 <input
                                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
                                     id="username" type="text" placeholder="Например, нужен курьер на несколько доставок" required name="name">
+                                    <input type="text" hidden name="cat_id" value="{{$current_category->id}}">
                             </div>
                         </div>
                         <input type="submit"

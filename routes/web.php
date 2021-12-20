@@ -25,7 +25,7 @@ Route::get('/performers/executors-courier', function () {
     return view('Performers/executors-courier');
 });
 
-Route::get('/news', [NewsController::class, 'home']);
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -79,4 +79,8 @@ Route::view('/press','reviews.CMI');
 
 Route::view('/vacancies','reviews.vacancies');
 
-Route::view('/blog','Site.blog');
+
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', [NewsController::class, 'home']);
+    Route::get('/{id}', [NewsController::class, 'get'])->name("Site.blog");
+});

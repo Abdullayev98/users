@@ -53,8 +53,9 @@
 <div id="expand"></div>
 </div>
 -->
-<div id="header" class="bg-[url('https://thumb.tildacdn.com/tild6433-3464-4536-a334-633535623739/-/format/webp/theme-photos-Cl-OpYW.jpg')] bg-cover bg-center h-auto">
-    <div class="bg-[rgba(0,0,0,.4)]">
+@foreach($blog as $block)
+<div id="header" class="bg-[url('{{asset($block->img)}}')] bg-cover bg-center h-screen">
+    <div class="bg-[rgba(0,0,0,.4)] h-screen">
         <div class="md:w-[250px] mx-auto py-5">
             <a href="/">
                 <img src="{{asset('/images/logo.png')}}" alt="" />
@@ -62,13 +63,13 @@
         </div>
         <div class="w-full text-center text-white">
             <div class="md:mt-24 text-[24px] font-bold text-[orange]">
-                ВЫПУСК 62
+                <!-- ВЫПУСК 62 -->
             </div>
             <div class="py-12 xl:text-[72px] md:text-[44px] text-[34px] font-bold xl:w-[1100px] mx-auto">
-                Самые необычные задания ноября
+                {{$block->title}}
             </div>
             <div class="xl:w-[700px] mx-auto font-['Ubuntu'] md:text-[24px] md:text-[24px] text-[18px]">
-                В ноябре заказчики искали спутника для бабушки в Испании и супергероев, которым под силу съесть всё меню Бургер Кинга. Мы выбрали для вас самое лучшее
+                {{$block->text}}
             </div>
             <div class="w-[50px] mx-auto py-8 animate-bounce">
                 <a href="#blog">
@@ -215,16 +216,18 @@
         Не уходите, почитайте еще
     </div>
     <div class="lg:w-[900px] md:w-[800px] xl:w-[1300px] mx-auto md:flex">
+      @foreach($last3 as $last)
         <a href="" class="lg:w-[400px] md:w-[200px] ml-16 lg:m-0">
-            <img src="https://thumb.tildacdn.com/tild6364-3939-4436-b339-303735393439/-/cover/720x468/center/center/-/format/webp/jamie-haughton-Z05Gi.jpg" alt=""class="lg:w-[300px] w-[650px]">
+            <img src="{{asset($last->img)}}" alt=""class="lg:w-[300px] w-[650px]">
             <p class="text-gray-500 text-[14px] my-2">
                 Истории
             </p>
             <div class="text-[16px] md:text-[24px] font-semibold">
-                А что, так бывает?
+                {{$last->title}}
             </div>
         </a>
-        <a href="" class="lg:w-[400px] md:w-[200px] mx-12">
+        @endforeach
+        <!-- <a href="" class="lg:w-[400px] md:w-[200px] mx-12">
             <img src="https://thumb.tildacdn.com/tild6461-3931-4432-b061-633531636334/-/cover/720x468/center/center/-/format/webp/Frame_93.png" alt=""class=" lg:w-[300px] w-[650px]">
             <p class="text-gray-500 text-[14px] my-2">
                 Подборки
@@ -241,7 +244,7 @@
             <div class="text-[16px] md:text-[24px] font-semibold">
                 Как актерское <br> мастерство помогает в жизни
             </div>
-        </a>
+        </a> -->
     </div>
 </div>
 
@@ -269,7 +272,7 @@
         </div>
     </div>
 </div>
-
+@endforeach
 <footer class="bg-black h-[250px] text-white">
     <div class="xl:max-w-[1200px] lg:max-w-[1100px] md:max-w-[800px] mx-auto">
         <div class="md:flex md:justify-between py-12 text-bold">
