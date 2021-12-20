@@ -95,9 +95,9 @@ public function complete(Request $request){
 
     $user = All_transaction::where('id', $merchant_trans_id)->first();
 
-    $balance = WalletBalance::where('user_id', $user->id)->first();
+    $balance = WalletBalance::where('user_id', $user->user_id)->first();
 
-    if(count($balance)){
+    if(isset($balance)){
     $summa = $balance->balance + $user->amount;
     }else{
         WalletBalance::create([
@@ -107,8 +107,8 @@ public function complete(Request $request){
         $summa = $user->amount;
     }
 
-    WalletBalance::where('user_id', $user->id)->update(['balance' => $summa]);
-    All_transaction::where('id', $merchant_trans_id)->update(['status' => 1]);
+    WalletBalance::where('user_id', $user->user_id)->update(['balance' => $summa]);
+    All_transaction::where('id', $user->id)->update(['status' => 1]);
 
     return ['click_trans_id' => $click_trans_id,'merchant_trans_id' => $merchant_trans_id,'merchant_confirm_id' => $merchant_confirm_id,'error' => $error,'error_note' => $error_note];
 
