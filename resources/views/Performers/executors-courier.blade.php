@@ -13,7 +13,7 @@
                     </div>
                    <div>
                        <p class="text-lg text-gray-500">Был на сайте 1 ч. 8 мин. назад</p>
-                       <h1 class="text-3xl font-bold ">Борис Касьянов</h1>
+                       <h1 class="text-3xl font-bold ">{{$performers->name}}</h1>
                    </div>
 
                    <div class="flex w-full mt-6">
