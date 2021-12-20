@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
@@ -28,42 +29,22 @@ Route::get('/news', [NewsController::class, 'home']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-    Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.index");
-    Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating");
-    Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("appeal.close");
-    Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send");
 });
 
 Route::group(['prefix' => 'performers'], function () {
     Route::get('/', [PerformersController::class, 'service']);
     Route::get('/{id}', [PerformersController::class, 'performer'])->name("performers.executors");
 });
-
-
 Route::get('/', [Controller::class, 'home']);
 
 Route::get('/home/profile', [HomeController::class, 'profile']);
-
-
-Route::get('/terms', function () {
-    return view('terms.terms');
-});
-Route::get('/offer-tasks', function () {
-    return view('task.offertasks');
-});
-
-Route::get('/verification', function () {
-    return view('create.verification');
-});
-
+Route::get('/terms', [Controller::class, 'terms'])->name('terms');
+Route::get('/offer-tasks', [Controller::class, 'offer_tasks'])->name('offer.tasks');
+Route::get('/verification', [Controller::class, 'verification'])->name('verification');
 Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('my.tasks');
-Route::get('/refill', function() {
-    return view('/Site/refill');
-});
+Route::get('/refill', [Controller::class, 'refill'])->name('refill');
+Route::get('/contacts', [Controller::class, 'contacts'])->name('contacts');
 
-Route::get('/contacts', function() {
-    return view('contacts.contacts');
-});
 
 Route::get('/choose-task', function() {
     return view('task.choosetasks');
