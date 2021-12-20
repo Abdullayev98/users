@@ -26,7 +26,6 @@
                        class="py-4 text-gray-500 hover:text-[#ffa200] hover:underline">{{$category->name}}</a>
                 </div>
             @endforeach
-
         </div>
     </div>
 @endsection

@@ -18,13 +18,12 @@ class CreateTaskController extends VoyagerBaseController
         if (!$current_category){
             return back();
         }
+        $task = new Task();
+        $task->category_id = $request->current_category;
+        $task->status = 0;
+        $task->save();
 
-
-        $categories = Category::query()->where("parent_id", null)->get();
-        $current_parent_category = Category::find($current_category->parent_id);
-        $child_categories = Category::query()->where("parent_id", $current_parent_category->id)->get();
-        
-        return view("create.name", compact('categories', 'current_category','child_categories', 'current_parent_category'));
+        return view("create.name", compact( 'current_category',));
     }
 
     public function task_add(Request $request){
@@ -37,8 +36,6 @@ class CreateTaskController extends VoyagerBaseController
         $task->name = $request->name;
         $task->status = 0;
         $task->save();
-        session()->put('task', $task);
-        session()->put('categroy_id', $request->category_id);
         return redirect()->route("task.create.address", $request->category_id);
 
     }
