@@ -23,8 +23,14 @@ class NewsController extends Controller
         $request->image->move('storage\posts\December2021', $imagename);
         $news->img = $imagename;
         $news->title = $request->title;
-        $news->text = $request->title;
+        $news->text = $request->text;
         $news->save();
         return redirect()->back();
+    }
+    public function get($id)
+    {
+          $blog = DB::table('blog_new')->where('id',$id)->get();
+          $last3 = DB::table('blog_new')->orderBy('id', 'asc')->take(3)->get();
+          return view('Site/blog',compact('blog','last3'));
     }
 }

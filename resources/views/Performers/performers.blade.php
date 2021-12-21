@@ -108,7 +108,7 @@
                 </div>
                 <div class="my-10">
                     <div class="flex flex-row">
-                       <a href="/performers/executors-courier"> <p class="text-3xl underline text-blue-500">Борис К.</p></a>
+                       <a href="/performers/executors-courier"> <p class="text-3xl underline text-blue-500 hover:text-red-500">Борис К.</p></a>
                         <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}">
