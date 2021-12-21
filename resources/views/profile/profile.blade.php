@@ -31,10 +31,6 @@
                                         <span>Изменить фото</span>
                                     </label>
                                 </div>
-
-
-                                <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="baatton" onclick="fileadd()">
-                                    <input type="submit" id="sub1" class="hidden" >
                                 <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
                                     <label for="sub1">
@@ -232,7 +228,7 @@
 
         }
         function fileadd(){
-          var x = document.getElementById("baatton");
+          var x = document.getElementById("buttons");
 
                 x.classList.add("hidden");
         }
