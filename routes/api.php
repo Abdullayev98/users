@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\FaqAPIController;
 use App\Http\Controllers\API\UserAPIController;
 use App\Http\Controllers\API\PaymentAPIController;
 use Illuminate\Http\Request;
@@ -30,4 +31,5 @@ Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
 
 // Paynet service
 Route::post('paynet', [PaymentAPIController::class, 'index']);
-
+// FAQ
+Route::get('faq', [FaqAPIController::class, 'index']);
