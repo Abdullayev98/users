@@ -16,21 +16,36 @@
                         <span>15 просмотров профиля</span>
                     </div>
                     <br>
-                    <h2 class="font-bold text-lg">Здравствуйте, Цезар!</h2>
+                    <h2 class="font-bold text-lg">Здравствуйте, {{$user->name}}!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
-                            src="https://data.whicdn.com/images/322027365/original.jpg?t=1541703413" alt="" width="384"
-                            height="512">
-                        <button class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
-                            <i class="fas fa-camera"></i>
-                            <span>Изменить фото</span>
-                        </button>
+                        src="{{asset("AvatarImages/{$user->avatar}")}}" alt="image" width="384"
+                        height="512">
+                        <form action="{{route('updateSettingPhoto' ,$user->id)}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
+                                <input type="file" id="file" name="avatar" class="hidden" onclick="fileupdate()">
+                                <label for="file">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Изменить фото</span>
+                                </label>
+                            </div>
+                            <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
+                                <input type="submit" id="sub1" class="hidden">
+                                <label for="sub1">
+                                    <i class="fas fa-save"></i>
+                                    <span>добавлять фото</span>
+                                </label>
+                            </div>
+                        </form>
                     </div>
                     <div class="inline-block ml-3 mt-1">
-                        <p class="inline-block text-m mr-2">34 год</p>
+                        <p class="inline-block text-m mr-2">{{$user->age}} @if($user->age>20 && $user->age%10==1) год @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
+                        @else лет                            
+                        @endif</p>
                         <span class="inline-block">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p class="inline-block text-m">Москва город</p>
+                            <p class="inline-block text-m">{{$user->location}} город</p>
                         </span>
                         <p class="mt-2">Создал <a href="#"><span>1</span></span> задание</a></p>
                         <p class="mt-4">Оценка: 3.6 </p>
@@ -40,7 +55,7 @@
                 <div class="content mt-20 ">
                 <div class="grid grid-cols-10">
                     <ul class=" md:col-span-9 col-span-10 md:items-left sitems-center">
-                        <li class="inline md:mr-5 mr-1"><a href="/home/profile" class=" text-[14px] md:text-[18px]">Обо мне</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Обо мне</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px]">Счет</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Тарифы</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/home/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li>
@@ -72,45 +87,52 @@
                                     <div class="flex justify-left w-full">
                                         <div class="md:w-3/5 w-full md:m-4 m-0">
                                             <h1 class="block w-3/5 text-left text-gray-800 text-3xl font-bold mb-6">Личные данные</h1>
-                                            <form action="/" class="w-full" method="post">
+                                            <form action="{{route('updateData')}}" class="w-full" method="POST">
+                                                @csrf
                                                 <div class="w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="first_name">Имя</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="first_name" id="first_name">
-                                                </div>
-                                                <div class="w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="last_name">Фамилия</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="last_name" id="last_name">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="name">Имя</label>
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="name" id="name" value="{{$user->name}}" required>
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="email">Email</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="email" name="email" id="email">
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="email" name="email" id="email" value="{{$user->email}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="email">Phone number</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="number" name="number" id="number">
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number" value="{{$user->phone_number}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="Date">Дата рождения</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="date" name="date" id="date">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="age">Возраст</label>
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="number" name="age" id="age" value="{{$user->age}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="textarea">Другие сведения</label>
-                                                    <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900" name="textarea" id="textarea"></textarea>
+                                                    <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900" name="description" id="textarea">{{$user->description}}</textarea>
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="Select">Город</label>
-                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900">
-                                                        <option>Ташкент</option>
-                                                        <option>Jakarta</option>
-                                                        <option>Bandung</option>
-                                                        <option>Mojokerto</option>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="location">Город</label>
+                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900" name="location">
+                                                        <option value="Toshkent" {{ $user->location=='Toshkent' ? 'selected' : '' }}>Toshkent</option>
+                                                        <option value="Farg'ona" {{ $user->location=='Farg\'ona' ? 'selected' : '' }}>Farg'ona</option>
+                                                        <option value="Namangan" {{ $user->location=='Namangan'?'selected':'' }}>Namangan</option>
+                                                        <option value="Andijon" {{ $user->location=='Andijon' ? 'selected' : '' }}>Andijon</option>
+                                                        <option value="Toshkent viloyati" {{ $user->location=='Toshkent viloyati' ? 'selected' : '' }}>Toshkent viloyati</option>
+                                                        <option value="Samarqand" {{ $user->location=='Samarqand' ? 'selected' : '' }}>Samarqand</option>
+                                                        <option value="Sirdaryo" {{ $user->location=='Sirdaryo' ? 'selected' : '' }}>Sirdaryo</option>
+                                                        <option value="Jizzax" {{ $user->location=='Jizzax' ? 'selected' : '' }}>Jizzax</option>
+                                                        <option value="Buxoro" {{ $user->location=='Buxoro' ? 'selected' : '' }}>Buxoro</option>
+                                                        <option value="Navoiy" {{ $user->location=='Navoiy' ? 'selected' : '' }}>Navoiy</option>
+                                                        <option value="Xorazm" {{ $user->location=='Xorazm' ? 'selected' : '' }}>Xorazm</option>
+                                                        <option value="Qashqadryo" {{ $user->location=='Qashqadryo' ? 'selected' : '' }}>Qashqadryo</option>
+                                                        <option value="Surxondaryo" {{ $user->location=='Surxondaryo' ? 'selected' : '' }}>Surxondaryo</option>
+                                                        <option value="Qoraqalpog'iston" {{ $user->location=='Qoraqalpog\'iston' ? 'selected' : '' }}>Qoraqalpog'iston</option>
                                                     </select>
                                                 </div>
-
-                                                <a href="#" class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" type="submit">Сохранить</a>
+                                                <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
                                                 <hr>
-                                                <a href="#" class="block md:w-3/5 w-full text-center hover:bg-gray-300 mt-5 uppercase text-lg p-4 rounded-xl" type="submit">Удалить профиль</a>
-                                            </form>
+                                            </form>   
+                                               
+                                            <a  onclick="ConfirmDelete()" type="submit" href="{{ route('users.delete') }}" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>                                                                
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -279,7 +301,7 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
-                            <p class="text-black text-sm block ">+998xx xxx-xx-xx</p>
+                            <p class="text-black text-sm block ">+998{{$user->phone_number}}</p>
                         </div>
                     </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -289,23 +311,33 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Email</h5>
-                            <p class="text-black text-sm block ">user@yandex.ru</p>
-                        </div>
-                    </div>
-                    <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 rounded-xl col-span-1"
-                            style="background-color: #4285F4;">
-                            <i class="fab fa-google text-white"></i>
-                        </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-black block mt-2">Google</h5>
-                            <p class="text-black text-sm block ">Подтвержден</p>
+                            <p class="text-black text-sm block ">{{$user->email}}</p>
                         </div>
                     </div>
                 </div>
                 <p class="mx-5 my-4">Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных
                     сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.</p>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
+                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                        style="background-color: #4285F4;">
+                        <i class="fab fa-google text-white"></i>
+                    </div>
+                    <div class="ml-3 col-span-3">
+                        <h5 class="font-bold text-black block mt-2 text-md">Google</h5>
+                        <a href="https://www.google.com/" target="_blank" class="block text-sm">Привязать</p></a>
+                    </div>
+                </div>
+                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                        style="background-color: #4285F4;">
+                        <i class="fab fa-facebook-f text-white"></i>
+                    </div>
+                    <div class="ml-3 col-span-3">
+                        <h5 class="font-bold text-black block mt-2 text-md">Facebook</h5>
+                        <a href="https://www.facebook.com/" target="_blank" class="block text-sm">Привязать</a>
+                    </div>
+                </div>
+                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="fas fa-fingerprint text-white"></i>
                     </div>
@@ -313,22 +345,13 @@
                         <h5 class="font-bold text-black block mt-2 text-md">OneID</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div>
+                </div> 
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="far fa-envelope text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
                         <h5 class="font-bold text-black block mt-2 text-md">mail.ru</h5>
-                        <a href="#" class=" block text-sm">Привязать</a>
-                    </div>
-                </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fab fa-facebook-f text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">Facebook</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
                 </div>
@@ -349,11 +372,31 @@
                         <h5 class="font-bold text-black block mt-2 text-md">AppleID</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
 {{-- right side bar end--}}
         </div>
     </div>
 
+    <script type="text/javascript">          
+        function fileupdate(){
+            var x = document.getElementById("buttons");
+                x.style.display = "block";
+        }
+        function fileadd(){
+          var x = document.getElementById("baatton");
+                x.classList.add("hidden");
+        }
 
+        function ConfirmDelete()
+        {   var result = confirm("Are you sure you want to delete?");
+            if(result == true )
+            {
+                return true;
+            }else{
+                console.log(result);
+                return false;
+            }
+        }
+    </script>
 @endsection
