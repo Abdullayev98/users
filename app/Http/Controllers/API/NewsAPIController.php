@@ -12,7 +12,7 @@ class NewsAPIController extends Controller
     public function index(){
         $news = BlogNew::all();
         $last2 = DB::table('blog_new')->orderBy('id', 'DESC')->first();
-        $data = [$news,$last2];
+        $data = ['news'=> $news, 'last2'=>$last2];
         return response()->json($data);
     }
     public function create(Request $request)
@@ -27,5 +27,11 @@ class NewsAPIController extends Controller
         $news->text = $request->title;
         $news->save();
         return response()->json(['status'=>'true','message'=>'created successfully']);
+    }
+    public function show($id){
+        $blog = DB::table('blog_new')->where('id',$id)->get();
+        $last3 = DB::table('blog_new')->orderBy('id', 'asc')->take(3)->get();
+        $data = ['blog'=>$blog,'last3'=>$last3];
+        return response()->json($data);
     }
 }

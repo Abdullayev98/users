@@ -37,3 +37,4 @@ Route::get('faq', [FaqAPIController::class, 'index']);
 
 Route::get('news', [NewsAPIController::class, 'index']);
 Route::post('news/create', [NewsAPIController::class, 'create']);
+Route::get('news/show/{id}', [NewsAPIController::class, 'show']);
