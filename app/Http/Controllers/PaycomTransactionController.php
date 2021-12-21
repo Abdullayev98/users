@@ -15,7 +15,7 @@ class PaycomTransactionController extends Controller
             'key'         => config('paycom.key'),
         ]);
 
-        dd($application);
+        //dd($application);
         $application->run();
     }
 }
