@@ -76,9 +76,7 @@ class PaycomApplication
      */
     private function CheckPerformTransaction()
     {
-        $this->validateBooking();
-        $this->validateTransaction();
-        $this->response->send(['allow' => true]);
+           $this->response->send(['allow' => true]);
     }
 
     /**
