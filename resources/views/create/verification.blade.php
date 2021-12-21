@@ -68,15 +68,17 @@
 
               </div>
           </div>
-          <div class="mt-16">
-            <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Стать исполнителем</a>
-          </div>
+          <a href="#">
+            <button  class="font-sans mt-8 text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+              Стать исполнителем
+            </button>
+          </a>
       </div>
 
 
     {{-- 1 --}}
     <div class="grid md:grid-cols-3 grid-cols-2 container mx-auto">
-        <div class="col-span-2 ">
+        <div class="col-span-2 xl:mr-0 mr-8">
           <img  src="	https://assets.youdo.com/next/_next/static/images/3065257-ce528a23cf35ebec9f26fca3c8234f92.jpg" alt="#">
         </div>
         <div class="col-span-2 md:col-span-1 md:mt-0 mt-8  md:text-left text-center">
@@ -85,20 +87,28 @@
             <div>
               <hr class="mt-12 mb-8">
               <p class="mb-24">Максимальный заказ на YouDo.com был почти на 100 000 рублей, я несколько дней решал проблему, за которую никто не хотел браться.</p>
-              <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Начать зарабатывать</a>
+              <a href="#" class="">
+                <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                  Начать зарабатывать
+                </button>
+              </a>
             </div>
         </div>
     </div>
 
     {{-- 2 --}}
     <div class="grid md:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
-      <div class="col-span-2 md:col-span-1 md:mt-0 mt-8 md:block hidden md:text-left text-center">
+      <div class="col-span-2 md:col-span-1 md:mt-0 mt-8 md:block hidden md:text-left text-center xl:mr-0 mr-8">
         <h1 class="font-bold text-3xl">Свободный график</h1>
         <p class="mt-6 text-lg">На YouDo вы работаете на себя и сами выбираете заказчиков. Выполняйте задания в удобное для вас время и устраивайте выходные, когда захотите.</p>
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24">Я считаю, что YouDo.com — это уникальный сервис возможностей. Его безусловное преимущество в том, что вы можете самостоятельно выбирать для себя график работы, заказы, клиентов, формировать свой доход.</p>
-            <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Начать работать на себя</a>
+            <a href="#">
+              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                Начать работать на себя
+              </button>
+            </a>
           </div>
       </div>
       <div class="col-span-2 mx-auto mr-8 md:block hidden">
@@ -114,14 +124,18 @@
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24">Я считаю, что YouDo.com — это уникальный сервис возможностей. Его безусловное преимущество в том, что вы можете самостоятельно выбирать для себя график работы, заказы, клиентов, формировать свой доход.</p>
-            <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Начать работать на себя</a>
+            <a href="#">
+              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                Начать работать на себя
+              </button>
+            </a>
           </div>
       </div>
     </div>
 
     {{-- 3 --}}
     <div class="grid md:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
-      <div class="col-span-2">
+      <div class="col-span-2 xl:mr-0 mr-8">
         <img  src="https://assets.youdo.com/next/_next/static/images/2735528-4845f3d54cb821712417c20131306d50.jpg" alt="#">
       </div>
       <div class="col-span-2 md:col-span-1 md:mt-0 mt-8 md:text-left text-center">
@@ -130,20 +144,28 @@
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24">Со Сделкой без риска не переживаешь, что оплата не поступит. Если что, задание закрывается автоматически</p>
-            <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Получить статус исполнителя</a>
+            <a href="#">
+              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                Получить статус исполнителя
+              </button>
+            </a>
           </div>
       </div>
     </div>
 
     {{-- 4 --}}
     <div class="grid md:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
-      <div class="col-span-2 md:col-span-1 md:mt-0 mt-8 md:block hidden md:text-left text-center">
+      <div class="col-span-2 md:col-span-1 md:mt-0 mt-8 md:block hidden md:text-left text-center xl:mr-0 mr-8">
         <h1 class="font-bold text-3xl">Экономия на рекламе</h1>
         <p class="mt-6 text-lg">Больше не нужно тратить деньги на собственный сайт и рекламу — выбирайте задания и отправляйте отклики заказчикам, которым услуга нужна прямо сейчас.</p>
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24">Сервис мне очень помог в наработке клиентской базы, что всегда очень сложно сделать в салоне. У меня уже есть заказчики, которые приходят на стрижку или окрашивание в третий, четвертый раз, то есть становятся постоянными клиентами.</p>
-            <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Стать исполнителем</a>
+            <a href="#">
+              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                Стать исполнителем
+              </button>
+            </a>
           </div>
       </div>
       <div class="col-span-2  mx-auto mr-8 md:block hidden">
@@ -159,7 +181,11 @@
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24">Сервис мне очень помог в наработке клиентской базы, что всегда очень сложно сделать в салоне. У меня уже есть заказчики, которые приходят на стрижку или окрашивание в третий, четвертый раз, то есть становятся постоянными клиентами.</p>
-            <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Стать исполнителем</a>
+            <a href="#">
+              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                Стать исполнителем
+              </button>
+            </a>
           </div>
       </div>
     </div>
@@ -218,7 +244,11 @@
            <p class="text-lg font-medium mt-4">Средний месячный доход <br>
             в категории «Курьерские услуги»</p>
             <div class="mt-16">
-              <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Стать исполнителем</a>
+              <a href="#">
+                <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                  Стать исполнителем
+                </button>
+              </a>
             </div>
           </div>
       </div>
@@ -246,7 +276,11 @@
          <p class="text-lg font-medium mt-4">Средний месячный доход <br>
           в категории «Фото и видеоуслуги»</p>
           <div class="mt-16">
-            <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Стать исполнителем</a>
+            <a href="#">
+              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                Стать исполнителем
+              </button>
+            </a>
           </div>
         </div>
         <div class="col-span-2 md:block hidden mx-auto mr-8 ">
@@ -262,7 +296,11 @@
          <p class="text-lg font-medium mt-4">Средний месячный доход <br>
           в категории «Фото и видеоуслуги»</p>
           <div class="mt-16">
-            <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="#">Стать исполнителем</a>
+            <a href="#">
+              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                Стать исполнителем
+              </button>
+            </a>
           </div>
         </div>
     </div>
