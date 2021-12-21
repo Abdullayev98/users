@@ -24,7 +24,11 @@ class User extends \TCG\Voyager\Models\User
     protected $fillable = [
         'name',
         'email',
+        'age',
         'password',
+        'phone_number',
+        'description',
+        'location',
         'text',
         'status',
         'facebook_id',
