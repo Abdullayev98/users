@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-@foreach($performers as $performer)
+
     <div class="container mx-auto">
         <div class="grid grid-cols-3  grid-flow-row mt-10">
         {{-- left sidebar start --}}
@@ -12,17 +12,13 @@
                         <span>2105 просмотров профиля</span>
                     </div>
                    <div>
-                     @if($performer->active_status == 1)
-                       <p class="text-lg text-gray-500">Онлайн</p>
-                       @else
-                       <p class="text-lg text-gray-500">Офлайн</p>
-                       @endif
-                       <h1 class="text-3xl font-bold ">{{$performer->name}}</h1>
+                       <p class="text-lg text-gray-500">Был на сайте 1 ч. 8 мин. назад</p>
+                       <h1 class="text-3xl font-bold ">Борис Касьянов</h1>
                    </div>
 
                    <div class="flex w-full mt-6">
                     <div class="flex-initial w-1/3">
-                      <img class="h-56 w-56" src="{{asset($performer->avatar)}}" alt="#">
+                      <img class="h-56 w-56" src="https://avatar.youdo.com/get.userAvatar?AvatarId=7441787&AvatarType=H180W180" alt="#">
                     </div>
                     <div class="flex-initial w-2/3 lg:ml-0 ml-6">
                         <div class="font-medium text-lg">
@@ -30,9 +26,7 @@
                             <span>Документы подтверждены</span>
                         </div>
                         <div class="text-gray-500 text-base mt-4">
-                          @if($performer->age != null)
-                            <span>{{$performer->age}} лет</span>
-                            @endif
+                            <span>20 лет</span>
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Санкт-Петербург</span>
                         </div>
@@ -50,7 +44,7 @@
                              <img class="h-20 mt-6 ml-4" src="{{ asset('images/icon_bag.png') }}">
                          </div>
                          <div>
-                             <a href="/chatify/{{$performer->id}}"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
+                             <a href="#"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
                                 Задать вопрос
                               </button></a>
                          </div>
@@ -66,7 +60,7 @@
                 <div class="mt-8">
                     <h1 class="text-3xl font-semibold text-gray-700">Обо мне</h1>
                     <div class="mt-4 mb-4 bg-orange-100 py-4 rounded-xl">
-                        <p class="ml-6">Чтобы воспользоваться моими услугами, нажмите кнопку <a class="text-red-500" href="#">«Предложить задание»</a>. <br>
+                        <p class="ml-6">Чтобы воспользоваться моими услугами, нажмите кнопку <a class="text-red-500 hover:text-red-900" onclick="toggleModal12('modal-id12')" href="#">«Предложить задание»</a>. <br>
                             Сотрудничаю с условием, что о моей работе будет оставлен отзыв на YouDo.</p>
                     </div>
                 </div>
@@ -99,7 +93,7 @@
             <div class="md:col-span-1 col-span-3  md:mx-2 mx-auto inline-block w-4/5 float-right right-20  h-auto">
                 <div class="mt-8 ">
                     <a class="md:block hidden" href="#">
-                        <button  class="modal-open bg-amber-600 hover:bg-amber-500 text-2xl text-white font-medium py-4 px-12  rounded">
+                        <button  class="bg-amber-600 hover:bg-amber-500 text-2xl text-white font-medium py-4 px-12  rounded" onclick="toggleModal12('modal-id12')">
                             Предложить задание
                         </button>
                     </a>
@@ -126,11 +120,7 @@
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Телефон</h2>
-                                @if($performer->phone_verified_at != null)
                                 <p>Подтвержден</p>
-                                @else
-                                <p>Не подтвержден</p>
-                                @endif
                             </div>
                         </div>
                         <div class="flex w-full mt-4">
@@ -139,11 +129,7 @@
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Email</h2>
-                                @if($performer->email_verified_at != null)
                                 <p>Подтвержден</p>
-                                @else
-                                <p>Не подтвержден</p>
-                                @endif
                             </div>
                         </div>
                         <div class="flex w-full mt-4">
@@ -167,7 +153,7 @@
                     </div>
                 </div>
                 <div class="mt-8">
-                    <h1 class="text-3xl font-medium">Новые публикации <br><a href="/news" class="text-blue-500 hover:text-red-600"> в блоге</a></h1>
+                    <h1 class="text-3xl font-medium">Новые публикации <br><a href="#" class="text-blue-500 hover:text-red-600"> в блоге</a></h1>
                     <img class="mt-4 rounded-xl " src="https://content0.youdo.com/zi.ashx?i=d36fd188a176881f" alt="#">
                     <h1 class="mt-4 font-medium text-xl text-gray-700">Из фрилансера в CEO Digital-агентства</h1>
                     <p class="mt-2 font-normal text-base text-gray-700">Вдохновляющая видео-история <br> исполнителя Александра</p>
@@ -182,5 +168,43 @@
         {{-- right sidebar end --}}
         </div>
     </div>
-@endforeach
+
+
+    {{-- Modal start --}}
+      <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id12">
+        <div class="relative w-auto my-6 mx-auto max-w-3xl"  id="modal-id12">
+          <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <div class=" text-center p-12  rounded-t">
+                  <button type="submit"  onclick="toggleModal12('modal-id12')" class="rounded-md w-100 h-16 absolute top-1 right-4">
+                    <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                  </button>
+                <h3 class="font-medium text-4xl block mt-4">
+                    На какую сумму хотите пополнить <br> кошелёк?
+                </h3>
+            </div>
+            <!--body-->
+            <div class="relative p-6 flex-auto">
+              <p class="my-4  text-lg  text-center">
+                Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.
+              </p>
+            </div>
+            <!--footer-->
+            <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
+                <div class="mt-4 ">
+                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" ref="#" >Создать задание</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
+      <script type="text/javascript">
+        function toggleModal12(modalID12){
+          document.getElementById(modalID12).classList.toggle("hidden");
+          document.getElementById(modalID12 + "-backdrop").classList.toggle("hidden");
+          document.getElementById(modalID12).classList.toggle("flex");
+          document.getElementById(modalID12 + "-backdrop").classList.toggle("flex");
+        }
+      </script>
+    {{-- Modal end --}}
 @endsection

@@ -13,12 +13,8 @@ class ProfileController extends Controller
 
     public function profileData()
     {
-        if (Auth::user() == null){
-            return redirect()->route('login');
-        }else{
-            $user = User::find(Auth::user()->id);
-            return view('profile.profile', compact('user'));
-        }
+        $user = User::find(Auth::user()->id);
+        return view('profile.profile', compact('user'));
     }
     public function update(Request $request, $id)
     {
@@ -34,5 +30,5 @@ class ProfileController extends Controller
         }
         $user->update($data);
         return  redirect()->route('userprofile');
-    }
+    }   
 }

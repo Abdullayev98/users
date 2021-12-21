@@ -74,10 +74,9 @@
                     <div id="scrollbar" class="w-full h-screen blog1">
 {{--                        <div class="w-full overflow-y-scroll w-full h-screen">--}}
                             <div class="w-full scroll-smooth hover:scroll-auto w-full h-screen">
-{{--                                <img src="https://css-static.youdo.com/assets/71201/i/become-an-executor-c1a1be93104435115c3e2d317aa61be6.svg" alt="">--}}
+                                <img src="https://css-static.youdo.com/assets/71201/i/become-an-executor-c1a1be93104435115c3e2d317aa61be6.svg" alt="">
                             @foreach($tasks as $task)
-                                {{$tasks->count()}}
-                                @if ($tasks->count() != 0)
+                                @if ($task->count() != 0)
                                     {{$task->count()}}
                                     <!-- If page is empty -->
                                         {{--                                        <div class="w-1/2 mx-auto my-auto">--}}
@@ -123,28 +122,7 @@
                 <div id="map" class="h-40 rounded-lg w-full">
                 </div>
                 <div class="w-full h-full">
-
-                    <div class="max-w-lg mx-auto">
-
-                        <button class="font-medium rounded-lg text-sm text-center inline-flex items-center mb-1" type="button">Все категории</button>
-
-                        <div class="w-full my-1">
-                            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
-                                <div x-data={show:false} class="rounded-sm">
-                                    <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                        <button class="font-medium rounded-lg text-sm text-center inline-flex items-center my-1" type="button">
-                                            {{$category->name}}
-                                        </button>
-                                    </div>
-
-                                </div>
-                            @endforeach
-                        </div>
-
-                    </div>
-
-                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-
+                    <x-faq/>
                 </div>
             </div>
         </div>

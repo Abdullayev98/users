@@ -44,63 +44,10 @@
                                 <input
                                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
                                     id="username" type="text" placeholder="Например, нужен курьер на несколько доставок" required name="name">
-                                {{--                            <div id="content" class="mt-4" style="display:none;">--}}
-                                {{--                                <label class="block text-left w-full mx-auto">--}}
-                                {{--                                    <select class="form-select block w-5/12 float-left mt-1">--}}
-                                {{--                                        <option>Option 1</option>--}}
-                                {{--                                        <option>Option 2</option>--}}
-                                {{--                                    </select>--}}
-                                {{--                                    <select class="form-select block w-5/12 mt-1 float-right">--}}
-                                {{--                                        <option>Option 1</option>--}}
-                                {{--                                        <option>Option 2</option>--}}
-                                {{--                                    </select>--}}
-                                {{--                                </label>--}}
-                                {{--                            </div>--}}
-
-                                {{--                            <div class="mt-4">--}}
-                                {{--                                <label class="text-sm mb-2">--}}
-                                {{--                                    <p id="showContent">Подкатегория <span class="underline hover:text-[#5f5869]">Другая посылка</span>--}}
-                                {{--                                    </p>--}}
-                                {{--                                    <!-- This example requires Tailwind CSS v2.0+ -->--}}
-
-                                {{--                                </label>--}}
-
-                                {{--                                <div  id="content"  class="grid hidden grid-cols-2 gap-5">--}}
-                                {{--                                    <div x-data="{ dropdownOpen: false }" class="relative">--}}
-                                {{--                                        <button @click="dropdownOpen = !dropdownOpen" class="relative z-10 w-full block border transition rounded-md bg-white p-2 focus:outline-none">--}}
-                                {{--                                            {{$current_parent_category->name}}--}}
-                                {{--                                        </button>--}}
-
-                                {{--                                        <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>--}}
-
-                                {{--                                        <div x-show="dropdownOpen" style="max-height: 200px; width: 100%" class="absolute  overflow-scroll mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">--}}
-
-                                {{--                                            @foreach($categories as $category)--}}
-                                {{--                                            <a href="{{route("task.create.name", )}}" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">--}}
-                                {{--                                                {{$category->name}}--}}
-                                {{--                                            </a>--}}
-                                {{--                                            @endforeach--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div x-data="{ dropdownOpen: false }" class="relative">--}}
-                                {{--                                        <button @click="dropdownOpen = !dropdownOpen" class="relative z-10 w-full block border transition rounded-md bg-white p-2 focus:outline-none">--}}
-                                {{--                                            {{$current_category->name}}--}}
-                                {{--                                        </button>--}}
-
-                                {{--                                        <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>--}}
-
-                                {{--                                        <div x-show="dropdownOpen" style="max-height: 200px; width: 100%" class="absolute overflow-scroll mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">--}}
-
-                                {{--                                            @foreach($child_categories as $category)--}}
-                                {{--                                                <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">--}}
-                                {{--                                                    {{$category->name}}--}}
-                                {{--                                                </a>--}}
-                                {{--                                            @endforeach--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-
-                                {{--                                </div>--}}
-                                {{--                            </div>--}}
+                                    <input type="text" hidden name="cat_id" value="{{$current_category->id}}">
+                            </div>
+                            <div class="hidden">
+                              <input type="text" name="cat_id" value="{{$current_category->id}}" hidden>
                             </div>
                         </div>
                         <input type="submit"
