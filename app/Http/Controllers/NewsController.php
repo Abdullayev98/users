@@ -23,7 +23,7 @@ class NewsController extends Controller
         $request->image->move('storage\posts\December2021', $imagename);
         $news->img = $imagename;
         $news->title = $request->title;
-        $news->text = $request->title;
+        $news->text = $request->text;
         $news->save();
         return redirect()->back();
     }
