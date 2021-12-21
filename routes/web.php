@@ -67,7 +67,7 @@ Route::get('/choose-task', function() {
 Route::get('/terms/doc', function() {
     return view('terms.pdf');
 });
-Route::get('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
+Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
 
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 
