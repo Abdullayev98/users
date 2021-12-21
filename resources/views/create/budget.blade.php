@@ -4,12 +4,13 @@
 <link rel="stylesheet" href="{{asset('css/budget.css')}}">
 <!-- Information section -->
 <x-roadmap/>
-<!-- <form class="" action="" method="post"> -->
+<form class="" action="{{route('task.create.notes')}}" method="post">
+  @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-      Ищем исполнителя для задания " "
+      Ищем исполнителя для задания "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
       Задание заполнено на 71%
@@ -33,12 +34,12 @@
               <div class="a"></div>
           <div id="slider-range-min"></div>
           </div>
-          <input type="text" id="amount">
+          <input type="text" id="amount" name="amount">
           </div>
           <div class="w-full">
-            <input type="checkbox" name="" value=""> Я использую YouDo для бизнеса, нужны закрывающие документы
+            <input type="checkbox" name="business" value="1"> Я использую YouDo для бизнеса, нужны закрывающие документы
             <p class="text-sm ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
-            <input type="checkbox" name="" value=""> Отдаю предпочтение застрахованным исполнителям
+            <input type="checkbox" name="insurance" value="1"> Отдаю предпочтение застрахованным исполнителям
             <p class="text-sm ml-4">В случае ущерба страховая возместит вам до 100 000 руб. Это бесплатно</p>
           </div>
           <div class="mt-4">
@@ -60,7 +61,7 @@
   </div>
 </div>
 </div>
-<!-- </form> -->
+</form>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>

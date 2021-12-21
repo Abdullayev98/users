@@ -27,4 +27,10 @@ class NewsController extends Controller
         $news->save();
         return redirect()->back();
     }
+    public function get($id)
+    {
+          $blog = DB::table('blog_new')->where('id',$id)->get();
+          $last3 = DB::table('blog_new')->orderBy('id', 'asc')->take(3)->get();
+          return view('Site/blog',compact('blog','last3'));
+    }
 }
