@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\How_work_it;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,7 +17,8 @@ class Controller extends BaseController
 
     public function home(){
         $tasks  =  Task::latest()->paginate(15);
-        return view('home',compact('tasks'));
+        $howitworks = How_work_it::all();
+        return view('home',compact('tasks','howitworks'));
     }
     public function home_profile(){
         return view('/profile/profile');
