@@ -193,7 +193,7 @@
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                   </button>
                 <h3 class="font-medium text-4xl block mt-4">
-                    На какую сумму хотите пополнить <br> кошелёк?
+                    У вас пока нет опубликованных <br> заданий
                 </h3>
             </div>
             <!--body-->
