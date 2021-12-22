@@ -37,9 +37,9 @@
           <input type="text" id="amount" name="amount">
           </div>
           <div class="w-full">
-            <input type="checkbox" id="check1" name="business" onclick="checkbox()" value="0"> Я использую YouDo для бизнеса, нужны закрывающие документы
+            <input type="checkbox" name="business" value="1"> Я использую YouDo для бизнеса, нужны закрывающие документы
             <p class="text-sm ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
-            <input type="checkbox" id="check2" name="insurance" onclick="checkbox()" value="0"> Отдаю предпочтение застрахованным исполнителям
+            <input type="checkbox" name="insurance" value="1"> Отдаю предпочтение застрахованным исполнителям
             <p class="text-sm ml-4">В случае ущерба страховая возместит вам до 100 000 руб. Это бесплатно</p>
           </div>
           <div class="mt-4">
@@ -81,21 +81,6 @@ $(".a").width(ui.value/5000+"%");
 $(".ui-slider-handle").text("");
 $("#amount").val(""+$("#slider-range-min").slider("value")+" сум");
 });
-
-function checkbox() {
-  var checkBox = document.getElementById("check1");
-  var checkBox2 = document.getElementById("check2");
-  if (checkBox.checked == true){
-    checkBox.value = "1";
-  } else {
-     checkBox.value = "0";
-  }
-  if (checkBox2.checked == true){
-    checkBox2.value = "1";
-  } else {
-     checkBox2.value = "0";
-  }
-}
 </script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
 @endsection

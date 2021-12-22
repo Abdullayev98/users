@@ -67,8 +67,8 @@
             <div class="grid md:grid-cols-3 grid-cols-1 w-full">
             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
                 <div class="text-gray-500 text-lg my-8">
-                    <a href="{{route('categories', ['id'=> $category2->id])}}" onmouseover="bigImg{{ $category2->id }}(this)" onmouseout="normalImg{{ $category2->id }}(this)" class="hover:text-[#ffa200]">
-                        <i class="{{ $category2->ico }} text-gray-500" id="{{ $category2->id }}"></i>  {{ $category2->name }}
+                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="">
+                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]"> {{ $category2->name }} </i>
                     </a>
                 </div>
                 @endforeach
@@ -432,19 +432,6 @@
                 modal.style.display = "none";
             }
         }
-    </script>
-    <script>
-    @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
-    var {{$category2->id}} = document.getElementById("{{$category2->id}}");
-
-    function bigImg{{$category2->id}}(x) {
-      {{$category2->id}}.classList.add("text-[#ffa200]");
-    }
-
-    function normalImg{{$category2->id}}(x) {
-      {{$category2->id}}.classList.remove("text-[#ffa200]");
-    }
-    @endforeach
     </script>
 
     <!-- <script>
