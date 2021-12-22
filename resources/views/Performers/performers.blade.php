@@ -89,10 +89,10 @@
                     </div>
                 </div>
             </div>
-
+            @foreach($users as $user)
             <div class="flex flex-row">
                 <div class="m-10">
-                    <img class="rounded-lg w-40 h-40" src="https://avatar.youdo.com/get.userAvatar?AvatarId=7441787&AvatarType=H180W180" alt="user">
+                    <img class="rounded-lg w-40 h-40" src="{{asset($user->avatar)}}" alt="user">
                     <div class="flex flex-row">
                         <p>Отзывы:</p>
                         <i class="far fa-thumbs-up m-1 text-gray-400"></i>    5128
@@ -108,19 +108,21 @@
                 </div>
                 <div class="my-10">
                     <div class="flex flex-row">
-                       <a href="/performers/2"> <p class="text-3xl underline text-blue-500 hover:text-red-500">Борис К.</p></a>
-                        <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
+                       <a href="/performers/{{$user->id}}"> <p class="text-3xl underline text-blue-500 hover:text-red-500">{{$user->name}}</p></a>
+                        <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
-                        <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}">
+                        <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
                     </div>
                     <div>
-                        <p class="text-sm text-gray-500 my-3">Был на сайте 9 мин. назад</p>
+                      @if($user->active_status == 1)
+                        <p class="text-sm text-gray-500 my-3">Онлайн</p>
+                        @else
+                        <p class="text-sm text-gray-500 my-3">Офлайн</p>
+                        @endif
                     </div>
                     <div>
                         <p class="text-base" style="width: 500px;">
-                            Добрый день! В штате опытные и проверенные курьеры .
-                            На практике прошли все виды курьерских доставок .
-                            За всех курьеров несу материальную ответственность . Способы опл…
+                          {{$user->description}}
                         </p>
                     </div>
                     <div>
@@ -128,6 +130,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 @endsection
