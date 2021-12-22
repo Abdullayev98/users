@@ -137,7 +137,7 @@
 
     @if (Route::has('login'))
         @auth
-  
+
     <div class="flex">
                 {{-- icon-1 --}}
         <div class="max-w-lg mx-auto">
@@ -161,7 +161,7 @@
                     </ul>
             </div>
         </div>
-        
+
         {{-- icon-2 --}}
         <div class="max-w-lg mx-auto">
             <button class="" type="button" data-dropdown-toggle="dropdown1"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
@@ -181,7 +181,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
 
         <div>
@@ -195,19 +195,13 @@
                 <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-6 mt-1 HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
             </a>
         </div>
-             
+
     </div>
-     
+
         @else
-<<<<<<< HEAD
             <p class="w-full hidden lg:block text-right inline-block float-right md:float-none mt-6 mb-6">
                 <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или
                 <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
-=======
-            <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden">
-                 <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или
-                 <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
->>>>>>> 8966c48d7d3b04617725276e67628630dacc5df7
             </p>
         @endauth
     @endif
@@ -261,7 +255,7 @@
                     Как удобнее оплатить?
                 </h3>
             </div>
-             
+
             <div class="container mt-8">
                 <div>
                 <a href="#"><img src="{{asset('/images/payme.png')}}" class="mx-auto w-48 h-18" alt="Payme"> </a>
@@ -272,8 +266,8 @@
                 <div>
                    <a href="#"><img src="{{asset('/images/paynet.jpg')}}" class="mx-auto w-64 h-18 mb-8" alt="Paynet"></a>
                 </div>
-            </div>      
-              </div>         
+            </div>
+              </div>
           </div>
         </div>
       </div>
@@ -282,7 +276,7 @@
 </div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal1-id-backdrop"></div>
-  
+
   <script type="text/javascript">
     function toggleModal(){
       document.getElementById("modal-id").classList.toggle("hidden");
@@ -312,7 +306,7 @@
             document.getElementById('button').classList.add("bg-gray-500");
             document.getElementById('button').classList.remove("hover:bg-lime-600");
             document.getElementById("button").innerHTML ="К оплате " + x +"₽";
-        }else{          
+        }else{
            document.getElementById('button').setAttribute("onclick","toggleModal1();");
            document.getElementById('button').classList.remove("bg-gray-500");
             document.getElementById('button').classList.add("bg-lime-500");
