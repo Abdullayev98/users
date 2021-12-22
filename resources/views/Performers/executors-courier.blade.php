@@ -9,7 +9,7 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>2105 просмотров профиля</span>
+                        <span>{{ $posts }} просмотров профиля</span>
                     </div>
                    <div>
                      @if($user->active_status == 1)
