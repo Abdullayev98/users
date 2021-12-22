@@ -21,7 +21,7 @@ use App\Http\Controllers\UserController;
 // Route::get('/performers', function () { return view('Performers.performers'); });
 
 Route::get('/login', [UserController::class, 'index'])->name('login');
-Route::post('/custom-signin', [UserController::class, 'createSignin'])->name('signin.custom');
+Route::post('/', [UserController::class, 'createSignin'])->name('signin.custom');
 
 
 Route::get('/register', [UserController::class, 'signup'])->name('register');

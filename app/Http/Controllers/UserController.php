@@ -31,8 +31,9 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             return view('home',compact('tasks'))
                         ->withSuccess('Logged-in');
+        }else {
+          return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
-        return view('login')->withSuccess('Credentials are wrong.');
     }
 
 

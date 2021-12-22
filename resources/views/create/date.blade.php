@@ -11,7 +11,7 @@
 
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
-  <div class="col-span-2">
+  <div class="md:col-span-2 col-span-3">
     <div class="w-full text-center text-2xl">
       Ищем исполнителя для задания "{{session('name')}}"
     </div>
@@ -23,7 +23,7 @@
         <div style="width: 57%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
-    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
+    <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
         Когда нужно приступить к работе?
       </div>
@@ -63,9 +63,7 @@
       </div>
     </div>
   </div>
-  <div class="col-span">
     <x-faq/>
-  </div>
 </div>
 </div>
 </form>
