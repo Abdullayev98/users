@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-
+@foreach($users as $user)
     <div class="container mx-auto">
         <div class="grid grid-cols-3  grid-flow-row mt-10">
         {{-- left sidebar start --}}
@@ -12,23 +12,29 @@
                         <span>2105 просмотров профиля</span>
                     </div>
                    <div>
-                       <p class="text-lg text-gray-500">Был на сайте 1 ч. 8 мин. назад</p>
-                       <h1 class="text-3xl font-bold ">Борис Касьянов</h1>
+                     @if($user->active_status == 1)
+                       <p class="text-lg text-gray-500">Онлайн</p>
+                       @else
+                       <p class="text-lg text-gray-500">Офлайн</p>
+                       @endif
+                       <h1 class="text-3xl font-bold ">{{$user->name}}</h1>
                    </div>
 
                    <div class="flex w-full mt-6">
                     <div class="flex-initial w-1/3">
-                      <img class="h-56 w-56" src="https://avatar.youdo.com/get.userAvatar?AvatarId=7441787&AvatarType=H180W180" alt="#">
+                      <img class="h-56 w-56" src="{{ asset($user->avatar) }}" alt="#">
                     </div>
                     <div class="flex-initial w-2/3 lg:ml-0 ml-6">
                         <div class="font-medium text-lg">
+                          @if($user->phone_verified_at && $user->email_verified_at)
                             <i class="fas fa-check-circle text-lime-600 text-2xl"></i>
                             <span>Документы подтверждены</span>
+                            @endif
                         </div>
                         <div class="text-gray-500 text-base mt-4">
-                            <span>20 лет</span>
+                            <span>{{$user->age}} лет</span>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Санкт-Петербург</span>
+                            <span>{{$user->location}}</span>
                         </div>
                         <div class="text-gray-500 text-base mt-6">
                             <span>Выполнил 199 заданий, создал 3 задания</span>
@@ -38,13 +44,13 @@
                              <i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i>
                             <span class="text-cyan-500 hover:text-red-600">(197 отзывов)</span>
                         </div>
-                        <div class="flex flex-row">
+                        <!-- <div class="flex flex-row">
                              <img class="h-24 mt-4 ml-2" src="{{ asset('images/icon_year.svg') }}">
                              <img class="h-24 mt-4 ml-4" src="{{ asset('images/icon_shield.png') }}">
                              <img class="h-20 mt-6 ml-4" src="{{ asset('images/icon_bag.png') }}">
-                         </div>
+                         </div> -->
                          <div>
-                             <a href="#"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
+                             <a href="/chatify/{{$user->id}}"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
                                 Задать вопрос
                               </button></a>
                          </div>
@@ -64,7 +70,7 @@
                             Сотрудничаю с условием, что о моей работе будет оставлен отзыв на YouDo.</p>
                     </div>
                 </div>
-                <p>Доброго времени суток, меня зовут Борис, я работал курьером на протяжении трёх лет в таких компаниях как: МигМигом, Sabellino и dostavista (Москва); на данный момент занимаюсь организацией доставок, иногда сам подрабатываю курьером, нахожусь в активном поиске частных лиц, процент беру минимальный, являюсь самозанятым в компании Amway, буду рад с Вами сотрудничать, для обсуждения деталей задания пожалуйста пишите на Вотсап.</p>
+                <p>{{$user->description}}</p>
 
                 <h1 class="mt-12 text-3xl font-medium">Виды выполняемых работ</h1>
 
@@ -105,7 +111,7 @@
                         <p class="text-gray-400">на YouDo с 13 апреля 2021 г.</p>
                     </div>
                     <div class="">
-                        <div class="flex w-full mt-4">
+                        <!-- <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
                                 <i class="text-[#fff] far fa-file-image text-2xl bg-lime-500 py-3 px-4 rounded-lg"></i>
                             </div>
@@ -113,14 +119,18 @@
                                 <h2 class="font-medium text-lg">Документы</h2>
                                 <p>Документы проверены</p>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
                                 <i class="text-[#fff] fas fa-phone-square text-2xl bg-amber-500 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Телефон</h2>
+                                @if($user->phone_verified_at)
                                 <p>Подтвержден</p>
+                                @else
+                                <p>Не подтвержден</p>
+                                @endif
                             </div>
                         </div>
                         <div class="flex w-full mt-4">
@@ -129,10 +139,14 @@
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Email</h2>
+                                @if($user->email_verified_at)
                                 <p>Подтвержден</p>
+                                @else
+                                <p>Не подтвержден</p>
+                                @endif
                             </div>
                         </div>
-                        <div class="flex w-full mt-4">
+                        <!-- <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
                                 <i class="text-[#fff] far fa-address-book text-2xl bg-blue-400 py-3 px-4 rounded-lg"></i>
                             </div>
@@ -140,8 +154,8 @@
                                 <h2 class="font-medium text-lg">Вконтакте</h2>
                                 <p>Подтвержден</p>
                             </div>
-                        </div>
-                        <div class="flex w-full mt-4">
+                        </div> -->
+                        <!-- <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
                                 <i class=" fab fa-apple text-2xl bg-gray-400 text-[#fff] py-3 px-4 rounded-lg"></i>
                             </div>
@@ -149,7 +163,7 @@
                                 <h2 class="font-medium text-lg">Apple ID</h2>
                                 <p>Подтвержден</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="mt-8">
@@ -191,13 +205,18 @@
             <!--footer-->
             <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                 <div class="mt-4 ">
+<<<<<<< HEAD
                     <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="#" >Создать задание</a>
+=======
+                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >Создать задание</a>
+>>>>>>> be0dbcf21225891814f5ab07f952745008b091c3
                 </div>
             </div>
           </div>
         </div>
       </div>
       <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
+      @endforeach
       <script type="text/javascript">
         function toggleModal12(modalID12){
           document.getElementById(modalID12).classList.toggle("hidden");

@@ -77,14 +77,14 @@
                                 <li class="mb-1">
                                     {{-- icon-1 --}}
                                     <div class="max-w-lg mx-auto ">
-                                        <button class="" type="button" data-dropdown-toggle="dropdown"><i class="ml-6 text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
+                                        <button class="" type="button" data-dropdown-toggle="dropdown4"><i class="ml-6 text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
                                         </button>
                                         <!-- Dropdown menu -->
-                                        <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
+                                        <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown4">
                                             <div class="px-4 py-3">
                                                 <span class="block text-base font-bold">Уведомления</span>
                                             </div>
-                                            <ul class="py-1" aria-labelledby="dropdown">
+                                            <ul class="py-1" aria-labelledby="dropdown4">
                                                 <li>
                                                     <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>Осталось только установить пароль</a>
                                                 </li>
@@ -101,11 +101,11 @@
                                 <li class="mb-1">
                                     {{-- icon-2 --}}
                                     <div class="max-w-lg mx-auto ml-6">
-                                        <button class="" type="button" data-dropdown-toggle="dropdown1"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
+                                        <button class="" type="button" data-dropdown-toggle="dropdown5"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
                                         </button>
                                         <!-- Dropdown menu -->
-                                        <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown1">
-                                            <ul class="py-1" aria-labelledby="dropdown1">
+                                        <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown5">
+                                            <ul class="py-1" aria-labelledby="dropdown5">
                                                 <li>
                                                     <a href="/profile" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Профиль</a>
                                                 </li>
@@ -149,7 +149,6 @@
                             <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или
 
                             <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a><br>
-                            <a href="{{ route('logout') }}" class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Выход</a>
 
                         </p>
                     </div>
