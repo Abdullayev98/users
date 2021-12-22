@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Models\Category;
-use Auth;
 
 class CreateTaskController extends VoyagerBaseController
 {
@@ -72,33 +71,16 @@ class CreateTaskController extends VoyagerBaseController
     public function notes(Request $request){
       $data = $request->input();
       $request->session()->put('amount', $data['amount']);
-      if ($request->input('business')) {
       $request->session()->put('business', $data['business']);
-    }else {
-      $request->session()->put('business', '0');
-    }
-      if ($request->input('insurance')) {
-        $request->session()->put('insurance', $data['insurance']);
-      }else {
-        $request->session()->put('insurance', '0');
-      }
+      $request->session()->put('insurance', $data['insurance']);
       return view('create.notes');
         // return view('create.notes');
     }
     public function contacts(Request $request){
       $data = $request->input();
       $request->session()->put('description', $data['description']);
-
-      if ($request->input('secret')) {
       $request->session()->put('secret', $data['secret']);
-    }else {
-      $request->session()->put('secret', '0');
-    }
-      if ($request->input('insurance')) {
-        $request->session()->put('docs', $data['docs']);
-      }else {
-        $request->session()->put('docs', '0');
-      }
+      $request->session()->put('docs', $data['docs']);
       return view('create.contacts');
     }
 
@@ -114,9 +96,7 @@ class CreateTaskController extends VoyagerBaseController
       $amount      = session()->pull('amount');
       $description = session()->pull('description');
       $secret      = session()->pull('secret');
-      $currenttime = date('Y-m-d H:i:s');
-      $userid      = Auth::id();
-      $data=array('created_at'=>$currenttime,'updated_at'=>$currenttime,'name'=>$name,"services_id"=>$category,"address"=>$location,"start_date"=>$date,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'providers_id'=>$userid,'phone'=>$phone,'show_only_to_performers'=>$secret);
+      $data=array('name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
       DB::table('tasks')->insert($data);
       return redirect('/')->with('success','Задание успешно добавлено!');
     }
