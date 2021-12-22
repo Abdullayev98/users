@@ -71,67 +71,77 @@
                         <li class="mb-1">
                             <a href="/performers" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
                         </li>
-                        <li class="mb-1">
-                            {{-- icon-1 --}}
-                            <div class="max-w-lg mx-auto">
-                                <button class="" type="button" data-dropdown-toggle="dropdown"><i class="ml-6 text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
-                                </button>
-                                <!-- Dropdown menu -->
-                                <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
-                                    <div class="px-4 py-3">
-                                        <span class="block text-base font-bold">Уведомления</span>
+
+                        @if (Route::has('login'))
+                            @auth
+                                <li class="mb-1">
+                                    {{-- icon-1 --}}
+                                    <div class="max-w-lg mx-auto ">
+                                        <button class="" type="button" data-dropdown-toggle="dropdown"><i class="ml-6 text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
+                                        </button>
+                                        <!-- Dropdown menu -->
+                                        <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
+                                            <div class="px-4 py-3">
+                                                <span class="block text-base font-bold">Уведомления</span>
+                                            </div>
+                                            <ul class="py-1" aria-labelledby="dropdown">
+                                                <li>
+                                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>Осталось только установить пароль</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">Отметить все как прочитанное</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <ul class="py-1" aria-labelledby="dropdown">
-                                        <li>
-                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>Осталось только установить пароль</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">Отметить все как прочитанное</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="mb-1">
-                            {{-- icon-2 --}}
-                            <div class="max-w-lg mx-auto">
-                                <button class="" type="button" data-dropdown-toggle="dropdown1"><i class="ml-6 text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
-                                </button>
-                                <!-- Dropdown menu -->
-                                <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown1">
-                                    <ul class="py-1" aria-labelledby="dropdown1">
-                                        <li>
-                                            <a href="/profile" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Профиль</a>
-                                        </li>
-                                        <li>
-                                            <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Настройки</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('logout') }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Выход</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="mb-1">
-                            {{-- icon-3 --}}
-                            <div>
-                                <a href="/chatify">
-                                    <i class="pl-6 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="mb-1">
-                            <div>
-                                <a href="#" onclick="toggleModal()">
-                                    <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-6 mt-1 HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
+                                </li>
+                                <li class="mb-1">
+                                    {{-- icon-2 --}}
+                                    <div class="max-w-lg mx-auto ml-6">
+                                        <button class="" type="button" data-dropdown-toggle="dropdown1"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
+                                        </button>
+                                        <!-- Dropdown menu -->
+                                        <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown1">
+                                            <ul class="py-1" aria-labelledby="dropdown1">
+                                                <li>
+                                                    <a href="/profile" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Профиль</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Настройки</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('logout') }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Выход</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mb-1">
+                                    {{-- icon-3 --}}
+                                    <div class="">
+                                        <a href="/chatify">
+                                            <i class="ml-6 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="mb-1">
+                                    <div class="">
+                                        <a href="#" onclick="toggleModal()">
+                                            <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-6 mt-1 HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
+                                        </a>
+                                    </div>
+                                </li>
+
+                            @else
+                                <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden">
+                                    <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или
+                                    <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
+                                </p>
+                            @endauth
+                        @endif
                 </div>
                 <div class="mt-auto">
                     <div class="pt-6">
