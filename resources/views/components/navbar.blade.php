@@ -218,11 +218,7 @@
             </div>
 
         @else
-            <<<<<<< HEAD
-            <p class="w-full hidden lg:block text-right inline-block float-right md:float-none mt-6 mb-6">
-                =======
             <p class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden">
-                >>>>>>> 777c842519d438191ecfa68f630be90bae9ad922
                 <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или
                 <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
             </p>
