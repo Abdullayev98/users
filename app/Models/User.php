@@ -60,4 +60,7 @@ class User extends \TCG\Voyager\Models\User
     public function Socials(){
         return $this->hasMany(Social::class);
     }
+    public function scopeUpdateViews($query, $id) {
+        return $query->whereId($id)->increment('views', 1);;
+    }
 }

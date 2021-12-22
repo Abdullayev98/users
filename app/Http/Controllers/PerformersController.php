@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use TCG\Voyager\Models\Category;
+use App\Models\User;
+
 
 class PerformersController extends Controller
 {
@@ -14,8 +16,12 @@ class PerformersController extends Controller
         return view('Performers/performers',compact('child_categories','categories'));
     }
     public function performer($id){
-        $categories = DB::table('categories')->where('parent_id', null)->get();
-        $users= DB::table('users')->where('id',$id)->get();
-        return view('Performers/executors-courier',compact('users','categories'));
+        $users= User::where('id',$id)->get();
+        // $posts = User::find($id); // fetch post from database
+        // $posts->increment('views'); // add a new page view to our 'views' column by incrementing it
+        $posts = User::updateViews($id);
+
+
+        return view('Performers/executors-courier',compact('users','posts'));
     }
 }
