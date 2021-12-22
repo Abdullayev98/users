@@ -62,11 +62,11 @@
             <div class="text-sm text-center mt-4">
                 готовы помочь вам в решении самых разнообразных задач
             </div>
-            <div class="grid md:grid-cols-3 grid-cols-1 w-full">
+            <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="">
-                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]"> {{ $category2->name }} </i>
+                <div class="text-gray-500 text-lg my-5 md:border-0 border-b md:p-0 pb-3">
+                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="block">
+                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]"></i> {{ $category2->name }}
                     </a>
                 </div>
                 @endforeach
@@ -149,7 +149,7 @@
         <div class="w-full bg-gradient-to-r from-[#fff] via-gray-400 to-[#fff] h-1 rounded-full"></div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-[#f6f8fa] to-[#fff]">
             <div class="container text-center mx-auto px-16">
-                <div class="text-4xl w-2/3 mx-auto py-16">
+                <div class="md:text-4xl text-[24px] w-3/3 font-semibold mx-auto py-10 md:py-16">
                     С YouDo вы экономите на услугах до 70%*.<br>
                     Как это возможно?
                 </div>
@@ -160,8 +160,8 @@
                             alt="">
                     </div>
                     <div class="text-left">
-                        <h3 class="text-4xl my-8">1.Создайте задание</h3>
-                        <h5 class="text-2xl my-8">Опишите своими словами задачу, которую требуется выполнить.</h5>
+                        <h3 class="md:text-4xl text-[24px] font-semibold my-8">1.Создайте задание</h3>
+                        <h5 class="md:text-2xl text-lg my-8">Опишите своими словами задачу, которую требуется выполнить.</h5>
                         <a href="/task/create?category_id=22"><h5 class="text-2xl text-blue-400 underline hover:text-red-500">Создать задание</h5>
                         </a>
                     </div>
@@ -180,8 +180,8 @@
                             src="https://assets.youdo.com/next/_next/static/images/hiw-2-aa57365db5ca978385ac301a2ef6a5e8.png"
                             alt="">
                     </div>
-                    <div class="text-left my-16 md:hidden block">
-                        <h3 class="text-4xl my-8">2.Исполнители предложат вам свои услуги и цены</h3>
+                    <div class="text-left md:hidden block">
+                        <h3 class="text-2xl font-semibold mt-8">2.Исполнители предложат вам свои услуги и цены</h3>
                         <h5 class="text-2xl my-8">Уже через пару минут вы начнете получать отклики от исполнителей,
                             готовых выполнить ваше задание.</h5>
                     </div>
@@ -190,10 +190,10 @@
                             src="https://assets.youdo.com/next/_next/static/images/hiw-3-afd296132a597387954d591bdc9952b2.png"
                             alt="">
                     </div>
-                    <div class="text-left my-16">
-                        <h3 class="text-4xl my-8">3.Выберите лучший отклик</h3>
+                    <div class="text-left mb-4">
+                        <h3 class="text-4xl mb-8">3.Выберите лучший отклик</h3>
                         <h5 class="text-2xl my-8">Вы сможете выбрать подходящего исполнителя, по разным критериям:</h5>
-                        <div class="grid grid-cols-2 text-gray-500">
+                        <div class="grid grid-cols-1 text-gray-500">
                             <div class=""><i class="fas fa-ruble-sign"> Стоимость услуг</i></div>
                             <div class=""><i class="fas fa-thumbs-up"> Отзывы заказчиков</i></div>
                             <div class=""><i class="fas fa-star"> Рейтинг</i></div>
@@ -202,13 +202,15 @@
                     </div>
                 </div>
             </div>
-            <div class="md:w-1/3 w-1/2 mx-auto h-16">
+            <div class="md:w-1/3 w-3/4 mx-auto my-4">
                 <button type="button" class=" bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Разместите
                     задание прямо сейчас
                 </button>
-                <h5 class="text-xl text-center">и найдите исполнителя за несколько минут</h5>
+                <div class="text-center text-xl">
+                    и найдите <br> исполнителя за несколько минут
+                </div>
             </div>
-            <div class="w-2/3 mx-auto my-16 text-center">
+            <div class="w-2/3 mx-auto my-8 text-center">
                 <p class="text-xs text-gray-400">*Экономия до 70% рассчитана на основании внутренних исследований и
                     анализа статистических данных ООО «Киберлогистик» за 2020 год, исходя из средней разницы между самым
                     дорогим и самым дешевым откликом исполнителей к размещенному заданию.</p>
