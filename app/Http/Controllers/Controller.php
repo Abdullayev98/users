@@ -55,8 +55,9 @@ class Controller extends BaseController
     }
     public function category($id){
         $categories = DB::table('categories')->where('parent_id', null)->get();
+        $choosed_category = DB::table('categories')->where('id', $id)->get();
         $child_categories= DB::table('categories')->where('parent_id',$id)->get();
-        return view('task/choosetasks',compact('child_categories','categories'));
+        return view('task/choosetasks',compact('child_categories','categories','choosed_category'));
     }
 
 }
