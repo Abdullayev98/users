@@ -29,10 +29,9 @@ class UserController extends Controller
         $tasks = Task::all();
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return view('home',compact('tasks'))
-                        ->withSuccess('Logged-in');
+            return redirect()->route('home', ['tasks'=>$tasks]);
         }
-        return view('login')->withSuccess('Credentials are wrong.');
+        return redirect()->route('login')->withSuccess('Credentials are wrong.');
     }
 
 
