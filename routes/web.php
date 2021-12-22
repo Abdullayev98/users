@@ -20,10 +20,13 @@ use App\Http\Controllers\PerformersController;
 
 
 Route::get('/performers', [PerformersController::class, 'service']);
-Route::get('/performers/executors-courier', function () {
+Route::get('/executors-courier', function () {
     return view('Performers/executors-courier');
 });
-
+Route::group(['prefix' => 'performers'], function () {
+Route::get('/', [PerformersController::class, 'service']);
+Route::get('/{id}', [PerformersController::class, 'performer'])->name('performer.main');
+});
 
 
 Route::group(['prefix' => 'admin'], function () {
