@@ -12,8 +12,8 @@
                     <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/author-reviews">Отзывы заказчиков</a><br>
                 </div>
                 <div class="mb-5 md:w-2/12 md:float-left -mt-5 md:m-0">
-                    <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/business">YouDo для бизнеса</a><br>
-                    <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/blog">Наш блог</a><br>
+                    <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#">YouDo для бизнеса</a><br>
+                    <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#">Наш блог</a><br>
                     <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#replain-link">Служба поддержки</a>
                 </div>
                 <div class="mb-5 md:float-left lg:float-none md:w-6/16">
