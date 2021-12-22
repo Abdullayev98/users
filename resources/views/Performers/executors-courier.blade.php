@@ -9,7 +9,7 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>{{ $posts }} просмотров профиля</span>
+                        <span>1 просмотров профиля</span>
                     </div>
                    <div>
                      @if($user->active_status == 1)
@@ -205,11 +205,7 @@
             <!--footer-->
             <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                 <div class="mt-4 ">
-<<<<<<< HEAD
-                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="#" >Создать задание</a>
-=======
                     <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >Создать задание</a>
->>>>>>> be0dbcf21225891814f5ab07f952745008b091c3
                 </div>
             </div>
           </div>

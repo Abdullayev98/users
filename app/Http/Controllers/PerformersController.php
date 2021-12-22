@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use TCG\Voyager\Models\Category;
 use App\Models\User;
+use App\Models\UserView;
+use Session;
+
 
 
 class PerformersController extends Controller
@@ -17,11 +20,6 @@ class PerformersController extends Controller
     }
     public function performer($id){
         $users= User::where('id',$id)->get();
-        // $posts = User::find($id); // fetch post from database
-        // $posts->increment('views'); // add a new page view to our 'views' column by incrementing it
-        $posts = User::updateViews($id);
-
-
-        return view('Performers/executors-courier',compact('users','posts'));
+        return view('Performers/executors-courier',compact('users'));
     }
 }
