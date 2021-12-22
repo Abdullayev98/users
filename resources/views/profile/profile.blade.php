@@ -19,9 +19,8 @@
                     <h2 class="font-bold text-2xl">Здравствуйте, {{$user->name}}!</h2>
                     <div class="grid grid-cols-3">
                         <div class="col-span-1 object-center  w-40 h-50">
-                            <img class="rounded-min mx-left overflow-hidden"
-                                src="{{asset("AvatarImages/{$user->avatar}")}}" alt="" width="384"
-                                height="512">
+                            <img class="rounded-min mx-left overflow-hidden" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="" width="384" height="512">
+                            <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
                             <form action="{{route('updatephoto' ,$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
@@ -186,10 +185,10 @@
                         <i class="fab fa-facebook-f text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                       
+
                             <h5 class="font-bold text-black block mt-2 text-md">Facebook </h5>
                             <a href="{{$social->social_link}}" target="_blank" class=" block text-sm">{{$social->social_name}}</a>
-                        
+
                     </div>
                 </div>
                 @endif
