@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
@@ -38,7 +37,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', [Controller::class, 'home'])->name('home');
 
-Route::get('/home/profile', [HomeController::class, 'profile'])->name('profile');
+Route::get('/home/profile', [HomeController::class, 'profile']);
 
 
 Route::get('/terms', function () {
