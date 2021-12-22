@@ -163,7 +163,7 @@
 
                     <div>
                         <img
-                            src="/public/storage/{{$howitwork->image}}"
+                            src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
                     <div class="text-left">
@@ -179,13 +179,13 @@
                     </div>
                     <div class="my-16 md:block hidden">
                         <img
-                            src="/public/storage/{{$howitwork->image}}"
+                            src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
 
                     <div class="my-16 md:hidden block">
                         <img
-                            src="/public/storage/{{$howitwork->image}}"
+                            src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
                     <div class="text-left md:hidden block">
