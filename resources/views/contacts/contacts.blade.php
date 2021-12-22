@@ -1,8 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="container w-full">
-        <div class="sub-container flex flex-row p-9 text-color-[#222]">
+        <div class="container mx-auto flex flex-row mt-8 mb-8 text-color-[#222]">
             <div class="basis-4/6 flex flex-row">
                 <div class="basis-5/6 flex flex-col">
                     <div class="basis-[100%] flex flex-row">
@@ -67,5 +66,4 @@
             </div>
             <div class="basis-2/6 invisible md:visible"><img src="https://youdo.com/_next/static/media/bardak.35854b6bb5e4459530827de9e859c853.png" alt=""></div>
         </div>
-    </div>
 @endsection

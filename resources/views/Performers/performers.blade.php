@@ -24,11 +24,11 @@
             </div>
 
             <div>
-                <div class="bg-white max-w-xl mx-auto">
+                <div class="max-w-xl mx-auto">
                     @foreach($categories as $category)
                         @if ($category->parent_id == NULL)
                             <label for="categories"></label>
-                            <select name="categories" id="categories" class="relative focus:outline-none mt-4 text-[#4099fb] cursor-pointer text-lg active:text-red-600">
+                            <select name="categories" id="categories" class="relative z-1 focus:outline-none mt-4 text-[#4099fb] cursor-pointer text-lg active:text-red-600">
                                 <option value="{{ $category->id }}">
                                     <div class="flex items-center justify-between mb-4 ">
                                         <span class="text-left font-bold text-blue-500  ">
