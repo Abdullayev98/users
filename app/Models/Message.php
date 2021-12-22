@@ -3,14 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use TCG\Voyager\Traits\Translatable;
 
 
 class Message extends Model
 {
+    use Translatable;
+    protected $translatable = ['is_answer','is_closed', 'text', 'status'];
     protected $table = "messages";
     protected $fillable = [
         'status'
     ];
+
     public function userObject()
     {
         return $this->belongsTo(User::class, 'user_id');

@@ -17,7 +17,9 @@
 
         </div>
         <div class="w-1/4">
-            <h4 class="font-bold text-xl">Курьерские услуги</h4>
+          @foreach($choosed_category as $choosed)
+            <h4 class="font-bold text-xl">{{$choosed->name}}</h4>
+            @endforeach
         </div>
         <div class="grid grid-cols-3 mt-8">
             @foreach($child_categories as $category)

@@ -21,10 +21,13 @@ use App\Http\Controllers\admin\VoyagerUserController;
 
 
 Route::get('/performers', [PerformersController::class, 'service']);
-Route::get('/performers/executors-courier', function () {
+Route::get('/executors-courier', function () {
     return view('Performers/executors-courier');
 });
-
+Route::group(['prefix' => 'performers'], function () {
+Route::get('/', [PerformersController::class, 'service']);
+Route::get('/{id}', [PerformersController::class, 'performer'])->name('performer.main');
+});
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -37,7 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('/', [Controller::class, 'home']);
+Route::get('/', [Controller::class, 'home'])->name('home');
 
 Route::get('/home/profile', [HomeController::class, 'profile']);
 
@@ -69,7 +72,7 @@ Route::get('/choose-task', function() {
 Route::get('/terms/doc', function() {
     return view('terms.pdf');
 });
-Route::get('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
+Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
 
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 

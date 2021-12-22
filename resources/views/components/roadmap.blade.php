@@ -1,4 +1,4 @@
-<div class="bg-[#f5f5fa] bg-center bg-cover mt-4 h-40 py-4 invisible lg:visible">
+<div class="bg-[#f5f5fa] bg-center bg-cover mt-4 h-40 py-4 hidden md:block">
     <div class="row-start-2 row-span-2 mx-56 h-full">
         <div class="grid grid-cols-3 gap-6 h-full">
             <div class="text-left h-full">

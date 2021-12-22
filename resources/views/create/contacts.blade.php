@@ -31,18 +31,9 @@
 
         <div>
             <div class="mb-3 xl:w-full">
-                <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">
-                    Описание</label>
-                <input type="text" name="phone" value="+998">
+                <input value="+998" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none " type="text" required name="phone">
               </div>
         </div>
-
-        <div>
-            <span class="underline hover:text-[#5f5869] text-lg decoration-dotted cursor-pointer float-right">Приватная информация</span>
-        </div>
-
-
-
           </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
