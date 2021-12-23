@@ -13,7 +13,9 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>15 просмотров профиля</span>
+                        @foreach($vcs as $vc)
+                        <span>{{$vc->count}} просмотров профиля</span>
+                        @endforeach
                     </div>
                     <br>
                     <h2 class="font-bold text-lg">Здравствуйте, {{$user->name}}!</h2>
@@ -43,16 +45,16 @@
                         @if($user->age!="")
                             <p class="inline-block text-m mr-2">
                                 {{$user->age}}
-                                @if($user->age>20 && $user->age%10==1) год 
+                                @if($user->age>20 && $user->age%10==1) год
                                 @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
-                                @else лет                            
-                                @endif 
+                                @else лет
+                                @endif
                             </p>
                         @endif
-                       
+
                         <span class="inline-block">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p class="inline-block text-m"> 
+                            <p class="inline-block text-m">
                                 @if($user->location!="") {{$user->location}} город
                                 @else город не включен
                                 @endif
@@ -110,7 +112,7 @@
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="email">Phone number</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number" 
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number"
                                                     @if ($user->phone_number=="") placeholder="998911234567"
                                                     @else value="{{$user->phone_number}}"
                                                     @endif >
@@ -144,9 +146,9 @@
                                                 </div>
                                                 <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
                                                 <hr>
-                                            </form>   
-                                               
-                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>                                                                
+                                            </form>
+
+                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -171,7 +173,7 @@
 {{-- settings/ third tab start -> subscribe for some tasks --}}
                                     <div class="w-4/5 mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. Выберите категории</h3>
-    {{-- choosing categories --}}                                    
+    {{-- choosing categories --}}
                                         <form action="{{route('get.category')}}" method="post">@csrf
                                             <div class="acordion mt-16">
                                                 @foreach ($categories as $category )
@@ -233,7 +235,7 @@
                                                                         <form action="{{route('insert.district')}}" method ="post">
                                                                             @csrf
                                                                             <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="district" type="text" placeholder="Поиск регионы" value="{{$user->district}}">
-                                                                        
+
                                                                         <input type="submit" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-8 md:px-8 text-center" value = "Оставить заявку">
                                                                         </form>
                                                                     </tbody>
@@ -309,7 +311,7 @@
                                         </div> --}}
     {{-- notification type end --}}
     {{-- task recommmendation --}}
-                                       
+
                                     </div>
 {{-- settings/ third tab end -> subscribe for some tasks --}}
                                 </div>

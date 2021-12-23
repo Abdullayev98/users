@@ -13,7 +13,9 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>{{$user->views}} просмотров профиля</span>
+                        @foreach($vcs as $vc)
+                        <span>{{$vc->count}} просмотров профиля</span>
+                        @endforeach
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl mb-2">Здравствуйте, {{$user->name}}!</h2>
@@ -54,16 +56,16 @@
                             @if($user->age!="")
                                 <p class="inline-block text-m mr-2">
                                     {{$user->age}}
-                                    @if($user->age>20 && $user->age%10==1) год 
+                                    @if($user->age>20 && $user->age%10==1) год
                                     @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
-                                    @else лет                            
-                                    @endif 
+                                    @else лет
+                                    @endif
                                 </p>
                             @endif
-                           
+
                             <span class="inline-block">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <p class="inline-block text-m"> 
+                                <p class="inline-block text-m">
                                     @if($user->location!="") {{$user->location}} город
                                     @else город не включен
                                     @endif

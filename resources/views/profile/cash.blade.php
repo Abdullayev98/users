@@ -11,10 +11,10 @@
             {{-- user ma'lumotlari --}}
             <div class="col-span-2 md:mx-3 mx-0">
                 <figure class="w-full">
-                    <div class="top-0 right-0 float-right text-gray-500 text-sm">
+                    <!-- <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>15 просмотров профиля</span>
-                    </div>
+
+                    </div> -->
                     <br>
                     <h2 class="font-bold text-2xl">Здравствуйте, Цезар!</h2>
                     <div class="grid grid-cols-3 mx-auto md:mx-1">
