@@ -8,13 +8,14 @@
   appearance: none;
 }
 </style>
-    <div class="flex flex-row container mx-auto mt-16">
+<div class="container mx-auto mt-16">
+    <div class="grid grid-cols-3  grid-flow-row">
 
-{{-----------------------------------------------------------------------------------}}
-{{--                             Left column                                       --}}
-{{-----------------------------------------------------------------------------------}}
+            {{-----------------------------------------------------------------------------------}}
+            {{--                             Left column                                       --}}
+            {{-----------------------------------------------------------------------------------}}
 
-        <div class="flex flex-col basis-1/3 px-8">
+        <div class="lg:col-span-1 col-span-3 px-8">
             <div class="flex flex-row shadow-lg rounded-lg mb-8">
                 <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url(images/like.png);">
                 </div>
@@ -24,7 +25,7 @@
             </div>
 
             <div>
-                <div class="max-w-xl mx-auto">
+                <div class="max-w-md mx-left">
                     @foreach($categories as $category)
                         @if ($category->parent_id == NULL)
                             <label for="categories"></label>
@@ -55,11 +56,11 @@
             </div>
         </div>
 
-{{-----------------------------------------------------------------------------------}}
-{{--                             Right column                                      --}}
-{{-----------------------------------------------------------------------------------}}
+            {{-----------------------------------------------------------------------------------}}
+            {{--                             Right column                                      --}}
+            {{-----------------------------------------------------------------------------------}}
 
-        <div class="flex flex-col basis-2/3">
+        <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16">
             <div class="bg-gray-100 flex flex-row h-40 mb-10" style="width: 700px;">
                 <div class="flex flex-col relative">
                     <div class="flex flex-row font-bold text-2xl m-4">
@@ -109,13 +110,13 @@
                 </div>
                 <div class="my-10">
                     <div class="flex flex-row">
-                       <a href="/performers/{{$user->id}}"> <p class="text-3xl underline text-blue-500 hover:text-red-500">{{$user->name}}</p></a>
+                    <a href="/performers/{{$user->id}}"> <p class="text-3xl underline text-blue-500 hover:text-red-500">{{$user->name}}</p></a>
                         <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
                     </div>
                     <div>
-                      @if($user->active_status == 1)
+                    @if($user->active_status == 1)
                         <p class="text-sm text-gray-500 my-3">Онлайн</p>
                         @else
                         <p class="text-sm text-gray-500 my-3">Офлайн</p>
@@ -123,11 +124,11 @@
                     </div>
                     <div>
                         <p class="text-base" style="width: 500px;">
-                          {{$user->description}}
+                        {{$user->description}}
                         </p>
                     </div>
                     <div>
-                      <a href="#" onclick="toggleModal12('modal-id12')">  <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 text-white mt-3">Предложить задание</button></a>
+                    <a href="#" onclick="toggleModal12('modal-id12')">  <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 text-white mt-3">Предложить задание</button></a>
                     </div>
                 </div>
             </div>
@@ -138,6 +139,7 @@
 
         </div>
     </div>
+</div>
 
      {{-- Modal start --}}
      <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id12">
