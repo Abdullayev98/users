@@ -85,10 +85,10 @@
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->
                             <ul id="tabs" class="md:inline-flex block w-full flex-center px-1 pt-2">
-                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
-                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
-                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
-                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Безопасность</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
+                                <li class="xl:px-2 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Безопасность</a></li>
                             </ul>
 
 <!-- Tab Contents -->
@@ -215,10 +215,36 @@
                                             <p class=" mt-5 text-sm text-left text-gray-600 ">Выберите районы, из которых вы хотите получать уведомления о новых заданиях:</p>
                                             <div class="parentCategory rounded-xl bg-gray-200 px-3 py-3">
                                                 <h4 class="font-bold text-gray-900 text-lg">город Ташкент</h4>
-                                                <button id="open-btn" class="rounded-xl bg-gray-300 h-10 w-2/5 px-10 mb-5">
-                                                    <i class="fas fa-exchange-alt inline mr-3"></i>
-                                                    <span class="inline">Изменить район</span>
-                                                </button>
+                                                <div x-data="{ showModal : false }">
+                                                    <button @click="showModal = !showModal" class="rounded-xl bg-gray-300 h-10 w-2/5 px-10">
+                                                        <i class="fas fa-exchange-alt inline mr-3"></i>
+                                                        <span class="inline">Изменить район</span>
+                                                    </button>
+                                                    <!-- Modal Background -->
+                                                    <div x-show="showModal" class="fixed flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-40 left-0 right-0 top-0 bottom-0" x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+                                                        <!-- Modal -->
+                                                        <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-10/12 h-auto md:w-4/12 mx-10" @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
+                                                            <div class="mx-auto pl-10 my-10 rounded-[20px] text-black">
+                                                                <table>
+                                                                    <thead>
+                                                                        <div class="md:text-[2rem] text-[1.8rem] md:w-[500px] font-bold font-['Radiance,sans-serif,Noto Sans']">Выберите регион</div>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="" type="text" placeholder="Поиск регионы">
+                                                                    </tbody>
+                                                                    <div class="py-8">
+                                                                        <a type="button" href="#contact" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-3 md:px-8 text-center">Оставить заявку</a>
+                                                                    </div>
+                                                                    <div class="text-right space-x-5">
+                                                                        <button @click="showModal = !showModal" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">Закрыть</button>
+                                                                    </div>
+                                                                </table>
+                                                            </div>
+                                                            <!-- script modal -->
+                                                            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <h4 class="font-bold text-gray-900 text-lg">Ташкентская область</h4>
                                                 <button id="open-btn" class="rounded-xl bg-gray-300 h-10 w-2/5 px-10 mb-5">
                                                     <i class="fas fa-exchange-alt inline mr-3"></i>
