@@ -20,7 +20,7 @@
                 <div class="col-span-2">
                     <div class="w-full bg-[#f8f7ee] my-5">
                         <div class="px-5 py-5">
-                            <form action="{{route('task_search')}}" method="get">
+                            <form action="{{route('search')}}" method="get">
                             <div class="grid grid-cols-4 gap-4 mb-3">
 
                                 <div class="inline-flex w-full col-span-4">
@@ -95,7 +95,7 @@
                         </div>
 
 
-                        <div id="scrollbar" class="w-full h-full blog1 my-5">
+                        <div id="scrollbar" class="w-full h-full blog1">
 {{--                          <div class="w-full overflow-y-scroll w-full h-screen">--}}
                             @foreach($tasks as $task)
                             <div class="w-full border hover:bg-blue-100">
@@ -249,35 +249,6 @@
         $(".rotate").click(function(){
             $(this).toggleClass("rotate-[360deg]");
         });
-
-
-        function first_ajax(id)
-        {
-            $.ajax({
-                url: 'route({{}})'+id+'',         /* Куда пойдет запрос */
-                method: 'get',             /* Метод передачи (post или get) */
-                //dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-                //data: {text: 'Текст'},     /* Параметры передаваемые в запросе. */
-                success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
-                    //alert(data);            /* В переменной data содержится ответ от index.php. */
-                    // console.log(data);
-
-                    $("#articles").empty();
-                    $.each(data, function(index, data){
-                    $("#articles").append(
-
-                        `  `,
-                        `  `,
-
-                    );
-
-                });
-        }
-        });
-        }
-
-
-
 
     </script>
 
