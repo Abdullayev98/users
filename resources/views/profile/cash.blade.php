@@ -42,7 +42,7 @@
                 <div class="content  mt-20 ">
                     <div class="grid md:grid-cols-10 w-full">
                         <ul class="md:col-span-9 col-span-10 items-center w-3/4 md:w-full">
-                            <li class="inline mr-1 md:mr-5"><a href="/home/profile" class="md:text-[18px] text-[14px]" >Обо мне</a></li>
+                            <li class="inline mr-1 md:mr-5"><a href="/profile" class="md:text-[18px] text-[14px]" >Обо мне</a></li>
                             <li class="inline mr-1 md:mr-5"><a href="/profile/cash" class="md:text-[18px] text-[14px] font-bold" >Счет</a></li>
                             {{-- <li class="inline mr-1 md:mr-5"><a href="/home/profile" class="md:text-[18px] text-[14px]" >Тарифы</a></li>
                             <li class="inline mr-1 md:mr-5"><a href="/home/profile" class="md:text-[18px] text-[14px]">Страхование</a></li> --}}
