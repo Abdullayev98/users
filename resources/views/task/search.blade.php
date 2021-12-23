@@ -30,7 +30,7 @@
 
                                 <div class="col-span-2">
                                     <label class="text-xs">Город, адрес, метро, район...</label>
-                                    <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text">
+                                    <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
                                 </div>
 
                                 <div class="">
@@ -47,7 +47,7 @@
 
                                 <div class="ml-3">
                                     <label class="text-xs">Стоимость заданий от</label>
-                                    <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." value="">
+                                    <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
                                 </div>
 
                                 <ul class="inline-flex flex-wrap w-full col-span-3">
