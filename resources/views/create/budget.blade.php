@@ -8,7 +8,7 @@
   @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
-  <div class="col-span-2">
+  <div class="md:col-span-2 col-span-3">
     <div class="w-full text-center text-2xl">
       Ищем исполнителя для задания "{{session('name')}}"
     </div>
@@ -56,9 +56,7 @@
       </div>
     </div>
   </div>
-  <div class="col-span">
     <x-faq/>
-  </div>
 </div>
 </div>
 </form>

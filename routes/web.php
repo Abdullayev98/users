@@ -6,6 +6,7 @@ use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\PerformersController;
+use App\Http\Controllers\admin\VoyagerUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,14 +21,18 @@ use App\Http\Controllers\PerformersController;
 
 
 Route::get('/performers', [PerformersController::class, 'service']);
-Route::get('/performers/executors-courier', function () {
+Route::get('/executors-courier', function () {
     return view('Performers/executors-courier');
 });
-
+Route::group(['prefix' => 'performers'], function () {
+Route::get('/', [PerformersController::class, 'service']);
+Route::get('/{id}', [PerformersController::class, 'performer'])->name('performer.main');
+});
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    Route::get("users/activitiy/{user}", [VoyagerUserController::class, "activity"])->name("users.activity");
     Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.index");
     Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating");
     Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("appeal.close");
@@ -35,7 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('/', [Controller::class, 'home']);
+Route::get('/', [Controller::class, 'home'])->name('home');
 
 Route::get('/home/profile', [HomeController::class, 'profile']);
 
