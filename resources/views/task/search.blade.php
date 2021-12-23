@@ -24,7 +24,7 @@
                             <div class="grid grid-cols-4 gap-4 mb-3">
 
                                 <div class="inline-flex w-full col-span-4">
-                                    <input id="suggest" class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
+                                    <input id="suggest" class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Поиск по ключевым словам" aria-label="Full name">
                                     <button id="mpshow" class="bg-green-500 px-4 py-1 rounded">Найти</button>
                                 </div>
 

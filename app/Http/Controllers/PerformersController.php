@@ -24,6 +24,6 @@ class PerformersController extends Controller
         $users= User::where('id',$id)->get();
         $categories = DB::table('categories')->get();
         $child_categories = DB::table('categories')->get();
-        return view('Performers/executors-courier',compact('users','categories','child_categories','posts'));
+        return view('Performers/executors-courier',compact('users','categories','child_categories'));
     }
 }
