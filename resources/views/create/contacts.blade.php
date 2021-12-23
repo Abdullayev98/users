@@ -31,15 +31,15 @@
 
         <div>
             <div class="mb-3 xl:w-full">
-                <input value="+998" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none " type="text" required name="phone">
+                <input value="+998" minlength="13" maxlength="13" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none " type="text" required name="phone">
               </div>
         </div>
           </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
-              <button type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+              <a href="/task/create/note" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                  Назад
-               </button>
+               </a>
                <input type="submit"
                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                name="" value="Отправить">
