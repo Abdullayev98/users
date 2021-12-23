@@ -154,52 +154,50 @@
                     Как это возможно?
                 </div>
                 <div class="grid md:grid-cols-2 grid-cols-1 mt-8 w-11/12 mx-auto">
+
+@php $cnt_for_hiw = 0; @endphp
+
+@foreach($howitworks as $howitwork)
+
+@if(($cnt_for_hiw % 2) == 0)
+
                     <div>
                         <img
-                            src="https://assets.youdo.com/next/_next/static/images/hiw-1-be91158a87ea183e3cd3e3dcc56471a5.png"
+                            src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
                     <div class="text-left">
-                        <h3 class="md:text-4xl text-[24px] font-semibold my-8">1.Создайте задание</h3>
-                        <h5 class="md:text-2xl text-lg my-8">Опишите своими словами задачу, которую требуется выполнить.</h5>
-                        <a href="/task/create?category_id=22"><h5 class="text-2xl text-blue-400 underline hover:text-red-500">Создать задание</h5>
-                        </a>
+                        <h3 class="md:text-4xl text-[24px] font-semibold my-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
+                        {!!$howitwork->description!!}
                     </div>
+
+@else
+
                     <div class="text-left my-16 md:block hidden">
-                        <h3 class="text-4xl my-8">2.Исполнители предложат вам свои услуги и цены</h3>
-                        <h5 class="text-2xl my-8">Уже через пару минут вы начнете получать отклики от исполнителей,
-                            готовых выполнить ваше задание.</h5>
+                        <h3 class="text-4xl font-semibold my-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
+                        {!!$howitwork->description!!}
                     </div>
                     <div class="my-16 md:block hidden">
                         <img
-                            src="https://assets.youdo.com/next/_next/static/images/hiw-2-aa57365db5ca978385ac301a2ef6a5e8.png"
+                            src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
+
                     <div class="my-16 md:hidden block">
                         <img
-                            src="https://assets.youdo.com/next/_next/static/images/hiw-2-aa57365db5ca978385ac301a2ef6a5e8.png"
+                            src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
                     <div class="text-left md:hidden block">
-                        <h3 class="text-2xl font-semibold mt-8">2.Исполнители предложат вам свои услуги и цены</h3>
-                        <h5 class="text-2xl my-8">Уже через пару минут вы начнете получать отклики от исполнителей,
-                            готовых выполнить ваше задание.</h5>
+                        <h3 class="text-2xl font-semibold mt-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
+                        {!!$howitwork->description!!}
                     </div>
-                    <div class="my-16">
-                        <img
-                            src="https://assets.youdo.com/next/_next/static/images/hiw-3-afd296132a597387954d591bdc9952b2.png"
-                            alt="">
-                    </div>
-                    <div class="text-left mb-4">
-                        <h3 class="text-4xl mb-8">3.Выберите лучший отклик</h3>
-                        <h5 class="text-2xl my-8">Вы сможете выбрать подходящего исполнителя, по разным критериям:</h5>
-                        <div class="grid grid-cols-1 text-gray-500">
-                            <div class=""><i class="fas fa-ruble-sign"> Стоимость услуг</i></div>
-                            <div class=""><i class="fas fa-thumbs-up"> Отзывы заказчиков</i></div>
-                            <div class=""><i class="fas fa-star"> Рейтинг</i></div>
-                            <div class=""><i class="fas fa-user-alt"> Примеры работ</i></div>
-                        </div>
-                    </div>
+@endif
+
+                    @php $cnt_for_hiw++ @endphp
+
+@endforeach
+
                 </div>
             </div>
             <div class="md:w-1/3 w-3/4 mx-auto my-4">
