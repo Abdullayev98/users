@@ -20,3 +20,7 @@ Route::get('/profile/delete', [ProfileController::class, 'destroy'])->name('user
 
 //added category id
 Route::post('/profile/getcategory',[ProfileController::class, 'getCategory'])->name('get.category');
+
+Route::post('/profile/insertdistrict',[ProfileController::class, 'StoreDistrict'])->name('insert.district');
+
+
