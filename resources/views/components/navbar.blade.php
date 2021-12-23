@@ -66,7 +66,7 @@
                             </div>
                         </li>
                         <li class="mb-1">
-                            <a href="{{ route('task.search') }}" class="block p-4 text-sm text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded font-medium delete-task text-gray-500">Найти задания</a>
+                            <a href="{{ route('tasks_all') }}" class="block p-4 text-sm text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded font-medium delete-task text-gray-500">Найти задания</a>
                         </li>
                         <li class="mb-1">
                             <a href="/performers" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
@@ -216,7 +216,7 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200]">Найти задания</a>
+        <a href="{{ route('tasks_all') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200]">Найти задания</a>
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
     </div>
 
