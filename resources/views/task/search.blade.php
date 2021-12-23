@@ -101,7 +101,7 @@
                             <div class="w-full border hover:bg-blue-100">
                               <div class="w-11/12 h-12 m-4">
                                 <div class="float-left w-9/12">
-                                  <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                                  <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="/detailed-tasks" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->name}}
                                   </a>
                                   <p class="text-sm ml-12mt-4">
