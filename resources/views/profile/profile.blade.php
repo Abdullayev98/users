@@ -18,7 +18,7 @@
                     <br>
                     <h2 class="font-bold text-2xl">Здравствуйте, {{$user->name}}!</h2>
                     <div class="grid grid-cols-3">
-                        <div class="col-span-1 object-center  w-40 h-50">
+                        <div class="col-span-1 w-40 h-50">
                             <img class="rounded-min mx-left overflow-hidden"
                                 src="{{asset("AvatarImages/{$user->avatar}")}}" alt="" width="384"
                                 height="512">
@@ -31,8 +31,6 @@
                                         <span>Изменить фото</span>
                                     </label>
                                 </div>
-
-
                                 <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="baatton" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden" >
                                 <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
@@ -44,18 +42,7 @@
                                 </div>
                             </form>
                         </div>
-                        {{-- <div class="relative inline-block object-center  w-40 h-50">
-                            <img class="rounded-min mx-left overflow-hidden"
-                                src="{{asset($user->avatar)}}" alt="" width="384"
-                                height="512">
-                                    <button class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button" onclick="openpopup()">
-                                        <i class="fas fa-camera"></i>
-                                        <span>Изменить фото</span>
-                                    </button>
-
-                        </div> --}}
-
-                        <div class="sm:col-span-1   col-span-3  md:ml-3 mt-1">
+                        <div class="sm:col-span-1 col-span-3  md:ml-3 mt-1">
                             <p class="inline-block text-m mr-2">34 год</p>
                             <span class="inline-block">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -72,8 +59,8 @@
                         <ul class=" md:col-span-9 items-center w-3/4 md:w-full" id="tabs">
                             <li class=" md:mr-5 mr-1 inline-block"><a href="/home/profile" class=" md:text-[18px] text-[14px] font-bold block " id="default-tab">Обо мне</a></li>
                             <li class=" md:mr-5 mr-1 inline-block"><a href="/profile/cash" class=" md:text-[18px] text-[14px]">Счет</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="#third" class=" md:text-[18px] text-[14px]">Тарифы</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/home/profile" class="md:text-[18px] text-[14px]">Страхование</a></li>
+                            {{-- <li class=" md:mr-5 mr-1 inline-block"><a href="#third" class=" md:text-[18px] text-[14px]">Тарифы</a></li>
+                            <li class=" md:mr-5 mr-1 inline-block"><a href="/home/profile" class="md:text-[18px] text-[14px]">Страхование</a></li> --}}
                             <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">Настройки</a></li>
 
                         </ul>
@@ -108,11 +95,9 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer">
+                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl my-auto hover:bg-gray-100 cursor-pointer">
                                 <div class="rounded-xl ring-1 ring-gray-300  object-center w-full h-auto">
                                     <i class="fas fa-plus-circle text-gray-300 text-9xl text-center w-full"></i>
-
                                 </div>
                             </div>
                         </div>
@@ -161,7 +146,7 @@
                 </div>
                 <p class="mx-5 my-4">Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных
                     сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.</p>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
                         <i class="fas fa-fingerprint text-white"></i>
                     </div>
@@ -169,7 +154,7 @@
                         <h5 class="font-bold text-black block mt-2 text-md">OneID</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div>
+                </div> --}}
                 {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
                         <i class="far fa-envelope text-white"></i>
@@ -220,7 +205,7 @@
 
         }
         function fileadd(){
-          var x = document.getElementById("baatton");
+          var x = document.getElementById("buttons");
 
                 x.classList.add("hidden");
         }

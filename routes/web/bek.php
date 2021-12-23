@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // this routes was added from Bekzod
-Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
+Route::get('/profile', [Controller::class, 'profile'])->name('profile');
 
 Route::prefix("profile")->group(function(){
     Route::get('/', [Controller::class, 'home_profile'])->name('home.profile');

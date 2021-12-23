@@ -18,7 +18,7 @@ class Controller extends BaseController
         $tasks  =  Task::latest()->paginate(15);
         return view('home',compact('tasks'));
     }
-    public function home_profile(){
+    public function profile(){
         return view('/profile/profile');
     }
     public function task_create(){

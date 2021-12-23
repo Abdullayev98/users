@@ -42,7 +42,7 @@
                 <div class="content  mt-20 ">
                     <div class="grid md:grid-cols-10 w-full">
                         <ul class="md:col-span-9 col-span-10 items-center w-3/4 md:w-full">
-                            <li class="inline mr-1 md:mr-5"><a href="/home/profile" class="md:text-[18px] text-[14px]" >Обо мне</a></li>
+                            <li class="inline mr-1 md:mr-5"><a href="/profile" class="md:text-[18px] text-[14px]" >Обо мне</a></li>
                             <li class="inline mr-1 md:mr-5"><a href="/profile/cash" class="md:text-[18px] text-[14px] font-bold" >Счет</a></li>
                             {{-- <li class="inline mr-1 md:mr-5"><a href="/home/profile" class="md:text-[18px] text-[14px]" >Тарифы</a></li>
                             <li class="inline mr-1 md:mr-5"><a href="/home/profile" class="md:text-[18px] text-[14px]">Страхование</a></li> --}}
@@ -138,7 +138,7 @@
                             <p class="text-black block ">user@yandex.ru</p>
                         </div>
                     </div>
-                    <div class="telefon ml-4 h-20 grid grid-cols-4">
+                    {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                         <div class="w-10 h-10 text-center mx-auto my-auto py-2 rounded-xl col-span-1"
                             style="background-color: #4285F4;">
                             <i class="fab fa-google text-white"></i>
@@ -147,11 +147,11 @@
                             <h5 class="font-bold text-black block mt-2">Google</h5>
                             <p class="text-black block ">Подтвержден</p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <p class="mx-5 my-4">Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных
                     сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.</p>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-10 h-10 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="fas fa-fingerprint text-white"></i>
                     </div>
@@ -159,8 +159,8 @@
                         <h5 class="font-bold text-black block mt-2 text-md">OneID</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                </div> --}}
+                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-10 h-10 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="far fa-envelope text-white"></i>
                     </div>
@@ -168,7 +168,7 @@
                         <h5 class="font-bold text-black block mt-2 text-md">mail.ru</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div>
+                </div> --}}
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-10 h-10 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-facebook-f text-white"></i>
@@ -178,7 +178,7 @@
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
                 </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-10 h-10 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-twitter text-white"></i>
                     </div>
@@ -186,8 +186,8 @@
                         <h5 class="font-bold text-black block mt-2 text-md">Twitter</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                </div> --}}
+                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-10 h-10 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-apple text-white"></i>
                     </div>
@@ -195,7 +195,7 @@
                         <h5 class="font-bold text-black block mt-2 text-md">AppleID</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
             {{-- right side bar end--}}
         </div>
