@@ -8,7 +8,7 @@
   appearance: none;
 }
 </style>
-    <div class="flex flex-row container mx-auto mx-40 my-8">
+    <div class="flex flex-row container mx-auto mt-16">
 
 {{-----------------------------------------------------------------------------------}}
 {{--                             Left column                                       --}}
