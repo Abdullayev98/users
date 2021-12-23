@@ -43,7 +43,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', [Controller::class, 'home'])->name('home');
 
-Route::get('/home/profile', [HomeController::class, 'profile']);
+//Route::get('/home/profile', [HomeController::class, 'profile']);
 
 
 Route::get('/terms', function () {

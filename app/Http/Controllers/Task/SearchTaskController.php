@@ -10,19 +10,23 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 class SearchTaskController extends VoyagerBaseController
 {
 
-    public function tasksAll(){
+    public function task_search(){
+
 
         $tasks = Task::paginate(20);
 
+//        return view("task/search", compact('tasks', paginate(50)));
+//        dd($tasks->all());
+//          return view('task.search', ['tasks'=>$tasks->paginate(50)]);
         return view('task.search', compact('tasks'));
     }
 
-    public function myTasks(){
+    public function my_tasks(){
         $tasks = Task::where('user_id', auth()->id());
-        return view('task.mytasks',compact('tasks'));
+//        dd($tasks);
+        return view('/task/mytasks',compact('tasks'));
     }
-
-    public function taskSearch(Request $request){
+    public function search(Request $request){
       $s = $request->s;
       $a = $request->a;
       $p = $request->p;

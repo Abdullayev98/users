@@ -20,7 +20,7 @@
                 <div class="col-span-2">
                     <div class="w-full bg-[#f8f7ee] my-5">
                         <div class="px-5 py-5">
-                            <form action="{{route('task_search')}}" method="get">
+                            <form action="{{route('search')}}" method="get">
                             <div class="grid grid-cols-4 gap-4 mb-3">
 
                                 <div class="inline-flex w-full col-span-4">
@@ -112,7 +112,7 @@
                         </div>
 
 
-                        <div id="scrollbar" class="w-full h-full blog1 my-5">
+                        <div id="scrollbar" class="w-full h-full blog1">
 {{--                          <div class="w-full overflow-y-scroll w-full h-screen">--}}
                             @foreach($tasks as $task)
                             <div class="w-full border hover:bg-blue-100">
@@ -270,6 +270,7 @@
             $(this).toggleClass("rotate-[360deg]");
         });
 
+<<<<<<< HEAD
         function all_cat(){
            // if ($('#all_check').is(':checked').removeAttr(checked)
                 // .prop('checked'): true
@@ -305,6 +306,8 @@
 
 
 
+=======
+>>>>>>> 329b78ecaf88cda9171913e101a0ccf7e8bd3bb8
     </script>
 
 @endsection

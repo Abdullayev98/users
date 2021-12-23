@@ -13,7 +13,7 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>{{$user->views}} просмотров профиля</span>
+
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl mb-2">Здравствуйте, {{$user->name}}!</h2>
@@ -54,16 +54,16 @@
                             @if($user->age!="")
                                 <p class="inline-block text-m mr-2">
                                     {{$user->age}}
-                                    @if($user->age>20 && $user->age%10==1) год 
+                                    @if($user->age>20 && $user->age%10==1) год
                                     @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
-                                    @else лет                            
-                                    @endif 
+                                    @else лет
+                                    @endif
                                 </p>
                             @endif
-                           
+
                             <span class="inline-block">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <p class="inline-block text-m"> 
+                                <p class="inline-block text-m">
                                     @if($user->location!="") {{$user->location}} город
                                     @else город не включен
                                     @endif
@@ -177,7 +177,7 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2 text-md">Google</h5>
-                            <a href="https://www.google.com/" target="_blank" class="block text-sm">Привязать</p></a>
+                            <a href="https://www.google.com/" target="_blank" class="block text-sm">Привязать</a></p></a>
                         </div>
                     </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
