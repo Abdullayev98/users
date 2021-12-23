@@ -41,7 +41,7 @@
                     </div>
                     <div class="inline-block ml-3 mt-1">
                         <p class="inline-block text-m mr-2">{{$user->age}} @if($user->age>20 && $user->age%10==1) год @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
-                        @else лет                            
+                        @else лет
                         @endif</p>
                         <span class="inline-block">
                             <i class="fas fa-map-marker-alt"></i>
@@ -130,9 +130,9 @@
                                                 </div>
                                                 <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
                                                 <hr>
-                                            </form>   
-                                               
-                                            <a  onclick="ConfirmDelete()" type="submit" href="{{ route('users.delete') }}" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>                                                                
+                                            </form>
+
+                                            <a  onclick="ConfirmDelete()" type="submit" href="{{ route('users.delete') }}" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -158,16 +158,64 @@
                                     <div class="w-4/5 mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. Выберите категории</h3>
     {{-- choosing categories --}}
-                                        <div class="parentCategory rounded-xl bg-gray-200 px-3 py-3">
-                                            <h4 class="font-bold text-gray-900 text-lg">Курьерские услуги</h4>
-                                            <div class="childCategory px-10 mb-5">
-                                                <div class="firstChild">
-                                                    <input type="checkbox" class="w-5 h-5 inline">
-                                                    <p class="text-lg inline ml-2">Услуги пешего курьера</p>
+
+                                        <div class="acordion mt-16">
+                                            <div class="mb-4 rounded-md border shadow-md">
+                                                <button class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
+                                                    Курьерские услуги
+                                                </button>
+                                                <div class="panel overflow-hidden hidden px-[18px] bg-white p-4">
+                                                    <div>
+                                                        <div>
+                                                            <label class="block">
+                                                                <input type="checkbox" class="mr-2 required:border-[#ffa200]">Услуги пешего курьера
+                                                            </label>
+                                                            <label class="block">
+                                                                <input type="checkbox" class="mr-2 bg-[#ffa200]">Услуги курьера на легковом авто
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-    {{-- choosing categories end --}}
+
+                                            <div class="mb-4 rounded-md border shadow-md">
+                                                <button class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
+                                                    Ремонт и строительство
+                                                </button>
+                                                <div class="panel overflow-hidden hidden px-[18px] bg-white">
+                                                    <div>
+                                                        <div>
+                                                            <label class="block">
+                                                                <input type="checkbox" class="mr-2 required:border-[#ffa200]">Мастер на час
+                                                            </label>
+                                                            <label class="block">
+                                                                <input type="checkbox" class="mr-2 bg-[#ffa200]">Ремонт под ключ
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                                <script>
+                                                    var acc = document.getElementsByClassName("accordion");
+                                                    var i;
+
+                                                    for (i = 0; i < acc.length; i++) {
+                                                        acc[i].addEventListener("click", function() {
+                                                            this.classList.toggle("active");
+                                                            var panel = this.nextElementSibling;
+                                                            if (panel.style.display === "block") {
+                                                                panel.style.display = "none";
+                                                            } else {
+                                                                panel.style.display = "block";
+                                                            }
+                                                        });
+                                                    }
+                                                </script>
+
+                                                {{-- choosing categories end --}}
     {{-- changing geolocation --}}
                                         <div class="geolocation">
                                             <h3 class="font-bold text-3xl mb-7 mt-10">2. Геопозиция. Ташкент и Ташкентская область</h3>
@@ -345,7 +393,7 @@
                         <h5 class="font-bold text-black block mt-2 text-md">OneID</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div> 
+                </div>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
                         <i class="far fa-envelope text-white"></i>
@@ -378,7 +426,7 @@
         </div>
     </div>
 
-    <script type="text/javascript">          
+    <script type="text/javascript">
         function fileupdate(){
             var x = document.getElementById("buttons");
                 x.style.display = "block";
