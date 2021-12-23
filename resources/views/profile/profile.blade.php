@@ -13,10 +13,10 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>15 просмотров профиля</span>
+                        <span>{{$user->views}} просмотров профиля</span>
                     </div>
                     <br>
-                    <h2 class="font-bold text-2xl">Здравствуйте, {{$user->name}}!</h2>
+                    <h2 class="font-bold text-2xl mb-2">Здравствуйте, {{$user->name}}!</h2>
                     <div class="grid grid-cols-3">
                         <div class="col-span-1 object-center  w-40 h-50">
                             <img class="rounded-min mx-left overflow-hidden" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="" width="384" height="512">
@@ -50,11 +50,24 @@
 
                         </div> --}}
 
-                        <div class="sm:col-span-1   col-span-3  md:ml-3 mt-1">
-                            <p class="inline-block text-m mr-2">34 год</p>
+                        <div class="inline-block ml-3 mt-1">
+                            @if($user->age!="")
+                                <p class="inline-block text-m mr-2">
+                                    {{$user->age}}
+                                    @if($user->age>20 && $user->age%10==1) год 
+                                    @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
+                                    @else лет                            
+                                    @endif 
+                                </p>
+                            @endif
+                           
                             <span class="inline-block">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <p class="inline-block text-m">Москва город</p>
+                                <p class="inline-block text-m"> 
+                                    @if($user->location!="") {{$user->location}} город
+                                    @else город не включен
+                                    @endif
+                                </p>
                             </span>
                             <p class="mt-2">Создал <a href="#"><span>1</span></span> задание</a></p>
                             <p class="mt-4">Оценка: 3.6 </p>
@@ -84,10 +97,7 @@
                                 <i class="fas fa-pencil-alt inline text-gray-300"></i>
                                 <p class="inline text-gray-300 cursor-pointer">Редактировать</p>
                             </span>
-                            <p class="mt-3 w-4/5">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book.</p>
+                            <p class="mt-3 w-4/5">{{$user->description}}</p>
                         </div>
                         <h4 class="font-bold text-lg mt-5">Примеры работ</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
@@ -130,7 +140,11 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
-                            <p class="font-bold text-black block ">+998 {{$user->phone_number}}</p>
+                            @if ($user->phone_number!="")
+                            <p class="font-bold text-black block ">{{"+".$user->phone_number}}</p>
+                            @else
+                            номер нет
+                            @endif
                         </div>
                     </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -156,7 +170,27 @@
                 </div>
                 <p class="mx-5 my-4">Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных
                     сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.</p>
-                @foreach ($user->Socials as $social)
+                    <div class="telefon ml-4 h-20 grid grid-cols-4">
+                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                            style="background-color: #4285F4;">
+                            <i class="fab fa-google text-white"></i>
+                        </div>
+                        <div class="ml-3 col-span-3">
+                            <h5 class="font-bold text-black block mt-2 text-md">Google</h5>
+                            <a href="https://www.google.com/" target="_blank" class="block text-sm">Привязать</p></a>
+                        </div>
+                    </div>
+                    <div class="telefon ml-4 h-20 grid grid-cols-4">
+                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                            style="background-color: #4285F4;">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </div>
+                        <div class="ml-3 col-span-3">
+                            <h5 class="font-bold text-black block mt-2 text-md">Facebook</h5>
+                            <a href="https://www.facebook.com/" target="_blank" class="block text-sm">Привязать</a>
+                        </div>
+                    </div>
+                {{-- @foreach ($user->Socials as $social)
                 @if ($social->social_name == 'OneID')
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
@@ -214,7 +248,7 @@
                     </div>
                 </div>
                 @endif
-                @endforeach
+                @endforeach --}}
             </div>
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>

@@ -40,12 +40,23 @@
                         </form>
                     </div>
                     <div class="inline-block ml-3 mt-1">
-                        <p class="inline-block text-m mr-2">{{$user->age}} @if($user->age>20 && $user->age%10==1) год @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
-                        @else лет
-                        @endif</p>
+                        @if($user->age!="")
+                            <p class="inline-block text-m mr-2">
+                                {{$user->age}}
+                                @if($user->age>20 && $user->age%10==1) год 
+                                @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
+                                @else лет                            
+                                @endif 
+                            </p>
+                        @endif
+                       
                         <span class="inline-block">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p class="inline-block text-m">{{$user->location}} город</p>
+                            <p class="inline-block text-m"> 
+                                @if($user->location!="") {{$user->location}} город
+                                @else город не включен
+                                @endif
+                            </p>
                         </span>
                         <p class="mt-2">Создал <a href="#"><span>1</span></span> задание</a></p>
                         <p class="mt-4">Оценка: 3.6 </p>
@@ -58,7 +69,7 @@
                         <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Обо мне</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px]">Счет</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Тарифы</a></li>
-                        <li class="inline md:mr-5 mr-1"><a href="/home/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li>
                         <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">Настройки</a></li>
 
                     </ul>
@@ -74,10 +85,10 @@
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->
                             <ul id="tabs" class="md:inline-flex block w-full flex-center px-1 pt-2">
-                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
-                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
-                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
-                                <li class="px-4 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Безопасность</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
+                                <li class="xl:px-2 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Безопасность</a></li>
                             </ul>
 
 <!-- Tab Contents -->
@@ -99,7 +110,10 @@
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="email">Phone number</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number" value="{{$user->phone_number}}">
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number" 
+                                                    @if ($user->phone_number=="") placeholder="998911234567"
+                                                    @else value="{{$user->phone_number}}"
+                                                    @endif >
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="age">Возраст</label>
@@ -130,9 +144,9 @@
                                                 </div>
                                                 <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
                                                 <hr>
-                                            </form>
-
-                                            <a  onclick="ConfirmDelete()" type="submit" href="{{ route('users.delete') }}" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>
+                                            </form>   
+                                               
+                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>                                                                
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -157,65 +171,44 @@
 {{-- settings/ third tab start -> subscribe for some tasks --}}
                                     <div class="w-4/5 mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. Выберите категории</h3>
-    {{-- choosing categories --}}
-
-                                        <div class="acordion mt-16">
-                                            <div class="mb-4 rounded-md border shadow-md">
-                                                <button class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
-                                                    Курьерские услуги
-                                                </button>
-                                                <div class="panel overflow-hidden hidden px-[18px] bg-white p-4">
-                                                    <div>
-                                                        <div>
-                                                            <label class="block">
-                                                                <input type="checkbox" class="mr-2 required:border-[#ffa200]">Услуги пешего курьера
-                                                            </label>
-                                                            <label class="block">
-                                                                <input type="checkbox" class="mr-2 bg-[#ffa200]">Услуги курьера на легковом авто
-                                                            </label>
-                                                        </div>
+    {{-- choosing categories --}}                                    
+                                        <form action="{{route('get.category')}}" method="post">@csrf
+                                            <div class="acordion mt-16">
+                                                @foreach ($categories as $category )
+                                                <div class="mb-4 rounded-md border shadow-md">
+                                                    <div class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
+                                                        {{$category->name}}
+                                                    </div>
+                                                    <div class="panel overflow-hidden hidden px-[18px] bg-white p-2">
+                                                        @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+                                                        <label class="block">
+                                                            <input type="checkbox"  name="category[]" value="{{$category2->id}}" class="mr-2 required:border-[#ffa200]">{{$category2->name}}
+                                                        </label>
+                                                        @endforeach
                                                     </div>
                                                 </div>
+                                                @endforeach
                                             </div>
+                                            <input type="submit" name="submit" value="Save">
+                                        </form>
+                                        <script>
+                                            var acc = document.getElementsByClassName("accordion");
+                                            var i;
 
-                                            <div class="mb-4 rounded-md border shadow-md">
-                                                <button class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
-                                                    Ремонт и строительство
-                                                </button>
-                                                <div class="panel overflow-hidden hidden px-[18px] bg-white">
-                                                    <div>
-                                                        <div>
-                                                            <label class="block">
-                                                                <input type="checkbox" class="mr-2 required:border-[#ffa200]">Мастер на час
-                                                            </label>
-                                                            <label class="block">
-                                                                <input type="checkbox" class="mr-2 bg-[#ffa200]">Ремонт под ключ
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                                <script>
-                                                    var acc = document.getElementsByClassName("accordion");
-                                                    var i;
-
-                                                    for (i = 0; i < acc.length; i++) {
-                                                        acc[i].addEventListener("click", function() {
-                                                            this.classList.toggle("active");
-                                                            var panel = this.nextElementSibling;
-                                                            if (panel.style.display === "block") {
-                                                                panel.style.display = "none";
-                                                            } else {
-                                                                panel.style.display = "block";
-                                                            }
-                                                        });
+                                            for (i = 0; i < acc.length; i++) {
+                                                acc[i].addEventListener("click", function() {
+                                                    this.classList.toggle("active");
+                                                    var panel = this.nextElementSibling;
+                                                    if (panel.style.display === "block") {
+                                                        panel.style.display = "none";
+                                                    } else {
+                                                        panel.style.display = "block";
                                                     }
-                                                </script>
+                                                });
+                                            }
+                                        </script>
 
-                                                {{-- choosing categories end --}}
+    {{-- choosing categories end --}}
     {{-- changing geolocation --}}
                                         <div class="geolocation">
                                             <h3 class="font-bold text-3xl mb-7 mt-10">2. Геопозиция. Ташкент и Ташкентская область</h3>
@@ -375,7 +368,11 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
-                            <p class="text-black text-sm block ">+998{{$user->phone_number}}</p>
+                            @if ($user->phone_number!="")
+                            <p class="font-bold text-black block ">{{"+".$user->phone_number}}</p>
+                            @else
+                            номер нет
+                            @endif
                         </div>
                     </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -466,6 +463,7 @@
         {   var result = confirm("Are you sure you want to delete?");
             if(result == true )
             {
+                window.location.href = "http://" +window.location.hostname+"/profile/delete";
                 return true;
             }else{
                 console.log(result);
