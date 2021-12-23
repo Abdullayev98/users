@@ -1,4 +1,4 @@
-<div class="my-0">
+<div class="my-0 md:col-span-1 col-span-3">
     <div class=" text-left text-2xl text-[#5f5869] w-11/12 ml-4">
 {{--        <div class=" text-left text-[#5f5869] ml-4">--}}
         Частые вопросы

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\How_work_it;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,7 +17,8 @@ class Controller extends BaseController
 
     public function home(){
         $tasks  =  Task::latest()->paginate(15);
-        return view('home',compact('tasks'));
+        $howitworks = How_work_it::all();
+        return view('home',compact('tasks','howitworks'));
     }
     public function profile(){
         return view('/profile/profile');
@@ -55,8 +57,9 @@ class Controller extends BaseController
     }
     public function category($id){
         $categories = DB::table('categories')->where('parent_id', null)->get();
+        $choosed_category = DB::table('categories')->where('id', $id)->get();
         $child_categories= DB::table('categories')->where('parent_id',$id)->get();
-        return view('task/choosetasks',compact('child_categories','categories'));
+        return view('task/choosetasks',compact('child_categories','categories','choosed_category'));
     }
 
 }

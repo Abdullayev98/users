@@ -82,7 +82,7 @@
                             <p class="mt-5">Специалисты отдела мониторинга готовы подключиться к любой сложной ситуации и сделать все возможное, чтобы помочь пользователям ее разрешить.</p>
                             <div class=" grid grid-cols-5 mt-10">
                                 <div class=" col-span-2">
-                                    <div class="rounded-xl py-5 bg-green-400 w-64 hover:bg-green-300 text-center"><a href="#" class="text-white text-2xl ">Написать в поддержку</a></div>
+                                    <div class="rounded-xl py-5 bg-green-400 w-64 hover:bg-green-300 text-center"><a href="#replain-link" class="text-white text-2xl ">Написать в поддержку</a></div>
                                 </div>
                                 <div class="col-span-3">
                                     <div class="ring-1 ring-gray-300 text-center py-5 rounded-xl col-span-3 w-64">

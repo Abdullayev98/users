@@ -19,9 +19,8 @@
                     <h2 class="font-bold text-2xl">Здравствуйте, {{$user->name}}!</h2>
                     <div class="grid grid-cols-3">
                         <div class="col-span-1 w-40 h-50">
-                            <img class="rounded-min mx-left overflow-hidden"
-                                src="{{asset("AvatarImages/{$user->avatar}")}}" alt="" width="384"
-                                height="512">
+                            <img class="rounded-min mx-left overflow-hidden" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="" width="384" height="512">
+                            <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
                             <form action="{{route('updatephoto' ,$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
@@ -113,16 +112,16 @@
                     <p>на YouDo с 12 сентября 2021 г.</p>
                 </div>
                 <div class="contacts  ">
-                    {{-- <div class="ml-4 h-20 grid grid-cols-4">
+                    <div class="ml-4 h-20 grid grid-cols-4">
                         <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
                             style="background-color: orange;">
                             <i class="fas fa-phone-alt text-white"></i>
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
-                            <p class="font-bold text-black block ">+998xx xxx-xx-xx</p>
+                            <p class="font-bold text-black block ">+998 {{$user->phone_number}}</p>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">
                         <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
                             style="background-color: #0091E6;">
@@ -130,7 +129,7 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Email</h5>
-                            <p class="text-sm">{{ $user->email}}</p>
+                            <p class="text-sm">{{$user->email}}</p>
                         </div>
                     </div>
                     {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -155,7 +154,9 @@
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
                 </div> --}}
-                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
+                @endif
+                @if ($social->social_name == 'mail.ru')
+                <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
                         <i class="far fa-envelope text-white"></i>
                     </div>
@@ -163,19 +164,23 @@
                         <h5 class="font-bold text-black block mt-2 text-md">mail.ru</h5>
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
-                </div> --}}
+                </div>
+                @endif
+                @if ($social->social_name == 'Facebook')
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-facebook-f text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        @foreach ($user->Socials as $social)
+
                             <h5 class="font-bold text-black block mt-2 text-md">Facebook </h5>
-                            <a href="{{$social->social_link}}" class=" block text-sm">{{$social->social_name}}</a>
-                        @endforeach
+                            <a href="{{$social->social_link}}" target="_blank" class=" block text-sm">{{$social->social_name}}</a>
+
                     </div>
                 </div>
-                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
+                @endif
+                @if ($social->social_name == 'Twitter')
+                <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-twitter text-white"></i>
                     </div>
@@ -184,6 +189,8 @@
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
                 </div>
+                @endif
+                @if ($social->social_name == 'AppleID')
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
                         <i class="fab fa-apple text-white"></i>
@@ -193,7 +200,9 @@
                         <a href="#" class=" block text-sm">Привязать</a>
                     </div>
                 </div>
-            </div> --}}
+                @endif
+                @endforeach
+            </div>
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>

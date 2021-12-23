@@ -3,15 +3,15 @@
 @section("content")
 
 <div class="mx-auto w-10/12 my-10">
-    <div class="grid grid-cols-3 gap-x-10">
+    <div class="md:grid md:grid-cols-3 md:gap-x-10">
         <div class="col-span-2">
             <div class="border-b">
                 <!-- Tabs -->
                 <div class="w-full bg-[#f8f7ee] px-5 py-5">
 
-                    <ul id="tabs" class="inline-flex w-full">
-                        <li class="rounded-t px-3 py-1"><a id="default-tab" href="#first">Я исполнитель</a></li>
-                        <li class="rounded-t px-3 py-1"><a href="#second">Я заказчик</a></li>
+                    <ul id="tabs" class="inline-flex text-center">
+                        <li class="rounded-t px-3 py-1 md:w-[150px]"><a id="default-tab" href="#first">Я исполнитель</a></li>
+                        <li class="rounded-t px-3 py-1 md:w-[150px]"><a href="#second">Я заказчик</a></li>
                     </ul>
 
                 </div>
@@ -35,7 +35,7 @@
                                         <a href="#" class="text-lg text-blue-400 hover:text-red-400">
                                             {{$task->name}}
                                         </a>
-                                        <p class="text-sm ml-12mt-4">
+                                        <p class="text-sm ml-12 mt-4">
                                             {{$task->description}}
                                         </p>
                                     </div>
@@ -117,7 +117,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-span">
+        <div class="col-span md:block hidden">
             <div class="w-full h-full mt-5">
                 <div id="map" class="h-40 rounded-lg w-full">
                 </div>
