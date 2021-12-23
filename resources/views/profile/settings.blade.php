@@ -69,7 +69,7 @@
                         <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Обо мне</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px]">Счет</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Тарифы</a></li>
-                        <li class="inline md:mr-5 mr-1"><a href="/home/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li>
                         <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">Настройки</a></li>
 
                     </ul>
@@ -171,65 +171,44 @@
 {{-- settings/ third tab start -> subscribe for some tasks --}}
                                     <div class="w-4/5 mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. Выберите категории</h3>
-    {{-- choosing categories --}}
-
-                                        <div class="acordion mt-16">
-                                            <div class="mb-4 rounded-md border shadow-md">
-                                                <button class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
-                                                    Курьерские услуги
-                                                </button>
-                                                <div class="panel overflow-hidden hidden px-[18px] bg-white p-4">
-                                                    <div>
-                                                        <div>
-                                                            <label class="block">
-                                                                <input type="checkbox" class="mr-2 required:border-[#ffa200]">Услуги пешего курьера
-                                                            </label>
-                                                            <label class="block">
-                                                                <input type="checkbox" class="mr-2 bg-[#ffa200]">Услуги курьера на легковом авто
-                                                            </label>
-                                                        </div>
+    {{-- choosing categories --}}                                    
+                                        <form action="{{route('get.category')}}" method="post">@csrf
+                                            <div class="acordion mt-16">
+                                                @foreach ($categories as $category )
+                                                <div class="mb-4 rounded-md border shadow-md">
+                                                    <div class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
+                                                        {{$category->name}}
+                                                    </div>
+                                                    <div class="panel overflow-hidden hidden px-[18px] bg-white p-2">
+                                                        @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+                                                        <label class="block">
+                                                            <input type="checkbox"  name="category[]" value="{{$category2->id}}" class="mr-2 required:border-[#ffa200]">{{$category2->name}}
+                                                        </label>
+                                                        @endforeach
                                                     </div>
                                                 </div>
+                                                @endforeach
                                             </div>
+                                            <input type="submit" name="submit" value="Save">
+                                        </form>
+                                        <script>
+                                            var acc = document.getElementsByClassName("accordion");
+                                            var i;
 
-                                            <div class="mb-4 rounded-md border shadow-md">
-                                                <button class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
-                                                    Ремонт и строительство
-                                                </button>
-                                                <div class="panel overflow-hidden hidden px-[18px] bg-white">
-                                                    <div>
-                                                        <div>
-                                                            <label class="block">
-                                                                <input type="checkbox" class="mr-2 required:border-[#ffa200]">Мастер на час
-                                                            </label>
-                                                            <label class="block">
-                                                                <input type="checkbox" class="mr-2 bg-[#ffa200]">Ремонт под ключ
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                                <script>
-                                                    var acc = document.getElementsByClassName("accordion");
-                                                    var i;
-
-                                                    for (i = 0; i < acc.length; i++) {
-                                                        acc[i].addEventListener("click", function() {
-                                                            this.classList.toggle("active");
-                                                            var panel = this.nextElementSibling;
-                                                            if (panel.style.display === "block") {
-                                                                panel.style.display = "none";
-                                                            } else {
-                                                                panel.style.display = "block";
-                                                            }
-                                                        });
+                                            for (i = 0; i < acc.length; i++) {
+                                                acc[i].addEventListener("click", function() {
+                                                    this.classList.toggle("active");
+                                                    var panel = this.nextElementSibling;
+                                                    if (panel.style.display === "block") {
+                                                        panel.style.display = "none";
+                                                    } else {
+                                                        panel.style.display = "block";
                                                     }
-                                                </script>
+                                                });
+                                            }
+                                        </script>
 
-                                                {{-- choosing categories end --}}
+    {{-- choosing categories end --}}
     {{-- changing geolocation --}}
                                         <div class="geolocation">
                                             <h3 class="font-bold text-3xl mb-7 mt-10">2. Геопозиция. Ташкент и Ташкентская область</h3>
