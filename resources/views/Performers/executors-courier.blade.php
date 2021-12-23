@@ -9,7 +9,9 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span> просмотров профиля</span>
+                        @foreach($vcs as $vc)
+                        <span>{{$vc->count}} просмотров профиля</span>
+                        @endforeach
                     </div>
                    <div>
                      @if($user->active_status == 1)
