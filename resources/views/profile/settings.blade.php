@@ -40,12 +40,23 @@
                         </form>
                     </div>
                     <div class="inline-block ml-3 mt-1">
-                        <p class="inline-block text-m mr-2">{{$user->age}} @if($user->age>20 && $user->age%10==1) год @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
-                        @else лет                            
-                        @endif</p>
+                        @if($user->age!="")
+                            <p class="inline-block text-m mr-2">
+                                {{$user->age}}
+                                @if($user->age>20 && $user->age%10==1) год 
+                                @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
+                                @else лет                            
+                                @endif 
+                            </p>
+                        @endif
+                       
                         <span class="inline-block">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p class="inline-block text-m">{{$user->location}} город</p>
+                            <p class="inline-block text-m"> 
+                                @if($user->location!="") {{$user->location}} город
+                                @else город не включен
+                                @endif
+                            </p>
                         </span>
                         <p class="mt-2">Создал <a href="#"><span>1</span></span> задание</a></p>
                         <p class="mt-4">Оценка: 3.6 </p>
@@ -99,7 +110,10 @@
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="email">Phone number</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number" value="{{$user->phone_number}}">
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number" 
+                                                    @if ($user->phone_number=="") placeholder="998911234567"
+                                                    @else value="{{$user->phone_number}}"
+                                                    @endif >
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="age">Возраст</label>
@@ -301,7 +315,11 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
-                            <p class="text-black text-sm block ">+998{{$user->phone_number}}</p>
+                            @if ($user->phone_number!="")
+                            <p class="font-bold text-black block ">{{$user->phone_number}}</p>
+                            @else
+                            номер нет
+                            @endif
                         </div>
                     </div>
                     <div class="telefon ml-4 h-20 grid grid-cols-4">

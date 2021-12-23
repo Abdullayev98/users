@@ -51,7 +51,7 @@ class ProfileController extends Controller
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),
             'age'=>$request->input('age'),
-            'phone_number'=>$request->input('phone_number'),
+            'phone_number'=>"+".$request->input('phone_number'),
             'description'=>$request->input('description'),
             'location'=>$request->input('location'),
         ]);
