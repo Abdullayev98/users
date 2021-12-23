@@ -253,7 +253,7 @@
           </div>
       </div>
 
-
+      
         <div class="grid md:grid-cols-3 grid-cols-1 container mx-auto  md:mt-32 mt-16 md:mb-32 mb-16">
             <div class="grid-cols-1 shadow-2xl p-8 rounded-lg h-64 w-90 ">
                 <p class="text-lg">Открыла для себя такую штуку, как сервис YouDo. Выполняешь задания — платят. Отличная замена обычной «работе на работе» ради денег</p>
