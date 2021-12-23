@@ -13,7 +13,7 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>15 просмотров профиля</span>
+                        <span>{{$user->views}} просмотров профиля</span>
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl mb-2">Здравствуйте, {{$user->name}}!</h2>
@@ -97,10 +97,7 @@
                                 <i class="fas fa-pencil-alt inline text-gray-300"></i>
                                 <p class="inline text-gray-300 cursor-pointer">Редактировать</p>
                             </span>
-                            <p class="mt-3 w-4/5">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a type specimen
-                                book.</p>
+                            <p class="mt-3 w-4/5">{{$user->description}}</p>
                         </div>
                         <h4 class="font-bold text-lg mt-5">Примеры работ</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
@@ -144,7 +141,7 @@
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
                             @if ($user->phone_number!="")
-                            <p class="font-bold text-black block ">{{$user->phone_number}}</p>
+                            <p class="font-bold text-black block ">{{"+".$user->phone_number}}</p>
                             @else
                             номер нет
                             @endif

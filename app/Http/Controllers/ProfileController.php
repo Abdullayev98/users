@@ -15,6 +15,8 @@ class ProfileController extends Controller
     public function profileData()
     {
         $user = User::find(Auth::user()->id);
+        $user->views +=1;
+        $user->update();
         return view('profile.profile', compact('user'));
     }
     public function update(Request $request, $id)
@@ -58,7 +60,7 @@ class ProfileController extends Controller
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),
             'age'=>$request->input('age'),
-            'phone_number'=>"+".$request->input('phone_number'),
+            'phone_number'=>$request->input('phone_number'),
             'description'=>$request->input('description'),
             'location'=>$request->input('location'),
         ]);

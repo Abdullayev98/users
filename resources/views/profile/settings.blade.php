@@ -146,7 +146,7 @@
                                                 <hr>
                                             </form>   
                                                
-                                            <a  onclick="ConfirmDelete()" type="submit" href="{{ route('users.delete') }}" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>                                                                
+                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>                                                                
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -316,7 +316,7 @@
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
                             @if ($user->phone_number!="")
-                            <p class="font-bold text-black block ">{{$user->phone_number}}</p>
+                            <p class="font-bold text-black block ">{{"+".$user->phone_number}}</p>
                             @else
                             номер нет
                             @endif
@@ -410,6 +410,8 @@
         {   var result = confirm("Are you sure you want to delete?");
             if(result == true )
             {
+                window.location.href = "http://" +window.location.hostname+"/profile/delete";
+                // window.location.replace(window.location.hostname+"/profile/delete");
                 return true;
             }else{
                 console.log(result);
