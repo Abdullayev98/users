@@ -30,6 +30,7 @@ class CreateTaskController extends VoyagerBaseController
         $data = $request->input();
         $request->session()->put('name', $data['name']);
         $request->session()->put('cat_id', $data['cat_id']);
+        $request->session()->flash('neym', $data['name']);
         return view('create.location');
 
     }
@@ -49,38 +50,64 @@ class CreateTaskController extends VoyagerBaseController
     // public function custom(){
     //     return view('create.custom');
     // }
+    public function location(Request $request){
 
+        return view('create.location');
+    }
     public function date(Request $request){
-      $data = $request->input();
-      $request->session()->put('location', $data['location']);
-      return view('create.date');
-        // return view('create.date');
+        $request->session()->put('location', $request->input('location'));
+        $request->session()->flash('location2', $request->input('location'));
+        return view('create.date');
     }
     public function budget(Request $request){
-
       $date = $request->input('date');
       $time = $request->input('time');
+      $request->session()->flash('deyt', $request->input('date'));
+      $request->session()->flash('taym', $request->input('time'));
       $data = $date." ".$time;
       $start = $request->get('start');
-      $starrt = implode(" ",$start);
-      $request->session()->put('data', $data);
-      $request->session()->put('start', $starrt);
+      if ($start) {
+        $starrt = implode(" ",$start);
+        $request->session()->put('data', $data);
+        $request->session()->put('start', $starrt);
+      }
       return view('create.budget');
         // return view('create.budget');
+    }
+    public function note(Request $request){
+      $descriptioon = $request->session()->pull('description');
+      return view('create.notes', compact('descriptioon'));
     }
     public function notes(Request $request){
       $data = $request->input();
       $request->session()->put('amount', $data['amount']);
-      $request->session()->put('business', $data['business']);
-      $request->session()->put('insurance', $data['insurance']);
+      $request->session()->flash('soqqa', $request->input('amount'));
+      if ($request->input('business')) {
+        $request->session()->put('business', $data['business']);
+      }else {
+        $request->session()->put('business', 0);
+      }
+      if ($request->input('insurance')) {
+        $request->session()->put('insurance', $data['insurance']);
+      }else {
+        $request->session()->put('insurance', 0);
+      }
       return view('create.notes');
         // return view('create.notes');
     }
     public function contacts(Request $request){
       $data = $request->input();
       $request->session()->put('description', $data['description']);
-      $request->session()->put('secret', $data['secret']);
-      $request->session()->put('docs', $data['docs']);
+      if ($request->input('secret')) {
+        $request->session()->put('secret', $data['secret']);
+      }else {
+        $request->session()->put('secret', 0);
+      }
+      if ($request->input('docs')) {
+        $request->session()->put('docs', $data['docs']);
+      }else {
+        $request->session()->put('docs', 0);
+      }
       return view('create.contacts');
     }
 

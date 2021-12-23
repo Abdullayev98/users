@@ -8,7 +8,7 @@
   appearance: none;
 }
 </style>
-    <div class="flex flex-row container mx-auto mt-16">
+    <div class="flex flex-row container mx-auto mx-40 my-8">
 
 {{-----------------------------------------------------------------------------------}}
 {{--                             Left column                                       --}}
@@ -90,7 +90,12 @@
                 </div>
             </div>
             @foreach($users as $user)
-
+@php
+ $cat_arr = explode(",",$user->category_id);
+ $res_c_arr = array_search($cf_id,$cat_arr);
+ //dd($res_c_arr);
+@endphp
+@if($res_c_arr !== false)
             <div class="flex flex-row">
                 <div class="m-10">
                     <img class="rounded-lg w-40 h-40" src="{{asset($user->avatar)}}" alt="user">
@@ -131,7 +136,7 @@
                     </div>
                 </div>
             </div>
-
+@endif
             @endforeach
 
             {{ $users->links() }}

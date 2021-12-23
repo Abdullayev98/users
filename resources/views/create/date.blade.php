@@ -42,15 +42,17 @@
                   </select>
             </div>
             <div class="flex items-center rounded-lg border py-1">
-              <input type="date" name="date" value="" class="mx-auto">
-              <input type="time" name="time" value="">
+              <input type="date" name="date" value="{{session('deyt')}}" class="mx-auto">
+              <input type="time" name="time" value="{{session('taym')}}">
             </div>
           </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
-              <button type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+               <a href="/task/create/location" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+              <!-- <button type="button"> -->
                  Назад
-               </button>
+               <!-- </button> -->
+             </a>
                <input type="submit"
                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                name="" value="Далее">
