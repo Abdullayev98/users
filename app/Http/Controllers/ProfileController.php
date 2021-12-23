@@ -102,4 +102,15 @@ class ProfileController extends Controller
         DB::update('update users set category_id = ? where id = ?',[$checkbox,$id]);
         return redirect()->back();
     }
+
+    public function StoreDistrict(Request $request){
+        $request->validate([
+            'district' => 'required',
+        ]);
+
+       $user = User::find(Auth::user()->id);
+        $user->district = $request->district;
+        $user->save();
+        return redirect()->back();
+    }
 }

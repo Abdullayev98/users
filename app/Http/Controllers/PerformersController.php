@@ -30,7 +30,7 @@ class PerformersController extends Controller
 
             if(isset($def_count)){
 
-            $ppi = $def_count->count++;
+            $ppi = $def_count->count + 1;
 
                 UserView::where('user_id', $id)->update(['count' => $ppi]);
 
