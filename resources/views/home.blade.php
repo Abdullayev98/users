@@ -36,7 +36,9 @@
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
                             <button type="submit"
                                     class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
+                                    <a href="task/create?category_id=22">
                                 Заказать услугу
+                                </a>
                             </button>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
@@ -109,7 +111,7 @@
                     </a>
                 </div>
             </div>
-            <div class="grid md:grid-cols-4 grid-cols-2 mt-8">
+            <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 <div class="text-center">
                     <img src="https://assets.youdo.com/_next/static/media/sbr_176.95ac6c46444100c6bcb6262ed7695c79.png"
                          class="mx-auto" alt="">
@@ -136,21 +138,12 @@
                         Более 1 000 000 отзывов от заказчиков помогут выбрать подходящего исполнителя.
                     </div>
                 </div>
-                <div class="text-center mx-4">
-                    <img
-                        src="https://assets.youdo.com/_next/static/media/forbusiness_176.05ef3328a82a6661b6c53ff31260b80a.png"
-                        class="mx-auto" alt="">
-                    <div class="font-bold my-4">YouDo для бизнеса</div>
-                    <div class="text-xs">
-                        Безналичная оплата бизнес-заданий с предоставлением закрывающих документов.
-                    </div>
-                </div>
             </div>
-            <div class="w-3/4 mx-auto my-8">
+            <!-- <div class="w-3/4 mx-auto my-8">
                 <img
                     src="https://avatars.mds.yandex.net/get-adfox-content/2367573/211006_adfox_1671985_4489405.2ae5b6df3d7a04dc28f071afffa30e99.png/optimize.webp"
                     alt="">
-            </div>
+            </div> -->
         </div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-gray-400 to-[#fff] h-1 rounded-full"></div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-[#f6f8fa] to-[#fff]">
