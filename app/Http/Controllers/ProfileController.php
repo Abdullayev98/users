@@ -8,13 +8,16 @@ use App\Models\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\DB;
 class ProfileController extends Controller
 {
 
+    //profile
     public function profileData()
     {
         $user = User::find(Auth::user()->id);
+        $user->views +=1;
+        $user->update();
         return view('profile.profile', compact('user'));
     }
     public function update(Request $request, $id)
@@ -38,10 +41,13 @@ class ProfileController extends Controller
         $user->update($data);
         return  redirect()->route('userprofile');
     }
+
+    //settings
     public function editData()
     {
         $user = User::find(Auth::user()->id);
-        return view('profile.settings', compact('user'));
+        $categories = DB::table('categories')->where('parent_id',Null)->get();
+        return view('profile.settings', compact('user','categories'));
     }
     public function updateData(Request $request)
     {
@@ -83,5 +89,17 @@ class ProfileController extends Controller
     {
         User::find(Auth::user()->id)->delete();
         return  redirect('/');
+    }
+
+    //getCategory
+    public function getCategory(Request $request)
+    {
+        $request->validate([
+            'category' => 'required'
+        ]);
+        $id = Auth::id();        
+        $checkbox = implode(",", $request->get('category'));
+        DB::update('update users set category_id = ? where id = ?',[$checkbox,$id]);
+        return redirect()->back();
     }
 }

@@ -20,17 +20,17 @@
                 <div class="col-span-2">
                     <div class="w-full bg-[#f8f7ee] my-5">
                         <div class="px-5 py-5">
-{{--                            <form action="">--}}
+                            <form action="{{route('search')}}" method="get">
                             <div class="grid grid-cols-4 gap-4 mb-3">
 
                                 <div class="inline-flex w-full col-span-4">
-                                    <input id="suggest" class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
-                                    <button id="mpshow" class="bg-green-500 px-4 py-1 rounded">Найти</button>
+                                    <input class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
+                                    <button class="bg-green-500 px-4 py-1 rounded">Найти</button>
                                 </div>
 
                                 <div class="col-span-2">
                                     <label class="text-xs">Город, адрес, метро, район...</label>
-                                    <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text">
+                                    <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
                                 </div>
 
                                 <div class="">
@@ -47,7 +47,7 @@
 
                                 <div class="ml-3">
                                     <label class="text-xs">Стоимость заданий от</label>
-                                    <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." value="">
+                                    <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
                                 </div>
 
                                 <ul class="inline-flex flex-wrap w-full col-span-3">
@@ -79,7 +79,7 @@
                                     </div>
                                 </ul>
                             </div>
-{{--                                </form>--}}
+                                </form>
                         </div>
                     </div>
 

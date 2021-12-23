@@ -13,14 +13,14 @@
         }
     </style>
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
     <div
         class="bg-[url('https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp')] bg-center bg-cover h-[450px] ">
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
-            </div>
-        @endif
         <div class="container-lg mx-auto bg-[url('https://assets.youdo.com/_next/static/media/pattern-dotted.981ffff613107988cc581a30c07a5551.svg')] bg-repeat h-[450px] ">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-32">
@@ -32,7 +32,7 @@
                     </p>
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
-                            <input type="text" placeholder="Например, составить иск"
+                            <input type="text" value="" id="header_input" placeholder="Например, составить иск"
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
                             <button type="submit"
                                     class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
@@ -40,13 +40,19 @@
                             </button>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
-                            Например: <a href="#" class="hover:text-slate-400">повесить кондиционер</a>
+                            Например: <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">повесить кондиционер</span>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
+
+    <script>
+        function myFunction() {
+            document.getElementById("header_input").value = document.getElementById("span_demo").innerHTML;
+        }
+    </script>
 
     <div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
         <!--modal content-->
@@ -64,7 +70,7 @@
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
-                <div class="text-gray-500 text-lg my-5 md:border-0 border-b md:p-0 pb-3">
+                <div class="text-gray-500 text-lg my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
                     <a href="{{route('categories', ['id'=> $category2->id])}}" class="block">
                         <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->name }}</i>
                     </a>
