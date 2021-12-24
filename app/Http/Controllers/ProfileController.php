@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Models\User;
 use App\Models\Social;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class ProfileController extends Controller
         $user->update($data);
         return  redirect()->route('userprofile');
     }
-    
+
     //profile Cash
     public function profileCash()
     {
