@@ -8,6 +8,7 @@ use App\Models\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\UserView;
 use Illuminate\Support\Facades\DB;
 class ProfileController extends Controller
 {
@@ -16,9 +17,9 @@ class ProfileController extends Controller
     public function profileData()
     {
         $user = User::find(Auth::user()->id);
-        $user->views +=1;
+        $vcs = UserView::where('user_id', $user->id)->first();
         $user->update();
-        return view('profile.profile', compact('user'));
+        return view('profile.profile', compact('user','vcs'));
     }
     public function update(Request $request, $id)
     {
@@ -46,8 +47,9 @@ class ProfileController extends Controller
     public function editData()
     {
         $user = User::find(Auth::user()->id);
+        $vcs = UserView::where('user_id', $user->id)->first();
         $categories = DB::table('categories')->where('parent_id',Null)->get();
-        return view('profile.settings', compact('user','categories'));
+        return view('profile.settings', compact('user','categories','vcs'));
     }
     public function updateData(Request $request)
     {
@@ -97,7 +99,7 @@ class ProfileController extends Controller
         $request->validate([
             'category' => 'required'
         ]);
-        $id = Auth::id();        
+        $id = Auth::id();
         $checkbox = implode(",", $request->get('category'));
         DB::update('update users set category_id = ? where id = ?',[$checkbox,$id]);
         return redirect()->back();
