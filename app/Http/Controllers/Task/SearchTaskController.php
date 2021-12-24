@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Task;
 
+use App\Models\User;
 use App\Models\Task;
+use TCG\Voyager\Models\Category;
 use Illuminate\Http\Request;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
@@ -42,6 +44,20 @@ class SearchTaskController extends VoyagerBaseController
     }
       return view('task.search', compact('tasks','s','a','p'));
 
+    }
+    public function task($id){
+        $tasks = Task::where('id',$id)->get();
+        foreach ($tasks as $task) {
+          $cat_id = $task->category_id;
+          $user_id = $task->category_id;
+        }
+        $same_tasks = Task::where('category_id',$cat_id)->get();
+
+        $users = User::all();
+        $current_user = User::find($user_id);
+        $categories = Category::where('id',$cat_id)->get();
+
+        return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
     }
 
 }
