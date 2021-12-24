@@ -40,13 +40,13 @@
                         <h1 class="text-lg font-bold h-auto w-48">Бюджет</h1>
                         <p class="text-lg  h-auto w-96">до {{$task->budget}}</p>
                     </div>
-                    <div class="ml-12 flex flex-row mt-4">
-                        <h1 class="text-lg font-bold h-auto w-48">Оплата задания</h1>
+                    <!-- <div class="ml-12 flex flex-row mt-4"> -->
+                        <!-- <h1 class="text-lg font-bold h-auto w-48">Оплата задания</h1> -->
                         <!-- <div class="flex flex-row  h-auto w-96">
                             <i class="far fa-credit-card text-green-400 text-2xl mr-3"></i>
                             <p class="text-lg">Банковской картой через</p>
                         </div> -->
-                    </div>
+                    <!-- </div> -->
                     <div class="ml-12 flex flex-row mt-4">
                         <h1 class="text-lg font-bold h-auto w-48">Место</h1>
                         <p class="text-lg  h-auto w-96">{{$task->address}}</p>
