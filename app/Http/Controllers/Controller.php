@@ -21,7 +21,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function home(){
-        $tasks  =  Task::latest()->paginate(15);
+        $tasks  =  Task::orderBy('id', 'desc')->take(15)->get();
         $howitworks = How_work_it::all();
         return view('home',compact('tasks','howitworks'));
     }

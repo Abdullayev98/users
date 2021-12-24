@@ -6,6 +6,7 @@ use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\PerformersController;
+use App\Http\Controllers\Task\SearchTaskController;
 use App\Http\Controllers\admin\VoyagerUserController;
 /*
 |--------------------------------------------------------------------------
@@ -44,9 +45,8 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', [Controller::class, 'home'])->name('home');
 
 
-Route::get('/detailed-tasks', function () {
-    return view('task.detailed-tasks');
-});
+
+Route::get('/detailed-tasks/{id}', [SearchTaskController::class, 'task'])->name("tasks.detail");
 
 Route::get('/terms', function () {
     return view('terms.terms');
