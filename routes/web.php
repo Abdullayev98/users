@@ -45,6 +45,9 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 //Route::get('/home/profile', [HomeController::class, 'profile']);
 
+Route::get('/detailed-tasks', function () {
+    return view('task.detailed-tasks');
+});
 
 Route::get('/terms', function () {
     return view('terms.terms');
