@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use File;
 use App\Models\User;
 use App\Models\Social;
 use Illuminate\Http\Request;
@@ -31,8 +30,6 @@ class ProfileController extends Controller
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
             $data['avatar'] = $request->file('avatar')->store("images/users");
-            // $filename = $request->file('avatar')->getClientOriginalName();
-            // Storage::disk('avatar')->putFileAs('images/users', $request->file('avatar'), $filename);
             $filename = request()->file('avatar');
             $extention = File::extension($filename);
             $file = $filename;
@@ -60,8 +57,6 @@ class ProfileController extends Controller
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
             $data['avatar'] = $request->file('avatar')->store("images/users");
-            // $filename = $request->file('avatar')->getClientOriginalName();
-            // Storage::disk('avatar')->putFileAs('images/users', $request->file('avatar'), $filename);
             $filename = request()->file('avatar');
             $extention = File::extension($filename);
             $file = $filename;
@@ -111,6 +106,10 @@ class ProfileController extends Controller
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
             $data['avatar'] = $request->file('avatar')->store("images/users");
+            $filename = request()->file('avatar');
+            $extention = File::extension($filename);
+            $file = $filename;
+            $file->store('images/users', ['disk' => 'avatar']);
         }
         $user->update($data);
         return  redirect()->route('editData');
