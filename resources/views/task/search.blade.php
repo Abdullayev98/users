@@ -24,19 +24,21 @@
                             <div class="grid grid-cols-4 gap-4 mb-3">
 
                                 <div class="inline-flex w-full col-span-4">
-                                    <input class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
-                                    <button class="bg-green-500 px-4 py-1 rounded">Найти</button>
+                                    <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
+                                    <button class="w-2/12 bg-green-500 ml-1 py-1 px-1 rounded">Найти</button>
                                 </div>
 
-                                <div class="col-span-3">
-                                    <label class="text-xs">Город, адрес, метро, район...</label>
-                                    <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
+                                <div class="inline-flex w-full col-span-4">
+                                    <div class="w-7/12">
+                                        <label class="text-xs">Город, адрес, метро, район...</label>
+                                        <input class="w-full border border-black rounded text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
+                                    </div>
+                                    <div class="w-1/5 ml-5">
+                                        <label class="text-xs">Стоимость заданий от</label>
+                                        <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
+                                    </div>
                                 </div>
 
-                                <div class="ml-3">
-                                    <label class="text-xs">Стоимость заданий от</label>
-                                    <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
-                                </div>
                             </div>
                                 </form>
                         </div>
