@@ -167,7 +167,7 @@
                     </div>
                     <div class="text-left">
                         <h3 class="md:text-4xl text-[24px] font-semibold my-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
-                        {!!$howitwork->description!!}
+                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">Создать задания</a>
                     </div>
 
 @else
@@ -189,7 +189,7 @@
                     </div>
                     <div class="text-left md:hidden block">
                         <h3 class="text-2xl font-semibold mt-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
-                        {!!$howitwork->description!!}
+                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">Создать задания</a>
                     </div>
 @endif
 
