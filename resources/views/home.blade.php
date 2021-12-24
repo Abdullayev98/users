@@ -200,9 +200,9 @@
                 </div>
             </div>
             <div class="md:w-1/3 w-3/4 mx-auto my-4">
-                <button type="button" class=" bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Разместите
+                <a href="/task/create?category_id=31" type="button" class="text-center pt-3 bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Разместите
                     задание прямо сейчас
-                </button>
+                </a>
                 <div class="text-center text-xl">
                     и найдите <br> исполнителя за несколько минут
                 </div>
@@ -376,10 +376,10 @@
 
                     </div>
                     <div class="mt-4">
-                        <button type="button"
-                                class=" bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">
+                        <a href="/task-search/" type="button"
+                                class="text-center pt-3 bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">
                             Показать все задания
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">

@@ -72,14 +72,14 @@
                                 </div>
                                   <div class="float-right w-1/4 text-right">
                                   <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                      <p class="text-sm ml-12 mt-4">Спортмастер</p>
-                                  <p class="text-sm ml-12 mt-4">Нет отзывов</p>
+                                      <p class="text-sm ml-12">Спортмастер</p>
+                                  <p class="text-sm ml-12">Нет отзывов</p>
                                 </div>
                               </div>
                             </div>
 {{--                          </div>--}}
                             @endforeach
-                            {{$tasks->links()}}
+                            <!-- {{$tasks->links()}} -->
                         </div>
 
 
@@ -96,14 +96,16 @@
                 </div>
                 <div class="w-full h-full mt-5">
                     <div id="map" class="h-60 my-5 rounded-lg w-full">
-{{--                        <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>--}}
+                       <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>
                     </div>
                     <form action="">
                         <div class="w-full h-full">
 
                             <div class="max-w-lg mx-auto">
 
-                                <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> Все категории</label>
+                                <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
+                                  <input type="checkbox" class="mr-1 hover:cursor-pointer"/> Все категории
+                                </label>
 
                                 <div class="w-full my-1">
 
@@ -115,13 +117,17 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                     </svg>
                                                 </button>
-                                                    <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category->name}}</label>
+                                                    <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">
+                                                      <input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category->name}}
+                                                    </label>
                                             </div>
                                             <div x-show="show" class="border border-b-0 px-8 py-0">
                                                 @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                                     <div>
-                                                        <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category2->name}}</label>
+                                                        <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
+                                                          <input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category2->name}}
+                                                        </label>
                                                     </div>
 
                                                 @endforeach
