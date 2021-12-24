@@ -44,7 +44,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', [Controller::class, 'home'])->name('home');
 
-//Route::get('/home/profile', [HomeController::class, 'profile']);
 
 
 Route::get('/detailed-tasks/{id}', [SearchTaskController::class, 'task'])->name("tasks.detail");
