@@ -140,7 +140,7 @@
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
                             @if ($user->phone_number!="")
-                            <p class="font-bold text-black block ">{{"+".$user->phone_number}}</p>
+                            <p class="font-bold text-black block ">{{$user->phone_number}}</p>
                             @else
                             номер нет
                             @endif
