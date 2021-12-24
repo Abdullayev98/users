@@ -109,9 +109,9 @@
                                                     <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="email" name="email" id="email" value="{{$user->email}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="email">Phone number</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="phone_number">Phone number</label>
                                                     <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number"
-                                                    @if ($user->phone_number=="") placeholder="998911234567"
+                                                    @if ($user->phone_number=="") placeholder="+998(00)000-00-00"
                                                     @else value="{{$user->phone_number}}"
                                                     @endif >
                                                 </div>
@@ -368,7 +368,7 @@
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
                             @if ($user->phone_number!="")
-                            <p class="font-bold text-black block ">{{"+".$user->phone_number}}</p>
+                            <p class="font-bold text-black block ">{{$user->phone_number}}</p>
                             @else
                             номер нет
                             @endif
@@ -447,7 +447,39 @@
 {{-- right side bar end--}}
         </div>
     </div>
-
+    <script src="https://unpkg.com/imask"></script>
+    
+    <script>
+        var element = document.getElementById('phone_number');
+    var maskOptions = {
+        mask: '+998 00 000-00-00',
+        lazy: false
+    } 
+    var mask = new IMask(element, maskOptions);
+    
+    var element2 = document.getElementById('email');
+    var maskOptions2 = {    
+        mask:function (value) {
+                    if(/^[a-z0-9_\.-]+$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.[a-z]{1,4}$/.test(value))
+                        return true;
+                    return false;
+                        },
+        lazy: false
+    } 
+    var mask2 = new IMask(element2, maskOptions2);
+      </script>
     <script type="text/javascript">
         function fileupdate(){
             var x = document.getElementById("buttons");

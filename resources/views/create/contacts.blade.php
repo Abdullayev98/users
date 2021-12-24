@@ -28,13 +28,19 @@
       <div class="py-4 mx-auto  text-left ">
         <div class="mb-4">
           <div id="formulario" class="flex flex-col gap-y-4">
-
-        <div>
-            <div class="mb-3 xl:w-full">
-                <input value="+998" minlength="13" maxlength="13" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none " type="text" required name="phone">
+            <div>
+              <div class="mb-3 xl:w-full">
+                <input
+                type="text"
+                name="phone"
+                id="phone"
+                placeholder="+998(00)000-00-00"
+                class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
+                />
               </div>
-        </div>
+            </div>
           </div>
+        </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
               <a href="/task/create/note" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
@@ -106,6 +112,39 @@
 
 
     </script>
+
+    <script src='https://unpkg.com/imask'></script>
+      <script>
+        var element = document.getElementById('phone');
+    var maskOptions = {
+        mask: '+998(00)000-00-00',
+        lazy: false
+    }
+    var mask = new IMask(element, maskOptions);
+
+    var element2 = document.getElementById('email');
+    var maskOptions2 = {
+        mask:function (value) {
+                    if(/^[a-z0-9_\.-]+$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.[a-z]{1,4}$/.test(value))
+                        return true;
+                    return false;
+                        },
+        lazy: false
+    }
+    var mask2 = new IMask(element2, maskOptions2);
+      </script>
 
 <script>
   var x = 1;
