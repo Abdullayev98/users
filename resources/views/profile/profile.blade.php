@@ -2,7 +2,7 @@
 
 @section("content")
 
-        <div class="container md:w-4/5 p-5 w-full my-10 mx-auto">
+        <div class="container md:w-4/5 p-3 w-full my-10 mx-auto">
 
 
         <div class="grid md:grid-cols-3 grid-flow-row mt-10 inline-block">
@@ -12,7 +12,7 @@
             <div class="col-span-2 mx-auto">
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
-                        <i class="far fa-eye"></i>
+                        <i class="far fa-eye"> просмотр</i>
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl mb-2">Здравствуйте, {{$user->name}}!</h2>
@@ -20,7 +20,7 @@
                         <div class="col-span-1 object-center  w-40 h-50">
                             <img class="rounded-min mx-left overflow-hidden" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="" width="384" height="512">
                             <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
-                            <form action="{{route('updatephoto' ,$user->id)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('updatephoto',$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
@@ -79,8 +79,8 @@
                         <ul class=" md:col-span-9 items-center w-3/4 md:w-full" id="tabs">
                             <li class=" md:mr-5 mr-1 inline-block"><a href="/home/profile" class=" md:text-[18px] text-[14px] font-bold block " id="default-tab">Обо мне</a></li>
                             <li class=" md:mr-5 mr-1 inline-block"><a href="/profile/cash" class=" md:text-[18px] text-[14px]">Счет</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="#third" class=" md:text-[18px] text-[14px]">Тарифы</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/home/profile" class="md:text-[18px] text-[14px]">Страхование</a></li>
+                            {{-- <li class=" md:mr-5 mr-1 inline-block"><a href="#third" class=" md:text-[18px] text-[14px]">Тарифы</a></li>
+                            <li class=" md:mr-5 mr-1 inline-block"><a href="/home/profile" class="md:text-[18px] text-[14px]">Страхование</a></li> --}}
                             <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">Настройки</a></li>
 
                         </ul>

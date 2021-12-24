@@ -12,11 +12,10 @@
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
-                        <i class="far fa-eye"></i>
- -->
+                        <i class="far fa-eye"> просмотр</i>
                     </div>
                     <br>
-                    <h2 class="font-bold text-lg">Здравствуйте, {{$user->name}}!</h2>
+                    <h2 class="font-bold text-lg mb-2">Здравствуйте, {{$user->name}}!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
                         src="{{asset("AvatarImages/{$user->avatar}")}}" alt="image" width="384"
@@ -68,8 +67,8 @@
                     <ul class=" md:col-span-9 col-span-10 md:items-left sitems-center">
                         <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Обо мне</a></li>
                         <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px]">Счет</a></li>
-                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Тарифы</a></li>
-                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li>
+                        {{-- <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Тарифы</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li> --}}
                         <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">Настройки</a></li>
 
                     </ul>
