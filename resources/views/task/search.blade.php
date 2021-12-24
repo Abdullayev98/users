@@ -250,7 +250,7 @@
             $(this).toggleClass("rotate-[360deg]");
         });
 
-<<<<<<< HEAD
+
         function all_cat(){
            // if ($('#all_check').is(':checked').removeAttr(checked)
                 // .prop('checked'): true
@@ -284,8 +284,7 @@
         }
 
 
-=======
->>>>>>> 7b5ed6f2e00570aeb2e126be6da40fdd7009d7fc
+
     </script>
 
 @endsection
