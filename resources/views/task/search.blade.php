@@ -84,7 +84,7 @@
                     </div>
 
                     <div>
-                        <div class="border-b">
+                        <div class="border-b mb-5">
                             <!-- Tabs -->
                             <ul id="tabs" class="inline-flex w-full">
                                 <li class="font-semibold rounded-t mr-5">Сортировать</li>
@@ -101,7 +101,7 @@
                             <div class="w-full border hover:bg-blue-100">
                               <div class="w-11/12 h-12 m-4">
                                 <div class="float-left w-9/12">
-                                  <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                                  <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="/detailed-tasks" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->name}}
                                   </a>
                                   <p class="text-sm ml-12mt-4">
@@ -249,6 +249,41 @@
         $(".rotate").click(function(){
             $(this).toggleClass("rotate-[360deg]");
         });
+
+
+        function all_cat(){
+           // if ($('#all_check').is(':checked').removeAttr(checked)
+                // .prop('checked'): true
+                // .is(':checked'): true
+        }
+
+
+        function first_ajax(id)
+        {
+            $.ajax({
+                url: 'route({{}})'+id+'',         /* Куда пойдет запрос */
+                method: 'get',             /* Метод передачи (post или get) */
+                //dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
+                //data: {text: 'Текст'},     /* Параметры передаваемые в запросе. */
+                success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+                    //alert(data);            /* В переменной data содержится ответ от index.php. */
+                    // console.log(data);
+
+                    $("#articles").empty();
+                    $.each(data, function(index, data){
+                    $("#articles").append(
+
+                        `  `,
+                        `  `,
+
+                    );
+
+                });
+        }
+        });
+        }
+
+
 
     </script>
 
