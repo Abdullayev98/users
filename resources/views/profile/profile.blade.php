@@ -13,17 +13,15 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        @foreach($vcs as $vc)
-                        <span>{{$vc->count}} просмотров профиля</span>
-                        @endforeach
+                        <span>{{$vcs->count ?? '' }} просмотров профиля</span>
                     </div>
                     <br>
-                    <h2 class="font-bold text-2xl mb-2">Здравствуйте, {{$user->name}}!</h2>
+                    <h2 class="font-bold text-2xl mb-2">Здравствуйте, {{$user ?? ''->name}}!</h2>
                     <div class="grid grid-cols-3">
                         <div class="col-span-1 object-center  w-40 h-50">
-                            <img class="rounded-min mx-left overflow-hidden" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="" width="384" height="512">
-                            <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
-                            <form action="{{route('updatephoto' ,$user->id)}}" method="POST" enctype="multipart/form-data">
+                            <img class="rounded-min mx-left overflow-hidden" src="{{asset("AvatarImages/{$user ?? ''->avatar}")}}" alt="" width="384" height="512">
+                            <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user ?? ''->avatar)}}" alt="" width="384" height="512"> -->
+                            <form action="{{route('updatephoto' ,$user ?? ''->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
@@ -43,7 +41,7 @@
                         </div>
                         {{-- <div class="relative inline-block object-center  w-40 h-50">
                             <img class="rounded-min mx-left overflow-hidden"
-                                src="{{asset($user->avatar)}}" alt="" width="384"
+                                src="{{asset($user ?? ''->avatar)}}" alt="" width="384"
                                 height="512">
                                     <button class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button" onclick="openpopup()">
                                         <i class="fas fa-camera"></i>
@@ -53,11 +51,11 @@
                         </div> --}}
 
                         <div class="inline-block ml-3 mt-1">
-                            @if($user->age!="")
+                            @if($user ?? ''->age!="")
                                 <p class="inline-block text-m mr-2">
-                                    {{$user->age}}
-                                    @if($user->age>20 && $user->age%10==1) год
-                                    @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
+                                    {{$user ?? ''->age}}
+                                    @if($user ?? ''->age>20 && $user ?? ''->age%10==1) год
+                                    @elseif ($user ?? ''->age>20 && ($user ?? ''->age%10==2 || $user ?? ''->age%10==3 || $user ?? ''->age%10==1)) года
                                     @else лет
                                     @endif
                                 </p>
@@ -66,7 +64,7 @@
                             <span class="inline-block">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <p class="inline-block text-m">
-                                    @if($user->location!="") {{$user->location}} город
+                                    @if($user ?? ''->location!="") {{$user ?? ''->location}} город
                                     @else город не включен
                                     @endif
                                 </p>
@@ -99,7 +97,7 @@
                                 <i class="fas fa-pencil-alt inline text-gray-300"></i>
                                 <p class="inline text-gray-300 cursor-pointer">Редактировать</p>
                             </span>
-                            <p class="mt-3 w-4/5">{{$user->description}}</p>
+                            <p class="mt-3 w-4/5">{{$user ?? ''->description}}</p>
                         </div>
                         <h4 class="font-bold text-lg mt-5">Примеры работ</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
@@ -142,8 +140,8 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Телефон</h5>
-                            @if ($user->phone_number!="")
-                            <p class="font-bold text-black block ">{{"+".$user->phone_number}}</p>
+                            @if ($user ?? ''->phone_number!="")
+                            <p class="font-bold text-black block ">{{"+".$user ?? ''->phone_number}}</p>
                             @else
                             номер нет
                             @endif
@@ -156,7 +154,7 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-black block mt-2">Email</h5>
-                            <p class="text-sm">{{$user->email}}</p>
+                            <p class="text-sm">{{$user ?? ''->email}}</p>
                         </div>
                     </div>
                     {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -192,7 +190,7 @@
                             <a href="https://www.facebook.com/" target="_blank" class="block text-sm">Привязать</a>
                         </div>
                     </div>
-                {{-- @foreach ($user->Socials as $social)
+                {{-- @foreach ($user ?? ''->Socials as $social)
                 @if ($social->social_name == 'OneID')
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
