@@ -101,7 +101,7 @@
                     </div>
 
                     <div>
-                        <div class="border-b">
+                        <div class="border-b mb-5">
                             <!-- Tabs -->
                             <ul id="tabs" class="inline-flex w-full">
                                 <li class="font-semibold rounded-t mr-5">Сортировать</li>
@@ -270,7 +270,6 @@
             $(this).toggleClass("rotate-[360deg]");
         });
 
-<<<<<<< HEAD
         function all_cat(){
            // if ($('#all_check').is(':checked').removeAttr(checked)
                 // .prop('checked'): true
@@ -304,10 +303,6 @@
         }
 
 
-
-
-=======
->>>>>>> 329b78ecaf88cda9171913e101a0ccf7e8bd3bb8
     </script>
 
 @endsection
