@@ -147,7 +147,7 @@
 
                         <div class="max-w-lg mx-auto">
 
-                            <button class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5" type="button"><input type="checkbox" class="mr-1"/> Все категории</button>
+                            <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> Все категории</label>
 
                             <div class="w-full my-1">
                                 @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
@@ -158,16 +158,13 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                 </svg>
                                             </button>
-                                            <button class="font-medium rounded-lg text-sm text-center inline-flex items-center" type="button">
-                                                <input type="checkbox" class="mr-1"/>
-                                                {{$category->name}}
-                                            </button>
+                                                <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category->name}}</label>
                                         </div>
                                         <div x-show="show" class="border border-b-0 px-8 py-1">
                                             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                                 <div>
-                                                    <button class="font-medium rounded-lg text-sm text-center inline-flex items-center" type="button"><input type="checkbox" class="mr-1"/> {{$category2->name}} </button>
+                                                    <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category2->name}}</label>
                                                 </div>
 
                                             @endforeach
@@ -252,9 +249,24 @@
 
 
         function all_cat(){
-           // if ($('#all_check').is(':checked').removeAttr(checked)
-                // .prop('checked'): true
-                // .is(':checked'): true
+            let allcat = $('.all_check').is('checked')
+           if (allcat)
+               allcat.removeAttr('checked')
+           else
+               allcat.attr('checked', 'checked')
+        }
+
+        function par_cat(){
+            if ($('#all_check').is('checked'))
+                $('#all_check').removeAttr(checked)
+            else
+                $('#all_check').attr(checked)
+        }
+        function chi_cat(){
+            if ($('#all_check').is('checked'))
+                $('#all_check').removeAttr(checked)
+            else
+                $('#all_check').attr(checked)
         }
 
 
