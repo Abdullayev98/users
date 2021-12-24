@@ -24,19 +24,21 @@
                             <div class="grid grid-cols-4 gap-4 mb-3">
 
                                 <div class="inline-flex w-full col-span-4">
-                                    <input class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
-                                    <button class="bg-green-500 px-4 py-1 rounded">Найти</button>
+                                    <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
+                                    <button class="w-2/12 bg-green-500 ml-1 py-1 px-1 rounded">Найти</button>
                                 </div>
 
-                                <div class="col-span-3">
-                                    <label class="text-xs">Город, адрес, метро, район...</label>
-                                    <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
+                                <div class="inline-flex w-full col-span-4">
+                                    <div class="w-7/12">
+                                        <label class="text-xs">Город, адрес, метро, район...</label>
+                                        <input class="w-full border border-black rounded text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
+                                    </div>
+                                    <div class="w-1/5 ml-5">
+                                        <label class="text-xs">Стоимость заданий от</label>
+                                        <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
+                                    </div>
                                 </div>
 
-                                <div class="ml-3">
-                                    <label class="text-xs">Стоимость заданий от</label>
-                                    <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
-                                </div>
                             </div>
                                 </form>
                         </div>
@@ -70,8 +72,8 @@
                                 </div>
                                   <div class="float-right w-1/4 text-right">
                                   <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                      <p class="text-sm ml-12mt-4">Спортмастер</p>
-                                  <p class="text-sm ml-12mt-4">Нет отзывов</p>
+                                      <p class="text-sm ml-12 mt-4">Спортмастер</p>
+                                  <p class="text-sm ml-12 mt-4">Нет отзывов</p>
                                 </div>
                               </div>
                             </div>
@@ -81,7 +83,10 @@
                         </div>
 
 
-
+                        {{--    Navigatsiya ko'rinishi un kere bo'ladigan Input va Button  --}}
+                        <input id="suggest" class="hidden" type="text">
+                        <button id="mpshow" class="hidden"></button>
+                        {{--    Ishonmaganla sinab ko'rishi mumkin --}}
 
 
 
@@ -90,50 +95,47 @@
 
                 </div>
                 <div class="w-full h-full mt-5">
-                    <div id="map" class="h-40 my-5 rounded-lg w-full">
-
+                    <div id="map" class="h-60 my-5 rounded-lg w-full">
 {{--                        <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>--}}
-
                     </div>
-                    <div class="w-full h-full">
+                    <form action="">
+                        <div class="w-full h-full">
 
-                        <div class="max-w-lg mx-auto">
+                            <div class="max-w-lg mx-auto">
 
-                            <button class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5" type="button"><input type="checkbox" class="mr-1"/> Все категории</button>
+                                <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> Все категории</label>
 
-                            <div class="w-full my-1">
-                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
-                                    <div x-data={show:false} class="rounded-sm">
-                                        <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                            <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
-                                                <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                            <button class="font-medium rounded-lg text-sm text-center inline-flex items-center" type="button">
-                                                <input type="checkbox" class="mr-1"/>
-                                                {{$category->name}}
-                                            </button>
+                                <div class="w-full my-1">
+
+                                    @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+                                        <div x-data={show:false} class="rounded-sm">
+                                            <div class="border border-b-0 bg-gray-100" id="headingOne">
+                                                <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                                                    <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                    </svg>
+                                                </button>
+                                                    <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category->name}}</label>
+                                            </div>
+                                            <div x-show="show" class="border border-b-0 px-8 py-0">
+                                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+
+                                                    <div>
+                                                        <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category2->name}}</label>
+                                                    </div>
+
+                                                @endforeach
+                                            </div>
                                         </div>
-                                        <div x-show="show" class="border border-b-0 px-8 py-1">
-                                            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+                                    @endforeach
+                                </div>
 
-                                                <div>
-                                                    <button class="font-medium rounded-lg text-sm text-center inline-flex items-center" type="button"><input type="checkbox" class="mr-1"/> {{$category2->name}} </button>
-                                                </div>
-
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                @endforeach
                             </div>
 
+                            <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+
                         </div>
-
-                        <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-
-
-                    </div>
+                    </form>
                 </div>
             </div>
 
@@ -204,9 +206,24 @@
 
 
         function all_cat(){
-           // if ($('#all_check').is(':checked').removeAttr(checked)
-                // .prop('checked'): true
-                // .is(':checked'): true
+            let allcat = $('.all_check').is('checked')
+           if (allcat)
+               allcat.removeAttr('checked')
+           else
+               allcat.attr('checked', 'checked')
+        }
+
+        function par_cat(){
+            if ($('#all_check').is('checked'))
+                $('#all_check').removeAttr(checked)
+            else
+                $('#all_check').attr(checked)
+        }
+        function chi_cat(){
+            if ($('#all_check').is('checked'))
+                $('#all_check').removeAttr(checked)
+            else
+                $('#all_check').attr(checked)
         }
 
 
