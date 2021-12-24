@@ -72,8 +72,8 @@
                                 </div>
                                   <div class="float-right w-1/4 text-right">
                                   <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                      <p class="text-sm ml-12mt-4">Спортмастер</p>
-                                  <p class="text-sm ml-12mt-4">Нет отзывов</p>
+                                      <p class="text-sm ml-12 mt-4">Спортмастер</p>
+                                  <p class="text-sm ml-12 mt-4">Нет отзывов</p>
                                 </div>
                               </div>
                             </div>
@@ -83,7 +83,10 @@
                         </div>
 
 
-
+                        {{--    Navigatsiya ko'rinishi un kere bo'ladigan Input va Button  --}}
+                        <input id="suggest" class="hidden" type="text">
+                        <button id="mpshow" class="hidden"></button>
+                        {{--    Ishonmaganla sinab ko'rishi mumkin --}}
 
 
 
@@ -92,47 +95,47 @@
 
                 </div>
                 <div class="w-full h-full mt-5">
-                    <div id="map" class="h-40 my-5 rounded-lg w-full">
-
+                    <div id="map" class="h-60 my-5 rounded-lg w-full">
 {{--                        <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>--}}
-
                     </div>
-                    <div class="w-full h-full">
+                    <form action="">
+                        <div class="w-full h-full">
 
-                        <div class="max-w-lg mx-auto">
+                            <div class="max-w-lg mx-auto">
 
-                            <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> Все категории</label>
+                                <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> Все категории</label>
 
-                            <div class="w-full my-1">
-                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
-                                    <div x-data={show:false} class="rounded-sm">
-                                        <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                            <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
-                                                <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                                <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category->name}}</label>
+                                <div class="w-full my-1">
+
+                                    @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+                                        <div x-data={show:false} class="rounded-sm">
+                                            <div class="border border-b-0 bg-gray-100" id="headingOne">
+                                                <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                                                    <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                    </svg>
+                                                </button>
+                                                    <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category->name}}</label>
+                                            </div>
+                                            <div x-show="show" class="border border-b-0 px-8 py-0">
+                                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+
+                                                    <div>
+                                                        <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category2->name}}</label>
+                                                    </div>
+
+                                                @endforeach
+                                            </div>
                                         </div>
-                                        <div x-show="show" class="border border-b-0 px-8 py-1">
-                                            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+                                    @endforeach
+                                </div>
 
-                                                <div>
-                                                    <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer"><input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category2->name}}</label>
-                                                </div>
-
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                @endforeach
                             </div>
 
+                            <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+
                         </div>
-
-                        <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-
-
-                    </div>
+                    </form>
                 </div>
             </div>
 
