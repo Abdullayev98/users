@@ -15,8 +15,7 @@
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
+            <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2 text-lg font-bold">{{ $message }} <button type="button" class="bg-red hover:bg-[#a5f3fc] py-1 px-4 rounded-full text-2xl font-bold close right-0" data-dismiss="alert">×</button> </div>
         </div>
     @endif
     <div
