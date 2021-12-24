@@ -40,8 +40,8 @@
     </section>
 @foreach($fc as $faq)
     <section class="mt-7">
-        <div class="w-10/12 lg:w-8/12 mx-auto md:flex flex-row justify-center items-center bg-white py-5 px-8 rounded-md shadow-lg shadow-indigo-300/40">
-            <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20 md:m-5 mx-auto ">
+        <div class="w-10/12 lg:w-8/12 mx-auto md:flex items-center bg-white py-5 px-8 rounded-md shadow-lg shadow-indigo-300/40">
+            <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20">
             <div class="px-6 py-3">
                 <a href="/questions/{{$faq->id}}"><h4 class="text-[#515254] text-[18px] mb-1">{{$faq->title}}</h4></a>
                 <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">{{$faq->description}}</p>
