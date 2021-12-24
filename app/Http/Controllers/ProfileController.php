@@ -17,7 +17,7 @@ class ProfileController extends Controller
     public function profileData()
     {
         $user = User::find(Auth::user()->id);
-        $vcs = UserView::where('user_id', $user->id)->get();
+        $vcs = UserView::where('user_id', $user->id)->first();
         $user->update();
         return view('profile.profile', compact('user','vcs'));
     }
@@ -47,7 +47,7 @@ class ProfileController extends Controller
     public function editData()
     {
         $user = User::find(Auth::user()->id);
-        $vcs = UserView::where('user_id', $user->id)->get();
+        $vcs = UserView::where('user_id', $user->id)->first();
         $categories = DB::table('categories')->where('parent_id',Null)->get();
         return view('profile.settings', compact('user','categories','vcs'));
     }

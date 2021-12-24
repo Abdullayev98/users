@@ -28,56 +28,15 @@
                                     <button class="bg-green-500 px-4 py-1 rounded">Найти</button>
                                 </div>
 
-                                <div class="col-span-2">
+                                <div class="col-span-3">
                                     <label class="text-xs">Город, адрес, метро, район...</label>
                                     <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
-                                </div>
-
-                                <div class="">
-                                    <label class="text-xs">Радиус поиска</label>
-{{--                                    <input tabindex="0" aria-autocomplete="list" class="border border-black rounded text-gray-700 py-1" value="">--}}
-                                    <select class="w-full border border-black rounded text-gray-700 py-1">
-                                        <option selected></option>
-                                        <option value="1">5 km</option>
-                                        <option value="2">10 km</option>
-                                        <option value="3">15 km</option>
-                                        <option value="4">20 km</option>
-                                    </select>
                                 </div>
 
                                 <div class="ml-3">
                                     <label class="text-xs">Стоимость заданий от</label>
                                     <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
                                 </div>
-
-                                <ul class="inline-flex flex-wrap w-full col-span-3">
-                                    <div class="col-span-1 mr-5">
-                                        <li>
-                                            <input class="" type="checkbox" id="" value=""></span>
-                                            <label class="" for="">Удалённая работа</label>
-                                        </li>
-                                        <li>
-                                            <input class="" type="checkbox" id="" value="">
-                                            <label class="" for="">Задания без откликов</label>
-                                        </li>
-                                    </div>
-                                    <div class="col-span-1 mr-5">
-                                        <li>
-                                            <input class="" type="checkbox" id="" value="">
-                                            <label class="" for="">Только вакансии</label>
-                                        </li>
-                                        <li>
-                                            <input class="" type="checkbox" id="" value="">
-                                            <label class="" for="">Сделка без риска</label>
-                                        </li>
-                                    </div>
-                                    <div class="col-span-1 mr-5">
-                                        <li>
-                                            <input class="" type="checkbox" id="" value="">
-                                            <label class="" for="">Бизнес-задания</label>
-                                        </li>
-                                    </div>
-                                </ul>
                             </div>
                                 </form>
                         </div>
@@ -96,12 +55,12 @@
 
 
                         <div id="scrollbar" class="w-full h-full blog1">
-{{--                          <div class="w-full overflow-y-scroll w-full h-screen">--}}
+{{--                      <div class="w-full overflow-y-scroll w-full h-screen">--}}
                             @foreach($tasks as $task)
-                            <div class="w-full border hover:bg-blue-100">
+                            <div class="w-full border hover:bg-blue-100 h-[100px]">
                               <div class="w-11/12 h-12 m-4">
                                 <div class="float-left w-9/12">
-                                  <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="/detailed-tasks" class="text-lg text-blue-400 hover:text-red-400">
+                                  <i class="fas fa-user-circle text-4xl float-left text-blue-400 mr-2"></i><a href="/detailed-tasks" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->name}}
                                   </a>
                                   <p class="text-sm ml-12mt-4">
@@ -113,13 +72,6 @@
                                   <a href="#" class="text-lg">{{$task->budget}} sum</a>
                                       <p class="text-sm ml-12mt-4">Спортмастер</p>
                                   <p class="text-sm ml-12mt-4">Нет отзывов</p>
-                                </div>
-                              </div>
-                              <div class="w-11/12 h-12 m-4">
-                                <div class="mx-auto w-9/12">
-                                  <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Вакансия</button>
-                                  <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Бесплатный отклик</button>
-                                  <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥Промо</button>
                                 </div>
                               </div>
                             </div>

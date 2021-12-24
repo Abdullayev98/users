@@ -13,7 +13,6 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl mb-2">Здравствуйте, {{$user->name}}!</h2>
@@ -51,7 +50,7 @@
                         </div> --}}
 
                         <div class="inline-block ml-3 mt-1">
-                            @if($user->age!="")
+                            @if($user->age != "")
                                 <p class="inline-block text-m mr-2">
                                     {{$user->age}}
                                     @if($user->age>20 && $user->age%10==1) год
