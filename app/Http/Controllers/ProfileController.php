@@ -18,7 +18,6 @@ class ProfileController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $vcs = UserView::where('user_id', $user->id)->first();
-        $user->update();
         return view('profile.profile', compact('user','vcs'));
     }
     public function update(Request $request, $id)
@@ -32,8 +31,33 @@ class ProfileController extends Controller
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
             $data['avatar'] = $request->file('avatar')->store("images/users");
-            // $filename = $request->file('avatar')->getClientOriginalName();
-            // Storage::disk('avatar')->putFileAs('images/users', $request->file('avatar'), $filename);
+            $filename = request()->file('avatar');
+            $extention = File::extension($filename);
+            $file = $filename;
+            $file->store('images/users', ['disk' => 'avatar']);
+        }
+        $user->update($data);
+        return  redirect()->route('userprofile');
+    }
+
+    //profile Cash
+    public function profileCash()
+    {
+        $user = User::find(Auth::user()->id);
+        $vcs = UserView::where('user_id', $user->id)->first();
+        return view('profile.cash', compact('user','vcs'));
+    }
+    public function updateCash(Request $request, $id)
+    {
+        $request->validate([
+            'avatar' => 'required|image'
+        ]);
+        $user= User::find($id);
+        $data = $request->all();
+
+        if($request->hasFile('avatar')){
+            Storage::delete($user->avatar);
+            $data['avatar'] = $request->file('avatar')->store("images/users");
             $filename = request()->file('avatar');
             $extention = File::extension($filename);
             $file = $filename;
@@ -83,6 +107,10 @@ class ProfileController extends Controller
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
             $data['avatar'] = $request->file('avatar')->store("images/users");
+            $filename = request()->file('avatar');
+            $extention = File::extension($filename);
+            $file = $filename;
+            $file->store('images/users', ['disk' => 'avatar']);
         }
         $user->update($data);
         return  redirect()->route('editData');

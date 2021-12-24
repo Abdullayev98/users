@@ -308,20 +308,20 @@
             </div>
             <div class="text-center h-96">
                 <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
-                    <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="6" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="400">
+                    <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="400">
                 </div>
-                <p class="text-sm mt-2 leading-6 text-gray-400">Сумма пополнения, минимум — 100 ₽</p>
+                <p class="text-sm mt-2 leading-6 text-gray-400">Сумма пополнения, минимум — 100 UZS</p>
 
                 <div class="mt-8">
                     <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " />
-                    <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 100 ₽</p>
+                    <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 100 UZS</p>
                 </div>
                 <p class="text-center mt-4  text-gray-400 m-8">
-                    Если вы заболеете и не сможете работать, ООО «Страховая компания "Манго"» <br> выплатит вам до 500 ₽ за каждый день болезни. *
+                    Если вы заболеете и не сможете работать, ООО «Страховая компания "Манго"» <br> выплатит вам до 500 UZS за каждый день болезни. *
                 </p>
 
                 <div class="mt-16">
-                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >К оплате 400 ₽</a>
+                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >К оплате</a>
                 </div>
             </div>
         </div>
@@ -331,26 +331,40 @@
 {{-- 2 --}}
 <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id1">
     <div class="relative w-auto my-6 mx-auto max-w-3xl">
-        <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <div class="border-2 shadow-2xl rounded-lg bg-gray-100  relative flex flex-col w-full bg-white outline-none focus:outline-none">
             <div class=" text-center p-6  rounded-t">
                 <button type="submit"  onclick="toggleModal1()" class="rounded-md w-100 h-16 absolute top-1 right-4">
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                 </button>
                 <h3 class="font-medium text-3xl block mt-6">
-                    Как удобнее оплатить?
+                    Способ оплаты
                 </h3>
             </div>
 
-            <div class="container mt-8">
-                <div>
-                    <a href="#"><img src="{{asset('/images/payme.png')}}" class="mx-auto w-48 h-18" alt="Payme"> </a>
-                </div>
-                <div>
-                    <a href="#"><img src="{{asset('/images/click.jpg')}}" class="mx-auto w-96 h-48" alt="Click"></a>
-                </div>
-                <div>
-                    <a href="#"><img src="{{asset('/images/paynet.jpg')}}" class="mx-auto w-64 h-18 mb-8" alt="Paynet"></a>
-                </div>
+            <div class="container mt-8 mb-12">
+                <form action="/ref" method="GET">
+                    <input type="hidden" name="user_id" value="1">
+                                  <div class="my-3 w-1/2 mx-auto">
+                                    <div class="custom-control custom-radio mb-4 text-3xl">
+                                      <input id="credit" onClick="doBlock()" name="paymethod" type="radio" value="PayMe" class="custom-control-input">
+                                      <label class="custom-control-label" for="credit">PayMe</label>
+                                    </div>
+                                    <div class="custom-control custom-radio text-3xl">
+                                      <input id="debit" onClick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input">
+                                      <label class="custom-control-label" for="debit">Click</label>
+                                    </div>
+                    
+                                    <div class="d-none input-group my-5" id="forhid">
+                                    <input id="amount_u" type="hidden" name="amount" class="form-control">
+                                    </div>
+                    
+                                  </div>
+                    
+                                <div class="text-center">
+                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-2xl font-bold py-3 px-8 rounded">Оплата</button>
+                                </div>
+                    
+                    </form>
             </div>
         </div>
     </div>
@@ -390,22 +404,22 @@
             document.getElementById('button').classList.remove("bg-lime-500");
             document.getElementById('button').classList.add("bg-gray-500");
             document.getElementById('button').classList.remove("hover:bg-lime-600");
-            document.getElementById("button").innerHTML ="К оплате " + x +"₽";
+            document.getElementById("button").innerHTML ="К оплате ";
         }else{
             document.getElementById('button').setAttribute("onclick","toggleModal1();");
             document.getElementById('button').classList.remove("bg-gray-500");
             document.getElementById('button').classList.add("bg-lime-500");
             document.getElementById('button').classList.add("hover:bg-lime-600");
-            document.getElementById("button").innerHTML ="К оплате " + x +"₽";
+            document.getElementById("button").innerHTML ="К оплате ";
         }
     }
     function checkFunction() {
         var x = document.getElementById("myText").value;
         var checkBox = document.getElementById("myCheck");
         if (checkBox.checked == true){
-            document.getElementById("button").innerHTML ="К оплате " +  (parseInt(x) + 100) +"₽";
+            document.getElementById("button").innerHTML ="К оплате ";
         } else {
-            document.getElementById("button").innerHTML ="К оплате " + x  +"₽";
+            document.getElementById("button").innerHTML ="К оплате " ;
         }
     }
     function validate(evt) {

@@ -15,9 +15,9 @@
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">
-            <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2 
+            <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2
             text-lg font-bold">{{ $message }}
-              <button onclick="toggleModal2()" type="button" class="bg-red hover:bg-[#a5f3fc] py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button> 
+              <button onclick="toggleModal2()" type="button" class="bg-red hover:bg-[#a5f3fc] py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button>
             </div>
         </div>
     @endif
@@ -285,7 +285,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full lg:shadow-xl">
+        <!-- <div class="w-full lg:shadow-xl">
             <div class="container mx-auto md:w-2/3 w-11/12">
                 <div class="w-2/3 mx-auto my-16 text-center">
                     <h1 class="text-4xl">Новые публикации <a href="/news"><span
@@ -356,7 +356,7 @@
                     </h1>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="container mx-auto md:w-2/3 w-11/12">
             <div class="w-full my-16">
                 <h1 class="text-4xl">Что заказывают на «Юду» прямо сейчас</h1>
