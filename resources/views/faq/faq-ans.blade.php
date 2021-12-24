@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-   
+
 
 </head>
 
 <body>
-   
+
     <section class="bg-[#494A4C] py-8 mb-7">
         <div class="lg:w-8/12 mx-auto w-10/12">
                 <div class="sm:block lg:flex flex-column justify-between ">
                     <a href="#"> <img class="w-32 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
-                
-                    <a href="/" class="text-white hover:text-gray-400"> 
+
+                    <a href="/" class="text-white hover:text-gray-400">
                         <i class="fa fa-link"></i>
-                            Перейти на сайт YouDo  
+                            Перейти на сайт YouDo
                     </a>
                 </div>
                 <h1 class="text-white text-3xl font-light  my-6">Ответы на частые вопросы и рекомендации от YouDo</h1>
@@ -35,13 +35,13 @@
                         </svg>
                     </button>
                     <input id="inp" class="bg-[#6d6e70] border-none outline-none transition h-16 pl-16 rounded-md focus:outline-none focus:bg-white w-full text-black text-lg hover:bg-[#7a7b7d]" type="search" name="search" placeholder="Поиск ответов..." />
-                </div>                    
+                </div>
             </form>
-        </div>                   
+        </div>
     </section>
-    
+
     <div class="lg:w-8/12 mx-auto w-10/12 text-gray-500">
-        <span class="text-sm">Все коллекции  <i class="fa fa-angle-right text-sm"></i> Как пользоваться сервисом</span>
+        <span class="text-sm">Все коллекции  <i class="fa fa-angle-right text-sm"></i> {{$fc->title}}</span>
     </div>
 
      <section class="mt-7">
@@ -49,15 +49,15 @@
             <div class="md:flex flex-row justify-center items-center">
                 <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20 md:m-5 mx-auto ">
                     <div class="px-6 py-3">
-                        <h4 class="text-[#515254] text-[32px] mb-1">Как пользоваться сервисом</h4>
-                        <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">Рассказываем, как заказать услугу или стать исполнителем, а ещё как общаться на сервисе. Новым исполнителям: как взять первое задание и начать зарабатывать. И немного о самых важных правилах площадки. </p>
+                        <h4 class="text-[#515254] text-[32px] mb-1">{{$fc->title}}</h4>
+                        <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">{{$fc->description}} </p>
                         <div class="flex flex-row items-center">
-                            <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
-                            
-                                <div class="flex flex-col">
+                            <!-- <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover "> -->
+
+                                <!-- <div class="flex flex-col">
                                     <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                    <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span> 
-                                </div>
+                                    <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
+                                </div> -->
                         </div>
                     </div>
             </div>
@@ -65,20 +65,24 @@
                 <h5 class="text-xl font-semibold mb-3">Общие вопросы</h5>
             </div>
             <div class="w-full bg-white border border-gray-300 rounded-t-md p-[30px] divide-y">
+              @foreach($fq as $faq)
                 <div class="w-full py-4">
-                    <a href="#">
-                        <h2 class="text-gray-800 text-xl">Как зарегистрироваться на сайте</h2>
-                    </a>
-                    <p class="text-gray-600">О возможных вариантах регистрации и этапах этого процесса</p>
+                    <!-- <a href="#"> -->
+                        <h2 class="text-gray-800 text-xl">{{$faq->question}}</h2>
+                    <!-- </a> -->
+                    <p class="text-gray-600">{{$faq->q_descript}}</p>
                     <div class="flex flex-row items-center">
-                                <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
-                            <div class="flex flex-col">
-                                <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span> 
-                            </div>
+                      <p class="text-gray-600">Ответ: {{$faq->answer_text}}</p>
+
+                                <!-- <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover "> -->
+                            <!-- <div class="flex flex-col"> -->
+                                <!-- <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a> -->
+                                <!-- <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span> -->
+                            <!-- </div> -->
                     </div>
                  </div>
-                <div class="w-full py-4">
+                 @endforeach
+                <!-- <div class="w-full py-4">
                     <a href="#">
                         <h2 class="text-gray-800 text-xl">Как зарегистрироваться на сайте</h2>
                     </a>
@@ -87,7 +91,7 @@
                                 <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
                             <div class="flex flex-col">
                                 <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span> 
+                                <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
                             </div>
                     </div>
                 </div>
@@ -100,16 +104,16 @@
                                 <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
                             <div class="flex flex-col">
                                 <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span> 
+                                <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
                             </div>
                     </div>
-                </div>
+                </div> -->
             </div>
-            
 
-            
-            
-           
+
+
+
+
         </div>
     </section>
 
