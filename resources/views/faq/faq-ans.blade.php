@@ -45,8 +45,8 @@
     </div>
 
      <section class="mt-7">
-        <div class="w-10/12 lg:w-8/12 mx-auto md:flex flex-col justify-start items-center bg-slate-100 py-5 px-8 rounded-md shadow-lg shadow-indigo-300/40">
-            <div class="md:flex items-center">
+        <div class="w-10/12 lg:w-8/12 mx-auto md:flex flex-col justify-start bg-slate-100 py-5 px-8 rounded-md shadow-lg shadow-indigo-300/40">
+            <div class="md:flex flex-row">
                 <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20 md:m-5 mx-auto ">
                     <div class="px-6 py-3">
                         <h4 class="text-[#515254] text-[32px] mb-1">{{$fc->title}}</h4>
