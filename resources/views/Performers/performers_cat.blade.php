@@ -25,32 +25,27 @@
 
             <div>
                 <div class="max-w-xl mx-auto">
-                    @foreach($categories as $category)
-                        @if ($category->parent_id == NULL)
-                            <label for="categories"></label>
-                            <select name="categories" id="categories" class="relative z-1 focus:outline-none mt-4 text-[#4099fb] cursor-pointer text-lg active:text-red-600">
-                                <option value="{{ $category->id }}">
-                                    <div class="flex items-center justify-between mb-4 ">
-                                        <span class="text-left font-bold text-blue-500  ">
-                                            {{$category->name}}
-                                        </span>
-                                    </div>
-                                </option>
+                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+                                    <div x-data={show:false} class="rounded-sm">
+                                        <div class="border border-b-0 bg-gray-100" id="headingOne">
+                                            <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                                                <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </button>
+                                                {{$category->name}}
+                                        </div>
+                                        <div x-show="show" class="border border-b-0 px-8 py-1">
+                                            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
-                                @foreach($child_categories as $child_category)
-                                    @if ($category->id == $child_category->parent_id)
-                                        <option value="{{ $child_category->id }}">
-                                            <div>
-                                                <div class="ml-4 text-blue-500">
-                                                    <a href="/perf-ajax/{{ $child_category->id }}" class="hover:text-[#ff0000]">{{ $child_category->name }}</a>
+                                                <div>
+                                                    <a href="/perf-ajax/{{ $category2->id }}">{{$category2->name}}</a>
                                                 </div>
-                                            </div>
-                                        </option>
-                                    @endif
+
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 @endforeach
-                            </select>
-                        @endif
-                    @endforeach
                 </div>
             </div>
         </div>

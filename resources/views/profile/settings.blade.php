@@ -13,7 +13,7 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>15 просмотров профиля</span>
+ -->
                     </div>
                     <br>
                     <h2 class="font-bold text-lg">Здравствуйте, {{$user->name}}!</h2>
@@ -43,16 +43,16 @@
                         @if($user->age!="")
                             <p class="inline-block text-m mr-2">
                                 {{$user->age}}
-                                @if($user->age>20 && $user->age%10==1) год 
+                                @if($user->age>20 && $user->age%10==1) год
                                 @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
-                                @else лет                            
-                                @endif 
+                                @else лет
+                                @endif
                             </p>
                         @endif
-                       
+
                         <span class="inline-block">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p class="inline-block text-m"> 
+                            <p class="inline-block text-m">
                                 @if($user->location!="") {{$user->location}} город
                                 @else город не включен
                                 @endif
@@ -110,7 +110,7 @@
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="email">Phone number</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number" 
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number"
                                                     @if ($user->phone_number=="") placeholder="998911234567"
                                                     @else value="{{$user->phone_number}}"
                                                     @endif >
@@ -144,9 +144,9 @@
                                                 </div>
                                                 <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
                                                 <hr>
-                                            </form>   
-                                               
-                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>                                                                
+                                            </form>
+
+                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -171,7 +171,7 @@
 {{-- settings/ third tab start -> subscribe for some tasks --}}
                                     <div class="w-4/5 mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. Выберите категории</h3>
-    {{-- choosing categories --}}                                    
+    {{-- choosing categories --}}
                                         <form action="{{route('get.category')}}" method="post">@csrf
                                             <div class="acordion mt-16">
                                                 @foreach ($categories as $category )
@@ -211,10 +211,10 @@
     {{-- choosing categories end --}}
     {{-- changing geolocation --}}
                                         <div class="geolocation">
-                                            <h3 class="font-bold text-3xl mb-7 mt-10">2. Геопозиция. Ташкент и Ташкентская область</h3>
+                                            <h3 class="font-bold text-3xl mb-7 mt-10">2. Геопозиция. {{$user->location}}</h3>
                                             <p class=" mt-5 text-sm text-left text-gray-600 ">Выберите районы, из которых вы хотите получать уведомления о новых заданиях:</p>
                                             <div class="parentCategory rounded-xl bg-gray-200 px-3 py-3">
-                                                <h4 class="font-bold text-gray-900 text-lg">город Ташкент</h4>
+                                                <h4 class="font-bold text-gray-900 text-lg">город {{$user->location}}</h4>
                                                 <div x-data="{ showModal : false }">
                                                     <button @click="showModal = !showModal" class="rounded-xl bg-gray-300 h-10 w-2/5 px-10">
                                                         <i class="fas fa-exchange-alt inline mr-3"></i>
@@ -230,11 +230,13 @@
                                                                         <div class="md:text-[2rem] text-[1.8rem] md:w-[500px] font-bold font-['Radiance,sans-serif,Noto Sans']">Выберите регион</div>
                                                                     </thead>
                                                                     <tbody>
-                                                                    <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="" type="text" placeholder="Поиск регионы">
+                                                                        <form action="{{route('insert.district')}}" method ="post">
+                                                                            @csrf
+                                                                            <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="district" type="text" placeholder="Поиск регионы" value="{{$user->district}}">
+
+                                                                        <input type="submit" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-8 md:px-8 text-center" value = "Оставить заявку">
+                                                                        </form>
                                                                     </tbody>
-                                                                    <div class="py-8">
-                                                                        <a type="button" href="#contact" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-3 md:px-8 text-center">Оставить заявку</a>
-                                                                    </div>
                                                                     <div class="text-right space-x-5">
                                                                         <button @click="showModal = !showModal" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">Закрыть</button>
                                                                     </div>
@@ -245,7 +247,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h4 class="font-bold text-gray-900 text-lg">Ташкентская область</h4>
+                                                {{-- <h4 class="font-bold text-gray-900 text-lg">Ташкентская область</h4>
                                                 <button id="open-btn" class="rounded-xl bg-gray-300 h-10 w-2/5 px-10 mb-5">
                                                     <i class="fas fa-exchange-alt inline mr-3"></i>
                                                     <span class="inline">Изменить район</span>
@@ -253,7 +255,7 @@
                                                 <div>
                                                     <input type="checkbox" class="w-5 h-5 inline">
                                                     <p class="text-sm text-center inline ml-2">Отправлять уведомление, если новое задание находится рядом со мной. Если на вашем телефоне установлено мобильное приложение.</p>
-                                                </div>
+                                                </div> --}}
                                                 {{-- changing modal --}}
                                                 <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
                                                     <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
@@ -292,7 +294,7 @@
                                         </div>
     {{-- changing geolocation end --}}
     {{-- notification type --}}
-                                        <div class="notification">
+                                        {{-- <div class="notification">
                                             <h3 class="font-bold text-3xl mb-7 mt-10">3. Типы уведомлений</h3>
                                             <p class="mt-5">Уведомлять меня по:</p>
 
@@ -304,13 +306,10 @@
                                             <i class="fas fa-mobile-alt inline mr-1"></i>
                                             <span class="inline">Push</span>
 
-                                        </div>
+                                        </div> --}}
     {{-- notification type end --}}
     {{-- task recommmendation --}}
-                                        <div class="recommendation">
-                                            <h3 class="font-bold text-3xl mb-7 mt-10">3. Типы уведомлений</h3>
-                                        </div>
-    {{-- task recommendation end --}}
+
                                     </div>
 {{-- settings/ third tab end -> subscribe for some tasks --}}
                                 </div>
