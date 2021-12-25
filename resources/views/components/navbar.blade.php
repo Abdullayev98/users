@@ -312,10 +312,10 @@
                 </div>
                 <p class="text-sm mt-2 leading-6 text-gray-400">Сумма пополнения, минимум — 1000 UZS</p>
 
-                <div class="mt-8">
-                    <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " />
-                    <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 10000 UZS</p>
-                </div>
+                <!-- <div class="mt-8"> -->
+                    <!-- <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " /> -->
+                    <!-- <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 10000 UZS</p> -->
+                <!-- </div> -->
 
 
                 <div class="mt-16">
@@ -380,7 +380,6 @@
 
 <script type="text/javascript">
     function toggleModal(){
-
         document.getElementById("modal-id").classList.toggle("hidden");
         document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
         document.getElementById("modal-id").classList.toggle("flex");
@@ -390,10 +389,9 @@
         var element = document.getElementById("modal-id-backdrop");
         element.classList.add("hidden");
         var element2 = document.getElementById("modal-id");
-        var b = document.getElementById("button").innerHTML;
-        var num = parseInt(b.replace(/\D+/g,""));
+        var b = document.getElementById("myText").value;
         var u = document.getElementById("amount_u");
-        u.value = num;
+        u.value = b;
         element2.classList.add("hidden");
         document.getElementById("modal-id1").classList.toggle("hidden");
         document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");

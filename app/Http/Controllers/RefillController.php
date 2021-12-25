@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Prepare;
 use App\Models\Complete;
 use App\Models\WalletBalance;
@@ -17,7 +18,7 @@ public function ref(Request $request){
 
         $new_article = All_transaction::create([
 
-            'user_id'=> $request->get("user_id"),
+            'user_id'=> Auth::id(),
             'amount'=> $request->get("amount"),
             'method'=> "Click",
 

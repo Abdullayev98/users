@@ -116,7 +116,7 @@
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="age">Возраст</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="number" name="age" id="age" value="{{$user->age}}">
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" min="18" type="number" name="age" id="age" value="{{$user->age}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="textarea">Другие сведения</label>
@@ -195,7 +195,7 @@
                                                 </div>
                                                 @endforeach
                                             </div>
-                                            <input type="submit" name="submit" value="Save">
+                                            <input class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" type="submit" name="submit" value="Сохранить">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");
