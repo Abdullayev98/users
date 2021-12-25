@@ -1,4 +1,5 @@
-<?php
+﻿<?php
+
 namespace App\Services\Paycom;
 
 use App\Domain\Booking\Models\Booking;
