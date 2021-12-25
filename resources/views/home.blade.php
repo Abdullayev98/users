@@ -40,7 +40,6 @@
                             <button type="submit"
                                     class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
                                 Заказать услугу
-                                <!-- </a> -->
                             </button>
                           </form>
                         </div>
