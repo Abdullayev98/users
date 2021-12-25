@@ -195,7 +195,7 @@
                                                 </div>
                                                 @endforeach
                                             </div>
-                                            <input type="submit" name="submit" value="Save">
+                                            <input class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" type="submit" name="submit" value="Сохранить">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");
