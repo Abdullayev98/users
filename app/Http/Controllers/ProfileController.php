@@ -77,22 +77,26 @@ class ProfileController extends Controller
     }
     public function updateData(Request $request)
     {
+      $int = (int)$request->input('role');
         $request->validate([
             'name' => 'required',
             'email' => 'required',
             'age' => 'required',
             'phone_number' => 'required',
             'description' => 'required',
-            'location' => 'required'
+            'location' => 'required',
+            'role' => 'required',
         ]);
         $user = User::find(Auth::user()->id)
         ->update([
             'name'=>$request->input('name'),
+            'settings'=>$request->input('name'),
             'email'=>$request->input('email'),
             'age'=>$request->input('age'),
             'phone_number'=>$request->input('phone_number'),
             'description'=>$request->input('description'),
             'location'=>$request->input('location'),
+            'role_id'=>$int,
         ]);
         return  redirect()->route('editData');
     }
