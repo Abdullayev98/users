@@ -27,14 +27,14 @@
                             <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
                             <form action="{{route('updatephotocash' ,$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
+                                <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button2">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
                                     <label for="file">
                                         <i class="fas fa-camera"></i>
                                         <span>Изменить фото</span>
                                     </label>
                                 </div>
-                                <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
+                                <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button2" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
                                     <label for="sub1">
                                         <i class="fas fa-save"></i>
@@ -88,9 +88,9 @@
                         <div class="head mt-5">
                             <h2 class="font-bold text-xl">Ваш баланс 0 UZS</h2>
                             <p class="inline">Пополнить счет на</p>
-                                <input class="inline rounded-xl ml-3 ring-1 text-3xl text-center h-18 w-36 pb-1"  onkeyup="myText.value = this.value" oninput="inputFunction()" onkeypress='validate(event)' id="myText1" type='number' min="1000" maxlength="7" value="1000"/>
+                                <input class="inline rounded-xl ml-3 ring-1 text-3xl text-center h-18 w-36 pb-1"  onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)' id="myText1" type='number' min="1000" maxlength="7" value="1000"/>
                                 <span class="ml-1 text-xl">UZS</span>
-                                <button onclick="toggleModal()" type="submit" id="button"
+                                <button onclick="toggleModal()" type="submit" id="button2"
                                     class="md:inline block md:ml-10 mx-auto mt-5 md:mt-0 h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 md:w-40 w-full">
                                     Пополнить счет</button>
                         </div>
@@ -251,7 +251,20 @@
 
 
     <script>
-
+    function inputCash() {
+        var x = document.getElementById("myText1").value;
+        if(x < 1000){
+            document.getElementById('button2').removeAttribute("onclick");
+            document.getElementById('button2').classList.remove("bg-lime-500");
+            document.getElementById('button2').classList.add("bg-gray-500");
+            document.getElementById('button2').classList.remove("hover:bg-lime-600");
+        }else{
+            document.getElementById('button2').setAttribute("onclick","toggleModal();");
+            document.getElementById('button2').classList.remove("bg-gray-500");
+            document.getElementById('button2').classList.add("bg-lime-500");
+            document.getElementById('button2').classList.add("hover:bg-lime-600");
+        }
+    }
         function fileupdate(){
             var x = document.getElementById("buttons");
                 x.style.display = "block";

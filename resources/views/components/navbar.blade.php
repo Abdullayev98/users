@@ -316,7 +316,7 @@
                     <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " />
                     <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 10000 UZS</p>
                 </div>
-               
+
 
                 <div class="mt-16">
                     <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >К оплате 1000 UZS</a>
@@ -355,17 +355,17 @@
                                         <input id="debit" onClick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input">
                                         <label class="custom-control-label" for="debit1">Paynet</label>
                                       </div>
-                    
+
                                     <div class="d-none input-group my-5" id="forhid">
                                     <input id="amount_u" type="hidden" name="amount" class="form-control">
                                     </div>
-                    
+
                                   </div>
-                    
+
                                 <div class="text-center">
                                     <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-2xl font-bold py-3 px-8 rounded">Оплата</button>
                                 </div>
-                    
+
                     </form>
             </div>
         </div>
@@ -380,6 +380,7 @@
 
 <script type="text/javascript">
     function toggleModal(){
+
         document.getElementById("modal-id").classList.toggle("hidden");
         document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
         document.getElementById("modal-id").classList.toggle("flex");
@@ -389,6 +390,10 @@
         var element = document.getElementById("modal-id-backdrop");
         element.classList.add("hidden");
         var element2 = document.getElementById("modal-id");
+        var b = document.getElementById("button").innerHTML;
+        var num = parseInt(b.replace(/\D+/g,""));
+        var u = document.getElementById("amount_u");
+        u.value = num;
         element2.classList.add("hidden");
         document.getElementById("modal-id1").classList.toggle("hidden");
         document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
