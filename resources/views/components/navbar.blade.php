@@ -349,10 +349,14 @@
                                       <input id="credit" onClick="doBlock()" name="paymethod" type="radio" value="PayMe" class="custom-control-input">
                                       <label class="custom-control-label" for="credit">PayMe</label>
                                     </div>
-                                    <div class="custom-control custom-radio text-3xl">
+                                    <div class="custom-control custom-radio mb-4 text-3xl">
                                       <input id="debit" onClick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input">
                                       <label class="custom-control-label" for="debit">Click</label>
                                     </div>
+                                    <div class="custom-control custom-radio mb-4 text-3xl">
+                                        <input id="debit" onClick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input">
+                                        <label class="custom-control-label" for="debit1">Paynet</label>
+                                      </div>
                     
                                     <div class="d-none input-group my-5" id="forhid">
                                     <input id="amount_u" type="hidden" name="amount" class="form-control">
