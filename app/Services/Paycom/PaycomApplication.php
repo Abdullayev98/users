@@ -95,11 +95,11 @@ class PaycomApplication
 
         $this->response->send([
             'create_time' => FormatHelper::datetime2timestamp($transaction->create_time),
-            'perform_time' => FormatHelper::datetime2timestamp($transaction->perform_time ?? 0),
+            'perform_time'=> FormatHelper::datetime2timestamp($transaction->perform_time ?? 0),
             'cancel_time' => FormatHelper::datetime2timestamp($transaction->cancel_time ?? 0),
             'transaction' => $transaction->paycom_transaction_id,
-            'state' => $transaction->state,
-            'reason' => isset($transaction->reason) ? 1 * $transaction->reason : null,
+            'state'       => $transaction->state,
+            'reason'      => isset($transaction->reason) ? 1 * $transaction->reason : null,
         ]);
     }
 
@@ -137,8 +137,8 @@ class PaycomApplication
                 $this->response->send([
                     'create_time' => FormatHelper::datetime2timestamp($transaction->create_time),
                     'transaction' => $transaction->paycom_transaction_id,
-                    'state' => $transaction->state,
-                    'receivers' => $transaction->receivers,
+                    'state'       => $transaction->state,
+                    'receivers'   => $transaction->receivers,
                 ]);
             }
         } else {
@@ -163,14 +163,14 @@ class PaycomApplication
             $transaction->create_time = FormatHelper::timestamp2datetime($create_time);
             $transaction->state = PaycomTransaction::STATE_CREATED;
             $transaction->amount = $this->request->amount;
-            $transaction->booking_id = $this->request->account('booking_id');
+            $transaction->transaction_id = $this->request->account('transaction_id');
             $transaction->save();
 
             $this->response->send([
                 'create_time' => $create_time,
                 'transaction' => $transaction->paycom_transaction_id,
-                'state' => $transaction->state,
-                'receivers' => null,
+                'state'       => $transaction->state,
+                'receivers'   => null,
             ]);
         }
     }
@@ -196,9 +196,9 @@ class PaycomApplication
                         'Transaction is expired.'
                     );
                 } else {
-                    Booking::where('id', $transaction->booking_id)->update(['paid' => Booking::PAID_UZCARD]);
-
                     // todo: Mark transaction as completed
+                    Transaction::where('id', $transaction->transaction_id)->update(['status' => Transaction::STATUS_PAID_SUCCESS]);
+                    
                     $perform_time = FormatHelper::timestamp(true);
                     $transaction->state = PaycomTransaction::STATE_COMPLETED;
                     $transaction->perform_time = FormatHelper::timestamp2datetime($perform_time);
@@ -249,13 +249,14 @@ class PaycomApplication
                 $this->response->send([
                     'transaction' => $transaction->paycom_transaction_id,
                     'cancel_time' => FormatHelper::datetime2timestamp($transaction->cancel_time),
-                    'state' => $transaction->state,
+                    'state'       => $transaction->state,
                 ]);
                 break;
 
             case PaycomTransaction::STATE_CREATED:
                 $transaction->cancel(1 * $this->request->params['reason']);
 
+                Transaction::where('id', $transaction->transaction_id)->update(['status' => Transaction::STATUS_PAYED_SUCCESS]);
                 Booking::where('id', $transaction->booking_id)->update(['paid' => null]);
 
                 $this->response->send([
