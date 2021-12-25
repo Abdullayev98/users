@@ -24,10 +24,10 @@ class PaymentAPIController extends Controller
         $auth = $this->checkauth($request);
         if($auth && $auth['status'] == 0){
             header("Content-Type: text/xml; charset=utf-8");
-            $webService = new SoapServer($request->wsd_url);
-            $webService->setObject(new PaynetService());
-            $webService->handle();
-            dd($webService->handle());
+            $webService = new SoapServer($request->wsd_url);         
+	    $webService->setObject(new PaynetService());
+	    $webService->handle();
+	    dd($webService->handle());
         }else{
             return response(json_encode([
                 'status'  => $auth['status'],

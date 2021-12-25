@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\How_work_it;
+use App\Models\User;
+use App\Models\UserView;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use TCG\Voyager\Models\Category;
 
 class Controller extends BaseController
@@ -15,11 +21,37 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function home(){
-        $tasks  =  Task::latest()->paginate(15);
-        return view('home',compact('tasks'));
+        $tasks  =  Task::orderBy('id', 'desc')->take(15)->get();
+        $howitworks = How_work_it::all();
+        return view('home',compact('tasks','howitworks'));
     }
-    public function home_profile(){
-        return view('/profile/profile');
+    public function home_profile()
+    {
+        $user = User::find(Auth::user()->id);
+        $vcs = UserView::where('user_id', $user->id)->get();
+        $user->update();
+        return view('profile.profile', compact('user','vcs'));
+    }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'avatar' => 'required|image'
+        ]);
+        $user= User::find($id);
+        $data = $request->all();
+
+        if($request->hasFile('avatar')){
+            Storage::delete($user->avatar);
+            $data['avatar'] = $request->file('avatar')->store("images/users");
+            // $filename = $request->file('avatar')->getClientOriginalName();
+            // Storage::disk('avatar')->putFileAs('images/users', $request->file('avatar'), $filename);
+            $filename = request()->file('avatar');
+            $extention = File::extension($filename);
+            $file = $filename;
+            $file->store('images/users', ['disk' => 'avatar']);
+        }
+        $user->update($data);
+        return  redirect()->route('userprofile');
     }
     public function task_create(){
         return view('/create/name');
@@ -55,8 +87,9 @@ class Controller extends BaseController
     }
     public function category($id){
         $categories = DB::table('categories')->where('parent_id', null)->get();
+        $choosed_category = DB::table('categories')->where('id', $id)->get();
         $child_categories= DB::table('categories')->where('parent_id',$id)->get();
-        return view('task/choosetasks',compact('child_categories','categories'));
+        return view('task/choosetasks',compact('child_categories','categories','choosed_category'));
     }
 
 }

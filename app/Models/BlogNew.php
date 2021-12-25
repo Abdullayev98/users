@@ -9,9 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Message;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
+use TCG\Voyager\Traits\Translatable;
 
 class BlogNew extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Translatable;
     protected $table = "blog_new";
+
+    protected $translatable = ['title','text'];
 }

@@ -9,7 +9,7 @@
   @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
-  <div class="col-span-2">
+  <div class="md:col-span-2 col-span-3">
     <div class="w-full text-center text-2xl">
       Ищем исполнителя для задания "{{session('name')}}"
     </div>
@@ -21,7 +21,7 @@
         <div style="width: 29%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
-    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
+    <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
         Где выполнить задание?
       </div>
@@ -36,7 +36,7 @@
                 <button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">
                   A
                 </button>
-                <input id="suggest" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Город, Улица, Дом" aria-label="Full name" name="location">
+                <input id="suggest" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Город, Улица, Дом" aria-label="Full name" value="{{session('location2')}}" name="location">
                 <button id="mpshow" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
                   <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                 </button>
@@ -59,9 +59,11 @@
              </button>
              <div id="map" class="h-60 mt-4 rounded-lg w-full" ></div>
              <div class="flex w-full gap-x-4 mt-4">
-              <button type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+               <a href="/task/create?category_id=22" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+              <!-- <button type="button"> -->
                  Назад
-               </button>
+               <!-- </button> -->
+               </a>
 
                <input type="submit" class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" name="" value="Далее">
 
@@ -73,9 +75,7 @@
       </div>
     </div>
   </div>
-  <div class="col-span">
     <x-faq/>
-  </div>
 </div>
 </div>
 

@@ -24,7 +24,11 @@ class User extends \TCG\Voyager\Models\User
     protected $fillable = [
         'name',
         'email',
+        'age',
         'password',
+        'phone_number',
+        'description',
+        'location',
         'text',
         'status',
         'facebook_id',
@@ -55,5 +59,8 @@ class User extends \TCG\Voyager\Models\User
     }
     public function Socials(){
         return $this->hasMany(Social::class);
+    }
+    public function scopeUpdateViews($query, $id) {
+        return $query->whereId($id)->increment('views', 1);;
     }
 }

@@ -8,63 +8,59 @@
   appearance: none;
 }
 </style>
-    <div class="flex flex-row container mx-auto mx-40 my-8">
+<div class="container mx-auto mt-16">
+    <div class="grid grid-cols-3  grid-flow-row">
 
-{{-----------------------------------------------------------------------------------}}
-{{--                             Left column                                       --}}
-{{-----------------------------------------------------------------------------------}}
+            {{-----------------------------------------------------------------------------------}}
+            {{--                             Left column                                       --}}
+            {{-----------------------------------------------------------------------------------}}
 
-        <div class="flex flex-col basis-1/3 px-8">
+        <div class="lg:col-span-1 col-span-3 px-8">
             <div class="flex flex-row shadow-lg rounded-lg mb-8">
                 <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url(images/like.png);">
                 </div>
                 <div class="basis-1/2 text-xs text-gray-700 text-left my-auto">
-                    Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.   
+                    Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.
                 </div>
             </div>
 
             <div>
-                <div class="bg-white max-w-xl mx-auto">
-                    @foreach($categories as $category)
-                        @if ($category->parent_id == NULL)     
-                            <label for="categories"></label>
-                            <select name="categories" id="categories" class="relative focus:outline-none mt-4 text-[#4099fb] cursor-pointer text-lg active:text-red-600">
-                                <option value="{{ $category->id }}">
-                                    <div class="flex items-center justify-between mb-4 ">
-                                        <span class="text-left font-bold text-blue-500  ">
-                                            {{$category->name}}				
-                                        </span>
-                                    </div>		
-                                </option>
-                                
-                                @foreach($child_categories as $child_category)
-                                    @if ($category->id == $child_category->parent_id)
-                                        <option value="{{ $child_category->id }}">
-                                            <div>
-                                                <div class="ml-4 text-blue-500">
-                                                    <a href="#" class="hover:text-[#ff0000]">{{ $child_category->name }}</a>  
+                <div class="max-w-md mx-left">
+                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+                                    <div x-data={show:false} class="rounded-sm">
+                                        <div class="border border-b-0 bg-gray-100" id="headingOne">
+                                            <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                                                <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </button>
+                                                {{$category->name}}
+                                        </div>
+                                        <div x-show="show" class="border border-b-0 px-8 py-1">
+                                            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+
+                                                <div>
+                                                    <a href="/perf-ajax/{{ $category2->id }}">{{$category2->name}}</a>
                                                 </div>
-                                            </div>
-                                        </option>
-                                    @endif
+
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 @endforeach
-                            </select>
-                        @endif
-                    @endforeach
                 </div>
             </div>
         </div>
 
-{{-----------------------------------------------------------------------------------}}
-{{--                             Right column                                      --}}
-{{-----------------------------------------------------------------------------------}}
+            {{-----------------------------------------------------------------------------------}}
+            {{--                             Right column                                      --}}
+            {{-----------------------------------------------------------------------------------}}
 
-        <div class="flex flex-col basis-2/3">
+        <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16">
             <div class="bg-gray-100 flex flex-row h-40 mb-10" style="width: 700px;">
                 <div class="flex flex-col relative">
                     <div class="flex flex-row font-bold text-2xl m-4">
                         <p>Курьерские услуги: рейтинг исполнителей</p>
-                    </div> 
+                    </div>
                     <div class="flex flex-row m-4 absolute bottom-0 left-0">
                         <div class="form-check flex flex-row mr-6">
                             <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-yellow-600 checked:border-yellow-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="verified">
@@ -89,10 +85,11 @@
                     </div>
                 </div>
             </div>
-            
+            @foreach($users as $user)
+
             <div class="flex flex-row">
                 <div class="m-10">
-                    <img class="rounded-lg w-40 h-40" src="https://avatar.youdo.com/get.userAvatar?AvatarId=7441787&AvatarType=H180W180" alt="user">
+                    <img class="rounded-lg w-40 h-40" src="{{asset($user->avatar)}}" alt="user">
                     <div class="flex flex-row">
                         <p>Отзывы:</p>
                         <i class="far fa-thumbs-up m-1 text-gray-400"></i>    5128
@@ -108,28 +105,75 @@
                 </div>
                 <div class="my-10">
                     <div class="flex flex-row">
-                       <a href="/performers/executors-courier"> <p class="text-3xl underline text-blue-500 hover:text-red-500">Борис К.</p></a>
-                        <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
+                    <a href="/performers/{{$user->id}}"> <p class="text-3xl underline text-blue-500 hover:text-red-500">{{$user->name}}</p></a>
+                        <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                         <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
-                        <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}">
+                        <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
                     </div>
                     <div>
-                        <p class="text-sm text-gray-500 my-3">Был на сайте 9 мин. назад</p>
+                    @if($user->active_status == 1)
+                        <p class="text-sm text-gray-500 my-3">Онлайн</p>
+                        @else
+                        <p class="text-sm text-gray-500 my-3">Офлайн</p>
+                        @endif
                     </div>
                     <div>
                         <p class="text-base" style="width: 500px;">
-                            Добрый день! В штате опытные и проверенные курьеры . 
-                            На практике прошли все виды курьерских доставок . 
-                            За всех курьеров несу материальную ответственность . Способы опл…
+                        {{$user->description}}
                         </p>
                     </div>
                     <div>
-                        <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 text-white mt-3">Предложить задание</button>
+                    <a href="#" onclick="toggleModal12('modal-id12')">  <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 text-white mt-3">Предложить задание</button></a>
                     </div>
                 </div>
             </div>
+
+            @endforeach
+
+            {{ $users->links() }}
+
         </div>
     </div>
+</div>
+
+     {{-- Modal start --}}
+     <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id12">
+        <div class="relative w-auto my-6 mx-auto max-w-3xl"  id="modal-id12">
+          <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <div class=" text-center p-12  rounded-t">
+                  <button type="submit"  onclick="toggleModal12('modal-id12')" class="rounded-md w-100 h-16 absolute top-1 right-4">
+                    <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                  </button>
+                <h3 class="font-medium text-4xl block mt-4">
+                    У вас пока нет опубликованных <br> заданий
+                </h3>
+            </div>
+            <!--body-->
+            <div class="relative p-6 flex-auto">
+              <p class="my-4  text-lg  text-center">
+                Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.
+              </p>
+            </div>
+            <!--footer-->
+            <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
+                <div class="mt-4 ">
+                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >Создать задание</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
+      <script type="text/javascript">
+        function toggleModal12(modalID12){
+          document.getElementById(modalID12).classList.toggle("hidden");
+          document.getElementById(modalID12 + "-backdrop").classList.toggle("hidden");
+          document.getElementById(modalID12).classList.toggle("flex");
+          document.getElementById(modalID12 + "-backdrop").classList.toggle("flex");
+        }
+      </script>
+    {{-- Modal end --}}
+
 @endsection
 
 @section('javasript')

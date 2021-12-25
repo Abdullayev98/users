@@ -13,16 +13,18 @@
         }
     </style>
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
-    <div
-        class="bg-[url('https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp')] bg-center bg-cover h-96 ">
-        @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
+    @if ($message = Session::get('success'))
+        <div  id="modal-id2" class="alert alert-success alert-block">
+            <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2
+            text-lg font-bold">{{ $message }}
+              <button onclick="toggleModal2()" type="button" class="bg-red hover:bg-[#a5f3fc] py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button>
+            </div>
+        </div>
     @endif
-        <div class="container-lg mx-auto">
-            <main class="xl:mx-96 lg:mx-60 md:mx-48 sm:mx-32">
+    <div
+        class="bg-[url('https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp')] bg-center bg-cover h-[450px] ">
+        <div class="container-lg mx-auto bg-[url('https://assets.youdo.com/_next/static/media/pattern-dotted.981ffff613107988cc581a30c07a5551.svg')] bg-repeat h-[450px] ">
+            <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-32">
                     <h1 class="font-semibold text-white text-3xl lg:text-5xl md:text-4xl">
                         <span class="block xl:block">Освободим вас от забот</span>
@@ -30,25 +32,37 @@
                     <p class="mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-sm md:mt-2 mb-3">
                         Поможем найти надежного исполнителя для любых задач
                     </p>
-                    <div class="w-3/4 mx-auto">
-                        <div
-                            class="flew w-full bg-white hover:shadow-[0_5px_30px_-0_rgba(255,138,0,4)] transition duration-200 rounded-md mx-auto">
-                            {{--                        <input type="text" placeholder="Например, составить иск" class="w-2/3 md: focus:outline-none sm:left-24 rounded-md text-black md:text-md md:pl-2 sm:w-1/2 py-2.5">--}}
-                            <input type="text" placeholder="Например, составить иск"
-                                   class="w-auto md:left-32 focus:outline-none sm:left-24 rounded-md text-black md:text-md md:pl-2 sm:w-2/3 py-2.5">
+                    <div class="w-full mx-auto">
+                        <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
+                            <input type="text" value="" id="header_input" placeholder="Например, составить иск"
+                                   class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
                             <button type="submit"
-                                    class="float-right border bg-yellow-500  border-transparent font-medium  rounded-md text-white px-3.5 py-1 mr-1 mt-1 md:text-md md:pb-1 text-white">
+                                    class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
+                                    <a href="task/create?category_id=22">
                                 Заказать услугу
+                                </a>
                             </button>
                         </div>
-                        <div class="text-left mt-2 text-gray-700 underline-offset-1 text-sm">
-                            Например: <a href="#" class="hover:text-slate-400">повесить кондиционер</a>
+                        <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
+                            Например: <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">повесить кондиционер</span>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
+
+    <script>
+         function toggleModal2() {
+        document.getElementById("modal-id2").classList.toggle("hidden");
+         }
+    </script>
+
+    <script>
+        function myFunction() {
+            document.getElementById("header_input").value = document.getElementById("span_demo").innerHTML;
+        }
+    </script>
 
     <div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
         <!--modal content-->
@@ -64,11 +78,11 @@
             <div class="text-sm text-center mt-4">
                 готовы помочь вам в решении самых разнообразных задач
             </div>
-            <div class="grid md:grid-cols-3 grid-cols-1 w-full">
+            <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="">
-                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]"> {{ $category2->name }} </i>
+                <div class="text-gray-500 text-lg my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
+                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="block">
+                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->name }}</i>
                     </a>
                 </div>
                 @endforeach
@@ -105,7 +119,7 @@
                     </a>
                 </div>
             </div>
-            <div class="grid md:grid-cols-4 grid-cols-2 mt-8">
+            <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 <div class="text-center">
                     <img src="https://assets.youdo.com/_next/static/media/sbr_176.95ac6c46444100c6bcb6262ed7695c79.png"
                          class="mx-auto" alt="">
@@ -132,85 +146,76 @@
                         Более 1 000 000 отзывов от заказчиков помогут выбрать подходящего исполнителя.
                     </div>
                 </div>
-                <div class="text-center mx-4">
-                    <img
-                        src="https://assets.youdo.com/_next/static/media/forbusiness_176.05ef3328a82a6661b6c53ff31260b80a.png"
-                        class="mx-auto" alt="">
-                    <div class="font-bold my-4">YouDo для бизнеса</div>
-                    <div class="text-xs">
-                        Безналичная оплата бизнес-заданий с предоставлением закрывающих документов.
-                    </div>
-                </div>
             </div>
-            <div class="w-3/4 mx-auto my-8">
+            <!-- <div class="w-3/4 mx-auto my-8">
                 <img
                     src="https://avatars.mds.yandex.net/get-adfox-content/2367573/211006_adfox_1671985_4489405.2ae5b6df3d7a04dc28f071afffa30e99.png/optimize.webp"
                     alt="">
-            </div>
+            </div> -->
         </div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-gray-400 to-[#fff] h-1 rounded-full"></div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-[#f6f8fa] to-[#fff]">
             <div class="container text-center mx-auto px-16">
-                <div class="text-4xl w-2/3 mx-auto py-16">
+                <div class="md:text-4xl text-[24px] w-3/3 font-semibold mx-auto py-10 md:py-16">
                     С YouDo вы экономите на услугах до 70%*.<br>
                     Как это возможно?
                 </div>
                 <div class="grid md:grid-cols-2 grid-cols-1 mt-8 w-11/12 mx-auto">
+
+@php $cnt_for_hiw = 0; @endphp
+
+@foreach($howitworks as $howitwork)
+
+@if(($cnt_for_hiw % 2) == 0)
+
                     <div>
                         <img
-                            src="https://assets.youdo.com/next/_next/static/images/hiw-1-be91158a87ea183e3cd3e3dcc56471a5.png"
+                            src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
                     <div class="text-left">
-                        <h3 class="text-4xl my-8">1.Создайте задание</h3>
-                        <h5 class="text-2xl my-8">Опишите своими словами задачу, которую требуется выполнить.</h5>
-                        <a href="/task/create?category_id=22"><h5 class="text-2xl text-blue-400 underline hover:text-red-500">Создать задание</h5>
-                        </a>
+                        <h3 class="md:text-4xl text-[24px] font-semibold my-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
+                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">Создать задания</a>
                     </div>
+
+@else
+
                     <div class="text-left my-16 md:block hidden">
-                        <h3 class="text-4xl my-8">2.Исполнители предложат вам свои услуги и цены</h3>
-                        <h5 class="text-2xl my-8">Уже через пару минут вы начнете получать отклики от исполнителей,
-                            готовых выполнить ваше задание.</h5>
+                        <h3 class="text-4xl font-semibold my-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
+                        {!!$howitwork->description!!}
                     </div>
                     <div class="my-16 md:block hidden">
                         <img
-                            src="https://assets.youdo.com/next/_next/static/images/hiw-2-aa57365db5ca978385ac301a2ef6a5e8.png"
+                            src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
+
                     <div class="my-16 md:hidden block">
                         <img
-                            src="https://assets.youdo.com/next/_next/static/images/hiw-2-aa57365db5ca978385ac301a2ef6a5e8.png"
+                            src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
-                    <div class="text-left my-16 md:hidden block">
-                        <h3 class="text-4xl my-8">2.Исполнители предложат вам свои услуги и цены</h3>
-                        <h5 class="text-2xl my-8">Уже через пару минут вы начнете получать отклики от исполнителей,
-                            готовых выполнить ваше задание.</h5>
+                    <div class="text-left md:hidden block">
+                        <h3 class="text-2xl font-semibold mt-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
+                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">Создать задания</a>
                     </div>
-                    <div class="my-16">
-                        <img
-                            src="https://assets.youdo.com/next/_next/static/images/hiw-3-afd296132a597387954d591bdc9952b2.png"
-                            alt="">
-                    </div>
-                    <div class="text-left my-16">
-                        <h3 class="text-4xl my-8">3.Выберите лучший отклик</h3>
-                        <h5 class="text-2xl my-8">Вы сможете выбрать подходящего исполнителя, по разным критериям:</h5>
-                        <div class="grid grid-cols-2 text-gray-500">
-                            <div class=""><i class="fas fa-ruble-sign"> Стоимость услуг</i></div>
-                            <div class=""><i class="fas fa-thumbs-up"> Отзывы заказчиков</i></div>
-                            <div class=""><i class="fas fa-star"> Рейтинг</i></div>
-                            <div class=""><i class="fas fa-user-alt"> Примеры работ</i></div>
-                        </div>
-                    </div>
+@endif
+
+                    @php $cnt_for_hiw++ @endphp
+
+@endforeach
+
                 </div>
             </div>
-            <div class="md:w-1/3 w-1/2 mx-auto h-16">
-                <button type="button" class=" bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Разместите
+            <div class="md:w-1/3 w-3/4 mx-auto my-4">
+                <a href="/task/create?category_id=31" type="button" class="text-center pt-3 bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Разместите
                     задание прямо сейчас
-                </button>
-                <h5 class="text-xl text-center">и найдите исполнителя за несколько минут</h5>
+                </a>
+                <div class="text-center text-xl">
+                    и найдите <br> исполнителя за несколько минут
+                </div>
             </div>
-            <div class="w-2/3 mx-auto my-16 text-center">
+            <div class="w-2/3 mx-auto my-8 text-center">
                 <p class="text-xs text-gray-400">*Экономия до 70% рассчитана на основании внутренних исследований и
                     анализа статистических данных ООО «Киберлогистик» за 2020 год, исходя из средней разницы между самым
                     дорогим и самым дешевым откликом исполнителей к размещенному заданию.</p>
@@ -280,7 +285,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full lg:shadow-xl">
+        <!-- <div class="w-full lg:shadow-xl">
             <div class="container mx-auto md:w-2/3 w-11/12">
                 <div class="w-2/3 mx-auto my-16 text-center">
                     <h1 class="text-4xl">Новые публикации <a href="/news"><span
@@ -351,7 +356,7 @@
                     </h1>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="container mx-auto md:w-2/3 w-11/12">
             <div class="w-full my-16">
                 <h1 class="text-4xl">Что заказывают на «Юду» прямо сейчас</h1>
@@ -379,10 +384,10 @@
 
                     </div>
                     <div class="mt-4">
-                        <button type="button"
-                                class=" bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">
+                        <a href="/task-search/" type="button"
+                                class="text-center pt-3 bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">
                             Показать все задания
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">

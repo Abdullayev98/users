@@ -8,7 +8,7 @@
   @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
-  <div class="col-span-2">
+  <div class="md:col-span-2 col-span-3">
     <div class="w-full text-center text-2xl">
       Ищем исполнителя для задания "{{session('name')}}"
     </div>
@@ -34,7 +34,7 @@
               <div class="a"></div>
           <div id="slider-range-min"></div>
           </div>
-          <input type="text" id="amount" name="amount">
+          <input type="text" id="amount" name="amount" value="{{session('soqqa')}}">
           </div>
           <div class="w-full">
             <input type="checkbox" name="business" value="1"> Я использую YouDo для бизнеса, нужны закрывающие документы
@@ -44,9 +44,9 @@
           </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
-              <button type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+              <a href="/task/create/date" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                  Назад
-               </button>
+               </a>
                <input type="submit"
               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
               name="" value="Далее">
@@ -56,9 +56,7 @@
       </div>
     </div>
   </div>
-  <div class="col-span">
     <x-faq/>
-  </div>
 </div>
 </div>
 </form>
