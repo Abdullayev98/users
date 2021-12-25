@@ -1,25 +1,25 @@
 <?php
+namespace App\Services\Payme;
 
-namespace Paycom;
+use App\Services\Payme\PaycomException;
 
-class PaycomMerchant
+class Merchant
 {
     public $config;
 
     public function __construct($config)
     {
         $this->config = $config;
+
+        // read key from key file
+        if ($this->config['keyFile']) {
+            $this->config['key'] = trim($this->config['keyFile']);
+        }
     }
 
-    /**
-     * @param $request_id
-     * @return bool
-     * @throws PaycomException
-     */
     public function Authorize($request_id)
     {
         $headers = getallheaders();
-        echo json_encode($this->config['key']);
         if (!$headers || !isset($headers['Authorization']) ||
             !preg_match('/^\s*Basic\s+(\S+)\s*$/i', $headers['Authorization'], $matches) ||
             base64_decode($matches[1]) != $this->config['login'] . ":" . $this->config['key']

@@ -1,8 +1,5 @@
 <?php
-
-namespace Paycom;
-
-use Throwable;
+namespace App\Services\Payme;
 
 class PaycomException extends \Exception
 {
@@ -30,7 +27,7 @@ class PaycomException extends \Exception
     public function __construct($request_id, $message, $code, $data = null)
     {
         $this->request_id = $request_id;
-        $this->message    = is_array($message) ? $message: static::message($message);
+        $this->message    = $message;
         $this->code       = $code;
         $this->data       = $data;
 
@@ -43,8 +40,6 @@ class PaycomException extends \Exception
 
         if ($this->data) {
             $this->error['data'] = $this->data;
-        } else {
-            $this->error['data'] = $this->message['ru'];
         }
     }
 
@@ -54,14 +49,14 @@ class PaycomException extends \Exception
 
         // create response
         $response['id']     = $this->request_id;
-//        $response['result'] = null;
+        $response['result'] = null;
         $response['error']  = $this->error;
 
         echo json_encode($response);
     }
 
-    public static function message($ru, $uz = null, $en = null)
+    public static function message($ru, $uz = '', $en = '')
     {
-        return ['ru' => $ru, 'uz' => $uz ?? $ru, 'en' => $en ?? $ru];
+        return ['ru' => $ru, 'uz' => $uz, 'en' => $en];
     }
 }

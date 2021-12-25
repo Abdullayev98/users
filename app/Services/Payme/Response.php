@@ -1,17 +1,16 @@
 <?php
+namespace App\Services\Payme;
 
-namespace Paycom;
+use App\Services\Payme\Request;
+use App\Services\Payme\PaycomException;
 
-class PaycomResponse
+class Response
 {
-
-    protected $request;
-
     /**
      * Response constructor.
-     * @param PaycomRequest $request request object.
+     * @param Request $request request object.
      */
-    public function __construct(PaycomRequest $request)
+    public function __construct(Request $request)
     {
         $this->request = $request;
     }

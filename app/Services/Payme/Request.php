@@ -1,10 +1,10 @@
 <?php
+namespace App\Services\Payme;
 
-namespace Paycom;
+use App\Services\Payme\PaycomException;
 
-class PaycomRequest
+class Request
 {
-
     /** @var array decoded request payload */
     public $payload;
 
@@ -21,10 +21,8 @@ class PaycomRequest
     public $amount;
 
     /**
-     * PaycomRequest constructor.
+     * Request constructor.
      * Parses request payload and populates properties with values.
-     *
-     * @throws PaycomException
      */
     public function __construct()
     {
