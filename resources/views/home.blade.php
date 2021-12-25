@@ -34,14 +34,15 @@
                     </p>
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
-                            <input type="text" value="" id="header_input" placeholder="Например, составить иск"
+                          <form class="" action="{{route('search')}}" method="get">
+                            <input type="text" name="s" value="" id="header_input" placeholder="Например, составить иск"
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
                             <button type="submit"
                                     class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
-                                    <a href="task/create?category_id=22">
                                 Заказать услугу
-                                </a>
+                                <!-- </a> -->
                             </button>
+                          </form>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
                             Например: <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">повесить кондиционер</span>
