@@ -297,7 +297,7 @@
 <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
     {{-- 1 --}}
     <div class="relative w-auto my-6 mx-auto max-w-3xl" id="modal11">
-        <div class="border-0 rounded-lg shadow-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <div class="border-0 rounded-lg shadow-2xl px-12 relative flex flex-col w-full bg-white outline-none focus:outline-none">
             <div class=" text-center p-6  rounded-t">
                 <button type="submit"  onclick="toggleModal()" class="rounded-md w-100 h-16 absolute top-1 right-4">
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
@@ -306,22 +306,20 @@
                     На какую сумму хотите пополнить <br> кошелёк?
                 </h3>
             </div>
-            <div class="text-center h-96">
+            <div class="text-center h-80">
                 <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
-                    <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="400">
+                    <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="1000">
                 </div>
-                <p class="text-sm mt-2 leading-6 text-gray-400">Сумма пополнения, минимум — 100 UZS</p>
+                <p class="text-sm mt-2 leading-6 text-gray-400">Сумма пополнения, минимум — 1000 UZS</p>
 
                 <div class="mt-8">
                     <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " />
-                    <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 100 UZS</p>
+                    <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 10000 UZS</p>
                 </div>
-                <p class="text-center mt-4  text-gray-400 m-8">
-                    Если вы заболеете и не сможете работать, ООО «Страховая компания "Манго"» <br> выплатит вам до 500 UZS за каждый день болезни. *
-                </p>
+               
 
                 <div class="mt-16">
-                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >К оплате</a>
+                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >К оплате 1000 UZS</a>
                 </div>
             </div>
         </div>
@@ -403,27 +401,27 @@
     }
     function inputFunction() {
         var x = document.getElementById("myText").value;
-        if(x < 100){
+        if(x < 1000){
             document.getElementById('button').removeAttribute("onclick");
             document.getElementById('button').classList.remove("bg-lime-500");
             document.getElementById('button').classList.add("bg-gray-500");
             document.getElementById('button').classList.remove("hover:bg-lime-600");
-            document.getElementById("button").innerHTML ="К оплате ";
+            document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
         }else{
             document.getElementById('button').setAttribute("onclick","toggleModal1();");
             document.getElementById('button').classList.remove("bg-gray-500");
             document.getElementById('button').classList.add("bg-lime-500");
             document.getElementById('button').classList.add("hover:bg-lime-600");
-            document.getElementById("button").innerHTML ="К оплате ";
+            document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
         }
     }
     function checkFunction() {
         var x = document.getElementById("myText").value;
         var checkBox = document.getElementById("myCheck");
         if (checkBox.checked == true){
-            document.getElementById("button").innerHTML ="К оплате ";
+            document.getElementById("button").innerHTML ="К оплате " + (parseInt(x) + 10000);
         } else {
-            document.getElementById("button").innerHTML ="К оплате " ;
+            document.getElementById("button").innerHTML ="К оплате " + x  +"UZS";
         }
     }
     function validate(evt) {
