@@ -33,7 +33,7 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                 </svg>
                                             </button>
-                                                {{$category->name}}
+                                                <h1 class="text-xl">{{$category->name}}</h1>
                                         </div>
                                         <div x-show="show" class="border border-b-0 px-8 py-1">
                                             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)

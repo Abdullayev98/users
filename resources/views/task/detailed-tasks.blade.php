@@ -19,9 +19,9 @@
                     <i class="far fa-question-circle mx-3 my-3.5 text-2xl text-gray-400"></i>
                 </div>
                 <div class="flex flex-row text-gray-400 mt-4">
-                    <p class="text-green-400 font-normal">Открыто</p>
+                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">Открыто</p>
                     <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
-                    <p class="mr-3 pr-3 border-r-2 border-gray-400">{{$task->created_at}}</p>
+                    <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$task->created_at}}</p>
                     @foreach($categories as $category)
                     <p>{{$category->name}}</p>
                     @endforeach
