@@ -7,7 +7,7 @@ return [
     'login'       => 'Paycom',
 
     // File with cashbox key (key can be found in cashbox settings)
-    'keyFile'     => env('PAYCOM_KEY'),
+    'keyFile'     => env('PAYCOM_KEY_TEST'),
 
     // Your database settings
     'db'          => [
