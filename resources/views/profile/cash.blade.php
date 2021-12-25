@@ -77,11 +77,11 @@
                     {{-- "about-me" end --}}
                     {{-- cash --}} <div class="cash block  w-full" id="tab-cash">
                         <div class="head mt-5">
-                            <h2 class="font-bold text-xl">Ваш баланс 0 &#36;</h2>
+                            <h2 class="font-bold text-xl">Ваш баланс 0 UZS</h2>
                             <p class="inline">Пополнить счет на</p>
-                            <input class="inline rounded-xl ml-3 w-20 h-10 ring-1" type='number' />
-                            <span class="ml-1 text-xl">&#36;</span>
-                            <button type="submit"
+                            <input class="inline rounded-xl ml-3 ring-1 text-3xl text-center h-18 w-36 pb-1"  onkeyup="myText.value = this.value; amount_u.value = this.value" oninput="inputFunction()" onkeypress='validate(event)' id="myText1" type='text' maxlength="7" value="400"/>
+                            <span class="ml-1 text-xl">UZS</span>
+                            <button onclick="toggleModal()" type="submit"
                                 class="md:inline block md:ml-10 mx-auto mt-5 md:mt-0 h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 md:w-40 w-full">Пополнить
                                 счет</button>
                         </div>

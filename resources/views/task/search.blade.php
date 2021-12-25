@@ -105,7 +105,7 @@
                             <div class="max-w-lg mx-auto">
 
                                 <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
-                                  <input type="checkbox" class="mr-1 hover:cursor-pointer"/> Все категории
+                                  <input type="checkbox" class="all_cat mr-1 hover:cursor-pointer"/> Все категории
                                 </label>
 
                                 <div class="w-full my-1">
@@ -119,7 +119,7 @@
                                                     </svg>
                                                 </button>
                                                     <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">
-                                                      <input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category->name}}
+                                                      <input type="checkbox" class="par_cat mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category->name}}
                                                     </label>
                                             </div>
                                             <div x-show="show" class="border border-b-0 px-8 py-0">
@@ -127,7 +127,7 @@
 
                                                     <div>
                                                         <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
-                                                          <input type="checkbox" class="mr-1 hover:cursor-pointer"/> {{$category2->name}}
+                                                          <input type="checkbox" class="chi_cat mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category2->name}}
                                                         </label>
                                                     </div>
 
@@ -212,28 +212,6 @@
         });
 
 
-        function all_cat(){
-            let allcat = $('.all_check').is('checked')
-           if (allcat)
-               allcat.removeAttr('checked')
-           else
-               allcat.attr('checked', 'checked')
-        }
-
-        function par_cat(){
-            if ($('#all_check').is('checked'))
-                $('#all_check').removeAttr(checked)
-            else
-                $('#all_check').attr(checked)
-        }
-        function chi_cat(){
-            if ($('#all_check').is('checked'))
-                $('#all_check').removeAttr(checked)
-            else
-                $('#all_check').attr(checked)
-        }
-
-
         function first_ajax(id)
         {
             $.ajax({
@@ -248,17 +226,105 @@
                     $("#articles").empty();
                     $.each(data, function(index, data){
                     $("#articles").append(
-
                         `  `,
                         `  `,
-
                     );
-
                 });
         }
         });
         }
 
+
+        // $(document).ready(function($) {
+        // $('#form').on('click', 'checkbox', function(e) {
+        //     $('#form').on('check', function(e) {
+        //         e.preventDefault();
+        //         let clicked = false;
+        //         $('.all_cat').on('!clicked', function() {
+        //             $('.par_cat').prop('checked', !clicked);
+        //                 console.log($('.par_cat').prop('checked', !clicked))
+        //             clicked = !clicked;
+        // this.innerHTML = clicked ? 'Deselect' : 'Select';
+        // })
+
+        //     console.log($('.all_cat').attr())
+        //     if ($('.all_cat').checked)
+        //     {$('.all_cat').attr("checked","checked");}
+        // else
+        //     {$('.all_cat').removeAttr('checked');}
+
+        // var data = $('#form').serializeArray();
+        // console.log(data);
+        // $.ajax({
+        //     url:$ ('#form').attr('action'),
+        //     data:data,
+        //     type:'POST',
+        //     datatype:'JSON',
+        //     success: function() {
+        //
+        //     },
+        //     error: function() {
+        //
+        //     }
+        //
+        // })
+
+        // })
+        // });
+
+
+
+
+        let allcat = false; // deselected
+        let state = false; // deselected
+        $('.all_cat').click(function () {
+            $('.par_cat').each(function() {
+                if(!allcat) {
+                    this.checked = true;
+                } else {
+                    this.checked = false;
+                }
+            });
+            $('.chi_cat').each(function() {
+                if(!allcat) {
+                    this.checked = true;
+                } else {
+                    this.checked = false;
+                }
+            });
+            //switch
+            if (allcat) {
+                allcat = false;
+            } else {
+                allcat = true;
+            }
+        });
+
+        $('.par_cat').click(function () {
+            let chi = this.id
+            // console.log(this.id)
+            console.log(state)
+
+            $('.chi_cat').each(function() {
+                if (this.id == chi) {
+                    if (this.checked == true) {
+                        this.checked = false;
+                    } else {
+                        this.checked = true;
+                    }
+                }
+                console.log(state)
+            });
+
+            //switch
+
+            if (state) {
+                state = false;
+            } else {
+                state = true;
+            }
+            console.log(state)
+        });
 
 
     </script>
