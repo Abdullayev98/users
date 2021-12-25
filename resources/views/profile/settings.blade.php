@@ -141,6 +141,13 @@
                                                         <option value="Qoraqalpog'iston" {{ $user->location=='Qoraqalpog\'iston' ? 'selected' : '' }}>Qoraqalpog'iston</option>
                                                     </select>
                                                 </div>
+                                                <div class="w-full block w-full mb-4">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="role">Тип профиля</label>
+                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900" name="role">
+                                                        <option value="2" {{ $user->role_id==2 ? 'selected' : '' }}>Исполнитель</option>
+                                                        <option value="3" {{ $user->role_id==3 ? 'selected' : '' }}>Заказчик</option>
+                                                    </select>
+                                                </div>
                                                 <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
                                                 <hr>
                                             </form>
@@ -447,17 +454,17 @@
         </div>
     </div>
     <script src="https://unpkg.com/imask"></script>
-    
+
     <script>
         var element = document.getElementById('phone_number');
     var maskOptions = {
         mask: '+998 00 000-00-00',
         lazy: false
-    } 
+    }
     var mask = new IMask(element, maskOptions);
-    
+
     var element2 = document.getElementById('email');
-    var maskOptions2 = {    
+    var maskOptions2 = {
         mask:function (value) {
                     if(/^[a-z0-9_\.-]+$/.test(value))
                         return true;
@@ -476,7 +483,7 @@
                     return false;
                         },
         lazy: false
-    } 
+    }
     var mask2 = new IMask(element2, maskOptions2);
       </script>
     <script type="text/javascript">
