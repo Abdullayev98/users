@@ -2,6 +2,7 @@
 namespace App\Services\Paycom;
 
 use App\Domain\Booking\Models\Booking;
+use App\Models\All_transaction as Transaction;
 use App\Services\Paycom\helpers\FormatHelper;
 use App\Services\Paycom\models\PaycomTransaction;
 
@@ -21,8 +22,8 @@ class PaycomApplication
      */
     public function __construct($config)
     {
-        $this->config = $config;
-        $this->request = new PaycomRequest();
+        $this->config   = $config;
+        $this->request  = new PaycomRequest();
         $this->response = new PaycomResponse($this->request);
         $this->merchant = new PaycomMerchant($this->config);
     }
@@ -307,7 +308,7 @@ class PaycomApplication
             );
         }
 
-        if (!isset($this->request->params['account']['booking_id']) || !$this->request->params['account']['booking_id']) {
+        if (!isset($this->request->params['account']['transaction_id']) || !$this->request->params['account']['transaction_id']) {
             throw new PaycomException(
                 $this->request->id,
                 PaycomException::message(
@@ -319,7 +320,7 @@ class PaycomApplication
                 'booking_id'
             );
         }
-
+        $transaction = 
         $booking = Booking::find($this->request->params['account']['booking_id']);
 
         if (!$booking || !$booking->id) {
@@ -458,7 +459,7 @@ class PaycomApplication
                 'time' => 1 * $row['paycom_time'], // paycom transaction timestamp as is
                 'amount' => 1 * $row['amount'],
                 'account' => [
-                    'booking_id' => 1 * $row['booking_id'], // account parameters to identify client/order/service
+                    'transaction_id' => 1 * $row['booking_id'], // account parameters to identify client/order/service
                     // ... additional parameters may be listed here, which are belongs to the account
                 ],
                 'create_time' => FormatHelper::datetime2timestamp($row['create_time']),

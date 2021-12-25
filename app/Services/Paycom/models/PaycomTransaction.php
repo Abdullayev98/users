@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\Paycom\models;
 
-use App\Domain\Booking\Models\Booking;
+use App\Models\All_transaction;
 use App\Services\Paycom\helpers\FormatHelper;
 use Illuminate\Database\Eloquent\Model;
 
@@ -58,9 +58,9 @@ class PaycomTransaction extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
 
-    public function booking()
+    public function transaction()
     {
-        return $this->belongsTo(Booking::class);
+        return $this->belongsTo(All_transaction::class);
     }
 
     public function isExpired()
