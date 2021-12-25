@@ -9,12 +9,11 @@ class PaycomTransactionController extends Controller
 {
     public function index()
     {
-        $application = new PaycomApplication([
-            'merchant_id' => config('paycom.merchant'),
-            'login'       => config('paycom.login'),
-            'key'         => config('paycom.key'),
+        $application = new \App\Services\Paycom\PaycomApplication([
+            'merchant_id' => config('constants.paycom.paycom_merchant'),
+            'login'       => config('constants.paycom.paycom_login'),
+            'key'         => config('constants.paycom.paycom_key'),
         ]);
-
         //dd($application);
         $application->run();
     }
