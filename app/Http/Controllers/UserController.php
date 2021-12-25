@@ -31,6 +31,13 @@ class UserController extends Controller
         $howitworks = How_work_it::all();
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+          if (Auth::id()) {
+            $user = User::find(Auth::user()->id)
+            ->update([
+                'active_status'=>1,
+            ]);
+            $request->session()->put('status_user', Auth::id());
+          }
             return view('home',compact('tasks','howitworks'))
                         ->withSuccess('Logged-in');
         }else {
@@ -75,7 +82,14 @@ class UserController extends Controller
     }
 
 
-    public function logout() {
+    public function logout(Request $request) {
+        $id = $request->session()->pull('status_user');
+        if ($id != null) {
+          $user = User::find($id)
+          ->update([
+              'active_status'=>0,
+          ]);
+        }
         Session::flush();
         Auth::logout();
         return Redirect('/');
