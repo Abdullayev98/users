@@ -31,13 +31,11 @@ class UserController extends Controller
         $howitworks = How_work_it::all();
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-
             return view('home',compact('tasks','howitworks'))
                         ->withSuccess('Logged-in');
         }else {
           return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
-
       }
     public function signup()
     {
