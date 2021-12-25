@@ -1,5 +1,6 @@
 <?php
-namespace App\Services\Paycom;
+
+namespace Paycom;
 
 class PaycomRequest
 {

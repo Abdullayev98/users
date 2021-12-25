@@ -1,10 +1,15 @@
 <?php
-namespace App\Services\Paycom;
 
-use App\Domain\Booking\Models\Booking;
+namespace Paycom;
+
+use Paycom\PaycomException;
+use Paycom\PaycomMerchant;
+use Paycom\PaycomResponse;
+use Paycom\PaycomRequest;
+use Paycom\helpers\FormatHelper;
+use Paycom\models\PaycomTransaction;
 use App\Models\All_transaction as Transaction;
-use App\Services\Paycom\helpers\FormatHelper;
-use App\Services\Paycom\models\PaycomTransaction;
+use App\Domain\Booking\Models\Booking;
 
 class PaycomApplication
 {
@@ -15,9 +20,7 @@ class PaycomApplication
 
     /**
      * PaycomApplication constructor.
-     *
-     * @param array $config configuration array with 'merchant_id', 'login', 'key' keys.
-     *
+     * @param array $config configuration array with 'merchant_id','login','key' keys.
      * @throws PaycomException
      */
     public function __construct($config)
@@ -36,7 +39,6 @@ class PaycomApplication
     {
         try {
             $this->merchant->Authorize($this->request->id);
-
             switch ($this->request->method) {
                 case 'CheckPerformTransaction':
                     $this->CheckPerformTransaction();
@@ -197,7 +199,7 @@ class PaycomApplication
                     );
                 } else {
                     // todo: Mark transaction as completed
-                    Transaction::where('id', $transaction->transaction_id)->update(['status' => Transaction::STATUS_PAID_SUCCESS]);
+                    Transaction::where('id', $transaction->transaction_id)->update(['status' => Transaction::STATUS_PAYED_SUCCESS]);
                     
                     $perform_time = FormatHelper::timestamp(true);
                     $transaction->state = PaycomTransaction::STATE_COMPLETED;
