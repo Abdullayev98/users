@@ -59,15 +59,9 @@
             <div class="bg-gray-100 flex flex-row h-40 mb-10" style="width: 700px;">
                 <div class="flex flex-col relative">
                     <div class="flex flex-row font-bold text-2xl m-4">
-                        <p>Курьерские услуги: рейтинг исполнителей</p>
+                        <p>Все исполнители</p>
                     </div>
-                    <div class="flex flex-row m-4 absolute bottom-0 left-0">
-                        <div class="form-check flex flex-row mr-6">
-                            <!-- <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-yellow-600 checked:border-yellow-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="verified">
-                            <label class="form-check-label inline-block text-gray-800" for="verified">
-                                Только проверенные
-                            </label> -->
-                        </div>
+                    <div class="flex flex-row m-4 absolute bottom-4 left-0">
                         <div class="form-check flex flex- mr-6">
                             <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" onclick="check()" id="online">
                             <label class="form-check-label inline-block text-gray-800" for="online">
