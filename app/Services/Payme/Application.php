@@ -194,7 +194,7 @@ class Application extends PaycomException
 
             // send response
             $this->response->send([
-                'create_time' => $transaction->create_time,
+                'create_time' => Format::datetime2timestamp($transaction->create_time),
                 'transaction' => $transaction->id,
                 'state'       => $transaction->state,
                 'receivers'   => null,
