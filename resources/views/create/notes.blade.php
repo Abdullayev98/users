@@ -52,7 +52,7 @@
               <span >Добавить фото</span>
              </button> -->
              <div>
-                <label class="md:w-2/3 block mt-6">
+                <!-- <label class="md:w-2/3 block mt-6">
                     <input class="mr-2 h-4 w-4" type="checkbox" name="docs">
                     <span class="text-lg text-slate-900">
                         Предоставить документы
@@ -66,7 +66,7 @@
                         <br>
                         <p class="text-sm text-slate-500">Задание увидят только исполнители, а после завершения - только вы и выбранный исполнитель.</p>
                     </span>
-                  </label>
+                  </label> -->
              </div>
              <div class="flex w-full gap-x-4 mt-4">
               <a href="/task/create/budget" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">

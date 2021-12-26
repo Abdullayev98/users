@@ -371,7 +371,7 @@
                                     <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
                                 </div>
                                 <div class="mx-auto w-2/3">
-                                    <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                                    <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->name}}
                                     </a>
                                     <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
