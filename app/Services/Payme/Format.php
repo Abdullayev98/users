@@ -1,6 +1,6 @@
 <?php
 
-namespace Paycom;
+namespace App\Services\Payme;
 
 class Format
 {
