@@ -63,13 +63,13 @@
                     </div>
                     <div class="flex flex-row m-4 absolute bottom-0 left-0">
                         <div class="form-check flex flex-row mr-6">
-                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-yellow-600 checked:border-yellow-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="verified">
+                            <!-- <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-yellow-600 checked:border-yellow-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="verified">
                             <label class="form-check-label inline-block text-gray-800" for="verified">
                                 Только проверенные
-                            </label>
+                            </label> -->
                         </div>
                         <div class="form-check flex flex- mr-6">
-                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="online">
+                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" onclick="check()" id="online">
                             <label class="form-check-label inline-block text-gray-800" for="online">
                                 Сейчас на сайте
                             </label>
@@ -78,18 +78,18 @@
                 </div>
                 <div class="flex flex-col m-4 relative">
                     <div>
-                        <p>Город: <a href="#"> Москва </a> </p>
+                        <!-- <p>Город: <a href="#"> Москва </a> </p> -->
                     </div>
-                    <div class="absolute bottom-0 right-0">
+                    <!-- <div class="absolute bottom-0 right-0">
                         <p>Указать метро</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             @foreach($users as $user)
 
-            <div class="flex flex-row">
+            <div class="flex flex-row" id="{{$user->id}}">
                 <div class="m-10">
-                    <img class="rounded-lg w-40 h-40" src="{{asset($user->avatar)}}" alt="user">
+                    <img class="rounded-lg w-40 h-40" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="user">
                     <div class="flex flex-row">
                         <p>Отзывы:</p>
                         <i class="far fa-thumbs-up m-1 text-gray-400"></i>    5128
@@ -170,6 +170,26 @@
           document.getElementById(modalID12 + "-backdrop").classList.toggle("hidden");
           document.getElementById(modalID12).classList.toggle("flex");
           document.getElementById(modalID12 + "-backdrop").classList.toggle("flex");
+        }
+      </script>
+      <script>
+      function check() {
+        // Get the checkbox
+        var checkBox = document.getElementById("online");
+        // Get the output text
+        @foreach($users as $user)
+        var {{$user->name}} = document.getElementById("{{$user->id}}");
+
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+          if ({{$user->active_status}} == 0) {
+            {{$user->name}}.classList.add("hidden");
+          }
+        } else {
+            {{$user->name}}.classList.remove("hidden");
+        }
+        @endforeach
         }
       </script>
     {{-- Modal end --}}
