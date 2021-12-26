@@ -124,7 +124,7 @@ class Application extends PaycomException
     {
         $order = new AllTransaction($this->request->id);
         $order->find($this->request->params['account']);
-
+        
         // validate parameters
         $order->validate($this->request->params);
 
@@ -182,22 +182,16 @@ class Application extends PaycomException
 
             // create new transaction
             // keep create_time as timestamp, it is necessary in response
-            try {
-                $create_time                        = Format::timestamp(true);
-                $transaction->paycom_transaction_id = $this->request->params['id'];
-                $transaction->paycom_time           = $this->request->params['time'];
-                $transaction->paycom_time_datetime  = Format::timestamp2datetime($this->request->params['time']);
-                $transaction->create_time           = Format::timestamp2datetime($create_time);
-                $transaction->state                 = PaycomTransaction::STATE_CREATED;
-                $transaction->amount                = $this->request->amount;
-                $transaction->transaction_id        = $this->request->account('transaction_id');
-                $transaction->save(); // after save $transaction->id will be populated with the newly created transaction's id.
-              }catch(\Exception $e) {
-                $this->response->error(
-                    PaycomException::ERROR_INVALID_ACCOUNT,
-                    PaycomException::message('Message: ' .$e->getMessage())
-                );
-              }
+            $create_time                        = Format::timestamp(true);
+            $transaction->paycom_transaction_id = $this->request->params['id'];
+            $transaction->paycom_time           = $this->request->params['time'];
+            $transaction->paycom_time_datetime  = Format::timestamp2datetime($this->request->params['time']);
+            $transaction->create_time           = Format::timestamp2datetime($create_time);
+            $transaction->state                 = PaycomTransaction::STATE_CREATED;
+            $transaction->amount                = $this->request->amount;
+            $transaction->transaction_id        = $this->request->account('transaction_id');
+            $transaction->save(); // after save $transaction->id will be populated with the newly created transaction's id.
+
             // send response
             $this->response->send([
                 'create_time' => $create_time,
