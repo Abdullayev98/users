@@ -371,7 +371,7 @@
                                     <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
                                 </div>
                                 <div class="mx-auto w-2/3">
-                                    <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                                    <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->name}}
                                     </a>
                                     <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
@@ -391,6 +391,7 @@
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">
+                <a href="/verification">
                     <div
                         class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-executors-d40b155c145cdfa2d0f387a2baef5430.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
@@ -398,19 +399,24 @@
                             <p class="text-4xl text-[#fff]">Как стать исполнителем</p>
                         </div>
                     </div>
+                </a>
+                <a href="/security">
                     <div
-                        class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
+                         class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
                             <i class="fas fa-shield-alt text-[#8ae2ed] text-5xl pt-8"></i>
                             <p class="text-4xl text-[#fff]">Безопасность и гарантии</p>
                         </div>
                     </div>
-                    <div
-                        class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
-                        <div class="w-full h-full bg-[#00000066] text-center">
-                            <p class="text-5xl pt-8 text-[#ffc730]">Надежные исполнители для бизнеса</p>
+                </a>
+                   <a href="/performers">
+                        <div
+                            class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
+                            <div class="w-full h-full bg-[#00000066] text-center">
+                                <p class="text-5xl pt-8 text-[#ffc730]">Надежные исполнители для бизнеса</p>
+                            </div>
                         </div>
-                    </div>
+                   </a>
                 </div>
             </div>
         </div>
