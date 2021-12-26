@@ -112,7 +112,7 @@
                     </div>
                     <div>
                     @if($user->active_status == 1)
-                        <p class="text-sm text-gray-500 my-3">Онлайн</p>
+                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-[2px]" > </i> Онлайн</p>
                         @else
                         <p class="text-sm text-gray-500 my-3">Офлайн</p>
                         @endif

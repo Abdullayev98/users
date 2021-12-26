@@ -66,15 +66,19 @@
                                   <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->name}}
                                   </a>
-                                  <p class="text-sm ml-12mt-4">
+                                  <p class="text-sm ml-12 mt-2">
                                       {{$task->address}}
 {{--                                      {{$task->description}}--}}
                                   </p>
                                 </div>
                                   <div class="float-right w-1/4 text-right">
-                                  <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                      <p class="text-sm ml-12">Спортмастер</p>
-                                  <p class="text-sm ml-12">Нет отзывов</p>
+                                  <p class="text-lg">{{$task->budget}}</p>
+                                  @foreach($categories as $category)
+                                   @if($category->id == $task->category_id)
+                                      <p class="text-sm ml-12">{{$category->name}}</p>
+                                   @endif
+                                  @endforeach
+                                  <!-- <p class="text-sm ml-12">Нет отзывов</p> -->
                                 </div>
                               </div>
                             </div>

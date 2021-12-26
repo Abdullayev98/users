@@ -352,7 +352,7 @@
                                       <label class="custom-control-label" for="debit">Click</label>
                                     </div>
                                     <div class="custom-control custom-radio mb-4 text-3xl">
-                                        <input id="debit" onClick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input">
+                                        <input id="debit1" onClick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input">
                                         <label class="custom-control-label" for="debit1">Paynet</label>
                                       </div>
 
