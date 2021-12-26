@@ -75,7 +75,6 @@ Route::get('/choose-task', function() {
 Route::get('/terms/doc', function() {
     return view('terms.pdf');
 });
-Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
 
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 
@@ -83,6 +82,7 @@ Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
 
+Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@paycom')->name('paycom');
 //social login facebook
 Route::get('login/facebook',[SocialController::class,'facebookRedirect']);
 Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook']);
