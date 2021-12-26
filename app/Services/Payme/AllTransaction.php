@@ -34,6 +34,11 @@ class AllTransaction extends Database
     public $amount;
 
     /**
+     * State of the transaction
+     */
+    public $state;
+
+    /**
      * Status of the transaction
      */
     public $status;
@@ -112,7 +117,7 @@ class AllTransaction extends Database
         }
 
         // for example, order state before payment should be 'waiting pay'
-        if ($this->status != self::STATE_WAITING_PAY) {
+        if ($this->state != self::STATE_WAITING_PAY) {
             throw new PaycomException(
                 $this->request_id,
                 'User transaction state is invalid.',
@@ -148,7 +153,7 @@ class AllTransaction extends Database
                 if ($row) {
                     $this->id          = 1 * $row['id'];
                     $this->amount      = 1 * $row['amount'];
-                    $this->status      = 1 * $row['status'];
+                    $this->state       = 1 * $row['state'];
                     return $this;
                 }
 
@@ -169,7 +174,7 @@ class AllTransaction extends Database
         // todo: Implement changing order state (reserve order after create transaction or free order after cancel)
 
         // Example implementation
-        $this->status = 1 * $state;
+        $this->state = 1 * $state;
         $this->save();
     }
 
@@ -195,16 +200,17 @@ class AllTransaction extends Database
 
         if (!$this->id) {
             // If new transaction, set its state to waiting
-            $this->status = self::STATE_WAITING_PAY;
+            $this->state = self::STATE_WAITING_PAY;
 
             // todo: Set customer ID
             // $this->user_id = 1 * SomeSessionManager::get('user_id');
 
-            $sql        = "insert into all_transactions set amount = :pAmount, status = :pStatus, user_id = :pUserId, method = :pMethod";
+            $sql        = "insert into all_transactions set amount = :pAmount, status = :pStatus, state = :pState, user_id = :pUserId, method = :pMethod";
             $sth        = $db->prepare($sql);
             $is_success = $sth->execute([
                 ':pAmount'  => $this->amount,
                 ':pStatus'  => $this->status,
+                ':pState'   => $this->state,
                 ':pUserId'  => $this->user_id,
                 ':pMethod'  => $this->method,
             ]);
@@ -214,9 +220,9 @@ class AllTransaction extends Database
             }
         } else {
 
-            $sql        = "update all_transactions set status = :pStatus where id = :pId";
+            $sql        = "update all_transactions set state = :pState where id = :pId";
             $sth        = $db->prepare($sql);
-            $is_success = $sth->execute([':pStatus' => $this->status, ':pId' => $this->id]);
+            $is_success = $sth->execute([':pState' => $this->state, ':pId' => $this->id]);
 
         }
 
