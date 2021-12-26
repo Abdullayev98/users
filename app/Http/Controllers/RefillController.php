@@ -33,8 +33,19 @@ public function ref(Request $request){
 
     if($request->get("paymethod") == 'PayMe'){
 
-        //Integration with PayMe
+        $tr = new All_transaction();
+        $tr->user_id = Auth::id();
+        $tr->amount  = $request->get("amount");
+        $tr->method  = $tr::DRIVER_PAYME;
+        $tr->state   = $tr::STATE_WAITING_PAY;
+        $tr->save();
 
+        return redirect()->route('paycom.send', ['transaction' => $tr]);
+    }
+
+
+    if($request->get("paymethod") == 'Paynet'){
+        dd('Paynet testing');
     }
 
 }
