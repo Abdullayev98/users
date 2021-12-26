@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\Payme;
 
-class Database
+class Format
 {
     public $config;
 
