@@ -124,7 +124,7 @@ class Application extends PaycomException
     {
         $order = new AllTransaction($this->request->id);
         $order->find($this->request->params['account']);
-        
+
         // validate parameters
         $order->validate($this->request->params);
 
@@ -194,7 +194,7 @@ class Application extends PaycomException
 
             // send response
             $this->response->send([
-                'create_time' => $create_time,
+                'create_time' => $transaction->create_time,
                 'transaction' => $transaction->id,
                 'state'       => $transaction->state,
                 'receivers'   => null,
