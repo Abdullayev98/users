@@ -40,7 +40,8 @@ public function ref(Request $request){
         $tr->state   = $tr::STATE_WAITING_PAY;
         $tr->save();
 
-        return redirect()->route('paycom.send', ['transaction' => $tr]);
+        // return redirect()->route('paycom.send', ['transaction' => $tr]);
+        return view('paycom.send', ['transaction' => $tr]);
     }
 
 

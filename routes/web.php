@@ -6,6 +6,7 @@ use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\PerformersController;
+use App\Http\Controllers\RefillController;
 use App\Http\Controllers\Task\SearchTaskController;
 use App\Http\Controllers\admin\VoyagerUserController;
 /*
@@ -58,6 +59,8 @@ Route::get('/offer-tasks', function () {
 Route::get('/verification', function () {
     return view('create.verification');
 });
+
+Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');
 
 Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('my.tasks');
 Route::get('/refill', function() {
