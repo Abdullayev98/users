@@ -33,7 +33,7 @@ public function ref(Request $request){
 
     if($request->get("paymethod") == 'PayMe'){
 
-        //Integration with PayMe
+        return redirect()->route("paycom.send");
 
     }
 

@@ -58,6 +58,9 @@ Route::get('/offer-tasks', function () {
 Route::get('/verification', function () {
     return view('create.verification');
 });
+Route::get('/payme', function () {
+    return view('paycom.paycom');
+});
 
 Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('my.tasks');
 Route::get('/refill', function() {
