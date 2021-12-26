@@ -17,7 +17,7 @@
     <section class="bg-[#494A4C] py-8">
         <div class="lg:w-8/12 mx-auto w-10/12">
                 <div class="sm:block lg:flex flex-column justify-between ">
-                    <a href="#"> <img class="w-32 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
+                    <a href="/"> <img class="w-32 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
 
                     <a href="/" class="text-white hover:text-gray-400">
                         <i class="fa fa-link"></i>
@@ -58,7 +58,7 @@
     </section>
 @endforeach
 
-    <footer class="bg-white w-full flex flex-col p-8 justify-center items-center">
+    <footer class="bg-white w-full flex flex-col p-8 justify-center items-center mt-8">
         <h2>YouDo.com</h2>
         <p>Мы используем Intercom</p>
     </footer>
