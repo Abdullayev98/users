@@ -30,7 +30,6 @@
         "psr-4": {
             "App\\": "app/",
             "PayUz\\": "app/services/paynetnew/",
-            "Paycom\\": "app/services/paycom/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
