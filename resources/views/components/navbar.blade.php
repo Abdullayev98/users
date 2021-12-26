@@ -341,18 +341,18 @@
                 <form action="/ref" method="GET">
                     <input type="hidden" name="user_id" value="1">
                                 <div class="my-3 w-1/2 mx-auto">
-                                    <div class="custom-control custom-radio mb-4 text-3xl">
-                                      <input id="credit" onclick="doBlock()" name="paymethod" type="radio" value="PayMe" class="custom-control-input">
-                                      <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500" name="button"><label for="credit"><img src="https://cdn.paycom.uz/documentation_assets/payme_01.png" alt=""></label> </button>
+                                    <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
+                                      <input id="credit" onclick="doBlock()" name="paymethod" type="radio" value="PayMe" class="custom-control-input mt-5 w-4 h-4 ">
+                                      <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="credit"><img src="https://cdn.paycom.uz/documentation_assets/payme_01.png" alt=""></label> </button>
 
                                     </div>
-                                    <div class="custom-control custom-radio mb-4 text-3xl">
-                                      <input id="debit" onclick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input">
-                                      <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500" name="button"><label for="debit"><img src="https://docs.click.uz/wp-content/themes/click_help/assets/images/logo.png" alt=""></label> </button>
+                                    <div class="custom-control custom-radio my-8 text-3xl flex flex-row">
+                                      <input id="debit" onclick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input mt-8 w-4 h-4 ">
+                                      <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit"><img src="https://docs.click.uz/wp-content/themes/click_help/assets/images/logo.png" alt=""></label> </button>
                                     </div>
-                                    <div class="custom-control custom-radio mb-4 text-3xl">
-                                        <input id="debit1" onclick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input">
-                                        <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500" name="button"><label for="debit1"><img src="https://paynet.uz/medias/article/big/134/logo-paynet.png" alt=""></label> </button>
+                                    <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
+                                        <input id="debit1" onclick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input mt-5 w-4 h-4 ">
+                                        <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit1"><img src="https://paynet.uz/medias/article/big/134/logo-paynet.png" alt=""></label> </button>
                                     </div>
                                 <div class="d-none input-group my-5" id="forhid">
                                     <input id="amount_u" type="hidden" name="amount" class="form-control">
