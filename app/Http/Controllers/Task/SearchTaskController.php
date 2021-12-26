@@ -15,12 +15,14 @@ class SearchTaskController extends VoyagerBaseController
     public function task_search(){
 
 
-        $tasks = Task::paginate(20);
+        $tasks = Task::orderBy('id','desc')->paginate(20);
+        $categories = Category::get()->all();
+        // dd($categories);
 
 //        return view("task/search", compact('tasks', paginate(50)));
 //        dd($tasks->all());
 //          return view('task.search', ['tasks'=>$tasks->paginate(50)]);
-        return view('task.search', compact('tasks'));
+        return view('task.search', compact('tasks','categories'));
     }
 
     public function my_tasks(){
@@ -42,7 +44,8 @@ class SearchTaskController extends VoyagerBaseController
     }else {
       $tasks = Task::where('name','LIKE',"%$s%")->orWhere('address','LIKE',"%$a%")->orWhere('budget','LIKE',"%$p%")->orderBy('name')->paginate(10);
     }
-      return view('task.search', compact('tasks','s','a','p'));
+    $categories = Category::get()->all();
+      return view('task.search', compact('tasks','s','a','p','categories'));
 
     }
     public function task($id){

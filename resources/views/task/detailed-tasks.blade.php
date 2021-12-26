@@ -29,7 +29,7 @@
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-2xl">
                     <div class="ml-12 flex flex-row">
-                        <h1 class="text-lg font-bold h-auto w-48">{{$task->data_type}}</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">{{$task->date_type}}</h1>
                         <p class="text-lg  h-auto w-96">{{$task->start_date}}</p>
                     </div>
                     <!-- <div class="ml-12 flex flex-row mt-4">
