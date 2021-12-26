@@ -17,7 +17,7 @@
 
         <div class="lg:col-span-1 col-span-3 px-8">
             <div class="flex flex-row shadow-lg rounded-lg mb-8">
-                <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url(images/like.png);">
+                <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
                 </div>
                 <div class="basis-1/2 text-xs text-gray-700 text-left my-auto">
                     Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.
