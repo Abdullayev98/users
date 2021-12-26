@@ -272,11 +272,11 @@
                                 src="https://assets.youdo.com/_next/static/media/android.1234ba9391753eeb525d4f71a808329e.svg"
                                 alt=""></button>
                     </a>
-                    <a href="#">
+                    <!-- <a href="#">
                         <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
                                 src="https://assets.youdo.com/_next/static/media/appgallery.67baccf681decda41c84b0364830d2e4.svg"
                                 alt=""></button>
-                    </a>
+                    </a> -->
                 </div>
                 <div class="h-64 md:block hidden">
                     <img
