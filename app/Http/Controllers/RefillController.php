@@ -33,9 +33,6 @@ public function ref(Request $request){
 
     if($request->get("paymethod") == 'PayMe'){
 
-<<<<<<< HEAD
-        return redirect()->route("paycom.send");
-=======
         $tr = new All_transaction();
         $tr->user_id = Auth::id();
         $tr->amount  = $request->get("amount");
@@ -43,10 +40,10 @@ public function ref(Request $request){
         $tr->state   = $tr::STATE_WAITING_PAY;
         $tr->save();
 
-        return redirect()->route('paycom.send', ['transaction' => $tr]);
+        // return redirect()->route('paycom.send', ['transaction' => $tr]);
+        return view('paycom.send', ['transaction' => $tr]);
     }
 
->>>>>>> 58f82a11e184d2cde6668af845ec5427153b493c
 
     if($request->get("paymethod") == 'Paynet'){
         dd('Paynet testing');
