@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class WalletBalance extends Model
 {
     use HasFactory;
+    
+    protected $fillable = ['user_id','balance'];
 
     public static function walletBalanceUpdateOrCreate($amount){
         $user_id = Auth::id();
