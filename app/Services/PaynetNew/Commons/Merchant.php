@@ -19,7 +19,7 @@ class Merchant
         if ($this->config['login']    != $this->request->params['account']['login'] ||
             $this->config['password'] != $this->request->params['account']['password'])
         {
-            $this->resonse->response($this->request, 'Insufficient privilege to perform this method.', Response::ERROR_INSUFFICIENT_PRIVILEGE);
+            $this->response->response($this->request, 'Insufficient privilege to perform this method.', Response::ERROR_INSUFFICIENT_PRIVILEGE);
         }
         return true;
     }
