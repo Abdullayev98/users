@@ -307,7 +307,11 @@ class Application extends PaycomException
             case PaycomTransaction::STATE_COMPLETED:
                 // find order and check, whether cancelling is possible this order
                 $order = new AllTransaction($this->request->id);
+
                 $order->find($this->request->params);
+
+                $order->id = $found->transaction_id;
+                
                 if ($order->allowCancel()) {
                     // cancel and change state to cancelled
                     $found->cancel(1 * $this->request->params['reason']);
