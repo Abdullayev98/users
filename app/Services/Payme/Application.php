@@ -227,8 +227,8 @@ class Application extends PaycomException
                     $params = ['transaction_id' => $found->transaction_id];
                     $order  = new AllTransaction($this->request->id);
                     $order->find($params);
+                    $order->status = AllTransaction::STATUS_SUCCESS;
                     $order->changeState(AllTransaction::STATE_PAY_ACCEPTED);
-                    $order->changeStatus(AllTransaction::STATUS_SUCCESS);
                     
                     // User Wallet create or update balance
                     WalletBalance::walletBalanceUpdateOrCreate($order->amount);
@@ -298,9 +298,9 @@ class Application extends PaycomException
                 // change order state to cancelled
                 $order = new AllTransaction($this->request->id);
                 $order->find($this->request->params);
-                $order->id = $found->transaction_id;
+                $order->id     = $found->transaction_id;
+                $order->status = AllTransaction::STATUS_REJECTED;
                 $order->changeState(AllTransaction::STATE_CANCELLED);
-                $order->changeStatus(AllTransaction::STATUS_REJECTED);
                 
                 // send response
                 $this->response->send([
@@ -318,11 +318,13 @@ class Application extends PaycomException
 
                 $order->id = $found->transaction_id;
                 
+                $order->status = AllTransaction::STATUS_REJECTED;
+                
                 if ($order->allowCancel()) {
                     // cancel and change state to cancelled
                     $found->cancel(1 * $this->request->params['reason']);
                     // after $found->cancel(), cancel_time and state properties populated with data
-
+                    
                     $order->changeState(AllTransaction::STATE_CANCELLED);
 
                     // send response
