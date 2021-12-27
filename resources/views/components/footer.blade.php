@@ -2,7 +2,7 @@
     <div class="p-10 text-gray-800">
         <div class="mx-auto text-center md:text-left">
             <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 gap-x-2">
-                <div class="mb-5 md:w-2/12 md:float-left md:mr-20 ml-24">
+                <div class="mb-5 md:w-2/12 md:float-left md:mr-20 md:ml-24">
                     <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/verification">Как&nbsp;стать&nbsp;исполнителем</a><br>
                     <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/faq">Частые вопросы</a><br>
                     <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/contacts">Контакты</a><br>
