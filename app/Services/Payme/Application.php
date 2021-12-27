@@ -9,6 +9,7 @@ use App\Services\Payme\PaycomException;
 use App\Services\Payme\PaycomTransaction;
 use App\Services\Payme\Response;
 use App\Services\Payme\Request;
+use App\Models\WalletBalance;
 
 class Application extends PaycomException
 {
@@ -227,6 +228,10 @@ class Application extends PaycomException
                     $order  = new AllTransaction($this->request->id);
                     $order->find($params);
                     $order->changeState(AllTransaction::STATE_PAY_ACCEPTED);
+                    $order->changeStatus(AllTransaction::STATUS_SUCCESS);
+                    
+                    // User Wallet create or update balance
+                    WalletBalance::walletBalanceUpdateOrCreate($order->amount);
 
                     // todo: Mark transaction as completed
                     $perform_time        = Format::timestamp(true);
@@ -295,7 +300,8 @@ class Application extends PaycomException
                 $order->find($this->request->params);
                 $order->id = $found->transaction_id;
                 $order->changeState(AllTransaction::STATE_CANCELLED);
-
+                $order->changeStatus(AllTransaction::STATUS_REJECTED);
+                
                 // send response
                 $this->response->send([
                     'transaction' => $found->id,
