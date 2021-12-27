@@ -62,9 +62,9 @@ class Request
     }
     public function getRequestArray(){
         $request_body  = file_get_contents('php://input');
-        $clean_xml = str_ireplace(['soapenv:', 'soap:','xmlns:','xsi:','ns1:'], '', $request_body);
-        $xml = simplexml_load_string($clean_xml);
-        $body = null;
+        $clean_xml     = str_ireplace(['soapenv:', 'soap:','xmlns:','xsi:','ns1:'], '', $request_body);
+        $xml           = simplexml_load_string($clean_xml);
+        $body          = null;
         if ($xml)
             $body = $xml->Body;
         else
@@ -74,11 +74,11 @@ class Request
     }
     public function paramsPerformTransaction($par){
         $res = [
-            'method' => self::METHOD_PerformTransaction,
-            'amount' => $par['amount'],
-            'transactionId' => $par['transactionId'],
+            'method'          => self::METHOD_PerformTransaction,
+            'amount'          => $par['amount'],
+            'transactionId'   => $par['transactionId'],
             'transactionTime' => $par['transactionTime'],
-            'key' => $par['parameters']['paramValue']
+            'key'             => $par['parameters']['paramValue']
         ];
         $this->params = array_merge($this->params, $res);
     }
