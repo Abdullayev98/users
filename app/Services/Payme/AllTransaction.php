@@ -18,6 +18,14 @@ class AllTransaction extends Database
     /** Transaction is cancelled. */
     const STATE_CANCELLED = 3;
 
+    const STATUS_NEW         = 0;
+    /** Transaction status is paid success. */
+    
+    const STATUS_SUCCESS     = 1;
+    /** Transaction status is rejected. */
+    
+    const STATUS_REJECTED    = -1;
+    
     public $request_id;
     public $params;
 
@@ -165,13 +173,13 @@ class AllTransaction extends Database
     }
 
     /**
-     * Change order's state to specified one.
-     * @param int $state new state of the order
+     * Change transaction's state to specified one.
+     * @param int $state new state of the transaction
      * @return void
      */
     public function changeState($state)
     {
-        // todo: Implement changing order state (reserve order after create transaction or free order after cancel)
+        // todo: Implement changing transaction state (reserve order after create transaction or free transaction after cancel)
 
         // Example implementation
         $this->state = 1 * $state;
@@ -179,12 +187,23 @@ class AllTransaction extends Database
     }
 
     /**
-     * Check, whether order can be cancelled or not.
-     * @return bool true - order is cancellable, otherwise false.
+     * Change transaction's status to specified one.
+     * @param int $status new state of the transaction
+     * @return void
+     */
+    public function changeStatus($status)
+    {
+        $this->status = 1 * $status;
+        $this->save();
+    }
+
+    /**
+     * Check, whether transaction can be cancelled or not.
+     * @return bool true - transaction is cancellable, otherwise false.
      */
     public function allowCancel()
     {
-        // todo: Implement order cancelling allowance check
+        // todo: Implement transaction cancelling allowance check
 
         // Example implementation
         return true; // do not allow cancellation
@@ -201,10 +220,8 @@ class AllTransaction extends Database
         if (!$this->id) {
             // If new transaction, set its state to waiting
             $this->state = self::STATE_WAITING_PAY;
-
             // todo: Set customer ID
             // $this->user_id = 1 * SomeSessionManager::get('user_id');
-
             $sql        = "insert into all_transactions set amount = :pAmount, status = :pStatus, state = :pState, user_id = :pUserId, method = :pMethod";
             $sth        = $db->prepare($sql);
             $is_success = $sth->execute([
@@ -214,15 +231,18 @@ class AllTransaction extends Database
                 ':pUserId'  => $this->user_id,
                 ':pMethod'  => $this->method,
             ]);
-
             if ($is_success) {
                 $this->id = $db->lastInsertId();
             }
         } else {
 
-            $sql        = "update all_transactions set state = :pState where id = :pId";
+            $sql        = "update all_transactions set state = :pState, status = :pStatus where id = :pId";
             $sth        = $db->prepare($sql);
-            $is_success = $sth->execute([':pState' => $this->state, ':pId' => $this->id]);
+            $is_success = $sth->execute([
+                ':pState'  => $this->state,
+                ':pStatus' => $this->status,
+                ':pId'     => $this->id
+            ]);
 
         }
 

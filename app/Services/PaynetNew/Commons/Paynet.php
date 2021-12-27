@@ -5,13 +5,9 @@ namespace PayUz\Commons;
 use App\Models\PaynetTransaction;
 use PayUz\DataFormat;
 use PayUz\PaymentException;
+use PayUz\Commons\Merchant;
 use PayUz\Commons\Request as PaynetRequest;
 use PayUz\Commons\Response as PaynetResponse;
-use PayUz\Commons\Merchant;
-    // use Goodoneuz\PayUz\Models\PaymentSystem;
-    // use Goodoneuz\PayUz\Services\PaymentService;
-    // use Goodoneuz\PayUz\Models\PaymentSystemParam;
-    // use Goodoneuz\PayUz\Services\PaymentSystemService;
 
 class Paynet
 {
@@ -59,18 +55,24 @@ class Paynet
     private function CheckTransaction()
     {
         $transaction = $this->getTransactionBySystemTransactionId();
-        $transactionState = ($transaction->state == Transaction::STATE_CANCELLED) ? 2 : 1;
-
-        return "<ns2:CheckTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
-            "<errorMsg>Success</errorMsg>".
-            "<status>0</status>".
+        if($transaction){
+            $transactionState = ($transaction->state == PaynetTransaction::STATE_CANCELLED) ? 2 : 1;
+            return "<ns2:CheckTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
+                "<errorMsg>Success</errorMsg>".
+                "<status>0</status>".
+                "<timeStamp>".DataFormat::toDateTimeWithTimeZone(now())."</timeStamp>".
+                "<providerTrnId>".$this->request->params['transactionId']."</providerTrnId>".
+                "<transactionState>" . $transactionState . "</transactionState>".
+                "<transactionStateErrorStatus>0</transactionStateErrorStatus>".
+                "<transactionStateErrorMsg>Success</transactionStateErrorMsg>".
+                "</ns2:CheckTransactionResult>";  
+        }
+        return "<ns2:PerformTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
+            "<errorMsg>Transaction not found </errorMsg>".
+            "<status>301</status>".
             "<timeStamp>".DataFormat::toDateTimeWithTimeZone(now())."</timeStamp>".
-            "<providerTrnId>".$this->request->params['transactionId']."</providerTrnId>".
-            "<transactionState>" . $transactionState . "</transactionState>".
-            "<transactionStateErrorStatus>0</transactionStateErrorStatus>".
-            "<transactionStateErrorMsg>Success</transactionStateErrorMsg>".
-            "</ns2:CheckTransactionResult>";
-            
+            "<providerTrnId>" . $this->request->params['transactionId'] . "</providerTrnId>".
+            "</ns2:PerformTransactionResult>";
     }
 
 
@@ -78,13 +80,13 @@ class Paynet
     {
         if ($this->getTransactionBySystemTransactionId())
             return "<ns2:PerformTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
-                "<errorMsg>transaction found</errorMsg>".
+                "<errorMsg>Transaction found </errorMsg>".
                 "<status>201</status>".
                 "<timeStamp>".DataFormat::toDateTimeWithTimeZone(now())."</timeStamp>".
                 "<providerTrnId>" . $this->request->params['transactionId'] . "</providerTrnId>".
                 "</ns2:PerformTransactionResult>";
         
-        $model = PaymentService::convertKeyToModel($this->request->params['key']);
+        $model = \App\Models\User::find($this->request->params['key']);
         
         // TODO: check if user not found return status 302;
         
@@ -106,20 +108,18 @@ class Paynet
             'cancel_time'           => null,
             'system_time_datetime'  => DataFormat::timestamp2datetime($this->request->params['transactionTime'])
         ));
-        $transaction = Transaction::create([
-            'payment_system'        => PaymentSystem::PAYNET,
+        $transaction = PaynetTransaction::create([
+            'payment_system'        => 'Paynet',
             'system_transaction_id' => $this->request->params['transactionId'],
             'amount'                => 1 * $this->request->params['amount'],
-            'currency_code'         => Transaction::CURRENCY_CODE_UZS,
-            'state'                 => Transaction::STATE_CREATED,
+            'currency_code'         => PaynetTransaction::CURRENCY_CODE_UZS,
+            'state'                 => PaynetTransaction::STATE_CREATED,
             'updated_time'          => 1*$create_time,
             'comment'               => (isset($this->request->params['error_note'])?$this->request->params['error_note']:''),
             'detail'                => $detail,
             'transactionable_type'  => get_class($model),
             'transactionable_id'    => $model->id
         ]);
-
-        PaymentService::payListener(null,$transaction,'after-pay');
 
         return  "<ns2:PerformTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
             "<errorMsg>Success</errorMsg>".
@@ -133,7 +133,7 @@ class Paynet
 
         $transaction = $this->getTransactionBySystemTransactionId();
 
-        if ($transaction == null || $transaction->state == Transaction::STATE_CANCELLED)
+        if ($transaction == null || $transaction->state == PaynetTransaction::STATE_CANCELLED)
         {
             return  "<ns2:CancelTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
                 "<errorMsg>bekor qilingan</errorMsg>".
@@ -143,10 +143,9 @@ class Paynet
                 "</ns2:CancelTransactionResult>";
         }
 
-        $transaction->state = Transaction::STATE_CANCELLED;
+        $transaction->state = PaynetTransaction::STATE_CANCELLED;
         $transaction->update();
-        PaymentService::payListener(null,$transaction,'cancel-pay');
-
+    
         return  "<ns2:CancelTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
             "<errorMsg>Success</errorMsg>".
             "<status>0</status>".
@@ -159,8 +158,8 @@ class Paynet
     private function GetStatement()
     {
         
-        $transactions = Transaction::where('payment_system', PaymentSystem::PAYNET)
-            ->where('state','<>',Transaction::STATE_CANCELLED)
+        $transactions = PaynetTransaction::where('payment_system', 'Paynet')
+            ->where('state','<>',PaynetTransaction::STATE_CANCELLED)
             ->where('created_at','<=',DataFormat::toDateTime($this->request->params['dateTo']))
             ->where('created_at','>=',DataFormat::toDateTime($this->request->params['dateFrom']))
             ->get();
@@ -189,7 +188,8 @@ class Paynet
     }
 
     private function GetInformation(){
-        $model = PaymentService::convertKeyToModel($this->request->params['key']);
+
+        $model = \App\Models\User::find($this->request->params['key']);
         
         if ($model) {
             return  "<ns2:GetInformationResult xmlns:ns2=\"http://uws.provider.com/\">".
@@ -212,6 +212,6 @@ class Paynet
 
     private function getTransactionBySystemTransactionId()
     {
-        return Transaction::where('system_transaction_id', $this->request->params['transactionId'])->first();
+        return PaynetTransaction::where('system_transaction_id', $this->request->params['transactionId'])->first();
     }
 }

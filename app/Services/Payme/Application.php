@@ -9,6 +9,7 @@ use App\Services\Payme\PaycomException;
 use App\Services\Payme\PaycomTransaction;
 use App\Services\Payme\Response;
 use App\Services\Payme\Request;
+use App\Models\WalletBalance;
 
 class Application extends PaycomException
 {
@@ -226,7 +227,11 @@ class Application extends PaycomException
                     $params = ['transaction_id' => $found->transaction_id];
                     $order  = new AllTransaction($this->request->id);
                     $order->find($params);
+                    $order->status = AllTransaction::STATUS_SUCCESS;
                     $order->changeState(AllTransaction::STATE_PAY_ACCEPTED);
+                    
+                    // User Wallet create or update balance
+                    WalletBalance::walletBalanceUpdateOrCreate($order->user_id, $order->amount);
 
                     // todo: Mark transaction as completed
                     $perform_time        = Format::timestamp(true);
@@ -293,9 +298,10 @@ class Application extends PaycomException
                 // change order state to cancelled
                 $order = new AllTransaction($this->request->id);
                 $order->find($this->request->params);
-                $order->id = $found->transaction_id;
+                $order->id     = $found->transaction_id;
+                $order->status = AllTransaction::STATUS_REJECTED;
                 $order->changeState(AllTransaction::STATE_CANCELLED);
-
+                
                 // send response
                 $this->response->send([
                     'transaction' => $found->id,
@@ -312,11 +318,13 @@ class Application extends PaycomException
 
                 $order->id = $found->transaction_id;
                 
+                $order->status = AllTransaction::STATUS_REJECTED;
+                
                 if ($order->allowCancel()) {
                     // cancel and change state to cancelled
                     $found->cancel(1 * $this->request->params['reason']);
                     // after $found->cancel(), cancel_time and state properties populated with data
-
+                    
                     $order->changeState(AllTransaction::STATE_CANCELLED);
 
                     // send response
