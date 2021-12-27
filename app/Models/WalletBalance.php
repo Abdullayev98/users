@@ -12,9 +12,7 @@ class WalletBalance extends Model
     
     protected $fillable = ['user_id','balance'];
 
-    public static function walletBalanceUpdateOrCreate($amount){
-        $user_id = Auth::id();
-        
+    public static function walletBalanceUpdateOrCreate($user_id, $amount){
         $record = self::where(['user_id' => $user_id,])->latest()->first();
 
         if (!is_null($record)) {

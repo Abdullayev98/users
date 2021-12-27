@@ -231,7 +231,7 @@ class Application extends PaycomException
                     $order->changeState(AllTransaction::STATE_PAY_ACCEPTED);
                     
                     // User Wallet create or update balance
-                    WalletBalance::walletBalanceUpdateOrCreate($order->amount);
+                    WalletBalance::walletBalanceUpdateOrCreate($order->user_id, $order->amount);
 
                     // todo: Mark transaction as completed
                     $perform_time        = Format::timestamp(true);
