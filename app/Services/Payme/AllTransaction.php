@@ -187,7 +187,7 @@ class AllTransaction extends Database
         // todo: Implement order cancelling allowance check
 
         // Example implementation
-        return false; // do not allow cancellation
+        return true; // do not allow cancellation
     }
 
     /**
