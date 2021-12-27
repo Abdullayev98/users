@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\How_work_it;
 use Session;
 use Hash;
 
@@ -27,15 +28,18 @@ class UserController extends Controller
             'password' => 'required',
         ]);
         $tasks = Task::all();
+        $howitworks = How_work_it::all();
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-
-            return view('home',compact('tasks'))
+            $user = User::find(Auth::user()->id)
+            ->update([
+                'active_status'=>1,
+            ]);
+            return view('home',compact('tasks','howitworks'))
                         ->withSuccess('Logged-in');
         }else {
           return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
-
       }
     public function signup()
     {
@@ -76,6 +80,10 @@ class UserController extends Controller
 
 
     public function logout() {
+          $user = User::find(Auth::id())
+          ->update([
+              'active_status'=>0,
+          ]);
         Session::flush();
         Auth::logout();
         return Redirect('/');

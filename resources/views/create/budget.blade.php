@@ -34,19 +34,19 @@
               <div class="a"></div>
           <div id="slider-range-min"></div>
           </div>
-          <input type="text" id="amount" name="amount">
+          <input type="text" id="amount" name="amount" value="{{session('soqqa')}}">
           </div>
-          <div class="w-full">
+          <!-- <div class="w-full">
             <input type="checkbox" name="business" value="1"> Я использую YouDo для бизнеса, нужны закрывающие документы
             <p class="text-sm ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
             <input type="checkbox" name="insurance" value="1"> Отдаю предпочтение застрахованным исполнителям
             <p class="text-sm ml-4">В случае ущерба страховая возместит вам до 100 000 руб. Это бесплатно</p>
-          </div>
+          </div> -->
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
-              <button type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+              <a href="/task/create/date" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                  Назад
-               </button>
+               </a>
                <input type="submit"
               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
               name="" value="Далее">

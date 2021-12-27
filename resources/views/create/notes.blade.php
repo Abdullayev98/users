@@ -35,7 +35,7 @@
                     Описание</label>
                 <textarea name="description"
                   class="form-control block resize-none w-full h-36  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-amber-600 focus:outline-none"
-                   placeholder="Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня."></textarea>
+                   placeholder="Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня.">{{$descriptioon ?? ''}}</textarea>
               </div>
         </div>
 
@@ -52,7 +52,7 @@
               <span >Добавить фото</span>
              </button> -->
              <div>
-                <label class="md:w-2/3 block mt-6">
+                <!-- <label class="md:w-2/3 block mt-6">
                     <input class="mr-2 h-4 w-4" type="checkbox" name="docs">
                     <span class="text-lg text-slate-900">
                         Предоставить документы
@@ -66,12 +66,12 @@
                         <br>
                         <p class="text-sm text-slate-500">Задание увидят только исполнители, а после завершения - только вы и выбранный исполнитель.</p>
                     </span>
-                  </label>
+                  </label> -->
              </div>
              <div class="flex w-full gap-x-4 mt-4">
-              <button type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+              <a href="/task/create/budget" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                  Назад
-               </button>
+               </a>
                <input type="submit"
                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                name="" value="Далее">

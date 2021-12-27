@@ -13,14 +13,16 @@
         }
     </style>
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
+    @if ($message = Session::get('success'))
+        <div  id="modal-id2" class="alert alert-success alert-block">
+            <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2
+            text-lg font-bold">{{ $message }}
+              <button onclick="toggleModal2()" type="button" class="bg-red hover:bg-[#a5f3fc] py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button>
+            </div>
+        </div>
+    @endif
     <div
         class="bg-[url('https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp')] bg-center bg-cover h-[450px] ">
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
-            </div>
-        @endif
         <div class="container-lg mx-auto bg-[url('https://assets.youdo.com/_next/static/media/pattern-dotted.981ffff613107988cc581a30c07a5551.svg')] bg-repeat h-[450px] ">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-32">
@@ -32,21 +34,35 @@
                     </p>
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
-                            <input type="text" placeholder="Например, составить иск"
+                          <form class="" action="{{route('search')}}" method="get">
+                            <input type="text" name="s" value="" id="header_input" placeholder="Например, составить иск"
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
                             <button type="submit"
                                     class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
                                 Заказать услугу
                             </button>
+                          </form>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
-                            Например: <a href="#" class="hover:text-slate-400">повесить кондиционер</a>
+                            Например: <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">повесить кондиционер</span>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
+
+    <script>
+         function toggleModal2() {
+        document.getElementById("modal-id2").classList.toggle("hidden");
+         }
+    </script>
+
+    <script>
+        function myFunction() {
+            document.getElementById("header_input").value = document.getElementById("span_demo").innerHTML;
+        }
+    </script>
 
     <div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
         <!--modal content-->
@@ -64,7 +80,7 @@
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
-                <div class="text-gray-500 text-lg my-5 md:border-0 border-b md:p-0 pb-3">
+                <div class="text-gray-500 text-lg my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
                     <a href="{{route('categories', ['id'=> $category2->id])}}" class="block">
                         <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->name }}</i>
                     </a>
@@ -103,7 +119,7 @@
                     </a>
                 </div>
             </div>
-            <div class="grid md:grid-cols-4 grid-cols-2 mt-8">
+            <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 <div class="text-center">
                     <img src="https://assets.youdo.com/_next/static/media/sbr_176.95ac6c46444100c6bcb6262ed7695c79.png"
                          class="mx-auto" alt="">
@@ -130,21 +146,12 @@
                         Более 1 000 000 отзывов от заказчиков помогут выбрать подходящего исполнителя.
                     </div>
                 </div>
-                <div class="text-center mx-4">
-                    <img
-                        src="https://assets.youdo.com/_next/static/media/forbusiness_176.05ef3328a82a6661b6c53ff31260b80a.png"
-                        class="mx-auto" alt="">
-                    <div class="font-bold my-4">YouDo для бизнеса</div>
-                    <div class="text-xs">
-                        Безналичная оплата бизнес-заданий с предоставлением закрывающих документов.
-                    </div>
-                </div>
             </div>
-            <div class="w-3/4 mx-auto my-8">
+            <!-- <div class="w-3/4 mx-auto my-8">
                 <img
                     src="https://avatars.mds.yandex.net/get-adfox-content/2367573/211006_adfox_1671985_4489405.2ae5b6df3d7a04dc28f071afffa30e99.png/optimize.webp"
                     alt="">
-            </div>
+            </div> -->
         </div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-gray-400 to-[#fff] h-1 rounded-full"></div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-[#f6f8fa] to-[#fff]">
@@ -168,7 +175,7 @@
                     </div>
                     <div class="text-left">
                         <h3 class="md:text-4xl text-[24px] font-semibold my-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
-                        {!!$howitwork->description!!}
+                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">Создать задания</a>
                     </div>
 
 @else
@@ -190,7 +197,7 @@
                     </div>
                     <div class="text-left md:hidden block">
                         <h3 class="text-2xl font-semibold mt-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
-                        {!!$howitwork->description!!}
+                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">Создать задания</a>
                     </div>
 @endif
 
@@ -201,9 +208,9 @@
                 </div>
             </div>
             <div class="md:w-1/3 w-3/4 mx-auto my-4">
-                <button type="button" class=" bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Разместите
+                <a href="/task/create?category_id=31" type="button" class="text-center pt-3 bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Разместите
                     задание прямо сейчас
-                </button>
+                </a>
                 <div class="text-center text-xl">
                     и найдите <br> исполнителя за несколько минут
                 </div>
@@ -265,11 +272,11 @@
                                 src="https://assets.youdo.com/_next/static/media/android.1234ba9391753eeb525d4f71a808329e.svg"
                                 alt=""></button>
                     </a>
-                    <a href="#">
+                    <!-- <a href="#">
                         <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
                                 src="https://assets.youdo.com/_next/static/media/appgallery.67baccf681decda41c84b0364830d2e4.svg"
                                 alt=""></button>
-                    </a>
+                    </a> -->
                 </div>
                 <div class="h-64 md:block hidden">
                     <img
@@ -278,7 +285,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full lg:shadow-xl">
+        <!-- <div class="w-full lg:shadow-xl">
             <div class="container mx-auto md:w-2/3 w-11/12">
                 <div class="w-2/3 mx-auto my-16 text-center">
                     <h1 class="text-4xl">Новые публикации <a href="/news"><span
@@ -349,7 +356,7 @@
                     </h1>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="container mx-auto md:w-2/3 w-11/12">
             <div class="w-full my-16">
                 <h1 class="text-4xl">Что заказывают на «Юду» прямо сейчас</h1>
@@ -364,7 +371,7 @@
                                     <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
                                 </div>
                                 <div class="mx-auto w-2/3">
-                                    <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                                    <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->name}}
                                     </a>
                                     <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
@@ -377,13 +384,14 @@
 
                     </div>
                     <div class="mt-4">
-                        <button type="button"
-                                class=" bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">
+                        <a href="/task-search/" type="button"
+                                class="text-center pt-3 bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">
                             Показать все задания
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">
+                <a href="/verification">
                     <div
                         class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-executors-d40b155c145cdfa2d0f387a2baef5430.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
@@ -391,19 +399,24 @@
                             <p class="text-4xl text-[#fff]">Как стать исполнителем</p>
                         </div>
                     </div>
+                </a>
+                <a href="/security">
                     <div
-                        class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
+                         class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
                             <i class="fas fa-shield-alt text-[#8ae2ed] text-5xl pt-8"></i>
                             <p class="text-4xl text-[#fff]">Безопасность и гарантии</p>
                         </div>
                     </div>
-                    <div
-                        class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
-                        <div class="w-full h-full bg-[#00000066] text-center">
-                            <p class="text-5xl pt-8 text-[#ffc730]">Надежные исполнители для бизнеса</p>
+                </a>
+                   <a href="/performers">
+                        <div
+                            class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
+                            <div class="w-full h-full bg-[#00000066] text-center">
+                                <p class="text-5xl pt-8 text-[#ffc730]">Надежные исполнители для бизнеса</p>
+                            </div>
                         </div>
-                    </div>
+                   </a>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-   
+
 
 </head>
 {{-- {{dd($fc)}} --}}
@@ -17,11 +17,11 @@
     <section class="bg-[#494A4C] py-8">
         <div class="lg:w-8/12 mx-auto w-10/12">
                 <div class="sm:block lg:flex flex-column justify-between ">
-                    <a href="#"> <img class="w-32 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
-                
-                    <a href="/" class="text-white hover:text-gray-400"> 
+                    <a href="/"> <img class="w-32 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
+
+                    <a href="/" class="text-white hover:text-gray-400">
                         <i class="fa fa-link"></i>
-                            Перейти на сайт YouDo  
+                            Перейти на сайт YouDo
                     </a>
                 </div>
                 <h1 class="text-white text-3xl font-light  my-6">Ответы на частые вопросы и рекомендации от YouDo</h1>
@@ -34,48 +34,31 @@
                         </svg>
                     </button>
                     <input id="inp" class="bg-[#6d6e70] border-none outline-none transition h-16 pl-16 rounded-md focus:outline-none focus:bg-white w-full text-black text-lg hover:bg-[#7a7b7d]" type="search" name="search" placeholder="Поиск ответов..." />
-                </div>                    
+                </div>
             </form>
-        </div>                   
+        </div>
     </section>
-   
+@foreach($fc as $faq)
     <section class="mt-7">
-        <div class="w-10/12 lg:w-8/12 mx-auto md:flex flex-row justify-center items-center bg-white py-5 px-8 rounded-md shadow-lg shadow-indigo-300/40">
-            <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20 md:m-5 mx-auto ">
+        <div class="w-10/12 lg:w-8/12 mx-auto md:flex items-center bg-white py-5 px-8 rounded-md shadow-lg shadow-indigo-300/40">
+            <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20">
             <div class="px-6 py-3">
-                <a href="/questions"><h4 class="text-[#515254] text-[18px] mb-1">Как пользоваться сервисом</h4></a>
-                <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">Рассказываем, как заказать услугу или стать исполнителем, а ещё как общаться на сервисе. Новым исполнителям: как взять первое задание и начать зарабатывать. И немного о самых важных правилах площадки. </p>
-                <div class="flex flex-row items-center">
+                <a href="/questions/{{$faq->id}}"><h4 class="text-[#515254] text-[18px] mb-1">{{$faq->title}}</h4></a>
+                <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">{{$faq->description}}</p>
+                <!-- <div class="flex flex-row items-center">
                     <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
-                    
+
                         <div class="flex flex-col">
                             <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                            <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span> 
+                            <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
                         </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
+@endforeach
 
-    <section class="mt-7 mb-7">
-        <div class="w-10/12 lg:w-8/12 mx-auto md:flex flex-row justify-start items-center bg-white py-5 px-8 rounded-md shadow-lg shadow-indigo-400/40">
-            <img src="{{asset('images/banned-account-icon.png')}}" alt="" class="h-20 md:m-5 mx-auto ">
-            <div class="px-6 py-3">
-                <h4 class="text-[#515254] text-[18px] mb-1">Проблемы с доступом к аккаунту</h4>
-                <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">Даже если доступ к аккаунту утерян, его можно восстановить самостоятельно.  </p>
-                <div class="flex flex-row items-center">
-                    <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
-                    
-                        <div class="flex flex-col">
-                            <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                            <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span> 
-                        </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-white w-full flex flex-col p-8 justify-center items-center">
+    <footer class="bg-white w-full flex flex-col p-8 justify-center items-center mt-8">
         <h2>YouDo.com</h2>
         <p>Мы используем Intercom</p>
     </footer>

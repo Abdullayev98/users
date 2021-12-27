@@ -9,11 +9,13 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        <span>1 просмотров профиля</span>
+                        @foreach($vcs as $vc)
+                        <span>{{$vc->count}} просмотров профиля</span>
+                        @endforeach
                     </div>
                    <div>
                      @if($user->active_status == 1)
-                       <p class="text-lg text-gray-500">Онлайн</p>
+                       <p class="text-lg text-green-500"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-[5px]" > </i>Онлайн</p>
                        @else
                        <p class="text-lg text-gray-500">Офлайн</p>
                        @endif
@@ -73,25 +75,32 @@
                 <p>{{$user->description}}</p>
 
                 <h1 class="mt-12 text-3xl font-medium">Виды выполняемых работ</h1>
-
+                @foreach($categories as $category)
+                 @if($category->id == $user->category_id)
                <div class="mt-8">
-                    <a href="#" class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">Курьерские услуги</a>
-                    <p class="mt-2 text-gray-400 text-lg">1 место в рейтинге категории в г. Санкт-Петербург, выполнено 199 заданий <br>
-                        20 место в общем рейтинге категории</p>
+                    <a href="#" class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">{{$category->name}}</a>
+                    <!-- <p class="mt-2 text-gray-400 text-lg">1 место в рейтинге категории в г. Санкт-Петербург, выполнено 199 заданий <br>
+                        20 место в общем рейтинге категории</p> -->
                </div>
                <div>
                   <ul>
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Услуги пешего курьера</a>  ................................................1 место</li>
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Другая посылка</a>  ...............................................................1 место</li>
+                    @foreach($child_categories as $cat)
+                    @if($cat->parent_id == $category->id)
+                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">{{$cat->name}}</a> </li>
+                    @endif
+                    @endforeach
+                    <!-- <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Услуги пешего курьера</a>  ................................................1 место</li> -->
+                    <!-- <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Другая посылка</a>  ...............................................................1 место</li>
                     <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Срочная доставка</a>  ..........................................................1 место</li>
                     <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Доставка продуктов</a>  .....................................................1 место</li>
                     <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Купить и доставить</a>  .......................................................2 место</li>
                     <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Услуги курьера на легковом авто</a>  .........................4 место</li>
                     <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Доставка еды из ресторанов</a>(нет выполненных заданий) </li>
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Курьер на день</a>(нет выполненных заданий)</li>
+                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Курьер на день</a>(нет выполненных заданий)</li> -->
                   </ul>
                </div>
-
+                @endif
+              @endforeach
             </div>
         {{-- left sidebar end --}}
 

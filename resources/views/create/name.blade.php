@@ -43,7 +43,7 @@
                                 </label>
                                 <input
                                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
-                                    id="username" type="text" placeholder="Например, нужен курьер на несколько доставок" required name="name">
+                                    id="username" type="text" placeholder="Например, нужен курьер на несколько доставок" required name="name" value="{{session('neym')}}">
                                     <input type="text" hidden name="cat_id" value="{{$current_category->id}}">
                             </div>
                             <div class="hidden">
