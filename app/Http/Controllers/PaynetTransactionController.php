@@ -17,7 +17,6 @@ class PaynetTransactionController extends Controller
         switch ($driver){
             case self::PAYNET:
                 $this->driverClass = new PaynetSystem;
-                dd($this->driverClass);
                 break;
         }
         // TODO Other payment system

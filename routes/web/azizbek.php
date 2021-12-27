@@ -7,6 +7,7 @@ use App\Http\Controllers\PaynetTransactionController;
 // Paynet Repo
 Route::get('/payment/paynet', function(){
     $constants = new Constants();
+    dd($constants);
     header("Content-Type: text/xml; charset=utf-8");
     $webService = new SoapServer($constants::$wsdl_url);
     $webService->setObject(new PaynetService());

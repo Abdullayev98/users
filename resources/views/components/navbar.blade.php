@@ -119,14 +119,12 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="mb-1">
-                                    {{-- icon-3 --}}
-                                    <div class="">
-                                        <a href="/chatify">
-                                            <i class="ml-6 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
-                                        </a>
-                                    </div>
-                                </li>
+                                   {{-- icon-3 --}}
+                                <div class="">
+                                    <a href="/chatify">
+                                        <i class="ml-6 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
+                                    </a>
+                                </div>
                                 <li class="mb-1">
                                     <div class="">
                                         <a href="#" onclick="toggleModal()">
@@ -271,7 +269,7 @@
                 {{-- icon-3 --}}
                 <div class=" float-left">
                     <a href="/chatify">
-                        <i class="pl-5 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
+                        <i class="ml-5 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
                     </a>
                 </div>
 
@@ -297,7 +295,7 @@
 <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
     {{-- 1 --}}
     <div class="relative w-auto my-6 mx-auto max-w-3xl" id="modal11">
-        <div class="border-0 rounded-lg shadow-2xl px-12 relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <div class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
             <div class=" text-center p-6  rounded-t">
                 <button type="submit"  onclick="toggleModal()" class="rounded-md w-100 h-16 absolute top-1 right-4">
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
@@ -306,7 +304,7 @@
                     На какую сумму хотите пополнить <br> кошелёк?
                 </h3>
             </div>
-            <div class="text-center h-80">
+            <div class="text-center h-64">
                 <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
                     <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="1000">
                 </div>
@@ -329,7 +327,7 @@
 {{-- 2 --}}
 <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id1">
     <div class="relative w-auto my-6 mx-auto max-w-3xl">
-        <div class="border-2 shadow-2xl rounded-lg bg-gray-100  relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <div class="border-2 shadow-2xl rounded-lg bg-gray-100 relative flex flex-col w-5/6 mx-auto mt-16 bg-white outline-none focus:outline-none">
             <div class=" text-center p-6  rounded-t">
                 <button type="submit"  onclick="toggleModal1()" class="rounded-md w-100 h-16 absolute top-1 right-4">
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
@@ -339,30 +337,30 @@
                 </h3>
             </div>
 
-            <div class="container mt-8 mb-12">
+            <div class="container mb-12">
                 <form action="/ref" method="GET">
                     <input type="hidden" name="user_id" value="1">
-                                  <div class="my-3 w-1/2 mx-auto">
-                                    <div class="custom-control custom-radio mb-4 text-3xl">
-                                      <input id="credit" onClick="doBlock()" name="paymethod" type="radio" value="PayMe" class="custom-control-input">
-                                      <label class="custom-control-label" for="credit">PayMe</label>
-                                    </div>
-                                    <div class="custom-control custom-radio mb-4 text-3xl">
-                                      <input id="debit" onClick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input">
-                                      <label class="custom-control-label" for="debit">Click</label>
-                                    </div>
-                                    <div class="custom-control custom-radio mb-4 text-3xl">
-                                        <input id="debit1" onClick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input">
-                                        <label class="custom-control-label" for="debit1">Paynet</label>
-                                      </div>
+                                <div class="my-3 w-1/2 mx-auto">
+                                    <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
+                                      <input id="credit" onclick="doBlock()" name="paymethod" type="radio" value="PayMe" class="custom-control-input mt-5 w-4 h-4 ">
+                                      <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="credit"><img src="https://cdn.paycom.uz/documentation_assets/payme_01.png" alt=""></label> </button>
 
-                                    <div class="d-none input-group my-5" id="forhid">
+                                    </div>
+                                    <div class="custom-control custom-radio my-8 text-3xl flex flex-row">
+                                      <input id="debit" onclick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input mt-8 w-4 h-4 ">
+                                      <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit"><img src="https://docs.click.uz/wp-content/themes/click_help/assets/images/logo.png" alt=""></label> </button>
+                                    </div>
+                                    <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
+                                        <input id="debit1" onclick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input mt-5 w-4 h-4 ">
+                                        <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit1"><img src="https://paynet.uz/medias/article/big/134/logo-paynet.png" alt=""></label> </button>
+                                    </div>
+                                <div class="d-none input-group my-5" id="forhid">
                                     <input id="amount_u" type="hidden" name="amount" class="form-control">
-                                    </div>
+                        </div>
 
-                                  </div>
+                </div>
 
-                                <div class="text-center">
+                                <div class="text-center mt-8">
                                     <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-2xl font-bold py-3 px-8 rounded">Оплата</button>
                                 </div>
 
@@ -483,6 +481,11 @@
             }
         }
     });
+
+
+    if (document.getElementById('credit').checked) {
+      alert('Hello');
+    }
 </script>
 
 @section("javascript")
