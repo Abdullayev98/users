@@ -220,10 +220,8 @@ class AllTransaction extends Database
         if (!$this->id) {
             // If new transaction, set its state to waiting
             $this->state = self::STATE_WAITING_PAY;
-
             // todo: Set customer ID
             // $this->user_id = 1 * SomeSessionManager::get('user_id');
-
             $sql        = "insert into all_transactions set amount = :pAmount, status = :pStatus, state = :pState, user_id = :pUserId, method = :pMethod";
             $sth        = $db->prepare($sql);
             $is_success = $sth->execute([
@@ -233,15 +231,18 @@ class AllTransaction extends Database
                 ':pUserId'  => $this->user_id,
                 ':pMethod'  => $this->method,
             ]);
-
             if ($is_success) {
                 $this->id = $db->lastInsertId();
             }
         } else {
 
-            $sql        = "update all_transactions set state = :pState where id = :pId";
+            $sql        = "update all_transactions set state = :pState, status = :pStatus where id = :pId";
             $sth        = $db->prepare($sql);
-            $is_success = $sth->execute([':pState' => $this->state, ':pId' => $this->id]);
+            $is_success = $sth->execute([
+                ':pState'  => $this->state,
+                ':pStatus' => $this->status,
+                ':pId'     => $this->id
+            ]);
 
         }
 
