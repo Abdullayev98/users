@@ -78,7 +78,7 @@
 
     {{-- 1 --}}
     <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
-        <div class="col-span-2 xl:mr-0 mr-8">
+        <div class="col-span-2 xl:mr-0 mr-8 md:mx-0 mx-6">
           <img  src="	https://assets.youdo.com/next/_next/static/images/3065257-ce528a23cf35ebec9f26fca3c8234f92.jpg" alt="#">
         </div>
         <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8  lg:text-left text-center">
@@ -115,7 +115,7 @@
         <img  src="https://assets.youdo.com/next/_next/static/images/2039481-bb66c26d9d35c864cd7994a436e8ca0f.jpg" alt="#">
       </div>
 
-      <div class="col-span-2 mx-auto mr-8 lg:hidden block">
+      <div class="col-span-2 mx-auto mr-8 lg:hidden block md:ml-0 ml-6">
         <img  src="https://assets.youdo.com/next/_next/static/images/2039481-bb66c26d9d35c864cd7994a436e8ca0f.jpg" alt="#">
       </div>
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
@@ -135,7 +135,7 @@
 
     {{-- 3 --}}
     <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
-      <div class="col-span-2 xl:mr-0 mr-8">
+      <div class="col-span-2 xl:mr-0 mr-8 md:mx-0 mx-6">
         <img  src="https://assets.youdo.com/next/_next/static/images/2735528-4845f3d54cb821712417c20131306d50.jpg" alt="#">
       </div>
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:text-left text-center">
@@ -168,11 +168,11 @@
             </a>
           </div>
       </div>
-      <div class="col-span-2  mx-auto mr-8 lg:block hidden">
+      <div class="col-span-2  mx-auto mr-8 lg:block hidden ">
         <img  src="https://assets.youdo.com/next/_next/static/images/2402385-0292eb700f06ad2d5a8f4e71a3edc48d.jpg" alt="#">
       </div>
 
-      <div class="col-span-2  mx-auto mr-8 lg:hidden block">
+      <div class="col-span-2  mx-auto mr-8 lg:hidden block md:ml-0 ml-6">
         <img  src="https://assets.youdo.com/next/_next/static/images/2402385-0292eb700f06ad2d5a8f4e71a3edc48d.jpg" alt="#">
       </div>
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
