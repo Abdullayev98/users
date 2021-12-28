@@ -2,7 +2,7 @@
 
 @section("content")
 
-<div class="mx-auto w-9/12 my-16">
+<div class="mx-auto md:w-9/12 w-full p-5 md:p-0 my-16">
 
     <div class="border-b">
     <!-- Tabs -->
@@ -17,23 +17,23 @@
         <div id="first">
 
             <div class="grid grid-cols-3 gap-x-10">
-                <div class="col-span-2">
+                <div class="md:col-span-2 col-span-3">
                     <div class="w-full bg-[#f8f7ee] my-5">
                         <div class="px-5 py-5">
                             <form action="{{route('search')}}" method="get">
-                            <div class="grid grid-cols-4 gap-4 mb-3">
+                            <div class="mb-3">
 
-                                <div class="inline-flex w-full col-span-4">
-                                    <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
-                                    <button class="w-2/12 bg-green-500 ml-1 py-1 px-1 rounded">Найти</button>
+                                <div class="md:inline-flex w-full">
+                                    <input class="md:w-10/12 w-full text-black-700 border border-black h-10 rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
+                                    <button class="md:w-2/12 w-full bg-green-500 md:ml-1 m-0 mt-3 md:mt-0 py-1 px-1 rounded">Найти</button>
                                 </div>
 
-                                <div class="inline-flex w-full col-span-4">
-                                    <div class="w-7/12">
+                                <div class="md:inline-flex w-full">
+                                    <div class="w-full md:min-w-72">
                                         <label class="text-xs">Город, адрес, метро, район...</label>
                                         <input class="w-full border border-black rounded text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
                                     </div>
-                                    <div class="w-1/5 ml-5">
+                                    <div class="md:min-w-20 w-full ml-0 md:ml-5">
                                         <label class="text-xs">Стоимость заданий от</label>
                                         <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
                                     </div>
@@ -45,13 +45,13 @@
                     </div>
 
                     <div>
-                        <div class="border-b mb-5">
+                        <div class="border-b mb-5 w-full grid justify-center ">
                             <!-- Tabs -->
                             <ul id="tabs" class="inline-flex w-full">
-                                <li class="font-semibold rounded-t mr-5">Сортировать</li>
-                                <li class="bg-[#f8f7ee] mr-4"><a href="#datesort">по дате публикации</a></li>
-                                <li class="underline decoration-dotted mr-4"><a href="#fastsort">по срочности</a></li>
-                                <li class="hover:text-red-500 mr-4"><a href="#geosort">по удалённости</a></li>
+                                <li class="font-semibold md:text-base text-xs rounded-t mr-5">Сортировать</li>
+                                <li class="bg-[#f8f7ee] mr-4 md:text-base text-xs"><a href="#datesort">по дате публикации</a></li>
+                                <li class="underline decoration-dotted md:text-base text-xs mr-4"><a href="#fastsort">по срочности</a></li>
+                                <li class="hover:text-red-500 md:text-base text-xs mr-4"><a href="#geosort">по удалённости</a></li>
                             </ul>
                         </div>
 
@@ -99,7 +99,8 @@
                     </div>
 
                 </div>
-                <div class="w-full h-full mt-5">
+
+                <div class="w-full h-full mt-5 md:col-span-1 col-span-3">
                     <div id="map" class="h-60 my-5 rounded-lg w-full">
                        <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>
                     </div>

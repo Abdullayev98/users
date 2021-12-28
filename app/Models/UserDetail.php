@@ -11,6 +11,6 @@ class UserDetail extends Model
     use HasFactory;
     use Translatable;
 
-    protected $translatable = [''];
+
 
 }

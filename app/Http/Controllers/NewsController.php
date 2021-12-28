@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
         $news = BlogNew::all();
         $last2 = DB::table('blog_new')->orderBy('id', 'DESC')->first();
