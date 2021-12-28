@@ -1744,68 +1744,6 @@
             "time": "2021-04-26T11:24:25+00:00"
         },
         {
-            "name": "goodoneuz/pay-uz",
-            "version": "2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/shaxzodbek-uzb/pay-uz.git",
-                "reference": "ef06235b616ca4eeb7b734af6f54c504f9b7da0c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/shaxzodbek-uzb/pay-uz/zipball/ef06235b616ca4eeb7b734af6f54c504f9b7da0c",
-                "reference": "ef06235b616ca4eeb7b734af6f54c504f9b7da0c",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.7.*|5.8.*|6.*|7.*|^8.0",
-                "php": "^7.1",
-                "stripe/stripe-php": "^6.31|^7.60"
-            },
-            "require-dev": {
-                "orchestra/testbench": "3.7.*|^6.2",
-                "phpunit/phpunit": "^7.0|^9.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Goodoneuz\\PayUz\\PayUzServiceProvider"
-                    ],
-                    "aliases": {
-                        "PayUz": "Goodoneuz\\PayUz\\PayUzFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Goodoneuz\\PayUz\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Shaxzodbek",
-                    "email": "shaxzodbek.qambaraliyev@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Payment: Click, Payme, Uzcard, Visa",
-            "homepage": "https://github.com/goodoneuz/pay-uz",
-            "keywords": [
-                "goodoneuz",
-                "pay-uz"
-            ],
-            "support": {
-                "issues": "https://github.com/shaxzodbek-uzb/pay-uz/issues",
-                "source": "https://github.com/shaxzodbek-uzb/pay-uz/tree/2.1"
-            },
-            "time": "2020-12-22T12:36:29+00:00"
-        },
-        {
             "name": "graham-campbell/result-type",
             "version": "v1.0.4",
             "source": {

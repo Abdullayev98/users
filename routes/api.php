@@ -31,8 +31,6 @@ Route::put('update/{id}', [UserAPIController::class, 'update']);
 Route::get('logout', [UserAPIController::class, 'logout']);
 Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
 
-// Paynet service
-Route::post('paynet', [PaymentAPIController::class, 'index']);
 // FAQ
 Route::get('faq', [FaqAPIController::class, 'index']);
 //News
