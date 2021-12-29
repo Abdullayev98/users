@@ -119,11 +119,26 @@
         </div>
         <div class="col-span md:block hidden">
             <div class="w-full h-full mt-5">
-                <div id="map" class="h-40 rounded-lg w-full">
+                <div id="map" class="h-60 rounded-lg w-full">
                 </div>
-                <div class="w-full h-full">
-                    <x-faq/>
+                <div class="w-full h-full mt-5">
+                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center mb-1" type="button">Все категории</button>
+
+                    <div class="w-full my-1">
+                        @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+                            <div x-data={show:false} class="rounded-sm">
+                                <div class="border border-b-0 bg-gray-100" id="headingOne">
+                                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center my-1" type="button">
+                                        {{$category->name}}
+                                    </button>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
                 </div>
+
+                {{--                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
             </div>
         </div>
     </div>

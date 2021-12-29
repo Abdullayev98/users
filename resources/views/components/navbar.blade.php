@@ -42,8 +42,13 @@
                         <li class="mb-1">
                             <a href="/performers" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
                         </li>
+                        @if (Auth::user())
+                            <li class="mb-1">
+                                <a href="{{ route('task.mytasks') }}" class="block p-4 text-sm text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded font-medium delete-task text-gray-500">Мои заказы</a>
+                            </li>
+                        @endif
 
-                        @if (Route::has('login'))
+                    @if (Route::has('login'))
                             @auth
                                 <li class="mb-1">
                                     {{-- icon-1 --}}
@@ -112,16 +117,16 @@
                             @endauth
                         @endif
                 </div>
-                <div class="mt-auto">
-                    <div class="pt-6">
-                        <p class="w-11/12 text-left inline-block float-right text-gray-500 md:float-none mt-6 mb-6">
-                            <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или
+{{--                <div class="mt-auto">--}}
+{{--                    <div class="pt-6">--}}
+{{--                        <p class="w-11/12 text-left inline-block float-right text-gray-500 md:float-none mt-6 mb-6">--}}
+{{--                            <a href="{{ route('login') }}"  class="font-medium border-b border-black border-dotted hover:border-yellow-500 hover:text-yellow-500">Вход</a> или--}}
 
-                            <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a><br>
+{{--                            <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a><br>--}}
 
-                        </p>
-                    </div>
-                </div>
+{{--                        </p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </nav>
         </div>
     </div>
@@ -187,6 +192,9 @@
         </style>
         <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200]">Найти задания</a>
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
+        @if (Auth::user())
+            <a href="{{ route('task.mytasks') }}" class="font-medium text-gray-500 hover:text-[#ffa200]">Мои заказы</a>
+        @endif
     </div>
 
     @if (Route::has('login'))
