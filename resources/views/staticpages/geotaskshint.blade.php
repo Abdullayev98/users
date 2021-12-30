@@ -25,12 +25,12 @@
             <div class="col-span-4 ml-1">
                 <div class="w-4/5">
                     <h1 class="font-bold text-5xl">Как это работает?</h1>
-                    <p class="w-4/5 mt-10">YouDo — удобный сервис, который позволяет быстро и безопасно находить надежных исполнителей для решения бытовых и бизнес-задач. Достаточно разместить задание на сервисе, и через несколько минут вы начнете получать отклики от исполнителей, которые будут готовы его выполнить.
+                    <p class="w-4/5 mt-10">Universal Services — удобный сервис, который позволяет быстро и безопасно находить надежных исполнителей для решения бытовых и бизнес-задач. Достаточно разместить задание на сервисе, и через несколько минут вы начнете получать отклики от исполнителей, которые будут готовы его выполнить.
                     </p><br>
-                    <p class="w-4/5">Исполнители проходят <a href="/verification" class="text-blue-600 hover:text-orange-500">специальную проверку</a> администрацией сервиса, поэтому YouDo <a href="/security" class="text-blue-600 hover:text-orange-500">безопасен для заказчиков.</a></p>
+                    <p class="w-4/5">Исполнители проходят <a href="/verification" class="text-blue-600 hover:text-orange-500">специальную проверку</a> администрацией сервиса, поэтому Universal Services <a href="/security" class="text-blue-600 hover:text-orange-500">безопасен для заказчиков.</a></p>
                     <iframe class="w-full mb-10 h-96 mt-10" src="https://www.youtube.com/embed/VjDI4YkJG7E"></iframe>
 
-                    <h1 class="font-bold text-4xl mt-10 text-center">Как создать задание на YouDo?</h1>
+                    <h1 class="font-bold text-4xl mt-10 text-center">Как создать задание на Universal Services?</h1>
                     <h3 class="mt-10 text-xl text-center">Выберите категорию</h3>
                     <img src="https://assets.youdo.com/next/_next/static/images/macbook-air2-c3eb51eecd4c26af441f36f2993b2d29.jpg" class="mx-auto"/>
                     <p class="text-xl text-center mt-10">В свободной форме опишите детали вашего задания</p>
@@ -82,7 +82,7 @@
                 <a href="categories/1" class="text-4xl text-white">Создать задание</a>
             </div>
             <div class="col-span-1 py-auto py-5">
-                <p>Может быть вы хотите стать <a href="/verification" class="text-blue-500 underline hover:text-orange-400">исполнителем YouDo?</a></p>
+                <p>Может быть вы хотите стать <a href="/verification" class="text-blue-500 underline hover:text-orange-400">исполнителем Universal Services?</a></p>
             </div>
         </div>
 

@@ -251,7 +251,7 @@
             Вебинары
         </div>
         <div class="text-center text-[20px] py-5">
-            Так как режим НПД еще молодой, а сформированной практики пока недостаточно, YouDo Бизнес и hh.ru запускают серию обучающих вебинаров, на которых расскажут об особенностях работы с самозанятыми, основных выгодах и рисках для бизнеса.
+            Так как режим НПД еще молодой, а сформированной практики пока недостаточно, Universal Services Бизнес и hh.ru запускают серию обучающих вебинаров, на которых расскажут об особенностях работы с самозанятыми, основных выгодах и рисках для бизнеса.
         </div>
         <div class="font-bold text-center text-[20px] py-5">
             Прошедшие (доступна запись)
@@ -278,15 +278,15 @@
     <div class="md:w-[350px] md:py-6 md:px-8 bg-[#f2f4fa] md:rounded-[20px] px-12">
         <a href="#">
             <img class="w-[150px] pt-4" src="https://static.tildacdn.com/tild3936-6261-4666-b464-643234303239/Forbes_logo.svg" alt="">
-            <h3 class="my-4 text-[#2052e9] font-bold">YouDo и HeadHunter запустили платформу для работы бизнеса с самозанятыми</h3>
-            <p class="pb-4 text-[14px]">Новость о запуске совместной<br> с hh.ru b2b-платформы YouDo Бизнес</p>
+            <h3 class="my-4 text-[#2052e9] font-bold">Universal Services и HeadHunter запустили платформу для работы бизнеса с самозанятыми</h3>
+            <p class="pb-4 text-[14px]">Новость о запуске совместной<br> с hh.ru b2b-платформы Universal Services Бизнес</p>
         </a>
     </div>
     <div class="md:w-[350px] md:py-6 md:px-8 bg-[#f2f4fa] rounded-[20px] mx-10 hidden md:block">
         <a href="#">
             <img class="w-[150px] pt-4" src="https://thumb.tildacdn.com/tild3137-6132-4661-b664-373137303936/-/resize/240x/-/format/webp/Rossiya-24_Logosvg.png" alt="">
             <h3 class="my-4 text-[#2052e9] font-bold">Заседание правительственной комиссии по вопросам развития МСП</h3>
-            <p class="pb-4 text-[14px]">Сооснователь YouDo Алексей Гидирим принял участие в заседании кабмина по вопросам развития малого и среднего предпринимательства. </p>
+            <p class="pb-4 text-[14px]">Сооснователь Universal Services Алексей Гидирим принял участие в заседании кабмина по вопросам развития малого и среднего предпринимательства. </p>
         </a>
     </div>
     <div class="md:w-[350px] md:py-6 md:px-8 bg-[#f2f4fa] rounded-[20px] hidden md:block">
@@ -304,7 +304,7 @@
             <img class="w-[50px] pt-4 float-left mr-5" src="https://thumb.tildacdn.com/tild6665-3737-4663-b335-646135323834/-/resize/120x/-/format/webp/1200px-Emblem_of_the.png" alt="">
             <img class="w-[50px] pt-4" src="https://thumb.tildacdn.com/tild6630-3933-4238-a263-653566646439/-/resize/118x/-/format/webp/logorostrud.png" alt="">
             <h3 class="my-4 text-[#2052e9] font-bold">Памятка для самозанятых и бизнеса</h3>
-            <p class="pb-4 text-[14px]">YouDo совместно с ФНС и Рострудом подготовил памятку, где эксперты разъяснили основные моменты по сотрудничеству бизнеса с самозанятыми. Документ полезен тем, что описывает существующие для обеих сторон риски, поскольку правоприменительная практика только формируется, и не все компании знают, как грамотно работать с самозанятыми.</p>
+            <p class="pb-4 text-[14px]">Universal Services совместно с ФНС и Рострудом подготовил памятку, где эксперты разъяснили основные моменты по сотрудничеству бизнеса с самозанятыми. Документ полезен тем, что описывает существующие для обеих сторон риски, поскольку правоприменительная практика только формируется, и не все компании знают, как грамотно работать с самозанятыми.</p>
         </a>
     </div>
     <div class="md:w-[350px] md:py-6 md:px-8 bg-[#f2f4fa] rounded-[20px] mx-10 hidden md:block">
@@ -334,7 +334,7 @@
                 Зарабатывайте <br> на рекомендациях
             </div>
             <div class="text-[16px] md:text-[20px] py-5">
-                Знаете компании, которым мы можем помочь в работе с самозанятыми? Предложите им сотрудничество с YouDo за вознаграждение.
+                Знаете компании, которым мы можем помочь в работе с самозанятыми? Предложите им сотрудничество с Universal Services за вознаграждение.
             </div>
             <div class="md:py-8 py-6">
                 <a type="button" href="#contact" class="text-white md:text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] md:py-3 md:px-8 py-2 px-4">Больше вебинаров</a>
@@ -390,7 +390,7 @@
     <div class="xl:max-w-[1200px] lg:max-w-[1100px] md:max-w-[800px] mx-auto">
         <div class="md:flex md:justify-between py-12 text-bold">
             <div class="hidden md:block">
-                © 2021 YouDo
+                © 2021 Universal Services
             </div>
             <div class="inline">
                 <div class="text-bold ml-8 md:-ml-20">

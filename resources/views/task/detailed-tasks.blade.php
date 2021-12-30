@@ -59,7 +59,7 @@
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-lg">
                     <h1 class="text-3xl font-semibold py-3">Хотите найти надежного помощника?</h1>
-                    <p class="text-lg mb-10">YouDo помогает быстро решать любые бытовые и бизнес-задачи.</p>
+                    <p class="text-lg mb-10">Universal Services помогает быстро решать любые бытовые и бизнес-задачи.</p>
                     <a href="/categories/1">
                         <button  class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded">
                             Создайте свое задание

@@ -23,7 +23,7 @@
     </div>
     <button id="ShowButton" class = "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="myFunction()">Прошлые редакции</button>
     <div class="youDo my-10">
-        <a href="/terms/doc" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none">Правила сервиса ЮДУ БИЗНЕС</a>
+        <a href="/terms/doc" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none">Правила сервиса Универсал сервис БИЗНЕС</a>
     </div>
 
     <div class="Rekvezit">

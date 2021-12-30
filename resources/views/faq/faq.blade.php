@@ -21,10 +21,10 @@
 
                     <a href="/" class="text-white hover:text-gray-400">
                         <i class="fa fa-link"></i>
-                            Перейти на сайт YouDo
+                            Перейти на сайт Universal Services
                     </a>
                 </div>
-                <h1 class="text-white text-3xl font-light  my-6">Ответы на частые вопросы и рекомендации от YouDo</h1>
+                <h1 class="text-white text-3xl font-light  my-6">Ответы на частые вопросы и рекомендации от Universal Services</h1>
                 {{-- input --}}
             <form class="">
                 <div class="flex relative mx-auto w-full">
@@ -59,7 +59,7 @@
 @endforeach
 
     <footer class="bg-white w-full flex flex-col p-8 justify-center items-center mt-8">
-        <h2>YouDo.com</h2>
+        <h2>users.uz</h2>
         <p>Мы используем Intercom</p>
     </footer>
 

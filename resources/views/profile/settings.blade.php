@@ -363,7 +363,7 @@
                 class="md:col-span-1 col-span-3  md:mx-2 mx-auto inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
-                    <p>на YouDo с 12 сентября 2021 г.</p>
+                    <p>на Universal Services с 12 сентября 2021 г.</p>
                 </div>
                 <div class="contacts relative ">
                     <div class="ml-4 h-20 grid grid-cols-4">
