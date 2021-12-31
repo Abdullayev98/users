@@ -37,9 +37,9 @@
             </div>
             <div class="md:w-8/12 mt-8">
                 <h1 class="text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] pb-2 font-semibold">
-                    Отзывы заказчиков о YouDo
+                    Отзывы заказчиков о Universal Services
                 </h1>
-                <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">Ежедневно на просторах интернета мы встречаем десятки отзывов наших пользователей о YouDo. Самые яркие и эмоциональные из них собираются на этой странице. Рады поделиться ими с вами!</p>
+                <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">Ежедневно на просторах интернета мы встречаем десятки отзывов наших пользователей о Universal Services. Самые яркие и эмоциональные из них собираются на этой странице. Рады поделиться ими с вами!</p>
                 <ul class="pt-[20px]">
                     <li class="border border-solid border-[2px] rounded-[5px]">
                         <div class="px-[15px] py-[20px]">
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div>
-                                Пользуюсь Youdo время от времени, полезная штука. Вчера курьер доставил посылочку к поезду. Весной опытная медсестра наложила полимерный бинт на сломанную ногу. И уборку там заказываю - качественно и недорого. В общем, рекомендую.
+                                Пользуюсь Universal Services время от времени, полезная штука. Вчера курьер доставил посылочку к поезду. Весной опытная медсестра наложила полимерный бинт на сломанную ногу. И уборку там заказываю - качественно и недорого. В общем, рекомендую.
                             </div>
                             <div class="w-full h-auto py-4">
                                 <img src="https://external.ftas3-1.fna.fbcdn.net/safe_image.php?d=AQE6EVXDDxMMJipo&w=540&h=282&url=http%3A%2F%2Fyoudo.com%2FStatic%2FFBWall_2018_2.jpg&cfs=1&upscale=1&fallback=news_d_placeholder_publisher&ext=emg0&_nc_oe=6f37e&_nc_sid=06c271&ccb=3-5&_nc_hash=AQHUUpFCB2oK2EA7" alt="">

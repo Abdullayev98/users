@@ -254,7 +254,7 @@
             Понравилась подборка?
         </div>
         <div class="text-[20px] md:w-[800px] mx-auto my-4">
-            Скачайте приложение YouDo и создайте своё задание уже сегодня
+            Скачайте приложение Universal Services и создайте своё задание уже сегодня
         </div>
         <div class="mb-5 md:float-left lg:float-none md:w-6/16 mx-auto">
                 <span class="">
@@ -277,7 +277,7 @@
     <div class="xl:max-w-[1200px] lg:max-w-[1100px] md:max-w-[800px] mx-auto">
         <div class="md:flex md:justify-between py-12 text-bold">
             <div class="hidden md:block">
-                © 2021 YouDo
+                © 2021 Universal Services
             </div>
             <div class="inline">
                 <div class="text-bold ml-8 md:-ml-20">

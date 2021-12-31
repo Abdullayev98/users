@@ -2,7 +2,7 @@
 
 @section("content")
 
-<div class="mx-auto md:w-9/12 w-full p-5 md:p-0 my-16">
+<div class="mx-auto w-9/12 my-16">
 
     <div class="border-b">
     <!-- Tabs -->
@@ -17,94 +17,73 @@
         <div id="first">
 
             <div class="grid grid-cols-3 gap-x-10">
-                <div class="md:col-span-2 col-span-3">
+                <div class="col-span-2">
                     <div class="w-full bg-[#f8f7ee] my-5">
                         <div class="px-5 py-5">
                             <form action="{{route('search')}}" method="get">
-                            <div class="mb-3">
+                            <div class="grid grid-cols-4 gap-4 mb-3">
 
-                                <div class="md:inline-flex w-full">
-                                    <input class="md:w-10/12 w-full text-black-700 border border-black h-10 rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
-                                    <button class="md:w-2/12 w-full bg-green-500 md:ml-1 m-0 mt-3 md:mt-0 py-1 px-1 rounded">Найти</button>
+                                <div class="inline-flex w-full col-span-4">
+                                    <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
+                                    <button class="w-2/12 bg-green-500 ml-1 py-1 px-1 rounded">Найти</button>
                                 </div>
 
-                                <div class="md:inline-flex w-full">
-                                    <div class="w-full md:min-w-72">
+                                <div class="inline-flex w-full col-span-4">
+                                    <div class="w-7/12">
                                         <label class="text-xs">Город, адрес, метро, район...</label>
                                         <input class="w-full border border-black rounded text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
                                     </div>
-                                    <div class="md:min-w-20 w-full ml-0 md:ml-5">
+                                    <div class="w-1/5 ml-5">
                                         <label class="text-xs">Стоимость заданий от</label>
                                         <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
                                     </div>
                                 </div>
-
                             </div>
-                                </form>
+                            </form>
                         </div>
                     </div>
 
                     <div>
-                        <div class="border-b mb-5 w-full grid justify-center ">
-                            <!-- Tabs -->
-                            <ul id="tabs" class="inline-flex w-full">
-                                <li class="font-semibold md:text-base text-xs rounded-t mr-5">Сортировать</li>
-                                <li class="bg-[#f8f7ee] mr-4 md:text-base text-xs"><a href="#datesort">по дате публикации</a></li>
-                                <li class="underline decoration-dotted md:text-base text-xs mr-4"><a href="#fastsort">по срочности</a></li>
-                                <li class="hover:text-red-500 md:text-base text-xs mr-4"><a href="#geosort">по удалённости</a></li>
-                            </ul>
-                        </div>
+{{--                        <div class="border-b mb-5">--}}
+{{--                            <!-- Tabs -->--}}
+{{--                            <ul id="tabs" class="inline-flex w-full">--}}
+{{--                                <li class="font-semibold rounded-t mr-5">Сортировать</li>--}}
+{{--                                <li class="bg-[#f8f7ee] mr-4"><a href="#datesort">по дате публикации</a></li>--}}
+{{--                                <li class="underline decoration-dotted mr-4"><a href="#fastsort">по срочности</a></li>--}}
+{{--                                <li class="hover:text-red-500 mr-4"><a href="#geosort">по удалённости</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
 
 
                         <div id="scrollbar" class="w-full h-full blog1">
-{{--                      <div class="w-full overflow-y-scroll w-full h-screen">--}}
-                            @foreach($tasks as $task)
-                            <div class="w-full border hover:bg-blue-100 h-[100px]">
-                              <div class="w-11/12 h-12 m-4">
-                                <div class="float-left w-9/12">
-                                  <i class="fas fa-user-circle text-4xl float-left text-blue-400 mr-2"></i>
-                                  <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
-                                        {{$task->name}}
-                                  </a>
-                                  <p class="text-sm ml-12 mt-2">
-                                      {{$task->address}}
-{{--                                      {{$task->description}}--}}
-                                  </p>
+                            <div class="w-full overflow-y-scroll w-full h-screen">
+                                <div class="show_tasks">
+                                {{--Show Tasks list --}}
                                 </div>
-                                  <div class="float-right w-1/4 text-right">
-                                  <p class="text-lg">{{$task->budget}}</p>
-                                  @foreach($categories as $category)
-                                   @if($category->id == $task->category_id)
-                                      <p class="text-sm ml-12">{{$category->name}}</p>
-                                   @endif
-                                  @endforeach
-                                  <!-- <p class="text-sm ml-12">Нет отзывов</p> -->
-                                </div>
-                              </div>
                             </div>
-{{--                          </div>--}}
-                            @endforeach
-                            <!-- {{$tasks->links()}} -->
+                            <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
+                                <div></div>
+                                <div class="butt col-span-3 text-center w-full h-full" style="display: none">
+                                    <p class="text-center">Показано 20 из 331</p>
+                                    <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_list(k)">Показать ещё</button>
+                                </div>
+                            </div>
                         </div>
-
+{{--                        {{$tasks->links()}}--}}
 
                         {{--    Navigatsiya ko'rinishi un kere bo'ladigan Input va Button  --}}
                         <input id="suggest" class="hidden" type="text">
                         <button id="mpshow" class="hidden"></button>
                         {{--    Ishonmaganla sinab ko'rishi mumkin --}}
 
-
-
-
                     </div>
 
                 </div>
-
-                <div class="w-full h-full mt-5 md:col-span-1 col-span-3">
+                <div class="w-full h-full mt-5">
                     <div id="map" class="h-60 my-5 rounded-lg w-full">
                        <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>
                     </div>
-                    <form action="">
+                    <form id="form">
                         <div class="w-full h-full">
 
                             <div class="max-w-lg mx-auto">
@@ -113,7 +92,7 @@
                                   <input type="checkbox" class="all_cat mr-1 hover:cursor-pointer"/> Все категории
                                 </label>
 
-                                <div class="w-full my-1">
+                                <div class="w-full my-1 for_check">
 
                                     @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                                         <div x-data={show:false} class="rounded-sm">
@@ -130,7 +109,7 @@
                                             <div x-show="show" class="border border-b-0 px-8 py-0">
                                                 @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
-                                                    <div>
+                                                    <div class="par{{$category->id}}">
                                                         <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
                                                           <input type="checkbox" class="chi_cat mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category2->name}}
                                                         </label>
@@ -148,6 +127,7 @@
 
                         </div>
                     </form>
+                    <div id="form2"></div>
                 </div>
             </div>
 
@@ -162,9 +142,9 @@
 @endsection
 
 @section("javasript")
-
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU" type="text/javascript"></script>
+    <script type="text/javascript" src="{{URL::asset('js/s_tasks.js')}}"></script>
     <script type="text/javascript">
         ymaps.ready(init);
             function init() {
@@ -183,8 +163,8 @@
     </script>
 
     <script>
-        let tabsContainer = document.querySelector("#tabs");
 
+        let tabsContainer = document.querySelector("#tabs");
         let tabTogglers = tabsContainer.querySelectorAll("a");
         console.log(tabTogglers);
 
@@ -211,127 +191,178 @@
 
         document.getElementById("default-tab").click();
 
-
         $(".rotate").click(function(){
             $(this).toggleClass("rotate-[360deg]");
         });
 
+        // let i = 20;
+        // let k = 0;
+        let dataAjax = {};
 
-        function first_ajax(id)
-        {
+        img_show();
+
+        function first_ajax(id){
             $.ajax({
-                url: 'route({{}})'+id+'',         /* Куда пойдет запрос */
-                method: 'get',             /* Метод передачи (post или get) */
-                //dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-                //data: {text: 'Текст'},     /* Параметры передаваемые в запросе. */
-                success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
-                    //alert(data);            /* В переменной data содержится ответ от index.php. */
-                    // console.log(data);
-
-                    $("#articles").empty();
-                    $.each(data, function(index, data){
-                    $("#articles").append(
-                        `  `,
-                        `  `,
-                    );
-                });
-        }
-        });
+                url: "{{route('tasks.search')}}",
+                // dataType: 'json',
+                data: {orderBy:id},
+                type: 'GET',
+                success: function(data) {
+                    dataAjax = $.parseJSON(JSON.stringify(data));
+                    tasks_list(dataAjax)
+                },
+                error: function() {
+                    alert("Ajax ishida xatolik...");
+                }
+            });
         }
 
+        function img_show() {
+            $(".show_tasks").empty();
+            $(".show_tasks").append(
+                `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
+                <div></div>
+                <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
+                <div></div>
+                <div class="col-span-3 text-center w-full h-full">
+                    <p class="text-3xl"><b>Задания не найдены</b></p>
+                    <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
+                </div>
+                </div>`
+            );
+            $('.butt').attr('style', 'display: none');
+        }
 
-        // $(document).ready(function($) {
-        // $('#form').on('click', 'checkbox', function(e) {
-        //     $('#form').on('check', function(e) {
-        //         e.preventDefault();
-        //         let clicked = false;
-        //         $('.all_cat').on('!clicked', function() {
-        //             $('.par_cat').prop('checked', !clicked);
-        //                 console.log($('.par_cat').prop('checked', !clicked))
-        //             clicked = !clicked;
-        // this.innerHTML = clicked ? 'Deselect' : 'Select';
-        // })
+        function tasks_list(data){
+            $(".show_tasks").empty();
+            $.each(data, function(index, data) {
+                $(".show_tasks").append(
+                    `<div class="w-full border hover:bg-blue-100 h-[100px]">
+                    <div class="w-11/12 h-12 m-4">
+                    <div class="float-left w-9/12">
+                    <i class="fas fa-user-circle text-4xl float-left text-blue-400 mr-2"></i>
+                    <a href="/detailed-tasks/data.id" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
+                    <p class="text-sm ml-12 mt-4">` + data.address + `</p>
+                    </div>
+                    <div class="float-right w-1/4 text-right">
+                    <a href="#" class="text-lg">` + data.budget + `</a>
+                    <p class="text-sm ml-12">Спортмастер</p>
+                    <p class="text-sm ml-12">Нет отзывов</p>
+                    </div>
+                    </div>
+                    </div>`,
+                )
+            });
+        }
 
-        //     console.log($('.all_cat').attr())
-        //     if ($('.all_cat').checked)
-        //     {$('.all_cat').attr("checked","checked");}
-        // else
-        //     {$('.all_cat').removeAttr('checked');}
-
-        // var data = $('#form').serializeArray();
-        // console.log(data);
-        // $.ajax({
-        //     url:$ ('#form').attr('action'),
-        //     data:data,
-        //     type:'POST',
-        //     datatype:'JSON',
-        //     success: function() {
-        //
-        //     },
-        //     error: function() {
-        //
-        //     }
-        //
-        // })
-
-        // })
-        // });
-
-
-
-
-        let allcat = false; // deselected
-        let state = false; // deselected
         $('.all_cat').click(function () {
-            $('.par_cat').each(function() {
-                if(!allcat) {
-                    this.checked = true;
-                } else {
+            if(this.checked == false) {
+                $(".for_check input:checkbox").each(function(){
                     this.checked = false;
-                }
-            });
-            $('.chi_cat').each(function() {
-                if(!allcat) {
+                });
+                img_show();
+            }else {
+                $(".for_check input:checkbox").each(function () {
                     this.checked = true;
-                } else {
-                    this.checked = false;
-                }
-            });
-            //switch
-            if (allcat) {
-                allcat = false;
-            } else {
-                allcat = true;
+                });
+                first_ajax('all')
             }
         });
 
         $('.par_cat').click(function () {
-            let chi = this.id
-            // console.log(this.id)
-            console.log(state)
-
-            $('.chi_cat').each(function() {
-                if (this.id == chi) {
-                    if (this.checked == true) {
-                        this.checked = false;
-                    } else {
-                        this.checked = true;
-                    }
-                }
-                console.log(state)
-            });
-
-            //switch
-
-            if (state) {
-                state = false;
+            if(this.checked == false) {
+                parcat_click_false(this.id)
             } else {
-                state = true;
+                parcat_click_true(this.id)
             }
-            console.log(state)
         });
 
 
-    </script>
+        $('.chi_cat').click(function () {
+            if (this.checked == false) {
+                chicat_click_false(this.id)
+            } else {
+                chicat_click_true(this.id)
+            }
+        });
 
+        function parcat_click_true(id) {
+            $('.chi_cat').each(function () {
+                if (this.id == id) {
+                    this.checked = true;
+                }
+            });
+            $('.all_cat').each(function () {
+                if (parcat_check()) {
+                    this.checked = true;
+                } else {
+                    this.checked = false;
+                }
+            });
+        }
+
+        function parcat_click_false(id) {
+            $('.all_cat').each(function () {
+                this.checked = false;
+            });
+            $('.chi_cat').each(function() {
+                if (this.id == id) {
+                    this.checked = false;
+                }
+            });
+        }
+
+        function parcat_check(){
+            let i = 1;
+            $('.par_cat').each(function() {
+                if (this.checked == false) {
+                    i = 0;
+                    return false;
+                }
+            });
+            return i;
+        }
+
+        function chicat_click_true(id){
+            $('.par_cat').each(function () {
+                if (this.id == id) {
+                    if (chicat_check(id))
+                        this.checked = true;
+                }
+            });
+            $('.all_cat').each(function () {
+                if (parcat_check()) {
+                    this.checked = true;
+                } else {
+                    this.checked = false;
+                }
+            });
+        }
+
+        function chicat_click_false(id){
+            $('.par_cat').each(function() {
+                if (this.id == id) {
+                    this.checked = false;
+                }
+            });
+            $('.all_cat').each(function () {
+                this.checked = false;
+            });
+        }
+
+        function chicat_check(id){
+            let i = 1;
+            $('.chi_cat').each(function() {
+                if (this.id == id) {
+                    if (this.checked == false) {
+                        i = 0;
+                        return false;
+                    }
+                }
+            });
+            return i;
+        }
+
+
+    </script>
 @endsection

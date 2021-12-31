@@ -125,7 +125,7 @@
                          class="mx-auto" alt="">
                     <div class="font-bold my-4">Удобная и безопасная оплата</div>
                     <div class="text-xs">
-                        При оплате через Сделку без риска YouDo вернет деньги, если что-то пойдет не так.
+                        При оплате через Сделку без риска Universal Services вернет деньги, если что-то пойдет не так.
                     </div>
                 </div>
                 <div class="text-center mx-4">
@@ -134,7 +134,7 @@
                         class="mx-auto" alt="">
                     <div class="font-bold my-4">Надежные исполнители</div>
                     <div class="text-xs">
-                        «Проверенные исполнители» подтвердили свои документы на YouDo.
+                        «Проверенные исполнители» подтвердили свои документы на Universal Services.
                     </div>
                 </div>
                 <div class="text-center mx-4">
@@ -157,7 +157,7 @@
         <div class="w-full bg-gradient-to-r from-[#fff] via-[#f6f8fa] to-[#fff]">
             <div class="container text-center mx-auto px-16">
                 <div class="md:text-4xl text-[24px] w-3/3 font-semibold mx-auto py-10 md:py-16">
-                    С YouDo вы экономите на услугах до 70%*.<br>
+                    С Universal Services вы экономите на услугах до 70%*.<br>
                     Как это возможно?
                 </div>
                 <div class="grid md:grid-cols-2 grid-cols-1 mt-8 w-11/12 mx-auto">
@@ -224,7 +224,7 @@
         <div class="bg-[#deeafb]">
             <div class="container mx-auto">
                 <div class="text-4xl w-2/3 mx-auto py-16 text-center">
-                    Основные преимущества YouDo
+                    Основные преимущества Universal Services
                 </div>
                 <div class="grid grid-cols-4 w-9/12 mx-auto">
                     <div class="">
@@ -240,7 +240,7 @@
                     </div>
                     <div class="col-span-3 my-16">
                         <h4 class="text-2xl">Проверенные исполнители</h4>
-                        <p class="text-md">Все исполнители YouDo проходят процедуру верификации, мы проверяем отзывы,
+                        <p class="text-md">Все исполнители Universal Services проходят процедуру верификации, мы проверяем отзывы,
                             разбираемся с жалобами и контролируем качество их работы.</p>
                     </div>
                     <div class=" my-16">
@@ -249,7 +249,7 @@
                     </div>
                     <div class="col-span-3 my-16">
                         <h4 class="text-2xl">Экономия времени</h4>
-                        <p class="text-md">На YouDo вы можете найти подходящего исполнителя за несколько минут. Многие
+                        <p class="text-md">На Universal Services вы можете найти подходящего исполнителя за несколько минут. Многие
                             из них готовы приступить к работе в тот же день, а иногда в тот же час.</p>
                     </div>
                 </div>
@@ -260,7 +260,7 @@
                 class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('https://assets.youdo.com/next/_next/static/images/download_hand-13ced686918d5e0b8a92914b8cc87aaf.png')]">
                 <div class="w-full md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-[#00000066]">
                     <h4 class="text-3xl md:text-[#000] text-[#ffff]">Персональный помощник в вашем кармане</h4>
-                    <p class="text-md mt-8 md:text-[#000] text-[#ffff]">Скачайте наше приложение и пользуйтесь YouDo,
+                    <p class="text-md mt-8 md:text-[#000] text-[#ffff]">Скачайте наше приложение и пользуйтесь Universal Services,
                         где бы вы ни находились.</p>
                     <a href="#">
                         <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
@@ -359,7 +359,7 @@
         </div> -->
         <div class="container mx-auto md:w-2/3 w-11/12">
             <div class="w-full my-16">
-                <h1 class="text-4xl">Что заказывают на «Юду» прямо сейчас</h1>
+                <h1 class="text-4xl">Что заказывают на «Универсал Сервис» прямо сейчас</h1>
             </div>
             <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-72">
                 <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">

@@ -4,8 +4,8 @@
 @section('content')
    <div class="h-screen   mb-32 bg-[url('https://assets.youdo.com/_next/static/media/back_toned.96ac5f6f14f3080fa4aed180c287d19f.jpg')] h-90">
         <div class="text-center my-auto pt-48">
-              <p class="text-5xl font-bold text-[#fff] ">Станьте исполнителем YouDo</p>
-              <p class="mt-8 mb-16 text-[#fff] text-2xl">YouDo поможет найти новых клиентов и зарабатывать <br>
+              <p class="text-5xl font-bold text-[#fff] ">Станьте исполнителем Universal Services</p>
+              <p class="mt-8 mb-16 text-[#fff] text-2xl">Universal Services поможет найти новых клиентов и зарабатывать <br>
                 на выполнении любых услуг.</p>
               <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="{{ route('task.search') }}">СТАТЬ ИСПОЛНИТЕЛЕМ</a>
         </div>
@@ -38,7 +38,7 @@
         <div class="zakza w-9/12 mx-auto text-center font-serif mb-32 mt-32">
           <div class="info">
               <h2 class="zakaz_title font-sans text-5xl pb-8 font-bold">Как получить заказ</h2>
-              <p class="zakaz_text font-sans text-xl pb-16 font-medium">На YouDo исполнители сами выбирают заказы и клиентов. Это просто.</p>
+              <p class="zakaz_text font-sans text-xl pb-16 font-medium">На Universal Services исполнители сами выбирают заказы и клиентов. Это просто.</p>
               <div class="process grid lg:grid-cols-5 grid-cols-1 items-center">
                   <div class="info ">
                       <div>
@@ -83,10 +83,10 @@
         </div>
         <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8  lg:text-left text-center">
           <h1 class="font-bold text-3xl">Достойный заработок</h1>
-          <p class="mt-6 text-lg">Зарабатывайте на заказах с YouDo без ограничений. Используйте сервис для подработки или начните развивать собственное дело.</p>
+          <p class="mt-6 text-lg">Зарабатывайте на заказах с Universal Services без ограничений. Используйте сервис для подработки или начните развивать собственное дело.</p>
             <div>
               <hr class="mt-8 mb-8">
-              <p class="mb-16">Максимальный заказ на YouDo.com был почти на 100 000 рублей, я несколько дней решал проблему, за которую никто не хотел браться.</p>
+              <p class="mb-16">Максимальный заказ на Universal Services.com был почти на 100 000 рублей, я несколько дней решал проблему, за которую никто не хотел браться.</p>
               <a href="{{ route('task.search') }}" class="">
                 <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                   Начать зарабатывать
@@ -100,10 +100,10 @@
     <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:block hidden lg:text-left text-center xl:mr-0 mr-8">
         <h1 class="font-bold text-3xl">Свободный график</h1>
-        <p class="mt-6 text-lg">На YouDo вы работаете на себя и сами выбираете заказчиков. Выполняйте задания в удобное для вас время и устраивайте выходные, когда захотите.</p>
+        <p class="mt-6 text-lg">На Universal Services вы работаете на себя и сами выбираете заказчиков. Выполняйте задания в удобное для вас время и устраивайте выходные, когда захотите.</p>
           <div>
             <hr class="mt-12 mb-8">
-            <p class="mb-24">Я считаю, что YouDo.com — это уникальный сервис возможностей. Его безусловное преимущество в том, что вы можете самостоятельно выбирать для себя график работы, заказы, клиентов, формировать свой доход.</p>
+            <p class="mb-24">Я считаю, что users.uz — это уникальный сервис возможностей. Его безусловное преимущество в том, что вы можете самостоятельно выбирать для себя график работы, заказы, клиентов, формировать свой доход.</p>
             <a href="{{ route('task.search') }}">
               <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                 Начать работать на себя
@@ -120,10 +120,10 @@
       </div>
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
         <h1 class="font-bold text-3xl">Свободный график</h1>
-        <p class="mt-6 text-lg">На YouDo вы работаете на себя и сами выбираете заказчиков. Выполняйте задания в удобное для вас время и устраивайте выходные, когда захотите.</p>
+        <p class="mt-6 text-lg">На Universal Services вы работаете на себя и сами выбираете заказчиков. Выполняйте задания в удобное для вас время и устраивайте выходные, когда захотите.</p>
           <div>
             <hr class="mt-12 mb-8">
-            <p class="mb-24">Я считаю, что YouDo.com — это уникальный сервис возможностей. Его безусловное преимущество в том, что вы можете самостоятельно выбирать для себя график работы, заказы, клиентов, формировать свой доход.</p>
+            <p class="mb-24">Я считаю, что users.uz — это уникальный сервис возможностей. Его безусловное преимущество в том, что вы можете самостоятельно выбирать для себя график работы, заказы, клиентов, формировать свой доход.</p>
             <a href="{{ route('task.search') }}">
               <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                 Начать работать на себя
@@ -194,7 +194,7 @@
 
 
         <div class="text-center mt-48 mb-16">
-          <h1 class="font-bold text-5xl">Условия сотрудничества с YouDo</h1>
+          <h1 class="font-bold text-5xl">Условия сотрудничества с Universal Services</h1>
           <p class="text-xl mt-8 font-medium">Сервис не берёт комиссию за выполненный заказ. <br>
             Вы оплачиваете только отклики к заданиям и сами выбираете клиентов.</p>
         </div>
@@ -230,7 +230,7 @@
 
        <div class="text-center mt-48 mb-16">
             <h1 class="font-bold text-5xl">Зарабатывайте и добивайтесь <br>
-              своих целей с YouDo</h1>
+              своих целей с Universal Services</h1>
             <p class="text-xl mt-8 font-medium">Наши исполнители делают это каждый день.</p>
        </div>
 
@@ -239,7 +239,7 @@
             <iframe class="rounded-lg h-full w-5/6 mx-auto" src="https://www.youtube.com/embed/FgV0PmpJFh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:text-left text-center">
-            <p class=" text-lg">YouDo помогает мне оставаться свободным. Несмотря на то, что график плотный, я решаю сам, не кто-то мне говорит, когда мне встать, куда приехать, что сделать.</p>
+            <p class=" text-lg">Universal Services помогает мне оставаться свободным. Несмотря на то, что график плотный, я решаю сам, не кто-то мне говорит, когда мне встать, куда приехать, что сделать.</p>
               <h1 class="font-bold text-6xl mt-4">65 000 ₽</h1>
            <p class="text-lg font-medium mt-4">Средний месячный доход <br>
             в категории «Курьерские услуги»</p>
@@ -253,10 +253,10 @@
           </div>
       </div>
 
-      
+
         <div class="grid md:grid-cols-3 grid-cols-1 container mx-auto  md:mt-32 mt-16 md:mb-32 mb-16">
             <div class="grid-cols-1 shadow-2xl p-8 rounded-lg h-64 w-90 ">
-                <p class="text-lg">Открыла для себя такую штуку, как сервис YouDo. Выполняешь задания — платят. Отличная замена обычной «работе на работе» ради денег</p>
+                <p class="text-lg">Открыла для себя такую штуку, как сервис Universal Services. Выполняешь задания — платят. Отличная замена обычной «работе на работе» ради денег</p>
                 <a class="text-lg text-slate-400 hover:text-cyan-400 underline" href="#">Читать дальше</a>
             </div>
             <div class="grid-cols-1 shadow-2xl p-8 rounded-lg ml-4 mr-4 md:mt-0 mt-8">
@@ -264,14 +264,14 @@
                 <a class="text-lg text-slate-400 hover:text-cyan-400 underline" href="#">Читать дальше</a>
             </div>
             <div class="grid-cols-1 shadow-2xl p-8 rounded-lg md:mt-0 mt-8">
-              <p class="text-lg">Начала потихоньку зарабатывать на поездку. Я остановилась на сайте YouDo. Там есть много интересных предложений и сама система сайта</p>
+              <p class="text-lg">Начала потихоньку зарабатывать на поездку. Я остановилась на сайте Universal Services. Там есть много интересных предложений и сама система сайта</p>
               <a class="text-lg text-slate-400 hover:text-cyan-400 underline" href="#">Читать дальше</a>
             </div>
         </div>
 
       <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-16 mb-16">
         <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:block hidden lg:text-left text-center">
-          <p class=" text-lg">Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с YouDo.</p>
+          <p class=" text-lg">Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с Universal Services.</p>
             <h1 class="font-bold text-6xl mt-4">70 000 ₽</h1>
          <p class="text-lg font-medium mt-4">Средний месячный доход <br>
           в категории «Фото и видеоуслуги»</p>
@@ -291,7 +291,7 @@
           <iframe class="rounded-lg h-full w-full" src="https://www.youtube.com/embed/M6QCnnVSfzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
-          <p class="mt-6 text-lg">Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с YouDo.</p>
+          <p class="mt-6 text-lg">Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с Universal Services.</p>
             <h1 class="font-bold text-6xl mt-4">70 000 ₽</h1>
          <p class="text-lg font-medium mt-4">Средний месячный доход <br>
           в категории «Фото и видеоуслуги»</p>

@@ -69,7 +69,7 @@
                     <h1 class="text-3xl font-semibold text-gray-700">Обо мне</h1>
                     <div class="mt-4 mb-4 bg-orange-100 py-4 rounded-xl">
                         <p class="ml-6">Чтобы воспользоваться моими услугами, нажмите кнопку <a class="text-red-500 hover:text-red-900" onclick="toggleModal12('modal-id12')" href="#">«Предложить задание»</a>. <br>
-                            Сотрудничаю с условием, что о моей работе будет оставлен отзыв на YouDo.</p>
+                            Сотрудничаю с условием, что о моей работе будет оставлен отзыв на Universal Services.</p>
                     </div>
                 </div>
                 <p>{{$user->description}}</p>
@@ -117,7 +117,7 @@
                 <div class="mt-16 border p-8 rounded-lg border-gray-300">
                     <div>
                         <h1 class="font-medium text-2xl">Исполнитель</h1>
-                        <p class="text-gray-400">на YouDo с 13 апреля 2021 г.</p>
+                        <p class="text-gray-400">на Universal Services с 13 апреля 2021 г.</p>
                     </div>
                     <div class="">
                         <!-- <div class="flex w-full mt-4">

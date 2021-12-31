@@ -17,17 +17,21 @@ class SearchTaskController extends VoyagerBaseController
 
         $tasks = Task::orderBy('id','desc')->paginate(20);
         $categories = Category::get()->all();
-        // dd($categories);
 
-//        return view("task/search", compact('tasks', paginate(50)));
-//        dd($tasks->all());
-//          return view('task.search', ['tasks'=>$tasks->paginate(50)]);
         return view('task.search', compact('tasks','categories'));
+    }
+
+    public function ajax_tasks(Request $request){
+        if (isset($request->orderBy)) {
+            if ($request->orderBy == 'all') {
+                $tasks = new Task();
+            }
+        }
+        return $tasks->all();
     }
 
     public function my_tasks(){
         $tasks = Task::where('user_id', auth()->id());
-//        dd($tasks);
         return view('/task/mytasks',compact('tasks'));
     }
     public function search(Request $request){

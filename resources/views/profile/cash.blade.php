@@ -115,16 +115,16 @@
                         </div>
                         <div class="FAQ reltive block w-full mt-5">
                             <h2 class="font-bold text-xl">Частые вопросы</h2>
-                            <h4 class="font-bold text-md mt-2">Условия работы с YouDo.</h4>
-                            <p>YouDo списывает с исполнителей фиксированную оплату за возможность оставлять к заданиям
+                            <h4 class="font-bold text-md mt-2">Условия работы с Universal Services.</h4>
+                            <p>Universal Services списывает с исполнителей фиксированную оплату за возможность оставлять к заданиям
                                 отклики с контактными данными. Стоимость одного отклика зависит от категории заданий и
                                 начинается от 20 рублей. Оплата за отклики не возвращается.</p>
                             <h4 class="font-bold text-md mt-2">Какая минимальная сумма для пополнения счета?</h4>
                             <p>400 рублей.</p>
-                            <h4 class="font-bold text-md mt-2">Как сделать возврат денег со своего счета в YouDo?</h4>
+                            <h4 class="font-bold text-md mt-2">Как сделать возврат денег со своего счета в Universal Services?</h4>
                             <p><a href="/home/profile" class="text-blue-500">Оформить запрос на возврат денег</a> -
                                 кликните по этой ссылке и укажите сумму, которую вы хотите вернуть. Как правило, деньги
-                                перечисляются на тот же счет, с которого производилось пополнение баланса в YouDo, в
+                                перечисляются на тот же счет, с которого производилось пополнение баланса в Universal Services, в
                                 течение 5 рабочих дней с учетом комиссии платежной системы.</p>
                             <!-- <h3 class="font-bold text-lg mt-2">Если у вас остались вопросы об условиях работы с YouDo,
                                 посмотрите это обучающее видео:</h3>
@@ -143,7 +143,7 @@
             <div class="md:col-span-1 col-span-3 md:mx-2 mx-auto md:mt-0 mt-5 inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto ">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
-                    <p>на YouDo с 12 сентября 2021 г.</p>
+                    <p>на Universal Services с 12 сентября 2021 г.</p>
                 </div>
                 <div class="contacts relative ">
                     <div class="ml-4 h-20 grid grid-cols-4">

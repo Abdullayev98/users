@@ -37,14 +37,14 @@
                 <a href class="bg-[url('https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg')] bg-no-repeat"></a>
                 <a href="/verification" class="w-[200px] px-[16px] pb-[15px] block rounded-[8px] shadow-xl hover:shadow-md text-[12px] leading-[16px] tracking-[.2px] text-[#444] mt-5 text-center">
                     <img src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" class="mx-auto pb-3" alt="">
-                    Станьте исполнителем Юду. И начните зарабатывать.
+                    Станьте исполнителем Универсал Сервис. И начните зарабатывать.
                 </a>
             </div>
             <div class="md:w-8/12 mt-8">
                 <h1 class="text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] pb-2 font-semibold">
-                    Отзывы исполнителей о YouDo
+                    Отзывы исполнителей о Universal Services
                 </h1>
-                <p class="pb-5 text-[14.7px] leading-[1.4rem]">Тысячи исполнителей уже получили возможность зарабатывать на YouDo тогда, когда им удобно, выполняя только ту работу, которая им нравится. Нам очень приятно читать отзывы, которые они оставляют о работе сервиса. Именно благодаря им YouDo с каждым днем становится лучше.</p>
+                <p class="pb-5 text-[14.7px] leading-[1.4rem]">Тысячи исполнителей уже получили возможность зарабатывать на Universal Services тогда, когда им удобно, выполняя только ту работу, которая им нравится. Нам очень приятно читать отзывы, которые они оставляют о работе сервиса. Именно благодаря им Universal Services с каждым днем становится лучше.</p>
                 <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">Мы рады, что каждый из исполнителей присоединился к сервису, и гордимся командой наших проверенных пользователей. А их отзывы о нашей работе доказывают, что мы делаем действительно полезный и необходимый для многих продукт.</p>
                 <ul class="pt-[20px]">
                     <li class="">
