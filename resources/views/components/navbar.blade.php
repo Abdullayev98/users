@@ -92,7 +92,7 @@
                                 </li>
                                    {{-- icon-3 --}}
                                 <div class="">
-                                    <a href="/chatify">
+                                    <a href="/chat">
                                         <i class="ml-6 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
                                     </a>
                                 </div>
@@ -239,7 +239,7 @@
                 <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                 {{-- icon-3 --}}
                 <div class=" float-left">
-                    <a href="/chatify">
+                    <a href="/chat">
                         <i class="ml-5 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
                     </a>
                 </div>
