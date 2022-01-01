@@ -66,10 +66,10 @@
                                                     <input class="" type="checkbox" id="" value="">
                                                     <label class="" for="">Только вакансии</label>
                                                 </li>
-                                                <li>
-                                                    <input class="" type="checkbox" id="" value="">
-                                                    <label class="" for="">Сделка без риска</label>
-                                                </li>
+{{--                                                <li>--}}
+{{--                                                    <input class="" type="checkbox" id="" value="">--}}
+{{--                                                    <label class="" for="">Сделка без риска</label>--}}
+{{--                                                </li>--}}
                                             </div>
                                             <div class="col-span-1 mr-5">
                                                 <li>
