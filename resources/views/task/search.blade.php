@@ -23,19 +23,19 @@
                             <form action="{{route('search')}}" method="get">
                                 <div class="grid grid-cols-4 gap-4 mb-3">
 
-                                    <div class="inline-flex w-full col-span-4">
+                                    <div class="sm:inline-flex block w-full col-span-4">
                                         <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
-                                        <button class="w-2/12 bg-green-500 ml-1 py-1 px-1 rounded">Найти</button>
+                                        <button class="sm:w-2/12 w-4/12 bg-green-500 ml-1 py-1 px-1 rounded sm:mt-0 mt-4">Найти</button>
                                     </div>
 
-                                    <div class="inline-flex w-full col-span-4">
+                                    <div class="sm:inline-flex block w-full col-span-4">
                                         <div class="w-7/12">
                                             <label class="text-xs">Город, адрес, метро, район...</label>
                                             <input class="w-full border border-black rounded text-black-700 py-1 px-1" type="text" name="a" value="{{$a ?? ''}}">
                                         </div>
-                                        <div class="w-1/5 ml-5">
+                                        <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
                                             <label class="text-xs">Стоимость заданий от</label>
-                                            <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1" placeholder=" руб." name="p" value="{{$p ?? ''}}">
+                                            <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1" placeholder="UZS" name="p" value="{{$p ?? ''}}">
                                         </div>
                                     </div>
                                 </div>
