@@ -81,7 +81,7 @@
                         <i class="fas fa-star text-yellow-500"></i>
                     </div>
                 </div>
-                <div class="my-10">
+                <div class="my-10 sm:mx-0 mx-8">
                     <div class="flex flex-row">
                     <a href="/performers/{{$user->id}}"> <p class="text-3xl underline text-blue-500 hover:text-red-500">{{$user->name}}</p></a>
                         <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
