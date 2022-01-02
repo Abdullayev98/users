@@ -5,7 +5,7 @@
    <div class="h-screen   mb-32 bg-[url('https://assets.youdo.com/_next/static/media/back_toned.96ac5f6f14f3080fa4aed180c287d19f.jpg')] h-90">
         <div class="text-center my-auto pt-48">
               <p class="text-5xl font-bold text-[#fff] ">Станьте исполнителем Universal Services</p>
-              <p class="mt-8 mb-16 text-[#fff] text-2xl">Universal Services поможет найти новых клиентов и зарабатывать <br>
+              <p class="mt-8 mb-12 text-[#fff] text-2xl">Universal Services поможет найти новых клиентов и зарабатывать <br>
                 на выполнении любых услуг.</p>
               <a class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="{{ route('task.search') }}">СТАТЬ ИСПОЛНИТЕЛЕМ</a>
         </div>
@@ -193,7 +193,7 @@
 
 
 
-        <div class="text-center mt-48 mb-16">
+        <div class="text-center sm:mt-48 mt-16 mb-16">
           <h1 class="font-bold text-5xl">Условия сотрудничества с Universal Services</h1>
           <p class="text-xl mt-8 font-medium">Сервис не берёт комиссию за выполненный заказ. <br>
             Вы оплачиваете только отклики к заданиям и сами выбираете клиентов.</p>
@@ -228,7 +228,7 @@
         </div>
 
 
-       <div class="text-center mt-48 mb-16">
+       <div class="text-center sm:mt-48 mt-16 mb-16">
             <h1 class="font-bold text-5xl">Зарабатывайте и добивайтесь <br>
               своих целей с Universal Services</h1>
             <p class="text-xl mt-8 font-medium">Наши исполнители делают это каждый день.</p>
@@ -269,7 +269,7 @@
             </div>
         </div>
 
-      <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-16 mb-16">
+      <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-16 sm:mb-16 mb-0">
         <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:block hidden lg:text-left text-center">
           <p class=" text-lg">Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с Universal Services.</p>
             <h1 class="font-bold text-6xl mt-4">70 000 ₽</h1>

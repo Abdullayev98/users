@@ -355,7 +355,7 @@
         document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
     }
     function toggleModal1(){
-        var element = document.getElementById("modal-id-backdrop");
+        var element = document.getElementById("modal-id-backdrop"); 
         element.classList.add("hidden");
         var element2 = document.getElementById("modal-id");
         var b = document.getElementById("myText").value;
