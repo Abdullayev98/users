@@ -52,7 +52,7 @@
                              <img class="h-20 mt-6 ml-4" src="{{ asset('images/icon_bag.png') }}">
                          </div> -->
                          <div>
-                             <a href="/chatify/{{$user->id}}"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
+                             <a href="/chat/{{$user->id}}"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
                                 Задать вопрос
                               </button></a>
                          </div>

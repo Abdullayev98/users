@@ -27,7 +27,7 @@
                </div>
                <div class="mb-5 md:float-left lg:float-none md:w-6/16 md:ml-24">
                    <span class="">
-                     © 2021 Universal services (user.uz) ·
+                     © 2021 Universal services (users.uz) ·
                        <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block hover:text-amber-500" rel="noopener noreferrer" href="/terms">
                            Правила сервиса
                        </a>

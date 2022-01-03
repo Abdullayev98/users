@@ -52,7 +52,7 @@
         </div>
 
         <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16">
-                <div class="bg-gray-100 h-40 rounded-xl">
+                <div class="bg-gray-100 h-40 rounded-xl w-4/5 sm:mx-0 mx-auto">
                         <div class="font-bold text-2xl mx-8 py-4">
                             <p>Все исполнители</p>
                         </div>
@@ -81,7 +81,7 @@
                         <i class="fas fa-star text-yellow-500"></i>
                     </div>
                 </div>
-                <div class="my-10">
+                <div class="my-10 md:mx-0 mx-8">
                     <div class="flex flex-row">
                     <a href="/performers/{{$user->id}}"> <p class="text-3xl underline text-blue-500 hover:text-red-500">{{$user->name}}</p></a>
                         <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
@@ -90,7 +90,7 @@
                     </div>
                     <div>
                     @if($user->active_status == 1)
-                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-[2px]" > </i> Онлайн</p>
+                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-1" > </i> Онлайн</p>
                         @else
                         <p class="text-sm text-gray-500 my-3">Офлайн</p>
                         @endif

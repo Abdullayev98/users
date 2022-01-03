@@ -92,7 +92,7 @@
                                 </li>
                                    {{-- icon-3 --}}
                                 <div class="">
-                                    <a href="/chatify">
+                                    <a href="/chat">
                                         <i class="ml-6 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
                                     </a>
                                 </div>
@@ -125,7 +125,7 @@
             </nav>
         </div>
     </div>
-    <div class="hidden w-full lg:inline-block xl:ml-12 lg:ml-12 md:pr-4 lg:space-x-8 md:space-x-6">
+    <div class="hidden w-full lg:inline-block xl:ml-12 lg:ml-12 lg:space-x-8 md:space-x-6">
         <div class="group inline-block">
             <button class="font-medium text-gray-500 hover:text-[#ffa200] focus:outline-none">
                 <span class="pr-1  font-[sans-serif] flex-1">Создать задание</span>
@@ -239,7 +239,7 @@
                 <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                 {{-- icon-3 --}}
                 <div class=" float-left">
-                    <a href="/chatify">
+                    <a href="/chat">
                         <i class="ml-5 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
                     </a>
                 </div>
@@ -355,7 +355,7 @@
         document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
     }
     function toggleModal1(){
-        var element = document.getElementById("modal-id-backdrop");
+        var element = document.getElementById("modal-id-backdrop"); 
         element.classList.add("hidden");
         var element2 = document.getElementById("modal-id");
         var b = document.getElementById("myText").value;
