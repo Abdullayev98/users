@@ -57,4 +57,18 @@ class PerformerAPIController extends Controller
         }
 
     }
+    public function perf_ajax($cf_id){
+        try {
+            $categories = DB::table('categories')->get();
+            $cur_cat = DB::table('categories')->where('id',$cf_id)->get();
+            $child_categories= DB::table('categories')->get();
+            $users= User::where('role_id',2)->paginate(50);
+            $data = ["categories"=>$categories,"cur_cat"=>$cur_cat,'child_categories'=>$child_categories,'users' => $users];
+            return response()->json($data);
+        }catch (Exception $e) {
+            $this->sendError($e->getMessage(), 200);
+            return response()->json(['status' => 'false', 'message' => $e->getMessage(),200]);
+        }
+
+    }
 }
