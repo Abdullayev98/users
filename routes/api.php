@@ -5,6 +5,7 @@ use App\Http\Controllers\API\NewsAPIController;
 use App\Http\Controllers\API\ProfileAPIController;
 use App\Http\Controllers\API\UserAPIController;
 use App\Http\Controllers\API\PaymentAPIController;
+use App\Http\Controllers\API\TaskAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,12 @@ Route::get('news/show/{id}', [NewsAPIController::class, 'show']);
 //Profile
 Route::get('profile/{id}', [ProfileAPIController::class, 'index']);
 Route::patch('profile/{id}', [ProfileAPIController::class, 'update']);
+//Tasks
+
+Route::prefix("task")->group(function (){
+    Route::get('/{id}', [TaskAPIController::class, 'task']);
+    Route::get('/search/{s}', [TaskAPIController::class, 'search']);
+});
+Route::middleware('auth:task')->group(function () {
+    Route::post('create', [TaskAPIController::class, 'create']);
+});
