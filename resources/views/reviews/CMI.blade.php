@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="md:container mx-auto pt-5 mt-[30px]">
-        <div class="w-full px-12 md:flex md:grid-flow-row md:justify-center md:mx-auto md:max-w-[1300px] pb-[130px]">
+        <div class="w-full px-12 md:flex md:grid-flow-row md:justify-center md:mx-auto md:max-w-[1300px] mb-4">
             <div class="lg:w-2/12 h-auto mt-5">
                 <ul>
                     <li>

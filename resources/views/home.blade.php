@@ -208,8 +208,10 @@
                 </div>
             </div>
             <div class="md:w-1/3 w-3/4 mx-auto my-4">
-                <a href="/task/create?category_id=31" type="button" class="text-center pt-3 bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Разместите
-                    задание прямо сейчас
+                <a href="/task/create?category_id=31">
+                  <button class="text-center py-3 px-2 sm:ml-12 ml-0 bg-yellow-500 border-[#e78900] text-2xl  border-b-4">
+                    Разместите задание прямо сейчас
+                  </button>
                 </a>
                 <div class="text-center text-xl">
                     и найдите <br> исполнителя за несколько минут
@@ -258,7 +260,7 @@
         <div class="w-full mx-auto lg:shadow-xl">
             <div
                 class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('https://assets.youdo.com/next/_next/static/images/download_hand-13ced686918d5e0b8a92914b8cc87aaf.png')]">
-                <div class="w-full md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-[#00000066]">
+                <div class="w-full sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-[#00000066]">
                     <h4 class="text-3xl md:text-[#000] text-[#ffff]">Персональный помощник в вашем кармане</h4>
                     <p class="text-md mt-8 md:text-[#000] text-[#ffff]">Скачайте наше приложение и пользуйтесь Universal Services,
                         где бы вы ни находились.</p>
@@ -361,7 +363,7 @@
             <div class="w-full my-16">
                 <h1 class="text-4xl">Что заказывают на «Универсал Сервис» прямо сейчас</h1>
             </div>
-            <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-72">
+            <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-48">
                 <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
                     <div class="w-full overflow-y-scroll w-full h-screen">
 
