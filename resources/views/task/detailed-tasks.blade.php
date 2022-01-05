@@ -92,10 +92,10 @@
                     </div>
                     <div class="">
                         <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name}}</a>
-                        <div class="flex flex-row">
+                        <!-- <div class="flex flex-row">
                             <p>Отзывы:</p>
                             <i class="far fa-thumbs-up m-1 text-gray-400"></i>  2
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
