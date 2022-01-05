@@ -1,6 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <div class="mx-auto w-9/12 my-16">
 
@@ -20,11 +21,12 @@
                 <div class="col-span-2">
                     <div class="w-full bg-[#f8f7ee] my-5">
                         <div class="px-5 py-5">
-                            <form action="{{route('search')}}" method="get">
+                            <!-- <form action="{{route('search')}}" method="get"> -->
                                 <div class="grid grid-cols-4 gap-4 mb-3">
 
                                     <div class="sm:inline-flex block w-full col-span-4">
-                                        <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name">
+                                        <!-- <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
+                                        <input id="filter" type="text" placeholder="Search.." class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" placeholder="Поиск по ключевым словам">
                                         <button class="sm:w-2/12 w-4/12 bg-green-500 ml-1 py-1 px-1 rounded sm:mt-0 mt-4">Найти</button>
                                     </div>
 
@@ -39,7 +41,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            <!-- </form> -->
                         </div>
                     </div>
 
@@ -49,15 +51,15 @@
                                 </div>
                                 <form id="form">
                                     <div class="w-full h-full">
-            
+
                                         <div class="max-w-lg mx-auto">
-            
+
                                             <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
                                             <input type="checkbox" class="all_cat mr-1 hover:cursor-pointer"/> Все категории
                                             </label>
-            
+
                                             <div class="w-full my-1 for_check">
-            
+
                                                 @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                                                     <div x-data={show:false} class="rounded-sm">
                                                         <div class="border border-b-0 bg-gray-100" id="headingOne">
@@ -72,23 +74,23 @@
                                                         </div>
                                                         <div x-show="show" class="border border-b-0 px-8 py-0">
                                                             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
-            
+
                                                                 <div class="par{{$category->id}}">
                                                                     <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
                                                                     <input type="checkbox" class="chi_cat mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category2->name}}
                                                                     </label>
                                                                 </div>
-            
+
                                                             @endforeach
                                                         </div>
                                                     </div>
                                                 @endforeach
                                             </div>
-            
+
                                         </div>
-            
+
                                         <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-            
+
                                     </div>
                                 </form>
                                 <div id="form2"></div>
@@ -184,7 +186,6 @@
 @section("javasript")
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU" type="text/javascript"></script>
-    <script type="text/javascript" src="{{URL::asset('js/s_tasks.js')}}"></script>
     <script type="text/javascript">
         ymaps.ready(init);
             function init() {
@@ -204,7 +205,6 @@
 
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
         <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU" type="text/javascript"></script>
-        <script type="text/javascript" src="{{URL::asset('js/s_tasks.js')}}"></script>
         <script type="text/javascript">
             ymaps.ready(init);
                 function init() {
@@ -259,7 +259,12 @@
         // let k = 0;
         let dataAjax = {};
 
-        img_show();
+        // img_show();
+        $('.all_cat').click();
+        $(".for_check input:checkbox").each(function () {
+            this.checked = true;
+        });
+        first_ajax('all')
 
         function first_ajax(id){
             $.ajax({
@@ -293,21 +298,25 @@
             $('.butt').attr('style', 'display: none');
         }
 
+
+
         function tasks_list(data){
             $(".show_tasks").empty();
             $.each(data, function(index, data) {
                 $(".show_tasks").append(
-                    `<div class="w-full border hover:bg-blue-100 h-[100px]">
+                    `<div id="results">
+                    <div class="w-full border hover:bg-blue-100 h-[100px] ">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12">
                     <i class="fas fa-user-circle text-4xl float-left text-blue-400 mr-2"></i>
                     <a href="/detailed-tasks/data.id" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-sm ml-12 mt-4">` + data.address + `</p>
                     </div>
-                    <div class="float-right w-1/4 text-right">
+                    <div class="float-right w-1/4 text-right can-hide" id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
                     <p class="text-sm ml-12">Спортмастер</p>
                     <p class="text-sm ml-12">Нет отзывов</p>
+                    </div>
                     </div>
                     </div>
                     </div>`,
@@ -315,6 +324,33 @@
             });
         }
 
+        $("#filter").keyup(function() {
+
+            // Retrieve the input field text and reset the count to zero
+            var filter = $(this).val(),
+            count = 0;
+
+            // Loop through the comment list
+            $('#results div').each(function() {
+
+
+            // If the list item does not contain the text phrase fade it out
+            if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    $(this).hide();  // MY CHANGE
+
+                    // Show the list item if the phrase matches and increase the count by 1
+            } else {
+                
+                $(this).show(); // MY CHANGE
+                count++;
+            }
+            });
+            if ($( "#about" ).hasClass( "can-hide" )) {
+                $("div").filter(".can-hide").css("display", "block");
+            }
+            });
+            
+     
         $('.all_cat').click(function () {
             if(this.checked == false) {
                 $(".for_check input:checkbox").each(function(){
