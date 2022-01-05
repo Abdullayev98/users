@@ -34,6 +34,7 @@ Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
 
 // FAQ
 Route::get('faq', [FaqAPIController::class, 'index']);
+Route::get('faq/{id}', [FaqAPIController::class, 'questions']);
 //News
 Route::get('news', [NewsAPIController::class, 'index']);
 Route::post('news/create', [NewsAPIController::class, 'create']);
