@@ -49,15 +49,15 @@
                                 </div>
                                 <form id="form">
                                     <div class="w-full h-full">
-            
+
                                         <div class="max-w-lg mx-auto">
-            
+
                                             <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
                                             <input type="checkbox" class="all_cat mr-1 hover:cursor-pointer"/> Все категории
                                             </label>
-            
+
                                             <div class="w-full my-1 for_check">
-            
+
                                                 @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                                                     <div x-data={show:false} class="rounded-sm">
                                                         <div class="border border-b-0 bg-gray-100" id="headingOne">
@@ -72,23 +72,23 @@
                                                         </div>
                                                         <div x-show="show" class="border border-b-0 px-8 py-0">
                                                             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
-            
+
                                                                 <div class="par{{$category->id}}">
                                                                     <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
                                                                     <input type="checkbox" class="chi_cat mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category2->name}}
                                                                     </label>
                                                                 </div>
-            
+
                                                             @endforeach
                                                         </div>
                                                     </div>
                                                 @endforeach
                                             </div>
-            
+
                                         </div>
-            
+
                                         <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-            
+
                                     </div>
                                 </form>
                                 <div id="form2"></div>
@@ -184,7 +184,6 @@
 @section("javasript")
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU" type="text/javascript"></script>
-    <script type="text/javascript" src="{{URL::asset('js/s_tasks.js')}}"></script>
     <script type="text/javascript">
         ymaps.ready(init);
             function init() {
@@ -204,7 +203,6 @@
 
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
         <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU" type="text/javascript"></script>
-        <script type="text/javascript" src="{{URL::asset('js/s_tasks.js')}}"></script>
         <script type="text/javascript">
             ymaps.ready(init);
                 function init() {
@@ -259,7 +257,12 @@
         // let k = 0;
         let dataAjax = {};
 
-        img_show();
+        // img_show();
+        $('.all_cat').click();
+        $(".for_check input:checkbox").each(function () {
+            this.checked = true;
+        });
+        first_ajax('all')
 
         function first_ajax(id){
             $.ajax({
