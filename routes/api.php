@@ -29,7 +29,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:api')->group(function () {
     Route::post('task/create', [TaskAPIController::class, 'create']);
     Route::get('settings', [ProfileAPIController::class, 'settings']);
-    Route::post('settings/update', [ProfileAPIController::class, 'settings_update']);
 });
 //User Routes
 Route::get('users', [UserAPIController::class, 'index']);

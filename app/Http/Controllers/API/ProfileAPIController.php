@@ -42,27 +42,4 @@ class ProfileAPIController extends Controller
             'description' => $user->description,
         ]);
     }
-    public function settings_update(Request $request)
-    {
-        $user = User::find(Auth::user()->id);
-        $rule = [
-            'name' => 'required',
-            'email' => 'required',
-            'location' => 'required',
-            'age' => 'required',
-            'description' => 'required',
-        ];
-        $validated = $request->validate($rule);
-        $result = $user::create($validated);
-        if ($result)
-            return [
-                'message' => 'Saved successfuly',
-                'success' => true,
-            ];
-        else
-            return [
-              'message' => 'Something wrong',
-              'success' => false,
-            ];
-    }
 }
