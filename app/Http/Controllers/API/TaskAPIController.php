@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use TCG\Voyager\Models\Category;
 
 class TaskAPIController extends Controller
@@ -24,33 +25,27 @@ class TaskAPIController extends Controller
         }
         return response()->json($tasks);
     }
-    public function DateType1(Request $request)
-    {
-        $request->validate([
-            'start_date' => 'required|dateFrom',
-            'end_date' => 'required|date'
-        ]);
-    }
     public function create(Request $request)
     {
         $rule =[
+            'name' => 'required',
             'address' => 'required',
-            'date_type' => 'required'
+            'date_type' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'budget' => 'required',
+            'description' => 'required',
+            'category_id' => 'required|numeric',
+        ];
+        $rule['phone'] = [
+            'required',
+            'regex:/^\+998(9[012345789])[0-9]{7}$/',
         ];
         $validated = $request->validate($rule);
-        $validated['name'] = $request->user()->name;
-        if($rule['date_type'] == 'Начать работу'){
-            $validated += $validated['start_date'];
-        }elseif($rule['date_type'] == 'Закончить работу'){
-            $validated += $validated['end_date'];
-        }elseif ($rule['date_type'] == 'Указать период'){
-            $validated += $validated['start_date'];
-            $validated += $validated['end_date'];
-        }
-        $result = $validated->save();
+        $result = Task::create($validated);
         if ($result)
             return [
-                'message' => 'Saved',
+                'message' => 'Created successfuly',
                 'success' => true,
             ];
         return [
