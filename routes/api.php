@@ -26,6 +26,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('auth:api')->group(function () {
+    Route::post('task/create', [TaskAPIController::class, 'create']);
+    Route::get('settings', [ProfileAPIController::class, 'settings']);
+    Route::post('settings/update', [ProfileAPIController::class, 'settings_update']);
+});
 //User Routes
 Route::get('users', [UserAPIController::class, 'index']);
 Route::post('login', [UserAPIController::class, 'login']);
@@ -48,9 +53,6 @@ Route::patch('profile/{id}', [ProfileAPIController::class, 'update']);
 Route::prefix("task")->group(function (){
     Route::get('/{id}', [TaskAPIController::class, 'task']);
     Route::get('/search/{s}', [TaskAPIController::class, 'search']);
-});
-Route::middleware('auth:api')->group(function () {
-    Route::post('task/create', [TaskAPIController::class, 'create']);
 });
 //Categories
 Route::get('/categories' , [CategoriesAPIController::class, 'index']);
