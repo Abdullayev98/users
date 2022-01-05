@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Models\Category;
+use Illuminate\Support\Facades\Auth;
+
 
 class CreateTaskController extends VoyagerBaseController
 {
@@ -123,7 +125,8 @@ class CreateTaskController extends VoyagerBaseController
       $amount      = session()->pull('amount');
       $description = session()->pull('description');
       $secret      = session()->pull('secret');
-      $data=array('name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
+      $user_id     =     Auth::id();
+      $data=array('user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
       DB::table('tasks')->insert($data);
       return redirect('/')->with('success','Задание успешно добавлено!');
     }
