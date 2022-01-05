@@ -8,6 +8,7 @@ use App\Http\Controllers\API\PaymentAPIController;
 use App\Http\Controllers\API\TaskAPIController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\CategoriesAPIController;
+use App\Http\Controllers\API\PerformerAPIController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -53,3 +54,6 @@ Route::middleware('auth:api')->group(function () {
 });
 //Categories
 Route::get('/categories' , [CategoriesAPIController::class, 'index']);
+//Performers
+Route::get('/performers', [PerformerAPIController::class, 'service']);
+Route::get('/performer/{id}', [PerformerAPIController::class, 'performer']);
