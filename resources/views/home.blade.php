@@ -47,6 +47,12 @@
                             Например: <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">повесить кондиционер</span>
                         </div>
                     </div>
+                    <div class="w-[350px] mx-auto mt-12">
+                      <a href="/verification" class="text-[#80e6ff] text-center">
+                        <img src="https://assets.youdo.com/_next/static/media/hero-video__gowork.8435e81afbc30d8a5afcd85693878644.svg" alt="" class="float-left mr-0">
+                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">стать исполнителем и начать зарабатывать</p>
+                      </a>
+                    </div>
                 </div>
             </main>
         </div>
