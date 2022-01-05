@@ -47,5 +47,7 @@ Route::patch('profile/{id}', [ProfileAPIController::class, 'update']);
 Route::prefix("task")->group(function (){
     Route::get('/{id}', [TaskAPIController::class, 'task']);
     Route::get('/search/{s}', [TaskAPIController::class, 'search']);
-    Route::post('create', [TaskAPIController::class, 'create']);
+});
+Route::middleware('auth:api')->group(function () {
+    Route::post('task/create', [TaskAPIController::class, 'create']);
 });
