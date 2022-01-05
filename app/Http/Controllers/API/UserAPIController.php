@@ -29,9 +29,10 @@ class UserAPIController extends Controller
             ]);
             if (auth()->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 $user = auth()->user();
+                $token = $user->createToken('authToken')->accessToken;
                 $user->device_token = $request->input('device_token', '');
                 $user->save();
-                return response()->json(['user' => $user, 'message' => 'User logged in successfully']);
+                return response()->json(['user' => $user,'token'=>$token, 'message' => 'User logged in successfully']);
             } else {
                 return response()->json(['status' => 200, 'message' => 'Credentials are not valid']);
             }
