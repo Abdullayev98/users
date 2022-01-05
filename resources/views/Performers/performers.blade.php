@@ -8,7 +8,7 @@
   appearance: none;
 }
 </style>
-<div class="container mx-auto mt-16">
+<div class="xl:w-10/12 mx-auto mt-16">
     <div class="grid grid-cols-3 ">
 
             {{-----------------------------------------------------------------------------------}}
@@ -64,44 +64,49 @@
                         </div>
                 </div>
             @foreach($users as $user)
-
-            <div class="md:flex flex-row" id="{{$user->id}}">
-                <div class="m-10">
-                    <img class="rounded-lg md:w-40 md:h-40 w-20 h-20" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="user">
-                    <div class="flex flex-row">
+            <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10">
+                <div class="w-34 float-left" id="{{$user->id}}">
+                    <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="user">
+                    <div class="flex flex-row text-[12px]">
                         <p>Отзывы:</p>
-                        <i class="far fa-thumbs-up m-1 text-gray-400"></i>    5128
-                        <i class="far fa-thumbs-down m-1 text-gray-400"></i>  21
+                        <i class="far fa-thumbs-up m-1 text-gray-400"></i> 5128
+                        <i class="far fa-thumbs-down m-1 text-gray-400"></i> 21
                     </div>
-                    <div class="flex flex-row">
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <i class="fas fa-star text-yellow-500"></i>
+                    <div class="flex flex-row text-[12px]">
+                        <i class="fas fa-star text-[#ffad00]"></i>
+                        <i class="fas fa-star text-[#ffad00]"></i>
+                        <i class="fas fa-star text-[#ffad00]"></i>
+                        <i class="fas fa-star text-[#ffad00]"></i>
+                        <i class="fas fa-star text-[#ffad00]"></i>
                     </div>
                 </div>
-                <div class="my-10 md:mx-0 mx-8">
-                    <div class="flex flex-row">
-                    <a href="/performers/{{$user->id}}"> <p class="text-3xl underline text-blue-500 hover:text-red-500">{{$user->name}}</p></a>
+                <div class="w-5/12 md:float-none md:float-none">
+                    <div>
+                        <a href="/performers/{{$user->id}}">
+                            <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 "> {{$user->name}} </p>
+                        </a>
                         <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
-                        <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
-                        <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
+                                <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
+                                <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
                     </div>
                     <div>
-                    @if($user->active_status == 1)
-                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-1" > </i> Онлайн</p>
+                           @if($user->active_status == 1)
+                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 mr-2 mt-1"> </i> Онлайн</p>
+
                         @else
                         <p class="text-sm text-gray-500 my-3">Офлайн</p>
                         @endif
+
                     </div>
                     <div>
-                        <p class="text-base">
-                        {{$user->description}}
+                        <p class="text-base md:text-[14px] text-[0.9rem] leading-0 md:w-[600px] ">
+                               {{$user->description}}
                         </p>
                     </div>
-                    <div>
-                    <a href="#" onclick="toggleModal12('modal-id12')">  <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 text-white mt-3">Предложить задание</button></a>
+                    <div >
+                        <a href="#" onclick="toggleModal12('modal-id12')" class="hidden lg:block">
+                            <button class="rounded-lg py-2 px-3 font-bold bg-[#ffad00] hover:bg-[#ff9500] transition duration-300 text-white mt-3">Предложить задание</button>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -110,26 +110,27 @@
 
                             @else
                             <!-- language icon -->
-                            <div class="lg:hidden block text-gray-500 ml-3 mt-4">
-                              <button class="w-[70px]" type="button" data-dropdown-toggle="language5">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                                UZB
+                            <div class="hidden lg:block float-right text-gray-500">
+                              <button class="w-[70px]" type="button" data-dropdown-toggle="language2">
+                                <img src="{{asset('/images/flag_uz.png')}}" alt="" class="w-[30px] h-[28px] float-left rounded-[50%]">
+                                UZ
                               </button>
                             </div>
-                            <div class="hidden text-base z-50 bg-black rounded-md" id="language5">
-                              <ul class="py-1" aria-labelledby="language5">
+                            <div class="hidden text-base z-50 bg-white rounded-md" id="language2">
+                              <ul class="py-1" aria-labelledby="language2">
                                 <li>
-                                  <a href="#" class="text-sm text-white block w-[70px]">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
+                                  <a href="#" class="text-sm text-gray-500 block w-[70px] h-[30px]">
+                                    <img src="{{asset('/images/flag_rus.png')}}" alt="" class="w-[30px] h-[30px] float-left rounded-[50%] mx-1">
                                     RU
                                   </a>
                                 </li>
                               </ul>
                             </div>
+                            <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                             <!--
                                 <button class="w-[70px]" type="button" data-dropdown-toggle="dropdown5">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                                                RUS
+                                                RU
                                 </button>
                                  Dropdown menu
                                 <div class="hidden bg-white text-base z-50 bg-black" id="dropdown5">
@@ -167,7 +168,7 @@
     </div>
     <div class="hidden w-full lg:inline-block xl:ml-12 lg:ml-12 lg:space-x-6 md:space-x-6">
         <div class="group inline-block">
-            <button class="font-medium text-gray-500 hover:text-[#ffa200] focus:outline-none">
+            <button class="font-medium text-gray-500 hover text-[14px] xl:text-[16px] text-[#ffa200] focus:outline-none">
                 <span class="pr-1  font-[sans-serif] flex-1">Создать задание</span>
                 <span></span>
             </button>
@@ -225,11 +226,11 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200]">Найти задания</a>
-        <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
+        <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">Найти задания</a>
+        <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">Исполнители</a>
         @if (Route::has('login'))
             @auth
-              <a href="/my-tasks" class="font-medium text-gray-500 hover:text-[#ffa200]">Мои заказы</a>
+              <a href="/my-tasks" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">Мои заказы</a>
             @else
             @endauth
         @endif
@@ -302,15 +303,15 @@
             <!-- language icon -->
             <div class="hidden lg:block float-right text-gray-500">
               <button class="w-[70px]" type="button" data-dropdown-toggle="language2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
+                <img src="{{asset('/images/flag_uz.png')}}" alt="" class="w-[30px] h-[28px] float-left rounded-[50%]">
                 UZ
               </button>
             </div>
-            <div class="hidden text-base z-50 bg-black rounded-md" id="language2">
+            <div class="hidden text-base z-50 bg-white rounded-md" id="language2">
               <ul class="py-1" aria-labelledby="language2">
                 <li>
-                  <a href="#" class="text-sm text-white block w-[70px]">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
+                  <a href="#" class="text-sm text-gray-500 block w-[70px] h-[30px]">
+                    <img src="{{asset('/images/flag_rus.png')}}" alt="" class="w-[30px] h-[28px] float-left rounded-[50%] mx-1">
                     RU
                   </a>
                 </li>
@@ -342,16 +343,16 @@
             <div class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden">
               <!-- language icon -->
               <div class="hidden lg:block float-right text-gray-500">
-                <button class="w-[70px] ml-5" type="button" data-dropdown-toggle="language">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
+                <button class="w-[70px]" type="button" data-dropdown-toggle="language2">
+                  <img src="{{asset('/images/flag_uz.png')}}" alt="" class="w-[30px] h-[28px] float-left rounded-[50%]">
                   UZ
                 </button>
               </div>
-              <div class="hidden text-base z-50 bg-black rounded-md" id="language">
-                <ul class="py-1" aria-labelledby="language">
+              <div class="hidden text-base z-50 bg-white rounded-md" id="language2">
+                <ul class="py-1" aria-labelledby="language2">
                   <li>
-                    <a href="#" class="text-sm text-white block w-[70px]">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
+                    <a href="#" class="text-sm text-gray-500 block w-[70px] h-[30px]">
+                      <img src="{{asset('/images/flag_rus.png')}}" alt="" class="w-[30px] h-[30px] float-left rounded-[50%] mx-1">
                       RU
                     </a>
                   </li>
@@ -433,31 +434,27 @@
             <div class="container mb-12">
                 <form action="/ref" method="GET">
                     <input type="hidden" name="user_id" value="1">
-                                <div class="my-3 w-1/2 mx-auto">
-                                    <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
-                                      <input id="credit" onclick="doBlock()" name="paymethod" type="radio" value="PayMe" class="custom-control-input mt-5 w-4 h-4 ">
-                                      <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="credit"><img src="https://cdn.paycom.uz/documentation_assets/payme_01.png" alt=""></label> </button>
-
-                                    </div>
-                                    <div class="custom-control custom-radio my-8 text-3xl flex flex-row">
-                                      <input id="debit" onclick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input mt-8 w-4 h-4 ">
-                                      <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit"><img src="https://docs.click.uz/wp-content/themes/click_help/assets/images/logo.png" alt=""></label> </button>
-                                    </div>
-                                    <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
-                                        <input id="debit1" onclick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input mt-5 w-4 h-4 ">
-                                        <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit1"><img src="https://paynet.uz/medias/article/big/134/logo-paynet.png" alt=""></label> </button>
-                                    </div>
-                                <div class="d-none input-group my-5" id="forhid">
-                                    <input id="amount_u" type="hidden" name="amount" class="form-control">
+                    <div class="my-3 w-1/2 mx-auto">
+                        <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
+                            <input id="credit" onclick="doBlock()" name="paymethod" type="radio" value="PayMe" class="custom-control-input mt-5 w-4 h-4 ">
+                            <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="credit"><img src="https://cdn.paycom.uz/documentation_assets/payme_01.png" alt=""></label> </button>
                         </div>
-
-                </div>
-
-                                <div class="text-center mt-8">
-                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-2xl font-bold py-3 px-8 rounded">Оплата</button>
-                                </div>
-
-                    </form>
+                        <div class="custom-control custom-radio my-8 text-3xl flex flex-row">
+                          <input id="debit" onclick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input mt-8 w-4 h-4 ">
+                          <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit"><img src="https://docs.click.uz/wp-content/themes/click_help/assets/images/logo.png" alt=""></label> </button>
+                        </div>
+                        <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
+                            <input id="debit1" onclick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input mt-5 w-4 h-4 ">
+                            <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit1"><img src="https://paynet.uz/medias/article/big/134/logo-paynet.png" alt=""></label> </button>
+                        </div>
+                        <div class="d-none input-group my-5" id="forhid">
+                            <input id="amount_u" type="hidden" name="amount" class="form-control">
+                        </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-2xl font-bold py-3 px-8 rounded">Оплата</button>
+                    </div>
+                  </form>
             </div>
         </div>
     </div>
