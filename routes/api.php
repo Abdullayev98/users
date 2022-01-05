@@ -7,6 +7,7 @@ use App\Http\Controllers\API\UserAPIController;
 use App\Http\Controllers\API\PaymentAPIController;
 use App\Http\Controllers\API\TaskAPIController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\CategoriesAPIController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -43,7 +44,6 @@ Route::get('news/show/{id}', [NewsAPIController::class, 'show']);
 Route::get('profile/{id}', [ProfileAPIController::class, 'index']);
 Route::patch('profile/{id}', [ProfileAPIController::class, 'update']);
 //Tasks
-
 Route::prefix("task")->group(function (){
     Route::get('/{id}', [TaskAPIController::class, 'task']);
     Route::get('/search/{s}', [TaskAPIController::class, 'search']);
@@ -51,3 +51,5 @@ Route::prefix("task")->group(function (){
 Route::middleware('auth:api')->group(function () {
     Route::post('task/create', [TaskAPIController::class, 'create']);
 });
+//Categories
+Route::get('/categories' , [CategoriesAPIController::class, 'index']);
