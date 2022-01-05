@@ -57,15 +57,16 @@
                             <p>Все исполнители</p>
                         </div>
                         <div class="form-check flex flex-row mx-8 mt-10">
-                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" onclick="check()" id="online">
+                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" 
+                            type="checkbox" value="1" onchange="check()" id="online">
                             <label class="form-check-label inline-block text-gray-800" for="online">
                                 Сейчас на сайте
                             </label>
                         </div>
                 </div>
             @foreach($users as $user)
-            <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10">
-                <div class="w-34 float-left" id="{{$user->id}}">
+            <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
+                <div class="w-34 float-left">
                     <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="user">
                     <div class="flex flex-row text-[12px]">
                         <p>Отзывы:</p>
@@ -161,16 +162,16 @@
         var checkBox = document.getElementById("online");
         // Get the output text
         @foreach($users as $user)
-        var {{$user->name}} = document.getElementById("{{$user->id}}");
+        var {{ str_replace(' ', '', $user->name) }} = document.getElementById("{{$user->id}}");
 
 
         // If the checkbox is checked, display the output text
         if (checkBox.checked == true){
           if ({{$user->active_status}} == 0) {
-            {{$user->name}}.classList.add("hidden");
+            {{ str_replace(' ', '', $user->name) }}.classList.add("hidden");
           }
         } else {
-            {{$user->name}}.classList.remove("hidden");
+            {{ str_replace(' ', '', $user->name) }}.classList.remove("hidden");
         }
         @endforeach
         }
