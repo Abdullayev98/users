@@ -10,7 +10,8 @@ use Exception;
 
 class PerformerAPIController extends Controller
 {
-    public function  service(){
+    public function  service()
+    {
        try{
            $categories = DB::table('categories')->get();
            $child_categories= DB::table('categories')->get();
@@ -22,7 +23,8 @@ class PerformerAPIController extends Controller
            return response()->json(['status' => 'false', 'message' => $e->getMessage(),200]);
        }
     }
-    public function performer($id){
+    public function performer($id)
+    {
 
         try {
             if(session('view_count') == NULL){
@@ -45,25 +47,9 @@ class PerformerAPIController extends Controller
                 }
                 session()->put('view_count', '1');
             }
-            $vcs = UserView::where('user_id', $id)->get();
             $users= User::where('id',$id)->get();
-            $categories = DB::table('categories')->get();
-            $child_categories = DB::table('categories')->get();
-            $data = ['vcs'=>$vcs, 'users'=>$users, 'categories'=>$categories, 'child_categories'=>$child_categories];
-            return response()->json($data);
-        }catch (Exception $e) {
-            $this->sendError($e->getMessage(), 200);
-            return response()->json(['status' => 'false', 'message' => $e->getMessage(),200]);
-        }
-
-    }
-    public function perf_ajax($cf_id){
-        try {
-            $categories = DB::table('categories')->get();
-            $cur_cat = DB::table('categories')->where('id',$cf_id)->get();
-            $child_categories= DB::table('categories')->get();
-            $users= User::where('role_id',2)->paginate(50);
-            $data = ["categories"=>$categories,"cur_cat"=>$cur_cat,'child_categories'=>$child_categories,'users' => $users];
+            $vcs = UserView::where('user_id', $id)->get();
+            $data = ['view counts'=>$vcs, 'users'=>$users,];
             return response()->json($data);
         }catch (Exception $e) {
             $this->sendError($e->getMessage(), 200);

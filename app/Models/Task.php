@@ -11,7 +11,7 @@ class Task extends Model
 {
     use HasFactory;
     use Translatable;
-    protected $fillable = ['name', 'address', 'category_id', 'date_type', 'start_date', 'end_date', 'budget', 'description', 'phone'];
+    protected $fillable = ['user_id' , 'name', 'address', 'category_id', 'date_type', 'start_date', 'end_date', 'budget', 'description', 'phone'];
     protected $translatable = [
         'name',
         'address',
