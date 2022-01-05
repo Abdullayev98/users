@@ -121,7 +121,7 @@
                                 <li>
                                   <a href="#" class="text-sm text-white block w-[70px]">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                                    RUS
+                                    RU
                                   </a>
                                 </li>
                               </ul>
@@ -138,7 +138,7 @@
                                             <a href="#" class="text-sm text-white block w-[70px]">
 
                                                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                                    UZB
+                                    UZ
                                             </a>
                                         </li>
                                     </ul>
@@ -303,7 +303,7 @@
             <div class="hidden lg:block float-right text-gray-500">
               <button class="w-[70px]" type="button" data-dropdown-toggle="language2">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                UZB
+                UZ
               </button>
             </div>
             <div class="hidden text-base z-50 bg-black rounded-md" id="language2">
@@ -311,7 +311,7 @@
                 <li>
                   <a href="#" class="text-sm text-white block w-[70px]">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                    RUS
+                    RU
                   </a>
                 </li>
               </ul>
@@ -320,7 +320,7 @@
             <!--
                 <button class="w-[70px]" type="button" data-dropdown-toggle="dropdown5">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                                RUS
+                                RU
                 </button>
                  Dropdown menu
                 <div class="hidden bg-white text-base z-50 bg-black" id="dropdown5">
@@ -329,7 +329,7 @@
                             <a href="#" class="text-sm text-white block w-[70px]">
 
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                    UZB
+                    UZ
                             </a>
                         </li>
                     </ul>
@@ -344,7 +344,7 @@
               <div class="hidden lg:block float-right text-gray-500">
                 <button class="w-[70px] ml-5" type="button" data-dropdown-toggle="language">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                  UZB
+                  UZ
                 </button>
               </div>
               <div class="hidden text-base z-50 bg-black rounded-md" id="language">
@@ -352,7 +352,7 @@
                   <li>
                     <a href="#" class="text-sm text-white block w-[70px]">
                       <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                      RUS
+                      RU
                     </a>
                   </li>
                 </ul>
@@ -361,7 +361,7 @@
               <!--
                   <button class="w-[70px]" type="button" data-dropdown-toggle="dropdown5">
                       <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                                  RUS
+                                  RU
                   </button>
                    Dropdown menu
                   <div class="hidden bg-white text-base z-50 bg-black" id="dropdown5">
@@ -370,7 +370,7 @@
                               <a href="#" class="text-sm text-white block w-[70px]">
 
                                   <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="" class="w-[30px] h-[20px] float-left mx-1">
-                      UZB
+                      UZ
                               </a>
                           </li>
                       </ul>
