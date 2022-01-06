@@ -25,6 +25,10 @@ class Controller extends BaseController
         $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
         $howitworks = How_work_it::all();
+        if (!session()->has('lang')) {
+            Session::put('lang', 'ru');
+
+        }
         return view('home',compact('tasks','howitworks', 'categories'));
     }
 
