@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use TCG\Voyager\Models\Category;
 
@@ -90,6 +91,10 @@ class Controller extends BaseController
         $choosed_category = DB::table('categories')->where('id', $id)->get();
         $child_categories= DB::table('categories')->where('parent_id',$id)->get();
         return view('task/choosetasks',compact('child_categories','categories','choosed_category'));
+    }
+    public function lang($lang){
+        Session::put('lang', $lang);
+        return redirect()->back();
     }
 
 }
