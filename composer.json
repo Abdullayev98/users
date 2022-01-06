@@ -9,7 +9,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "joy/voyager-api": "^1.0",
-        "laravel/framework": "^8.65",
+        "laravel/framework": "^8.78",
         "laravel/passport": "^10.2",
         "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.2",
