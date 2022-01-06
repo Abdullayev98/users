@@ -33,6 +33,12 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('name', $data['name']);
         $request->session()->put('cat_id', $data['cat_id']);
         $request->session()->flash('neym', $data['name']);
+        if (Auth::user()->name != null) {
+          $user_name = Auth::user()->name;
+          $email = Auth::user()->email;
+          $request->session()->put('user_name',$user_name);
+          $request->session()->put('email',$email);
+        }
         return view('create.location');
 
     }
@@ -150,21 +156,29 @@ class CreateTaskController extends VoyagerBaseController
     }
 
     public function create(Request $request){
-      $phone       = $request->input('phone');
-      $datay        = $request->input();
+      $phone      = $request->input('phone');
+      if (Auth::user()->name == null) {
+        $user_name       = $request->input('user_name');
+        $email      = $request->input('email');
+        $request->session()->put('user_name', $user_name);
+        $request->session()->put('email', $email);
+      }
+      $user_name  = session()->pull('user_name');
+      $email      = session()->pull('email');
+      $datay      = $request->input();
       $request->session()->put('phone', $datay['phone']);
       $name        = session()->pull('name');
       $category    = session()->pull('cat_id');
       $location    = session()->pull('location');
       $date        = session()->pull('data');
-      $date2        = session()->pull('data2');
+      $date2       = session()->pull('data2');
       $start       = session()->pull('start');
       $amount      = session()->pull('amount');
       $description = session()->pull('description');
       $secret      = session()->pull('secret');
       $services      = session()->pull('services');
       $user_id     =     Auth::id();
-      $data=array('services'=>$services,'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,"end_date"=>$date2,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
+      $data=array('user_name'=>$user_name,'user_email'=>$email,'services'=>$services,'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,"end_date"=>$date2,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
       DB::table('tasks')->insert($data);
       return redirect('/')->with('success','Задание успешно добавлено!');
     }

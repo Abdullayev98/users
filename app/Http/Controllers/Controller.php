@@ -22,11 +22,12 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function home(Request $request){
-        $category = Category::withTranslations(['ru', 'uz'])->where('parent_id')->get();
+        $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
         $howitworks = How_work_it::all();
-        return view('home',compact('tasks','howitworks', 'category'));
+        return view('home',compact('tasks','howitworks', 'categories'));
     }
+
     public function home_profile()
     {
         $user = User::find(Auth::user()->id);
