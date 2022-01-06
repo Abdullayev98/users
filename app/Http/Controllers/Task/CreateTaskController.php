@@ -57,7 +57,14 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location');
     }
     public function date(Request $request){
-        $request->session()->put('location', $request->input('location'));
+      $location = $request->input('location');
+      $location2 = $request->input('location1');
+      if ($location2 != '') {
+        $fullloc = $location." | ".$location2;
+      }else {
+        $fullloc = $location;
+      }
+        $request->session()->put('location', $fullloc);
         $request->session()->flash('location2', $request->input('location'));
         return view('create.date');
     }
