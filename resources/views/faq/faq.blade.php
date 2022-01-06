@@ -14,6 +14,9 @@
 </head>
 {{-- {{dd($fc)}} --}}
 <body class="bg-slate-200">
+<?php
+$lang = Session::get('lang')
+?>
     <section class="bg-[#494A4C] py-8">
         <div class="lg:w-8/12 mx-auto w-10/12">
                 <div class="sm:block lg:flex flex-column justify-between ">
@@ -43,8 +46,9 @@
         <div class="w-10/12 lg:w-8/12 mx-auto md:flex items-center bg-white py-5 px-8 rounded-md shadow-lg shadow-indigo-300/40">
             <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20">
             <div class="px-6 py-3">
-                <a href="/questions/{{$faq->id}}"><h4 class="text-[#515254] text-[18px] mb-1">{{$faq->title}}</h4></a>
-                <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">{{$faq->description}}</p>
+
+                <a href="/questions/{{$faq->id}}"><h4 class="text-[#515254] text-[18px] mb-1">{{$faq->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4></a>
+                <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">{{$faq->getTranslatedAttribute('description', Session::get('lang'), 'fallbackLocale')}}</p>
                 <!-- <div class="flex flex-row items-center">
                     <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
 

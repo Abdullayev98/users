@@ -27,7 +27,7 @@ class TaskAPIController extends Controller
     }
     public function create(Request $request)
     {
-        $rule =[
+        $rule = $request->validate([
             'name' => 'required',
             'address' => 'required',
             'date_type' => 'required',
@@ -36,13 +36,10 @@ class TaskAPIController extends Controller
             'budget' => 'required',
             'description' => 'required',
             'category_id' => 'required|numeric',
-        ];
-        $rule['phone'] = [
-            'required',
-            'regex:/^\+998(9[012345789])[0-9]{7}$/',
-        ];
-        $validated = $request->validate($rule);
-        $result = Task::create($validated);
+            'phone' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/'
+        ]);
+        $rule["user_id"] = auth()->user()->id;
+        $result = Task::create($rule);
         if ($result)
             return [
                 'message' => 'Created successfuly',
