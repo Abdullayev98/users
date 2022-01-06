@@ -10,10 +10,9 @@ class FaqsController extends Controller
 {
         public function index()
         {
-            $fc = FaqCategories::all();
+            $fc = FaqCategories::withTranslations(['ru', 'uz'])->get();
 
             return view('faq.faq',compact('fc'));
-
         }
 
          public function questions($id)
