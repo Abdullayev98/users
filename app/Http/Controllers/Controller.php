@@ -88,9 +88,9 @@ class Controller extends BaseController
         return view('/task/mytasks',compact('tasks'));
     }
     public function category($id){
-        $categories = DB::table('categories')->where('parent_id', null)->get();
-        $choosed_category = DB::table('categories')->where('id', $id)->get();
-        $child_categories= DB::table('categories')->where('parent_id',$id)->get();
+        $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        $choosed_category = Category::withTranslations(['ru', 'uz'])->where('id', $id)->get();
+        $child_categories= Category::withTranslations(['ru', 'uz'])->where('parent_id',$id)->get();
         return view('task/choosetasks',compact('child_categories','categories','choosed_category'));
     }
     public function lang($lang){
