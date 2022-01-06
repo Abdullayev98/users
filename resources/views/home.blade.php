@@ -2,6 +2,23 @@
 
 
 @section('content')
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('1f89b665267dfe7451d6', {
+      cluster: 'ap2'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(data["title_task"]);
+    });
+  </script>
+
     <style media="screen">
         #test {
             width: 100px;
