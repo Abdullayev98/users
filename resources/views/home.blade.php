@@ -85,10 +85,10 @@
                 готовы помочь вам в решении самых разнообразных задач
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
-            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
+            @foreach ($category as $category2)
                 <div class="text-gray-500 text-lg my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
                     <a href="{{route('categories', ['id'=> $category2->id])}}" class="block xl:ml-16">
-                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->name }}</i>
+                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</i>
                     </a>
                 </div>
                 @endforeach
@@ -380,10 +380,10 @@
                                 </div>
                                 <div class="mx-auto w-2/3">
                                     <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
-                                        {{$task->name}}
+                                        {{$task->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </a>
                                     <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
-                                        {{$task->description}}
+                                        {{$task->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}
                                     </p>
                                 </div>
                             </div>
