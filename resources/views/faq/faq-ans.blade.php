@@ -41,7 +41,7 @@
     </section>
 
     <div class="lg:w-8/12 mx-auto w-10/12 text-gray-500">
-        <span class="text-sm">Все коллекции  <i class="fa fa-angle-right text-sm"></i> {{$fc->title}}</span>
+        <span class="text-sm">Все коллекции  <i class="fa fa-angle-right text-sm"></i> {{$fc->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</span>
     </div>
 
      <section class="mt-7">
@@ -49,8 +49,8 @@
             <div class="md:flex flex-row">
                 <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20 md:m-5 mx-auto ">
                     <div class="px-6 py-3">
-                        <h4 class="text-[#515254] text-[32px] mb-1">{{$fc->title}}</h4>
-                        <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">{{$fc->description}} </p>
+                        <h4 class="text-[#515254] text-[32px] mb-1">{{$fc->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
+                        <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">{{$fc->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}} </p>
                         <div class="flex flex-row items-center">
                             <!-- <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover "> -->
 
@@ -68,11 +68,11 @@
               @foreach($fq as $faq)
                 <div class="w-full py-4">
                     <!-- <a href="#"> -->
-                        <h2 class="text-gray-800 text-xl">{{$faq->question}}</h2>
+                        <h2 class="text-gray-800 text-xl">{{$faq->getTranslatedAttribute('question',Session::get('lang') , 'fallbackLocale')}}</h2>
                     <!-- </a> -->
-                    <p class="text-gray-600">{{$faq->q_descript}}</p>
+                    <p class="text-gray-600">{{$faq->getTranslatedAttribute('q_descript',Session::get('lang') , 'fallbackLocale')}}</p>
                     <div class="flex flex-row items-center">
-                      <p class="text-gray-600">Ответ: {{$faq->answer_text}}</p>
+                      <p class="text-gray-600">Ответ: {{$faq->getTranslatedAttribute('answer_text',Session::get('lang') , 'fallbackLocale')}}</p>
 
                                 <!-- <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover "> -->
                             <!-- <div class="flex flex-col"> -->
@@ -109,19 +109,8 @@
                     </div>
                 </div> -->
             </div>
-
-
-
-
-
         </div>
     </section>
-
-
-
-
-
-
      <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 </body>
