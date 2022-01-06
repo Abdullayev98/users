@@ -18,6 +18,8 @@ Route::prefix("task")->group(function (){
         Route::post('/custom', [CreateTaskController::class, 'custom'])->name('task.create.custom');
         Route::post('/date', [CreateTaskController::class, 'date'])->name('task.create.date');
         Route::post('/budget', [CreateTaskController::class, 'budget'])->name('task.create.budget');
+        Route::get('/service', [CreateTaskController::class, 'service'])->name('task.create.service');
+        Route::post('/services', [CreateTaskController::class, 'services'])->name('task.create.services');
         Route::get('/note', [CreateTaskController::class, 'note'])->name('task.create.note');
         Route::post('/notes', [CreateTaskController::class, 'notes'])->name('task.create.notes');
         Route::post('/contacts', [CreateTaskController::class, 'contacts'])->name('task.create.contacts');

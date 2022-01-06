@@ -74,20 +74,31 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->flash('deyt', $request->input('date'));
       $request->session()->flash('taym', $request->input('time'));
       $data = $date." ".$time;
+      $date2 = $request->input('date2');
+      $time2 = $request->input('time2');
+      $request->session()->flash('deyt2', $request->input('date2'));
+      $request->session()->flash('taym2', $request->input('time2'));
+      $data2 = $date2." ".$time2;
       $start = $request->get('start');
       if ($start) {
         $starrt = implode(" ",$start);
         $request->session()->put('data', $data);
+        $request->session()->put('data2', $data);
         $request->session()->put('start', $starrt);
       }
       return view('create.budget');
         // return view('create.budget');
     }
-    public function note(Request $request){
-      $descriptioon = $request->session()->pull('description');
-      return view('create.notes', compact('descriptioon'));
+
+    public function service(Request $request){
+      $cat_id = $request->session->pull('cat_id');
+      $category = Category::where('id',$cat_id)-first();
+      $categories = explode(',',$category->services);
+      return view('create.services', compact('categories'));
     }
-    public function notes(Request $request){
+
+
+    public function services(Request $request){
       $data = $request->input();
       $request->session()->put('amount', $data['amount']);
       $request->session()->flash('soqqa', $request->input('amount'));
@@ -101,9 +112,27 @@ class CreateTaskController extends VoyagerBaseController
       }else {
         $request->session()->put('insurance', 0);
       }
+      $cat_id = session()->pull('cat_id');
+      $category = Category::where('id',$cat_id)->first();
+      $categories = explode(',',$category->services);
+      return view('create.services', compact('categories'));
+    }
+
+    public function note(Request $request){
+      $descriptioon = $request->session()->pull('description');
+      return view('create.notes', compact('descriptioon'));
+    }
+
+
+    public function notes(Request $request){
+      $data = $request->input();
+      $serv = implode(",", $data['services']);
+      $request->session()->put('services', $serv);
       return view('create.notes');
         // return view('create.notes');
     }
+
+
     public function contacts(Request $request){
       $data = $request->input();
       $request->session()->put('description', $data['description']);
@@ -128,12 +157,14 @@ class CreateTaskController extends VoyagerBaseController
       $category    = session()->pull('cat_id');
       $location    = session()->pull('location');
       $date        = session()->pull('data');
+      $date2        = session()->pull('data2');
       $start       = session()->pull('start');
       $amount      = session()->pull('amount');
       $description = session()->pull('description');
       $secret      = session()->pull('secret');
+      $services      = session()->pull('services');
       $user_id     =     Auth::id();
-      $data=array('user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
+      $data=array('services'=>$services,'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,"end_date"=>$date2,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
       DB::table('tasks')->insert($data);
       return redirect('/')->with('success','Задание успешно добавлено!');
     }
