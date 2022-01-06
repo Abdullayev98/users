@@ -20,8 +20,6 @@ use App\Http\Controllers\admin\VoyagerUserController;
 |
 */
 
-
-
 Route::get('/performers', [PerformersController::class, 'service']);
 Route::get('perf-ajax/{id}', [PerformersController::class, 'perf_ajax']);
 Route::get('/executors-courier', function () {
