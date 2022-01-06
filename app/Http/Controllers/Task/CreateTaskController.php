@@ -9,6 +9,7 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use App\Events\MyEvent;
 
 
 class CreateTaskController extends VoyagerBaseController
@@ -178,8 +179,19 @@ class CreateTaskController extends VoyagerBaseController
       $secret      = session()->pull('secret');
       $services      = session()->pull('services');
       $user_id     =     Auth::id();
-      $data=array('user_name'=>$user_name,'user_email'=>$email,'services'=>$services,'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,"end_date"=>$date2,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
-      DB::table('tasks')->insert($data);
+
+      $id = Task::create([
+
+        'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret
+
+    ]);
+
+    $id_task = $id->id;
+    $id_cat = $id->category_id;
+    $title_task = $id->name;
+
+        event(new MyEvent($id_task,$id_cat,$title_task));
+
       return redirect('/')->with('success','Задание успешно добавлено!');
     }
 
