@@ -60,7 +60,7 @@
 
                                             <div class="w-full my-1 for_check2">
 
-                                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+                                                @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
                                                     <div x-data={show:false} class="rounded-sm">
                                                         <div class="border border-b-0 bg-gray-100" id="headingOne">
                                                             <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
@@ -69,15 +69,15 @@
                                                                 </svg>
                                                             </button>
                                                                 <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">
-                                                                <input type="checkbox" class="par_cat2 mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category->name}}
+                                                                <input type="checkbox" class="par_cat2 mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                                                 </label>
                                                         </div>
                                                         <div x-show="show" class="border border-b-0 px-8 py-0">
-                                                            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+                                                            @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
 
                                                                 <div class="par{{$category->id}}">
                                                                     <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
-                                                                    <input type="checkbox" class="chi_cat2 mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category2->name}}
+                                                                    <input type="checkbox" class="chi_cat2 mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                                                     </label>
                                                                 </div>
 
@@ -136,7 +136,7 @@
 
                                 <div class="w-full my-1 for_check">
 
-                                    @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+                                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
                                         <div x-data={show:false} class="rounded-sm">
                                             <div class="border border-b-0 bg-gray-100" id="headingOne">
                                                 <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
@@ -145,15 +145,15 @@
                                                     </svg>
                                                 </button>
                                                     <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">
-                                                      <input type="checkbox" class="par_cat mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category->name}}
+                                                      <input type="checkbox" class="par_cat mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                                     </label>
                                             </div>
                                             <div x-show="show" class="border border-b-0 px-8 py-0">
-                                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+                                                @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
 
                                                     <div class="par{{$category->id}}">
                                                         <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
-                                                          <input type="checkbox" class="chi_cat mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category2->name}}
+                                                          <input type="checkbox" class="chi_cat mr-1 hover:cursor-pointer" id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                                         </label>
                                                     </div>
 
@@ -338,16 +338,16 @@
             $('#results a').each(function() {
             // If the list item does not contain the text phrase fade it out
             if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-                    var parent = $(this).parent();  
-                    var parents = $(parent).parent();  
+                    var parent = $(this).parent();
+                    var parents = $(parent).parent();
                     // MY CHANGE
-                    $(parents).parent().hide();  
+                    $(parents).parent().hide();
                     // Show the list item if the phrase matches and increase the count by 1
             } else {
-                var parent = $(this).parent();  
-                    var parents = $(parent).parent();  
+                var parent = $(this).parent();
+                    var parents = $(parent).parent();
                     // MY CHANGE
-                    $(parents).parent().show(); 
+                    $(parents).parent().show();
                 // $(this).show(); // MY CHANGE
                 count++;
             }
@@ -364,16 +364,16 @@
             $('#results p').each(function() {
             // If the list item does not contain the text phrase fade it out
             if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-                    var parent = $(this).parent();  
-                    var parents = $(parent).parent();  
+                    var parent = $(this).parent();
+                    var parents = $(parent).parent();
                     // MY CHANGE
-                    $(parents).parent().hide();  
+                    $(parents).parent().hide();
                     // Show the list item if the phrase matches and increase the count by 1
             } else {
-                var parent = $(this).parent();  
-                    var parents = $(parent).parent();  
+                var parent = $(this).parent();
+                    var parents = $(parent).parent();
                     // MY CHANGE
-                    $(parents).parent().show(); 
+                    $(parents).parent().show();
                 // $(this).show(); // MY CHANGE
                 count++;
             }
@@ -391,23 +391,23 @@
                 $('#about a').each(function() {
                 // If the list item does not contain the text phrase fade it out
                 if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-                        var parent = $(this).parent();  
-                        var parents = $(parent).parent();  
+                        var parent = $(this).parent();
+                        var parents = $(parent).parent();
                         // MY CHANGE
-                        $(parents).parent().hide();  
+                        $(parents).parent().hide();
                         // Show the list item if the phrase matches and increase the count by 1
                 } else {
-                    var parent = $(this).parent();  
-                        var parents = $(parent).parent();  
+                    var parent = $(this).parent();
+                        var parents = $(parent).parent();
                         // MY CHANGE
-                        $(parents).parent().show(); 
+                        $(parents).parent().show();
                     // $(this).show(); // MY CHANGE
                     count++;
                 }
                 });
                 });
-            
-     
+
+
         $('.all_cat').click(function () {
             if(this.checked == false) {
                 $(".for_check input:checkbox").each(function(){
