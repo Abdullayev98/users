@@ -30,4 +30,16 @@ class ProfileAPIController extends Controller
         $user->update($data);
         return  response()->json(['status'=>true,'message'=>"avatar successfully changed"]);
     }
+    public function settings()
+    {
+        $user = User::find(Auth::user()->id);
+        return response()->json([
+            'name' => $user->name,
+            'email' => $user->email,
+            'location' => $user->location,
+            'age' => $user->age,
+            'role_id' => $user->role_id,
+            'description' => $user->description,
+        ]);
+    }
 }
