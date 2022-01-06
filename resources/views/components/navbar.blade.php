@@ -92,7 +92,7 @@
                                 </li>
                                    {{-- icon-3 --}}
                                 <div class="">
-                                    <a href="/chat">
+                                    <a href="/chatify">
                                         <i class="ml-6 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
                                     </a>
                                 </div>
@@ -239,7 +239,7 @@
                 <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                 {{-- icon-3 --}}
                 <div class=" float-left">
-                    <a href="/chat">
+                    <a href="/chatify">
                         <i class="ml-5 text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
                     </a>
                 </div>
@@ -355,7 +355,7 @@
         document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
     }
     function toggleModal1(){
-        var element = document.getElementById("modal-id-backdrop"); 
+        var element = document.getElementById("modal-id-backdrop");
         element.classList.add("hidden");
         var element2 = document.getElementById("modal-id");
         var b = document.getElementById("myText").value;
