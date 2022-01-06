@@ -113,11 +113,11 @@
                                     <!-- language blog -->
                                     <div class="text-gray-500 mt-2">
                                       <div class="flex">
-                                        <a href="#" class="hover:text-red-500 mr-2">
+                                        <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
                                           UZ
                                         </a>
                                         I
-                                        <a href="#" class="hover:text-red-500 ml-2">
+                                        <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
                                           RU
                                         </a>
                                       </div>
@@ -276,11 +276,11 @@
             <!-- language blog -->
             <div class="flex justify-center text-gray-500 hidden lg:block">
               <div class="flex">
-                <a href="#" class="hover:text-red-500 mr-2">
+                <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
                   UZ
                 </a>
                 I
-                <a href="#" class="hover:text-red-500 ml-2">
+                <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
                   RU
                 </a>
               </div>

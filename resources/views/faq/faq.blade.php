@@ -14,9 +14,6 @@
 </head>
 {{-- {{dd($fc)}} --}}
 <body class="bg-slate-200">
-<?php
-$lang = Session::get('lang')
-?>
     <section class="bg-[#494A4C] py-8">
         <div class="lg:w-8/12 mx-auto w-10/12">
                 <div class="sm:block lg:flex flex-column justify-between ">
