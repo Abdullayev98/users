@@ -49,6 +49,15 @@
                             <div class="hidden">
                               <input type="text" name="cat_id" value="{{$current_category->id}}" hidden>
                             </div>
+                            <h3>Подкатегория <span id="button" style="color: grey;" onclick="myFunction()">Услуги пешего курьера</span></h3>
+                            <div style="display:none" id="categories">
+                                @foreach ($child_categories as $category2)
+                                    <br>
+                                        <a class="hover:text-green-500" href="/task/create?category_id={{ $category2->id }}">
+                                            {{ $category2->name }}
+                                        </a>
+                                @endforeach
+                            </div>
                         </div>
                         <input type="submit"
                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-11/12 md:ml-5 ml-2 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
@@ -145,7 +154,21 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
+    <script>
+        function myFunction() {
+            var x = document.getElementById("categories");
+            var y = document.getElementById("button");
 
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+
+            } else {
+                x.style.display = "none";
+                y.style.display = "block";
+            }
+        }
+    </script>
     <script>
 
 
