@@ -76,6 +76,11 @@ step:2250,
 slide:function(event,ui){
 $("#amount").val(""+ui.value+" Сум");
 $(".a").width(ui.value/150+"%");
+if($('.a').css("width") < "15%"){
+  $( "#qotaq" ).css('margin-left', '10%');
+  }else{
+    $( "#qotaq" ).css('margin-left', '-1%');
+  }
 }
 });
 $("#amount").val(""+$("#slider-range-min").slider("value")+"");
@@ -84,7 +89,10 @@ $("#amount").val(""+$("#slider-range-min").slider("value")+"");
 <script>
   window.onload = function exampleFunction() {
       console.log('The Script will load now.');
-      $( ".ui-slider-handle" ).css('left', '10%');
+
+      $(".ui-slider-handle").attr("id","qotaq");
+  $( "#qotaq" ).css('margin-left', '10%');
+
       // $(".ui-slider-range-min").html('<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>');
   }
 </script>
