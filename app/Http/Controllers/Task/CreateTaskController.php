@@ -34,7 +34,7 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('name', $data['name']);
         $request->session()->put('cat_id', $data['cat_id']);
         $request->session()->flash('neym', $data['name']);
-        if (Auth::user()->name != null) {
+        if (Auth::user()) {
           $user_name = Auth::user()->name;
           $email = Auth::user()->email;
           $request->session()->put('user_name',$user_name);
@@ -158,7 +158,7 @@ class CreateTaskController extends VoyagerBaseController
 
     public function create(Request $request){
       $phone      = $request->input('phone');
-      if (Auth::user()->name == null) {
+      if (!Auth::user()) {
         $user_name       = $request->input('user_name');
         $email      = $request->input('email');
         $request->session()->put('user_name', $user_name);
