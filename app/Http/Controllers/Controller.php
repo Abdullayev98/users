@@ -27,7 +27,6 @@ class Controller extends BaseController
         $howitworks = How_work_it::all();
         if (!session()->has('lang')) {
             Session::put('lang', 'ru');
-
         }
         return view('home',compact('tasks','howitworks', 'categories'));
     }
