@@ -97,6 +97,12 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('lift_za', $lift_za);
         return view('create.movers');
     }
+    public function peopleTransported(Request $request)
+    {
+        $peopleCount = $request->input('peopleCount');
+        $request->session()->put('peopleCount', $peopleCount);
+        return view('create.peopleTransported');
+    }
     public function date(Request $request){
       $location = $request->input('location');
       $location2 = $request->input('location1');

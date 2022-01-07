@@ -17,6 +17,7 @@ Route::prefix("task")->group(function (){
         Route::post('/cargo', [CreateTaskController::class, 'cargo'])->name('task.create.cargo');
         Route::get('/people', [CreateTaskController::class, 'people'])->name('task.create.people');
         Route::post('/movers', [CreateTaskController::class, 'movers'])->name('task.create.movers');
+        Route::post('/peoplefortransported', [CreateTaskController::class, 'peopleTransported'])->name('task.create.peopleTransported');
         Route::post('/address', [CreateTaskController::class, 'location_create'])->name('task.create.address');
         Route::post('/custom', [CreateTaskController::class, 'custom'])->name('task.create.custom');
         Route::post('/date', [CreateTaskController::class, 'date'])->name('task.create.date');
