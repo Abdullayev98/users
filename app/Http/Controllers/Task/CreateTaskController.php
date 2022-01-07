@@ -83,7 +83,7 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('height', $height);
         return view('create.people');
     }
-    
+
     public function movers(Request $request)
     {
       if($_POST['contact'] == 'da'){
@@ -173,6 +173,7 @@ class CreateTaskController extends VoyagerBaseController
       }
 
       $cat_id = session()->pull('cat_id');
+      $request->session()->put('cat_id', $cat_id);
       $category = Category::where('id',1)->first();
       $categories = explode(',',$category->services);
       return view('create.services', compact('categories'));
@@ -224,6 +225,15 @@ class CreateTaskController extends VoyagerBaseController
       $need_movers = session()->pull('need_movers');
       $secret      = session()->pull('secret');
       $services      = session()->pull('services');
+      $etaj_po = session()->pull('etaj_po');
+      $lift_po = session()->pull('lift_po');
+      $etaj_za = session()->pull('etaj_za');
+      $lift_za = session()->pull('lift_za');
+      $peopleCount = session()->pull('peopleCount');
+      $weight = session()->pull('weight');
+      $length = session()->pull('length');
+      $width = session()->pull('width');
+      $height = session()->pull('height');
       $user_id     =     Auth::id();
       if (!Auth::user()) {
         $user_name  = $request->input('user_name');
@@ -237,7 +247,7 @@ class CreateTaskController extends VoyagerBaseController
         $email      = session()->pull('email');
       }
 
-      $id = Task::create([
+      $id = [
         'user_id'=>$user_id,
         'name'=>$name,
         'user_email'=>$email,
@@ -251,14 +261,24 @@ class CreateTaskController extends VoyagerBaseController
         'phone'=>$phone,
         'need_movers'=>$need_movers,
         'show_only_to_performers'=>$secret,
-    ]);
-    $id_task = $id->id;
-    $id_cat = $id->category_id;
-    $title_task = $id->name;
-
-        event(new MyEvent($id_task,$id_cat,$title_task));
-
-      return redirect('/')->with('success','Задание успешно добавлено!');
+        'etaj_po' => $etaj_po,
+        'lift_po' => $lift_po,
+        'etaj_za' => $etaj_za,
+        'lift_za' => $lift_za,
+        'peopleCount' => $peopleCount,
+        'weight' => $weight,
+        'length' => $length,
+        'width' => $width,
+        'height' => $height,
+    ];
+      dd($id);
+//    $id_task = $id->id;
+//    $id_cat = $id->category_id;
+//    $title_task = $id->name;
+//
+//        event(new MyEvent($id_task,$id_cat,$title_task));
+//
+//      return redirect('/')->with('success','Задание успешно добавлено!');
     }
 
 

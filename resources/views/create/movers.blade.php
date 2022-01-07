@@ -32,7 +32,7 @@
                                     Этаж погрузки
                                     <input id="etaj_po" name="etaj_po" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                     Лифт
-                                    <select id="lift_po" value="Лифт отсутствует" name="lift_po" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                    <select id="lift_po" value="Лифт отсутствует" name="lift_po[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         <option>Лифт отсутствует</option>
                                         <option>Лифт пассажирский</option>
                                         <option>Лифт грузовой</option>
@@ -40,7 +40,7 @@
                                     Этаж разгрузки
                                     <input id="etaj_za" name="etaj_za" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                     Лифт
-                                    <select id="lift_za" value="Лифт отсутствует" name="lift_za" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                    <select id="lift_za" value="Лифт отсутствует" name="lift_za[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         <option>Лифт отсутствует</option>
                                         <option>Лифт пассажирский</option>
                                         <option>Лифт грузовой</option>
