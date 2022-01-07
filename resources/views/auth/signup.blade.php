@@ -38,6 +38,14 @@
                         @if ($errors->has('email'))
                         <span class="text-danger" style="color: red">{{ $errors->first('email') }}</span>
                         @endif
+                        <label class="block text-gray-500 text-sm" for="phone_number">
+                            Телефон немер
+                        </label>
+                        <input type="text" name="phone_number" placeholder="Phone" id="phone_number" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                        <br>
+                        @if ($errors->has('phone_number'))
+                        <span class="text-danger" style="color: red">{{ $errors->first('phone_number') }}</span>
+                        @endif
 
                         <label class="block text-gray-500 text-sm" for="password">
                             Пароль

@@ -53,11 +53,9 @@ class SearchTaskController extends VoyagerBaseController
 
     }
     public function task($id){
-        $tasks = Task::where('id',$id)->get();
-        foreach ($tasks as $task) {
-          $cat_id = $task->category_id;
-          $user_id = $task->user_id;
-        }
+        $tasks = Task::where('id',$id)->first();
+          $cat_id = $tasks->category_id;
+          $user_id = $tasks->user_id;
         $same_tasks = Task::where('category_id',$cat_id)->get();
 
         $users = User::all();
