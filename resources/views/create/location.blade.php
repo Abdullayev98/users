@@ -4,8 +4,11 @@
 
 <!-- Information section -->
 <x-roadmap/>
-
-<form action="{{route('task.create.date')}}" method="post">
+@if ($pcategory->id == 3 )
+  <form action="{{route('task.create.cargo')}}" method="post">
+  @else
+  <form action="{{route('task.create.date')}}" method="post">
+@endif
   @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">

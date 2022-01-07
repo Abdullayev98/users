@@ -44,10 +44,10 @@
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-32">
                     <h1 class="font-semibold text-white text-3xl lg:text-5xl md:text-4xl">
-                        <span class="block xl:block">Освободим вас от забот</span>
+                        <span class="block xl:block">@lang('lang.header_title')</span>
                     </h1>
                     <p class="mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-sm md:mt-2 mb-3">
-                        Поможем найти надежного исполнителя для любых задач
+                        @lang('lang.header_sub')
                     </p>
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
