@@ -102,17 +102,22 @@
             $( "#slider-range-min" ).slider({
                 range: "min",
                 value: 0,
-                min: 90,
-                max: 100,
+                min: {{$category->max}}/5,
+                max: {{$category->max}},
+                step:{{$category->max}}/5,
                 slide: function( event, ui ) {
-                    $( "#amount" ).val( "$" + ui.value + "");
-                    var width = $(".ui-slider-handle").width();
-                    var third = ((ui.min*100)/ui.max)/4;
+                    var maximum = {{$category->max}};
+                    if (maximum == ui.value) {
+                        $("#amount").val( "от " + ui.value + " сум");
+                    }else{
+                        $("#amount").val( "до " + ui.value + " сум");   
+                    }
+                    var third = ui.min*2;
                     $(".a").width(third);
                 }
             });
             $(".ui-slider-handle").text("<>");
-            $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value") + ",000");
+            $( "#amount" ).val( $( "#slider-range-min" ).slider( "value") + " cум");
         });
     </script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->

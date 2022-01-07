@@ -19,7 +19,6 @@ class CreateTaskController extends VoyagerBaseController
     public function task_create(Request $request){
 
         $current_category = Category::find($request->category_id);
-        $request->session()->put('cat_id', $request->category_id);
         if (!$current_category){
             return back();
         }
@@ -33,6 +32,7 @@ class CreateTaskController extends VoyagerBaseController
 
         $data = $request->input();
         $request->session()->put('name', $data['name']);
+        $request->session()->put('cat_id', $data['cat_id']);
         $request->session()->flash('neym', $data['name']);
         if (Auth::user()) {
           $user_name = Auth::user()->name;
@@ -40,7 +40,8 @@ class CreateTaskController extends VoyagerBaseController
           $request->session()->put('user_name',$user_name);
           $request->session()->put('email',$email);
         }
-        $category_id = $request->session()->pull('cat_id');
+        $category_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $category_id);
         $child_category = Category::where('id', $category_id)->first();
         $cat = $child_category->parent_id;
         $pcategory = Category::where('id', $cat)->first();
@@ -120,6 +121,7 @@ class CreateTaskController extends VoyagerBaseController
           $request->session()->put('etaj_za', $etaj_za);
           $request->session()->put('lift_za', $lift_za);
         }
+
         return view('create.date');
     }
     public function budget(Request $request){
@@ -140,7 +142,10 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('data2', $data);
         $request->session()->put('start', $starrt);
       }
-      return view('create.budget');
+      $cat_id = session()->pull('cat_id');
+      $request->session()->put('cat_id', $cat_id);
+      $category = Category::where('id',$cat_id)->first();
+      return view('create.budget',compact('category'));
         // return view('create.budget');
     }
 
