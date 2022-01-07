@@ -1,15 +1,14 @@
 @extends("layouts.app")
 
 @section("content")
-  @foreach($tasks as $task)
     <div class="container mx-auto w-9/12">
         <div class="grid grid-cols-3  grid-flow-row mt-8 mb-8">
 
                 {{-- left sidebar start --}}
             <div class="lg:col-span-2 col-span-3">
-                <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
+                <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                 <div class="flex flex-row">
-                    <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">до {{$task->budget}}</p>
+                    <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">до {{$tasks->budget}}</p>
                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
                     <h1 class="my-2 text-green-400">Сделка без риска</h1>
                     <i class="far fa-question-circle mx-3 my-1 text-2xl text-green-300"></i>
@@ -21,7 +20,7 @@
                 <div class="flex flex-row text-gray-400 mt-4">
                     <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">Открыто</p>
                     <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
-                    <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$task->created_at}}</p>
+                    <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
                     @foreach($categories as $category)
                     <p>{{$category->name}}</p>
                     @endforeach
@@ -29,8 +28,8 @@
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-2xl">
                     <div class="ml-12 flex flex-row">
-                        <h1 class="text-lg font-bold h-auto w-48">{{$task->date_type}}</h1>
-                        <p class="text-lg  h-auto w-96">{{$task->start_date}}</p>
+                        <h1 class="text-lg font-bold h-auto w-48">{{$tasks->date_type}}</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->start_date}}</p>
                     </div>
                     <!-- <div class="ml-12 flex flex-row mt-4">
                         <h1 class="text-lg font-bold h-auto w-48">Завершить</h1>
@@ -38,7 +37,7 @@
                     </div> -->
                     <div class="ml-12 flex flex-row mt-8">
                         <h1 class="text-lg font-bold h-auto w-48">Бюджет</h1>
-                        <p class="text-lg  h-auto w-96">до {{$task->budget}}</p>
+                        <p class="text-lg  h-auto w-96">до {{$tasks->budget}}</p>
                     </div>
                     <!-- <div class="ml-12 flex flex-row mt-4"> -->
                         <!-- <h1 class="text-lg font-bold h-auto w-48">Оплата задания</h1> -->
@@ -49,11 +48,11 @@
                     <!-- </div> -->
                     <div class="ml-12 flex flex-row mt-4">
                         <h1 class="text-lg font-bold h-auto w-48">Место</h1>
-                        <p class="text-lg  h-auto w-96">{{$task->address}}</p>
+                        <p class="text-lg  h-auto w-96">{{$tasks->address}}</p>
                     </div>
                     <div class="ml-12 flex flex-row mt-8">
                         <h1 class="text-lg font-bold h-auto w-48">Нужно</h1>
-                        <p class="text-lg  h-auto w-96">{{$task->description}}</p>
+                        <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
                 </div>
 
@@ -88,10 +87,10 @@
                 <h1 class="text-lg">Заказчик этого задания</h1>
                 <div class="flex flex-row mt-4">
                     <div class="mr-4">
-                        <img src="{{ asset($current_user->avatar) }}" class="border-2 border-gray-400 w-32 h-32" alt="#">
+                        <img src="{{ asset($current_user->avatar ?? $tasks->user_name ) }}" class="border-2 border-gray-400 w-32 h-32" alt="#">
                     </div>
                     <div class="">
-                        <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name}}</a>
+                        <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a>
                         <!-- <div class="flex flex-row">
                             <p>Отзывы:</p>
                             <i class="far fa-thumbs-up m-1 text-gray-400"></i>  2
@@ -102,5 +101,5 @@
                 {{-- right sidebar end --}}
         </div>
     </div>
-@endforeach
+
 @endsection

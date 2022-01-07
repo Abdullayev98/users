@@ -158,14 +158,6 @@ class CreateTaskController extends VoyagerBaseController
 
     public function create(Request $request){
       $phone      = $request->input('phone');
-      if (!Auth::user()) {
-        $user_name       = $request->input('user_name');
-        $email      = $request->input('email');
-        $request->session()->put('user_name', $user_name);
-        $request->session()->put('email', $email);
-      }
-      $user_name  = session()->pull('user_name');
-      $email      = session()->pull('email');
       $datay      = $request->input();
       $request->session()->put('phone', $datay['phone']);
       $name        = session()->pull('name');
@@ -179,13 +171,33 @@ class CreateTaskController extends VoyagerBaseController
       $secret      = session()->pull('secret');
       $services      = session()->pull('services');
       $user_id     =     Auth::id();
+      if (!Auth::user()) {
+        $user_name  = $request->input('user_name');
+        $email      = $request->input('email');
+        $request->session()->put('user_name', $user_name);
+        $request->session()->put('email', $email);
+        $user_name  = session()->pull('user_name');
+        $email      = session()->pull('email');
+      }else {
+        $user_name  = session()->pull('user_name');
+        $email      = session()->pull('email');
+      }
 
       $id = Task::create([
-
-        'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret
-
+        'user_id'=>$user_id,
+        'name'=>$name,
+        'user_email'=>$email,
+        'user_name'=>$user_name,
+        "category_id"=>$category,
+        "address"=>$location,
+        "start_date"=>$date,
+        'date_type'=>$start,
+        'budget'=>$amount,
+        'description'=>$description,
+        'phone'=>$phone,
+        'show_only_to_performers'=>$secret,
     ]);
-
+    // dd($id,$user_name,$email);
     $id_task = $id->id;
     $id_cat = $id->category_id;
     $title_task = $id->name;
