@@ -46,8 +46,8 @@
               <input type="time" name="time" value="{{session('taym')}}" required>
             </div>            
             <div class="flex items-center rounded-lg border py-1" id="datetime" style="display: none;">
-              <input type="date" name="date2" value="{{session('deyt2')}}" class="mx-auto" required>
-              <input type="time" name="time2" value="{{session('taym2')}}" required>
+              <input type="date" name="date2" value="{{session('deyt2')}}" class="mx-auto" >
+              <input type="time" name="time2" value="{{session('taym2')}}" >
             </div>
           </div>
           <div class="mt-4">

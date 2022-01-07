@@ -20,7 +20,7 @@
         <div style="width: 71%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
-    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
+    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl  w-full p-6 px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
         На какой бюджет вы рассчитываете?
       </div>
@@ -30,7 +30,7 @@
       <div class="py-4 mx-auto  text-left ">
         <div class="mb-4">
           <div id="formulario" class="flex flex-col gap-y-4">
-            <div class="cube">
+            <div class="cube mx-auto">
               <div class="a"></div>
           <div id="slider-range-min"></div>
           </div>
@@ -70,17 +70,31 @@
 $(function(){
 $("#slider-range-min").slider({
 range:"min",
-value:5,
-min:100000,
-max:500000,
+min:1500,
+max:15000,
+step:2250,
 slide:function(event,ui){
 $("#amount").val(""+ui.value+" Сум");
-$(".a").width(ui.value/5000+"%");
+$(".a").width(ui.value/150+"%");
+if($('.a').css("width") < "15%"){
+  $( "#qotaq" ).css('margin-left', '10%');
+  }else{
+    $( "#qotaq" ).css('margin-left', '-1%');
+  }
 }
 });
-$(".ui-slider-handle").text("");
-$("#amount").val(""+$("#slider-range-min").slider("value")+" сум");
+$("#amount").val(""+$("#slider-range-min").slider("value")+"");
 });
+</script>
+<script>
+  window.onload = function exampleFunction() {
+      console.log('The Script will load now.');
+
+      $(".ui-slider-handle").attr("id","qotaq");
+  $( "#qotaq" ).css('margin-left', '10%');
+
+      // $(".ui-slider-range-min").html('<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>');
+  }
 </script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
 @endsection

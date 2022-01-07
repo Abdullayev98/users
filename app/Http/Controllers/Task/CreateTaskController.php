@@ -9,6 +9,7 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use App\Events\MyEvent;
 
 
 class CreateTaskController extends VoyagerBaseController
@@ -33,6 +34,12 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('name', $data['name']);
         $request->session()->put('cat_id', $data['cat_id']);
         $request->session()->flash('neym', $data['name']);
+        if (Auth::user()->name != null) {
+          $user_name = Auth::user()->name;
+          $email = Auth::user()->email;
+          $request->session()->put('user_name',$user_name);
+          $request->session()->put('email',$email);
+        }
         return view('create.location');
 
     }
@@ -52,8 +59,8 @@ class CreateTaskController extends VoyagerBaseController
     // public function custom(){
     //     return view('create.custom');
     // }
-    public function location(Request $request, $id)
-    {
+    public function location(Request $request){
+
         return view('create.location');
     }
     public function cargo(Request $request)
@@ -184,32 +191,42 @@ class CreateTaskController extends VoyagerBaseController
     }
 
     public function create(Request $request){
-      $phone       = $request->input('phone');
-      $datay        = $request->input();
+      $phone      = $request->input('phone');
+      if (Auth::user()->name == null) {
+        $user_name       = $request->input('user_name');
+        $email      = $request->input('email');
+        $request->session()->put('user_name', $user_name);
+        $request->session()->put('email', $email);
+      }
+      $user_name  = session()->pull('user_name');
+      $email      = session()->pull('email');
+      $datay      = $request->input();
       $request->session()->put('phone', $datay['phone']);
       $name        = session()->pull('name');
       $category    = session()->pull('cat_id');
       $location    = session()->pull('location');
       $date        = session()->pull('data');
-      $date2        = session()->pull('data2');
+      $date2       = session()->pull('data2');
       $start       = session()->pull('start');
       $amount      = session()->pull('amount');
       $description = session()->pull('description');
       $secret      = session()->pull('secret');
       $services      = session()->pull('services');
-      $weight = session()->pull('weight');
-      $length = session()->pull('length');
-      $width = session()->pull('width');
-      $height = session()->pull('height');
-      $etaj_po = session()->pull('etaj_po');
-      $lift_po = session()->pull('lift_po');
-      $etaj_za = session()->pull('etaj_za');
-      $lift_za = session()->pull('lift_za');
       $user_id     =     Auth::id();
-      $data=array('cargo_weight' => $weight,'length' => $length,'width' => $width,'height' => $height, 'etaj_po' => $etaj_po, 'lift_po' => $lift_po, 'etaj_za' => $etaj_za, 'lift_za' => $lift_za,'services'=>$services,'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,"end_date"=>$date2,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
-//      DB::table('tasks')->insert($data);
-        dd($data);
-//      return redirect('/')->with('success','Задание успешно добавлено!');
+
+      $id = Task::create([
+
+        'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret
+
+    ]);
+
+    $id_task = $id->id;
+    $id_cat = $id->category_id;
+    $title_task = $id->name;
+
+        event(new MyEvent($id_task,$id_cat,$title_task));
+
+      return redirect('/')->with('success','Задание успешно добавлено!');
     }
 
 

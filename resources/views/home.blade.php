@@ -2,6 +2,23 @@
 
 
 @section('content')
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('1f89b665267dfe7451d6', {
+      cluster: 'ap2'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(data["title_task"]);
+    });
+  </script>
+
     <style media="screen">
         #test {
             width: 100px;
@@ -78,14 +95,14 @@
     </div>
     <main>
         <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
-            <div class="text-3xl font-bold text-center">
+            {{-- <div class="text-3xl font-bold text-center">
                 Более 2 300 000 исполнителей
-            </div>
+            </div> --}}
             <div class="text-sm text-center mt-4">
-                готовы помочь вам в решении самых разнообразных задач
+               Исполнители готовы помочь вам в решении самых разнообразных задач
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
-            @foreach ($category as $category2)
+            @foreach ($categories as $category2)
                 <div class="text-gray-500 text-lg my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
                     <a href="{{route('categories', ['id'=> $category2->id])}}" class="block xl:ml-16">
                         <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</i>

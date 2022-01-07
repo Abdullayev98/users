@@ -276,13 +276,23 @@
             <!-- language blog -->
             <div class="flex justify-center text-gray-500 hidden lg:block">
               <div class="flex">
-                <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
-                  UZ
-                </a>
-                I
-                <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
-                  RU
-                </a>
+                  @if (session('lang') == 'uz')
+                  <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
+                    UZ
+                  </a>
+                  I
+                  <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
+                    RU
+                  </a>
+                  @else
+                  <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
+                    UZ
+                  </a>
+                  I
+                  <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">
+                    RU
+                  </a>
+                  @endif
               </div>
             </div>
 
@@ -295,15 +305,25 @@
             </div>
             <!-- language blog -->
             <div class="flex justify-center text-gray-500 hidden lg:block">
-              <div class="flex">
-                <a href="#" class="hover:text-red-500 mr-2">
-                  UZ
-                </a>
-                I
-                <a href="#" class="hover:text-red-500 ml-2">
-                  RU
-                </a>
-              </div>
+                <div class="flex">
+                    @if (session('lang') == 'uz')
+                    <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
+                      UZ
+                    </a>
+                    I
+                    <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
+                      RU
+                    </a>
+                    @else
+                    <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
+                      UZ
+                    </a>
+                    I
+                    <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">
+                      RU
+                    </a>
+                    @endif
+                  </div>
             </div>
         @endauth
     @endif
@@ -384,10 +404,10 @@
         </div>
     </div>
 </div>
+{{-- </div>
 </div>
 </div>
-</div>
-</div>
+</div> --}}
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal1-id-backdrop"></div>
 
