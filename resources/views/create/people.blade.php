@@ -4,7 +4,7 @@
 
     <!-- Information section -->
     <x-roadmap/>
-    <form class="" action="{{route('task.create.people')}}" method="post">
+    <form class="" action="{{route('task.create.movers')}}" method="post">
         @csrf
         <div class="mx-auto w-9/12  my-16">
             <div class="grid grid-cols-3 gap-x-20">
@@ -33,7 +33,7 @@
 
                                         <div class="mb-3 xl:w-full">
                                             <input type="radio" id="contactChoice1"
-                                                   name="contact" value="da" checked>
+                                                   name="contact" value="da">
                                             <label for="contactChoice1">Да</label>
                                             <br>
                                             <br>

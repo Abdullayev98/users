@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form class="" action="{{route('task.create.cargo')}}" method="post">
+    <form class="" action="{{route('task.create.people')}}" method="post">
         @csrf
 
         <div class="mx-auto w-9/12  my-16">
