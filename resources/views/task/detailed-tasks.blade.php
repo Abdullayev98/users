@@ -73,7 +73,7 @@
                         <a href="#" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
                         @foreach($users as $user)
                         @if($user->id == $same_task->user_id)
-                        <p class="text-gray-400 text-base">{{$user->name}}, до {{$same_task->budget}}</p>
+                        <p class="text-gray-400 text-base">{{$user->name}}, {{$same_task->budget}}</p>
                         @endif
                         @endforeach
                     </div>
@@ -90,7 +90,8 @@
                         <img src="{{ asset($current_user->avatar ?? $tasks->user_name ) }}" class="border-2 border-gray-400 w-32 h-32" alt="#">
                     </div>
                     <div class="">
-                        <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a>
+                        <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
+                        <a href="#" class="text-xl text-gray-500">{{$current_user->email ?? $tasks->user_email}}</a>
                         <!-- <div class="flex flex-row">
                             <p>Отзывы:</p>
                             <i class="far fa-thumbs-up m-1 text-gray-400"></i>  2
