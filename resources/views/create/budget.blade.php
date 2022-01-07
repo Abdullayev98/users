@@ -112,10 +112,12 @@
                     }else{
                         $("#amount").val( "до " + ui.value + " сум");   
                     }
-                    var third = ui.min*2;
-                    $(".a").width(third);
+                    
                 }
             });
+            $(".ui-slider-range").css("height",'55px');
+            $(".ui-slider-range").css("background-color",'#ffa200');
+            $(".ui-slider-range").css("top",'-1079%');
             $(".ui-slider-handle").text("<>");
             $( "#amount" ).val( $( "#slider-range-min" ).slider( "value") + " cум");
         });
