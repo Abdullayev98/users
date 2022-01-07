@@ -93,6 +93,12 @@ class CreateTaskController extends VoyagerBaseController
       return redirect('create.date');
     }
     }
+    public function peopleTransported(Request $request)
+    {
+        $peopleCount = $request->input('peopleCount');
+        $request->session()->put('peopleCount', $peopleCount);
+        return view('create.peopleTransported');
+    }
     public function date(Request $request){
         if ($request->input('location')) {
           $location = $request->input('location');
