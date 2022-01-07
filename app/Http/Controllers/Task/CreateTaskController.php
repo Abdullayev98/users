@@ -52,9 +52,43 @@ class CreateTaskController extends VoyagerBaseController
     // public function custom(){
     //     return view('create.custom');
     // }
-    public function location(Request $request){
-
+    public function location(Request $request, $id)
+    {
         return view('create.location');
+    }
+    public function cargo(Request $request)
+    {
+//        $data = $request->input();
+//        $request->session()->put('name', $data['name']);
+        $weight = $request->input('weight');
+        $length = $request->input('length');
+        $width = $request->input('width');
+        $height = $request->input('height');
+        $request->session()->put('weight', $weight);
+        $request->session()->put('length', $length);
+        $request->session()->put('width', $width);
+        $request->session()->put('height', $height);
+        return view('create.cargo');
+    }
+    public function people()
+    {
+        if($_POST['contact'] == 'da'){
+            $this->need_movers = 1;
+            $this->movers();
+        }
+        return view('create.people');
+    }
+    public function movers(Request $request)
+    {
+        $etaj_po = $request->input('etaj_po');
+        $lift_po = $request->input('lift_po');
+        $etaj_za = $request->input('etaj_za');
+        $lift_za = $request->input('lift_za');
+        $request->session()->put('etaj_po', $etaj_po);
+        $request->session()->put('lift_po', $lift_po);
+        $request->session()->put('etaj_za', $etaj_za);
+        $request->session()->put('lift_za', $lift_za);
+        return view('create.movers');
     }
     public function date(Request $request){
       $location = $request->input('location');
@@ -91,7 +125,7 @@ class CreateTaskController extends VoyagerBaseController
     }
 
     public function service(Request $request){
-      $cat_id = $request->session->pull('cat_id');
+      $cat_id = $request->session()->pull('cat_id');
       $category = Category::where('id',$cat_id)-first();
       $categories = explode(',',$category->services);
       return view('create.services', compact('categories'));
@@ -163,10 +197,19 @@ class CreateTaskController extends VoyagerBaseController
       $description = session()->pull('description');
       $secret      = session()->pull('secret');
       $services      = session()->pull('services');
+      $weight = session()->pull('weight');
+      $length = session()->pull('length');
+      $width = session()->pull('width');
+      $height = session()->pull('height');
+      $etaj_po = session()->pull('etaj_po');
+      $lift_po = session()->pull('lift_po');
+      $etaj_za = session()->pull('etaj_za');
+      $lift_za = session()->pull('lift_za');
       $user_id     =     Auth::id();
-      $data=array('services'=>$services,'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,"end_date"=>$date2,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
-      DB::table('tasks')->insert($data);
-      return redirect('/')->with('success','Задание успешно добавлено!');
+      $data=array('cargo_weight' => $weight,'length' => $length,'width' => $width,'height' => $height, 'etaj_po' => $etaj_po, 'lift_po' => $lift_po, 'etaj_za' => $etaj_za, 'lift_za' => $lift_za,'services'=>$services,'user_id'=>$user_id,'name'=>$name,"category_id"=>$category,"address"=>$location,"start_date"=>$date,"end_date"=>$date2,'date_type'=>$start,'budget'=>$amount,'description'=>$description,'phone'=>$phone,'show_only_to_performers'=>$secret);
+//      DB::table('tasks')->insert($data);
+        dd($data);
+//      return redirect('/')->with('success','Задание успешно добавлено!');
     }
 
 
