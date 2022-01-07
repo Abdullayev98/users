@@ -30,7 +30,9 @@
           <div id="formulario" class="flex flex-col gap-y-4">
             <div>
               <div class="mb-3 xl:w-full">
-        @if (!Route::has('login'))
+        @auth
+          
+        @else
         <label for="name">Имя</label>
                 <input type="text" name="user_name" placeholder="Имя"
                 class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
@@ -38,7 +40,7 @@
                 <input type="email" name="email" placeholder="E-mail"
               class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
               />
-                @endif
+          r@endauth
                 <label for="phone">Номер телефона</label>
                 <input type="text" name="phone" id="phone" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
               </div>
