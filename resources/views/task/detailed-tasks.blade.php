@@ -54,6 +54,11 @@
                         <h1 class="text-lg font-bold h-auto w-48">Нужно</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
+                    <div class="w-full mt-6">
+                        <button  class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 md:ml-[24%] ml-[3%] px-8 pt-2 pb-3 rounded">
+                            Откликнуться на это задание
+                        </button>
+                    </div>
                 </div>
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-lg">
