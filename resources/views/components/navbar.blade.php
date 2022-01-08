@@ -1,4 +1,22 @@
 
+
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('1f89b665267dfe7451d6', {
+      cluster: 'ap2'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(data["title_task"]);
+    });
+  </script>
+
 <nav class="z-10 relative flex items-center mx-6 lg:w-11/12 xl:w-10/12 md:mx-auto justify-between  lg:justify-start font-[sans-serif]" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
       <!--  mobile menu -->
@@ -24,6 +42,7 @@
         <div class="w-2/12 flex justify-center lg:hidden">
           {{-- icon-1 --}}
           <div class=" float-left ml-8">
+              <div class="w-4 h-4 absolute rounded-full ">1</div>
               <button class="" type="button" data-dropdown-toggle="notification"><i class="text-xl text-slate-400 hover:text-orange-500 far fa-bell"></i>
               </button>
               <!-- Dropdown menu -->
@@ -215,6 +234,7 @@
             <div class="flex lg:inline-block hidden w-4/12 float-right">
                 {{-- icon-1 --}}
                 <div class="max-w-lg mx-auto float-left">
+                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
                     <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
                     </button>
                     <!-- Dropdown menu -->
