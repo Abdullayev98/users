@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Task;
 
 use App\Models\Task;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Models\Category;
+use TCG\Voyager\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Events\MyEvent;
 
@@ -19,7 +21,6 @@ class CreateTaskController extends VoyagerBaseController
     public function task_create(Request $request){
 
         $current_category = Category::find($request->category_id);
-        $request->session()->put('cat_id', $request->category_id);
         if (!$current_category){
             return back();
         }
@@ -33,6 +34,7 @@ class CreateTaskController extends VoyagerBaseController
 
         $data = $request->input();
         $request->session()->put('name', $data['name']);
+        $request->session()->put('cat_id', $data['cat_id']);
         $request->session()->flash('neym', $data['name']);
         if (Auth::user()) {
           $user_name = Auth::user()->name;
@@ -40,7 +42,8 @@ class CreateTaskController extends VoyagerBaseController
           $request->session()->put('user_name',$user_name);
           $request->session()->put('email',$email);
         }
-        $category_id = $request->session()->pull('cat_id');
+        $category_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $category_id);
         $child_category = Category::where('id', $category_id)->first();
         $cat = $child_category->parent_id;
         $pcategory = Category::where('id', $cat)->first();
@@ -72,6 +75,8 @@ class CreateTaskController extends VoyagerBaseController
     }
     public function people(Request $request)
     {
+
+
       $weight = $request->input('weight');
       $length = $request->input('length');
       $width = $request->input('width');
@@ -82,7 +87,7 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('height', $height);
         return view('create.people');
     }
-    
+
     public function movers(Request $request)
     {
       if($_POST['contact'] == 'da'){
@@ -120,6 +125,7 @@ class CreateTaskController extends VoyagerBaseController
           $request->session()->put('etaj_za', $etaj_za);
           $request->session()->put('lift_za', $lift_za);
         }
+
         return view('create.date');
     }
     public function budget(Request $request){
@@ -140,7 +146,10 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('data2', $data);
         $request->session()->put('start', $starrt);
       }
-      return view('create.budget');
+      $cat_id = session()->pull('cat_id');
+      $request->session()->put('cat_id', $cat_id);
+      $category = Category::where('id',$cat_id)->first();
+      return view('create.budget',compact('category'));
         // return view('create.budget');
     }
 
@@ -168,6 +177,7 @@ class CreateTaskController extends VoyagerBaseController
       }
 
       $cat_id = session()->pull('cat_id');
+      $request->session()->put('cat_id', $cat_id);
       $category = Category::where('id',1)->first();
       $categories = explode(',',$category->services);
       return view('create.services', compact('categories'));
@@ -189,6 +199,15 @@ class CreateTaskController extends VoyagerBaseController
 
 
     public function contacts(Request $request){
+      $request->validate([
+        'avatar' => 'required|image'
+      ]);
+      $image = $request->avatar;
+
+      $imagename = $image->getClientOriginalName();
+      $request->avatar->move('storage/tasks/avatar', $imagename);
+      $images_name = $request->avatar;
+      $request->session()->put('image', 'storage/tasks/avatar/'.''.$imagename);
       $data = $request->input();
       $request->session()->put('description', $data['description']);
       if ($request->input('secret')) {
@@ -210,6 +229,7 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('phone', $datay['phone']);
       $name        = session()->pull('name');
       $category    = session()->pull('cat_id');
+      $image    = session()->pull('image');
       $location    = session()->pull('location');
       $date        = session()->pull('data');
       $date2       = session()->pull('data2');
@@ -219,6 +239,15 @@ class CreateTaskController extends VoyagerBaseController
       $need_movers = session()->pull('need_movers');
       $secret      = session()->pull('secret');
       $services      = session()->pull('services');
+      $etaj_po = session()->pull('etaj_po');
+      $lift_po = session()->pull('lift_po');
+      $etaj_za = session()->pull('etaj_za');
+      $lift_za = session()->pull('lift_za');
+      $peopleCount = session()->pull('peopleCount');
+      $weight = session()->pull('weight');
+      $length = session()->pull('length');
+      $width = session()->pull('width');
+      $height = session()->pull('height');
       $user_id     =     Auth::id();
       if (!Auth::user()) {
         $user_name  = $request->input('user_name');
@@ -233,6 +262,7 @@ class CreateTaskController extends VoyagerBaseController
       }
 
       $id = Task::create([
+        'photos' => $image,
         'user_id'=>$user_id,
         'name'=>$name,
         'user_email'=>$email,
@@ -246,14 +276,44 @@ class CreateTaskController extends VoyagerBaseController
         'phone'=>$phone,
         'need_movers'=>$need_movers,
         'show_only_to_performers'=>$secret,
+        'etaj_po' => $etaj_po,
+        'lift_po' => $lift_po,
+        'etaj_za' => $etaj_za,
+        'lift_za' => $lift_za,
+        'peopleCount' => $peopleCount,
+        'weight' => $weight,
+        'length' => $length,
+        'width' => $width,
+        'height' => $height,
     ]);
-    $id_task = $id->id;
-    $id_cat = $id->category_id;
-    $title_task = $id->name;
 
-        event(new MyEvent($id_task,$id_cat,$title_task));
+    foreach(User::all() as $users){
 
-      return redirect('/')->with('success','Задание успешно добавлено!');
+
+        $user_cat_ids = explode(",",$users->category_id);
+        $check_for_true = array_search($category,$user_cat_ids);
+
+        if($check_for_true !== false){
+        Notification::create([
+
+            'user_id'=>$users->id,
+            'description'=> 1,
+            'task_id'=>$id->id,
+            "cat_id"=>$category,
+            "name_task"=>$id->name
+
+        ]);
+    }
+
+    }
+
+       $id_task = $id->id;
+       $id_cat = $id->category_id;
+       $title_task = $id->name;
+
+           event(new MyEvent($id_task,$id_cat,$title_task));
+
+     return redirect('/')->with('success','Задание успешно добавлено!');
     }
 
 

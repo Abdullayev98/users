@@ -45,7 +45,7 @@
 
                                         </div>
                                     </div>
-                                    <input type="text" id="amount" name="amount">
+                                    <input type="text" id="amount" name="amount" readonly>
 {{--                                    <div class="flex ">--}}
 {{--                                        <div class="cursor-default">--}}
 {{--                                            <div class="w-2 h-2 bg-gray-200 rounded-full -ml-1 -mt-5 z-0"></div>--}}
@@ -102,17 +102,24 @@
             $( "#slider-range-min" ).slider({
                 range: "min",
                 value: 0,
-                min: 90,
-                max: 100,
+                min: {{$category->max}}/5,
+                max: {{$category->max}},
+                step:{{$category->max}}/5,
                 slide: function( event, ui ) {
-                    $( "#amount" ).val( "$" + ui.value + "");
-                    var width = $(".ui-slider-handle").width();
-                    var third = ((ui.min*100)/ui.max)/4;
-                    $(".a").width(third);
+                    var maximum = {{$category->max}};
+                    if (maximum == ui.value) {
+                        $("#amount").val( "от " + ui.value + " сум");
+                    }else{
+                        $("#amount").val( "до " + ui.value + " сум");   
+                    }
+                    
                 }
             });
+            $(".ui-slider-range").css("height",'55px');
+            $(".ui-slider-range").css("background",'linear-gradient(rgb(255, 132, 56), rgb(255, 255, 255))');
+            $(".ui-slider-range").css("top",'-1079%');
             $(".ui-slider-handle").text("<>");
-            $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value") + ",000");
+            $( "#amount" ).val('от ' + $( "#slider-range-min" ).slider( "value") + " cум");
         });
     </script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->

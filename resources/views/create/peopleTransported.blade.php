@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form class="" action="{{route('task.create.peopleTransported')}}" method="post">
+    <form class="" action="{{route('task.create.date')}}" method="post">
         @csrf
 
         <div class="mx-auto w-9/12  my-16">
