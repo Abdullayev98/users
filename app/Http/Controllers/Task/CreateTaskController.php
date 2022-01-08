@@ -81,6 +81,9 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('length', $length);
       $request->session()->put('width', $width);
       $request->session()->put('height', $height);
+      if(session('cat_id') == 50){
+          $request->session()->forget('weight');
+      }
         return view('create.people');
     }
 
@@ -91,13 +94,11 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('movers', $need_movers);
         return view('create.movers');
     }else {
-      return redirect('create.date');
+      return view('create.date');
     }
     }
     public function peopleTransported(Request $request)
     {
-        $peopleCount = $request->input('peopleCount');
-        $request->session()->put('peopleCount', $peopleCount);
         return view('create.peopleTransported');
     }
     public function date(Request $request){
@@ -116,6 +117,8 @@ class CreateTaskController extends VoyagerBaseController
           $lift_po = $request->input('lift_po');
           $etaj_za = $request->input('etaj_za');
           $lift_za = $request->input('lift_za');
+          $people_count = $request->input('peopleCount');
+          $request->session()->put('peopleCount', $people_count);
           $request->session()->put('etaj_po', $etaj_po);
           $request->session()->put('lift_po', $lift_po);
           $request->session()->put('etaj_za', $etaj_za);
@@ -222,7 +225,7 @@ class CreateTaskController extends VoyagerBaseController
       $start       = session()->pull('start');
       $amount      = session()->pull('amount');
       $description = session()->pull('description');
-      $need_movers = session()->pull('need_movers');
+      $need_movers = session()->pull('movers');
       $secret      = session()->pull('secret');
       $services      = session()->pull('services');
       $etaj_po = session()->pull('etaj_po');
