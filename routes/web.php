@@ -20,6 +20,7 @@ use App\Http\Controllers\admin\VoyagerUserController;
 |
 */
 
+Route::get('/fordelnotif/{id}/{task_id}', [PerformersController::class, 'del_notif']);
 Route::get('/performers', [PerformersController::class, 'service']);
 Route::get('perf-ajax/{id}', [PerformersController::class, 'perf_ajax']);
 Route::get('/executors-courier', function () {

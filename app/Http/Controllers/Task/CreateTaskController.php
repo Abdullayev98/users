@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Models\Category;
+use TCG\Voyager\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Events\MyEvent;
 
@@ -74,6 +75,8 @@ class CreateTaskController extends VoyagerBaseController
     }
     public function people(Request $request)
     {
+
+
       $weight = $request->input('weight');
       $length = $request->input('length');
       $width = $request->input('width');
@@ -82,9 +85,6 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('length', $length);
       $request->session()->put('width', $width);
       $request->session()->put('height', $height);
-      if(session('cat_id') == 50){
-          $request->session()->forget('weight');
-      }
         return view('create.people');
     }
 
@@ -95,11 +95,13 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('movers', $need_movers);
         return view('create.movers');
     }else {
-      return view('create.date');
+      return redirect('create.date');
     }
     }
     public function peopleTransported(Request $request)
     {
+        $peopleCount = $request->input('peopleCount');
+        $request->session()->put('peopleCount', $peopleCount);
         return view('create.peopleTransported');
     }
     public function date(Request $request){
@@ -118,8 +120,6 @@ class CreateTaskController extends VoyagerBaseController
           $lift_po = $request->input('lift_po');
           $etaj_za = $request->input('etaj_za');
           $lift_za = $request->input('lift_za');
-          $people_count = $request->input('peopleCount');
-          $request->session()->put('peopleCount', $people_count);
           $request->session()->put('etaj_po', $etaj_po);
           $request->session()->put('lift_po', $lift_po);
           $request->session()->put('etaj_za', $etaj_za);
@@ -199,6 +199,15 @@ class CreateTaskController extends VoyagerBaseController
 
 
     public function contacts(Request $request){
+      $request->validate([
+        'avatar' => 'required|image'
+      ]);
+      $image = $request->avatar;
+
+      $imagename = $image->getClientOriginalName();
+      $request->avatar->move('storage/tasks/avatar', $imagename);
+      $images_name = $request->avatar;
+      $request->session()->put('image', 'storage/tasks/avatar/'.''.$imagename);
       $data = $request->input();
       $request->session()->put('description', $data['description']);
       if ($request->input('secret')) {
@@ -220,13 +229,14 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('phone', $datay['phone']);
       $name        = session()->pull('name');
       $category    = session()->pull('cat_id');
+      $image    = session()->pull('image');
       $location    = session()->pull('location');
       $date        = session()->pull('data');
       $date2       = session()->pull('data2');
       $start       = session()->pull('start');
       $amount      = session()->pull('amount');
       $description = session()->pull('description');
-      $need_movers = session()->pull('movers');
+      $need_movers = session()->pull('need_movers');
       $secret      = session()->pull('secret');
       $services      = session()->pull('services');
       $etaj_po = session()->pull('etaj_po');
@@ -252,9 +262,11 @@ class CreateTaskController extends VoyagerBaseController
       }
 
       $id = Task::create([
-
+        'photos' => $image,
         'user_id'=>$user_id,
         'name'=>$name,
+        'user_email'=>$email,
+        'user_name'=>$user_name,
         "category_id"=>$category,
         "address"=>$location,
         "start_date"=>$date,
@@ -262,24 +274,44 @@ class CreateTaskController extends VoyagerBaseController
         'budget'=>$amount,
         'description'=>$description,
         'phone'=>$phone,
-        'show_only_to_performers'=>$secret
-
+        'need_movers'=>$need_movers,
+        'show_only_to_performers'=>$secret,
+        'etaj_po' => $etaj_po,
+        'lift_po' => $lift_po,
+        'etaj_za' => $etaj_za,
+        'lift_za' => $lift_za,
+        'peopleCount' => $peopleCount,
+        'weight' => $weight,
+        'length' => $length,
+        'width' => $width,
+        'height' => $height,
     ]);
 
-    Notification::create([
+    foreach(User::all() as $users){
 
-        'user_id'=>$user_id,
-        'description'=> 1,
-        'task_id'=>$id->id,
-        "cat_id"=>$category
 
-    ]);
+        $user_cat_ids = explode(",",$users->category_id);
+        $check_for_true = array_search($category,$user_cat_ids);
 
-   $id_task = $id->id;
-   $id_cat = $id->category_id;
-   $title_task = $id->name;
+        if($check_for_true !== false){
+        Notification::create([
 
-       event(new MyEvent($id_task,$id_cat,$title_task));
+            'user_id'=>$users->id,
+            'description'=> 1,
+            'task_id'=>$id->id,
+            "cat_id"=>$category,
+            "name_task"=>$id->name
+
+        ]);
+    }
+
+    }
+
+       $id_task = $id->id;
+       $id_cat = $id->category_id;
+       $title_task = $id->name;
+
+           event(new MyEvent($id_task,$id_cat,$title_task));
 
      return redirect('/')->with('success','Задание успешно добавлено!');
     }
