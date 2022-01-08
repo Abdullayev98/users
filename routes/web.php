@@ -48,6 +48,7 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 Route::get('/detailed-tasks/{id}', [SearchTaskController::class, 'task'])->name("tasks.detail");
 
+
 Route::get('/terms', function () {
     return view('terms.terms');
 });
