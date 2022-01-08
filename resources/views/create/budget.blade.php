@@ -45,7 +45,7 @@
 
                                         </div>
                                     </div>
-                                    <input type="text" id="amount" name="amount">
+                                    <input type="text" id="amount" name="amount" readonly>
 {{--                                    <div class="flex ">--}}
 {{--                                        <div class="cursor-default">--}}
 {{--                                            <div class="w-2 h-2 bg-gray-200 rounded-full -ml-1 -mt-5 z-0"></div>--}}
@@ -116,10 +116,10 @@
                 }
             });
             $(".ui-slider-range").css("height",'55px');
-            $(".ui-slider-range").css("background-color",'#ffa200');
+            $(".ui-slider-range").css("background",'linear-gradient(rgb(255, 132, 56), rgb(255, 255, 255))');
             $(".ui-slider-range").css("top",'-1079%');
             $(".ui-slider-handle").text("<>");
-            $( "#amount" ).val( $( "#slider-range-min" ).slider( "value") + " cум");
+            $( "#amount" ).val('от ' + $( "#slider-range-min" ).slider( "value") + " cум");
         });
     </script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
