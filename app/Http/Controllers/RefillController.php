@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Prepare;
 use App\Models\Complete;
 use App\Models\WalletBalance;
@@ -17,7 +18,7 @@ public function ref(Request $request){
 
         $new_article = All_transaction::create([
 
-            'user_id'=> $request->get("user_id"),
+            'user_id'=> Auth::id(),
             'amount'=> $request->get("amount"),
             'method'=> "Click",
 
@@ -32,8 +33,20 @@ public function ref(Request $request){
 
     if($request->get("paymethod") == 'PayMe'){
 
-        //Integration with PayMe
+        $tr = new All_transaction();
+        $tr->user_id = Auth::id();
+        $tr->amount  = $request->get("amount");
+        $tr->method  = $tr::DRIVER_PAYME;
+        $tr->state   = $tr::STATE_WAITING_PAY;
+        $tr->save();
 
+        // return redirect()->route('paycom.send', ['transaction' => $tr]);
+        return view('paycom.send', ['transaction' => $tr]);
+    }
+
+
+    if($request->get("paymethod") == 'Paynet'){
+        dd('Paynet testing');
     }
 
 }

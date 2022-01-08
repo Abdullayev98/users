@@ -116,7 +116,7 @@
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="age">Возраст</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="number" name="age" id="age" value="{{$user->age}}">
+                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" min="18" type="number" name="age" id="age" value="{{$user->age}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="textarea">Другие сведения</label>
@@ -139,6 +139,13 @@
                                                         <option value="Qashqadryo" {{ $user->location=='Qashqadryo' ? 'selected' : '' }}>Qashqadryo</option>
                                                         <option value="Surxondaryo" {{ $user->location=='Surxondaryo' ? 'selected' : '' }}>Surxondaryo</option>
                                                         <option value="Qoraqalpog'iston" {{ $user->location=='Qoraqalpog\'iston' ? 'selected' : '' }}>Qoraqalpog'iston</option>
+                                                    </select>
+                                                </div>
+                                                <div class="w-full block w-full mb-4">
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="role">Тип профиля</label>
+                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900" name="role">
+                                                        <option value="2" {{ $user->role_id==2 ? 'selected' : '' }}>Исполнитель</option>
+                                                        <option value="3" {{ $user->role_id==3 ? 'selected' : '' }}>Заказчик</option>
                                                     </select>
                                                 </div>
                                                 <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
@@ -188,7 +195,7 @@
                                                 </div>
                                                 @endforeach
                                             </div>
-                                            <input type="submit" name="submit" value="Save">
+                                            <input class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" type="submit" name="submit" value="Сохранить">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");
@@ -356,7 +363,7 @@
                 class="md:col-span-1 col-span-3  md:mx-2 mx-auto inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
-                    <p>на YouDo с 12 сентября 2021 г.</p>
+                    <p>на Universal Services с 12 сентября 2021 г.</p>
                 </div>
                 <div class="contacts relative ">
                     <div class="ml-4 h-20 grid grid-cols-4">
@@ -447,17 +454,17 @@
         </div>
     </div>
     <script src="https://unpkg.com/imask"></script>
-    
+
     <script>
         var element = document.getElementById('phone_number');
     var maskOptions = {
         mask: '+998 00 000-00-00',
         lazy: false
-    } 
+    }
     var mask = new IMask(element, maskOptions);
-    
+
     var element2 = document.getElementById('email');
-    var maskOptions2 = {    
+    var maskOptions2 = {
         mask:function (value) {
                     if(/^[a-z0-9_\.-]+$/.test(value))
                         return true;
@@ -476,7 +483,7 @@
                     return false;
                         },
         lazy: false
-    } 
+    }
     var mask2 = new IMask(element2, maskOptions2);
       </script>
     <script type="text/javascript">

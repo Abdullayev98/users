@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-        <div class="container mx-auto flex flex-row mt-8 mb-8 text-color-[#222]">
+        <div class="container pl-[16px] mx-auto flex flex-row mt-8 mb-8 text-color-[#222]">
             <div class="basis-4/6 flex flex-row">
                 <div class="basis-5/6 flex flex-col">
                     <div class="basis-[100%] flex flex-row">
@@ -24,7 +24,7 @@
                         <div class="text-left grid grid-cols-1 gap-2 md:grid-cols-2">
                             <div class="pb-[48px]">
                                 <div class="pb-[12px] font-bold">Для СМИ и PR-служб</div>
-                                <div>Даём комментарии и пишем статьи про IT. Хотите написать про YouDo?</div>
+                                <div>Даём комментарии и пишем статьи про IT. Хотите написать про Universal Services?</div>
                                 <div class="text-[#4099fb]"><a href="mailto:pr@youdo.com">pr@youdo.com</a></div>
                             </div>
                             <div class="pb-[48px]">

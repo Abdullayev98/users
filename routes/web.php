@@ -6,6 +6,7 @@ use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\PerformersController;
+use App\Http\Controllers\RefillController;
 use App\Http\Controllers\Task\SearchTaskController;
 use App\Http\Controllers\admin\VoyagerUserController;
 /*
@@ -18,8 +19,6 @@ use App\Http\Controllers\admin\VoyagerUserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 
 Route::get('/performers', [PerformersController::class, 'service']);
 Route::get('perf-ajax/{id}', [PerformersController::class, 'perf_ajax']);
@@ -59,6 +58,8 @@ Route::get('/verification', function () {
     return view('create.verification');
 });
 
+Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');
+
 Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('my.tasks');
 Route::get('/refill', function() {
     return view('/Site/refill');
@@ -75,7 +76,6 @@ Route::get('/choose-task', function() {
 Route::get('/terms/doc', function() {
     return view('terms.pdf');
 });
-Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@index');
 
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
 
@@ -83,6 +83,7 @@ Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('
 
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete');
 
+Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@paycom')->name('paycom');
 //social login facebook
 Route::get('login/facebook',[SocialController::class,'facebookRedirect']);
 Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook']);

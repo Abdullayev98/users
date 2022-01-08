@@ -2,6 +2,23 @@
 
 
 @section('content')
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('1f89b665267dfe7451d6', {
+      cluster: 'ap2'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(data["title_task"]);
+    });
+  </script>
+
     <style media="screen">
         #test {
             width: 100px;
@@ -15,9 +32,9 @@
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">
-            <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2 
+            <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2
             text-lg font-bold">{{ $message }}
-              <button onclick="toggleModal2()" type="button" class="bg-red hover:bg-[#a5f3fc] py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button> 
+              <button onclick="toggleModal2()" type="button" class="bg-red hover:bg-[#a5f3fc] py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button>
             </div>
         </div>
     @endif
@@ -27,25 +44,31 @@
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-32">
                     <h1 class="font-semibold text-white text-3xl lg:text-5xl md:text-4xl">
-                        <span class="block xl:block">Освободим вас от забот</span>
+                        <span class="block xl:block">@lang('lang.header_title')</span>
                     </h1>
                     <p class="mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-sm md:mt-2 mb-3">
-                        Поможем найти надежного исполнителя для любых задач
+                        @lang('lang.header_sub')
                     </p>
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
-                            <input type="text" value="" id="header_input" placeholder="Например, составить иск"
+                          <form class="" action="{{route('search')}}" method="get">
+                            <input type="text" name="s" value="" id="header_input" placeholder="Например, составить иск"
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
                             <button type="submit"
                                     class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
-                                    <a href="task/create?category_id=22">
                                 Заказать услугу
-                                </a>
                             </button>
+                          </form>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
                             Например: <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">повесить кондиционер</span>
                         </div>
+                    </div>
+                    <div class="w-[350px] mx-auto mt-12">
+                      <a href="/verification" class="text-[#80e6ff] text-center">
+                        <img src="https://assets.youdo.com/_next/static/media/hero-video__gowork.8435e81afbc30d8a5afcd85693878644.svg" alt="" class="float-left mr-0">
+                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">стать исполнителем и начать зарабатывать</p>
+                      </a>
                     </div>
                 </div>
             </main>
@@ -72,17 +95,17 @@
     </div>
     <main>
         <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
-            <div class="text-3xl font-bold text-center">
+            {{-- <div class="text-3xl font-bold text-center">
                 Более 2 300 000 исполнителей
-            </div>
+            </div> --}}
             <div class="text-sm text-center mt-4">
-                готовы помочь вам в решении самых разнообразных задач
+               Исполнители готовы помочь вам в решении самых разнообразных задач
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
-            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id')->get() as $category2)
+            @foreach ($categories as $category2)
                 <div class="text-gray-500 text-lg my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
-                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="block">
-                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->name }}</i>
+                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="block xl:ml-16">
+                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</i>
                     </a>
                 </div>
                 @endforeach
@@ -125,7 +148,7 @@
                          class="mx-auto" alt="">
                     <div class="font-bold my-4">Удобная и безопасная оплата</div>
                     <div class="text-xs">
-                        При оплате через Сделку без риска YouDo вернет деньги, если что-то пойдет не так.
+                        При оплате через Сделку без риска Universal Services вернет деньги, если что-то пойдет не так.
                     </div>
                 </div>
                 <div class="text-center mx-4">
@@ -134,7 +157,7 @@
                         class="mx-auto" alt="">
                     <div class="font-bold my-4">Надежные исполнители</div>
                     <div class="text-xs">
-                        «Проверенные исполнители» подтвердили свои документы на YouDo.
+                        «Проверенные исполнители» подтвердили свои документы на Universal Services.
                     </div>
                 </div>
                 <div class="text-center mx-4">
@@ -157,7 +180,7 @@
         <div class="w-full bg-gradient-to-r from-[#fff] via-[#f6f8fa] to-[#fff]">
             <div class="container text-center mx-auto px-16">
                 <div class="md:text-4xl text-[24px] w-3/3 font-semibold mx-auto py-10 md:py-16">
-                    С YouDo вы экономите на услугах до 70%*.<br>
+                    С Universal Services вы экономите на услугах до 70%*.<br>
                     Как это возможно?
                 </div>
                 <div class="grid md:grid-cols-2 grid-cols-1 mt-8 w-11/12 mx-auto">
@@ -208,8 +231,10 @@
                 </div>
             </div>
             <div class="md:w-1/3 w-3/4 mx-auto my-4">
-                <a href="/task/create?category_id=31" type="button" class="text-center pt-3 bg-yellow-500 border-[#e78900] text-2xl h-16 w-full border-b-4">Разместите
-                    задание прямо сейчас
+                <a href="/task/create?category_id=31">
+                  <button class="text-center py-3 px-2 sm:ml-12 ml-0 bg-yellow-500 border-[#e78900] text-2xl  border-b-4">
+                    Разместите задание прямо сейчас
+                  </button>
                 </a>
                 <div class="text-center text-xl">
                     и найдите <br> исполнителя за несколько минут
@@ -224,7 +249,7 @@
         <div class="bg-[#deeafb]">
             <div class="container mx-auto">
                 <div class="text-4xl w-2/3 mx-auto py-16 text-center">
-                    Основные преимущества YouDo
+                    Основные преимущества Universal Services
                 </div>
                 <div class="grid grid-cols-4 w-9/12 mx-auto">
                     <div class="">
@@ -240,7 +265,7 @@
                     </div>
                     <div class="col-span-3 my-16">
                         <h4 class="text-2xl">Проверенные исполнители</h4>
-                        <p class="text-md">Все исполнители YouDo проходят процедуру верификации, мы проверяем отзывы,
+                        <p class="text-md">Все исполнители Universal Services проходят процедуру верификации, мы проверяем отзывы,
                             разбираемся с жалобами и контролируем качество их работы.</p>
                     </div>
                     <div class=" my-16">
@@ -249,7 +274,7 @@
                     </div>
                     <div class="col-span-3 my-16">
                         <h4 class="text-2xl">Экономия времени</h4>
-                        <p class="text-md">На YouDo вы можете найти подходящего исполнителя за несколько минут. Многие
+                        <p class="text-md">На Universal Services вы можете найти подходящего исполнителя за несколько минут. Многие
                             из них готовы приступить к работе в тот же день, а иногда в тот же час.</p>
                     </div>
                 </div>
@@ -258,9 +283,9 @@
         <div class="w-full mx-auto lg:shadow-xl">
             <div
                 class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('https://assets.youdo.com/next/_next/static/images/download_hand-13ced686918d5e0b8a92914b8cc87aaf.png')]">
-                <div class="w-full md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-[#00000066]">
+                <div class="w-full sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-[#00000066]">
                     <h4 class="text-3xl md:text-[#000] text-[#ffff]">Персональный помощник в вашем кармане</h4>
-                    <p class="text-md mt-8 md:text-[#000] text-[#ffff]">Скачайте наше приложение и пользуйтесь YouDo,
+                    <p class="text-md mt-8 md:text-[#000] text-[#ffff]">Скачайте наше приложение и пользуйтесь Universal Services,
                         где бы вы ни находились.</p>
                     <a href="#">
                         <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
@@ -272,11 +297,11 @@
                                 src="https://assets.youdo.com/_next/static/media/android.1234ba9391753eeb525d4f71a808329e.svg"
                                 alt=""></button>
                     </a>
-                    <a href="#">
+                    <!-- <a href="#">
                         <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
                                 src="https://assets.youdo.com/_next/static/media/appgallery.67baccf681decda41c84b0364830d2e4.svg"
                                 alt=""></button>
-                    </a>
+                    </a> -->
                 </div>
                 <div class="h-64 md:block hidden">
                     <img
@@ -285,7 +310,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full lg:shadow-xl">
+        <!-- <div class="w-full lg:shadow-xl">
             <div class="container mx-auto md:w-2/3 w-11/12">
                 <div class="w-2/3 mx-auto my-16 text-center">
                     <h1 class="text-4xl">Новые публикации <a href="/news"><span
@@ -356,12 +381,12 @@
                     </h1>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="container mx-auto md:w-2/3 w-11/12">
             <div class="w-full my-16">
-                <h1 class="text-4xl">Что заказывают на «Юду» прямо сейчас</h1>
+                <h1 class="text-4xl">Что заказывают на «Универсал Сервис» прямо сейчас</h1>
             </div>
-            <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-72">
+            <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-48">
                 <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
                     <div class="w-full overflow-y-scroll w-full h-screen">
 
@@ -371,11 +396,11 @@
                                     <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
                                 </div>
                                 <div class="mx-auto w-2/3">
-                                    <a href="#" class="text-lg text-blue-400 hover:text-red-400">
-                                        {{$task->name}}
+                                    <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
+                                        {{$task->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </a>
                                     <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
-                                        {{$task->description}}
+                                        {{$task->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}
                                     </p>
                                 </div>
                             </div>
@@ -391,6 +416,7 @@
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">
+                <a href="/verification">
                     <div
                         class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-executors-d40b155c145cdfa2d0f387a2baef5430.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
@@ -398,19 +424,24 @@
                             <p class="text-4xl text-[#fff]">Как стать исполнителем</p>
                         </div>
                     </div>
+                </a>
+                <a href="/security">
                     <div
-                        class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
+                         class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
                             <i class="fas fa-shield-alt text-[#8ae2ed] text-5xl pt-8"></i>
                             <p class="text-4xl text-[#fff]">Безопасность и гарантии</p>
                         </div>
                     </div>
-                    <div
-                        class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
-                        <div class="w-full h-full bg-[#00000066] text-center">
-                            <p class="text-5xl pt-8 text-[#ffc730]">Надежные исполнители для бизнеса</p>
+                </a>
+                   <a href="/performers">
+                        <div
+                            class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
+                            <div class="w-full h-full bg-[#00000066] text-center">
+                                <p class="text-5xl pt-8 text-[#ffc730]">Надежные исполнители для бизнеса</p>
+                            </div>
                         </div>
-                    </div>
+                   </a>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
                         class="bg-inherit hover:bg-[#ffebad] border py-1 rounded-full px-4 my-4 text-gray-500 text-xs">
                     <i class="fas {{ $category->ico }}"></i>
                     <a href="{{route('categories',['id'=>$category->id])}}">
-                        {{$category->name}}
+                        {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                     </a>
                 </button>
             @endforeach
@@ -18,14 +18,14 @@
         </div>
         <div class="w-1/4">
           @foreach($choosed_category as $choosed)
-            <h4 class="font-bold text-xl">{{$choosed->name}}</h4>
+            <h4 class="font-bold text-xl">{{$choosed->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</h4>
             @endforeach
         </div>
         <div class="grid grid-cols-3 mt-8">
             @foreach($child_categories as $category)
                 <div class="w-full text-left">
-                    <a href="{{url('task/create',['id'=>$category->id])}}"
-                       class="py-4 text-gray-500 hover:text-[#ffa200] hover:underline">{{$category->name}}</a>
+                    <a href="/task/create?category_id={{$category->id}}"
+                       class="py-4 text-gray-500 hover:text-[#ffa200] hover:underline">{{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</a>
                 </div>
             @endforeach
 

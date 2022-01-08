@@ -10,6 +10,7 @@ return [
     ],
     'paycom' => [
         'paycom_merchant'  => env('PAYCOM_MERCHANT',''),
+        'paycom_login'     => env('PAYCOM_LOGIN','Paycom'),
         'paycom_key'       => env('PAYCOM_KEY',''),
         'paycom_key_test'  => env('PAYCOM_KEY_TEST','')
     ]

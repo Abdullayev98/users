@@ -2,6 +2,15 @@
 
 @section("content")
 
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+</style>
+
     <div class="container lg:w-4/5 p-5 w-full my-10 mx-auto">
 
 
@@ -18,14 +27,14 @@
                             <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
                             <form action="{{route('updatephotocash' ,$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
+                                <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button2">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
                                     <label for="file">
                                         <i class="fas fa-camera"></i>
                                         <span>Изменить фото</span>
                                     </label>
                                 </div>
-                                <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
+                                <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button2" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
                                     <label for="sub1">
                                         <i class="fas fa-save"></i>
@@ -77,13 +86,13 @@
                     {{-- "about-me" end --}}
                     {{-- cash --}} <div class="cash block  w-full" id="tab-cash">
                         <div class="head mt-5">
-                            <h2 class="font-bold text-xl">Ваш баланс 0 &#36;</h2>
+                            <h2 class="font-bold text-xl">Ваш баланс 0 UZS</h2>
                             <p class="inline">Пополнить счет на</p>
-                            <input class="inline rounded-xl ml-3 w-20 h-10 ring-1" type='number' />
-                            <span class="ml-1 text-xl">&#36;</span>
-                            <button type="submit"
-                                class="md:inline block md:ml-10 mx-auto mt-5 md:mt-0 h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 md:w-40 w-full">Пополнить
-                                счет</button>
+                                <input class="inline rounded-xl ml-3 ring-1 text-3xl text-center h-18 w-36 pb-1"  onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)' id="myText1" type='number' min="1000" maxlength="7" value="1000"/>
+                                <span class="ml-1 text-xl">UZS</span>
+                                <button onclick="toggleModal()" type="submit" id="button2"
+                                    class="md:inline block md:ml-10 mx-auto mt-5 md:mt-0 h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 md:w-40 w-full">
+                                    Пополнить счет</button>
                         </div>
                         <div class="relative mt-10 p-5 bg-gray-100 w-full block">
                             <h2 class="inline-block font-bold text-xl">История операций</h2>
@@ -106,21 +115,21 @@
                         </div>
                         <div class="FAQ reltive block w-full mt-5">
                             <h2 class="font-bold text-xl">Частые вопросы</h2>
-                            <h4 class="font-bold text-md mt-2">Условия работы с YouDo.</h4>
-                            <p>YouDo списывает с исполнителей фиксированную оплату за возможность оставлять к заданиям
+                            <h4 class="font-bold text-md mt-2">Условия работы с Universal Services.</h4>
+                            <p>Universal Services списывает с исполнителей фиксированную оплату за возможность оставлять к заданиям
                                 отклики с контактными данными. Стоимость одного отклика зависит от категории заданий и
                                 начинается от 20 рублей. Оплата за отклики не возвращается.</p>
                             <h4 class="font-bold text-md mt-2">Какая минимальная сумма для пополнения счета?</h4>
                             <p>400 рублей.</p>
-                            <h4 class="font-bold text-md mt-2">Как сделать возврат денег со своего счета в YouDo?</h4>
+                            <h4 class="font-bold text-md mt-2">Как сделать возврат денег со своего счета в Universal Services?</h4>
                             <p><a href="/home/profile" class="text-blue-500">Оформить запрос на возврат денег</a> -
                                 кликните по этой ссылке и укажите сумму, которую вы хотите вернуть. Как правило, деньги
-                                перечисляются на тот же счет, с которого производилось пополнение баланса в YouDo, в
+                                перечисляются на тот же счет, с которого производилось пополнение баланса в Universal Services, в
                                 течение 5 рабочих дней с учетом комиссии платежной системы.</p>
-                            <h3 class="font-bold text-lg mt-2">Если у вас остались вопросы об условиях работы с YouDo,
+                            <!-- <h3 class="font-bold text-lg mt-2">Если у вас остались вопросы об условиях работы с YouDo,
                                 посмотрите это обучающее видео:</h3>
                             <iframe class="w-full h-auto" src="https://www.youtube.com/embed/Js_5Pal4bOE">
-                            </iframe>
+                            </iframe> -->
 
                         </div>
                     </div>
@@ -134,7 +143,7 @@
             <div class="md:col-span-1 col-span-3 md:mx-2 mx-auto md:mt-0 mt-5 inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto ">
                 <div class="mt-6 ml-4">
                     <h3 class="font-bold">Исполнитель</h3>
-                    <p>на YouDo с 12 сентября 2021 г.</p>
+                    <p>на Universal Services с 12 сентября 2021 г.</p>
                 </div>
                 <div class="contacts relative ">
                     <div class="ml-4 h-20 grid grid-cols-4">
@@ -242,7 +251,20 @@
 
 
     <script>
-
+    function inputCash() {
+        var x = document.getElementById("myText1").value;
+        if(x < 1000){
+            document.getElementById('button2').removeAttribute("onclick");
+            document.getElementById('button2').classList.remove("bg-lime-500");
+            document.getElementById('button2').classList.add("bg-gray-500");
+            document.getElementById('button2').classList.remove("hover:bg-lime-600");
+        }else{
+            document.getElementById('button2').setAttribute("onclick","toggleModal();");
+            document.getElementById('button2').classList.remove("bg-gray-500");
+            document.getElementById('button2').classList.add("bg-lime-500");
+            document.getElementById('button2').classList.add("hover:bg-lime-600");
+        }
+    }
         function fileupdate(){
             var x = document.getElementById("buttons");
                 x.style.display = "block";

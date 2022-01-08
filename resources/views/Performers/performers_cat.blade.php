@@ -13,42 +13,41 @@
 {{-----------------------------------------------------------------------------------}}
 {{--                             Left column                                       --}}
 {{-----------------------------------------------------------------------------------}}
-
-        <div class="flex flex-col basis-1/3 px-8">
-            <div class="flex flex-row shadow-lg rounded-lg mb-8">
-                <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url(images/like.png);">
-                </div>
-                <div class="basis-1/2 text-xs text-gray-700 text-left my-auto">
-                    Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.
-                </div>
-            </div>
-
-            <div>
-                <div class="max-w-xl mx-auto">
-                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
-                                    <div x-data={show:false} class="rounded-sm">
-                                        <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                            <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
-                                                <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                                {{$category->name}}
-                                        </div>
-                                        <div x-show="show" class="border border-b-0 px-8 py-1">
-                                            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
-
-                                                <div>
-                                                    <a href="/perf-ajax/{{ $category2->id }}">{{$category2->name}}</a>
-                                                </div>
-
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                @endforeach
-                </div>
-            </div>
+<div class="lg:col-span-1 col-span-3 px-8">
+    <div class="flex flex-row shadow-lg rounded-lg mb-8">
+        <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
         </div>
+        <div class="basis-1/2 text-xs text-gray-700 text-left my-auto">
+            Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.
+        </div>
+    </div>
+
+    <div>
+        <div class="max-w-md mx-left">
+        @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+                            <div x-data={show:false} class="rounded-sm">
+                                <div class="border border-b-0 bg-gray-100" id="headingOne">
+                                    <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                                        <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                        {{$category->name}}
+                                </div>
+                                <div x-show="show" class="border border-b-0 px-8 py-1">
+                                    @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+
+                                        <div>
+                                            <a href="/perf-ajax/{{ $category2->id }}">{{$category2->name}}</a>
+                                        </div>
+
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+        </div>
+    </div>
+</div>
 
 {{-----------------------------------------------------------------------------------}}
 {{--                             Right column                                      --}}
@@ -58,29 +57,17 @@
             <div class="bg-gray-100 flex flex-row h-40 mb-10" style="width: 700px;">
                 <div class="flex flex-col relative">
                     <div class="flex flex-row font-bold text-2xl m-4">
-                        <p>Курьерские услуги: рейтинг исполнителей</p>
+                      @foreach($cur_cat as $cur)
+                        <p>{{$cur->name}}</p>
+                        @endforeach
                     </div>
                     <div class="flex flex-row m-4 absolute bottom-0 left-0">
-                        <div class="form-check flex flex-row mr-6">
-                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-yellow-600 checked:border-yellow-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="verified">
-                            <label class="form-check-label inline-block text-gray-800" for="verified">
-                                Только проверенные
-                            </label>
-                        </div>
                         <div class="form-check flex flex- mr-6">
-                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="online">
+                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" onclick="check()" id="online">
                             <label class="form-check-label inline-block text-gray-800" for="online">
                                 Сейчас на сайте
                             </label>
                         </div>
-                    </div>
-                </div>
-                <div class="flex flex-col m-4 relative">
-                    <div>
-                        <p>Город: <a href="#"> Москва </a> </p>
-                    </div>
-                    <div class="absolute bottom-0 right-0">
-                        <p>Указать метро</p>
                     </div>
                 </div>
             </div>
@@ -91,7 +78,7 @@
  //dd($res_c_arr);
 @endphp
 @if($res_c_arr !== false)
-            <div class="flex flex-row">
+            <div class="flex flex-row" id="{{$user->id}}">
                 <div class="m-10">
                     <img class="rounded-lg w-40 h-40" src="{{asset($user->avatar)}}" alt="user">
                     <div class="flex flex-row">
@@ -116,7 +103,7 @@
                     </div>
                     <div>
                       @if($user->active_status == 1)
-                        <p class="text-sm text-gray-500 my-3">Онлайн</p>
+                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-[2px]" > </i>Онлайн</p>
                         @else
                         <p class="text-sm text-gray-500 my-3">Офлайн</p>
                         @endif
@@ -173,6 +160,33 @@
           document.getElementById(modalID12 + "-backdrop").classList.toggle("hidden");
           document.getElementById(modalID12).classList.toggle("flex");
           document.getElementById(modalID12 + "-backdrop").classList.toggle("flex");
+        }
+      </script>
+      <script>
+      function check() {
+        // Get the checkbox
+        var checkBox = document.getElementById("online");
+        // Get the output text
+        @foreach($users as $user)
+        @php
+         $cat_arr = explode(",",$user->category_id);
+         $res_c_arr = array_search($cf_id,$cat_arr);
+         //dd($res_c_arr);
+        @endphp
+        @if($res_c_arr !== false)
+        var {{$user->name}} = document.getElementById("{{$user->id}}");
+
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+          if ({{$user->active_status}} == 0) {
+            {{$user->name}}.classList.add("hidden");
+          }
+        } else {
+            {{$user->name}}.classList.remove("hidden");
+        }
+        @endif
+        @endforeach
         }
       </script>
     {{-- Modal end --}}

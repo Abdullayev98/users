@@ -5,25 +5,25 @@
     <div class="terms">
         <h2 class="ruleHead font-sans text-[56px] pb-[28px] ">Правила сервиса</h2>
         <ul class="list ">
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «19» октября 2021 г.</a></li>
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «29» июля 2021 г.</a>  </li>
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «20» февраля 2021 г.</a></li>
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «17» декабря 2020 г.</a></li>
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «10» октября 2020 г.</a></li>
-            <li class="mb-4"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «18» августа 2020 г.</a></li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «19» октября 2021 г.</a></li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «29» июля 2021 г.</a>  </li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «20» февраля 2021 г.</a></li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «17» декабря 2020 г.</a></li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «10» октября 2020 г.</a></li>
+            <li class="mb-4"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «18» августа 2020 г.</a></li>
         </ul>
         <ul class="list hidden" id="div">
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «19» октября 2021 г.</a></li>
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «29» июля 2021 г.</a>  </li>
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «20» февраля 2021 г.</a></li>
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «17» декабря 2020 г.</a></li>
-            <li class="mb-2"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «10» октября 2020 г.</a></li>
-            <li class="mb-4"><a href="" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «18» августа 2020 г.</a></li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «19» октября 2021 г.</a></li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «29» июля 2021 г.</a>  </li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «20» февраля 2021 г.</a></li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «17» декабря 2020 г.</a></li>
+            <li class="mb-2"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «10» октября 2020 г.</a></li>
+            <li class="mb-4"><a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDFReference13.pdf" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none ">Редакция от «18» августа 2020 г.</a></li>
         </ul>
     </div>
     <button id="ShowButton" class = "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="myFunction()">Прошлые редакции</button>
     <div class="youDo my-10">
-        <a href="/terms/doc" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none">Правила сервиса ЮДУ БИЗНЕС</a>
+        <a href="/terms/doc" class="border-b-2 border-black hover:text-[#ffa200] hover:border-none">Правила сервиса Универсал сервис БИЗНЕС</a>
     </div>
 
     <div class="Rekvezit">

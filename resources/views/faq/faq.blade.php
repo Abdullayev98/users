@@ -17,14 +17,14 @@
     <section class="bg-[#494A4C] py-8">
         <div class="lg:w-8/12 mx-auto w-10/12">
                 <div class="sm:block lg:flex flex-column justify-between ">
-                    <a href="#"> <img class="w-32 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
+                    <a href="/"> <img class="w-32 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
 
                     <a href="/" class="text-white hover:text-gray-400">
                         <i class="fa fa-link"></i>
-                            Перейти на сайт YouDo
+                            Перейти на сайт Universal Services
                     </a>
                 </div>
-                <h1 class="text-white text-3xl font-light  my-6">Ответы на частые вопросы и рекомендации от YouDo</h1>
+                <h1 class="text-white text-3xl font-light  my-6">Ответы на частые вопросы и рекомендации от Universal Services</h1>
                 {{-- input --}}
             <form class="">
                 <div class="flex relative mx-auto w-full">
@@ -43,8 +43,9 @@
         <div class="w-10/12 lg:w-8/12 mx-auto md:flex items-center bg-white py-5 px-8 rounded-md shadow-lg shadow-indigo-300/40">
             <img src="{{asset('images/faq-chat-png.png')}}" alt="" class="h-20">
             <div class="px-6 py-3">
-                <a href="/questions/{{$faq->id}}"><h4 class="text-[#515254] text-[18px] mb-1">{{$faq->title}}</h4></a>
-                <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">{{$faq->description}}</p>
+
+                <a href="/questions/{{$faq->id}}"><h4 class="text-[#515254] text-[18px] mb-1">{{$faq->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4></a>
+                <p class="leading-6 text-[#565867] mb-3 pr-3 text-[16px]">{{$faq->getTranslatedAttribute('description', Session::get('lang'), 'fallbackLocale')}}</p>
                 <!-- <div class="flex flex-row items-center">
                     <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
 
@@ -58,8 +59,8 @@
     </section>
 @endforeach
 
-    <footer class="bg-white w-full flex flex-col p-8 justify-center items-center">
-        <h2>YouDo.com</h2>
+    <footer class="bg-white w-full flex flex-col p-8 justify-center items-center mt-8">
+        <h2>users.uz</h2>
         <p>Мы используем Intercom</p>
     </footer>
 

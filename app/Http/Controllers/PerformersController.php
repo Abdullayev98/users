@@ -61,9 +61,11 @@ public function perf_ajax($cf_id){
     // return $users;
 
     $categories = DB::table('categories')->get();
+    $cur_cat = DB::table('categories')->where('id',$cf_id)->get();
     $child_categories= DB::table('categories')->get();
     $users= User::where('role_id',2)->paginate(50);
-    return view('Performers/performers_cat',compact('child_categories','categories','users','cf_id'));
+
+    return view('Performers/performers_cat',compact('child_categories','categories','users','cf_id','cur_cat'));
 
 }
 

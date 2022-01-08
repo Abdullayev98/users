@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="md:container mx-auto pt-5 mt-[30px]">
-        <div class="w-full px-12 md:flex md:grid-flow-row md:justify-center md:mx-auto md:max-w-[1300px] pb-[130px]">
+        <div class="w-full px-12 md:flex md:grid-flow-row md:justify-center md:mx-auto md:max-w-[1300px] mb-4">
             <div class="lg:w-2/12 h-auto mt-5">
                 <ul>
                     <li>
@@ -36,7 +36,7 @@
                 <a href class="bg-[url('https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg')] bg-no-repeat"></a>
                 <a href="/verification" class="w-[200px] px-[16px] pb-[15px] block rounded-[8px] shadow-xl hover:shadow-md text-[12px] leading-[16px] tracking-[.2px] text-[#444] mt-5 text-center mb-8">
                     <img src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" class="mx-auto pb-3" alt="">
-                    Станьте исполнителем Юду. И начните зарабатывать.
+                    Станьте исполнителем Универсал Сервис. И начните зарабатывать.
                 </a>
             </div>
             <div class="md:w-9/12 md:mt-10 md:pl-12">
@@ -45,7 +45,7 @@
                         6 декабря 2021 г.
                     </div>
                     <h1 class="text-[1.4rem] md:text-[1.8rem]">
-                        <span class="text-red-500">ТАСС</span> / YouDo и "Яндекс.Про" составили портрет самозанятого
+                        <span class="text-red-500">ТАСС</span> / Universal Services и "Яндекс.Про" составили портрет самозанятого
                     </h1>
                     <p class="mt-4">
                         Совместно с Яндекс.Про провели

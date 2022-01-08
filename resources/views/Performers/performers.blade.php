@@ -8,8 +8,8 @@
   appearance: none;
 }
 </style>
-<div class="container mx-auto mt-16">
-    <div class="grid grid-cols-3  grid-flow-row">
+<div class="xl:w-10/12 mx-auto mt-16">
+    <div class="grid grid-cols-3 ">
 
             {{-----------------------------------------------------------------------------------}}
             {{--                             Left column                                       --}}
@@ -17,7 +17,7 @@
 
         <div class="lg:col-span-1 col-span-3 px-8">
             <div class="flex flex-row shadow-lg rounded-lg mb-8">
-                <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url(images/like.png);">
+                <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
                 </div>
                 <div class="basis-1/2 text-xs text-gray-700 text-left my-auto">
                     Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.
@@ -51,79 +51,63 @@
             </div>
         </div>
 
-            {{-----------------------------------------------------------------------------------}}
-            {{--                             Right column                                      --}}
-            {{-----------------------------------------------------------------------------------}}
-
         <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16">
-            <div class="bg-gray-100 flex flex-row h-40 mb-10" style="width: 700px;">
-                <div class="flex flex-col relative">
-                    <div class="flex flex-row font-bold text-2xl m-4">
-                        <p>Курьерские услуги: рейтинг исполнителей</p>
-                    </div>
-                    <div class="flex flex-row m-4 absolute bottom-0 left-0">
-                        <div class="form-check flex flex-row mr-6">
-                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-yellow-600 checked:border-yellow-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="verified">
-                            <label class="form-check-label inline-block text-gray-800" for="verified">
-                                Только проверенные
-                            </label>
+                <div class="bg-gray-100 h-40 rounded-xl w-4/5 sm:mx-0 mx-auto">
+                        <div class="font-bold text-2xl mx-8 py-4">
+                            <p>Все исполнители</p>
                         </div>
-                        <div class="form-check flex flex- mr-6">
-                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="online">
+                        <div class="form-check flex flex-row mx-8 mt-10">
+                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" 
+                            type="checkbox" value="1" onchange="check()" id="online">
                             <label class="form-check-label inline-block text-gray-800" for="online">
                                 Сейчас на сайте
                             </label>
                         </div>
-                    </div>
                 </div>
-                <div class="flex flex-col m-4 relative">
-                    <div>
-                        <p>Город: <a href="#"> Москва </a> </p>
-                    </div>
-                    <div class="absolute bottom-0 right-0">
-                        <p>Указать метро</p>
-                    </div>
-                </div>
-            </div>
             @foreach($users as $user)
-
-            <div class="flex flex-row">
-                <div class="m-10">
-                    <img class="rounded-lg w-40 h-40" src="{{asset($user->avatar)}}" alt="user">
-                    <div class="flex flex-row">
+            <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
+                <div class="w-34 float-left">
+                    <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="user">
+                    <div class="flex flex-row text-[12px]">
                         <p>Отзывы:</p>
-                        <i class="far fa-thumbs-up m-1 text-gray-400"></i>    5128
-                        <i class="far fa-thumbs-down m-1 text-gray-400"></i>  21
+                        <i class="far fa-thumbs-up m-1 text-gray-400"></i> 5128
+                        <i class="far fa-thumbs-down m-1 text-gray-400"></i> 21
                     </div>
-                    <div class="flex flex-row">
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <i class="fas fa-star text-yellow-500"></i>
+                    <div class="flex flex-row text-[12px]">
+                        <i class="fas fa-star text-[#ffad00]"></i>
+                        <i class="fas fa-star text-[#ffad00]"></i>
+                        <i class="fas fa-star text-[#ffad00]"></i>
+                        <i class="fas fa-star text-[#ffad00]"></i>
+                        <i class="fas fa-star text-[#ffad00]"></i>
                     </div>
                 </div>
-                <div class="my-10">
-                    <div class="flex flex-row">
-                    <a href="/performers/{{$user->id}}"> <p class="text-3xl underline text-blue-500 hover:text-red-500">{{$user->name}}</p></a>
+                <div class="w-5/12 md:float-none md:float-none">
+                    <div>
+                        <a href="/performers/{{$user->id}}">
+                            <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 "> {{$user->name}} </p>
+                        </a>
                         <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
-                        <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
-                        <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
+                                <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
+                                <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
                     </div>
                     <div>
-                    @if($user->active_status == 1)
-                        <p class="text-sm text-gray-500 my-3">Онлайн</p>
+                           @if($user->active_status == 1)
+                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 mr-2 mt-1"> </i> Онлайн</p>
+
                         @else
                         <p class="text-sm text-gray-500 my-3">Офлайн</p>
                         @endif
+
                     </div>
                     <div>
-                        <p class="text-base" style="width: 500px;">
-                        {{$user->description}}
+                        <p class="text-base md:text-[14px] text-[0.9rem] leading-0 md:w-[600px] ">
+                               {{$user->description}}
                         </p>
                     </div>
-                    <div>
-                    <a href="#" onclick="toggleModal12('modal-id12')">  <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 text-white mt-3">Предложить задание</button></a>
+                    <div >
+                        <a href="#" onclick="toggleModal12('modal-id12')" class="hidden lg:block">
+                            <button class="rounded-lg py-2 px-3 font-bold bg-[#ffad00] hover:bg-[#ff9500] transition duration-300 text-white mt-3">Предложить задание</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -133,7 +117,6 @@
             {{ $users->links() }}
 
         </div>
-    </div>
 </div>
 
      {{-- Modal start --}}
@@ -164,12 +147,33 @@
         </div>
       </div>
       <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
+      </div>
       <script type="text/javascript">
         function toggleModal12(modalID12){
           document.getElementById(modalID12).classList.toggle("hidden");
           document.getElementById(modalID12 + "-backdrop").classList.toggle("hidden");
           document.getElementById(modalID12).classList.toggle("flex");
           document.getElementById(modalID12 + "-backdrop").classList.toggle("flex");
+        }
+      </script>
+      <script>
+      function check() {
+        // Get the checkbox
+        var checkBox = document.getElementById("online");
+        // Get the output text
+        @foreach($users as $user)
+        var {{ str_replace(' ', '', $user->name) }} = document.getElementById("{{$user->id}}");
+
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+          if ({{$user->active_status}} == 0) {
+            {{ str_replace(' ', '', $user->name) }}.classList.add("hidden");
+          }
+        } else {
+            {{ str_replace(' ', '', $user->name) }}.classList.remove("hidden");
+        }
+        @endforeach
         }
       </script>
     {{-- Modal end --}}

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use TCG\Voyager\Models\Category;
 
@@ -20,11 +21,16 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function home(){
-        $tasks  =  Task::orderBy('id', 'desc')->take(15)->get();
+    public function home(Request $request){
+        $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
         $howitworks = How_work_it::all();
-        return view('home',compact('tasks','howitworks'));
+        if (!session()->has('lang')) {
+            Session::put('lang', 'ru');
+        }
+        return view('home',compact('tasks','howitworks', 'categories'));
     }
+
     public function home_profile()
     {
         $user = User::find(Auth::user()->id);
@@ -86,10 +92,14 @@ class Controller extends BaseController
         return view('/task/mytasks',compact('tasks'));
     }
     public function category($id){
-        $categories = DB::table('categories')->where('parent_id', null)->get();
-        $choosed_category = DB::table('categories')->where('id', $id)->get();
-        $child_categories= DB::table('categories')->where('parent_id',$id)->get();
+        $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        $choosed_category = Category::withTranslations(['ru', 'uz'])->where('id', $id)->get();
+        $child_categories= Category::withTranslations(['ru', 'uz'])->where('parent_id',$id)->get();
         return view('task/choosetasks',compact('child_categories','categories','choosed_category'));
+    }
+    public function lang($lang){
+        Session::put('lang', $lang);
+        return redirect()->back();
     }
 
 }

@@ -3,19 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\Paycom\PaycomApplication;
+use App\Services\Payme\Application;
 
 class PaycomTransactionController extends Controller
 {
-    public function index()
+    public function paycom()
     {
-        $application = new PaycomApplication([
-            'merchant_id' => config('paycom.merchant'),
-            'login'       => config('paycom.login'),
-            'key'         => config('paycom.key'),
-        ]);
-
-        //dd($application);
-        $application->run();
+        $application = new Application();
+        return $application->run();
     }
 }

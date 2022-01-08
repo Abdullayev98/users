@@ -35,15 +35,19 @@
           <div id="formulario" class="flex flex-col gap-y-4">
 
             <div class="flex items-center rounded-lg border py-1">
-                  <select name="start[]" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none" aria-label="Default select example">
-                      <option selected value="Начать работу">Начать работу</option>
-                      <option value="Закончить работу">Закончить работу</option>
-                      <option value="Указать период">Указать период</option>
+                  <select name="start[]" id="periud" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none" aria-label="Default select example">
+                      <option selected value="Начать работу" id="1">Начать работу</option>
+                      <option value="Закончить работу" id="2">Закончить работу</option>
+                      <option value="Указать период" id="3">Указать период</option>
                   </select>
             </div>
             <div class="flex items-center rounded-lg border py-1">
-              <input type="date" name="date" value="{{session('deyt')}}" class="mx-auto">
-              <input type="time" name="time" value="{{session('taym')}}">
+              <input type="date" name="date" value="{{session('deyt')}}" class="mx-auto" required>
+              <input type="time" name="time" value="{{session('taym')}}" required>
+            </div>            
+            <div class="flex items-center rounded-lg border py-1" id="datetime" style="display: none;">
+              <input type="date" name="date2" value="{{session('deyt2')}}" class="mx-auto" >
+              <input type="time" name="time2" value="{{session('taym2')}}" >
             </div>
           </div>
           <div class="mt-4">
@@ -74,5 +78,15 @@
 @endsection
 
 @section("javasript")
+<script>
+  $("#periud").change(function(){
+    if($(this).val() == 'Указать период'){
+      $("#datetime").show();
+    }else{
+      $("#datetime").hide();
+    }
+
+});
+</script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
 @endsection

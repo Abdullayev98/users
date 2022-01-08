@@ -15,17 +15,23 @@ class SearchTaskController extends VoyagerBaseController
     public function task_search(){
 
 
-        $tasks = Task::paginate(20);
+        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->paginate(20);
+        $categories = Category::withTranslations(['ru', 'uz'])->get();
 
-//        return view("task/search", compact('tasks', paginate(50)));
-//        dd($tasks->all());
-//          return view('task.search', ['tasks'=>$tasks->paginate(50)]);
-        return view('task.search', compact('tasks'));
+        return view('task.search', compact('tasks','categories'));
+    }
+
+    public function ajax_tasks(Request $request){
+        if (isset($request->orderBy)) {
+            if ($request->orderBy == 'all') {
+                $tasks = new Task();
+            }
+        }
+        return $tasks->all();
     }
 
     public function my_tasks(){
         $tasks = Task::where('user_id', auth()->id());
-//        dd($tasks);
         return view('/task/mytasks',compact('tasks'));
     }
     public function search(Request $request){
@@ -42,21 +48,20 @@ class SearchTaskController extends VoyagerBaseController
     }else {
       $tasks = Task::where('name','LIKE',"%$s%")->orWhere('address','LIKE',"%$a%")->orWhere('budget','LIKE',"%$p%")->orderBy('name')->paginate(10);
     }
-      return view('task.search', compact('tasks','s','a','p'));
+    $categories = Category::get()->all();
+      return view('task.search', compact('tasks','s','a','p','categories'));
 
     }
     public function task($id){
-        $tasks = Task::where('id',$id)->get();
-        foreach ($tasks as $task) {
-          $cat_id = $task->category_id;
-          $user_id = $task->category_id;
-        }
+        $tasks = Task::where('id',$id)->first();
+          $cat_id = $tasks->category_id;
+          $user_id = $tasks->user_id;
         $same_tasks = Task::where('category_id',$cat_id)->get();
 
         $users = User::all();
         $current_user = User::find($user_id);
         $categories = Category::where('id',$cat_id)->get();
-
+        // dd($current_user);
         return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
     }
 
