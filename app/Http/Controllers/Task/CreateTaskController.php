@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Task;
 
 use App\Models\Task;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Models\Category;
+use TCG\Voyager\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Events\MyEvent;
 
@@ -201,7 +203,7 @@ class CreateTaskController extends VoyagerBaseController
         'avatar' => 'required|image'
       ]);
       $image = $request->avatar;
-      
+
       $imagename = $image->getClientOriginalName();
       $request->avatar->move('storage/tasks/avatar', $imagename);
       $images_name = $request->avatar;
@@ -284,13 +286,33 @@ class CreateTaskController extends VoyagerBaseController
         'width' => $width,
         'height' => $height,
     ]);
-      // dd($id);
-//    $id_task = $id->id;
-//    $id_cat = $id->category_id;
-//    $title_task = $id->name;
-//
-//        event(new MyEvent($id_task,$id_cat,$title_task));
-//
+
+    foreach(User::all() as $users){
+
+
+        $user_cat_ids = explode(",",$users->category_id);
+        $check_for_true = array_search($category,$user_cat_ids);
+
+        if($check_for_true !== false){
+        Notification::create([
+
+            'user_id'=>$users->id,
+            'description'=> 1,
+            'task_id'=>$id->id,
+            "cat_id"=>$category,
+            "name_task"=>$id->name
+
+        ]);
+    }
+
+    }
+
+       $id_task = $id->id;
+       $id_cat = $id->category_id;
+       $title_task = $id->name;
+
+           event(new MyEvent($id_task,$id_cat,$title_task));
+
      return redirect('/')->with('success','Задание успешно добавлено!');
     }
 
