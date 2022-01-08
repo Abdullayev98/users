@@ -73,7 +73,7 @@ public function perf_ajax($cf_id){
 
 public function del_notif($id,$task_id){
 
-    Notification::remove($id);
+    Notification::where('id',$id)->delete();
 
     $tasks = Task::where('id',$task_id)->first();
     $cat_id = $tasks->category_id;
