@@ -100,8 +100,9 @@
                     <div class="">
 {{--                        <div class="big-map" hidden="hidden">--}}
                             <div class="static">
-                                <div id="map3" class="big-map h-80 my-5 rounded-lg w-3/3 static" hidden>
-                                    <div class="absolute z-50"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer left-70" title="Kartani kattalashtirish" onclick="map_pos('big')"/></div>
+                                <div id="map3" class="big-map h-80 my-5 rounded-lg w-3/3 static align-items-center" hidden>
+{{--                                    <div class="absolute z-50 w-full"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('big')"/></div>--}}
+                                    <img src="{{asset('images/up-down.png')}}" class="absolute z-50 hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('big')"/>
                                 </div>
                             </div>
 {{--                        </div>--}}
@@ -133,7 +134,12 @@
 {{--                    <div class="small-map">--}}
                         <div class="static">
                             <div id="map2" class="small-map h-60 my-5 rounded-lg w-full static">
-                            <div class="absolute z-50 right-60"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
+                                <div class="grid grid-cols-3 gap-3 content-center w-full">
+                                    <div></div><div></div>
+                                    <div class="col-span-3 text-right w-full h-full">
+                                        <div class="absolute z-50 right-60"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 {{--                    </div>--}}
@@ -222,17 +228,26 @@
         function init() {
             var myMap,
                 bigMap = false;
-            var suggestView1 = new ymaps.SuggestView('suggest');
+            var suggestView2 = new ymaps.SuggestView('suggest');
             var myMap = new ymaps.Map('map2', {
                 center: [55.74, 37.58],
                 zoom: 15,
                 controls: []
+                // controls: ['geolocationControl']
             });
-            var searchControl = new ymaps.control.SearchControl({  });
-            myMap.controls.add(searchControl);
-            $("#mpshow").click(function(){
-                searchControl.search(document.getElementById('suggest').value);
-            });
+
+            // $("#mpshow").click(function(){
+            //     var suggestView = myMap.SuggestView('suggest');
+            //     var searchControl = myMap.controls.SearchControl({suggestView});
+            //     myMap.controls.add(searchControl);
+            //     searchControl.search(document.getElementById('suggest').value);
+            // });
+
+                var searchControl = new ymaps.control.SearchControl({});
+                myMap.controls.add(searchControl);
+                $("#mpshow").click(function(){
+                    searchControl.search(document.getElementById('suggest').value);
+                });
         }
     </script>
 
@@ -242,13 +257,13 @@
             function init() {
                 var myMap,
                     bigMap = false;
-                var suggestView1 = new ymaps.SuggestView('suggest');
+                var suggestView3 = new ymaps.SuggestView('suggest');
                 var myMap = new ymaps.Map('map3', {
                     center: [55.74, 37.58],
                     zoom: 15,
                     controls: []
                 });
-                var searchControl = new ymaps.control.SearchControl({  });
+                var searchControl = new ymaps.control.SearchControl({});
                 myMap.controls.add(searchControl);
                 $("#mpshow").click(function(){
                     searchControl.search(document.getElementById('suggest').value);
