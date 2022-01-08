@@ -21,10 +21,10 @@
 
                     <a href="/" class="text-white hover:text-gray-400">
                         <i class="fa fa-link"></i>
-                            Перейти на сайт Universal Services
+                            @lang('lang.faq_text')
                     </a>
                 </div>
-                <h1 class="text-white text-3xl font-light  my-6">Ответы на частые вопросы и рекомендации от Universal Services</h1>
+                <h1 class="text-white text-3xl font-light  my-6">@lang('lang.faq_text1')</h1>
                 {{-- input --}}
             <form class="">
                 <div class="flex relative mx-auto w-full">

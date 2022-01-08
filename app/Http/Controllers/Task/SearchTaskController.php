@@ -12,11 +12,13 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 class SearchTaskController extends VoyagerBaseController
 {
 
-    public function task_search(){
+    public function task_search(Request $request){
 
 
         $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->paginate(20);
         $categories = Category::withTranslations(['ru', 'uz'])->get();
+        $phone = $request->input('response_desc');
+        dd($phone);
 
         return view('task.search', compact('tasks','categories'));
     }
@@ -61,8 +63,15 @@ class SearchTaskController extends VoyagerBaseController
         $users = User::all();
         $current_user = User::find($user_id);
         $categories = Category::where('id',$cat_id)->get();
+
         // dd($current_user);
         return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
     }
+
+    public function task_response(Request $request){
+      $phone = $request->input('response_desc');
+      dd($phone);
+      return view('task.search');
+  }
 
 }
