@@ -101,8 +101,12 @@
 {{--                        <div class="big-map" hidden="hidden">--}}
                             <div class="static">
                                 <div id="map3" class="big-map h-80 my-5 rounded-lg w-3/3 static align-items-center" hidden>
-{{--                                    <div class="absolute z-50 w-full"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('big')"/></div>--}}
-                                    <img src="{{asset('images/up-down.png')}}" class="absolute z-50 hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('big')"/>
+                                    <div class="grid grid-cols-10 gap-10 content-center w-full">
+                                        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                                        <div class="text-right w-full h-full">
+                                            <div class="absolute z-50"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('big')"/></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 {{--                        </div>--}}
@@ -134,10 +138,10 @@
 {{--                    <div class="small-map">--}}
                         <div class="static">
                             <div id="map2" class="small-map h-60 my-5 rounded-lg w-full static">
-                                <div class="grid grid-cols-3 gap-3 content-center w-full">
-                                    <div></div><div></div>
-                                    <div class="col-span-3 text-right w-full h-full">
-                                        <div class="absolute z-50 right-60"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
+                                <div class="grid grid-cols-6 gap-6 content-center w-full">
+                                    <div></div><div></div><div></div><div></div><div></div>
+                                    <div class="text-right w-full h-full">
+                                        <div class="absolute z-50 mt-2 ml-3"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
                                     </div>
                                 </div>
                             </div>
@@ -210,13 +214,13 @@
         ymaps.ready(init);
             function init() {
                 var suggestView1 = new ymaps.SuggestView('suggest');
-                var myMap = new ymaps.Map('map1', {
+                var myMap1 = new ymaps.Map('map1', {
                     center: [55.74, 37.58],
                     zoom: 15,
                     controls: []
                 });
                 var searchControl = new ymaps.control.SearchControl({  });
-                myMap.controls.add(searchControl);
+                myMap1.controls.add(searchControl);
                 $("#mpshow").click(function(){
                 searchControl.search(document.getElementById('suggest').value);
             });
@@ -226,27 +230,18 @@
     <script type="text/javascript">
         ymaps.ready(init);
         function init() {
-            var myMap,
-                bigMap = false;
             var suggestView2 = new ymaps.SuggestView('suggest');
-            var myMap = new ymaps.Map('map2', {
+            var myMap2 = new ymaps.Map('map2', {
                 center: [55.74, 37.58],
                 zoom: 15,
                 controls: []
                 // controls: ['geolocationControl']
             });
 
-            // $("#mpshow").click(function(){
-            //     var suggestView = myMap.SuggestView('suggest');
-            //     var searchControl = myMap.controls.SearchControl({suggestView});
-            //     myMap.controls.add(searchControl);
-            //     searchControl.search(document.getElementById('suggest').value);
-            // });
-
                 var searchControl = new ymaps.control.SearchControl({});
-                myMap.controls.add(searchControl);
+                myMap2.controls.add(searchControl);
                 $("#mpshow").click(function(){
-                    searchControl.search(document.getElementById('suggest').value);
+                searchControl.search(document.getElementById('suggest').value)
                 });
         }
     </script>
@@ -255,16 +250,14 @@
 
             ymaps.ready(init);
             function init() {
-                var myMap,
-                    bigMap = false;
                 var suggestView3 = new ymaps.SuggestView('suggest');
-                var myMap = new ymaps.Map('map3', {
+                var myMap3 = new ymaps.Map('map3', {
                     center: [55.74, 37.58],
                     zoom: 15,
                     controls: []
                 });
                 var searchControl = new ymaps.control.SearchControl({});
-                myMap.controls.add(searchControl);
+                myMap3.controls.add(searchControl);
                 $("#mpshow").click(function(){
                     searchControl.search(document.getElementById('suggest').value);
                 });
@@ -749,7 +742,6 @@
         }
 
         function map_pos(bs){
-            console.log(bs)
             if (bs == 'big'){
                 $('.big-map').attr("id","")
                 $('.big-map').attr("hidden","hidden")
