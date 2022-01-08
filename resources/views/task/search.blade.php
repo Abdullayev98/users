@@ -39,14 +39,16 @@
                                             <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1" placeholder="UZS" id="price">
                                         </div>
                                     </div>
+
                                 </div>
                             <!-- </form> -->
                         </div>
                     </div>
 
                     <div class="col-span-2 lg:col-span-1 lg:hidden block mx-4 lg:mt-0 mt-8 mb-4">
-                        <div id="map1" class="h-60 my-5 rounded-lg w-full">
-                            <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>
+                        <div id="map1" class="h-60 my-5 rounded-lg w-full static">
+{{--                            <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>--}}
+{{--                            <div class="absolute bottom-0 left-0"><p> Map Text </p></div>--}}
                         </div>
 {{--                        <form id="form">--}}
                             <div class="w-full h-full">
@@ -96,6 +98,14 @@
                     </div>
 
                     <div class="">
+{{--                        <div class="big-map" hidden="hidden">--}}
+                            <div class="static">
+                                <div id="map3" class="big-map h-80 my-5 rounded-lg w-3/3 static align-items-center" hidden>
+{{--                                    <div class="absolute z-50 w-full"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('big')"/></div>--}}
+                                    <img src="{{asset('images/up-down.png')}}" class="absolute z-50 hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('big')"/>
+                                </div>
+                            </div>
+{{--                        </div>--}}
                         <div id="scrollbar" class="w-full h-full blog1">
                             <div class="w-full overflow-y-scroll w-full">
                                 <div class="show_tasks">
@@ -121,9 +131,18 @@
                 </div>
 
                 <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">
-                    <div id="map2" class="h-60 my-5 rounded-lg w-full">
-                       <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>
-                    </div>
+{{--                    <div class="small-map">--}}
+                        <div class="static">
+                            <div id="map2" class="small-map h-60 my-5 rounded-lg w-full static">
+                                <div class="grid grid-cols-3 gap-3 content-center w-full">
+                                    <div></div><div></div>
+                                    <div class="col-span-3 text-right w-full h-full">
+                                        <div class="absolute z-50 right-60"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+{{--                    </div>--}}
                     <form id="form">
                         <div class="w-full h-full">
 
@@ -204,24 +223,53 @@
         }
     </script>
 
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init() {
+            var myMap,
+                bigMap = false;
+            var suggestView2 = new ymaps.SuggestView('suggest');
+            var myMap = new ymaps.Map('map2', {
+                center: [55.74, 37.58],
+                zoom: 15,
+                controls: []
+                // controls: ['geolocationControl']
+            });
 
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-        <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU" type="text/javascript"></script>
-        <script type="text/javascript">
+            // $("#mpshow").click(function(){
+            //     var suggestView = myMap.SuggestView('suggest');
+            //     var searchControl = myMap.controls.SearchControl({suggestView});
+            //     myMap.controls.add(searchControl);
+            //     searchControl.search(document.getElementById('suggest').value);
+            // });
+
+                var searchControl = new ymaps.control.SearchControl({});
+                myMap.controls.add(searchControl);
+                $("#mpshow").click(function(){
+                    searchControl.search(document.getElementById('suggest').value);
+                });
+        }
+    </script>
+
+    <script type="text/javascript">
+
             ymaps.ready(init);
-                function init() {
-                    var suggestView1 = new ymaps.SuggestView('suggest');
-                    var myMap = new ymaps.Map('map2', {
-                        center: [55.74, 37.58],
-                        zoom: 15,
-                        controls: []
-                    });
-                    var searchControl = new ymaps.control.SearchControl({  });
-                    myMap.controls.add(searchControl);
-                    $("#mpshow").click(function(){
+            function init() {
+                var myMap,
+                    bigMap = false;
+                var suggestView3 = new ymaps.SuggestView('suggest');
+                var myMap = new ymaps.Map('map3', {
+                    center: [55.74, 37.58],
+                    zoom: 15,
+                    controls: []
+                });
+                var searchControl = new ymaps.control.SearchControl({});
+                myMap.controls.add(searchControl);
+                $("#mpshow").click(function(){
                     searchControl.search(document.getElementById('suggest').value);
                 });
             }
+
         </script>
 
     <script>
@@ -698,6 +746,21 @@
                 }
             });
             return i;
+        }
+
+        function map_pos(bs){
+            console.log(bs)
+            if (bs == 'big'){
+                $('.big-map').attr("id","")
+                $('.big-map').attr("hidden","hidden")
+                $('.small-map').attr("id","map2")
+                $('.small-map').removeAttr("hidden")
+            }else{
+                $('.small-map').attr("id","")
+                $('.small-map').attr("hidden","hidden")
+                $('.big-map').attr("id","map2")
+                $('.big-map').removeAttr("hidden")
+            }
         }
 
 
