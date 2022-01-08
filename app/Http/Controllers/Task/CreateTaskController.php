@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Models\Category;
+use TCG\Voyager\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Events\MyEvent;
 
@@ -263,14 +264,25 @@ class CreateTaskController extends VoyagerBaseController
 
     ]);
 
+foreach(User::all() as $users){
+
+
+    $user_cat_ids = explode(",",$users->category_id);
+    $check_for_true = array_search($category,$user_cat_ids);
+
+    if($check_for_true !== false){
     Notification::create([
 
-        'user_id'=>$user_id,
+        'user_id'=>$users->id,
         'description'=> 1,
         'task_id'=>$id->id,
-        "cat_id"=>$category
+        "cat_id"=>$category,
+        "name_task"=>$id->name
 
     ]);
+}
+
+}
 
    $id_task = $id->id;
    $id_cat = $id->category_id;
