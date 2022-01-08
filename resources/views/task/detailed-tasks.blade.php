@@ -97,19 +97,17 @@
                                                 </div>
                                             </header>
                                             <main>
-                                                <form action="">
-                                                    <textarea class="rounded-md w-full focus:outline-none my-4"  type="text" id="form8" rows="4">
-
-                                                    </textarea>
+                                                <form action="{{route('task.search')}}" method="post">
+                                                    <textarea class="rounded-md w-full focus:outline-none my-4"  type="text" id="form8" rows="4" name="response_desc"></textarea>
                                                     <hr>
                                                     <div class="my-2">
                                                         <label>
-                                                            <input type="checkbox" class="mr-2">Уведомить меня, если исполнителем<br>
+                                                            <input type="checkbox" name="notificate" class="mr-2">Уведомить меня, если исполнителем<br>
                                                         </label>
                                                         <label>
                                                             <input type="checkbox" class="mr-2">Указать время актуальности предложения<br>
                                                         </label>
-                                                        <select name="" id="">
+                                                        <select name="response_time" id="">
                                                             <option value="1">1 часов</option>
                                                             <option value="2">2 часов</option>
                                                             <option value="4">4 часов</option>
@@ -122,19 +120,18 @@
                                                         </select>
                                                     </div>
                                                     <label>
-                                                        <input type="text" name="" class="border border-1 border-solid ">
+                                                        <input type="text" name="response_price" class="border border-1 border-solid ">
                                                     </label>
-                                                </form>
                                                 <hr>
                                             </main>
                                             <footer class="flex justify-center bg-transparent">
-                                                <button
+                                                <input
                                                     type="submit"
                                                     class="bg-green-600 font-semibold text-white py-3 w-full rounded-b-md hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300"
-                                                    @click="showModal2 = false">
-                                                    Submit
-                                                </button>
+                                                    @click="showModal2 = false" value="Submit">
+                                                    
                                             </footer>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
