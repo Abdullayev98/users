@@ -7,45 +7,45 @@
             <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8">
                 <ul>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">Как это работает</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">@lang('lang.review_howItWorks')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">Безопасность и гарантии</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">@lang('lang.review_security')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">Награды и рейтинг</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">@lang('lang.review_rewards')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/rewievs">Отзывы исполнителей</a>
+                        <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/rewievs">@lang('lang.review_PerFeed')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/author-reviews">Отзывы заказчиков</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/author-reviews">@lang('lang.review_CusFeed')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/press">СМИ о нас</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/press">@lang('lang.review_aboutUs')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Реклама на сервисе</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">@lang('lang.review_addsInServ')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">Контакты</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">@lang('lang.review_contacts')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/vacancies">Вакансии</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/vacancies">@lang('lang.review_vacancy')</a>
                     </li>
                 </ul>
                 <a href class="bg-[url('https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg')] bg-no-repeat"></a>
                 <a href="/verification" class="w-[200px] px-[16px] pb-[15px] block rounded-[8px] shadow-xl hover:shadow-md text-[12px] leading-[16px] tracking-[.2px] text-[#444] mt-5 text-center">
                     <img src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" class="mx-auto pb-3" alt="">
-                    Станьте исполнителем Универсал Сервис. И начните зарабатывать.
+                    @lang('lang.review_bePerformer')
                 </a>
             </div>
             <div class="md:w-8/12 mt-8">
                 <h1 class="text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] pb-2 font-semibold">
-                    Отзывы исполнителей о Universal Services
+                @lang('lang.review_feedbackAboutUser')
                 </h1>
-                <p class="pb-5 text-[14.7px] leading-[1.4rem]">Тысячи исполнителей уже получили возможность зарабатывать на Universal Services тогда, когда им удобно, выполняя только ту работу, которая им нравится. Нам очень приятно читать отзывы, которые они оставляют о работе сервиса. Именно благодаря им Universal Services с каждым днем становится лучше.</p>
-                <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">Мы рады, что каждый из исполнителей присоединился к сервису, и гордимся командой наших проверенных пользователей. А их отзывы о нашей работе доказывают, что мы делаем действительно полезный и необходимый для многих продукт.</p>
+                <p class="pb-5 text-[14.7px] leading-[1.4rem]">@lang('lang.review_text1')</p>
+                <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">@lang('lang.review_text2')</p>
                 <ul class="pt-[20px]">
                     <li class="">
                         <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-[40px] h-[40px] overflow-hidden rounded-[4px] shadow-lg border-b-0 ">
@@ -57,10 +57,10 @@
                             </span>
                             <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    Выполнил
+                                @lang('lang.review_finished')
                                     <!-- -->
-                                    <!-- -->341 задание
-                                    <!-- -->. Средняя оценка:
+                                    <!-- -->341 @lang('lang.review_task')
+                                    <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
                                 <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('https://assets.youdo.com/_next/static/media/star-yellow-light.060905faef303b513812a0dd81ab6876.svg')] bg-[length:16px_16px] relative">
@@ -82,10 +82,10 @@
                             </span>
                             <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    Выполнил
+                                @lang('lang.review_finished')
                                     <!-- -->
-                                    <!-- -->341 задание
-                                    <!-- -->. Средняя оценка:
+                                    <!-- -->341 @lang('lang.review_task')
+                                    <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
                                 <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('https://assets.youdo.com/_next/static/media/star-yellow-light.060905faef303b513812a0dd81ab6876.svg')] bg-[length:16px_16px] relative">
@@ -107,10 +107,10 @@
                             </span>
                             <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    Выполнил
+                                @lang('lang.review_finished')
                                     <!-- -->
-                                    <!-- -->341 задание
-                                    <!-- -->. Средняя оценка:
+                                    <!-- -->341 @lang('lang.review_task')
+                                    <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
                                 <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('https://assets.youdo.com/_next/static/media/star-yellow-light.060905faef303b513812a0dd81ab6876.svg')] bg-[length:16px_16px] relative">
@@ -132,10 +132,10 @@
                             </span>
                             <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    Выполнил
+                                @lang('lang.review_finished')
                                     <!-- -->
-                                    <!-- -->341 задание
-                                    <!-- -->. Средняя оценка:
+                                    <!-- -->341 @lang('lang.review_task')
+                                    <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
                                 <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('https://assets.youdo.com/_next/static/media/star-yellow-light.060905faef303b513812a0dd81ab6876.svg')] bg-[length:16px_16px] relative">
@@ -148,7 +148,7 @@
                         </div>
                     </li>
                 </ul>
-                <a href="categories/1" class="inline-block mt-7 border-0 outline-0 text-center whitespace-nowrap min-w-[100px] rounded-[8px] text-[2rem] h-[3.5rem] text-white px-[23px] bg-[linear-gradient(180deg,#5dbeff,#4096ef)] hover:bg-[linear-gradient(180deg,#a2d8fc,#6eaff1)]">Создать задание</a>
+                <a href="categories/1" class="inline-block mt-7 border-0 outline-0 text-center whitespace-nowrap min-w-[100px] rounded-[8px] text-[2rem] h-[3.5rem] text-white px-[23px] bg-[linear-gradient(180deg,#5dbeff,#4096ef)] hover:bg-[linear-gradient(180deg,#a2d8fc,#6eaff1)]">@lang('lang.review_createTask')</a>
             </div>
         </div>
     </div>

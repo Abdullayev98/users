@@ -12,10 +12,10 @@
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
-                        <i class="far fa-eye"> просмотр</i>
+                        <i class="far fa-eye"> @lang('lang.profile_view')</i>
                     </div>
                     <br>
-                    <h2 class="font-bold text-lg mb-2">Здравствуйте, {{$user->name}}!</h2>
+                    <h2 class="font-bold text-lg mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
                         src="{{asset("AvatarImages/{$user->avatar}")}}" alt="image" width="384"
@@ -26,14 +26,14 @@
                                 <input type="file" id="file" name="avatar" class="hidden" onclick="fileupdate()">
                                 <label for="file">
                                     <i class="fas fa-camera"></i>
-                                    <span>Изменить фото</span>
+                                    <span>@lang('lang.cash_changeImg')</span>
                                 </label>
                             </div>
                             <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
                                 <input type="submit" id="sub1" class="hidden">
                                 <label for="sub1">
                                     <i class="fas fa-save"></i>
-                                    <span>добавлять фото</span>
+                                    <span>@lang('lang.cash_addImg')</span>
                                 </label>
                             </div>
                         </form>
@@ -42,9 +42,9 @@
                         @if($user->age!="")
                             <p class="inline-block text-m mr-2">
                                 {{$user->age}}
-                                @if($user->age>20 && $user->age%10==1) год
-                                @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) года
-                                @else лет
+                                @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
+                                @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                @else @lang('lang.cash_rusYearLet')
                                 @endif
                             </p>
                         @endif
@@ -52,24 +52,24 @@
                         <span class="inline-block">
                             <i class="fas fa-map-marker-alt"></i>
                             <p class="inline-block text-m">
-                                @if($user->location!="") {{$user->location}} город
-                                @else город не включен
+                                @if($user->location!="") {{$user->location}} @lang('lang.cash_city')
+                                @else @lang('lang.cash_cityNotGiven')
                                 @endif
                             </p>
                         </span>
-                        <p class="mt-2">Создал <a href="#"><span>1</span></span> задание</a></p>
-                        <p class="mt-4">Оценка: 3.6 </p>
+                        <p class="mt-2">@lang('lang.cash_created') <a href="#"><span>1</span></span> @lang('lang.cash_task')</a></p>
+                        <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p>
                     </div>
                 </figure>
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 ">
                 <div class="grid grid-cols-10">
                     <ul class=" md:col-span-9 col-span-10 md:items-left sitems-center">
-                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Обо мне</a></li>
-                        <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px]">Счет</a></li>
-                        {{-- <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Тарифы</a></li>
-                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">Страхование</a></li> --}}
-                        <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">Настройки</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">@lang('lang.cash_aboutMe')</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px]">@lang('lang.cash_check')</a></li>
+                        {{-- <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">@lang('lang.cash_tariff')</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">@lang('lang.cash_insurance')</a></li> --}}
+                        <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">@lang('lang.cash_settings')</a></li>
 
                     </ul>
                     <div class="md:col-span-1 md:block hidden" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl" ></i></a></div>
@@ -96,11 +96,11 @@
 {{-- settings/ first tab -> base settings start --}}
                                     <div class="flex justify-left w-full">
                                         <div class="md:w-3/5 w-full md:m-4 m-0">
-                                            <h1 class="block w-3/5 text-left text-gray-800 text-3xl font-bold mb-6">Личные данные</h1>
+                                            <h1 class="block w-3/5 text-left text-gray-800 text-3xl font-bold mb-6">@lang('lang.settings_personalData')</h1>
                                             <form action="{{route('updateData')}}" class="w-full" method="POST">
                                                 @csrf
                                                 <div class="w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="name">Имя</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="name">@lang('lang.settings_name')</label>
                                                     <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="name" id="name" value="{{$user->name}}" required>
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
@@ -108,22 +108,22 @@
                                                     <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="email" name="email" id="email" value="{{$user->email}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="phone_number">Phone number</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="phone_number">Phone number@lang('lang.header_sub')</label>
                                                     <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number"
                                                     @if ($user->phone_number=="") placeholder="+998(00)000-00-00"
                                                     @else value="{{$user->phone_number}}"
                                                     @endif >
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="age">Возраст</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="age">Возраст@lang('lang.header_sub')</label>
                                                     <input class="rounded-xl border py-2 px-3 w-full text-grey-900" min="18" type="number" name="age" id="age" value="{{$user->age}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="textarea">Другие сведения</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="textarea">Другие сведения@lang('lang.header_sub')</label>
                                                     <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900" name="description" id="textarea">{{$user->description}}</textarea>
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="location">Город</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="location">Город@lang('lang.header_sub')</label>
                                                     <select class="border rounded-xl py-2 px-3 w-full text-grey-900" name="location">
                                                         <option value="Toshkent" {{ $user->location=='Toshkent' ? 'selected' : '' }}>Toshkent</option>
                                                         <option value="Farg'ona" {{ $user->location=='Farg\'ona' ? 'selected' : '' }}>Farg'ona</option>
@@ -142,17 +142,17 @@
                                                     </select>
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="role">Тип профиля</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="role">@lang('lang.settings_profileType')</label>
                                                     <select class="border rounded-xl py-2 px-3 w-full text-grey-900" name="role">
-                                                        <option value="2" {{ $user->role_id==2 ? 'selected' : '' }}>Исполнитель</option>
-                                                        <option value="3" {{ $user->role_id==3 ? 'selected' : '' }}>Заказчик</option>
+                                                        <option value="2" {{ $user->role_id==2 ? 'selected' : '' }}>@lang('lang.settings_performer')</option>
+                                                        <option value="3" {{ $user->role_id==3 ? 'selected' : '' }}>@lang('lang.settings_customer')</option>
                                                     </select>
                                                 </div>
                                                 <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
                                                 <hr>
                                             </form>
 
-                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">Удалить профиль</a>
+                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">профиль@lang('lang.settings_delete')</a>
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -160,23 +160,23 @@
                                 <div id="second" class="hidden p-4">
 {{-- settings/ second tab -> enable notification start --}}
                                     <div class="md:w-4/5 w-full mt-5">
-                                        <h3 class="font-bold text-3xl">Получать уведомления:</h3>
+                                        <h3 class="font-bold text-3xl">@lang('lang.settings_takeNotif')</h3>
                                         <div class="grid grid-cols-10 mt-5">
                                             <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
-                                            <span class="col-span-9 ml-2">Системные уведомления</span>
+                                            <span class="col-span-9 ml-2">@lang('lang.settings_systemNotif')</span>
                                         </div>
                                         <div class="grid grid-cols-10 mt-5">
                                             <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
-                                            <span class="col-span-9 ml-2">Я хочу получать новости сайта</span>
+                                            <span class="col-span-9 ml-2">@lang('lang.settings_wantNews')</span>
                                         </div>
-                                        <button class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl" type="submit">Сохранить</button>
+                                        <button class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl" type="submit">@lang('lang.settings_save')</button>
                                     </div>
 {{-- settings/ second tab -> enable notification end --}}
                                 </div>
                                 <div id="third" class="hidden p-4">
 {{-- settings/ third tab start -> subscribe for some tasks --}}
                                     <div class="w-4/5 mt-10">
-                                        <h3 class="font-bold text-3xl mb-7">1. Выберите категории</h3>
+                                        <h3 class="font-bold text-3xl mb-7">1. @lang('lang.settings_chooseCat')</h3>
     {{-- choosing categories --}}
                                         <form action="{{route('get.category')}}" method="post">@csrf
                                             <div class="acordion mt-16">
@@ -217,14 +217,14 @@
     {{-- choosing categories end --}}
     {{-- changing geolocation --}}
                                         <div class="geolocation">
-                                            <h3 class="font-bold text-3xl mb-7 mt-10">2. Геопозиция. {{$user->location}}</h3>
-                                            <p class=" mt-5 text-sm text-left text-gray-600 ">Выберите районы, из которых вы хотите получать уведомления о новых заданиях:</p>
+                                            <h3 class="font-bold text-3xl mb-7 mt-10">2. @lang('lang.settings_location'). {{$user->location}}</h3>
+                                            <p class=" mt-5 text-sm text-left text-gray-600 ">@lang('lang.settings_chooseRegion')</p>
                                             <div class="parentCategory rounded-xl bg-gray-200 px-3 py-3">
-                                                <h4 class="font-bold text-gray-900 text-lg">город {{$user->location}}</h4>
+                                                <h4 class="font-bold text-gray-900 text-lg">@lang('lang.cash_city') {{$user->location}}</h4>
                                                 <div x-data="{ showModal : false }">
                                                     <button @click="showModal = !showModal" class="rounded-xl bg-gray-300 h-10 w-2/5 px-10">
                                                         <i class="fas fa-exchange-alt inline mr-3"></i>
-                                                        <span class="inline">Изменить район</span>
+                                                        <span class="inline">@lang('lang.settings_changeRegion')</span>
                                                     </button>
                                                     <!-- Modal Background -->
                                                     <div x-show="showModal" class="fixed flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-40 left-0 right-0 top-0 bottom-0" x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
@@ -233,18 +233,18 @@
                                                             <div class="mx-auto pl-10 my-10 rounded-[20px] text-black">
                                                                 <table>
                                                                     <thead>
-                                                                        <div class="md:text-[2rem] text-[1.8rem] md:w-[500px] font-bold font-['Radiance,sans-serif,Noto Sans']">Выберите регион</div>
+                                                                        <div class="md:text-[2rem] text-[1.8rem] md:w-[500px] font-bold font-['Radiance,sans-serif,Noto Sans']">@lang('lang.settings_chooseR')</div>
                                                                     </thead>
                                                                     <tbody>
                                                                         <form action="{{route('insert.district')}}" method ="post">
                                                                             @csrf
                                                                             <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="district" type="text" placeholder="Поиск регионы" value="{{$user->district}}">
 
-                                                                        <input type="submit" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-8 md:px-8 text-center" value = "Оставить заявку">
+                                                                        <input type="submit" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-8 md:px-8 text-center" value = "@lang('lang.settings_remain')">
                                                                         </form>
                                                                     </tbody>
                                                                     <div class="text-right space-x-5">
-                                                                        <button @click="showModal = !showModal" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">Закрыть</button>
+                                                                        <button @click="showModal = !showModal" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">@lang('lang.settings_close')</button>
                                                                     </div>
                                                                 </table>
                                                             </div>
@@ -253,14 +253,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{-- <h4 class="font-bold text-gray-900 text-lg">Ташкентская область</h4>
+                                                {{-- <h4 class="font-bold text-gray-900 text-lg">@lang('lang.settings_tashkent')</h4>
                                                 <button id="open-btn" class="rounded-xl bg-gray-300 h-10 w-2/5 px-10 mb-5">
                                                     <i class="fas fa-exchange-alt inline mr-3"></i>
-                                                    <span class="inline">Изменить район</span>
+                                                    <span class="inline">@lang('lang.settings_changeRegion')</span>
                                                 </button>
                                                 <div>
                                                     <input type="checkbox" class="w-5 h-5 inline">
-                                                    <p class="text-sm text-center inline ml-2">Отправлять уведомление, если новое задание находится рядом со мной. Если на вашем телефоне установлено мобильное приложение.</p>
+                                                    <p class="text-sm text-center inline ml-2">@lang('lang.settings_sendNotif')</p>
                                                 </div> --}}
                                                 {{-- changing modal --}}
                                                 <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
@@ -272,23 +272,23 @@
                                                             </button>
                                                             <div class="mx-auto flex items-center justify-center w-full">
                                                                 <h3 class="font-bold text-4xl block">
-                                                                    На какую сумму хотите пополнить кошелёк?
+                                                                    @lang('lang.settings_howMuch')
                                                                 </h3>
                                                             </div>
                                                             <input class="ml-3 mt-10 w-30 h-20 ring-1 rounded-xl ring-gray-100" type='number' />
 
-                                                            <p class="text-sm leading-6 text-gray-400">Сумма пополнения, минимум — 60 000сум</p>
+                                                            <p class="text-sm leading-6 text-gray-400">@lang('lang.settings_minimum') — 60 000сум</p>
                                                             <div class="mt-2 px-7 py-3">
                                                                 <input type="checkbox" class="w-5 h-5 rounded-md inline-block " />
-                                                                <p class="text-md inline-block ml-2">Оформить полис на 7 дней за 15 000 сум</p>
+                                                                <p class="text-md inline-block ml-2">@lang('lang.settings_order')</p>
                                                             </div>
                                                             <div class="items-center px-4 py-3">
                                                                 <button id="ok-btn"
                                                                     class="px-4 py-2 bg-green-500 text-white text-xl font-medium rounded-md w-2/5 h-16  shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
-                                                                    К оплате x сум
+                                                                    @lang('lang.settings_toPay')
                                                                 </button>
-                                                                <p>* — Порядок выплаты, ограничения и полные условия определены в <a href="/home/oferta"
-                                                                        class="cursor-pointer text-sm text-blue-400 underline">Оферте</a></p>
+                                                                <p>* — @lang('lang.settings_in')<a href="/home/oferta"
+                                                                        class="cursor-pointer text-sm text-blue-400 underline">@lang('lang.settings_offerta')</a></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -301,8 +301,8 @@
     {{-- changing geolocation end --}}
     {{-- notification type --}}
                                         {{-- <div class="notification">
-                                            <h3 class="font-bold text-3xl mb-7 mt-10">3. Типы уведомлений</h3>
-                                            <p class="mt-5">Уведомлять меня по:</p>
+                                            <h3 class="font-bold text-3xl mb-7 mt-10">3. @lang('lang.settings_notifTypes')</h3>
+                                            <p class="mt-5">@lang('lang.settings_nofifMeBy')</p>
 
                                             <input type="checkbox" class="inline w-4 h-4" />
                                             <i class="far fa-envelope inline mr-1"></i>
@@ -310,7 +310,7 @@
 
                                             <input type="checkbox" class="inline w-4 h-4 ml-10"/>
                                             <i class="fas fa-mobile-alt inline mr-1"></i>
-                                            <span class="inline">Push</span>
+                                            <span class="inline">@lang('lang.settings_push')</span>
 
                                         </div> --}}
     {{-- notification type end --}}
@@ -362,8 +362,8 @@
             <div
                 class="md:col-span-1 col-span-3  md:mx-2 mx-auto inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
                 <div class="mt-6 ml-4">
-                    <h3 class="font-bold">Исполнитель</h3>
-                    <p>на Universal Services с 12 сентября 2021 г.</p>
+                    <h3 class="font-bold">@lang('lang.settings_performer')</h3>
+                    <p>@lang('lang.settings_since')</p>
                 </div>
                 <div class="contacts relative ">
                     <div class="ml-4 h-20 grid grid-cols-4">

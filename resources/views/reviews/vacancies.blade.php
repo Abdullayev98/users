@@ -7,76 +7,75 @@
             <div class="lg:w-2/12 h-auto mt-5">
                 <ul>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">Как это работает</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">@lang('lang.review_howItWorks')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">Безопасность и гарантии</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">@lang('lang.review_security')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">Награды и рейтинг</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">@lang('lang.review_rewards')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/reviews">Отзывы исполнителей</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/reviews">@lang('lang.review_PerFeed')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/author-reviews">Отзывы заказчиков</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/author-reviews">@lang('lang.review_CusFeed')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/press">СМИ о нас</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/press">@lang('lang.review_aboutUs')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Реклама на сервисе</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">@lang('lang.review_addsInServ')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">Контакты</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">@lang('lang.review_contacts')</a>
                     </li>
                     <li>
-                        <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/vacancies">Вакансии</a>
+                        <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/vacancies">@lang('lang.review_vacancy')</a>
                     </li>
                 </ul>
                 <a href class="bg-[url('https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg')] bg-no-repeat"></a>
                 <a href="/verification" class="w-[200px] px-[16px] pb-[15px] block rounded-[8px] shadow-xl hover:shadow-md text-[12px] leading-[16px] tracking-[.2px] text-[#444] mt-5 text-center mb-8">
                     <img src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" class="mx-auto pb-3" alt="">
-                    Станьте исполнителем Универсал Сервис. И начните зарабатывать.
+                    @lang('lang.review_bePerformer')
                 </a>
             </div>
             <div class="md:w-9/12 md:mt-2 md:pl-12">
                 <h1 class="text-[1.9rem] font-semibold ">
-                    Вакансии
+                @lang('lang.review_vacancy')
                 </h1>
                 <img src="https://assets.youdo.com/next/_next/static/images/photo4-8a783577cfab9ce8adc6eb892b8df661.jpg" alt="" class="my-4">
-                <h1 class="text-[1.6rem] font-semibold my-4">Кто мы</h1>
-                <p class="my-5">Universal Services — это удобное мобильное приложение и сайт для заказа любых услуг напрямую у специалистов и поиска клиентов.</p>
-                <p class="my-5">Пользователи Universal Services ежедневно решают свои бытовые и рабочие задачи, находят заказы и подработку. Сервис помогает миллионам людей экономить деньги и время, делегировать рутинные дела, которые отвлекают от важного. А ещё Universal Services меняет рынок труда, позволяя людям работать в удобное время, без начальников и офиса.</p>
-                <p class="my-5">Сейчас на сервисе зарегистрированы 5,9 млн пользователей, из которых более 1 млн сами оказывают услуги. На Universal Services легко найти курьера, сантехника, визажиста или бригаду для ремонта. Заказать разработку сайта, организовать свадьбу, переезд и найти исполнителей для тысячи других задач.</p>
-                <p class="my-5">Задания, в которых нужно личное присутствие специалиста, выполняются во всех регионах России: Москва, Санкт-Петербург, Казань, Нижний Новгород, Екатеринбург и т. д. Уже сейчас создать заказ можно из любой точки мира.</p>
-                <p class="my-5">Мы активно растем, в том числе за счет больших рекламных кампаний в интернете и по ТВ. Серия роликов «Дела делаются» в 2018 году попала в список победителей рекламного конкурса на Sostav.ru. С момента основания сервис получил множество престижных номинаций и наград. Среди них: премия Рунета, конкурс Forbes «Стартап года», «Золотой сайт» и т. д. В 2017 году Universal Services вошло в список лучших приложений в номинации «Тренды года» в App Store. В 2019 году Universal Services вошло в топ-20 самых дорогих компаний Рунета по версии Forbes.</p>
-                <p class="my-5">Для решения рабочих задач команда Universal Services использует современные технологии, анализ данных и машинное обучение. Наш главный офис находится в Москве, второй — в Казани.
-                    Мы стремимся раскрыть потенциал каждого сотрудника и ищем тех, для кого работа не ограничивается выполнением задач. Людей, которым важно помогать другим и быть частью большого проекта, способного менять мир.</p>
+                <h1 class="text-[1.6rem] font-semibold my-4">@lang('lang.vac_whoWeAre')</h1>
+                <p class="my-5">@lang('lang.vac_about1')</p>
+                <p class="my-5">@lang('lang.vac_about2')</p>
+                <p class="my-5">@lang('lang.vac_about3')</p>
+                <p class="my-5">@lang('lang.vac_about4')</p>
+                <p class="my-5">@lang('lang.vac_about5')</p>
+                <p class="my-5">@lang('lang.vac_about6')</p>
                 <h1 class="text-[1.9rem] font-semibold ">
-                    Что мы предлагаем?
+                @lang('lang.vac_whatWeOffer')
                 </h1>
                 <div class="ml-8 my-3">
-                    <li class="my-2">Амбициозные и интересные задачи;</li>
-                    <li class="my-2">Конкурентоспособная «белая» заработная плата;</li>
-                    <li class="my-2">Возможность внести свои инициативы и увидеть результат своей работы;</li>
-                    <li class="my-2">Адекватное руководство, компетентный коллектив, низкий уровень бюрократии;</li>
-                    <li class="my-2">Оформление по ТК РФ;</li>
-                    <li class="my-2">Полная занятость, полный день;</li>
-                    <li class="my-2">Гибкий график работы: время начала с 8:00 до 12:00 и окончания с 17:00 до 21:00 соответственно, перерыв на обед — один час;</li>
-                    <li class="my-2">Возможность работать как в офисе (офис находится в 7 — 10 минутах пешком от метро Фрунзенская / Парк Культуры), так и удаленно из дома;</li>
-                    <li class="my-2">Современная техника — компьютеры с 32Gb оперативной памяти, SSD, два монитора;</li>
-                    <li class="my-2">Корпоративные мероприятия;</li>
-                    <li class="my-2">Оплачиваемое участие в профильных конференциях.</li>
+                    <li class="my-2">@lang('lang.vac_offer1')</li>
+                    <li class="my-2">@lang('lang.vac_offer2')</li>
+                    <li class="my-2">@lang('lang.vac_offer3')</li>
+                    <li class="my-2">@lang('lang.vac_offer4')</li>
+                    <li class="my-2">@lang('lang.vac_offer5')</li>
+                    <li class="my-2">@lang('lang.vac_offer6')</li>
+                    <li class="my-2">@lang('lang.vac_offer7')</li>
+                    <li class="my-2">@lang('lang.vac_offer8')</li>
+                    <li class="my-2">@lang('lang.vac_offer9')</li>
+                    <li class="my-2">@lang('lang.vac_offer10')</li>
+                    <li class="my-2">@lang('lang.vac_offer11')</li>
                 </div>
 
                 <div class="acordion mt-16">
                     <div class="mb-4 rounded-md border shadow-md">
-                        <button class="rounded-md accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px] outline-none transition duration-400 italic font-[latoregular,sans-serif] text-[2rem] hover:bg-gray-200">Ведущий менеджер по директ - маркетингу </button>
+                        <button class="rounded-md accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px] outline-none transition duration-400 italic font-[latoregular,sans-serif] text-[2rem] hover:bg-gray-200">@lang('lang.vac_vacancy1')</button>
                         <div class="panel overflow-hidden hidden px-[18px] bg-white p-4">
                             <div class="text-[#7f7f7f]">
                                 <div>
-                                    <h1 class="font-semibold text-[20px]">Обязанности:</h1>
+                                    <h1 class="font-semibold text-[20px]">@lang('lang.vac_require')</h1>
                                     <li class="my-2">Амбициозные и интересные задачи;</li>
                                     <li class="my-2">Конкурентоспособная «белая» заработная плата;</li>
                                     <li class="my-2">Возможность внести свои инициативы и увидеть результат своей работы;</li>
@@ -94,18 +93,18 @@
                                     type="button"
                                     target="_self"
                                     class="bg-[#6fc727] hover:bg-[#5ab82e] text-white py-3 px-6 rounded-md text-[18px] my-4">
-                                    Откликнуться на вакансию
+                                    @lang('lang.vac_reply')
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <div class="mb-4 rounded-md border shadow-md">
-                        <button class="rounded-md accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px] outline-none transition duration-400 italic font-[latoregular,sans-serif] text-[2rem] hover:bg-gray-200">QA Automation engineer/Тестировщик-автоматизатор (Java)</button>
+                        <button class="rounded-md accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px] outline-none transition duration-400 italic font-[latoregular,sans-serif] text-[2rem] hover:bg-gray-200">@lang('lang.vac_vacancy2')</button>
                         <div class="panel overflow-hidden hidden px-[18px] bg-white">
                             <div class="text-[#7f7f7f]">
                                 <div>
-                                    <h1 class="font-semibold text-[20px]">Обязанности:</h1>
+                                    <h1 class="font-semibold text-[20px]">@lang('lang.vac_require')</h1>
                                     <li class="my-2">Амбициозные и интересные задачи;</li>
                                     <li class="my-2">Конкурентоспособная «белая» заработная плата;</li>
                                     <li class="my-2">Возможность внести свои инициативы и увидеть результат своей работы;</li>
@@ -123,18 +122,18 @@
                                     type="button"
                                     target="_self"
                                     class="bg-[#6fc727] hover:bg-[#5ab82e] text-white py-3 px-6 rounded-md text-[18px] my-4">
-                                    Откликнуться на вакансию
+                                    @lang('lang.vac_reply')
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <div class="mb-4 rounded-md border shadow-md">
-                        <button class="rounded-md accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px] outline-none transition duration-400 italic font-[latoregular,sans-serif] text-[2rem] hover:bg-gray-200">Тестировщик мобильных приложений</button>
+                        <button class="rounded-md accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px] outline-none transition duration-400 italic font-[latoregular,sans-serif] text-[2rem] hover:bg-gray-200">@lang('lang.vac_vacancy3')</button>
                         <div class="panel overflow-hidden hidden px-[18px] bg-white">
                             <div class="text-[#7f7f7f]">
                                 <div>
-                                    <h1 class="font-semibold text-[20px]">Обязанности:</h1>
+                                    <h1 class="font-semibold text-[20px]">@lang('lang.vac_require')</h1>
                                     <li class="my-2">Амбициозные и интересные задачи;</li>
                                     <li class="my-2">Конкурентоспособная «белая» заработная плата;</li>
                                     <li class="my-2">Возможность внести свои инициативы и увидеть результат своей работы;</li>
@@ -152,7 +151,7 @@
                                     type="button"
                                     target="_self"
                                     class="bg-[#6fc727] hover:bg-[#5ab82e] text-white py-3 px-6 rounded-md text-[18px] my-4">
-                                    Откликнуться на вакансию
+                                    @lang('lang.vac_reply')
                                 </a>
                             </div>
                         </div>

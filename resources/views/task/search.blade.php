@@ -7,8 +7,8 @@
     <div class="border-b">
       <!-- Tabs -->
         <ul id="tabs" class="inline-flex w-full">
-            <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">Все задания</a></li>
-            <li class="font-semibold rounded-t pb-3"><a href="#second">Рекомендованные</a></li>
+            <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">@lang('lang.search_allTasks')</a></li>
+            <li class="font-semibold rounded-t pb-3"><a href="#second">@lang('lang.search_recomend')</a></li>
         </ul>
     </div>
 
@@ -25,17 +25,17 @@
 
                                     <div class="sm:inline-flex block w-full col-span-4">
                                         <!-- <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
-                                        <input id="filter" type="text" class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" placeholder="Поиск по ключевым словам">
-                                        <button class="sm:w-2/12 w-4/12 bg-green-500 ml-1 py-1 px-1 rounded sm:mt-0 mt-4" id="mpshow">Найти</button>
+                                        <input id="filter" type="text" class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" placeholder="@lang('lang.search_byKey')">
+                                        <button class="sm:w-2/12 w-4/12 bg-green-500 ml-1 py-1 px-1 rounded sm:mt-0 mt-4" id="mpshow">@lang('lang.search_find')</button>
                                     </div>
 
                                     <div class="sm:inline-flex block w-full col-span-4">
                                         <div class="w-7/12">
-                                            <label class="text-xs">Город, адрес, метро, район...</label>
+                                            <label class="text-xs">@lang('lang.search_location')</label>
                                             <input class="address w-full border border-black rounded text-black-700 py-1 px-1" type="text" id="suggest">
                                         </div>
                                         <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
-                                            <label class="text-xs">Стоимость заданий от</label>
+                                            <label class="text-xs">@lang('lang.search_priceBy')</label>
                                             <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1" placeholder="UZS" id="price">
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@
                                 <div class="max-w-lg mx-auto">
 
                                     <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
-                                    <input type="checkbox" class="all_cat2 mr-1 hover:cursor-pointer"/> Все категории
+                                    <input type="checkbox" class="all_cat2 mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')
                                     </label>
 
                                     <div class="w-full my-1 for_check2">
@@ -105,8 +105,8 @@
                             <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
                                 <div></div>
                                 <div class="butt col-span-3 text-center w-full h-full" style="display: none">
-                                    <p class="text-center">Показано 20 из 331</p>
-                                    <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_list(k)">Показать ещё</button>
+                                    <p class="text-center">@lang('lang.search_shown')</p>
+                                    <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_list(k)">@lang('lang.search_showMore')</button>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                             <div class="max-w-lg mx-auto">
 
                                 <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
-                                  <input type="checkbox" class="all_cat mr-1 hover:cursor-pointer"/> Все категории
+                                  <input type="checkbox" class="all_cat mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')
                                 </label>
 
                                 <div class="w-full my-1 for_check">
@@ -378,8 +378,8 @@
                 <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
                 <div></div>
                 <div class="col-span-3 text-center w-full h-full">
-                    <p class="text-3xl"><b>Задания не найдены</b></p>
-                    <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
+                    <p class="text-3xl"><b>@lang('lang.search_tasksNotFound')</b></p>
+                    <p class="text-lg">@lang('lang.search_tryAnOther')</p>
                 </div>
                 </div>`
             );
@@ -402,8 +402,8 @@
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">Спортмастер</p>
-                    <p class="text-sm ml-12">Нет отзывов</p>
+                    <p class="text-sm ml-12">@lang('lang.search_sportMaster')</p>
+                    <p class="text-sm ml-12">@lang('lang.search_noFeedback')</p>
                     </div>
                     </div>
                     </div>
@@ -432,8 +432,8 @@
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">Спортмастер</p>
-                    <p class="text-sm ml-12">Нет отзывов</p>
+                    <p class="text-sm ml-12">@lang('lang.search_sportMaster')</p>
+                    <p class="text-sm ml-12">@lang('lang.search_noFeedback')</p>
                     </div>
                     </div>
                     </div>

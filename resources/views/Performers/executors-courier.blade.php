@@ -10,14 +10,14 @@
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
                         @foreach($vcs as $vc)
-                        <span>{{$vc->count}} просмотров профиля</span>
+                        <span>{{$vc->count}} @lang('lang.exe_viewProfile')</span>
                         @endforeach
                     </div>
                    <div>
                      @if($user->active_status == 1)
-                       <p class="text-lg text-green-500"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-[5px]" > </i>Онлайн</p>
+                       <p class="text-lg text-green-500"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-[5px]" > </i>@lang('lang.exe_online')</p>
                        @else
-                       <p class="text-lg text-gray-500">Офлайн</p>
+                       <p class="text-lg text-gray-500">@lang('lang.exe_offline')</p>
                        @endif
                        <h1 class="text-3xl font-bold ">{{$user->name}}</h1>
                    </div>
@@ -30,21 +30,21 @@
                         <div class="font-medium text-lg">
                           @if($user->phone_verified_at && $user->email_verified_at)
                             <i class="fas fa-check-circle text-lime-600 text-2xl"></i>
-                            <span>Документы подтверждены</span>
+                            <span>@lang('lang.exe_docsAccept')</span>
                             @endif
                         </div>
                         <div class="text-gray-500 text-base mt-4">
-                            <span>{{$user->age}} лет</span>
+                            <span>{{$user->age}} @lang('lang.exe_rusYearLet')</span>
                             <i class="fas fa-map-marker-alt"></i>
                             <span>{{$user->location}}</span>
                         </div>
                         <div class="text-gray-500 text-base mt-6">
-                            <span>Выполнил 199 заданий, создал 3 задания</span>
+                            <span>@lang('lang.exe_done')</span>
                         </div>
                         <div class="text-gray-500 text-base mt-1">
-                            <span>Средняя оценка: 4,9</span>
+                            <span>@lang('lang.exe_averageRating'): 4,9</span>
                              <i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i>
-                            <span class="text-cyan-500 hover:text-red-600">(197 отзывов)</span>
+                            <span class="text-cyan-500 hover:text-red-600">(197 @lang('lang.exe_feedbacks'))</span>
                         </div>
                         <!-- <div class="flex flex-row">
                              <img class="h-24 mt-4 ml-2" src="{{ asset('images/icon_year.svg') }}">
@@ -53,12 +53,12 @@
                          </div> -->
                          <div>
                              <a href="/chat/{{$user->id}}"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
-                                Задать вопрос
+                                @lang('lang.exe_ask')
                               </button></a>
                          </div>
                          <a class="md:hidden block mt-8" href="#">
                             <button  class="bg-amber-600 hover:bg-amber-500 text-2xl text-white font-medium py-4 px-12  rounded">
-                                Предложить задание
+                                @lang('lang.exe_giveTask')
                             </button>
                         </a>
                     </div>
@@ -66,15 +66,15 @@
                 </figure>
 
                 <div class="mt-8">
-                    <h1 class="text-3xl font-semibold text-gray-700">Обо мне</h1>
+                    <h1 class="text-3xl font-semibold text-gray-700">@lang('lang.exe_aboutMe')</h1>
                     <div class="mt-4 mb-4 bg-orange-100 py-4 rounded-xl">
-                        <p class="ml-6">Чтобы воспользоваться моими услугами, нажмите кнопку <a class="text-red-500 hover:text-red-900" onclick="toggleModal12('modal-id12')" href="#">«Предложить задание»</a>. <br>
-                            Сотрудничаю с условием, что о моей работе будет оставлен отзыв на Universal Services.</p>
+                        <p class="ml-6"> @lang('lang.exe_pushBtn')<a class="text-red-500 hover:text-red-900" onclick="toggleModal12('modal-id12')" href="#">@lang('lang.exe_giveTbtn')</a>. <br>
+                            @lang('lang.exe_work')</p>
                     </div>
                 </div>
                 <p>{{$user->description}}</p>
 
-                <h1 class="mt-12 text-3xl font-medium">Виды выполняемых работ</h1>
+                <h1 class="mt-12 text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
                 @foreach($categories as $category)
                  @if($category->id == $user->category_id)
                <div class="mt-8">
@@ -109,15 +109,15 @@
                 <div class="mt-8 ">
                     <a class="md:block hidden" href="#">
                         <button  class="bg-amber-600 hover:bg-amber-500 text-2xl text-white font-medium py-4 px-12  rounded" onclick="toggleModal12('modal-id12')">
-                            Предложить задание
+                            @lang('lang.exe_giveTask')
                         </button>
                     </a>
-                    <p class="md:block hidden text-sm text-amber-500 text-center mt-8">Исполнитель получит уведомление и сможет оказать вам свои услуги</p>
+                    <p class="md:block hidden text-sm text-amber-500 text-center mt-8">@lang('lang.exe_perfTakesNotif')</p>
                 </div>
                 <div class="mt-16 border p-8 rounded-lg border-gray-300">
                     <div>
-                        <h1 class="font-medium text-2xl">Исполнитель</h1>
-                        <p class="text-gray-400">на Universal Services с 13 апреля 2021 г.</p>
+                        <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
+                        <p class="text-gray-400">@lang('lang.exe_since')</p>
                     </div>
                     <div class="">
                         <!-- <div class="flex w-full mt-4">
@@ -134,11 +134,11 @@
                                 <i class="text-[#fff] fas fa-phone-square text-2xl bg-amber-500 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
-                                <h2 class="font-medium text-lg">Телефон</h2>
+                                <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
                                 @if($user->phone_verified_at)
-                                <p>Подтвержден</p>
+                                <p>@lang('lang.exe_verified')</p>
                                 @else
-                                <p>Не подтвержден</p>
+                                <p>@lang('lang.exe_notVerified')</p>
                                 @endif
                             </div>
                         </div>
@@ -149,9 +149,9 @@
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Email</h2>
                                 @if($user->email_verified_at)
-                                <p>Подтвержден</p>
+                                <p>@lang('lang.exe_verified')</p>
                                 @else
-                                <p>Не подтвержден</p>
+                                <p>@lang('lang.exe_notVerified')</p>
                                 @endif
                             </div>
                         </div>
@@ -176,16 +176,16 @@
                     </div>
                 </div>
                 <div class="mt-8">
-                    <h1 class="text-3xl font-medium">Новые публикации <br><a href="#" class="text-blue-500 hover:text-red-600"> в блоге</a></h1>
+                    <h1 class="text-3xl font-medium">@lang('lang.exe_newPost')<br><a href="#" class="text-blue-500 hover:text-red-600">@lang('lang.exe_inBlog')</a></h1>
                     <img class="mt-4 rounded-xl " src="https://content0.youdo.com/zi.ashx?i=d36fd188a176881f" alt="#">
-                    <h1 class="mt-4 font-medium text-xl text-gray-700">Из фрилансера в CEO Digital-агентства</h1>
-                    <p class="mt-2 font-normal text-base text-gray-700">Вдохновляющая видео-история <br> исполнителя Александра</p>
+                    <h1 class="mt-4 font-medium text-xl text-gray-700">@lang('lang.exe_fromTo')</h1>
+                    <p class="mt-2 font-normal text-base text-gray-700">('lang.exe_motivation')</p>
                     <hr class="mt-4 mb-4 text-gray-300">
-                    <h2 class="font-medium text-xl text-gray-700">Станьте сертифицированным мастером Tarkett</h2>
+                    <h2 class="font-medium text-xl text-gray-700">@lang('lang.exe_becomeMaster')</h2>
                     <hr class="mt-4 mb-4 text-gray-300">
-                    <h2 class="font-medium text-xl text-gray-700">Средства для ухода за посудомоечной машиной в подарок</h2>
+                    <h2 class="font-medium text-xl text-gray-700">@lang('lang.exe_prize')</h2>
                     <hr class="mt-4 mb-4 text-gray-300">
-                    <h2 class="font-medium text-xl text-gray-700">Решили убраться? Получите за это подарок!</h2>
+                    <h2 class="font-medium text-xl text-gray-700">@lang('lang.exe_takeItForFree')</h2>
                 </div>
             </div>
         {{-- right sidebar end --}}
@@ -202,19 +202,19 @@
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                   </button>
                 <h3 class="font-medium text-4xl block mt-4">
-                    У вас пока нет опубликованных <br> заданий
+                    @lang('lang.exe_youHaventT')
                 </h3>
             </div>
             <!--body-->
             <div class="relative p-6 flex-auto">
               <p class="my-4  text-lg  text-center">
-                Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.
+                @lang('lang.exe_createTFirst')
               </p>
             </div>
             <!--footer-->
             <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                 <div class="mt-4 ">
-                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >Создать задание</a>
+                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
                 </div>
             </div>
           </div>
