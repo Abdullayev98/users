@@ -1,7 +1,7 @@
 <?php
-  
+
 return [
-  
+
     'header_title' => "Освободим вас от забот",
     'header_sub' => "Поможем найти надежного исполнителя для любых задач",
 
@@ -96,7 +96,7 @@ return [
     'business_text31' => "Прошел 23 сентября в 13:00",
     'business_text32' => "Вебинар «Как вести документооборот и не попасть в ловушки. Кейс стаффинговой группы ANCOR»",
     'business_text33' => "Больше вебинаров",
-    'business_text34' => "О нас пишут".,
+    'business_text34' => "О нас пишут",
     'business_text35' => "Universal Services и HeadHunter запустили платформу для работы бизнеса с самозанятыми",
     'business_text36' => "Новость о запуске совместной",
     'business_text37' => "с hh.ru b2b-платформы Universal Services Бизнес",
@@ -130,7 +130,7 @@ return [
     // components faq blade start
     'comfaq_ownquestion' => "Частые вопросы",
     'comfaq_text1' => "Сколько откликов я получу?",
-    'comfaq_text2' => "Обязательно ли выбирать исполнителя?", 
+    'comfaq_text2' => "Обязательно ли выбирать исполнителя?",
     'comfaq_text3' => "Какую цену установить?",
     'comfaq_text4' => "Как оплачивать услуги исполнителя?",
     'comfaq_text5' => "Как выбрать надежного исполнителя?",
@@ -160,7 +160,7 @@ return [
     'roadmap_text4' => "Обращайте внимание на проверенных исполнителей.",
     // roadmap blade ended
 
-    // contacts blade start 
+    // contacts blade start
     'contact_title' => "Контакты",
     'contact_text' => "Наша служба поддержки работает каждый день.
      Ответим на любые вопросы и пожелания в чате.",
@@ -199,6 +199,6 @@ return [
     'faq_text' => "Перейти на сайт Universal Services",
     'faq_text1' => "Ответы на частые вопросы и рекомендации от Universal Services",
     'faq_text2' => "Мы используем Intercom",
-    //faq faq blade ended 
+    //faq faq blade ended
 
 ];
