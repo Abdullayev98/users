@@ -73,6 +73,8 @@ class CreateTaskController extends VoyagerBaseController
     }
     public function people(Request $request)
     {
+
+
       $weight = $request->input('weight');
       $length = $request->input('length');
       $width = $request->input('width');
@@ -195,6 +197,15 @@ class CreateTaskController extends VoyagerBaseController
 
 
     public function contacts(Request $request){
+      $request->validate([
+        'avatar' => 'required|image'
+      ]);
+      $image = $request->avatar;
+      
+      $imagename = $image->getClientOriginalName();
+      $request->avatar->move('storage/tasks/avatar', $imagename);
+      $images_name = $request->avatar;
+      $request->session()->put('image', 'storage/tasks/avatar/'.''.$imagename);
       $data = $request->input();
       $request->session()->put('description', $data['description']);
       if ($request->input('secret')) {
@@ -216,6 +227,7 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('phone', $datay['phone']);
       $name        = session()->pull('name');
       $category    = session()->pull('cat_id');
+      $image    = session()->pull('image');
       $location    = session()->pull('location');
       $date        = session()->pull('data');
       $date2       = session()->pull('data2');
@@ -247,7 +259,8 @@ class CreateTaskController extends VoyagerBaseController
         $email      = session()->pull('email');
       }
 
-      $id = [
+      $id = Task::create([
+        'photos' => $image,
         'user_id'=>$user_id,
         'name'=>$name,
         'user_email'=>$email,
@@ -270,15 +283,15 @@ class CreateTaskController extends VoyagerBaseController
         'length' => $length,
         'width' => $width,
         'height' => $height,
-    ];
-      dd($id);
+    ]);
+      // dd($id);
 //    $id_task = $id->id;
 //    $id_cat = $id->category_id;
 //    $title_task = $id->name;
 //
 //        event(new MyEvent($id_task,$id_cat,$title_task));
 //
-//      return redirect('/')->with('success','Задание успешно добавлено!');
+     return redirect('/')->with('success','Задание успешно добавлено!');
     }
 
 
