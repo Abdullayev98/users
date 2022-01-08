@@ -22,10 +22,10 @@
 
                     <a href="/" class="text-white hover:text-gray-400">
                         <i class="fa fa-link"></i>
-                            Перейти на сайт Universal Services
+                            @lang('lang.faq-ans_text')
                     </a>
                 </div>
-                <h1 class="text-white text-3xl font-light  my-6">Ответы на частые вопросы и рекомендации от Universal Services</h1>
+                <h1 class="text-white text-3xl font-light  my-6">@lang('lang.faq-ans_text1')</h1>
                 {{-- input --}}
             <form class="">
                 <div class="flex relative mx-auto w-full">
@@ -41,7 +41,7 @@
     </section>
 
     <div class="lg:w-8/12 mx-auto w-10/12 text-gray-500">
-        <span class="text-sm">Все коллекции  <i class="fa fa-angle-right text-sm"></i> {{$fc->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</span>
+        <span class="text-sm">@lang('lang.faq-ans_allcollection')  <i class="fa fa-angle-right text-sm"></i> {{$fc->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</span>
     </div>
 
      <section class="mt-7">
@@ -62,7 +62,7 @@
                     </div>
             </div>
             <div class="w-full">
-                <h5 class="text-xl font-semibold mb-3">Общие вопросы</h5>
+                <h5 class="text-xl font-semibold mb-3">@lang('lang.faq-ans_allquestions')</h5>
             </div>
             <div class="w-full bg-white border border-gray-300 rounded-t-md p-[30px] divide-y">
               @foreach($fq as $faq)
