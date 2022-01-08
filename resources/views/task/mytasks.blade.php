@@ -116,6 +116,17 @@
 
                 </div>
             </div>
+
+            <div>
+                <div class="text-4xl font-semibold my-6">
+                    У задания 13 откликов
+                </div>
+                <hr>
+                <div>
+
+                </div>
+
+            </div>
         </div>
         <div class="col-span md:block hidden">
             <div class="w-full h-full mt-5">

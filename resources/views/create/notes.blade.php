@@ -4,7 +4,7 @@
 
 <!-- Information section -->
 <x-roadmap/>
-<form class="" action="{{route('task.create.contacts')}}" method="post">
+<form class="" action="{{route('task.create.contacts')}}" method="post" enctype="multipart/form-data">
   @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
@@ -47,10 +47,13 @@
 
           </div>
           <div class="mt-4">
-            <!-- <button id="addbtn" type="button"  class="w-full border-dashed border border-[#000] rounded-lg py-2 text-center flex justify-center items-center gap-2" name="button">
-                <i class="fa fa-camera h-4 w-4 text-gray-500 " aria-hidden="true"></i>
-              <span >Добавить фото</span>
-             </button> -->
+                <div class="w-full border-dashed border border-[#000] rounded-lg py-2 text-center flex justify-center items-center gap-2" type="button">
+                  <input type="file" id="file" name="avatar" class="hidden">
+                  <label for="file">
+                      <i class="fa fa-camera h-4 w-4 text-gray-500"></i>
+                      <span>Добавить фото</span>
+                  </label>
+                </div>
              <div>
                 <!-- <label class="md:w-2/3 block mt-6">
                     <input class="mr-2 h-4 w-4" type="checkbox" name="docs">

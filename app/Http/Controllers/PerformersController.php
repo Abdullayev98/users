@@ -12,6 +12,8 @@ use App\Models\UserView;
 use Session;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use App\Models\Task;
+use App\Models\Notification;
 
 
 class PerformersController extends Controller
@@ -67,6 +69,22 @@ public function perf_ajax($cf_id){
 
     return view('Performers/performers_cat',compact('child_categories','categories','users','cf_id','cur_cat'));
 
+}
+
+public function del_notif($id,$task_id){
+
+    Notification::where('id',$id)->delete();
+
+    $tasks = Task::where('id',$task_id)->first();
+    $cat_id = $tasks->category_id;
+    $user_id = $tasks->user_id;
+  $same_tasks = Task::where('category_id',$cat_id)->get();
+
+  $users = User::all();
+  $current_user = User::find($user_id);
+  $categories = Category::where('id',$cat_id)->get();
+  // dd($current_user);
+  return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
 }
 
 }
