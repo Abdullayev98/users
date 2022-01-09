@@ -149,7 +149,7 @@
                         class="mx-auto" alt="">
                     <div class="font-bold my-4">@lang('lang.body_feedback')</div>
                     <div class="text-xs">
-                   
+                    @lang('lang.body_over1mln')
                     </div>
                 </div>
             </div>
