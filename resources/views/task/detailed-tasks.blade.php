@@ -95,7 +95,8 @@
                                                             </label>
                                                             <label class=" px-2">
                                                                 <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>Указать время актуальности предложения
-                                                            </label><br>
+                                                            </label>
+                                                            <br>
                                                             <select name="response_time" id="AttorneyEmpresa" class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500" style="display: none">
                                                                 <option value="1" class="">1 часов</option>
                                                                 <option value="2" class="">2 часов</option>
@@ -109,7 +110,7 @@
                                                             </select>
                                                         </div>
                                                         <label>
-                                                            <input type="text"  name="response_price" class="border rounded-md px-2 border-solid focus:outline-[rgba(255,119,0,4)] mr-3 my-2">SUM
+                                                            <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">SUM
                                                             <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
                                                             <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
                                                         </label>
@@ -117,7 +118,7 @@
                                                     </main>
                                                     <footer class="flex justify-center bg-transparent">
                                                         <button
-                                                            class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300"
+                                                            class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300"
                                                             @click="showModal2 = false">Далее</button>
                                                     </footer>
                                                 </form>
@@ -143,7 +144,7 @@
                         </button>
                     </a>
                 </div>
-                
+
                 <div class="w-[750px]">
                     <div>
                         @if(isset($task_responses))
