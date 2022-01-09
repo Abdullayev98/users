@@ -58,9 +58,16 @@
 
                     <div x-data="{ showModal1: false, showModal2: false, showModal3: false }" :class="{'overflow-y-hidden': showModal1 || showModal2 || showModal3}">
                         <div  class="w-full flex flex-col sm:flex-row justify-center pl-32">
+                            @auth
                             <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2" @click="showModal2 = true">
                                 Откликнуться на это задание
                             </button>
+                            @else
+                            <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2">
+                                Откликнуться на это задание
+                            </button>
+                            @endauth
+                            
                             <!-- Modal -->
                             <div class="fixed inset-0 w-full h-full z-20 bg-black bg-opacity-50 duration-300 overflow-y-auto" x-show="showModal2" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                                 <div class="relative sm:w-3/4 md:w-1/2 lg:w-1/3 mx-2 sm:mx-auto my-10 opacity-100">
@@ -175,14 +182,15 @@
                                 <a href="">по отзывам</a>
                             </div>
                         </div>
+                        @foreach ($task_responses as $response)
                     <div class="mb-6">
                         <div class="my-10">
                             <div class="rounded-md bg-black h-24 float-left mr-5">
                                 <img class="w-24 h-24" src="https://assets.youdo.com/_next/static/media/executor_176.900c31f3bbd110fe153ec59d249ac71b.png" alt="">
                             </div>
                             <div class="">
-                                <a href="#" class="text-blue-500 text-xl font-semibold float-left">
-                                    Илья С.
+                                <a href="/performers/{{$response_users->id}}" class="text-blue-500 text-xl font-semibold float-left">
+                                    {{$response_users->name}}
                                 </a>
                                 <img class="w-7 h-7 ml-2" src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" alt="">
                                 <div class="text-gray-700">
@@ -196,20 +204,14 @@
                         </div>
                         <div class="bg-[#f5f5f5] rounded-[10px] p-4">
                             <div class="ml-10">
-                                <div class="text-[17px] text-gray-500 font-semibold">Стоимость 11 135 ₽</div>
+                                <div class="text-[17px] text-gray-500 font-semibold">Стоимость {{$response->price}} ₽</div>
                                 <div class="text-[17px] text-gray-500">Здраствуйте.</div>
 
-                                <div class="text-[17px] text-gray-500 my-5">Мы могли бы ответить на насколько вопросов:</div>
+                                <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
 
-                                <div class="text-[17px] text-gray-500">-В каком городе вы находитесь?</div>
-                                <div class="text-[17px] text-gray-500">-Какой бюджет планировали на рекламную компанию?</div>
-                                <div class="text-[17px] text-gray-500 mb-8">-Сколько необходимо заявок в месяц?</div>
-
-                                <div class="text-[17px] text-gray-500">Прощу прислать ссылку на сайт для ознокомления. Спасибо!</div>
-
-                                <div class="text-[17px] text-gray-500 font-semibold my-4">Телефон исполнителя: +998 99 999-99-99</div>
+                                <div class="text-[17px] text-gray-500 font-semibold my-4">Телефон исполнителя: {{$response_users->phone_number}}</div>
                                 <div class="">
-                                    <a href="#" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
+                                    <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                         Написать в чат
                                     </a>
                                     <a href="#" class="text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-[#6fc727] hover:bg-[#5ab82e] font-medium border border-transparent rounded-md">
@@ -222,6 +224,7 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     </div>
                 </div>
 
