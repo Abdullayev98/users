@@ -10,15 +10,15 @@
                 <div class="flex flex-row">
                     <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">до {{$tasks->budget}}</p>
                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
-                    <h1 class="my-2 text-green-400">Сделка без риска</h1>
+                    <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                     <i class="far fa-question-circle mx-3 my-1 text-2xl text-green-300"></i>
                 </div>
                 <div class="flex flex-row">
-                    <p class="mt-4 text-lg text-gray-400 font-normal">Заказчик отдает предпочтение застрахованным исполнителям</p>
+                    <p class="mt-4 text-lg text-gray-400 font-normal">@lang('lang.detT_insuredPer')</p>
                     <i class="far fa-question-circle mx-3 my-3.5 text-2xl text-gray-400"></i>
                 </div>
                 <div class="flex flex-row text-gray-400 mt-4">
-                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">Открыто</p>
+                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
                     <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
                     <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
                     @foreach($categories as $category)
@@ -36,7 +36,7 @@
                         <p class="text-lg  h-auto w-96">26 декабря 2021, 23:00</p>
                     </div> -->
                     <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">Бюджет</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
                         <p class="text-lg  h-auto w-96">до {{$tasks->budget}}</p>
                     </div>
                     <!-- <div class="ml-12 flex flex-row mt-4"> -->
@@ -47,11 +47,11 @@
                         </div> -->
                     <!-- </div> -->
                     <div class="ml-12 flex flex-row mt-4">
-                        <h1 class="text-lg font-bold h-auto w-48">Место</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->address}}</p>
                     </div>
                     <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">Нужно</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_need')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
 
@@ -148,19 +148,19 @@
 
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-lg">
-                    <h1 class="text-3xl font-semibold py-3">Хотите найти надежного помощника?</h1>
-                    <p class="text-lg mb-10">Universal Services помогает быстро решать любые бытовые и бизнес-задачи.</p>
+                    <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
+                    <p class="text-lg mb-10">@lang('lang.detT_fastHelp')</p>
                     <a href="/categories/1">
                         <button
                             class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded"
                             @click="showModal1 = true">
-                            Создайте свое задание
+                            @lang('lang.detT_createOwnTask')
                         </button>
                       </a>
                 </div>
 
                 <div class="mt-12">
-                    <h1 class="text-3xl font-medium ">Другие задания в категории</h1>
+                    <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTask')</h1>
                     @foreach($same_tasks as $same_task)
                     <div class="mt-4">
                         <a href="#" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
@@ -177,7 +177,7 @@
 
                 {{-- right sidebar start --}}
             <div class="lg:col-span-1 col-span-3 lg:mt-0 mt-8">
-                <h1 class="text-lg">Заказчик этого задания</h1>
+                <h1 class="text-lg">@lang('lang.detT_ownerOfThisTask')</h1>
                 <div class="flex flex-row mt-4">
                     <div class="mr-4">
                         <img src="{{ asset($current_user->avatar ?? $tasks->user_name ) }}" class="border-2 border-gray-400 w-32 h-32" alt="#">

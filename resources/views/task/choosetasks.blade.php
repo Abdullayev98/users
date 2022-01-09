@@ -3,8 +3,8 @@
 @section("content")
     <div class="container w-10/12 mx-auto my-16">
         <div class="w-8/12 mx-auto text-center">
-            <h1 class="text-5xl font-bold">Выберите категорию задания</h1>
-            <h3 class="text-xl text-gray-500">Мы готовы помочь вам в решении самых разнообразных задач</h3>
+            <h1 class="text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
+            <h3 class="text-xl text-gray-500">@lang('lang.chT_weHelp')</h3>
             @foreach($categories as $category)
                 <button type="button"
                         class="bg-inherit hover:bg-[#ffebad] border py-1 rounded-full px-4 my-4 text-gray-500 text-xs">

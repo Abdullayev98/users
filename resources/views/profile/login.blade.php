@@ -1,4 +1,4 @@
-<p class="text-center">Войти через:</p>
+<p class="text-center">@lang('lang.login_by')</p>
 <div class="flex flex-row">
     <a href="#" class="w-14 h-10 text-center rounded-xl block text-sm bg-blue-600">
         <svg class="w-6 h-10 text-blue-600 fill-white ml-4"

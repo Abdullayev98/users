@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Самые необычные задания ноября</title>
+    <title>@lang('lang.blog_strangeTasks')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{$app_logo ?? ''}}" />
     <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
@@ -90,9 +90,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Съесть много фастфуда</a>
-            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Тоже считаете, что можете бесконечно есть бургеры с картошечкой? Тогда вот шанс стать звездой YouTube и заработать!</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList')</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_strangeDesc')</p>
+            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -102,9 +102,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Прогнать крысу из-под кресла</a>
-            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">В московской квартире — крыса Шрёдингера. Нужен смельчак, который прогонит хвостатого непрошеного гостя.</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList2')</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_starngeDesc2')</p>
+            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -114,9 +114,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Поехать в Испанию с бабушкой</a>
-            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Нескучный отдых на берегу моря рядом с боевой бабушкой, изучавшей ядерную физику и поющей в хоре.</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList3')</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_strangeDesc3')</p>
+            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -126,9 +126,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Украсть Рождество</a>
-            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Разыскивается зелёный, но добрый похититель Рождества, который не будет разбивать детские сердечки, а вдохновит их перед праздниками.</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList4')</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_strangeDesc4')</p>
+            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -138,9 +138,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">Построить баню в Бразилии</a>
-            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">Специалисты по строительству бань ликуют: нашелся заказчик за рубежом. Ola, Бразилия!</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">Смотреть →</a>
+            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList5')</a>
+            <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_strangeDesc5')</p>
+            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -149,27 +149,27 @@
     <div class="my-4">
         <div class="max-w-[500px] mx-auto pt-14">
             <h1 class="text-[#ffa200] text-[32px] font-bold text-center ">
-                Голосуем за лучшее задание
+            @lang('lang.blog_vote')
             </h1>
         </div>
         <div class="text-center text-[18px] md:w-[520px] mx-auto my-4">
-            Какое из заданий ноября удивило больше всего? Голосуйте за своего фаворита.
+        @lang('lang.blog_voteQuestion')
         </div>
         <div class="md:w-[600px] mx-auto">
             <div class="text-center text-[26px] font-bold my-4">
-                Лучшее задание:
+            @lang('lang.blog_bestTasks')
             </div>
             <div>
                 <div class="mt-4">
-                    <label class="cursor-pointer text-[18px]"> &nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;Съесть много фастфуда 🍔</label><br />
-                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;Прогнать 🐭 из-под кресла </label><br />
-                    <label class="cursor-pointer text-[18px]"> &nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;Поехать в Испанию с бабушкой 👵</label><br />
-                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;Украсть Рождество 🎄</label><br />
-                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;Построить баню в Бразилии ✈️</label><br />
+                    <label class="cursor-pointer text-[18px]"> &nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList') 🍔</label><br />
+                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList2') 🐭</label><br />
+                    <label class="cursor-pointer text-[18px]"> &nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList3') 👵</label><br />
+                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList4') 🎄</label><br />
+                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList5') ✈️</label><br />
                 </div>
             </div>
             <div class="py-8 text-center">
-                <a type="button" href="#contact" class="text-white text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#ffa200] rounded-[30px] py-3 px-8">Выбрать задание</a>
+                <a type="button" href="#contact" class="text-white text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#ffa200] rounded-[30px] py-3 px-8">@lang('lang.blog_chooseTask')</a>
             </div>
         </div>
     </div>
@@ -178,7 +178,7 @@
 <div class="w-[300px] mx-auto py-16">
     <div class="bg-white mx-auto">
         <div class="text-[24px]">
-            Оцените подборку ноября
+        @lang('lang.blog_rateBlog')
         </div>
         <div class="ml-10 my-5">
             <div class="float-left mr-4">
@@ -197,15 +197,15 @@
 <div class="bg-[#fff8f0] my-16">
     <div class="py-24 text-center">
         <div class="text-[36px] font-bold">
-            Понравилась подборка?
+        @lang('lang.blog_doYouLike')
         </div>
         <div class="text-[20px] xl:w-[800px] mx-auto my-4">
-            Подпишитесь на рассылку нашего блога. Присылаем свежие истории, видео, анонсы спецпроектов или полезные подборки.
+        @lang('lang.blog_subscribe')
         </div>
         <div class="xl:w-[800px] mx-auto">
             <table>
                 <input type="text" class="bg-[#f5f5f5] outline-none rounded-[20px] my-4 py-3 px-5 w-8/12 border border-[#ffa200] inline mr-2" />
-                <button type="submit" class="text-white text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#ffa200] rounded-[30px] py-3 px-8">Подписаться</button>
+                <button type="submit" class="text-white text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#ffa200] rounded-[30px] py-3 px-8">@lang('lang.blog_wantSubscribe')</button>
             </table>
         </div>
     </div>
@@ -213,14 +213,14 @@
 
 <div class="my-20 lg:max-w-[1300px] md:max-w-[900px] max-w-[600px] mx-auto">
     <div class="text-center my-8 text-[36px] font-bold">
-        Не уходите, почитайте еще
+    @lang('lang.blog_dontLeve')
     </div>
     <div class="lg:w-[900px] md:w-[800px] xl:w-[1300px] mx-auto md:flex">
       @foreach($last3 as $last)
         <a href="" class="lg:w-[400px] md:w-[200px] ml-16 lg:m-0">
             <img src="{{asset($last->img)}}" alt=""class="lg:w-[300px] w-[650px]">
             <p class="text-gray-500 text-[14px] my-2">
-                Истории
+            @lang('lang.blog_storyes')
             </p>
             <div class="text-[16px] md:text-[24px] font-semibold">
                 {{$last->title}}
@@ -251,10 +251,10 @@
 <div class="bg-[#fff8f0] my-16">
     <div class="text-center py-16">
         <div class="text-[36px] font-bold">
-            Понравилась подборка?
+        @lang('lang.blog_doYouLike')
         </div>
         <div class="text-[20px] md:w-[800px] mx-auto my-4">
-            Скачайте приложение Universal Services и создайте своё задание уже сегодня
+        @lang('lang.blog_download')
         </div>
         <div class="mb-5 md:float-left lg:float-none md:w-6/16 mx-auto">
                 <span class="">
@@ -281,20 +281,19 @@
             </div>
             <div class="inline">
                 <div class="text-bold ml-8 md:-ml-20">
-                    <a class="ml-8" href="">О нас</a>
+                    <a class="ml-8" href="">@lang('lang.blog_aboutUs')</a>
                     <a class="ml-8" href="">Facebook</a>
                     <a class="ml-8" href="">Twitter</a>
-                    <a class="ml-8" href="">Контакты</a>
-                    <a href="">HR-лидогенерация</a>
+                    <a class="ml-8" href="">@lang('lang.blog_contacts')</a>
+                    <a href="">@lang('lang.blog_hr')</a>
                 </div>
             </div>
             <div>
-                <a href="#header" class="hidden sm:block">Наверх</a>
+                <a href="#header" class="hidden sm:block">@lang('lang.blog_up')</a>
             </div>
         </div>
         <div class="max-w-xl mx-auto text-[#9e9e9e] text-[14px] text-center">
-            Информация, размещенная на настоящей странице, не является публичной офертой,
-            как она определена в Гражданском кодексе Российской Федерации
+        @lang('lang.blog_info')
         </div>
     </div>
 </footer>

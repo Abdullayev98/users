@@ -5,16 +5,16 @@
         <div class="mt-3 text-center">
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4">
-                    Войти через:
+                   @lang('lang.signin_enter')
                 </h3>
             </div>
             <div class="mt-4 flex flex-row justify-center">
-               <a href="login/google"> <button class="w-40 h-12 rounded-lg bg-red-500 text-gray-200 uppercase font-semibold hover:bg-red-700 text-gray-100 transition mb-4 mr-4"> Google</button></a>
-               <a href="login/facebook"> <button class="w-40 h-12 rounded-lg bg-blue-500 text-gray-200 uppercase font-semibold hover:bg-blue-700 text-gray-100 transition mb-4"> Facebook</button></a>
+               <a href="login/google"> <button class="w-40 h-12 rounded-lg bg-red-500 text-gray-200 uppercase font-semibold hover:bg-red-700 text-gray-100 transition mb-4 mr-4"> @lang('lang.signin_google')</button></a>
+               <a href="login/facebook"> <button class="w-40 h-12 rounded-lg bg-blue-500 text-gray-200 uppercase font-semibold hover:bg-blue-700 text-gray-100 transition mb-4"> @lang('lang.signin_facebook')</button></a>
             </div>
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4 mt-4">
-                    Войти по электронной почте
+                 @lang('lang.signin_elpocta')
                 </h3>
             </div>
             <div>
@@ -22,7 +22,7 @@
                     @csrf
                     <div class="mb-4">
                         <label class="block text-gray-500  text-sm " for="name">
-                            Имя Фамилия
+                        @lang('lang.signin_username')
                         </label>
                         <input type="text" name="name" placeholder="Name" id="name"
                         class="shadow appearance-none border border-slate-300 rounded
@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-6">
                         <label class="block text-gray-500  text-sm " for="password">
-                            Пароль
+                        @lang('lang.signin_password')
                         </label>
                         <input   type="password" name="password" placeholder="Password" id="password" required
                         class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3
@@ -53,13 +53,13 @@
                 </form>
                 <p class="text-sky-500 text-lg mb-4">
                     <a href="#">
-                        Забыли пароль?
+                    @lang('lang.signin_passwordforgot')
                     </a>
                 </p>
                 <p class="text-lg mb-4">
                     Еще не с нами?
                     <a class="text-sky-500" href="{{ route('register') }}">
-                        Зарегистрируйтесь
+                    @lang('lang.signin_registration')
                     </a>
                 </p>
             </div>

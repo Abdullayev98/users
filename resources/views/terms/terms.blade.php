@@ -27,12 +27,12 @@
     </div>
 
     <div class="Rekvezit">
-        <h2 class="Rekvezit_title font-bold pb-2">Реквизиты</h2>
-        <p class="Rekvezit_text">Общество с ограниченной ответственностью «Киберлогистик»</p>
-        <p class="Rekvezit_text">Адрес для корреспонденции, направления жалоб и предложений:</p>
-        <p class="Rekvezit_text">119021, Россия, г. Москва, а/я 21</p>
-        <p class="Rekvezit_text">Юридический адрес:</p>
-        <p class="Rekvezit_text">121205, Россия, г. Москва, Территория Инновационного Центра «Сколково», улица Нобеля 7, офис 47</p>
+        <h2 class="Rekvezit_title font-bold pb-2">@lang('lang.terms_requisites')</h2>
+        <p class="Rekvezit_text">@lang('lang.terms_cyberLogic')</p>
+        <p class="Rekvezit_text">@lang('lang.terms_address')</p>
+        <p class="Rekvezit_text">@lang('lang.terms_addressDetail')</p>
+        <p class="Rekvezit_text">@lang('lang.terms_politicAdress')</p>
+        <p class="Rekvezit_text">@lang('lang.terms_politicAddressDetail')</p>
         <p class="Rekvezit_text">ИНН 7730194136</p>
         <p class="Rekvezit_text">КПП 773101001</p>
         <p class="Rekvezit_text">ОГРН 5157746302434</p>
