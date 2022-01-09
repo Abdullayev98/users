@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Task;
 
 use App\Models\Task;
-use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
@@ -251,10 +250,11 @@ class CreateTaskController extends VoyagerBaseController
         $email      = session()->pull('email');
       }
 
-      $id = Task::create([
-
+      $id = [
         'user_id'=>$user_id,
         'name'=>$name,
+        'user_email'=>$email,
+        'user_name'=>$user_name,
         "category_id"=>$category,
         "address"=>$location,
         "start_date"=>$date,
@@ -262,26 +262,26 @@ class CreateTaskController extends VoyagerBaseController
         'budget'=>$amount,
         'description'=>$description,
         'phone'=>$phone,
-        'show_only_to_performers'=>$secret
-
-    ]);
-
-    Notification::create([
-
-        'user_id'=>$user_id,
-        'description'=> 1,
-        'task_id'=>$id->id,
-        "cat_id"=>$category
-
-    ]);
-
-   $id_task = $id->id;
-   $id_cat = $id->category_id;
-   $title_task = $id->name;
-
-       event(new MyEvent($id_task,$id_cat,$title_task));
-
-     return redirect('/')->with('success','Задание успешно добавлено!');
+        'need_movers'=>$need_movers,
+        'show_only_to_performers'=>$secret,
+        'etaj_po' => $etaj_po,
+        'lift_po' => $lift_po,
+        'etaj_za' => $etaj_za,
+        'lift_za' => $lift_za,
+        'peopleCount' => $peopleCount,
+        'weight' => $weight,
+        'length' => $length,
+        'width' => $width,
+        'height' => $height,
+    ];
+      dd($id);
+//    $id_task = $id->id;
+//    $id_cat = $id->category_id;
+//    $title_task = $id->name;
+//
+//        event(new MyEvent($id_task,$id_cat,$title_task));
+//
+//      return redirect('/')->with('success','Задание успешно добавлено!');
     }
 
 
