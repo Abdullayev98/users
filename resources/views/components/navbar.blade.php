@@ -1,22 +1,6 @@
 
 
 
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-  <script>
-
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('1f89b665267dfe7451d6', {
-      cluster: 'ap2'
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      alert(data["title_task"]);
-    });
-  </script>
-
 <nav class="z-10 relative flex items-center mx-6 lg:w-11/12 xl:w-10/12 md:mx-auto justify-between  lg:justify-start font-[sans-serif]" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
       <!--  mobile menu -->
@@ -243,7 +227,7 @@ use Illuminate\Support\Facades\Auth;
 @php $count_for_not++; @endphp
 
 @endforeach
-                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">{{$count_for_not}}</div>
+                <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">{{$count_for_not}}</div>
                     <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
                     </button>
                     <!-- Dropdown menu -->
@@ -258,6 +242,8 @@ use Illuminate\Support\Facades\Auth;
                                 <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
                             </li>
 @endforeach
+
+<div id="for_append_notifications"></div>
 
                             <li>
                                 <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>Осталось только установить пароль</a>
@@ -446,8 +432,55 @@ use Illuminate\Support\Facades\Auth;
 </div> --}}
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal1-id-backdrop"></div>
+@if(Auth::user() !== NULL)
+
+@php
+
+$array_cats_user = Auth::user()->category_id;
+
+@endphp
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('1f89b665267dfe7451d6', {
+      cluster: 'ap2'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
 
 
+        const for_check_cat_id = [<? echo $array_cats_user ?>];
+
+        let num_cat_id = Number(data["id_cat"]);
+
+        let check_arr = for_check_cat_id.includes(num_cat_id);
+
+if(check_arr === true){
+   var content_count = document.getElementById('content_count').innerHTML;
+   let count_for_inner = Number(content_count) + 1;
+   document.getElementById('content_count').innerHTML = count_for_inner;
+
+   let el_for_create = document.getElementById('for_append_notifications');
+
+   el_for_create.insertAdjacentHTML('afterend', `
+<li>
+<a href="/detailed-tasks/`+ Number(data["id_task"]) +`" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">`+ data["title_task"] +`</a>
+</li>
+ `);
+
+}
+
+      console.log(check_arr);
+
+
+    });
+  </script>
+@endif
 
 <script type="text/javascript">
     function toggleModal(){

@@ -484,4 +484,346 @@ return [
     'perfCat_feedbacks' => "Отзывы: uz",
     'perfCat_allPerf' => "Все исполнители uz",
     // performers_cat.blade end
+
+    // budget.blade start
+    'budget_lookingFor' => "Ищем исполнителя для задания uz",
+    'budget_percent' => "Задание заполнено на 71% uz",
+    'budget_yourBudget' => "На какой бюджет вы рассчитываете? uz",
+    'budget_sum' => "до 150 сум uz",
+    'budget_back' => "Назад uz",
+    // budget.blade end
+
+    // cargo.blade start
+    'cargo_percent' => "Задание заполнено на 57% uz",
+    'cargo_howBig' => "Насколько большой груз? uz",
+    'cargo_measure' => "Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт. uz",
+    'cargo_weight' => "Вес груза, кг uz",
+    'cargo_leight' => "Длина, м uz",
+    'cargo_width' => "Ширина, м uz",
+    'cargo_height' => "Высота, м uz",
+    // cargo.blade end
+
+    // contacts.blade start
+    'contact_percent' => "Задание заполнено на 86% uz",
+    'contact_details' => "Уточните детали uz",
+    'contact_name' => "Имя uz",
+    'contact_number' => "Номер телефона uz",
+    'contact_send' => "Отправить uz",
+    // contacts.blade end
+
+    // date.blade start
+    'date_percent' => "Задание заполнено на 57% uz",
+    'date_startTime' => "Когда нужно приступить к работе? uz",
+    'date_startDate' => "Укажите точную дату или период, когда нужно приступить к работе. uz",
+    'date_startTask' => "Начать работу uz",
+    'date_finishTask' => "Закончить работу uz",
+    'date_givePeriod' => "Указать период uz",
+    // date.blade end
+
+    // location.blade start
+    'loc_percent' => "Задание заполнено на 29% uz",
+    'loc_whereTask' => "Где выполнить задание? uz",
+    'loc_giveLocation' => "Укажите адрес или место, чтобы найти исполнителя рядом с вами. uz",
+    'loc_add' => "Добавить ещё адрес uz",
+    // location.blade end
+
+    // movers.blade start
+    'movers_percent' => "Задание заполнено на 57% uz",
+    'movers_loadFlat' => "Этаж погрузки uz",
+    'movers_elevator' => "Лифт uz",
+    'movers_noElevator' => "Лифт отсутствует uz",
+    'movers_smElevator' => "Лифт пассажирский uz",
+    'movers_cargElevator' => "Лифт грузовой uz",
+    'movers_flat' => "Этаж разгрузки uz",
+    // movers.blade end
+
+    // name.blade start
+    'name_helpToFind' => "Поможем найти исполнителя для вашего задания uz",
+    'name_percent' => "Задание заполнено на 14% uz",
+    'name_howCanWeHelpU' => "Чем вам помочь? uz",
+    'name_taskName' => "Название задания uz",
+    'name_example' => "Например, нужен курьер на несколько доставок uz",
+    'name_subCat' => "Подкатегория uz",
+    'name_pedCourier' => "Услуги пешего курьера uz",
+    'name_next' => "Далее uz",
+    'name_deleteAsk' => "Введённые данные будут потеряны. <br> Удалить задание? uz",
+    'name_continue' => "Продожить uz",
+    'name_delete' => "Удалить uz",
+    'name_cencel' => "Отмена uz",
+    // name.blade end
+
+    // notes.blade start
+    'notes_percent' => "Задание заполнено на 86% uz",
+    'notes_details' => "Уточните детали uz",
+    'notes_destcript' => "Описание uz",
+    'notes_example' => "Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня. uz",
+    'notes_addPhoto' => "Добавить фото uz",
+    'notes_back' => "Назад uz",
+    // notes.blade end
+
+    // people.blade start
+    'people_percent' => "Задание заполнено на 86% uz",
+    'people_needLoader' => "Нужны услуги грузчиков? uz",
+    'people_yes' => "Да uz",
+    'people_no' => "Нет uz",
+    // people.blade end
+
+    // peopleT.blade start
+    'peopleT_percent' => "Задание заполнено на 43% uz",
+    'peopleT_howManyPas' => "Сколько человек нужно перевезти? uz",
+    'peopleT_prbAmount' => "Можно указать ориентировочное количество uz",
+    // peopleT.blade end
+
+    // services.blade start
+    'service_percent' => "Задание заполнено на 86% uz",
+    'service_details' => "Уточните детали uz",
+    // services.blade end
+
+    // verification.blade start
+    'ver_becomePerf' => "Станьте исполнителем Universal Services uz",
+    'ver_uSerHelps' => "Universal Services поможет найти новых клиентов и зарабатывать <br> на выполнении любых услуг. uz",
+    'ver_becomePrefBtn' => "СТАТЬ ИСПОЛНИТЕЛЕМ uz",
+    'ver_advantage' => "Преимущества uz",
+    'ver_becomePref2' => "Станьте исполнителем и выполняйте интересные задания от заказчиков <br> в удобное для вас время. uz",
+    'ver_goodSalary' => "Достойный заработок uz",
+    'ver_freeTime' => "Свободный график uz",
+    'ver_safeService' => "Безопасный сервис uz",
+    'ver_addsEconomy' => "Экономия на рекламе uz",
+    'ver_howToGetTask' => "Как получить заказ uz",
+    'ver_perfsChoose' => "На Universal Services исполнители сами выбирают заказы и клиентов. Это просто. uz",
+    'ver_becomePerf3' => "Станьте исполнителем и заполните профиль uz",
+    'ver_chooseTask' => "Выберите задание и откликнитесь на него uz",
+    'ver_takeMoney' => "Получите оплату сразу же после выполнения задания uz",
+    'ver_earnByTasks' => "Зарабатывайте на заказах с Universal Services без ограничений. Используйте сервис для подработки или начните развивать собственное дело. uz",
+    'ver_maxOrder' => "Максимальный заказ на Universal Services.com был почти на 100 000 рублей, я несколько дней решал проблему, за которую никто не хотел браться. uz",
+    'ver_startEarning' => "Начать зарабатывать uz",
+    'ver_workForYourserf' => "На Universal Services вы работаете на себя и сами выбираете заказчиков. Выполняйте задания в удобное для вас время и устраивайте выходные, когда захотите uz",
+    'ver_opinion' => "Я считаю, что users.uz — это уникальный сервис возможностей. Его безусловное преимущество в том, что вы можете самостоятельно выбирать для себя график работы, заказы, клиентов, формировать свой доход. uz",
+    'ver_startEarningForY' => "Начать работать на себя uz",
+    'ver_serviceSec' => "Безопасность сервиса uz",
+    'ver_readFeedbacks' => "итайте отзывы о заказчиках и выполняйте задания со Сделкой без риска: при успешном завершении работы вы гарантированно получите оплату на карту. uz",
+    'ver_securityDescr' => "Со Сделкой без риска не переживаешь, что оплата не поступит. Если что, задание закрывается автоматически uz",
+    'ver_getPerfStatus' => "Получить статус исполнителя uz",
+    'ver_addsDescr' => "Больше не нужно тратить деньги на собственный сайт и рекламу — выбирайте задания и отправляйте отклики заказчикам, которым услуга нужна прямо сейчас. uz",
+    'ver_opinion2' => "Сервис мне очень помог в наработке клиентской базы, что всегда очень сложно сделать в салоне. У меня уже есть заказчики, которые приходят на стрижку или окрашивание в третий, четвертый раз, то есть становятся постоянными клиентами. uz",
+    'ver_partnershipT' => "Условия сотрудничества с Universal Services uz",
+    'ver_noTaxes' => "Сервис не берёт комиссию за выполненный заказ. <br> Вы оплачиваете только отклики к заданиям и сами выбираете клиентов. uz",
+    'ver_unlim' => "Безлимитный тариф uz",
+    'ver_unlimFeedbacks' => "Неограниченное количество откликов <br> к заказам на 15, 30 или 90 дней. uz",
+    'ver_chooseTariff' => "Выбрать тариф uz",
+    'ver_basicTariff' => "Базовый тариф uz",
+    'ver_fixedFeedbacks' => "Фиксированное количество откликов: 25, <br> 50 или 100. Сроком на 30 дней. uz",
+    'ver_getYourGoals' => "Зарабатывайте и добивайтесь <br> своих целей с Universal Services uz",
+    'ver_everyday' => "Наши исполнители делают это каждый день. uz",
+    'ver_independance' => "Universal Services помогает мне оставаться свободным. Несмотря на то, что график плотный, я решаю сам, не кто-то мне говорит, когда мне встать, куда приехать, что сделать. uz",
+    'ver_avarageSCour' => "Средний месячный доход <br> в категории «Курьерские услуги» uz",
+    'ver_readMore' => "Читать дальше uz",
+    'ver_opinion3' => "Открыла для себя такую штуку, как сервис Universal Services. Выполняешь задания — платят. Отличная замена обычной «работе на работе» ради денег uz",
+    'ver_opinion4' => "Очень крутой сервис, напоминает Uber. Удобно пользоваться, особенно со стороны заказчика — быстро и дешево решаются любые сложные uz",
+    'ver_opinion5' => "Начала потихоньку зарабатывать на поездку. Я остановилась на сайте Universal Services. Там есть много интересных предложений и сама система сайта uz",
+    'ver_opinion6' => "Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с Universal Services. uz",
+    'ver_avarageSPhoto' => "Средний месячный доход <br> в категории «Фото и видеоуслуги» uz",
+    'ver_opinion7' => "Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с Universal Services. uz",
+    'ver_avarageS3' => "Средний месячный доход <br> в категории «Фото и видеоуслуги» uz",
+    'ver_' => " uz",
+    'ver_' => " uz",
+    // verification.blade end
+
+
+
+    // signin blade start
+    'signin_enter' => " Войти через: uz",
+    'signin_google' => "Google uz",
+    'signin_facebook' => "Facebook uz",
+    'signin_elpocta' => ' Войти по электронной почте',
+    'signin_username' => " Имя Фамилия uz",
+    'signin_password' => " Пароль uz",
+    'signin_passwordforgot' => "Забыли пароль? uz",
+    'signin_registration' => "  Зарегистрируйтесь uz",
+    // signin blade ended
+
+    // signup blade start
+    'signup_username' => " Имя Фамилия uz",
+    'signup_enter' => " Войти через: uz",
+    'signup_google' => "Google uz",
+    'signup_facebook' => "Facebook uz",
+    'signup_endedregistration' => " Завершение регистрации uz",
+    'signup_elpocta' => "Электронная почта uz",
+    'signup_telnumber' => "Телефон немер uz",
+    'signup_password' => " Пароль uz",
+    'signup_registration' => " Зарегистрация uz",
+    // signup blade ended
+
+    // business blade start
+    'business_foundperson' => "Находим исполнителей uz",
+    'business_avtodocument' => "Автоматизируем документооборот uz",
+    'business_legal' => "Производим легальные расчеты uz",
+    'business_fastfoundperson' => "Ускорьте поиск исполнителей uz",
+    'business_owndatabaseperformers' => "Собственная база 2.6 млн исполнителей  uz",
+    'business_foryourbusinesswork' => "для задач вашего бизнеса uz",
+    'business_selectionofselfemployedperformersaccordingtovariouscriteria'=> "Подбор самозанятых исполнителей по различным критериям uz",
+    'business_automate' => "Автоматизируйте uz",
+    'business_interactionwithself-employed' => " взаимодействие с самозанятыми uz",
+    'business_assistancetoperformersinobtainingself-employment' => "Помощь исполнителям в оформлении самозанятости uz",
+    'business_avtodocandact' => "Автоматическое формирование договоров и актов uz",
+    'business_ownpersonroom' => "Актуальные статусы исполнителей в личном кабинете uz",
+    'business_chooseeasyworkforyou' => "Выберите удобный формат работы uz",
+    'business_workinbrouser' => "Работайте прямо из браузера, без дополнительных доработок на вашей стороне uz",
+    'business_text' => "Получите персонального менеджера, который поможет с загрузкой данных и выплатами uz",
+    'business_integrationtapi' => "Интеграция по API uz",
+    'business_text1' => " Подключите платформу к своей учетной системе для обмена данными uz",
+    'business_submitaplication' => "Оставить заявку uz",
+    'business_togetherwith' => "Совместно с uz",
+    'business_forbusiness' => "Помогаем бизнесу uz",
+    'business_workinown' => "работать с самозанятыми uz",
+    'business_ownroom' => "Личный кабинет uz",
+    'business_menengersakk' => "Аккаунт-менеджер uz",
+    'business_payforyourownwork24\7' => "Платите самозанятым без ограничений 24/7 uz",
+    'business_payforcard' => "Выплаты на любые карты, uz",
+    'business_accauntdetailsorphonenumber' => "реквизиты счета или по номеру телефона uz",
+    'business_ceklimit' => "Проверка лимитов и статуса uz",
+    'business_performerbeforepayment' => "исполнителей перед выплатой uz",
+    'business_avtoformation' => "Автоматическое формирование uz",
+    'business_checkselfemployers' => "чеков и оплата налогов за самозанятого uz",
+    'business_text2' => "* Страховые услуги оказывает ООО «Страховая компания «Манго». Лицензии С Л № 4372 и СИ № 4372 от 12.09.2019 г. Выданы Банком России без ограничения срока действия. Сайт: uz",
+    'business_saytmango' => "www.mango.rocks. uz",
+    'business_text3' => "Подробнее о правилах и условиях страхования uz",
+    'business_text4' => "** Услуга по страхованию оказывается организацией Страховое акционерное общество «ВСК». Лицензия Банка России СИ № 0621 от 11.09.2015. uz",
+    'business_text5' => "Подробнее о правилах и условиях страхования uz",
+    'business_text6' => "Привлекайте лучших специалистов uz",
+    'business_text7' => "А мы сделаем их работу комфортной uz",
+    'business_text8' => "Выплаты без ограничений uz",
+    'business_text9' => "Исполнитель может получать выплаты uz",
+    'business_everyordereveryday' => "за каждый заказ, день в день  uz",
+    'business_inholiday' => "Даже в выходные и праздничные дни uz",
+    'business_text10' => "Страховка от материального ущерба** uz",
+    'business_text11' => "Аналог больничного — поддержим исполнителя, uz",
+    'business_text12' => "если он заболеет и не сможет работать uz",
+    'business_text13' => "Медицинская страховка* uz",
+    'business_text14' => "Если что-то пойдет не так, страховая может uz",
+    'business_text15' => "выплатить до 100 000 рублей за ущерб, uz",
+    'business_text16' => "причиненный застрахованным исполнителем uz",
+    'business_supportservice' => "Служба поддержки uz",
+    'business_text17' => "Поможем исполнителям получить статус самозанятого, познакомим с платформой и ответим на вопросы uz",
+    'business_text18' => "Узнай, что такое HR-Лидогенерация uz",
+    'business_text19' => "Сотрудничайте с самозанятыми правильно uz",
+    'business_text20' => "Поделимся опытом, как это делать: uz",
+    'business_text21' => "Участвуем в рабочих группах (при министерствах и  uz",
+    'business_text22' => "ведомствах) и бизнес- ассоциациях по развитию uz",
+    'business_text23' => "рынка самозанятых uz",
+    'business_text24' => "Совместно с ФНС России, Рострудом и ОНФ uz",
+    'business_text25' => "разработали памятку для юридических лиц по uz",
+    'business_text26' => "безопасной работе с самозанятыми uz",
+    'business_text27' => "Скачать на сайте ФНС → uz",
+    'business_text28' => "Совместно с ДПИР Москвы и мбм.мос.ру запустили обучающий онлайн курc для самозанятых исполнителей uz",
+    'business_webinars' => "Вебинары uz",
+    'business_text29' => "Так как режим НПД еще молодой, а сформированной практики пока недостаточно, Universal Services Бизнес и hh.ru запускают серию обучающих вебинаров, на которых расскажут об особенностях работы с самозанятыми, основных выгодах и рисках для бизнеса. uz",
+    'business_text30' => "Прошедшие (доступна запись) uz",
+    'business_text31' => "Прошел 23 сентября в 13:00 uz",
+    'business_text32' => "Вебинар «Как вести документооборот и не попасть в ловушки. Кейс стаффинговой группы ANCOR» uz",
+    'business_text33' => "Больше вебинаров uz",
+    'business_text34' => "О нас пишут uz",
+    'business_text35' => "Universal Services и HeadHunter запустили платформу для работы бизнеса с самозанятыми uz",
+    'business_text36' => "Новость о запуске совместной uz",
+    'business_text37' => "с hh.ru b2b-платформы Universal Services Бизнес uz",
+    'business_text38' => "Заседание правительственной комиссии по вопросам развития МСП uz",
+    'business_text39' => "Сооснователь Universal Services Алексей Гидирим принял участие в заседании кабмина по вопросам развития малого и среднего предпринимательства.  uz",
+    'business_text40' => "Самозанятые хотят на работу uz",
+    'business_text41' => "Весной 2020 года, в самый разгар пандемии коронавируса, мы вместе с сервисом Profi.ru обратились в столичную мэрию с просьбой разрешить самозанятым получать пропуска «для рабочих граждан» для осуществления деятельности во время локдауна. uz",
+    'business_text42' => "Памятка для самозанятых и бизнеса uz",
+    'business_text43' => "Universal Services совместно с ФНС и Рострудом подготовил памятку, где эксперты разъяснили основные моменты по сотрудничеству бизнеса с самозанятыми. Документ полезен тем, что описывает существующие для обеих сторон риски, поскольку правоприменительная практика только формируется, и не все компании знают, как грамотно работать с самозанятыми. uz",
+    'business_text44' => "Опрос: половина российских самозанятых тратит весь свой доход на бытовые нужды uz",
+    'business_text45' => "Мы провели исследование и узнали, сколько самозанятых совмещают фриланс с основной работой, кто работает исключительно на себя, кто пришёл во фриланс вынужденно из-за коронакризиса, какие причины, что люди совмещают фриланс с наемным трудом и другое. uz",
+    'business_text46' => "Ролик к 30-летию ФНС uz",
+    'business_text47' => "Поучаствовали в фильме, посвященному юбилею ведомства, рассказали о своем опыте взаимодействия с ФНС и участие в рабочей группе по разработке режима НПД. uz",
+    'business_manynews' => "Больше новостей uz",
+    'business_earn' => "Зарабатывайте uz",
+    'business_inrek' => "на рекомендациях uz",
+    'business_text48' => "Знаете компании, которым мы можем помочь в работе с самозанятыми? Предложите им сотрудничество с Universal Services за вознаграждение. uz",
+    'business_morevebinars' => "Больше вебинаров uz",
+    'business_letstalk' => "Давайте поговорим uz",
+    'business_text49' => "Мы подробнее расскажем о возможностях платформы и ответим на вопросы uz",
+    'business_text50' => "Сколько у вас самозанятых? uz",
+    'business_footer' => "© 2021 Universal Services uz",
+    'business_aboutus' => "О нас uz",
+    'business_contact' => "Контакты uz",
+    'business_text50' => "HR-лидогенерация uz",
+    'business_tothetop' => "Наверх uz",
+    'business_text51' => " Информация, размещенная на настоящей странице, не является публичной офертой,
+     как она определена в Гражданском кодексе Российской Федерации uz",
+    // business blade  ended
+
+    // components faq blade start
+    'comfaq_ownquestion' => "Частые вопросы uz",
+    'comfaq_text1' => "Сколько откликов я получу? uz",
+    'comfaq_text2' => "Обязательно ли выбирать исполнителя? uz",
+    'comfaq_text3' => "Какую цену установить? uz",
+    'comfaq_text4' => "Как оплачивать услуги исполнителя? uz",
+    'comfaq_text5' => "Как выбрать надежного исполнителя? uz",
+    'comfaq_text6' => "Как не выбрать исполнителем мошенника? uz",
+    //components faq blade ended
+
+    // footer blade start
+    'footer_how' => "Как uz",
+    'footer_become' => "стать uz",
+    'footer_performer' => "исполнителем uz",
+    'footer_ownquestion' => "Частые вопросы uz",
+    'footer_contact' => "Контакты uz",
+    'footer_costumersreviews' => "Отзывы заказчиков uz",
+    'footer_text' => "Служба поддержки uz",
+    'footer_foot' => "  © 2021 Universal services (users.uz) · uz",
+    'footer_text1' => "Правила сервиса uz",
+    'footer_text2' => "заданий уже создано uz",
+    'footer_text3' => "в этих категориях uz",
+    // footer blade ended
+
+    // roadmap blade start
+    'roadmap_describeatask' => "Опишите задание uz",
+    'roadmap_text' => "Мы оповестим о нём подходящих исполнителей. uz",
+    'roadmap_text1' => "Получите отклики uz",
+    'roadmap_text2' => "Заинтересованные исполнители предложат свои услуги. uz",
+    'roadmap_text3' => "Выберите исполнителя uz",
+    'roadmap_text4' => "Обращайте внимание на проверенных исполнителей. uz",
+    // roadmap blade ended
+
+    // contacts blade start
+    'contact_title' => "Контакты uz",
+    'contact_text' => "Наша служба поддержки работает каждый день.
+     Ответим на любые вопросы и пожелания в чате. uz",
+    'contact_text1' => "Написать в поддержку uz",
+    'contact_text2' => "Для СМИ и PR-служб uz",
+    'contact_text3' => "Даём комментарии и пишем статьи про IT. Хотите написать про Universal Services? uz",
+    'contact_text4' => "Для партнёров uz",
+    'contact_text5' => "Запускаем проекты, которые делают жизнь в городе лучше. Есть идеи? uz",
+    'contact_text6' => "Для контрагентов uz",
+    'contact_text7' => "Начать сотрудничество или связаться с отделом маркетинга uz",
+    'contact_text8' => "Для соискателей uz",
+    'contact_text9' => "Ищем людей, которые хотят работать над большим IT-проектом uz",
+    'contact_text10' => "Посмотреть вакансии uz",
+    'contact_text11' => "Реквизиты uz",
+    'contact_text12' => " Общество с ограниченной ответственностью «Киберлогистик»
+
+    Адрес для корреспонденции, направления жалоб и предложений:
+    119021, Россия, г. Москва, а/я 21
+
+    Юридический адрес:
+    121205, Россия, г. Москва, Территория Инновационного Центра «Сколково», улица Нобеля 7, офис 47
+
+    ИНН 7730194136
+    КПП 773101001
+    ОГРН 5157746302434 uz",
+    // contact blade ended
+
+    // faq-ans blade start
+    'faq-ans_text' => "Перейти на сайт Universal Services uz",
+    'faq-ans_text1' => "Ответы на частые вопросы и рекомендации от Universal Services uz",
+    'faq-ans_allcollection' => "Все коллекции uz",
+    'faq-ans_allquestions' => "Общие вопросы uz",
+    // faq-ans blade ended
+
+    // faq faq blade start
+    'faq_text' => "Перейти на сайт Universal Services uz",
+    'faq_text1' => "Ответы на частые вопросы и рекомендации от Universal Services uz",
+    'faq_text2' => "Мы используем Intercom uz",
+    //faq faq blade ended
 ];

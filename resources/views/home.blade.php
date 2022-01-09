@@ -149,7 +149,7 @@
                         class="mx-auto" alt="">
                     <div class="font-bold my-4">@lang('lang.body_feedback')</div>
                     <div class="text-xs">
-                   
+                    @lang('lang.body_over1mln')
                     </div>
                 </div>
             </div>
@@ -374,6 +374,7 @@
                                 <div class="mx-auto w-2/3">
                                     <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
+                                        {{$task->count()}}
                                     </a>
                                     <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
                                         {{$task->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}

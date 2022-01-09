@@ -38,16 +38,12 @@
    </div>
 </footer>
 
-
+{{-- 
 <div class="bg-[#333] text-[#a4a4a4] text-center lg:py-[60px] lg:px-[40px] invisible xl:visible -ml-1">
    <div>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px] mr-[20px]">8</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">9</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">2</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px] mr-[20px]">7</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">4</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">1</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">7</span>
+
+       <span class="inline-block text-[5rem] leading-4 tracking-[4px] mr-[20px]">
+    </span>
    </div>
    <p class="inline text-[2rem] leading-[2]">@lang('lang.footer_text2') <span>@lang('lang.footer_text3')</span></p>
-</div>
+</div> --}}

@@ -143,13 +143,28 @@
                         </button>
                     </a>
                 </div>
-
+                
                 <div class="w-[750px]">
                     <div>
+                        @if(isset($task_responses))
                         <div class="text-4xl font-semibold my-6">
-                            У задания 13 откликов
+                            @if ($response_count <= 4)
+                            @if ($response_count == 1)
+                            У задания {{$response_count}} отклик
+                            @else
+                            У задания {{$response_count}} откликa
+                            @endif
+                            @else
+                            У задания {{$response_count}} откликов
+                            @endif
                         </div>
+                        @else
+                        <div class="text-4xl font-semibold my-6">
+                            У задания нет откликов
+                        </div>
+                        @endif
                         <hr>
+                        @if(isset($task_responses))
                         <div class="flex my-2">
                             <div class="mr-2 bg-[#fff6db] px-2">
                                 <a href="#">по рейтингу</a>
@@ -205,6 +220,7 @@
                     </div>
                     @endforeach
                     </div>
+                    @endif
                 </div>
 
                 <div class="mt-12">
