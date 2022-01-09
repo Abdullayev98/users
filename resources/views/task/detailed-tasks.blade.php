@@ -118,9 +118,7 @@
                                                     </main>
                                                     <footer class="flex justify-center bg-transparent">
                                                         <button
-                                                            class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300"
-                                                            @click="showModal2 = false"
-                                                            onclick="myFunction()">
+                                                            class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300">
                                                             Далее
                                                         </button>
                                                     </footer>
@@ -248,19 +246,6 @@
                     </div>
 
                     <script>
-                        function myFunction(){
-                            $('.preloader').show();
-                            $('.btn-preloader').hide();
-                            $('.bg-opacity-50').hide();
-                            window.setTimeout(function() {
-                                $('.preloader').hide();
-                                $('.modal').show();
-                            }, 1000);
-                            window.setTimeout(function() {
-                                $('.modal').hide();
-                                window.location.reload();
-                            }, 3000);
-                        }
                     </script>
                 </div>
 
@@ -436,6 +421,17 @@
                     console.log(error);
                 }
             });
+            $('.preloader').show();
+            $('.btn-preloader').hide();
+            $('.bg-opacity-50').hide();
+            window.setTimeout(function() {
+                $('.preloader').hide();
+                $('.modal').show();
+            }, 1000);
+            window.setTimeout(function() {
+                $('.modal').hide();
+                window.location.reload();
+            }, 3000);
         });
     </script>
 
