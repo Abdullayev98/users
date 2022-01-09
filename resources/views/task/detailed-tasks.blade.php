@@ -4,25 +4,25 @@
     <div class="container mx-auto w-9/12">
         <div class="grid grid-cols-3  grid-flow-row mt-8 mb-8">
 
-                {{-- left sidebar start --}}    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+            {{-- left sidebar start --}}
             <div class="lg:col-span-2 col-span-3">
                 <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                 <div class="flex flex-row">
                     <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">до {{$tasks->budget}}</p>
                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
-                    <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
+                    <h1 class="my-2 text-green-400">Сделка без риска</h1>
                     <i class="far fa-question-circle mx-3 my-1 text-2xl text-green-300"></i>
                 </div>
                 <div class="flex flex-row">
-                    <p class="mt-4 text-lg text-gray-400 font-normal">@lang('lang.detT_insuredPer')</p>
+                    <p class="mt-4 text-lg text-gray-400 font-normal">Заказчик отдает предпочтение застрахованным исполнителям</p>
                     <i class="far fa-question-circle mx-3 my-3.5 text-2xl text-gray-400"></i>
                 </div>
                 <div class="flex flex-row text-gray-400 mt-4">
-                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
+                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">Открыто</p>
                     <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
                     <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
                     @foreach($categories as $category)
-                    <p>{{$category->name}}</p>
+                        <p>{{$category->name}}</p>
                     @endforeach
                 </div>
 
@@ -36,25 +36,24 @@
                         <p class="text-lg  h-auto w-96">26 декабря 2021, 23:00</p>
                     </div> -->
                     <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">Бюджет</h1>
                         <p class="text-lg  h-auto w-96">до {{$tasks->budget}}</p>
                     </div>
                     <!-- <div class="ml-12 flex flex-row mt-4"> -->
-                        <!-- <h1 class="text-lg font-bold h-auto w-48">Оплата задания</h1> -->
-                        <!-- <div class="flex flex-row  h-auto w-96">
-                            <i class="far fa-credit-card text-green-400 text-2xl mr-3"></i>
-                            <p class="text-lg">Банковской картой через</p>
-                        </div> -->
+                    <!-- <h1 class="text-lg font-bold h-auto w-48">Оплата задания</h1> -->
+                    <!-- <div class="flex flex-row  h-auto w-96">
+                        <i class="far fa-credit-card text-green-400 text-2xl mr-3"></i>
+                        <p class="text-lg">Банковской картой через</p>
+                    </div> -->
                     <!-- </div> -->
                     <div class="ml-12 flex flex-row mt-4">
-                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">Место</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->address}}</p>
                     </div>
                     <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_need')</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">Нужно</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
-
                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                     <div x-data="{ showModal1: false, showModal2: false, showModal3: false }" :class="{'overflow-y-hidden': showModal1 || showModal2 || showModal3}">
@@ -65,117 +64,186 @@
                             <!-- Modal -->
                             <div class="fixed inset-0 w-full h-full z-20 bg-black bg-opacity-50 duration-300 overflow-y-auto" x-show="showModal2" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                                 <div class="relative sm:w-3/4 md:w-1/2 lg:w-1/3 mx-2 sm:mx-auto my-10 opacity-100">
-                                    <div class="relative bg-[#fff6db] shadow-lg rounded-lg text-gray-900 z-20" @click.away="showModal2 = false" x-show="showModal2" x-transition:enter="transition transform duration-300" x-transition:enter-start="scale-0" x-transition:enter-end="scale-100" x-transition:leave="transition transform duration-300" x-transition:leave-start="scale-100" x-transition:leave-end="scale-0">
+                                    <div class="relative bg-white shadow-lg rounded-lg text-gray-900 z-20" @click.away="showModal2 = false" x-show="showModal2" x-transition:enter="transition transform duration-300" x-transition:enter-start="scale-0" x-transition:enter-end="scale-100" x-transition:leave="transition transform duration-300" x-transition:leave-start="scale-100" x-transition:leave-end="scale-0">
                                         <div class="w-[450px] mx-auto">
                                             <header class="p-3 text-black">
                                                 <h2 class="font-semibold text-2xl mb-4">Добавить предложение к заказу</h2>
-                                                <!--   dropdown   -->
-                                                <button class="bg-transparent text-blue-500 underline flex" type="button" data-dropdown-toggle="pattern">
-                                                    Использовать шаблон
-                                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                </button>
-                                                <!--   dropdown menu   -->
-                                                <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="pattern">
-                                                    <div class="px-4 py-3">
-                                                        <span class="block text-sm">Bonnie Green</span>
-                                                        <span class="block text-sm font-medium text-gray-900 truncate">name@flowbite.com</span>
-                                                    </div>
-                                                    <ul class="py-1" aria-labelledby="dropdown">
-                                                        <li>
-                                                            <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Dashboard</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Settings</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Earnings</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Sign out</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+{{--                                                <!--   dropdown   -->--}}
+{{--                                                <button class="text-blue-500 underline hover:text-red-500" type="button" data-dropdown-toggle="notification">--}}
+{{--                                                    Использовать шаблон--}}
+{{--                                                </button>--}}
+{{--                                                <!-- Dropdown menu -->--}}
+{{--                                                <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="notification">--}}
+{{--                                                    <div class="px-4 py-3">--}}
+{{--                                                        <span class="block text-gray-400 text-[14px]">Готовые шаблоны</span>--}}
+{{--                                                    </div>--}}
+{{--                                                    <ul class="py-1" aria-labelledby="notification">--}}
+{{--                                                        <li>--}}
+{{--                                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">--}}
+{{--                                                                <div class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">--}}
+{{--                                                                    <span href="#" id="span_textarea" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">--}}
+{{--                                                                        asdasdda--}}
+{{--                                                                    </span>--}}
+{{--                                                                </div>--}}
+{{--                                                            </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li>--}}
+{{--                                                            <a href="#" class="text-sm hover:text-red-500 hover:bg-gray-100 text-blue-600 block px-4 py-2">--}}
+{{--                                                                + Создать новый шаблон--}}
+{{--                                                            </a>--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </div>--}}
+{{--                                                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
                                             </header>
                                             <main>
                                                 <form id="ajaxform">
-                                                    <textarea class="rounded-md w-full focus:outline-none my-4"  type="text" id="form8" rows="4" name="response_desc"></textarea>
+                                                    <textarea id="textarea_modal" class="resize-none rounded-md w-full focus:outline-[rgba(255,119,0,4)] border border p-4  transition duration-200 my-4"  type="text" id="form8" rows="4" name="response_desc"></textarea>
+                                                    <script>
+                                                        function myFunction() {
+                                                            document.getElementById("textarea_modal").value = document.getElementById("span_textarea").innerHTML;
+                                                        }
+                                                    </script>
                                                     <hr>
                                                     <div class="my-2">
-                                                        <label>
-                                                            <input type="checkbox" name="notificate" value="1" class="mr-2">Уведомить меня, если исполнителем<br>
+                                                        <label class=" px-2">
+                                                            <input type="checkbox" name="notificate" value="1" class="mr-2 my-3 ">Уведомить меня, если исполнителем<br>
                                                         </label>
-                                                        <label>
-                                                            <input class="coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>Указать время актуальности предложения
-                                                        </label>
-                                                        <select name="response_time" id="AttorneyEmpresa" class="answer" style="display: none">
-                                                            <option value="1">1 часов</option>
-                                                            <option value="2">2 часов</option>
-                                                            <option value="4">4 часов</option>
-                                                            <option value="6">6 часов</option>
-                                                            <option value="8">8 часов</option>
-                                                            <option value="10">10 часов</option>
-                                                            <option value="12">12 часов</option>
-                                                            <option value="24">24 часов</option>
-                                                            <option value="48">48 часов</option>
+                                                        <label class=" px-2">
+                                                            <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>Указать время актуальности предложения
+                                                        </label><br>
+                                                        <select name="response_time" id="AttorneyEmpresa" class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500" style="display: none">
+                                                            <option value="1" class="">1 часов</option>
+                                                            <option value="2" class="">2 часов</option>
+                                                            <option value="4" class="">4 часов</option>
+                                                            <option value="6" class="">6 часов</option>
+                                                            <option value="8" class="">8 часов</option>
+                                                            <option value="10" class="">10 часов</option>
+                                                            <option value="12" class="">12 часов</option>
+                                                            <option value="24" class="">24 часов</option>
+                                                            <option value="48" class="">48 часов</option>
                                                         </select>
                                                     </div>
                                                     <label>
-                                                        <input type="text" name="response_price" class="border border-1 border-solid ">
+                                                        <input type="text"  name="response_price" class="border rounded-md px-2 border-solid focus:outline-[rgba(255,119,0,4)] mr-3 my-2">SUM
                                                         <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
                                                         <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
                                                     </label>
-                                                <hr>
+                                                    <hr>
                                             </main>
                                             <footer class="flex justify-center bg-transparent">
                                                 <button
-                                                    class="save-data bg-green-600 font-semibold text-white py-3 w-full rounded-b-md hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300"
-                                                    @click="showModal2 = false">Submit</button>
-                                                    
+                                                    class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300"
+                                                    @click="showModal2 = false">Далее</button>
                                             </footer>
-                                        </form>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                           <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
                         </div>
                     </div>
-
+                    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
                     <!--  ------------------------ showModal Откликнуться на это задание end  ------------------------  -->
 
-
+                </div>
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-lg">
-                    <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
-                    <p class="text-lg mb-10">@lang('lang.detT_fastHelp')</p>
+                    <h1 class="text-3xl font-semibold py-3">Хотите найти надежного помощника?</h1>
+                    <p class="text-lg mb-10">Universal Services помогает быстро решать любые бытовые и бизнес-задачи.</p>
                     <a href="/categories/1">
-                        <button
-                            class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded"
-                            @click="showModal1 = true">
-                            @lang('lang.detT_createOwnTask')
+                        <button  class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded">
+                            Создайте свое задание
                         </button>
-                      </a>
+                    </a>
+                </div>
+
+                <div class="w-[750px]">
+                    <div>
+                        <div class="text-4xl font-semibold my-6">
+                            У задания 13 откликов
+                        </div>
+                        <hr>
+                        <div class="flex my-2">
+                            <div class="mr-2 bg-[#fff6db] px-2">
+                                <a href="#">по рейтингу</a>
+                            </div>
+                            <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
+                                <a href="">по времени</a>
+                            </div>
+                            <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
+                                <a href="">по отзывам</a>
+                            </div>
+                        </div>
+                    <div class="mb-6">
+                        <div class="my-10">
+                            <div class="rounded-md bg-black h-24 float-left mr-5">
+                                <img class="w-24 h-24" src="https://assets.youdo.com/_next/static/media/executor_176.900c31f3bbd110fe153ec59d249ac71b.png" alt="">
+                            </div>
+                            <div class="">
+                                <a href="#" class="text-blue-500 text-xl font-semibold float-left">
+                                    Илья С.
+                                </a>
+                                <img class="w-7 h-7 ml-2" src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" alt="">
+                                <div class="text-gray-700">
+                                    <i class="fas fa-star text-[#fff0d0] mr-1"></i>4,96 по 63 отзывам
+                                </div>
+                                <div class="mt-2">
+                                    <i class="fas fa-briefcase fa-2x text-blue-300"></i>
+                                    <i class="fas fa-shield-alt fa-2x text-green-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-[#f5f5f5] rounded-[10px] p-4">
+                            <div class="ml-10">
+                                <div class="text-[17px] text-gray-500 font-semibold">Стоимость 11 135 ₽</div>
+                                <div class="text-[17px] text-gray-500">Здраствуйте.</div>
+
+                                <div class="text-[17px] text-gray-500 my-5">Мы могли бы ответить на насколько вопросов:</div>
+
+                                <div class="text-[17px] text-gray-500">-В каком городе вы находитесь?</div>
+                                <div class="text-[17px] text-gray-500">-Какой бюджет планировали на рекламную компанию?</div>
+                                <div class="text-[17px] text-gray-500 mb-8">-Сколько необходимо заявок в месяц?</div>
+
+                                <div class="text-[17px] text-gray-500">Прощу прислать ссылку на сайт для ознокомления. Спасибо!</div>
+
+                                <div class="text-[17px] text-gray-500 font-semibold my-4">Телефон исполнителя: +998 99 999-99-99</div>
+                                <div class="">
+                                    <a href="#" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
+                                        Написать в чат
+                                    </a>
+                                    <a href="#" class="text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-[#6fc727] hover:bg-[#5ab82e] font-medium border border-transparent rounded-md">
+                                        Выбрать исполнителем
+                                    </a>
+                                </div>
+                                <div class="text-gray-400 text-[14px] my-6">
+                                    Выберите исполнителя, чтобы потом оставить отзыв о работе.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
 
                 <div class="mt-12">
-                    <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTask')</h1>
+                    <h1 class="text-3xl font-medium ">Другие задания в категории</h1>
                     @foreach($same_tasks as $same_task)
-                    <div class="mt-4">
-                        <a href="#" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
-                        @foreach($users as $user)
-                        @if($user->id == $same_task->user_id)
-                        <p class="text-gray-400 text-base">{{$user->name}}, {{$same_task->budget}}</p>
-                        @endif
-                        @endforeach
-                    </div>
+                        <div class="mt-4">
+                            <a href="#" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
+                            @foreach($users as $user)
+                                @if($user->id == $same_task->user_id)
+                                    <p class="text-gray-400 text-base">{{$user->name}}, {{$same_task->budget}}</p>
+                                @endif
+                            @endforeach
+                        </div>
                     @endforeach
                 </div>
             </div>
-                {{-- left sidebar end --}}
+            {{-- left sidebar end --}}
 
-                {{-- right sidebar start --}}
+            {{-- right sidebar start --}}
             <div class="lg:col-span-1 col-span-3 lg:mt-0 mt-8">
-                <h1 class="text-lg">@lang('lang.detT_ownerOfThisTask')</h1>
+                <h1 class="text-lg">Заказчик этого задания</h1>
                 <div class="flex flex-row mt-4">
                     <div class="mr-4">
                         <img src="{{ asset($current_user->avatar ?? $tasks->user_name ) }}" class="border-2 border-gray-400 w-32 h-32" alt="#">
@@ -190,19 +258,17 @@
                     </div>
                 </div>
             </div>
-                {{-- right sidebar end --}}
+            {{-- right sidebar end --}}
         </div>
     </div>
     <script>
-
-    function valueChanged()
-    {
-        if($('.coupon_question').is(":checked"))   
-            $(".answer").show();
-        else
-            $(".answer").hide();
-    }
-
+        function valueChanged()
+        {
+            if($('.coupon_question').is(":checked"))
+                $(".answer").show();
+            else
+                $(".answer").hide();
+        }
         $(".save-data").click(function(event){
             event.preventDefault();
             let response_desc = $('textarea#form8').val();
@@ -213,35 +279,36 @@
                 var notificate = 0;
             }
             var response_time = null;
-            
+
             if ($('.answer').is(':visible')) {
-                var response_time = 1; 
+                var response_time = 1;
             }
             let response_price = $("input[name=response_price]").val();
             let task_id = $("input[name=task_id]").val();
             let _token = $("input[name=csrf]").val();
             $.ajax({
-              url: "/ajax-request",
-              type:"POST",
-              data:{
-                response_desc:response_desc,
-                notificate:notificate,
-                response_time:response_time,
-                response_price:response_price,
-                task_id:task_id,
-                _token:_token
-              },
-              success:function(response){
-                console.log(response);
-                if(response) {
-                  $('.success').text(response.success);
-                  
+                url: "/ajax-request",
+                type:"POST",
+                data:{
+                    response_desc:response_desc,
+                    notificate:notificate,
+                    response_time:response_time,
+                    response_price:response_price,
+                    task_id:task_id,
+                    _token:_token
+                },
+                success:function(response){
+                    console.log(response);
+                    if(response) {
+                        $('.success').text(response.success);
+
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
                 }
-              },
-              error: function(error) {
-               console.log(error);
-              }
-             });
+            });
         });
-      </script>
+    </script>
+
 @endsection
