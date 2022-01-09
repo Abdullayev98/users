@@ -102,12 +102,12 @@
                                                     <hr>
                                                     <div class="my-2">
                                                         <label>
-                                                            <input type="checkbox" name="notificate" class="mr-2">Уведомить меня, если исполнителем<br>
+                                                            <input type="checkbox" name="notificate" value="1" class="mr-2">Уведомить меня, если исполнителем<br>
                                                         </label>
                                                         <label>
-                                                            <input type="checkbox" class="mr-2">Указать время актуальности предложения<br>
+                                                            <input class="coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>Указать время актуальности предложения
                                                         </label>
-                                                        <select name="response_time" id="">
+                                                        <select name="response_time" id="AttorneyEmpresa" class="answer" style="display: none">
                                                             <option value="1">1 часов</option>
                                                             <option value="2">2 часов</option>
                                                             <option value="4">4 часов</option>
@@ -122,16 +122,14 @@
                                                     <label>
                                                         <input type="text" name="response_price" class="border border-1 border-solid ">
                                                         <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
+                                                        <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
                                                     </label>
                                                 <hr>
                                             </main>
                                             <footer class="flex justify-center bg-transparent">
-                                                {{-- <input
-                                                    type="submit"
+                                                <button
                                                     class="save-data bg-green-600 font-semibold text-white py-3 w-full rounded-b-md hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300"
-                                                    @click="showModal2 = false" value="Submit"> --}}
-
-                                                    <button class="btn btn-success save-data">Save</button>
+                                                    @click="showModal2 = false">Submit</button>
                                                     
                                             </footer>
                                         </form>
@@ -197,15 +195,31 @@
     </div>
     <script>
 
+    function valueChanged()
+    {
+        if($('.coupon_question').is(":checked"))   
+            $(".answer").show();
+        else
+            $(".answer").hide();
+    }
+
         $(".save-data").click(function(event){
             event.preventDefault();
-      
             let response_desc = $('textarea#form8').val();
-            let notificate = $("input[name=notificate]").val();
-            let response_time = $("input[name=response_time]").val();
+            var notificate = null;
+            if ($("input[name=notificate]").is(':checked')) {
+                var notificate = 1;
+            }else{
+                var notificate = 0;
+            }
+            var response_time = null;
+            
+            if ($('.answer').is(':visible')) {
+                var response_time = 1; 
+            }
             let response_price = $("input[name=response_price]").val();
+            let task_id = $("input[name=task_id]").val();
             let _token = $("input[name=csrf]").val();
-      
             $.ajax({
               url: "/ajax-request",
               type:"POST",
@@ -214,13 +228,14 @@
                 notificate:notificate,
                 response_time:response_time,
                 response_price:response_price,
+                task_id:task_id,
                 _token:_token
               },
               success:function(response){
                 console.log(response);
                 if(response) {
                   $('.success').text(response.success);
-                  $("#ajaxform")[0].reset();
+                  
                 }
               },
               error: function(error) {

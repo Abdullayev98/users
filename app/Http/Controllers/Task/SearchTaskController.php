@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Task;
 
 use App\Models\User;
 use App\Models\Task;
+use App\Models\TaskResponse;
 use TCG\Voyager\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
 
@@ -67,10 +69,21 @@ class SearchTaskController extends VoyagerBaseController
     }
 
     public function task_response(Request $request){
-      $data = $request->all();
+      $description = $request->input('response_desc');
+      $notificate = $request->input('notificate');
+      $response_time = $request->input('response_time');
+      $response_price = $request->input('response_price');
+      $task_id = $request->input('task_id');
       #create or update your data here
-
-      return response()->json(['success'=>$data]);
+      TaskResponse::create([
+        'user_id' => Auth::id(),
+        'task_id' => $task_id,
+        'description' => $description,
+        'notificate' => $notificate,
+        'time' => $response_time,
+        'price' => $response_price
+      ]);
+      return response()->json(['success'=>$description]);
   }
 
 }
