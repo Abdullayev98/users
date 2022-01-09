@@ -31,6 +31,8 @@ Route::get('/', [PerformersController::class, 'service']);
 Route::get('/{id}', [PerformersController::class, 'performer'])->name('performer.main');
 });
 
+Route::post('ajax-request', [SearchTaskController::class, 'task_response']);
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

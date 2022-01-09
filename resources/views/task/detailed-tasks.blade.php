@@ -4,7 +4,7 @@
     <div class="container mx-auto w-9/12">
         <div class="grid grid-cols-3  grid-flow-row mt-8 mb-8">
 
-                {{-- left sidebar start --}}
+                {{-- left sidebar start --}}    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
             <div class="lg:col-span-2 col-span-3">
                 <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                 <div class="flex flex-row">
@@ -97,7 +97,7 @@
                                                 </div>
                                             </header>
                                             <main>
-                                                <form action="{{route('task.search')}}" method="post">
+                                                <form id="ajaxform">
                                                     <textarea class="rounded-md w-full focus:outline-none my-4"  type="text" id="form8" rows="4" name="response_desc"></textarea>
                                                     <hr>
                                                     <div class="my-2">
@@ -121,14 +121,17 @@
                                                     </div>
                                                     <label>
                                                         <input type="text" name="response_price" class="border border-1 border-solid ">
+                                                        <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
                                                     </label>
                                                 <hr>
                                             </main>
                                             <footer class="flex justify-center bg-transparent">
-                                                <input
+                                                {{-- <input
                                                     type="submit"
-                                                    class="bg-green-600 font-semibold text-white py-3 w-full rounded-b-md hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300"
-                                                    @click="showModal2 = false" value="Submit">
+                                                    class="save-data bg-green-600 font-semibold text-white py-3 w-full rounded-b-md hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300"
+                                                    @click="showModal2 = false" value="Submit"> --}}
+
+                                                    <button class="btn btn-success save-data">Save</button>
                                                     
                                             </footer>
                                         </form>
@@ -192,5 +195,38 @@
                 {{-- right sidebar end --}}
         </div>
     </div>
+    <script>
 
+        $(".save-data").click(function(event){
+            event.preventDefault();
+      
+            let response_desc = $('textarea#form8').val();
+            let notificate = $("input[name=notificate]").val();
+            let response_time = $("input[name=response_time]").val();
+            let response_price = $("input[name=response_price]").val();
+            let _token = $("input[name=csrf]").val();
+      
+            $.ajax({
+              url: "/ajax-request",
+              type:"POST",
+              data:{
+                response_desc:response_desc,
+                notificate:notificate,
+                response_time:response_time,
+                response_price:response_price,
+                _token:_token
+              },
+              success:function(response){
+                console.log(response);
+                if(response) {
+                  $('.success').text(response.success);
+                  $("#ajaxform")[0].reset();
+                }
+              },
+              error: function(error) {
+               console.log(error);
+              }
+             });
+        });
+      </script>
 @endsection
