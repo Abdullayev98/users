@@ -58,101 +58,77 @@
 
                     <div x-data="{ showModal1: false, showModal2: false, showModal3: false }" :class="{'overflow-y-hidden': showModal1 || showModal2 || showModal3}">
                         <div  class="w-full flex flex-col sm:flex-row justify-center pl-32">
-                            @auth
-                            <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2" @click="showModal2 = true">
-                                Откликнуться на это задание
-                            </button>
-                            @else
-                            <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2">
-                                Откликнуться на это задание
-                            </button>
-                            @endauth
-                            
-                            <!-- Modal -->
-                            <div class="fixed inset-0 w-full h-full z-20 bg-black bg-opacity-50 duration-300 overflow-y-auto" x-show="showModal2" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                                <div class="relative sm:w-3/4 md:w-1/2 lg:w-1/3 mx-2 sm:mx-auto my-10 opacity-100">
-                                    <div class="relative bg-white shadow-lg rounded-lg text-gray-900 z-20" @click.away="showModal2 = false" x-show="showModal2" x-transition:enter="transition transform duration-300" x-transition:enter-start="scale-0" x-transition:enter-end="scale-100" x-transition:leave="transition transform duration-300" x-transition:leave-start="scale-100" x-transition:leave-end="scale-0">
-                                        <div class="w-[450px] mx-auto">
-                                            <header class="p-3 text-black">
-                                                <h2 class="font-semibold text-2xl mb-4">Добавить предложение к заказу</h2>
-{{--                                                <!--   dropdown   -->--}}
-{{--                                                <button class="text-blue-500 underline hover:text-red-500" type="button" data-dropdown-toggle="notification">--}}
-{{--                                                    Использовать шаблон--}}
-{{--                                                </button>--}}
-{{--                                                <!-- Dropdown menu -->--}}
-{{--                                                <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="notification">--}}
-{{--                                                    <div class="px-4 py-3">--}}
-{{--                                                        <span class="block text-gray-400 text-[14px]">Готовые шаблоны</span>--}}
-{{--                                                    </div>--}}
-{{--                                                    <ul class="py-1" aria-labelledby="notification">--}}
-{{--                                                        <li>--}}
-{{--                                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">--}}
-{{--                                                                <div class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">--}}
-{{--                                                                    <span href="#" id="span_textarea" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">--}}
-{{--                                                                        asdasdda--}}
-{{--                                                                    </span>--}}
-{{--                                                                </div>--}}
-{{--                                                            </a>--}}
-{{--                                                        </li>--}}
-{{--                                                        <li>--}}
-{{--                                                            <a href="#" class="text-sm hover:text-red-500 hover:bg-gray-100 text-blue-600 block px-4 py-2">--}}
-{{--                                                                + Создать новый шаблон--}}
-{{--                                                            </a>--}}
-{{--                                                        </li>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
-{{--                                                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
-                                            </header>
-                                            <main>
+                            <!-- This is an example component -->
+                            <div class="max-w-2xl mx-auto">
+                                <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                        type="button"
+                                        data-modal-toggle="authentication-modal">
+                                    Откликнуться на это задание
+                                </button>
+
+                                <!-- Main modal -->
+                                <div id="authentication-modal"
+                                     aria-hidden="true"
+                                     class="hidden overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center">
+                                    <div class="relative w-full max-w-md px-4 h-full md:h-auto">
+                                        <!-- Modal content -->
+                                        <div class="bg-white rounded-lg shadow relative dark:bg-gray-700">
+                                            <div class="flex justify-end p-2">
+                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                                        data-modal-toggle="authentication-modal">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" action="#">
+                                                <header>
+                                                    <h2 class="font-semibold text-2xl mb-4">Добавить предложение к заказу</h2>
+                                                </header>
                                                 <form id="ajaxform">
-                                                    <textarea id="textarea_modal" class="resize-none rounded-md w-full focus:outline-[rgba(255,119,0,4)] border border p-4  transition duration-200 my-4"  type="text" id="form8" rows="4" name="response_desc"></textarea>
-                                                    <script>
-                                                        function myFunction() {
-                                                            document.getElementById("textarea_modal").value = document.getElementById("span_textarea").innerHTML;
-                                                        }
-                                                    </script>
-                                                    <hr>
-                                                    <div class="my-2">
-                                                        <label class=" px-2">
-                                                            <input type="checkbox" name="notificate" value="1" class="mr-2 my-3 ">Уведомить меня, если исполнителем<br>
+                                                    <main>
+                                                        <textarea class="resize-none rounded-md w-full focus:outline-[rgba(255,119,0,4)] border border p-4  transition duration-200 my-4"  type="text" id="form8" rows="4" name="response_desc"></textarea>
+                                                        <hr>
+                                                        <div class="my-2">
+                                                            <label class=" px-2">
+                                                                <input type="checkbox" name="notificate" value="1" class="mr-2 my-3 ">Уведомить меня, если исполнителем<br>
+                                                            </label>
+                                                            <label class=" px-2">
+                                                                <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>Указать время актуальности предложения
+                                                            </label><br>
+                                                            <select name="response_time" id="AttorneyEmpresa" class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500" style="display: none">
+                                                                <option value="1" class="">1 часов</option>
+                                                                <option value="2" class="">2 часов</option>
+                                                                <option value="4" class="">4 часов</option>
+                                                                <option value="6" class="">6 часов</option>
+                                                                <option value="8" class="">8 часов</option>
+                                                                <option value="10" class="">10 часов</option>
+                                                                <option value="12" class="">12 часов</option>
+                                                                <option value="24" class="">24 часов</option>
+                                                                <option value="48" class="">48 часов</option>
+                                                            </select>
+                                                        </div>
+                                                        <label>
+                                                            <input type="text"  name="response_price" class="border rounded-md px-2 border-solid focus:outline-[rgba(255,119,0,4)] mr-3 my-2">SUM
+                                                            <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
+                                                            <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
                                                         </label>
-                                                        <label class=" px-2">
-                                                            <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>Указать время актуальности предложения
-                                                        </label><br>
-                                                        <select name="response_time" id="AttorneyEmpresa" class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500" style="display: none">
-                                                            <option value="1" class="">1 часов</option>
-                                                            <option value="2" class="">2 часов</option>
-                                                            <option value="4" class="">4 часов</option>
-                                                            <option value="6" class="">6 часов</option>
-                                                            <option value="8" class="">8 часов</option>
-                                                            <option value="10" class="">10 часов</option>
-                                                            <option value="12" class="">12 часов</option>
-                                                            <option value="24" class="">24 часов</option>
-                                                            <option value="48" class="">48 часов</option>
-                                                        </select>
-                                                    </div>
-                                                    <label>
-                                                        <input type="text"  name="response_price" class="border rounded-md px-2 border-solid focus:outline-[rgba(255,119,0,4)] mr-3 my-2">SUM
-                                                        <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
-                                                        <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
-                                                    </label>
-                                                    <hr>
-                                            </main>
-                                            <footer class="flex justify-center bg-transparent">
-                                                <button
-                                                    class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300"
-                                                    @click="showModal2 = false">Далее</button>
-                                            </footer>
+                                                        <hr>
+                                                    </main>
+                                                    <footer class="flex justify-center bg-transparent">
+                                                        <button
+                                                            class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300"
+                                                            @click="showModal2 = false">Далее</button>
+                                                    </footer>
+                                                </form>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                    <script>
-                        
-                    </script>
                     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
                     <!--  ------------------------ showModal Откликнуться на это задание end  ------------------------  -->
 
