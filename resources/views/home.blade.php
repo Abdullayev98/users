@@ -36,22 +36,22 @@
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
                           <form class="" action="{{route('search')}}" method="get">
-                            <input type="text" name="s" value="" id="header_input" placeholder="Например, составить иск"
+                            <input type="text" name="s" value="" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
                             <button type="submit"
                                     class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
-                                Заказать услугу
+                                @lang('lang.header_orderBtn')
                             </button>
                           </form>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
-                            Например: <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">повесить кондиционер</span>
+                        @lang('lang.header_example') <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">@lang('lang.header_airCon')</span>
                         </div>
                     </div>
                     <div class="w-[350px] mx-auto mt-12">
                       <a href="/verification" class="text-[#80e6ff] text-center">
                         <img src="https://assets.youdo.com/_next/static/media/hero-video__gowork.8435e81afbc30d8a5afcd85693878644.svg" alt="" class="float-left mr-0">
-                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">стать исполнителем и начать зарабатывать</p>
+                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">@lang('lang.header_bePerformer')</p>
                       </a>
                     </div>
                 </div>
@@ -80,10 +80,10 @@
     <main>
         <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
             {{-- <div class="text-3xl font-bold text-center">
-                Более 2 300 000 исполнителей
+                @lang('lang.header_over2mln')
             </div> --}}
             <div class="text-sm text-center mt-4">
-               Исполнители готовы помочь вам в решении самых разнообразных задач
+            @lang('lang.body_helpers')
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
             @foreach ($categories as $category2)
@@ -120,8 +120,7 @@
                 </div> -->
                 <div class="md:col-span-3 text-center col-span-1">
                     <a href="/categories/1">
-                        <button type="button" class="border hover:border-[#000] rounded-md w-64 h-12">Посмотреть все
-                            услуги
+                        <button type="button" class="border hover:border-[#000] rounded-md w-64 h-12">@lang('lang.body_allService')
                         </button>
                     </a>
                 </div>
@@ -130,27 +129,27 @@
                 <div class="text-center">
                     <img src="https://assets.youdo.com/_next/static/media/sbr_176.95ac6c46444100c6bcb6262ed7695c79.png"
                          class="mx-auto" alt="">
-                    <div class="font-bold my-4">Удобная и безопасная оплата</div>
+                    <div class="font-bold my-4">@lang('lang.body_comfortPay')</div>
                     <div class="text-xs">
-                        При оплате через Сделку без риска Universal Services вернет деньги, если что-то пойдет не так.
+                    @lang('lang.body_securePay')
                     </div>
                 </div>
                 <div class="text-center mx-4">
                     <img
                         src="https://assets.youdo.com/_next/static/media/executor_176.900c31f3bbd110fe153ec59d249ac71b.png"
                         class="mx-auto" alt="">
-                    <div class="font-bold my-4">Надежные исполнители</div>
+                    <div class="font-bold my-4">@lang('lang.body_loyalPerformer')</div>
                     <div class="text-xs">
-                        «Проверенные исполнители» подтвердили свои документы на Universal Services.
+                    @lang('lang.body_performerDocs')
                     </div>
                 </div>
                 <div class="text-center mx-4">
                     <img
                         src="https://assets.youdo.com/_next/static/media/reviews_176.ecbafe84fcaf362f56dad039b6e9756b.png"
                         class="mx-auto" alt="">
-                    <div class="font-bold my-4">Доверенные отзывы</div>
+                    <div class="font-bold my-4">@lang('lang.body_feedback')</div>
                     <div class="text-xs">
-                        Более 1 000 000 отзывов от заказчиков помогут выбрать подходящего исполнителя.
+                   
                     </div>
                 </div>
             </div>
@@ -164,8 +163,7 @@
         <div class="w-full bg-gradient-to-r from-[#fff] via-[#f6f8fa] to-[#fff]">
             <div class="container text-center mx-auto px-16">
                 <div class="md:text-4xl text-[24px] w-3/3 font-semibold mx-auto py-10 md:py-16">
-                    С Universal Services вы экономите на услугах до 70%*.<br>
-                    Как это возможно?
+                @lang('lang.body_economy')
                 </div>
                 <div class="grid md:grid-cols-2 grid-cols-1 mt-8 w-11/12 mx-auto">
 
@@ -182,7 +180,7 @@
                     </div>
                     <div class="text-left">
                         <h3 class="md:text-4xl text-[24px] font-semibold my-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
-                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">Создать задания</a>
+                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">@lang('lang.body_createTask')</a>
                     </div>
 
 @else
@@ -204,7 +202,7 @@
                     </div>
                     <div class="text-left md:hidden block">
                         <h3 class="text-2xl font-semibold mt-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
-                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">Создать задания</a>
+                        <a href="/categories/1" class="text-blue-500 underline text-[22px]">@lang('lang.body_createTask')</a>
                     </div>
 @endif
 
@@ -217,49 +215,44 @@
             <div class="md:w-1/3 w-3/4 mx-auto my-4">
                 <a href="/task/create?category_id=31">
                   <button class="text-center py-3 px-2 sm:ml-12 ml-0 bg-yellow-500 border-[#e78900] text-2xl  border-b-4">
-                    Разместите задание прямо сейчас
+                  @lang('lang.body_putTask')
                   </button>
                 </a>
                 <div class="text-center text-xl">
-                    и найдите <br> исполнителя за несколько минут
+                @lang('lang.body_findPerformer')
                 </div>
             </div>
             <div class="w-2/3 mx-auto my-8 text-center">
-                <p class="text-xs text-gray-400">*Экономия до 70% рассчитана на основании внутренних исследований и
-                    анализа статистических данных ООО «Киберлогистик» за 2020 год, исходя из средней разницы между самым
-                    дорогим и самым дешевым откликом исполнителей к размещенному заданию.</p>
+                <p class="text-xs text-gray-400">@lang('lang.body_ecomomyText')</p>
             </div>
         </div>
         <div class="bg-[#deeafb]">
             <div class="container mx-auto">
                 <div class="text-4xl w-2/3 mx-auto py-16 text-center">
-                    Основные преимущества Universal Services
+                @lang('lang.body_benefit')
                 </div>
                 <div class="grid grid-cols-4 w-9/12 mx-auto">
                     <div class="">
                         <img src="http://pngimg.com/uploads/ruble/ruble_PNG35.png" class="w-32" alt="">
                     </div>
                     <div class="col-span-3">
-                        <h4 class="text-2xl">Выгодные цены</h4>
-                        <p class="text-md">У частных исполнителей нет расходов на офис, рекламу, зарплату секретарю и
-                            других затрат, которые сервисные компании обычно включают в стоимость своих услуг.</p>
+                        <h4 class="text-2xl">@lang('lang.body_bestPrise')</h4>
+                        <p class="text-md">@lang('lang.body_bestPriseCon')</p>
                     </div>
                     <div class=" my-16">
                         <img src="https://www.freeiconspng.com/uploads/white-like-icon-png-20.png" class="w-32" alt="">
                     </div>
                     <div class="col-span-3 my-16">
-                        <h4 class="text-2xl">Проверенные исполнители</h4>
-                        <p class="text-md">Все исполнители Universal Services проходят процедуру верификации, мы проверяем отзывы,
-                            разбираемся с жалобами и контролируем качество их работы.</p>
+                        <h4 class="text-2xl">@lang('lang.body_reliablePer')</h4>
+                        <p class="text-md">@lang('lang.body_reliablePerCon')</p>
                     </div>
                     <div class=" my-16">
                         <img src="https://www.pngkit.com/png/full/245-2458956_hours-time-icon-png-white.png"
                              class="w-32" alt="">
                     </div>
                     <div class="col-span-3 my-16">
-                        <h4 class="text-2xl">Экономия времени</h4>
-                        <p class="text-md">На Universal Services вы можете найти подходящего исполнителя за несколько минут. Многие
-                            из них готовы приступить к работе в тот же день, а иногда в тот же час.</p>
+                        <h4 class="text-2xl">@lang('lang.body_timeSaving')</h4>
+                        <p class="text-md">@lang('lang.body_timeSavingCon')</p>
                     </div>
                 </div>
             </div>
@@ -268,9 +261,8 @@
             <div
                 class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('https://assets.youdo.com/next/_next/static/images/download_hand-13ced686918d5e0b8a92914b8cc87aaf.png')]">
                 <div class="w-full sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-[#00000066]">
-                    <h4 class="text-3xl md:text-[#000] text-[#ffff]">Персональный помощник в вашем кармане</h4>
-                    <p class="text-md mt-8 md:text-[#000] text-[#ffff]">Скачайте наше приложение и пользуйтесь Universal Services,
-                        где бы вы ни находились.</p>
+                    <h4 class="text-3xl md:text-[#000] text-[#ffff]">@lang('lang.body_personalHelper')</h4>
+                    <p class="text-md mt-8 md:text-[#000] text-[#ffff]">@lang('lang.body_downloadApp')</p>
                     <a href="#">
                         <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
                                 src="https://assets.youdo.com/_next/static/media/ios.d3a42dd0816a046400b4bb7d2b11067f.svg"
@@ -368,7 +360,7 @@
         </div> -->
         <div class="container mx-auto md:w-2/3 w-11/12">
             <div class="w-full my-16">
-                <h1 class="text-4xl">Что заказывают на «Универсал Сервис» прямо сейчас</h1>
+                <h1 class="text-4xl">@lang('lang.body_whatOthersDoing')</h1>
             </div>
             <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-48">
                 <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
@@ -395,7 +387,7 @@
                     <div class="mt-4">
                         <a href="/task-search/" type="button"
                                 class="text-center pt-3 bg-[#4697fa] border-[#005ccd] text-[#fff] text-2xl h-16 w-full border-b-4">
-                            Показать все задания
+                                @lang('lang.body_showAllTasks')
                         </a>
                     </div>
                 </div>
@@ -405,7 +397,7 @@
                         class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-executors-d40b155c145cdfa2d0f387a2baef5430.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
                             <i class="fas fa-user text-[#84e879] text-5xl pt-8"></i>
-                            <p class="text-4xl text-[#fff]">Как стать исполнителем</p>
+                            <p class="text-4xl text-[#fff]">@lang('lang.body_howToJoin')</p>
                         </div>
                     </div>
                 </a>
@@ -414,7 +406,7 @@
                          class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
                             <i class="fas fa-shield-alt text-[#8ae2ed] text-5xl pt-8"></i>
-                            <p class="text-4xl text-[#fff]">Безопасность и гарантии</p>
+                            <p class="text-4xl text-[#fff]">@lang('lang.body_security')</p>
                         </div>
                     </div>
                 </a>
@@ -422,7 +414,7 @@
                         <div
                             class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
                             <div class="w-full h-full bg-[#00000066] text-center">
-                                <p class="text-5xl pt-8 text-[#ffc730]">Надежные исполнители для бизнеса</p>
+                                <p class="text-5xl pt-8 text-[#ffc730]">@lang('lang.body_perForBusines')</p>
                             </div>
                         </div>
                    </a>

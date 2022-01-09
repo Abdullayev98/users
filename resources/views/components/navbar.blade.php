@@ -42,7 +42,7 @@
         <div class="w-2/12 flex justify-center lg:hidden">
           {{-- icon-1 --}}
           <div class=" float-left ml-8">
-              <div class="w-4 h-4 absolute rounded-full ">1</div>
+                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
               <button class="" type="button" data-dropdown-toggle="notification"><i class="text-xl text-slate-400 hover:text-orange-500 far fa-bell"></i>
               </button>
               <!-- Dropdown menu -->
@@ -227,14 +227,23 @@
             @endauth
         @endif
     </div>
-
+<?php
+use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
+?>
     @if (Route::has('login'))
         @auth
 
             <div class="flex lg:inline-block hidden w-4/12 float-right">
                 {{-- icon-1 --}}
                 <div class="max-w-lg mx-auto float-left">
-                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
+@php $count_for_not = 0; @endphp
+@foreach(Notification::where('user_id', Auth::user()->id)->get() as $notification)
+
+@php $count_for_not++; @endphp
+
+@endforeach
+                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">{{$count_for_not}}</div>
                     <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
                     </button>
                     <!-- Dropdown menu -->
@@ -243,6 +252,13 @@
                             <span class="block text-base font-bold">Уведомления</span>
                         </div>
                         <ul class="py-1" aria-labelledby="dropdown">
+
+@foreach(Notification::where('user_id', Auth::user()->id)->get() as $notification)
+                            <li>
+                                <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
+                            </li>
+@endforeach
+
                             <li>
                                 <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>Осталось только установить пароль</a>
                             </li>

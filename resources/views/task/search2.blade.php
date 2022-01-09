@@ -7,8 +7,8 @@
         <div class="border-b">
             <!-- Tabs -->
             <ul id="tabs" class="inline-flex w-full">
-                <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">Все задания</a></li>
-                <li class="font-semibold rounded-t pb-3"><a href="#second">Рекомендованные</a></li>
+                <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">@lang('lang.search2_allTasks')</a></li>
+                <li class="font-semibold rounded-t pb-3"><a href="#second">@lang('lang.search2_recomend')</a></li>
             </ul>
         </div>
 
@@ -24,17 +24,17 @@
                                     <div class="grid grid-cols-4 gap-4 mb-3">
 
                                         <div class="inline-flex w-full col-span-4">
-                                            <input id="suggest" class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">
-                                            <button id="mpshow" class="bg-green-500 px-4 py-1 rounded">Найти</button>
+                                            <input id="suggest" class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="@lang('lang.search2_location')" aria-label="Full name">
+                                            <button id="mpshow" class="bg-green-500 px-4 py-1 rounded">@lang('lang.search2_find')</button>
                                         </div>
 
                                         <div class="col-span-2">
-                                            <label class="text-xs">Город, адрес, метро, район...</label>
+                                            <label class="text-xs">@lang('lang.search2_detLoc')</label>
                                             <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text">
                                         </div>
 
                                         <div class="">
-                                            <label class="text-xs">Радиус поиска</label>
+                                            <label class="text-xs">@lang('lang.search2_searchR')</label>
 {{--                                            <input tabindex="0" aria-autocomplete="list" class="border border-black rounded text-gray-700 py-1" value="">--}}
                                             <select class="w-full border border-black rounded text-gray-700 py-1">
                                                 <option selected></option>
@@ -46,7 +46,7 @@
                                         </div>
 
                                         <div class="ml-3">
-                                            <label class="text-xs">Стоимость заданий от</label>
+                                            <label class="text-xs">@lang('lang.search2_priceBy')</label>
                                             <input type="text" maxlength="7" class="border border-black text-black-700 rounded w-5/6 py-1 px-1" placeholder=" руб." value="">
                                         </div>
 
@@ -54,27 +54,27 @@
                                             <div class="col-span-1 mr-5">
                                                 <li>
                                                     <input class="" type="checkbox" id="" value=""></span>
-                                                    <label class="" for="">Удалённая работа</label>
+                                                    <label class="" for="">@lang('lang.search2_distance')</label>
                                                 </li>
                                                 <li>
                                                     <input class="" type="checkbox" id="" value="">
-                                                    <label class="" for="">Задания без откликов</label>
+                                                    <label class="" for="">@lang('lang.search2_notRespondedT')</label>
                                                 </li>
                                             </div>
                                             <div class="col-span-1 mr-5">
                                                 <li>
                                                     <input class="" type="checkbox" id="" value="">
-                                                    <label class="" for="">Только вакансии</label>
+                                                    <label class="" for="">@lang('lang.search2_onlyVacancy')</label>
                                                 </li>
 {{--                                                <li>--}}
 {{--                                                    <input class="" type="checkbox" id="" value="">--}}
-{{--                                                    <label class="" for="">Сделка без риска</label>--}}
+{{--                                                    <label class="" for="">@lang('lang.search2_dealWithoutRisk')</label>--}}
 {{--                                                </li>--}}
                                             </div>
                                             <div class="col-span-1 mr-5">
                                                 <li>
                                                     <input class="" type="checkbox" id="" value="">
-                                                    <label class="" for="">Бизнес-задания</label>
+                                                    <label class="" for="">@lang('lang.search2_BusinesTask')</label>
                                                 </li>
                                             </div>
                                         </ul>

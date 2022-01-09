@@ -5,16 +5,16 @@
         <div class="mt-3 text-center">
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block my-4">
-                    Войти через:
+                 @lang('lang.signup_enter')
                 </h3>
             </div>
             <div class="mt-4 flex flex-row justify-center">
-                <a href="login/google"> <button class="w-40 h-12 rounded-lg bg-red-500 text-gray-200 uppercase font-semibold hover:bg-red-700 text-gray-100 transition mb-4 mr-4"> Google</button></a>
-                <a href="login/facebook"> <button class="w-40 h-12 rounded-lg bg-blue-500 text-gray-200 uppercase font-semibold hover:bg-blue-700 text-gray-100 transition mb-4"> Facebook</button></a>
+                <a href="login/google"> <button class="w-40 h-12 rounded-lg bg-red-500 text-gray-200 uppercase font-semibold hover:bg-red-700 text-gray-100 transition mb-4 mr-4"> @lang('lang.signup_google')</button></a>
+                <a href="login/facebook"> <button class="w-40 h-12 rounded-lg bg-blue-500 text-gray-200 uppercase font-semibold hover:bg-blue-700 text-gray-100 transition mb-4"> @lang('lang.signup_facebook')</button></a>
             </div>
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4 mt-4">
-                    Завершение регистрации
+                 @lang('lang.signup_endedregistration')
                 </h3>
             </div>
             <form action="{{ route('user.registration') }}" method="POST">
@@ -22,7 +22,7 @@
                 <div>
                     <div class="mb-4">
                         <label class="block text-gray-500 text-sm" for="name">
-                            Имя Фамилия
+                        @lang('lang.signup_username')
                         </label>
                         <input type="text" name="name" placeholder="Name" id="name" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                         <br>
@@ -31,7 +31,7 @@
                         @endif
 
                         <label class="block text-gray-500 text-sm" for="email_address">
-                            Электронная почта
+                         @lang('lang.signup_elpocta')
                         </label>
                         <input type="text" name="email" placeholder="Email" id="email_address" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                         <br>
@@ -39,7 +39,7 @@
                         <span class="text-danger" style="color: red">{{ $errors->first('email') }}</span>
                         @endif
                         <label class="block text-gray-500 text-sm" for="phone_number">
-                            Телефон немер
+                         @lang('lang.signup_telnumber')
                         </label>
                         <input type="text" name="phone_number" placeholder="Phone" id="phone_number" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                         <br>
@@ -48,7 +48,7 @@
                         @endif
 
                         <label class="block text-gray-500 text-sm" for="password">
-                            Пароль
+                         @lang('lang.signup_password')
                         </label>
                         <input type="password" name="password" placeholder="Password" id="password" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                         <br>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <button type="submit" class="w-80 h-12 rounded-lg bg-lime-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">
-                    Зарегистрация
+                    @lang('lang.signup_registration')
                 </button>
             </form>
         </div>
