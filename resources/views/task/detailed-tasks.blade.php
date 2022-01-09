@@ -56,7 +56,7 @@
                     </div>
                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
-                    <div x-data="{ showModal1: false, showModal2: false, showModal3: false }" :class="{'overflow-y-hidden': showModal1 || showModal2 || showModal3}">
+                    <div>
                         <div  class="w-full flex flex-col sm:flex-row justify-center pl-32">
                             <!-- This is an example component -->
                             <div class="max-w-2xl mx-auto">
@@ -69,7 +69,7 @@
                                 <!-- Main modal -->
                                 <div id="authentication-modal"
                                      aria-hidden="true"
-                                     class="hidden overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center">
+                                     class="btn-preloader hidden overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center">
                                     <div class="relative w-full max-w-md px-4 h-full md:h-auto">
                                         <!-- Modal content -->
                                         <div class="bg-white rounded-lg shadow relative dark:bg-gray-700">
@@ -119,20 +119,149 @@
                                                     <footer class="flex justify-center bg-transparent">
                                                         <button
                                                             class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300"
-                                                            @click="showModal2 = false">Далее</button>
+                                                            @click="showModal2 = false"
+                                                            onclick="myFunction()">
+                                                            Далее
+                                                        </button>
                                                     </footer>
                                                 </form>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
                     <!--  ------------------------ showModal Откликнуться на это задание end  ------------------------  -->
+                    <style>
+                        body {
+                            margin: 0;
+                        }
 
+                        .preloader {
+                            /*фиксированное позиционирование*/
+                            position: fixed;
+                            /* координаты положения */
+                            left: 0;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
+                            z-index: 1001;
+                            background: rgba(0,0,0,0.4);
+                        }
+
+                        .preloader__row {
+                            position: relative;
+                            top: 50%;
+                            left: 50%;
+                            width: 70px;
+                            height: 70px;
+                            margin-top: -35px;
+                            margin-left: -35px;
+                            text-align: center;
+                            animation: preloader-rotate 2s infinite linear;
+                        }
+
+                        .preloader__item {
+                            position: absolute;
+                            display: inline-block;
+                            top: 0;
+                            background-color: #337ab7;
+                            border-radius: 100%;
+                            width: 35px;
+                            height: 35px;
+                            animation: preloader-bounce 2s infinite ease-in-out;
+                        }
+
+                        .preloader__item:last-child {
+                            top: auto;
+                            bottom: 0;
+                            animation-delay: -1s;
+                        }
+
+                        @keyframes preloader-rotate {
+                            100% {
+                                transform: rotate(360deg);
+                            }
+                        }
+
+                        @keyframes preloader-bounce {
+
+                            0%,
+                            100% {
+                                transform: scale(0);
+                            }
+
+                            50% {
+                                transform: scale(1);
+                            }
+                        }
+
+                        .loaded_hiding .preloader {
+                            transition: 0.3s opacity;
+                            opacity: 0;
+                        }
+
+                        .loaded .preloader {
+                            display: none;
+                        }
+                    </style>
+                    <!-- Прелоадер -->
+                    <div class="preloader" style="display: none">
+                        <div class="preloader__row">
+                            <div class="preloader__item"></div>
+                            <div class="preloader__item"></div>
+                        </div>
+                    </div>
+
+                    <!-- Основной контент страницы -->
+                    <div class="modal" style="display: none">
+                        <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+                            <!-- modal -->
+                            <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center text-green-500 py-12 text-3xl">
+                                <!-- modal header -->
+                                <i class="far fa-check-circle fa-4x py-4"></i>
+                                <div class="mx-12">
+                                    Ваш отклик успешно отправлен!
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            const modal = document.querySelector('.modal');
+
+                            const showModal = document.querySelector('.show-modal');
+                            const closeModal = document.querySelectorAll('.close-modal');
+
+                            showModal.addEventListener('click', function (){
+                                modal.classList.remove('hidden')
+                            });
+
+                            closeModal.forEach(close => {
+                                close.addEventListener('click', function (){
+                                    modal.classList.add('hidden')
+                                });
+                            });
+                        </script>
+                    </div>
+
+                    <script>
+                        function myFunction(){
+                            $('.preloader').show();
+                            $('.btn-preloader').hide();
+                            $('.bg-opacity-50').hide();
+                            window.setTimeout(function() {
+                                $('.preloader').hide();
+                                $('.modal').show();
+                            }, 1000);
+                            window.setTimeout(function() {
+                                $('.modal').hide();
+                                window.location.reload();
+                            }, 3000);
+                        }
+                    </script>
                 </div>
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-lg">
