@@ -204,7 +204,7 @@
                         </div>
                         <div class="bg-[#f5f5f5] rounded-[10px] p-4">
                             <div class="ml-10">
-                                <div class="text-[17px] text-gray-500 font-semibold">Стоимость {{$response->price}} ₽</div>
+                                <div class="text-[17px] text-gray-500 font-semibold">Стоимость {{$response->price}} сум</div>
                                 <div class="text-[17px] text-gray-500">Здраствуйте.</div>
 
                                 <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
