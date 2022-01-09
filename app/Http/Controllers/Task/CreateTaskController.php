@@ -244,10 +244,18 @@ class CreateTaskController extends VoyagerBaseController
       $etaj_za = session()->pull('etaj_za');
       $lift_za = session()->pull('lift_za');
       $peopleCount = session()->pull('peopleCount');
-      $weight = session()->pull('weight');
-      $length = session()->pull('length');
-      $width = session()->pull('width');
-      $height = session()->pull('height');
+      if ($category != 50) {
+        $weight = null;
+        $length = null;
+        $width = null;
+        $height = null;
+      }else {
+        $weight = session()->pull('weight');
+        $length = session()->pull('length');
+        $width = session()->pull('width');
+        $height = session()->pull('height');
+      }
+      
       $user_id     =     Auth::id();
       if (!Auth::user()) {
         $user_name  = $request->input('user_name');
@@ -286,7 +294,7 @@ class CreateTaskController extends VoyagerBaseController
         'width' => $width,
         'height' => $height,
     ]);
-
+    dd($id);
     foreach(User::all() as $users){
 
 
