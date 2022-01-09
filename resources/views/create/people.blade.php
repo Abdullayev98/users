@@ -10,10 +10,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="col-span-2">
                     <div class="w-full text-center text-2xl">
-                        Ищем исполнителя для задания "{{session('name')}}"
+                    @lang('lang.budget_lookingFor') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                        Задание заполнено на 86%
+                        @lang('lang.people_percent')
                     </div>
                     <div class="relative pt-1">
                         <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            Нужны услуги грузчиков?
+                            @lang('lang.people_needLoader')
                         </div>
 
                         <div class="py-4 mx-auto  text-left ">
@@ -34,12 +34,12 @@
                                         <div class="mb-3 xl:w-full">
                                             <input type="radio" id="contactChoice1"
                                                    name="contact" value="da">
-                                            <label for="contactChoice1">Да</label>
+                                            <label for="contactChoice1">@lang('lang.people_yes')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="contactChoice2"
                                                    name="contact" value="net">
-                                            <label for="contactChoice2">Нет</label>
+                                            <label for="contactChoice2">@lang('lang.people_no')</label>
                                         </div>
                                     </div>
 
@@ -49,11 +49,11 @@
                                     <div class="mt-4">
                                         <div class="flex w-full gap-x-4 mt-4">
                                             <a href="/task/create/budget" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
-                                                Назад
+                                                @lang('lang.notes_back')
                                             </a>
                                             <input type="submit"
                                                    class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                                   name="" value="Далее">
+                                                   name="" value="@lang('lang.name_next')">
                                         </div>
                                     </div>
 
