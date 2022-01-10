@@ -106,29 +106,28 @@
 
 
         var myMap = new ymaps.Map('map', {
-            center: [55.74, 37.58],
+            center: [41.311158, 69.279737],
             zoom: 15,
-            controls: []
+            controls: ['geolocationControl']
         });
+
         var searchControl = new ymaps.control.SearchControl({
 
 
         });
         myMap.controls.add(searchControl);
+        $(".ymaps-2-1-79-controls__control_toolbar").hide();
 
 
         $("#mpshow").click(function(){
-
-
-        searchControl.search(document.getElementById('suggest').value);
-
-
-
-
+        // searchControl.search(document.getElementById('suggest').value);
+        
+        $(".ymaps-2-1-79-float-button-icon").click();
+        
     });
 
     }
-
+    $(".ymaps-2-1-79-float-button-icon").hide();
 
     </script>
 

@@ -113,6 +113,7 @@
                                                             <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">SUM
                                                             <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
                                                             <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
+                                                            <input type="text" name="user_id" class="hidden" value="{{$current_user->id ?? null}}">
                                                         </label>
                                                         <hr>
                                                     </main>
@@ -346,11 +347,26 @@
                 <h1 class="text-lg">Заказчик этого задания</h1>
                 <div class="flex flex-row mt-4">
                     <div class="mr-4">
-                        <img src="{{ asset($current_user->avatar ?? $tasks->user_name ) }}" class="border-2 border-gray-400 w-32 h-32" alt="#">
+                        <img src="
+                        @if ($current_user->avatar == 'users/default.png')
+                            {{ asset("AvatarImages/images/{$current_user->avatar}") }}
+                        @else 
+                            {{ asset("AvatarImages/{$current_user->avatar}") }}
+                        @endif" class="border-2 border-gray-400 w-32 h-32" alt="#">
                     </div>
                     <div class="">
                         <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
-                        <a href="#" class="text-xl text-gray-500">{{$current_user->email ?? $tasks->user_email}}</a>
+                        <a href="#" class="text-xl text-gray-500">
+                            @if($current_user->age != "")
+                                <p class="inline-block text-m mr-2">
+                                    {{$current_user->age}}
+                                    @if($current_user->age>20 && $current_user->age%10==1) @lang('lang.cash_rusYearGod')
+                                    @elseif ($current_user->age>20 && ($current_user->age%10==2 || $current_user->age%10==3 || $current_user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                    @else @lang('lang.cash_rusYearLet')
+                                    @endif
+                                </p>
+                            @endif
+                        </a>
                         <!-- <div class="flex flex-row">
                             <p>Отзывы:</p>
                             <i class="far fa-thumbs-up m-1 text-gray-400"></i>  2
@@ -385,6 +401,7 @@
             let response_price = $("input[name=response_price]").val();
             let task_id = $("input[name=task_id]").val();
             let _token = $("input[name=csrf]").val();
+            let user_id = $("input[name=user_id]").val();
             $.ajax({
                 url: "/ajax-request",
                 type:"POST",
@@ -394,7 +411,8 @@
                     response_time:response_time,
                     response_price:response_price,
                     task_id:task_id,
-                    _token:_token
+                    _token:_token,
+                    user_id:user_id
                 },
                 success:function(response){
                     console.log(response);
