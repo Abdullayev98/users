@@ -33,7 +33,11 @@
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
                         Чем вам помочь?
                     </div>
-                    <form action="{{route('task.create.name')}}" method="post">
+                    @if($category_id == 60)
+                    <form action="{{route('task.create.housemaid')}}" method="post">
+                        @else
+                        <form action="{{route('task.create.name')}}" method="post">
+                    @endif
                         @csrf
 
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
