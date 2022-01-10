@@ -113,6 +113,7 @@
                                                             <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">SUM
                                                             <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
                                                             <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
+                                                            <input type="text" name="user_id" class="hidden" value="{{$current_user->id ?? null}}">
                                                         </label>
                                                         <hr>
                                                     </main>
@@ -136,7 +137,6 @@
                         body {
                             margin: 0;
                         }
-
                         .preloader {
                             /*фиксированное позиционирование*/
                             position: fixed;
@@ -149,7 +149,6 @@
                             z-index: 1001;
                             background: rgba(0,0,0,0.4);
                         }
-
                         .preloader__row {
                             position: relative;
                             top: 50%;
@@ -161,7 +160,6 @@
                             text-align: center;
                             animation: preloader-rotate 2s infinite linear;
                         }
-
                         .preloader__item {
                             position: absolute;
                             display: inline-block;
@@ -172,36 +170,29 @@
                             height: 35px;
                             animation: preloader-bounce 2s infinite ease-in-out;
                         }
-
                         .preloader__item:last-child {
                             top: auto;
                             bottom: 0;
                             animation-delay: -1s;
                         }
-
                         @keyframes preloader-rotate {
                             100% {
                                 transform: rotate(360deg);
                             }
                         }
-
                         @keyframes preloader-bounce {
-
                             0%,
                             100% {
                                 transform: scale(0);
                             }
-
                             50% {
                                 transform: scale(1);
                             }
                         }
-
                         .loaded_hiding .preloader {
                             transition: 0.3s opacity;
                             opacity: 0;
                         }
-
                         .loaded .preloader {
                             display: none;
                         }
@@ -229,14 +220,11 @@
 
                         <script>
                             const modal = document.querySelector('.modal');
-
                             const showModal = document.querySelector('.show-modal');
                             const closeModal = document.querySelectorAll('.close-modal');
-
                             showModal.addEventListener('click', function (){
                                 modal.classList.remove('hidden')
                             });
-
                             closeModal.forEach(close => {
                                 close.addEventListener('click', function (){
                                     modal.classList.add('hidden')
@@ -244,7 +232,9 @@
                             });
                         </script>
                     </div>
-                    <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+
+                    <script>
+                    </script>
                 </div>
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-lg">
@@ -260,78 +250,78 @@
                 <div class="w-[750px]">
                     <div>
                         @if(isset($task_responses))
-                        <div class="text-4xl font-semibold my-6">
-                            @if ($response_count <= 4)
-                            @if ($response_count == 1)
-                            У задания {{$response_count}} отклик
-                            @else
-                            У задания {{$response_count}} откликa
-                            @endif
-                            @else
-                            У задания {{$response_count}} откликов
-                            @endif
-                        </div>
+                            <div class="text-4xl font-semibold my-6">
+                                @if ($response_count <= 4)
+                                    @if ($response_count == 1)
+                                        У задания {{$response_count}} отклик
+                                    @else
+                                        У задания {{$response_count}} откликa
+                                    @endif
+                                @else
+                                    У задания {{$response_count}} откликов
+                                @endif
+                            </div>
                         @else
-                        <div class="text-4xl font-semibold my-6">
-                            У задания нет откликов
-                        </div>
+                            <div class="text-4xl font-semibold my-6">
+                                У задания нет откликов
+                            </div>
                         @endif
                         <hr>
                         @if(isset($task_responses))
-                        <div class="flex my-2">
-                            <div class="mr-2 bg-[#fff6db] px-2">
-                                <a href="#">по рейтингу</a>
-                            </div>
-                            <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
-                                <a href="">по времени</a>
-                            </div>
-                            <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
-                                <a href="">по отзывам</a>
-                            </div>
-                        </div>
-                        @foreach ($task_responses as $response)
-                    <div class="mb-6">
-                        <div class="my-10">
-                            <div class="rounded-md bg-black h-24 float-left mr-5">
-                                <img class="w-24 h-24" src="https://assets.youdo.com/_next/static/media/executor_176.900c31f3bbd110fe153ec59d249ac71b.png" alt="">
-                            </div>
-                            <div class="">
-                                <a href="/performers/{{$response_users->id}}" class="text-blue-500 text-xl font-semibold float-left">
-                                    {{$response_users->name}}
-                                </a>
-                                <img class="w-7 h-7 ml-2" src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" alt="">
-                                <div class="text-gray-700">
-                                    <i class="fas fa-star text-[#fff0d0] mr-1"></i>4,96 по 63 отзывам
+                            <div class="flex my-2">
+                                <div class="mr-2 bg-[#fff6db] px-2">
+                                    <a href="#">по рейтингу</a>
                                 </div>
-                                <div class="mt-2">
-                                    <i class="fas fa-briefcase fa-2x text-blue-300"></i>
-                                    <i class="fas fa-shield-alt fa-2x text-green-300"></i>
+                                <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
+                                    <a href="">по времени</a>
+                                </div>
+                                <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
+                                    <a href="">по отзывам</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="bg-[#f5f5f5] rounded-[10px] p-4">
-                            <div class="ml-10">
-                                <div class="text-[17px] text-gray-500 font-semibold">Стоимость {{$response->price}} сум</div>
-                                <div class="text-[17px] text-gray-500">Здраствуйте.</div>
+                            @foreach ($task_responses as $response)
+                                <div class="mb-6">
+                                    <div class="my-10">
+                                        <div class="rounded-md bg-black h-24 float-left mr-5">
+                                            <img class="w-24 h-24" src="https://assets.youdo.com/_next/static/media/executor_176.900c31f3bbd110fe153ec59d249ac71b.png" alt="">
+                                        </div>
+                                        <div class="">
+                                            <a href="/performers/{{$response_users->id}}" class="text-blue-500 text-xl font-semibold float-left">
+                                                {{$response_users->name}}
+                                            </a>
+                                            <img class="w-7 h-7 ml-2" src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" alt="">
+                                            <div class="text-gray-700">
+                                                <i class="fas fa-star text-[#fff0d0] mr-1"></i>4,96 по 63 отзывам
+                                            </div>
+                                            <div class="mt-2">
+                                                <i class="fas fa-briefcase fa-2x text-blue-300"></i>
+                                                <i class="fas fa-shield-alt fa-2x text-green-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-[#f5f5f5] rounded-[10px] p-4">
+                                        <div class="ml-10">
+                                            <div class="text-[17px] text-gray-500 font-semibold">Стоимость {{$response->price}} сум</div>
+                                            <div class="text-[17px] text-gray-500">Здраствуйте.</div>
 
-                                <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
+                                            <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
 
-                                <div class="text-[17px] text-gray-500 font-semibold my-4">Телефон исполнителя: {{$response_users->phone_number}}</div>
-                                <div class="">
-                                    <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
-                                        Написать в чат
-                                    </a>
-                                    <a href="#" class="text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-[#6fc727] hover:bg-[#5ab82e] font-medium border border-transparent rounded-md">
-                                        Выбрать исполнителем
-                                    </a>
+                                            <div class="text-[17px] text-gray-500 font-semibold my-4">Телефон исполнителя: {{$response_users->phone_number}}</div>
+                                            <div class="">
+                                                <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
+                                                    Написать в чат
+                                                </a>
+                                                <a href="#" class="text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-[#6fc727] hover:bg-[#5ab82e] font-medium border border-transparent rounded-md">
+                                                    Выбрать исполнителем
+                                                </a>
+                                            </div>
+                                            <div class="text-gray-400 text-[14px] my-6">
+                                                Выберите исполнителя, чтобы потом оставить отзыв о работе.
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-gray-400 text-[14px] my-6">
-                                    Выберите исполнителя, чтобы потом оставить отзыв о работе.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                            @endforeach
                     </div>
                     @endif
                 </div>
@@ -357,11 +347,26 @@
                 <h1 class="text-lg">Заказчик этого задания</h1>
                 <div class="flex flex-row mt-4">
                     <div class="mr-4">
-                        <img src="{{ asset($current_user->avatar ?? $tasks->user_name ) }}" class="border-2 border-gray-400 w-32 h-32" alt="#">
+                        <img src="
+                        @if ($current_user->avatar == 'users/default.png')
+                            {{ asset("AvatarImages/images/{$current_user->avatar}") }}
+                        @else 
+                            {{ asset("AvatarImages/{$current_user->avatar}") }}
+                        @endif" class="border-2 border-gray-400 w-32 h-32" alt="#">
                     </div>
                     <div class="">
                         <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
-                        <a href="#" class="text-xl text-gray-500">{{$current_user->email ?? $tasks->user_email}}</a>
+                        <a href="#" class="text-xl text-gray-500">
+                            @if($current_user->age != "")
+                                <p class="inline-block text-m mr-2">
+                                    {{$current_user->age}}
+                                    @if($current_user->age>20 && $current_user->age%10==1) @lang('lang.cash_rusYearGod')
+                                    @elseif ($current_user->age>20 && ($current_user->age%10==2 || $current_user->age%10==3 || $current_user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                    @else @lang('lang.cash_rusYearLet')
+                                    @endif
+                                </p>
+                            @endif
+                        </a>
                         <!-- <div class="flex flex-row">
                             <p>Отзывы:</p>
                             <i class="far fa-thumbs-up m-1 text-gray-400"></i>  2
@@ -390,13 +395,13 @@
                 var notificate = 0;
             }
             var response_time = null;
-
             if ($('.answer').is(':visible')) {
                 var response_time = 1;
             }
             let response_price = $("input[name=response_price]").val();
             let task_id = $("input[name=task_id]").val();
             let _token = $("input[name=csrf]").val();
+            let user_id = $("input[name=user_id]").val();
             $.ajax({
                 url: "/ajax-request",
                 type:"POST",
@@ -406,13 +411,13 @@
                     response_time:response_time,
                     response_price:response_price,
                     task_id:task_id,
-                    _token:_token
+                    _token:_token,
+                    user_id:user_id
                 },
                 success:function(response){
                     console.log(response);
                     if(response) {
                         $('.success').text(response.success);
-
                     }
                 },
                 error: function(error) {
