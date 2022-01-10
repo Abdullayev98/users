@@ -15,7 +15,7 @@
                         <li id="second_tab" class="rounded-t px-3 py-1 md:w-[150px]"><a href="#second">@lang('lang.mytasks_iAmCustomer')</a></li>
 
                     </ul>
-                    <p>{{ $tasks->count() }}</p>
+                    <p class="p-5">Всего {{ $tasks->count() }} задание найдено</p>
 
                 </div>
             </div>
@@ -27,9 +27,9 @@
                     <div class="w-full scroll-smooth hover:scroll-auto w-full">
 
                             @foreach($tasks as $task)
-                            <div class="w-full border hover:bg-blue-100 my-5">
-                                <div class="grid grid-cols-10 p-2">
-                                    <i class="fas fa-user-circle text-4xl col-span-1 m-auto text-blue-400"></i>
+                            <div class="w-full hover:bg-blue-100 border-t border-solid my-5">
+                                <div class="md:grid md:grid-cols-10 p-2">
+                                    <i class="fas fa-user-circle text-4xl md:col-span-1 m-auto text-blue-400"></i>
                                     <div class="col-span-6">
                                         <a href="#" class="text-lg text-blue-400 hover:text-red-400">
                                             {{$task->name}}
@@ -39,7 +39,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="col-span-3 text-right">
+                                    <div class="col-span-3 md:text-right">
                                         <a href="#" class="text-lg">{{$task->budget}} sum</a>
                                         <p class="text-sm">@lang('lang.mytasks_sportMaster')</p>
                                         <p class="text-sm">@lang('lang.mytasks_noFeedback')</p>
@@ -47,6 +47,7 @@
 
                                 </div>
                             </div>
+
                             @endforeach
 
                         </div>
@@ -59,12 +60,11 @@
 
                 <div id="second" class="hidden">
 
-                    <div id="scrollbar" class="w-full h-screen blog1">
-                            <div class="w-full scroll-smooth hover:scroll-auto w-full h-screen">
+                    <div id="scrollbar" class="w-full blog1">
+                            <div class="w-full scroll-smooth hover:scroll-auto w-full">
                             @foreach($tasks as $task)
-                                    {{-- {{$task->count()}} --}}
-                                    <div class="w-full border hover:bg-blue-100 my-5">
-                                        <div class="grid grid-cols-10 p-2">
+                                    <div class="w-full border-t border-solid hover:bg-blue-100  my-5">
+                                        <div class="md:grid md:grid-cols-10 p-2">
                                             <i class="fas fa-user-circle text-4xl col-span-1 m-auto text-blue-400"></i>
                                             <div class="col-span-6">
                                                 <a href="#" class="text-lg text-blue-400  hover:text-red-400">
@@ -74,7 +74,7 @@
                                                     {{$task->description}}
                                                 </p>
                                             </div>
-                                            <div class="col-span-3 text-right">
+                                            <div class="col-span-3 md:text-right">
                                                 <a href="#" class="text-lg">{{$task->budget}} sum</a>
                                                 <p class="text-sm">@lang('lang.mytasks_sportMaster')</p>
                                                 <p class="text-sm">@lang('lang.mytasks_noFeedback')</p>
@@ -111,7 +111,7 @@
                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                             <div x-data={show:false} class="rounded-sm">
                                 <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center my-1" type="button">
+                                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center my-1 mx-1" type="button">
                                         {{$category->name}}
                                     </button>
                                 </div>
