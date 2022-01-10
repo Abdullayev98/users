@@ -33,8 +33,10 @@
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
                         @lang('lang.name_howCanWeHelpU')
                     </div>
-                    @if($category_id == 60)
+                    @if($current_category->id == 60)
                     <form action="{{route('task.create.housemaid')}}" method="post">
+                        @elseif($current_parent_category->id == 8)
+                        <form action="{{route('task.create.smm')}}" method="post">
                         @else
                         <form action="{{route('task.create.name')}}" method="post">
                     @endif
