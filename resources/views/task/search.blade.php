@@ -46,70 +46,57 @@
                     </div>
 
                     <div class="col-span-2 lg:col-span-1 lg:hidden block mx-4 lg:mt-0 mt-8 mb-4">
-                        <div id="map1" class="h-60 my-5 rounded-lg w-full static">
-{{--                            <div class="b-tasks-btn-toggle-map-wrapper" title="Свернуть карту"><span class="b-tasks-btn-toggle-map-arrow-up i-mini"></span><span class="b-tasks-btn-toggle-map-arrow-down i-mini"></span></div>--}}
-{{--                            <div class="absolute bottom-0 left-0"><p> Map Text </p></div>--}}
-                        </div>
-{{--                        <form id="form">--}}
-                            <div class="w-full h-full">
+                        <div id="map1" class="h-60 my-5 rounded-lg w-full static"></div>
+                        <div class="w-full h-full">
 
-                                <div class="max-w-lg mx-auto">
+                            <div class="max-w-lg mx-auto">
 
-                                    <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
-                                    <input type="checkbox" class="all_cat2 mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')
-                                    </label>
+                                <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
+                                <input type="checkbox" class="all_cat2 mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')
+                                </label>
 
-                                    <div class="w-full my-1 for_check2">
+                                <div class="w-full my-1 for_check2">
 
-                                        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
-                                            <div x-data={show:false} class="rounded-sm">
-                                                <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                                    <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
-                                                        <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                        </svg>
-                                                    </button>
-                                                        <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">
-                                                        <input type="checkbox" class="par_cat2 mr-1 hover:cursor-pointer" name="{{$category->id}}" id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
-                                                        </label>
-                                                </div>
-                                                <div x-show="show" class="border border-b-0 px-8 py-0">
-                                                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
-
-                                                        <div class="par{{$category->id}}">
-                                                            <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
-                                                            <input type="checkbox" class="chi_cat2 mr-1 hover:cursor-pointer" name="{{$category2->id}}" id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
-                                                            </label>
-                                                        </div>
-
-                                                    @endforeach
-                                                </div>
+                                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
+                                        <div x-data={show:false} class="rounded-sm">
+                                            <div class="border border-b-0 bg-gray-100" id="headingOne">
+                                                <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                                                    <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                    </svg>
+                                                </button>
+                                                    <label class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">
+                                                    <input type="checkbox" class="par_cat2 mr-1 hover:cursor-pointer" name="{{$category->id}}" id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
+                                                    </label>
                                             </div>
-                                        @endforeach
-                                    </div>
+                                            <div x-show="show" class="border border-b-0 px-8 py-0">
+                                                @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
 
+                                                    <div class="par{{$category->id}}">
+                                                        <label class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
+                                                        <input type="checkbox" class="chi_cat2 mr-1 hover:cursor-pointer" name="{{$category2->id}}" id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
+                                                        </label>
+                                                    </div>
+
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
 
-                                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-
                             </div>
-{{--                        </form>--}}
-                        <div id="form2"></div>
+
+                            <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+
+                        </div>
                     </div>
 
                     <div class="">
-{{--                        <div class="big-map" hidden="hidden">--}}
-                            <div class="static">
-                                <div id="map3" class="big-map h-80 my-5 rounded-lg w-3/3 static align-items-center" hidden>
-                                    <div class="grid grid-cols-10 gap-10 content-center w-full">
-                                        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-                                        <div class="text-right w-full h-full">
-                                            <div class="absolute z-50"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('big')"/></div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">
+                            <div class="big-map static">
+
                             </div>
-{{--                        </div>--}}
+                        </div>
                         <div id="scrollbar" class="w-full h-full blog1">
                             <div class="w-full overflow-y-scroll w-full">
                                 <div class="show_tasks">
@@ -124,34 +111,15 @@
                                 </div>
                             </div>
                         </div>
-                                {{-- {{$tasks->links()}}--}}
-
-                         {{--    Navigatsiya ko'rinishi un kere bo'ladigan Input va Button  --}}
-{{--                        <input id="suggest" class="hidden" type="text">--}}
-{{--                        <button id="mpshow" class="hidden"></button>--}}
-                          {{--    Ishonmaganla sinab ko'rishi mumkin --}}
                     </div>
-
                 </div>
 
                 <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">
-{{--                    <div class="small-map">--}}
-                        <div class="static">
-                            <div id="map2" class="small-map h-60 my-5 rounded-lg w-full static">
-                                <div class="grid grid-cols-6 gap-6 content-center w-full">
-                                    <div></div><div></div><div></div><div></div><div></div>
-                                    <div class="text-right w-full h-full">
-                                        <div class="absolute z-50 mt-2 ml-3"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-{{--                    </div>--}}
-                    <form id="form">
+                    <div class="small-map static">
+
+                    </div>
                         <div class="w-full h-full">
-
                             <div class="max-w-lg mx-auto">
-
                                 <label class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
                                   <input type="checkbox" class="all_cat mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')
                                 </label>
@@ -190,8 +158,6 @@
                             <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
 
                         </div>
-                    </form>
-                    <div id="form2"></div>
                 </div>
             </div>
 
@@ -209,61 +175,41 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU" type="text/javascript"></script>
-    <script type="text/javascript">
-        ymaps.ready(init);
-            function init() {
-                var suggestView1 = new ymaps.SuggestView('suggest');
-                var myMap1 = new ymaps.Map('map1', {
-                    center: [55.74, 37.58],
-                    zoom: 15,
-                    controls: []
-                });
-                var searchControl = new ymaps.control.SearchControl({  });
-                myMap1.controls.add(searchControl);
-                $("#mpshow").click(function(){
-                searchControl.search(document.getElementById('suggest').value);
-            });
-        }
-    </script>
-
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script type="text/javascript">
         ymaps.ready(init);
         function init() {
-            var suggestView2 = new ymaps.SuggestView('suggest');
-            var myMap2 = new ymaps.Map('map2', {
+            var myMap1 = new ymaps.Map('map1', {
                 center: [55.74, 37.58],
                 zoom: 15,
                 controls: []
-                // controls: ['geolocationControl']
             });
 
-                var searchControl = new ymaps.control.SearchControl({});
-                myMap2.controls.add(searchControl);
-                $("#mpshow").click(function(){
-                searchControl.search(document.getElementById('suggest').value)
-                });
+            $("#mpshow").click(function(){
+
+            });
         }
     </script>
 
+
+
+    <script type="text/javascript"></script>
+
     <script type="text/javascript">
 
-            ymaps.ready(init);
-            function init() {
-                var suggestView3 = new ymaps.SuggestView('suggest');
-                var myMap3 = new ymaps.Map('map3', {
-                    center: [55.74, 37.58],
-                    zoom: 15,
-                    controls: []
-                });
-                var searchControl = new ymaps.control.SearchControl({});
-                myMap3.controls.add(searchControl);
-                $("#mpshow").click(function(){
-                    searchControl.search(document.getElementById('suggest').value);
-                });
-            }
+        ymaps.ready(init);
+        function init() {
+            var myMap4 = new ymaps.Map('map4', {
+                center: [55.74, 37.58],
+                zoom: 15,
+                controls: []
+            });
+            $("#mpshow").click(function(){
 
-        </script>
+            });
+        }
+
+    </script>
 
     <script>
 
@@ -324,7 +270,7 @@
             });
         });
 
-        $("#address").keyup(function() {
+        $(".address").keyup(function() {
 
             // Retrieve the input field text and reset the count to zero
             var filter = $(this).val(),
@@ -377,14 +323,7 @@
             });
         });
 
-
-
-
-        // let i = 20;
-        // let k = 0;
         let dataAjax = {};
-
-        // img_show();
         $('.all_cat').click();
         $('.all_cat2').click();
         $(".for_check input:checkbox").each(function () {
@@ -394,6 +333,7 @@
             this.checked = true;
         });
         first_ajax('all')
+        map_pos('big')
 
         function first_ajax(id){
             $.ajax({
@@ -419,8 +359,8 @@
                 <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
                 <div></div>
                 <div class="col-span-3 text-center w-full h-full">
-                    <p class="text-3xl"><b>@lang('lang.search_tasksNotFound')</b></p>
-                    <p class="text-lg">@lang('lang.search_tryAnOther')</p>
+                    <p class="text-3xl"><b>Задания не найдены</b></p>
+                    <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
                 </div>
                 </div>`
             );
@@ -443,8 +383,8 @@
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">@lang('lang.search_sportMaster')</p>
-                    <p class="text-sm ml-12">@lang('lang.search_noFeedback')</p>
+                    <p class="text-sm ml-12">Спортмастер</p>
+                    <p class="text-sm ml-12">Нет отзывов</p>
                     </div>
                     </div>
                     </div>
@@ -460,10 +400,10 @@
             $('.chi_cat').each(function () {
                 if (this.checked) {
                     id = this.name
-            $.each(data, function(index, data) {
-                if (data.category_id == id) {
-            $(".show_tasks").append(
-                `<div>
+                    $.each(data, function(index, data) {
+                        if (data.category_id == id) {
+                            $(".show_tasks").append(
+                                `<div>
                     <div class="w-full border hover:bg-blue-100 h-[100px] ">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
@@ -473,8 +413,8 @@
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">@lang('lang.search_sportMaster')</p>
-                    <p class="text-sm ml-12">@lang('lang.search_noFeedback')</p>
+                    <p class="text-sm ml-12">Спортмастер</p>
+                    <p class="text-sm ml-12">Нет отзывов</p>
                     </div>
                     </div>
                     </div>
@@ -743,15 +683,85 @@
 
         function map_pos(bs){
             if (bs == 'big'){
-                $('.big-map').attr("id","")
-                $('.big-map').attr("hidden","hidden")
-                $('.small-map').attr("id","map2")
-                $('.small-map').removeAttr("hidden")
+                // $('.big-map').attr("id","")
+                // $('.big-map').attr("hidden","hidden")
+                // $('.small-map').attr("id","map2")
+                // $('.small-map').removeAttr("hidden")
+                $(".big-map").empty();
+                $(".small-map").append(
+                    `<div id="map2" class="h-60 my-5 rounded-lg w-full static">
+                         <div class="grid grid-cols-6 gap-6 content-center w-full">
+                             <div></div><div></div><div></div><div></div><div></div>
+                             <div class="text-right w-full h-full">
+                                 <div class="absolute z-50 ml-1"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
+                             </div>
+                         </div>
+                     </div>`,
+                )
+
+                ymaps.ready(init);
+                function init() {
+                    var myMap2 = new ymaps.Map('map2', {
+                        center: [55.74, 37.58],
+                        zoom: 15,
+                        // controls: []
+                        controls: ['geolocationControl']
+                    });
+
+//             myMap2.balloon.open(myMap2.getCenter(), {
+//                 contentHeader: 'Однажды',
+//                 contentBody: 'В студеную зимнюю пору' +
+//                     ' <span style="color:red; font-weight:bold">Я</span>' +
+//                     ' из лесу <b>вышел</b>',
+//             });
+//
+//             myMap2.hint.open([55.76, 37.38], 'Кто <em>поднимается</em> в гору?');
+//
+//             var myPlacemark = new ymaps.Placemark([55.7, 37.6], {
+//                 balloonContentHeader: 'Однажды',
+//                 balloonContentBody: 'В студеную зимнюю пору',
+//                 balloonContentFooter: 'Мы пошли в гору',
+//                 hintContent: 'Зимние происшествия'
+//             });
+//
+//             myMap2.geoObjects.add(myPlacemark);
+//
+// // Балун откроется в точке «привязки» балуна — т. е. над меткой.
+//             myPlacemark.balloon.open();
+
+                }
+
+
             }else{
-                $('.small-map').attr("id","")
-                $('.small-map').attr("hidden","hidden")
-                $('.big-map').attr("id","map2")
-                $('.big-map').removeAttr("hidden")
+                // $('.small-map').attr("id","")
+                // $('.small-map').attr("hidden","hidden")
+                // $('.big-map').attr("id","map2")
+                // $('.big-map').removeAttr("hidden")
+                $(".small-map").empty();
+                $(".big-map").append(
+                    `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
+                         <div class="grid grid-cols-10 gap-10 content-center w-full">
+                             <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                             <div class="text-right w-full h-full">
+                                 <div class="absolute z-50"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer ml-1" title="Kartani kichiklashtirish" onclick="map_pos('big')"/></div>
+                             </div>
+                         </div>
+                     </div>`,
+                )
+
+                ymaps.ready(init);
+                function init() {
+                    var myMap3 = new ymaps.Map('map3', {
+                        center: [55.74, 37.58],
+                        zoom: 15,
+                        controls: []
+                    });
+                    $("#mpshow").click(function(){
+
+                    });
+                }
+
+
             }
         }
 
