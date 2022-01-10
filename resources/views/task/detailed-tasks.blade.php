@@ -244,9 +244,7 @@
                             });
                         </script>
                     </div>
-
-                    <script>
-                    </script>
+                    <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
                 </div>
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-lg">
