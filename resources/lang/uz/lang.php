@@ -556,7 +556,7 @@ return [
     'notes_percent' => "Vazifa 86% toʻldi",
     'notes_details' => "Tafsilotlarni ko'rsating",
     'notes_destcript' => "Ta'rif",
-    'notes_example' => "Masalan: yog'ochdan, tomi va ikkita derazali bir qavatli bolalar uyi qurish. Saytda tez-tez suv yig'iladi, sizga shag'al drenaj kerak bo'ladi.",
+    'notes_example' => "Masalan: yog'ochdan, tomi va ikkita derazali bir qavatli bolalar uyi qurish. Hovlida tez-tez suv yig'iladi, sizga shag'al drenaj kerak bo'ladi.",
     'notes_addPhoto' => "Rasm qo'shish",
     'notes_back' => "Orqaga",
     // notes.blade end
