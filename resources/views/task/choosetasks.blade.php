@@ -1,13 +1,13 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="container w-10/12 mx-auto my-16">
-        <div class="w-8/12 mx-auto text-center">
-            <h1 class="text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
-            <h3 class="text-xl text-gray-500">@lang('lang.chT_weHelp')</h3>
+    <div class="container w-10/12 mx-auto">
+        <div class="w-10/12 md:w-8/12 mx-auto text-center">
+            <h1 class="text-3xl md:text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
+            <h3 class="text-xl md:text-2xl my-5 text-gray-500">@lang('lang.chT_weHelp')</h3>
             @foreach($categories as $category)
                 <button type="button"
-                        class="bg-inherit hover:bg-[#ffebad] border py-1 rounded-full px-4 my-4 text-gray-500 text-xs">
+                        class="bg-inherit hover:bg-[#ffebad] border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
                     <i class="fas {{ $category->ico }}"></i>
                     <a href="{{route('categories',['id'=>$category->id])}}">
                         {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
@@ -16,16 +16,16 @@
             @endforeach
 
         </div>
-        <div class="w-1/4">
+        <div class="w-full ml-4 md:text-left mt-8 md:m-0">
           @foreach($choosed_category as $choosed)
-            <h4 class="font-bold text-xl">{{$choosed->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</h4>
+            <h4 class="font-bold text-3xl">{{$choosed->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</h4>
             @endforeach
         </div>
-        <div class="grid grid-cols-3 mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 mt-8">
             @foreach($child_categories as $category)
-                <div class="w-full text-left">
+                <div class="w-full text-left text-left border-b border-solid md:border-0 mt-4 border-[#e9e9e9]">
                     <a href="/task/create?category_id={{$category->id}}"
-                       class="py-4 text-gray-500 hover:text-[#ffa200] hover:underline">{{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</a>
+                       class="text-gray-500 hover:text-[#ffa200] block ml-4 md:ml-0 pb-4 hover:underline">{{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</a>
                 </div>
             @endforeach
 

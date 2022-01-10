@@ -112,7 +112,7 @@
                             <div x-data={show:false} class="rounded-sm">
                                 <div class="border border-b-0 bg-gray-100" id="headingOne">
                                     <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center my-1 mx-1" type="button">
-                                        {{$category->name}}
+                                        {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </button>
                                 </div>
                             </div>

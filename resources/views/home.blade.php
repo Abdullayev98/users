@@ -3,16 +3,6 @@
 
 @section('content')
 
-    <style media="screen">
-        #test {
-            width: 100px;
-            height: 100px;
-            position: relative;
-            top: 100px;
-            bottom: 100px;
-            background: green;
-        }
-    </style>
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">
