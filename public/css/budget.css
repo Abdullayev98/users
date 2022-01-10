@@ -235,3 +235,13 @@ height: 100%;
 padding-top: 5rem;
 text-align: center;
 }
+
+@media (min-width: 768px) {
+    .cube {
+        width: 400px;
+    }
+
+    .a:before, .a:after {
+        width: 400px;
+    }
+}

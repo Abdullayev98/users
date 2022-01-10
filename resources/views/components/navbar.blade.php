@@ -1,7 +1,7 @@
 
 
 
-<nav class="z-10 relative flex items-center mx-6 lg:w-11/12 xl:w-10/12 md:mx-auto justify-between  lg:justify-start font-[sans-serif]" aria-label="Global">
+<nav class="z-10 relative flex items-center mr-6 lg:w-11/12 xl:w-10/12 md:mx-auto justify-between  lg:justify-start font-[sans-serif]" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
       <!--  mobile menu -->
       <!-- <div class="flex justify-between w-11/12 items-center"> -->
@@ -27,7 +27,8 @@
           {{-- icon-1 --}}
           <div class=" float-left ml-8">
                 <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
-              <button class="" type="button" data-dropdown-toggle="notification"><i class="text-xl text-slate-400 hover:text-orange-500 far fa-bell"></i>
+              <button class="" type="button" data-dropdown-toggle="notification">
+                  <i class="text-xl text-slate-400 hover:text-orange-500 far fa-bell"></i>
               </button>
               <!-- Dropdown menu -->
               <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="notification">
@@ -102,7 +103,7 @@
                             @auth
 
                             <li class="mb-1">
-                                <a href="/my-tasks" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_myTasks')</a>
+                                <a href="{{ route('task.mytasks') }}" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_myTasks')</a>
                             </li>
 
                                    {{-- icon-3 --}}
@@ -206,7 +207,7 @@
         <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
-              <a href="/my-tasks" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
+              <a href="{{ route('task.mytasks') }}" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
             @else
             @endauth
         @endif
@@ -258,7 +259,6 @@ use Illuminate\Support\Facades\Auth;
                     </div>
                 </div>
 
-                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                 {{-- icon-3 --}}
                 <div class=" float-left">
                     <a href="/chat">
@@ -292,7 +292,6 @@ use Illuminate\Support\Facades\Auth;
                         </ul>
                     </div>
                 </div>
-            <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
             </div>
 
             <!-- language blog -->
