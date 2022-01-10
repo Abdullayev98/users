@@ -1,7 +1,8 @@
 <?php
-  
+
 return [
     // home.blade start
+    'lang_for_map' => "uz_UZ",
     'header_title' => "Освободим вас от забот uz",
     'header_sub' => "Поможем найти надежного исполнителя для любых задач uz",
     'header_orderBtn' => "Заказать услугу uz",
@@ -44,7 +45,7 @@ return [
     'body_security' => "Безопасность и гарантии uz",
     'body_perForBusines' => "Надежные исполнители для бизнеса uz",
     // home.blade end
-    
+
     // pdf.blade start
     'pdf_terms' => "Правила Универсал Сервис БИЗНЕС uz",
     // pdf.blade end
@@ -107,10 +108,9 @@ return [
     'search_byKey' => "Поиск по ключевым словам uz",
     'search_location' => "Город, адрес, метро, район... uz",
     'search_priceBy' => "Стоимость заданий от uz",
-    'search_allCat' => "Все категории uz",
+    'search_allCat' => "Barcha kategoriyalar",
     'search_shown' => "Показано 20 из 331 uz",
     'search_showMore' => "Показать ещё uz",
-    'search_allCat' => "Все категории uz",
     'search_tasksNotFound' => "Задания не найдены uz",
     'search_tryAnOther' => "Попробуйте уточнить запрос или выбрать другие категории uz",
     'search_sportMaster' => "Спортмастер uz",
@@ -131,7 +131,7 @@ return [
     'search2_dealWithoutRisk' => "Сделка без риска uz",
     'search2_BusinesTask' => "Бизнес-задания uz",
     // search2.blade end
-    
+
     // badgets.blade start
     'badgets_howItWorks' => "Как это работает uz",
     'badgets_security' => "Безопасность и гарантии uz",
@@ -628,6 +628,28 @@ return [
     'ver_' => " uz",
     'ver_' => " uz",
     // verification.blade end
+
+    // navbar.blade start
+    'navbar_notif' => "Xabarlar",
+    'navbar_justSetPass' => "faqatgina parol ornatish qoldi",
+    'navbar_settings' => "'sozlamalar' bolimida",
+    'navbar_markAsRead' => "Hammasini oqilgan dep belgilash",
+    'navbar_createTask' => "Vazifa yaratish",
+    'navbar_findTask' => "Vzifani topish",
+    'navbar_perfs' => "Ijrochilar",
+    'navbar_myTasks' => "Mening topshiriqlarim",
+    'navbar_exit' => "Chiqish",
+    'navbar_enter' => "Kirish",
+    'navbar_or' => "yoki",
+    'navbar_reg' => "Registratsiya",
+    'navbar_profile' => "Profil",
+    'navbar_set' => "Sozlamalar",
+    'navbar_howMuch' => "Hamyoningizni <br> qanchaga toldirmoqchisiz",
+    'navbar_minimum' => "Minimal toldirish miqdori - 1000 som",
+    'navbar_toPayment' => "Tolovga otish",
+    'navbar_paymentWay' => "Tolov turlari",
+    'navbar_payment' => "Tolov",
+    // navbar.blade end
 
 
 
