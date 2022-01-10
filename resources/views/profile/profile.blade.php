@@ -49,7 +49,7 @@
 
                         </div> --}}
 
-                        <div class="inline-block ml-3 mt-1">
+                        <div class="md:col-span-2 col-span-3 lg:col-span-1 ml-3 mt-1">
                             @if($user->age != "")
                                 <p class="inline-block text-m mr-2">
                                     {{$user->age}}

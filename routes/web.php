@@ -64,7 +64,8 @@ Route::get('/verification', function () {
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');
 
-Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('my.tasks');
+Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('task.mytasks');
+
 Route::get('/refill', function() {
     return view('/Site/refill');
 });
