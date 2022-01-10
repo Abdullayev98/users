@@ -1,7 +1,8 @@
 <?php
-  
+
 return [
     // home.blade start
+    'lang_for_map' => "uz_UZ",
     'header_title' => "Освободим вас от забот uz",
     'header_sub' => "Поможем найти надежного исполнителя для любых задач uz",
     'header_orderBtn' => "Заказать услугу uz",
@@ -44,7 +45,7 @@ return [
     'body_security' => "Безопасность и гарантии uz",
     'body_perForBusines' => "Надежные исполнители для бизнеса uz",
     // home.blade end
-    
+
     // pdf.blade start
     'pdf_terms' => "Правила Универсал Сервис БИЗНЕС uz",
     // pdf.blade end
@@ -107,10 +108,9 @@ return [
     'search_byKey' => "Поиск по ключевым словам uz",
     'search_location' => "Город, адрес, метро, район... uz",
     'search_priceBy' => "Стоимость заданий от uz",
-    'search_allCat' => "Все категории uz",
+    'search_allCat' => "Barcha kategoriyalar",
     'search_shown' => "Показано 20 из 331 uz",
     'search_showMore' => "Показать ещё uz",
-    'search_allCat' => "Все категории uz",
     'search_tasksNotFound' => "Задания не найдены uz",
     'search_tryAnOther' => "Попробуйте уточнить запрос или выбрать другие категории uz",
     'search_sportMaster' => "Спортмастер uz",
@@ -131,7 +131,7 @@ return [
     'search2_dealWithoutRisk' => "Сделка без риска uz",
     'search2_BusinesTask' => "Бизнес-задания uz",
     // search2.blade end
-    
+
     // badgets.blade start
     'badgets_howItWorks' => "Как это работает uz",
     'badgets_security' => "Безопасность и гарантии uz",

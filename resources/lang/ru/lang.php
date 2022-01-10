@@ -2,6 +2,7 @@
 
 return [
     // home.blade start
+    'lang_for_map' => "ru_RU",
     'header_title' => "Освободим вас от забот",
     'header_sub' => "Поможем найти надежного исполнителя для любых задач",
     'header_orderBtn' => "Заказать услугу",
@@ -44,7 +45,7 @@ return [
     'body_security' => "Безопасность и гарантии",
     'body_perForBusines' => "Надежные исполнители для бизнеса",
     // home.blade end
-    
+
     // pdf.blade start
     'pdf_terms' => "Правила Универсал Сервис БИЗНЕС",
     // pdf.blade end
@@ -131,7 +132,7 @@ return [
     'search2_dealWithoutRisk' => "Сделка без риска",
     'search2_BusinesTask' => "Бизнес-задания",
     // search2.blade end
-    
+
     // badgets.blade start
     'badgets_howItWorks' => "Как это работает",
     'badgets_security' => "Безопасность и гарантии",
