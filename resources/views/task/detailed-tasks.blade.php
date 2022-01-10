@@ -113,6 +113,7 @@
                                                             <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">SUM
                                                             <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
                                                             <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
+                                                            <input type="text" name="user_id" class="hidden" value="{{$current_user->id ?? null}}">
                                                         </label>
                                                         <hr>
                                                     </main>
@@ -397,6 +398,7 @@
             let response_price = $("input[name=response_price]").val();
             let task_id = $("input[name=task_id]").val();
             let _token = $("input[name=csrf]").val();
+            let user_id = $("input[name=user_id]").val();
             $.ajax({
                 url: "/ajax-request",
                 type:"POST",
@@ -406,13 +408,13 @@
                     response_time:response_time,
                     response_price:response_price,
                     task_id:task_id,
-                    _token:_token
+                    _token:_token,
+                    user_id:user_id
                 },
                 success:function(response){
                     console.log(response);
                     if(response) {
                         $('.success').text(response.success);
-
                     }
                 },
                 error: function(error) {
