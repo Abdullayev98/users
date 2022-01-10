@@ -88,6 +88,7 @@ class SearchTaskController extends VoyagerBaseController
       $response_time = $request->input('response_time');
       $response_price = $request->input('response_price');
       $task_id = $request->input('task_id');
+      $users_id = $request->input('user_id');
       #create or update your data here
       TaskResponse::create([
         'user_id' => Auth::id(),
@@ -95,7 +96,9 @@ class SearchTaskController extends VoyagerBaseController
         'description' => $description,
         'notificate' => $notificate,
         'time' => $response_time,
-        'price' => $response_price
+        'price' => $response_price,
+        'price' => $response_price,
+        'creator_id' => $users_id
       ]);
       return response()->json(['success'=>$description]);
   }
