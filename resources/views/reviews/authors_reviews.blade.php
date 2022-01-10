@@ -7,39 +7,39 @@
             <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8">
                 <ul>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">Как это работает</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">@lang('lang.authors_howItWorks')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">Безопасность и гарантии</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">@lang('lang.authors_security')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">Награды и рейтинг</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">@lang('lang.authors_rewards')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/reviews">Отзывы исполнителей</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/reviews">@lang('lang.authors_PerFeed')</a>
                     </li>
                     <li>
-                        <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/">Отзывы заказчиков</a>
+                        <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/">@lang('lang.authors_CusFeed')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/press">СМИ о нас</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/press">@lang('lang.authors_aboutUs')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Реклама на сервисе</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">@lang('lang.authors_addsInServ')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">Контакты</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">@lang('lang.authors_contacts')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/vacancies">Вакансии</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/vacancies">@lang('lang.authors_vacancy')</a>
                     </li>
                 </ul>
             </div>
             <div class="md:w-8/12 mt-8">
                 <h1 class="text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] pb-2 font-semibold">
-                    Отзывы заказчиков о Universal Services
+                @lang('lang.authors_CusFeedAboutUser')
                 </h1>
-                <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">Ежедневно на просторах интернета мы встречаем десятки отзывов наших пользователей о Universal Services. Самые яркие и эмоциональные из них собираются на этой странице. Рады поделиться ими с вами!</p>
+                <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">@lang('lang.authors_FeedbackInf')</p>
                 <ul class="pt-[20px]">
                     <li class="border border-solid border-[2px] rounded-[5px]">
                         <div class="px-[15px] py-[20px]">
@@ -52,12 +52,12 @@
                                 </span>
                                 <div class="text-[.9rem] -mt-2 text-[rgba(78,78,78,.5)]">
                                     <span class="align-middle">
-                                        <a href="#">около 2 лет назад</a>
+                                        <a href="#">@lang('lang.authors_timeAgo')</a>
                                     </span>
                                 </div>
                             </div>
                             <div>
-                                Пользуюсь Universal Services время от времени, полезная штука. Вчера курьер доставил посылочку к поезду. Весной опытная медсестра наложила полимерный бинт на сломанную ногу. И уборку там заказываю - качественно и недорого. В общем, рекомендую.
+                            @lang('lang.authors_feedback')
                             </div>
                             <div class="w-full h-auto py-4">
                                 <img src="https://external.ftas3-1.fna.fbcdn.net/safe_image.php?d=AQE6EVXDDxMMJipo&w=540&h=282&url=http%3A%2F%2Fyoudo.com%2FStatic%2FFBWall_2018_2.jpg&cfs=1&upscale=1&fallback=news_d_placeholder_publisher&ext=emg0&_nc_oe=6f37e&_nc_sid=06c271&ccb=3-5&_nc_hash=AQHUUpFCB2oK2EA7" alt="">
@@ -65,7 +65,7 @@
                         </div>
                     </li>
                 </ul>
-                <a href="categories/1" class="inline-block mt-7 border-0 outline-0 text-center whitespace-nowrap min-w-[100px] rounded-[8px] text-[2rem] h-[3.5rem] text-white px-[23px] bg-[linear-gradient(180deg,#5dbeff,#4096ef)] hover:bg-[linear-gradient(180deg,#a2d8fc,#6eaff1)">Создать задание</a>
+                <a href="categories/1" class="inline-block mt-7 border-0 outline-0 text-center whitespace-nowrap min-w-[100px] rounded-[8px] text-[2rem] h-[3.5rem] text-white px-[23px] bg-[linear-gradient(180deg,#5dbeff,#4096ef)] hover:bg-[linear-gradient(180deg,#a2d8fc,#6eaff1)">@lang('lang.authors_createTask')</a>
             </div>
         </div>
     </div>

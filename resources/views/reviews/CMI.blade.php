@@ -6,79 +6,79 @@
             <div class="lg:w-2/12 h-auto mt-5">
                 <ul>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">Как это работает</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">@lang('lang.authors_howItWorks')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">Безопасность и гарантии</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">@lang('lang.authors_security')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">Награды и рейтинг</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">@lang('lang.authors_rewards')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/reviews">Отзывы исполнителей</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/reviews">@lang('lang.authors_PerFeed')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/author-reviews">Отзывы заказчиков</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/author-reviews">@lang('lang.authors_CusFeed')</a>
                     </li>
                     <li>
-                        <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/press">СМИ о нас</a>
+                        <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/press">@lang('lang.authors_aboutUs')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">Реклама на сервисе</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">@lang('lang.authors_addsInServ')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">Контакты</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">@lang('lang.authors_contacts')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/vacancies">Вакансии</a>
+                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/vacancies">@lang('lang.authors_vacancy')</a>
                     </li>
                 </ul>
                 <a href class="bg-[url('https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg')] bg-no-repeat"></a>
                 <a href="/verification" class="w-[200px] px-[16px] pb-[15px] block rounded-[8px] shadow-xl hover:shadow-md text-[12px] leading-[16px] tracking-[.2px] text-[#444] mt-5 text-center mb-8">
                     <img src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" class="mx-auto pb-3" alt="">
-                    Станьте исполнителем Универсал Сервис. И начните зарабатывать.
+                    @lang('lang.cmi_bePerf')
                 </a>
             </div>
             <div class="md:w-9/12 md:mt-10 md:pl-12">
                 <div class="mb-12">
                     <div class="italic text-[#828282]">
-                        6 декабря 2021 г.
+                    6 декабря 2021 г.
                     </div>
                     <h1 class="text-[1.4rem] md:text-[1.8rem]">
-                        <span class="text-red-500">ТАСС</span> / Universal Services и "Яндекс.Про" составили портрет самозанятого
+                        <span class="text-red-500">ТАСС</span> / @lang('lang.cmi_priority')
                     </h1>
                     <p class="mt-4">
-                        Совместно с Яндекс.Про провели
+                    @lang('lang.cmi_yandex1')
 
-                        <a class="text-blue-500 hover:text-black" href="/">исследование</a>
+                        <a class="text-blue-500 hover:text-black" href="/">@lang('lang.cmi_yandex2')</a>
 
-                        и узнали уровень дохода самозанятых, причины, по которым люди переходят на этот режим, а также основные плюсы и минусы, по мнению исполнителей. Кроме того, узнали главные факторы, благодаря которым самозанятые делают выбор в пользу платформенной занятости в России.</p>
+                        @lang('lang.cmi_yandex3')</p>
                 </div>
                 <div class="mb-12">
                     <div class="italic text-[#828282]">
                         6 декабря 2021 г.
                     </div>
                     <h1 class="text-[1.4rem] md:text-[1.8rem]">
-                        <span class="text-red-500">Российская Газета</span> / Ремонт квартир дорожает из-за роста цен на материалы и услуги рабочих
+                        <span class="text-red-500">@lang('lang.cmi_news1')</span> / @lang('lang.cmi_news2')
                     </h1>
                     <p class="mt-4">
-                        Поделились с
+                    @lang('lang.cmi_news3')
 
-                        <a class="text-blue-500 hover:text-black" href="/"> Российской Газетой </a>
+                        <a class="text-blue-500 hover:text-black" href="/"> @lang('lang.cmi_news4') </a>
 
-                        данными о росте стоимости строительства и ремонта, выяснили причины, а также рассказали о том, чего стоит ждать в будущем.</p>
+                        @lang('lang.cmi_news5')</p>
                 </div>
                 <div class="mb-12">
                     <div class="italic text-[#828282]">
                         11 декабря 2021 г.
                     </div>
                     <h1 class="text-[1.4rem] md:text-[1.8rem]">
-                        <span class="text-red-500">РБК</span> / Подорожание техники и электроники толкнуло петербуржцев на вторичный рынок
+                        <span class="text-red-500">РБК</span> / @lang('lang.cmi_info1')
                     </h1>
                     <p class="mt-4">
-                        <a class="text-blue-500 hover:text-black" href="/">Выяснили</a>,
+                        <a class="text-blue-500 hover:text-black" href="/">@lang('lang.cmi_info2')</a>,
 
-                        где чаще всего встречается повышенный интерес к ремонту домашней техники. В Петербурге спрос на ремонт электроники и гаджетов вырос вдвое за последни три месяца.</p>
+                        @lang('lang.cmi_info3')</p>
                 </div>
             </div>
         </div>

@@ -15,8 +15,8 @@
                                 <div class="px-5 py-5">
 
                                     <div class="grid grid-cols-4 gap-4 mb-3">
-                                      <a href="/offer-tasks" class="rounded border bg-gradient-to-b from-[#d4d4d4] to-[#c1c1c1] px-4 py-1">Я исполнитель</a>
-                                      <a href="/my-tasks" class="rounded border bg-gradient-to-b from-[#f5f5f5] to-[#e0e0e0] px-4 py-1">Я заказчик</a>
+                                      <a href="/offer-tasks" class="rounded border bg-gradient-to-b from-[#d4d4d4] to-[#c1c1c1] px-4 py-1">@lang('lang.offerT_iAmPerformer')</a>
+                                      <a href="/my-tasks" class="rounded border bg-gradient-to-b from-[#f5f5f5] to-[#e0e0e0] px-4 py-1">@lang('lang.offerT_iAmCustomer')</a>
 
 
                                     </div>
@@ -31,21 +31,21 @@
                                       <div class="w-11/12 h-12 m-4">
                                         <div class="float-left w-9/12">
                                           <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-lg text-blue-400 hover:text-red-400">
-                                            Оценить консультацию по телефону.
+                                          @lang('lang.offerT_rateByPhone')
                                           </a>
                                           <p class="text-sm ml-12mt-4">
-                                            ВНИМАНИЕ!!! Это задание за хороший отзыв для вас, не за деньги!!!
+                                          @lang('lang.offerT_warning')
                                           </p>
                                         </div><div class="float-right w-1/4 text-right">
-                                          <a href="#" class="text-lg">100 000 sum</a><p class="text-sm ml-12mt-4">Спортмастер</p>
-                                          <p class="text-sm ml-12mt-4">Нет отзывов</p>
+                                          <a href="#" class="text-lg">100 000 sum</a><p class="text-sm ml-12mt-4">@lang('lang.offerT_sportMaster')</p>
+                                          <p class="text-sm ml-12mt-4">@lang('lang.offerT_noFeedback')</p>
                                         </div>
                                       </div>
                                       <div class="w-11/12 h-12 m-4">
                                         <div class="mx-auto w-9/12">
-                                          <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Вакансия</button>
-                                          <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Бесплатный отклик</button>
-                                          <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥Промо</button>
+                                          <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.offerT_vacancy')</button>
+                                          <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.offerT_freeRespond')</button>
+                                          <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥@lang('lang.offerT_promo')</button>
                                         </div>
                                       </div>
                                     </div>

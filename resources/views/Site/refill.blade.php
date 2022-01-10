@@ -18,7 +18,7 @@
   <form action="/ref" method="GET">
 <input type="hidden" name="user_id" value="1">
   <hr>
-<h5>Способ оплаты</h5>
+<h5>@lang('lang.refill_paymantWays')</h5>
 
               <div class="my-3">
                 <div class="custom-control custom-radio">
@@ -38,7 +38,7 @@
 
               </div>
 
-  <button type="submit" class="btn btn-primary">Выбирать</button>
+  <button type="submit" class="btn btn-primary">@lang('lang.refill_choose')</button>
 
 </form>
   </div>

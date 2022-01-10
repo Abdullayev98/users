@@ -20,7 +20,7 @@
                 <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
                 </div>
                 <div class="basis-1/2 text-xs text-gray-700 text-left my-auto">
-                    Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.
+                    @lang('lang.perfCat_becomePerf')
                 </div>
             </div>
 
@@ -54,13 +54,13 @@
         <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16">
                 <div class="bg-gray-100 h-40 rounded-xl w-4/5 sm:mx-0 mx-auto">
                         <div class="font-bold text-2xl mx-8 py-4">
-                            <p>Все исполнители</p>
+                            <p>@lang('lang.perfCat_allPerf')</p>
                         </div>
                         <div class="form-check flex flex-row mx-8 mt-10">
                             <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" 
                             type="checkbox" value="1" onchange="check()" id="online">
                             <label class="form-check-label inline-block text-gray-800" for="online">
-                                Сейчас на сайте
+                                @lang('lang.perfCat_nowInSite')
                             </label>
                         </div>
                 </div>
@@ -69,7 +69,7 @@
                 <div class="w-34 float-left">
                     <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="user">
                     <div class="flex flex-row text-[12px]">
-                        <p>Отзывы:</p>
+                        <p>@lang('lang.perfCat_feedbacks')</p>
                         <i class="far fa-thumbs-up m-1 text-gray-400"></i> 5128
                         <i class="far fa-thumbs-down m-1 text-gray-400"></i> 21
                     </div>
@@ -92,10 +92,10 @@
                     </div>
                     <div>
                            @if($user->active_status == 1)
-                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 mr-2 mt-1"> </i> Онлайн</p>
+                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 mr-2 mt-1"> </i> @lang('lang.exe_online')</p>
 
                         @else
-                        <p class="text-sm text-gray-500 my-3">Офлайн</p>
+                        <p class="text-sm text-gray-500 my-3">@lang('lang.exe_offline')</p>
                         @endif
 
                     </div>
@@ -106,7 +106,7 @@
                     </div>
                     <div >
                         <a href="#" onclick="toggleModal12('modal-id12')" class="hidden lg:block">
-                            <button class="rounded-lg py-2 px-3 font-bold bg-[#ffad00] hover:bg-[#ff9500] transition duration-300 text-white mt-3">Предложить задание</button>
+                            <button class="rounded-lg py-2 px-3 font-bold bg-[#ffad00] hover:bg-[#ff9500] transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                         </a>
                     </div>
                 </div>
@@ -128,19 +128,19 @@
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                   </button>
                 <h3 class="font-medium text-4xl block mt-4">
-                    У вас пока нет опубликованных <br> заданий
+                    @lang('lang.exe_youHaventT')
                 </h3>
             </div>
             <!--body-->
             <div class="relative p-6 flex-auto">
               <p class="my-4  text-lg  text-center">
-                Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.
+                @lang('lang.exe_createTFirst')
               </p>
             </div>
             <!--footer-->
             <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                 <div class="mt-4 ">
-                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >Создать задание</a>
+                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
                 </div>
             </div>
           </div>

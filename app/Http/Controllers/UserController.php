@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\How_work_it;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Hash;
+use TCG\Voyager\Models\Category;
 
 class UserController extends Controller
 {
@@ -24,19 +25,22 @@ class UserController extends Controller
     public function createSignin(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'name' => 'required',
             'password' => 'required',
         ]);
-        $tasks = Task::all();
+        $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
         $howitworks = How_work_it::all();
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('name', 'password');
         if (Auth::attempt($credentials)) {
             $user = User::find(Auth::user()->id)
             ->update([
                 'active_status'=>1,
             ]);
-            return view('home',compact('tasks','howitworks'))
-                        ->withSuccess('Logged-in');
+            $lang = Session::pull('lang');
+            Session::put('lang', $lang);
+            return view('home',compact('tasks','howitworks','categories'))->withSuccess('Logged-in');
+
         }else {
           return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
@@ -51,7 +55,8 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/',
+            'email',
             'password' => 'required|min:6',
         ]);
         $data = $request->all();
@@ -62,18 +67,24 @@ class UserController extends Controller
 
     public function createUser(array $data)
     {
-      return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password'])
-      ]);
+        return User::create([
+            'name' => $data['name'],
+            'phone_number' => $data['phone_number'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'])
+        ]);
     }
 
 
     public function dashboardView()
     {
         if(Auth::check()){
-            return view('home');
+            $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+            $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
+            $howitworks = How_work_it::all();
+            $lang = Session::pull('lang');
+            Session::put('lang', $lang);
+            return view('home',compact('tasks','howitworks', 'categories'));
         }
         return redirect("login")->withSuccess('Access is not permitted');
     }
@@ -84,9 +95,11 @@ class UserController extends Controller
           ->update([
               'active_status'=>0,
           ]);
+        $lang = Session::pull('lang');
         Session::flush();
         Auth::logout();
-        return Redirect('/');
+        Session::put('lang', $lang);
+        return redirect('/');
     }
 
     /**

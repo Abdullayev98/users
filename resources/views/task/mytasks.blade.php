@@ -10,8 +10,8 @@
                 <div class="w-full bg-[#f8f7ee] px-5 py-5">
 
                     <ul id="tabs" class="inline-flex text-center">
-                        <li class="rounded-t px-3 py-1 md:w-[150px]"><a id="default-tab" href="#first">Я исполнитель</a></li>
-                        <li class="rounded-t px-3 py-1 md:w-[150px]"><a href="#second">Я заказчик</a></li>
+                        <li class="rounded-t px-3 py-1 md:w-[150px]"><a id="default-tab" href="#first">@lang('lang.mytasks_iAmPerformer')</a></li>
+                        <li class="rounded-t px-3 py-1 md:w-[150px]"><a href="#second">@lang('lang.mytasks_iAmCustomer')</a></li>
                     </ul>
 
                 </div>
@@ -42,16 +42,16 @@
 
                                     <div class="float-right w-1/4 text-right">
                                         <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                        <p class="text-sm ml-12mt-4">Спортмастер</p>
-                                        <p class="text-sm ml-12mt-4">Нет отзывов</p>
+                                        <p class="text-sm ml-12mt-4">@lang('lang.mytasks_sportMaster')</p>
+                                        <p class="text-sm ml-12mt-4">@lang('lang.mytasks_noFeedback')</p>
                                     </div>
 
                                 </div>
                                 <div class="w-11/12 h-12 m-4">
                                     <div class="mx-auto w-9/12">
-                                        <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Вакансия</button>
-                                        <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Бесплатный отклик</button>
-                                        <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥Промо</button>
+                                        <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.mytasks_vacancy')</button>
+                                        <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.mytasks_freeRespond')</button>
+                                        <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥@lang('lang.mytasks_promo')</button>
                                     </div>
                                 </div>
                             </div>
@@ -97,15 +97,15 @@
                                             </div>
                                             <div class="float-right w-1/4 text-right">
                                                 <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                                <p class="text-sm ml-12mt-4">Спортмастер</p>
-                                                <p class="text-sm ml-12mt-4">Нет отзывов</p>
+                                                <p class="text-sm ml-12mt-4">@lang('lang.mytasks_sportMaster')</p>
+                                                <p class="text-sm ml-12mt-4">@lang('lang.mytasks_noFeedback')</p>
                                             </div>
                                         </div>
                                         <div class="w-11/12 h-12 m-4">
                                             <div class="mx-auto w-9/12">
-                                                <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Вакансия</button>
-                                                <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">Бесплатный отклик</button>
-                                                <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥Промо</button>
+                                                <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.mytasks_vacancy')</button>
+                                                <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.mytasks_freeRespond')</button>
+                                                <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥@lang('lang.mytasks_promo')</button>
                                             </div>
                                         </div>
                                     </div>
@@ -116,13 +116,24 @@
 
                 </div>
             </div>
+
+            <div>
+                <div class="text-4xl font-semibold my-6">
+                    У задания 13 откликов
+                </div>
+                <hr>
+                <div>
+
+                </div>
+
+            </div>
         </div>
         <div class="col-span md:block hidden">
             <div class="w-full h-full mt-5">
                 <div id="map" class="h-60 rounded-lg w-full">
                 </div>
                 <div class="w-full h-full mt-5">
-                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center mb-1" type="button">Все категории</button>
+                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center mb-1" type="button">@lang('lang.mytasks_allCat')</button>
 
                     <div class="w-full my-1">
                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)

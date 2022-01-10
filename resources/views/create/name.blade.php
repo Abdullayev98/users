@@ -18,10 +18,10 @@
         <div class="grid grid-cols-3 h-full">
             <div class="md:col-span-2 col-span-3">
                 <div class="w-full text-center md:text-2xl text-xl">
-                    Поможем найти исполнителя для вашего задания
+                    @lang('lang.name_helpToFind')
                 </div>
                 <div class="w-full text-center my-4 text-[#5f5869]">
-                    Задание заполнено на 14%
+                    @lang('lang.name_percent')
                 </div>
                 <div class="pt-1">
                     <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200 mx-auto ">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
-                        Чем вам помочь?
+                        @lang('lang.name_howCanWeHelpU')
                     </div>
                     <form action="{{route('task.create.name')}}" method="post">
                         @csrf
@@ -39,20 +39,29 @@
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
                             <div class="mb-4">
                                 <label class="block text-[#5f5869] text-sm mb-2" for="username">
-                                    Название задания
+                                    @lang('lang.name_taskName')
                                 </label>
                                 <input
                                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
-                                    id="username" type="text" placeholder="Например, нужен курьер на несколько доставок" required name="name" value="{{session('neym')}}">
+                                    id="username" type="text" placeholder="@lang('lang.name_example')" required name="name" value="{{session('neym')}}">
                                     <input type="text" hidden name="cat_id" value="{{$current_category->id}}">
                             </div>
                             <div class="hidden">
                               <input type="text" name="cat_id" value="{{$current_category->id}}" hidden>
                             </div>
+                            <h3>@lang('lang.name_subCat') <span id="button" style="color: grey;" onclick="myFunction()">@lang('lang.name_pedCourier')</span></h3>
+                            <div style="display:none" id="categories">
+                                @foreach ($child_categories as $category2)
+                                    <br>
+                                        <a class="hover:text-green-500" href="/task/create?category_id={{ $category2->id }}">
+                                            {{ $category2->name }}
+                                        </a>
+                                @endforeach
+                            </div>
                         </div>
                         <input type="submit"
                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-11/12 md:ml-5 ml-2 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
-                               name="" value="Далее">
+                               name="" value="@lang('lang.name_next')">
                     </form>
                 </div>
             </div>
@@ -145,17 +154,31 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
+    <script>
+        function myFunction() {
+            var x = document.getElementById("categories");
+            var y = document.getElementById("button");
 
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+
+            } else {
+                x.style.display = "none";
+                y.style.display = "block";
+            }
+        }
+    </script>
     <script>
 
 
         $(".delete-task").click(function (){
             Swal.fire({
-                title: 'Введённые данные будут потеряны. <br> Удалить задание?',
+                title: '@lang('lang.name_deleteAsk')',
                 showDenyButton: true,
-                confirmButtonText: 'Продожить',
-                denyButtonText: `Удалить`,
-                cancelButtonText: `Отмена`,
+                confirmButtonText: '@lang('lang.name_continue')',
+                denyButtonText: '@lang('lang.name_delete')',
+                cancelButtonText: '@lang('lang.name_cencel')',
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {

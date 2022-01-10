@@ -2,15 +2,15 @@
        <div class="mx-auto text-center md:text-left">
            <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 gap-x-2">
                <div class="mb-5 md:w-2/12 md:float-left md:mr-20 md:ml-24">
-                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/verification">Как&nbsp;стать&nbsp;исполнителем</a><br>
-                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/faq">Частые вопросы</a><br>
-                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/contacts">Контакты</a><br>
+                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a><br>
+                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/faq">@lang('lang.footer_ownquestion')</a><br>
+                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/contacts">@lang('lang.footer_contact')</a><br>
                </div>
                <div class="mb-5 md:w-2/12 md:float-left -mt-5 md:m-0">
-                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/author-reviews">Отзывы заказчиков</a><br>
+                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/author-reviews">@lang('lang.footer_costumersreviews')</a><br>
                    <!-- <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#">YouDo для бизнеса</a><br>
                    <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#">Наш блог</a><br> -->
-                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#replain-link">Служба поддержки</a>
+                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#replain-link">@lang('lang.footer_text')</a>
                </div>
                <div class="mb-5 md:float-left mx-auto lg:float-none md:w-6/16">
                    <div class="w-1/1 ml-auto px-auto">
@@ -27,9 +27,9 @@
                </div>
                <div class="mb-5 md:float-left lg:float-none md:w-6/16 md:ml-24">
                    <span class="">
-                     © 2021 Universal services (users.uz) ·
+                   @lang('lang.footer_foot')
                        <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block hover:text-amber-500" rel="noopener noreferrer" href="/terms">
-                           Правила сервиса
+                           @lang('lang.footer_text1')
                        </a>
                    </span>
                </div>
@@ -38,16 +38,12 @@
    </div>
 </footer>
 
-
+{{-- 
 <div class="bg-[#333] text-[#a4a4a4] text-center lg:py-[60px] lg:px-[40px] invisible xl:visible -ml-1">
    <div>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px] mr-[20px]">8</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">9</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">2</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px] mr-[20px]">7</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">4</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">1</span>
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px]">7</span>
+
+       <span class="inline-block text-[5rem] leading-4 tracking-[4px] mr-[20px]">
+    </span>
    </div>
-   <p class="inline text-[2rem] leading-[2]">заданий уже создано <span>в этих категориях</span></p>
-</div>
+   <p class="inline text-[2rem] leading-[2]">@lang('lang.footer_text2') <span>@lang('lang.footer_text3')</span></p>
+</div> --}}
