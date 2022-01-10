@@ -2,6 +2,7 @@
 
 return [
     // home.blade start
+    'lang_for_map' => "ru_RU",
     'header_title' => "Освободим вас от забот",
     'header_sub' => "Поможем найти надежного исполнителя для любых задач",
     'header_orderBtn' => "Заказать услугу",
@@ -44,7 +45,7 @@ return [
     'body_security' => "Безопасность и гарантии",
     'body_perForBusines' => "Надежные исполнители для бизнеса",
     // home.blade end
-    
+
     // pdf.blade start
     'pdf_terms' => "Правила Универсал Сервис БИЗНЕС",
     // pdf.blade end
@@ -131,7 +132,7 @@ return [
     'search2_dealWithoutRisk' => "Сделка без риска",
     'search2_BusinesTask' => "Бизнес-задания",
     // search2.blade end
-    
+
     // badgets.blade start
     'badgets_howItWorks' => "Как это работает",
     'badgets_security' => "Безопасность и гарантии",
@@ -625,9 +626,29 @@ return [
     'ver_avarageSPhoto' => "Средний месячный доход <br> в категории «Фото и видеоуслуги»",
     'ver_opinion7' => "Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с Universal Services.",
     'ver_avarageS3' => "Средний месячный доход <br> в категории «Фото и видеоуслуги»",
-    'ver_' => "",
-    'ver_' => "",
     // verification.blade end
+
+    // navbar.blade start
+    'navbar_notif' => "Уведомления",
+    'navbar_justSetPass' => "Осталось только установить пароль",
+    'navbar_settings' => "В раздел 'Настройки'",
+    'navbar_markAsRead' => "Отметить все как прочитанное",
+    'navbar_createTask' => "Создать задание",
+    'navbar_findTask' => "Найти задания",
+    'navbar_perfs' => "Исполнители",
+    'navbar_myTasks' => "Мои заказы",
+    'navbar_exit' => "Выход",
+    'navbar_enter' => "Вход",
+    'navbar_or' => "или",
+    'navbar_reg' => "Регистрация",
+    'navbar_profile' => "Профиль",
+    'navbar_set' => "Настройки",
+    'navbar_howMuch' => "На какую сумму хотите пополнить <br> кошелёк?",
+    'navbar_minimum' => "Сумма пополнения, минимум — 1000 UZS",
+    'navbar_toPayment' => "К оплате",
+    'navbar_paymentWay' => "Способ оплаты",
+    'navbar_payment' => "Оплата",
+    // navbar.blade end
 
 
 
