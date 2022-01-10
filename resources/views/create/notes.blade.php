@@ -10,10 +10,10 @@
 <div class="grid grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-      Ищем исполнителя для задания "{{session('name')}}"
+    @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-      Задание заполнено на 86%
+      @lang('lang.notes_percent')
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
@@ -22,7 +22,7 @@
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-        Уточните детали
+        @lang('lang.notes_details')
       </div>
 
       <div class="py-4 mx-auto  text-left ">
@@ -32,10 +32,10 @@
         <div>
             <div class="mb-3 xl:w-full">
                 <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">
-                    Описание</label>
+                    @lang('lang.notes_destcript')</label>
                 <textarea name="description"
                   class="form-control block resize-none w-full h-36  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-amber-600 focus:outline-none"
-                   placeholder="Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня.">{{$descriptioon ?? ''}}</textarea>
+                   placeholder="@lang('lang.notes_example')">{{$descriptioon ?? ''}}</textarea>
               </div>
         </div>
 
@@ -51,7 +51,7 @@
                   <input type="file" id="file" name="avatar" class="hidden">
                   <label for="file">
                       <i class="fa fa-camera h-4 w-4 text-gray-500"></i>
-                      <span>Добавить фото</span>
+                      <span>@lang('lang.notes_addPhoto')</span>
                   </label>
                 </div>
              <div>
@@ -73,11 +73,11 @@
              </div>
              <div class="flex w-full gap-x-4 mt-4">
               <a href="/task/create/budget" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
-                 Назад
+                 @lang('lang.notes_back')
                </a>
                <input type="submit"
                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                               name="" value="Далее">
+                               name="" value="@lang('lang.name_next')">
              </div>
 
 

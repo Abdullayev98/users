@@ -355,6 +355,17 @@ class CreateTaskController extends VoyagerBaseController
       $length = session()->pull('length');
       $width = session()->pull('width');
       $height = session()->pull('height');
+        if ($category != 50) {
+            $weight = null;
+            $length = null;
+            $width = null;
+            $height = null;
+        }else {
+            $weight = session()->pull('weight');
+            $length = session()->pull('length');
+            $width = session()->pull('width');
+            $height = session()->pull('height');
+        }
       $glassSht = session()->pull('box');
       $service1 = session()->pull('service1');
       $where = session()->pull('where');

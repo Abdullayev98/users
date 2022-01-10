@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Task;
 
+use Illuminate\Support\Arr;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\TaskResponse;
@@ -61,16 +62,24 @@ class SearchTaskController extends VoyagerBaseController
         $same_tasks = Task::where('category_id',$cat_id)->get();
 
         $task_responses = TaskResponse::where('task_id', $tasks->id)->get();
+        $response_count = TaskResponse::where('task_id', $tasks->id)->count();
         foreach($task_responses as $response){
-        $response_users = User::where('id', $response->user_id)->first();
+          $response_users = User::where('id', $response->user_id)->first();
+          }
+  
+          $users = User::all();
+          $current_user = User::find($user_id);
+          $categories = Category::where('id',$cat_id)->get();
+  
+
+        $arr = get_defined_vars();
+
+        if (Arr::exists($arr, 'response_users')) {
+            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count'));
+        }else {
+          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
         }
 
-        $users = User::all();
-        $current_user = User::find($user_id);
-        $categories = Category::where('id',$cat_id)->get();
-
-        // dd($current_user);
-        return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users'));
     }
 
     public function task_response(Request $request){
@@ -79,6 +88,7 @@ class SearchTaskController extends VoyagerBaseController
       $response_time = $request->input('response_time');
       $response_price = $request->input('response_price');
       $task_id = $request->input('task_id');
+      $users_id = $request->input('user_id');
       #create or update your data here
       TaskResponse::create([
         'user_id' => Auth::id(),
@@ -86,7 +96,9 @@ class SearchTaskController extends VoyagerBaseController
         'description' => $description,
         'notificate' => $notificate,
         'time' => $response_time,
-        'price' => $response_price
+        'price' => $response_price,
+        'price' => $response_price,
+        'creator_id' => $users_id
       ]);
       return response()->json(['success'=>$description]);
   }

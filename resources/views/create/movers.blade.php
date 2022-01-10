@@ -9,10 +9,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="md:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
-                        Ищем исполнителя для задания "{{session('name')}}"
+                        @lang('lang.budget_lookingFor') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                        Задание заполнено на 57%
+                        @lang('lang.movers_percent')
                     </div>
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -21,40 +21,40 @@
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            Насколько большой груз?
+                            @lang('lang.cargo_howBig')
                         </div>
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.
+                            @lang('lang.cargo_measure')
                         </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
-                                    Этаж погрузки
+                                    @lang('lang.movers_loadFlat')
                                     <input id="etaj_po" name="etaj_po" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                    Лифт
+                                    @lang('lang.movers_elevator')
                                     <select id="lift_po" value="Лифт отсутствует" name="lift_po[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        <option>Лифт отсутствует</option>
-                                        <option>Лифт пассажирский</option>
-                                        <option>Лифт грузовой</option>
+                                        <option>@lang('lang.movers_noElevator')</option>
+                                        <option>@lang('lang.movers_smElevator')</option>
+                                        <option>@lang('lang.movers_cargElevator')</option>
                                     </select>
-                                    Этаж разгрузки
+                                    @lang('lang.movers_flat')
                                     <input id="etaj_za" name="etaj_za" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                    Лифт
+                                    @lang('lang.movers_elevator')
                                     <select id="lift_za" value="Лифт отсутствует" name="lift_za[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        <option>Лифт отсутствует</option>
-                                        <option>Лифт пассажирский</option>
-                                        <option>Лифт грузовой</option>
+                                        <option>@lang('lang.movers_noElevator')</option>
+                                        <option>@lang('lang.movers_smElevator')</option>
+                                        <option>@lang('lang.movers_cargElevator')</option>
                                     </select>                                </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
                                         <a href="/task/create/location" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
-                                            Назад
+                                            @lang('lang.budget_back')
                                             <!-- </button> -->
                                         </a>
                                         <input type="submit"
                                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                               name="" value="Далее">
+                                               name="" value="@lang('lang.name_next')">
 
                                     </div>
 

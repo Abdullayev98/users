@@ -16,7 +16,7 @@
 
                                     <div class="grid grid-cols-4 gap-4 mb-3">
                                       <a href="/offer-tasks" class="rounded border bg-gradient-to-b from-[#d4d4d4] to-[#c1c1c1] px-4 py-1">@lang('lang.offerT_iAmPerformer')</a>
-                                      <a href="/my-tasks" class="rounded border bg-gradient-to-b from-[#f5f5f5] to-[#e0e0e0] px-4 py-1">@lang('lang.offerT_iAmCustomer')</a>
+                                      <a href="{{ route('task.mytasks') }}" class="rounded border bg-gradient-to-b from-[#f5f5f5] to-[#e0e0e0] px-4 py-1">@lang('lang.offerT_iAmCustomer')</a>
 
 
                                     </div>

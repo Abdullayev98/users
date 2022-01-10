@@ -14,10 +14,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="md:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
-                        Ищем исполнителя для задания "{{session('name')}}"
+                        @lang('lang.budget_lookingFor') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                        Задание заполнено на 71%
+                        @lang('lang.budget_percent')
                     </div>
                     <div class="relative pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl  w-full p-6 px-20">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            На какой бюджет вы рассчитываете?
+                            @lang('lang.budget_yourBudget')
                         </div>
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
 
@@ -55,19 +55,19 @@
 {{--                                            <div class="w-2 h-2 bg-gray-200 rounded-full -ml-1 -mt-5 z-0"></div>--}}
 {{--                                        </div>--}}
 {{--                                        <div class="w-[200px]">--}}
-{{--                                            <p class="text-[12px]  cursor-default">до 150 сум</p>--}}
+{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>--}}
 {{--                                        </div>--}}
 {{--                                        <div class="">--}}
-{{--                                            <p class="text-[12px]  cursor-default">до 150 сум</p>--}}
+{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>--}}
 {{--                                        </div>--}}
 {{--                                        <div class="">--}}
-{{--                                            <p class="text-[12px]  cursor-default">до 150 сум </p>--}}
+{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum') </p>--}}
 {{--                                        </div>--}}
 {{--                                        <div class="">--}}
-{{--                                            <p class="text-[12px]  cursor-default">до 150 сум</p>--}}
+{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>--}}
 {{--                                        </div>--}}
 {{--                                        <div class="">--}}
-{{--                                            <p class="text-[12px]  cursor-default">до 150 сум </p>--}}
+{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum') </p>--}}
 {{--                                        </div>--}}
 {{--                                    </div>--}}
                                 </div>
@@ -80,11 +80,11 @@
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
                                         <a href="/task/create/date" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
-                                            Назад
+                                            @lang('lang.budget_back')
                                         </a>
                                         <input type="submit"
                                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                               name="" value="Далее">
+                                               name="" value="@lang('lang.name_next')">
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
             });
             $(".ui-slider-range").css("height",'55px');
             $(".ui-slider-range").css("background",'linear-gradient(rgb(255, 132, 56), rgb(255, 255, 255))');
-            $(".ui-slider-range").css("top",'-1079%');
+            $(".ui-slider-range").css("top",'-1879%');
             $(".ui-slider-handle").text("<>");
             $( "#amount" ).val('от ' + $( "#slider-range-min" ).slider( "value") + " cум");
         });

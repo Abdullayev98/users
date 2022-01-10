@@ -3,16 +3,6 @@
 
 @section('content')
 
-    <style media="screen">
-        #test {
-            width: 100px;
-            height: 100px;
-            position: relative;
-            top: 100px;
-            bottom: 100px;
-            background: green;
-        }
-    </style>
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">
@@ -149,7 +139,7 @@
                         class="mx-auto" alt="">
                     <div class="font-bold my-4">@lang('lang.body_feedback')</div>
                     <div class="text-xs">
-                   
+                    @lang('lang.body_over1mln')
                     </div>
                 </div>
             </div>
@@ -179,15 +169,15 @@
                             alt="">
                     </div>
                     <div class="text-left">
-                        <h3 class="md:text-4xl text-[24px] font-semibold my-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
+                        <h3 class="md:text-4xl text-[24px] font-semibold my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         <a href="/categories/1" class="text-blue-500 underline text-[22px]">@lang('lang.body_createTask')</a>
                     </div>
 
 @else
 
                     <div class="text-left my-16 md:block hidden">
-                        <h3 class="text-4xl font-semibold my-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
-                        {!!$howitwork->description!!}
+                        <h3 class="text-4xl font-semibold my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
+                        {{ strip_tags($howitwork->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')) }}
                     </div>
                     <div class="my-16 md:block hidden">
                         <img
@@ -201,7 +191,7 @@
                             alt="">
                     </div>
                     <div class="text-left md:hidden block">
-                        <h3 class="text-2xl font-semibold mt-8"> {{$cnt_for_hiw + 1}}.{{$howitwork->title}}</h3>
+                        <h3 class="text-2xl font-semibold mt-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         <a href="/categories/1" class="text-blue-500 underline text-[22px]">@lang('lang.body_createTask')</a>
                     </div>
 @endif
@@ -374,6 +364,7 @@
                                 <div class="mx-auto w-2/3">
                                     <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
+                                        {{$task->count()}}
                                     </a>
                                     <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
                                         {{$task->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}

@@ -1,23 +1,7 @@
 
 
 
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-  <script>
-
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('1f89b665267dfe7451d6', {
-      cluster: 'ap2'
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      alert(data["title_task"]);
-    });
-  </script>
-
-<nav class="z-10 relative flex items-center mx-6 lg:w-11/12 xl:w-10/12 md:mx-auto justify-between  lg:justify-start font-[sans-serif]" aria-label="Global">
+<nav class="z-10 relative flex items-center mr-6 lg:w-11/12 xl:w-10/12 md:mx-auto justify-between  lg:justify-start font-[sans-serif]" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
       <!--  mobile menu -->
       <!-- <div class="flex justify-between w-11/12 items-center"> -->
@@ -43,22 +27,23 @@
           {{-- icon-1 --}}
           <div class=" float-left ml-8">
                 <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
-              <button class="" type="button" data-dropdown-toggle="notification"><i class="text-xl text-slate-400 hover:text-orange-500 far fa-bell"></i>
+              <button class="" type="button" data-dropdown-toggle="notification">
+                  <i class="text-xl text-slate-400 hover:text-orange-500 far fa-bell"></i>
               </button>
               <!-- Dropdown menu -->
               <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="notification">
                   <div class="px-4 py-3">
-                      <span class="block text-base font-bold">Уведомления</span>
+                      <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
                   </div>
                   <ul class="py-1" aria-labelledby="notification">
                       <li>
-                          <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>Осталось только установить пароль</a>
+                          <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
                       </li>
                       <li>
-                          <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
+                          <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                       </li>
                       <li>
-                          <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">Отметить все как прочитанное</a>
+                          <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
                       </li>
                   </ul>
               </div>
@@ -105,20 +90,20 @@
                           @endauth
                       @endif
                         <li class="mb-1">
-                            <a href="/categories/1" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">Создать задание</a>
+                            <a href="/categories/1" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_createTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="{{ route('task.search') }}" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">Найти задания</a>
+                            <a href="{{ route('task.search') }}" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_findTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="/performers" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">Исполнители</a>
+                            <a href="/performers" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_perfs')</a>
                         </li>
 
                         @if (Route::has('login'))
                             @auth
 
                             <li class="mb-1">
-                                <a href="/my-tasks" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">Мои заказы</a>
+                                <a href="{{ route('task.mytasks') }}" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_myTasks')</a>
                             </li>
 
                                    {{-- icon-3 --}}
@@ -144,13 +129,13 @@
                                 </li>
 
                                 <div class="font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
-                                  <a href="{{ route('logout') }}" class="ml-4">Выход</a>
+                                  <a href="{{ route('logout') }}" class="ml-4">@lang('lang.navbar_exit')</a>
                                 </div>
 
                             @else
                             <div class="font-medium text-gray-500  relative top-60 block w-full ml-4">
-                              <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или
-                              <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
+                              <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
+                              <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
                             </div>
                             @endauth
                         @endif
@@ -161,7 +146,7 @@
     <div class="hidden w-full lg:inline-block xl:ml-12 lg:ml-12 lg:space-x-6 md:space-x-6">
         <div class="group inline-block">
             <button class="font-medium text-gray-500 hover text-[14px] xl:text-[16px] text-[#ffa200] focus:outline-none">
-                <span class="pr-1  font-[sans-serif] flex-1">Создать задание</span>
+                <span class="pr-1  font-[sans-serif] flex-1">@lang('lang.navbar_createTask')</span>
                 <span></span>
             </button>
             <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top ">
@@ -218,11 +203,11 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">Найти задания</a>
-        <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">Исполнители</a>
+        <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
+        <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
-              <a href="/my-tasks" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">Мои заказы</a>
+              <a href="{{ route('task.mytasks') }}" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
             @else
             @endauth
         @endif
@@ -243,13 +228,13 @@ use Illuminate\Support\Facades\Auth;
 @php $count_for_not++; @endphp
 
 @endforeach
-                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">{{$count_for_not}}</div>
+                <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">{{$count_for_not}}</div>
                     <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
                     </button>
                     <!-- Dropdown menu -->
                     <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
                         <div class="px-4 py-3">
-                            <span class="block text-base font-bold">Уведомления</span>
+                            <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
                         </div>
                         <ul class="py-1" aria-labelledby="dropdown">
 
@@ -259,20 +244,21 @@ use Illuminate\Support\Facades\Auth;
                             </li>
 @endforeach
 
+<div id="for_append_notifications"></div>
+
                             <li>
-                                <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>Осталось только установить пароль</a>
+                                <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
                             </li>
                             <li>
-                                <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">В раздел "Настройки"</a>
+                                <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                             </li>
                             <li>
-                                <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">Отметить все как прочитанное</a>
+                                <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                 {{-- icon-3 --}}
                 <div class=" float-left">
                     <a href="/chat">
@@ -295,18 +281,17 @@ use Illuminate\Support\Facades\Auth;
                     <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdowndesk">
                         <ul class="py-1" aria-labelledby="dropdowndesk">
                             <li>
-                                <a href="/profile" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Профиль</a>
+                                <a href="/profile" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_profile')</a>
                             </li>
                             <li>
-                                <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Настройки</a>
+                                <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_set')</a>
                             </li>
                             <li>
-                                <a href="{{ route('logout') }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Выход</a>
+                                <a href="{{ route('logout') }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_exit')</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-<script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
             </div>
 
             <!-- language blog -->
@@ -336,8 +321,8 @@ use Illuminate\Support\Facades\Auth;
 
         @else
             <div class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4">
-                <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">Вход</a> или
-                <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">Регистрация</a>
+                <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
+                <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
             </div>
             <!-- language blog -->
             <div class="flex justify-center text-gray-500 hidden lg:block">
@@ -376,14 +361,14 @@ use Illuminate\Support\Facades\Auth;
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                 </button>
                 <h3 class="font-medium text-3xl block mt-6">
-                    На какую сумму хотите пополнить <br> кошелёк?
+                    @lang('lang.navbar_howMuch')
                 </h3>
             </div>
             <div class="text-center h-64">
                 <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
                     <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="1000">
                 </div>
-                <p class="text-sm mt-2 leading-6 text-gray-400">Сумма пополнения, минимум — 1000 UZS</p>
+                <p class="text-sm mt-2 leading-6 text-gray-400">@lang('lang.navbar_minimum')</p>
 
                 <!-- <div class="mt-8"> -->
                     <!-- <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " /> -->
@@ -392,7 +377,7 @@ use Illuminate\Support\Facades\Auth;
 
 
                 <div class="mt-16">
-                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >К оплате</a>
+                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >@lang('lang.navbar_toPayment')</a>
                 </div>
             </div>
         </div>
@@ -408,7 +393,7 @@ use Illuminate\Support\Facades\Auth;
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                 </button>
                 <h3 class="font-medium text-3xl block mt-6">
-                    Способ оплаты
+                    @lang('lang.navbar_paymentWay')
                 </h3>
             </div>
 
@@ -433,7 +418,7 @@ use Illuminate\Support\Facades\Auth;
                         </div>
                     </div>
                     <div class="text-center mt-8">
-                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-2xl font-bold py-3 px-8 rounded">Оплата</button>
+                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-2xl font-bold py-3 px-8 rounded">@lang('lang.navbar_payment')</button>
                     </div>
                   </form>
             </div>
@@ -446,8 +431,55 @@ use Illuminate\Support\Facades\Auth;
 </div> --}}
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal1-id-backdrop"></div>
+@if(Auth::user() !== NULL)
+
+@php
+
+$array_cats_user = Auth::user()->category_id;
+
+@endphp
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('1f89b665267dfe7451d6', {
+      cluster: 'ap2'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
 
 
+        const for_check_cat_id = [<? echo $array_cats_user ?>];
+
+        let num_cat_id = Number(data["id_cat"]);
+
+        let check_arr = for_check_cat_id.includes(num_cat_id);
+
+if(check_arr === true){
+   var content_count = document.getElementById('content_count').innerHTML;
+   let count_for_inner = Number(content_count) + 1;
+   document.getElementById('content_count').innerHTML = count_for_inner;
+
+   let el_for_create = document.getElementById('for_append_notifications');
+
+   el_for_create.insertAdjacentHTML('afterend', `
+<li>
+<a href="/detailed-tasks/`+ Number(data["id_task"]) +`" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">`+ data["title_task"] +`</a>
+</li>
+ `);
+
+}
+
+      console.log(check_arr);
+
+
+    });
+  </script>
+@endif
 
 <script type="text/javascript">
     function toggleModal(){
