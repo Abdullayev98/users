@@ -110,14 +110,14 @@
                     if (maximum == ui.value) {
                         $("#amount").val( "от " + ui.value + " сум");
                     }else{
-                        $("#amount").val( "до " + ui.value + " сум");   
+                        $("#amount").val( "до " + ui.value + " сум");
                     }
-                    
+
                 }
             });
             $(".ui-slider-range").css("height",'55px');
             $(".ui-slider-range").css("background",'linear-gradient(rgb(255, 132, 56), rgb(255, 255, 255))');
-            $(".ui-slider-range").css("top",'-1079%');
+            $(".ui-slider-range").css("top",'-1879%');
             $(".ui-slider-handle").text("<>");
             $( "#amount" ).val('от ' + $( "#slider-range-min" ).slider( "value") + " cум");
         });

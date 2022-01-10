@@ -10,12 +10,12 @@
                 <div class="w-full bg-[#f8f7ee] px-5 py-5">
 
                     <ul id="tabs" class="inline-flex text-center">
-                        @if (auth()->user()->role_id == 1)
                         <li id="first_tab" class="rounded-t px-3 py-1 md:w-[150px]"><a id="default-tab" href="#first">@lang('lang.mytasks_iAmPerformer')</a></li>
-                            @elseif (auth()->user()->role_id == 2)
-                        <li id="first_tab" class="rounded-t px-3 py-1 md:w-[150px]"><a href="#second">@lang('lang.mytasks_iAmCustomer')</a></li>
-                        @endif
+
+                        <li id="second_tab" class="rounded-t px-3 py-1 md:w-[150px]"><a href="#second">@lang('lang.mytasks_iAmCustomer')</a></li>
+
                     </ul>
+                    <p class="p-5">Всего {{ $tasks->count() }} задание найдено</p>
 
                 </div>
             </div>
@@ -23,30 +23,31 @@
     <!-- Tab Contents -->
             <div id="tab-contents">
                 <div id="first">
-                    <div id="scrollbar" class="w-full h-screen blog1">
-                    <div class="w-full scroll-smooth hover:scroll-auto w-full h-screen">
+                    <div id="scrollbar" class="w-full blog1">
+                    <div class="w-full scroll-smooth hover:scroll-auto w-full">
 
                             @foreach($tasks as $task)
-                            <div class="w-full border hover:bg-blue-100">
-                                <div class="w-11/12 h-12 m-4">
-                                    <div class="float-left w-9/12">
-                                        <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i>
+                            <div class="w-full hover:bg-blue-100 border-t border-solid my-5">
+                                <div class="md:grid md:grid-cols-10 p-2">
+                                    <i class="fas fa-user-circle text-4xl md:col-span-1 m-auto text-blue-400"></i>
+                                    <div class="col-span-6">
                                         <a href="#" class="text-lg text-blue-400 hover:text-red-400">
                                             {{$task->name}}
                                         </a>
-                                        <p class="text-sm ml-12 mt-4">
+                                        <p class="text-sm mt-2">
                                             {{$task->description}}
                                         </p>
                                     </div>
 
-                                    <div class="float-right w-1/4 text-right">
+                                    <div class="col-span-3 md:text-right">
                                         <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                        <p class="text-sm ml-12mt-4">@lang('lang.mytasks_sportMaster')</p>
-                                        <p class="text-sm ml-12mt-4">@lang('lang.mytasks_noFeedback')</p>
+                                        <p class="text-sm">@lang('lang.mytasks_sportMaster')</p>
+                                        <p class="text-sm">@lang('lang.mytasks_noFeedback')</p>
                                     </div>
 
                                 </div>
                             </div>
+
                             @endforeach
 
                         </div>
@@ -59,25 +60,24 @@
 
                 <div id="second" class="hidden">
 
-                    <div id="scrollbar" class="w-full h-screen blog1">
-                            <div class="w-full scroll-smooth hover:scroll-auto w-full h-screen">
+                    <div id="scrollbar" class="w-full blog1">
+                            <div class="w-full scroll-smooth hover:scroll-auto w-full">
                             @foreach($tasks as $task)
-                                    {{$task->count()}}
-                                    <div class="w-full border hover:bg-blue-100">
-                                        <div class="w-11/12 h-12 m-4">
-                                            <div class="float-left w-9/12">
-                                                <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i>
-                                                <a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                                    <div class="w-full border-t border-solid hover:bg-blue-100  my-5">
+                                        <div class="md:grid md:grid-cols-10 p-2">
+                                            <i class="fas fa-user-circle text-4xl col-span-1 m-auto text-blue-400"></i>
+                                            <div class="col-span-6">
+                                                <a href="#" class="text-lg text-blue-400  hover:text-red-400">
                                                     {{$task->name}}
                                                 </a>
-                                                <p class="text-sm ml-12mt-4">
+                                                <p class="text-sm mt-2">
                                                     {{$task->description}}
                                                 </p>
                                             </div>
-                                            <div class="float-right w-1/4 text-right">
+                                            <div class="col-span-3 md:text-right">
                                                 <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                                <p class="text-sm ml-12mt-4">@lang('lang.mytasks_sportMaster')</p>
-                                                <p class="text-sm ml-12mt-4">@lang('lang.mytasks_noFeedback')</p>
+                                                <p class="text-sm">@lang('lang.mytasks_sportMaster')</p>
+                                                <p class="text-sm">@lang('lang.mytasks_noFeedback')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -111,8 +111,8 @@
                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                             <div x-data={show:false} class="rounded-sm">
                                 <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center my-1" type="button">
-                                        {{$category->name}}
+                                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center my-1 mx-1" type="button">
+                                        {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </button>
                                 </div>
                             </div>
@@ -152,9 +152,36 @@
         }
     </script>
 
+
     <script>
-        $('#first_tab').addClass("bg-gray-300");
-       
-    </script>
+        let tabsContainer = document.querySelector("#tabs");
+
+        let tabTogglers = tabsContainer.querySelectorAll("a");
+        console.log(tabTogglers);
+
+        tabTogglers.forEach(function(toggler) {
+        toggler.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        let tabName = this.getAttribute("href");
+
+        let tabContents = document.querySelector("#tab-contents");
+
+        for (let i = 0; i < tabContents.children.length; i++) {
+
+        tabTogglers[i].parentElement.classList.remove("border-blue-400", "border-b",  "-mb-px", "opacity-100");  tabContents.children[i].classList.remove("hidden");
+        if ("#" + tabContents.children[i].id === tabName) {
+        continue;
+        }
+        tabContents.children[i].classList.add("hidden");
+
+        }
+        e.target.parentElement.classList.add("border-blue-400", "border-b-4", "-mb-px", "opacity-100");
+        });
+        });
+
+        document.getElementById("default-tab").click();
+
+        </script>
 
 @endsection

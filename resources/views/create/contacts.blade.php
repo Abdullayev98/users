@@ -7,7 +7,7 @@
 <form class="" action="{{route('task.create')}}" method="post">
   @csrf
 <div class="mx-auto w-9/12  my-16">
-<div class="grid grid-cols-3 gap-x-20">
+<div class="grid md:grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
       @lang('lang.budget_lookingFor') "{{session('name')}}"
@@ -20,7 +20,7 @@
         <div style="width: 86%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
-    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
+    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-2 md:p-6 px-8">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
         @lang('lang.contact_details')
       </div>
@@ -31,7 +31,7 @@
             <div>
               <div class="mb-3 xl:w-full">
         @auth
-          
+
         @else
         <label for="name">@lang('lang.contact_name')</label>
                 <input type="text" name="user_name" placeholder="@lang('lang.contact_name')"
@@ -53,8 +53,8 @@
                  @lang('lang.budget_back')
                </a>
                <input type="submit"
-                               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                               name="" value="@lang('lang.contact_send')">
+                      class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                      name="" value="@lang('lang.contact_send')">
              </div>
 
 
@@ -62,10 +62,12 @@
         </div>
       </div>
     </div>
+
+    <div class="col-span mt-5 md:mt-0">
+        <x-faq/>
+    </div>
   </div>
-  <div class="col-span">
-    <x-faq/>
-  </div>
+
 </div>
 </div>
 </form>
