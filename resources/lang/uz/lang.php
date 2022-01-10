@@ -633,7 +633,7 @@ return [
     'navbar_settings' => "'sozlamalar' bolimida",
     'navbar_markAsRead' => "Hammasini oqilgan dep belgilash",
     'navbar_createTask' => "Vazifa yaratish",
-    'navbar_findTask' => "Vzifani topish",
+    'navbar_findTask' => "Vazifani topish",
     'navbar_perfs' => "Ijrochilar",
     'navbar_myTasks' => "Mening topshiriqlarim",
     'navbar_exit' => "Chiqish",
