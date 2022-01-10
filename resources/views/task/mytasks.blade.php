@@ -10,8 +10,11 @@
                 <div class="w-full bg-[#f8f7ee] px-5 py-5">
 
                     <ul id="tabs" class="inline-flex text-center">
-                        <li class="rounded-t px-3 py-1 md:w-[150px]"><a id="default-tab" href="#first">@lang('lang.mytasks_iAmPerformer')</a></li>
-                        <li class="rounded-t px-3 py-1 md:w-[150px]"><a href="#second">@lang('lang.mytasks_iAmCustomer')</a></li>
+                        @if (auth()->user()->role_id == 1)
+                        <li id="first_tab" class="rounded-t px-3 py-1 md:w-[150px]"><a id="default-tab" href="#first">@lang('lang.mytasks_iAmPerformer')</a></li>
+                            @elseif (auth()->user()->role_id == 2)
+                        <li id="first_tab" class="rounded-t px-3 py-1 md:w-[150px]"><a href="#second">@lang('lang.mytasks_iAmCustomer')</a></li>
+                        @endif
                     </ul>
 
                 </div>
@@ -20,11 +23,7 @@
     <!-- Tab Contents -->
             <div id="tab-contents">
                 <div id="first">
-
-
-
                     <div id="scrollbar" class="w-full h-screen blog1">
-{{--                        <div class="w-full overflow-y-scroll w-full h-screen">--}}
                     <div class="w-full scroll-smooth hover:scroll-auto w-full h-screen">
 
                             @foreach($tasks as $task)
@@ -47,43 +46,23 @@
                                     </div>
 
                                 </div>
-                                <div class="w-11/12 h-12 m-4">
-                                    <div class="mx-auto w-9/12">
-                                        <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.mytasks_vacancy')</button>
-                                        <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.mytasks_freeRespond')</button>
-                                        <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥@lang('lang.mytasks_promo')</button>
-                                    </div>
-                                </div>
                             </div>
                             @endforeach
 
                         </div>
                     </div>
-                    {{--    Navigatsiya ko'rinishi un kere bo'ladigan Input va Button  --}}
+
                     <input id="suggest" class="hidden" type="text">
                     <button id="mpshow" class="hidden"></button>
-                    {{--    Ishonmaganla sinab ko'rishi mumkin --}}
 
-{{--                    <div class="w-1/2 mx-auto">--}}
-{{--                        <img src="https://css-static.youdo.com/assets/71201/i/not-found-49ad008e444789b0c0ce43a7456c263f.svg" alt="">--}}
-{{--                    </div>--}}
                 </div>
 
                 <div id="second" class="hidden">
 
                     <div id="scrollbar" class="w-full h-screen blog1">
-{{--                        <div class="w-full overflow-y-scroll w-full h-screen">--}}
                             <div class="w-full scroll-smooth hover:scroll-auto w-full h-screen">
-                                <img src="https://css-static.youdo.com/assets/71201/i/become-an-executor-c1a1be93104435115c3e2d317aa61be6.svg" alt="">
                             @foreach($tasks as $task)
-                                @if ($task->count() != 0)
                                     {{$task->count()}}
-                                    <!-- If page is empty -->
-                                        {{--                                        <div class="w-1/2 mx-auto my-auto">--}}
-                                        {{--                    <img src="{{asset('has.svg')}}" alt="">--}}
-                                        <img src="https://css-static.youdo.com/assets/71201/i/become-an-executor-c1a1be93104435115c3e2d317aa61be6.svg" alt="">
-                                        {{--                                        </div>--}}
-                                    @endif
                                     <div class="w-full border hover:bg-blue-100">
                                         <div class="w-11/12 h-12 m-4">
                                             <div class="float-left w-9/12">
@@ -101,13 +80,6 @@
                                                 <p class="text-sm ml-12mt-4">@lang('lang.mytasks_noFeedback')</p>
                                             </div>
                                         </div>
-                                        <div class="w-11/12 h-12 m-4">
-                                            <div class="mx-auto w-9/12">
-                                                <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.mytasks_vacancy')</button>
-                                                <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.mytasks_freeRespond')</button>
-                                                <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥@lang('lang.mytasks_promo')</button>
-                                            </div>
-                                        </div>
                                     </div>
                             @endforeach
 
@@ -118,9 +90,9 @@
             </div>
 
             <div>
-                <div class="text-4xl font-semibold my-6">
-                    У задания 13 откликов
-                </div>
+                {{-- <div class="text-4xl font-semibold my-6">
+                    У задания {{$task_count}} откликов
+                </div> --}}
                 <hr>
                 <div>
 
@@ -181,31 +153,8 @@
     </script>
 
     <script>
-        let tabsContainer = document.querySelector("#tabs");
-
-        let tabTogglers = tabsContainer.querySelectorAll("a");
-        console.log(tabTogglers);
-
-        tabTogglers.forEach(function (toggler) {
-            toggler.addEventListener("click", function (e) {
-                e.preventDefault();
-
-                let tabName = this.getAttribute("href");
-
-                let tabContents = document.querySelector("#tab-contents");
-
-                for (let i = 0; i < tabContents.children.length; i++) {
-                    tabTogglers[i].parentElement.classList.remove("bg-gray-300");  tabContents.children[i].classList.remove("hidden");
-                    tabContents.children[i].classList.remove("hidden");
-                    if ("#" + tabContents.children[i].id === tabName) {
-                        continue;
-                    }
-                    tabContents.children[i].classList.add("hidden");
-                }
-                e.target.parentElement.classList.add("bg-gray-300");
-            });
-        });
-        document.getElementById("default-tab").click();
+        $('#first_tab').addClass("bg-gray-300");
+       
     </script>
 
 @endsection
