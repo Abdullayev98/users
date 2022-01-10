@@ -88,9 +88,11 @@ class Controller extends BaseController
         return view('/staticpages/badges');
     }
     public function my_tasks(){
-        $tasks = Task::where('user_id', auth()->id());
-        return view('/task/mytasks',compact('tasks'));
+        $tasks = Task::where('user_id', Auth::id())->get();
+        $task_count = Task::where('user_id', Auth::id())->count();
+        return view('task.mytasks',compact('tasks','task_count'));
     }
+
     public function category($id){
         $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $choosed_category = Category::withTranslations(['ru', 'uz'])->where('id', $id)->get();
