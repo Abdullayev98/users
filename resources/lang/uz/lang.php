@@ -629,6 +629,28 @@ return [
     'ver_' => " uz",
     // verification.blade end
 
+    // navbar.blade start
+    'navbar_notif' => "Xabarlar",
+    'navbar_justSetPass' => "faqatgina parol ornatish qoldi",
+    'navbar_settings' => "'sozlamalar' bolimida",
+    'navbar_markAsRead' => "Hammasini oqilgan dep belgilash",
+    'navbar_createTask' => "Vazifa yaratish",
+    'navbar_findTask' => "Vzifani topish",
+    'navbar_perfs' => "Ijrochilar",
+    'navbar_myTasks' => "Mening topshiriqlarim",
+    'navbar_exit' => "Chiqish",
+    'navbar_enter' => "Kirish",
+    'navbar_or' => "yoki",
+    'navbar_reg' => "Registratsiya",
+    'navbar_profile' => "Profil",
+    'navbar_set' => "Sozlamalar",
+    'navbar_howMuch' => "Hamyoningizni <br> qanchaga toldirmoqchisiz",
+    'navbar_minimum' => "Minimal toldirish miqdori - 1000 som",
+    'navbar_toPayment' => "Tolovga otish",
+    'navbar_paymentWay' => "Tolov turlari",
+    'navbar_payment' => "Tolov",
+    // navbar.blade end
+
 
 
     // signin blade start
