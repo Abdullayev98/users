@@ -383,8 +383,12 @@
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">Спортмастер</p>
-                    <p class="text-sm ml-12">Нет отзывов</p>
+                    <p class="text-sm ml-12">`+ data.category_id +`</p>
+                    @foreach ($categories as $category)
+                        @if ($category->id == 22)
+                        <p class="text-sm ml-12">{{$category->name}}</p>
+                        @endif
+                    @endforeach
                     </div>
                     </div>
                     </div>
@@ -413,8 +417,12 @@
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">Спортмастер</p>
-                    <p class="text-sm ml-12">Нет отзывов</p>
+                    <p class="text-sm ml-12">`+ data.category_id +`</p>   
+                    @foreach ($categories as $category)
+                        @if ($category->id == `+ data.category_id +`)
+                        <p class="text-sm ml-12">{{$category->name}}</p>
+                        @endif
+                    @endforeach
                     </div>
                     </div>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use File;
 use App\Models\User;
+use App\Models\WalletBalance;
 use App\Models\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,8 +45,10 @@ class ProfileController extends Controller
     public function profileCash()
     {
         $user = User::find(Auth::user()->id);
+        $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
+        
         $vcs = UserView::where('user_id', $user->id)->first();
-        return view('profile.cash', compact('user','vcs'));
+        return view('profile.cash', compact('user','vcs','balance'));
     }
     public function updateCash(Request $request, $id)
     {
