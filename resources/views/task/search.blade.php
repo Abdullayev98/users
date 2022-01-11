@@ -383,8 +383,7 @@
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">Спортсмен</p>
-                    <p class="text-sm ml-12">Нет отзывов</p>
+                    <p class="text-sm ml-12">`+ data.category_name +`</p>
                     </div>
                     </div>
                     </div>
@@ -413,8 +412,7 @@
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">Спортсмен</p>
-                    <p class="text-sm ml-12">Нет отзывов</p>
+                    <p class="text-sm ml-12">`+ data.category_name +`</p>
                     </div>
                     </div>
                     </div>
