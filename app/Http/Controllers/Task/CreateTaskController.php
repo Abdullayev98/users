@@ -52,6 +52,14 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
+    public function computer(Request $request)
+    {
+      $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 9)->first();
+        $categories = explode(',',$category->services);
+      return view('create.computer', compact('categories'));
+    }
     public function smm(Request $request)
     {
         $cat_id = session()->pull('cat_id');
@@ -84,23 +92,30 @@ class CreateTaskController extends VoyagerBaseController
     public function location(Request $request)
     {
         if($service1 = $request->input('services')){
-            $services = implode(',',$service1);
-            $request->session()->put('service1', $services);
-            if ($service1[0]){
-                return view('create.glass');
-            }else{
-                return view('create.location');
-            }
+          $services = implode(',',$service1);
+          $request->session()->put('service1', $services);
+          if ($service1[0]){
+              return view('create.glass');
+          }else{
+              return view('create.location');
+          }
         }elseif($glassSht = $request->input('box')){
             $request->session()->put('box', $glassSht);
-        }else{
-          $data = $request->input('smm');
+        }elseif($data = $request->input('smm')){
           $request->session()->put('smm', $data);
           if($data == 'Можно выполнить удаленно'){
             return view('create.date');
           }
           $request->session()->put('smm', $data);
+        }elseif($data = $request->input('computer')){
+          $request->session()->put('computer_service', $data);
+          if($data == 'Можно выполнить удаленно'){
+              return view('create.date');
+          }
+          $request->session()->put('computer_service', $data);
         }
+        $computer = session()->pull('computer_service');
+        $request->session()->put('computer_service', $computer);
         $smm = session()->pull('smm');
         $request->session()->put('smm', $smm);
         $service = $request->session()->pull('service1');
@@ -210,7 +225,12 @@ class CreateTaskController extends VoyagerBaseController
       $category = Category::where('id',$cat_id)->first();
       $parent_id = Category::query()->where("parent_id", null)->skip(4)->first();
       $request->session()->put('parent_id', $parent_id);
-      return view('create.budget',compact('category'));
+      $category_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $category_id);
+        $child_category = Category::where('id', $category_id)->first();
+        $cat = $child_category->parent_id;
+        $pcategory = Category::where('id', $cat)->first();
+      return view('create.budget',compact('category','pcategory'));
         // return view('create.budget');
     }
 
@@ -333,31 +353,28 @@ class CreateTaskController extends VoyagerBaseController
       $etaj_za = session()->pull('etaj_za');
       $lift_za = session()->pull('lift_za');
       $peopleCount = session()->pull('peopleCount');
-      $weight = session()->pull('weight');
-      $length = session()->pull('length');
-      $width = session()->pull('width');
-      $height = session()->pull('height');
-        if ($category != 50) {
+        if ($category == 50) {
+            $weight = session()->pull('weight');
+            $length = session()->pull('length');
+            $width = session()->pull('width');
+            $height = session()->pull('height');
+        }else {
             $weight = null;
             $length = null;
             $width = null;
             $height = null;
-        }else {
-            $weight = session()->pull('weight');
-            $length = session()->pull('length'); 
-            $width = session()->pull('width');
-            $height = session()->pull('height');
         }
-      $glassSht = session()->pull('box');
-      $service1 = session()->pull('service1');
-      $where = session()->pull('where');
-      $how_many = session()->pull('how_many');
-      $smm = session()->pull('smm');
-      if($category != 60){
       $glassSht = null;
       $service1 = null;
       $where = null;
       $how_many = null;
+      $smm = session()->pull('smm');
+      $computer = session()->pull('computer_service');
+      if($category == 60){
+        $glassSht = session()->pull('box');
+        $service1 = session()->pull('service1');
+        $where = session()->pull('where');
+        $how_many = session()->pull('how_many');
       }
       $user_id     =     Auth::id();
       if (!Auth::user()) {
@@ -402,6 +419,7 @@ class CreateTaskController extends VoyagerBaseController
         'where' => $where,
         'how_many' => $how_many,
         'smm_service' => $smm,
+        'computer_service' => $computer,
     ];
     dd($id);
     foreach(User::all() as $users){

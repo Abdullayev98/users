@@ -8,6 +8,8 @@
     <form class="" action="{{route('task.create.notes')}}" method="post">
         @elseif(session('parent_id'))
     <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($pcategory->id == 9)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
         @else
     <form class="" action="{{route('task.create.services')}}" method="post">
     @endif
