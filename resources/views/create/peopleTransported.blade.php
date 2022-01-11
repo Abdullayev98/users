@@ -21,12 +21,12 @@
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            @lang('lang.people_howManyPas')
+                            @lang('lang.peopleT_howManyPas')
                         </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
-                                    @lang('lang.people_prbAmount')
+                                    @lang('lang.peopleT_prbAmount')
                                     <input id="peopleCount" name="peopleCount" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                 </div>
                                 <div class="mt-4">

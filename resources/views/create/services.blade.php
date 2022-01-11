@@ -30,7 +30,7 @@
           <div id="formulario" class="flex flex-col gap-y-4">
 
         <div>
-            
+
             <div class="mb-3 xl:w-full">
                 @foreach ($categories as $category)
                 <label class="md:w-2/3 block mt-6">
