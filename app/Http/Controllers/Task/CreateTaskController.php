@@ -323,15 +323,13 @@ class CreateTaskController extends VoyagerBaseController
 
 
     public function contacts(Request $request){
-      $request->validate([
-        'avatar' => 'required|image'
-      ]);
+      
+      if($request->avatar) {
       $image = $request->avatar;
-
       $imagename = $image->getClientOriginalName();
       $request->avatar->move('storage/tasks/avatar', $imagename);
-      $images_name = $request->avatar;
       $request->session()->put('image', 'storage/tasks/avatar/'.''.$imagename);
+    }
       $data = $request->input();
 //      $request->session()->put('description', $data['description']);
       if ($request->input('secret')) {

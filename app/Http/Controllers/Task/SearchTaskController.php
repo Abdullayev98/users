@@ -8,6 +8,7 @@ use App\Models\Task;
 use App\Models\TaskResponse;
 use TCG\Voyager\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
@@ -26,8 +27,11 @@ class SearchTaskController extends VoyagerBaseController
     public function ajax_tasks(Request $request){
         if (isset($request->orderBy)) {
             if ($request->orderBy == 'all') {
-                $tasks = new Task();
-            }
+              $tasks =  DB::table("tasks")
+              ->join('categories', 'tasks.category_id', '=', 'categories.id')
+              ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+              ->get();
+          }
         }
         return $tasks->all();
     }
@@ -50,7 +54,7 @@ class SearchTaskController extends VoyagerBaseController
     }else {
       $tasks = Task::where('name','LIKE',"%$s%")->orWhere('address','LIKE',"%$a%")->orWhere('budget','LIKE',"%$p%")->orderBy('name')->paginate(10);
     }
-    $categories = Category::get()->all();
+    $categories = Category::all();
       return view('task.search', compact('tasks','s','a','p','categories'));
 
     }
