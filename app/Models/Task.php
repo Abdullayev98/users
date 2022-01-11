@@ -40,6 +40,7 @@ class Task extends Model
         'remont_ustanovka_service',
         'remont_tex',
         'krosata_service',
+        'bugalter_service',
 ];
     protected $translatable = [
         'name',

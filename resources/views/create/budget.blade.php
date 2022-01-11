@@ -20,6 +20,8 @@
     <form class="" action="{{route('task.create.notes')}}" method="post">
     @elseif(session('parent_id')->id == 17)
     <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('parent_id')->id == 18)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
         @else
     <form class="" action="{{route('task.create.services')}}" method="post">
     @endif
