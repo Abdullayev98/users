@@ -29,7 +29,7 @@ class SearchTaskController extends VoyagerBaseController
             if ($request->orderBy == 'all') {
               $tasks =  DB::table("tasks")
               ->join('categories', 'tasks.category_id', '=', 'categories.id')
-              ->select('tasks.*', 'categories.name as category_name')
+              ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
               ->get();
           }
         }

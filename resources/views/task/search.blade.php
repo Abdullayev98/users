@@ -406,7 +406,7 @@
                     <div class="w-full border hover:bg-blue-100 h-[100px] ">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
-                    <i class="fas fa-user-circle text-4xl float-left text-blue-400 mr-2"></i>
+                    <i class="`+data.icon+` text-4xl float-left text-blue-400 mr-2"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-sm ml-10 mt-1">` + data.address + `</p>
                     </div>
