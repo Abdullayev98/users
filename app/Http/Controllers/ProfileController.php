@@ -46,6 +46,7 @@ class ProfileController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
+        
         $vcs = UserView::where('user_id', $user->id)->first();
         return view('profile.cash', compact('user','vcs','balance'));
     }
