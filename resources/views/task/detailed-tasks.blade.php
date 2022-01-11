@@ -62,11 +62,16 @@
                             <div class="max-w-2xl mx-auto">
                                 @if (Route::has('login'))
                                     @auth
+                                        @if($balance >=400)
                                         <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                 type="button"
                                                 data-modal-toggle="authentication-modal">
                                             Откликнуться на это задание
                                         </button>
+                                        @else
+                                            <h1>SAlom</h1>
+                                        @endif
+                                    @endauth
                                 @else
                                         <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                 type="button">
@@ -74,7 +79,7 @@
                                                 Откликнуться на это задание
                                             </a>
                                         </button>
-                                    @endauth
+
                                 @endif
 
                                 <!-- Main modal -->
