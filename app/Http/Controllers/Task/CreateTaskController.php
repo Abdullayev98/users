@@ -52,6 +52,16 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
+    public function krosata(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 16)->first();
+        $categories = explode(',',$category->services);
+      return view('create.krosata', compact('categories'));
+    }
     public function remont_tex(Request $request)
     {
       $data = $request->input();
@@ -177,6 +187,8 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('photo_service', $data);
         }elseif($data = $request->input('remont_tex')){
           $request->session()->put('remont_tex_service', $data);
+        }elseif($data = $request->input('krosata')){
+          $request->session()->put('krosata_service', $data);
         }
         $computer = session()->pull('computer_service');
         $request->session()->put('computer_service', $computer);
@@ -462,6 +474,11 @@ class CreateTaskController extends VoyagerBaseController
       }else{
         $remont_tex = null;
       }
+      if(session('parent_id')->id == 16){
+        $krosata_service = session()->pull('krosata_service');
+      }else{
+        $krosata_service = null;
+      }
       $user_id     =     Auth::id();
       if (!Auth::user()) {
         $user_name  = $request->input('user_name');
@@ -512,6 +529,7 @@ class CreateTaskController extends VoyagerBaseController
         'it_service' => $it,
         'photo_service' => $photo,
         'remont_tex_service' => $remont_tex,
+        'krosata_service' => $krosata_service,
       ];
       dd($id);
         session()->forget('task');

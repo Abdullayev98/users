@@ -29,6 +29,7 @@ Route::prefix("task")->group(function (){
         Route::post('/it', [CreateTaskController::class, 'it'])->name('task.create.it');//it emas Ay Ti
         Route::post('/photo', [CreateTaskController::class, 'photo'])->name('task.create.photo');
         Route::post('/remont_tex', [CreateTaskController::class, 'remont_tex'])->name('task.create.remont_tex');
+        Route::post('/krosata', [CreateTaskController::class, 'krosata'])->name('task.create.krosata');
         Route::post('/date', [CreateTaskController::class, 'date'])->name('task.create.date');
         Route::post('/budget', [CreateTaskController::class, 'budget'])->name('task.create.budget');
         Route::get('/service', [CreateTaskController::class, 'service'])->name('task.create.service');
