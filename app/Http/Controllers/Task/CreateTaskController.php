@@ -52,9 +52,36 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
-    public function bugalter(Request $request)
+    public function age(Request $request)
     {
       $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 19)->first();
+        $categories = explode(',',$category->services);
+      return view('create.age');
+    }
+    public function training(Request $request)
+    {
+      $data = $request->input('age');
+      $request->session()->put('age', $data);
+      return view('create.training');
+    }
+    public function learning(Request $request)
+    {
+      $data = $request->input();
+      $request->session()->put('training', $data['training']);
+      $request->session()->put('time', $data['time']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 19)->first();
+        $categories = explode(',',$category->services);
+      return view('create.learning', compact('categories'));
+    }
+    public function bugalter(Request $request)
+    {
+        $data = $request->input();
         $request->session()->put('cat_id', $data['cat_id']);
         $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
@@ -217,6 +244,12 @@ class CreateTaskController extends VoyagerBaseController
             return view('create.date');
           }
           $request->session()->put('bugalter_service', $data);
+        }elseif($data = $request->input('learning')){
+          $request->session()->put('learning_service', $data);
+          if($data == 'Удаленно (через интернет)'){
+            return view('create.date');
+          }
+          $request->session()->put('learning_service', $data);
         }
         $computer = session()->pull('computer_service');
         $request->session()->put('computer_service', $computer);
@@ -517,6 +550,14 @@ class CreateTaskController extends VoyagerBaseController
       }else{
         $bugalter_service = null;
       }
+      if(session('parent_id')->id == 19){
+        $training = session()->pull('training');
+        $age = session()->pull('age');
+        $time = session()->pull('time');
+        $learning_service = session()->pull('learning_service');
+      }else{
+        $learning_service = null;
+      }
       $user_id     =     Auth::id();
       if (!Auth::user()) {
         $user_name  = $request->input('user_name');
@@ -570,6 +611,7 @@ class CreateTaskController extends VoyagerBaseController
         'remont_tex' => $remont_tex,
         'krosata_service' => $krosata_service,
         'bugalter_service' => $bugalter_service,
+        'learning_service' => array('service' => $learning_service ,'age' => $age, 'time' => $time, 'training' => $training),
       ];
       dd($id);
         session()->forget('task');
