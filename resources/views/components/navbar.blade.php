@@ -425,10 +425,7 @@ use Illuminate\Support\Facades\Auth;
         </div>
     </div>
 </div>
-{{-- </div>
-</div>
-</div>
-</div> --}}
+
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal1-id-backdrop"></div>
 @if(Auth::user() !== NULL)
