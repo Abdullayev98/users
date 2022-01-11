@@ -1,11 +1,11 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="container mx-auto w-9/12">
-        <div class="grid grid-cols-3  grid-flow-row mt-8 mb-8">
+    <div class="mx-auto w-9/12">
+        <div class="mt-8 flex mb-8">
 
             {{-- left sidebar start --}}
-            <div class="lg:col-span-2 col-span-3">
+            <div class="w-8/12 float-left">
                 <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                 <div class="flex flex-row">
                     <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">до {{$tasks->budget}}</p>
@@ -60,11 +60,22 @@
                         <div  class="w-full flex flex-col sm:flex-row justify-center pl-32">
                             <!-- This is an example component -->
                             <div class="max-w-2xl mx-auto">
-                                <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
-                                        type="button"
-                                        data-modal-toggle="authentication-modal">
-                                    Откликнуться на это задание
-                                </button>
+                                @if (Route::has('login'))
+                                    @auth
+                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                type="button"
+                                                data-modal-toggle="authentication-modal">
+                                            Откликнуться на это задание
+                                        </button>
+                                @else
+                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                type="button">
+                                            <a href="/register">
+                                                Откликнуться на это задание
+                                            </a>
+                                        </button>
+                                    @endauth
+                                @endif
 
                                 <!-- Main modal -->
                                 <div id="authentication-modal"
@@ -131,72 +142,7 @@
                             </div>
                         </div>
                     </div>
-                    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
                     <!--  ------------------------ showModal Откликнуться на это задание end  ------------------------  -->
-                    <style>
-                        body {
-                            margin: 0;
-                        }
-                        .preloader {
-                            /*фиксированное позиционирование*/
-                            position: fixed;
-                            /* координаты положения */
-                            left: 0;
-                            top: 0;
-                            right: 0;
-                            bottom: 0;
-                            /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
-                            z-index: 1001;
-                            background: rgba(0,0,0,0.4);
-                        }
-                        .preloader__row {
-                            position: relative;
-                            top: 50%;
-                            left: 50%;
-                            width: 70px;
-                            height: 70px;
-                            margin-top: -35px;
-                            margin-left: -35px;
-                            text-align: center;
-                            animation: preloader-rotate 2s infinite linear;
-                        }
-                        .preloader__item {
-                            position: absolute;
-                            display: inline-block;
-                            top: 0;
-                            background-color: #337ab7;
-                            border-radius: 100%;
-                            width: 35px;
-                            height: 35px;
-                            animation: preloader-bounce 2s infinite ease-in-out;
-                        }
-                        .preloader__item:last-child {
-                            top: auto;
-                            bottom: 0;
-                            animation-delay: -1s;
-                        }
-                        @keyframes preloader-rotate {
-                            100% {
-                                transform: rotate(360deg);
-                            }
-                        }
-                        @keyframes preloader-bounce {
-                            0%,
-                            100% {
-                                transform: scale(0);
-                            }
-                            50% {
-                                transform: scale(1);
-                            }
-                        }
-                        .loaded_hiding .preloader {
-                            transition: 0.3s opacity;
-                            opacity: 0;
-                        }
-                        .loaded .preloader {
-                            display: none;
-                        }
-                    </style>
                     <!-- Прелоадер -->
                     <div class="preloader" style="display: none">
                         <div class="preloader__row">
@@ -217,24 +163,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <script>
-                            const modal = document.querySelector('.modal');
-                            const showModal = document.querySelector('.show-modal');
-                            const closeModal = document.querySelectorAll('.close-modal');
-                            showModal.addEventListener('click', function (){
-                                modal.classList.remove('hidden')
-                            });
-                            closeModal.forEach(close => {
-                                close.addEventListener('click', function (){
-                                    modal.classList.add('hidden')
-                                });
-                            });
-                        </script>
                     </div>
-
-                    <script>
-                    </script>
                 </div>
 
                 <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-lg">
@@ -322,7 +251,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                    </div>
+                        </div>
                     @endif
                 </div>
 
@@ -340,43 +269,99 @@
                     @endforeach
                 </div>
             </div>
-            {{-- left sidebar end --}}
+        </div>
 
-            {{-- right sidebar start --}}
-            <div class="lg:col-span-1 col-span-3 lg:mt-0 mt-8">
-                <h1 class="text-lg">Заказчик этого задания</h1>
-                <div class="flex flex-row mt-4">
-                    <div class="mr-4">
-                        <img src="
+        {{-- right sidebar start --}}
+        <div class="w-3/12 lg:mt-0 mt-8">
+            <h1 class="text-lg">Заказчик этого задания</h1>
+            <div class="flex flex-row mt-4">
+                <div class="mr-4">
+                    <img src="
                         @if ($current_user->avatar == 'users/default.png')
-                            {{ asset("AvatarImages/images/{$current_user->avatar}") }}
-                        @else 
-                            {{ asset("AvatarImages/{$current_user->avatar}") }}
-                        @endif" class="border-2 border-gray-400 w-32 h-32" alt="#">
-                    </div>
-                    <div class="">
-                        <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
-                        <a href="#" class="text-xl text-gray-500">
-                            @if($current_user->age != "")
-                                <p class="inline-block text-m mr-2">
-                                    {{$current_user->age}}
-                                    @if($current_user->age>20 && $current_user->age%10==1) @lang('lang.cash_rusYearGod')
-                                    @elseif ($current_user->age>20 && ($current_user->age%10==2 || $current_user->age%10==3 || $current_user->age%10==1)) @lang('lang.cash_rusYearGoda')
-                                    @else @lang('lang.cash_rusYearLet')
-                                    @endif
-                                </p>
-                            @endif
-                        </a>
-                        <!-- <div class="flex flex-row">
-                            <p>Отзывы:</p>
-                            <i class="far fa-thumbs-up m-1 text-gray-400"></i>  2
-                        </div> -->
-                    </div>
+                    {{ asset("AvatarImages/images/{$current_user->avatar}") }}
+                    @else
+                    {{ asset("AvatarImages/{$current_user->avatar}") }}
+                    @endif" class="border-2 border-gray-400 w-32 h-32" alt="#">
+                </div>
+                <div class="">
+                    <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
+                    <a href="#" class="text-xl text-gray-500">
+                        @if($current_user->age != "")
+                            <p class="inline-block text-m mr-2">
+                                {{$current_user->age}}
+                                @if($current_user->age>20 && $current_user->age%10==1) @lang('lang.cash_rusYearGod')
+                                @elseif ($current_user->age>20 && ($current_user->age%10==2 || $current_user->age%10==3 || $current_user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                @else @lang('lang.cash_rusYearLet')
+                                @endif
+                            </p>
+                        @endif
+                    </a>
                 </div>
             </div>
-            {{-- right sidebar end --}}
         </div>
     </div>
+
+    <style>
+        .preloader {
+            /*фиксированное позиционирование*/
+            position: fixed;
+            /* координаты положения */
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
+            z-index: 1001;
+            background: rgba(0,0,0,0.4);
+        }
+        .preloader__row {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            width: 70px;
+            height: 70px;
+            margin-top: -35px;
+            margin-left: -35px;
+            text-align: center;
+            animation: preloader-rotate 2s infinite linear;
+        }
+        .preloader__item {
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            background-color: #337ab7;
+            border-radius: 100%;
+            width: 35px;
+            height: 35px;
+            animation: preloader-bounce 2s infinite ease-in-out;
+        }
+        .preloader__item:last-child {
+            top: auto;
+            bottom: 0;
+            animation-delay: -1s;
+        }
+        @keyframes preloader-rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes preloader-bounce {
+            0%,
+            100% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+        .loaded_hiding .preloader {
+            transition: 0.3s opacity;
+            opacity: 0;
+        }
+        .loaded .preloader {
+            display: none;
+        }
+    </style>
     <script>
         function valueChanged()
         {
@@ -435,6 +420,19 @@
                 $('.modal').hide();
                 window.location.reload();
             }, 3000);
+        });
+    </script>
+    <script>
+        const modal = document.querySelector('.modal');
+        const showModal = document.querySelector('.show-modal');
+        const closeModal = document.querySelectorAll('.close-modal');
+        showModal.addEventListener('click', function (){
+            modal.classList.remove('hidden')
+        });
+        closeModal.forEach(close => {
+            close.addEventListener('click', function (){
+                modal.classList.add('hidden')
+            });
         });
     </script>
 
