@@ -6,7 +6,17 @@
     <x-roadmap/>
     @if($category->id == 60)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-        @elseif(session('parent_id'))
+        @elseif(session('parent_id')->id == 8)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('parent_id')->id == 9)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('parent_id')->id == 12)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('parent_id')->id == 13)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('parent_id')->id == 15)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('parent_id')->id == 16)
     <form class="" action="{{route('task.create.notes')}}" method="post">
         @else
     <form class="" action="{{route('task.create.services')}}" method="post">

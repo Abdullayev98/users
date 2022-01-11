@@ -37,6 +37,18 @@
                     <form action="{{route('task.create.housemaid')}}" method="post">
                         @elseif($current_parent_category->id == 8)
                         <form action="{{route('task.create.smm')}}" method="post">
+                        @elseif($current_parent_category->id == 9)
+                        <form action="{{route('task.create.computer')}}" method="post">
+                        @elseif($current_parent_category->id == 11)
+                        <form action="{{route('task.create.design')}}" method="post">
+                        @elseif($current_parent_category->id == 12)
+                        <form action="{{route('task.create.it')}}" method="post">
+                        @elseif($current_parent_category->id == 13)
+                        <form action="{{route('task.create.photo')}}" method="post">
+                        @elseif($current_parent_category->id == 15)
+                        <form action="{{route('task.create.remont_tex')}}" method="post">
+                        @elseif($current_parent_category->id == 16)
+                        <form action="{{route('task.create.krosata')}}" method="post">
                         @else
                         <form action="{{route('task.create.name')}}" method="post">
                     @endif
