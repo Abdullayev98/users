@@ -7,7 +7,7 @@
 <form class="" action="{{route('task.create.contacts')}}" method="post" enctype="multipart/form-data">
   @csrf
 <div class="mx-auto w-9/12  my-16">
-<div class="grid grid-cols-3 gap-x-20">
+<div class="grid md:grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
     @lang('lang.budget_lookingFor') "{{session('name')}}"
@@ -20,7 +20,7 @@
         <div style="width: 86%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
-    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
+    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full px-6 p-6 md:px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
         @lang('lang.notes_details')
       </div>

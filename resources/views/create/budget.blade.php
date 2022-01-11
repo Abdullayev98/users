@@ -14,7 +14,7 @@
         @csrf
         <div class="mx-auto w-9/12  my-16">
             <div class="grid grid-cols-3 gap-x-20">
-                <div class="md:col-span-2 col-span-3">
+                <div class="lg:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
                         @lang('lang.budget_lookingFor') "{{session('name')}}"
                     </div>
@@ -26,30 +26,16 @@
                             <div style="width: 71%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                         </div>
                     </div>
-                    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl  w-full p-6 px-20">
+                    <div class="shadow-xl w-full mx-auto md:mt-7 rounded-2xl  w-full p-6 md:px-20">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
                             @lang('lang.budget_yourBudget')
                         </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-
-                        </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
+                                <div id="formulario" class="flex flex-col gap-y-4 xl:block hidden">
                                     <div class="cube">
                                         <div class="a"></div>
-                                        <div id="slider-range-min" class="flex">
-{{--                                            <div class="w-2 h-2 bg-[#ffa200] border border-1 rounded-full -mt-[2px]"></div>--}}
-{{--                                            <div class="w-2 h-2 bg-[#ffa200] border border-1 rounded-full -mt-[2px] ml-[70px]"></div>--}}
-{{--                                            <div class="w-2 h-2 bg-[#ffa200] border border-1 rounded-full -mt-[2px] ml-[75px]"></div>--}}
-{{--                                            <div class="w-2 h-2 bg-[#ffa200] border border-1 rounded-full -mt-[2px] ml-[75px]"></div>--}}
-{{--                                            <div class="w-2 h-2 bg-[#ffa200] border border-1 rounded-full -mt-[2px] ml-[75px]"></div>--}}
-{{--                                            <div class="w-2 h-2 bg-[#ffa200] border border-1 rounded-full -mt-[2px] ml-[75px]"></div>--}}
-{{--                                            <div class="w-2 h-2 bg-[#ffa200] border border-1 rounded-full -mt-[2px] ml-[75px]"></div>--}}
-                                        </div>
-                                        <div id="#slider-range-dots" class="relative z-999 flex mt-[55px]">
-
-                                        </div>
+                                        <div id="slider-range-min" class="flex"></div>
                                     </div>
                                     <input type="text" id="amount" name="amount" readonly>
 {{--                                    <div class="flex ">--}}
@@ -73,12 +59,39 @@
 {{--                                        </div>--}}
 {{--                                    </div>--}}
                                 </div>
-                                <!-- <div class="w-full">
-                                  <input type="checkbox" name="business" value="1"> Я использую YouDo для бизнеса, нужны закрывающие документы
-                                  <p class="text-sm ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
-                                  <input type="checkbox" name="insurance" value="1"> Отдаю предпочтение застрахованным исполнителям
-                                  <p class="text-sm ml-4">В случае ущерба страховая возместит вам до 100 000 руб. Это бесплатно</p>
-                                </div> -->
+                                <div class="w-[100px]  md:w-[200px]">
+                                    <select id="" name="amount" class="border md:ml-14 bg-[#ffa200]  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-[#ffaa00]">
+                                        <option value="0">
+                                            Выберите бюджет
+                                        </option>
+                                        <option value="1">
+                                                до {{$category->max/5}}
+                                        </option>
+                                        <option value="2">
+                                                до {{$category->max/5 * 2}}
+                                        </option>
+                                        <option value="3">
+                                                до {{$category->max/5 * 3}}
+                                        </option>
+                                        <option value="4">
+                                            до {{$category->max/5 * 4}}
+                                        </option>
+                                        <option value="5">
+                                            от {{$category->max}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="w-full text-left">
+                                    <label>
+                                        <input type="checkbox" name="business" value="1"> Я использую YouDo для бизнеса, нужны закрывающие документы
+                                    </label>
+                                        <p class="text-sm xl:ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
+                                    <label>
+                                        <input type="checkbox" name="insurance" value="1"> Отдаю предпочтение застрахованным исполнителям
+                                    </label>
+                                        <p class="text-sm xl:ml-4">В случае ущерба страховая возместит вам до 100 000 руб. Это бесплатно</p>
+                                </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
                                         <a href="/task/create/date" type="button"  class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
@@ -128,5 +141,5 @@
             $( "#amount" ).val('от ' + $( "#slider-range-min" ).slider( "value") + " cум");
         });
     </script>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
+
 @endsection

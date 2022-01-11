@@ -221,6 +221,7 @@ font-size: 2rem;
 color: #ffa200;
 background: transparent;
 border: none;
+left: 18%;
 }
 #amount:focus {
 outline: none;
@@ -236,12 +237,3 @@ padding-top: 5rem;
 text-align: center;
 }
 
-@media (min-width: 768px) {
-    .cube {
-        width: 400px;
-    }
-
-    .a:before, .a:after {
-        width: 400px;
-    }
-}
