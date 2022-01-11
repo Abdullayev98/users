@@ -4,7 +4,13 @@
     <link rel="stylesheet" href="{{asset('css/budget.css')}}">
     <!-- Information section -->
     <x-roadmap/>
+    @if($category->id == 60)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+        @elseif(session('parent_id'))
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+        @else
     <form class="" action="{{route('task.create.services')}}" method="post">
+    @endif
         @csrf
         <div class="mx-auto w-9/12  my-16">
             <div class="grid grid-cols-3 gap-x-20">
