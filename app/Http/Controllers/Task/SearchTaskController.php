@@ -51,7 +51,7 @@ class SearchTaskController extends VoyagerBaseController
     }else {
       $tasks = Task::where('name','LIKE',"%$s%")->orWhere('address','LIKE',"%$a%")->orWhere('budget','LIKE',"%$p%")->orderBy('name')->paginate(10);
     }
-    $categories = Category::get()->all();
+    $categories = Category::all();
       return view('task.search', compact('tasks','s','a','p','categories'));
 
     }
