@@ -4,7 +4,7 @@ use App\Http\Controllers\API\FaqAPIController;
 use App\Http\Controllers\API\NewsAPIController;
 use App\Http\Controllers\API\ProfileAPIController;
 use App\Http\Controllers\API\UserAPIController;
-use App\Http\Controllers\API\PaymentAPIController;
+use App\Http\Controllers\API\PaynetTransactionAPIController;
 use App\Http\Controllers\API\TaskAPIController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\CategoriesAPIController;
@@ -58,3 +58,8 @@ Route::get('/categories' , [CategoriesAPIController::class, 'index']);
 //Performers
 Route::get('/performers', [PerformerAPIController::class, 'service']);
 Route::get('/performer/{id}', [PerformerAPIController::class, 'performer']);
+
+////PaynetTransactions
+//Route::any('/paynet',function(){
+//    (new PaynetTransactionAPIController)->driver('paynet')->handle();
+//});
