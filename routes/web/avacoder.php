@@ -24,6 +24,7 @@ Route::prefix("task")->group(function (){
         Route::post('/address', [CreateTaskController::class, 'location_create'])->name('task.create.address');
         Route::post('/custom', [CreateTaskController::class, 'custom'])->name('task.create.custom');
         Route::post('/smm', [CreateTaskController::class, 'smm'])->name('task.create.smm');
+        Route::post('/computer', [CreateTaskController::class, 'computer'])->name('task.create.computer');
         Route::post('/date', [CreateTaskController::class, 'date'])->name('task.create.date');
         Route::post('/budget', [CreateTaskController::class, 'budget'])->name('task.create.budget');
         Route::get('/service', [CreateTaskController::class, 'service'])->name('task.create.service');

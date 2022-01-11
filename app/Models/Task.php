@@ -32,6 +32,8 @@ class Task extends Model
         'service1',
         'where',
         'how_many',
+        'smm_service',
+        'computer_service',
 ];
     protected $translatable = [
         'name',
