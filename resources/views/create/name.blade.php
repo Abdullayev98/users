@@ -39,6 +39,8 @@
                         <form action="{{route('task.create.smm')}}" method="post">
                         @elseif($current_parent_category->id == 9)
                         <form action="{{route('task.create.computer')}}" method="post">
+                        @elseif($current_parent_category->id == 11)
+                        <form action="{{route('task.create.design')}}" method="post">
                         @else
                         <form action="{{route('task.create.name')}}" method="post">
                     @endif
