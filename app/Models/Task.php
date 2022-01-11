@@ -37,6 +37,9 @@ class Task extends Model
         'design_service',
         'it_service',
         'photo_service',
+        'remont_ustanovka_service',
+        'remont_tex',
+        'krosata_service',
 ];
     protected $translatable = [
         'name',

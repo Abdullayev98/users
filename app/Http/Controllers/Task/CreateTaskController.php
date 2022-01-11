@@ -52,6 +52,16 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
+    public function remont_tex(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 17)->first();
+        $categories = explode(',',$category->services);
+      return view('create.remont_tex', compact('categories'));
+    }
     public function krosata(Request $request)
     {
       $data = $request->input();
@@ -62,7 +72,7 @@ class CreateTaskController extends VoyagerBaseController
         $categories = explode(',',$category->services);
       return view('create.krosata', compact('categories'));
     }
-    public function remont_tex(Request $request)
+    public function remont_ustanovka(Request $request)
     {
       $data = $request->input();
         $request->session()->put('cat_id', $data['cat_id']);
@@ -70,7 +80,7 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('cat_id', $cat_id);
         $category = Category::where('id', 15)->first();
         $categories = explode(',',$category->services);
-        return view('create.remont_tex', compact('categories'));
+        return view('create.remont_ustanovka', compact('categories'));
     }
     public function photo(Request $request)
     {
@@ -185,10 +195,12 @@ class CreateTaskController extends VoyagerBaseController
             return view('create.date');
         }
         $request->session()->put('photo_service', $data);
-        }elseif($data = $request->input('remont_tex')){
-          $request->session()->put('remont_tex_service', $data);
+        }elseif($data = $request->input('remont_ustanovka')){
+          $request->session()->put('remont_ustanovka_service', $data);
         }elseif($data = $request->input('krosata')){
           $request->session()->put('krosata_service', $data);
+        }elseif($data = $request->input('remont_tex')){
+          $request->session()->put('remont_tex_service', $data);
         }
         $computer = session()->pull('computer_service');
         $request->session()->put('computer_service', $computer);
@@ -470,14 +482,19 @@ class CreateTaskController extends VoyagerBaseController
         $how_many = null;
       }
       if(session('parent_id')->id == 15){
-        $remont_tex = session()->pull('remont_tex_service');
+        $remont_ustanovka = session()->pull('remont_ustanovka_service');
       }else{
-        $remont_tex = null;
+        $remont_ustanovka = null;
       }
       if(session('parent_id')->id == 16){
         $krosata_service = session()->pull('krosata_service');
       }else{
         $krosata_service = null;
+      }
+      if(session('parent_id')->id == 17){
+        $remont_tex = session()->pull('remont_tex_service');
+      }else{
+        $remont_tex = null;
       }
       $user_id     =     Auth::id();
       if (!Auth::user()) {
@@ -528,7 +545,8 @@ class CreateTaskController extends VoyagerBaseController
         'design_service' => $design,
         'it_service' => $it,
         'photo_service' => $photo,
-        'remont_tex_service' => $remont_tex,
+        'remont_ustanovka_service' => $remont_ustanovka,
+        'remont_tex' => $remont_tex,
         'krosata_service' => $krosata_service,
       ];
       dd($id);
