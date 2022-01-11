@@ -41,6 +41,8 @@
                         <form action="{{route('task.create.computer')}}" method="post">
                         @elseif($current_parent_category->id == 11)
                         <form action="{{route('task.create.design')}}" method="post">
+                        @elseif($current_parent_category->id == 12)
+                        <form action="{{route('task.create.it')}}" method="post">
                         @else
                         <form action="{{route('task.create.name')}}" method="post">
                     @endif

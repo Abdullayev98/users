@@ -26,6 +26,7 @@ Route::prefix("task")->group(function (){
         Route::post('/smm', [CreateTaskController::class, 'smm'])->name('task.create.smm');
         Route::post('/computer', [CreateTaskController::class, 'computer'])->name('task.create.computer');
         Route::post('/design', [CreateTaskController::class, 'design'])->name('task.create.design');
+        Route::post('/it', [CreateTaskController::class, 'it'])->name('task.create.it');//it emas Ay Ti
         Route::post('/date', [CreateTaskController::class, 'date'])->name('task.create.date');
         Route::post('/budget', [CreateTaskController::class, 'budget'])->name('task.create.budget');
         Route::get('/service', [CreateTaskController::class, 'service'])->name('task.create.service');
@@ -33,7 +34,7 @@ Route::prefix("task")->group(function (){
         Route::get('/note', [CreateTaskController::class, 'note'])->name('task.create.note');
         Route::post('/notes', [CreateTaskController::class, 'notes'])->name('task.create.notes');
         Route::post('/contacts', [CreateTaskController::class, 'contacts'])->name('task.create.contacts');
-        Route::get('/done', [CreateTaskController::class, 'create'])->name('task.create');
+        Route::post('/done', [CreateTaskController::class, 'create'])->name('task.create');
         // Route::post('/create',[CreateTaskController::class 'create'])->name('task.create');
 
     });
