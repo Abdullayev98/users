@@ -51,6 +51,8 @@
                         <form action="{{route('task.create.krosata')}}" method="post">
                         @elseif($current_parent_category->id == 17)
                         <form action="{{route('task.create.remont_tex')}}" method="post">
+                        @elseif($current_parent_category->id == 18)
+                        <form action="{{route('task.create.bugalter')}}" method="post">
                         @else
                         <form action="{{route('task.create.name')}}" method="post">
                     @endif
