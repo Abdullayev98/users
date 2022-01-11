@@ -52,6 +52,16 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
+    public function remont_tex(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 15)->first();
+        $categories = explode(',',$category->services);
+        return view('create.remont_tex', compact('categories'));
+    }
     public function photo(Request $request)
     {
       $data = $request->input();
@@ -165,6 +175,8 @@ class CreateTaskController extends VoyagerBaseController
             return view('create.date');
         }
         $request->session()->put('photo_service', $data);
+        }elseif($data = $request->input('remont_tex')){
+          $request->session()->put('remont_tex_service', $data);
         }
         $computer = session()->pull('computer_service');
         $request->session()->put('computer_service', $computer);
@@ -399,7 +411,7 @@ class CreateTaskController extends VoyagerBaseController
       $etaj_za = session()->pull('etaj_za');
       $lift_za = session()->pull('lift_za');
       $peopleCount = session()->pull('peopleCount');
-      if(session('parent_id')->id){
+      if(session('parent_id')->id == 13){
         $photo = session()->pull('photo_service');
       }else{
         $photo = null;
@@ -444,6 +456,11 @@ class CreateTaskController extends VoyagerBaseController
         $service1 = null;
         $where = null;
         $how_many = null;
+      }
+      if(session('parent_id')->id == 15){
+        $remont_tex = session()->pull('remont_tex_service');
+      }else{
+        $remont_tex = null;
       }
       $user_id     =     Auth::id();
       if (!Auth::user()) {
@@ -494,6 +511,7 @@ class CreateTaskController extends VoyagerBaseController
         'design_service' => $design,
         'it_service' => $it,
         'photo_service' => $photo,
+        'remont_tex_service' => $remont_tex,
       ];
       dd($id);
         session()->forget('task');
