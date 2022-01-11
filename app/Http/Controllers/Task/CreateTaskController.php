@@ -52,6 +52,16 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
+    public function photo(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 13)->first();
+        $categories = explode(',',$category->services);
+      return view('create.photo', compact('categories'));
+    }
     public function it(Request $request)
     {
       $data = $request->input();
@@ -149,6 +159,12 @@ class CreateTaskController extends VoyagerBaseController
             return view('create.date');
           }
           $request->session()->put('it_service', $data);
+        }elseif($data = $request->input('photo')){
+          $request->session()->put('photo_service', $data);
+          if($data == 'Можно выполнить удаленно'){
+            return view('create.date');
+        }
+        $request->session()->put('photo_service', $data);
         }
         $computer = session()->pull('computer_service');
         $request->session()->put('computer_service', $computer);
@@ -383,6 +399,11 @@ class CreateTaskController extends VoyagerBaseController
       $etaj_za = session()->pull('etaj_za');
       $lift_za = session()->pull('lift_za');
       $peopleCount = session()->pull('peopleCount');
+      if(session('parent_id')->id){
+        $photo = session()->pull('photo_service');
+      }else{
+        $photo = null;
+      }
         if ($category == 50) {
             $weight = session()->pull('weight');
             $length = session()->pull('length');
@@ -472,6 +493,7 @@ class CreateTaskController extends VoyagerBaseController
         'computer_service' => $computer,
         'design_service' => $design,
         'it_service' => $it,
+        'photo_service' => $photo,
       ];
       dd($id);
         session()->forget('task');
