@@ -86,7 +86,7 @@
                     {{-- "about-me" end --}}
                     {{-- cash --}} <div class="cash block  w-full" id="tab-cash">
                         <div class="head mt-5">
-                            <h2 class="font-bold text-xl">@lang('lang.cash_yourBalance') 0 UZS</h2>
+                            <h2 class="font-bold text-xl">@lang('lang.cash_yourBalance') {{$balance->balance}} UZS</h2>
                             <p class="inline">@lang('lang.cash_topUp')</p>
                                 <input class="inline rounded-xl ml-3 ring-1 text-3xl text-center h-18 w-36 pb-1"  onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)' id="myText1" type='number' min="1000" maxlength="7" value="1000"/>
                                 <span class="ml-1 text-xl">UZS</span>
