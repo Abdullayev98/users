@@ -1,6 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
+    <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     <div class="mx-auto w-9/12">
         <div class="mt-8 flex mb-8">
 
@@ -62,14 +63,28 @@
                             <div class="max-w-2xl mx-auto">
                                 @if (Route::has('login'))
                                     @auth
-                                        @if($balance >=400)
+                                        @if($balance >= 400)
                                         <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                 type="button"
                                                 data-modal-toggle="authentication-modal">
                                             Откликнуться на это задание
                                         </button>
                                         @else
-                                            <h1>SAlom</h1>
+                                            <a href="#" class='btn open-modal' data-modal="#modal1">Откликнуться на это задание</a>
+
+                                            <div class='modal' id='modal1'>
+                                                <div class='content'>
+                                                    <img src="https://css-static.youdo.com/assets/72082/i/recharge-pig-0ce0730fc21f092f12cc3855956a45d4.svg" alt="">
+                                                    <h1 class='title'>Пополните баланс</h1>
+                                                    <p>
+                                                        Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.
+                                                    </p>
+                                                    <p>
+                                                        При отклике сумма на балансе не блокируется — можно оставлять отклики и к другим заданиям.
+                                                    </p>
+                                                    <a class='btn' data-modal="#modal1" href="#">Пополнить</a>
+                                                </div>
+                                            </div>
                                         @endif
                                     @endauth
                                 @else
@@ -438,6 +453,53 @@
             close.addEventListener('click', function (){
                 modal.classList.add('hidden')
             });
+        });
+    </script>
+    <script>
+        $(".modal").each(function() {
+            $(this).wrap('<div class="overlay"></div>')
+        });
+
+        $(".open-modal").on('click', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation;
+
+            var $this = $(this),
+                modal = $($this).data("modal");
+
+            $(modal).parents(".overlay").addClass("open");
+            setTimeout(function() {
+                $(modal).addClass("open");
+            }, 350);
+
+            $(document).on('click', function(e) {
+                var target = $(e.target);
+
+                if ($(target).hasClass("overlay")) {
+                    $(target).find(".modal").each(function() {
+                        $(this).removeClass("open");
+                    });
+                    setTimeout(function() {
+                        $(target).removeClass("open");
+                    }, 350);
+                }
+
+            });
+
+        });
+
+        $(".close-modal").on('click', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation;
+
+            var $this = $(this),
+                modal = $($this).data("modal");
+
+            $(modal).removeClass("open");
+            setTimeout(function() {
+                $(modal).parents(".overlay").removeClass("open");
+            }, 50);
+
         });
     </script>
 

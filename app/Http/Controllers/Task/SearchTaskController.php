@@ -60,7 +60,7 @@ class SearchTaskController extends VoyagerBaseController
 
     }
     public function task($id){
-        $balance = WalletBalance::where('user_id',$id)->first();
+        $balance = WalletBalance::where('user_id',Auth::id())->first();
         if ($balance){
             $balance =  $balance->balance;
         }else{
