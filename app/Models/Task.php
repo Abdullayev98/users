@@ -69,6 +69,7 @@ class Task extends Model
         'age',
         'time',
         'training',
+        'coordinates'
 ];
     protected $translatable = [
         'name',
