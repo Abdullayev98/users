@@ -394,7 +394,7 @@ class CreateTaskController extends VoyagerBaseController
         $request->session()->put('movers', $need_movers);
         return view('create.movers');
     }else {
-      return redirect('create.date');
+      return view('create.date');
     }
     }
     public function peopleTransported(Request $request)
