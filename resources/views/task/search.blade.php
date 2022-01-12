@@ -36,12 +36,19 @@
                                         </div>
                                         <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
                                             <label class="text-xs">@lang('lang.search_byMapRadius')</label>
-{{--                                            <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1">--}}
-                                            <select name="" id="" class="w-full border border-black text-black-700 rounded py-1 px-1">
-                                                <option value="0">Без ограничений</option>
+                                            <select name="" id="" class="border border-black text-lg-left text-black-700 rounded py-1 w-full">
+                                                <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
                                                 <option value="5">5 km</option>
+                                                <option value="10">10 km</option>
+                                                <option value="15">15 km</option>
+                                                <option value="20">20 km</option>
+                                                <option value="30">30 km</option>
+                                                <option value="50">50 km</option>
+                                                <option value="75">75 km</option>
+                                                <option value="100">100 km</option>
+                                                <option value="200">200 km</option>
                                             </select>
                                         </div>
                                         <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
@@ -179,171 +186,22 @@
     </div>
 </div>
 
+<style>
+    [class*="copyrights-pane"]
+    {display: none !important;}
+</style>
+
 @endsection
 
 @section("javasript")
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+{{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
+    <script src="{{asset('js/search_tasks.js')}}"></script>
     <script type="text/javascript">
-        ymaps.ready(init);
-        function init() {
-            var myMap1 = new ymaps.Map('map1', {
-                center: [55.74, 37.58],
-                zoom: 15,
-                controls: []
-            });
-
-            $("#mpshow").click(function(){
-
-            });
-        }
-    </script>
-
-
-
-    <script type="text/javascript"></script>
-
-    <script type="text/javascript">
-
-        ymaps.ready(init);
-        function init() {
-            var myMap4 = new ymaps.Map('map4', {
-                center: [55.74, 37.58],
-                zoom: 15,
-                controls: []
-            });
-            $("#mpshow").click(function(){
-
-            });
-        }
-
-    </script>
-
-    <script>
-
-        let tabsContainer = document.querySelector("#tabs");
-        let tabTogglers = tabsContainer.querySelectorAll("a");
-        console.log(tabTogglers);
-
-        tabTogglers.forEach(function(toggler) {
-            toggler.addEventListener("click", function(e) {
-                e.preventDefault();
-
-                let tabName = this.getAttribute("href");
-
-                let tabContents = document.querySelector("#tab-contents");
-
-                for (let i = 0; i < tabContents.children.length; i++) {
-
-                    tabTogglers[i].parentElement.classList.remove("border-orange-400", "border-b",  "opacity-100");  tabContents.children[i].classList.remove("hidden");
-                    if ("#" + tabContents.children[i].id === tabName) {
-                        continue;
-                    }
-                    tabContents.children[i].classList.add("hidden");
-
-                }
-                e.target.parentElement.classList.add("border-orange-400", "border-b-2", "opacity-100");
-            });
-        });
-
-        document.getElementById("default-tab").click();
-
-        $(".rotate").click(function(){
-            $(this).toggleClass("rotate-[360deg]");
-        });
-
-        $("#filter").keyup(function() {
-
-            // Retrieve the input field text and reset the count to zero
-            var filter = $(this).val(),
-                count = 0;
-
-            // Loop through the comment list
-            $('#results a').each(function() {
-                // If the list item does not contain the text phrase fade it out
-                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-                    var parent = $(this).parent();
-                    var parents = $(parent).parent();
-                    // MY CHANGE
-                    $(parents).parent().hide();
-                    // Show the list item if the phrase matches and increase the count by 1
-                } else {
-                    var parent = $(this).parent();
-                    var parents = $(parent).parent();
-                    // MY CHANGE
-                    $(parents).parent().show();
-                    // $(this).show(); // MY CHANGE
-                    count++;
-                }
-            });
-        });
-
-        $(".address").keyup(function() {
-
-            // Retrieve the input field text and reset the count to zero
-            var filter = $(this).val(),
-                count = 0;
-
-            // Loop through the comment list
-            $('#results p').each(function() {
-                // If the list item does not contain the text phrase fade it out
-                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-                    var parent = $(this).parent();
-                    var parents = $(parent).parent();
-                    // MY CHANGE
-                    $(parents).parent().hide();
-                    // Show the list item if the phrase matches and increase the count by 1
-                } else {
-                    var parent = $(this).parent();
-                    var parents = $(parent).parent();
-                    // MY CHANGE
-                    $(parents).parent().show();
-                    // $(this).show(); // MY CHANGE
-                    count++;
-                }
-            });
-        });
-
-
-        $("#price").keyup(function() {
-
-            // Retrieve the input field text and reset the count to zero
-            var filter = $(this).val(),
-                count = 0;
-
-            // Loop through the comment list
-            $('#about a').each(function() {
-                // If the list item does not contain the text phrase fade it out
-                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-                    var parent = $(this).parent();
-                    var parents = $(parent).parent();
-                    // MY CHANGE
-                    $(parents).parent().hide();
-                    // Show the list item if the phrase matches and increase the count by 1
-                } else {
-                    var parent = $(this).parent();
-                    var parents = $(parent).parent();
-                    // MY CHANGE
-                    $(parents).parent().show();
-                    // $(this).show(); // MY CHANGE
-                    count++;
-                }
-            });
-        });
-
-        let dataAjax = {};
-        $('.all_cat').click();
-        $('.all_cat2').click();
-        $(".for_check input:checkbox").each(function () {
-            this.checked = true;
-        });
-        $(".for_check2 input:checkbox").each(function () {
-            this.checked = true;
-        });
-        first_ajax('all')
         map_pos('big')
+        first_ajax('all')
 
         function first_ajax(id){
             $.ajax({
@@ -374,339 +232,17 @@
                 </div>
                 </div>`
             );
-            $('.butt').attr('style', 'display: none');
+            // $('.butt').attr('style', 'display: none');
         }
 
-
-
-        function tasks_list_all(data){
-            $(".show_tasks").empty();
-            $.each(data, function(index, data) {
-                if (data.status != 1) {
-                $(".show_tasks").append(
-                    `<div>
-                    <div class="w-full border hover:bg-blue-100 h-[100px] ">
-                    <div class="w-11/12 h-12 m-4">
-                    <div class="float-left w-9/12 " id="results">
-                    <i class="fas fa-user-circle text-4xl float-left text-blue-400 mr-2"></i>
-                    <a href="/detailed-tasks/`+data.id+`" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-sm ml-12 mt-4">` + data.address + `</p>
-                    </div>
-                    <div class="float-right w-1/4 text-right " id="about">
-                    <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">`+ data.category_name +`</p>
-                    </div>
-                    </div>
-                    </div>
-                    </div>`,
-                )
-            }
-            });
-        }
-
-        function tasks_list(data){
-            $(".show_tasks").empty();
-            let id;
-
-            $('.chi_cat').each(function () {
-                if (this.checked) {
-                    id = this.name
-                    $.each(data, function(index, data) {
-                        if (data.category_id == id && data.status != 1) {
-                            $(".show_tasks").append(
-                                `<div>
-                    <div class="w-full border hover:bg-blue-100 h-[100px] ">
-                    <div class="w-11/12 h-12 m-4">
-                    <div class="float-left w-9/12 " id="results">
-                    <i class="`+data.icon+` text-4xl float-left text-blue-400 mr-2"></i>
-                    <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-sm ml-10 mt-1">` + data.address + `</p>
-                    </div>
-                    <div class="float-right w-1/4 text-right " id="about">
-                    <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">`+ data.category_name +`</p>
-                    </div>
-                    </div>
-                    </div>
-                    </div>`,
-                            )
-                        }
-                    });
-                }
-            });
-        }
-
-        $('.all_cat, .all_cat2').click(function () {
-            if(this.checked == false) {
-                $(".for_check input:checkbox").each(function(){
-                    this.checked = false;
-                });
-                $(".for_check2 input:checkbox").each(function(){
-                    this.checked = false;
-                });
-                $('.all_cat').each(function () {
-                    this.checked = false;
-                });
-                $('.all_cat2').each(function () {
-                    this.checked = false;
-                });
-                img_show();
-            }else {
-                $(".for_check input:checkbox").each(function () {
-                    this.checked = true;
-                });
-                $(".for_check2 input:checkbox").each(function () {
-                    this.checked = true;
-                });
-                $('.all_cat').each(function () {
-                    this.checked = true;
-                });
-                $('.all_cat2').each(function () {
-                    this.checked = true;
-                });
-                tasks_list_all(dataAjax)
-            }
-        });
-
-        $('.par_cat, .par_cat2').click(function () {
-            if(this.checked == false) {
-                parcats_click_false(this.id, this.name)
-                if (chicat_check_print()){
-                    tasks_list(dataAjax)}
-                else{
-                    img_show()
-                }
-            } else {
-                parcats_click_true(this.id, this.name)
-                tasks_list(dataAjax)
-            }
-        });
-
-        $('.chi_cat, .chi_cat2').click(function () {
-            if (this.checked == false) {
-                chicats_click_false(this.id, this.name)
-                if (chicat_check_print()){
-                    tasks_list(dataAjax)}
-                else{
-                    img_show()
-                }
-            } else {
-                chicats_click_true(this.id, this.name)
-                tasks_list(dataAjax)
-            }
-        });
-
-        function parcats_click_true(id, name) {
-            $('.par_cat').each(function () {
-                if (this.name == name) {
-                    this.checked = true;
-                }
-            });
-            $('.chi_cat').each(function () {
-                if (this.id == id) {
-                    this.checked = true;
-                }
-            });
-            $('.all_cat').each(function () {
-                if (parcat_check()) {
-                    this.checked = true;
-                } else {
-                    this.checked = false;
-                }
-            });
-            $('.par_cat2').each(function () {
-                if (this.name == name) {
-                    this.checked = true;
-                }
-            });
-            $('.chi_cat2').each(function () {
-                if (this.id == id) {
-                    this.checked = true;
-                }
-            });
-            $('.all_cat2').each(function () {
-                if (parcat2_check()) {
-                    this.checked = true;
-                    tasks_list_all(dataAjax)
-                } else {
-                    this.checked = false;
-                }
-            });
-        }
-
-        function parcats_click_false(id) {
-            $('.par_cat').each(function() {
-                if (this.id == id) {
-                    this.checked = false;
-                }
-            });
-            $('.all_cat').each(function () {
-                this.checked = false;
-            });
-            $('.chi_cat').each(function() {
-                if (this.id == id) {
-                    this.checked = false;
-                }
-            });
-            $('.par_cat2').each(function() {
-                if (this.id == id) {
-                    this.checked = false;
-                }
-            });
-            $('.all_cat2').each(function () {
-                this.checked = false;
-            });
-            $('.chi_cat2').each(function() {
-                if (this.id == id) {
-                    this.checked = false;
-                }
-            });
-        }
-
-        function parcat_check(){
-            let i = 1;
-            $('.par_cat').each(function() {
-                if (this.checked == false) {
-                    i = 0;
-                    return false;
-                }
-            });
-            return i;
-        }
-
-        function parcat2_check(){
-            let i = 1;
-            $('.par_cat2').each(function() {
-                if (this.checked == false) {
-                    i = 0;
-                    return false;
-                }
-            });
-            return i;
-        }
-
-        function chicats_click_true(id, name){
-            $('.chi_cat').each(function() {
-                if (this.name == name) {
-                    this.checked = true;
-                }
-            });
-            $('.par_cat').each(function () {
-                if (this.id == id) {
-                    if (chicat_check(id))
-                        this.checked = true;
-                }
-            });
-            $('.all_cat').each(function () {
-                if (parcat_check()) {
-                    this.checked = true;
-                } else {
-                    this.checked = false;
-                }
-            });
-            $('.chi_cat2').each(function() {
-                if (this.name == name) {
-                    this.checked = true;
-                }
-            });
-            $('.par_cat2').each(function () {
-                if (this.id == id) {
-                    if (chicat2_check(id))
-                        this.checked = true;
-                }
-            });
-            $('.all_cat2').each(function () {
-                if (parcat2_check()) {
-                    this.checked = true;
-                    tasks_list_all(dataAjax)
-                } else {
-                    this.checked = false;
-                }
-            });
-        }
-
-        function chicats_click_false(id, name){
-            $('.chi_cat').each(function() {
-                if (this.name == name) {
-                    this.checked = false
-                }
-            });
-            $('.par_cat').each(function() {
-                if (this.id == id) {
-                    this.checked = false;
-                }
-            });
-            $('.all_cat').each(function () {
-                this.checked = false;
-            });
-            $('.chi_cat2').each(function() {
-                if (this.name == name) {
-                    this.checked = false
-                }
-            });
-            $('.par_cat2').each(function() {
-                if (this.id == id) {
-                    this.checked = false;
-                }
-            });
-            $('.all_cat2').each(function () {
-                this.checked = false;
-            });
-        }
-
-        function chicat_check(id){
-            let i = 1;
-            $('.chi_cat').each(function() {
-                if (this.id == id) {
-                    if (this.checked == false) {
-                        i = 0;
-                        return false;
-                    }
-                }
-            });
-            return i;
-        }
-
-        function chicat2_check(id){
-            let i = 1;
-            $('.chi_cat2').each(function() {
-                if (this.id == id) {
-                    if (this.checked == false) {
-                        i = 0;
-                        return false;
-                    }
-                }
-            });
-            return i;
-        }
-
-        function chicat_check_print(){
-            let i = 0;
-            $('.chi_cat').each(function() {
-                if (this.checked) {
-                    i = 1;
-                    return false;
-                }
-            });
-            return i;
-        }
-
+        let dataRes;
         function map_pos(bs){
             if (bs == 'big'){
-                // $('.big-map').attr("id","")
-                // $('.big-map').attr("hidden","hidden")
-                // $('.small-map').attr("id","map2")
-                // $('.small-map').removeAttr("hidden")
                 $(".big-map").empty();
                 $(".small-map").append(
                     `<div id="map2" class="h-60 my-5 rounded-lg w-full static">
-                         <div class="grid grid-cols-6 gap-6 content-center w-full">
-                             <div></div><div></div><div></div><div></div><div></div>
-                             <div class="text-right w-full h-full">
-                                 <div class="absolute z-50 ml-1"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
-                             </div>
-                         </div>
-                     </div>`,
+                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
+                    </div>`,
                 )
 
                 ymaps.ready(init);
@@ -743,20 +279,11 @@
 
 
             }else{
-                // $('.small-map').attr("id","")
-                // $('.small-map').attr("hidden","hidden")
-                // $('.big-map').attr("id","map2")
-                // $('.big-map').removeAttr("hidden")
                 $(".small-map").empty();
                 $(".big-map").append(
                     `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
-                         <div class="grid grid-cols-10 gap-10 content-center w-full">
-                             <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-                             <div class="text-right w-full h-full">
-                                 <div class="absolute z-50"><img src="{{asset('images/up-down.png')}}" class="hover:cursor-pointer ml-1" title="Kartani kichiklashtirish" onclick="map_pos('big')"/></div>
-                             </div>
-                         </div>
-                     </div>`,
+                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos('big')"/></div>
+                    </div>`,
                 )
 
                 ymaps.ready(init);
