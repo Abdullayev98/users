@@ -11,6 +11,24 @@
         <form action="{{route('task.create.cargo')}}" method="post">
     @endif
   <form action="{{route('task.create.cargo')}}" method="post">
+  @elseif($pcategory->id == 1)
+    @if(session('cat_id') == 22)
+      <form action="{{route('task.create.delivery')}}" method="post">
+    @elseif(session('cat_id') == 23)
+      <form action="{{route('task.create.delivery')}}" method="post">
+    @elseif(session('cat_id') == 25)
+      <form action="{{route('task.create.delivery')}}" method="post">
+      @elseif(session('cat_id') == 28)
+      <form action="{{route('task.create.delivery')}}" method="post">
+    @elseif(session('cat_id') == 29)
+      <form action="{{route('task.create.delivery')}}" method="post">
+    @elseif(session('cat_id') == 24)
+      <form action="{{route('task.create.buy_delivery')}}" method="post">
+    @elseif(session('cat_id') == 27)
+      <form action="{{route('task.create.buy_delivery')}}" method="post">
+    @else
+        <form action="{{route('task.create.buy_delivery')}}" method="post">
+    @endif
   @else
   <form action="{{route('task.create.date')}}" method="post">
 @endif

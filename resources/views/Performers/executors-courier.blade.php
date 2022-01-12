@@ -52,7 +52,7 @@
                              <img class="h-20 mt-6 ml-4" src="{{ asset('images/icon_bag.png') }}">
                          </div> -->
                          <div>
-                             <a href="/chat/{{$user->id}}">
+                             <a href="{{url('performers/chat',['id'=>$user->id])}}">
                                  <button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
                                     @lang('lang.exe_ask')
                                 </button>

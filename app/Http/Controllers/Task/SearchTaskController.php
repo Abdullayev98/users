@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Task;
 
+use App\Models\WalletBalance;
 use Illuminate\Support\Arr;
 use App\Models\User;
 use App\Models\Task;
@@ -59,6 +60,13 @@ class SearchTaskController extends VoyagerBaseController
 
     }
     public function task($id){
+        $balance = WalletBalance::where('user_id',Auth::id())->first();
+        if ($balance){
+            $balance =  $balance->balance;
+        }else{
+            $balance = 0;
+        }
+
         $tasks = Task::where('id',$id)->first();
           $cat_id = $tasks->category_id;
           $user_id = $tasks->user_id;
@@ -69,18 +77,18 @@ class SearchTaskController extends VoyagerBaseController
         foreach($task_responses as $response){
           $response_users = User::where('id', $response->user_id)->first();
           }
-  
+
           $users = User::all();
           $current_user = User::find($user_id);
           $categories = Category::where('id',$cat_id)->get();
-  
+
 
         $arr = get_defined_vars();
 
         if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count'));
+            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count','balance'));
         }else {
-          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
+          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance'));
         }
 
     }
