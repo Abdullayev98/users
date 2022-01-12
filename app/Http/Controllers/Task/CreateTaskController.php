@@ -52,6 +52,29 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
+    public function car_service(Request $request)
+    {
+      $data = $request->input();
+      $request->session()->put('popeg', $data['popeg']);
+      $request->session()->put('no_texpassport', $data['no_texpassport']);
+      $category = Category::where('id', 213)->first();
+      $categories = explode(',',$category->services);
+      return view('create.car_service', compact('categories'));
+    }
+    public function remont_car(Request $request)
+    {
+        $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+      return view('create.remont_car');
+    }
+    public function info_car(Request $request)
+    {
+      $data = $request->input('car');
+      $request->session()->put('car', $data);
+      return view('create.info_car');
+    }
     public function construction(Request $request)
     {
       $cat_id = session()->pull('cat_id');
@@ -283,6 +306,8 @@ class CreateTaskController extends VoyagerBaseController
           }
           $request->session()->put('learning_service', $data);
         }
+        $car_service = $request->input('car_service');
+        $request->session()->put('car_service', $car_service);
         $computer = session()->pull('computer_service');
         $request->session()->put('computer_service', $computer);
         $smm = session()->pull('smm');
@@ -379,8 +404,8 @@ class CreateTaskController extends VoyagerBaseController
           $request->session()->put('buy_delivey_height', $buy_delivey_height); 
           $request->session()->put('buy_delivey_width', $buy_delivey_width); 
           $request->session()->put('buy_delivey_length', $buy_delivey_length); 
-        }elseif($data = $request->input('car')){
-        $request->session()->put('car', $data);
+        }elseif($data = $request->input('delivey_car')){
+        $request->session()->put('delivey_car', $data);
         }else {
           $etaj_po = $request->input('etaj_po');
           $lift_po = $request->input('lift_po');
@@ -461,11 +486,12 @@ class CreateTaskController extends VoyagerBaseController
 
 
     public function notes(Request $request){
-      $data = $request->input('service_delivery');
-      $request->session()->put('service_delivery', $data);
-      $construction = $request->input('construction');
-      $services = implode(',', $construction);
-      $request->session()->put('construction_service', $services);
+      if($data = $request->input('service_delivery')){
+          $request->session()->put('service_delivery', $data);
+      }elseif($construction = $request->input('construction')){
+        $services = implode(',', $construction);
+        $request->session()->put('construction_service', $services);
+      }
         $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
         $category = Category::where('id',$cat_id)->first();
@@ -527,7 +553,16 @@ class CreateTaskController extends VoyagerBaseController
     public function create(Request $request){
       $cat_id = session()->pull('cat_id');
       $request->session()->put('cat_id', $cat_id);
-
+      if(session('parent_id')->id == 213){
+      $car_model = session()->pull('car');
+      $popeg = session()->pull('popeg');
+      $no_texpassport = session()->pull('no_texpassport');
+      $car_service = session()->pull('car_service');
+      }
+      $car_model = null;
+      $popeg = null;
+      $no_texpassport = null;
+      $car_service = null;
       $phone      = $request->input('phone');
       $datay      = $request->input();
       // if(session('cat_id') == ){
@@ -661,7 +696,7 @@ class CreateTaskController extends VoyagerBaseController
         $user_name  = session()->pull('user_name');
         $email      = session()->pull('email');
       }
-      $car = null;
+      $delivey_car = null;
       if($cat_id == 22){
         $delivey_weight = session()->pull('delivey_weight');
       $delivey_height = session()->pull('delivey_height');
@@ -686,7 +721,7 @@ class CreateTaskController extends VoyagerBaseController
       $delivey_width = session()->pull('delivey_width');
       $delivey_length = session()->pull('delivey_length');
       $delivey_budget = session()->pull('delivey_budget');
-      $car = session()->pull('car');
+      $delivey_car = session()->pull('delivey_car');
       }elseif($cat_id == 29){
         $delivey_weight = session()->pull('delivey_weight');
       $delivey_height = session()->pull('delivey_height');
@@ -705,7 +740,7 @@ class CreateTaskController extends VoyagerBaseController
       }else{
         $construction_service = null;
       }
-      $id = [
+      $id = Task::create([
         'photos' => $image,
         'user_id'=>$user_id,
         'name'=>$name,
@@ -720,7 +755,8 @@ class CreateTaskController extends VoyagerBaseController
         'phone'=>$phone,
         'need_movers'=>$need_movers,
         'show_only_to_performers'=>$secret,
-        'delivery' => array('delivey_weight' => $delivey_weight,'delivey_height' => $delivey_height,'delivey_width' => $delivey_width, 'delivey_length' => $delivey_length, 'delivey_budget' => $delivey_budget, 'car' => $car),
+        'remont_car' => array('car_model' => $car_model,'car_service' => $car_service,'popeg' => $popeg, 'no_texpassport' => $no_texpassport,),
+        'delivery' => array('delivey_weight' => $delivey_weight,'delivey_height' => $delivey_height,'delivey_width' => $delivey_width, 'delivey_length' => $delivey_length, 'delivey_budget' => $delivey_budget, 'delivey_car' => $delivey_car),
         'buy_delivery' => array('service_delivery' => $service_delivery,'buy_delivey_weight' => $buy_delivey_weight,'buy_delivey_height' => $buy_delivey_height,'buy_delivey_width' => $buy_delivey_width, 'buy_delivey_length' => $buy_delivey_length),
         'construction_service' => $construction_service,
         'services' => $services,
@@ -749,8 +785,7 @@ class CreateTaskController extends VoyagerBaseController
         'krosata_service' => $krosata_service,
         'bugalter_service' => $bugalter_service,
         'learning_service' => array('service' => $learning_service ,'age' => $age, 'time' => $time, 'training' => $training),
-      ];
-      dd($id);
+      ]);
         session()->forget('task');
         session()->forget('category');
         return redirect("/home");

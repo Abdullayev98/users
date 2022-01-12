@@ -32,6 +32,8 @@
     <form class="" action="{{route('task.create.service_delivery')}}" method="post">
     @elseif($parent_id->id == 2)
     <form class="" action="{{route('task.create.construction')}}" method="post">
+    @elseif($parent_id->id == 213)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
     @else
     <form class="" action="{{route('task.create.services')}}" method="post">
     @endif
