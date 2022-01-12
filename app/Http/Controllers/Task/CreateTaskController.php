@@ -49,6 +49,7 @@ class CreateTaskController extends VoyagerBaseController
         $child_category = Category::where('id', $category_id)->first();
         $cat = $child_category->parent_id;
         $pcategory = Category::where('id', $cat)->first();
+        $request->session()->put('parent_id', $pcategory);
         return view('create.location', compact('pcategory'));
 
     }
