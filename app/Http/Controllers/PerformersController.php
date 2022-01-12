@@ -15,6 +15,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use App\Models\Task;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
 
 
 class PerformersController extends Controller
@@ -89,7 +90,12 @@ public function perf_ajax($cf_id){
 }
 
 public function del_notif($id,$task_id){
-
+    $balance = WalletBalance::where('user_id',Auth::id())->first();
+    if ($balance){
+        $balance =  $balance->balance;
+    }else{
+        $balance = 0;
+    }
     Notification::where('id',$id)->delete();
 
     $tasks = Task::where('id',$task_id)->first();
@@ -101,7 +107,7 @@ public function del_notif($id,$task_id){
   $current_user = User::find($user_id);
   $categories = Category::where('id',$cat_id)->get();
   // dd($current_user);
-  return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
+  return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance'));
 }
 
 }
