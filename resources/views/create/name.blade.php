@@ -55,6 +55,8 @@
                         <form action="{{route('task.create.bugalter')}}" method="post">
                         @elseif($current_parent_category->id == 19)
                         <form action="{{route('task.create.age')}}" method="post">
+                        @elseif($current_parent_category->id == 213)
+                        <form action="{{route('task.create.remont_car')}}" method="post">
                         @else
                         <form action="{{route('task.create.name')}}" method="post">
                     @endif
