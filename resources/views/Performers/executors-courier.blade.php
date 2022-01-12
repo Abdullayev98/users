@@ -39,13 +39,13 @@
                             <span>{{$user->location}}</span>
                         </div>
                         <div class="text-gray-500 text-base mt-6">
-                            <span>@lang('lang.exe_done')</span>
+                            <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span>
                         </div>
-                        <div class="text-gray-500 text-base mt-1">
+                        {{-- <div class="text-gray-500 text-base mt-1">
                             <span>@lang('lang.exe_averageRating'): 4,9</span>
                              <i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i>
                             <span class="text-cyan-500 hover:text-red-600">(197 @lang('lang.exe_feedbacks'))</span>
-                        </div>
+                        </div> --}}
                         <!-- <div class="flex flex-row">
                              <img class="h-24 mt-4 ml-2" src="{{ asset('images/icon_year.svg') }}">
                              <img class="h-24 mt-4 ml-4" src="{{ asset('images/icon_shield.png') }}">
@@ -69,10 +69,10 @@
 
                 <div class="mt-8">
                     <h1 class="text-3xl font-semibold text-gray-700">@lang('lang.exe_aboutMe')</h1>
-                    <div class="mt-4 mb-4 bg-orange-100 py-4 rounded-xl">
+                    {{-- <div class="mt-4 mb-4 bg-orange-100 py-4 rounded-xl">
                         <p class="ml-6"> @lang('lang.exe_pushBtn')<a class="text-red-500 hover:text-red-900" onclick="toggleModal12('modal-id12')" href="#">@lang('lang.exe_giveTbtn')</a>. <br>
                             @lang('lang.exe_work')</p>
-                    </div>
+                    </div> --}}
                 </div>
                 <p>{{$user->description}}</p>
 
@@ -80,7 +80,7 @@
                 @foreach($categories as $category)
                  @if($category->id == $user->category_id)
                <div class="mt-8">
-                    <a href="#" class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">{{$category->name}}</a>
+                    <a class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">{{$category->name}}</a>
                     <!-- <p class="mt-2 text-gray-400 text-lg">1 место в рейтинге категории в г. Санкт-Петербург, выполнено 199 заданий <br>
                         20 место в общем рейтинге категории</p> -->
                </div>
@@ -108,18 +108,10 @@
 
         {{-- right sidebar start --}}
             <div class="md:col-span-1 col-span-3  md:mx-2 mx-auto inline-block w-4/5 float-right right-20  h-auto">
-                <div class="mt-8 ">
-                    <a class="md:block hidden" href="#">
-                        <button  class="bg-amber-600 hover:bg-amber-500 text-2xl text-white font-medium py-4 px-12  rounded" onclick="toggleModal12('modal-id12')">
-                            @lang('lang.exe_giveTask')
-                        </button>
-                    </a>
-                    <p class="md:block hidden text-sm text-amber-500 text-center mt-8">@lang('lang.exe_perfTakesNotif')</p>
-                </div>
                 <div class="mt-16 border p-8 rounded-lg border-gray-300">
                     <div>
                         <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
-                        <p class="text-gray-400">@lang('lang.exe_since')</p>
+                        <p class="text-gray-400">@lang('lang.exe_since') {{date('d-m-Y', strtotime($user->created_at))}}</p>
                     </div>
                     <div class="">
                         <!-- <div class="flex w-full mt-4">
@@ -176,18 +168,6 @@
                             </div>
                         </div> -->
                     </div>
-                </div>
-                <div class="mt-8">
-                    <h1 class="text-3xl font-medium">@lang('lang.exe_newPost')<br><a href="#" class="text-blue-500 hover:text-red-600">@lang('lang.exe_inBlog')</a></h1>
-                    <img class="mt-4 rounded-xl " src="{{asset('images/man.jpeg')}}" alt="#">
-                    <h1 class="mt-4 font-medium text-xl text-gray-700">@lang('lang.exe_fromTo')</h1>
-                    <p class="mt-2 font-normal text-base text-gray-700">('lang.exe_motivation')</p>
-                    <hr class="mt-4 mb-4 text-gray-300">
-                    <h2 class="font-medium text-xl text-gray-700">@lang('lang.exe_becomeMaster')</h2>
-                    <hr class="mt-4 mb-4 text-gray-300">
-                    <h2 class="font-medium text-xl text-gray-700">@lang('lang.exe_prize')</h2>
-                    <hr class="mt-4 mb-4 text-gray-300">
-                    <h2 class="font-medium text-xl text-gray-700">@lang('lang.exe_takeItForFree')</h2>
                 </div>
             </div>
         {{-- right sidebar end --}}

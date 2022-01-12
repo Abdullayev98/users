@@ -68,7 +68,8 @@ class PerformersController extends Controller
         $users= User::where('id',$id)->get();
         $categories = DB::table('categories')->get();
         $child_categories = DB::table('categories')->get();
-        return view('Performers/executors-courier',compact('users','categories','child_categories','vcs'));
+        $task_count = Task::where('user_id', Auth::id())->count();
+        return view('Performers/executors-courier',compact('users','categories','child_categories','vcs','task_count'));
     }
 
 public function perf_ajax($cf_id){

@@ -372,6 +372,7 @@
         function tasks_list_all(data){
             $(".show_tasks").empty();
             $.each(data, function(index, data) {
+                if (data.status != 1) {                    
                 $(".show_tasks").append(
                     `<div>
                     <div class="w-full border hover:bg-blue-100 h-[100px] ">
@@ -389,6 +390,7 @@
                     </div>
                     </div>`,
                 )
+            }
             });
         }
 
@@ -400,7 +402,7 @@
                 if (this.checked) {
                     id = this.name
                     $.each(data, function(index, data) {
-                        if (data.category_id == id) {
+                        if (data.category_id == id && data.status != 1) {
                             $(".show_tasks").append(
                                 `<div>
                     <div class="w-full border hover:bg-blue-100 h-[100px] ">

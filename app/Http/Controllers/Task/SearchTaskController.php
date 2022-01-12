@@ -20,7 +20,7 @@ class SearchTaskController extends VoyagerBaseController
     public function task_search(){
 
 
-        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->paginate(20);
+        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->get();
         $categories = Category::withTranslations(['ru', 'uz'])->get();
         return view('task.search', compact('tasks','categories'));
     }
@@ -96,24 +96,34 @@ class SearchTaskController extends VoyagerBaseController
     }
 
     public function task_response(Request $request){
-      $description = $request->input('response_desc');
-      $notificate = $request->input('notificate');
-      $response_time = $request->input('response_time');
-      $response_price = $request->input('response_price');
+      $status = $request->input('status');
+      $performer_id = $request->input('performer_id');
       $task_id = $request->input('task_id');
-      $users_id = $request->input('user_id');
-      TaskResponse::create([
-        'user_id' => Auth::id(),
-        'task_id' => $task_id,
-        'description' => $description,
-        'notificate' => $notificate,
-        'time' => $response_time,
-        'price' => $response_price,
-        'price' => $response_price,
-        'creator_id' => $users_id
-      ]);
-      
-      return response()->json(['success'=>$description]);
+      $description = $request->input('response_desc');
+      if($status){
+        Task::where('id', $task_id)->update([
+          'status' => $status,
+          'performer_id' => $performer_id,
+        ]);
+      }
+      if($description){
+        $notificate = $request->input('notificate');
+        $response_time = $request->input('response_time');
+        $response_price = $request->input('response_price');
+        $task_id = $request->input('task_id');
+        $users_id = $request->input('user_id');
+        TaskResponse::create([
+          'user_id' => Auth::id(),
+          'task_id' => $task_id,
+          'description' => $description,
+          'notificate' => $notificate,
+          'time' => $response_time,
+          'price' => $response_price,
+          'price' => $response_price,
+          'creator_id' => $users_id
+        ]);
+      }
+      return response()->json(['success'=>$performer_id]);
   }
 
 }
