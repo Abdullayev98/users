@@ -2,7 +2,7 @@
 
 
 @section('content')
-   <div class="h-screen   mb-32 bg-[url('https://assets.youdo.com/_next/static/media/back_toned.96ac5f6f14f3080fa4aed180c287d19f.jpg')] h-90">
+   <div class="h-screen bg-no-repeat mb-32 bg-[url('https://images.pexels.com/photos/5588400/pexels-photo-5588400.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=768&amp;w=1688')] h-90">
         <div class="text-center my-auto pt-48">
               <p class="text-5xl font-bold text-[#fff] ">@lang('lang.ver_becomePerf')</p>
               <p class="mt-8 mb-12 text-[#fff] text-2xl">@lang('lang.ver_uSerHelps')</p>
@@ -15,19 +15,19 @@
       <p class="font-bold mt-16">@lang('lang.ver_becomePref2')</p>
         <div class="grid md:grid-cols-4 grid-cols-1 gap-4 pt-16 container mx-auto font-bold text-xl">
           <div>
-            <img class="mx-auto" src="	https://assets.youdo.com/_next/static/media/money.bd687ef7e0abebf2c7822c7c9e527522.png" alt="#">
+            <img class="mx-auto" src="{{asset('images/User_money.png')}}" alt="#">
              <p>@lang('lang.ver_goodSalary')</p>
           </div>
           <div>
-            <img class="mx-auto" src="https://assets.youdo.com/_next/static/media/free.4da9be74c8a60728ae3a1126aec7b2b0.png" alt="#">
+            <img class="mx-auto" src="{{asset('images/User_watch.png')}}" alt="#">
             <p>@lang('lang.ver_freeTime')</p>
           </div>
           <div>
-            <img class="mx-auto" src="https://assets.youdo.com/_next/static/media/safe.110dfdf9ed01a8b87b2d2efdee4a843f.png" alt="#">
+            <img class="mx-auto" src="{{asset('images/User_security.png')}}" alt="#">
             <p>@lang('lang.ver_safeService')</p>
           </div>
           <div>
-            <img class="mx-auto" src="	https://assets.youdo.com/_next/static/media/economy.2c5d8e9a3016bb0d29e7444455afc18e.png" alt="#">
+            <img class="mx-auto" src="{{asset('images/User_cash.png')}}" alt="#">
             <p>@lang('lang.ver_addsEconomy')</p>
           </div>
         </div>
@@ -45,7 +45,7 @@
                       </div>
                   </div>
                   <div>
-                      <img class="object-cover lg:block hidden   w-10/12 shrink" src="https://assets.youdo.com/_next/static/media/arrow.35c0a4c2bd4bf776be97bd4bb7a66db9.svg" alt="">
+                      <img class="object-cover lg:block hidden   w-10/12 shrink" src="{{asset('images/arrow.svg')}}" alt="">
                   </div>
                   <div class="info ">
                       <div>
@@ -54,7 +54,7 @@
                       </div>
                   </div>
                   <div>
-                      <img class="object-cover lg:block hidden   w-10/12 shrink" src="https://assets.youdo.com/_next/static/media/arrow.35c0a4c2bd4bf776be97bd4bb7a66db9.svg" alt="">
+                      <img class="object-cover lg:block hidden   w-10/12 shrink" src="{{asset('images/arrow.svg')}}" alt="">
                   </div>
                   <div class="info ">
                       <div>
@@ -77,7 +77,7 @@
     {{-- 1 --}}
     <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
         <div class="col-span-2 xl:mr-0 mr-8 md:mx-0 mx-6">
-          <img  src="	https://assets.youdo.com/next/_next/static/images/3065257-ce528a23cf35ebec9f26fca3c8234f92.jpg" alt="#">
+          <img  src="{{asset('images/performer1.jpg')}}" alt="#">
         </div>
         <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8  lg:text-left text-center">
           <h1 class="font-bold text-3xl">@lang('lang.ver_goodSalary')</h1>
@@ -110,11 +110,11 @@
           </div>
       </div>
       <div class="col-span-2 mx-auto mr-8 lg:block hidden">
-        <img  src="https://assets.youdo.com/next/_next/static/images/2039481-bb66c26d9d35c864cd7994a436e8ca0f.jpg" alt="#">
+        <img  src="{{asset('images/performer2.jpg')}}" alt="#">
       </div>
 
       <div class="col-span-2 mx-auto mr-8 lg:hidden block md:ml-0 ml-6">
-        <img  src="https://assets.youdo.com/next/_next/static/images/2039481-bb66c26d9d35c864cd7994a436e8ca0f.jpg" alt="#">
+        <img  src="{{asset('images/performer2.jpg')}}" alt="#">
       </div>
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
         <h1 class="font-bold text-3xl">@lang('lang.ver_freeTime')</h1>
@@ -134,7 +134,7 @@
     {{-- 3 --}}
     <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
       <div class="col-span-2 xl:mr-0 mr-8 md:mx-0 mx-6">
-        <img  src="https://assets.youdo.com/next/_next/static/images/2735528-4845f3d54cb821712417c20131306d50.jpg" alt="#">
+        <img  src="{{asset('images/performer3.jpg')}}" alt="#">
       </div>
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:text-left text-center">
         <h1 class="font-bold text-3xl">@lang('lang.ver_serviceSec')</h1>
@@ -167,11 +167,11 @@
           </div>
       </div>
       <div class="col-span-2  mx-auto mr-8 lg:block hidden ">
-        <img  src="https://assets.youdo.com/next/_next/static/images/2402385-0292eb700f06ad2d5a8f4e71a3edc48d.jpg" alt="#">
+        <img  src="{{asset('images/performer4.jpg')}}" alt="#">
       </div>
 
       <div class="col-span-2  mx-auto mr-8 lg:hidden block md:ml-0 ml-6">
-        <img  src="https://assets.youdo.com/next/_next/static/images/2402385-0292eb700f06ad2d5a8f4e71a3edc48d.jpg" alt="#">
+        <img  src="{{asset('images/performer4.jpg')}}" alt="#">
       </div>
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
         <h1 class="font-bold text-3xl">@lang('lang.ver_addsEconomy')</h1>
@@ -206,7 +206,7 @@
                   </button>
                 </div>
                   <div class="float-right ">
-                      <img class="w-24 h-24" src="https://assets.youdo.com/_next/static/media/unlim.fbd507f8113531a2717af8877957d4aa.svg" alt="#">
+                      <img class="w-24 h-24" src="{{asset('images/unlim_User.svg')}}" alt="#">
                   </div>
             </div>
 
@@ -219,7 +219,7 @@
                 </button>
               </div>
                 <div class="float-right">
-                    <img class="w-24 h-24" src="https://assets.youdo.com/_next/static/media/basic.4d5f4ab124ffcd01e1b75c89be396d63.svg" alt="#">
+                    <img class="w-24 h-24" src="{{asset('images/basic_User.svg')}}" alt="#">
                 </div>
             </div>
         </div>
@@ -232,11 +232,11 @@
 
       <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
           <div class="col-span-2">
-            <iframe class="rounded-lg h-full w-5/6 mx-auto" src="https://www.youtube.com/embed/FgV0PmpJFh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="rounded-lg h-full w-5/6 mx-auto" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:text-left text-center">
             <p class=" text-lg">@lang('lang.ver_independance')</p>
-              <h1 class="font-bold text-6xl mt-4">65 000 ₽</h1>
+              <h1 class="font-bold text-6xl mt-4">65 000</h1>
            <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSCour')</p>
             <div class="mt-16">
               <a href="{{ route('task.search') }}">
@@ -267,7 +267,7 @@
       <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-16 sm:mb-16 mb-0">
         <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:block hidden lg:text-left text-center">
           <p class=" text-lg">@lang('lang.ver_opinion6')</p>
-            <h1 class="font-bold text-6xl mt-4">70 000 ₽</h1>
+            <h1 class="font-bold text-6xl mt-4">70 000</h1>
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSPhoto')</p>
           <div class="mt-16">
             <a href="{{ route('task.search') }}">
@@ -278,15 +278,15 @@
           </div>
         </div>
         <div class="col-span-2 lg:block hidden mx-auto mr-8 ">
-          <iframe class="rounded-lg h-full" width="640" src="https://www.youtube.com/embed/M6QCnnVSfzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe class="rounded-lg h-full" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <div class="col-span-2 lg:hidden block mx-auto mr-8 ">
-          <iframe class="rounded-lg h-full w-full" src="https://www.youtube.com/embed/M6QCnnVSfzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="rounded-lg h-full w-full" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
           <p class="mt-6 text-lg">@lang('lang.ver_opinion7')</p>
-            <h1 class="font-bold text-6xl mt-4">70 000 ₽</h1>
+            <h1 class="font-bold text-6xl mt-4">70 000</h1>
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageS3')</p>
           <div class="mt-16">
             <a href="{{ route('task.search') }}">

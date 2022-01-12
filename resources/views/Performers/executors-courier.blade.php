@@ -179,7 +179,7 @@
                 </div>
                 <div class="mt-8">
                     <h1 class="text-3xl font-medium">@lang('lang.exe_newPost')<br><a href="#" class="text-blue-500 hover:text-red-600">@lang('lang.exe_inBlog')</a></h1>
-                    <img class="mt-4 rounded-xl " src="https://content0.youdo.com/zi.ashx?i=d36fd188a176881f" alt="#">
+                    <img class="mt-4 rounded-xl " src="{{asset('images/man.jpeg')}}" alt="#">
                     <h1 class="mt-4 font-medium text-xl text-gray-700">@lang('lang.exe_fromTo')</h1>
                     <p class="mt-2 font-normal text-base text-gray-700">('lang.exe_motivation')</p>
                     <hr class="mt-4 mb-4 text-gray-300">

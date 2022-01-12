@@ -74,7 +74,7 @@
 
                                             <div class='modal' id='modal1'>
                                                 <div class='content'>
-                                                    <img src="https://css-static.youdo.com/assets/72082/i/recharge-pig-0ce0730fc21f092f12cc3855956a45d4.svg" alt="">
+                                                    <img src="{{asset('images/cashback.svg')}}" alt="">
                                                     <h1 class='title'>Пополните баланс</h1>
                                                     <p>
                                                         Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.
@@ -197,6 +197,7 @@
                 </div>
 
                 <div class="w-[750px]">
+                    @if ($tasks->user_name == $auth_user->name)
                     <div>
                         @if(isset($task_responses))
                             <div class="text-4xl font-semibold my-6">
@@ -232,13 +233,13 @@
                                 <div class="mb-6">
                                     <div class="my-10">
                                         <div class="rounded-md bg-black h-24 float-left mr-5">
-                                            <img class="w-24 h-24" src="https://assets.youdo.com/_next/static/media/executor_176.900c31f3bbd110fe153ec59d249ac71b.png" alt="">
+                                            <img class="w-24 h-24" src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%85%D0%BE%D0%BA%D0%BA%D0%B5%D1%8F-%D0%BD%D0%B0-%D0%BB%D1%8C%D0%B4%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%BF%D0%BE%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-117033775.jpg" alt="">
                                         </div>
                                         <div class="">
                                             <a href="/performers/{{$response_users->id}}" class="text-blue-500 text-xl font-semibold float-left">
                                                 {{$response_users->name}}
                                             </a>
-                                            <img class="w-7 h-7 ml-2" src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" alt="">
+                                            <img class="w-7 h-7 ml-2" src="{{asset('images/shield.svg')}}" alt="">
                                             <div class="text-gray-700">
                                                 <i class="fas fa-star text-[#fff0d0] mr-1"></i>4,96 по 63 отзывам
                                             </div>
@@ -274,7 +275,7 @@
                         </div>
                     @endif
                 </div>
-
+                @endif
                 <div class="mt-12">
                     <h1 class="text-3xl font-medium ">Другие задания в категории</h1>
                     @foreach($same_tasks as $same_task)
@@ -296,16 +297,19 @@
             <h1 class="text-lg">Заказчик этого задания</h1>
             <div class="flex flex-row mt-4">
                 <div class="mr-4">
+                    @if (isset($current_user))
                     <img src="
                         @if ($current_user->avatar == 'users/default.png')
                     {{ asset("AvatarImages/images/{$current_user->avatar}") }}
                     @else
                     {{ asset("AvatarImages/{$current_user->avatar}") }}
                     @endif" class="border-2 border-gray-400 w-32 h-32" alt="#">
+                    @endif
                 </div>
                 <div class="">
                     <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
                     <a href="#" class="text-xl text-gray-500">
+                    @if (isset($current_user))
                         @if($current_user->age != "")
                             <p class="inline-block text-m mr-2">
                                 {{$current_user->age}}
@@ -314,6 +318,7 @@
                                 @else @lang('lang.cash_rusYearLet')
                                 @endif
                             </p>
+                        @endif
                         @endif
                     </a>
                 </div>

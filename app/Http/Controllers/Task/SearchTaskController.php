@@ -82,13 +82,14 @@ class SearchTaskController extends VoyagerBaseController
           $current_user = User::find($user_id);
           $categories = Category::where('id',$cat_id)->get();
 
-
+          $auth_user = Auth::user();
+          
         $arr = get_defined_vars();
 
         if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count','balance'));
+            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count','balance','auth_user'));
         }else {
-          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance'));
+          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance','auth_user'));
         }
 
     }
