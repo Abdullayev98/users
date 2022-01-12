@@ -57,8 +57,13 @@
                                 @endif
                             </p>
                         </span>
-                        <p class="mt-2">@lang('lang.cash_created') <a href="#"><span>1</span></span> @lang('lang.cash_task')</a></p>
-                        <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p>
+                        <p class="mt-2">@lang('lang.cash_created') <a href="#">
+                            <span>
+                                @if ($task == Null)  0
+                                @else {{$task}}
+                                @endif
+                            </span> @lang('lang.cash_task')</a></p>
+                        {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                     </div>
                 </figure>
                 {{-- user ma'lumotlari tugashi --}}
