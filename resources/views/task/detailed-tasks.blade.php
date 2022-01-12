@@ -197,6 +197,7 @@
                 </div>
 
                 <div class="w-[750px]">
+                    @if (isset($suth_user))
                     @if ($tasks->user_name == $auth_user->name)
                     <div>
                         @if(isset($task_responses))
@@ -275,6 +276,7 @@
                         </div>
                     @endif
                 </div>
+                @endif
                 @endif
                 <div class="mt-12">
                     <h1 class="text-3xl font-medium ">Другие задания в категории</h1>
