@@ -52,9 +52,128 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
-    public function computer(Request $request)
+    public function avto_delivery(Request $request)
+    {
+      return view('create.delivery_avto');
+    }
+    public function service_delivery(Request $request)
     {
       $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 1)->first();
+        $categories = explode(',',$category->services);
+      return view('create.delivery1', compact('categories'));
+    }
+    public function delivery(Request $request)
+    {
+      return view('create.delivery');
+    }
+    public function buy_delivery(Request $request)
+    {
+      return view('create.buy_delivery');
+    }
+    public function age(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 19)->first();
+        $categories = explode(',',$category->services);
+      return view('create.age');
+    }
+    public function training(Request $request)
+    {
+      $data = $request->input('age');
+      $request->session()->put('age', $data);
+      return view('create.training');
+    }
+    public function learning(Request $request)
+    {
+      $data = $request->input();
+      $request->session()->put('training', $data['training']);
+      $request->session()->put('time', $data['time']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 19)->first();
+        $categories = explode(',',$category->services);
+      return view('create.learning', compact('categories'));
+    }
+    public function bugalter(Request $request)
+    {
+        $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 18)->first();
+        $categories = explode(',',$category->services);
+      return view('create.bugalter', compact('categories'));
+    }
+    public function remont_tex(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 17)->first();
+        $categories = explode(',',$category->services);
+      return view('create.remont_tex', compact('categories'));
+    }
+    public function krosata(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 16)->first();
+        $categories = explode(',',$category->services);
+      return view('create.krosata', compact('categories'));
+    }
+    public function remont_ustanovka(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 15)->first();
+        $categories = explode(',',$category->services);
+        return view('create.remont_ustanovka', compact('categories'));
+    }
+    public function photo(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 13)->first();
+        $categories = explode(',',$category->services);
+      return view('create.photo', compact('categories'));
+    }
+    public function it(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 12)->first();
+        $categories = explode(',',$category->services);
+        return view('create.it', compact('categories'));
+    }
+    public function design(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 11)->first();
+        $categories = explode(',',$category->services);
+      return view('create.design', compact('categories'));
+    }
+    public function computer(Request $request)
+    {
+      $data = $request->input();
+        $request->session()->put('cat_id', $data['cat_id']);
+        $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
         $category = Category::where('id', 9)->first();
         $categories = explode(',',$category->services);
@@ -62,10 +181,12 @@ class CreateTaskController extends VoyagerBaseController
     }
     public function smm(Request $request)
     {
-        $cat_id = session()->pull('cat_id');
-        $request->session()->put('cat_id', $cat_id);
-        $category = Category::where('id',8)->first();
-        $categories = explode(',',$category->services);
+      $data = $request->input();
+      $request->session()->put('cat_id', $data['cat_id']);
+      $cat_id = session()->pull('cat_id');
+      $request->session()->put('cat_id', $cat_id);
+      $category = Category::where('id', 8)->first();
+      $categories = explode(',',$category->services);
         return view('create.smm', compact('categories'));
     }
     public function housemaid(Request $request)
@@ -113,6 +234,42 @@ class CreateTaskController extends VoyagerBaseController
               return view('create.date');
           }
           $request->session()->put('computer_service', $data);
+        }elseif($data = $request->input('design')){
+          $request->session()->put('design_service', $data);
+          if($data == 'Можно выполнить удаленно'){
+            return view('create.date');
+          }
+          $request->session()->put('design_service', $data);
+        }elseif($data = $request->input('it')){
+          $request->session()->put('it_service', $data);
+          if($data == 'Можно выполнить удаленно'){
+            return view('create.date');
+          }
+          $request->session()->put('it_service', $data);
+        }elseif($data = $request->input('photo')){
+          $request->session()->put('photo_service', $data);
+          if($data == 'Можно выполнить удаленно'){
+            return view('create.date');
+        }
+        $request->session()->put('photo_service', $data);
+        }elseif($data = $request->input('remont_ustanovka')){
+          $request->session()->put('remont_ustanovka_service', $data);
+        }elseif($data = $request->input('krosata')){
+          $request->session()->put('krosata_service', $data);
+        }elseif($data = $request->input('remont_tex')){
+          $request->session()->put('remont_tex_service', $data);
+        }elseif($data = $request->input('bugalter')){
+          $request->session()->put('bugalter_service', $data);
+          if($data == 'Можно выполнить удаленно'){
+            return view('create.date');
+          }
+          $request->session()->put('bugalter_service', $data);
+        }elseif($data = $request->input('learning')){
+          $request->session()->put('learning_service', $data);
+          if($data == 'Удаленно (через интернет)'){
+            return view('create.date');
+          }
+          $request->session()->put('learning_service', $data);
         }
         $computer = session()->pull('computer_service');
         $request->session()->put('computer_service', $computer);
@@ -127,6 +284,7 @@ class CreateTaskController extends VoyagerBaseController
         $child_category = Category::where('id', $category_id)->first();
         $cat = $child_category->parent_id;
         $pcategory = Category::where('id', $cat)->first();
+        $request->session()->put('parent_id', $pcategory);
         return view('create.location', compact('pcategory'));
     }
     public function cargo(Request $request)
@@ -189,6 +347,28 @@ class CreateTaskController extends VoyagerBaseController
           }
             $request->session()->put('location', $fullloc);
             $request->session()->flash('location2', $request->input('location'));
+        }elseif($data2 = $request->input('delivey_weight')){
+          $delivey_weight = $request->input('delivey_weight');
+          $delivey_height = $request->input('delivey_height');
+          $delivey_width = $request->input('delivey_width');
+          $delivey_length = $request->input('delivey_length');
+          $delivey_budget = $request->input('delivey_budget');
+          $request->session()->put('delivey_weight', $delivey_weight); 
+          $request->session()->put('delivey_height', $delivey_height); 
+          $request->session()->put('delivey_width', $delivey_width); 
+          $request->session()->put('delivey_length', $delivey_length); 
+          $request->session()->put('delivey_budget', $delivey_budget); 
+        }elseif($data1 = $request->input('buy_delivey_weight')){
+          $buy_delivey_weight = $request->input('buy_delivey_weight');
+          $buy_delivey_height = $request->input('buy_delivey_height');
+          $buy_delivey_width = $request->input('buy_delivey_width');
+          $buy_delivey_length = $request->input('buy_delivey_length');
+          $request->session()->put('buy_delivey_weight', $buy_delivey_weight); 
+          $request->session()->put('buy_delivey_height', $buy_delivey_height); 
+          $request->session()->put('buy_delivey_width', $buy_delivey_width); 
+          $request->session()->put('buy_delivey_length', $buy_delivey_length); 
+        }elseif($data = $request->input('car')){
+        $request->session()->put('car', $data);
         }else {
           $etaj_po = $request->input('etaj_po');
           $lift_po = $request->input('lift_po');
@@ -223,14 +403,9 @@ class CreateTaskController extends VoyagerBaseController
       $cat_id = session()->pull('cat_id');
       $request->session()->put('cat_id', $cat_id);
       $category = Category::where('id',$cat_id)->first();
-      $parent_id = Category::query()->where("parent_id", null)->skip(4)->first();
-      $request->session()->put('parent_id', $parent_id);
-      $category_id = session()->pull('cat_id');
-        $request->session()->put('cat_id', $category_id);
-        $child_category = Category::where('id', $category_id)->first();
-        $cat = $child_category->parent_id;
-        $pcategory = Category::where('id', $cat)->first();
-      return view('create.budget',compact('category','pcategory'));
+      $parent_8 = Category::query()->where("parent_id", null)->skip(4)->first();
+      $request->session()->put('parent_8', $parent_8);
+      return view('create.budget',compact('category'));
         // return view('create.budget');
     }
 
@@ -272,6 +447,8 @@ class CreateTaskController extends VoyagerBaseController
 
 
     public function notes(Request $request){
+      $data = $request->input('service_delivery');
+      $request->session()->put('service_delivery', $data);
         $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
         $category = Category::where('id',$cat_id)->first();
@@ -279,7 +456,7 @@ class CreateTaskController extends VoyagerBaseController
             $data = null;
             $serv = null;
             $request->session()->put('services', $serv);
-        }elseif(session('parent_id')){
+        }elseif(session('parent_8')){
           $data = null;
           $serv = null;
           // $request->session()->put('services', $serv);
@@ -331,8 +508,35 @@ class CreateTaskController extends VoyagerBaseController
     }
 
     public function create(Request $request){
+      $cat_id = session()->pull('cat_id');
+      $request->session()->put('cat_id', $cat_id);
+
       $phone      = $request->input('phone');
       $datay      = $request->input();
+      // if(session('cat_id') == ){
+        if($cat_id == 24){
+          $service_delivery = session()->pull('service_delivery');
+          $buy_delivey_weight = session()->pull('buy_delivey_weight');
+      $buy_delivey_height = session()->pull('buy_delivey_height');
+      $buy_delivey_width = session()->pull('buy_delivey_width');
+      $buy_delivey_length = session()->pull('buy_delivey_length');
+        }elseif($cat_id == 27){
+          $service_delivery = session()->pull('service_delivery');
+          $buy_delivey_weight = session()->pull('buy_delivey_weight');
+      $buy_delivey_height = session()->pull('buy_delivey_height');
+      $buy_delivey_width = session()->pull('buy_delivey_width');
+      $buy_delivey_length = session()->pull('buy_delivey_length');
+        }
+          else{
+            $service_delivery = null;
+          $buy_delivey_weight = null;
+          $buy_delivey_height = null;
+          $buy_delivey_width = null;
+          $buy_delivey_length = null;
+        }
+        
+
+      // }
 //      $request->session()->put('phone', $datay['phone']);
       $name        = session()->pull('name');
       $category    = session()->pull('cat_id');
@@ -351,6 +555,11 @@ class CreateTaskController extends VoyagerBaseController
       $etaj_za = session()->pull('etaj_za');
       $lift_za = session()->pull('lift_za');
       $peopleCount = session()->pull('peopleCount');
+      if(session('parent_id') == 13){
+        $photo = session()->pull('photo_service');
+      }else{
+        $photo = null;
+      }
         if ($category == 50) {
             $weight = session()->pull('weight');
             $length = session()->pull('length');
@@ -362,17 +571,66 @@ class CreateTaskController extends VoyagerBaseController
             $width = null;
             $height = null;
         }
-      $glassSht = null;
-      $service1 = null;
-      $where = null;
-      $how_many = null;
       $smm = session()->pull('smm');
-      $computer = session()->pull('computer_service');
+      
+      if(session('parent_id') == 9){
+        $computer = session()->pull('computer_service');
+      }else{
+        $computer = null;
+      }
+     
+      if(session('parent_id') == 11){
+        $design = session()->pull('design_service');
+      }else{
+        $design = null;
+      }
+      
+      if(session('parent_id') == 12){
+        $it = session()->pull('it_service');
+      }else{
+        $it = null;
+      }
       if($category == 60){
         $glassSht = session()->pull('box');
         $service1 = session()->pull('service1');
         $where = session()->pull('where');
         $how_many = session()->pull('how_many');
+      }else{
+        $glassSht = null;
+        $service1 = null;
+        $where = null;
+        $how_many = null;
+      }
+      if(session('parent_id') == 15){
+        $remont_ustanovka = session()->pull('remont_ustanovka_service');
+      }else{
+        $remont_ustanovka = null;
+      }
+      if(session('parent_id') == 16){
+        $krosata_service = session()->pull('krosata_service');
+      }else{
+        $krosata_service = null;
+      }
+      if(session('parent_id') == 17){
+        $remont_tex = session()->pull('remont_tex_service');
+      }else{
+        $remont_tex = null;
+      }
+      if(session('parent_id') == 18){
+        $bugalter_service = session()->pull('bugalter_service');
+      }else{
+        $bugalter_service = null;
+      }
+      if(session('parent_id') == 19){
+        $training = session()->pull('training');
+        $age = session()->pull('age');
+        $time = session()->pull('time');
+        $learning_service = session()->pull('learning_service');
+      }else{
+        $training = null;
+        $age = null;
+        $time = null;
+        $learning_service = null;
       }
       $user_id     =     Auth::id();
       if (!Auth::user()) {
@@ -386,8 +644,46 @@ class CreateTaskController extends VoyagerBaseController
         $user_name  = session()->pull('user_name');
         $email      = session()->pull('email');
       }
-
-      $id = [
+      $car = null;
+      if($cat_id == 22){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      }elseif($cat_id == 23){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      }elseif($cat_id == 25){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      }elseif($cat_id == 28){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      $car = session()->pull('car');
+      }elseif($cat_id == 29){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      }else{
+        $delivey_weight = null;
+      $delivey_height = null;
+      $delivey_width = null;
+      $delivey_length = null;
+      $delivey_budget = null;
+      }
+      $id = Task::create([
         'photos' => $image,
         'user_id'=>$user_id,
         'name'=>$name,
@@ -402,6 +698,9 @@ class CreateTaskController extends VoyagerBaseController
         'phone'=>$phone,
         'need_movers'=>$need_movers,
         'show_only_to_performers'=>$secret,
+        'delivery' => array('delivey_weight' => $delivey_weight,'delivey_height' => $delivey_height,'delivey_width' => $delivey_width, 'delivey_length' => $delivey_length, 'delivey_budget' => $delivey_budget, 'car' => $car),
+        'buy_delivery' => array('service_delivery' => $service_delivery,'buy_delivey_weight' => $buy_delivey_weight,'buy_delivey_height' => $buy_delivey_height,'buy_delivey_width' => $buy_delivey_width, 'buy_delivey_length' => $buy_delivey_length),
+        // 'service_delivery' => $service_delivery,
         'services' => $services,
         'etaj_po' => $etaj_po,
         'lift_po' => $lift_po,
@@ -417,43 +716,18 @@ class CreateTaskController extends VoyagerBaseController
         'where' => $where,
         'how_many' => $how_many,
         'smm_service' => $smm,
+        'how_many' => $how_many,
+        'smm_service' => $smm,
         'computer_service' => $computer,
-    ];
-    dd($id);
-    foreach(User::all() as $users){
-
-
-        $user_cat_ids = explode(",",$users->category_id);
-        $check_for_true = array_search($category,$user_cat_ids);
-
-        if($check_for_true !== false){
-        Notification::create([
-
-            'user_id'=>$users->id,
-            'description'=> 1,
-            'task_id'=>$id->id,
-            "cat_id"=>$category,
-            "name_task"=>$id->name
-
-        ]);
-    }
-
-    }
-
-       $id_task = $id->id;
-       $id_cat = $id->category_id;
-       $title_task = $id->name;
-
-           event(new MyEvent($id_task,$id_cat,$title_task));
-
-     return redirect('/')->with('success','Задание успешно добавлено!');
-    }
-
-
-
-
-    public function delete(Task $task){
-        $task->delete();
+        'design_service' => $design,
+        'it_service' => $it,
+        'photo_service' => $photo,
+        'remont_ustanovka_service' => $remont_ustanovka,
+        'remont_tex' => $remont_tex,
+        'krosata_service' => $krosata_service,
+        'bugalter_service' => $bugalter_service,
+        'learning_service' => array('service' => $learning_service ,'age' => $age, 'time' => $time, 'training' => $training),
+      ]);
         session()->forget('task');
         session()->forget('category');
         return redirect("/home");

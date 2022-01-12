@@ -1,4 +1,5 @@
-<div class="p-10 text-gray-800">
+<footer>
+    <div class="p-10 text-gray-800">
        <div class="mx-auto text-center md:text-left">
            <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 gap-x-2">
                <div class="mb-5 md:w-2/12 md:float-left md:mr-20 md:ml-24">
@@ -28,6 +29,9 @@
                <div class="mb-5 md:float-left lg:float-none md:w-6/16 md:ml-24">
                    <span class="">
                    @lang('lang.footer_foot')
+                       <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block hover:text-amber-500" rel="noopener noreferrer">
+                           @lang('lang.footer_text1')
+                       </a>
                    </span>
                </div>
            </div>
@@ -35,12 +39,12 @@
    </div>
 </footer>
 
-{{-- 
-<div class="bg-[#333] text-[#a4a4a4] text-center lg:py-[60px] lg:px-[40px] invisible xl:visible -ml-1">
-   <div>
 
-       <span class="inline-block text-[5rem] leading-4 tracking-[4px] mr-[20px]">
-    </span>
-   </div>
-   <p class="inline text-[2rem] leading-[2]">@lang('lang.footer_text2') <span>@lang('lang.footer_text3')</span></p>
-</div> --}}
+{{--<div class="bg-[#333] text-[#a4a4a4] text-center lg:py-[60px] lg:px-[40px] invisible xl:visible -ml-1">--}}
+{{--   <div>--}}
+
+{{--       <span class="inline-block text-[5rem] leading-4 tracking-[4px] mr-[20px]">--}}
+{{--    </span>--}}
+{{--   </div>--}}
+{{--   <p class="inline text-[2rem] leading-[2]">@lang('lang.footer_text2') <span>@lang('lang.footer_text3')</span></p>--}}
+{{--</div>--}}

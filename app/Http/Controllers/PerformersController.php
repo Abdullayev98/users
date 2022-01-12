@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WalletBalance;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use TCG\Voyager\Models\Category;
@@ -18,6 +19,22 @@ use App\Models\Notification;
 
 class PerformersController extends Controller
 {
+    public  function performer_chat($id){
+
+        $wallet1 = WalletBalance::where('user_id',$id)->first();
+        $wallet2 = WalletBalance::where('user_id',auth()->user()->id)->first();
+        if ($wallet1 == null || $wallet2==null){
+            return redirect()->back();
+        }
+        if ($wallet1->balance>=4000 and $wallet2->balance>=4000 ){
+            return redirect()->route('chat',['id'=>$id]);
+        }else{
+            return redirect()->back();
+        }
+
+
+
+    }
     public function service(){
         $categories = DB::table('categories')->get();
         $child_categories= DB::table('categories')->get();

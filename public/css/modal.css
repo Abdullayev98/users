@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+.modal {
+    width: 600px;!important;
+}
+
+.modal img {
+    margin: 0 auto;
+    padding: 15px 0;
+}
+
+.modal p {
+    text-align: left;!important;
+    padding-bottom: 10px;
+}
+
+.modal h1 {
+    font-size: 24px;!important;
+    font-weight: bold;!important;
+    padding: 15px 0 ;!important;
+}
+
+.btn {
+    margin: 10px 0;
+  padding: 10px 30px;
+  display: inline-block;
+  background: #6fc727;
+  color: white;
+  text-decoration: none;
+  transition: 0.35s ease-in-out;
+  font-weight: 700;
+}
+.btn:hover {
+  background: #5ab82e;
+}
+
+.overlay {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.35s ease-in-out;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+.overlay.open {
+  opacity: 1;
+  pointer-events: inherit;
+}
+.overlay .modal {
+  background: white;
+  text-align: center;
+  padding: 40px 80px;
+  box-shadow: 0px 1px 10px rgba(255, 255, 255, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.35s ease-in-out;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+.overlay .modal.open {
+  opacity: 1;
+  pointer-events: inherit;
+}
+.overlay .modal.open .content {
+  transform: translate(0, 0px);
+  opacity: 1;
+}
+.overlay .modal .content {
+  transform: translate(0, -10px);
+  opacity: 0;
+  transition: 0.35s ease-in-out;
+}
+.overlay .modal .title {
+  margin-top: 0;
+}

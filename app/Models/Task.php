@@ -34,6 +34,14 @@ class Task extends Model
         'how_many',
         'smm_service',
         'computer_service',
+        'design_service',
+        'it_service',
+        'photo_service',
+        'remont_ustanovka_service',
+        'remont_tex',
+        'krosata_service',
+        'bugalter_service',
+        'learning_service',
 ];
     protected $translatable = [
         'name',

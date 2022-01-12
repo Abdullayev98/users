@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
 
 Route::prefix("task")->group(function (){
-
     Route::prefix("create")->group(function (){
         Route::get('/', [CreateTaskController::class, 'task_create'])->name('task.create.name');
         Route::post('/location', [CreateTaskController::class, 'location'])->name('task.create.location');
+        Route::post('/delivery', [CreateTaskController::class, 'delivery'])->name('task.create.delivery');
+        Route::post('/buy_delivery', [CreateTaskController::class, 'buy_delivery'])->name('task.create.buy_delivery');
+        Route::post('/service_delivery', [CreateTaskController::class, 'service_delivery'])->name('task.create.service_delivery');
+        Route::post('/avto_delivery', [CreateTaskController::class, 'avto_delivery'])->name('task.create.avto_delivery');
         Route::post('/', [CreateTaskController::class, 'task_add'])->name('task.create.name');
         Route::post('/cargo', [CreateTaskController::class, 'cargo'])->name('task.create.cargo');
         Route::post('/people', [CreateTaskController::class, 'people'])->name('task.create.people');
@@ -25,6 +28,16 @@ Route::prefix("task")->group(function (){
         Route::post('/custom', [CreateTaskController::class, 'custom'])->name('task.create.custom');
         Route::post('/smm', [CreateTaskController::class, 'smm'])->name('task.create.smm');
         Route::post('/computer', [CreateTaskController::class, 'computer'])->name('task.create.computer');
+        Route::post('/design', [CreateTaskController::class, 'design'])->name('task.create.design');
+        Route::post('/it', [CreateTaskController::class, 'it'])->name('task.create.it');//it emas Ay Ti
+        Route::post('/photo', [CreateTaskController::class, 'photo'])->name('task.create.photo');
+        Route::post('/remont_ustanovka', [CreateTaskController::class, 'remont_ustanovka'])->name('task.create.remont_ustanovka');
+        Route::post('/remont_tex', [CreateTaskController::class, 'remont_tex'])->name('task.create.remont_tex');
+        Route::post('/bugalter', [CreateTaskController::class, 'bugalter'])->name('task.create.bugalter');
+        Route::post('/learning', [CreateTaskController::class, 'learning'])->name('task.create.learning');
+        Route::post('/age', [CreateTaskController::class, 'age'])->name('task.create.age');
+        Route::post('/training', [CreateTaskController::class, 'training'])->name('task.create.training');
+        Route::post('/krosata', [CreateTaskController::class, 'krosata'])->name('task.create.krosata');
         Route::post('/date', [CreateTaskController::class, 'date'])->name('task.create.date');
         Route::post('/budget', [CreateTaskController::class, 'budget'])->name('task.create.budget');
         Route::get('/service', [CreateTaskController::class, 'service'])->name('task.create.service');
@@ -32,7 +45,7 @@ Route::prefix("task")->group(function (){
         Route::get('/note', [CreateTaskController::class, 'note'])->name('task.create.note');
         Route::post('/notes', [CreateTaskController::class, 'notes'])->name('task.create.notes');
         Route::post('/contacts', [CreateTaskController::class, 'contacts'])->name('task.create.contacts');
-        Route::get('/done', [CreateTaskController::class, 'create'])->name('task.create');
+        Route::post('/done', [CreateTaskController::class, 'create'])->name('task.create');
         // Route::post('/create',[CreateTaskController::class 'create'])->name('task.create');
 
     });

@@ -1,16 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-    <link rel="stylesheet" href="{{asset('css/budget.css')}}">
+    <link rel="stylesheet" href="{{asset('css/budjet.css')}}">
     <!-- Information section -->
     <x-roadmap/>
     @if($category->id == 60)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-        @elseif(session('parent_id'))
+    @elseif($category->id == 8)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($pcategory->id == 9)
+    @elseif($category->id == 9)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-        @else
+    @elseif($category->id == 12)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 13)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 15)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 16)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 17)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 18)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 19)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 22)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 24)
+    <form class="" action="{{route('task.create.service_delivery')}}" method="post">
+    @elseif($category->id == 27)
+    <form class="" action="{{route('task.create.service_delivery')}}" method="post">
+    @else
     <form class="" action="{{route('task.create.services')}}" method="post">
     @endif
         @csrf
@@ -61,32 +81,32 @@
 {{--                                        </div>--}}
 {{--                                    </div>--}}
                                 </div>
-                                <div class="w-[100px]  md:w-[200px]">
+                                <div class="w-[100px]  md:w-[200px] xl:hidden">
                                     <select id="" name="amount" class="border md:ml-14 bg-[#ffa200]  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-[#ffaa00]">
                                         <option value="0">
                                             Выберите бюджет
                                         </option>
-                                        <option value="1">
-                                                до {{$category->max/5}}
+                                        <option value="{{$category->max/5}} UZS">
+                                            от {{$category->max/5}} UZS
                                         </option>
-                                        <option value="2">
-                                                до {{$category->max/5 * 2}}
+                                        <option value="{{$category->max/5 * 2}} UZS">
+                                            от {{$category->max/5 * 2}} UZS
                                         </option>
-                                        <option value="3">
-                                                до {{$category->max/5 * 3}}
+                                        <option value="{{$category->max/5 * 3}} UZS">
+                                            от {{$category->max/5 * 3}} UZS
                                         </option>
-                                        <option value="4">
-                                            до {{$category->max/5 * 4}}
+                                        <option value="{{$category->max/5 * 4}} UZS">
+                                            от {{$category->max/5 * 4}} UZS
                                         </option>
-                                        <option value="5">
-                                            от {{$category->max}}
+                                        <option value="{{$category->max}} UZS">
+                                            до {{$category->max}} UZS
                                         </option>
                                     </select>
                                 </div>
 
                                 <div class="w-full text-left">
                                     <label>
-                                        <input type="checkbox" name="business" value="1"> Я использую YouDo для бизнеса, нужны закрывающие документы
+                                        <input type="checkbox" name="business" value="1"> Я использую U-Ser для бизнеса, нужны закрывающие документы
                                     </label>
                                         <p class="text-sm xl:ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
                                     <label>
@@ -113,14 +133,13 @@
         </div>
     </form>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 @endsection
 
 @section("javasript")
     <script>
         $(function() {
-            $( "#slider-range-min" ).slider({
+            $( "#slider-range-min").slider({
                 range: "min",
                 value: 0,
                 min: {{$category->max}}/5,

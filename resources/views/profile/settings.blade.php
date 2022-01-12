@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <div class="container mx-auto">
+    <div class="xl:w-[1266px] lg:w-[1100px] mx-auto">
 
 
         <div class="grid grid-cols-3  grid-flow-row mt-10">
