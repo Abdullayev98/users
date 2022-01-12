@@ -73,7 +73,7 @@
                             <div class="hidden">
                               <input type="text" name="cat_id" value="{{$current_category->id}}" hidden>
                             </div>
-                            <button type='tab' id='button' style="color: grey; hover: red;" onclick="myFunction()">Подкатегории</button>
+                            <button type='button' id='button' style="color: grey; hover: red;" onclick="myFunction()">Подкатегории</button>
                             <div style="display:none" id="categories">
                                 @foreach ($child_categories as $category2)
                                     <br>
