@@ -683,7 +683,7 @@ class CreateTaskController extends VoyagerBaseController
       $delivey_length = null;
       $delivey_budget = null;
       }
-      $id = [
+      $id = Task::create([
         'photos' => $image,
         'user_id'=>$user_id,
         'name'=>$name,
@@ -727,8 +727,7 @@ class CreateTaskController extends VoyagerBaseController
         'krosata_service' => $krosata_service,
         'bugalter_service' => $bugalter_service,
         'learning_service' => array('service' => $learning_service ,'age' => $age, 'time' => $time, 'training' => $training),
-      ];
-      dd($id);
+      ]);
         session()->forget('task');
         session()->forget('category');
         return redirect("/home");
