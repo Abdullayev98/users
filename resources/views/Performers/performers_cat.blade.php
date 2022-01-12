@@ -32,13 +32,14 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                         </svg>
                                     </button>
-                                        {{$category->name}}
-                                </div>
-                                <div x-show="show" class="border border-b-0 px-8 py-1">
+                                    <div x-show="show" class="border border-b-0 px-8 py-1">
+                                    {{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
+
+                          </div>
                                     @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                         <div>
-                                            <a href="/perf-ajax/{{ $category2->id }}">{{$category2->name}}</a>
+                                            <a href="/perf-ajax/{{ $category2->id }}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
                                         </div>
 
                                     @endforeach
