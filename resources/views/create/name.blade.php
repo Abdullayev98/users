@@ -55,6 +55,8 @@
                         <form action="{{route('task.create.bugalter')}}" method="post">
                         @elseif($current_parent_category->id == 19)
                         <form action="{{route('task.create.age')}}" method="post">
+                        @elseif($current_parent_category->id == 213)
+                        <form action="{{route('task.create.remont_car')}}" method="post">
                         @else
                         <form action="{{route('task.create.name')}}" method="post">
                     @endif
@@ -73,7 +75,7 @@
                             <div class="hidden">
                               <input type="text" name="cat_id" value="{{$current_category->id}}" hidden>
                             </div>
-                            <h3>@lang('lang.name_subCat') <span id="button" style="color: grey;" onclick="myFunction()">@lang('lang.name_pedCourier')</span></h3>
+                            <button type='button' id='button' style="color: grey; hover: red;" onclick="myFunction()">Подкатегории</button>
                             <div style="display:none" id="categories">
                                 @foreach ($child_categories as $category2)
                                     <br>
