@@ -52,6 +52,26 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
+    public function avto_delivery(Request $request)
+    {
+      return view('create.delivery_avto');
+    }
+    public function service_delivery(Request $request)
+    {
+      $cat_id = session()->pull('cat_id');
+        $request->session()->put('cat_id', $cat_id);
+        $category = Category::where('id', 1)->first();
+        $categories = explode(',',$category->services);
+      return view('create.delivery1', compact('categories'));
+    }
+    public function delivery(Request $request)
+    {
+      return view('create.delivery');
+    }
+    public function buy_delivery(Request $request)
+    {
+      return view('create.buy_delivery');
+    }
     public function age(Request $request)
     {
       $data = $request->input();
@@ -327,6 +347,28 @@ class CreateTaskController extends VoyagerBaseController
           }
             $request->session()->put('location', $fullloc);
             $request->session()->flash('location2', $request->input('location'));
+        }elseif($data2 = $request->input('delivey_weight')){
+          $delivey_weight = $request->input('delivey_weight');
+          $delivey_height = $request->input('delivey_height');
+          $delivey_width = $request->input('delivey_width');
+          $delivey_length = $request->input('delivey_length');
+          $delivey_budget = $request->input('delivey_budget');
+          $request->session()->put('delivey_weight', $delivey_weight); 
+          $request->session()->put('delivey_height', $delivey_height); 
+          $request->session()->put('delivey_width', $delivey_width); 
+          $request->session()->put('delivey_length', $delivey_length); 
+          $request->session()->put('delivey_budget', $delivey_budget); 
+        }elseif($data1 = $request->input('buy_delivey_weight')){
+          $buy_delivey_weight = $request->input('buy_delivey_weight');
+          $buy_delivey_height = $request->input('buy_delivey_height');
+          $buy_delivey_width = $request->input('buy_delivey_width');
+          $buy_delivey_length = $request->input('buy_delivey_length');
+          $request->session()->put('buy_delivey_weight', $buy_delivey_weight); 
+          $request->session()->put('buy_delivey_height', $buy_delivey_height); 
+          $request->session()->put('buy_delivey_width', $buy_delivey_width); 
+          $request->session()->put('buy_delivey_length', $buy_delivey_length); 
+        }elseif($data = $request->input('car')){
+        $request->session()->put('car', $data);
         }else {
           $etaj_po = $request->input('etaj_po');
           $lift_po = $request->input('lift_po');
@@ -405,6 +447,8 @@ class CreateTaskController extends VoyagerBaseController
 
 
     public function notes(Request $request){
+      $data = $request->input('service_delivery');
+      $request->session()->put('service_delivery', $data);
         $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
         $category = Category::where('id',$cat_id)->first();
@@ -464,8 +508,34 @@ class CreateTaskController extends VoyagerBaseController
     }
 
     public function create(Request $request){
+      $cat_id = session()->pull('cat_id');
+      $request->session()->put('cat_id', $cat_id);
+
       $phone      = $request->input('phone');
       $datay      = $request->input();
+      // if(session('cat_id') == ){
+        if($cat_id == 24){
+          $service_delivery = session()->pull('service_delivery');
+          $buy_delivey_weight = session()->pull('buy_delivey_weight');
+      $buy_delivey_height = session()->pull('buy_delivey_height');
+      $buy_delivey_width = session()->pull('buy_delivey_width');
+      $buy_delivey_length = session()->pull('buy_delivey_length');
+        }elseif($cat_id == 27){
+          $service_delivery = session()->pull('service_delivery');
+          $buy_delivey_weight = session()->pull('buy_delivey_weight');
+      $buy_delivey_height = session()->pull('buy_delivey_height');
+      $buy_delivey_width = session()->pull('buy_delivey_width');
+      $buy_delivey_length = session()->pull('buy_delivey_length');
+        }
+          else{
+          $buy_delivey_weight = null;
+          $buy_delivey_height = null;
+          $buy_delivey_width = null;
+          $buy_delivey_length = null;
+        }
+        
+
+      // }
 //      $request->session()->put('phone', $datay['phone']);
       $name        = session()->pull('name');
       $category    = session()->pull('cat_id');
@@ -484,7 +554,7 @@ class CreateTaskController extends VoyagerBaseController
       $etaj_za = session()->pull('etaj_za');
       $lift_za = session()->pull('lift_za');
       $peopleCount = session()->pull('peopleCount');
-      if(session('parent_id')->id == 13){
+      if(session('parent_id') == 13){
         $photo = session()->pull('photo_service');
       }else{
         $photo = null;
@@ -502,19 +572,19 @@ class CreateTaskController extends VoyagerBaseController
         }
       $smm = session()->pull('smm');
       
-      if(session('parent_id')->id == 9){
+      if(session('parent_id') == 9){
         $computer = session()->pull('computer_service');
       }else{
         $computer = null;
       }
      
-      if(session('parent_id')->id == 11){
+      if(session('parent_id') == 11){
         $design = session()->pull('design_service');
       }else{
         $design = null;
       }
       
-      if(session('parent_id')->id == 12){
+      if(session('parent_id') == 12){
         $it = session()->pull('it_service');
       }else{
         $it = null;
@@ -530,32 +600,35 @@ class CreateTaskController extends VoyagerBaseController
         $where = null;
         $how_many = null;
       }
-      if(session('parent_id')->id == 15){
+      if(session('parent_id') == 15){
         $remont_ustanovka = session()->pull('remont_ustanovka_service');
       }else{
         $remont_ustanovka = null;
       }
-      if(session('parent_id')->id == 16){
+      if(session('parent_id') == 16){
         $krosata_service = session()->pull('krosata_service');
       }else{
         $krosata_service = null;
       }
-      if(session('parent_id')->id == 17){
+      if(session('parent_id') == 17){
         $remont_tex = session()->pull('remont_tex_service');
       }else{
         $remont_tex = null;
       }
-      if(session('parent_id')->id == 18){
+      if(session('parent_id') == 18){
         $bugalter_service = session()->pull('bugalter_service');
       }else{
         $bugalter_service = null;
       }
-      if(session('parent_id')->id == 19){
+      if(session('parent_id') == 19){
         $training = session()->pull('training');
         $age = session()->pull('age');
         $time = session()->pull('time');
         $learning_service = session()->pull('learning_service');
       }else{
+        $training = null;
+        $age = null;
+        $time = null;
         $learning_service = null;
       }
       $user_id     =     Auth::id();
@@ -570,7 +643,45 @@ class CreateTaskController extends VoyagerBaseController
         $user_name  = session()->pull('user_name');
         $email      = session()->pull('email');
       }
-
+      $car = null;
+      if($cat_id == 22){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      }elseif($cat_id == 23){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      }elseif($cat_id == 25){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      }elseif($cat_id == 28){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      $car = session()->pull('car');
+      }elseif($cat_id == 29){
+        $delivey_weight = session()->pull('delivey_weight');
+      $delivey_height = session()->pull('delivey_height');
+      $delivey_width = session()->pull('delivey_width');
+      $delivey_length = session()->pull('delivey_length');
+      $delivey_budget = session()->pull('delivey_budget');
+      }else{
+        $delivey_weight = null;
+      $delivey_height = null;
+      $delivey_width = null;
+      $delivey_length = null;
+      $delivey_budget = null;
+      }
       $id = [
         'photos' => $image,
         'user_id'=>$user_id,
@@ -586,6 +697,9 @@ class CreateTaskController extends VoyagerBaseController
         'phone'=>$phone,
         'need_movers'=>$need_movers,
         'show_only_to_performers'=>$secret,
+        'delivery' => array('delivey_weight' => $delivey_weight,'delivey_height' => $delivey_height,'delivey_width' => $delivey_width, 'delivey_length' => $delivey_length, 'delivey_budget' => $delivey_budget, 'car' => $car),
+        'buy_delivery' => array('service_delivery' => $service_delivery,'buy_delivey_weight' => $buy_delivey_weight,'buy_delivey_height' => $buy_delivey_height,'buy_delivey_width' => $buy_delivey_width, 'buy_delivey_length' => $buy_delivey_length),
+        // 'service_delivery' => $service_delivery,
         'services' => $services,
         'etaj_po' => $etaj_po,
         'lift_po' => $lift_po,

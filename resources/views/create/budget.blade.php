@@ -6,25 +6,31 @@
     <x-roadmap/>
     @if($category->id == 60)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-        @elseif(session('parent_id')->id == 8)
+    @elseif($category->id == 8)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('parent_id')->id == 9)
+    @elseif($category->id == 9)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('parent_id')->id == 12)
+    @elseif($category->id == 12)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('parent_id')->id == 13)
+    @elseif($category->id == 13)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('parent_id')->id == 15)
+    @elseif($category->id == 15)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('parent_id')->id == 16)
+    @elseif($category->id == 16)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('parent_id')->id == 17)
+    @elseif($category->id == 17)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('parent_id')->id == 18)
+    @elseif($category->id == 18)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('parent_id')->id == 19)
+    @elseif($category->id == 19)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-        @else
+    @elseif($category->id == 22)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 24)
+    <form class="" action="{{route('task.create.service_delivery')}}" method="post">
+    @elseif($category->id == 27)
+    <form class="" action="{{route('task.create.service_delivery')}}" method="post">
+    @else
     <form class="" action="{{route('task.create.services')}}" method="post">
     @endif
         @csrf
@@ -100,7 +106,7 @@
 
                                 <div class="w-full text-left">
                                     <label>
-                                        <input type="checkbox" name="business" value="1"> Я использую YouDo для бизнеса, нужны закрывающие документы
+                                        <input type="checkbox" name="business" value="1"> Я использую U-Ser для бизнеса, нужны закрывающие документы
                                     </label>
                                         <p class="text-sm xl:ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
                                     <label>
