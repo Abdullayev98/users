@@ -115,7 +115,7 @@ class CreateTaskController extends VoyagerBaseController
           $coordinates = $request->input('coordinates');
           $request->session()->put('coordinates', $coordinates);
           $request->session()->flash('location2', $request->input('location'));
-          
+
       }
       return view('create.delivery');
     }
@@ -133,7 +133,7 @@ class CreateTaskController extends VoyagerBaseController
           $coordinates = $request->input('coordinates');
           $request->session()->put('coordinates', $coordinates);
           $request->session()->flash('location2', $request->input('location'));
-          
+
       }
       return view('create.buy_delivery');
     }
@@ -413,7 +413,7 @@ class CreateTaskController extends VoyagerBaseController
             $coordinates = $request->input('coordinates');
             $request->session()->put('coordinates', $coordinates);
             $request->session()->flash('location2', $request->input('location'));
-            
+
         }
         return view('create.peopleTransported');
     }
@@ -430,7 +430,7 @@ class CreateTaskController extends VoyagerBaseController
             $coordinates = $request->input('coordinates');
             $request->session()->put('coordinates', $coordinates);
             $request->session()->flash('location2', $request->input('location'));
-            
+
         }
         if($data2 = $request->input('delivey_weight')){
           $delivey_weight = $request->input('delivey_weight');
@@ -438,20 +438,20 @@ class CreateTaskController extends VoyagerBaseController
           $delivey_width = $request->input('delivey_width');
           $delivey_length = $request->input('delivey_length');
           $delivey_budget = $request->input('delivey_budget');
-          $request->session()->put('delivey_weight', $delivey_weight); 
-          $request->session()->put('delivey_height', $delivey_height); 
-          $request->session()->put('delivey_width', $delivey_width); 
-          $request->session()->put('delivey_length', $delivey_length); 
-          $request->session()->put('delivey_budget', $delivey_budget); 
+          $request->session()->put('delivey_weight', $delivey_weight);
+          $request->session()->put('delivey_height', $delivey_height);
+          $request->session()->put('delivey_width', $delivey_width);
+          $request->session()->put('delivey_length', $delivey_length);
+          $request->session()->put('delivey_budget', $delivey_budget);
         }elseif($data1 = $request->input('buy_delivey_weight')){
           $buy_delivey_weight = $request->input('buy_delivey_weight');
           $buy_delivey_height = $request->input('buy_delivey_height');
           $buy_delivey_width = $request->input('buy_delivey_width');
           $buy_delivey_length = $request->input('buy_delivey_length');
-          $request->session()->put('buy_delivey_weight', $buy_delivey_weight); 
-          $request->session()->put('buy_delivey_height', $buy_delivey_height); 
-          $request->session()->put('buy_delivey_width', $buy_delivey_width); 
-          $request->session()->put('buy_delivey_length', $buy_delivey_length); 
+          $request->session()->put('buy_delivey_weight', $buy_delivey_weight);
+          $request->session()->put('buy_delivey_height', $buy_delivey_height);
+          $request->session()->put('buy_delivey_width', $buy_delivey_width);
+          $request->session()->put('buy_delivey_length', $buy_delivey_length);
         }elseif($data = $request->input('delivey_car')){
         $request->session()->put('delivey_car', $data);
         }else {
@@ -576,7 +576,7 @@ class CreateTaskController extends VoyagerBaseController
 
 
     public function contacts(Request $request){
-      
+
       if($request->avatar) {
       $image = $request->avatar;
       $imagename = $image->getClientOriginalName();
@@ -634,7 +634,7 @@ class CreateTaskController extends VoyagerBaseController
           $buy_delivey_width = null;
           $buy_delivey_length = null;
         }
-        
+
 
       // }
 //      $request->session()->put('phone', $datay['phone']);
@@ -673,19 +673,19 @@ class CreateTaskController extends VoyagerBaseController
             $height = null;
         }
       $smm = session()->pull('smm');
-      
+
       if(session('parent_id')->id == 9){
         $computer = session()->pull('computer_service');
       }else{
         $computer = null;
       }
-     
+
       if(session('parent_id')->id == 11){
         $design = session()->pull('design_service');
       }else{
         $design = null;
       }
-      
+
       if(session('parent_id')->id == 12){
         $it = session()->pull('it_service');
       }else{
@@ -810,9 +810,9 @@ class CreateTaskController extends VoyagerBaseController
         'no_texpassport' => $no_texpassport,
         'delivery_weight' => $delivey_weight,
         'delivery_height' => $delivey_height,
-        'delivery_width' => $delivey_width, 
-        'delivery_length' => $delivey_length, 
-        'delivery_budget' => $delivey_budget, 
+        'delivery_width' => $delivey_width,
+        'delivery_length' => $delivey_length,
+        'delivery_budget' => $delivey_budget,
         'delivery_car' => $delivey_car,
         'service_delivery' => $service_delivery,
         'buy_delivery_weight' => $buy_delivey_weight,
@@ -847,13 +847,41 @@ class CreateTaskController extends VoyagerBaseController
         'bugalter_service' => $bugalter_service,
         'coordinates' => $coordinates,
         'learning_service' => $learning_service ,
-        'age' => $age, 
-        'time' => $time, 
+        'age' => $age,
+        'time' => $time,
         'training' => $training,
       ]);
         session()->forget('task');
         session()->forget('category');
-        return redirect("/");
+
+        foreach(User::all() as $users){
+
+
+            $user_cat_ids = explode(",",$users->category_id);
+            $check_for_true = array_search($category,$user_cat_ids);
+
+            if($check_for_true !== false){
+            Notification::create([
+
+                'user_id'=>$users->id,
+                'description'=> 1,
+                'task_id'=>$id->id,
+                "cat_id"=>$category,
+                "name_task"=>$id->name
+
+            ]);
+        }
+
+        }
+
+           $id_task = $id->id;
+           $id_cat = $id->category_id;
+           $title_task = $id->name;
+
+               event(new MyEvent($id_task,$id_cat,$title_task));
+
+         return redirect('/')->with('success','Задание успешно добавлено!');
+
     }
 
 
