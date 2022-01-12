@@ -52,6 +52,18 @@ class CreateTaskController extends VoyagerBaseController
         return view('create.location', compact('pcategory'));
 
     }
+    public function construction(Request $request)
+    {
+      $cat_id = session()->pull('cat_id');
+      $request->session()->put('cat_id', $cat_id);
+      $category = Category::where('id', 30)->first();
+      $category1 = Category::where('id', 31)->first();
+      $categories = explode(',',$category->services);
+      $categories1 = explode(',',$category1->services);
+      $category2 = Category::where('id', 2)->first();
+      $categories2 = explode(',',$category2->services);
+      return view('create.construction', compact('categories','categories1','categories2', 'cat_id'));
+    }
     public function avto_delivery(Request $request)
     {
       return view('create.delivery_avto');
@@ -402,10 +414,12 @@ class CreateTaskController extends VoyagerBaseController
       }
       $cat_id = session()->pull('cat_id');
       $request->session()->put('cat_id', $cat_id);
+      $parent_id = session()->pull('parent_id');
+      $request->session()->put('parent_id', $parent_id);
       $category = Category::where('id',$cat_id)->first();
       $parent_8 = Category::query()->where("parent_id", null)->skip(4)->first();
       $request->session()->put('parent_8', $parent_8);
-      return view('create.budget',compact('category'));
+      return view('create.budget',compact('category','parent_id'));
         // return view('create.budget');
     }
 
@@ -449,6 +463,9 @@ class CreateTaskController extends VoyagerBaseController
     public function notes(Request $request){
       $data = $request->input('service_delivery');
       $request->session()->put('service_delivery', $data);
+      $construction = $request->input('construction');
+      $services = implode(',', $construction);
+      $request->session()->put('construction_service', $services);
         $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
         $category = Category::where('id',$cat_id)->first();
@@ -555,7 +572,7 @@ class CreateTaskController extends VoyagerBaseController
       $etaj_za = session()->pull('etaj_za');
       $lift_za = session()->pull('lift_za');
       $peopleCount = session()->pull('peopleCount');
-      if(session('parent_id') == 13){
+      if(session('parent_id')->id == 13){
         $photo = session()->pull('photo_service');
       }else{
         $photo = null;
@@ -573,19 +590,19 @@ class CreateTaskController extends VoyagerBaseController
         }
       $smm = session()->pull('smm');
       
-      if(session('parent_id') == 9){
+      if(session('parent_id')->id == 9){
         $computer = session()->pull('computer_service');
       }else{
         $computer = null;
       }
      
-      if(session('parent_id') == 11){
+      if(session('parent_id')->id == 11){
         $design = session()->pull('design_service');
       }else{
         $design = null;
       }
       
-      if(session('parent_id') == 12){
+      if(session('parent_id')->id == 12){
         $it = session()->pull('it_service');
       }else{
         $it = null;
@@ -601,27 +618,27 @@ class CreateTaskController extends VoyagerBaseController
         $where = null;
         $how_many = null;
       }
-      if(session('parent_id') == 15){
+      if(session('parent_id')->id == 15){
         $remont_ustanovka = session()->pull('remont_ustanovka_service');
       }else{
         $remont_ustanovka = null;
       }
-      if(session('parent_id') == 16){
+      if(session('parent_id')->id == 16){
         $krosata_service = session()->pull('krosata_service');
       }else{
         $krosata_service = null;
       }
-      if(session('parent_id') == 17){
+      if(session('parent_id')->id == 17){
         $remont_tex = session()->pull('remont_tex_service');
       }else{
         $remont_tex = null;
       }
-      if(session('parent_id') == 18){
+      if(session('parent_id')->id == 18){
         $bugalter_service = session()->pull('bugalter_service');
       }else{
         $bugalter_service = null;
       }
-      if(session('parent_id') == 19){
+      if(session('parent_id')->id == 19){
         $training = session()->pull('training');
         $age = session()->pull('age');
         $time = session()->pull('time');
@@ -683,7 +700,12 @@ class CreateTaskController extends VoyagerBaseController
       $delivey_length = null;
       $delivey_budget = null;
       }
-      $id = Task::create([
+      if(session('parent_id')->id == 2){
+        $construction_service = session()->pull('construction_service');
+      }else{
+        $construction_service = null;
+      }
+      $id = [
         'photos' => $image,
         'user_id'=>$user_id,
         'name'=>$name,
@@ -700,7 +722,7 @@ class CreateTaskController extends VoyagerBaseController
         'show_only_to_performers'=>$secret,
         'delivery' => array('delivey_weight' => $delivey_weight,'delivey_height' => $delivey_height,'delivey_width' => $delivey_width, 'delivey_length' => $delivey_length, 'delivey_budget' => $delivey_budget, 'car' => $car),
         'buy_delivery' => array('service_delivery' => $service_delivery,'buy_delivey_weight' => $buy_delivey_weight,'buy_delivey_height' => $buy_delivey_height,'buy_delivey_width' => $buy_delivey_width, 'buy_delivey_length' => $buy_delivey_length),
-        // 'service_delivery' => $service_delivery,
+        'construction_service' => $construction_service,
         'services' => $services,
         'etaj_po' => $etaj_po,
         'lift_po' => $lift_po,
@@ -727,7 +749,8 @@ class CreateTaskController extends VoyagerBaseController
         'krosata_service' => $krosata_service,
         'bugalter_service' => $bugalter_service,
         'learning_service' => array('service' => $learning_service ,'age' => $age, 'time' => $time, 'training' => $training),
-      ]);
+      ];
+      dd($id);
         session()->forget('task');
         session()->forget('category');
         return redirect("/home");
