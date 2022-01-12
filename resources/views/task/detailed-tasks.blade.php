@@ -197,6 +197,7 @@
                 </div>
 
                 <div class="w-[750px]">
+                    @if ($tasks->user_name == $auth_user->name)
                     <div>
                         @if(isset($task_responses))
                             <div class="text-4xl font-semibold my-6">
@@ -274,7 +275,7 @@
                         </div>
                     @endif
                 </div>
-
+                @endif
                 <div class="mt-12">
                     <h1 class="text-3xl font-medium ">Другие задания в категории</h1>
                     @foreach($same_tasks as $same_task)
@@ -296,16 +297,19 @@
             <h1 class="text-lg">Заказчик этого задания</h1>
             <div class="flex flex-row mt-4">
                 <div class="mr-4">
+                    @if (isset($current_user))
                     <img src="
                         @if ($current_user->avatar == 'users/default.png')
                     {{ asset("AvatarImages/images/{$current_user->avatar}") }}
                     @else
                     {{ asset("AvatarImages/{$current_user->avatar}") }}
                     @endif" class="border-2 border-gray-400 w-32 h-32" alt="#">
+                    @endif
                 </div>
                 <div class="">
                     <a href="#" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
                     <a href="#" class="text-xl text-gray-500">
+                    @if (isset($current_user))
                         @if($current_user->age != "")
                             <p class="inline-block text-m mr-2">
                                 {{$current_user->age}}
@@ -314,6 +318,7 @@
                                 @else @lang('lang.cash_rusYearLet')
                                 @endif
                             </p>
+                        @endif
                         @endif
                     </a>
                 </div>
