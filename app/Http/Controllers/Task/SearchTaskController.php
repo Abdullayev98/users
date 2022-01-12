@@ -38,8 +38,9 @@ class SearchTaskController extends VoyagerBaseController
     }
 
     public function my_tasks(){
-        $tasks = Task::where('user_id', auth()->id());
-        return view('/task/mytasks',compact('tasks'));
+        $tasks = Task::where('user_id', auth()->id())->get();
+        $categories = Category::get();
+        return view('/task/mytasks',compact('tasks','categories'));
     }
     public function search(Request $request){
       $s = $request->s;
@@ -101,7 +102,6 @@ class SearchTaskController extends VoyagerBaseController
       $response_price = $request->input('response_price');
       $task_id = $request->input('task_id');
       $users_id = $request->input('user_id');
-      #create or update your data here
       TaskResponse::create([
         'user_id' => Auth::id(),
         'task_id' => $task_id,
@@ -112,6 +112,7 @@ class SearchTaskController extends VoyagerBaseController
         'price' => $response_price,
         'creator_id' => $users_id
       ]);
+      
       return response()->json(['success'=>$description]);
   }
 
