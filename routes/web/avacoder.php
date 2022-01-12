@@ -16,6 +16,10 @@ Route::prefix("task")->group(function (){
         Route::post('/buy_delivery', [CreateTaskController::class, 'buy_delivery'])->name('task.create.buy_delivery');
         Route::post('/service_delivery', [CreateTaskController::class, 'service_delivery'])->name('task.create.service_delivery');
         Route::post('/avto_delivery', [CreateTaskController::class, 'avto_delivery'])->name('task.create.avto_delivery');
+        Route::post('/car', [CreateTaskController::class, 'remont_car'])->name('task.create.remont_car');
+        Route::post('/info', [CreateTaskController::class, 'info_car'])->name('task.create.info_car');
+        Route::post('/carservice', [CreateTaskController::class, 'car_service'])->name('task.create.car_service');
+        Route::post('/construction', [CreateTaskController::class, 'construction'])->name('task.create.construction');
         Route::post('/', [CreateTaskController::class, 'task_add'])->name('task.create.name');
         Route::post('/cargo', [CreateTaskController::class, 'cargo'])->name('task.create.cargo');
         Route::post('/people', [CreateTaskController::class, 'people'])->name('task.create.people');

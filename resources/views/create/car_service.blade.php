@@ -4,7 +4,7 @@
 
 <!-- Information section -->
 <x-roadmap/>
-<form class="" action="{{route('task.create.date')}}" method="post">
+<form class="" action="{{route('task.create.location')}}" method="post">
   @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
@@ -13,16 +13,16 @@
     @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-    Задание заполнено на 75%
+    Задание заполнено на 33%
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
-        <div style="width: 75%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+        <div style="width: 33%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-      Как планируете оплатить покупку?
+      Какие услуги понадобятся?
       </div>
 
       <div class="py-4 mx-auto  text-left ">
@@ -32,19 +32,14 @@
         <div>
 
             <div class="mb-3 xl:w-full">
-                <input type="radio" id="delivey_car"
-                    name="delivey_car[]" value="Не требуется">
-                <label for="delivey_car">Не требуется</label>
-                <br>
-                <br>
-                <input type="radio" id="delivey_car"
-                    name="delivey_car[]" value="На легковом авто">
-                <label for="delivey_car[]">На легковом авто</label>
-                <br>
-                <br>
-                <input type="radio" id="delivey_car"
-                    name="delivey_car[]" value="На грузовом авто">
-                <label for="delivey_car[]">На грузовом авто</label>
+                @foreach ($categories as $category)
+                <label class="md:w-2/3 block mt-6">
+                    <input class="mr-2  h-4 w-4" type="radio" value="{{$category}}" name="car_service[]">
+                    <span class="text-lg text-slate-900">
+                        {{$category}}
+                    </span>
+                  </label>
+                  @endforeach
               </div>
         </div>
 
