@@ -100,7 +100,7 @@
 
                                 <div class="w-full text-left">
                                     <label>
-                                        <input type="checkbox" name="business" value="1"> Я использую YouDo для бизнеса, нужны закрывающие документы
+                                        <input type="checkbox" name="business" value="1"> Я использую U-Ser для бизнеса, нужны закрывающие документы
                                     </label>
                                         <p class="text-sm xl:ml-4 mb-4">На ваше задание смогут откликаться только юридические лица, ИП и самозанятые</p>
                                     <label>

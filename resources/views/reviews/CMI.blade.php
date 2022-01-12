@@ -33,9 +33,9 @@
                         <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/vacancies">@lang('lang.authors_vacancy')</a>
                     </li>
                 </ul>
-                <a href class="bg-[url('https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg')] bg-no-repeat"></a>
+                <a href class="bg-[url('{{asset('images/shield.svg')}}')] bg-no-repeat"></a>
                 <a href="/verification" class="w-[200px] px-[16px] pb-[15px] block rounded-[8px] shadow-xl hover:shadow-md text-[12px] leading-[16px] tracking-[.2px] text-[#444] mt-5 text-center mb-8">
-                    <img src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" class="mx-auto pb-3" alt="">
+                    <img src="{{asset('images/shield.svg')}}" class="mx-auto pb-3" alt="">
                     @lang('lang.cmi_bePerf')
                 </a>
             </div>

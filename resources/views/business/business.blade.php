@@ -46,7 +46,7 @@
                 <img src="https://thumb.tildacdn.com/tild6664-3164-4261-b435-663833636134/-/format/webp/1.png" alt="">
             </div>
             <div class="md:hidden">
-                <img class="mx-auto w-[400px]" src="https://assets.youdo.com/_next/static/media/main-banner-mobile.984038ace813892adcf707f36f8b8508.svg" alt="">
+                <img class="mx-auto w-[400px]" src="{{asset('images/manyhands.png')}}" alt="">
             </div>
             <div class="md:mt-10 md:relative ml-10 xl:m-0 md:-top-[500px] lg:-top-[600px]">
                 <div class="mb-5 text-[20px]">
