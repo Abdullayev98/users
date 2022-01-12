@@ -35,6 +35,23 @@
                                             <input class="address w-full border border-black rounded text-black-700 py-1 px-1" type="text" id="suggest">
                                         </div>
                                         <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
+                                            <label class="text-xs">@lang('lang.search_byMapRadius')</label>
+                                            <select name="" id="" class="border border-black text-lg-left text-black-700 rounded py-1 px-1">
+                                                <option value="0">@lang('lang.search_byMapRadiusNo')</option>
+                                                <option value="1.5">1.5 km</option>
+                                                <option value="3">3 km</option>
+                                                <option value="5">5 km</option>
+                                                <option value="10">10 km</option>
+                                                <option value="15">15 km</option>
+                                                <option value="20">20 km</option>
+                                                <option value="30">30 km</option>
+                                                <option value="50">50 km</option>
+                                                <option value="75">75 km</option>
+                                                <option value="100">100 km</option>
+                                                <option value="200">200 km</option>
+                                            </select>
+                                        </div>
+                                        <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
                                             <label class="text-xs">@lang('lang.search_priceBy')</label>
                                             <input type="text" maxlength="7" class="w-full border border-black text-black-700 rounded py-1 px-1" placeholder="UZS" id="price">
                                         </div>
@@ -372,7 +389,7 @@
         function tasks_list_all(data){
             $(".show_tasks").empty();
             $.each(data, function(index, data) {
-                if (data.status != 1) {                    
+                if (data.status != 1) {
                 $(".show_tasks").append(
                     `<div>
                     <div class="w-full border hover:bg-blue-100 h-[100px] ">
