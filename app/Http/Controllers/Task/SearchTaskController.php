@@ -21,7 +21,7 @@ class SearchTaskController extends VoyagerBaseController
 
 
         $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->get();
-        $categories = Category::withTranslations(['ru', 'uz'])->get();
+        $categories = Category::withTranslations(['ru', 'uz']);
         return view('task.search', compact('tasks','categories'));
     }
 
@@ -84,7 +84,7 @@ class SearchTaskController extends VoyagerBaseController
           $categories = Category::where('id',$cat_id)->get();
 
           $auth_user = Auth::user();
-          
+
         $arr = get_defined_vars();
 
         if (Arr::exists($arr, 'response_users')) {
