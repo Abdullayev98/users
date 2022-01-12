@@ -107,6 +107,7 @@ return [
     'search_find' => "Найти",
     'search_byKey' => "Поиск по ключевым словам",
     'search_location' => "Город, адрес, метро, район...",
+    'search_byMapRadius' => "Радиус поиска",
     'search_priceBy' => "Стоимость заданий от",
     'search_allCat' => "Все категории",
     'search_shown' => "Показано 20 из 331",

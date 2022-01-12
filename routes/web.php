@@ -92,11 +92,11 @@ Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name
 
 Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@paycom')->name('paycom');
 //social login facebook
-Route::get('login/facebook',[SocialController::class,'facebookRedirect']);
+Route::get('login/facebook',[SocialController::class,'facebookRedirect'])->name('auth.facebook');
 Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook']);
 
 //social login google
-Route::get('login/google',[SocialController::class,'googleRedirect']);
+Route::get('login/google',[SocialController::class,'googleRedirect'])->name('auth.google');
 Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']);
 
 Route::view('/faq','faq.faq');

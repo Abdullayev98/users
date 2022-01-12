@@ -107,6 +107,7 @@ return [
     'search_find' => "Toping",
     'search_byKey' => "Kalit so'zlarni qidirish",
     'search_location' => "Shahar, manzil, metro, tuman ...",
+    'search_byMapRadius' => "Radius bo'yicha",
     'search_priceBy' => "Topshiriqlarning narxi",
     'search_allCat' => "Barcha toifalar",
     'search_shown' => "331 tadan 20 tasi koʻrsatilmoqda",
