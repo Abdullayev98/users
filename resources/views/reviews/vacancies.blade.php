@@ -34,9 +34,9 @@
                         <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/vacancies">@lang('lang.review_vacancy')</a>
                     </li>
                 </ul>
-                <a href class="bg-[url('https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg')] bg-no-repeat"></a>
+                <a href class="bg-[url('{{asset('images/shield.svg')}}')] bg-no-repeat"></a>
                 <a href="/verification" class="w-[200px] px-[16px] pb-[15px] block rounded-[8px] shadow-xl hover:shadow-md text-[12px] leading-[16px] tracking-[.2px] text-[#444] mt-5 text-center mb-8">
-                    <img src="https://assets.youdo.com/_next/static/media/shield-only.db76e917d01c0a73d98962ea064216a4.svg" class="mx-auto pb-3" alt="">
+                    <img src="{{asset('images/shield.svg')}}" class="mx-auto pb-3" alt="">
                     @lang('lang.review_bePerformer')
                 </a>
             </div>
@@ -44,7 +44,7 @@
                 <h1 class="text-[1.9rem] font-semibold ">
                 @lang('lang.review_vacancy')
                 </h1>
-                <img src="https://assets.youdo.com/next/_next/static/images/photo4-8a783577cfab9ce8adc6eb892b8df661.jpg" alt="" class="my-4">
+                <img src="https://www.roi-selling.com/hs-fs/hub/444749/file-1929610769-jpg/blog-files/team-.jpg" alt="" class="my-4">
                 <h1 class="text-[1.6rem] font-semibold my-4">@lang('lang.vac_whoWeAre')</h1>
                 <p class="my-5">@lang('lang.vac_about1')</p>
                 <p class="my-5">@lang('lang.vac_about2')</p>
@@ -89,7 +89,7 @@
                                     <li class="my-2">Оплачиваемое участие в профильных конференциях.</li>
                                 </div>
                                 <a
-                                    href="mailto:e.kiselev@youdo.ru?subject=%D0%92%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20-%20%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%D1%83"
+                                    href="mailto:e.kiselev@user.ru?subject=%D0%92%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20-%20%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%D1%83"
                                     type="button"
                                     target="_self"
                                     class="bg-[#6fc727] hover:bg-[#5ab82e] text-white py-3 px-6 rounded-md text-[18px] my-4">
@@ -118,7 +118,7 @@
                                     <li class="my-2">Оплачиваемое участие в профильных конференциях.</li>
                                 </div>
                                 <a
-                                    href="mailto:e.kiselev@youdo.ru?subject=%D0%92%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20-%20%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%D1%83"
+                                    href="mailto:e.kiselev@user.ru?subject=%D0%92%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20-%20%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%D1%83"
                                     type="button"
                                     target="_self"
                                     class="bg-[#6fc727] hover:bg-[#5ab82e] text-white py-3 px-6 rounded-md text-[18px] my-4">
@@ -147,7 +147,7 @@
                                     <li class="my-2">Оплачиваемое участие в профильных конференциях.</li>
                                 </div>
                                 <a
-                                    href="mailto:e.kiselev@youdo.ru?subject=%D0%92%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20-%20%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%D1%83"
+                                    href="mailto:e.kiselev@user.ru?subject=%D0%92%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20-%20%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%D1%83"
                                     type="button"
                                     target="_self"
                                     class="bg-[#6fc727] hover:bg-[#5ab82e] text-white py-3 px-6 rounded-md text-[18px] my-4">

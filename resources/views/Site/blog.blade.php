@@ -258,14 +258,14 @@
         </div>
         <div class="mb-5 md:float-left lg:float-none md:w-6/16 mx-auto">
                 <span class="">
-                    <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block" rel="noopener noreferrer" href="https://app.appsflyer.com/id560999571?pid=coldunshik&amp;c=youdo" target="_blank">
+                    <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block" rel="noopener noreferrer" href="https://app.appsflyer.com/id560999571?pid=coldunshik&amp;c=user" target="_blank">
                         <button type="button" class="w-[200px] bg-[#000] rounded-md mt-8">
-                            <img src="https://assets.youdo.com/_next/static/media/ios.d3a42dd0816a046400b4bb7d2b11067f.svg" alt="" class="w-[200px]">
+                            <img src="{{asset('images/download_ios.svg')}}" alt="" class="w-[200px]">
                         </button>
                     </a>
-                    <a class="md:mr-2 rounded-md md:inline-block md:px-3" rel="noopener noreferrer" href="http://app.appsflyer.com/com.sebbia.youdo?pid=coldunshik&amp;c=youdo" target="_blank">
+                    <a class="md:mr-2 rounded-md md:inline-block md:px-3" rel="noopener noreferrer" href="http://app.appsflyer.com/com.sebbia.user?pid=coldunshik&amp;c=user" target="_blank">
                         <button type="button" class="w-[200px] bg-[#000] rounded-md mt-8">
-                            <img src="https://assets.youdo.com/_next/static/media/android.1234ba9391753eeb525d4f71a808329e.svg" alt="" class="w-[200px]">
+                            <img src="{{asset('images/download_android.svg')}}" alt="" class="w-[200px]">
                         </button>
                     </a>
                 </span>
