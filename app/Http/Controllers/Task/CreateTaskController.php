@@ -54,9 +54,10 @@ class CreateTaskController extends VoyagerBaseController
     }
     public function car_service(Request $request)
     {
-      $data = $request->input();
-      $request->session()->put('popeg', $data['popeg']);
-      $request->session()->put('no_texpassport', $data['no_texpassport']);
+      $popeg = $request->input('popeg');
+      $no_texpassport = $request->input('no_texpassport');
+      $request->session()->put('popeg', $popeg);
+      $request->session()->put('no_texpassport', $no_texpassport);
       $category = Category::where('id', 213)->first();
       $categories = explode(',',$category->services);
       return view('create.car_service', compact('categories'));
@@ -101,14 +102,38 @@ class CreateTaskController extends VoyagerBaseController
     }
     public function delivery(Request $request)
     {
-      $coordinates = $request->input('coordinates');
-            $request->session()->put('coordinates', $coordinates);
+      if ($request->input('location')) {
+        $location = $request->input('location');
+        $location2 = $request->input('location1');
+        if ($location2 != '') {
+          $fullloc = $location." | ".$location2;
+        }else {
+          $fullloc = $location;
+        }
+          $request->session()->put('location', $fullloc);
+          $coordinates = $request->input('coordinates');
+          $request->session()->put('coordinates', $coordinates);
+          $request->session()->flash('location2', $request->input('location'));
+          
+      }
       return view('create.delivery');
     }
     public function buy_delivery(Request $request)
     {
-      $coordinates = $request->input('coordinates');
-      $request->session()->put('coordinates', $coordinates);
+      if ($request->input('location')) {
+        $location = $request->input('location');
+        $location2 = $request->input('location1');
+        if ($location2 != '') {
+          $fullloc = $location." | ".$location2;
+        }else {
+          $fullloc = $location;
+        }
+          $request->session()->put('location', $fullloc);
+          $coordinates = $request->input('coordinates');
+          $request->session()->put('coordinates', $coordinates);
+          $request->session()->flash('location2', $request->input('location'));
+          
+      }
       return view('create.buy_delivery');
     }
     public function age(Request $request)
@@ -129,9 +154,9 @@ class CreateTaskController extends VoyagerBaseController
     }
     public function learning(Request $request)
     {
-      $data = $request->input();
-      $request->session()->put('training', $data['training']);
-      $request->session()->put('time', $data['time']);
+      $training = $request->input('training');
+      $time = $request->input('time',$training);
+      $request->session()->put('time', $time);
         $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
         $category = Category::where('id', 19)->first();
@@ -375,8 +400,20 @@ class CreateTaskController extends VoyagerBaseController
     {
         $peopleCount = $request->input('peopleCount');
         $request->session()->put('peopleCount', $peopleCount);
-        $coordinates = $request->input('coordinates');
+        if ($request->input('location')) {
+          $location = $request->input('location');
+          $location2 = $request->input('location1');
+          if ($location2 != '') {
+            $fullloc = $location." | ".$location2;
+          }else {
+            $fullloc = $location;
+          }
+            $request->session()->put('location', $fullloc);
+            $coordinates = $request->input('coordinates');
             $request->session()->put('coordinates', $coordinates);
+            $request->session()->flash('location2', $request->input('location'));
+            
+        }
         return view('create.peopleTransported');
     }
     public function date(Request $request){
@@ -392,7 +429,9 @@ class CreateTaskController extends VoyagerBaseController
             $coordinates = $request->input('coordinates');
             $request->session()->put('coordinates', $coordinates);
             $request->session()->flash('location2', $request->input('location'));
-        }elseif($data2 = $request->input('delivey_weight')){
+            
+        }
+        if($data2 = $request->input('delivey_weight')){
           $delivey_weight = $request->input('delivey_weight');
           $delivey_height = $request->input('delivey_height');
           $delivey_width = $request->input('delivey_width');

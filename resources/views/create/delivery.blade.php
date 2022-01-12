@@ -33,15 +33,15 @@
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
                                         Вес посылки, кг
-                                        <input max='50' id="delivey_weight" name="delivey_weight[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input max='50' id="delivey_weight" name="delivey_weight" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         Длина, м
-                                        <input max='100' id="delivey_length" name="delivey_length[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input max='100' id="delivey_length" name="delivey_length" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         Ширина, м
-                                        <input max='100' id="delivey_width" name="delivey_width[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input max='100' id="delivey_width" name="delivey_width" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         Высота, м
-                                        <input max='100' id="delivey_height" name="delivey_height[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input max='100' id="delivey_height" name="delivey_height" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         Ценность посылки, uzs.
-                                        <input id="delivey_budget" name="delivey_budget[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input id="delivey_budget" name="delivey_budget" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
