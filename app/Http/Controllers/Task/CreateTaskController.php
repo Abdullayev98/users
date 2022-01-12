@@ -528,6 +528,7 @@ class CreateTaskController extends VoyagerBaseController
       $buy_delivey_length = session()->pull('buy_delivey_length');
         }
           else{
+            $service_delivery = null;
           $buy_delivey_weight = null;
           $buy_delivey_height = null;
           $buy_delivey_width = null;
