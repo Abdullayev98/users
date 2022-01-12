@@ -204,7 +204,7 @@
             </div>
             <div class="md:w-1/3 w-3/4 mx-auto my-4">
                 <a href="/task/create?category_id=31">
-                  <button class="text-center py-3 px-2 sm:ml-12 ml-0 bg-yellow-500 border-[#e78900] text-2xl  border-b-4">
+                  <button class="text-center py-2 px-3 sm:ml-12 ml-0 bg-yellow-500 border-[#e78900] text-2xl  border-b-4">
                   @lang('lang.body_putTask')
                   </button>
                 </a>
