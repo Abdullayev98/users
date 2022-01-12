@@ -28,15 +28,15 @@
                 <div class="max-w-md mx-left">
                 @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                                     <div x-data={show:false} class="rounded-sm">
-                                        <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                            <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                                        <div class="border border-b-0 bg-gray-100 cursor-pointer" id="{{ str_replace(' ', '', $category->name) }}">
+                                            <button class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
                                                 <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                 </svg>
                                             </button>
                                                 {{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                         </div>
-                                        <div x-show="show" class="border border-b-0 px-8 py-1">
+                                        <div id="{{$category->slug}}" class="border border-b-0 px-8 py-1 hidden">
                                             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                                 <div>
@@ -148,6 +148,17 @@
       </div>
       <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
       </div>
+      <script>
+     @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+        $( "#{{ str_replace(' ', '', $category->name) }}" ).click(function() {
+            if ($("#{{$category->slug}}").hasClass("hidden")) {
+                $("#{{$category->slug}}").removeClass('hidden');
+            }else{
+                $("#{{$category->slug}}").addClass('hidden');
+            }
+        });
+        @endforeach
+      </script>
       <script type="text/javascript">
         function toggleModal12(modalID12){
           document.getElementById(modalID12).classList.toggle("hidden");

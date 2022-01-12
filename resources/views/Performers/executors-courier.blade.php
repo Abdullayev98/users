@@ -2,7 +2,7 @@
 
 @section("content")
 @foreach($users as $user)
-    <div class="container mx-auto">
+    <div class="xl:w-[1200px] lg:w-[900px] md:w-[700px] mx-auto">
         <div class="grid grid-cols-3  grid-flow-row mt-10">
         {{-- left sidebar start --}}
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
@@ -52,12 +52,14 @@
                              <img class="h-20 mt-6 ml-4" src="{{ asset('images/icon_bag.png') }}">
                          </div> -->
                          <div>
-                             <a href="/chat/{{$user->id}}"><button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
-                                @lang('lang.exe_ask')
-                              </button></a>
+                             <a href="{{url('performers/chat',['id'=>$user->id])}}">
+                                 <button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
+                                    @lang('lang.exe_ask')
+                                </button>
+                             </a>
                          </div>
                          <a class="md:hidden block mt-8" href="#">
-                            <button  class="bg-amber-600 hover:bg-amber-500 text-2xl text-white font-medium py-4 px-12  rounded">
+                            <button  class="bg-amber-600 hover:bg-amber-500 md:text-2xl text-white font-medium py-4 md:px-12  rounded">
                                 @lang('lang.exe_giveTask')
                             </button>
                         </a>

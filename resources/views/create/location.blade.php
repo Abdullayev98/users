@@ -11,6 +11,24 @@
         <form action="{{route('task.create.cargo')}}" method="post">
     @endif
   <form action="{{route('task.create.cargo')}}" method="post">
+  @elseif($pcategory->id == 1)
+    @if(session('cat_id') == 22)
+      <form action="{{route('task.create.delivery')}}" method="post">
+    @elseif(session('cat_id') == 23)
+      <form action="{{route('task.create.delivery')}}" method="post">
+    @elseif(session('cat_id') == 25)
+      <form action="{{route('task.create.delivery')}}" method="post">
+      @elseif(session('cat_id') == 28)
+      <form action="{{route('task.create.delivery')}}" method="post">
+    @elseif(session('cat_id') == 29)
+      <form action="{{route('task.create.delivery')}}" method="post">
+    @elseif(session('cat_id') == 24)
+      <form action="{{route('task.create.buy_delivery')}}" method="post">
+    @elseif(session('cat_id') == 27)
+      <form action="{{route('task.create.buy_delivery')}}" method="post">
+    @else
+        <form action="{{route('task.create.buy_delivery')}}" method="post">
+    @endif
   @else
   <form action="{{route('task.create.date')}}" method="post">
 @endif
@@ -44,10 +62,10 @@
                 <button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">
                   A
                 </button>
-                <input id="suggest" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="@lang('lang.search2_location')" aria-label="Full name" value="{{session('location2')}}" name="location" required>
-                <button id="mpshow" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
-                  <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
-                </button>
+                <input id="address" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="@lang('lang.search2_location')" value="{{session('location2')}}" name="location" required>
+            </div>
+            <div class="flex items-center rounded-lg border py-1">
+               <input id="coordinates" name="coordinates" type="text" value="{{session('coordinates')}}" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" required>
             </div>
             <div id="addinput" class="flex gap-y-2 flex-col">
 
@@ -98,36 +116,76 @@
     </script>
     <script type="text/javascript">
 
-    ymaps.ready(init);
+function init() {
+        var  myInput = document.getElementById("address"),
+            myPlacemark,
+            myMap = new ymaps.Map('map', {
+                center: [41.317170, 69.248458],
+                zoom: 12
+            }, {
+                searchControlProvider: 'yandex#search'
+            });
 
-    function init() {
-        var suggestView1 = new ymaps.SuggestView('suggest');
+        // Слушаем клик на карте.
+        myMap.events.add('click', function (e) {
+            var coords = e.get('coords');
 
-
-
-        var myMap = new ymaps.Map('map', {
-            center: [41.311158, 69.279737],
-            zoom: 15,
-            controls: ['geolocationControl']
+            // Если метка уже создана – просто передвигаем ее.
+            if (myPlacemark) {
+                myPlacemark.geometry.setCoordinates(coords);
+            }
+            // Если нет – создаем.
+            else {
+                myPlacemark = createPlacemark(coords);
+                myMap.geoObjects.add(myPlacemark);
+                // Слушаем событие окончания перетаскивания на метке.
+                myPlacemark.events.add('dragend', function () {
+                    getAddress(myPlacemark.geometry.getCoordinates());
+                });
+            }
+            getAddress(coords);
+            save(coords);
         });
 
-        var searchControl = new ymaps.control.SearchControl({
+        // Создание метки.
+        function createPlacemark(coords) {
+            return new ymaps.Placemark(coords, {
+                iconCaption: 'поиск...'
+            }, {
+                preset: 'islands#violetDotIconWithCaption',
+                draggable: true
+            });
+        }
 
+        // Определяем адрес по координатам (обратное геокодирование).
+        function getAddress(coords) {
+            myPlacemark.properties.set('iconCaption', 'поиск...');
+            ymaps.geocode(coords).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0),
+                    address = firstGeoObject.getAddressLine();
 
-        });
-        myMap.controls.add(searchControl);
-        $(".ymaps-2-1-79-controls__control_toolbar").hide();
+                myPlacemark.properties
+                    .set({
+                        // Формируем строку с данными об объекте.
+                        iconCaption: [
+                            // Название населенного пункта или вышестоящее административно-территориальное образование.
+                            firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas(),
+                            // Получаем путь до топонима, если метод вернул null, запрашиваем наименование здания.
+                            firstGeoObject.getThoroughfare() || firstGeoObject.getPremise()
+                        ].filter(Boolean).join(', '),
+                        // В качестве контента балуна задаем строку с адресом объекта.
+                        balloonContent: address
+                    });
+                myInput.value = address;
+            });
+        }
 
-
-        $("#mpshow").click(function(){
-        // searchControl.search(document.getElementById('suggest').value);
-        
-        $(".ymaps-2-1-79-float-button-icon").click();
-        
-    });
+        function save (coords){
+    document.getElementById("coordinates").value = coords;
+}
 
     }
-    $(".ymaps-2-1-79-float-button-icon").hide();
+    ymaps.ready(init);
 
     </script>
 

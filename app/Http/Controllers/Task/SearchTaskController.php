@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Task;
 
+use App\Models\WalletBalance;
 use Illuminate\Support\Arr;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\TaskResponse;
 use TCG\Voyager\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
@@ -20,15 +22,17 @@ class SearchTaskController extends VoyagerBaseController
 
         $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->paginate(20);
         $categories = Category::withTranslations(['ru', 'uz'])->get();
-
         return view('task.search', compact('tasks','categories'));
     }
 
     public function ajax_tasks(Request $request){
         if (isset($request->orderBy)) {
             if ($request->orderBy == 'all') {
-                $tasks = new Task();
-            }
+              $tasks =  DB::table("tasks")
+              ->join('categories', 'tasks.category_id', '=', 'categories.id')
+              ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+              ->get();
+          }
         }
         return $tasks->all();
     }
@@ -51,11 +55,18 @@ class SearchTaskController extends VoyagerBaseController
     }else {
       $tasks = Task::where('name','LIKE',"%$s%")->orWhere('address','LIKE',"%$a%")->orWhere('budget','LIKE',"%$p%")->orderBy('name')->paginate(10);
     }
-    $categories = Category::get()->all();
+    $categories = Category::all();
       return view('task.search', compact('tasks','s','a','p','categories'));
 
     }
     public function task($id){
+        $balance = WalletBalance::where('user_id',Auth::id())->first();
+        if ($balance){
+            $balance =  $balance->balance;
+        }else{
+            $balance = 0;
+        }
+
         $tasks = Task::where('id',$id)->first();
           $cat_id = $tasks->category_id;
           $user_id = $tasks->user_id;
@@ -66,18 +77,18 @@ class SearchTaskController extends VoyagerBaseController
         foreach($task_responses as $response){
           $response_users = User::where('id', $response->user_id)->first();
           }
-  
+
           $users = User::all();
           $current_user = User::find($user_id);
           $categories = Category::where('id',$cat_id)->get();
-  
+
 
         $arr = get_defined_vars();
 
         if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count'));
+            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count','balance'));
         }else {
-          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
+          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance'));
         }
 
     }

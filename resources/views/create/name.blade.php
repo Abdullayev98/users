@@ -33,7 +33,33 @@
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
                         @lang('lang.name_howCanWeHelpU')
                     </div>
-                    <form action="{{route('task.create.name')}}" method="post">
+                    @if($current_category->id == 60)
+                    <form action="{{route('task.create.housemaid')}}" method="post">
+                        @elseif($current_parent_category->id == 8)
+                        <form action="{{route('task.create.smm')}}" method="post">
+                        @elseif($current_parent_category->id == 9)
+                        <form action="{{route('task.create.computer')}}" method="post">
+                        @elseif($current_parent_category->id == 11)
+                        <form action="{{route('task.create.design')}}" method="post">
+                        @elseif($current_parent_category->id == 12)
+                        <form action="{{route('task.create.it')}}" method="post">
+                        @elseif($current_parent_category->id == 13)
+                        <form action="{{route('task.create.photo')}}" method="post">
+                        @elseif($current_parent_category->id == 15)
+                        <form action="{{route('task.create.remont_ustanovka')}}" method="post">
+                        @elseif($current_parent_category->id == 16)
+                        <form action="{{route('task.create.krosata')}}" method="post">
+                        @elseif($current_parent_category->id == 17)
+                        <form action="{{route('task.create.remont_tex')}}" method="post">
+                        @elseif($current_parent_category->id == 18)
+                        <form action="{{route('task.create.bugalter')}}" method="post">
+                        @elseif($current_parent_category->id == 19)
+                        <form action="{{route('task.create.age')}}" method="post">
+                        @elseif($current_parent_category->id == 213)
+                        <form action="{{route('task.create.remont_car')}}" method="post">
+                        @else
+                        <form action="{{route('task.create.name')}}" method="post">
+                    @endif
                         @csrf
 
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
@@ -49,7 +75,7 @@
                             <div class="hidden">
                               <input type="text" name="cat_id" value="{{$current_category->id}}" hidden>
                             </div>
-                            <h3>@lang('lang.name_subCat') <span id="button" style="color: grey;" onclick="myFunction()">@lang('lang.name_pedCourier')</span></h3>
+                            <button type='button' id='button' style="color: grey; hover: red;" onclick="myFunction()">Подкатегории</button>
                             <div style="display:none" id="categories">
                                 @foreach ($child_categories as $category2)
                                     <br>

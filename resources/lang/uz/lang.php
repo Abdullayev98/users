@@ -556,7 +556,7 @@ return [
     'notes_percent' => "Vazifa 86% toʻldi",
     'notes_details' => "Tafsilotlarni ko'rsating",
     'notes_destcript' => "Ta'rif",
-    'notes_example' => "Masalan: yog'ochdan, tomi va ikkita derazali bir qavatli bolalar uyi qurish. Saytda tez-tez suv yig'iladi, sizga shag'al drenaj kerak bo'ladi.",
+    'notes_example' => "Masalan: yog'ochdan, tomi va ikkita derazali bir qavatli bolalar uyi qurish. Hovlida tez-tez suv yig'iladi, sizga shag'al drenaj kerak bo'ladi.",
     'notes_addPhoto' => "Rasm qo'shish",
     'notes_back' => "Orqaga",
     // notes.blade end
@@ -633,7 +633,7 @@ return [
     'navbar_settings' => "'sozlamalar' bolimida",
     'navbar_markAsRead' => "Hammasini oqilgan dep belgilash",
     'navbar_createTask' => "Vazifa yaratish",
-    'navbar_findTask' => "Vzifani topish",
+    'navbar_findTask' => "Vazifani topish",
     'navbar_perfs' => "Ijrochilar",
     'navbar_myTasks' => "Mening topshiriqlarim",
     'navbar_exit' => "Chiqish",

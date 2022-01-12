@@ -61,8 +61,13 @@
                                     @endif
                                 </p>
                             </span>
-                            <p class="mt-2">@lang('lang.cash_created') <a href="#"><span>1</span></span> @lang('lang.cash_task')</a></p>
-                            <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p>
+                            <p class="mt-2">@lang('lang.cash_created') <a href="#">
+                                <span>
+                                    @if ($task == Null)  0
+                                    @else {{$task}}
+                                    @endif
+                                </span> @lang('lang.cash_task')</a></p>
+                            {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                         </div>
                     </div>
                 </figure>
@@ -86,7 +91,11 @@
                     {{-- "about-me" end --}}
                     {{-- cash --}} <div class="cash block  w-full" id="tab-cash">
                         <div class="head mt-5">
-                            <h2 class="font-bold text-xl">@lang('lang.cash_yourBalance') 0 UZS</h2>
+                            <h2 class="font-bold text-xl">@lang('lang.cash_yourBalance') 
+                                @if ($balance == Null) 0
+                                @else {{$balance->balance}} UZS
+                                @endif
+                            </h2>
                             <p class="inline">@lang('lang.cash_topUp')</p>
                                 <input class="inline rounded-xl ml-3 ring-1 text-3xl text-center h-18 w-36 pb-1"  onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)' id="myText1" type='number' min="1000" maxlength="7" value="1000"/>
                                 <span class="ml-1 text-xl">UZS</span>

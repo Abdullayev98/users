@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use File;
 use App\Models\User;
+use App\Models\Task;
+use App\Models\WalletBalance;
 use App\Models\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +20,8 @@ class ProfileController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $vcs = UserView::where('user_id', $user->id)->first();
-        return view('profile.profile', compact('user','vcs'));
+        $task = Task::where('user_id',Auth::user()->id)->count();
+        return view('profile.profile', compact('user','vcs','task'));
     }
     public function update(Request $request, $id)
     {
@@ -44,8 +47,10 @@ class ProfileController extends Controller
     public function profileCash()
     {
         $user = User::find(Auth::user()->id);
+        $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
         $vcs = UserView::where('user_id', $user->id)->first();
-        return view('profile.cash', compact('user','vcs'));
+        $task = Task::where('user_id',Auth::user()->id)->count();
+        return view('profile.cash', compact('user','vcs','balance','task'));
     }
     public function updateCash(Request $request, $id)
     {
@@ -73,7 +78,8 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
         $vcs = UserView::where('user_id', $user->id)->first();
         $categories = DB::table('categories')->where('parent_id',Null)->get();
-        return view('profile.settings', compact('user','categories','vcs'));
+        $task = Task::where('user_id',Auth::user()->id)->count();
+        return view('profile.settings', compact('user','categories','vcs','task'));
     }
     public function updateData(Request $request)
     {
