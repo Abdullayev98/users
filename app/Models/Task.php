@@ -42,6 +42,7 @@ class Task extends Model
         'krosata_service',
         'bugalter_service',
         'learning_service',
+        'coordinates',
 ];
     protected $translatable = [
         'name',
