@@ -785,7 +785,7 @@ return [
     // footer blade start
     'footer_how' => "Qanday qilib",
     'footer_become' => "Ijrochi",
-    'footer_performer' => "bolihsh mumkin",
+    'footer_performer' => "bolish mumkin",
     'footer_ownquestion' => "Ko'p beriladigan savollar",
     'footer_contact' => "Kontaktlar",
     'footer_costumersreviews' => "Mijozlar sharhlari",
