@@ -66,6 +66,9 @@ class UserController extends Controller
         $data = $request->all();
         $check = $this->createUser($data);
         $token = Str::random(64);
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
+        $howitworks = How_work_it::all();
         UserVerify::create([
             'user_id' => $check->id,
             'token' => $token
@@ -74,7 +77,7 @@ class UserController extends Controller
             $message->to($request->email);
             $message->subject('Email Verification Mail');
         });
-        return redirect("dashboard")->withSuccess('Successfully logged-in!');
+        return view('home', compact('tasks', 'howitworks', 'categories'))->withSuccess('Logged-in');
     }
 
 

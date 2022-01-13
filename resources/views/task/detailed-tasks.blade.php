@@ -150,6 +150,7 @@
                                                             <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">SUM
                                                             <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
                                                             <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
+                                                            <input type="text" name="name_task" class="hidden" value="{{$tasks->name}}">
                                                             <input type="text" name="status" class="hidden" value="1">
                                                             <input type="text" name="user_id" class="hidden" value="{{$current_user->id ?? null}}">
                                                         </label>
@@ -422,6 +423,7 @@
             let task_id = $("input[name=task_id]").val();
             let _token = $("input[name=csrf]").val();
             let user_id = $("input[name=user_id]").val();
+            let name_task = $("input[name=name_task]").val();
             $.ajax({
                 url: "/ajax-request",
                 type:"POST",
@@ -432,7 +434,8 @@
                     response_price:response_price,
                     task_id:task_id,
                     _token:_token,
-                    user_id:user_id
+                    user_id:user_id,
+                    name_task:name_task
                 },
                 success:function(response){
                     console.log(response);
@@ -464,6 +467,7 @@
             let status = $("input[name=status]").val();
             let task_id = $("input[name=task_id]").val();
             let performer_id = $("input[name=performer_id]").val();
+            let name_task = $("input[name=name_task]").val();
             $.ajax({
                 url: "/ajax-request",
                 type:"POST",
@@ -471,7 +475,8 @@
                     _token:_token,
                     status:status,
                     task_id:task_id,
-                    performer_id:performer_id
+                    performer_id:performer_id,
+                    name_task:name_task
                 },
                 success:function(response){
                     console.log(response);
