@@ -10,10 +10,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="col-span-2">
                     <div class="w-full text-center text-2xl">
-                        Ищем исполнителя для задания "{{session('name')}}"
+                        @lang('lang.buyd_text') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                        Задание заполнено на 33%
+                        @lang('lang.bugalter_taskready')
                     </div>
                     <div class="relative pt-1">
                         <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            Какие услуги понадобятся?
+                            @lang('lang.const_text1')
                         </div>
 
                         <div class="py-4 mx-auto  text-left ">
@@ -42,37 +42,37 @@
                                             @endforeach
 {{--                                            <input type="checkbox" id="a1"--}}
 {{--                                                   name="a1[]" value="1">--}}
-{{--                                            <label for="a1">Помыть окна</label>--}}
+{{--                                            <label for="a1">@lang('lang.housem1_text')</label>--}}
 {{--                                            <br>--}}
 {{--                                            <br>--}}
 {{--                                            <input type="checkbox" id="a2"--}}
 {{--                                                   name="a2" value="1">--}}
-{{--                                            <label for="a2[]">Погладить белье</label>--}}
+{{--                                            <label for="a2[]">@lang('lang.housem1_text1')</label>--}}
 {{--                                            <br>--}}
 {{--                                            <br>--}}
 {{--                                            <input type="checkbox" id="a3"--}}
 {{--                                                   name="a3" value="1">--}}
-{{--                                            <label for="a3[]">Помыть посуду</label>--}}
+{{--                                            <label for="a3[]">@lang('lang.housem1_text2')</label>--}}
 {{--                                            <br>--}}
 {{--                                            <br>--}}
 {{--                                            <input type="checkbox" id="a4"--}}
 {{--                                                   name="a4[]" value="1">--}}
-{{--                                            <label for="a4">Внутри холод-ка</label>--}}
+{{--                                            <label for="a4">@lang('lang.housem1_text3')</label>--}}
 {{--                                            <br>--}}
 {{--                                            <br>--}}
 {{--                                            <input type="checkbox" id="a5"--}}
 {{--                                                   name="a5[]" value="1">--}}
-{{--                                            <label for="a5">Внутри духовки</label>--}}
+{{--                                            <label for="a5">@lang('lang.housem1_text4')</label>--}}
 {{--                                            <br>--}}
 {{--                                            <br>--}}
 {{--                                            <input type="checkbox" id="a6"--}}
 {{--                                                   name="a6" value="1">--}}
-{{--                                            <label for="a6[]">Внутри СВЧ-печи</label>--}}
+{{--                                            <label for="a6[]">@lang('lang.housem1_text5')</label>--}}
 {{--                                            <br>--}}
 {{--                                            <br>--}}
 {{--                                            <input type="checkbox" id="a7"--}}
 {{--                                                   name="a7[]" value="1">--}}
-{{--                                            <label for="a7">Внутри шкафов</label>--}}
+{{--                                            <label for="a7">@lang('lang.housem1_text6')</label>--}}
                                         </div>
                                     </div>
 

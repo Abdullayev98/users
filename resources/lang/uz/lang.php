@@ -543,6 +543,11 @@ return [
     'budget_yourBudget' => "Siz qaysi byudjetni ko'ryapsiz?",
     'budget_sum' => "150 so'mgacha",
     'budget_back' => "Orqaga",
+    'budget_text' => "Byudjetni tanlang",
+    'budget_text1' => "Men biznes uchun U-Serdan foydalanaman, yopish qog'ozlari kerak",
+    'budget_text2' => "Sizning topshirig'ingizga faqat yuridik shaxslar, yakka tartibdagi tadbirkorlar va yakka tartibdagi tadbirkorlar javob bera oladi.",
+    'budget_text3' => "Men sug'urtalangan ijrochilarga ustunlik beraman",
+    'budget_text4' => "Zarar bo'lgan taqdirda, sug'urta kompaniyasi sizga 100 000 rublgacha to'laydi. Bu Bepul",
     // budget.blade end
 
     // cargo.blade start
@@ -896,4 +901,123 @@ return [
     'faq_text1' => "Universal xizmatlardan tez-tez so'raladigan savollar va tavsiyalar",
     'faq_text2' => "Biz Intercom dan foydalanmoqdamiz",
     //faq faq blade ended
+
+    //age blade started
+    'age_lookperformersfortask' => "Biz vazifani bajaruvchini qidirmoqdamiz",
+    'age_text' => " Topshiriq 22% bajarildi",
+    'age_studentsage' => "Talaba necha yoshda?",
+    'age_text1' => "Yosh",
+    //age blade ended
+
+    //bugalter blade started
+   'bugalter_taskready' => "Topshiriq 33% bajarildi",
+   'bugalter_placeofservice' => "Xizmat ko'rsatish joyi",
+   //bugalter blade ended
+
+   //buy delivery blade started
+   'buyd_text' => "Biz vazifani bajaruvchini qidirmoqdamiz",
+   'buyd_text1' => "Topshiriq 43% bajarildi",
+   'buyd_text2' => "Yuk tashish imkoniyatlari qanday?",
+   'buyd_text3' => "Posilka og'irligi, kg",
+   'buyd_text4' => "Uzunlik, m",
+   'buyd_text5' => "Kengligi, m",
+   'buyd_text6' => "Balandligi, m",
+   // buy delivery ended
+
+   // computer blade started
+   'comp_text' => "Topshiriq 20% bajarildi",
+   // computer blade ended
+
+   // construction blade started
+   'const_text' => "Topshiriq 80% bajarildi",
+   'const_text1' => "Qanday xizmatlar kerak bo'ladi?",
+   // construction blade started
+
+   // delivery avto blade started 
+   'delA_text' => "Topshiriq 65% bajarildi",
+   'delA_text1' => "Kuryer qaysi transport vositasida bo'lishi kerak?",
+   'delA_text2' => "Talab qilinmaydi",
+   'delA_text3' => "Yengil avtomobil bilan",
+   'delA_text4' => "Yuk mashinasida",
+   // delivery avto blade ended 
+
+   // deloivery blade started
+   'delivery_text' => "Posilka qiymati, uzs.",
+   // delivery blade ended
+
+   // delivery1 blade started
+   'del1_text' => "Topshiriq 75% bajarildi",
+   'del1_text1' => "Xarid uchun qanday to'lashni rejalashtiryapsiz?",
+   // delivery1 blade ended
+
+   // design blade started
+   'design_text' => "Topshiriq 25% bajarildi",
+   // design blade ended
+
+   // glass blade started
+   'glass_text' => "Topshiriq 44% bajarildi",
+   'glass_text1' => "Qancha oynani tozalash kerak?",
+   'glass_text2' => "dona.",
+   // glass blade ended
+
+   // housemaid blade started
+   'housem_wheretoclean' => "Qayerda tozalash kerak?",
+   'housem_text' => "Ijrochilar tegishli transportni tanlashlari uchun vazn va o'lchamlarni ko'rsating.",
+   'housem_text1' => "bino",
+   'housem_text2' => "xonali kvartira",
+   'housem_office' => "Idora",
+   'housem_text3' => "Xususiy uy (dacha)",
+   'housem_text4' => "Qanchalik tez-tez tozalash kerak",
+   'housem_text5' => "Bir martalik tozalash",
+   'housem_text6' => "Oyiga 1 marta",
+   'housem_text7' => "Oyiga 2 marta",
+   'housem_text8' => "Har hafta",
+   // housemaid blade ended
+
+   // housemaid1 blade started
+   'housem1_text' => "Derazalarni yuvish",
+   'housem1_text1' => "Kiyim dazmollash",
+   'housem1_text2' => "Idishlarni yuvish",
+   'housem1_text3' => "Muzlatkich ichida",
+   'housem1_text4' => "Pech ichida",
+   'housem1_text5' => "Mikrato'lqinli pech ichida",
+   'housem1_text6' => "Shkaflar ichida",
+   // housemaid1 blade ended
+
+   // info car blade stared
+   'infoc_text' => "Topshiriq 30% bajarildi",
+   'infoc_text1' => "Kilometr qancha?",
+   'infoc_text2' => "Yurgan masofasi, km",
+   'infoc_text3' => "Ro‘yxatdan o‘tish raqami", 
+   // info car blade ended
+
+    // krosata blade stared
+    'krosata_text' => "Topshiriq 23% bajarildi",
+    // krosata blade ended
+
+    // learning blade stared
+    'learning_text' => "Manzil",
+    // learning blade ended
+
+    // photo blade stared
+    'photo_text' => "Topshiriq 21% bajarildi",
+    // photo blade ended
+
+    //remont car blade started 
+    'remontc_text' => "Qanday mashinangiz bor?",
+    'remontc_text1' => "Avtomobilning markasi, modeli va ishlab chiqarilgan yili",
+    'remontc_text2' => "Masalan, Chevrolet Cruze 2014 ",
+    //remont car blade ended 
+
+    // training blade started
+    'training_text' => "Qanday darslar kerak?",
+    'training_text1' => "Pudratchilar tegishli transportni tanlashlari uchun og'irlik va o'lchamlarni ko'rsating.",
+    'training_text2' => "Chastotasi",
+    'training_text3' => "Muntazam ravishda",
+    'training_text4' => "Faqat bitta mashg'ulot",
+    'training_text5' => "Mashq qancha davom etadi",
+    'training_minut' => "daqiqa",
+    'training_text6' => "Muhim emas",
+    // training blade ended
+
 ];

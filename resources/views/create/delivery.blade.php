@@ -12,10 +12,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="md:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
-                    Ищем исполнителя для задания "{{session('name')}}"
+                    @lang('lang.buyd_text') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                    Задание заполнено на 60%
+                    @lang('lang.buyd_text1')
                     </div>
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -27,20 +27,20 @@
                             @lang('lang.cargo_howBig')
                         </div>
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                        Какие параметры посылки?
+                        @lang('lang.buyd_text2')
                         </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
-                                        Вес посылки, кг
+                                        @lang('lang.buyd_text3')
                                         <input max='50' id="delivey_weight" name="delivey_weight" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        Длина, м
+                                        @lang('lang.buyd_text4')
                                         <input max='100' id="delivey_length" name="delivey_length" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        Ширина, м
+                                        @lang('lang.buyd_text5')
                                         <input max='100' id="delivey_width" name="delivey_width" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         Высота, м
                                         <input max='100' id="delivey_height" name="delivey_height" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        Ценность посылки, uzs.
+                                        @lang('lang.delivery_text')
                                         <input id="delivey_budget" name="delivey_budget" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                 </div>
                                 <div class="mt-4">
