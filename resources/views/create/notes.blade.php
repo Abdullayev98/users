@@ -17,7 +17,7 @@
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
-        <div style="width: 86%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+        <div style="width: 90%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full px-6 p-6 md:px-20">

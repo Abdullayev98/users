@@ -554,7 +554,7 @@ return [
     // name.blade end
 
     // notes.blade start
-    'notes_percent' => "Задание заполнено на 86%",
+    'notes_percent' => "Задание заполнено на 90%",
     'notes_details' => "Уточните детали",
     'notes_destcript' => "Описание",
     'notes_example' => "Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня.",
@@ -576,7 +576,7 @@ return [
     // peopleT.blade end
 
     // services.blade start
-    'service_percent' => "Задание заполнено на 86%",
+    'service_percent' => "Задание заполнено на 89%",
     'service_details' => "Уточните детали",
     // services.blade end
 
