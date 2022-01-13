@@ -32,7 +32,7 @@
                             <p class="">@lang('lang.secure_weTry')</p>
                         </div>
 {{--                        <div class="grid grid-cols-10">--}}
-{{--                            <div class="col-span-3 bg-no-repeat mt-20" style="background-image: url('https://assets.youdo.com/_next/static/media/sbr-screen.a2f6a92627c5306e984799eec1143662.png')">--}}
+{{--                            <div class="col-span-3 bg-no-repeat mt-20" style="background-image: url('https://cbkg.ru/uploads/articles/82cf7590067ad3b49941bb888c690331.jpg')">--}}
 
 {{--                            </div>--}}
 
@@ -52,12 +52,12 @@
                                 <a href="#" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_testDocs')</a>
                             </div>
 
-                            <div class="col-span-3 bg-no-repeat mt-20 bg-auto bg-right" style="background-image: url('https://assets.youdo.com/_next/static/media/documents-screen-shadow.a7af39c38e5cfc27e1ad5862892a3ec8.png')">
+                            <div class="col-span-3 bg-no-repeat mt-20 bg-auto bg-right" style="background-image: url('https://sun9-31.userapi.com/impf/c626417/v626417063/59eb3/Mi90OPQvDa0.jpg?size=560x540&quality=96&sign=9c7a38c94313f19aa9bfc1da41f35f2b&type=album')">
 
                             </div>
                         </div>
                         <div class="grid grid-cols-10 h-96">
-                            <div class="col-span-3 bg-no-repeat bg-left " style="background-image: url('https://assets.youdo.com/_next/static/media/reviews-screen-shadow.ff467ea1c88c4b45c03df0eedf99845f.png')">
+                            <div class="col-span-3 bg-no-repeat bg-left " style="background-image: url('https://cdn.shopify.com/s/files/1/0055/6174/5498/files/YZPremiums_-_3.0_rating.png?v=1592434448')">
                             </div>
                             <div class="col-span-7 p-5 my-auto">
                                 <h3 class="text-2xl mb-5">@lang('lang.secure_ratingAndFeed')</h3>

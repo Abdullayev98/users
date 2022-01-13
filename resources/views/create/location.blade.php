@@ -82,11 +82,16 @@
              </button>
              <div id="map" class="h-60 mt-4 rounded-lg w-full" ></div>
              <div class="flex w-full gap-x-4 mt-4">
-               <a href="/task/create?category_id=22" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
-              <!-- <button type="button"> -->
-                 @lang('lang.budget_back')
-               <!-- </button> -->
-               </a>
+             <a onclick="myFunction()" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                            <!-- <button type="button"> -->
+                                            @lang('lang.notes_back')
+                                            <!-- </button> -->
+                                            <script>
+                                                function myFunction() {
+                                                    window.history.back();
+                                                }
+                                            </script>
+                                        </a>
 
                <input type="submit" class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" name="" value="@lang('lang.name_next')">
 
