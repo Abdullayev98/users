@@ -2,14 +2,14 @@ let dataAjax = {};
 let dataGeo = {};
 $('.all_cat').click();
 $('.all_cat2').click();
-$(".for_check input:checkbox").each(function () {
+$(".for_check input:checkbox").each(function() {
     this.checked = true;
 });
-$(".for_check2 input:checkbox").each(function () {
+$(".for_check2 input:checkbox").each(function() {
     this.checked = true;
 });
 
-function tasks_list_all(data){
+function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
         if (data.status != 1) {
@@ -18,13 +18,13 @@ function tasks_list_all(data){
                     <div class="w-full border hover:bg-blue-100 h-[100px] ">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
-                    <i class="fas fa-user-circle text-4xl float-left text-blue-400 mr-2"></i>
-                    <a href="/detailed-tasks/`+data.id+`" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
+                    <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2"></i>
+                    <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-sm ml-12 mt-4">` + data.address + `</p>
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">`+ data.category_name +`</p>
+                    <p class="text-sm ml-12">` + data.category_name + `</p>
                     </div>
                     </div>
                     </div>
@@ -34,11 +34,11 @@ function tasks_list_all(data){
     });
 }
 
-function tasks_list(data){
+function tasks_list(data) {
     $(".show_tasks").empty();
     let id;
 
-    $('.chi_cat').each(function () {
+    $('.chi_cat').each(function() {
         if (this.checked) {
             id = this.name
             $.each(data, function(index, data) {
@@ -48,13 +48,13 @@ function tasks_list(data){
                     <div class="w-full border hover:bg-blue-100 h-[100px] ">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
-                    <i class="`+data.icon+` text-4xl float-left text-blue-400 mr-2"></i>
+                    <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-sm ml-10 mt-1">` + data.address + `</p>
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">`+ data.category_name +`</p>
+                    <p class="text-sm ml-12">` + data.category_name + `</p>
                     </div>
                     </div>
                     </div>
@@ -67,6 +67,7 @@ function tasks_list(data){
 }
 
 ymaps.ready(init);
+
 function init() {
     var myMap1 = new ymaps.Map('map1', {
         center: [55.74, 37.58],
@@ -74,7 +75,7 @@ function init() {
         controls: []
     });
 
-    $("#mpshow").click(function(){
+    $("#mpshow").click(function() {
 
     });
 }
@@ -92,7 +93,8 @@ tabTogglers.forEach(function(toggler) {
 
         for (let i = 0; i < tabContents.children.length; i++) {
 
-            tabTogglers[i].parentElement.classList.remove("border-orange-400", "border-b",  "opacity-100");  tabContents.children[i].classList.remove("hidden");
+            tabTogglers[i].parentElement.classList.remove("border-orange-400", "border-b", "opacity-100");
+            tabContents.children[i].classList.remove("hidden");
             if ("#" + tabContents.children[i].id === tabName) {
                 continue;
             }
@@ -105,7 +107,7 @@ tabTogglers.forEach(function(toggler) {
 
 document.getElementById("default-tab").click();
 
-$(".rotate").click(function(){
+$(".rotate").click(function() {
     $(this).toggleClass("rotate-[360deg]");
 });
 
@@ -211,7 +213,7 @@ function parcats_click_false(id) {
             this.checked = false;
         }
     });
-    $('.all_cat').each(function () {
+    $('.all_cat').each(function() {
         this.checked = false;
     });
     $('.chi_cat').each(function() {
@@ -224,7 +226,7 @@ function parcats_click_false(id) {
             this.checked = false;
         }
     });
-    $('.all_cat2').each(function () {
+    $('.all_cat2').each(function() {
         this.checked = false;
     });
     $('.chi_cat2').each(function() {
@@ -234,7 +236,7 @@ function parcats_click_false(id) {
     });
 }
 
-function parcat_check(){
+function parcat_check() {
     let i = 1;
     $('.par_cat').each(function() {
         if (this.checked == false) {
@@ -245,7 +247,7 @@ function parcat_check(){
     return i;
 }
 
-function parcat2_check(){
+function parcat2_check() {
     let i = 1;
     $('.par_cat2').each(function() {
         if (this.checked == false) {
@@ -256,7 +258,7 @@ function parcat2_check(){
     return i;
 }
 
-function chicats_click_false(id, name){
+function chicats_click_false(id, name) {
     $('.chi_cat').each(function() {
         if (this.name == name) {
             this.checked = false
@@ -267,7 +269,7 @@ function chicats_click_false(id, name){
             this.checked = false;
         }
     });
-    $('.all_cat').each(function () {
+    $('.all_cat').each(function() {
         this.checked = false;
     });
     $('.chi_cat2').each(function() {
@@ -280,12 +282,12 @@ function chicats_click_false(id, name){
             this.checked = false;
         }
     });
-    $('.all_cat2').each(function () {
+    $('.all_cat2').each(function() {
         this.checked = false;
     });
 }
 
-function chicat_check(id){
+function chicat_check(id) {
     let i = 1;
     $('.chi_cat').each(function() {
         if (this.id == id) {
@@ -298,7 +300,7 @@ function chicat_check(id){
     return i;
 }
 
-function chicat2_check(id){
+function chicat2_check(id) {
     let i = 1;
     $('.chi_cat2').each(function() {
         if (this.id == id) {
@@ -311,7 +313,7 @@ function chicat2_check(id){
     return i;
 }
 
-function chicat_check_print(){
+function chicat_check_print() {
     let i = 0;
     $('.chi_cat').each(function() {
         if (this.checked) {
@@ -322,44 +324,44 @@ function chicat_check_print(){
     return i;
 }
 
-$('.all_cat, .all_cat2').click(function () {
-    if(this.checked == false) {
-        $(".for_check input:checkbox").each(function(){
+$('.all_cat, .all_cat2').click(function() {
+    if (this.checked == false) {
+        $(".for_check input:checkbox").each(function() {
             this.checked = false;
         });
-        $(".for_check2 input:checkbox").each(function(){
+        $(".for_check2 input:checkbox").each(function() {
             this.checked = false;
         });
-        $('.all_cat').each(function () {
+        $('.all_cat').each(function() {
             this.checked = false;
         });
-        $('.all_cat2').each(function () {
+        $('.all_cat2').each(function() {
             this.checked = false;
         });
         img_show();
-    }else {
-        $(".for_check input:checkbox").each(function () {
+    } else {
+        $(".for_check input:checkbox").each(function() {
             this.checked = true;
         });
-        $(".for_check2 input:checkbox").each(function () {
+        $(".for_check2 input:checkbox").each(function() {
             this.checked = true;
         });
-        $('.all_cat').each(function () {
+        $('.all_cat').each(function() {
             this.checked = true;
         });
-        $('.all_cat2').each(function () {
+        $('.all_cat2').each(function() {
             this.checked = true;
         });
         tasks_list_all(dataAjax)
     }
 });
 
-$('.par_cat, .par_cat2').click(function () {
-    if(this.checked == false) {
+$('.par_cat, .par_cat2').click(function() {
+    if (this.checked == false) {
         parcats_click_false(this.id, this.name)
-        if (chicat_check_print()){
-            tasks_list(dataAjax)}
-        else{
+        if (chicat_check_print()) {
+            tasks_list(dataAjax)
+        } else {
             img_show()
         }
     } else {
@@ -368,12 +370,12 @@ $('.par_cat, .par_cat2').click(function () {
     }
 });
 
-$('.chi_cat, .chi_cat2').click(function () {
+$('.chi_cat, .chi_cat2').click(function() {
     if (this.checked == false) {
         chicats_click_false(this.id, this.name)
-        if (chicat_check_print()){
-            tasks_list(dataAjax)}
-        else{
+        if (chicat_check_print()) {
+            tasks_list(dataAjax)
+        } else {
             img_show()
         }
     } else {
@@ -383,34 +385,34 @@ $('.chi_cat, .chi_cat2').click(function () {
 });
 
 function parcats_click_true(id, name) {
-    $('.par_cat').each(function () {
+    $('.par_cat').each(function() {
         if (this.name == name) {
             this.checked = true;
         }
     });
-    $('.chi_cat').each(function () {
+    $('.chi_cat').each(function() {
         if (this.id == id) {
             this.checked = true;
         }
     });
-    $('.all_cat').each(function () {
+    $('.all_cat').each(function() {
         if (parcat_check()) {
             this.checked = true;
         } else {
             this.checked = false;
         }
     });
-    $('.par_cat2').each(function () {
+    $('.par_cat2').each(function() {
         if (this.name == name) {
             this.checked = true;
         }
     });
-    $('.chi_cat2').each(function () {
+    $('.chi_cat2').each(function() {
         if (this.id == id) {
             this.checked = true;
         }
     });
-    $('.all_cat2').each(function () {
+    $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
             tasks_list_all(dataAjax)
@@ -420,19 +422,19 @@ function parcats_click_true(id, name) {
     });
 }
 
-function chicats_click_true(id, name){
+function chicats_click_true(id, name) {
     $('.chi_cat').each(function() {
         if (this.name == name) {
             this.checked = true;
         }
     });
-    $('.par_cat').each(function () {
+    $('.par_cat').each(function() {
         if (this.id == id) {
             if (chicat_check(id))
                 this.checked = true;
         }
     });
-    $('.all_cat').each(function () {
+    $('.all_cat').each(function() {
         if (parcat_check()) {
             this.checked = true;
         } else {
@@ -444,13 +446,13 @@ function chicats_click_true(id, name){
             this.checked = true;
         }
     });
-    $('.par_cat2').each(function () {
+    $('.par_cat2').each(function() {
         if (this.id == id) {
             if (chicat2_check(id))
                 this.checked = true;
         }
     });
-    $('.all_cat2').each(function () {
+    $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
             tasks_list_all(dataAjax)
