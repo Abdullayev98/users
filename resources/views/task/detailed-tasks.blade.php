@@ -8,9 +8,7 @@
     <div class="mx-auto w-9/12">
 @endif
         <div class="mt-8 md:flex mb-8">
-        <div class="mt-8 lg:flex mb-8">
             {{-- left sidebar start --}}
-            <div class="w-9/12 float-left">
             <div class="w-9/12 float-left">
                 <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                 <div class="flex flex-row">
@@ -38,7 +36,6 @@
                     @endforeach
                 </div>
 
-                <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
                 <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
                 <div class="ml-12 flex flex-row">
                         <h1 class="text-lg font-bold h-auto w-48">{{$tasks->date_type}}</h1>
@@ -217,7 +214,6 @@
                     </div>
                 </div>
 
-                <div class="mt-12 border-2 p-6 w-11/12 rounded-lg border-orange-100 shadow-lg">
                 <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">    
                 <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
                     <p class="text-lg mb-10">@lang('lang.detT_fastHelp')</p>
@@ -228,7 +224,6 @@
                     </a>
                 </div>
 
-                <div class="lg:w-[700px] w-[400px]">
                 <div class="lg:w-[700px] w-[400px]">
                     @if (isset($auth_user))
                     @if ($tasks->user_name == $auth_user->name)
