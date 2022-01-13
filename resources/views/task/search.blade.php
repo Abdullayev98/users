@@ -68,15 +68,15 @@
                                     </div>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               checked><span class="ml-2 text-gray-700">Удалённая работа</span>
+                                               checked><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               ><span class="ml-2 text-gray-700">Задания без откликов</span>
+                                               ><span class="ml-2 text-gray-700">@lang('lang.search_noCallback')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               ><span class="ml-2 text-gray-700">Только вакансии</span>
+                                               ><span class="ml-2 text-gray-700">@lang('lang.search_onlyVacancy')</span>
                                     </label>
                                 </div>
 
@@ -155,13 +155,10 @@
                             </div>
                             <div class="b-tasks-sorting">
                                 <div class="inline-flex items-center my-5">
-                                    <span class="title__994cd">Сортировать:</span>
-                                    <a href="#" data-sort-type="1" class="mx-5">по
-                                        дате публикации</a>
-                                    <a href="#" data-sort-type="2"  class="mx-5 active">по
-                                        срочности</a>
-                                    <a href="#" data-sort-type="3"  class="mx-5 ">по
-                                        удалённости</a>
+                                    <span class="title__994cd">@lang('lang.search_filter')</span>
+                                    <a href="#" data-sort-type="1" class="mx-5">@lang('lang.search_byDate')</a>
+                                    <a href="#" data-sort-type="2"  class="mx-5 active">@lang('lang.search_byHurry')</a>
+                                    <a href="#" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</a>
                                 </div>
                             </div>
                             <div id="scrollbar" class="w-full h-full blog1">

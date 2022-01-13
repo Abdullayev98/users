@@ -76,6 +76,35 @@ return [
     'detT_createOwnTask' => "Создайте свое задание",
     'detT_otherTask' => "Другие задания в категории",
     'detT_ownerOfThisTask' => "Заказчик этого задания",
+    'detT_inProsses' => "В исполнении",
+    'detT_callback' => "Откликнуться на это задание",
+    'detT_fill' => "Пополните баланс",
+    'detT_balanceReq' => "Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.",
+    'detT_balanceReq2' => "При отклике сумма на балансе не блокируется — можно оставлять отклики и к другим заданиям.",
+    'detT_fill2' => "Пополнить",
+    'detT_addOffers' => "Добавить предложение к заказу",
+    'detT_notifMe' => "Уведомить меня, если исполнителем",
+    'detT_pointTime' => "Указать время актуальности предложения",
+    'detT_hour' => "часов",
+    'detT_next' => "Далее",
+    'detT_callbackSucces' => "Ваш отклик успешно отправлен!",
+    'detT_onTask' => "У задания",
+    'detT_callback1' => "отклик",
+    'detT_callback2' => "откликa",
+    'detT_callback3' => "откликов",
+    'detT_noCallbacks' => "У задания нет откликов",
+    'detT_byRating' => "по рейтингу",
+    'detT_byTime' => "по времени",
+    'detT_byCallbacks' => "по отзывам",
+    'detT_numByNum' => "4,96 по 63 отзывам",
+    'detT_price' => "Стоимость",
+    'detT_Hello' => "Здраствуйте.",
+    'detT_phoneNum' => "Телефон исполнителя:",
+    'detT_writeOnChat' => "Написать в чат",
+    'detT_choose' => "Выбрать исполнителем",
+    'detT_choosePerf' => "Выберите исполнителя, чтобы потом оставить отзыв о работе.",
+    'detT_otherTaskInCat' => "Другие задания в категории",
+    'detT_ordererThisTask' => "Заказчик этого задания",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -87,6 +116,8 @@ return [
     'mytasks_freeRespond' => "Бесплатный отклик",
     'mytasks_promo' => "Промо",
     'mytasks_allCat' => "Все категории",
+    'mytask_onTask' => "У задания",
+    'mytask_callbacks' => "откликов",
     // mytasks.blade end
 
     // offertask.blade start
@@ -118,6 +149,13 @@ return [
     'search_tryAnOther' => "Попробуйте уточнить запрос или выбрать другие категории",
     'search_sportMaster' => "Спортмастер",
     'search_noFeedback' => "Нет отзывов",
+    'search_remoteJob' => "Удалённая работа",
+    'search_noCallback' => "Задания без откликов",
+    'search_onlyVacancy' => "Только вакансии",
+    'search_filter' => "Сортировать:",
+    'search_byDate' => "по дате публикации",
+    'search_byHurry' => "по срочности",
+    'search_byRemote' => "по удалённости",
     // search.blade end
 
     // search2.blade start
@@ -445,6 +483,17 @@ return [
     'settings_nofifMeBy' => "Уведомлять меня по:",
     'settings_push' => "Push",
     'settings_since' => "на Universal Services с 12 сентября 2021 г.",
+    'settings_allSettings' => "Общие настройки",
+    'settings_notifs' => "Уведомления",
+    'settings_subscribeOnTask' => "Подписка на задания",
+    'settings_security' => "Безопасность",
+    'settings_age' => "Возраст",
+    'settings_otherSet' => "Другие сведения",
+    'settings_city' => "Город",
+    'settings_profile' => "профиль",
+    'settings_phone' => "Телефон",
+    'settings_noNumber' => "номер нет",
+    'settings_trust' => "Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.",
     // settings.blade end
 
     // executors-courier.blade start
@@ -461,7 +510,7 @@ return [
     'exe_giveTask' => "Предложить задание",
     'exe_aboutMe' => "Обо мне",
     'exe_pushBtn' => "Чтобы воспользоваться моими услугами, нажмите кнопку",
-    'exe_giveTbtn' => "«Предложить задание»",
+    'exe_giveTbtn' => "Предложить задание",
     'exe_work' => "Сотрудничаю с условием, что о моей работе будет оставлен отзыв на Universal Services.",
     'exe_typeOfDone' => "Виды выполняемых работ",
     'exe_perfTakesNotif' => "Исполнитель получит уведомление и сможет оказать вам свои услуги",
