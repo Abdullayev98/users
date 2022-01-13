@@ -495,6 +495,11 @@ return [
     'budget_yourBudget' => "На какой бюджет вы рассчитываете?",
     'budget_sum' => "до 150 сум",
     'budget_back' => "Назад",
+    'budget_text' => "Выберите бюджет",
+    'budget_text1' => "Я использую U-Ser для бизнеса, нужны закрывающие документы",
+    'budget_text2' => "На ваше задание смогут откликаться только юридические лица, ИП и самозанятые",
+    'budget_text3' => "Отдаю предпочтение застрахованным исполнителям",
+    'budget_text4' => "В случае ущерба страховая возместит вам до 100 000 руб. Это бесплатно",
     // budget.blade end
 
     // cargo.blade start
@@ -850,5 +855,125 @@ return [
     'faq_text1' => "Ответы на частые вопросы и рекомендации от Universal Services",
     'faq_text2' => "Мы используем Intercom",
     //faq faq blade ended
+
+    //age blade started
+    'age_lookperformersfortask' => "Ищем исполнителя для задания",
+    'age_text' => " Задание заполнено на 22%",
+    'age_studentsage' => "Сколько лет ученику?",
+    'age_text1' => "Возраст",
+    //age blade ended
+
+    //bugalter blade started
+    'bugalter_taskready' => "Задание заполнено на 33%",
+    'bugalter_placeofservice' => "Место оказания услуги",
+    //bugalter blade ended
+
+    //buy delivery blade started
+    'buyd_text' => "Ищем исполнителя для задания",
+    'buyd_text1' => "Задание заполнено на 60%",
+    'buyd_text2' => "Какие параметры посылки?",
+    'buyd_text3' => "Вес посылки, кг",
+    'buyd_text4' => "Длина, м",
+    'buyd_text5' => "Ширина, м",
+    'buyd_text6' => "Высота, м",
+    // buy delivery blade ended
+    
+    // computer blade started
+    'comp_text' => "Задание заполнено на 20%",
+    // computer blade ended
+
+    // construction blade started
+    'const_text' => "Задание заполнено на 80%",
+    'const_text1' => " Какие услуги понадобятся?",
+    // construction blade started
+
+    // delivery avto blade started 
+    'delA_text' => "Задание заполнено на 65%",
+    'delA_text1' => "На каком автомобиле должен быть курьер?",
+    'delA_text2' => "Не требуется",
+    'delA_text3' => "На легковом авто",
+    'delA_text4' => "На грузовом авто",
+    // delivery avto blade ended 
+
+    // delivery blade started
+    'delivery_text' => "Ценность посылки, uzs.",
+    // delivery blade ended
+
+    // delivery1 blade started
+    'del1_text' => "Задание заполнено на 75%",
+    'del1_text1' => "Как планируете оплатить покупку?",
+    // delivery1 blade ended
+
+    // design blade started
+    'design_text' => "Задание заполнено на 25%",
+    // design blade ended
+
+    // glass blade started
+    'glass_text' => "Задание заполнено на 44%",
+    'glass_text1' => "Сколько окон нужно помыть?",
+    'glass_text2' => "шт."
+    // glass blade ended
+
+    // housemaid blade started
+    'housem_wheretoclean' => "Где нужно убраться?",
+    'housem_text' => "Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.",
+    'housem_text1' => "Помещение",
+    'housem_text2' => "комнатная квартира",
+    'housem_office' => "Офис",
+    'housem_text3' => "Частный дом (коттедж)",
+    'housem_text4' => "Как часто требуется уборка",
+    'housem_text5' => "Разовая уборка",
+    'housem_text6' => "1 раз в месяц",
+    'housem_text7' => "2 раза в месяц",
+    'housem_text8' => "Каждую неделю",
+    // housemaid blade ended
+
+    // housemaid1 blade started
+    'housem1_text' => "Помыть окна",
+    'housem1_text1' => "Погладить белье",
+    'housem1_text2' => "Помыть посуду",
+    'housem1_text3' => "Внутри холод-ка",
+    'housem1_text4' => "Внутри духовки",
+    'housem1_text5' => "Внутри СВЧ-печи",
+    'housem1_text6' => "Внутри шкафов",
+    // housemaid1 blade ended
+
+    // info car blade stared
+    'infoc_text' => "Задание заполнено на 30%",
+    'infoc_text1' => " Какой пробег?",
+    'infoc_text2' => "Пробег, км",
+    'infoc_text3' => "Номер Техпасспорта", 
+    // info car blade ended
+
+    // krosata blade stared
+    'krosata_text' => "Задание заполнено на 23%",
+    // krosata blade ended
+
+    // learning blade stared
+    'learning_text' => "Место проведения",
+    // learning blade ended
+
+    // photo blade stared
+    'photo_text' => "Задание заполнено на 21%",
+    // photo blade ended
+
+    //remont car blade started 
+    'remontc_text' => "Какой у вас автомобиль?",
+    'remontc_text1' => "Марка, модель и год выпуска авто",
+    'remontc_text2' => "Например, Chevrolet Cruze 2014 года ",
+    //remont car blade ended 
+
+    // training blade started
+    'training_text' => "Какие нужны занятия?",
+    'training_text1' => "Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.",
+    'training_text2' => "Частота",
+    'training_text3' => "Регулярно",
+    'training_text4' => "Только одно занятие",
+    'training_text5' => "Как длиться тренирофка",
+    'training_minut' => "минут",
+    'training_text6' => "Неважно",
+    // training blade ended
+
+
 
 ];
