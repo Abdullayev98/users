@@ -36,6 +36,7 @@ class User extends \TCG\Voyager\Models\User
         'avatar',
         'google_id',
         'active_status',
+        'is_email_verified'
     ];
 
     /**

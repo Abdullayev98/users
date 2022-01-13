@@ -21,7 +21,7 @@
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            Где нужно убраться?
+                        Какие нужны занятия?
                         </div>
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                             Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.
@@ -45,10 +45,15 @@
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
-                                        <a href="/task/create/location" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                    <a onclick="myFunction()" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
-                                            Назад
+                                            @lang('lang.notes_back')
                                             <!-- </button> -->
+                                            <script>
+                                                function myFunction() {
+                                                    window.history.back();
+                                                }
+                                            </script>
                                         </a>
                                         <input type="submit"
                                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"

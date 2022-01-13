@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTaskResponsesTable extends Migration
+class CreateUserVerifiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateTaskResponsesTable extends Migration
      */
     public function up()
     {
-        Schema::create('task_responses', function (Blueprint $table) {
-            $table->id();
+        Schema::create('users_verify', function (Blueprint $table) {
+            $table->integer('user_id');
+            $table->string('token');
             $table->timestamps();
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('is_email_verified')->default(0);
         });
     }
 
@@ -26,6 +31,6 @@ class CreateTaskResponsesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task_responses');
+        Schema::dropIfExists('user_verifies');
     }
 }
