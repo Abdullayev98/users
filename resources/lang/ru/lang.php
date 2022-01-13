@@ -960,7 +960,7 @@ return [
     // glass blade started
     'glass_text' => "Задание заполнено на 44%",
     'glass_text1' => "Сколько окон нужно помыть?",
-    'glass_text2' => "шт."
+    'glass_text2' => "шт.",
     // glass blade ended
 
     // housemaid blade started
