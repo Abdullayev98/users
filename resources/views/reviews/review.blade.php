@@ -63,8 +63,8 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('https://assets.youdo.com/_next/static/media/star-yellow-light.060905faef303b513812a0dd81ab6876.svg')] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('https://assets.youdo.com/_next/static/media/star-yellow.fa0c2503fe45dd35115966cd963633ea.svg')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[{{asset('images/star-yellow-light.svg')}}] bg-[length:16px_16px] relative">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
                                 </div>
                             </div>
                         </div>
@@ -88,8 +88,8 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('https://assets.youdo.com/_next/static/media/star-yellow-light.060905faef303b513812a0dd81ab6876.svg')] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('https://assets.youdo.com/_next/static/media/star-yellow.fa0c2503fe45dd35115966cd963633ea.svg')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('{{asset('images/star-yellow-light.svg')}}')] bg-[length:16px_16px] relative">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
                                 </div>
                             </div>
                         </div>
@@ -113,8 +113,8 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('https://assets.youdo.com/_next/static/media/star-yellow-light.060905faef303b513812a0dd81ab6876.svg')] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('https://assets.youdo.com/_next/static/media/star-yellow.fa0c2503fe45dd35115966cd963633ea.svg')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('{{asset('images/star-yellow-light.svg')}}')] bg-[length:16px_16px] relative">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
                                 </div>
                             </div>
                         </div>
@@ -138,8 +138,8 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('https://assets.youdo.com/_next/static/media/star-yellow-light.060905faef303b513812a0dd81ab6876.svg')] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('https://assets.youdo.com/_next/static/media/star-yellow.fa0c2503fe45dd35115966cd963633ea.svg')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('{{asset('images/star-yellow-light.svg')}}')] bg-[length:16px_16px] relative">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
                                 </div>
                             </div>
                         </div>

@@ -459,6 +459,7 @@ $array_cats_user = Auth::user()->category_id;
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
 
+        if(Number(data["type"]) === 1){
 
         const for_check_cat_id = [<? echo $array_cats_user ?>];
 
@@ -481,7 +482,48 @@ if(check_arr === true){
 
 }
 
-      console.log(check_arr);
+    }
+
+    if(Number(data["type"]) === 2){
+
+  let user_id_for_js2 = Number(<? echo $array_cats_user ?>);
+
+  if(user_id_for_js2 === Number(data["user_id_fjs"])){
+   var content_count = document.getElementById('content_count').innerHTML;
+   let count_for_inner = Number(content_count) + 1;
+   document.getElementById('content_count').innerHTML = count_for_inner;
+
+   let el_for_create = document.getElementById('for_append_notifications');
+
+   el_for_create.insertAdjacentHTML('afterend', `
+<li>
+<a href="/detailed-tasks/`+ Number(data["id_task"]) +`" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">У вас новый отклик</a>
+</li>
+ `);
+
+}
+
+    }
+    if(Number(data["type"]) === 3){
+
+        let user_id_for_js3 = Number(<? echo $array_cats_user ?>);
+
+if(user_id_for_js3 === Number(data["user_id_fjs"])){
+ var content_count = document.getElementById('content_count').innerHTML;
+ let count_for_inner = Number(content_count) + 1;
+ document.getElementById('content_count').innerHTML = count_for_inner;
+
+ let el_for_create = document.getElementById('for_append_notifications');
+
+ el_for_create.insertAdjacentHTML('afterend', `
+<li>
+<a href="/detailed-tasks/`+ Number(data["id_task"]) +`" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">Вы получили задание</a>
+</li>
+`);
+
+}
+
+    }
 
 
     });

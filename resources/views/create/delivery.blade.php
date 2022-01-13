@@ -15,11 +15,11 @@
                     Ищем исполнителя для задания "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                    Задание заполнено на 43%
+                    Задание заполнено на 60%
                     </div>
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
-                            <div style="width: 43%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                            <div style="width: 60%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                         </div>
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
@@ -45,10 +45,15 @@
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
-                                        <a href="/task/create/location" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                    <a onclick="myFunction()" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
-                                            @lang('lang.budget_back')
+                                            @lang('lang.notes_back')
                                             <!-- </button> -->
+                                            <script>
+                                                function myFunction() {
+                                                    window.history.back();
+                                                }
+                                            </script>
                                         </a>
                                         <input type="submit"
                                                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"

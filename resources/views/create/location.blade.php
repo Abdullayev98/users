@@ -40,11 +40,11 @@
       @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-      @lang('lang.date_percent')
+      @lang('lang.loc_percent')
     </div>
     <div class=" pt-1">
       <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
-        <div style="width: 56%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+        <div style="width: 55%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
@@ -82,11 +82,16 @@
              </button>
              <div id="map" class="h-60 mt-4 rounded-lg w-full" ></div>
              <div class="flex w-full gap-x-4 mt-4">
-               <a href="/task/create?category_id=22" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
-              <!-- <button type="button"> -->
-                 @lang('lang.budget_back')
-               <!-- </button> -->
-               </a>
+             <a onclick="myFunction()" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                            <!-- <button type="button"> -->
+                                            @lang('lang.notes_back')
+                                            <!-- </button> -->
+                                            <script>
+                                                function myFunction() {
+                                                    window.history.back();
+                                                }
+                                            </script>
+                                        </a>
 
                <input type="submit" class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" name="" value="@lang('lang.name_next')">
 

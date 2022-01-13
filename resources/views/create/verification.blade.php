@@ -2,14 +2,18 @@
 
 
 @section('content')
-   <div class="h-screen   mb-32 bg-[url('https://assets.youdo.com/_next/static/media/back_toned.96ac5f6f14f3080fa4aed180c287d19f.jpg')] h-90">
-        <div class="text-center my-auto pt-48 ">
-        <div class="h-screen bg-no-repeat mb-32 bg-[url('https://images.pexels.com/photos/5588400/pexels-photo-5588400.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=768&amp;w=1688')] h-90">
-              <p class="text-5xl font-bold text-[#fff] ">@lang('lang.ver_becomePerf')</p>
-              <p class="mt-8 mb-12 text-[#fff] text-2xl">@lang('lang.ver_uSerHelps')</p>
-              <a class=" px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500  h-12 rounded-md text-xl" href="{{ route('task.search') }}">@lang('lang.ver_becomePrefBtn')</a>
-        </div>
-    </div>
+<div class="h-screen bg-no-repeat mb-32 bg-[url('https://images.pexels.com/photos/5588400/pexels-photo-5588400.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=768&amp;w=1688')] h-90">
+  <div class="text-center my-auto pt-48">
+    <p class="text-5xl font-bold text-[#fff] ">@lang('lang.ver_becomePerf')</p>
+    <p class="mt-8 mb-12 text-[#fff] text-2xl">@lang('lang.ver_uSerHelps')</p>
+        <a href="{{ route('task.search') }}">
+          <button  class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 rounded-md text-xl">
+            @lang('lang.ver_becomePrefBtn')
+          </button>
+        </a>
+  </div>
+</div>
+
 
     <div class="w-10/12 mx-auto text-center mb-16">
       <h1 class="text-5xl font-bold">@lang('lang.ver_advantage')</h1>
@@ -278,12 +282,12 @@
             </a>
           </div>
         </div>
-        <div class="col-span-2 lg:block hidden mx-auto mr-8 ">
+        <div class="col-span-2 lg:block hidden mx-auto mr-8">
           <iframe class="rounded-lg h-full" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <div class="col-span-2 lg:hidden block mx-auto mr-8 ">
-        <iframe class="rounded-lg h-full w-full" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="col-span-2 lg:hidden block mx-auto ">
+        <iframe class="rounded-lg h-full sm:h-[300px] w-full sm:w-[600px]" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
           <p class="mt-6 text-lg">@lang('lang.ver_opinion7')</p>

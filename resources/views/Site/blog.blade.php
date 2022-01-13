@@ -233,7 +233,7 @@
                 Подборки
             </p>
             <div class="text-[16px] md:text-[24px] font-semibold">
-                Очень странные дела на YouDo
+                Очень странные дела на User
             </div>
         </a>
         <a href="" class="lg:w-[400px] md:w-[200px]">

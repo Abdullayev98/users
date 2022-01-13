@@ -174,8 +174,8 @@
         <div class="hidden lg:block md:relative md:-ml-[100px] md:-mt-[50px]">
             <img class="w-[90%]" src="https://thumb.tildacdn.com/tild6130-6362-4463-b235-663435346337/-/format/webp/4.png" alt="">
             <div class="md:relative md:w-[400px] md:left-[200px] text-[12px] top-4">
-                <p class="text-[#9e9e9e]">@lang('lang.business_text2') <a class="text-[#ff8562]" href="https://mango.rocks/">@lang('lang.business_saytmango')</a> <a class="text-[#ff8562]" href="https://blog.youdo.com/mango">@lang('lang.business_text3')</a></p>
-                <p class="text-[#9e9e9e]">@lang('lang.lang.business_text4') <a class="text-[#ff8562]" href="https://youdo.com/vsk">@lang('lang.business_text5')</a></p>
+                <p class="text-[#9e9e9e]">@lang('lang.business_text2') <a class="text-[#ff8562]" href="https://mango.rocks/">@lang('lang.business_saytmango')</a> <a class="text-[#ff8562]" href="https://blog.user.com/mango">@lang('lang.business_text3')</a></p>
+                <p class="text-[#9e9e9e]">@lang('lang.lang.business_text4') <a class="text-[#ff8562]" href="https://user.com/vsk">@lang('lang.business_text5')</a></p>
             </div>
         </div>
         <div class="md:relative top-14 w-10/12 lg:w-full mx-auto lg:m-0">
