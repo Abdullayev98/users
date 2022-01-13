@@ -3,7 +3,6 @@
 
 @section('content')
 
-    <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">
             <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2
@@ -13,8 +12,8 @@
         </div>
     @endif
     <div
-        class="bg-[url('https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp')] bg-center bg-cover h-[450px] ">
-        <div class="container-lg mx-auto bg-[url('https://assets.youdo.com/_next/static/media/pattern-dotted.981ffff613107988cc581a30c07a5551.svg')] bg-repeat h-[450px] ">
+        class="bg-[url('https://homecleanhome.co.nz/wp-content/uploads/2015/07/Vacuum-Slider.jpg')] bg-center bg-cover h-[450px] ">
+        <div class="container-lg mx-auto bg-[url('{{asset('images/pattern-dotted.svg')}}')] bg-repeat h-[450px] ">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-32">
                     <h1 class="font-semibold text-white text-3xl lg:text-5xl md:text-4xl">
@@ -40,7 +39,7 @@
                     </div>
                     <div class="w-[350px] mx-auto mt-12">
                       <a href="/verification" class="text-[#80e6ff] text-center">
-                        <img src="https://assets.youdo.com/_next/static/media/hero-video__gowork.8435e81afbc30d8a5afcd85693878644.svg" alt="" class="float-left mr-0">
+                        <i class="text-blue fas fa-shield-alt float-left mr-0 text-2xl"></i>
                         <p class="ml-0 border-b border-dotted border-[#80e6ff]">@lang('lang.header_bePerformer')</p>
                       </a>
                     </div>
@@ -117,8 +116,8 @@
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 <div class="text-center">
-                    <img src="https://assets.youdo.com/_next/static/media/sbr_176.95ac6c46444100c6bcb6262ed7695c79.png"
-                         class="mx-auto" alt="">
+                    <img src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D0%BF%D0%BE%D1%80%D1%82%D0%BC%D0%BE%D0%BD%D0%B0-115076170.jpg" 
+                         class="mx-auto h-[200px] w-[200px]" alt="">
                     <div class="font-bold my-4">@lang('lang.body_comfortPay')</div>
                     <div class="text-xs">
                     @lang('lang.body_securePay')
@@ -126,8 +125,8 @@
                 </div>
                 <div class="text-center mx-4">
                     <img
-                        src="https://assets.youdo.com/_next/static/media/executor_176.900c31f3bbd110fe153ec59d249ac71b.png"
-                        class="mx-auto" alt="">
+                        src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%85%D0%BE%D0%BA%D0%BA%D0%B5%D1%8F-%D0%BD%D0%B0-%D0%BB%D1%8C%D0%B4%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%BF%D0%BE%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-117033775.jpg"
+                        class="mx-auto h-[200px] w-[200px]" alt="">
                     <div class="font-bold my-4">@lang('lang.body_loyalPerformer')</div>
                     <div class="text-xs">
                     @lang('lang.body_performerDocs')
@@ -135,9 +134,9 @@
                 </div>
                 <div class="text-center mx-4">
                     <img
-                        src="https://assets.youdo.com/_next/static/media/reviews_176.ecbafe84fcaf362f56dad039b6e9756b.png"
-                        class="mx-auto" alt="">
-                    <div class="font-bold my-4">@lang('lang.body_feedback')</div>
+                        src="https://avatars.mds.yandex.net/get-dialogs/1676983/eb0009385cb3f7e62b66/orig"
+                        class="mx-auto h-[150px] w-[150px] m-[25px]" alt="">
+                    <div class="font-bold mb-4 mt-10">@lang('lang.body_feedback')</div>
                     <div class="text-xs">
                     @lang('lang.body_over1mln')
                     </div>
@@ -204,7 +203,7 @@
             </div>
             <div class="md:w-1/3 w-3/4 mx-auto my-4">
                 <a href="/task/create?category_id=31">
-                  <button class="text-center py-3 px-2 sm:ml-12 ml-0 bg-yellow-500 border-[#e78900] text-2xl  border-b-4">
+                  <button class="text-center py-2 px-3 sm:ml-12 ml-0 bg-yellow-500 border-[#e78900] text-2xl  border-b-4">
                   @lang('lang.body_putTask')
                   </button>
                 </a>
@@ -249,105 +248,29 @@
         </div>
         <div class="w-full mx-auto lg:shadow-xl">
             <div
-                class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('https://assets.youdo.com/next/_next/static/images/download_hand-13ced686918d5e0b8a92914b8cc87aaf.png')]">
+                class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('{{asset('/images/download_hand_User.png')}}')]">
                 <div class="w-full sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-[#00000066]">
                     <h4 class="text-3xl md:text-[#000] text-[#ffff]">@lang('lang.body_personalHelper')</h4>
                     <p class="text-md mt-8 md:text-[#000] text-[#ffff]">@lang('lang.body_downloadApp')</p>
                     <a href="#">
                         <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
-                                src="https://assets.youdo.com/_next/static/media/ios.d3a42dd0816a046400b4bb7d2b11067f.svg"
+                                src="{{asset('images/download_ios.svg')}}"
                                 alt=""></button>
                     </a>
                     <a href="#">
                         <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
-                                src="https://assets.youdo.com/_next/static/media/android.1234ba9391753eeb525d4f71a808329e.svg"
+                                src="{{asset('images/download_android.svg')}}"
                                 alt=""></button>
                     </a>
-                    <!-- <a href="#">
-                        <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
-                                src="https://assets.youdo.com/_next/static/media/appgallery.67baccf681decda41c84b0364830d2e4.svg"
-                                alt=""></button>
-                    </a> -->
+                    
                 </div>
                 <div class="h-64 md:block hidden">
                     <img
-                        src="https://assets.youdo.com/next/_next/static/images/download_hand-13ced686918d5e0b8a92914b8cc87aaf.png"
-                        class="relative float-right bottom-14" alt="">
+                        src="{{asset('/images/download_hand_User.png')}}"
+                        class="relative float-right bottom-24" alt="">
                 </div>
             </div>
         </div>
-        <!-- <div class="w-full lg:shadow-xl">
-            <div class="container mx-auto md:w-2/3 w-11/12">
-                <div class="w-2/3 mx-auto my-16 text-center">
-                    <h1 class="text-4xl">Новые публикации <a href="/news"><span
-                                class="text-[#4099fb] hover:text-[#ff280c] underline">в блоге</span></a></h1>
-                </div>
-                <div class="grid md:grid-cols-3 grid-cols-2 mx-auto">
-                    <div
-                        class="col-span-2 mx-auto w-10/12 md:my-16 h-96 blog1 bg-cover bg-no-repeat bg-[url('https://content0.youdo.com/zi.ashx?i=d36fd188a176881f')]">
-                        <div class="w-full h-full bg-[#00000066]">
-                            <div class="text-xs text-[#ffff] ml-4 pt-64 h-4">
-                                Блог YouDo
-                            </div>
-                            <div class="text-lg text-[#ffff] ml-4 w-52 pt-8 h-4">
-                                Из Фрилансера в СЕО <br> Digital-агентства
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="mx-auto md:col-span-1 col-span-2 md:w-full w-10/12 h-96 md:my-16 my-8 blog1 bg-[url('https://content9.youdo.com/zi.ashx?i=cf53596d9aeb5742')]">
-                        <div class="w-full h-full bg-[#00000066]">
-                            <div class="text-xs text-[#ffff] ml-4 pt-64 h-4">
-                                Спецпроекты
-                            </div>
-                            <div class="text-lg text-[#ffff] ml-4 w-52 pt-8 h-4">
-                                Станьте <br> сертифицированным <br> мастером Tarkett
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-6 grid-cols-2 mx-auto">
-                    <div
-                        class="col-span-3 md:w-4/5 w-10/12 mb-8 mx-auto h-96 blog1 bg-[url('https://content7.youdo.com/zi.ashx?i=9acd814387dbd28f')]">
-                        <div class="w-full h-full bg-[#00000066]">
-                            <div class="text-xs text-[#ffff] ml-4 pt-64 h-4">
-                                Спецпроекты
-                            </div>
-                            <div class="text-lg text-[#ffff] ml-4 w-full pt-8 h-4">
-                                Средства для ухода за посудомоечной машиной в подарок
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="col-span-3 md:w-full w-10/12 md:ml-auto mx-auto h-96 blog1 bg-cover bg-no-repeat bg-[url('https://content0.youdo.com/zi.ashx?i=d3b9516659746950')]">
-                        <div class="w-full h-full bg-[#00000066]">
-                            <div class="text-xs text-[#ffff] ml-4 pt-64 h-4">
-                                Спецпроекты
-                            </div>
-                            <div class="text-lg text-[#ffff] ml-4 w-full pt-8 h-4">
-                                Реили убраться? Получите <br> за это подарок
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-2/3 mx-auto mt-16 py-8 text-center">
-                    <h4 class="text-lg">Хотите стать героем наших историй? Это просто!</h4>
-                    <h1 class="text-lg">
-                        <a href="">
-                <span class="text-[#4099fb] hover:text-[#ff280c] underline">
-                  Разместите задание
-                </span>
-                        </a>
-                        или
-                        <a href="">
-                  <span class="text-[#4099fb] hover:text-[#ff280c] underline">
-                    станьте исполнителем.
-                  </span>
-                        </a>
-                    </h1>
-                </div>
-            </div>
-        </div> -->
         <div class="container mx-auto md:w-2/3 w-11/12">
             <div class="w-full my-16">
                 <h1 class="text-4xl">@lang('lang.body_whatOthersDoing')</h1>
@@ -385,7 +308,7 @@
                 <div class="w-full md:col-span-1 h-full col-span-2">
                 <a href="/verification">
                     <div
-                        class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-executors-d40b155c145cdfa2d0f387a2baef5430.jpg')]">
+                        class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover bg-[url('https://www.roi-selling.com/hs-fs/hub/444749/file-1929610769-jpg/blog-files/team-.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
                             <i class="fas fa-user text-[#84e879] text-5xl pt-8"></i>
                             <p class="lg:text-4xl md:text-2xl  text-3xl text-[#fff]">@lang('lang.body_howToJoin')</p>
@@ -394,7 +317,7 @@
                 </a>
                 <a href="/security">
                     <div
-                         class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-security-e4a7b046a3514fd9957083be30dc1f4f.jpg')]">
+                         class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://3blaws.s3.amazonaws.com/images/bigstock-Green-energy-biofuel-electric-74257315.jpg')]">
                         <div class="w-full h-full bg-[#00000066] text-center">
                             <i class="fas fa-shield-alt text-[#8ae2ed] text-5xl pt-8"></i>
                             <p class="lg:text-4xl md:text-2xl  text-3xl text-[#fff]">@lang('lang.body_security')</p>
@@ -403,7 +326,7 @@
                 </a>
                    <a href="/performers">
                         <div
-                            class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://assets.youdo.com/next/_next/static/images/pennants-b2b-152e142edc63148dcfe9dfc83a99e62e.jpg')]">
+                            class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://wallpapercave.com/wp/wp4002616.jpg')]">
                             <div class="w-full h-full bg-[#00000066] text-center">
                                 <p class="lg:text-4xl md:text-2xl  text-3xl pt-8 text-[#ffc730]">@lang('lang.body_perForBusines')</p>
                             </div>

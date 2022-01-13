@@ -32,19 +32,19 @@
         <div>
 
             <div class="mb-3 xl:w-full">
-                <input type="radio" id="car"
-                    name="car[]" value="Не требуется">
-                <label for="car">Не требуется</label>
+                <input type="radio" id="delivey_car"
+                    name="delivey_car[]" value="Не требуется">
+                <label for="delivey_car">Не требуется</label>
                 <br>
                 <br>
-                <input type="radio" id="car"
-                    name="car[]" value="На легковом авто">
-                <label for="car[]">На легковом авто</label>
+                <input type="radio" id="delivey_car"
+                    name="delivey_car[]" value="На легковом авто">
+                <label for="delivey_car[]">На легковом авто</label>
                 <br>
                 <br>
-                <input type="radio" id="car"
-                    name="car[]" value="На грузовом авто">
-                <label for="car[]">На грузовом авто</label>
+                <input type="radio" id="delivey_car"
+                    name="delivey_car[]" value="На грузовом авто">
+                <label for="delivey_car[]">На грузовом авто</label>
               </div>
         </div>
 
