@@ -13,16 +13,16 @@
     @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-    Задание заполнено на 33%
+    Задание заполнено на 44%
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
-        <div style="width: 33%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+        <div style="width: 44%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-      Место оказания услуги
+      Место проведения
       </div>
 
       <div class="py-4 mx-auto  text-left ">
