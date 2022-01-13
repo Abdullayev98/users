@@ -309,7 +309,7 @@ use Illuminate\Support\Facades\Auth;
               <div class="flex">
                   @if (session('lang') == 'uz')
                   <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
-                    UZ
+                    O'Z
                   </a>
                   I
                   <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
@@ -317,7 +317,7 @@ use Illuminate\Support\Facades\Auth;
                   </a>
                   @else
                   <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
-                    UZ
+                     O'Z
                   </a>
                   I
                   <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">
@@ -339,7 +339,7 @@ use Illuminate\Support\Facades\Auth;
                 <div class="flex">
                     @if (session('lang') == 'uz')
                     <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
-                      UZ
+                       O'Z
                     </a>
                     I
                     <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
@@ -347,7 +347,7 @@ use Illuminate\Support\Facades\Auth;
                     </a>
                     @else
                     <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
-                      UZ
+                      O'Z
                     </a>
                     I
                     <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">

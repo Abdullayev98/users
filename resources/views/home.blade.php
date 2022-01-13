@@ -15,16 +15,16 @@
         <div class="container-lg mx-auto bg-[url('{{asset('images/pattern-dotted.svg')}}')] bg-repeat h-[450px] ">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-32">
-                    <h1 class="font-semibold text-white text-3xl lg:text-5xl md:text-4xl">
+                    <h1 class="font-bold text-white text-3xl lg:text-6xl md:text-4xl">
                         <span class="block xl:block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-sm md:mt-2 mb-3">
+                    <p class="font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-                                   class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
+                                   class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-lg md:pl-2 md:w-2/3 py-3">
                                 <datalist  id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
@@ -78,7 +78,7 @@
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
             @foreach ($categories as $category2)
-                <div class="text-gray-500 text-lg my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
+                <div class="text-gray-500 text-sm my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
                     <a href="{{route('categories', ['id'=> $category2->id])}}" class="block xl:ml-16">
                         <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</i>
                     </a>
@@ -109,9 +109,9 @@
                         <i class="fas fa-camera-retro text-gray-500"></i> Фото, видео и аудио
                     </a>
                 </div> -->
-                <div class="md:col-span-3 text-center col-span-1">
+                <div class="md:col-span-3 text-center  col-span-1">
                     <a href="/categories/1">
-                        <button type="button" class="border hover:border-[#000] rounded-md w-64 h-12">@lang('lang.body_allService')
+                        <button type="button" class="font-semibold border hover:border-[#000] rounded-md w-64 h-12">@lang('lang.body_allService')
                         </button>
                     </a>
                 </div>
@@ -120,8 +120,8 @@
                 <div class="text-center">
                     <img src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D0%BF%D0%BE%D1%80%D1%82%D0%BC%D0%BE%D0%BD%D0%B0-115076170.jpg" 
                          class="mx-auto h-[200px] w-[200px]" alt="">
-                    <div class="font-bold my-4">@lang('lang.body_comfortPay')</div>
-                    <div class="text-xs">
+                    <div class="font-bold text-xl my-4">@lang('lang.body_comfortPay')</div>
+                    <div class="text-sm">
                     @lang('lang.body_securePay')
                     </div>
                 </div>
@@ -129,8 +129,8 @@
                     <img
                         src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%85%D0%BE%D0%BA%D0%BA%D0%B5%D1%8F-%D0%BD%D0%B0-%D0%BB%D1%8C%D0%B4%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%BF%D0%BE%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-117033775.jpg"
                         class="mx-auto h-[200px] w-[200px]" alt="">
-                    <div class="font-bold my-4">@lang('lang.body_loyalPerformer')</div>
-                    <div class="text-xs">
+                    <div class="font-bold text-xl my-4">@lang('lang.body_loyalPerformer')</div>
+                    <div class="text-sm">
                     @lang('lang.body_performerDocs')
                     </div>
                 </div>
@@ -138,8 +138,8 @@
                     <img
                         src="https://avatars.mds.yandex.net/get-dialogs/1676983/eb0009385cb3f7e62b66/orig"
                         class="mx-auto h-[150px] w-[150px] m-[25px]" alt="">
-                    <div class="font-bold mb-4 mt-10">@lang('lang.body_feedback')</div>
-                    <div class="text-xs">
+                    <div class="font-bold text-xl mb-4 mt-10">@lang('lang.body_feedback')</div>
+                    <div class="text-sm">
                     @lang('lang.body_over1mln')
                     </div>
                 </div>
@@ -203,9 +203,9 @@
 
                 </div>
             </div>
-            <div class="md:w-1/3 w-3/4 mx-auto my-4">
+            <div class="text-center md:w-1/2 w-3/4 mx-auto my-4">
                 <a href="/task/create?category_id=31">
-                  <button class="text-center py-2 px-3 sm:ml-12 ml-0 bg-yellow-500 border-[#e78900] text-2xl  border-b-4">
+                  <button class="text-center font-semibold py-4 px-5 sm:ml-12 ml-0 bg-yellow-500 border-[#e78900] text-2xl  border-b-4">
                   @lang('lang.body_putTask')
                   </button>
                 </a>
@@ -227,14 +227,14 @@
                         <img src="http://pngimg.com/uploads/ruble/ruble_PNG35.png" class="w-32" alt="">
                     </div>
                     <div class="col-span-3">
-                        <h4 class="text-2xl">@lang('lang.body_bestPrise')</h4>
+                        <h4 class="font-semibold text-2xl">@lang('lang.body_bestPrise')</h4>
                         <p class="text-md">@lang('lang.body_bestPriseCon')</p>
                     </div>
                     <div class=" my-16">
                         <img src="https://www.freeiconspng.com/uploads/white-like-icon-png-20.png" class="w-32" alt="">
                     </div>
                     <div class="col-span-3 my-16">
-                        <h4 class="text-2xl">@lang('lang.body_reliablePer')</h4>
+                        <h4 class="font-semibold text-2xl">@lang('lang.body_reliablePer')</h4>
                         <p class="text-md">@lang('lang.body_reliablePerCon')</p>
                     </div>
                     <div class=" my-16">
@@ -242,7 +242,7 @@
                              class="w-32" alt="">
                     </div>
                     <div class="col-span-3 my-16">
-                        <h4 class="text-2xl">@lang('lang.body_timeSaving')</h4>
+                        <h4 class="font-semibold text-2xl">@lang('lang.body_timeSaving')</h4>
                         <p class="text-md">@lang('lang.body_timeSavingCon')</p>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
             <div
                 class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('{{asset('/images/download_hand_User.png')}}')]">
                 <div class="w-full sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-[#00000066]">
-                    <h4 class="text-3xl md:text-[#000] text-[#ffff]">@lang('lang.body_personalHelper')</h4>
+                    <h4 class="font-semibold text-3xl md:text-[#000] text-[#ffff]">@lang('lang.body_personalHelper')</h4>
                     <p class="text-md mt-8 md:text-[#000] text-[#ffff]">@lang('lang.body_downloadApp')</p>
                     <a href="#">
                         <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
