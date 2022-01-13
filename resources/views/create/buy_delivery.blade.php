@@ -12,11 +12,11 @@
                     Ищем исполнителя для задания "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                    Задание заполнено на 43%
+                    Задание заполнено на 60%
                     </div>
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
-                            <div style="width: 43%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                            <div style="width: 60%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                         </div>
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">

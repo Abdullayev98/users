@@ -491,15 +491,15 @@ return [
 
     // budget.blade start
     'budget_lookingFor' => "Ищем исполнителя для задания",
-    'budget_percent' => "Задание заполнено на 71%",
+    'budget_percent' => "Задание заполнено на 75%",
     'budget_yourBudget' => "На какой бюджет вы рассчитываете?",
     'budget_sum' => "до 150 сум",
     'budget_back' => "Назад",
     // budget.blade end
 
     // cargo.blade start
-    'cargo_percent' => "Задание заполнено на 57%",
-    'cargo_howBig' => "Насколько большой груз?",
+    'cargo_percent' => "Задание заполнено на 60%",
+    'cargo_howBig' => "Укажите детали погрузки и разгрузки?",
     'cargo_measure' => "Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.",
     'cargo_weight' => "Вес груза, кг",
     'cargo_leight' => "Длина, м",
@@ -508,7 +508,7 @@ return [
     // cargo.blade end
 
     // contacts.blade start
-    'contact_percent' => "Задание заполнено на 86%",
+    'contact_percent' => "Задание заполнено на",
     'contact_details' => "Уточните детали",
     'contact_name' => "Имя",
     'contact_number' => "Номер телефона",
@@ -516,7 +516,7 @@ return [
     // contacts.blade end
 
     // date.blade start
-    'date_percent' => "Задание заполнено на 57%",
+    'date_percent' => "Задание заполнено на 70%",
     'date_startTime' => "Когда нужно приступить к работе?",
     'date_startDate' => "Укажите точную дату или период, когда нужно приступить к работе.",
     'date_startTask' => "Начать работу",
@@ -525,14 +525,14 @@ return [
     // date.blade end
 
     // location.blade start
-    'loc_percent' => "Задание заполнено на 29%",
+    'loc_percent' => "Задание заполнено на 55%",
     'loc_whereTask' => "Где выполнить задание?",
     'loc_giveLocation' => "Укажите адрес или место, чтобы найти исполнителя рядом с вами.",
     'loc_add' => "Добавить ещё адрес",
     // location.blade end
 
     // movers.blade start
-    'movers_percent' => "Задание заполнено на 57%",
+    'movers_percent' => "Задание заполнено на 68%",
     'movers_loadFlat' => "Этаж погрузки",
     'movers_elevator' => "Лифт",
     'movers_noElevator' => "Лифт отсутствует",
@@ -566,7 +566,7 @@ return [
     // notes.blade end
 
     // people.blade start
-    'people_percent' => "Задание заполнено на 86%",
+    'people_percent' => "Задание заполнено на 62%",
     'people_needLoader' => "Нужны услуги грузчиков?",
     'people_yes' => "Да",
     'people_no' => "Нет",

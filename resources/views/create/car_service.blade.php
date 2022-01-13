@@ -22,7 +22,7 @@
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-      Какие услуги понадобятся?
+      Место оказания услуги?
       </div>
 
       <div class="py-4 mx-auto  text-left ">

@@ -13,7 +13,7 @@
     @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-    Задание заполнено на 29%
+    Задание заполнено на 25%
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">

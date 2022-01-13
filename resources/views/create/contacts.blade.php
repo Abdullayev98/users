@@ -13,11 +13,11 @@
       @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-      @lang('lang.contact_percent')
+      @lang('lang.contact_percent') 99%
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
-        <div style="width: 86%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+        <div style="width: 99%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-2 md:p-6 px-8">
