@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
-                                        <a href="/task/create/location" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                        <a href="/task/create/name" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
                                             Назад
                                             <!-- </button> -->
