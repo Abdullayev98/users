@@ -165,7 +165,7 @@
 @if(($cnt_for_hiw % 2) == 0)
 
                     <div>
-                        <img
+                        <img class="ml-20"
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>

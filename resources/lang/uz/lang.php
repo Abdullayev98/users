@@ -490,14 +490,14 @@ return [
 
     // budget.blade start
     'budget_lookingFor' => "Vazifa uchun tayinlovchi qidirilmoqda",
-    'budget_percent' => "Ish 71% toʻlgan",
+    'budget_percent' => "Ish 75% toʻlgan",
     'budget_yourBudget' => "Siz qaysi byudjetni ko'ryapsiz?",
     'budget_sum' => "150 so'mgacha",
     'budget_back' => "Orqaga",
     // budget.blade end
 
     // cargo.blade start
-    'cargo_percent' => "Vazifa 57% toʻldi",
+    'cargo_percent' => "Vazifa 60% toʻldi",
     'cargo_howBig' => "Yuk qanchalik katta?",
     'cargo_measure' => "Ijrochilar to'g'ri transport vositasini topishlari uchun vazn va o'lchamlarni belgilang.",
     'cargo_weight' => "Yuk vazni, kg",
@@ -507,7 +507,7 @@ return [
     // cargo.blade end
 
     // contacts.blade start
-    'contact_percent' => "Vazifa 86% toʻldi",
+    'contact_percent' => "Vazifa toʻldi",
     'contact_details' => "Tafsilotlarni ko'rsating",
     'contact_name' => "Ism",
     'contact_number' => "Telefon raqami",
@@ -515,7 +515,7 @@ return [
     // contacts.blade end
 
     // date.blade start
-    'date_percent' => "Vazifa 57% to'ldi",
+    'date_percent' => "Vazifa 70% to'ldi",
     'date_startTime' => "Siz qachon ish boshlashingiz kerak?",
     'date_startDate' => "Iltimos, ishni boshlamoqchi bo'lgan sana yoki davrni aniq belgilang.",
     'date_startTask' => "Ishni boshlash",
@@ -524,14 +524,14 @@ return [
     // date.blade end
 
     // location.blade start
-    'loc_percent' => "Ish 29% toʻlgan",
+    'loc_percent' => "Ish 55% toʻlgan",
     'loc_whereTask' => "Vazifani qayerda bajarishim mumkin?",
     'loc_giveLocation' => "Atrofingizdagi rassomni topish uchun manzil yoki manzilni kiriting.",
     'loc_add' => "Boshqa manzil qo'shing",
     // location.blade end
 
     // movers.blade start
-    'movers_percent' => "Vazifa 57% toʻldi",
+    'movers_percent' => "Vazifa 68% toʻldi",
     'movers_loadFlat' => "Qavat yuklanmoqda",
     'movers_elevator' => "Lift",
     'movers_noElevator' => "Lift yo'q",
@@ -556,7 +556,7 @@ return [
     // name.blade end
 
     // notes.blade start
-    'notes_percent' => "Vazifa 86% toʻldi",
+    'notes_percent' => "Vazifa 90% toʻldi",
     'notes_details' => "Tafsilotlarni ko'rsating",
     'notes_destcript' => "Ta'rif",
     'notes_example' => "Masalan: yog'ochdan, tomi va ikkita derazali bir qavatli bolalar uyi qurish. Hovlida tez-tez suv yig'iladi, sizga shag'al drenaj kerak bo'ladi.",
@@ -565,7 +565,7 @@ return [
     // notes.blade end
 
     // people.blade start
-    'people_percent' => "Ish 86% to'lgan",
+    'people_percent' => "Ish 62% to'lgan",
     'people_needLoader' => "Sizga yuklovchi xizmatlari kerakmi?",
     'people_yes' => "Ha",
     'people_no' => "Yo'q",
@@ -578,7 +578,7 @@ return [
     // peopleT.blade end
 
     // services.blade start
-    'service_percent' => "Ish 86% toʻlgan",
+    'service_percent' => "Ish 89% toʻlgan",
     'service_details' => "Tafsilotlarni ko'rsating",
     // services.blade end
 

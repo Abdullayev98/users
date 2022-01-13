@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="grid grid-cols-5">
-                            <div class="col-span-1 bg-no-repeat" style="background-image:url('https://assets.youdo.com/_next/static/media/badge-insurance.f85d1a0eef6ece06a0be8948561b1fc1.svg')">
+                            <div class="col-span-1 bg-no-repeat" style="background-image:url('https://mymodel.website/lay/icons/approved-thumb-up.png')">
                             </div>
                             <div class="col-span-4">
                                 <p class="mt-5"><span class="text-red-500 italic">@lang('lang.badgets_perService')</span>@lang('lang.badgets_text5')</p>
