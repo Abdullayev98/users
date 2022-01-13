@@ -27,6 +27,8 @@
                     <div class="w-full scroll-smooth hover:scroll-auto w-full">
 
                             @foreach($tasks as $task)
+                            @auth
+                            @if ($task->performer_id == auth()->user()->id)
                             <div>
                                 <div class="w-full border hover:bg-blue-100 h-[100px] ">
                                     <div class="w-11/12 h-12 m-4">
@@ -50,6 +52,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @endauth
                             @endforeach
 
                         </div>
@@ -65,6 +69,8 @@
                     <div id="scrollbar" class="w-full blog1">
                             <div class="w-full scroll-smooth hover:scroll-auto w-full">
                             @foreach($tasks as $task)
+                            @auth
+                            @if ($task->user_id == auth()->user()->id)
                                     <div class="w-full border-t border-solid hover:bg-blue-100  my-5">
                                         <div class="md:grid md:grid-cols-10 p-2">
                                             <i class="fas fa-user-circle text-4xl col-span-1 m-auto text-blue-400"></i>
@@ -83,6 +89,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    @endif
+                                    @endauth
                             @endforeach
 
                         </div>
@@ -93,7 +102,7 @@
 
             <div>
                 {{-- <div class="text-4xl font-semibold my-6">
-                    У задания {{$task_count}} откликов
+                    @lang('lang.mytask_onTask') {{$task_count}} @lang('lang.mytask_callbacks') 
                 </div> --}}
                 <hr>
                 <div>

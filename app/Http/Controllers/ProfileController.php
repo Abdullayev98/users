@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\portfolio;
 use File;
 use App\Models\User;
 use App\Models\Task;
@@ -21,7 +22,8 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
         $vcs = UserView::where('user_id', $user->id)->first();
         $task = Task::where('user_id',Auth::user()->id)->count();
-        return view('profile.profile', compact('user','vcs','task'));
+        $ports = portfolio::where('user_id',Auth::user()->id)->get();       
+        return view('profile.profile', compact('user','vcs','task','ports'));
     }
     public function update(Request $request, $id)
     {
@@ -153,4 +155,10 @@ class ProfileController extends Controller
         $user->save();
         return redirect()->back();
     }
+
+    //portfolio
+    // public function porfolioIndex(){
+    //     $portfolios = portfolio::where('user_id', Auth::user()->id);
+    //     return view('profile.profile', compact('portfolios'));
+    // }
 }
