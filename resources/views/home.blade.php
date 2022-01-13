@@ -3,6 +3,11 @@
 
 @section('content')
 
+<style>
+    input::-webkit-calendar-picker-indicator{
+        display: none;
+    }
+</style>
     <!-- <source srcset="https://assets.youdo.com/next/_next/static/images/frame-79b538237f77d7d37ed14920afcdb8b0.webp" type="image/webp"> -->
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">
@@ -25,14 +30,17 @@
                     </p>
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
-                          <form class="" action="{{route('search')}}" method="get">
-                            <input type="text" name="s" value="" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
+                            <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
-                            <button type="submit"
+                                <datalist  id="TypeList">
+                                    @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
+                                        <option value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </datalist>
+                            <a href="" type="submit" id="createhref"
                                     class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
                                 @lang('lang.header_orderBtn')
-                            </button>
-                          </form>
+                            </a>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
                         @lang('lang.header_example') <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">@lang('lang.header_airCon')</span>
@@ -477,5 +485,10 @@
       var elems = document.getElementsByClassName("chat");
         elems.style.display = "block";
     }
+    </script>
+    <script>
+        $("input[name=TypeList]").focusout(function(){
+            $("#createhref").attr("href", '/task/create?category_id='+$(this).id());
+        });
     </script>
 @endsection
