@@ -27,7 +27,8 @@
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md xl:w-[700px] lg:w-[600px] md:w-[400px] py-3">
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
-                                        <option value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option
+                                            value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
