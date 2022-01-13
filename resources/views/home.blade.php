@@ -13,8 +13,19 @@
     <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
     <div class="HomepageHeaderSection">
         <div class=" video-bg">
-            {{--            <img src="{{ asset ('images/performer2.jpg') }}" alt="">--}}
-            <video src="{{ asset ('video/dota_montage_02.mp4')}}" type="video/mp4" autoplay muted loop></video>
+            @if(setting('site.Video_bg') != null)
+            @php
+            $array_video = json_decode(setting('site.Video_bg'), true);
+                $str_replace = str_replace("\\","/",$array_video);
+            @endphp
+            <video src="storage/{{$array_video['0']['download_link']}}" type="video/mp4" autoplay muted loop></video>
+            @else
+            @php
+                $pp = setting('site.foto_bg');
+                $str_replace = str_replace("\\","/",$pp);
+            @endphp
+            <img src="storage/{{$str_replace}}" alt="rasm yoq">
+            @endif
             <div class="effects"></div>
             <div class="video-bg__content"></div>
         </div>
