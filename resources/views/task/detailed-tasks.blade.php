@@ -2,8 +2,12 @@
 
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
+    @if(isset($task_responses))
+    <div class="flex mx-auto w-9/12">
+        @else
     <div class="mx-auto w-9/12">
-        <div class="mt-8 lg:flex mb-8">
+@endif
+        <div class="mt-8 md:flex mb-8">
 
             {{-- left sidebar start --}}
             <div class="w-9/12 float-left">
@@ -102,7 +106,23 @@
                                         </button>
 
                                 @endif
-
+                                @auth
+                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
+                                <button id="sendbutton" class="font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                type="button">
+                                    Оставить отзыв
+                                </button>
+                                <div class="hideform hidden">
+                                <input type="radio" name="good" class="good border rounded ml-6 w-8/12" value="1">
+                                <input type="radio" name="good" class="good border rounded ml-6 w-8/12" value="0">
+                                <input type="text" name="comment" class="border rounded ml-6 w-8/12" value="">
+                                <button class="send-comment font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                type="button">
+                                    Отправить
+                                </button>
+                            </div>   
+                                @endif
+                                @endauth
                                 <!-- Main modal -->
                                 <div id="authentication-modal"
                                      aria-hidden="true"
@@ -260,7 +280,7 @@
                                         </div>
                                     </div>
                                     <div class="bg-[#f5f5f5] rounded-[10px] p-4">
-                                        <div class="ml-10">
+                                        <div class="ml-0">
                                             <div class="text-[17px] text-gray-500 font-semibold">Стоимость {{$response->price}} сум</div>
                                             <div class="text-[17px] text-gray-500">Здраствуйте.</div>
 
@@ -548,6 +568,47 @@
                 $(modal).parents(".overlay").removeClass("open");
             }, 50);
 
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#sendbutton").click(function(){
+                $("#sendbutton").hide();
+                $(".hideform").removeClass('hidden');
+            });
+        });
+        $(".send-comment").click(function(event){
+            event.preventDefault();
+            let good = $(".good:checked").val();
+            let comment = $("input[name=comment]").val();
+            let _token = $("input[name=csrf]").val();
+            let performer_id = $("input[name=performer_id]").val();
+            let task_id = $("input[name=task_id]").val();
+            let user_id = $("input[name=user_id]").val();
+            $.ajax({
+                url: "/ajax-request",
+                type:"POST",
+                data:{
+                    good:good,
+                    comment:comment,
+                    user_id:user_id,
+                    performer_id:performer_id,
+                    task_id:task_id,
+                    _token:_token,
+                },
+                success:function(response){
+                    console.log(response);
+                    if(response) {
+                        $('.success').text(response.success);
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+            window.setTimeout(function() {
+                window.location.reload();
+            }, 3000);
         });
     </script>
 
