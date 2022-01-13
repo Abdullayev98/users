@@ -145,7 +145,7 @@
     </div>
     <div class="hidden w-full lg:inline-block xl:ml-12 lg:ml-12 lg:space-x-6 md:space-x-6">
         <div class="group inline-block">
-            <button class="font-medium text-gray-500 hover text-[14px] xl:text-[16px] text-[#ffa200] focus:outline-none">
+            <button class="font-medium text-gray-500 text-[14px] xl:text-[16px] hover:text-[#ffa200] focus:outline-none">
                 <span class="pr-1  font-[sans-serif] flex-1">@lang('lang.navbar_createTask')</span>
                 <span></span>
             </button>
@@ -309,7 +309,7 @@ use Illuminate\Support\Facades\Auth;
               <div class="flex">
                   @if (session('lang') == 'uz')
                   <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
-                    UZ
+                    O'Z
                   </a>
                   I
                   <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
@@ -317,7 +317,7 @@ use Illuminate\Support\Facades\Auth;
                   </a>
                   @else
                   <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
-                    UZ
+                     O'Z
                   </a>
                   I
                   <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">
@@ -339,7 +339,7 @@ use Illuminate\Support\Facades\Auth;
                 <div class="flex">
                     @if (session('lang') == 'uz')
                     <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
-                      UZ
+                       O'Z
                     </a>
                     I
                     <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
@@ -347,7 +347,7 @@ use Illuminate\Support\Facades\Auth;
                     </a>
                     @else
                     <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
-                      UZ
+                      O'Z
                     </a>
                     I
                     <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">

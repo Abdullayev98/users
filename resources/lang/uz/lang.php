@@ -76,6 +76,35 @@ return [
     'detT_createOwnTask' => "Topshiriqingizni yarating",
     'detT_otherTask' => "Kategoriyadagi boshqa vazifalar",
     'detT_ownerOfThisTask' => "Ushbu topshiriqning mijozi",
+    'detT_inProsses' => "Davom etilmoqda",
+    'detT_callback' => "Bu vazifaga javob bering",
+    'detT_fill' => "Balansni to'ldirish",
+    'detT_balanceReq' => "Javob berish uchun balansingiz 4000 so‘m bo‘lishi kerak. Agar mijoz siz bilan bog‘lanmoqchi bo‘lsa, biz avtomatik ravishda hisobingizdan aloqa narxini yechib olamiz.",
+    'detT_balanceReq2' => "Agar siz javob yozsangiz, balansdagi miqdor bloklanmagan - siz boshqa topshiriqlarga javob qoldirishingiz mumkin.",
+    'detT_fill2' => "To'ldirish",
+    'detT_addOffers' => "Buyurtmaga taklif qo'shish",
+    'detT_notifMe' => "Agar ijrochi bo'lsa, menga xabar bering",
+    'detT_pointTime' => "Taklifning amal qilish muddatini belgilang",
+    'detT_hour' => "soat",
+    'detT_next' => "Keyingi",
+    'detT_callbackSucces' => "Sizning sorovingiz muvaffaqiyatli yuborildi!",
+    'detT_onTask' => "Vazifada",
+    'detT_callback1' => "sorov",
+    'detT_callback2' => "sorov",
+    'detT_callback3' => "sorov",
+    'detT_noCallbacks' => "Ishda sorovlar yo'q",
+    'detT_byRating' => "baho bo'yicha",
+    'detT_byTime' => "vaqt bo'yicha",
+    'detT_byCallbacks' => "sorovlar orqali",
+    'detT_numByNum' => "63 ta sharh asosida 4,96",
+    'detT_price' => "narx",
+    'detT_Hello' => "Salom.",
+    'detT_phoneNum' => "Ijrochining telefon raqami:",
+    'detT_writeOnChat' => "Chatga yozish",
+    'detT_choose' => "Ijrochini tanlang",
+    'detT_choosePerf' => "Ishnga baho berish uchun ijrochini tanlang.",
+    'detT_otherTaskInCat' => "Kategoriyadagi boshqa vazifalar",
+    'detT_ordererThisTask' => "Bu topshiriqning buyurtmachisi",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -87,6 +116,8 @@ return [
     'mytasks_freeRespond' => "Bepul javob",
     'mytasks_promo' => "Promo",
     'mytasks_allCat' => "Barcha toifalar",
+    'mytask_onTask' => "bu topshiriqda sorovlar",
+    'mytask_callbacks' => "ta",
     // mytasks.blade end
 
     // offertask.blade start
@@ -118,6 +149,13 @@ return [
     'search_tryAnOther' => "So'rovingizni aniqlashtirishga harakat qiling yoki boshqa toifalarni tanlang",
     'search_sportMaster' => "Sport ustasi",
     'search_noFeedback' => "Sharhlar yo'q",
+    'search_remoteJob' => "Masofadan ish",
+    'search_noCallback' => "Sorovlarsiz topshiriqlar",
+    'search_onlyVacancy' => "Faqat vakansiyalar",
+    'search_filter' => "Saralash:",
+    'search_byDate' => "nashr qilingan sana bo'yicha",
+    'search_byHurry' => "shoshilinch",
+    'search_byRemote' => "masofadan",
     // search.blade end
 
     // search2.blade start
@@ -444,6 +482,17 @@ return [
     'settings_nofifMeBy' => "Menga xabar bering:",
     'settings_push' => "Surish",
     'settings_since' => "Universal xizmatlarda 2021-yil 12-sentabrdan boshlab",
+    'settings_allSettings' => "Umumiy sozlamalar",
+    'settings_notifs' => "xabarnoma",
+    'settings_subscribeOnTask' => "Vazifalarga obuna bo'lish",
+    'settings_security' => "Xavfsizlik",
+    'settings_age' => "Yosh",
+    'settings_otherSet' => "Boshqa ma'lumotlar",
+    'settings_city' => "Shahar",
+    'settings_profile' => "profil",
+    'settings_phone' => "Telefon",
+    'settings_noNumber' => "raqam yo'q",
+    'settings_trust' => "Ijtimoiy tarmoqlardagi akkauntlaringizni Servicebox profilingizga ulash orqali foydalanuvchi ishonchini oshiring. Biz sizning kontaktlaringizni maxfiy saqlashga sodiqmiz.",
     // settings.blade end
 
     // executors-courier.blade start
