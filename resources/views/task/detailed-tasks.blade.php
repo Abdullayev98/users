@@ -2,8 +2,8 @@
 
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
-    <div class="mx-auto w-9/12 lg:flex">
-        <div class="mt-8 flex mb-8">
+    <div class="mx-auto w-9/12">
+        <div class="mt-8 lg:flex mb-8">
 
             {{-- left sidebar start --}}
             <div class="w-9/12 float-left">
