@@ -6,6 +6,7 @@ use App\Models\WalletBalance;
 use Illuminate\Support\Arr;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Notification;
 use App\Models\TaskResponse;
 use TCG\Voyager\Models\Category;
 use Illuminate\Http\Request;
@@ -100,10 +101,19 @@ class SearchTaskController extends VoyagerBaseController
       $performer_id = $request->input('performer_id');
       $task_id = $request->input('task_id');
       $description = $request->input('response_desc');
+      $name_task = $request->input('name_task');
+      $users_id = $request->input('user_id');
       if($status){
         Task::where('id', $task_id)->update([
           'status' => $status,
           'performer_id' => $performer_id,
+        ]);
+        Notification::create([
+          'user_id' => $performer_id,
+          'task_id' => $task_id,
+          'name_task' => $name_task,
+          'description' => 1,
+          'type' => 3
         ]);
       }
       if($description){
@@ -121,6 +131,13 @@ class SearchTaskController extends VoyagerBaseController
           'price' => $response_price,
           'price' => $response_price,
           'creator_id' => $users_id
+        ]);
+        Notification::create([
+          'user_id' => $users_id,
+          'task_id' => $task_id,
+          'name_task' => $name_task,
+          'description' => 1,
+          'type' => 2
         ]);
       }
       return response()->json(['success'=>$performer_id]);
