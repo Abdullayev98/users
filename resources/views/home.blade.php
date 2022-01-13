@@ -37,10 +37,6 @@
                                         class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24 z-50 relative text-white">
                                     @lang('lang.header_orderBtn')
                                 </a>
-                                <a href="" type="submit" id="createhref"
-                                        class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24 z-50 relative text-white">
-                                    @lang('lang.header_orderBtn')
-                                </a>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
                         

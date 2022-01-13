@@ -113,9 +113,17 @@
                                     Оставить отзыв
                                 </button>
                                 <div class="hideform hidden">
-                                <input type="radio" name="good" class="good border rounded ml-6 w-8/12" value="1">
-                                <input type="radio" name="good" class="good border rounded ml-6 w-8/12" value="0">
-                                <input type="text" name="comment" class="border rounded ml-6 w-8/12" value="">
+                               <div class="flex flex-row w-1/2 my-4 mx-auto">
+                                    <label class="mx-4">
+                                        <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
+                                        <i class="far fa-thumbs-up active:text-blue-500 text-xl"></i>
+                                    </label>
+                                    <label class="mx-4">
+                                        <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
+                                        <i class="far fa-thumbs-down active:text-blue-500 text-xl"></i>
+                                    </label>
+                               </div>
+                                <input type="text" name="comment" class="border rounded ml-6 mb-4 bg-amber-100 w-8/12 py-2 text-center font-normal" value="">
                                 <button class="send-comment font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                 type="button">
                                     Отправить
