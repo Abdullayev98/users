@@ -28,7 +28,9 @@ class Controller extends BaseController
         if (!session()->has('lang')) {
             Session::put('lang', 'ru');
         }
-        return view('home',compact('tasks','howitworks', 'categories'));
+        $random_category= Category::all()->random();
+
+        return view('home',compact('tasks','howitworks', 'categories','random_category'));
     }
 
     public function home_profile()
