@@ -24,16 +24,16 @@
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-                                   class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md md:pl-2 md:w-2/3 py-3">
-                                <datalist  id="TypeList">
+                                   class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md xl:w-[700px] lg:w-[600px] md:w-[400px] py-3">
+                                <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </datalist>
-                            <a href="" type="submit" id="createhref"
-                                    class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md  text-white">
-                                @lang('lang.header_orderBtn')
-                            </a>
+                                <a href="" type="submit" id="createhref"
+                                        class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24 z-50 relative text-white">
+                                    @lang('lang.header_orderBtn')
+                                </a>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
                         @lang('lang.header_example') <span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">@lang('lang.header_airCon')</span>
@@ -118,7 +118,7 @@
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 <div class="text-center">
-                    <img src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D0%BF%D0%BE%D1%80%D1%82%D0%BC%D0%BE%D0%BD%D0%B0-115076170.jpg" 
+                    <img src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D0%BF%D0%BE%D1%80%D1%82%D0%BC%D0%BE%D0%BD%D0%B0-115076170.jpg"
                          class="mx-auto h-[200px] w-[200px]" alt="">
                     <div class="font-bold my-4">@lang('lang.body_comfortPay')</div>
                     <div class="text-xs">
@@ -165,7 +165,7 @@
 @if(($cnt_for_hiw % 2) == 0)
 
                     <div>
-                        <img
+                        <img class="ml-20"
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
@@ -264,7 +264,7 @@
                                 src="{{asset('images/download_android.svg')}}"
                                 alt=""></button>
                     </a>
-                    
+
                 </div>
                 <div class="h-64 md:block hidden">
                     <img
@@ -413,4 +413,5 @@
         });
         });
     </script>
+
 @endsection

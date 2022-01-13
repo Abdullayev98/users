@@ -32,9 +32,9 @@
 
                     <h1 class="font-bold text-4xl mt-10 text-center">@lang('lang.geoT_howToCreate')</h1>
                     <h3 class="mt-10 text-xl text-center">@lang('lang.geoT_chooseCat')</h3>
-                    <img src="https://assets.youdo.com/next/_next/static/images/macbook-air2-c3eb51eecd4c26af441f36f2993b2d29.jpg" class="mx-auto"/>
+                    <img src="https://i1.wp.com/composs.ru/wp-content/uploads/2017/03/oshibka_651-7.jpg" class="mx-auto"/>
                     <p class="text-xl text-center mt-10">@lang('lang.geoT_giveDetails')</p>
-                    <img src="https://assets.youdo.com/next/_next/static/images/table-i-need-be98b0992c2295b91e61779ed27c3c94.jpg" class="mx-auto"/>
+                    <img src="https://docs.microsoft.com/en-us/powerapps/maker/portals/media/contact-us-form.png" class="mx-auto"/>
                 </div>
             </div>
         </div>
@@ -49,12 +49,12 @@
                 </div>
             </div>
             <div class="col-span-1">
-                <img src="https://assets.youdo.com/next/_next/static/images/create_task-8a473693dc5d602b2ccfe8207576a63d.jpg" class="w-4/5 mx-auto"/>
+                <img src="https://f.hubspotusercontent30.net/hubfs/8822336/location-icon-pin-pointer-map%20(2).jpg" class="w-4/5 mx-auto"/>
             </div>
         </div>
         <div class="grid grid-cols-2 mt-10 w-4/5 mx-auto">
             <div class="col-span-1">
-                <img src="https://assets.youdo.com/next/_next/static/images/executive_selection-2432f1d3f0d4f10880fc790d2cb390e4.jpg" class="w-4/5 mx-auto"/>
+                <img src="https://aviafrezer.ru/assets/images/resources/14/3356.jpg" class="w-4/5 mx-auto"/>
             </div>
             <div class="col-span-1 my-auto">
                 <div class="w-3/5 mx-auto">
@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="col-span-1">
-                <img src="https://assets.youdo.com/next/_next/static/images/task_complete-3b15890cc07d8a0317d3382194fe5ebf.jpg" class="mx-auto"/>
+                <img src="https://pixy.org/src/58/thumbs350/582432.jpg" class="mx-auto"/>
             </div>
         </div>
         <div class="w-4/5 mx-auto mt-20">badges
