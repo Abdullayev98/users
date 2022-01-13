@@ -867,18 +867,21 @@ class CreateTaskController extends VoyagerBaseController
                 'description'=> 1,
                 'task_id'=>$id->id,
                 "cat_id"=>$category,
-                "name_task"=>$id->name
+                "name_task"=>$id->name,
+                "type"=> 1
 
             ]);
         }
 
         }
 
+           $user_id_fjs = NULL;
            $id_task = $id->id;
            $id_cat = $id->category_id;
            $title_task = $id->name;
+           $type = 1;
 
-               event(new MyEvent($id_task,$id_cat,$title_task));
+               event(new MyEvent($id_task,$id_cat,$title_task,$type,$user_id_fjs));
 
          return redirect('/')->with('success','Задание успешно добавлено!');
 
