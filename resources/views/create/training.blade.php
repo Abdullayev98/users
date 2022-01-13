@@ -21,7 +21,7 @@
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            Где нужно убраться?
+                        Какие нужны занятия?
                         </div>
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                             Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.
