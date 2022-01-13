@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="basis-2/6 hidden md:inline-block"><img src="https://youdo.com/_next/static/media/bardak.35854b6bb5e4459530827de9e859c853.png" alt=""></div>
+            <div class="basis-2/6 hidden md:inline-block"><img src="https://clipartspub.com/images/software-clipart-clip-art-9.jpg" alt=""></div>
         </div>
 @endsection
 @endsection
