@@ -237,7 +237,7 @@
 
       <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
           <div class="col-span-2">
-            <iframe class="rounded-lg h-full sm:h-[300px] w-5/6 mx-auto" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="rounded-lg h-full w-5/6 mx-auto" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:text-left text-center">
             <p class=" text-lg">@lang('lang.ver_independance')</p>
