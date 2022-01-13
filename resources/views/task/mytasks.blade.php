@@ -27,27 +27,29 @@
                     <div class="w-full scroll-smooth hover:scroll-auto w-full">
 
                             @foreach($tasks as $task)
-                            <div class="w-full hover:bg-blue-100 border-t border-solid my-5">
-                                <div class="md:grid md:grid-cols-10 p-2">
-                                    <i class="fas fa-user-circle text-4xl md:col-span-1 m-auto text-blue-400"></i>
-                                    <div class="col-span-6">
-                                        <a href="#" class="text-lg text-blue-400 hover:text-red-400">
-                                            {{$task->name}}
-                                        </a>
-                                        <p class="text-sm mt-2">
-                                            {{$task->description}}
-                                        </p>
+                            <div>
+                                <div class="w-full border hover:bg-blue-100 h-[100px] ">
+                                    <div class="w-11/12 h-12 m-4">
+                                        <div class="float-left w-9/12 " id="results">
+                                            @foreach ($categories as $category)
+                                            @if ($category->id == $task->category_id) 
+                                            <i class="{{$category->ico}} text-4xl float-left text-blue-400 mr-2"></i>
+                                            @endif
+                                            @endforeach
+                                            <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">{{$task->name}}</a>
+                                            <p class="text-sm ml-12 mt-4">{{$task->address}}</p>
+                                        </div>
+                                        <div class="float-right w-1/4 text-right " id="about">
+                                            <a href="#" class="text-lg">{{$task->budget}}</a>
+                                            @foreach ($categories as $category)
+                                            @if ($category->id == $task->category_id)
+                                            <p class="text-sm ml-12">{{$category->name}}</p>                                                
+                                            @endif
+                                            @endforeach
+                                        </div>
                                     </div>
-
-                                    <div class="col-span-3 md:text-right">
-                                        <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                        <p class="text-sm">@lang('lang.mytasks_sportMaster')</p>
-                                        <p class="text-sm">@lang('lang.mytasks_noFeedback')</p>
-                                    </div>
-
                                 </div>
                             </div>
-
                             @endforeach
 
                         </div>

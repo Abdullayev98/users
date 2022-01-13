@@ -21,7 +21,7 @@
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            Где нужно убраться?
+                        Какие нужны занятия?
                         </div>
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                             Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.
@@ -30,12 +30,12 @@
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
                                 Частота
-                                    <select id="training" name="training[]" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                    <select id="training" name="training" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         <option>Регулярно</option>
                                         <option>Только одно занятие</option>
                                     </select>
                                     Как часто требуется уборка
-                                    <select id="time" name="time[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                    <select id="time" name="time" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         <option>45 минут</option>
                                         <option>60 минут</option>
                                         <option>90 минут</option>

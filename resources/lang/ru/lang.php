@@ -107,6 +107,8 @@ return [
     'search_find' => "Найти",
     'search_byKey' => "Поиск по ключевым словам",
     'search_location' => "Город, адрес, метро, район...",
+    'search_byMapRadius' => "Радиус поиска",
+    'search_byMapRadiusNo' => "Без ограничений",
     'search_priceBy' => "Стоимость заданий от",
     'search_allCat' => "Все категории",
     'search_shown' => "Показано 20 из 331",
@@ -451,7 +453,8 @@ return [
     'exe_offline' => "Офлайн",
     'exe_docsAccept' => "Документы подтверждены",
     'exe_rusYearLet' => "лет",
-    'exe_done' => "Выполнил 199 заданий, создал 3 задания",
+    'exe_create' => "создал",
+    'exe_counttask' => "задания",
     'exe_averageRating' => "Средняя оценка",
     'exe_feedbacks' => "отзывов",
     'exe_ask' => "Задать вопрос",
@@ -463,7 +466,7 @@ return [
     'exe_typeOfDone' => "Виды выполняемых работ",
     'exe_perfTakesNotif' => "Исполнитель получит уведомление и сможет оказать вам свои услуги",
     'exe_performer' => "Исполнитель",
-    'exe_since' => "на Universal Services с 13 апреля 2021 г.",
+    'exe_since' => "на Universal Services с ",
     'exe_phone' => "Телефон",
     'exe_verified' => "Подтвержден",
     'exe_notVerified' => "Не подтвержден",
@@ -554,7 +557,7 @@ return [
     // name.blade end
 
     // notes.blade start
-    'notes_percent' => "Задание заполнено на 86%",
+    'notes_percent' => "Задание заполнено на 90%",
     'notes_details' => "Уточните детали",
     'notes_destcript' => "Описание",
     'notes_example' => "Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня.",
@@ -576,7 +579,7 @@ return [
     // peopleT.blade end
 
     // services.blade start
-    'service_percent' => "Задание заполнено на 86%",
+    'service_percent' => "Задание заполнено на 89%",
     'service_details' => "Уточните детали",
     // services.blade end
 

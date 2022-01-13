@@ -30,6 +30,10 @@
     <form class="" action="{{route('task.create.service_delivery')}}" method="post">
     @elseif($category->id == 27)
     <form class="" action="{{route('task.create.service_delivery')}}" method="post">
+    @elseif($parent_id->id == 2)
+    <form class="" action="{{route('task.create.construction')}}" method="post">
+    @elseif($parent_id->id == 213)
+    <form class="" action="{{route('task.create.notes')}}" method="post">
     @else
     <form class="" action="{{route('task.create.services')}}" method="post">
     @endif
@@ -41,11 +45,11 @@
                         @lang('lang.budget_lookingFor') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                        @lang('lang.budget_percent')
+                        @lang('lang.contact_percent')
                     </div>
                     <div class="relative pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
-                            <div style="width: 71%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                            <div style="width: 86%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                         </div>
                     </div>
                     <div class="shadow-xl w-full mx-auto md:mt-7 rounded-2xl  w-full p-6 md:px-20">

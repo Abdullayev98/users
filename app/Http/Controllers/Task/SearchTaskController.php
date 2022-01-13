@@ -20,8 +20,8 @@ class SearchTaskController extends VoyagerBaseController
     public function task_search(){
 
 
-        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->paginate(20);
-        $categories = Category::withTranslations(['ru', 'uz'])->get();
+        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->get();
+        $categories = Category::withTranslations(['ru', 'uz']);
         return view('task.search', compact('tasks','categories'));
     }
 
@@ -38,8 +38,9 @@ class SearchTaskController extends VoyagerBaseController
     }
 
     public function my_tasks(){
-        $tasks = Task::where('user_id', auth()->id());
-        return view('/task/mytasks',compact('tasks'));
+        $tasks = Task::where('user_id', auth()->id())->get();
+        $categories = Category::get();
+        return view('/task/mytasks',compact('tasks','categories'));
     }
     public function search(Request $request){
       $s = $request->s;
@@ -82,36 +83,47 @@ class SearchTaskController extends VoyagerBaseController
           $current_user = User::find($user_id);
           $categories = Category::where('id',$cat_id)->get();
 
+          $auth_user = Auth::user();
 
         $arr = get_defined_vars();
 
         if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count','balance'));
+            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count','balance','auth_user'));
         }else {
-          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance'));
+          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance','auth_user'));
         }
 
     }
 
     public function task_response(Request $request){
-      $description = $request->input('response_desc');
-      $notificate = $request->input('notificate');
-      $response_time = $request->input('response_time');
-      $response_price = $request->input('response_price');
+      $status = $request->input('status');
+      $performer_id = $request->input('performer_id');
       $task_id = $request->input('task_id');
-      $users_id = $request->input('user_id');
-      #create or update your data here
-      TaskResponse::create([
-        'user_id' => Auth::id(),
-        'task_id' => $task_id,
-        'description' => $description,
-        'notificate' => $notificate,
-        'time' => $response_time,
-        'price' => $response_price,
-        'price' => $response_price,
-        'creator_id' => $users_id
-      ]);
-      return response()->json(['success'=>$description]);
+      $description = $request->input('response_desc');
+      if($status){
+        Task::where('id', $task_id)->update([
+          'status' => $status,
+          'performer_id' => $performer_id,
+        ]);
+      }
+      if($description){
+        $notificate = $request->input('notificate');
+        $response_time = $request->input('response_time');
+        $response_price = $request->input('response_price');
+        $task_id = $request->input('task_id');
+        $users_id = $request->input('user_id');
+        TaskResponse::create([
+          'user_id' => Auth::id(),
+          'task_id' => $task_id,
+          'description' => $description,
+          'notificate' => $notificate,
+          'time' => $response_time,
+          'price' => $response_price,
+          'price' => $response_price,
+          'creator_id' => $users_id
+        ]);
+      }
+      return response()->json(['success'=>$performer_id]);
   }
 
 }

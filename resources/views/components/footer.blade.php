@@ -15,18 +15,18 @@
                </div>
                <div class="mb-5 md:float-left mx-auto lg:float-none md:w-6/16">
                    <div class="w-1/1 ml-auto px-auto">
-                       <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block" rel="noopener noreferrer" href="https://app.appsflyer.com/id560999571?pid=coldunshik&amp;c=youdo" target="_blank">
-                           <button type="button" class="w-3/10 bg-[#000] rounded-md mt-8 hover:bg-[#ffa200]"><img src="https://assets.youdo.com/_next/static/media/ios.d3a42dd0816a046400b4bb7d2b11067f.svg" alt=""> </button>
+                       <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block" rel="noopener noreferrer" href="#" target="_blank">
+                           <button type="button" class="w-3/10 bg-[#000] rounded-md mt-8 hover:bg-[#ffa200]"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
                        </a>
-                       <a class="md:mr-2 rounded-md md:inline-block md:px-3" rel="noopener noreferrer" href="http://app.appsflyer.com/com.sebbia.youdo?pid=coldunshik&amp;c=youdo" target="_blank">
-                           <button type="button" class="w-3/10 bg-[#000] rounded-md mt-8 hover:bg-[#ffa200]"><img src="https://assets.youdo.com/_next/static/media/android.1234ba9391753eeb525d4f71a808329e.svg" alt=""> </button>
+                       <a class="md:mr-2 rounded-md md:inline-block md:px-3" rel="noopener noreferrer" href="#" target="_blank">
+                           <button type="button" class="w-3/10 bg-[#000] rounded-md mt-8 hover:bg-[#ffa200]"><img src="{{asset('images/download_android.svg')}}" alt=""> </button>
                        </a>
                        <!-- <a class="md:mr-2 rounded-md lg:inline-block" rel="noopener noreferrer" href="https://appgallery.cloud.huawei.com/ag/n/app/C101747675?locale=ru_RU&amp;channelId=youdo&amp;id=424fff149df14f2c9f75123706820d5e&amp;s=4DFA8AAFD6CA4AA004756257A93CE9BC6E6F07E2AE3564259878D059C9C07573&amp;detailType=0&amp;v=" target="_blank">
                            <button type="button" class="w-3/10 bg-[#000] rounded-md mt-8 hover:bg-[#ffa200]"><img src="https://assets.youdo.com/_next/static/media/appgallery.67baccf681decda41c84b0364830d2e4.svg" alt=""> </button>
                        </a> -->
                    </div>
                </div>
-               <div class="mb-5 md:float-left lg:float-none md:w-6/16 md:ml-24">
+               <div class="mb-5 md:float-left lg:float-none md:w-6/16 md:ml-24 pt-5">
                    <span class="">
                    @lang('lang.footer_foot')
                        <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block hover:text-amber-500" rel="noopener noreferrer">

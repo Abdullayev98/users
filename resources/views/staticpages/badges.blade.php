@@ -32,7 +32,7 @@
                         <h2 class="text-3xl p-5">@lang('lang.badgets_typeOfCustomers')</h2>
                         <div class="grid grid-cols-5">
                             <div class="col-span-1 bg-no-repeat w-50 h-24  bg-black" >
-                                <img src="https://assets.youdo.com/_next/static/media/gold.e89ccdb62b00976c80fd95166df8b68b.svg"  class="mx-auto" />
+                                <img src="{{asset('images/titul.svg')}}"  class="mx-auto" />
                             </div>
                             <div class="col-span-4">
                                 <p class=""><span class="text-red-500 italic">@lang('lang.badgets_perOfTheYear')</span>@lang('lang.badgets_text4')</p>
