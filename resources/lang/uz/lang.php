@@ -957,7 +957,7 @@ return [
    // glass blade started
    'glass_text' => "Topshiriq 44% bajarildi",
    'glass_text1' => "Qancha oynani tozalash kerak?",
-   'glass_text2' => "dona."
+   'glass_text2' => "dona.",
    // glass blade ended
 
    // housemaid blade started
