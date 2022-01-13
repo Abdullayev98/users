@@ -2,7 +2,6 @@
 
 
 @section('content')
-
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">
             <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2
@@ -406,7 +405,12 @@
     </script>
     <script>
         $("input[name=TypeList]").focusout(function(){
-            $("#createhref").attr("href", '/task/create?category_id='+$(this).id());
+        });
+        $(function() {
+        $('#header_input').on('input',function() {
+            var opt = $('option[value="'+$(this).val()+'"]');
+            $("#createhref").attr("href", '/task/create?category_id='+opt.attr('id'));
+        });
         });
     </script>
 @endsection
