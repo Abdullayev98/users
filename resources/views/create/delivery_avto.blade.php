@@ -13,7 +13,7 @@
     @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-    Задание заполнено на 65%
+    @lang('lang.delA_text')
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
@@ -22,7 +22,7 @@
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-      На каком автомобиле должен быть курьер?
+      @lang('lang.delA_text1')
       </div>
 
       <div class="py-4 mx-auto  text-left ">
@@ -34,17 +34,17 @@
             <div class="mb-3 xl:w-full">
                 <input type="radio" id="delivey_car"
                     name="delivey_car[]" value="Не требуется">
-                <label for="delivey_car">Не требуется</label>
+                <label for="delivey_car">@lang('lang.delA_text2')</label>
                 <br>
                 <br>
                 <input type="radio" id="delivey_car"
                     name="delivey_car[]" value="На легковом авто">
-                <label for="delivey_car[]">На легковом авто</label>
+                <label for="delivey_car[]">@lang('lang.delA_text3')</label>
                 <br>
                 <br>
                 <input type="radio" id="delivey_car"
                     name="delivey_car[]" value="На грузовом авто">
-                <label for="delivey_car[]">На грузовом авто</label>
+                <label for="delivey_car[]">@lang('lang.delA_text4')</label>
               </div>
         </div>
 

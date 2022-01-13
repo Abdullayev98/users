@@ -9,10 +9,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="md:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
-                        Ищем исполнителя для задания "{{session('name')}}"
+                        @lang('lang.buyd_text') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                        Задание заполнено на 33%
+                        @lang('lang.bugalter_taskready')
                     </div>
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -21,26 +21,26 @@
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                        Какие нужны занятия?
+                        @lang('lang.training_text')
                         </div>
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.
+                            @lang('lang.training_text1')
                         </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
-                                Частота
+                                @lang('lang.training_text2')
                                     <select id="training" name="training" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        <option>Регулярно</option>
-                                        <option>Только одно занятие</option>
+                                        <option>@lang('lang.training_text3')</option>
+                                        <option>@lang('lang.training_text4')</option>
                                     </select>
-                                    Как часто требуется уборка
+                                    @lang('lang.training_text5')
                                     <select id="time" name="time" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        <option>45 минут</option>
-                                        <option>60 минут</option>
-                                        <option>90 минут</option>
-                                        <option>120 минут</option>
-                                        <option>Неважно</option>
+                                        <option>45 @lang('lang.training_minut')</option>
+                                        <option>60 @lang('lang.training_minut')</option>
+                                        <option>90 @lang('lang.training_minut')</option>
+                                        <option>120 @lang('lang.training_minut')</option>
+                                        <option>@lang('lang.training_text6')</option>
                                     </select>
                                 </div>
                                 <div class="mt-4">
