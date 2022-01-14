@@ -14,7 +14,7 @@
         class="bg-[url('https://homecleanhome.co.nz/wp-content/uploads/2015/07/Vacuum-Slider.jpg')] bg-center bg-cover h-[450px] ">
         <div class="container-lg mx-auto bg-[url('{{asset('images/pattern-dotted.svg')}}')] bg-repeat h-[450px] ">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
-                <div class="text-center pt-32">
+                <div class="text-center pt-24">
                     <h1 class="font-bold text-white text-3xl lg:text-6xl md:text-4xl">
                         <span class="block xl:block">@lang('lang.header_title')</span>
                     </h1>
