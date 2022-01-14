@@ -141,7 +141,7 @@ return [
     'search_location' => "Город, адрес, метро, район...",
     'search_byMapRadius' => "Радиус поиска",
     'search_byMapRadiusNo' => "Без ограничений",
-    'search_priceBy' => "Стоимость заданий от",
+    'search_priceBy' => "Стоимость заданий",
     'search_allCat' => "Все категории",
     'search_shown' => "Показано 20 из 331",
     'search_showMore' => "Показать ещё",
