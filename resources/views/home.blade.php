@@ -40,6 +40,7 @@
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
                         
+                      
                         @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">{{$random_category->name}}</span>
                         </div>
                     </div>

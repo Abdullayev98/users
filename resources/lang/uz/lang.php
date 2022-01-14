@@ -8,7 +8,7 @@ return [
     'header_orderBtn' => "Buyurtma xizmati",
     'header_example' => "Masalan:",
     'header_airCon' => "konditsionerni osib qo'ying",
-    'header_exampleSearch' => "Masalan, da'vo qiling",
+    'header_exampleSearch' => "Qanday yordam kerak? yozing...",
     'header_bePerformer' => "ijrochi bo'ling va daromad olishni boshlang",
     'header_over2mln' => "2 300 000 dan ortiq ijrochilar",
     'body_helpers' => "Ijrochilar sizga turli xil vazifalarni hal qilishda yordam berishga tayyor",
