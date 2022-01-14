@@ -93,8 +93,7 @@
     <main>
         <div class="container md:text-left text-left mx-auto mt-36 md:px-16 px-4">
             <div class="text-3xl font-bold text-center">
-                @lang('lang.header_over')  @lang('lang.header_performers')
-                {{-- {{$users_count}} --}}
+                @lang('lang.header_over') {{$users_count}}  @lang('lang.header_performers')
             </div>
             <div class="text-sm text-center mt-4">
             @lang('lang.body_helpers')
