@@ -10,9 +10,28 @@
             </div>
         </div>
     @endif
-    <div
-        class="bg-[url('https://homecleanhome.co.nz/wp-content/uploads/2015/07/Vacuum-Slider.jpg')] bg-center bg-cover h-[450px] ">
-        <div class="container-lg mx-auto bg-[url('{{asset('images/pattern-dotted.svg')}}')] bg-repeat h-[450px] ">
+    <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
+    <div class="HomepageHeaderSection">
+        <div class=" video-bg">
+            @if(setting('site.Video_bg') != null)
+            @php
+            $array_video = json_decode(setting('site.Video_bg'), true);
+                $str_replace = str_replace("\\","/",$array_video);
+            @endphp
+            <video src="storage/{{$array_video['0']['download_link']}}" type="video/mp4" autoplay muted loop></video>
+            @else
+            @php
+                $pp = setting('site.foto_bg');
+                $str_replace = str_replace("\\","/",$pp);
+            @endphp
+            <img src="storage/{{$str_replace}}" alt="rasm yoq">
+            @endif
+            <div class="effects"></div>
+            <div class="video-bg__content"></div>
+        </div>
+    </div>
+    <div class="relative z-999 top-0 left-50">
+        <div class="">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-32">
                     <h1 class="font-bold text-white text-3xl lg:text-6xl md:text-4xl">
@@ -73,10 +92,10 @@
         </div>
     </div>
     <main>
-        <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
-            {{-- <div class="text-3xl font-bold text-center">
+        <div class="container md:text-left text-left mx-auto mt-36 md:px-16 px-4">
+            <div class="text-3xl font-bold text-center">
                 @lang('lang.header_over2mln')
-            </div> --}}
+            </div> 
             <div class="text-sm text-center mt-4">
             @lang('lang.body_helpers')
             </div>
