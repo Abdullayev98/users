@@ -66,7 +66,7 @@
                     <div class="w-[350px] mx-auto mt-12">
                       <a href="/verification" class="text-[#80e6ff] text-center">
                         <i class="text-blue fas fa-shield-alt float-left mr-0 text-2xl"></i>
-                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">@lang('lang.header_bePerformer')</p>
+                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">@lang('lang.header_bePerformer') </p>
                       </a>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
     <main>
         <div class="container md:text-left text-left mx-auto mt-36 md:px-16 px-4">
             <div class="text-3xl font-bold text-center">
-                @lang('lang.header_over2mln')
+                @lang('lang.header_over') {{$users_count}} @lang('lang.header_performers')
             </div> 
             <div class="text-sm text-center mt-4">
             @lang('lang.body_helpers')
