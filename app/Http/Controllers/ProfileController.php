@@ -157,8 +157,23 @@ class ProfileController extends Controller
     }
 
     //portfolio
-    // public function porfolioIndex(){
-    //     $portfolios = portfolio::where('user_id', Auth::user()->id);
-    //     return view('profile.profile', compact('portfolios'));
-    // }
+    public function StorePicture(Request $request){
+            $request->validate([
+              'image' => 'required|image'
+            ]);
+            $portfolio = new portfolio;
+            $photo = $request->file('image');
+
+            if($photo){
+                // $image_name = time() . '.' . $photo->getClientOriginalExtension();
+                $imagename = "images/portfolios/".$photo->getClientOriginalName();
+                $photo->move(public_path().'/AvatarImages/images/portfolios/',$imagename);
+                $portfolio->image = $imagename;
+            }
+            $portfolio->user_id= Auth::user()->id;
+            $portfolio->comment = $request->comment;
+            $portfolio->save();
+            return back();
+
+        }
 }

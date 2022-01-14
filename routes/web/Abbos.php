@@ -27,4 +27,6 @@ Route::post('/profile/getcategory',[ProfileController::class, 'getCategory'])->n
 
 Route::post('/profile/insertdistrict',[ProfileController::class, 'StoreDistrict'])->name('insert.district');
 
+Route::post('/profile/storepicture',[ProfileController::class, 'StorePicture'])->name('storePicture');
+
 
