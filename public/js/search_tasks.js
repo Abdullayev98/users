@@ -22,6 +22,7 @@ function tasks_list_all(data) {
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-sm ml-12 mt-4">` + data.address + `</p>
                     <p class="text-sm ml-10 mt-1">Начать ` + data.start_date + `</p>
+                    <p class="text-sm ml-10 mt-1">` + data.oplata + `</p>
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
@@ -53,6 +54,7 @@ function tasks_list(data) {
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-sm ml-10 mt-1">` + data.address + `</p>
                     <p class="text-sm ml-10 mt-1">Начать ` + data.start_date + `</p>
+                    <p class="text-sm ml-10 mt-1">` + data.oplata + `</p>
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
