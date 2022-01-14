@@ -29,8 +29,8 @@ class Controller extends BaseController
             Session::put('lang', 'ru');
         }
         $random_category= Category::all()->random();
-
-        return view('home',compact('tasks','howitworks', 'categories','random_category'));
+        $users_count = User::where('role_id', 2)->count();
+        return view('home',compact('tasks','howitworks', 'categories','random_category','users_count'));
     }
 
     public function home_profile()
