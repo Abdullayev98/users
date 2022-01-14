@@ -10,9 +10,28 @@
             </div>
         </div>
     @endif
-    <div
-        class="bg-[url('https://homecleanhome.co.nz/wp-content/uploads/2015/07/Vacuum-Slider.jpg')] bg-center bg-cover h-[450px] ">
-        <div class="container-lg mx-auto bg-[url('{{asset('images/pattern-dotted.svg')}}')] bg-repeat h-[450px] ">
+    <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
+    <div class="HomepageHeaderSection">
+        <div class=" video-bg">
+            @if(setting('site.Video_bg') != null)
+            @php
+            $array_video = json_decode(setting('site.Video_bg'), true);
+                $str_replace = str_replace("\\","/",$array_video);
+            @endphp
+            <video src="storage/{{$array_video['0']['download_link']}}" type="video/mp4" autoplay muted loop></video>
+            @else
+            @php
+                $pp = setting('site.foto_bg');
+                $str_replace = str_replace("\\","/",$pp);
+            @endphp
+            <img src="storage/{{$str_replace}}" alt="rasm yoq">
+            @endif
+            <div class="effects"></div>
+            <div class="video-bg__content"></div>
+        </div>
+    </div>
+    <div class="relative z-999 top-0 left-50">
+        <div class="">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-32">
                     <h1 class="font-bold text-white text-3xl lg:text-6xl md:text-4xl">
@@ -37,20 +56,17 @@
                                         class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24 z-50 relative text-white">
                                     @lang('lang.header_orderBtn')
                                 </a>
-                                <a href="" type="submit" id="createhref"
-                                        class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24 z-50 relative text-white">
-                                    @lang('lang.header_orderBtn')
-                                </a>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
                         
-                        @lang('lang.header_example') {{$random_category->name}}<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">@lang('lang.header_airCon')</span>
+                      
+                        @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">{{$random_category->name}}</span>
                         </div>
                     </div>
                     <div class="w-[350px] mx-auto mt-12">
                       <a href="/verification" class="text-[#80e6ff] text-center">
                         <i class="text-blue fas fa-shield-alt float-left mr-0 text-2xl"></i>
-                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">@lang('lang.header_bePerformer')</p>
+                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">@lang('lang.header_bePerformer') </p>
                       </a>
                     </div>
                 </div>
@@ -77,10 +93,10 @@
         </div>
     </div>
     <main>
-        <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
-            {{-- <div class="text-3xl font-bold text-center">
-                @lang('lang.header_over2mln')
-            </div> --}}
+        <div class="container md:text-left text-left mx-auto mt-36 md:px-16 px-4">
+            <div class="text-3xl font-bold text-center">
+                @lang('lang.header_over') {{$users_count}} @lang('lang.header_performers')
+            </div> 
             <div class="text-sm text-center mt-4">
             @lang('lang.body_helpers')
             </div>

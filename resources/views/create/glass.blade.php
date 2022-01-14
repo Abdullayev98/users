@@ -10,10 +10,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="col-span-2">
                     <div class="w-full text-center text-2xl">
-                        Ищем исполнителя для задания "{{session('name')}}"
+                       @lang('lang.buyd_text') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                        Задание заполнено на 44%
+                        @lang('lang.glass_text')
                     </div>
                     <div class="relative pt-1">
                         <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            Сколько окон нужно помыть?
+                            @lang('lang.glass_text1')
                         </div>
 
                         <div class="py-4 mx-auto  text-left ">
@@ -34,52 +34,52 @@
                                         <div name="glassSht" class="mb-3 xl:w-full">
                                             <input type="radio" id="1"
                                                    name="box" value="1">
-                                            <label for="1">1 шт.</label>
+                                            <label for="1">1 @lang('lang.glass_text2')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="2"
                                                    name="box" value="2">
-                                            <label for="2">2 шт.</label>
+                                            <label for="2">2 @lang('lang.glass_text2')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="3"
                                                    name="box" value="3">
-                                            <label for="3">3 шт.</label>
+                                            <label for="3">3 @lang('lang.glass_text2')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="4"
                                                    name="box" value="4">
-                                            <label for="4">4 шт.</label>
+                                            <label for="4">4 @lang('lang.glass_text2')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="5"
                                                    name="box" value="5">
-                                            <label for="5">5 шт.</label>
+                                            <label for="5">5 @lang('lang.glass_text2')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="6"
                                                    name="box" value="6">
-                                            <label for="6">6 шт.</label>
+                                            <label for="6">6 @lang('lang.glass_text2')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="7"
                                                    name="box" value="7">
-                                            <label for="7">7 шт.</label>
+                                            <label for="7">7 @lang('lang.glass_text2')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="8"
                                                    name="box" value="8">
-                                            <label for="8">8 шт.</label>
+                                            <label for="8">8 @lang('lang.glass_text2')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="9"
                                                    name="box" value="9">
-                                            <label for="9">9 шт.</label>
+                                            <label for="9">9 @lang('lang.glass_text2')</label>
                                             <br>
                                             <br>
                                             <input type="radio" id="0"
                                                    name="box" value="10">
-                                            <label for="0">10 шт.</label>
+                                            <label for="0">10 @lang('lang.glass_text2')</label>
                                         </div>
                                     </div>
 

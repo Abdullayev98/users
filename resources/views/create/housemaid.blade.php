@@ -9,10 +9,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="md:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
-                        Ищем исполнителя для задания "{{session('name')}}"
+                        @lang('lang.buyd_text') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                        Задание заполнено на 25%
+                       @lang('lang.design_text')
                     </div>
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -21,29 +21,29 @@
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            Где нужно убраться?
+                            @lang('lang.housem_wheretoclean')
                         </div>
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.
+                            @lang('lang.housem_text')
                         </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
-                                    Помещение
+                                    @lang('lang.housem_text1')
                                     <select id="where" name="where[]" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        <option>1-комнатная квартира</option>
-                                        <option>2-комнатная квартира</option>
-                                        <option>3-комнатная квартира</option>
-                                        <option>4-комнатная квартира</option>
-                                        <option>Офис</option>
-                                        <option>Частный дом (коттедж)</option>
+                                        <option>1-@lang('lang.housem_text2')</option>
+                                        <option>2-@lang('lang.housem_text2')</option>
+                                        <option>3-@lang('lang.housem_text2')</option>
+                                        <option>4-@lang('lang.housem_text2')</option>
+                                        <option>@lang('lang.housem_office')</option>
+                                        <option>@lang('lang.housem_text3')</option>
                                     </select>
-                                    Как часто требуется уборка
+                                    @lang('lang.housem_text4')
                                     <select id="how_many" name="how_many[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        <option>Разовая уборка</option>
-                                        <option>1 раз в месяц</option>
-                                        <option>2 раза в месяц</option>
-                                        <option>Каждую неделю</option>
+                                        <option>@lang('lang.housem_text5')</option>
+                                        <option>@lang('lang.housem_text6')</option>
+                                        <option>@lang('lang.housem_text7')</option>
+                                        <option>@lang('lang.housem_text8')</option>
                                     </select>
                                 </div>
                                 <div class="mt-4">
