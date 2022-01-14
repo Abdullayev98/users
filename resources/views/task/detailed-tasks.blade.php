@@ -116,11 +116,11 @@
                                <div class="flex flex-row w-1/2 my-4 mx-auto">
                                     <label class="mx-4">
                                         <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
-                                        <i class="far fa-thumbs-up active:text-blue-500 text-xl"></i>
+                                        <i id="class_demo"  class="text-gray-500 far fa-thumbs-up text-xl"></i>
                                     </label>
                                     <label class="mx-4">
                                         <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
-                                        <i class="far fa-thumbs-down active:text-blue-500 text-xl"></i>
+                                        <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-xl"></i>
                                     </label>
                                </div>
                                 <input type="text" name="comment" class="border rounded ml-6 mb-4 bg-amber-100 w-8/12 py-2 text-center font-normal" value="">
@@ -427,8 +427,22 @@
         }
     </style>
     <script>
+        $(document).ready(function(){
+            $("#class_demo").click(function(){
+                $("#class_demo").removeClass("text-gray-500");
+            $("#class_demo").addClass("text-amber-500");
+            $("#class_demo1").removeClass("text-amber-500");
+            $("#class_demo1").addClass("text-gray-500");
+            });
+            $("#class_demo1").click(function(){
+            $("#class_demo1").removeClass("text-gray-500");
+            $("#class_demo1").addClass("text-amber-500");
+            $("#class_demo").removeClass("text-amber-500");
+            $("#class_demo").addClass("text-gray-500");
+            });
+        });
         function valueChanged()
-        {
+        {   
             if($('.coupon_question').is(":checked"))
                 $(".answer").show();
             else
