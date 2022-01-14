@@ -22,7 +22,7 @@ class SearchTaskController extends VoyagerBaseController
     public function task_search(){
 
 
-        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->get();
+        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','asc')->get();
         $categories = Category::withTranslations(['ru', 'uz']);
         return view('task.search', compact('tasks','categories'));
     }
