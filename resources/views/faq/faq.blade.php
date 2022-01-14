@@ -61,7 +61,7 @@
 
     <footer class="lg:text-lg md:text-base sm:text-sm text-xs bg-white w-full flex flex-col p-8 justify-center items-center mt-8">
         <h2>users.uz</h2>
-        <p>Мы используем Intercom</p>
+        <p>@lang('lang.faq_text2')</p>
     </footer>
 
 

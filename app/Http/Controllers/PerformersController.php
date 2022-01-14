@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\WalletBalance;
+use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use TCG\Voyager\Models\Category;
@@ -69,7 +70,11 @@ class PerformersController extends Controller
         $categories = DB::table('categories')->get();
         $child_categories = DB::table('categories')->get();
         $task_count = Task::where('user_id', Auth::id())->count();
-        return view('Performers/executors-courier',compact('users','categories','child_categories','vcs','task_count'));
+        $tasks = Task::get();
+        $reviews = Review::get();
+        $reviews_count = Review::where('user_id', $id)->count();
+        $review_users= User::get();
+        return view('Performers/executors-courier',compact('reviews_count','tasks','users','categories','child_categories','vcs','task_count','reviews','review_users'));
     }
 
 public function perf_ajax($cf_id){

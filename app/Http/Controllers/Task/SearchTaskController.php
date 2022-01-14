@@ -9,6 +9,7 @@ use App\Models\Task;
 use App\Models\Notification;
 use App\Models\TaskResponse;
 use TCG\Voyager\Models\Category;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -101,8 +102,10 @@ class SearchTaskController extends VoyagerBaseController
       $performer_id = $request->input('performer_id');
       $task_id = $request->input('task_id');
       $description = $request->input('response_desc');
+      $comment = $request->input('comment');
       $name_task = $request->input('name_task');
       $users_id = $request->input('user_id');
+      $good = $request->input('good');
       if($status){
         Task::where('id', $task_id)->update([
           'status' => $status,
@@ -139,6 +142,26 @@ class SearchTaskController extends VoyagerBaseController
           'description' => 1,
           'type' => 2
         ]);
+      }
+      if($comment){
+        if(Auth::id() == $users_id){
+          Review::create([
+            'user_id' => $performer_id,
+            'description' => $comment,
+            'good_bad' => $good,
+            'reviewer_id' => Auth::id(),
+            'task_id' => $task_id,
+          ]);
+        }
+        if(Auth::id() == $performer_id){
+          Review::create([
+            'user_id' => $users_id,
+            'description' => $comment,
+            'good_bad' => $good,
+            'reviewer_id' => Auth::id(),
+            'task_id' => $task_id,
+          ]);
+        }
       }
       return response()->json(['success'=>$performer_id]);
   }

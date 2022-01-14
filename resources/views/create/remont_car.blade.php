@@ -9,10 +9,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="md:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
-                    Ищем исполнителя для задания "{{session('name')}}"
+                    @lang('lang.buyd_text') "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                    Задание заполнено на 25%
+                    @lang('lang.design_text')
                     </div>
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -21,15 +21,15 @@
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                        Какой у вас автомобиль?
+                        @lang('lang.remontc_text')
 
                         </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
-                                Марка, модель и год выпуска авто
+                                @lang('lang.remontc_text1')
                                         <input id="car" name="car" type="text" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        Например, Chevrolet Cruze 2014 года 
+                                        @lang('lang.remontc_text2')
                                     </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">

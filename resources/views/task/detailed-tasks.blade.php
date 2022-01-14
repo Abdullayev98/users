@@ -2,29 +2,32 @@
 
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
+    @if(isset($task_responses))
+    <div class="flex mx-auto w-9/12">
+        @else
     <div class="mx-auto w-9/12">
-        <div class="mt-8 lg:flex mb-8">
-
+@endif
+        <div class="mt-8 md:flex mb-8">
             {{-- left sidebar start --}}
             <div class="w-9/12 float-left">
                 <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                 <div class="flex flex-row">
                     <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">до {{$tasks->budget}}</p>
                     @if ($tasks->email_confirm == 1)
-                    <h1 class="my-2 text-green-400">Сделка без риска</h1>
+                    <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
                     @endif
                 </div>
                 <div class="flex flex-row">
                     @if ($tasks->show_only_to_performers == 1)
-                    <p class="mt-4 text-lg text-gray-400 font-normal">Заказчик отдает предпочтение застрахованным исполнителям</p>
+                    <p class="mt-4 text-lg text-gray-400 font-normal">@lang('lang.detT_insuredPer')</p>
                     @endif
                 </div>
                 <div class="flex flex-row text-gray-400 mt-4">
                     @if ($tasks->status == 1)
-                    <p class="text-amber-500 font-normal border-r-2 border-gray-400 pr-2">В исполнении</p>
+                    <p class="text-amber-500 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_inProsses')</p>
                     @else
-                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">Открыто</p>
+                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
                     @endif
                     <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
                     <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
@@ -34,7 +37,7 @@
                 </div>
 
                 <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
-                    <div class="ml-12 flex flex-row">
+                <div class="ml-12 flex flex-row">
                         <h1 class="text-lg font-bold h-auto w-48">{{$tasks->date_type}}</h1>
                         <p class="text-lg  h-auto w-96">{{date('d-m-Y', strtotime($tasks->start_date))}}</p>
                     </div>
@@ -43,7 +46,7 @@
                         <p class="text-lg  h-auto w-96">26 декабря 2021, 23:00</p>
                     </div> -->
                     <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">Бюджет</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
                         <p class="text-lg  h-auto w-96">до {{$tasks->budget}}</p>
                     </div>
                     <!-- <div class="ml-12 flex flex-row mt-4"> -->
@@ -54,11 +57,11 @@
                     </div> -->
                     <!-- </div> -->
                     <div class="ml-12 flex flex-row mt-4">
-                        <h1 class="text-lg font-bold h-auto w-48">Место</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->address}}</p>
                     </div>
                     <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">Нужно</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_need')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
@@ -73,22 +76,22 @@
                                         <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                 type="button"
                                                 data-modal-toggle="authentication-modal">
-                                            Откликнуться на это задание
+                                            @lang('lang.detT_callback')
                                         </button>
                                         @else
-                                            <a href="#" class='btn open-modal' data-modal="#modal1">Откликнуться на это задание</a>
+                                            <a href="#" class='btn open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
 
                                             <div class='modal' id='modal1'>
                                                 <div class='content'>
                                                     <img src="{{asset('images/cashback.svg')}}" alt="">
-                                                    <h1 class='title'>Пополните баланс</h1>
+                                                    <h1 class='title'>@lang('lang.detT_fill')</h1>
                                                     <p>
-                                                        Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.
+                                                        @lang('lang.detT_balanceReq')
                                                     </p>
                                                     <p>
-                                                        При отклике сумма на балансе не блокируется — можно оставлять отклики и к другим заданиям.
+                                                        @lang('lang.detT_balanceReq2')
                                                     </p>
-                                                    <a class='btn' data-modal="#modal1" href="#">Пополнить</a>
+                                                    <a class='btn' data-modal="#modal1" href="#">@lang('lang.detT_fill2')</a>
                                                 </div>
                                             </div>
                                         @endif
@@ -98,11 +101,36 @@
                                                 type="button">
                                             <a href="/register">
                                                 Откликнуться на это задание
+                                                @lang('lang.detT_callback')
                                             </a>
                                         </button>
 
                                 @endif
-
+                                @auth
+                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
+                                <button id="sendbutton" class="font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                type="button">
+                                    Оставить отзыв
+                                </button>
+                                <div class="hideform hidden">
+                               <div class="flex flex-row w-1/2 my-4 mx-auto">
+                                    <label class="mx-4">
+                                        <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
+                                        <i class="far fa-thumbs-up active:text-blue-500 text-xl"></i>
+                                    </label>
+                                    <label class="mx-4">
+                                        <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
+                                        <i class="far fa-thumbs-down active:text-blue-500 text-xl"></i>
+                                    </label>
+                               </div>
+                                <input type="text" name="comment" class="border rounded ml-6 mb-4 bg-amber-100 w-8/12 py-2 text-center font-normal" value="">
+                                <button class="send-comment font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                type="button">
+                                    Отправить
+                                </button>
+                            </div>   
+                                @endif
+                                @endauth
                                 <!-- Main modal -->
                                 <div id="authentication-modal"
                                      aria-hidden="true"
@@ -120,7 +148,7 @@
                                             </div>
                                             <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" action="#">
                                                 <header>
-                                                    <h2 class="font-semibold text-2xl mb-4">Добавить предложение к заказу</h2>
+                                                    <h2 class="font-semibold text-2xl mb-4">@lang('lang.detT_addOffers')</h2>
                                                 </header>
                                                 <form id="ajaxform">
                                                     <main>
@@ -128,22 +156,22 @@
                                                         <hr>
                                                         <div class="my-2">
                                                             <label class=" px-2">
-                                                                <input type="checkbox" name="notificate" value="1" class="mr-2 my-3 ">Уведомить меня, если исполнителем<br>
+                                                                <input type="checkbox" name="notificate" value="1" class="mr-2 my-3 ">@lang('lang.detT_notifMe')<br>
                                                             </label>
                                                             <label class=" px-2">
-                                                                <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>Указать время актуальности предложения
+                                                                <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>@lang('lang.detT_pointTime')
                                                             </label>
                                                             <br>
                                                             <select name="response_time" id="AttorneyEmpresa" class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500" style="display: none">
-                                                                <option value="1" class="">1 часов</option>
-                                                                <option value="2" class="">2 часов</option>
-                                                                <option value="4" class="">4 часов</option>
-                                                                <option value="6" class="">6 часов</option>
-                                                                <option value="8" class="">8 часов</option>
-                                                                <option value="10" class="">10 часов</option>
-                                                                <option value="12" class="">12 часов</option>
-                                                                <option value="24" class="">24 часов</option>
-                                                                <option value="48" class="">48 часов</option>
+                                                                <option value="1" class="">1 @lang('lang.detT_hour')</option>
+                                                                <option value="2" class="">2 @lang('lang.detT_hour')</option>
+                                                                <option value="4" class="">4 @lang('lang.detT_hour')</option>
+                                                                <option value="6" class="">6 @lang('lang.detT_hour')</option>
+                                                                <option value="8" class="">8 @lang('lang.detT_hour')</option>
+                                                                <option value="10" class="">10 @lang('lang.detT_hour')</option>
+                                                                <option value="12" class="">12 @lang('lang.detT_hour')</option>
+                                                                <option value="24" class="">24 @lang('lang.detT_hour')</option>
+                                                                <option value="48" class="">48 @lang('lang.detT_hour')</option>
                                                             </select>
                                                         </div>
                                                         <label>
@@ -159,7 +187,7 @@
                                                     <footer class="flex justify-center bg-transparent">
                                                         <button
                                                             class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300">
-                                                            Далее
+                                                            @lang('lang.detT_next')
                                                         </button>
                                                     </footer>
                                                 </form>
@@ -187,19 +215,19 @@
                                 <!-- modal header -->
                                 <i class="far fa-check-circle fa-4x py-4"></i>
                                 <div class="mx-12">
-                                    Ваш отклик успешно отправлен!
+                                    @lang('lang.detT_callbackSucces')
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">
-                    <h1 class="text-3xl font-semibold py-3">Хотите найти надежного помощника?</h1>
-                    <p class="text-lg mb-10">Universal Services помогает быстро решать любые бытовые и бизнес-задачи.</p>
+                <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">    
+                <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
+                    <p class="text-lg mb-10">@lang('lang.detT_fastHelp')</p>
                     <a href="/categories/1">
                         <button  class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded">
-                            Создайте свое задание
+                            @lang('lang.detT_createOwnTask')
                         </button>
                     </a>
                 </div>
@@ -212,30 +240,30 @@
                             <div class="text-4xl font-semibold my-6">
                                 @if ($response_count <= 4)
                                     @if ($response_count == 1)
-                                        У задания {{$response_count}} отклик
+                                        @lang('lang.detT_onTask') {{$response_count}} отклик@lang('lang.detT_createOwnTask')
                                     @else
-                                        У задания {{$response_count}} откликa
+                                        @lang('lang.detT_onTask') {{$response_count}} откликa@lang('lang.detT_createOwnTask')
                                     @endif
                                 @else
-                                    У задания {{$response_count}} откликов
+                                    @lang('lang.detT_onTask') {{$response_count}} откликов@lang('lang.detT_createOwnTask')
                                 @endif
                             </div>
                         @else
                             <div class="text-4xl font-semibold my-6">
-                                У задания нет откликов
+                                @lang('lang.detT_noCallbacks')
                             </div>
                         @endif
                         <hr>
                         @if(isset($task_responses))
                             <div class="flex my-2">
                                 <div class="mr-2 bg-[#fff6db] px-2">
-                                    <a href="#">по рейтингу</a>
+                                    <a href="#">@lang('lang.detT_byRating')</a>
                                 </div>
                                 <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
-                                    <a href="">по времени</a>
+                                    <a href="">@lang('lang.detT_byTime')</a>
                                 </div>
                                 <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
-                                    <a href="">по отзывам</a>
+                                    <a href="">@lang('lang.detT_byCallbacks')</a>
                                 </div>
                             </div>
                             @foreach ($task_responses as $response)
@@ -251,7 +279,7 @@
                                             <input type="text" name="performer_id" class="hidden" value="{{$response_users->id}}">
                                             <img class="w-7 h-7 ml-2" src="{{asset('images/shield.svg')}}" alt="">
                                             <div class="text-gray-700">
-                                                <i class="fas fa-star text-[#fff0d0] mr-1"></i>4,96 по 63 отзывам
+                                                <i class="fas fa-star text-[#fff0d0] mr-1"></i>@lang('lang.detT_numByNum')
                                             </div>
                                             <div class="mt-2">
                                                 <i class="fas fa-briefcase fa-2x text-blue-300"></i>
@@ -260,23 +288,23 @@
                                         </div>
                                     </div>
                                     <div class="bg-[#f5f5f5] rounded-[10px] p-4">
-                                        <div class="ml-10">
-                                            <div class="text-[17px] text-gray-500 font-semibold">Стоимость {{$response->price}} сум</div>
-                                            <div class="text-[17px] text-gray-500">Здраствуйте.</div>
+                                        <div class="ml-0">
+                                            <div class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}} сум</div>
+                                            <div class="text-[17px] text-gray-500">@lang('lang.detT_Hello')</div>
 
                                             <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
 
-                                            <div class="text-[17px] text-gray-500 font-semibold my-4">Телефон исполнителя: {{$response_users->phone_number}}</div>
+                                            <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>
                                             <div class="">
                                                 <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
-                                                    Написать в чат
+                                                    @lang('lang.detT_writeOnChat')
                                                 </a>
                                                 <a class=" send-data text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-[#6fc727] hover:bg-[#5ab82e] font-medium border border-transparent rounded-md">
-                                                    Выбрать исполнителем
+                                                    @lang('lang.detT_choose')
                                                 </a>
                                             </div>
                                             <div class="text-gray-400 text-[14px] my-6">
-                                                Выберите исполнителя, чтобы потом оставить отзыв о работе.
+                                                @lang('lang.detT_choosePerf')
                                             </div>
                                         </div>
                                     </div>
@@ -288,7 +316,7 @@
                 @endif
                 @endif
                 <div class="mt-12">
-                    <h1 class="text-3xl font-medium ">Другие задания в категории</h1>
+                    <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
                     @foreach($same_tasks as $same_task)
                         <div class="mt-4">
                             <a href="#" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
@@ -305,7 +333,7 @@
 
         {{-- right sidebar start --}}
         <div class="w-3/12 lg:mt-0 mt-8">
-            <h1 class="text-lg">Заказчик этого задания</h1>
+            <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
             <div class="flex flex-row mt-4">
                 <div class="mr-4">
                     @if (isset($current_user))
@@ -548,6 +576,47 @@
                 $(modal).parents(".overlay").removeClass("open");
             }, 50);
 
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#sendbutton").click(function(){
+                $("#sendbutton").hide();
+                $(".hideform").removeClass('hidden');
+            });
+        });
+        $(".send-comment").click(function(event){
+            event.preventDefault();
+            let good = $(".good:checked").val();
+            let comment = $("input[name=comment]").val();
+            let _token = $("input[name=csrf]").val();
+            let performer_id = $("input[name=performer_id]").val();
+            let task_id = $("input[name=task_id]").val();
+            let user_id = $("input[name=user_id]").val();
+            $.ajax({
+                url: "/ajax-request",
+                type:"POST",
+                data:{
+                    good:good,
+                    comment:comment,
+                    user_id:user_id,
+                    performer_id:performer_id,
+                    task_id:task_id,
+                    _token:_token,
+                },
+                success:function(response){
+                    console.log(response);
+                    if(response) {
+                        $('.success').text(response.success);
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+            window.setTimeout(function() {
+                window.location.reload();
+            }, 3000);
         });
     </script>
 
