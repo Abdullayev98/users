@@ -584,7 +584,8 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('image', 'storage/tasks/avatar/'.''.$imagename);
     }
       $data = $request->input();
-//      $request->session()->put('description', $data['description']);
+      $request->session()->put('oplata', $data['oplata']);
+     $request->session()->put('description', $data['description']);
       if ($request->input('secret')) {
         $request->session()->put('secret', $data['secret']);
       }else {
@@ -638,6 +639,7 @@ class CreateTaskController extends VoyagerBaseController
 
       // }
 //      $request->session()->put('phone', $datay['phone']);
+      $oplata = session()->pull('oplata');
       $name        = session()->pull('name');
       $category    = session()->pull('cat_id');
       $image    = session()->pull('image');
@@ -850,7 +852,8 @@ class CreateTaskController extends VoyagerBaseController
         'age' => $age,
         'time' => $time,
         'training' => $training,
-      ]);
+        'oplata' => $oplata,
+       ]);
         session()->forget('task');
         session()->forget('category');
 
