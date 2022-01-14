@@ -24,13 +24,8 @@
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-<<<<<<< HEAD
-                                   class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-lg md:pl-2 md:w-2/3 py-3">
-                                <datalist  id="TypeList">
-=======
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md xl:w-[700px] lg:w-[600px] md:w-[400px] py-3">
                                 <datalist id="TypeList">
->>>>>>> f20ac100caaab1fc484ce900de0c1c7df80b767e
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
                                             value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
