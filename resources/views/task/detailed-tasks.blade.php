@@ -49,6 +49,283 @@
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
                         <p class="text-lg  h-auto w-96">до {{$tasks->budget}}</p>
                     </div>
+                    @isset($tasks->oplata)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">Оплата</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->oplata}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->description)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">Описание</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->phone)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">phone</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->phone}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->need_movers)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">need_movers</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->need_movers}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->car_model)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">car_model</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->car_model}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->car_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">car_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->car_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->pobeg)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">pobeg</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->pobeg}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->no_texpassport)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">no_texpassport</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->no_texpassport}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_weight)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">delivery_weight</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_weight}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_width)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">delivery_width</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_width}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_length)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">delivery_length</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_length}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_budget)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">delivery_budget</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_budget}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_car)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">delivery_car</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_car}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->service_delivery)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">service_delivery</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->service_delivery}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_weight)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">buy_delivery_weight</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_weight}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_height)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">buy_delivery_height</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_height}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_width)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">buy_delivery_width</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_width}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_length)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">buy_delivery_length</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_length}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->construction_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">construction_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->construction_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->services)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">services</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->services}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->etaj_po)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">etaj_po</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->etaj_po}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->lift_po)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">lift_po</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->lift_po}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->etaj_za)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">etaj_za</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->etaj_za}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->lift_za)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">lift_za</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->lift_za}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->peopleCount)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">peopleCount</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->peopleCount}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->weight)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">weight</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->weight}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->length)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">length</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->length}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->width)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">width</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->width}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->height)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">height</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->height}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->glassSht)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">Oyna nechtaligi</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->glassSht}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->service1)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">uborka services</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->service1}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->where)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">where</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->where}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->how_many)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">how_many</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->how_many}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->smm_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">smm_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->smm_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->computer_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">computer_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->computer_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->design_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">design_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->design_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->it_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">it_service</h1><!--it mas ay ti-->
+                        <p class="text-lg  h-auto w-96">{{$tasks->it_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->photo_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">photo_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->photo_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->remont_ustanovka_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">remont_ustanovka_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->remont_ustanovka_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->remont_tex)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">remont_tex</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->remont_tex}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->krosata_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">krosata_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->krosata_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->bugalter_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">bugalter_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->bugalter_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->learning_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">learning_service</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->learning_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->age)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">age</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->age}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->time)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">time</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->time}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->training)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">training</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->training}}</p>
+                    </div>
+                    @endisset
+
                     <!-- <div class="ml-12 flex flex-row mt-4"> -->
                     <!-- <h1 class="text-lg font-bold h-auto w-48">Оплата задания</h1> -->
                     <!-- <div class="flex flex-row  h-auto w-96">
