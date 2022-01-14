@@ -584,7 +584,8 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('image', 'storage/tasks/avatar/'.''.$imagename);
     }
       $data = $request->input();
-//      $request->session()->put('description', $data['description']);
+      $request->session()->put('oplata', $data['oplata']);
+     $request->session()->put('description', $data['description']);
       if ($request->input('secret')) {
         $request->session()->put('secret', $data['secret']);
       }else {
