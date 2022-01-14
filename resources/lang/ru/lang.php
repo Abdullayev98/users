@@ -8,7 +8,7 @@ return [
     'header_orderBtn' => "Заказать услугу",
     'header_example' => "Например:",
     'header_airCon' => "повесить кондиционер",
-    'header_exampleSearch' => "Например, составить иск",
+    'header_exampleSearch' => "Напишите, чем вам помочь...",
     'header_bePerformer' => "стать исполнителем и начать зарабатывать",
     'header_over2mln' => "Более 2 300 000 исполнителей",
     'body_helpers' => "Исполнители готовы помочь вам в решении самых разнообразных задач",
