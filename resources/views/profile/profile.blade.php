@@ -255,16 +255,6 @@
                 document.getElementById(modal + "-backdrop").classList.toggle("hidden");
                 document.getElementById(modal).classList.toggle("flex");
                 document.getElementById(modal + "-backdrop").classList.toggle("flex");
-
-                var data = @json($ports)
-
-                
-
-                let my_rasm =  data.find(function(value)  {
-                    if(value.id == modal)
-               return value;
-             });
-                console.log(my_rasm);
             }
         </script>
         <script type="text/javascript">

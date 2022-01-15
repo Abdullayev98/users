@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advant;
 use App\Models\Task;
 use App\Models\How_work_it;
 use App\Models\User;
@@ -30,7 +31,8 @@ class Controller extends BaseController
         }
         $random_category= Category::first();
         $users_count = User::where('role_id', 2)->count();
-        return view('home',compact('tasks','howitworks', 'categories','random_category','users_count'));
+        $advants = Advant::all();
+        return view('home',compact('tasks','howitworks', 'categories','random_category','users_count','advants'));
     }
 
     public function home_profile()
