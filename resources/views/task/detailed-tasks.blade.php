@@ -343,7 +343,7 @@
                             <div class="max-w-2xl mx-auto">
                                 @auth
                                         @if($balance >= 400)
-                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                 type="button"
                                                 data-modal-toggle="authentication-modal">
                                             @lang('lang.detT_callback')
@@ -500,12 +500,12 @@
                             <div class="text-4xl font-semibold my-6">
                                 @if ($response_count <= 4)
                                     @if ($response_count == 1)
-                                        @lang('lang.detT_onTask') {{$response_count}} отклик@lang('lang.detT_createOwnTask')
+                                        @lang('lang.detT_onTask') {{$response_count}} отклик
                                     @else
-                                        @lang('lang.detT_onTask') {{$response_count}} откликa@lang('lang.detT_createOwnTask')
+                                        @lang('lang.detT_onTask') {{$response_count}} откликa
                                     @endif
                                 @else
-                                    @lang('lang.detT_onTask') {{$response_count}} откликов@lang('lang.detT_createOwnTask')
+                                    @lang('lang.detT_onTask') {{$response_count}} откликов
                                 @endif
                             </div>
                         @else
@@ -579,7 +579,7 @@
                     <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
                     @foreach($same_tasks as $same_task)
                         <div class="mt-4">
-                            <a href="#" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
+                            <a href="{{$same_task->id}}" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
                             @foreach($users as $user)
                                 @if($user->id == $same_task->user_id)
                                     <p class="text-gray-400 text-base">{{$user->name}}, {{$same_task->budget}}</p>

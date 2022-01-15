@@ -93,10 +93,10 @@
                             <a href="/categories/1" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_createTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="{{ route('task.search') }}" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_findTask')</a>
+                            <a href="{{ route('task.search') }}" class="search block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_findTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="/performers" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_perfs')</a>
+                            <a href="/performers" class="performers block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_perfs')</a>
                         </li>
 
                         @if (Route::has('login'))
@@ -160,7 +160,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <ul class="bg-white border rounded-sm absolute top-0 right-0 transition duration-150 ease-in-out origin-top-left w-100">
+                        <ul class="bg-white border rounded-sm absolute h-full overflow-y-auto top-0 right-0 transition duration-150 ease-in-out origin-top-left w-100">
 
                             @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
                                 <li class="rounded-sm">
@@ -203,8 +203,8 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="font-medium delete-task text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
-        <a href="/performers" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
+        <a href="{{ route('task.search') }}" class="searchs font-medium delete-task text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
+        <a href="/performers" class="performer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
               <a href="{{ route('task.mytasks') }}" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
@@ -641,7 +641,15 @@ if(user_id_for_js3 === Number(data["user_id_fjs"])){
       alert('Hello');
     }
 </script>
-
+<script>
+        var link = document.location.href.split('/');
+        if(link[3] == 'task'){
+            $(".performers").removeAttr("href");
+            $(".performer").removeAttr("href");
+            $(".search").removeAttr("href");
+            $(".searchs").removeAttr("href");
+        }
+</script>
 @section("javascript")
 
 @endsection

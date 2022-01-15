@@ -28,7 +28,7 @@ class CreateTaskController extends VoyagerBaseController
         $current_parent_category = Category::find($current_category->parent_id);
         $child_categories = Category::query()->where("parent_id", $current_parent_category->id)->get();
         $request->session()->put('current_parent_category', $current_parent_category);
-        $category_id = session()->pull('cat_id');
+        $category_id = $request->category_id;
         $request->session()->put('cat_id', $category_id);
         return view("create.name", compact('category_id' ,'categories', 'current_category','child_categories', 'current_parent_category'));
     }
@@ -96,9 +96,9 @@ class CreateTaskController extends VoyagerBaseController
     }
     public function service_delivery(Request $request)
     {
-      $cat_id = session()->pull('cat_id');
+        $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
-        $category = Category::where('id', 30)->first();
+        $category = Category::where('id', 1)->first();
         $categories = explode(',',$category->services);
       return view('create.delivery1', compact('categories'));
     }
@@ -280,12 +280,10 @@ class CreateTaskController extends VoyagerBaseController
     {
         if($service1 = $request->input('services')){
           $services = implode(',',$service1);
-          $request->session()->put('service1', $services);
-          if ($service1[0]){
+          if ($service1[0] == 'Помыть окна'){
               return view('create.glass');
-          }else{
-              return view('create.location');
           }
+          $request->session()->put('service1', $services);
         }elseif($glassSht = $request->input('box')){
             $request->session()->put('box', $glassSht);
         }elseif($data = $request->input('smm')){
@@ -456,14 +454,22 @@ class CreateTaskController extends VoyagerBaseController
         }elseif($data = $request->input('delivey_car')){
         $request->session()->put('delivey_car', $data);
         }else {
-          $etaj_po = $request->input('etaj_po');
-          $lift_po = $request->input('lift_po');
-          $etaj_za = $request->input('etaj_za');
-          $lift_za = $request->input('lift_za');
-          $request->session()->put('etaj_po', $etaj_po);
-          $request->session()->put('lift_po', $lift_po);
-          $request->session()->put('etaj_za', $etaj_za);
-          $request->session()->put('lift_za', $lift_za);
+            if(session('cat_id') != 52){
+                $etaj_po = $request->input('etaj_po');
+                $lift_po = $request->input('lift_po');
+                $etaj_za = $request->input('etaj_za');
+                $lift_za = $request->input('lift_za');
+                $request->session()->put('etaj_po', $etaj_po);
+                $request->session()->put('lift_po', $lift_po);
+                $request->session()->put('etaj_za', $etaj_za);
+                $request->session()->put('lift_za', $lift_za);
+            }else{
+                $etaj_po = $request->input('etaj_po');
+                $lift_po = $request->input('lift_po');
+                $request->session()->put('etaj_po', $etaj_po);
+                $request->session()->put('lift_po', $lift_po);
+            }
+
         }
 
         return view('create.date');
@@ -791,6 +797,9 @@ class CreateTaskController extends VoyagerBaseController
         $construction_service = session()->pull('construction_service');
       }else{
         $construction_service = null;
+      }
+      if($location == null){
+          $location = 'Можно выполнить удаленно';
       }
       $id = Task::create([
         'photos' => $image,

@@ -64,4 +64,3 @@
             <div class="basis-2/6 hidden md:inline-block"><img src="https://clipartspub.com/images/software-clipart-clip-art-9.jpg" alt=""></div>
         </div>
 @endsection
-@endsection

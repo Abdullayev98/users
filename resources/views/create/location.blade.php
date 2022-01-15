@@ -7,6 +7,8 @@
 @if ($pcategory->id == 3 )
     @if(session('cat_id') == 50)
         <form action="{{route('task.create.peopleTransported')}}" method="post">
+            @elseif(session('cat_id') == 53)
+                <form action="{{route('task.create.date')}}" method="post">
             @else
         <form action="{{route('task.create.cargo')}}" method="post">
     @endif

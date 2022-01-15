@@ -14,13 +14,17 @@ function tasks_list_all(data) {
     $.each(data, function(index, data) {
         if (data.status != 1) {
             $(".show_tasks").append(
+<<<<<<< HEAD
                 `<div class="sort-table print_block" hidden>
+=======
+                `<div class="sort-table as" >
+>>>>>>> b1de539386e8121c3c10c8e9f9e09d62f463abdc
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-sm ml-12 mt-4">` + data.address + `</p>
+                    <p class="text-sm ml-12 mt-4 location">` + data.address + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
@@ -32,6 +36,7 @@ function tasks_list_all(data) {
                     </div>
                     </div>`,
             )
+
         }
     });
 }
@@ -52,7 +57,7 @@ function tasks_list(data) {
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-sm ml-10 mt-1">` + data.address + `</p>
+                    <p class="text-sm ml-10 mt-1 location">` + data.address + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
@@ -150,7 +155,7 @@ $(".address").keyup(function() {
         count = 0;
 
     // Loop through the comment list
-    $('#results p').each(function() {
+    $('#results .location').each(function() {
         // If the list item does not contain the text phrase fade it out
         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
             var parent = $(this).parent();
@@ -467,3 +472,17 @@ function chicats_click_true(id, name) {
         }
     });
 }
+$(document).ready(function(){
+    $("#as").click(function(){
+        $( ".location" ).each(function( index ) {
+            if ($( this ).text() != ''){
+                var parent = $(this).parent();
+                var parent2 = parent.parent();
+                var parent3 = parent2.parent();
+                parent3.hide();
+            }
+        });
+    });
+});
+
+

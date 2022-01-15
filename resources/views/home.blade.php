@@ -240,19 +240,21 @@
             </div>
         </div>
         <div class="bg-[#deeafb]">
-            <div class="container mx-auto">
+            <div class="container mx-auto pb-24">
                 <div class="text-4xl w-2/3 mx-auto py-16 text-center">
                 @lang('lang.body_benefit')
                 </div>
-                <div class="grid grid-cols-4 w-9/12 mx-auto">
+                <div class="grid grid-cols-4 w-9/12 mx-auto gap-y-12">
+                    @foreach ($advants as $advant )
                     <div class="">
-                        <img src="http://pngimg.com/uploads/ruble/ruble_PNG35.png" class="w-32" alt="">
+                        <img src="/storage/{{$advant->image}}" class="w-32" alt="">
                     </div>
                     <div class="col-span-3">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_bestPrise')</h4>
-                        <p class="text-md">@lang('lang.body_bestPriseCon')</p>
+                        <h4 class="font-semibold text-2xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
+                        <p class="text-md">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
                     </div>
-                    <div class=" my-16">
+                    @endforeach
+                    {{-- <div class=" my-16"> @lang('lang.body_bestPrise') @lang('lang.body_bestPriseCon')
                         <img src="https://www.freeiconspng.com/uploads/white-like-icon-png-20.png" class="w-32" alt="">
                     </div>
                     <div class="col-span-3 my-16">
@@ -266,7 +268,7 @@
                     <div class="col-span-3 my-16">
                         <h4 class="font-semibold text-2xl">@lang('lang.body_timeSaving')</h4>
                         <p class="text-md">@lang('lang.body_timeSavingCon')</p>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

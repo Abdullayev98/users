@@ -33,8 +33,8 @@
                                             >@lang('lang.search_find')</button>
                                     </div>
 
-                                    <div class="sm:inline-flex block w-full col-span-4">
-                                        <div class="w-7/12">
+                                    <div class="md:inline-flex block w-full col-span-4">
+                                        <div class="w-7/12 lg:w-7/12 md:w-7/12">
                                             <label class="text-md mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                             <input
                                                 class="address p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
@@ -43,9 +43,16 @@
                                                 <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                             </button>
                                         </div>
+<<<<<<< HEAD
                                         <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
                                             <label class="text-md mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
                                             <select name="" id="selectGeo" class="py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full" onchange="r=$('#selectGeo').val();">
+=======
+                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-3/12  md:ml-2 ml-0">
+                                            <label class="text-sm lg:text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
+                                            <select name="" id=""
+                                                    class="  py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full">
+>>>>>>> b1de539386e8121c3c10c8e9f9e09d62f463abdc
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
@@ -60,8 +67,8 @@
                                                 <option value="200">200 km</option>
                                             </select>
                                         </div>
-                                        <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
-                                            <label class="text-sm mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
+                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-3/12  md:ml-2 ml-0">
+                                            <label class=" text-sm  md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
                                             <input type="text" maxlength="7"
                                                    class="w-full  border-md  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700"
                                                    placeholder="UZS" id="price">
@@ -69,15 +76,15 @@
                                     </div>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               checked><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
+                                        ><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               ><span class="ml-2 text-gray-700">@lang('lang.search_noCallback')</span>
+                                        ><span class="ml-2 text-gray-700">@lang('lang.search_noCallback')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               ><span class="ml-2 text-gray-700">@lang('lang.search_onlyVacancy')</span>
+                                        ><span class="ml-2 text-gray-700">@lang('lang.search_onlyVacancy')</span>
                                     </label>
                                 </div>
 
@@ -159,7 +166,7 @@
                                     <span class="title__994cd">@lang('lang.search_filter')</span>
                                     <a href="/task-search" data-sort-type="1" class="mx-5">@lang('lang.search_byDate')</a>
                                     <button data-sort="nomer"  data-sort-type="2"  class="srt-nomer focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
-                                    <a href="#" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</a>
+                                    <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
                             </div>
                             <div id="scrollbar" class="w-full h-full blog1">
@@ -190,11 +197,11 @@
                                     <input type="checkbox" class="form-checkbox all_cat mr-1  h-5 w-5 text-orange-400"
                                     ><span class="ml-2 text-gray-700">@lang('lang.search_allCat')</span>
                                 </label>
-{{--                                <label--}}
-{{--                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">--}}
-{{--                                    <input type="checkbox"--}}
-{{--                                           class="all_cat mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')--}}
-{{--                                </label>--}}
+                                {{--                                <label--}}
+                                {{--                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">--}}
+                                {{--                                    <input type="checkbox"--}}
+                                {{--                                           class="all_cat mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')--}}
+                                {{--                                </label>--}}
 
                                 <div class="w-full my-1 for_check">
 
@@ -216,13 +223,13 @@
                                                            name="{{$category->id}}"
                                                            id="par{{$category->id}}"><span class="ml-2 text-gray-700">{{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</span>
                                                 </label>
-{{--                                                <label--}}
-{{--                                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">--}}
+                                                {{--                                                <label--}}
+                                                {{--                                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">--}}
 
-{{--                                                    <input type="checkbox" class="par_cat mr-1  hover:cursor-pointer"--}}
-{{--                                                           name="{{$category->id}}"--}}
-{{--                                                           id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-{{--                                                </label>--}}
+                                                {{--                                                    <input type="checkbox" class="par_cat mr-1  hover:cursor-pointer"--}}
+                                                {{--                                                           name="{{$category->id}}"--}}
+                                                {{--                                                           id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
+                                                {{--                                                </label>--}}
                                             </div>
                                             <div x-show="show" class="border-b-0 px-8 py-0">
                                                 @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
@@ -233,13 +240,13 @@
                                                                    name="{{$category2->id}}"
                                                                    id="par{{$category->id}}"><span class="ml-2 text-gray-700">{{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</span>
                                                         </label>
-{{--                                                        <label--}}
-{{--                                                            class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">--}}
-{{--                                                            <input type="checkbox"--}}
-{{--                                                                   class="chi_cat mr-1 hover:cursor-pointer"--}}
-{{--                                                                   name="{{$category2->id}}"--}}
-{{--                                                                   id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-{{--                                                        </label>--}}
+                                                        {{--                                                        <label--}}
+                                                        {{--                                                            class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">--}}
+                                                        {{--                                                            <input type="checkbox"--}}
+                                                        {{--                                                                   class="chi_cat mr-1 hover:cursor-pointer"--}}
+                                                        {{--                                                                   name="{{$category2->id}}"--}}
+                                                        {{--                                                                   id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
+                                                        {{--                                                        </label>--}}
                                                     </div>
 
                                                 @endforeach
@@ -261,6 +268,7 @@
 
             <div id="second" class="hidden">
 
+<<<<<<< HEAD
 {{--                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">--}}
 {{--                    <div class="col-span-2">--}}
 {{--                        <div class="w-full bg-[#f8f7ee] my-5 rounded-md">--}}
@@ -354,8 +362,40 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 
-            </div>
+=======
+                                <script
+                                    src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
 
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div id="scrollbar" class="w-full h-full blog1">
+                                <div class="w-full w-full">
+                                    <div class="show_tasks">
+                                        {{--Show Tasks list --}}
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
+                                    <div></div>
+                                    <div class="butt col-span-3 text-center w-full h-full" style="display: none">
+                                        <p class="text-center">@lang('lang.search_shown')</p>
+                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"
+                                                onclick="tasks_list(k)">@lang('lang.search_showMore')</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">
+                        <div class="small-map static">
+
+                        </div>
+                    </div>
+                </div>
+>>>>>>> b1de539386e8121c3c10c8e9f9e09d62f463abdc
+            </div>
         </div>
     </div>
 
@@ -648,6 +688,19 @@
                 $(".sort-table").append(items);
             });
         });
+    </script>
+    <script>
+        var $btns = $('.btn').click(function() {
+            if (this.id == 'all') {
+                $('#parent > div').fadeIn(450);
+            } else {
+                var $el = $('.' + this.id).fadeIn(450);
+                $('#parent > div').not($el).hide();
+            }
+            $btns.removeClass('active');
+            $(this).addClass('active');
+        })
+
     </script>
 
 @endsection

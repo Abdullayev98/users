@@ -34,7 +34,7 @@
             <div class="mb-3 xl:w-full">
                 @foreach ($categories as $category)
                 <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2  h-4 w-4" type="radio" value="{{$category}}" name="service_delivery">
+                    <input class="mr-2  h-4 w-4" type="checkbox" value="{{$category}}" name="service_delivery">
                     <span class="text-lg text-slate-900">
                         {{$category}}
                     </span>
