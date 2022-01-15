@@ -61,12 +61,6 @@
                         <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
                     @endisset
-                    @isset($tasks->phone)
-                    <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.exe_phone')</h1>
-                        <p class="text-lg  h-auto w-96">{{$tasks->phone}}</p>
-                    </div>
-                    @endisset
                     @isset($tasks->need_movers)
                     <div class="ml-12 flex flex-row mt-8">
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_needmovers')</h1>
