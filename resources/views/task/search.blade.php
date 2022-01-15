@@ -68,15 +68,15 @@
                                     </div>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               ><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
+                                        ><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               ><span class="ml-2 text-gray-700">@lang('lang.search_noCallback')</span>
+                                        ><span class="ml-2 text-gray-700">@lang('lang.search_noCallback')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               ><span class="ml-2 text-gray-700">@lang('lang.search_onlyVacancy')</span>
+                                        ><span class="ml-2 text-gray-700">@lang('lang.search_onlyVacancy')</span>
                                     </label>
                                 </div>
 
@@ -158,7 +158,7 @@
                                     <span class="title__994cd">@lang('lang.search_filter')</span>
                                     <a href="/task-search" data-sort-type="1" class="mx-5">@lang('lang.search_byDate')</a>
                                     <button data-sort="nomer"  data-sort-type="2"  class="srt-nomer focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
-                                    <a href="#" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</a>
+                                    <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
                             </div>
                             <div id="scrollbar" class="w-full h-full blog1">
@@ -189,11 +189,11 @@
                                     <input type="checkbox" class="form-checkbox all_cat mr-1  h-5 w-5 text-orange-400"
                                     ><span class="ml-2 text-gray-700">@lang('lang.search_allCat')</span>
                                 </label>
-{{--                                <label--}}
-{{--                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">--}}
-{{--                                    <input type="checkbox"--}}
-{{--                                           class="all_cat mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')--}}
-{{--                                </label>--}}
+                                {{--                                <label--}}
+                                {{--                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">--}}
+                                {{--                                    <input type="checkbox"--}}
+                                {{--                                           class="all_cat mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')--}}
+                                {{--                                </label>--}}
 
                                 <div class="w-full my-1 for_check">
 
@@ -215,13 +215,13 @@
                                                            name="{{$category->id}}"
                                                            id="par{{$category->id}}"><span class="ml-2 text-gray-700">{{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</span>
                                                 </label>
-{{--                                                <label--}}
-{{--                                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">--}}
+                                                {{--                                                <label--}}
+                                                {{--                                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">--}}
 
-{{--                                                    <input type="checkbox" class="par_cat mr-1  hover:cursor-pointer"--}}
-{{--                                                           name="{{$category->id}}"--}}
-{{--                                                           id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-{{--                                                </label>--}}
+                                                {{--                                                    <input type="checkbox" class="par_cat mr-1  hover:cursor-pointer"--}}
+                                                {{--                                                           name="{{$category->id}}"--}}
+                                                {{--                                                           id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
+                                                {{--                                                </label>--}}
                                             </div>
                                             <div x-show="show" class="border-b-0 px-8 py-0">
                                                 @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
@@ -232,13 +232,13 @@
                                                                    name="{{$category2->id}}"
                                                                    id="par{{$category->id}}"><span class="ml-2 text-gray-700">{{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</span>
                                                         </label>
-{{--                                                        <label--}}
-{{--                                                            class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">--}}
-{{--                                                            <input type="checkbox"--}}
-{{--                                                                   class="chi_cat mr-1 hover:cursor-pointer"--}}
-{{--                                                                   name="{{$category2->id}}"--}}
-{{--                                                                   id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-{{--                                                        </label>--}}
+                                                        {{--                                                        <label--}}
+                                                        {{--                                                            class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">--}}
+                                                        {{--                                                            <input type="checkbox"--}}
+                                                        {{--                                                                   class="chi_cat mr-1 hover:cursor-pointer"--}}
+                                                        {{--                                                                   name="{{$category2->id}}"--}}
+                                                        {{--                                                                   id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
+                                                        {{--                                                        </label>--}}
                                                     </div>
 
                                                 @endforeach
@@ -501,6 +501,19 @@
                 $(".sort-table").append(items);
             });
         });
+    </script>
+    <script>
+        var $btns = $('.btn').click(function() {
+            if (this.id == 'all') {
+                $('#parent > div').fadeIn(450);
+            } else {
+                var $el = $('.' + this.id).fadeIn(450);
+                $('#parent > div').not($el).hide();
+            }
+            $btns.removeClass('active');
+            $(this).addClass('active');
+        })
+
     </script>
 
 @endsection
