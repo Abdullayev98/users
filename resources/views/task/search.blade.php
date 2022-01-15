@@ -41,7 +41,7 @@
                                                 class="address p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
                                         </div>
-                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-1/5  md:ml-2 ml-0">
+                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-3/12  md:ml-2 ml-0">
                                             <label class="text-sm lg:text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
                                             <select name="" id=""
                                                     class="  py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full">
@@ -59,8 +59,8 @@
                                                 <option value="200">200 km</option>
                                             </select>
                                         </div>
-                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-1/5  md:ml-2 ml-0">
-                                            <label class=" text-sm lg:text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
+                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-3/12  md:ml-2 ml-0">
+                                            <label class=" text-sm  md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
                                             <input type="text" maxlength="7"
                                                    class="w-full  border-md  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700"
                                                    placeholder="UZS" id="price">

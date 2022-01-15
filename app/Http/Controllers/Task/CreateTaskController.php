@@ -28,7 +28,7 @@ class CreateTaskController extends VoyagerBaseController
         $current_parent_category = Category::find($current_category->parent_id);
         $child_categories = Category::query()->where("parent_id", $current_parent_category->id)->get();
         $request->session()->put('current_parent_category', $current_parent_category);
-        $category_id = session()->pull('cat_id');
+        $category_id = $request->category_id;
         $request->session()->put('cat_id', $category_id);
         return view("create.name", compact('category_id' ,'categories', 'current_category','child_categories', 'current_parent_category'));
     }
@@ -799,6 +799,9 @@ class CreateTaskController extends VoyagerBaseController
         $construction_service = session()->pull('construction_service');
       }else{
         $construction_service = null;
+      }
+      if($location == null){
+          $location = 'Можно выполнить удаленно';
       }
       $id = Task::create([
         'photos' => $image,
