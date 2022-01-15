@@ -347,8 +347,7 @@
                         <div  class="w-full flex flex-col sm:flex-row justify-center pl-32">
                             <!-- This is an example component -->
                             <div class="max-w-2xl mx-auto">
-                                @if (Route::has('login'))
-                                    @auth
+                                @auth
                                         @if($balance >= 400)
                                         <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                 type="button"
@@ -357,7 +356,6 @@
                                         </button>
                                         @else
                                             <a href="#" class='btn open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
-
                                             <div class='modal' id='modal1'>
                                                 <div class='content'>
                                                     <img src="{{asset('images/cashback.svg')}}" alt="">
@@ -365,24 +363,15 @@
                                                     <p>
                                                         @lang('lang.detT_balanceReq')
                                                     </p>
-                                                    <p>
-                                                        @lang('lang.detT_balanceReq2')
-                                                    </p>
                                                     <a class='btn' data-modal="#modal1" href="#">@lang('lang.detT_fill2')</a>
                                                 </div>
                                             </div>
                                         @endif
-                                    @endauth
                                 @else
-                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
-                                                type="button">
-                                            <a href="/register">
+                                <a href="/register" class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2">
                                                 @lang('lang.detailedT_text18')
-                                                @lang('lang.detT_callback')
-                                            </a>
-                                        </button>
-
-                                @endif
+                                    </a>
+                                @endauth
                                 @auth
                                 @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
                                 <button id="sendbutton" class="font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
