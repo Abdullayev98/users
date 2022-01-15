@@ -8,9 +8,10 @@ return [
     'header_orderBtn' => "Заказать услугу",
     'header_example' => "Например:",
     'header_airCon' => "повесить кондиционер",
-    'header_exampleSearch' => "Например, составить иск",
+    'header_exampleSearch' => "Напишите, чем вам помочь...",
     'header_bePerformer' => "стать исполнителем и начать зарабатывать",
-    'header_over2mln' => "Более 2 300 000 исполнителей",
+    'header_over' => "Более",
+    'header_performers' => "исполнителей",
     'body_helpers' => "Исполнители готовы помочь вам в решении самых разнообразных задач",
     'body_allService' => "Посмотреть все услуги",
     'body_comfortPay' => "Удобная и безопасная оплата",
@@ -76,6 +77,35 @@ return [
     'detT_createOwnTask' => "Создайте свое задание",
     'detT_otherTask' => "Другие задания в категории",
     'detT_ownerOfThisTask' => "Заказчик этого задания",
+    'detT_inProsses' => "В исполнении",
+    'detT_callback' => "Откликнуться на это задание",
+    'detT_fill' => "Пополните баланс",
+    'detT_balanceReq' => "Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.",
+    'detT_balanceReq2' => "При отклике сумма на балансе не блокируется — можно оставлять отклики и к другим заданиям.",
+    'detT_fill2' => "Пополнить",
+    'detT_addOffers' => "Добавить предложение к заказу",
+    'detT_notifMe' => "Уведомить меня, если исполнителем",
+    'detT_pointTime' => "Указать время актуальности предложения",
+    'detT_hour' => "часов",
+    'detT_next' => "Далее",
+    'detT_callbackSucces' => "Ваш отклик успешно отправлен!",
+    'detT_onTask' => "У задания",
+    'detT_callback1' => "отклик",
+    'detT_callback2' => "откликa",
+    'detT_callback3' => "откликов",
+    'detT_noCallbacks' => "У задания нет откликов",
+    'detT_byRating' => "по рейтингу",
+    'detT_byTime' => "по времени",
+    'detT_byCallbacks' => "по отзывам",
+    'detT_numByNum' => "4,96 по 63 отзывам",
+    'detT_price' => "Стоимость",
+    'detT_Hello' => "Здраствуйте.",
+    'detT_phoneNum' => "Телефон исполнителя:",
+    'detT_writeOnChat' => "Написать в чат",
+    'detT_choose' => "Выбрать исполнителем",
+    'detT_choosePerf' => "Выберите исполнителя, чтобы потом оставить отзыв о работе.",
+    'detT_otherTaskInCat' => "Другие задания в категории",
+    'detT_ordererThisTask' => "Заказчик этого задания",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -87,6 +117,8 @@ return [
     'mytasks_freeRespond' => "Бесплатный отклик",
     'mytasks_promo' => "Промо",
     'mytasks_allCat' => "Все категории",
+    'mytask_onTask' => "У задания",
+    'mytask_callbacks' => "откликов",
     // mytasks.blade end
 
     // offertask.blade start
@@ -109,7 +141,7 @@ return [
     'search_location' => "Город, адрес, метро, район...",
     'search_byMapRadius' => "Радиус поиска",
     'search_byMapRadiusNo' => "Без ограничений",
-    'search_priceBy' => "Стоимость заданий от",
+    'search_priceBy' => "Стоимость заданий",
     'search_allCat' => "Все категории",
     'search_shown' => "Показано 20 из 331",
     'search_showMore' => "Показать ещё",
@@ -118,6 +150,13 @@ return [
     'search_tryAnOther' => "Попробуйте уточнить запрос или выбрать другие категории",
     'search_sportMaster' => "Спортмастер",
     'search_noFeedback' => "Нет отзывов",
+    'search_remoteJob' => "Удалённая работа",
+    'search_noCallback' => "Задания без откликов",
+    'search_onlyVacancy' => "Только вакансии",
+    'search_filter' => "Сортировать:",
+    'search_byDate' => "по дате публикации",
+    'search_byHurry' => "по срочности",
+    'search_byRemote' => "по удалённости",
     // search.blade end
 
     // search2.blade start
@@ -445,6 +484,17 @@ return [
     'settings_nofifMeBy' => "Уведомлять меня по:",
     'settings_push' => "Push",
     'settings_since' => "на Universal Services с 12 сентября 2021 г.",
+    'settings_allSettings' => "Общие настройки",
+    'settings_notifs' => "Уведомления",
+    'settings_subscribeOnTask' => "Подписка на задания",
+    'settings_security' => "Безопасность",
+    'settings_age' => "Возраст",
+    'settings_otherSet' => "Другие сведения",
+    'settings_city' => "Город",
+    'settings_profile' => "профиль",
+    'settings_phone' => "Телефон",
+    'settings_noNumber' => "номер нет",
+    'settings_trust' => "Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.",
     // settings.blade end
 
     // executors-courier.blade start
@@ -461,7 +511,7 @@ return [
     'exe_giveTask' => "Предложить задание",
     'exe_aboutMe' => "Обо мне",
     'exe_pushBtn' => "Чтобы воспользоваться моими услугами, нажмите кнопку",
-    'exe_giveTbtn' => "«Предложить задание»",
+    'exe_giveTbtn' => "Предложить задание",
     'exe_work' => "Сотрудничаю с условием, что о моей работе будет оставлен отзыв на Universal Services.",
     'exe_typeOfDone' => "Виды выполняемых работ",
     'exe_perfTakesNotif' => "Исполнитель получит уведомление и сможет оказать вам свои услуги",
@@ -495,6 +545,11 @@ return [
     'budget_yourBudget' => "На какой бюджет вы рассчитываете?",
     'budget_sum' => "до 150 сум",
     'budget_back' => "Назад",
+    'budget_text' => "Выберите бюджет",
+    'budget_text1' => "Я использую U-Ser для бизнеса, нужны закрывающие документы",
+    'budget_text2' => "На ваше задание смогут откликаться только юридические лица, ИП и самозанятые",
+    'budget_text3' => "Отдаю предпочтение застрахованным исполнителям",
+    'budget_text4' => "В случае ущерба страховая возместит вам до 100 000 руб. Это бесплатно",
     // budget.blade end
 
     // cargo.blade start
@@ -850,5 +905,171 @@ return [
     'faq_text1' => "Ответы на частые вопросы и рекомендации от Universal Services",
     'faq_text2' => "Мы используем Intercom",
     //faq faq blade ended
+
+    //age blade started
+    'age_lookperformersfortask' => "Ищем исполнителя для задания",
+    'age_text' => " Задание заполнено на 22%",
+    'age_studentsage' => "Сколько лет ученику?",
+    'age_text1' => "Возраст",
+    //age blade ended
+
+    //bugalter blade started
+    'bugalter_taskready' => "Задание заполнено на 33%",
+    'bugalter_placeofservice' => "Место оказания услуги",
+    //bugalter blade ended
+
+    //buy delivery blade started
+    'buyd_text' => "Ищем исполнителя для задания",
+    'buyd_text1' => "Задание заполнено на 60%",
+    'buyd_text2' => "Какие параметры посылки?",
+    'buyd_text3' => "Вес посылки, кг",
+    'buyd_text4' => "Длина, м",
+    'buyd_text5' => "Ширина, м",
+    'buyd_text6' => "Высота, м",
+    // buy delivery blade ended
+    
+    // computer blade started
+    'comp_text' => "Задание заполнено на 20%",
+    // computer blade ended
+
+    // construction blade started
+    'const_text' => "Задание заполнено на 80%",
+    'const_text1' => " Какие услуги понадобятся?",
+    // construction blade started
+
+    // delivery avto blade started 
+    'delA_text' => "Задание заполнено на 65%",
+    'delA_text1' => "На каком автомобиле должен быть курьер?",
+    'delA_text2' => "Не требуется",
+    'delA_text3' => "На легковом авто",
+    'delA_text4' => "На грузовом авто",
+    // delivery avto blade ended 
+
+    // delivery blade started
+    'delivery_text' => "Ценность посылки, uzs.",
+    // delivery blade ended
+
+    // delivery1 blade started
+    'del1_text' => "Задание заполнено на 75%",
+    'del1_text1' => "Как планируете оплатить покупку?",
+    // delivery1 blade ended
+
+    // design blade started
+    'design_text' => "Задание заполнено на 25%",
+    // design blade ended
+
+    // glass blade started
+    'glass_text' => "Задание заполнено на 44%",
+    'glass_text1' => "Сколько окон нужно помыть?",
+    'glass_text2' => "шт.",
+    // glass blade ended
+
+    // housemaid blade started
+    'housem_wheretoclean' => "Где нужно убраться?",
+    'housem_text' => "Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.",
+    'housem_text1' => "Помещение",
+    'housem_text2' => "комнатная квартира",
+    'housem_office' => "Офис",
+    'housem_text3' => "Частный дом (коттедж)",
+    'housem_text4' => "Как часто требуется уборка",
+    'housem_text5' => "Разовая уборка",
+    'housem_text6' => "1 раз в месяц",
+    'housem_text7' => "2 раза в месяц",
+    'housem_text8' => "Каждую неделю",
+    // housemaid blade ended
+
+    // housemaid1 blade started
+    'housem1_text' => "Помыть окна",
+    'housem1_text1' => "Погладить белье",
+    'housem1_text2' => "Помыть посуду",
+    'housem1_text3' => "Внутри холод-ка",
+    'housem1_text4' => "Внутри духовки",
+    'housem1_text5' => "Внутри СВЧ-печи",
+    'housem1_text6' => "Внутри шкафов",
+    // housemaid1 blade ended
+
+    // info car blade stared
+    'infoc_text' => "Задание заполнено на 30%",
+    'infoc_text1' => " Какой пробег?",
+    'infoc_text2' => "Пробег, км",
+    'infoc_text3' => "Номер Техпасспорта", 
+    // info car blade ended
+
+    // krosata blade stared
+    'krosata_text' => "Задание заполнено на 23%",
+    // krosata blade ended
+
+    // learning blade stared
+    'learning_text' => "Место проведения",
+    // learning blade ended
+
+    // photo blade stared
+    'photo_text' => "Задание заполнено на 21%",
+    // photo blade ended
+
+    //remont car blade started 
+    'remontc_text' => "Какой у вас автомобиль?",
+    'remontc_text1' => "Марка, модель и год выпуска авто",
+    'remontc_text2' => "Например, Chevrolet Cruze 2014 года ",
+    //remont car blade ended 
+
+    // training blade started
+    'training_text' => "Какие нужны занятия?",
+    'training_text1' => "Укажите вес и размеры, чтобы исполнители подобрали подходящий транспорт.",
+    'training_text2' => "Частота",
+    'training_text3' => "Регулярно",
+    'training_text4' => "Только одно занятие",
+    'training_text5' => "Как длиться тренирофка",
+    'training_minut' => "минут",
+    'training_text6' => "Неважно",
+    // training blade ended
+
+    // detailed tasks blade started
+    'deteiledT_before' => "До",
+    'detailedT_needmovers' => "Нужны грузчики",
+    'detailedT_carmodel' => "Модель автомобиля",
+    'detailedT_carservice' => "Автосервис",
+    'detailedT_pobeg' => "Пробег",
+    'detailedT_notexpassport' => "Нет техпаспорта",
+    'detailedT_deliveryweight' => "Вес доставки",
+    'detailedT_deliverywidth' => "Ширина доставки",
+    'detailedT_deliverylength' => "Длина доставки",
+    'detailedT_deliverybudget' => "Бюджет доставки",
+    'detailedT_deliverycar' => "Машина доставки",
+    'detailedT_servicedelivery' => "Предоставление услуг",
+    'detailedT_text' => "Купить вес доставки",
+    'detailedT_text1' => "Купить высота доставки",
+    'detailedT_text2' => "Купить ширину доставки",
+    'detailedT_text3' => "Купить длину доставки",
+    'detailedT_text4' => "Строительные услуги",
+    'detailedT_text5' => "Сервисы",
+    'detailedT_text6' => "Этаж по",
+    'detailedT_text7' => "Лифт по",
+    'detailedT_text8' => "Этаж за",
+    'detailedT_text9' => "Поднять за",
+    'detailedT_text10' => "Количество людей",
+    'detailedT_weight' => "Масса",
+    'detailedT_length' => "Длина",
+    'detailedT_width' => "Ширина",
+    'detailedT_height' => "Высота",
+    'detailedT_text11' => "Сколько окон?",
+    'detailedT_text12' => "Услуги уборке",
+    'detailedT_where' => "Где",
+    'detailedT_howmany' => "Как много",
+    'detailedT_smm' => "Смм сервис",
+    'detailedT_comser' => "Компьютерный сервис",
+    'detailedT_design' => "Дизайнерские услуги",
+    'detailedT_itservice' => "ИТ-сервис",
+    'detailedT_photoser' => "Фото услуги",
+    'detaieldT_text13' => "Ремонт установка сервис",
+    'detailedT_text14' => "Ремонт техники",
+    'detailedT_text15' => "Сервис крaсoты",
+    'detailedT_text16' => "Служба бухгалтеров",
+    'detailedT_text17' => "Служба обучения",
+    'detailedT_time' => "Время",
+    'detailedT_training' => "Обучение",
+    'detailedT_text18' => "Откликнуться на это задание",
+    'detailedT_text19' => "Оставить отзыв",
+    //detailed tasks blade ended
 
 ];

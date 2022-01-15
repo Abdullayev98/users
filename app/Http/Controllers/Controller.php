@@ -23,12 +23,14 @@ class Controller extends BaseController
 
     public function home(Request $request){
         $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
+        $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->get();
         $howitworks = How_work_it::all();
         if (!session()->has('lang')) {
             Session::put('lang', 'ru');
         }
-        return view('home',compact('tasks','howitworks', 'categories'));
+        $random_category= Category::all()->random();
+        $users_count = User::where('role_id', 2)->count();
+        return view('home',compact('tasks','howitworks', 'categories','random_category','users_count'));
     }
 
     public function home_profile()

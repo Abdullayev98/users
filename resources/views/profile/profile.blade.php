@@ -105,23 +105,33 @@
                         </div>
                         <h4 class="font-bold text-lg mt-5">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
-
+                            <?php 
+                                $soni = 1;
+                            ?>
+                            @foreach ($ports as $port)
                             <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">
                                 <div class="rounded-xl shadow-lg  object-center">
-                                    <img class="rounded-t-xl z-10 "
-                                        src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg">
+                                    <img class="rounded-t-xl z-10 w-40 h-40"
+                                        src="{{asset("AvatarImages/{$port->image}")}}">
                                     <div class="w-full bg-gray-700 hover:bg-gray-500 grid grid-cols-5 z-40 rounded-b-xl h-10">
-                                        <p class="col-span-4 text-white text-center">@lang('lang.profile_textForJobs')</p>
+                                        <p class="col-span-4 text-white text-center">{{$port->comment}}</p>
+                                        {{-- @lang('lang.profile_textForJobs') --}}
                                         <i class="col-span-1 fas fa-camera text-white text-center text-xl"><span
-                                                class="text-sm"> 1</span> </i>
+                                                class="text-sm"> {{$soni}}</span> </i>
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                                $soni++;
+                            ?>
+                            @endforeach
 
                             <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer">
-                                <div class="rounded-xl ring-1 ring-gray-300  object-center w-full h-auto">
-                                    <i class="fas fa-plus-circle text-gray-300 text-9xl text-center w-full"></i>
-
+                                <div class="rounded-xl ring-1 ring-gray-300  object-center w-full h-auto">                   
+                                   <a href="#" onclick="toggleModal123('modal-id123')">
+                                    <i class="fas fa-plus-circle text-gray-300 text-9xl text-center w-full">
+                                    </i> 
+                                   </a>
                                 </div>
                             </div>
                         </div>
@@ -256,6 +266,47 @@
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
+
+                       {{-- Modal start --}}
+                    <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id123">
+                        <div class="relative md:w-1/3 w-1/2  my-6 mx-auto max-w-3xl" id="modal11">
+                            <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+                                <div class=" text-center p-6  rounded-t">
+                                    <button type="submit"  onclick="toggleModal123('modal-id123')" class=" w-100 h-16 absolute top-1 right-4">
+                                        <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                                    </button>
+                                    <h3 class="font-medium text-3xl block">
+                                        Выберите регион
+                                    </h3>
+                                </div>
+                                <div class="text-center h-64">
+                                   <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" name="image" id="file" class="outline-none mx-auto bg-amber-200 rounded-xl block my-4 py-3 px-5 w-10/12">
+                                        {{-- <label for="file">
+                                            <i class="fas fa-camera"></i>
+                                            <span>@lang('lang.cash_changeImg')</span>
+                                        </label> --}}
+                                       
+                                       <input type="text" name="comment" class="outline-none mx-auto bg-amber-200 rounded-xl block my-8 py-3 px-5 w-10/12">
+                                       <input type="submit" class="py-2 px-4 bg-lime-500 rounded-md text-xl mt-3 mx-auto cursor-pointer">
+                                   </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
+                       {{-- Modal end --}}
+
+                       <script type="text/javascript">
+                        function toggleModal123(modalID123){
+                          document.getElementById(modalID123).classList.toggle("hidden");
+                          document.getElementById(modalID123 + "-backdrop").classList.toggle("hidden");
+                          document.getElementById(modalID123).classList.toggle("flex");
+                          document.getElementById(modalID123 + "-backdrop").classList.toggle("flex");
+                        }
+                      </script>
+
     <script>
 
         function fileupdate(){

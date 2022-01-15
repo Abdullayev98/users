@@ -584,7 +584,8 @@ class CreateTaskController extends VoyagerBaseController
       $request->session()->put('image', 'storage/tasks/avatar/'.''.$imagename);
     }
       $data = $request->input();
-//      $request->session()->put('description', $data['description']);
+      $request->session()->put('oplata', $data['oplata']);
+     $request->session()->put('description', $data['description']);
       if ($request->input('secret')) {
         $request->session()->put('secret', $data['secret']);
       }else {
@@ -638,6 +639,7 @@ class CreateTaskController extends VoyagerBaseController
 
       // }
 //      $request->session()->put('phone', $datay['phone']);
+      $oplata = session()->pull('oplata');
       $name        = session()->pull('name');
       $category    = session()->pull('cat_id');
       $image    = session()->pull('image');
@@ -806,7 +808,7 @@ class CreateTaskController extends VoyagerBaseController
         'show_only_to_performers'=>$secret,
         'car_model' => $car_model,
         'car_service' => $car_service,
-        'popeg' => $popeg,
+        'pobeg' => $popeg,
         'no_texpassport' => $no_texpassport,
         'delivery_weight' => $delivey_weight,
         'delivery_height' => $delivey_height,
@@ -835,8 +837,6 @@ class CreateTaskController extends VoyagerBaseController
         'where' => $where,
         'how_many' => $how_many,
         'smm_service' => $smm,
-        'how_many' => $how_many,
-        'smm_service' => $smm,
         'computer_service' => $computer,
         'design_service' => $design,
         'it_service' => $it,
@@ -850,7 +850,8 @@ class CreateTaskController extends VoyagerBaseController
         'age' => $age,
         'time' => $time,
         'training' => $training,
-      ]);
+        'oplata' => $oplata,
+       ]);
         session()->forget('task');
         session()->forget('category');
 

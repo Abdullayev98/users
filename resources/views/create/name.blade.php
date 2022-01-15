@@ -77,12 +77,67 @@
                             </div>
                             <button type='button' id='button' style="color: grey; hover: red;" onclick="myFunction()">Подкатегории</button>
                             <div style="display:none" id="categories">
-                                @foreach ($child_categories as $category2)
-                                    <br>
-                                        <a class="hover:text-green-500" href="/task/create?category_id={{ $category2->id }}">
-                                            {{ $category2->name }}
-                                        </a>
-                                @endforeach
+
+                            <div class="flex justify-center">
+  <div class="my-3 xl:w-50 pr-2">
+    <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));" class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+
+        <option selected  disabled>Выберите один из пунктов</option>
+        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $cat_for_p)
+        <option value="{{$cat_for_p->id}}">{{ $cat_for_p->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
+        @endforeach
+    </select>
+  </div>
+  @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $cat_for_ch)
+  <div id="for_filter_select{{ $cat_for_ch->id }}" class="my-3 xl:w-50 pl-2 hidden for_all_hid_ch">
+    <select onchange="window.location.href = this.options[this.selectedIndex].value" class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+        <option selected  disabled>Выберите один из пунктов</option>
+        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $cat_for_ch->id)->get() as $category2)
+        <option value="/task/create?category_id={{ $category2->id }}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
+        @endforeach
+    </select>
+  </div>
+  @endforeach
+</div>
+
+<script>
+function func_for_select(id) {
+
+    $('.for_all_hid_ch').addClass('hidden');
+
+$('#for_filter_select'+ id +'').removeClass('hidden');
+};
+</script>
+
+
                             </div>
                         </div>
                         <input type="submit"

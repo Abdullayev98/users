@@ -145,15 +145,15 @@
     </div>
     <div class="hidden w-full lg:inline-block xl:ml-12 lg:ml-12 lg:space-x-6 md:space-x-6">
         <div class="group inline-block">
-            <button class="font-medium text-gray-500 hover text-[14px] xl:text-[16px] text-[#ffa200] focus:outline-none">
+            <button class="font-medium text-gray-500 text-[14px] xl:text-[16px] hover:text-[#ffa200] focus:outline-none">
                 <span class="pr-1  font-[sans-serif] flex-1">@lang('lang.navbar_createTask')</span>
                 <span></span>
             </button>
             <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top ">
                 @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
-                    <li class="py-2 px-4 rounded-sm hover:bg-gray-200">
+                    <li class="py-2 px-4 rounded-sm hover:bg-gray-100">
                         <button class="w-full text-left flex items-center outline-none focus:outline-none">
-                            <span class="pr-1 flex-1">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
+                            <span class="pr-1 flex-1 font-semibold text-sm hover:text-blue-700">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                             <span class="mr-auto">
                                 <svg class="fill-current h-4 w-4 transition duration-150 ease-in-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
@@ -309,7 +309,7 @@ use Illuminate\Support\Facades\Auth;
               <div class="flex">
                   @if (session('lang') == 'uz')
                   <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
-                    UZ
+                    O'Z
                   </a>
                   I
                   <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
@@ -317,7 +317,7 @@ use Illuminate\Support\Facades\Auth;
                   </a>
                   @else
                   <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
-                    UZ
+                     O'Z
                   </a>
                   I
                   <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">
@@ -339,7 +339,7 @@ use Illuminate\Support\Facades\Auth;
                 <div class="flex">
                     @if (session('lang') == 'uz')
                     <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
-                      UZ
+                       O'Z
                     </a>
                     I
                     <a href="{{route('lang', ['lang'=>'ru'])}}" class="hover:text-red-500 ml-2">
@@ -347,7 +347,7 @@ use Illuminate\Support\Facades\Auth;
                     </a>
                     @else
                     <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
-                      UZ
+                      O'Z
                     </a>
                     I
                     <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">
