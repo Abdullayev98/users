@@ -87,6 +87,7 @@
                     <ul>
                         @if (isset($reviews))
                         @foreach ($reviews as $review)
+                            @if($review->user_id == $user->id)
                         <li class="">
                             <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-[40px] h-[40px] overflow-hidden rounded-[4px] shadow-lg border-b-0 ">
                                 <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
@@ -109,16 +110,16 @@
                                     <i class="far fa-thumbs-up"></i>
                                     @else
                                     <i class="far fa-thumbs-down"></i>
-                                    @endif 
-                                    Исполнитель                                        
+                                    @endif
+                                    Исполнитель
                                     @else
-                                    Отзыв: 
+                                    Отзыв:
                                     @if ($review->good_bad == 1)
                                     <i class="far fa-thumbs-up"></i>
                                     @else
                                     <i class="far fa-thumbs-down"></i>
-                                    @endif  
-                                    Заказчик                                        
+                                    @endif
+                                    Заказчик
                                     @endif
                                     @endif
                                     @endforeach
@@ -129,7 +130,7 @@
                                 <div class="text-gray-500 pb-4">
                                     @foreach ($tasks as $task)
                                     @if ($task->id == $review->task_id)
-                                    <i class="far fa-thumbs-up"></i> Задание "{{$task->name}}" выполнено                                                                                
+                                    <i class="far fa-thumbs-up"></i> Задание "{{$task->name}}" выполнено
                                     @endif
                                     @endforeach
                                 </div>
@@ -139,6 +140,7 @@
                                 </div>
                             </div>
                         </li>
+                        @endif
                         @endforeach
                         @endif
                     </ul>
