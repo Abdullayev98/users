@@ -81,7 +81,6 @@ function tasks_show(){
                     this.hidden = false;
                     i++
                     s++
-                    console.log(s)
                 }
             }
         }
