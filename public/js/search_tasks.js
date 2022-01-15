@@ -149,7 +149,7 @@ $(".address").keyup(function() {
         count = 0;
 
     // Loop through the comment list
-    $('#results p').each(function() {
+    $('#results .location').each(function() {
         // If the list item does not contain the text phrase fade it out
         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
             var parent = $(this).parent();
