@@ -8,6 +8,8 @@
     <form class="" action="{{route('task.create.notes')}}" method="post">
     @elseif(session('current_parent_category')->id == 8)
     <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 2)
+    <form action="{{route('task.create.construction')}}" method="post">
     @elseif(session('current_parent_category')->id == 9)
     <form action="{{route('task.create.notes')}}" method="post">
     @elseif(session('current_parent_category')->id == 11)
@@ -29,7 +31,7 @@
     @elseif(session('current_parent_category')->id == 213)
     <form action="{{route('task.create.notes')}}" method="post">
     @else
-    <form class="" action="{{route('task.create.services')}}" method="post">
+    <form class="" action="{{route('task.create.notes')}}" method="post">
     @endif
         @csrf
         <div class="mx-auto w-9/12  my-16">
