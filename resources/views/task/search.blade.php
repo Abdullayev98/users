@@ -68,7 +68,7 @@
                                     </div>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               checked><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
+                                               ><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
