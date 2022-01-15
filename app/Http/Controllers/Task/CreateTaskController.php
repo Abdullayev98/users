@@ -659,7 +659,7 @@ class CreateTaskController extends VoyagerBaseController
       $lift_za = session()->pull('lift_za');
       $coordinates = session()->pull('coordinates');
       $peopleCount = session()->pull('peopleCount');
-      if(session('parent_id') == 13){
+      if(session('parent_id')->id == 13){
         $photo = session()->pull('photo_service');
       }else{
         $photo = null;
