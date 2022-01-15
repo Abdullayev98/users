@@ -106,8 +106,8 @@
                         <h4 class="font-bold text-lg mt-5">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
                             @foreach ($ports as $port)
-                                <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">
-                                    <div  id="gallery{{$port->id}}" class="rounded-xl shadow-lg  object-center">
+                                <div class="lg:w-1/3 md:w-1/2 p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">
+                                    <div  id="gallery{{$port->id}}" class="rounded-xl shadow-lg  object-center w-52">
                                         <img class="rounded-t-xl z-10 w-52 h-40"
                                              src="{{asset("AvatarImages/{$port->image}")}}">
                                         <div class="w-full bg-gray-700 hover:bg-gray-500 grid grid-cols-5 z-40 rounded-b-xl h-10">
@@ -128,7 +128,7 @@
                                     <img src="" />
                                 </div>
 
-                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer">
+                            <div class="lg:w-1/3 md:w-1/2  p-4 rounded-xl hover:bg-gray-100 cursor-pointer xl:ml-0 ml-4">
                                 <div class="rounded-xl ring-1 ring-gray-300  object-center w-full h-auto">
                                     <a href="#" onclick="toggleModal123('modal-id123')">
                                         <i class="fas fa-plus-circle text-gray-300 text-9xl text-center w-full">
