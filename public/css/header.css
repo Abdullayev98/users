@@ -24,7 +24,7 @@ video {
     left: 0;
 }
 .video-bg {
-    height: 100vh;
+    height: auto;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -48,7 +48,7 @@ video {
     left: 0;
     z-index: 2;
     width: 100%;
-    height: auto;
+    height: 100vh;
     background-color: rgba(0,0,0,0.6);
 }
 .video-bg__content {
