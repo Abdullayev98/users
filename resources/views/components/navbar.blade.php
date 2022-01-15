@@ -160,7 +160,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <ul class="bg-white border rounded-sm absolute h-full top-0 right-0 transition duration-150 ease-in-out origin-top-left w-100">
+                        <ul class="bg-white border rounded-sm absolute h-full overflow-y-auto top-0 right-0 transition duration-150 ease-in-out origin-top-left w-100">
 
                             @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
                                 <li class="rounded-sm">
