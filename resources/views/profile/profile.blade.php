@@ -108,14 +108,14 @@
                             @foreach ($ports as $port)
                                 <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">
                                     <div  id="gallery{{$port->id}}" class="rounded-xl shadow-lg  object-center">
-                                        <img class="rounded-t-xl z-10 w-52 h-40"
+                                        <img class="rounded-t-xl z-10 w-full h-40"
                                              src="{{asset("AvatarImages/{$port->image}")}}">
                                         <div class="w-full bg-gray-700 hover:bg-gray-500 grid grid-cols-5 z-40 rounded-b-xl h-10">
                                             <p class="col-span-4 text-white text-center">
                                                 @if (strlen($port->comment)>10)
                                                     {{substr($port->comment, 0, 10)}}...
                                                 @else
-                                                {{$port->comment}}
+                                                    {{$port->comment}}
                                                 @endif
                                             </p>
                                             {{-- @lang('lang.profile_textForJobs') --}}
@@ -124,9 +124,9 @@
                                     </div>
                                 </div>
                             @endforeach
-                                <div id="modal">
-                                    <img src="" />
-                                </div>
+                            <div id="modal">
+                                <img src="" />
+                            </div>
 
                             <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer">
                                 <div class="rounded-xl ring-1 ring-gray-300  object-center w-full h-auto">
