@@ -394,7 +394,7 @@
                                 type="button">
                                     @lang('lang.contact_send')
                                 </button>
-                            </div>   
+                            </div>
                                 @endif
                                 @endauth
                                 <!-- Main modal -->
@@ -488,7 +488,7 @@
                     </div>
                 </div>
 
-                <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">    
+                <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">
                 <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
                     <p class="text-lg mb-10">@lang('lang.detT_fastHelp')</p>
                     <a href="/categories/1">
@@ -612,7 +612,7 @@
                     @endif
                 </div>
                 <div class="">
-                    <a href="@if (isset($current_user))/performers/@endif{{$current_user->id ?? ''}}" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
+                    <a href="@if (isset($current_user))/performers/{{$current_user->id}}@else @endif" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
                     <a href="#" class="text-xl text-gray-500">
                     @if (isset($current_user))
                         @if($current_user->age != "")
@@ -708,7 +708,7 @@
             });
         });
         function valueChanged()
-        {   
+        {
             if($('.coupon_question').is(":checked"))
                 $(".answer").show();
             else
