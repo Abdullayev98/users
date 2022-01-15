@@ -1,0 +1,35 @@
+
+#gallery img {
+    width: 250px;
+
+    cursor: pointer;
+}
+
+#modal {
+    display: none;
+
+    text-align: center;
+}
+
+#modal.show {
+    display: block;
+}
+
+#modal img {
+    width: 250px;
+    left: 40%;
+    top: 40%;
+    position: fixed;
+    z-index: 3;
+}
+
+#modal:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, .8);
+}
