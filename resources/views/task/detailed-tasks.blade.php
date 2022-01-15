@@ -579,7 +579,7 @@
                     <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
                     @foreach($same_tasks as $same_task)
                         <div class="mt-4">
-                            <a href="#" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
+                            <a href="{{$same_task->id}}" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
                             @foreach($users as $user)
                                 @if($user->id == $same_task->user_id)
                                     <p class="text-gray-400 text-base">{{$user->name}}, {{$same_task->budget}}</p>
