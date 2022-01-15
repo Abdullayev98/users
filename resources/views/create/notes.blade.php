@@ -63,7 +63,7 @@
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2 h-4 w-4" type="radio" name="oplata" value="Оплата через карту">
+                    <input class="mr-2 h-4 w-4" type="radio" checked name="oplata" value="Оплата через карту">
                     <span class="text-lg text-slate- 900">
                         Оплата через карту
                     </span>
@@ -95,7 +95,7 @@
                                             </script>
                                         </a>
                <input type="submit"
-                               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                name="" value="@lang('lang.name_next')">
              </div>
 
