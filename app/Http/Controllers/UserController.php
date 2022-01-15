@@ -41,8 +41,10 @@ class UserController extends Controller
                     'active_status' => 1,
                 ]);
             $lang = Session::pull('lang');
+            $users_count = User::where('role_id', 2)->count();
+            $random_category = Category::all()->random();
             Session::put('lang', $lang);
-            return view('home', compact('tasks', 'howitworks', 'categories'))->withSuccess('Logged-in');
+            return view('home', compact('tasks', 'howitworks', 'categories','users_count','random_category'))->withSuccess('Logged-in');
 
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');

@@ -27,6 +27,7 @@ class CreateTaskController extends VoyagerBaseController
         $categories = Category::query()->where("parent_id", null)->get();
         $current_parent_category = Category::find($current_category->parent_id);
         $child_categories = Category::query()->where("parent_id", $current_parent_category->id)->get();
+        $request->session()->put('current_parent_category', $current_parent_category);
         $category_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $category_id);
         return view("create.name", compact('category_id' ,'categories', 'current_category','child_categories', 'current_parent_category'));
@@ -97,7 +98,7 @@ class CreateTaskController extends VoyagerBaseController
     {
       $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
-        $category = Category::where('id', 1)->first();
+        $category = Category::where('id', 30)->first();
         $categories = explode(',',$category->services);
       return view('create.delivery1', compact('categories'));
     }
@@ -808,7 +809,7 @@ class CreateTaskController extends VoyagerBaseController
         'show_only_to_performers'=>$secret,
         'car_model' => $car_model,
         'car_service' => $car_service,
-        'popeg' => $popeg,
+        'pobeg' => $popeg,
         'no_texpassport' => $no_texpassport,
         'delivery_weight' => $delivey_weight,
         'delivery_height' => $delivey_height,
@@ -835,8 +836,6 @@ class CreateTaskController extends VoyagerBaseController
         'glassSht' => $glassSht,
         'service1' => $service1,
         'where' => $where,
-        'how_many' => $how_many,
-        'smm_service' => $smm,
         'how_many' => $how_many,
         'smm_service' => $smm,
         'computer_service' => $computer,

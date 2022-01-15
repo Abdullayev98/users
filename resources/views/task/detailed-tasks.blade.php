@@ -12,7 +12,7 @@
             <div class="w-9/12 float-left">
                 <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                 <div class="flex flex-row">
-                    <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">до {{$tasks->budget}}</p>
+                    <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">@lang('lang.deteiledT_before') {{$tasks->budget}}</p>
                     @if ($tasks->email_confirm == 1)
                     <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
@@ -49,6 +49,277 @@
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
                         <p class="text-lg  h-auto w-96">до {{$tasks->budget}}</p>
                     </div>
+                    @isset($tasks->oplata)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.navbar_payment')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->oplata}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->description)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.notes_destcript')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->need_movers)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_needmovers')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->need_movers}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->car_model)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_carmodel')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->car_model}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->car_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_carservice')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->car_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->pobeg)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_pobeg')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->pobeg}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->no_texpassport)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_notexpassport')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->no_texpassport}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_weight)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliveryweight')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_weight}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_width)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliverywidth')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_width}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_length)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliverylength')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_length}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_budget)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliverybudget')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_budget}} UZS</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_car)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliverycar')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_car}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->service_delivery)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_servicedelivery')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->service_delivery}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_weight)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_weight}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_height)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text1')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_height}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_width)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text2')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_width}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_length)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text3')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_length}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->construction_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text4')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->construction_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->services)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text5')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->services}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->etaj_po)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text6')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->etaj_po}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->lift_po)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text7')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->lift_po}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->etaj_za)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text8')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->etaj_za}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->lift_za)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text9')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->lift_za}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->peopleCount)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text10')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->peopleCount}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->weight)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_weight')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->weight}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->length)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_length')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->length}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->width)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_width')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->width}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->height)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_height')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->height}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->glassSht)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text11')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->glassSht}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->service1)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text12')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->service1}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->where)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_where')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->where}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->how_many)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_howmany')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->how_many}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->smm_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_smm')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->smm_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->computer_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_comser')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->computer_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->design_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_design')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->design_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->it_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_itservice')</h1><!--it mas ay ti-->
+                        <p class="text-lg  h-auto w-96">{{$tasks->it_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->photo_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_photoser')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->photo_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->remont_ustanovka_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detaieldT_text13')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->remont_ustanovka_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->remont_tex)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text14')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->remont_tex}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->krosata_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text15')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->krosata_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->bugalter_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text16')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->bugalter_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->learning_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text17')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->learning_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->age)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.settings_age')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->age}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->time)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_time')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->time}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->training)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_training')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->training}}</p>
+                    </div>
+                    @endisset
+
                     <!-- <div class="ml-12 flex flex-row mt-4"> -->
                     <!-- <h1 class="text-lg font-bold h-auto w-48">Оплата задания</h1> -->
                     <!-- <div class="flex flex-row  h-auto w-96">
@@ -70,8 +341,7 @@
                         <div  class="w-full flex flex-col sm:flex-row justify-center pl-32">
                             <!-- This is an example component -->
                             <div class="max-w-2xl mx-auto">
-                                @if (Route::has('login'))
-                                    @auth
+                                @auth
                                         @if($balance >= 400)
                                         <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                 type="button"
@@ -80,7 +350,6 @@
                                         </button>
                                         @else
                                             <a href="#" class='btn open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
-
                                             <div class='modal' id='modal1'>
                                                 <div class='content'>
                                                     <img src="{{asset('images/cashback.svg')}}" alt="">
@@ -88,37 +357,28 @@
                                                     <p>
                                                         @lang('lang.detT_balanceReq')
                                                     </p>
-                                                    <p>
-                                                        @lang('lang.detT_balanceReq2')
-                                                    </p>
                                                     <a class='btn' data-modal="#modal1" href="#">@lang('lang.detT_fill2')</a>
                                                 </div>
                                             </div>
                                         @endif
-                                    @endauth
                                 @else
-                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
-                                                type="button">
-                                            <a href="/register">
-                                                Откликнуться на это задание
-                                                @lang('lang.detT_callback')
-                                            </a>
-                                        </button>
-
-                                @endif
+                                <a href="/register" class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2">
+                                                @lang('lang.detailedT_text18')
+                                    </a>
+                                @endauth
                                 @auth
                                 @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
                                 <button id="sendbutton" class="font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                 type="button">
-                                    Оставить отзыв
+                                    @lang('lang.detailedT_text19')
                                 </button>
                                 <div class="hideform hidden">
                                <div class="flex flex-row w-1/2 my-4 mx-auto">
-                                    <label class="mx-4">
+                                    <label class="mx-4 cursor-pointer">
                                         <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
                                         <i id="class_demo"  class="text-gray-500 far fa-thumbs-up text-xl"></i>
                                     </label>
-                                    <label class="mx-4">
+                                    <label class="mx-4 cursor-pointer">
                                         <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
                                         <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-xl"></i>
                                     </label>
@@ -126,9 +386,9 @@
                                 <input type="text" name="comment" class="border rounded ml-6 mb-4 bg-amber-100 w-8/12 py-2 text-center font-normal" value="">
                                 <button class="send-comment font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                 type="button">
-                                    Отправить
+                                    @lang('lang.contact_send')
                                 </button>
-                            </div>   
+                            </div>
                                 @endif
                                 @endauth
                                 <!-- Main modal -->
@@ -175,7 +435,7 @@
                                                             </select>
                                                         </div>
                                                         <label>
-                                                            <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">SUM
+                                                            <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
                                                             <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
                                                             <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
                                                             <input type="text" name="name_task" class="hidden" value="{{$tasks->name}}">
@@ -222,7 +482,7 @@
                     </div>
                 </div>
 
-                <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">    
+                <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">
                 <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
                     <p class="text-lg mb-10">@lang('lang.detT_fastHelp')</p>
                     <a href="/categories/1">
@@ -346,7 +606,7 @@
                     @endif
                 </div>
                 <div class="">
-                    <a href="@if (isset($current_user))/performers/@endif{{$current_user->id ?? ''}}" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
+                    <a href="@if (isset($current_user))/performers/{{$current_user->id}}@else @endif" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
                     <a href="#" class="text-xl text-gray-500">
                     @if (isset($current_user))
                         @if($current_user->age != "")
@@ -442,7 +702,7 @@
             });
         });
         function valueChanged()
-        {   
+        {
             if($('.coupon_question').is(":checked"))
                 $(".answer").show();
             else

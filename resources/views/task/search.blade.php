@@ -156,8 +156,8 @@
                             <div class="b-tasks-sorting">
                                 <div class="inline-flex items-center my-5">
                                     <span class="title__994cd">@lang('lang.search_filter')</span>
-                                    <a href="#" data-sort-type="1" class="mx-5">@lang('lang.search_byDate')</a>
-                                    <a href="#" data-sort-type="2"  class="mx-5 active">@lang('lang.search_byHurry')</a>
+                                    <a href="/task-search" data-sort-type="1" class="mx-5">@lang('lang.search_byDate')</a>
+                                    <button data-sort="nomer"  data-sort-type="2"  class="srt-nomer focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
                                     <a href="#" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</a>
                                 </div>
                             </div>
@@ -483,6 +483,26 @@
         }
 
 
+    </script>
+
+    <script>
+        $(function() {
+            $("[data-sort]").click(function() {
+                var collator = new Intl.Collator(["en", "ru"], {
+                        numeric: true,
+                        bytime: true,
+                        bymonth: true
+                    }),
+                    rank = this.dataset.sort,
+                    order = (this.dataset.order = -(this.dataset.order || -1));
+                comparator = (a, b) => order * collator.compare(
+                    a.dataset[rank],
+                    b.dataset[rank]
+                ),
+                    items = $(".item").sort(comparator);
+                $(".sort-table").append(items);
+            });
+        });
     </script>
 
 @endsection
