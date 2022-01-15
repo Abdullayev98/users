@@ -111,7 +111,13 @@
                                         <img class="rounded-t-xl z-10 w-52 h-40"
                                              src="{{asset("AvatarImages/{$port->image}")}}">
                                         <div class="w-full bg-gray-700 hover:bg-gray-500 grid grid-cols-5 z-40 rounded-b-xl h-10">
-                                            <p class="col-span-4 text-white text-center">{{$port->comment}}</p>
+                                            <p class="col-span-4 text-white text-center">
+                                                @if (strlen($port->comment)>10)
+                                                    {{substr($port->comment, 0, 10)}}...
+                                                @else
+                                                {{$port->comment}}
+                                                @endif
+                                            </p>
                                             {{-- @lang('lang.profile_textForJobs') --}}
                                             <i class="col-span-1 fas fa-camera text-white text-center text-xl"></i>
                                         </div>
