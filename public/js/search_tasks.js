@@ -14,11 +14,8 @@ function tasks_list_all(data) {
     $.each(data, function(index, data) {
         if (data.status != 1) {
             $(".show_tasks").append(
-<<<<<<< HEAD
                 `<div class="sort-table print_block" hidden>
-=======
-                `<div class="sort-table as" >
->>>>>>> b1de539386e8121c3c10c8e9f9e09d62f463abdc
+                <div class="sort-table as">
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
@@ -80,15 +77,21 @@ function tasks_show(){
     $('.print_block').each(function() {
         if (this.hidden) {
             if (i <= p){
-                if(s <= dataAjax.length){
+                if(s <= dataAjax.length-1){
                     this.hidden = false;
                     i++
                     s++
+                    console.log(s)
                 }
             }
         }
     });
-
+    if (s > dataAjax.length-1){
+        $('#pnum').html(dataAjax.length-1)
+    }else{
+        $('#pnum').html(s)
+    }
+$('#snum').html(dataAjax.length-1)
 }
 
 let tabsContainer = document.querySelector("#tabs");

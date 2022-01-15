@@ -39,20 +39,14 @@
                                             <input
                                                 class="address p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
-                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 ml-2 rounded absolute left-[38%]" type="button">
+                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute left-[38%]" type="button">
                                                 <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                             </button>
                                         </div>
-<<<<<<< HEAD
+
                                         <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
                                             <label class="text-md mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
                                             <select name="" id="selectGeo" class="py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full" onchange="r=$('#selectGeo').val();">
-=======
-                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-3/12  md:ml-2 ml-0">
-                                            <label class="text-sm lg:text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                            <select name="" id=""
-                                                    class="  py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full">
->>>>>>> b1de539386e8121c3c10c8e9f9e09d62f463abdc
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
@@ -178,9 +172,15 @@
                                 <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
                                     <div></div>
                                     <div class="butt col-span-3 text-center w-full h-full">
-                                        <p class="text-center">@lang('lang.search_shown')</p>
+                                        <ul class="inline-flex">
+                                            <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span></li>
+                                            <li>&nbsp;из&nbsp;<span id="snum"></span></li>
+                                            <li></li>
+                                        </ul>
+                                        <div>
                                         <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"
                                         onclick="tasks_show()">@lang('lang.search_showMore')</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -268,7 +268,6 @@
 
             <div id="second" class="hidden">
 
-<<<<<<< HEAD
 {{--                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">--}}
 {{--                    <div class="col-span-2">--}}
 {{--                        <div class="w-full bg-[#f8f7ee] my-5 rounded-md">--}}
@@ -362,39 +361,39 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 
-=======
-                                <script
-                                    src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
 
-                            </div>
-                        </div>
+{{--                                <script--}}
+{{--                                    src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
 
-                        <div class="">
-                            <div id="scrollbar" class="w-full h-full blog1">
-                                <div class="w-full w-full">
-                                    <div class="show_tasks">
-                                        {{--Show Tasks list --}}
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                                    <div></div>
-                                    <div class="butt col-span-3 text-center w-full h-full" style="display: none">
-                                        <p class="text-center">@lang('lang.search_shown')</p>
-                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"
-                                                onclick="tasks_list(k)">@lang('lang.search_showMore')</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                    <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">
-                        <div class="small-map static">
+{{--                        <div class="">--}}
+{{--                            <div id="scrollbar" class="w-full h-full blog1">--}}
+{{--                                <div class="w-full w-full">--}}
+{{--                                    <div class="show_tasks">--}}
+{{--                                        --}}{{--Show Tasks list --}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
+{{--                                    <div></div>--}}
+{{--                                    <div class="butt col-span-3 text-center w-full h-full" style="display: none">--}}
+{{--                                        <p class="text-center">@lang('lang.search_shown')</p>--}}
+{{--                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"--}}
+{{--                                                onclick="tasks_list(k)">@lang('lang.search_showMore')</button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                        </div>
-                    </div>
-                </div>
->>>>>>> b1de539386e8121c3c10c8e9f9e09d62f463abdc
+{{--                    <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">--}}
+{{--                        <div class="small-map static">--}}
+
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
             </div>
         </div>
     </div>
@@ -455,7 +454,6 @@
         }
 
         function map_pos(mm){
-            ymaps.ready(init);
             if(mm){
                 m=0;
                 $(".big-map").empty();
@@ -464,16 +462,9 @@
                     <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(m)"/></div>
                     </div>`
                 ),
-
+                ymaps.ready(init);
                 function init() {
                     var location = ymaps.geolocation;
-                    // var myMap1 = new ymaps.Map('map1', {
-                    //         center: [55.74, 37.58],
-                    //         zoom: 15,
-                    //         controls: []
-                    //         // controls: ['geolocationControl']
-                    //     }, {searchControlProvider: 'yandex#search'}
-                    // );
                     var myMap2 = new ymaps.Map('map2', {
                             center: [41.317648, 69.230585],
                             zoom: 10,
@@ -483,173 +474,62 @@
                     );
 
                     $("#mpshow").click(function(){
-                        // Получение местоположения и автоматическое отображение его на карте.
                         location.get({
                             mapStateAutoApply: true
                         })
                             .then(
                                 function(result) {
-                                    // Получение местоположения пользователя.
                                     var userAddress = result.geoObjects.get(0).properties.get('text');
                                     var  myInput = document.getElementById("suggest");
                                     myInput.value = userAddress;
                                     var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
-                                    console.log(userCoodinates)
-                                    // Пропишем полученный адрес в балуне.
-                                    // result.geoObjects.get(0).properties.set({
-                                    //     balloonContentBody: 'Адрес: ' + userAddress +
-                                    //         '<br/>Координаты:' + userCoodinates
-                                    // });
-                                    // myMap1.geoObjects.add(result.geoObjects)
                                     myMap2.geoObjects.add(result.geoObjects)
-                                    // myMap3.geoObjects.add(result.geoObjects)
                                 },
                                 function(err) {
                                     console.log('Ошибка: ' + err)
                                 }
                             );
                     });
-                    $("#selectGeo").click(function(){
-                        objects = ymaps.geoQuery([
-                            // {
-                            //     type: 'Point',
-                            //     coordinates: [41.417648, 69.330585]
-                            // },
-                            {
-                                type: 'Point',
-                                coordinates: [41.327648, 69.270585]
-                            },
-                            {
-                                type: 'Point',
-                                coordinates: [41.377648, 69.290585]
-                            }
-                        ]).addToMap(myMap2),
-
-                            circle = new ymaps.Circle([userCoodinates, r*1000], null, { draggable: true });
-                        circle.events.add('drag', function () {
-                            // Объекты, попадающие в круг, будут становиться красными.
-                            var objectsInsideCircle = objects.searchInside(circle);
-                            objectsInsideCircle.setOptions('preset', 'islands#redIcon');
-                            // Оставшиеся объекты - синими.
-                            objects.remove(objectsInsideCircle).setOptions('preset', 'islands#blueIcon');
-                        });
-
-                        // myMap1.geoObjects.add(circle);
-                        myMap2.geoObjects.add(circle);
-                        // myMap3.geoObjects.add(circle);
-
-                        // var myPlacemark1 = new ymaps.Placemark([userCoodinates], {});
-                        var myPlacemark2 = new ymaps.Placemark([userCoodinates], {});
-                        // var myPlacemark3 = new ymaps.Placemark([userCoodinates], {});
-
-
-                        // myMap1.geoObjects.add(myPlacemark1);
-                        myMap2.geoObjects.add(myPlacemark2);
-                        // myMap3.geoObjects.add(myPlacemark3);
-                    });
                 }
 
-            }else{
-                m=1;
+            }else {
+                m = 1;
                 $(".small-map").empty();
                 $(".big-map").append(
                     `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
                     <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(m)"/></div>
                     </div>`
-                )
-            }
-
-                function init() {
-                    var location = ymaps.geolocation;
-                    // var myMap1 = new ymaps.Map('map1', {
-                    //         center: [55.74, 37.58],
-                    //         zoom: 15,
-                    //         controls: []
-                    //         // controls: ['geolocationControl']
-                    //     }, {searchControlProvider: 'yandex#search'}
-                    // );
-                    var myMap2 = new ymaps.Map('map2', {
-                            center: [41.317648, 69.230585],
-                            zoom: 10,
-                            // controls: []
-                            controls: ['geolocationControl']
-                        }, {searchControlProvider: 'yandex#search'}
-                    );
-                    // var myMap3 = new ymaps.Map('map3', {
-                    //         center: [41.317648, 69.230585],
-                    //         zoom: 10,
-                    //         controls: []
-                    //         // controls: ['geolocationControl']
-                    //     }, {searchControlProvider: 'yandex#search'}
-                    // );
-
-                    $("#mpshow").click(function(){
-                    // Получение местоположения и автоматическое отображение его на карте.
-                    location.get({
-                        mapStateAutoApply: true
-                    })
-                        .then(
-                            function(result) {
-                                // Получение местоположения пользователя.
-                                var userAddress = result.geoObjects.get(0).properties.get('text');
-                                var  myInput = document.getElementById("suggest");
-                                myInput.value = userAddress;
-                                var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
-                                // Пропишем полученный адрес в балуне.
-                                result.geoObjects.get(0).properties.set({
-                                    balloonContentBody: 'Адрес: ' + userAddress +
-                                        '<br/>Координаты:' + userCoodinates
-                                });
-                                // myMap1.geoObjects.add(result.geoObjects)
-                                myMap2.geoObjects.add(result.geoObjects)
-                                // myMap3.geoObjects.add(result.geoObjects)
-                            },
-                            function(err) {
-                                console.log('Ошибка: ' + err)
-                            }
+                ),
+                    ymaps.ready(init);
+                    function init() {
+                        var location = ymaps.geolocation;
+                        var myMap3 = new ymaps.Map('map3', {
+                                center: [41.317648, 69.230585],
+                                zoom: 10,
+                                // controls: []
+                                controls: ['geolocationControl']
+                            }, {searchControlProvider: 'yandex#search'}
                         );
-                    });
-                    $("#selectGeo").click(function(){
-                    objects = ymaps.geoQuery([
-                        {
-                            type: 'Point',
-                            coordinates: [41.417648, 69.330585]
-                        },
-                        {
-                            type: 'Point',
-                            coordinates: [41.327648, 69.270585]
-                        },
-                        {
-                            type: 'Point',
-                            coordinates: [41.377648, 69.290585]
-                        }
-                    // ]).addToMap(myMap1,myMap2,myMap3),
-                    ]).addToMap(myMap2),
 
-                        circle = new ymaps.Circle([userCoodinates, r*1000], null, { draggable: true });
-                    circle.events.add('drag', function () {
-                        // Объекты, попадающие в круг, будут становиться красными.
-                        var objectsInsideCircle = objects.searchInside(circle);
-                        objectsInsideCircle.setOptions('preset', 'islands#redIcon');
-                        // Оставшиеся объекты - синими.
-                        objects.remove(objectsInsideCircle).setOptions('preset', 'islands#blueIcon');
-                    });
-
-                    // myMap1.geoObjects.add(circle);
-                    myMap2.geoObjects.add(circle);
-                    // myMap3.geoObjects.add(circle);
-
-                    // var myPlacemark1 = new ymaps.Placemark([userCoodinates], {});
-                    // var myPlacemark2 = new ymaps.Placemark([userCoodinates], {});
-                    // var myPlacemark3 = new ymaps.Placemark([userCoodinates], {});
-
-
-                    // myMap1.geoObjects.add(myPlacemark1);
-                    // myMap2.geoObjects.add(myPlacemark2);
-                    // myMap3.geoObjects.add(myPlacemark3);
-                    });
-                }
-
+                        $("#mpshow").click(function () {
+                            location.get({
+                                mapStateAutoApply: true
+                            })
+                                .then(
+                                    function (result) {
+                                        var userAddress = result.geoObjects.get(0).properties.get('text');
+                                        var myInput = document.getElementById("suggest");
+                                        myInput.value = userAddress;
+                                        var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
+                                        myMap3.geoObjects.add(result.geoObjects)
+                                    },
+                                    function (err) {
+                                        console.log('Ошибка: ' + err)
+                                    }
+                                );
+                        });
+                    }
+            }
             // if (bs == 'big' && k == 0){
             //     $(".small-map").empty();
             //     m=0
