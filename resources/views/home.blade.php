@@ -48,8 +48,6 @@
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
                                             value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
-                                            <option
-                                            value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
@@ -58,9 +56,9 @@
                                 </a>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
-                        
-                      
-                        @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">{{$random_category->name}}</span>
+
+
+                        @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer"> {{$random_category->name}}</span>
                         </div>
                     </div>
                     <div class="w-[350px] mx-auto mt-12">
@@ -95,9 +93,8 @@
     <main>
         <div class="container md:text-left text-left mx-auto mt-36 md:px-16 px-4">
             <div class="text-3xl font-bold text-center">
-                @lang('lang.header_over')  @lang('lang.header_performers')
-                {{-- {{$users_count}} --}}
-            </div> 
+                @lang('lang.header_over') {{$users_count}}  @lang('lang.header_performers')
+            </div>
             <div class="text-sm text-center mt-4">
             @lang('lang.body_helpers')
             </div>
@@ -314,7 +311,6 @@
                                 <div class="mx-auto w-2/3">
                                     <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
-                                        {{$task->count()}}
                                     </a>
                                     <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
                                         {{$task->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}
