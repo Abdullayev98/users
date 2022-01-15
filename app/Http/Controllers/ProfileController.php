@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Portfolio;
+use App\Models\Portfolio_new;
 use File;
 use App\Models\User;
 use App\Models\Task;
@@ -22,7 +22,7 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
         $vcs = UserView::where('user_id', $user->id)->first();
         $task = Task::where('user_id',Auth::user()->id)->count();
-        $ports = Portfolio::where('user_id',Auth::user()->id)->get();
+        $ports = Portfolio_new::where('user_id',Auth::user()->id)->get();
         return view('profile.profile', compact('user','vcs','task','ports'));
     }
     public function update(Request $request, $id)
@@ -161,7 +161,7 @@ class ProfileController extends Controller
             $request->validate([
               'image' => 'required|image'
             ]);
-            $portfolio = new portfolio;
+            $portfolio = new Portfolio_new;
             $photo = $request->file('image');
 
             if($photo){

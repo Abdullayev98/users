@@ -34,15 +34,15 @@
                                             id="mpshow">@lang('lang.search_find')</button>
                                     </div>
 
-                                    <div class="sm:inline-flex block w-full col-span-4">
-                                        <div class="w-7/12">
+                                    <div class="md:inline-flex block w-full col-span-4">
+                                        <div class="w-7/12 lg:w-7/12 md:w-7/12">
                                             <label class="text-md mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                             <input
                                                 class="address p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
                                         </div>
-                                        <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
-                                            <label class="text-md mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
+                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-3/12  md:ml-2 ml-0">
+                                            <label class="text-sm lg:text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
                                             <select name="" id=""
                                                     class="  py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full">
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
@@ -59,8 +59,8 @@
                                                 <option value="200">200 km</option>
                                             </select>
                                         </div>
-                                        <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
-                                            <label class="text-sm mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
+                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-3/12  md:ml-2 ml-0">
+                                            <label class=" text-sm  md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
                                             <input type="text" maxlength="7"
                                                    class="w-full  border-md  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700"
                                                    placeholder="UZS" id="price">
@@ -68,7 +68,7 @@
                                     </div>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                               checked><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
+                                               ><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
@@ -351,9 +351,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 
