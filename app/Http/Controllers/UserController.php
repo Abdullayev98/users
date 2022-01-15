@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Advant;
 use App\Models\UserVerify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,9 @@ class UserController extends Controller
             $users_count = User::where('role_id', 2)->count();
             $random_category = Category::all()->random();
             Session::put('lang', $lang);
-            return view('home', compact('tasks', 'howitworks', 'categories','users_count','random_category'))->withSuccess('Logged-in');
+            $advants = Advant::all();
+
+            return view('home', compact('tasks','advants', 'howitworks', 'categories','users_count','random_category'))->withSuccess('Logged-in');
 
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
@@ -67,7 +70,7 @@ class UserController extends Controller
         ]);
         $check = $this->createUser($validated);
         $token   = Str::random(64);
-        $sms_otp = Str::random(5); 
+        $sms_otp = Str::random(5);
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $tasks      = Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
         $howitworks = How_work_it::all();
@@ -130,7 +133,7 @@ class UserController extends Controller
     public function verifyAccount($token, $is_otp = false)
     {
         if($is_otp){
-            $verifyUser = UserVerify::where('sms_otp', $token)->first();    
+            $verifyUser = UserVerify::where('sms_otp', $token)->first();
         }else{
             $verifyUser = UserVerify::where('token', $token)->first();
         }
