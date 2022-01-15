@@ -466,17 +466,17 @@ function chicats_click_true(id, name) {
         }
     });
 }
-$(document).ready(function(){
-    $("#as").click(function(){
-        $( ".location" ).each(function( index ) {
-            if ($( this ).text() != ''){
-                var parent = $(this).parent();
-                var parent2 = parent.parent();
-                var parent3 = parent2.parent();
-                parent3.hide();
-            }
-        });
-    });
-});
+// $(document).ready(function(){
+//     $("#as").click(function(){
+//         $( ".location" ).each(function( index ) {
+//             if ($( this ).text() != ''){
+//                 var parent = $(this).parent();
+//                 var parent2 = parent.parent();
+//                 var parent3 = parent2.parent();
+//                 parent3.hide();
+//             }
+//         });
+//     });
+// });
 
 
