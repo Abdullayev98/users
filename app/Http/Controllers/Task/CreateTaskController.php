@@ -456,14 +456,22 @@ class CreateTaskController extends VoyagerBaseController
         }elseif($data = $request->input('delivey_car')){
         $request->session()->put('delivey_car', $data);
         }else {
-          $etaj_po = $request->input('etaj_po');
-          $lift_po = $request->input('lift_po');
-          $etaj_za = $request->input('etaj_za');
-          $lift_za = $request->input('lift_za');
-          $request->session()->put('etaj_po', $etaj_po);
-          $request->session()->put('lift_po', $lift_po);
-          $request->session()->put('etaj_za', $etaj_za);
-          $request->session()->put('lift_za', $lift_za);
+            if(session('cat_id') != 52){
+                $etaj_po = $request->input('etaj_po');
+                $lift_po = $request->input('lift_po');
+                $etaj_za = $request->input('etaj_za');
+                $lift_za = $request->input('lift_za');
+                $request->session()->put('etaj_po', $etaj_po);
+                $request->session()->put('lift_po', $lift_po);
+                $request->session()->put('etaj_za', $etaj_za);
+                $request->session()->put('lift_za', $lift_za);
+            }else{
+                $etaj_po = $request->input('etaj_po');
+                $lift_po = $request->input('lift_po');
+                $request->session()->put('etaj_po', $etaj_po);
+                $request->session()->put('lift_po', $lift_po);
+            }
+
         }
 
         return view('create.date');
