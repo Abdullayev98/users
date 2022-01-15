@@ -240,11 +240,11 @@
             </div>
         </div>
         <div class="bg-[#deeafb]">
-            <div class="container mx-auto">
+            <div class="container mx-auto pb-24">
                 <div class="text-4xl w-2/3 mx-auto py-16 text-center">
                 @lang('lang.body_benefit')
                 </div>
-                <div class="grid grid-cols-4 w-9/12 mx-auto">
+                <div class="grid grid-cols-4 w-9/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
                     <div class="">
                         <img src="/storage/{{$advant->image}}" class="w-32" alt="">

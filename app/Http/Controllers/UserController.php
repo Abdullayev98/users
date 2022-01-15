@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Advant;
 use App\Models\UserVerify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,9 @@ class UserController extends Controller
             $users_count = User::where('role_id', 2)->count();
             $random_category = Category::all()->random();
             Session::put('lang', $lang);
-            return view('home', compact('tasks', 'howitworks', 'categories','users_count','random_category'))->withSuccess('Logged-in');
+            $advants = Advant::all();
+
+            return view('home', compact('tasks','advants', 'howitworks', 'categories','users_count','random_category'))->withSuccess('Logged-in');
 
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
@@ -59,26 +62,31 @@ class UserController extends Controller
 
     public function customSignup(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
+        $validated = $request->validate([
+            'name'         => 'required',
             'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/',
-            'email',
-            'password' => 'required|min:6',
+            'email'        => 'nullable|email|unique:users,email',
+            'password'     => 'required|min:6',
         ]);
-        $data = $request->all();
-        $check = $this->createUser($data);
-        $token = Str::random(64);
+        $check = $this->createUser($validated);
+        $token   = Str::random(64);
+        $sms_otp = Str::random(5);
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
+        $tasks      = Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
         $howitworks = How_work_it::all();
         UserVerify::create([
             'user_id' => $check->id,
-            'token' => $token
+            'token'   => $token,
+            'sms_otp' => $sms_otp
         ]);
-        Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
-            $message->to($request->email);
-            $message->subject('Email Verification Mail');
-        });
+        if($request->has('email')){
+            Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
+                $message->to($request->email);
+                $message->subject('Email Verification Mail');
+            });
+        }elseif($request->has('phone_number')){
+            // TODO: send client sms
+        }
         return view('home', compact('tasks', 'howitworks', 'categories'))->withSuccess('Logged-in');
     }
 
@@ -86,10 +94,10 @@ class UserController extends Controller
     public function createUser(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'name'         => $data['name'],
             'phone_number' => $data['phone_number'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+            'email'        => $data['email'],
+            'password'     => Hash::make($data['password'])
         ]);
 
     }
@@ -122,23 +130,24 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function verifyAccount($token)
+    public function verifyAccount($token, $is_otp = false)
     {
-        $verifyUser = UserVerify::where('token', $token)->first();
-        $message = 'Sorry your email cannot be identified.';
+        if($is_otp){
+            $verifyUser = UserVerify::where('sms_otp', $token)->first();
+        }else{
+            $verifyUser = UserVerify::where('token', $token)->first();
+        }
+        $message = 'Sorry your profile cannot be identified.';
         if(!is_null($verifyUser) ){
             $user = $verifyUser->user;
             if(!$user->is_email_verified) {
                 $verifyUser->user->is_email_verified = 1;
                 $verifyUser->user->save();
-                $user['email_verified_at'] = 1;
-                $message = "Your e-mail is verified. You can now login.";
+                $message = "Your profile is verified. You can now login.";
             } else {
-                $message = "Your e-mail is already verified. You can now login.";
+                $message = "Your profile is already verified. You can now login.";
             }
         }
         return redirect()->route('login')->with('message', $message);
     }
-
-
 }

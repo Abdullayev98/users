@@ -343,7 +343,7 @@
                             <div class="max-w-2xl mx-auto">
                                 @auth
                                         @if($balance >= 400)
-                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                 type="button"
                                                 data-modal-toggle="authentication-modal">
                                             @lang('lang.detT_callback')
