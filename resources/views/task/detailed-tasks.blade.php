@@ -61,12 +61,6 @@
                         <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
                     @endisset
-                    @isset($tasks->phone)
-                    <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.exe_phone')</h1>
-                        <p class="text-lg  h-auto w-96">{{$tasks->phone}}</p>
-                    </div>
-                    @endisset
                     @isset($tasks->need_movers)
                     <div class="ml-12 flex flex-row mt-8">
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_needmovers')</h1>
@@ -394,7 +388,7 @@
                                 type="button">
                                     @lang('lang.contact_send')
                                 </button>
-                            </div>   
+                            </div>
                                 @endif
                                 @endauth
                                 <!-- Main modal -->
@@ -488,7 +482,7 @@
                     </div>
                 </div>
 
-                <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">    
+                <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">
                 <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
                     <p class="text-lg mb-10">@lang('lang.detT_fastHelp')</p>
                     <a href="/categories/1">
@@ -708,7 +702,7 @@
             });
         });
         function valueChanged()
-        {   
+        {
             if($('.coupon_question').is(":checked"))
                 $(".answer").show();
             else
