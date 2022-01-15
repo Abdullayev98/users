@@ -500,12 +500,12 @@
                             <div class="text-4xl font-semibold my-6">
                                 @if ($response_count <= 4)
                                     @if ($response_count == 1)
-                                        @lang('lang.detT_onTask') {{$response_count}} отклик@lang('lang.detT_createOwnTask')
+                                        @lang('lang.detT_onTask') {{$response_count}} отклик
                                     @else
-                                        @lang('lang.detT_onTask') {{$response_count}} откликa@lang('lang.detT_createOwnTask')
+                                        @lang('lang.detT_onTask') {{$response_count}} откликa
                                     @endif
                                 @else
-                                    @lang('lang.detT_onTask') {{$response_count}} откликов@lang('lang.detT_createOwnTask')
+                                    @lang('lang.detT_onTask') {{$response_count}} откликов
                                 @endif
                             </div>
                         @else
