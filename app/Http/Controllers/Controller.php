@@ -28,7 +28,7 @@ class Controller extends BaseController
         if (!session()->has('lang')) {
             Session::put('lang', 'ru');
         }
-        $random_category= Category::all()->random();
+        $random_category= Category::first();
         $users_count = User::where('role_id', 2)->count();
         return view('home',compact('tasks','howitworks', 'categories','random_category','users_count'));
     }

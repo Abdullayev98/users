@@ -105,25 +105,20 @@
                         </div>
                         <h4 class="font-bold text-lg mt-5">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
-                            <?php 
-                                $soni = 1;
-                            ?>
                             @foreach ($ports as $port)
-                            <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">
-                                <div class="rounded-xl shadow-lg  object-center">
-                                    <img class="rounded-t-xl z-10 w-40 h-40"
-                                        src="{{asset("AvatarImages/{$port->image}")}}">
-                                    <div class="w-full bg-gray-700 hover:bg-gray-500 grid grid-cols-5 z-40 rounded-b-xl h-10">
-                                        <p class="col-span-4 text-white text-center">{{$port->comment}}</p>
-                                        {{-- @lang('lang.profile_textForJobs') --}}
-                                        <i class="col-span-1 fas fa-camera text-white text-center text-xl"><span
-                                                class="text-sm"> {{$soni}}</span> </i>
+                                <div  class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">
+                                    <div class="rounded-xl shadow-lg  object-center">
+                                        <a href="#" onclick="ModalRasm({{$port->id}})" ><img class="rounded-t-xl z-10 w-52 h-40"
+                                        src="{{asset("AvatarImages/{$port->image}")}}"></a>
+                                        <div class="w-full bg-gray-700 hover:bg-gray-500 grid grid-cols-5 z-40 rounded-b-xl h-10">
+                                            <p class="col-span-4 text-white text-center">{{substr($port->comment, 0, 10)}}@if (strlen($port->comment)>10)
+                                                ...
+                                            @endif</p>
+                                            {{-- @lang('lang.profile_textForJobs') --}}
+                                            <i class="col-span-1 fas fa-camera text-white text-center text-xl"></i>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <?php
-                                $soni++;
-                            ?>
                             @endforeach
 
                             <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer">
@@ -203,122 +198,93 @@
                             <a href="https://www.facebook.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a>
                         </div>
                     </div>
-                {{-- @foreach ($user->Socials as $social)
-                @if ($social->social_name == 'OneID')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fas fa-fingerprint text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">OneID</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                @endif
-                @if ($social->social_name == 'mail.ru')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="far fa-envelope text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">mail.ru</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                @endif
-                @if ($social->social_name == 'Facebook')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fab fa-facebook-f text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-
-                            <h5 class="font-bold text-black block mt-2 text-md">Facebook </h5>
-                            <a href="{{$social->social_link}}" target="_blank" class=" block text-sm">{{$social->social_name}}</a>
-
-                    </div>
-                </div>
-                @endif
-                @if ($social->social_name == 'Twitter')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fab fa-twitter text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">Twitter</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                @endif
-                @if ($social->social_name == 'AppleID')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fab fa-apple text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">AppleID</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                @endif
-                @endforeach --}}
+                
             </div>
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
 
-                       {{-- Modal start --}}
-                    <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id123">
-                        <div class="relative md:w-1/3 w-1/2  my-6 mx-auto max-w-3xl" id="modal11">
-                            <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
-                                <div class=" text-center p-6  rounded-t">
-                                    <button type="submit"  onclick="toggleModal123('modal-id123')" class=" w-100 h-16 absolute top-1 right-4">
-                                        <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
-                                    </button>
-                                    <h3 class="font-medium text-3xl block">
-                                        Выберите регион
-                                    </h3>
-                                </div>
-                                <div class="text-center h-64">
-                                   <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="file" name="image" id="file" class="outline-none mx-auto bg-amber-200 rounded-xl block my-4 py-3 px-5 w-10/12">
-                                        {{-- <label for="file">
-                                            <i class="fas fa-camera"></i>
-                                            <span>@lang('lang.cash_changeImg')</span>
-                                        </label> --}}
-                                       
-                                       <input type="text" name="comment" class="outline-none mx-auto bg-amber-200 rounded-xl block my-8 py-3 px-5 w-10/12">
-                                       <input type="submit" class="py-2 px-4 bg-lime-500 rounded-md text-xl mt-3 mx-auto cursor-pointer">
-                                   </form>
-                                </div>
+                    {{-- Modal start --}}
+                <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id123">
+                    <div class="relative md:w-1/3 w-1/2  my-6 mx-auto max-w-3xl" id="modal11">
+                        <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+                            <div class=" text-center p-6  rounded-t">
+                                <button type="submit"  onclick="toggleModal123('modal-id123')" class=" w-100 h-16 absolute top-1 right-4">
+                                    <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                                </button>
+                                <h3 class="font-medium text-3xl block">
+                                    Вставьте портфолио
+                                </h3>
+                            </div>
+                            <div class="text-center h-64">
+                                <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="image" id="file" class="outline-none mx-auto bg-amber-200 rounded-xl block my-4 py-3 px-5 w-10/12">
+                                    <input type="text" name="comment" class="outline-none mx-auto bg-amber-200 rounded-xl block my-8 py-3 px-5 w-10/12">
+                                    <input type="submit" class="py-2 px-4 bg-lime-500 rounded-md text-xl mt-3 mx-auto cursor-pointer">
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
+                </div>
+                <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
                        {{-- Modal end --}}
 
-                       <script type="text/javascript">
-                        function toggleModal123(modalID123){
-                          document.getElementById(modalID123).classList.toggle("hidden");
-                          document.getElementById(modalID123 + "-backdrop").classList.toggle("hidden");
-                          document.getElementById(modalID123).classList.toggle("flex");
-                          document.getElementById(modalID123 + "-backdrop").classList.toggle("flex");
-                        }
-                      </script>
+                      
+                         {{-- Modal start --}}
+            <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal">
+                <div class="relative md:w-1/3 w-1/2  my-6 mx-auto max-w-3xl" id="modal1">
+                    <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+                        <div class=" text-center p-6  rounded-t">
+                            <button type="submit"  onclick="ModalRasm('modal')" class=" w-100 h-16 absolute top-1 right-4">
+                                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                            </button>
+                            <img class="rounded-t-xl z-10 w-full "
+                            src="{{asset("AvatarImages/{$port->image}")}}">
+                            <p class="col-span-4 text-white text-center">{{$port->comment}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-backdrop"></div>
 
-    <script>
 
-        function fileupdate(){
+        <script type="text/javascript">
+            function ModalRasm(modal){
+                document.getElementById(modal).classList.toggle("hidden");
+                document.getElementById(modal + "-backdrop").classList.toggle("hidden");
+                document.getElementById(modal).classList.toggle("flex");
+                document.getElementById(modal + "-backdrop").classList.toggle("flex");
+
+                var data = @json($ports)
+
+                
+
+                let my_rasm =  data.find(function(value)  {
+                    if(value.id == modal)
+               return value;
+             });
+                console.log(my_rasm);
+            }
+        </script>
+        <script type="text/javascript">
+            function toggleModal123(modalID123){
+            document.getElementById(modalID123).classList.toggle("hidden");
+            document.getElementById(modalID123 + "-backdrop").classList.toggle("hidden");
+            document.getElementById(modalID123).classList.toggle("flex");
+            document.getElementById(modalID123 + "-backdrop").classList.toggle("flex");
+            }
+        </script>
+        <script>
+            function fileupdate(){
+                var x = document.getElementById("buttons");
+                    x.style.display = "block";
+
+            }
+            function fileadd(){
             var x = document.getElementById("buttons");
-                x.style.display = "block";
 
-        }
-        function fileadd(){
-          var x = document.getElementById("buttons");
-
-                x.classList.add("hidden");
-        }
-
+                    x.classList.add("hidden");
+            }
     </script>
 @endsection
