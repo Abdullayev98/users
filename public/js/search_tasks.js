@@ -14,8 +14,8 @@ function tasks_list_all(data) {
     $.each(data, function(index, data) {
         if (data.status != 1) {
             $(".show_tasks").append(
-                `<div>
-                    <div class="w-full border hover:bg-blue-100 h-[140px] ">
+                `<div class="sort-table">
+                    <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
@@ -46,8 +46,8 @@ function tasks_list(data) {
             $.each(data, function(index, data) {
                 if (data.category_id == id && data.status != 1) {
                     $(".show_tasks").append(
-                        `<div>
-                    <div class="w-full border hover:bg-blue-100 h-[140px] ">
+                        `<div class="sort-table">
+                    <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
