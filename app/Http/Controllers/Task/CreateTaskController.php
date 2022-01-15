@@ -96,7 +96,7 @@ class CreateTaskController extends VoyagerBaseController
     }
     public function service_delivery(Request $request)
     {
-      $cat_id = session()->pull('cat_id');
+        $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
         $category = Category::where('id', 1)->first();
         $categories = explode(',',$category->services);
