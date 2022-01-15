@@ -280,12 +280,10 @@ class CreateTaskController extends VoyagerBaseController
     {
         if($service1 = $request->input('services')){
           $services = implode(',',$service1);
-          $request->session()->put('service1', $services);
-          if ($service1[0]){
+          if ($service1[0] == 'Помыть окна'){
               return view('create.glass');
-          }else{
-              return view('create.location');
           }
+          $request->session()->put('service1', $services);
         }elseif($glassSht = $request->input('box')){
             $request->session()->put('box', $glassSht);
         }elseif($data = $request->input('smm')){
