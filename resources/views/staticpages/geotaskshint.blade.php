@@ -28,7 +28,9 @@
                     <p class="w-4/5 mt-10">@lang('lang.geoT_aboutComp')
                     </p><br>
                     <p class="w-4/5">@lang('lang.geoT_perSec1')<a href="/verification" class="text-blue-600 hover:text-orange-500">@lang('lang.geoT_perSec2')</a> @lang('lang.geoT_perSec3')<a href="/security" class="text-blue-600 hover:text-orange-500">@lang('lang.geoT_perSec4')</a></p>
-                    <iframe class="w-full mb-10 h-96 mt-10" src="https://www.youtube.com/embed/VjDI4YkJG7E"></iframe>
+                    <iframe class="w-full mb-10 h-96 mt-10" width="727" height="409" src="https://www.youtube.com/embed/_nb4qzvpEhE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                        
 
                     <h1 class="font-bold text-4xl mt-10 text-center">@lang('lang.geoT_howToCreate')</h1>
                     <h3 class="mt-10 text-xl text-center">@lang('lang.geoT_chooseCat')</h3>
