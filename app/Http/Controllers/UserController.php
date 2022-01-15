@@ -26,6 +26,21 @@ class UserController extends Controller
         return view('auth.signin');
     }
 
+    public function signup()
+    {
+        return view('auth.signup');
+    }
+
+    public function reset()
+    {
+        return view('auth.reset');
+    }
+
+    public function confirm()
+    {
+        return view('auth.confirm');
+    }
+
     public function createSignin(Request $request)
     {
         $request->validate([
@@ -53,12 +68,6 @@ class UserController extends Controller
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
     }
-
-    public function signup()
-    {
-        return view('auth.signup');
-    }
-
 
     public function customSignup(Request $request)
     {
@@ -90,7 +99,6 @@ class UserController extends Controller
         return view('home', compact('tasks', 'howitworks', 'categories'))->withSuccess('Logged-in');
     }
 
-
     public function createUser(array $data)
     {
         return User::create([
@@ -101,7 +109,6 @@ class UserController extends Controller
         ]);
 
     }
-
 
     public function dashboardView()
     {
@@ -115,7 +122,6 @@ class UserController extends Controller
         }
         return redirect("login")->withSuccess('Access is not permitted');
     }
-
 
     public function logout()
     {
