@@ -800,6 +800,9 @@ class CreateTaskController extends VoyagerBaseController
       }else{
         $construction_service = null;
       }
+      if($location == null){
+          $location = 'Можно выполнить удаленно';
+      }
       $id = Task::create([
         'photos' => $image,
         'user_id'=>$user_id,
