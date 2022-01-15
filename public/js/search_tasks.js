@@ -1,5 +1,5 @@
 let dataAjax = {};
-let dataGeo = {};
+let dataGeo = [];
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -14,7 +14,7 @@ function tasks_list_all(data) {
     $.each(data, function(index, data) {
         if (data.status != 1) {
             $(".show_tasks").append(
-                `<div class="sort-table">
+                `<div class="sort-table print_block" hidden>
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
@@ -46,7 +46,7 @@ function tasks_list(data) {
             $.each(data, function(index, data) {
                 if (data.category_id == id && data.status != 1) {
                     $(".show_tasks").append(
-                        `<div class="sort-table">
+                    `<div class="sort-table print_block" hidden>
                     <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
@@ -70,18 +70,20 @@ function tasks_list(data) {
     });
 }
 
-ymaps.ready(init);
-
-function init() {
-    var myMap1 = new ymaps.Map('map1', {
-        center: [55.74, 37.58],
-        zoom: 15,
-        controls: []
+function tasks_show(){
+    let i=1;
+    $('.print_block').each(function() {
+        if (this.hidden) {
+            if (i <= p){
+                if(s <= dataAjax.length){
+                    this.hidden = false;
+                    i++
+                    s++
+                }
+            }
+        }
     });
 
-    $("#mpshow").click(function() {
-
-    });
 }
 
 let tabsContainer = document.querySelector("#tabs");

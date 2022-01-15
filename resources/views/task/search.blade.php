@@ -7,8 +7,7 @@
         <div class="border-b container mx-auto">
             <!-- Tabs -->
             <ul id="tabs" class="inline-flex w-full">
-                <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab"
-                                                                 href="#first">@lang('lang.search_allTasks')</a></li>
+                <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">@lang('lang.search_allTasks')</a></li>
                 <li class="font-semibold rounded-t pb-3"><a href="#second">@lang('lang.search_recomend')</a></li>
             </ul>
         </div>
@@ -31,7 +30,7 @@
                                                placeholder="@lang('lang.search_byKey')">
                                         <button
                                             class="sm:w-2/12 w-4/12 bg-lime-500 hover:bg-lime-600 ml-1 py-1 px-1 rounded-md sm:mt-0 mt-4 text-white"
-                                            id="mpshow">@lang('lang.search_find')</button>
+                                            >@lang('lang.search_find')</button>
                                     </div>
 
                                     <div class="sm:inline-flex block w-full col-span-4">
@@ -40,11 +39,13 @@
                                             <input
                                                 class="address p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
+                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 ml-2 rounded absolute left-[38%]" type="button">
+                                                <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
+                                            </button>
                                         </div>
                                         <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
                                             <label class="text-md mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                            <select name="" id=""
-                                                    class="  py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full">
+                                            <select name="" id="selectGeo" class="py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full" onchange="r=$('#selectGeo').val();">
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
@@ -169,10 +170,10 @@
                                 </div>
                                 <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
                                     <div></div>
-                                    <div class="butt col-span-3 text-center w-full h-full" style="display: none">
+                                    <div class="butt col-span-3 text-center w-full h-full">
                                         <p class="text-center">@lang('lang.search_shown')</p>
                                         <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"
-                                                onclick="tasks_list(k)">@lang('lang.search_showMore')</button>
+                                        onclick="tasks_show()">@lang('lang.search_showMore')</button>
                                     </div>
                                 </div>
                             </div>
@@ -259,98 +260,99 @@
             </div>
 
             <div id="second" class="hidden">
-                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
-                    <div class="col-span-2">
-                        <div class="w-full bg-[#f8f7ee] my-5 rounded-md">
-                        </div>
 
-                        <div class="col-span-2 lg:col-span-1 lg:hidden block mx-4 lg:mt-0 mt-8 mb-4">
-                            <div id="map1" class="h-60 my-5 rounded-lg w-full static"></div>
-                            <div class="w-full h-full">
+{{--                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">--}}
+{{--                    <div class="col-span-2">--}}
+{{--                        <div class="w-full bg-[#f8f7ee] my-5 rounded-md">--}}
+{{--                        </div>--}}
 
-                                <div class="max-w-lg mx-auto">
+{{--                        <div class="col-span-2 lg:col-span-1 lg:hidden block mx-4 lg:mt-0 mt-8 mb-4">--}}
+{{--                            <div id="map1" class="h-60 my-5 rounded-lg w-full static"></div>--}}
+{{--                            <div class="w-full h-full">--}}
 
-                                    <label
-                                        class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
-                                        <input type="checkbox"
-                                               class="all_cat2 mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')
-                                    </label>
+{{--                                <div class="max-w-lg mx-auto">--}}
 
-                                    <div class="w-full my-1 for_check2">
+{{--                                    <label--}}
+{{--                                        class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">--}}
+{{--                                        <input type="checkbox"--}}
+{{--                                               class="all_cat2 mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')--}}
+{{--                                    </label>--}}
 
-                                        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
-                                            <div x-data={show:false} class="rounded-sm">
-                                                <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                                    <button @click="show=!show"
-                                                            class="underline text-blue-500 hover:text-blue-700 focus:outline-none"
-                                                            type="button">
-                                                        <svg class="w-4 h-4 rotate -rotate-90" fill="none"
-                                                             stroke="currentColor" viewBox="0 0 24 24"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                  stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                        </svg>
-                                                    </button>
-                                                    <label
-                                                        class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">
-                                                        <input type="checkbox"
-                                                               class="par_cat2 mr-1 hover:cursor-pointer"
-                                                               name="{{$category->id}}"
-                                                               id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
-                                                    </label>
-                                                </div>
-                                                <div x-show="show" class="border border-b-0 px-8 py-0">
-                                                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
+{{--                                    <div class="w-full my-1 for_check2">--}}
 
-                                                        <div class="par{{$category->id}}">
-                                                            <label
-                                                                class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
-                                                                <input type="checkbox"
-                                                                       class="chi_cat2 mr-1 hover:cursor-pointer"
-                                                                       name="{{$category2->id}}"
-                                                                       id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
-                                                            </label>
-                                                        </div>
+{{--                                        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)--}}
+{{--                                            <div x-data={show:false} class="rounded-sm">--}}
+{{--                                                <div class="border border-b-0 bg-gray-100" id="headingOne">--}}
+{{--                                                    <button @click="show=!show"--}}
+{{--                                                            class="underline text-blue-500 hover:text-blue-700 focus:outline-none"--}}
+{{--                                                            type="button">--}}
+{{--                                                        <svg class="w-4 h-4 rotate -rotate-90" fill="none"--}}
+{{--                                                             stroke="currentColor" viewBox="0 0 24 24"--}}
+{{--                                                             xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                            <path stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                                                                  stroke-width="2" d="M19 9l-7 7-7-7"></path>--}}
+{{--                                                        </svg>--}}
+{{--                                                    </button>--}}
+{{--                                                    <label--}}
+{{--                                                        class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">--}}
+{{--                                                        <input type="checkbox"--}}
+{{--                                                               class="par_cat2 mr-1 hover:cursor-pointer"--}}
+{{--                                                               name="{{$category->id}}"--}}
+{{--                                                               id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
+{{--                                                    </label>--}}
+{{--                                                </div>--}}
+{{--                                                <div x-show="show" class="border border-b-0 px-8 py-0">--}}
+{{--                                                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)--}}
 
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
+{{--                                                        <div class="par{{$category->id}}">--}}
+{{--                                                            <label--}}
+{{--                                                                class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">--}}
+{{--                                                                <input type="checkbox"--}}
+{{--                                                                       class="chi_cat2 mr-1 hover:cursor-pointer"--}}
+{{--                                                                       name="{{$category2->id}}"--}}
+{{--                                                                       id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
 
-                                </div>
+{{--                                                    @endforeach--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
+{{--                                    </div>--}}
 
-                                <script
-                                    src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+{{--                                </div>--}}
 
-                            </div>
-                        </div>
+{{--                                <script--}}
+{{--                                    src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
 
-                        <div class="">
-                            <div id="scrollbar" class="w-full h-full blog1">
-                                <div class="w-full w-full">
-                                    <div class="show_tasks">
-                                        {{--Show Tasks list --}}
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                                    <div></div>
-                                    <div class="butt col-span-3 text-center w-full h-full" style="display: none">
-                                        <p class="text-center">@lang('lang.search_shown')</p>
-                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"
-                                                onclick="tasks_list(k)">@lang('lang.search_showMore')</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                    <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">
-                        <div class="small-map static">
+{{--                        <div class="">--}}
+{{--                            <div id="scrollbar" class="w-full h-full blog1">--}}
+{{--                                <div class="w-full w-full">--}}
+{{--                                    <div class="show_tasks">--}}
+{{--                                        --}}{{--Show Tasks list --}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
+{{--                                    <div></div>--}}
+{{--                                    <div class="butt col-span-3 text-center w-full h-full" style="display: none">--}}
+{{--                                        <p class="text-center">@lang('lang.search_shown')</p>--}}
+{{--                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"--}}
+{{--                                                onclick="tasks_list(k)">@lang('lang.search_showMore')</button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                        </div>
-                    </div>
-                </div>
+{{--                    <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">--}}
+{{--                        <div class="small-map static">--}}
+
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
             </div>
 
@@ -367,18 +369,17 @@
 
 @section("javasript")
 
-    {{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script
-        src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')"
-        type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script type="text/javascript">
-        map_pos('big')
-        first_ajax('all')
-        module.exports = {
-            plugins: [require('@tailwindcss/forms'),]
-        };
+        let r=0, m=1, p=10, s=0;
+        map_pos(m)
+        first_ajax('all');
+
+        // module.exports = {
+        //     plugins: [require('@tailwindcss/forms'),]
+        // };
 
         function first_ajax(id) {
             $.ajax({
@@ -388,7 +389,8 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    tasks_list(dataAjax)
+                    tasks_list_all(dataAjax)
+                    tasks_show();
                 },
                 error: function () {
                     alert("Ajax ishida xatolik...");
@@ -412,74 +414,217 @@
             // $('.butt').attr('style', 'display: none');
         }
 
-        let dataRes;
-
-        function map_pos(bs) {
-            if (bs == 'big') {
+        function map_pos(mm){
+            ymaps.ready(init);
+            if(mm){
+                m=0;
                 $(".big-map").empty();
                 $(".small-map").append(
                     `<div id="map2" class="h-60 my-5 rounded-lg w-full static">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos('small')"/></div>
-                    </div>`,
-                )
-
-                ymaps.ready(init);
+                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(m)"/></div>
+                    </div>`
+                ),
 
                 function init() {
+                    var location = ymaps.geolocation;
+                    // var myMap1 = new ymaps.Map('map1', {
+                    //         center: [55.74, 37.58],
+                    //         zoom: 15,
+                    //         controls: []
+                    //         // controls: ['geolocationControl']
+                    //     }, {searchControlProvider: 'yandex#search'}
+                    // );
                     var myMap2 = new ymaps.Map('map2', {
-                        center: [55.74, 37.58],
-                        zoom: 15,
-                        // controls: []
-                        controls: ['geolocationControl']
+                            center: [41.317648, 69.230585],
+                            zoom: 10,
+                            // controls: []
+                            controls: ['geolocationControl']
+                        }, {searchControlProvider: 'yandex#search'}
+                    );
+
+                    $("#mpshow").click(function(){
+                        // Получение местоположения и автоматическое отображение его на карте.
+                        location.get({
+                            mapStateAutoApply: true
+                        })
+                            .then(
+                                function(result) {
+                                    // Получение местоположения пользователя.
+                                    var userAddress = result.geoObjects.get(0).properties.get('text');
+                                    var  myInput = document.getElementById("suggest");
+                                    myInput.value = userAddress;
+                                    var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
+                                    console.log(userCoodinates)
+                                    // Пропишем полученный адрес в балуне.
+                                    // result.geoObjects.get(0).properties.set({
+                                    //     balloonContentBody: 'Адрес: ' + userAddress +
+                                    //         '<br/>Координаты:' + userCoodinates
+                                    // });
+                                    // myMap1.geoObjects.add(result.geoObjects)
+                                    myMap2.geoObjects.add(result.geoObjects)
+                                    // myMap3.geoObjects.add(result.geoObjects)
+                                },
+                                function(err) {
+                                    console.log('Ошибка: ' + err)
+                                }
+                            );
                     });
+                    $("#selectGeo").click(function(){
+                        objects = ymaps.geoQuery([
+                            // {
+                            //     type: 'Point',
+                            //     coordinates: [41.417648, 69.330585]
+                            // },
+                            {
+                                type: 'Point',
+                                coordinates: [41.327648, 69.270585]
+                            },
+                            {
+                                type: 'Point',
+                                coordinates: [41.377648, 69.290585]
+                            }
+                        ]).addToMap(myMap2),
 
-//             myMap2.balloon.open(myMap2.getCenter(), {
-//                 contentHeader: 'Однажды',
-//                 contentBody: 'В студеную зимнюю пору' +
-//                     ' <span style="color:red; font-weight:bold">Я</span>' +
-//                     ' из лесу <b>вышел</b>',
-//             });
-//
-//             myMap2.hint.open([55.76, 37.38], 'Кто <em>поднимается</em> в гору?');
-//
-//             var myPlacemark = new ymaps.Placemark([55.7, 37.6], {
-//                 balloonContentHeader: 'Однажды',
-//                 balloonContentBody: 'В студеную зимнюю пору',
-//                 balloonContentFooter: 'Мы пошли в гору',
-//                 hintContent: 'Зимние происшествия'
-//             });
-//
-//             myMap2.geoObjects.add(myPlacemark);
-//
-// // Балун откроется в точке «привязки» балуна — т. е. над меткой.
-//             myPlacemark.balloon.open();
+                            circle = new ymaps.Circle([userCoodinates, r*1000], null, { draggable: true });
+                        circle.events.add('drag', function () {
+                            // Объекты, попадающие в круг, будут становиться красными.
+                            var objectsInsideCircle = objects.searchInside(circle);
+                            objectsInsideCircle.setOptions('preset', 'islands#redIcon');
+                            // Оставшиеся объекты - синими.
+                            objects.remove(objectsInsideCircle).setOptions('preset', 'islands#blueIcon');
+                        });
 
+                        // myMap1.geoObjects.add(circle);
+                        myMap2.geoObjects.add(circle);
+                        // myMap3.geoObjects.add(circle);
+
+                        // var myPlacemark1 = new ymaps.Placemark([userCoodinates], {});
+                        var myPlacemark2 = new ymaps.Placemark([userCoodinates], {});
+                        // var myPlacemark3 = new ymaps.Placemark([userCoodinates], {});
+
+
+                        // myMap1.geoObjects.add(myPlacemark1);
+                        myMap2.geoObjects.add(myPlacemark2);
+                        // myMap3.geoObjects.add(myPlacemark3);
+                    });
                 }
 
-
-            } else {
+            }else{
+                m=1;
                 $(".small-map").empty();
                 $(".big-map").append(
                     `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos('big')"/></div>
-                    </div>`,
+                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(m)"/></div>
+                    </div>`
                 )
-
-                ymaps.ready(init);
+            }
 
                 function init() {
-                    var myMap3 = new ymaps.Map('map3', {
-                        center: [55.74, 37.58],
-                        zoom: 15,
-                        controls: []
-                    });
-                    $("#mpshow").click(function () {
+                    var location = ymaps.geolocation;
+                    // var myMap1 = new ymaps.Map('map1', {
+                    //         center: [55.74, 37.58],
+                    //         zoom: 15,
+                    //         controls: []
+                    //         // controls: ['geolocationControl']
+                    //     }, {searchControlProvider: 'yandex#search'}
+                    // );
+                    var myMap2 = new ymaps.Map('map2', {
+                            center: [41.317648, 69.230585],
+                            zoom: 10,
+                            // controls: []
+                            controls: ['geolocationControl']
+                        }, {searchControlProvider: 'yandex#search'}
+                    );
+                    // var myMap3 = new ymaps.Map('map3', {
+                    //         center: [41.317648, 69.230585],
+                    //         zoom: 10,
+                    //         controls: []
+                    //         // controls: ['geolocationControl']
+                    //     }, {searchControlProvider: 'yandex#search'}
+                    // );
 
+                    $("#mpshow").click(function(){
+                    // Получение местоположения и автоматическое отображение его на карте.
+                    location.get({
+                        mapStateAutoApply: true
+                    })
+                        .then(
+                            function(result) {
+                                // Получение местоположения пользователя.
+                                var userAddress = result.geoObjects.get(0).properties.get('text');
+                                var  myInput = document.getElementById("suggest");
+                                myInput.value = userAddress;
+                                var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
+                                // Пропишем полученный адрес в балуне.
+                                result.geoObjects.get(0).properties.set({
+                                    balloonContentBody: 'Адрес: ' + userAddress +
+                                        '<br/>Координаты:' + userCoodinates
+                                });
+                                // myMap1.geoObjects.add(result.geoObjects)
+                                myMap2.geoObjects.add(result.geoObjects)
+                                // myMap3.geoObjects.add(result.geoObjects)
+                            },
+                            function(err) {
+                                console.log('Ошибка: ' + err)
+                            }
+                        );
+                    });
+                    $("#selectGeo").click(function(){
+                    objects = ymaps.geoQuery([
+                        {
+                            type: 'Point',
+                            coordinates: [41.417648, 69.330585]
+                        },
+                        {
+                            type: 'Point',
+                            coordinates: [41.327648, 69.270585]
+                        },
+                        {
+                            type: 'Point',
+                            coordinates: [41.377648, 69.290585]
+                        }
+                    // ]).addToMap(myMap1,myMap2,myMap3),
+                    ]).addToMap(myMap2),
+
+                        circle = new ymaps.Circle([userCoodinates, r*1000], null, { draggable: true });
+                    circle.events.add('drag', function () {
+                        // Объекты, попадающие в круг, будут становиться красными.
+                        var objectsInsideCircle = objects.searchInside(circle);
+                        objectsInsideCircle.setOptions('preset', 'islands#redIcon');
+                        // Оставшиеся объекты - синими.
+                        objects.remove(objectsInsideCircle).setOptions('preset', 'islands#blueIcon');
+                    });
+
+                    // myMap1.geoObjects.add(circle);
+                    myMap2.geoObjects.add(circle);
+                    // myMap3.geoObjects.add(circle);
+
+                    // var myPlacemark1 = new ymaps.Placemark([userCoodinates], {});
+                    // var myPlacemark2 = new ymaps.Placemark([userCoodinates], {});
+                    // var myPlacemark3 = new ymaps.Placemark([userCoodinates], {});
+
+
+                    // myMap1.geoObjects.add(myPlacemark1);
+                    // myMap2.geoObjects.add(myPlacemark2);
+                    // myMap3.geoObjects.add(myPlacemark3);
                     });
                 }
 
+            // if (bs == 'big' && k == 0){
+            //     $(".small-map").empty();
+            //     m=0
+            // }
+            // if(bs == 'small' && k == 0){
+            //     $(".big-map").empty();
+            //     m=1
+            // }
+            // if (bs == 'big' && k == 1){
+            //     $(".big-map").empty();
+            // }
+            // if (bs == 'small' && k == 1){
+            //     $(".small-map").empty();
+            // }
 
-            }
         }
 
 
