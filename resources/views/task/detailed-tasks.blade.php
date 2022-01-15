@@ -374,11 +374,11 @@
                                 </button>
                                 <div class="hideform hidden">
                                <div class="flex flex-row w-1/2 my-4 mx-auto">
-                                    <label class="mx-4">
+                                    <label class="mx-4 cursor-pointer">
                                         <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
                                         <i id="class_demo"  class="text-gray-500 far fa-thumbs-up text-xl"></i>
                                     </label>
-                                    <label class="mx-4">
+                                    <label class="mx-4 cursor-pointer">
                                         <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
                                         <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-xl"></i>
                                     </label>
