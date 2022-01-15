@@ -8,8 +8,8 @@
     <form class="" action="{{route('task.create.notes')}}" method="post">
     @elseif(session('current_parent_category')->id == 8)
     <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 2)
-    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif($category->id == 30)
+    <form action="{{route('task.create.service_delivery')}}" method="post">
     @elseif(session('current_parent_category')->id == 9)
     <form action="{{route('task.create.notes')}}" method="post">
     @elseif(session('current_parent_category')->id == 11)
