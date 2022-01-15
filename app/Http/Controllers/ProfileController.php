@@ -161,7 +161,7 @@ class ProfileController extends Controller
             $request->validate([
               'image' => 'required|image'
             ]);
-            $portfolio = new portfolio;
+            $portfolio = new Portfolio_new;
             $photo = $request->file('image');
 
             if($photo){
