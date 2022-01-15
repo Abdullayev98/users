@@ -33,9 +33,7 @@
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
                         @lang('lang.name_howCanWeHelpU')
                     </div>
-                    @if($current_parent_category->id == 7)
-                    <form action="{{route('task.create.housemaid')}}" method="post">
-                        @elseif($current_parent_category->id == 8)
+                        @if($current_parent_category->id == 8)
                         <form action="{{route('task.create.smm')}}" method="post">
                         @elseif($current_parent_category->id == 9)
                         <form action="{{route('task.create.computer')}}" method="post">
@@ -57,6 +55,8 @@
                         <form action="{{route('task.create.age')}}" method="post">
                         @elseif($current_parent_category->id == 213)
                         <form action="{{route('task.create.remont_car')}}" method="post">
+                        @elseif($category_id == 60 || $category_id == 59 )
+                                <form action="{{route('task.create.housemaid')}}" method="post">
                         @else
                         <form action="{{route('task.create.name')}}" method="post">
                     @endif
