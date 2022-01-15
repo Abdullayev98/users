@@ -105,25 +105,18 @@
                         </div>
                         <h4 class="font-bold text-lg mt-5">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
-                            <?php
-                            $soni = 1;
-                            ?>
                             @foreach ($ports as $port)
                                 <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">
                                     <div  id="gallery{{$port->id}}" class="rounded-xl shadow-lg  object-center">
-                                        <img class="rounded-t-xl z-10 w-40 h-40"
+                                        <img class="rounded-t-xl z-10 w-52 h-40"
                                              src="{{asset("AvatarImages/{$port->image}")}}">
                                         <div class="w-full bg-gray-700 hover:bg-gray-500 grid grid-cols-5 z-40 rounded-b-xl h-10">
                                             <p class="col-span-4 text-white text-center">{{$port->comment}}</p>
                                             {{-- @lang('lang.profile_textForJobs') --}}
-                                            <i class="col-span-1 fas fa-camera text-white text-center text-xl"><span
-                                                    class="text-sm"> {{$soni}}</span> </i>
+                                            <i class="col-span-1 fas fa-camera text-white text-center text-xl"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <?php
-                                $soni++;
-                                ?>
                             @endforeach
                                 <div id="modal">
                                     <img src="" />
