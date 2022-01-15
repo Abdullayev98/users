@@ -105,7 +105,7 @@
                         </div>
                         <h4 class="font-bold text-lg mt-5">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
-                            <?php 
+                            <?php
                                 $soni = 1;
                             ?>
                             @foreach ($ports as $port)
@@ -127,10 +127,10 @@
                             @endforeach
 
                             <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer">
-                                <div class="rounded-xl ring-1 ring-gray-300  object-center w-full h-auto">                   
+                                <div class="rounded-xl ring-1 ring-gray-300  object-center w-full h-auto">
                                    <a href="#" onclick="toggleModal123('modal-id123')">
                                     <i class="fas fa-plus-circle text-gray-300 text-9xl text-center w-full">
-                                    </i> 
+                                    </i>
                                    </a>
                                 </div>
                             </div>
@@ -287,7 +287,7 @@
                                             <i class="fas fa-camera"></i>
                                             <span>@lang('lang.cash_changeImg')</span>
                                         </label> --}}
-                                       
+
                                        <input type="text" name="comment" class="outline-none mx-auto bg-amber-200 rounded-xl block my-8 py-3 px-5 w-10/12">
                                        <input type="submit" class="py-2 px-4 bg-lime-500 rounded-md text-xl mt-3 mx-auto cursor-pointer">
                                    </form>
