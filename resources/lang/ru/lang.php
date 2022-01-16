@@ -143,7 +143,8 @@ return [
     'search_byMapRadiusNo' => "Без ограничений",
     'search_priceBy' => "Стоимость заданий",
     'search_allCat' => "Все категории",
-    'search_shown' => "Показано 20 из 331",
+    'search_shown' => "Показано",
+    'search_shown2' => "заданий",
     'search_showMore' => "Показать ещё",
     'search_allCat' => "Все категории",
     'search_tasksNotFound' => "Задания не найдены",
@@ -927,7 +928,7 @@ return [
     'buyd_text5' => "Ширина, м",
     'buyd_text6' => "Высота, м",
     // buy delivery blade ended
-    
+
     // computer blade started
     'comp_text' => "Задание заполнено на 20%",
     // computer blade ended
@@ -937,13 +938,13 @@ return [
     'const_text1' => " Какие услуги понадобятся?",
     // construction blade started
 
-    // delivery avto blade started 
+    // delivery avto blade started
     'delA_text' => "Задание заполнено на 65%",
     'delA_text1' => "На каком автомобиле должен быть курьер?",
     'delA_text2' => "Не требуется",
     'delA_text3' => "На легковом авто",
     'delA_text4' => "На грузовом авто",
-    // delivery avto blade ended 
+    // delivery avto blade ended
 
     // delivery blade started
     'delivery_text' => "Ценность посылки, uzs.",
@@ -992,7 +993,7 @@ return [
     'infoc_text' => "Задание заполнено на 30%",
     'infoc_text1' => " Какой пробег?",
     'infoc_text2' => "Пробег, км",
-    'infoc_text3' => "Номер Техпасспорта", 
+    'infoc_text3' => "Номер Техпасспорта",
     // info car blade ended
 
     // krosata blade stared
@@ -1007,11 +1008,11 @@ return [
     'photo_text' => "Задание заполнено на 21%",
     // photo blade ended
 
-    //remont car blade started 
+    //remont car blade started
     'remontc_text' => "Какой у вас автомобиль?",
     'remontc_text1' => "Марка, модель и год выпуска авто",
     'remontc_text2' => "Например, Chevrolet Cruze 2014 года ",
-    //remont car blade ended 
+    //remont car blade ended
 
     // training blade started
     'training_text' => "Какие нужны занятия?",

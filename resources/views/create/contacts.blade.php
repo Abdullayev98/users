@@ -86,47 +86,6 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-    <script type="text/javascript">
-
-    ymaps.ready(init);
-
-    function init() {
-        var suggestView1 = new ymaps.SuggestView('suggest');
-
-
-
-        var myMap = new ymaps.Map('map', {
-            center: [55.74, 37.58],
-            zoom: 15,
-            controls: []
-        });
-        var searchControl = new ymaps.control.SearchControl({
-
-
-        });
-        myMap.controls.add(searchControl);
-
-
-        $("#mpshow").click(function(){
-
-
-        searchControl.search(document.getElementById('suggest').value);
-
-
-
-
-    });
-
-    }
-
-
-
-
-
-
-
-
-    </script>
 
     <script src='https://unpkg.com/imask'></script>
       <script>

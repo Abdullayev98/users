@@ -1,5 +1,5 @@
 let dataAjax = {};
-let dataGeo = {};
+let dataGeo = [];
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -14,13 +14,14 @@ function tasks_list_all(data) {
     $.each(data, function(index, data) {
         if (data.status != 1) {
             $(".show_tasks").append(
-                `<div class="sort-table">
+                `<div class="sort-table print_block" hidden>
+                <div class="sort-table as">
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-sm ml-12 mt-4">` + data.address + `</p>
+                    <p class="text-sm ml-12 mt-4 location">` + data.address + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
@@ -32,6 +33,7 @@ function tasks_list_all(data) {
                     </div>
                     </div>`,
             )
+
         }
     });
 }
@@ -46,13 +48,13 @@ function tasks_list(data) {
             $.each(data, function(index, data) {
                 if (data.category_id == id && data.status != 1) {
                     $(".show_tasks").append(
-                        `<div class="sort-table">
+                    `<div class="sort-table print_block" hidden>
                     <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-sm ml-10 mt-1">` + data.address + `</p>
+                    <p class="text-sm ml-10 mt-1 location">` + data.address + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
@@ -70,18 +72,25 @@ function tasks_list(data) {
     });
 }
 
-ymaps.ready(init);
-
-function init() {
-    var myMap1 = new ymaps.Map('map1', {
-        center: [55.74, 37.58],
-        zoom: 15,
-        controls: []
+function tasks_show(){
+    let i=1;
+    $('.print_block').each(function() {
+        if (this.hidden) {
+            if (i <= p){
+                if(s <= dataAjax.length-1){
+                    this.hidden = false;
+                    i++
+                    s++
+                }
+            }
+        }
     });
-
-    $("#mpshow").click(function() {
-
-    });
+    if (s > dataAjax.length-1){
+        $('#pnum').html(dataAjax.length-1)
+    }else{
+        $('#pnum').html(s)
+    }
+$('#snum').html(dataAjax.length-1)
 }
 
 let tabsContainer = document.querySelector("#tabs");
@@ -148,7 +157,7 @@ $(".address").keyup(function() {
         count = 0;
 
     // Loop through the comment list
-    $('#results p').each(function() {
+    $('#results .location').each(function() {
         // If the list item does not contain the text phrase fade it out
         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
             var parent = $(this).parent();
@@ -465,3 +474,17 @@ function chicats_click_true(id, name) {
         }
     });
 }
+// $(document).ready(function(){
+//     $("#as").click(function(){
+//         $( ".location" ).each(function( index ) {
+//             if ($( this ).text() != ''){
+//                 var parent = $(this).parent();
+//                 var parent2 = parent.parent();
+//                 var parent3 = parent2.parent();
+//                 parent3.hide();
+//             }
+//         });
+//     });
+// });
+
+
