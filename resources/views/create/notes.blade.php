@@ -55,14 +55,26 @@
                   </label>
                 </div>
              <div>
-                <!-- <label class="md:w-2/3 block mt-6">
+                <label class="md:w-2/3 block mt-6">
                     <input class="mr-2 h-4 w-4" type="checkbox" name="docs">
-                    <span class="text-lg text-slate-900">
+                    <span class="text-lg text-slate- 900">
                         Предоставить документы
                         <br><p class="text-sm text-slate-500">Для оформления расписки/доверенности</p>
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
+                    <input class="mr-2 h-4 w-4" type="radio" checked name="oplata" value="Оплата через карту">
+                    <span class="text-lg text-slate- 900">
+                        Оплата через карту
+                    </span>
+                  </label>
+                  <label class="md:w-2/3 block mt-6">
+                    <input class="mr-2 h-4 w-4" type="radio" name="oplata" value="Оплата наличными">
+                    <span class="text-lg text-slate- 900">
+                        Оплата наличными
+                    </span>
+                  </label>
+                  <!-- <label class="md:w-2/3 block mt-6">
                     <input class="mr-2  h-4 w-4" type="checkbox" value="1" name="secret">
                     <span class="text-lg text-slate-900">
                         Сделать приватным
@@ -83,7 +95,7 @@
                                             </script>
                                         </a>
                <input type="submit"
-                               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                name="" value="@lang('lang.name_next')">
              </div>
 

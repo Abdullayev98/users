@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advant;
 use App\Models\Task;
 use App\Models\How_work_it;
 use App\Models\User;
@@ -23,14 +24,15 @@ class Controller extends BaseController
 
     public function home(Request $request){
         $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
+        $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->get();
         $howitworks = How_work_it::all();
         if (!session()->has('lang')) {
             Session::put('lang', 'ru');
         }
-        $random_category= Category::all()->random();
-
-        return view('home',compact('tasks','howitworks', 'categories','random_category'));
+        $random_category= Category::first();
+        $users_count = User::where('role_id', 2)->count();
+        $advants = Advant::all();
+        return view('home',compact('tasks','howitworks', 'categories','random_category','users_count','advants'));
     }
 
     public function home_profile()

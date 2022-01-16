@@ -39,7 +39,14 @@
                             <span>{{$user->location}}</span>
                         </div>
                         <div class="text-gray-500 text-base mt-6">
-                            <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span>
+                            <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
+                            @if ($reviews_count == 1)
+                            <span>Получил {{$reviews_count}} Отзыв</span>
+                            @elseif ($reviews_count > 1 && $reviews_count > 5)
+                            <span>Получил {{$reviews_count}} Отзыва</span>
+                            @else
+                            <span>Получил {{$reviews_count}} Отзывов</span>
+                            @endif
                         </div>
                         {{-- <div class="text-gray-500 text-base mt-1">
                             <span>@lang('lang.exe_averageRating'): 4,9</span>
@@ -78,52 +85,64 @@
 
                 <div class="py-12">
                     <ul>
+                        @if (isset($reviews))
+                        @foreach ($reviews as $review)
+                            @if($review->user_id == $user->id)
                         <li class="">
                             <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-[40px] h-[40px] overflow-hidden rounded-[4px] shadow-lg border-b-0 ">
                                 <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
                             </a>
                             <div class="align-top ml-[50px] min-h-[42px]">
                             <span>
-                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-[#0091e6] ">Александр Ф.</a>
+                                @foreach ($users as $user)
+                                @if ($user->id == $review->reviewer_id)
+                                <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-[#0091e6] ">{{$user->name}}</a>
+                                @endif
+                                @endforeach
                             </span>
                                 <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    Отзывы: <i class="far fa-thumbs-up"></i>24 - Заказчик
+                                    @foreach ($users as $user)
+                                    @if ($user->id == $review->reviewer_id)
+                                    @if ($user->role_id == 2)
+                                    Отзыв:
+                                    @if ($review->good_bad == 1)
+                                    <i class="far fa-thumbs-up"></i>
+                                    @else
+                                    <i class="far fa-thumbs-down"></i>
+                                    @endif
+                                    Исполнитель
+                                    @else
+                                    Отзыв:
+                                    @if ($review->good_bad == 1)
+                                    <i class="far fa-thumbs-up"></i>
+                                    @else
+                                    <i class="far fa-thumbs-down"></i>
+                                    @endif
+                                    Заказчик
+                                    @endif
+                                    @endif
+                                    @endforeach
                                 </span>
                                 </div>
                             </div>
                             <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-[#faf5ef] shadow-[-1px_1px_2px] shadow-[#dcdcdc] rounded-[10px] relative text-[#4e4e4e] text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-[#f5f5f5] border-solid">
                                 <div class="text-gray-500 pb-4">
-                                    <i class="far fa-thumbs-up"></i> Задание "Пассажирские перевозки" выполнено
+                                    @foreach ($tasks as $task)
+                                    @if ($task->id == $review->task_id)
+                                    <i class="far fa-thumbs-up"></i> Задание "{{$task->name}}" выполнено
+                                    @endif
+                                    @endforeach
                                 </div>
                                 <hr>
                                 <div class="pt-4">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolor ea eaque eligendi ex facere fugit incidunt, libero magni mollitia natus possimus provident quas recusandae totam?.
+                                    {{$review->description}}
                                 </div>
-                                <div class="py-4 flex text-gray-500">
-                                    Оценка:5.0
-                                    <div class="ml-2">
-                                        Качество
-                                        <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('{{asset('images/star-yellow-light.svg')}}')] bg-[length:16px_16px] relative">
-                                            <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-2">
-                                        Вежливость
-                                        <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('{{asset('images/star-yellow-light.svg')}}')] bg-[length:16px_16px] relative">
-                                            <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-2">
-                                        Стоимость услуг
-                                        <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('{{asset('images/star-yellow-light.svg')}}')] bg-[length:16px_16px] relative">
-                                            <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </li>
+                        @endif
+                        @endforeach
+                        @endif
                     </ul>
                 </div>
 

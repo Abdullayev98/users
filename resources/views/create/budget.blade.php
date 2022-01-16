@@ -6,36 +6,32 @@
     <x-roadmap/>
     @if($category->id == 60)
     <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 8)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 9)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 12)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 13)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 15)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 16)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 17)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 18)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 19)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 22)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif($category->id == 24)
-    <form class="" action="{{route('task.create.service_delivery')}}" method="post">
-    @elseif($category->id == 27)
-    <form class="" action="{{route('task.create.service_delivery')}}" method="post">
-    @elseif($parent_id->id == 2)
-    <form class="" action="{{route('task.create.construction')}}" method="post">
-    @elseif($parent_id->id == 213)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 8)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 2)
+    <form action="{{route('task.create.construction')}}" method="post">
+    @elseif(session('current_parent_category')->id == 9)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 11)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 12)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 13)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 15)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 16)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 17)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 18)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 19)
+    <form action="{{route('task.create.notes')}}" method="post">
+    @elseif(session('current_parent_category')->id == 213)
+    <form action="{{route('task.create.notes')}}" method="post">
     @else
-    <form class="" action="{{route('task.create.services')}}" method="post">
+    <form class="" action="{{route('task.create.notes')}}" method="post">
     @endif
         @csrf
         <div class="mx-auto w-9/12  my-16">
@@ -88,7 +84,7 @@
                                 <div class="w-[100px]  md:w-[200px] xl:hidden">
                                     <select id="" name="amount" class="border md:ml-14 bg-[#ffa200]  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-[#ffaa00]">
                                         <option value="0">
-                                            Выберите бюджет
+                                            @lang('lang.budget_text')
                                         </option>
                                         <option value="{{$category->max/5}} UZS">
                                             от {{$category->max/5}} UZS

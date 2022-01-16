@@ -29,6 +29,7 @@
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
+                                    @if(session('cat_id') != 52)
                                     @lang('lang.movers_loadFlat')
                                     <input id="etaj_po" name="etaj_po" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                     @lang('lang.movers_elevator')
@@ -44,7 +45,18 @@
                                         <option>@lang('lang.movers_noElevator')</option>
                                         <option>@lang('lang.movers_smElevator')</option>
                                         <option>@lang('lang.movers_cargElevator')</option>
-                                    </select>                                </div>
+                                    </select>
+                                    @else
+                                        @lang('lang.movers_loadFlat')
+                                        <input id="etaj_po" name="etaj_po" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        @lang('lang.movers_elevator')
+                                        <select id="lift_po" value="Лифт отсутствует" name="lift_po[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                            <option>@lang('lang.movers_noElevator')</option>
+                                            <option>@lang('lang.movers_smElevator')</option>
+                                            <option>@lang('lang.movers_cargElevator')</option>
+                                        </select>
+                                @endif
+                                </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
                                     <a onclick="myFunction()" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">

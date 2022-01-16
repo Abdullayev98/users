@@ -13,7 +13,7 @@
     @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
     <div class="w-full text-center my-4 text-[#5f5869]">
-    Задание заполнено на 75%
+    @lang('lang.del1_text')
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
@@ -22,7 +22,7 @@
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-      Как планируете оплатить покупку?
+      @lang('lang.del1_text1')
       </div>
 
       <div class="py-4 mx-auto  text-left ">
@@ -34,7 +34,7 @@
             <div class="mb-3 xl:w-full">
                 @foreach ($categories as $category)
                 <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2  h-4 w-4" type="radio" value="{{$category}}" name="service_delivery">
+                    <input class="mr-2  h-4 w-4" type="checkbox" value="{{$category}}" name="service_delivery">
                     <span class="text-lg text-slate-900">
                         {{$category}}
                     </span>

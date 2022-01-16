@@ -2,29 +2,32 @@
 
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
+    @if(isset($task_responses))
+    <div class="flex mx-auto w-9/12">
+        @else
     <div class="mx-auto w-9/12">
-        <div class="mt-8 lg:flex mb-8">
-
+@endif
+        <div class="mt-8 md:flex mb-8">
             {{-- left sidebar start --}}
             <div class="w-9/12 float-left">
                 <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                 <div class="flex flex-row">
-                    <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">до {{$tasks->budget}}</p>
+                    <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">@lang('lang.deteiledT_before') {{$tasks->budget}}</p>
                     @if ($tasks->email_confirm == 1)
-                    <h1 class="my-2 text-green-400">Сделка без риска</h1>
+                    <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
                     @endif
                 </div>
                 <div class="flex flex-row">
                     @if ($tasks->show_only_to_performers == 1)
-                    <p class="mt-4 text-lg text-gray-400 font-normal">Заказчик отдает предпочтение застрахованным исполнителям</p>
+                    <p class="mt-4 text-lg text-gray-400 font-normal">@lang('lang.detT_insuredPer')</p>
                     @endif
                 </div>
                 <div class="flex flex-row text-gray-400 mt-4">
                     @if ($tasks->status == 1)
-                    <p class="text-amber-500 font-normal border-r-2 border-gray-400 pr-2">В исполнении</p>
+                    <p class="text-amber-500 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_inProsses')</p>
                     @else
-                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">Открыто</p>
+                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
                     @endif
                     <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
                     <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
@@ -34,7 +37,7 @@
                 </div>
 
                 <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
-                    <div class="ml-12 flex flex-row">
+                <div class="ml-12 flex flex-row">
                         <h1 class="text-lg font-bold h-auto w-48">{{$tasks->date_type}}</h1>
                         <p class="text-lg  h-auto w-96">{{date('d-m-Y', strtotime($tasks->start_date))}}</p>
                     </div>
@@ -43,9 +46,280 @@
                         <p class="text-lg  h-auto w-96">26 декабря 2021, 23:00</p>
                     </div> -->
                     <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">Бюджет</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
                         <p class="text-lg  h-auto w-96">до {{$tasks->budget}}</p>
                     </div>
+                    @isset($tasks->oplata)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.navbar_payment')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->oplata}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->description)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.notes_destcript')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->need_movers)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_needmovers')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->need_movers}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->car_model)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_carmodel')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->car_model}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->car_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_carservice')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->car_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->pobeg)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_pobeg')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->pobeg}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->no_texpassport)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_notexpassport')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->no_texpassport}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_weight)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliveryweight')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_weight}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_width)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliverywidth')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_width}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_length)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliverylength')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_length}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_budget)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliverybudget')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_budget}} UZS</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->delivery_car)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_deliverycar')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->delivery_car}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->service_delivery)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_servicedelivery')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->service_delivery}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_weight)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_weight}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_height)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text1')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_height}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_width)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text2')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_width}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->buy_delivery_length)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text3')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->buy_delivery_length}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->construction_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text4')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->construction_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->services)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text5')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->services}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->etaj_po)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text6')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->etaj_po}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->lift_po)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text7')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->lift_po}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->etaj_za)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text8')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->etaj_za}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->lift_za)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text9')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->lift_za}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->peopleCount)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text10')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->peopleCount}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->weight)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_weight')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->weight}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->length)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_length')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->length}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->width)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_width')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->width}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->height)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_height')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->height}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->glassSht)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text11')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->glassSht}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->service1)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text12')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->service1}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->where)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_where')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->where}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->how_many)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_howmany')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->how_many}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->smm_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_smm')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->smm_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->computer_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_comser')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->computer_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->design_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_design')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->design_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->it_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_itservice')</h1><!--it mas ay ti-->
+                        <p class="text-lg  h-auto w-96">{{$tasks->it_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->photo_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_photoser')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->photo_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->remont_ustanovka_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detaieldT_text13')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->remont_ustanovka_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->remont_tex)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text14')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->remont_tex}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->krosata_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text15')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->krosata_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->bugalter_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text16')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->bugalter_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->learning_service)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_text17')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->learning_service}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->age)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.settings_age')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->age}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->time)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_time')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->time}}</p>
+                    </div>
+                    @endisset
+                    @isset($tasks->training)
+                    <div class="ml-12 flex flex-row mt-8">
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_training')</h1>
+                        <p class="text-lg  h-auto w-96">{{$tasks->training}}</p>
+                    </div>
+                    @endisset
+
                     <!-- <div class="ml-12 flex flex-row mt-4"> -->
                     <!-- <h1 class="text-lg font-bold h-auto w-48">Оплата задания</h1> -->
                     <!-- <div class="flex flex-row  h-auto w-96">
@@ -54,11 +328,11 @@
                     </div> -->
                     <!-- </div> -->
                     <div class="ml-12 flex flex-row mt-4">
-                        <h1 class="text-lg font-bold h-auto w-48">Место</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->address}}</p>
                     </div>
                     <div class="ml-12 flex flex-row mt-8">
-                        <h1 class="text-lg font-bold h-auto w-48">Нужно</h1>
+                        <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_need')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
@@ -67,42 +341,56 @@
                         <div  class="w-full flex flex-col sm:flex-row justify-center pl-32">
                             <!-- This is an example component -->
                             <div class="max-w-2xl mx-auto">
-                                @if (Route::has('login'))
-                                    @auth
+                                @auth
                                         @if($balance >= 400)
-                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                 type="button"
                                                 data-modal-toggle="authentication-modal">
-                                            Откликнуться на это задание
+                                            @lang('lang.detT_callback')
                                         </button>
                                         @else
-                                            <a href="#" class='btn open-modal' data-modal="#modal1">Откликнуться на это задание</a>
-
+                                            <a href="#" class='btn open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
                                             <div class='modal' id='modal1'>
                                                 <div class='content'>
                                                     <img src="{{asset('images/cashback.svg')}}" alt="">
-                                                    <h1 class='title'>Пополните баланс</h1>
+                                                    <h1 class='title'>@lang('lang.detT_fill')</h1>
                                                     <p>
-                                                        Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.
+                                                        @lang('lang.detT_balanceReq')
                                                     </p>
-                                                    <p>
-                                                        При отклике сумма на балансе не блокируется — можно оставлять отклики и к другим заданиям.
-                                                    </p>
-                                                    <a class='btn' data-modal="#modal1" href="#">Пополнить</a>
+                                                    <a class='btn' data-modal="#modal1" href="#">@lang('lang.detT_fill2')</a>
                                                 </div>
                                             </div>
                                         @endif
-                                    @endauth
                                 @else
-                                        <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2"
-                                                type="button">
-                                            <a href="/register">
-                                                Откликнуться на это задание
-                                            </a>
-                                        </button>
-
+                                <a href="/register" class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2">
+                                                @lang('lang.detailedT_text18')
+                                    </a>
+                                @endauth
+                                @auth
+                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
+                                <button id="sendbutton" class="font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                type="button">
+                                    @lang('lang.detailedT_text19')
+                                </button>
+                                <div class="hideform hidden">
+                               <div class="flex flex-row w-1/2 my-4 mx-auto">
+                                    <label class="mx-4 cursor-pointer">
+                                        <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
+                                        <i id="class_demo"  class="text-gray-500 far fa-thumbs-up text-xl"></i>
+                                    </label>
+                                    <label class="mx-4 cursor-pointer">
+                                        <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
+                                        <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-xl"></i>
+                                    </label>
+                               </div>
+                                <input type="text" name="comment" class="border rounded ml-6 mb-4 bg-amber-100 w-8/12 py-2 text-center font-normal" value="">
+                                <button class="send-comment font-sans w-8/12 text-lg font-semibold bg-green-500 text-[#fff] hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                type="button">
+                                    @lang('lang.contact_send')
+                                </button>
+                            </div>
                                 @endif
-
+                                @endauth
                                 <!-- Main modal -->
                                 <div id="authentication-modal"
                                      aria-hidden="true"
@@ -120,7 +408,7 @@
                                             </div>
                                             <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" action="#">
                                                 <header>
-                                                    <h2 class="font-semibold text-2xl mb-4">Добавить предложение к заказу</h2>
+                                                    <h2 class="font-semibold text-2xl mb-4">@lang('lang.detT_addOffers')</h2>
                                                 </header>
                                                 <form id="ajaxform">
                                                     <main>
@@ -128,26 +416,26 @@
                                                         <hr>
                                                         <div class="my-2">
                                                             <label class=" px-2">
-                                                                <input type="checkbox" name="notificate" value="1" class="mr-2 my-3 ">Уведомить меня, если исполнителем<br>
+                                                                <input type="checkbox" name="notificate" value="1" class="mr-2 my-3 ">@lang('lang.detT_notifMe')<br>
                                                             </label>
                                                             <label class=" px-2">
-                                                                <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>Указать время актуальности предложения
+                                                                <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>@lang('lang.detT_pointTime')
                                                             </label>
                                                             <br>
                                                             <select name="response_time" id="AttorneyEmpresa" class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500" style="display: none">
-                                                                <option value="1" class="">1 часов</option>
-                                                                <option value="2" class="">2 часов</option>
-                                                                <option value="4" class="">4 часов</option>
-                                                                <option value="6" class="">6 часов</option>
-                                                                <option value="8" class="">8 часов</option>
-                                                                <option value="10" class="">10 часов</option>
-                                                                <option value="12" class="">12 часов</option>
-                                                                <option value="24" class="">24 часов</option>
-                                                                <option value="48" class="">48 часов</option>
+                                                                <option value="1" class="">1 @lang('lang.detT_hour')</option>
+                                                                <option value="2" class="">2 @lang('lang.detT_hour')</option>
+                                                                <option value="4" class="">4 @lang('lang.detT_hour')</option>
+                                                                <option value="6" class="">6 @lang('lang.detT_hour')</option>
+                                                                <option value="8" class="">8 @lang('lang.detT_hour')</option>
+                                                                <option value="10" class="">10 @lang('lang.detT_hour')</option>
+                                                                <option value="12" class="">12 @lang('lang.detT_hour')</option>
+                                                                <option value="24" class="">24 @lang('lang.detT_hour')</option>
+                                                                <option value="48" class="">48 @lang('lang.detT_hour')</option>
                                                             </select>
                                                         </div>
                                                         <label>
-                                                            <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">SUM
+                                                            <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
                                                             <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
                                                             <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
                                                             <input type="text" name="name_task" class="hidden" value="{{$tasks->name}}">
@@ -159,7 +447,7 @@
                                                     <footer class="flex justify-center bg-transparent">
                                                         <button
                                                             class="save-data bg-[#ff8a00] font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300">
-                                                            Далее
+                                                            @lang('lang.detT_next')
                                                         </button>
                                                     </footer>
                                                 </form>
@@ -187,7 +475,7 @@
                                 <!-- modal header -->
                                 <i class="far fa-check-circle fa-4x py-4"></i>
                                 <div class="mx-12">
-                                    Ваш отклик успешно отправлен!
+                                    @lang('lang.detT_callbackSucces')
                                 </div>
                             </div>
                         </div>
@@ -195,11 +483,11 @@
                 </div>
 
                 <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">
-                    <h1 class="text-3xl font-semibold py-3">Хотите найти надежного помощника?</h1>
-                    <p class="text-lg mb-10">Universal Services помогает быстро решать любые бытовые и бизнес-задачи.</p>
+                <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
+                    <p class="text-lg mb-10">@lang('lang.detT_fastHelp')</p>
                     <a href="/categories/1">
                         <button  class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded">
-                            Создайте свое задание
+                            @lang('lang.detT_createOwnTask')
                         </button>
                     </a>
                 </div>
@@ -212,30 +500,30 @@
                             <div class="text-4xl font-semibold my-6">
                                 @if ($response_count <= 4)
                                     @if ($response_count == 1)
-                                        У задания {{$response_count}} отклик
+                                        @lang('lang.detT_onTask') {{$response_count}} отклик
                                     @else
-                                        У задания {{$response_count}} откликa
+                                        @lang('lang.detT_onTask') {{$response_count}} откликa
                                     @endif
                                 @else
-                                    У задания {{$response_count}} откликов
+                                    @lang('lang.detT_onTask') {{$response_count}} откликов
                                 @endif
                             </div>
                         @else
                             <div class="text-4xl font-semibold my-6">
-                                У задания нет откликов
+                                @lang('lang.detT_noCallbacks')
                             </div>
                         @endif
                         <hr>
                         @if(isset($task_responses))
                             <div class="flex my-2">
                                 <div class="mr-2 bg-[#fff6db] px-2">
-                                    <a href="#">по рейтингу</a>
+                                    <a href="#">@lang('lang.detT_byRating')</a>
                                 </div>
                                 <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
-                                    <a href="">по времени</a>
+                                    <a href="">@lang('lang.detT_byTime')</a>
                                 </div>
                                 <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
-                                    <a href="">по отзывам</a>
+                                    <a href="">@lang('lang.detT_byCallbacks')</a>
                                 </div>
                             </div>
                             @foreach ($task_responses as $response)
@@ -251,7 +539,7 @@
                                             <input type="text" name="performer_id" class="hidden" value="{{$response_users->id}}">
                                             <img class="w-7 h-7 ml-2" src="{{asset('images/shield.svg')}}" alt="">
                                             <div class="text-gray-700">
-                                                <i class="fas fa-star text-[#fff0d0] mr-1"></i>4,96 по 63 отзывам
+                                                <i class="fas fa-star text-[#fff0d0] mr-1"></i>@lang('lang.detT_numByNum')
                                             </div>
                                             <div class="mt-2">
                                                 <i class="fas fa-briefcase fa-2x text-blue-300"></i>
@@ -260,23 +548,23 @@
                                         </div>
                                     </div>
                                     <div class="bg-[#f5f5f5] rounded-[10px] p-4">
-                                        <div class="ml-10">
-                                            <div class="text-[17px] text-gray-500 font-semibold">Стоимость {{$response->price}} сум</div>
-                                            <div class="text-[17px] text-gray-500">Здраствуйте.</div>
+                                        <div class="ml-0">
+                                            <div class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}} сум</div>
+                                            <div class="text-[17px] text-gray-500">@lang('lang.detT_Hello')</div>
 
                                             <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
 
-                                            <div class="text-[17px] text-gray-500 font-semibold my-4">Телефон исполнителя: {{$response_users->phone_number}}</div>
+                                            <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>
                                             <div class="">
                                                 <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
-                                                    Написать в чат
+                                                    @lang('lang.detT_writeOnChat')
                                                 </a>
                                                 <a class=" send-data text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-[#6fc727] hover:bg-[#5ab82e] font-medium border border-transparent rounded-md">
-                                                    Выбрать исполнителем
+                                                    @lang('lang.detT_choose')
                                                 </a>
                                             </div>
                                             <div class="text-gray-400 text-[14px] my-6">
-                                                Выберите исполнителя, чтобы потом оставить отзыв о работе.
+                                                @lang('lang.detT_choosePerf')
                                             </div>
                                         </div>
                                     </div>
@@ -288,10 +576,10 @@
                 @endif
                 @endif
                 <div class="mt-12">
-                    <h1 class="text-3xl font-medium ">Другие задания в категории</h1>
+                    <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
                     @foreach($same_tasks as $same_task)
                         <div class="mt-4">
-                            <a href="#" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
+                            <a href="{{$same_task->id}}" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
                             @foreach($users as $user)
                                 @if($user->id == $same_task->user_id)
                                     <p class="text-gray-400 text-base">{{$user->name}}, {{$same_task->budget}}</p>
@@ -305,7 +593,7 @@
 
         {{-- right sidebar start --}}
         <div class="w-3/12 lg:mt-0 mt-8">
-            <h1 class="text-lg">Заказчик этого задания</h1>
+            <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
             <div class="flex flex-row mt-4">
                 <div class="mr-4">
                     @if (isset($current_user))
@@ -318,7 +606,7 @@
                     @endif
                 </div>
                 <div class="">
-                    <a href="@if (isset($current_user))/performers/@endif{{$current_user->id ?? ''}}" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
+                    <a href="@if (isset($current_user))/performers/{{$current_user->id}}@else @endif" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
                     <a href="#" class="text-xl text-gray-500">
                     @if (isset($current_user))
                         @if($current_user->age != "")
@@ -399,6 +687,20 @@
         }
     </style>
     <script>
+        $(document).ready(function(){
+            $("#class_demo").click(function(){
+                $("#class_demo").removeClass("text-gray-500");
+            $("#class_demo").addClass("text-amber-500");
+            $("#class_demo1").removeClass("text-amber-500");
+            $("#class_demo1").addClass("text-gray-500");
+            });
+            $("#class_demo1").click(function(){
+            $("#class_demo1").removeClass("text-gray-500");
+            $("#class_demo1").addClass("text-amber-500");
+            $("#class_demo").removeClass("text-amber-500");
+            $("#class_demo").addClass("text-gray-500");
+            });
+        });
         function valueChanged()
         {
             if($('.coupon_question').is(":checked"))
@@ -548,6 +850,47 @@
                 $(modal).parents(".overlay").removeClass("open");
             }, 50);
 
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#sendbutton").click(function(){
+                $("#sendbutton").hide();
+                $(".hideform").removeClass('hidden');
+            });
+        });
+        $(".send-comment").click(function(event){
+            event.preventDefault();
+            let good = $(".good:checked").val();
+            let comment = $("input[name=comment]").val();
+            let _token = $("input[name=csrf]").val();
+            let performer_id = $("input[name=performer_id]").val();
+            let task_id = $("input[name=task_id]").val();
+            let user_id = $("input[name=user_id]").val();
+            $.ajax({
+                url: "/ajax-request",
+                type:"POST",
+                data:{
+                    good:good,
+                    comment:comment,
+                    user_id:user_id,
+                    performer_id:performer_id,
+                    task_id:task_id,
+                    _token:_token,
+                },
+                success:function(response){
+                    console.log(response);
+                    if(response) {
+                        $('.success').text(response.success);
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+            window.setTimeout(function() {
+                window.location.reload();
+            }, 3000);
         });
     </script>
 

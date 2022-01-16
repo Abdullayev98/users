@@ -8,9 +8,10 @@ return [
     'header_orderBtn' => "Buyurtma xizmati",
     'header_example' => "Masalan:",
     'header_airCon' => "konditsionerni osib qo'ying",
-    'header_exampleSearch' => "Masalan, da'vo qiling",
+    'header_exampleSearch' => "Qanday yordam kerak? yozing...",
     'header_bePerformer' => "ijrochi bo'ling va daromad olishni boshlang",
-    'header_over2mln' => "2 300 000 dan ortiq ijrochilar",
+    'header_over' => "",
+    'header_performers' => "dan ortiq ijrochilar",
     'body_helpers' => "Ijrochilar sizga turli xil vazifalarni hal qilishda yordam berishga tayyor",
     'body_allService' => "Barcha xizmatlarni ko'rish",
     'body_comfortPay' => "Qulay va xavfsiz to'lov",
@@ -76,6 +77,35 @@ return [
     'detT_createOwnTask' => "Topshiriqingizni yarating",
     'detT_otherTask' => "Kategoriyadagi boshqa vazifalar",
     'detT_ownerOfThisTask' => "Ushbu topshiriqning mijozi",
+    'detT_inProsses' => "Davom etilmoqda",
+    'detT_callback' => "Bu vazifaga javob bering",
+    'detT_fill' => "Balansni to'ldirish",
+    'detT_balanceReq' => "Javob berish uchun balansingiz 4000 so‘m bo‘lishi kerak. Agar mijoz siz bilan bog‘lanmoqchi bo‘lsa, biz avtomatik ravishda hisobingizdan aloqa narxini yechib olamiz.",
+    'detT_balanceReq2' => "Agar siz javob yozsangiz, balansdagi miqdor bloklanmagan - siz boshqa topshiriqlarga javob qoldirishingiz mumkin.",
+    'detT_fill2' => "To'ldirish",
+    'detT_addOffers' => "Buyurtmaga taklif qo'shish",
+    'detT_notifMe' => "Agar ijrochi bo'lsa, menga xabar bering",
+    'detT_pointTime' => "Taklifning amal qilish muddatini belgilang",
+    'detT_hour' => "soat",
+    'detT_next' => "Keyingi",
+    'detT_callbackSucces' => "Sizning sorovingiz muvaffaqiyatli yuborildi!",
+    'detT_onTask' => "Vazifada",
+    'detT_callback1' => "sorov",
+    'detT_callback2' => "sorov",
+    'detT_callback3' => "sorov",
+    'detT_noCallbacks' => "Ishda sorovlar yo'q",
+    'detT_byRating' => "baho bo'yicha",
+    'detT_byTime' => "vaqt bo'yicha",
+    'detT_byCallbacks' => "sorovlar orqali",
+    'detT_numByNum' => "63 ta sharh asosida 4,96",
+    'detT_price' => "narx",
+    'detT_Hello' => "Salom.",
+    'detT_phoneNum' => "Ijrochining telefon raqami:",
+    'detT_writeOnChat' => "Chatga yozish",
+    'detT_choose' => "Ijrochini tanlang",
+    'detT_choosePerf' => "Ishnga baho berish uchun ijrochini tanlang.",
+    'detT_otherTaskInCat' => "Kategoriyadagi boshqa vazifalar",
+    'detT_ordererThisTask' => "Bu topshiriqning buyurtmachisi",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -87,6 +117,8 @@ return [
     'mytasks_freeRespond' => "Bepul javob",
     'mytasks_promo' => "Promo",
     'mytasks_allCat' => "Barcha toifalar",
+    'mytask_onTask' => "bu topshiriqda sorovlar",
+    'mytask_callbacks' => "ta",
     // mytasks.blade end
 
     // offertask.blade start
@@ -118,6 +150,13 @@ return [
     'search_tryAnOther' => "So'rovingizni aniqlashtirishga harakat qiling yoki boshqa toifalarni tanlang",
     'search_sportMaster' => "Sport ustasi",
     'search_noFeedback' => "Sharhlar yo'q",
+    'search_remoteJob' => "Masofadan ish",
+    'search_noCallback' => "Sorovlarsiz topshiriqlar",
+    'search_onlyVacancy' => "Faqat vakansiyalar",
+    'search_filter' => "Saralash:",
+    'search_byDate' => "nashr qilingan sana bo'yicha",
+    'search_byHurry' => "shoshilinch",
+    'search_byRemote' => "masofadan",
     // search.blade end
 
     // search2.blade start
@@ -444,6 +483,17 @@ return [
     'settings_nofifMeBy' => "Menga xabar bering:",
     'settings_push' => "Surish",
     'settings_since' => "Universal xizmatlarda 2021-yil 12-sentabrdan boshlab",
+    'settings_allSettings' => "Umumiy sozlamalar",
+    'settings_notifs' => "xabarnoma",
+    'settings_subscribeOnTask' => "Vazifalarga obuna bo'lish",
+    'settings_security' => "Xavfsizlik",
+    'settings_age' => "Yosh",
+    'settings_otherSet' => "Boshqa ma'lumotlar",
+    'settings_city' => "Shahar",
+    'settings_profile' => "profil",
+    'settings_phone' => "Telefon",
+    'settings_noNumber' => "raqam yo'q",
+    'settings_trust' => "Ijtimoiy tarmoqlardagi akkauntlaringizni Servicebox profilingizga ulash orqali foydalanuvchi ishonchini oshiring. Biz sizning kontaktlaringizni maxfiy saqlashga sodiqmiz.",
     // settings.blade end
 
     // executors-courier.blade start
@@ -494,6 +544,11 @@ return [
     'budget_yourBudget' => "Siz qaysi byudjetni ko'ryapsiz?",
     'budget_sum' => "150 so'mgacha",
     'budget_back' => "Orqaga",
+    'budget_text' => "Byudjetni tanlang",
+    'budget_text1' => "Men biznes uchun U-Serdan foydalanaman, yopish qog'ozlari kerak",
+    'budget_text2' => "Sizning topshirig'ingizga faqat yuridik shaxslar, yakka tartibdagi tadbirkorlar va yakka tartibdagi tadbirkorlar javob bera oladi.",
+    'budget_text3' => "Men sug'urtalangan ijrochilarga ustunlik beraman",
+    'budget_text4' => "Zarar bo'lgan taqdirda, sug'urta kompaniyasi sizga 100 000 rublgacha to'laydi. Bu Bepul",
     // budget.blade end
 
     // cargo.blade start
@@ -847,4 +902,171 @@ return [
     'faq_text1' => "Universal xizmatlardan tez-tez so'raladigan savollar va tavsiyalar",
     'faq_text2' => "Biz Intercom dan foydalanmoqdamiz",
     //faq faq blade ended
+
+    //age blade started
+    'age_lookperformersfortask' => "Biz vazifani bajaruvchini qidirmoqdamiz",
+    'age_text' => " Topshiriq 22% bajarildi",
+    'age_studentsage' => "Talaba necha yoshda?",
+    'age_text1' => "Yosh",
+    //age blade ended
+
+    //bugalter blade started
+   'bugalter_taskready' => "Topshiriq 33% bajarildi",
+   'bugalter_placeofservice' => "Xizmat ko'rsatish joyi",
+   //bugalter blade ended
+
+   //buy delivery blade started
+   'buyd_text' => "Biz vazifani bajaruvchini qidirmoqdamiz",
+   'buyd_text1' => "Topshiriq 43% bajarildi",
+   'buyd_text2' => "Yuk tashish imkoniyatlari qanday?",
+   'buyd_text3' => "Posilka og'irligi, kg",
+   'buyd_text4' => "Uzunlik, m",
+   'buyd_text5' => "Kengligi, m",
+   'buyd_text6' => "Balandligi, m",
+   // buy delivery ended
+
+   // computer blade started
+   'comp_text' => "Topshiriq 20% bajarildi",
+   // computer blade ended
+
+   // construction blade started
+   'const_text' => "Topshiriq 80% bajarildi",
+   'const_text1' => "Qanday xizmatlar kerak bo'ladi?",
+   // construction blade started
+
+   // delivery avto blade started 
+   'delA_text' => "Topshiriq 65% bajarildi",
+   'delA_text1' => "Kuryer qaysi transport vositasida bo'lishi kerak?",
+   'delA_text2' => "Talab qilinmaydi",
+   'delA_text3' => "Yengil avtomobil bilan",
+   'delA_text4' => "Yuk mashinasida",
+   // delivery avto blade ended 
+
+   // deloivery blade started
+   'delivery_text' => "Posilka qiymati, uzs.",
+   // delivery blade ended
+
+   // delivery1 blade started
+   'del1_text' => "Topshiriq 75% bajarildi",
+   'del1_text1' => "Xarid uchun qanday to'lashni rejalashtiryapsiz?",
+   // delivery1 blade ended
+
+   // design blade started
+   'design_text' => "Topshiriq 25% bajarildi",
+   // design blade ended
+
+   // glass blade started
+   'glass_text' => "Topshiriq 44% bajarildi",
+   'glass_text1' => "Qancha oynani tozalash kerak?",
+   'glass_text2' => "dona.",
+   // glass blade ended
+
+   // housemaid blade started
+   'housem_wheretoclean' => "Qayerda tozalash kerak?",
+   'housem_text' => "Ijrochilar tegishli transportni tanlashlari uchun vazn va o'lchamlarni ko'rsating.",
+   'housem_text1' => "bino",
+   'housem_text2' => "xonali kvartira",
+   'housem_office' => "Idora",
+   'housem_text3' => "Xususiy uy (dacha)",
+   'housem_text4' => "Qanchalik tez-tez tozalash kerak",
+   'housem_text5' => "Bir martalik tozalash",
+   'housem_text6' => "Oyiga 1 marta",
+   'housem_text7' => "Oyiga 2 marta",
+   'housem_text8' => "Har hafta",
+   // housemaid blade ended
+
+   // housemaid1 blade started
+   'housem1_text' => "Derazalarni yuvish",
+   'housem1_text1' => "Kiyim dazmollash",
+   'housem1_text2' => "Idishlarni yuvish",
+   'housem1_text3' => "Muzlatkich ichida",
+   'housem1_text4' => "Pech ichida",
+   'housem1_text5' => "Mikrato'lqinli pech ichida",
+   'housem1_text6' => "Shkaflar ichida",
+   // housemaid1 blade ended
+
+   // info car blade stared
+   'infoc_text' => "Topshiriq 30% bajarildi",
+   'infoc_text1' => "Kilometr qancha?",
+   'infoc_text2' => "Yurgan masofasi, km",
+   'infoc_text3' => "Ro‘yxatdan o‘tish raqami", 
+   // info car blade ended
+
+    // krosata blade stared
+    'krosata_text' => "Topshiriq 23% bajarildi",
+    // krosata blade ended
+
+    // learning blade stared
+    'learning_text' => "Manzil",
+    // learning blade ended
+
+    // photo blade stared
+    'photo_text' => "Topshiriq 21% bajarildi",
+    // photo blade ended
+
+    //remont car blade started 
+    'remontc_text' => "Qanday mashinangiz bor?",
+    'remontc_text1' => "Avtomobilning markasi, modeli va ishlab chiqarilgan yili",
+    'remontc_text2' => "Masalan, Chevrolet Cruze 2014 ",
+    //remont car blade ended 
+
+    // training blade started
+    'training_text' => "Qanday darslar kerak?",
+    'training_text1' => "Pudratchilar tegishli transportni tanlashlari uchun og'irlik va o'lchamlarni ko'rsating.",
+    'training_text2' => "Chastotasi",
+    'training_text3' => "Muntazam ravishda",
+    'training_text4' => "Faqat bitta mashg'ulot",
+    'training_text5' => "Mashq qancha davom etadi",
+    'training_minut' => "daqiqa",
+    'training_text6' => "Muhim emas",
+    // training blade ended
+
+    // detailed tasks blade started
+    'deteiledT_before' => "gacha",
+    'detailedT_needmovers' => "Ko'chiruvchilar kerak",
+    'detailedT_carmodel' => "Avtomobil modeli",
+    'detailedT_carservice' => "avtomobil xizmati",
+    'detailedT_pobeg' => "Kilometr",
+    'detailedT_notexpassport' => "Ro'yxatdan o'tish guvohnomasi yo'q",
+    'detailedT_deliveryweight' => "Yuk tashish og'irligi",
+    'detailedT_deliverywidth' => "Etkazib berish kengligi",
+    'detailedT_deliverylength' => "Yetkazib berish muddati",
+    'detailedT_deliverybudget' => "Yetkazib berish byudjeti",
+    'detailedT_deliverycar' => "Yetkazib berish mashinasi",
+    'detailedT_servicedelivery' => "Xizmatlarni taqdim etish",
+    'detailedT_text' => "Yuk tashish vaznini sotib oling",
+    'detailedT_text1' => "Yuk tashish balandligini sotib oling",
+    'detailedT_text2' => "Yetkazib berish kengligini sotib oling",
+    'detailedT_text3' => "Yuk tashish uzunligini sotib oling",
+    'detailedT_text4' => "Qurilish xizmatlari",
+    'detailedT_text5' => "Xizmatlar",
+    'detailedT_text6' => "Qavat tomonidan",
+    'detailedT_text7' => "Lift tomonidan",
+    'detailedT_text8' => "Qavat boshiga",
+    'detailedT_text9' => "uchun ko'taring",
+    'detailedT_text10' => "Odamlar soni",
+    'detailedT_weight' => "Og'irligi",
+    'detailedT_length' => "Uzunlik",
+    'detailedT_width' => "Kengligi",
+    'detailedT_height' => "Balandligi",
+    'detailedT_text11' => "Qancha deraza?",
+    'detailedT_text12' => "tozalash xizmati",
+    'detailedT_where' => "Qayerda",
+    'detailedT_howmany' => "Qanday ko'p",
+    'detailedT_smm' => "SMM xizmati",
+    'detailedT_comser' => "Kompyuter xizmati",
+    'detailedT_design' => "Dizayn xizmatlari",
+    'detailedT_itservice' => "IT xizmati",
+    'detailedT_photoser' => "Fotosurat xizmatlari",
+    'detaieldT_text13' => "Ta'mirlash o'rnatish xizmati",
+    'detailedT_text14' => "Uskunalarni ta'mirlash",
+    'detailedT_text15' => "Go'zallik xizmati",
+    'detailedT_text16' => "Buxgalter xizmati",
+    'detailedT_text17' => "O'quv xizmati",
+    'detailedT_time' => "Vaqt",
+    'detailedT_training' => "Ta'lim",
+    'detailedT_text18' => "Bu chaqiruvga javob bering",
+    'detailedT_text19' => "Fikr qoldiring",
+    //detailed tasks blade ended
+
 ];

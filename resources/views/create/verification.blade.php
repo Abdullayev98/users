@@ -6,7 +6,11 @@
   <div class="text-center my-auto pt-48">
     <p class="text-5xl font-bold text-[#fff] ">@lang('lang.ver_becomePerf')</p>
     <p class="mt-8 mb-12 text-[#fff] text-2xl">@lang('lang.ver_uSerHelps')</p>
+      @auth
         <a href="{{ route('task.search') }}">
+            @else
+                <a href="/register">
+            @endauth
           <button  class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 rounded-md text-xl">
             @lang('lang.ver_becomePrefBtn')
           </button>
@@ -71,7 +75,11 @@
 
               </div>
           </div>
-          <a href="{{ route('task.search') }}">
+            @auth
+                <a href="{{ route('task.search') }}">
+                    @else
+                        <a href="/register">
+                            @endauth
             <button  class="font-sans mt-8 text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
               @lang('lang.ver_becomePrefBtn')
             </button>
@@ -90,7 +98,11 @@
             <div>
               <hr class="mt-8 mb-8">
               <p class="mb-16">@lang('lang.ver_maxOrder')</p>
-              <a href="{{ route('task.search') }}" class="">
+                @auth
+                    <a href="{{ route('task.search') }}">
+                        @else
+                            <a href="/register">
+                                @endauth
                 <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                   @lang('lang.ver_startEarning')
                 </button>
@@ -107,7 +119,11 @@
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24">@lang('lang.ver_opinion')</p>
-            <a href="{{ route('task.search') }}">
+              @auth
+                  <a href="{{ route('task.search') }}">
+                      @else
+                          <a href="/register">
+                              @endauth
               <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                 @lang('lang.ver_startEarningForY')
               </button>
@@ -127,7 +143,11 @@
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24">@lang('lang.ver_opinion')</p>
-            <a href="{{ route('task.search') }}">
+              @auth
+                  <a href="{{ route('task.search') }}">
+                      @else
+                          <a href="/register">
+                              @endauth
               <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                 @lang('lang.ver_startEarningForY')
               </button>
@@ -147,7 +167,11 @@
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24">@lang('lang.ver_securityDescr')</p>
-            <a href="{{ route('task.search') }}">
+              @auth
+                  <a href="{{ route('task.search') }}">
+                      @else
+                          <a href="/register">
+                              @endauth
               <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                 @lang('lang.ver_getPerfStatus')
               </button>
@@ -164,7 +188,11 @@
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24">@lang('lang.ver_opinion2')</p>
-            <a href="{{ route('task.search') }}">
+              @auth
+                  <a href="{{ route('task.search') }}">
+                      @else
+                          <a href="/register">
+                              @endauth
               <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
@@ -184,7 +212,11 @@
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-24"> клиентами.@lang('lang.ver_opinion2')</p>
-            <a href="{{ route('task.search') }}">
+              @auth
+                  <a href="{{ route('task.search') }}">
+                      @else
+                          <a href="/register">
+                              @endauth
               <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
@@ -244,7 +276,11 @@
               <h1 class="font-bold text-6xl mt-4">65 000</h1>
            <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSCour')</p>
             <div class="mt-16">
-              <a href="{{ route('task.search') }}">
+                @auth
+                    <a href="{{ route('task.search') }}">
+                        @else
+                            <a href="/register">
+                                @endauth
                 <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                   @lang('lang.ver_becomePrefBtn')
                 </button>
@@ -275,7 +311,11 @@
             <h1 class="font-bold text-6xl mt-4">70 000</h1>
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSPhoto')</p>
           <div class="mt-16">
-            <a href="{{ route('task.search') }}">
+              @auth
+                  <a href="{{ route('task.search') }}">
+                      @else
+                          <a href="/register">
+                              @endauth
               <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
@@ -294,7 +334,11 @@
             <h1 class="font-bold text-6xl mt-4">70 000</h1>
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageS3')</p>
           <div class="mt-16">
-            <a href="{{ route('task.search') }}">
+              @auth
+                  <a href="{{ route('task.search') }}">
+                      @else
+                          <a href="/register">
+                              @endauth
               <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>

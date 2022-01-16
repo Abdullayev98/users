@@ -89,10 +89,10 @@
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->
                             <ul id="tabs" class="md:inline-flex block w-full flex-center px-1 pt-2">
-                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">Общие настройки</a></li>
-                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Уведомления</a></li>
-                                <li class="xl:px-2 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Подписка на задания</a></li>
-                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Безопасность</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">@lang('lang.settings_allSettings')</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">@lang('lang.settings_notifs')</a></li>
+                                <li class="xl:px-2 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">@lang('lang.settings_subscribeOnTask')</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">@lang('lang.settings_security')</a></li>
                             </ul>
 
 <!-- Tab Contents -->
@@ -113,22 +113,22 @@
                                                     <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="email" name="email" id="email" value="{{$user->email}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="phone_number">Phone number@lang('lang.header_sub')</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="phone_number">Phone number</label>
                                                     <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number"
                                                     @if ($user->phone_number=="") placeholder="+998(00)000-00-00"
                                                     @else value="{{$user->phone_number}}"
                                                     @endif >
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="age">Возраст@lang('lang.header_sub')</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="age">@lang('lang.settings_age')</label>
                                                     <input class="rounded-xl border py-2 px-3 w-full text-grey-900" min="18" type="number" name="age" id="age" value="{{$user->age}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="textarea">Другие сведения@lang('lang.header_sub')</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="textarea">@lang('lang.settings_otherSet')</label>
                                                     <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900" name="description" id="textarea">{{$user->description}}</textarea>
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400" for="location">Город@lang('lang.header_sub')</label>
+                                                    <label class="mb-2 text-md md:block text-gray-400" for="location">@lang('lang.settings_city')</label>
                                                     <select class="border rounded-xl py-2 px-3 w-full text-grey-900" name="location">
                                                         <option value="Toshkent" {{ $user->location=='Toshkent' ? 'selected' : '' }}>Toshkent</option>
                                                         <option value="Farg'ona" {{ $user->location=='Farg\'ona' ? 'selected' : '' }}>Farg'ona</option>
@@ -157,7 +157,7 @@
                                                 <hr>
                                             </form>
 
-                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">профиль@lang('lang.settings_delete')</a>
+                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">@lang('lang.settings_profile')</a>
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -377,11 +377,11 @@
                             <i class="fas fa-phone-alt text-white"></i>
                         </div>
                         <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-black block mt-2">Телефон</h5>
+                            <h5 class="font-bold text-black block mt-2">@lang('lang.settings_phone')</h5>
                             @if ($user->phone_number!="")
                             <p class="font-bold text-black block ">{{$user->phone_number}}</p>
                             @else
-                            номер нет
+                            @lang('lang.settings_noNumber')
                             @endif
                         </div>
                     </div>
@@ -396,8 +396,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="mx-5 my-4">Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных
-                    сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.</p>
+                <p class="mx-5 my-4">@lang('lang.settings_trust')</p>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
                     <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
                         style="background-color: #4285F4;">
@@ -405,7 +404,7 @@
                     </div>
                     <div class="ml-3 col-span-3">
                         <h5 class="font-bold text-black block mt-2 text-md">Google</h5>
-                        <a href="https://www.google.com/" target="_blank" class="block text-sm">Привязать</p></a>
+                        <a href="https://www.google.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</p></a>
                     </div>
                 </div>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -415,7 +414,7 @@
                     </div>
                     <div class="ml-3 col-span-3">
                         <h5 class="font-bold text-black block mt-2 text-md">Facebook</h5>
-                        <a href="https://www.facebook.com/" target="_blank" class="block text-sm">Привязать</a>
+                        <a href="https://www.facebook.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div>
                 {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -424,7 +423,7 @@
                     </div>
                     <div class="ml-3 col-span-3">
                         <h5 class="font-bold text-black block mt-2 text-md">OneID</h5>
-                        <a href="#" class=" block text-sm">Привязать</a>
+                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -433,7 +432,7 @@
                     </div>
                     <div class="ml-3 col-span-3">
                         <h5 class="font-bold text-black block mt-2 text-md">mail.ru</h5>
-                        <a href="#" class=" block text-sm">Привязать</a>
+                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -442,7 +441,7 @@
                     </div>
                     <div class="ml-3 col-span-3">
                         <h5 class="font-bold text-black block mt-2 text-md">Twitter</h5>
-                        <a href="#" class=" block text-sm">Привязать</a>
+                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
@@ -451,7 +450,7 @@
                     </div>
                     <div class="ml-3 col-span-3">
                         <h5 class="font-bold text-black block mt-2 text-md">AppleID</h5>
-                        <a href="#" class=" block text-sm">Привязать</a>
+                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div> --}}
             </div>

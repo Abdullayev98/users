@@ -10,11 +10,30 @@
             </div>
         </div>
     @endif
-    <div
-        class="bg-[url('https://homecleanhome.co.nz/wp-content/uploads/2015/07/Vacuum-Slider.jpg')] bg-center bg-cover h-[450px] ">
-        <div class="container-lg mx-auto bg-[url('{{asset('images/pattern-dotted.svg')}}')] bg-repeat h-[450px] ">
+    <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
+    <div class="HomepageHeaderSection">
+        <div class=" video-bg">
+            @if(setting('site.Video_bg') != null)
+            @php
+            $array_video = json_decode(setting('site.Video_bg'), true);
+                $str_replace = str_replace("\\","/",$array_video);
+            @endphp
+            <video src="storage/{{$array_video['0']['download_link']}}" type="video/mp4" autoplay muted loop></video>
+            @else
+            @php
+                $pp = setting('site.foto_bg');
+                $str_replace = str_replace("\\","/",$pp);
+            @endphp
+            <img src="storage/{{$str_replace}}" alt="rasm yoq">
+            @endif
+            <div class="effects"></div>
+            <div class="video-bg__content"></div>
+        </div>
+    </div>
+    <div class="relative z-999 top-0 left-50">
+        <div class="">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
-                <div class="text-center pt-32">
+                <div class="text-center pt-24">
                     <h1 class="font-bold text-white text-3xl lg:text-6xl md:text-4xl">
                         <span class="block xl:block">@lang('lang.header_title')</span>
                     </h1>
@@ -24,38 +43,28 @@
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-<<<<<<< HEAD
-                                   class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-lg md:pl-2 md:w-2/3 py-3">
-                                <datalist  id="TypeList">
-=======
                                    class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md xl:w-[700px] lg:w-[600px] md:w-[400px] py-3">
                                 <datalist id="TypeList">
->>>>>>> f20ac100caaab1fc484ce900de0c1c7df80b767e
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
-                                            value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
-                                            <option
                                             value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
-                                        class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24 z-50 relative text-white">
-                                    @lang('lang.header_orderBtn')
-                                </a>
-                                <a href="" type="submit" id="createhref"
-                                        class="float-right border bg-[#f70]  border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24 z-50 relative text-white">
+                                        class="float-right border bg-[#f70] z-0 border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24  relative text-white">
                                     @lang('lang.header_orderBtn')
                                 </a>
                         </div>
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
-                        @lang('lang.header_example') {{$random_category}}<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">@lang('lang.header_airCon')</span>
-                        @lang('lang.header_example') {{$random_category}}<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer">@lang('lang.header_airCon')</span>
+
+
+                        @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer"> {{$random_category->name}}</span>
                         </div>
                     </div>
                     <div class="w-[350px] mx-auto mt-12">
                       <a href="/verification" class="text-[#80e6ff] text-center">
                         <i class="text-blue fas fa-shield-alt float-left mr-0 text-2xl"></i>
-                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">@lang('lang.header_bePerformer')</p>
+                        <p class="ml-0 border-b border-dotted border-[#80e6ff]">@lang('lang.header_bePerformer') </p>
                       </a>
                     </div>
                 </div>
@@ -82,10 +91,10 @@
         </div>
     </div>
     <main>
-        <div class="container md:text-left text-left mx-auto mt-8 md:px-16 px-4">
-            {{-- <div class="text-3xl font-bold text-center">
-                @lang('lang.header_over2mln')
-            </div> --}}
+        <div class="container md:text-left text-left mx-auto mt-36 md:px-16 px-4">
+            <div class="text-3xl font-bold text-center">
+                @lang('lang.header_over') {{$users_count}}  @lang('lang.header_performers')
+            </div>
             <div class="text-sm text-center mt-4">
             @lang('lang.body_helpers')
             </div>
@@ -231,19 +240,21 @@
             </div>
         </div>
         <div class="bg-[#deeafb]">
-            <div class="container mx-auto">
+            <div class="container mx-auto pb-24">
                 <div class="text-4xl w-2/3 mx-auto py-16 text-center">
                 @lang('lang.body_benefit')
                 </div>
-                <div class="grid grid-cols-4 w-9/12 mx-auto">
+                <div class="grid grid-cols-4 w-9/12 mx-auto gap-y-12">
+                    @foreach ($advants as $advant )
                     <div class="">
-                        <img src="http://pngimg.com/uploads/ruble/ruble_PNG35.png" class="w-32" alt="">
+                        <img src="/storage/{{$advant->image}}" class="w-32" alt="">
                     </div>
                     <div class="col-span-3">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_bestPrise')</h4>
-                        <p class="text-md">@lang('lang.body_bestPriseCon')</p>
+                        <h4 class="font-semibold text-2xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
+                        <p class="text-md">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
                     </div>
-                    <div class=" my-16">
+                    @endforeach
+                    {{-- <div class=" my-16"> @lang('lang.body_bestPrise') @lang('lang.body_bestPriseCon')
                         <img src="https://www.freeiconspng.com/uploads/white-like-icon-png-20.png" class="w-32" alt="">
                     </div>
                     <div class="col-span-3 my-16">
@@ -257,7 +268,7 @@
                     <div class="col-span-3 my-16">
                         <h4 class="font-semibold text-2xl">@lang('lang.body_timeSaving')</h4>
                         <p class="text-md">@lang('lang.body_timeSavingCon')</p>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -302,7 +313,6 @@
                                 <div class="mx-auto w-2/3">
                                     <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">
                                         {{$task->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
-                                        {{$task->count()}}
                                     </a>
                                     <p class="text-sm mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
                                         {{$task->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}

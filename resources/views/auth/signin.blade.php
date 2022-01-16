@@ -51,8 +51,8 @@
                         Войти
                     </button>
                 </form>
-                <p class="text-sky-500 text-lg mb-4">
-                    <a href="#">
+                <p class="text-lg mb-4">
+                    <a class="text-sky-500" href="{{ route('reset') }}">
                     @lang('lang.signin_passwordforgot')
                     </a>
                 </p>

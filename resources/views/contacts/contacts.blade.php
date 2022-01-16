@@ -56,22 +56,11 @@
                             @lang('lang.contact_text11')
                         </div>
                         <div>
-                        Общество с ограниченной ответственностью «Киберлогистик»
-
-                        Адрес для корреспонденции, направления жалоб и предложений:
-                        119021, Россия, г. Москва, а/я 21
-
-                        Юридический адрес:
-                        121205, Россия, г. Москва, Территория Инновационного Центра «Сколково», улица Нобеля 7, офис 47
-
-                        ИНН 7730194136
-                        КПП 773101001
-                        ОГРН 5157746302434
+                        @lang('lang.contact_text12')
                         </div>
                     </div>
                 </div>
             </div>
             <div class="basis-2/6 hidden md:inline-block"><img src="https://clipartspub.com/images/software-clipart-clip-art-9.jpg" alt=""></div>
         </div>
-@endsection
 @endsection

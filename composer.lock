@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09ab8355df57076d82d0b307647f9641",
+    "content-hash": "222722cf444c2de7adff497d3cebd864",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -8564,6 +8564,53 @@
                 }
             ],
             "time": "2021-11-09T08:33:29+00:00"
+        },
+        {
+            "name": "teamprodev/playmobile-sms",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teamprodev/laravel_sms_playmobile.git",
+                "reference": "43fb8f39ef8e1bc92e89b4639d357f0bdd94ce8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teamprodev/laravel_sms_playmobile/zipball/43fb8f39ef8e1bc92e89b4639d357f0bdd94ce8d",
+                "reference": "43fb8f39ef8e1bc92e89b4639d357f0bdd94ce8d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "PlayMobile\\SMS\\SmsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PlayMobile\\SMS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AzizbekDev",
+                    "email": "azizbek_muzaffarov@mail.ru"
+                }
+            ],
+            "description": "Playmobile SMS service to Laravel project",
+            "support": {
+                "issues": "https://github.com/teamprodev/laravel_sms_playmobile/issues",
+                "source": "https://github.com/teamprodev/laravel_sms_playmobile/tree/1.0.0"
+            },
+            "time": "2022-01-14T07:02:01+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

@@ -102,7 +102,7 @@
 
             <div>
                 {{-- <div class="text-4xl font-semibold my-6">
-                    У задания {{$task_count}} откликов
+                    @lang('lang.mytask_onTask') {{$task_count}} @lang('lang.mytask_callbacks') 
                 </div> --}}
                 <hr>
                 <div>

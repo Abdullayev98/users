@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portfolio_new;
 use File;
 use App\Models\User;
 use App\Models\Task;
@@ -21,7 +22,8 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
         $vcs = UserView::where('user_id', $user->id)->first();
         $task = Task::where('user_id',Auth::user()->id)->count();
-        return view('profile.profile', compact('user','vcs','task'));
+        $ports = Portfolio_new::where('user_id',Auth::user()->id)->get();
+        return view('profile.profile', compact('user','vcs','task','ports'));
     }
     public function update(Request $request, $id)
     {
@@ -153,4 +155,25 @@ class ProfileController extends Controller
         $user->save();
         return redirect()->back();
     }
+
+    //portfolio
+    public function StorePicture(Request $request){
+            $request->validate([
+              'image' => 'required|image'
+            ]);
+            $portfolio = new Portfolio_new;
+            $photo = $request->file('image');
+
+            if($photo){
+                // $image_name = time() . '.' . $photo->getClientOriginalExtension();
+                $imagename = "images/portfolios/".$photo->getClientOriginalName();
+                $photo->move(public_path().'/AvatarImages/images/portfolios/',$imagename);
+                $portfolio->image = $imagename;
+            }
+            $portfolio->user_id= Auth::user()->id;
+            $portfolio->comment = $request->comment;
+            $portfolio->save();
+            return back();
+
+        }
 }

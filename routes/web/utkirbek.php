@@ -19,8 +19,10 @@ Route::post('/create-user', [UserController::class, 'customSignup'])->name('user
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
+Route::get('/reset', [UserController::class, 'reset'])->name('reset');
 
-//
+Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm');
+
 //Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth', 'is_verify_email']);
 Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth']);
 Route::get('account/verify/{token}', [UserController::class, 'verifyAccount'])->name('user.verify');
