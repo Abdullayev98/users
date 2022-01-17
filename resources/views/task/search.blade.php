@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                     <label class="inline-flex items-center mt-3">
-                                        <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
+                                        <input type="checkbox" class="form-checkbox checkboxByAs  h-5 w-5 text-orange-400"
                                         ><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
@@ -442,7 +442,7 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    tasks_list_all(dataAjax)
+                    tasks_list(dataAjax)
                 },
                 error: function () {
                     alert("Ajax ishida xatolik...");
@@ -458,7 +458,7 @@
                 type: 'GET',
                 success: function(data) {
                     dataAjax2 = $.parseJSON(JSON.stringify(data));
-                    tasks_list_all(dataAjax2)
+                    tasks_list(dataAjax2)
                     tasks_show();
                     // for(var i in data) {
                     //     // dataGeo.push(i,data[i].coordinates.split(','));
@@ -479,7 +479,7 @@
                 type: 'GET',
                 success: function(data) {
                     dataAjax3 = $.parseJSON(JSON.stringify(data));
-                    tasks_list_all(dataAjax3)
+                    tasks_list(dataAjax3)
                     tasks_show();
                     // for(var i in data) {
                     //     // dataGeo.push(i,data[i].coordinates.split(','));

@@ -503,5 +503,12 @@ $(document).ready(function(){
     $("#as").click(function(){
         third_ajax()
     });
+    $(".checkboxByAs").change(function() {
+        if(this.checked) {
+            third_ajax()
+        }else {
+            first_ajax()
+        }
+    });
 });
 
