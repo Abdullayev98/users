@@ -158,7 +158,8 @@
                             <div class="b-tasks-sorting">
                                 <div class="inline-flex items-center my-5">
                                     <span class="title__994cd">@lang('lang.search_filter')</span>
-                                    <a href="/task-search" class="mx-5">@lang('lang.search_byDate')</a>
+{{--                                    <a href="{{}}" class="mx-5">@lang('lang.search_byDate')</a>--}}
+                                    <button class="mx-5" onclick="tasks_list_all(dataAjax);">@lang('lang.search_byDate')</button>
                                     <button id="srochnost" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
                                     <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
@@ -172,7 +173,7 @@
                                     <div class="butt w-full h-full">
                                         <ul class="text-center">
                                             <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
-                                            <li><button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show()">@lang('lang.search_showMore')</button></li>
+                                            <li><button class=" mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show()">@lang('lang.search_showMore')</button></li>
                                         </ul>
 {{--                                        <div class="w-full h-full">--}}
 
@@ -427,9 +428,9 @@
         first_ajax('all');
         second_ajax();
 
-        // module.exports = {
-        //     plugins: [require('@tailwindcss/forms'),]
-        // };
+        module.exports = {
+            plugins: [require('@tailwindcss/forms'),]
+        };
 
         function first_ajax(id) {
             $.ajax({
