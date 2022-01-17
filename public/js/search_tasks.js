@@ -1,5 +1,6 @@
 let dataAjax = {};
 let dataAjax2 = {};
+let dataAjax3 = {};
 let dataGeo = [];
 $('.all_cat').click();
 $('.all_cat2').click();
@@ -483,25 +484,28 @@ function chicats_click_true(id, name) {
 }
 
 $(document).ready(function(){
-    $("#as").click(function(){
-        tasks_show_all()
-        $('.location').each(function( index ) {
-            if ($( this ).text() != ''){
-                var parent = $(this).parent();
-                var parent2 = parent.parent();
-                var parent3 = parent2.parent();
-                parent3.hide();
-                $(".butt").hide();
-                $('#srochnost').prop('disabled', false);
-            }
-        });
-    });
+    // $("#as").click(function(){
+    //     tasks_show_all()
+    //     $('.location').each(function( index ) {
+    //         if ($( this ).text() != ''){
+    //             var parent = $(this).parent();
+    //             var parent2 = parent.parent();
+    //             var parent3 = parent2.parent();
+    //             parent3.hide();
+    //             $(".butt").hide();
+    //             $('#srochnost').prop('disabled', false);
+    //         }
+    //     });
+    // });
 
     $("#srochnost").click(function(){
         second_ajax()
     });
     $(".byid").click(function(){
         first_ajax()
+    });
+    $("#as").click(function(){
+        third_ajax()
     });
 });
 

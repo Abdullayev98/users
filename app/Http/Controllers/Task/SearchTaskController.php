@@ -46,6 +46,16 @@ class SearchTaskController extends VoyagerBaseController
         return $tasks->all();
     }
 
+    public function ajax_task3(Request $request){
+        $tasks =  DB::table("tasks")->where([['address', '=', null], ['status', '=', null]])
+            ->orderBy('id','desc')
+            ->join('categories', 'tasks.category_id', '=', 'categories.id')
+            ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+            ->get();
+
+        return $tasks->all();
+    }
+
     public function my_tasks(){
         $tasks = Task::where('user_id', auth()->id())->get();
         $categories = Category::get();

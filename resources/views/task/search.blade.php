@@ -470,6 +470,27 @@
             });
         }
 
+        function third_ajax(){
+            $.ajax({
+                url: "{{route('task3.search')}}",
+                // dataType: 'json',
+                // data: {orderBy:d},
+                type: 'GET',
+                success: function(data) {
+                    dataAjax3 = $.parseJSON(JSON.stringify(data));
+                    tasks_list_all(dataAjax3)
+                    tasks_show();
+                    // for(var i in data) {
+                    //     // dataGeo.push(i,data[i].coordinates.split(','));
+                    //     dataGeo.push(data[i].coordinates.split(','));
+                    // }
+                },
+                error: function() {
+                    alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");
+                }
+            });
+        }
+
         function img_show() {
             $(".show_tasks").empty();
             $(".show_tasks").append(
