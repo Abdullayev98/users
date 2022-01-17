@@ -12,7 +12,8 @@ $(".for_check2 input:checkbox").each(function() {
 function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
-        if (data.status != 1) {
+        if (data.address != '') {
+            dl++
             $(".show_tasks").append(
                 `<div class="sort-table print_block" hidden>
                 <div class="sort-table as">
@@ -41,12 +42,12 @@ function tasks_list_all(data) {
 function tasks_list(data) {
     $(".show_tasks").empty();
     let id;
-
     $('.chi_cat').each(function() {
         if (this.checked) {
             id = this.name
             $.each(data, function(index, data) {
-                if (data.category_id == id && data.status != 1) {
+                if (data.category_id == id && data.address != '') {
+                    dl++
                     $(".show_tasks").append(
                     `<div class="sort-table print_block" hidden>
                     <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="`+ data.start_date +`">
@@ -72,12 +73,16 @@ function tasks_list(data) {
     });
 }
 
+function resetCounters(){
+    s=0, dl=0;
+}
+
 function tasks_show(){
     let i=1;
     $('.print_block').each(function() {
         if (this.hidden) {
             if (i <= p){
-                if(s <= dataAjax.length-1){
+                if(s <= dl){
                     this.hidden = false;
                     i++
                     s++
@@ -85,19 +90,15 @@ function tasks_show(){
             }
         }
     });
-    if (s > dataAjax.length-1){
-        $('#pnum').html(dataAjax.length-1)
-    }else{
-        $('#pnum').html(s)
-    }
-$('#snum').html(dataAjax.length-1)
+
+$('#pnum').html(s)
+$('#snum').html(dl)
 }
 
 function tasks_show_all(){
     $('.print_block').each(function() {
         this.hidden = false;
     });
-
 }
 
 let tabsContainer = document.querySelector("#tabs");
