@@ -607,7 +607,7 @@ return [
     'name_pedCourier' => "Услуги пешего курьера",
     'name_next' => "Далее",
     'name_deleteAsk' => "Введённые данные будут потеряны. <br> Удалить задание?",
-    'name_continue' => "Продожить",
+    'name_continue' => "Продолжить создание",
     'name_delete' => "Удалить",
     'name_cencel' => "Отмена",
     // name.blade end

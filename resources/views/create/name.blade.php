@@ -251,24 +251,19 @@ $('#for_filter_select'+ id +'').removeClass('hidden');
         }
     </script>
     <script>
-
-
         $(".delete-task").click(function (){
             Swal.fire({
                 title: '@lang('lang.name_deleteAsk')',
                 showDenyButton: true,
                 confirmButtonText: '@lang('lang.name_continue')',
                 denyButtonText: '@lang('lang.name_delete')',
-                cancelButtonText: '@lang('lang.name_cencel')',
             }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     Swal.close()
                 } else if (result.isDenied) {
                 }
             })
         })
-
     </script>
 
 @endsection
