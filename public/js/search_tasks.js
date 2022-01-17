@@ -1,4 +1,5 @@
 let dataAjax = {};
+let dataAjax2 = {};
 let dataGeo = [];
 $('.all_cat').click();
 $('.all_cat2').click();
@@ -480,6 +481,7 @@ function chicats_click_true(id, name) {
         }
     });
 }
+
 $(document).ready(function(){
     $("#as").click(function(){
         tasks_show_all()
@@ -494,29 +496,14 @@ $(document).ready(function(){
             }
         });
     });
+
+    $("#srochnost").click(function(){
+        second_ajax()
+    });
+    $(".byid").click(function(){
+        first_ajax()
+    });
 });
 
-function chat_order() {
-   if (!$("#srochnost").is(":disabled")) {
 
-       var container = $(".show_tasks");
-       var items = $(".sort-item");
-       $('#srochnost').prop('disabled', true);
-       items.each(function () {
-           var BCDate = $(this).attr("data-event-date");
-           var standartDate = new Date(BCDate).getTime();
-           $(this).attr("data-event-date", standartDate);
-           console.log(standartDate);
-       });
-
-
-       items.sort(function (a, b) {
-           a = parseFloat($(a).attr("data-event-date"));
-           b = parseFloat($(b).attr("data-event-date"));
-           return a > b ? -1 : a < b ? 1 : 0;
-       }).each(function () {
-           container.prepend(this);
-       });
-   }
-}
 

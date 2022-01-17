@@ -159,8 +159,8 @@
                                 <div class="inline-flex items-center my-5">
                                     <span class="title__994cd">@lang('lang.search_filter')</span>
 {{--                                    <a href="{{}}" class="mx-5">@lang('lang.search_byDate')</a>--}}
-                                    <button class="mx-5" onclick="tasks_list_all(data)">@lang('lang.search_byDate')</button>
-                                    <button id="srochnost"  onclick="chat_order()" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
+                                    <button class="mx-5 byid">@lang('lang.search_byDate')</button>
+                                    <button id="srochnost" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
                                     <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
                             </div>
@@ -456,10 +456,13 @@
                 // data: {orderBy:d},
                 type: 'GET',
                 success: function(data) {
-                    for(var i in data) {
-                        // dataGeo.push(i,data[i].coordinates.split(','));
-                        dataGeo.push(data[i].coordinates.split(','));
-                    }
+                    dataAjax2 = $.parseJSON(JSON.stringify(data));
+                    tasks_list_all(dataAjax2)
+                    tasks_show();
+                    // for(var i in data) {
+                    //     // dataGeo.push(i,data[i].coordinates.split(','));
+                    //     dataGeo.push(data[i].coordinates.split(','));
+                    // }
                 },
                 error: function() {
                     alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");

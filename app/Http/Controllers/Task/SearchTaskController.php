@@ -28,23 +28,22 @@ class SearchTaskController extends VoyagerBaseController
     }
 
     public function ajax_tasks(Request $request){
-        if (isset($request->orderBy)) {
-            if ($request->orderBy == 'all') {
+
               $tasks =  DB::table("tasks")->where('status',null)->orderBy('id','desc')
               ->join('categories', 'tasks.category_id', '=', 'categories.id')
               ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
               ->get();
-          }
-        }
+
         return $tasks->all();
     }
 
     public function ajax_task2(Request $request){
-                $tasks =  DB::table("tasks")->orderBy('id','desc')
-                    ->select('coordinates')
-                    ->get();
+        $tasks =  DB::table("tasks")->where('status',null)->orderBy('start_date','asc')
+            ->join('categories', 'tasks.category_id', '=', 'categories.id')
+            ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+            ->get();
 
-        return $tasks;
+        return $tasks->all();
     }
 
     public function my_tasks(){
