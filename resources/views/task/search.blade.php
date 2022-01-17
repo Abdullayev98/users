@@ -423,7 +423,7 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script type="text/javascript">
-        let r=0, m=1, p=10, s=0;
+        let r=0, m=1, p=10, s=0, dl=0;
         map_pos(m)
         first_ajax('all');
         second_ajax();
