@@ -14,21 +14,19 @@ function tasks_list_all(data) {
     $.each(data, function(index, data) {
         if (data.status != 1) {
             $(".show_tasks").append(
-                `<div class="sort-table print_block" hidden>
-                <div class="sort-table as">
-                    <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
+                `<div class="sort-list print_block" hidden>
+                    <div class="w-full border hover:bg-blue-100 h-[140px] sort-item" data-event-date="` + data.start_date + `">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-sm ml-12 mt-4 location">` + data.address + `</p>
-                    <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
+                    <p class="text-sm ml-10 mt-1 pl-4" >Начать ` + data.start_date + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
                     <p class="text-sm ml-12">` + data.category_name + `</p>
-                    </div>
                     </div>
                     </div>
                     </div>`,
@@ -48,14 +46,14 @@ function tasks_list(data) {
             $.each(data, function(index, data) {
                 if (data.category_id == id && data.status != 1) {
                     $(".show_tasks").append(
-                    `<div class="sort-table print_block" hidden>
-                    <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="`+ data.start_date +`">
+                    `<div class="print_block sort-list" hidden>
+                    <div class="w-full border hover:bg-blue-100 h-[140px] sort-item"  data-event-date="` + data.start_date + `">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-sm ml-10 mt-1 location">` + data.address + `</p>
-                    <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
+                    <p class="text-sm ml-10 mt-1 pl-4 ">Начать ` + data.start_date + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
@@ -97,7 +95,6 @@ function tasks_show_all(){
     $('.print_block').each(function() {
         this.hidden = false;
     });
-
 }
 
 let tabsContainer = document.querySelector("#tabs");
@@ -491,9 +488,33 @@ $(document).ready(function(){
                 var parent3 = parent2.parent();
                 parent3.hide();
                 $(".butt").hide();
+                $('#srochnost').prop('disabled', false);
             }
         });
     });
 });
 
+function chat_order() {
+   if (!$("#srochnost").is(":disabled")) {
+
+       var container = $(".show_tasks");
+       var items = $(".sort-item");
+       $('#srochnost').prop('disabled', true);
+       items.each(function () {
+           var BCDate = $(this).attr("data-event-date");
+           var standartDate = new Date(BCDate).getTime();
+           $(this).attr("data-event-date", standartDate);
+           console.log(standartDate);
+       });
+
+
+       items.sort(function (a, b) {
+           a = parseFloat($(a).attr("data-event-date"));
+           b = parseFloat($(b).attr("data-event-date"));
+           return a > b ? -1 : a < b ? 1 : 0;
+       }).each(function () {
+           container.prepend(this);
+       });
+   }
+}
 

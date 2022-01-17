@@ -159,8 +159,8 @@
                                 <div class="inline-flex items-center my-5">
                                     <span class="title__994cd">@lang('lang.search_filter')</span>
 {{--                                    <a href="{{}}" class="mx-5">@lang('lang.search_byDate')</a>--}}
-                                    <button class="mx-5" onclick="tasks_list_all(dataAjax);">@lang('lang.search_byDate')</button>
-                                    <button id="srochnost" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
+                                    <button class="mx-5" onclick="tasks_list_all(data)">@lang('lang.search_byDate')</button>
+                                    <button id="srochnost"  onclick="chat_order()" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
                                     <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
                             </div>
@@ -730,26 +730,6 @@
             }
         }
 
-    </script>
-
-    <script>
-        $(function() {
-            $("[data-sort]").click(function() {
-                var collator = new Intl.Collator(["en", "ru"], {
-                        numeric: true,
-                        bytime: true,
-                        bymonth: true
-                    }),
-                    rank = this.dataset.sort,
-                    order = (this.dataset.order = -(this.dataset.order || -1));
-                comparator = (a, b) => order * collator.compare(
-                    a.dataset[rank],
-                    b.dataset[rank]
-                ),
-                    items = $(".item").sort(comparator);
-                $(".sort-table").append(items);
-            });
-        });
     </script>
     <script>
         var $btns = $('.btn').click(function() {
