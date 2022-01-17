@@ -93,6 +93,12 @@ function tasks_show(){
 $('#snum').html(dataAjax.length-1)
 }
 
+function tasks_show_all(){
+    $('.print_block').each(function() {
+        this.hidden = false;
+    });
+}
+
 let tabsContainer = document.querySelector("#tabs");
 let tabTogglers = tabsContainer.querySelectorAll("a");
 
@@ -476,6 +482,7 @@ function chicats_click_true(id, name) {
 }
 $(document).ready(function(){
     $("#as").click(function(){
+        tasks_show_all()
         $( ".location" ).each(function( index ) {
             if ($( this ).text() != ''){
                 var parent = $(this).parent();

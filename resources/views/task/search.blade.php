@@ -169,20 +169,30 @@
                                         {{--Show Tasks list --}}
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                                    <div></div>
-                                    <div class="butt col-span-3 text-center w-full h-full">
-                                        <ul class="inline-flex">
-                                            <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span></li>
-                                            <li>&nbsp;из&nbsp;<span id="snum"></span></li>
-                                            <li></li>
+                                    <div class="butt w-full h-full">
+                                        <ul class="text-center">
+                                            <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
+                                            <li><button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show()">@lang('lang.search_showMore')</button></li>
                                         </ul>
-                                        <div>
-                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"
-                                        onclick="tasks_show()">@lang('lang.search_showMore')</button>
-                                        </div>
+{{--                                        <div class="w-full h-full">--}}
+
+{{--                                        </div>--}}
                                     </div>
-                                </div>
+
+{{--                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
+{{--                                    <div></div>--}}
+{{--                                    <div class="butt col-span-3 text-center w-full h-full">--}}
+{{--                                        <ul class="inline-flex">--}}
+{{--                                            <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span></li>--}}
+{{--                                            <li>&nbsp;из&nbsp;<span id="snum"></span></li>--}}
+{{--                                            <li></li>--}}
+{{--                                        </ul>--}}
+{{--                                        <div>--}}
+{{--                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"--}}
+{{--                                        onclick="tasks_show()">@lang('lang.search_showMore')</button>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -472,6 +482,7 @@
             // $('.butt').attr('style', 'display: none');
         }
 
+        function map1_show(){
         ymaps.ready(init);
         function init() {
                 var myMap1 = new ymaps.Map('map1', {
@@ -527,14 +538,14 @@
             });
             myMap1.geoObjects.add(circle);
         };
+        }
 
         function map_pos(mm) {
             if (mm) {
-                m = 0;
                 $(".big-map").empty();
                 $(".small-map").append(
                     `<div id="map2" class="h-60 my-5 rounded-lg w-full static">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(m)"/></div>
+                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
                     </div>`
                 ),
                 ymaps.ready(init);
@@ -617,11 +628,10 @@
 
                 }
             } else {
-                m = 1;
                 $(".small-map").empty();
                 $(".big-map").append(
                     `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(m)"/></div>
+                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(1)"/></div>
                     </div>`
                 ),
                 ymaps.ready(init);
