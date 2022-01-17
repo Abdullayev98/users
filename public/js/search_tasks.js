@@ -13,18 +13,22 @@ $(".for_check2 input:checkbox").each(function() {
 
 function tasks_list_all(data) {
     $(".show_tasks").empty();
+    let nm;
     $.each(data, function(index, data) {
         if (data.address != '') {
             dl++
+            nm='1'
+        }else{nm='0'}
             $(".show_tasks").append(
-                `<div class="sort-list print_block" hidden>
-                    <div class="w-full border hover:bg-blue-100 h-[140px] sort-item" data-event-date="` + data.start_date + `">
+                `<div class="sort-table print_block" name="`+nm+`" hidden>
+                <div class="sort-table as">
+                    <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-sm ml-12 mt-4 location">` + data.address + `</p>
-                    <p class="text-sm ml-10 mt-1 pl-4" >Начать ` + data.start_date + `</p>
+                    <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                     <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
@@ -32,60 +36,73 @@ function tasks_list_all(data) {
                     <p class="text-sm ml-12">` + data.category_name + `</p>
                     </div>
                     </div>
+                    </div>
                     </div>`,
             )
-
-        }
     });
 }
 
 function tasks_list(data) {
     $(".show_tasks").empty();
-    let id;
+    let id, nm;
     $('.chi_cat').each(function() {
         if (this.checked) {
             id = this.name
             $.each(data, function(index, data) {
-                if (data.category_id == id && data.address != '') {
-                    dl++
-                    $(".show_tasks").append(
-                    `<div class="print_block sort-list" hidden>
-                    <div class="w-full border hover:bg-blue-100 h-[140px] sort-item"  data-event-date="` + data.start_date + `">
-                    <div class="w-11/12 h-12 m-4">
-                    <div class="float-left w-9/12 " id="results">
-                    <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
-                    <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-sm ml-10 mt-1 location">` + data.address + `</p>
-                    <p class="text-sm ml-10 mt-1 pl-4 ">Начать ` + data.start_date + `</p>
-                    <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
-                    </div>
-                    <div class="float-right w-1/4 text-right " id="about">
-                    <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">` + data.category_name + `</p>
-                    </div>
-                    </div>
-                    </div>
-                    </div>`,
-                    )
+                if (data.category_id == id) {
+                    if (data.address != '') {
+                        dl++
+                        nm='1'
+                    }else{nm='0'}
+                        $(".show_tasks").append(
+                            `<div class="sort-table print_block" name="`+nm+`" hidden>
+                            <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="` + data.start_date + `">
+                            <div class="w-11/12 h-12 m-4">
+                            <div class="float-left w-9/12 " id="results">
+                            <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
+                            <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
+                            <p class="text-sm ml-10 mt-1 location">` + data.address + `</p>
+                            <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
+                            <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
+                            </div>
+                            <div class="float-right w-1/4 text-right " id="about">
+                            <a href="#" class="text-lg">` + data.budget + `</a>
+                            <p class="text-sm ml-12">` + data.category_name + `</p>
+                            </div>
+                            </div>
+                            </div>
+                            </div>`,
+                        )
                 }
             });
         }
     });
 }
 
+function byDateShow(){
+    $('.print_block').each(function() {
+        this.hidden = true;
+    });
+    resetCounters()
+    tasks_show()
+}
+
 function resetCounters(){
-    s=0, dl=0;
+    s=0;
 }
 
 function tasks_show(){
     let i=1;
     $('.print_block').each(function() {
+        // if ((this.hidden) && (i <= p) && (s <= dl) && (this.name == '1'))
         if (this.hidden) {
             if (i <= p){
-                if(s <= dl){
-                    this.hidden = false;
-                    i++
-                    s++
+                if (s <= dl) {
+                    if (this.name == '1') {
+                        this.hidden = false;
+                        i++
+                        s++
+                    }
                 }
             }
         }
@@ -483,20 +500,8 @@ function chicats_click_true(id, name) {
     });
 }
 
+
 $(document).ready(function(){
-    // $("#as").click(function(){
-    //     tasks_show_all()
-    //     $('.location').each(function( index ) {
-    //         if ($( this ).text() != ''){
-    //             var parent = $(this).parent();
-    //             var parent2 = parent.parent();
-    //             var parent3 = parent2.parent();
-    //             parent3.hide();
-    //             $(".butt").hide();
-    //             $('#srochnost').prop('disabled', false);
-    //         }
-    //     });
-    // });
 
     $("#srochnost").click(function(){
         second_ajax()
