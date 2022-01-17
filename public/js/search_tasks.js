@@ -1,4 +1,5 @@
 let dataAjax = {};
+let dataAjax2 = {};
 let dataGeo = [];
 $('.all_cat').click();
 $('.all_cat2').click();
@@ -497,6 +498,7 @@ function chicats_click_true(id, name) {
         }
     });
 }
+
 $(document).ready(function(){
     $("#as").click(function(){
         tasks_show_all()
@@ -510,6 +512,17 @@ $(document).ready(function(){
             }
         });
     });
+
+    $("#srochnost").click(function(){
+        second_ajax()
+    });
+    $(".byid").click(function(){
+        first_ajax()
+    });
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8654a570810caacb610450f9ee9eea7d9cb3d782
 

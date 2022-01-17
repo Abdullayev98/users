@@ -159,7 +159,11 @@
                                 <div class="inline-flex items-center my-5">
                                     <span class="title__994cd">@lang('lang.search_filter')</span>
 {{--                                    <a href="{{}}" class="mx-5">@lang('lang.search_byDate')</a>--}}
+<<<<<<< HEAD
                                     <button class="mx-5" onclick="byDateShow();">@lang('lang.search_byDate')</button>
+=======
+                                    <button class="mx-5 byid">@lang('lang.search_byDate')</button>
+>>>>>>> 8654a570810caacb610450f9ee9eea7d9cb3d782
                                     <button id="srochnost" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
                                     <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
@@ -456,10 +460,13 @@
                 // data: {orderBy:d},
                 type: 'GET',
                 success: function(data) {
-                    for(var i in data) {
-                        // dataGeo.push(i,data[i].coordinates.split(','));
-                        dataGeo.push(data[i].coordinates.split(','));
-                    }
+                    dataAjax2 = $.parseJSON(JSON.stringify(data));
+                    tasks_list_all(dataAjax2)
+                    tasks_show();
+                    // for(var i in data) {
+                    //     // dataGeo.push(i,data[i].coordinates.split(','));
+                    //     dataGeo.push(data[i].coordinates.split(','));
+                    // }
                 },
                 error: function() {
                     alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");
