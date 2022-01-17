@@ -13,14 +13,9 @@ $(".for_check2 input:checkbox").each(function() {
 
 function tasks_list_all(data) {
     $(".show_tasks").empty();
-    let nm;
     $.each(data, function(index, data) {
-        if (data.address != '') {
-            dl++
-            nm='1'
-        }else{nm='0'}
             $(".show_tasks").append(
-                `<div class="sort-table print_block" name="`+nm+`" hidden>
+                `<div class="sort-table print_block">
                 <div class="sort-table as">
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
@@ -44,18 +39,14 @@ function tasks_list_all(data) {
 
 function tasks_list(data) {
     $(".show_tasks").empty();
-    let id, nm;
+    let id;
     $('.chi_cat').each(function() {
         if (this.checked) {
             id = this.name
             $.each(data, function(index, data) {
                 if (data.category_id == id) {
-                    if (data.address != '') {
-                        dl++
-                        nm='1'
-                    }else{nm='0'}
                         $(".show_tasks").append(
-                            `<div class="sort-table print_block" name="`+nm+`" hidden>
+                            `<div class="sort-table print_block">
                             <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="` + data.start_date + `">
                             <div class="w-11/12 h-12 m-4">
                             <div class="float-left w-9/12 " id="results">
@@ -513,6 +504,4 @@ $(document).ready(function(){
         third_ajax()
     });
 });
-
-
 
