@@ -1,6 +1,6 @@
 let dataAjax = {};
-let dataAjax2 = {};
-let dataAjax3 = {};
+// let dataAjax2 = {};
+// let dataAjax3 = {};
 let dataGeo = [];
 $('.all_cat').click();
 $('.all_cat2').click();
@@ -16,8 +16,8 @@ function tasks_list_all(data) {
     $.each(data, function(index, data) {
         dl++
             $(".show_tasks").append(
-                `<div class="sort-table print_block" hidden>
-                <div class="sort-table as">
+                    `<div class="sort-table print_block" hidden>
+                    <div class="sort-table as">
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
@@ -478,23 +478,23 @@ $(document).ready(function(){
 
     $("#srochnost").click(function(){
         resetCounters()
-        second_ajax()
+        first_ajax('sroch')
     });
     $(".byid").click(function(){
         resetCounters()
-        first_ajax()
+        first_ajax('all')
     });
     $("#as").click(function(){
         resetCounters()
-        third_ajax()
+        first_ajax('udal')
     });
     $(".checkboxByAs").change(function() {
         if(this.checked) {
             resetCounters()
-            third_ajax()
+            first_ajax('udal')
         }else {
             resetCounters()
-            first_ajax()
+            first_ajax('all')
         }
     });
 });

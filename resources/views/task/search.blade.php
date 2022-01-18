@@ -441,7 +441,10 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    tasks_list_all(dataAjax)
+                    for(var i in data) {
+                        dataGeo.push(data[i].coordinates.split(','));
+                    }
+                    tasks_list(dataAjax)
                     tasks_show();
                 },
                 error: function () {
@@ -450,47 +453,47 @@
             });
         }
 
-        function second_ajax(){
-            $.ajax({
-                url: "{{route('task2.search')}}",
-                // dataType: 'json',
-                // data: {orderBy:d},
-                type: 'GET',
-                success: function(data) {
-                    dataAjax2 = $.parseJSON(JSON.stringify(data));
-                    tasks_list(dataAjax2)
-                    tasks_show();
-                    // for(var i in data) {
-                    //     // dataGeo.push(i,data[i].coordinates.split(','));
-                    //     dataGeo.push(data[i].coordinates.split(','));
-                    // }
-                },
-                error: function() {
-                    alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");
-                }
-            });
-        }
+        {{--function second_ajax(){--}}
+        {{--    $.ajax({--}}
+        {{--        url: "{{route('task2.search')}}",--}}
+        {{--        // dataType: 'json',--}}
+        {{--        // data: {orderBy:d},--}}
+        {{--        type: 'GET',--}}
+        {{--        success: function(data) {--}}
+        {{--            dataAjax2 = $.parseJSON(JSON.stringify(data));--}}
+        {{--            tasks_list(dataAjax2)--}}
+        {{--            tasks_show();--}}
+        {{--            // for(var i in data) {--}}
+        {{--            //     // dataGeo.push(i,data[i].coordinates.split(','));--}}
+        {{--            //     dataGeo.push(data[i].coordinates.split(','));--}}
+        {{--            // }--}}
+        {{--        },--}}
+        {{--        error: function() {--}}
+        {{--            alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--}--}}
 
-        function third_ajax(){
-            $.ajax({
-                url: "{{route('task3.search')}}",
-                // dataType: 'json',
-                // data: {orderBy:d},
-                type: 'GET',
-                success: function(data) {
-                    dataAjax3 = $.parseJSON(JSON.stringify(data));
-                    tasks_list(dataAjax3)
-                    tasks_show();
-                    // for(var i in data) {
-                    //     // dataGeo.push(i,data[i].coordinates.split(','));
-                    //     dataGeo.push(data[i].coordinates.split(','));
-                    // }
-                },
-                error: function() {
-                    alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");
-                }
-            });
-        }
+        {{--function third_ajax(){--}}
+        {{--    $.ajax({--}}
+        {{--        url: "{{route('task3.search')}}",--}}
+        {{--        // dataType: 'json',--}}
+        {{--        // data: {orderBy:d},--}}
+        {{--        type: 'GET',--}}
+        {{--        success: function(data) {--}}
+        {{--            dataAjax3 = $.parseJSON(JSON.stringify(data));--}}
+        {{--            tasks_list(dataAjax3)--}}
+        {{--            tasks_show();--}}
+        {{--            // for(var i in data) {--}}
+        {{--            //     // dataGeo.push(i,data[i].coordinates.split(','));--}}
+        {{--            //     dataGeo.push(data[i].coordinates.split(','));--}}
+        {{--            // }--}}
+        {{--        },--}}
+        {{--        error: function() {--}}
+        {{--            alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--}--}}
 
         function img_show() {
             $(".show_tasks").empty();
@@ -572,9 +575,9 @@
                 });
                 clusterer.add(geoObjects);
                 myMap1.geoObjects.add(clusterer);
-                // myMap1.setBounds(clusterer.getBounds(), {
-                //     checkZoomRange: true
-                // });
+                myMap1.setBounds(clusterer.getBounds(), {
+                    checkZoomRange: false
+                });
 
                 // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
                 circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, { draggable: true });
@@ -656,9 +659,9 @@
                     });
                     clusterer.add(geoObjects);
                     myMap2.geoObjects.add(clusterer);
-                    // myMap2.setBounds(clusterer.getBounds(), {
-                    //     checkZoomRange: true
-                    // });
+                    myMap2.setBounds(clusterer.getBounds(), {
+                        checkZoomRange: false
+                    });
 
                     // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
                     circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
@@ -723,9 +726,9 @@
                     });
                     clusterer.add(geoObjects);
                     myMap3.geoObjects.add(clusterer);
-                    // myMap3.setBounds(clusterer.getBounds(), {
-                    //     checkZoomRange: true
-                    // });
+                    myMap3.setBounds(clusterer.getBounds(), {
+                        checkZoomRange: false
+                    });
 
                     // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
                     circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
