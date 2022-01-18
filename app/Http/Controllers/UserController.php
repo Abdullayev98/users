@@ -72,8 +72,8 @@ class UserController extends Controller
     public function customSignup(Request $request)
     {
         $validated = $request->validate([
-            'name'         => 'required',
-            'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/',
+            'name'         => 'required|unique:users,name',
+            'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/|unique:users,phone_number',
             'email'        => 'nullable|email|unique:users,email',
             'password'     => 'required|min:6',
         ]);
@@ -95,6 +95,7 @@ class UserController extends Controller
             });
         }elseif($request->has('phone_number')){
             // TODO: send client sms
+
         }
         return view('home', compact('tasks', 'howitworks', 'categories'))->withSuccess('Logged-in');
     }
