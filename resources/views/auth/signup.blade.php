@@ -28,7 +28,7 @@
                             id="name" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                         <br>
                         @if ($errors->has('name'))
-                            <span class="text-danger" style="color: red">Пользователь с таким именем уже существует!</span>
+                            <span class="text-danger" style="color: red">{{ $errors->first('name') }}</span>
                         @endif
                         <label class="block text-gray-500 text-sm" for="email_address">
                             @lang('lang.signup_elpocta')
@@ -37,7 +37,7 @@
                         id="email_address" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                         <br>
                         @if ($errors->has('email'))
-                            <span class="text-danger" style="color: red">Пользователь с такой почтой уже существует!</span>
+                            <span class="text-danger" style="color: red">{{ $errors->first('email') }}</span>
                         @endif
                         <label class="block text-gray-500 text-sm" for="phone_number">
                             @lang('lang.signup_telnumber') <span class="text-red-500">*</span>
