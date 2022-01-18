@@ -46,7 +46,7 @@
 
                                         <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
                                             <label class="text-md mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                            <select name="" id="selectGeo" class="py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full" onchange="r=$('#selectGeo').val(); ">
+                                            <select name="" id="selectGeo" class="py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full" onchange="r=$('#selectGeo').val(); map_pos(k)">
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                     <label class="inline-flex items-center mt-3">
-                                        <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
+                                        <input type="checkbox" class="form-checkbox checkboxByAs  h-5 w-5 text-orange-400"
                                         ><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
@@ -158,7 +158,9 @@
                             <div class="b-tasks-sorting">
                                 <div class="inline-flex items-center my-5">
                                     <span class="title__994cd">@lang('lang.search_filter')</span>
-                                    <a href="/task-search" class="mx-5">@lang('lang.search_byDate')</a>
+
+                                    <button class="mx-5 byid">@lang('lang.search_byDate')</button>
+
                                     <button id="srochnost" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
                                     <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
@@ -169,20 +171,30 @@
                                         {{--Show Tasks list --}}
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                                    <div></div>
-                                    <div class="butt col-span-3 text-center w-full h-full">
-                                        <ul class="inline-flex">
-                                            <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span></li>
-                                            <li>&nbsp;из&nbsp;<span id="snum"></span></li>
-                                            <li></li>
+                                    <div class="w-full h-full">
+                                        <ul class="text-center">
+                                            <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
+                                            <li><button id="loadMore" class="butt mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show()">@lang('lang.search_showMore')</button></li>
                                         </ul>
-                                        <div>
-                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"
-                                        onclick="tasks_show()">@lang('lang.search_showMore')</button>
-                                        </div>
+{{--                                        <div class="w-full h-full">--}}
+
+{{--                                        </div>--}}
                                     </div>
-                                </div>
+
+{{--                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
+{{--                                    <div></div>--}}
+{{--                                    <div class="butt col-span-3 text-center w-full h-full">--}}
+{{--                                        <ul class="inline-flex">--}}
+{{--                                            <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span></li>--}}
+{{--                                            <li>&nbsp;из&nbsp;<span id="snum"></span></li>--}}
+{{--                                            <li></li>--}}
+{{--                                        </ul>--}}
+{{--                                        <div>--}}
+{{--                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"--}}
+{{--                                        onclick="tasks_show()">@lang('lang.search_showMore')</button>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -412,15 +424,12 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script type="text/javascript">
-        let r=0, m=1, p=10, s=0;
-        map_pos(m)
+        let r=0, m=1, p=10, s=0, dl=0, k=1;
+        map_pos(m);
         first_ajax('all');
-        second_ajax();
-
-        // module.exports = {
-        //     plugins: [require('@tailwindcss/forms'),]
-        // };
-
+        module.exports = {
+            plugins: [require('@tailwindcss/forms'),]
+        };
         function first_ajax(id) {
             $.ajax({
                 url: "{{route('tasks.search')}}",
@@ -429,7 +438,13 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    tasks_list_all(dataAjax)
+                    if (dataGeo.length == 0){
+                        for (var i in data) {
+                            dataGeo.push(data[i].coordinates.split(','));
+                        }
+                    }
+                    resetCounters()
+                    tasks_list(dataAjax)
                     tasks_show();
                 },
                 error: function () {
@@ -438,23 +453,47 @@
             });
         }
 
-        function second_ajax(){
-            $.ajax({
-                url: "{{route('task2.search')}}",
-                // dataType: 'json',
-                // data: {orderBy:d},
-                type: 'GET',
-                success: function(data) {
-                    for(var i in data) {
-                        // dataGeo.push(i,data[i].coordinates.split(','));
-                        dataGeo.push(data[i].coordinates.split(','));
-                    }
-                },
-                error: function() {
-                    alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");
-                }
-            });
-        }
+        {{--function second_ajax(){--}}
+        {{--    $.ajax({--}}
+        {{--        url: "{{route('task2.search')}}",--}}
+        {{--        // dataType: 'json',--}}
+        {{--        // data: {orderBy:d},--}}
+        {{--        type: 'GET',--}}
+        {{--        success: function(data) {--}}
+        {{--            dataAjax2 = $.parseJSON(JSON.stringify(data));--}}
+        {{--            tasks_list(dataAjax2)--}}
+        {{--            tasks_show();--}}
+        {{--            // for(var i in data) {--}}
+        {{--            //     // dataGeo.push(i,data[i].coordinates.split(','));--}}
+        {{--            //     dataGeo.push(data[i].coordinates.split(','));--}}
+        {{--            // }--}}
+        {{--        },--}}
+        {{--        error: function() {--}}
+        {{--            alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--}--}}
+
+        {{--function third_ajax(){--}}
+        {{--    $.ajax({--}}
+        {{--        url: "{{route('task3.search')}}",--}}
+        {{--        // dataType: 'json',--}}
+        {{--        // data: {orderBy:d},--}}
+        {{--        type: 'GET',--}}
+        {{--        success: function(data) {--}}
+        {{--            dataAjax3 = $.parseJSON(JSON.stringify(data));--}}
+        {{--            tasks_list(dataAjax3)--}}
+        {{--            tasks_show();--}}
+        {{--            // for(var i in data) {--}}
+        {{--            //     // dataGeo.push(i,data[i].coordinates.split(','));--}}
+        {{--            //     dataGeo.push(data[i].coordinates.split(','));--}}
+        {{--            // }--}}
+        {{--        },--}}
+        {{--        error: function() {--}}
+        {{--            alert("Geokodlarni Ajax orqali yuklab bo\'lmadi...");--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--}--}}
 
         function img_show() {
             $(".show_tasks").empty();
@@ -472,6 +511,56 @@
             // $('.butt').attr('style', 'display: none');
         }
 
+        function tasks_show(){
+            let i=1;
+            $('.print_block').each(function() {
+                // if ((this.hidden) && (i <= p) && (s <= dl) && (this.name == '1'))
+                if (this.hidden) {
+                    if (i <= p){
+                        if (s <= dl) {
+                            // if (this.name == '1') {
+                            this.hidden = false;
+                            i++
+                            s++
+                            // }
+                        }
+                    }
+                }
+            });
+            $('#pnum').html(s)
+            $('#snum').html(dl)
+            if (s==dl){
+                $('.butt').attr("disabled","disabled")
+            }
+        }
+
+        // $("#mpshow").click(function(){
+        //     ymaps.ready(init);
+        //     function init() {
+        //         location.get({
+        //             mapStateAutoApply: true
+        //         })
+        //             .then(
+        //                 function (result) {
+        //                     var userAddress = result.geoObjects.get(0).properties.get('text');
+        //                     var myInput = document.getElementById("suggest");
+        //                     myInput.value = userAddress;
+        //                     var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
+        //                     if (k) {
+        //                         myMap2.geoObjects.add(result.geoObjects)
+        //                     } else {
+        //                         myMap3.geoObjects.add(result.geoObjects)
+        //                     }
+        //                 },
+        //                 function (err) {
+        //                     console.log('Ошибка: ' + err)
+        //                 }
+        //             );
+        //     }
+        // });
+
+
+        function map1_show(){
         ymaps.ready(init);
         function init() {
                 var myMap1 = new ymaps.Map('map1', {
@@ -513,11 +602,11 @@
                 clusterer.add(geoObjects);
                 myMap1.geoObjects.add(clusterer);
                 myMap1.setBounds(clusterer.getBounds(), {
-                    checkZoomRange: true
+                    checkZoomRange: false
                 });
 
-                // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
-                circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, { draggable: true });
+                circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
+                // circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, { draggable: true });
                 circle.events.add('drag', function () {
                 // Объекты, попадающие в круг, будут становиться красными.
                 var objectsInsideCircle = objects.searchInside(circle);
@@ -527,14 +616,16 @@
             });
             myMap1.geoObjects.add(circle);
         };
+        }
 
         function map_pos(mm) {
             if (mm) {
-                m = 0;
+                k=1;
+                $(".small-map").empty();
                 $(".big-map").empty();
                 $(".small-map").append(
                     `<div id="map2" class="h-60 my-5 rounded-lg w-full static">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(m)"/></div>
+                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
                     </div>`
                 ),
                 ymaps.ready(init);
@@ -559,6 +650,7 @@
                                     myInput.value = userAddress;
                                     var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
                                     myMap2.geoObjects.add(result.geoObjects)
+                                    myMap3.geoObjects.add(result.geoObjects)
                                 },
                                 function(err) {
                                     console.log('Ошибка: ' + err)
@@ -597,11 +689,11 @@
                     clusterer.add(geoObjects);
                     myMap2.geoObjects.add(clusterer);
                     myMap2.setBounds(clusterer.getBounds(), {
-                        checkZoomRange: true
+                        checkZoomRange: false
                     });
 
-                    // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
-                    circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
+                    circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
+                    // circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
                     circle.events.add('drag', function () {
                         // Объекты, попадающие в круг, будут становиться красными.
                         var objectsInsideCircle = objects.searchInside(circle);
@@ -617,11 +709,12 @@
 
                 }
             } else {
-                m = 1;
+                k=0;
+                $(".big-map").empty();
                 $(".small-map").empty();
                 $(".big-map").append(
                     `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(m)"/></div>
+                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(1)"/></div>
                     </div>`
                 ),
                 ymaps.ready(init);
@@ -632,7 +725,26 @@
                             // behaviors: ['default', 'scrollZoom']
                         }, {
                             searchControlProvider: 'yandex#search'
-                        }),
+                        });
+
+                    $("#mpshow").click(function(){
+                        location.get({
+                            mapStateAutoApply: true
+                        })
+                            .then(
+                                function(result) {
+                                    var userAddress = result.geoObjects.get(0).properties.get('text');
+                                    var  myInput = document.getElementById("suggest");
+                                    myInput.value = userAddress;
+                                    var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
+                                    myMap2.geoObjects.add(result.geoObjects)
+                                    myMap3.geoObjects.add(result.geoObjects)
+                                },
+                                function(err) {
+                                    console.log('Ошибка: ' + err)
+                                }
+                            );
+                    });
 
                         clusterer = new ymaps.Clusterer({
                             preset: 'islands#invertedVioletClusterIcons',
@@ -665,11 +777,11 @@
                     clusterer.add(geoObjects);
                     myMap3.geoObjects.add(clusterer);
                     myMap3.setBounds(clusterer.getBounds(), {
-                        checkZoomRange: true
+                        checkZoomRange: false
                     });
 
-                    // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
-                    circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
+                    circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
+                    // circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
                     circle.events.add('drag', function () {
                         // Объекты, попадающие в круг, будут становиться красными.
                         var objectsInsideCircle = objects.searchInside(circle);
@@ -740,6 +852,7 @@
             });
         });
     </script>
+
     <script>
         var $btns = $('.btn').click(function() {
             if (this.id == 'all') {

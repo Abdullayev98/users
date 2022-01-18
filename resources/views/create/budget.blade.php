@@ -54,7 +54,7 @@
                         </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4 xl:block hidden">
+                                <div id="formulario" class="flex flex-col gap-y-4 xl:block hidden relative right-14">
                                     <div class="cube">
                                         <div class="a"></div>
                                         <div id="slider-range-min" class="flex"></div>

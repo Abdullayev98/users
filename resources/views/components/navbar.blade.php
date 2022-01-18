@@ -17,7 +17,7 @@
             </div>
         </nav>
         <div class="flex justify-center w-8/12 md:w-full">
-            <a href="/">
+            <a class="logo cursor-pointer delete-task" href="/">
                 <img src="{{asset('/images/logo.png')}}" class="overflow-hidden h-14 lg:h-16 py-2" alt="" />
             </a>
         </div>
@@ -81,7 +81,7 @@
                             <li class="mb-1">
                                 {{-- icon-2 --}}
                                 <div class="max-w-lg mx-auto ml-6">
-                                  <a href="/profile">
+                                  <a href="/profile" class="delete-task cursor-pointer profiles">
                                     <button class="" type="button" data-dropdown-toggle="dropdownuser"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
                                     </button>
                                   </a>
@@ -90,20 +90,20 @@
                           @endauth
                       @endif
                         <li class="mb-1">
-                            <a href="/categories/1" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_createTask')</a>
+                            <a href="/categories/1" class="task block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_createTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="{{ route('task.search') }}" class="search block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_findTask')</a>
+                            <a href="{{ route('task.search') }}" class="searchs block delete-task cursor-pointer p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_findTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="/performers" class="performers block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_perfs')</a>
+                            <a href="/performers" class="performers delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_perfs')</a>
                         </li>
 
                         @if (Route::has('login'))
                             @auth
 
                             <li class="mb-1">
-                                <a href="{{ route('task.mytasks') }}" class="block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_myTasks')</a>
+                                <a href="{{ route('task.mytasks') }}" class="my-tasks delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_myTasks')</a>
                             </li>
 
                                    {{-- icon-3 --}}
@@ -203,11 +203,11 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="searchs font-medium delete-task text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
-        <a href="/performers" class="performer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
+        <a href="{{ route('task.search') }}" class="search cursor-pointer font-medium delete-task text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
+        <a href="/performers" class="performer delete-task cursor-pointer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
-              <a href="{{ route('task.mytasks') }}" class="font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
+              <a href="{{ route('task.mytasks') }}" class="my-task delete-task cursor-pointer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
             @else
             @endauth
         @endif
@@ -291,10 +291,10 @@ use Illuminate\Support\Facades\Auth;
                     <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdowndesk">
                         <ul class="py-1" aria-labelledby="dropdowndesk">
                             <li>
-                                <a href="/profile" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_profile')</a>
+                                <a href="/profile" class="profile delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_profile')</a>
                             </li>
                             <li>
-                                <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_set')</a>
+                                <a href="/profile/settings" class="setting delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_set')</a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_exit')</a>
@@ -317,7 +317,7 @@ use Illuminate\Support\Facades\Auth;
                   </a>
                   @else
                   <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
-                     O'Z
+                     UZ
                   </a>
                   I
                   <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">
@@ -347,7 +347,7 @@ use Illuminate\Support\Facades\Auth;
                     </a>
                     @else
                     <a href="{{route('lang', ['lang'=>'uz'])}}" class="hover:text-red-500 mr-2">
-                      O'Z
+                      UZ
                     </a>
                     I
                     <a href="{{route('lang', ['lang'=>'ru'])}}" class="text-red-500 hover:text-gray-500-500 ml-2">
@@ -641,15 +641,24 @@ if(user_id_for_js3 === Number(data["user_id_fjs"])){
       alert('Hello');
     }
 </script>
-<script>
-        var link = document.location.href.split('/');
-        if(link[3] == 'task'){
-            $(".performers").removeAttr("href");
-            $(".performer").removeAttr("href");
-            $(".search").removeAttr("href");
-            $(".searchs").removeAttr("href");
-        }
-</script>
+
+    <script >
+            var link = document.location.href.split('/');
+            if(link[3] == 'task'){
+                $(".performers").removeAttr("href");
+                $(".performer").removeAttr("href");
+                $(".search").removeAttr("href");
+                $(".searchs").removeAttr("href");
+                $(".my-task").removeAttr("href");
+                $(".my-tasks").removeAttr("href");
+                $(".task").removeAttr("href");
+                $(".setting").removeAttr("href");
+                $(".profile").removeAttr("href");
+                $(".profiles").removeAttr("href");
+                $(".logo").removeAttr("href");
+            }
+    </script>
+
 @section("javascript")
 
 @endsection
