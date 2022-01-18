@@ -14,8 +14,9 @@ $(".for_check2 input:checkbox").each(function() {
 function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
+        dl++
             $(".show_tasks").append(
-                `<div class="sort-table print_block">
+                `<div class="sort-table print_block" hidden>
                 <div class="sort-table as">
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
@@ -45,8 +46,9 @@ function tasks_list(data) {
             id = this.name
             $.each(data, function(index, data) {
                 if (data.category_id == id) {
+                    dl++
                         $(".show_tasks").append(
-                            `<div class="sort-table print_block">
+                            `<div class="sort-table print_block" hidden>
                             <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="` + data.start_date + `">
                             <div class="w-11/12 h-12 m-4">
                             <div class="float-left w-9/12 " id="results">
@@ -79,28 +81,8 @@ function byDateShow(){
 }
 
 function resetCounters(){
-    s=0;
-}
-
-function tasks_show(){
-    let i=1;
-    $('.print_block').each(function() {
-        // if ((this.hidden) && (i <= p) && (s <= dl) && (this.name == '1'))
-        if (this.hidden) {
-            if (i <= p){
-                if (s <= dl) {
-                    if (this.name == '1') {
-                        this.hidden = false;
-                        i++
-                        s++
-                    }
-                }
-            }
-        }
-    });
-
-$('#pnum').html(s)
-$('#snum').html(dl)
+    $('.butt').removeAttr("disabled")
+    s=0, dl=0;
 }
 
 function tasks_show_all(){
@@ -495,18 +477,23 @@ function chicats_click_true(id, name) {
 $(document).ready(function(){
 
     $("#srochnost").click(function(){
+        resetCounters()
         second_ajax()
     });
     $(".byid").click(function(){
+        resetCounters()
         first_ajax()
     });
     $("#as").click(function(){
+        resetCounters()
         third_ajax()
     });
     $(".checkboxByAs").change(function() {
         if(this.checked) {
+            resetCounters()
             third_ajax()
         }else {
+            resetCounters()
             first_ajax()
         }
     });

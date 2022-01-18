@@ -171,10 +171,10 @@
                                         {{--Show Tasks list --}}
                                     </div>
                                 </div>
-                                    <div class="butt w-full h-full">
+                                    <div class="w-full h-full">
                                         <ul class="text-center">
                                             <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
-                                            <li><button id="loadMore" class=" mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" >@lang('lang.search_showMore')</button></li>
+                                            <li><button id="loadMore" class="butt mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show()">@lang('lang.search_showMore')</button></li>
                                         </ul>
 {{--                                        <div class="w-full h-full">--}}
 
@@ -425,10 +425,9 @@
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script type="text/javascript">
         let r=0, m=1, p=10, s=0, dl=0;
-        map_pos(m)
+        map_pos(m);
         first_ajax('all');
-        second_ajax();
-        tasks_show()
+        // second_ajax();
 
         module.exports = {
             plugins: [require('@tailwindcss/forms'),]
@@ -442,7 +441,8 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    tasks_list(dataAjax)
+                    tasks_list_all(dataAjax)
+                    tasks_show();
                 },
                 error: function () {
                     alert("Ajax ishida xatolik...");
@@ -508,6 +508,29 @@
             // $('.butt').attr('style', 'display: none');
         }
 
+        function tasks_show(){
+            let i=1;
+            $('.print_block').each(function() {
+                // if ((this.hidden) && (i <= p) && (s <= dl) && (this.name == '1'))
+                if (this.hidden) {
+                    if (i <= p){
+                        if (s <= dl) {
+                            // if (this.name == '1') {
+                            this.hidden = false;
+                            i++
+                            s++
+                            // }
+                        }
+                    }
+                }
+            });
+            $('#pnum').html(s)
+            $('#snum').html(dl)
+            if (s==dl){
+                $('.butt').attr("disabled","disabled")
+            }
+        }
+
         function map1_show(){
         ymaps.ready(init);
         function init() {
@@ -549,9 +572,9 @@
                 });
                 clusterer.add(geoObjects);
                 myMap1.geoObjects.add(clusterer);
-                myMap1.setBounds(clusterer.getBounds(), {
-                    checkZoomRange: true
-                });
+                // myMap1.setBounds(clusterer.getBounds(), {
+                //     checkZoomRange: true
+                // });
 
                 // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
                 circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, { draggable: true });
@@ -633,9 +656,9 @@
                     });
                     clusterer.add(geoObjects);
                     myMap2.geoObjects.add(clusterer);
-                    myMap2.setBounds(clusterer.getBounds(), {
-                        checkZoomRange: true
-                    });
+                    // myMap2.setBounds(clusterer.getBounds(), {
+                    //     checkZoomRange: true
+                    // });
 
                     // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
                     circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
@@ -700,9 +723,9 @@
                     });
                     clusterer.add(geoObjects);
                     myMap3.geoObjects.add(clusterer);
-                    myMap3.setBounds(clusterer.getBounds(), {
-                        checkZoomRange: true
-                    });
+                    // myMap3.setBounds(clusterer.getBounds(), {
+                    //     checkZoomRange: true
+                    // });
 
                     // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
                     circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
