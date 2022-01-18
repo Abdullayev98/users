@@ -877,17 +877,11 @@ return [
     'contact_text9' => "Biz yirik IT loyihasida ishlashni xohlovchilarni qidiramiz",
     'contact_text10' => "Bo'sh ish o'rinlarini ko'rish",
     'contact_text11' => "Rekvizitlar",
-    'contact_text12' => "Cyberlogistic mas'uliyati cheklangan jamiyati
-
-     Muloqot, shikoyat va takliflar uchun manzil:
-     119021, Rossiya, Moskva, pochta qutisi 21
-
-     Yuridik manzil:
-     121205, Rossiya, Moskva, Skolkovo innovatsion markazi hududi, Nobel ko'chasi 7, ofis 47
-
-     INN 7730194136
-     KPP 773101001
-     PSRN 5157746302434 ",
+    'contact_text12' => "ООО `All services in one`
+<br>
+    Manzil: O`zbekiston, Farg`ona viloyati
+<br>
+    ИНН: 309045024",
     // contact blade ended
 
     // faq-ans blade start
@@ -934,13 +928,13 @@ return [
    'const_text1' => "Qanday xizmatlar kerak bo'ladi?",
    // construction blade started
 
-   // delivery avto blade started 
+   // delivery avto blade started
    'delA_text' => "Topshiriq 65% bajarildi",
    'delA_text1' => "Kuryer qaysi transport vositasida bo'lishi kerak?",
    'delA_text2' => "Talab qilinmaydi",
    'delA_text3' => "Yengil avtomobil bilan",
    'delA_text4' => "Yuk mashinasida",
-   // delivery avto blade ended 
+   // delivery avto blade ended
 
    // deloivery blade started
    'delivery_text' => "Posilka qiymati, uzs.",
@@ -989,7 +983,7 @@ return [
    'infoc_text' => "Topshiriq 30% bajarildi",
    'infoc_text1' => "Kilometr qancha?",
    'infoc_text2' => "Yurgan masofasi, km",
-   'infoc_text3' => "Ro‘yxatdan o‘tish raqami", 
+   'infoc_text3' => "Ro‘yxatdan o‘tish raqami",
    // info car blade ended
 
     // krosata blade stared
@@ -1004,11 +998,11 @@ return [
     'photo_text' => "Topshiriq 21% bajarildi",
     // photo blade ended
 
-    //remont car blade started 
+    //remont car blade started
     'remontc_text' => "Qanday mashinangiz bor?",
     'remontc_text1' => "Avtomobilning markasi, modeli va ishlab chiqarilgan yili",
     'remontc_text2' => "Masalan, Chevrolet Cruze 2014 ",
-    //remont car blade ended 
+    //remont car blade ended
 
     // training blade started
     'training_text' => "Qanday darslar kerak?",
