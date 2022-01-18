@@ -27,7 +27,7 @@
                     <div class="md:basis-1/2 basis-[100%] flex flex-row">
                         <div class="md:text-left basis-[100%] text-center grid grid-cols-1 gap-2 md:grid-cols-2">
                         <div class="md:basis-1/2 basis-[100%] flex flex-row">
-                        <div class="md:text-left basis-[100%] text-center grid grid-cols-1 gap-2 md:grid-cols-2">
+                        <!-- <div class="md:text-left basis-[100%] text-center grid grid-cols-1 gap-2 md:grid-cols-2">
                             <div class="pb-[48px]">
                                 <div class="pb-[12px] font-bold">@lang('lang.contact_text2')</div>
                                 <div>@lang('lang.contact_text3')</div>
@@ -48,7 +48,7 @@
                                 <div>@lang('lang.contact_text9')</div>
                                 <div class="text-[#4099fb]"><a href="#">@lang('lang.contact_text10')</a></div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="basis-[100%] ">
                     <div class="basis-[100%] ">

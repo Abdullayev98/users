@@ -72,23 +72,9 @@ function tasks_list(data) {
     });
 }
 
-function byDateShow(){
-    $('.print_block').each(function() {
-        this.hidden = true;
-    });
-    resetCounters()
-    tasks_show()
-}
-
 function resetCounters(){
     $('.butt').removeAttr("disabled")
     s=0, dl=0;
-}
-
-function tasks_show_all(){
-    $('.print_block').each(function() {
-        this.hidden = false;
-    });
 }
 
 let tabsContainer = document.querySelector("#tabs");
@@ -363,7 +349,9 @@ $('.all_cat, .all_cat2').click(function() {
         $('.all_cat2').each(function() {
             this.checked = true;
         });
+        resetCounters()
         tasks_list_all(dataAjax)
+        tasks_show()
     }
 });
 
@@ -371,13 +359,17 @@ $('.par_cat, .par_cat2').click(function() {
     if (this.checked == false) {
         parcats_click_false(this.id, this.name)
         if (chicat_check_print()) {
+            resetCounters()
             tasks_list(dataAjax)
+            tasks_show()
         } else {
             img_show()
         }
     } else {
         parcats_click_true(this.id, this.name)
+        resetCounters()
         tasks_list(dataAjax)
+        tasks_show()
     }
 });
 
@@ -385,13 +377,17 @@ $('.chi_cat, .chi_cat2').click(function() {
     if (this.checked == false) {
         chicats_click_false(this.id, this.name)
         if (chicat_check_print()) {
+            resetCounters()
             tasks_list(dataAjax)
+            tasks_show()
         } else {
             img_show()
         }
     } else {
         chicats_click_true(this.id, this.name)
+        resetCounters()
         tasks_list(dataAjax)
+        tasks_show()
     }
 });
 
@@ -426,7 +422,9 @@ function parcats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
+            resetCounters()
             tasks_list_all(dataAjax)
+            tasks_show()
         } else {
             this.checked = false;
         }
@@ -466,7 +464,9 @@ function chicats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
+            resetCounters()
             tasks_list_all(dataAjax)
+            tasks_show()
         } else {
             this.checked = false;
         }
@@ -477,23 +477,18 @@ function chicats_click_true(id, name) {
 $(document).ready(function(){
 
     $("#srochnost").click(function(){
-        resetCounters()
         first_ajax('sroch')
     });
     $(".byid").click(function(){
-        resetCounters()
         first_ajax('all')
     });
     $("#as").click(function(){
-        resetCounters()
         first_ajax('udal')
     });
     $(".checkboxByAs").change(function() {
         if(this.checked) {
-            resetCounters()
             first_ajax('udal')
         }else {
-            resetCounters()
             first_ajax('all')
         }
     });
