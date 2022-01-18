@@ -7,7 +7,10 @@ use App\Http\Controllers\ProfileController;
 
 
 //Profile
-Route::get('/profile', [ProfileController::class, 'profileData'])->name('userprofile');
+
+Route::group(['middleware'=>'auth'], function (){
+    Route::get('/profile', [ProfileController::class, 'profileData'])->name('userprofile');
+});
 Route::put('/updateuserphoto/{id}', [ProfileController::class, 'update'])->name('updatephoto');
 
 //Profile cash

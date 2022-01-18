@@ -36,11 +36,8 @@ class ProfileController extends Controller
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
             $data['avatar'] = $request->file('avatar')->store("images/users");
-            $filename = request()->file('avatar');
-            $extention = File::extension($filename);
-            $file = $filename;
-            $file->store('images/users', ['disk' => 'avatar']);
         }
+        $data['avatar'] = asset("AvatarImages/".$data['avatar']);
         $user->update($data);
         return  redirect()->route('userprofile');
     }
