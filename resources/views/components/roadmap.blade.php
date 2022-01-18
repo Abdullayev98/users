@@ -39,10 +39,13 @@
             showDenyButton: true,
             confirmButtonText: '@lang('lang.name_continue')',
             denyButtonText: '@lang('lang.name_delete')',
+            Url:'/',
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.close()
             } else if (result.isDenied) {
+                window.open(href='/');
+                return false;
             }
         })
     })
