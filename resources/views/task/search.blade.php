@@ -427,12 +427,9 @@
         let r=0, m=1, p=10, s=0, dl=0;
         map_pos(m);
         first_ajax('all');
-        // second_ajax();
-
         module.exports = {
             plugins: [require('@tailwindcss/forms'),]
         };
-
         function first_ajax(id) {
             $.ajax({
                 url: "{{route('tasks.search')}}",
@@ -444,6 +441,7 @@
                     for(var i in data) {
                         dataGeo.push(data[i].coordinates.split(','));
                     }
+                    resetCounters()
                     tasks_list(dataAjax)
                     tasks_show();
                 },
