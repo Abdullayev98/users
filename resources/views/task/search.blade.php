@@ -605,7 +605,7 @@
                     checkZoomRange: false
                 });
 
-                circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
+                circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true }, { fill: false });
                 // circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, { draggable: true });
                 circle.events.add('drag', function () {
                 // Объекты, попадающие в круг, будут становиться красными.
@@ -630,33 +630,73 @@
                 ),
                 ymaps.ready(init);
                 function init() {
+                    var userAddress, userCoordinates = [41.317648, 69.230585], myInput = document.getElementById("suggest");
+                    var resGeoObj = {};
                     var location = ymaps.geolocation;
                     var myMap2 = new ymaps.Map('map2', {
-                            center: [41.317648, 69.230585],
-                            zoom: 10,
-                            // behaviors: ['default', 'scrollZoom']
-                        }, {
-                            searchControlProvider: 'yandex#search'
-                        });
+                        // center: [41.317648, 69.230585],
+                        // center: [userCoordinates[0],userCoordinates[1]],
+                        center: userCoordinates,
+                        zoom: 15,
+                        controls: ['geolocationControl'],
+                        behaviors: ['default', 'scrollZoomNo']
+                    }, {
+                        searchControlProvider: 'yandex#search'
+                    });
 
-                        $("#mpshow").click(function(){
-                        location.get({
-                            mapStateAutoApply: true
-                        })
-                            .then(
-                                function(result) {
-                                    var userAddress = result.geoObjects.get(0).properties.get('text');
-                                    var  myInput = document.getElementById("suggest");
-                                    myInput.value = userAddress;
-                                    var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
-                                    myMap2.geoObjects.add(result.geoObjects)
-                                    myMap3.geoObjects.add(result.geoObjects)
-                                },
-                                function(err) {
-                                    console.log('Ошибка: ' + err)
-                                }
-                            );
+                    $("#mpshow").click(function() {
+                    location.get({
+                        mapStateAutoApply: true
+                    })
+                        .then(
+                            function(result) {
+                                userAddress = result.geoObjects.get(0).properties.get('text');
+                                myInput.value = userAddress;
+                                userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
+                                // myMap3.geoObjects.add(result.geoObjects)
+                                // myMap2.geoObjects.add(result.geoObjects)
+                                var placemark = new yMaps.Placemark(new yMaps.GeoPoint(userCoordinates));
+                                placemark.name = userAddress;
+                                // myMap2.addOverlay(placemark);
+                                myMap2.add(placemark);
+
+
+
+                            },
+                            function(err) {
+                                console.log('Ошибка: ' + err)
+                            }
+                        );
+
+
+
+
+
+
+
+                            myInput.value = userAddress;
+                            myMap2.geoObjects.add(resGeoObj)
+                            console.log(userCoordinates)
                         });
+                        // $("#mpshow").click(function(){
+                        // location.get({
+                        //     mapStateAutoApply: true
+                        // })
+                        //     .then(
+                        //         function(result) {
+                        //             var userAddress = result.geoObjects.get(0).properties.get('text');
+                        //             var  myInput = document.getElementById("suggest");
+                        //             myInput.value = userAddress;
+                        //             var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
+                        //             console.log(userCoodinates)
+                        //             myMap2.geoObjects.add(result.geoObjects)
+                        //             // myMap3.geoObjects.add(result.geoObjects)
+                        //         },
+                        //         function(err) {
+                        //             console.log('Ошибка: ' + err)
+                        //         }
+                        //     );
+                        // });
 
                         clusterer = new ymaps.Clusterer({
                             preset: 'islands#invertedVioletClusterIcons',
@@ -692,8 +732,9 @@
                         checkZoomRange: false
                     });
 
-                    circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
+                    circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 2});
                     // circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
+                    // circle.options().fill = false;
                     circle.events.add('drag', function () {
                         // Объекты, попадающие в круг, будут становиться красными.
                         var objectsInsideCircle = objects.searchInside(circle);
@@ -721,8 +762,8 @@
                 function init() {
                     var myMap3 = new ymaps.Map('map3', {
                             center: [41.317648, 69.230585],
-                            zoom: 10,
-                            // behaviors: ['default', 'scrollZoom']
+                            zoom: 15,
+                            behaviors: ['default', 'scrollZoom']
                         }, {
                             searchControlProvider: 'yandex#search'
                         });
