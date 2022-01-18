@@ -72,7 +72,7 @@ class UserController extends Controller
     public function customSignup(Request $request)
     {
         $validated = $request->validate([
-            'name'         => 'required',
+            'name'         => 'required|unique:users,name',
             'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/',
             'email'        => 'required|email|unique:users,email',
             'password'     => 'required|min:6',
