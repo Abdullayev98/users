@@ -44,7 +44,7 @@
             if (result.isConfirmed) {
                 Swal.close()
             } else if (result.isDenied) {
-                window.open(href='/');
+                window.location.href = '/';
                 return false;
             }
         })
