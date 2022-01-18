@@ -188,20 +188,42 @@ $("#price").keyup(function() {
 });
 
 
-function img_show() {
-    $(".show_tasks").empty();
-    $(".show_tasks").append(
-        `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-        <div></div>
-        <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
-        <div></div>
-        <div class="col-span-3 text-center w-full h-full">
-            <p class="text-3xl"><b>Задания не найдены</b></p>
-            <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
-        </div>
-        </div>`
-    );
-    // $('.butt').attr('style', 'display: none');
+// function img_show() {
+//     $(".show_tasks").empty();
+//     $(".show_tasks").append(
+//         `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
+//         <div></div>
+//         <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
+//         <div></div>
+//         <div class="col-span-3 text-center w-full h-full">
+//             <p class="text-3xl"><b>Задания не найдены</b></p>
+//             <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
+//         </div>
+//         </div>`
+//     );
+//     // $('.butt').attr('style', 'display: none');
+// }
+
+function fourInOne1(){
+    resetCounters()
+    tasks_list_all(dataAjax)
+    if(dl==0){
+        img_show();
+    }else {
+        tasks_show()
+        $('.lM').removeAttr('hidden');
+    }
+}
+
+function fourInOne2(){
+    resetCounters()
+    tasks_list(dataAjax)
+    if(dl==0){
+        img_show();
+    }else {
+        tasks_show()
+        $('.lM').removeAttr('hidden');
+    }
 }
 
 function parcats_click_false(id) {
@@ -349,9 +371,7 @@ $('.all_cat, .all_cat2').click(function() {
         $('.all_cat2').each(function() {
             this.checked = true;
         });
-        resetCounters()
-        tasks_list_all(dataAjax)
-        tasks_show()
+        fourInOne1();
     }
 });
 
@@ -359,17 +379,13 @@ $('.par_cat, .par_cat2').click(function() {
     if (this.checked == false) {
         parcats_click_false(this.id, this.name)
         if (chicat_check_print()) {
-            resetCounters()
-            tasks_list(dataAjax)
-            tasks_show()
+            fourInOne2();
         } else {
             img_show()
         }
     } else {
         parcats_click_true(this.id, this.name)
-        resetCounters()
-        tasks_list(dataAjax)
-        tasks_show()
+        fourInOne2();
     }
 });
 
@@ -377,17 +393,13 @@ $('.chi_cat, .chi_cat2').click(function() {
     if (this.checked == false) {
         chicats_click_false(this.id, this.name)
         if (chicat_check_print()) {
-            resetCounters()
-            tasks_list(dataAjax)
-            tasks_show()
+            fourInOne2();
         } else {
             img_show()
         }
     } else {
         chicats_click_true(this.id, this.name)
-        resetCounters()
-        tasks_list(dataAjax)
-        tasks_show()
+        fourInOne2();
     }
 });
 
@@ -422,9 +434,7 @@ function parcats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
-            resetCounters()
-            tasks_list_all(dataAjax)
-            tasks_show()
+            fourInOne1();
         } else {
             this.checked = false;
         }
@@ -464,9 +474,7 @@ function chicats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
-            resetCounters()
-            tasks_list_all(dataAjax)
-            tasks_show()
+            fourInOne1();
         } else {
             this.checked = false;
         }
