@@ -74,7 +74,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name'         => 'required',
             'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/',
-            'email'        => 'nullable|email|unique:users,email',
+            'email'        => 'required|email|unique:users,email',
             'password'     => 'required|min:6',
         ]);
         $check = $this->createUser($validated);
@@ -96,7 +96,10 @@ class UserController extends Controller
         }elseif($request->has('phone_number')){
             // TODO: send client sms
         }
-        return view('home', compact('tasks', 'howitworks', 'categories'))->withSuccess('Logged-in');
+        $random_category= Category::first();
+        $users_count = User::where('role_id', 2)->count();
+        $advants = Advant::all();
+        return view('home', compact('tasks', 'howitworks', 'categories','random_category','users_count','advants'))->withSuccess('Logged-in');
     }
 
     public function createUser(array $data)
