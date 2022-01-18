@@ -73,7 +73,7 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name'         => 'required|unique:users,name',
-            'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/',
+            'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/|unique:users,phone_number',
             'email'        => 'required|email|unique:users,email',
             'password'     => 'required|min:6',
         ]);
