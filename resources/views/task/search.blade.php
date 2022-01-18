@@ -46,7 +46,7 @@
 
                                         <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
                                             <label class="text-md mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                            <select name="" id="selectGeo" class="py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full" onchange="r=$('#selectGeo').val(); ">
+                                            <select name="" id="selectGeo" class="py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full" onchange="r=$('#selectGeo').val(); map_pos(k)">
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
@@ -424,7 +424,7 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script type="text/javascript">
-        let r=0, m=1, p=10, s=0, dl=0;
+        let r=0, m=1, p=10, s=0, dl=0, k=1;
         map_pos(m);
         first_ajax('all');
         module.exports = {
@@ -438,8 +438,10 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    for(var i in data) {
-                        dataGeo.push(data[i].coordinates.split(','));
+                    if (dataGeo.length == 0){
+                        for (var i in data) {
+                            dataGeo.push(data[i].coordinates.split(','));
+                        }
                     }
                     resetCounters()
                     tasks_list(dataAjax)
@@ -532,6 +534,32 @@
             }
         }
 
+        // $("#mpshow").click(function(){
+        //     ymaps.ready(init);
+        //     function init() {
+        //         location.get({
+        //             mapStateAutoApply: true
+        //         })
+        //             .then(
+        //                 function (result) {
+        //                     var userAddress = result.geoObjects.get(0).properties.get('text');
+        //                     var myInput = document.getElementById("suggest");
+        //                     myInput.value = userAddress;
+        //                     var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
+        //                     if (k) {
+        //                         myMap2.geoObjects.add(result.geoObjects)
+        //                     } else {
+        //                         myMap3.geoObjects.add(result.geoObjects)
+        //                     }
+        //                 },
+        //                 function (err) {
+        //                     console.log('Ошибка: ' + err)
+        //                 }
+        //             );
+        //     }
+        // });
+
+
         function map1_show(){
         ymaps.ready(init);
         function init() {
@@ -577,8 +605,8 @@
                     checkZoomRange: false
                 });
 
-                // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
-                circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, { draggable: true });
+                circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
+                // circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, { draggable: true });
                 circle.events.add('drag', function () {
                 // Объекты, попадающие в круг, будут становиться красными.
                 var objectsInsideCircle = objects.searchInside(circle);
@@ -592,6 +620,8 @@
 
         function map_pos(mm) {
             if (mm) {
+                k=1;
+                $(".small-map").empty();
                 $(".big-map").empty();
                 $(".small-map").append(
                     `<div id="map2" class="h-60 my-5 rounded-lg w-full static">
@@ -620,6 +650,7 @@
                                     myInput.value = userAddress;
                                     var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
                                     myMap2.geoObjects.add(result.geoObjects)
+                                    myMap3.geoObjects.add(result.geoObjects)
                                 },
                                 function(err) {
                                     console.log('Ошибка: ' + err)
@@ -661,8 +692,8 @@
                         checkZoomRange: false
                     });
 
-                    // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
-                    circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
+                    circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
+                    // circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
                     circle.events.add('drag', function () {
                         // Объекты, попадающие в круг, будут становиться красными.
                         var objectsInsideCircle = objects.searchInside(circle);
@@ -678,6 +709,8 @@
 
                 }
             } else {
+                k=0;
+                $(".big-map").empty();
                 $(".small-map").empty();
                 $(".big-map").append(
                     `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
@@ -692,7 +725,26 @@
                             // behaviors: ['default', 'scrollZoom']
                         }, {
                             searchControlProvider: 'yandex#search'
-                        }),
+                        });
+
+                    $("#mpshow").click(function(){
+                        location.get({
+                            mapStateAutoApply: true
+                        })
+                            .then(
+                                function(result) {
+                                    var userAddress = result.geoObjects.get(0).properties.get('text');
+                                    var  myInput = document.getElementById("suggest");
+                                    myInput.value = userAddress;
+                                    var userCoodinates = result.geoObjects.get(0).geometry.getCoordinates();
+                                    myMap2.geoObjects.add(result.geoObjects)
+                                    myMap3.geoObjects.add(result.geoObjects)
+                                },
+                                function(err) {
+                                    console.log('Ошибка: ' + err)
+                                }
+                            );
+                    });
 
                         clusterer = new ymaps.Clusterer({
                             preset: 'islands#invertedVioletClusterIcons',
@@ -728,8 +780,8 @@
                         checkZoomRange: false
                     });
 
-                    // circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
-                    circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
+                    circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true });
+                    // circle = new ymaps.Circle([[41.317648, 69.230585], 10000], null, {draggable: true});
                     circle.events.add('drag', function () {
                         // Объекты, попадающие в круг, будут становиться красными.
                         var objectsInsideCircle = objects.searchInside(circle);
