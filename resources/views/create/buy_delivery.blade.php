@@ -30,13 +30,13 @@
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
                                         @lang('lang.buyd_text3')
-                                        <input max='50' id="buy_delivey_weight" name="buy_delivey_weight[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input max='50' id="buy_delivey_weight" name="buy_delivey_weight[]" type="text" onkeypress='validate(event)' class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         @lang('lang.buyd_text4')
-                                        <input max='100' id="buy_delivey_length" name="buy_delivey_length[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input max='100' id="buy_delivey_length" name="buy_delivey_length[]" type="text" onkeypress='validate(event)' class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         @lang('lang.buyd_text5')
-                                        <input max='100' id="buy_delivey_width" name="buy_delivey_width[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input max='100' id="buy_delivey_width" name="buy_delivey_width[]" type="text" onkeypress='validate(event)' class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         @lang('lang.buyd_text6')
-                                        <input max='100' id="buy_delivey_height" name="buy_delivey_height[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input max='100' id="buy_delivey_height" name="buy_delivey_height[]" type="text" onkeypress='validate(event)' class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
@@ -67,5 +67,27 @@
         </div>
     </form>
 
+    <script>
+        $(".delete-task").click(function (){
+        Swal.fire({
+            title: '@lang('lang.name_deleteAsk')',
+            showDenyButton: true,
+            confirmButtonText: '@lang('lang.name_continue')',
+            denyButtonText: '@lang('lang.name_delete')',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.close()
+            } else if (result.isDenied) {
+                window.location.href = '/';
+                return false;
+            }
+        })
+    })
+        $('div').removeClass('group');
+        $('ul').removeClass('group-hover');
+        $('button').removeClass('hover:text-[#ffa200]');
+        $('button').removeClass('text-gray-500');
+        $('button').addClass('text-gray-400');
+    </script>
 
 @endsection
