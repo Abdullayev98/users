@@ -352,9 +352,11 @@
                                             </div>
                                         @endif
                                 @else
-                                <a href="/register" class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2">
-                                                @lang('lang.detailedT_text18')
-                                    </a>
+                                <a href="/register">
+                                    <button  class="font-sans mt-8 text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                                        @lang('lang.detailedT_text18')
+                                    </button>
+                                </a>
                                 @endauth
                                 @auth
                                 @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
