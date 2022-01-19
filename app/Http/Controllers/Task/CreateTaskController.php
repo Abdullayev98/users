@@ -547,6 +547,14 @@ class CreateTaskController extends VoyagerBaseController
         $services = implode(',', $construction);
         $request->session()->put('construction_service', $services);
       }
+      if($request->input('amount') != 0){
+        $budget = $request->input('amount');
+      }else{
+        $budget = $request->input('amount1');
+      }
+      
+      $request->session()->put('amount', $budget);
+      dd($budget);
         $cat_id = session()->pull('cat_id');
         $request->session()->put('cat_id', $cat_id);
         $category = Category::where('id',$cat_id)->first();
