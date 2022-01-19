@@ -129,7 +129,7 @@ class ProfileController extends Controller
         ]);
         $id = Auth::id();
         $checkbox = implode(",", $request->get('category'));
-        DB::update('update users set category_id = ? where id = ?',[$checkbox,$id]);
+        User::where('id',$id)->update(['category_id'=>$checkbox]);
         return redirect()->back();
     }
 

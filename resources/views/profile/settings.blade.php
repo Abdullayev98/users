@@ -186,6 +186,7 @@
                                         <form action="{{route('get.category')}}" method="post">@csrf
                                             <div class="acordion mt-16">
                                                 @foreach ($categories as $category )
+                                               
                                                 <div class="mb-4 rounded-md border shadow-md">
                                                     <div class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
                                                         {{$category->name}}
@@ -193,7 +194,12 @@
                                                     <div class="panel overflow-hidden hidden px-[18px] bg-white p-2">
                                                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
                                                         <label class="block">
-                                                            <input type="checkbox"  name="category[]" value="{{$category2->id}}" class="mr-2 required:border-[#ffa200]">{{$category2->name}}
+                                                            @php
+                                                            $cat_arr = explode(",",$user->category_id);
+                                                            $res_c_arr = array_search($category2->id,$cat_arr);
+                                                            //dd($res_c_arr);
+                                                        @endphp
+                                                            <input type="checkbox" @if($res_c_arr !== false) checked @endif name="category[]" value="{{$category2->id}}" class="mr-2 required:border-[#ffa200]" >{{$category2->name}}
                                                         </label>
                                                         @endforeach
                                                     </div>
