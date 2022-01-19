@@ -75,7 +75,7 @@
                             <div class="hidden">
                               <input type="text" name="cat_id" value="{{$current_category->id}}" hidden>
                             </div>
-                            <button type='button' id='button' style="color: grey; hover: red;" onclick="myFunction()">Подкатегории</button>
+                            <button type='button' id='button' style="color: grey; hover: red;" onclick="myFunction()">@lang('lang.name_subCat2')</button>
                             <div style="display:none" id="categories">
 
                             <div class="flex justify-center">
@@ -96,7 +96,7 @@
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
 
-        <option selected  disabled>Выберите один из пунктов</option>
+        <option selected  disabled>@lang('lang.name_chooseOne')</option>
         @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $cat_for_p)
         <option value="{{$cat_for_p->id}}">{{ $cat_for_p->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
         @endforeach
