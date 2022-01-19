@@ -357,7 +357,7 @@
                                                     <p>
                                                         @lang('lang.detT_balanceReq')
                                                     </p>
-                                                    <a class='btn' data-modal="#modal1" href="#">@lang('lang.detT_fill2')</a>
+                                                    <a class='btn' href="/profile/cash">@lang('lang.detT_fill2')</a>
                                                 </div>
                                             </div>
                                         @endif
