@@ -5,7 +5,7 @@ return [
     'lang_for_map' => "uz_UZ",
     'header_title' => "Sizni tashvishlardan xalos qilamiz",
     'header_sub' => "Biz sizga har qanday vazifani bajarish uchun ishonchli ijrochi topishga yordam beramiz",
-    'header_orderBtn' => "Buyurtma xizmati",
+    'header_orderBtn' => "Buyurtma berish",
     'header_example' => "Masalan:",
     'header_airCon' => "konditsionerni osib qo'ying",
     'header_exampleSearch' => "Qanday yordam kerak? yozing...",
@@ -497,7 +497,7 @@ return [
     // settings.blade end
 
     // executors-courier.blade start
-    'exe_viewProfile' => "profil ko'rinishlari",
+    'exe_viewProfile' => "martta ko'rilgan",
     'exe_online' => "Onlayn",
     'exe_offline' => "Oflayn",
     'exe_docsAccept' => "Qabul qilingan hujjatlar",
@@ -510,7 +510,7 @@ return [
     'exe_giveTask' => "Vazifa taklif qilish",
     'exe_aboutMe' => "Men haqimda",
     'exe_pushBtn' => "Mening xizmatlarimdan foydalanish uchun tugmani bosing",
-    'exe_giveTbtn' => "' Topshiriqni taklif qilish '",
+    'exe_giveTbtn' => "Topshiriqni taklif qilish",
     'exe_work' => "Mening ishim Universal Services tomonidan ko'rib chiqilishi sharti bilan hamkorlik qilaman.",
     'exe_typeOfDone' => "Bajarilgan ish turlari",
     'exe_perfTakesNotif' => "Ijrochi bildirishnoma oladi va sizga o'z xizmatlarini taqdim eta oladi",
@@ -608,6 +608,8 @@ return [
     'name_continue' => "Davom etish",
     'name_delete' => "O'chirish",
     'name_cencel' => "Bekor qilish",
+    'name_subCat2' => "Subkategorialar",
+    'name_chooseOne' => "Bittasini tanlang",
     // name.blade end
 
     // notes.blade start
@@ -718,6 +720,7 @@ return [
     'signin_password' => "Parol",
     'signin_passwordforgot' => "Parolni unutdingizmi?",
     'signin_registration' => "Ro'yxatdan o'tish",
+    'singin_withoutUs' => "Yangimisiz?",
     // signin blade ended
 
     // signup blade start

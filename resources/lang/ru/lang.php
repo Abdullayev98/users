@@ -610,6 +610,8 @@ return [
     'name_continue' => "Продолжить создание",
     'name_delete' => "Удалить",
     'name_cencel' => "Отмена",
+    'name_subCat2' => "Подкатегории",
+    'name_chooseOne' => "Выберите один из пунктов",
     // name.blade end
 
     // notes.blade start
@@ -720,6 +722,7 @@ return [
     'signin_password' => " Пароль",
     'signin_passwordforgot' => "Забыли пароль?",
     'signin_registration' => "  Зарегистрируйтесь",
+    'singin_withoutUs' => "Еще не с нами?",
     // signin blade ended
 
     // signup blade start
