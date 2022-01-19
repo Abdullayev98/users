@@ -133,7 +133,7 @@
                                 </div>
 
                             @else
-                            <div class="font-medium text-gray-500  relative top-60 block w-full ml-4">
+                            <div class="font-medium text-gray-500  relative top-60 block w-[400px] ml-4">
                               <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
                               <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
                             </div>
@@ -143,8 +143,8 @@
             </nav>
         </div>
     </div>
-    <div class="hidden w-full lg:inline-block xl:ml-12 lg:ml-12 lg:space-x-6 md:space-x-6">
-        <div class="group inline-block">
+    <div class="hidden w-[800px] lg:inline-block xl:ml-12 lg:ml-12">
+        <div class="group inline-block mr-4">
             <button class="font-medium text-gray-500 text-[14px] xl:text-[16px] hover:text-[#ffa200] focus:outline-none">
                 <span class="pr-1  font-[sans-serif] flex-1">@lang('lang.navbar_createTask')</span>
                 <span></span>
@@ -203,8 +203,8 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="search cursor-pointer font-medium delete-task text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
-        <a href="/performers" class="performer delete-task cursor-pointer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
+        <a href="{{ route('task.search') }}" class="search cursor-pointer font-medium delete-task text-gray-500 hover:text-[#ffa200] mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
+        <a href="/performers" class="performer delete-task cursor-pointer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
               <a href="{{ route('task.mytasks') }}" class="my-task delete-task cursor-pointer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
@@ -218,8 +218,7 @@ use Illuminate\Support\Facades\Auth;
 ?>
     @if (Route::has('login'))
         @auth
-
-            <div class="flex lg:inline-block hidden w-4/12 float-right">
+    <div class="flex lg:inline-block hidden w-[300px] float-right">
                 {{-- icon-1 --}}
                 <div class="max-w-lg mx-auto float-left">
 @php $count_for_not = 0; @endphp
@@ -241,15 +240,15 @@ use Illuminate\Support\Facades\Auth;
 @foreach(Notification::where('user_id', Auth::user()->id)->get() as $notification)
 @if($notification->type == 1)
                             <li>
-                                <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
+                                <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
                             </li>
 @elseif($notification->type == 2)
                             <li>
-                                <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">У вас новый отклик</a>
+                                <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">У вас новый отклик</a>
                             </li>
 @elseif($notification->type == 3)
                             <li>
-                                <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">Вы получили задание</a>
+                                <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">Вы получили задание</a>
                             </li>
 @endif
 @endforeach
@@ -330,7 +329,7 @@ use Illuminate\Support\Facades\Auth;
 
 
         @else
-            <div class="w-full text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4">
+            <div class="w-[400px] text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4">
                 <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
                 <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
             </div>

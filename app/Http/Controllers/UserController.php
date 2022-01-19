@@ -71,13 +71,26 @@ class UserController extends Controller
 
     public function customSignup(Request $request)
     {
-        $validated = $request->validate([
-            'name'         => 'required',
-            'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/',
-            'email'        => 'nullable|email|unique:users,email',
-            'password'     => 'required|min:6',
-        ]);
-        $check = $this->createUser($validated);
+       $data = $request->validate(
+            [
+                'name'         => 'required|unique:users,name',
+                'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/|unique:users,phone_number',
+                'email'        => 'required|email|unique:users,email',
+                'password'     => 'required|min:6',
+            ],
+            [
+                'name.required' => 'Требуется заполнение!',
+                'name.unique' => 'Пользователь с таким именем уже существует!',
+                'phone_number.required' => 'Требуется заполнение!',
+                'phone_number.regex' => 'Неверный формат номера телефона!',
+                'phone_number.unique' => 'Этот номер есть в системе!',
+                'email.required' => 'Требуется заполнение!',
+                'email.unique' => 'Пользователь с такой почтой уже существует!',
+                'password.required' => 'Требуется заполнение!',
+                'password.min' => 'Пароли должны содержать не менее 6-ми символов'
+            ]
+        );
+        $check = $this->createUser($data);
         $token   = Str::random(64);
         $sms_otp = Str::random(5);
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
@@ -96,7 +109,10 @@ class UserController extends Controller
         }elseif($request->has('phone_number')){
             // TODO: send client sms
         }
-        return view('home', compact('tasks', 'howitworks', 'categories'))->withSuccess('Logged-in');
+        $random_category= Category::first();
+        $users_count = User::where('role_id', 2)->count();
+        $advants = Advant::all();
+        return view('home', compact('tasks', 'howitworks', 'categories','random_category','users_count','advants'))->withSuccess('Logged-in');
     }
 
     public function createUser(array $data)

@@ -1,6 +1,6 @@
 let dataAjax = {};
-let dataAjax2 = {};
-let dataAjax3 = {};
+// let dataAjax2 = {};
+// let dataAjax3 = {};
 let dataGeo = [];
 $('.all_cat').click();
 $('.all_cat2').click();
@@ -14,9 +14,10 @@ $(".for_check2 input:checkbox").each(function() {
 function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
+        dl++
             $(".show_tasks").append(
-                `<div class="sort-table print_block">
-                <div class="sort-table as">
+                    `<div class="sort-table print_block" hidden>
+                    <div class="sort-table as">
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
@@ -29,6 +30,7 @@ function tasks_list_all(data) {
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
                     <p class="text-sm ml-12">` + data.category_name + `</p>
+                    <p class="text-sm ml-12 mt-2">` + data.user_name + `</p>
                     </div>
                     </div>
                     </div>
@@ -45,8 +47,9 @@ function tasks_list(data) {
             id = this.name
             $.each(data, function(index, data) {
                 if (data.category_id == id) {
+                    dl++
                         $(".show_tasks").append(
-                            `<div class="sort-table print_block">
+                            `<div class="sort-table print_block" hidden>
                             <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="` + data.start_date + `">
                             <div class="w-11/12 h-12 m-4">
                             <div class="float-left w-9/12 " id="results">
@@ -59,6 +62,7 @@ function tasks_list(data) {
                             <div class="float-right w-1/4 text-right " id="about">
                             <a href="#" class="text-lg">` + data.budget + `</a>
                             <p class="text-sm ml-12">` + data.category_name + `</p>
+                            <p class="text-sm ml-12 mt-2">` + data.user_name + `</p>
                             </div>
                             </div>
                             </div>
@@ -70,43 +74,9 @@ function tasks_list(data) {
     });
 }
 
-function byDateShow(){
-    $('.print_block').each(function() {
-        this.hidden = true;
-    });
-    resetCounters()
-    tasks_show()
-}
-
 function resetCounters(){
-    s=0;
-}
-
-function tasks_show(){
-    let i=1;
-    $('.print_block').each(function() {
-        // if ((this.hidden) && (i <= p) && (s <= dl) && (this.name == '1'))
-        if (this.hidden) {
-            if (i <= p){
-                if (s <= dl) {
-                    if (this.name == '1') {
-                        this.hidden = false;
-                        i++
-                        s++
-                    }
-                }
-            }
-        }
-    });
-
-$('#pnum').html(s)
-$('#snum').html(dl)
-}
-
-function tasks_show_all(){
-    $('.print_block').each(function() {
-        this.hidden = false;
-    });
+    $('.butt').removeAttr("disabled")
+    s=0, dl=0;
 }
 
 let tabsContainer = document.querySelector("#tabs");
@@ -220,20 +190,42 @@ $("#price").keyup(function() {
 });
 
 
-function img_show() {
-    $(".show_tasks").empty();
-    $(".show_tasks").append(
-        `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-        <div></div>
-        <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
-        <div></div>
-        <div class="col-span-3 text-center w-full h-full">
-            <p class="text-3xl"><b>Задания не найдены</b></p>
-            <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
-        </div>
-        </div>`
-    );
-    // $('.butt').attr('style', 'display: none');
+// function img_show() {
+//     $(".show_tasks").empty();
+//     $(".show_tasks").append(
+//         `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
+//         <div></div>
+//         <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
+//         <div></div>
+//         <div class="col-span-3 text-center w-full h-full">
+//             <p class="text-3xl"><b>Задания не найдены</b></p>
+//             <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
+//         </div>
+//         </div>`
+//     );
+//     // $('.butt').attr('style', 'display: none');
+// }
+
+function fourInOne1(){
+    resetCounters()
+    tasks_list_all(dataAjax)
+    if(dl==0){
+        img_show();
+    }else {
+        tasks_show()
+        $('.lM').removeAttr('hidden');
+    }
+}
+
+function fourInOne2(){
+    resetCounters()
+    tasks_list(dataAjax)
+    if(dl==0){
+        img_show();
+    }else {
+        tasks_show()
+        $('.lM').removeAttr('hidden');
+    }
 }
 
 function parcats_click_false(id) {
@@ -381,7 +373,7 @@ $('.all_cat, .all_cat2').click(function() {
         $('.all_cat2').each(function() {
             this.checked = true;
         });
-        tasks_list_all(dataAjax)
+        fourInOne1();
     }
 });
 
@@ -389,13 +381,13 @@ $('.par_cat, .par_cat2').click(function() {
     if (this.checked == false) {
         parcats_click_false(this.id, this.name)
         if (chicat_check_print()) {
-            tasks_list(dataAjax)
+            fourInOne2();
         } else {
             img_show()
         }
     } else {
         parcats_click_true(this.id, this.name)
-        tasks_list(dataAjax)
+        fourInOne2();
     }
 });
 
@@ -403,13 +395,13 @@ $('.chi_cat, .chi_cat2').click(function() {
     if (this.checked == false) {
         chicats_click_false(this.id, this.name)
         if (chicat_check_print()) {
-            tasks_list(dataAjax)
+            fourInOne2();
         } else {
             img_show()
         }
     } else {
         chicats_click_true(this.id, this.name)
-        tasks_list(dataAjax)
+        fourInOne2();
     }
 });
 
@@ -444,7 +436,7 @@ function parcats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
-            tasks_list_all(dataAjax)
+            fourInOne1();
         } else {
             this.checked = false;
         }
@@ -484,7 +476,7 @@ function chicats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
-            tasks_list_all(dataAjax)
+            fourInOne1();
         } else {
             this.checked = false;
         }
@@ -495,19 +487,19 @@ function chicats_click_true(id, name) {
 $(document).ready(function(){
 
     $("#srochnost").click(function(){
-        second_ajax()
+        first_ajax('sroch')
     });
     $(".byid").click(function(){
-        first_ajax()
+        first_ajax('all')
     });
     $("#as").click(function(){
-        third_ajax()
+        first_ajax('udal')
     });
     $(".checkboxByAs").change(function() {
         if(this.checked) {
-            third_ajax()
+            first_ajax('udal')
         }else {
-            first_ajax()
+            first_ajax('all')
         }
     });
 });

@@ -5,8 +5,8 @@
     @if(isset($task_responses))
     <div class="flex mx-auto w-9/12">
         @else
-    <div class="mx-auto w-9/12">
-@endif
+      <div class="mx-auto w-9/12">
+             @endif
         <div class="mt-8 md:flex mb-8">
             {{-- left sidebar start --}}
             <div class="w-9/12 float-left">
@@ -37,31 +37,27 @@
                 </div>
 
                 <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
-                <div class="ml-12 flex flex-row">
+                    <div class="ml-12 flex flex-row">
                         <h1 class="text-lg font-bold h-auto w-48">{{$tasks->date_type}}</h1>
                         <p class="text-lg  h-auto w-96">{{date('d-m-Y', strtotime($tasks->start_date))}}</p>
                     </div>
-                    <!-- <div class="ml-12 flex flex-row mt-4">
-                        <h1 class="text-lg font-bold h-auto w-48">Завершить</h1>
-                        <p class="text-lg  h-auto w-96">26 декабря 2021, 23:00</p>
-                    </div> -->
                     <div class="ml-12 flex flex-row mt-8">
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
                         <p class="text-lg  h-auto w-96">до {{$tasks->budget}}</p>
                     </div>
-                    @isset($tasks->oplata)
+                        @isset($tasks->oplata)
                     <div class="ml-12 flex flex-row mt-8">
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.navbar_payment')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->oplata}}</p>
                     </div>
-                    @endisset
-                    @isset($tasks->description)
+                        @endisset
+                        @isset($tasks->description)
                     <div class="ml-12 flex flex-row mt-8">
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.notes_destcript')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
-                    @endisset
-                    @isset($tasks->need_movers)
+                        @endisset
+                        @isset($tasks->need_movers)
                     <div class="ml-12 flex flex-row mt-8">
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detailedT_needmovers')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->need_movers}}</p>
@@ -320,13 +316,7 @@
                     </div>
                     @endisset
 
-                    <!-- <div class="ml-12 flex flex-row mt-4"> -->
-                    <!-- <h1 class="text-lg font-bold h-auto w-48">Оплата задания</h1> -->
-                    <!-- <div class="flex flex-row  h-auto w-96">
-                        <i class="far fa-credit-card text-green-400 text-2xl mr-3"></i>
-                        <p class="text-lg">Банковской картой через</p>
-                    </div> -->
-                    <!-- </div> -->
+                       
                     <div class="ml-12 flex flex-row mt-4">
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->address}}</p>
@@ -335,12 +325,12 @@
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_need')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->description}}</p>
                     </div>
-                    <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
+                       <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                     <div>
                         <div  class="w-full flex flex-col sm:flex-row justify-center pl-32">
                             <!-- This is an example component -->
-                            <div class="max-w-2xl mx-auto">
+                            <div class="max-w-2xl mx-auto mt-4">
                                 @auth
                                         @if($balance >= 400)
                                         <button class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
@@ -357,14 +347,16 @@
                                                     <p>
                                                         @lang('lang.detT_balanceReq')
                                                     </p>
-                                                    <a class='btn' data-modal="#modal1" href="#">@lang('lang.detT_fill2')</a>
+                                                    <a class='btn' href="/profile/cash">@lang('lang.detT_fill2')</a>
                                                 </div>
                                             </div>
                                         @endif
                                 @else
-                                <a href="/register" class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded transition-all duration-300 m-2">
-                                                @lang('lang.detailedT_text18')
-                                    </a>
+                                <a href="/register">
+                                    <button  class="font-sans mt-8 text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                                        @lang('lang.detailedT_text18')
+                                    </button>
+                                </a>
                                 @endauth
                                 @auth
                                 @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
@@ -483,7 +475,7 @@
                 </div>
 
                 <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">
-                <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
+                    <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
                     <p class="text-lg mb-10">@lang('lang.detT_fastHelp')</p>
                     <a href="/categories/1">
                         <button  class="font-sans text-lg font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-8 pt-2 pb-3 rounded">
@@ -591,7 +583,7 @@
             </div>
         </div>
 
-        {{-- right sidebar start --}}
+           {{-- right sidebar start --}}
         <div class="w-3/12 lg:mt-0 mt-8">
             <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
             <div class="flex flex-row mt-4">
@@ -623,6 +615,7 @@
                 </div>
             </div>
         </div>
+      </div>
     </div>
 
     <style>

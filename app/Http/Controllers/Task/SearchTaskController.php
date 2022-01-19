@@ -26,33 +26,58 @@ class SearchTaskController extends VoyagerBaseController
     }
 
     public function ajax_tasks(Request $request){
-
-              $tasks =  DB::table("tasks")->where('status',null)->orderBy('id','desc')
-              ->join('categories', 'tasks.category_id', '=', 'categories.id')
-              ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
-              ->get();
-
+        if (isset($request->orderBy)) {
+            if ($request->orderBy == 'all') {
+                $tasks = DB::table("tasks")->where('status', null)->orderBy('id', 'desc')
+                    ->join('categories', 'tasks.category_id', '=', 'categories.id')
+                    ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+                    ->get();
+            }
+            if ($request->orderBy == 'sroch') {
+                $tasks =  DB::table("tasks")->where('status',null)->orderBy('start_date','asc')
+                    ->join('categories', 'tasks.category_id', '=', 'categories.id')
+                    ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+                    ->get();
+            }
+            if ($request->orderBy == 'udal') {
+                $tasks =  DB::table("tasks")->where([['address', '=', null], ['status', '=', null]])
+                    ->orderBy('id','desc')
+                    ->join('categories', 'tasks.category_id', '=', 'categories.id')
+                    ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+                    ->get();
+            }
+        }
         return $tasks->all();
     }
 
-    public function ajax_task2(Request $request){
-        $tasks =  DB::table("tasks")->where('status',null)->orderBy('start_date','asc')
-            ->join('categories', 'tasks.category_id', '=', 'categories.id')
-            ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
-            ->get();
-
-        return $tasks->all();
-    }
-
-    public function ajax_task3(Request $request){
-        $tasks =  DB::table("tasks")->where([['address', '=', null], ['status', '=', null]])
-            ->orderBy('id','desc')
-            ->join('categories', 'tasks.category_id', '=', 'categories.id')
-            ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
-            ->get();
-
-        return $tasks->all();
-    }
+//    public function ajax_tasks(Request $request){
+//
+//              $tasks =  DB::table("tasks")->where('status',null)->orderBy('id','desc')
+//              ->join('categories', 'tasks.category_id', '=', 'categories.id')
+//              ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+//              ->get();
+//
+//        return $tasks->all();
+//    }
+//
+//    public function ajax_task2(Request $request){
+//        $tasks =  DB::table("tasks")->where('status',null)->orderBy('start_date','asc')
+//            ->join('categories', 'tasks.category_id', '=', 'categories.id')
+//            ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+//            ->get();
+//
+//        return $tasks->all();
+//    }
+//
+//    public function ajax_task3(Request $request){
+//        $tasks =  DB::table("tasks")->where([['address', '=', null], ['status', '=', null]])
+//            ->orderBy('id','desc')
+//            ->join('categories', 'tasks.category_id', '=', 'categories.id')
+//            ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+//            ->get();
+//
+//        return $tasks->all();
+//    }
 
 
     public function my_tasks(){
