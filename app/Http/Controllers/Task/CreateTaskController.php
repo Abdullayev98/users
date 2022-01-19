@@ -512,8 +512,13 @@ class CreateTaskController extends VoyagerBaseController
 
 
     public function services(Request $request){
-      $data = $request->input();
-      $request->session()->put('amount', $data['amount']);
+      if($request->input('amount') != 0){
+        $budget = $request->input('amount');
+        $request->session()->put('amount', $budget);
+      }else{
+        $budget = $request->input('amount1');
+        $request->session()->put('amount1', $budget);
+      }
       $request->session()->flash('soqqa', $request->input('amount'));
       if ($request->input('business')) {
         $request->session()->put('business', $data['business']);
