@@ -1,7 +1,7 @@
 let dataAjax = {};
-// let dataAjax2 = {};
-// let dataAjax3 = {};
-let dataGeo = [];
+let dataGeoAll = [];
+let dataGeoSroch = [];
+let dataGeoUdal = [];
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -18,7 +18,7 @@ function tasks_list_all(data) {
             $(".show_tasks").append(
                     `<div class="sort-table print_block" hidden>
                     <div class="sort-table as">
-                    <div class="w-full border hover:bg-blue-100 h-[140px] item" data-nomer="`+ data.start_date +`">
+                    <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
                     <div class="w-11/12 h-12 m-4">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
@@ -50,7 +50,7 @@ function tasks_list(data) {
                     dl++
                         $(".show_tasks").append(
                             `<div class="sort-table print_block" hidden>
-                            <div class="w-full border hover:bg-blue-100 h-[140px] item"  data-nomer="` + data.start_date + `">
+                            <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="` + data.start_date + `">
                             <div class="w-11/12 h-12 m-4">
                             <div class="float-left w-9/12 " id="results">
                             <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
@@ -124,16 +124,24 @@ $("#filter").keyup(function() {
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().hide();
+            $(parents).parent().id = '';
             // Show the list item if the phrase matches and increase the count by 1
         } else {
             var parent = $(this).parent();
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().show();
+            $(parents).parent().id = 'geoShow';
             // $(this).show(); // MY CHANGE
             count++;
+            console.log(count);
         }
+        console.log(count);
     });
+    console.log(count);
+        if (count){
+            tasks_show2();
+        }
 });
 
 $(".address").keyup(function() {
@@ -150,12 +158,14 @@ $(".address").keyup(function() {
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().hide();
+            $(parents).parent().id = '';
             // Show the list item if the phrase matches and increase the count by 1
         } else {
             var parent = $(this).parent();
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().show();
+            $(parents).parent().id = 'geoShow';
             // $(this).show(); // MY CHANGE
             count++;
         }
@@ -177,16 +187,21 @@ $("#price").keyup(function() {
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().hide();
+            $(parents).parent().id = '';
             // Show the list item if the phrase matches and increase the count by 1
         } else {
             var parent = $(this).parent();
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().show();
+            $(parents).parent().id = 'geoShow';
             // $(this).show(); // MY CHANGE
             count++;
+            console.log(count);
         }
+        console.log(count);
     });
+    console.log(count);
 });
 
 
@@ -213,7 +228,6 @@ function fourInOne1(){
         img_show();
     }else {
         tasks_show()
-        $('.lM').removeAttr('hidden');
     }
 }
 
@@ -224,7 +238,31 @@ function fourInOne2(){
         img_show();
     }else {
         tasks_show()
-        $('.lM').removeAttr('hidden');
+    }
+}
+
+function tasks_show2(){
+    let gg = 0;
+    $('#geoShow').each(function() {
+        this.hidden = true;
+        gg++
+    });
+    console.log(gg)
+    let i=1;
+    $('#geoShow').each(function() {
+        if ((this.hidden) && (i <= p) && (sGeo <= dlGeo))
+        {
+            this.hidden = false;
+            i++
+            sGeo++
+        }
+    });
+    $('.lM2').removeAttr('hidden');
+    // $('.lM').attr("hidden","hidden")
+    $('#pnum2').html(sGeo)
+    $('#snum2').html(dlGeo)
+    if (sGeo==dlGeo){
+        $('.butt2').attr("disabled","disabled")
     }
 }
 

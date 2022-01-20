@@ -247,7 +247,7 @@
                 </div>
                 <div class="grid grid-cols-4 w-9/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
-                    <div class="">
+                    <div class="my-auto sm:mr-0 mr-4    ">
                         <img src="/storage/{{$advant->image}}" class="w-32" alt="">
                     </div>
                     <div class="col-span-3">
@@ -255,21 +255,6 @@
                         <p class="text-md">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
                     </div>
                     @endforeach
-                    {{-- <div class=" my-16"> @lang('lang.body_bestPrise') @lang('lang.body_bestPriseCon')
-                        <img src="https://www.freeiconspng.com/uploads/white-like-icon-png-20.png" class="w-32" alt="">
-                    </div>
-                    <div class="col-span-3 my-16">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_reliablePer')</h4>
-                        <p class="text-md">@lang('lang.body_reliablePerCon')</p>
-                    </div>
-                    <div class=" my-16">
-                        <img src="https://www.pngkit.com/png/full/245-2458956_hours-time-icon-png-white.png"
-                             class="w-32" alt="">
-                    </div>
-                    <div class="col-span-3 my-16">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_timeSaving')</h4>
-                        <p class="text-md">@lang('lang.body_timeSavingCon')</p>
-                    </div> --}}
                 </div>
             </div>
         </div>
