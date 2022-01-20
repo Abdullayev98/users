@@ -194,14 +194,11 @@ $("#price").keyup(function() {
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().show();
-            $(parents).parent().id = 'geoShow';
+            $(parents).parent().id = "geoShow";
             // $(this).show(); // MY CHANGE
             count++;
-            console.log(count);
         }
-        console.log(count);
     });
-    console.log(count);
 });
 
 
