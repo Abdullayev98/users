@@ -19,7 +19,7 @@
                     <h2 class="font-bold text-2xl mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="grid grid-cols-2">
                         <div class="col-span-1 object-center sm:w-40 h-50">
-                            <img class="rounded-min mx-left overflow-hidden" src="{{$user->avatar}}" alt="" width="384" height="512">
+                            <img class="rounded-min mx-left overflow-hidden" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="" width="384" height="512">
                         <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
                             <form action="{{route('updatephoto',$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -270,7 +270,7 @@
 
     {{-- Modal start --}}
     <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id123">
-        <div class="relative md:w-1/3 w-1/2  my-6 mx-auto max-w-3xl" id="modal11">
+        <div class="relative my-6 mx-auto max-w-3xl" id="modal11">
             <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
                 <div class=" text-center p-6  rounded-t">
                     <button type="submit"  onclick="toggleModal123('modal-id123')" class=" w-100 h-16 absolute top-1 right-4">

@@ -30,13 +30,13 @@
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
                                     @lang('lang.cargo_weight')
-                                        <input id="weight" name="weight" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input id="weight" name="weight" type="text" onkeypress='validate(event)' class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                     @lang('lang.cargo_leight')
-                                        <input id="length" name="length" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input id="length" name="length" type="text" onkeypress='validate(event)' class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                     @lang('lang.cargo_width')
-                                        <input id="width" name="width" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                        <input id="width" name="width" type="text" onkeypress='validate(event)' class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                     @lang('lang.cargo_height')
-                                    <input id="height" name="height" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                    <input id="height" name="height" type="text" onkeypress='validate(event)' class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
@@ -67,5 +67,28 @@
         </div>
     </form>
 
+    <script>
+        $(".delete-task").click(function (){
+        Swal.fire({
+            title: '@lang('lang.name_deleteAsk')',
+            showDenyButton: true,
+            confirmButtonText: '@lang('lang.name_continue')',
+            denyButtonText: '@lang('lang.name_delete')',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.close()
+            } else if (result.isDenied) {
+                window.location.href = '/';
+                return false;
+            }
+        })
+    })
+        $('div').removeClass('group');
+        $('ul').removeClass('group-hover');
+        $('button').removeClass('hover:text-[#ffa200]');
+        $('button').removeClass('text-gray-500');
+        $('button').addClass('text-gray-400');
+    </script>
+    
 
 @endsection
