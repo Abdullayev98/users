@@ -39,7 +39,6 @@
             showDenyButton: true,
             confirmButtonText: '@lang('lang.name_continue')',
             denyButtonText: '@lang('lang.name_delete')',
-            Url:'/',
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.close()
@@ -49,4 +48,9 @@
             }
         })
     })
+    $('div').removeClass('group');
+    $('ul').removeClass('group-hover');
+    $('button').removeClass('hover:text-[#ffa200]');
+    $('button').removeClass('text-gray-500');
+    $('button').addClass('text-gray-400');
   </script>

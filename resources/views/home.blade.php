@@ -58,7 +58,7 @@
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
 
 
-                        @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer"> {{$random_category->name}}</span>
+                        @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                         </div>
                     </div>
                     <div class="w-[350px] mx-auto mt-12">
@@ -187,33 +187,33 @@
 @if(($cnt_for_hiw % 2) == 0)
 
                     <div>
-                        <img class="ml-20"
+                        <img class="lg:ml-0  mx-auto "
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
-                    <div class="text-left">
+                    <div class="md:text-left text-center">
                         <h3 class="md:text-4xl text-[24px] font-semibold my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         <a href="/categories/1" class="text-blue-500 underline text-[22px]">@lang('lang.body_createTask')</a>
                     </div>
 
 @else
 
-                    <div class="text-left my-16 md:block hidden">
+                    <div class="md:text-left text-center my-16 md:block hidden">
                         <h3 class="text-4xl font-semibold my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         {{ strip_tags($howitwork->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')) }}
                     </div>
                     <div class="my-16 md:block hidden">
-                        <img
+                        <img class="lg:ml-0  mx-auto "
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
 
                     <div class="my-16 md:hidden block">
-                        <img
+                        <img class="lg:ml-0 mx-auto "
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
-                    <div class="text-left md:hidden block">
+                    <div class="md:text-left text-center md:hidden block">
                         <h3 class="text-2xl font-semibold mt-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         <a href="/categories/1" class="text-blue-500 underline text-[22px]">@lang('lang.body_createTask')</a>
                     </div>
@@ -435,6 +435,38 @@
             $("#createhref").attr("href", '/task/create?category_id='+opt.attr('id'));
         });
         });
+    </script>
+    <div class="w-full" x-data="topBtn">
+        <button onclick="topFunction()" id="myBtn" title="Go to top" class="fixed z-10 hidden p-3 bg-gray-100 rounded-full shadow-md bottom-5 right-24 animate-bounce">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18">
+                </path>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     </script>
 
 @endsection

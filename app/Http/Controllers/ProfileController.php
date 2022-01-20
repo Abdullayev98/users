@@ -32,12 +32,11 @@ class ProfileController extends Controller
         ]);
         $user= User::find($id);
         $data = $request->all();
-
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
-            $data['avatar'] = $request->file('avatar')->store("images/users");
+            $filename = request()->file('avatar');
+            $data['avatar'] = $filename->store("images/users", ['disk' => 'avatar']);
         }
-        $data['avatar'] = asset("AvatarImages/".$data['avatar']);
         $user->update($data);
         return  redirect()->route('userprofile');
     }
@@ -58,14 +57,10 @@ class ProfileController extends Controller
         ]);
         $user= User::find($id);
         $data = $request->all();
-
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
-            $data['avatar'] = $request->file('avatar')->store("images/users");
             $filename = request()->file('avatar');
-            $extention = File::extension($filename);
-            $file = $filename;
-            $file->store('images/users', ['disk' => 'avatar']);
+            $data['avatar'] = $filename->store("images/users", ['disk' => 'avatar']);
         }
         $user->update($data);
         return  redirect()->route('userprofile');
@@ -112,14 +107,10 @@ class ProfileController extends Controller
         ]);
         $user= User::find($id);
         $data = $request->all();
-
         if($request->hasFile('avatar')){
             Storage::delete($user->avatar);
-            $data['avatar'] = $request->file('avatar')->store("images/users");
             $filename = request()->file('avatar');
-            $extention = File::extension($filename);
-            $file = $filename;
-            $file->store('images/users', ['disk' => 'avatar']);
+            $data['avatar'] = $filename->store("images/users", ['disk' => 'avatar']);
         }
         $user->update($data);
         return  redirect()->route('editData');
@@ -138,7 +129,7 @@ class ProfileController extends Controller
         ]);
         $id = Auth::id();
         $checkbox = implode(",", $request->get('category'));
-        DB::update('update users set category_id = ? where id = ?',[$checkbox,$id]);
+        User::where('id',$id)->update(['category_id'=>$checkbox]);
         return redirect()->back();
     }
 
