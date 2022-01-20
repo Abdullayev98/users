@@ -12,7 +12,7 @@
     @endif
     <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
     <div class="HomepageHeaderSection">
-        <div class=" video-bg">
+        <div class="video-bg">
             @if(setting('site.Video_bg') != null)
             @php
             $array_video = json_decode(setting('site.Video_bg'), true);
@@ -24,7 +24,8 @@
                 $pp = setting('site.foto_bg');
                 $str_replace = str_replace("\\","/",$pp);
             @endphp
-            <img src="storage/{{$str_replace}}" alt="rasm yoq">
+{{--            <img src="storage/{{$str_replace}}" alt="rasm yoq">--}}
+            <img src="{{ asset('/images/uborka1.jpg') }}" alt="rasm yoq">
             @endif
             <div class="effects"></div>
             <div class="video-bg__content"></div>
@@ -34,10 +35,10 @@
         <div class="">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-24">
-                    <h1 class="font-bold text-white text-3xl lg:text-6xl md:text-4xl">
+                    <h1 class="font-bold text-white text-[42px] leading-[50px] lg:text-6xl md:text-4xl">
                         <span class="block xl:block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
+                    <p class="md:font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
                     <div class="w-full mx-auto">
