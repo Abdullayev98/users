@@ -39,14 +39,14 @@
                                             <input
                                                 class="address p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
-                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute left-[38%]" type="button">
+                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute left-[37%]" type="button">
                                                 <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                             </button>
                                         </div>
 
-                                        <div class="sm:w-1/5 w-1/3 sm:ml-5 ml-0">
+                                        <div class="w-2/5 sm:w-1/5 sm:ml-3">
                                             <label class="text-md mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                            <select name="" id="selectGeo" class="py-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-lg-left text-black-700 rounded py-1 w-full" onchange="r=$('#selectGeo').val(); map_pos(k)">
+                                            <select name="" id="selectGeo" class="py-2 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); map_pos(k)">
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
@@ -61,11 +61,9 @@
                                                 <option value="200">200 km</option>
                                             </select>
                                         </div>
-                                        <div class="w-2/5 xl:w-1/4 xl:ml-1 lg:w-2/6 lg:ml-1 md:w-3/12  md:ml-2 ml-0">
+                                        <div class="w-[155px] xl:w-1/4 xl:ml-5 lg:w-2/6 lg:ml-1 md:w-3/12 md:ml-2 sm:w-1/5 sm:ml-5 ml-0">
                                             <label class=" text-sm  md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
-                                            <input type="text" maxlength="7"
-                                                   class="w-full  border-md  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700"
-                                                   placeholder="UZS" id="price">
+                                            <input type="text" maxlength="7" class="w-full border-md p-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
                                         </div>
                                     </div>
                                     <label class="inline-flex items-center mt-3">
@@ -171,15 +169,18 @@
                                         {{--Show Tasks list --}}
                                     </div>
                                 </div>
-                                    <div class="w-full h-full">
-                                        <ul class="text-center lM">
-                                            <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
-                                            <li><button id="loadMore" class="butt mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show()">@lang('lang.search_showMore')</button></li>
-                                        </ul>
-{{--                                        <div class="w-full h-full">--}}
-
-{{--                                        </div>--}}
-                                    </div>
+                                <div class="w-full h-full lM">
+                                    <ul class="text-center">
+                                        <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
+                                        <li><button id="loadMore" class="butt mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show()">@lang('lang.search_showMore')</button></li>
+                                    </ul>
+                                </div>
+                                <div class="w-full h-full lM2" hidden>
+                                    <ul class="text-center">
+                                        <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum2"></span>&nbsp;из&nbsp;<span id="snum2"></span></li>
+                                        <li><button id="loadMore2" class="butt2 mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show2()">@lang('lang.search_showMore')</button></li>
+                                    </ul>
+                                </div>
 
 {{--                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
 {{--                                    <div></div>--}}
@@ -457,8 +458,8 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script type="text/javascript">
-        let r=0, m=1, p=10, s=0, dl=0, k=1;
-        map_pos(m);
+        let r=0, m=1, p=10, s=0, sGeo=0, dl=0, dlGeo=0, k=1, dGCounter=1;
+        // map_pos(m);
         first_ajax('all');
         module.exports = {
             plugins: [require('@tailwindcss/forms'),]
@@ -471,12 +472,22 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    if (dataGeo.length == 0){
+                    if (id == 'all' && dataGeoAll.length == 0){
                         for (var i in data) {
-                            dataGeo.push(data[i].coordinates.split(','));
+                            dataGeoAll.push(data[i].coordinates.split(','));
                         }
                     }
-                    fourInOne2();
+                    if (id == 'sroch' && dataGeoSroch.length == 0){
+                        for (var i in data) {
+                            dataGeoSroch.push(data[i].coordinates.split(','));
+                        }
+                    }
+                    if (id == 'udal' && dataGeoUdal.length == 0){
+                        for (var i in data) {
+                            dataGeoUdal.push(data[i].coordinates.split(','));
+                        }
+                    }
+                    fourInOne1();
                 },
                 error: function () {
                     alert("Ajax ishida xatolik...");
@@ -540,24 +551,22 @@
                 </div>`
             );
             $('.lM').attr("hidden","hidden")
+            $('.lM2').attr("hidden","hidden")
         }
 
         function tasks_show(){
             let i=1;
             $('.print_block').each(function() {
-                // if ((this.hidden) && (i <= p) && (s <= dl) && (this.name == '1'))
-                if (this.hidden) {
-                    if (i <= p){
-                        if (s <= dl) {
-                            // if (this.name == '1') {
-                            this.hidden = false;
-                            i++
-                            s++
-                            // }
-                        }
-                    }
+                if ((this.hidden) && (i <= p) && (s <= dl))
+                {
+                    this.hidden = false;
+                    i++
+                    s++
                 }
             });
+            map_pos(m)
+            $('.lM').removeAttr('hidden');
+            // $('.lM2').attr("hidden","hidden")
             $('#pnum').html(s)
             $('#snum').html(dl)
             if (s==dl){
@@ -609,22 +618,40 @@
                         clusterHideIconOnBalloonOpen: false,
                         geoObjectHideIconOnBalloonOpen: false
                     }),
-                    getPointData = function (index) {
-                        return {
-                            balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
-                            balloonContentBody: '<p>Ваше имя: <input name="login"></p><p>Телефон в формате 2xxx-xxx:  <input></p><p><input type="submit" value="Отправить"></p>',
-                            balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
-                            clusterCaption: 'метка <strong>' + index + '</strong>'
-                        };
-                    },
+                    // getPointData = function (index) {
+                    //     return {
+                    //         balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
+                    //         balloonContentBody: '<p>Ваше имя: <input name="login"></p><p>Телефон в формате 2xxx-xxx:  <input></p><p><input type="submit" value="Отправить"></p>',
+                    //         balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
+                    //         clusterCaption: 'метка <strong>' + index + '</strong>'
+                    //     };
+                    // },
                     getPointOptions = function () {
                         return {
                             preset: 'islands#violetIcon'
                         };
                     },
                     geoObjects = [];
-                for(var i = 0, len = dataGeo.length; i < len; i++) {
-                    geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                if (dGCounter == 1){
+                    for(var i = 0; i <= p+sGeo && i <= dl; i++,sGeo++) {
+                        geoObjects[i] = new ymaps.Placemark(dataGeoAll[i], getPointOptions());
+                        // for(var i = 0, len = dataGeo.length; i < len; i++) {
+                        // geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                    }
+                }
+                if (dGCounter == 2){
+                    for(var i = 0; i <= p+sGeo && i <= dl; i++,sGeo++) {
+                        geoObjects[i] = new ymaps.Placemark(dataGeoSroch[sGeo], getPointOptions());
+                        // for(var i = 0, len = dataGeo.length; i < len; i++) {
+                        // geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                    }
+                }
+                if (dGCounter == 3){
+                    for(var i = 0; i <= p+sGeo && i <= dl; i++,sGeo++) {
+                        geoObjects[i] = new ymaps.Placemark(dataGeoUdal[sGeo], getPointOptions());
+                        // for(var i = 0, len = dataGeo.length; i < len; i++) {
+                        // geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                    }
                 }
                 clusterer.options.set({
                     gridSize: 80,
@@ -676,7 +703,6 @@
                                 userAddress = result.geoObjects.get(0).properties.get('text');
                                 // myInput.value = userAddress;
                                 userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
-                                console.log(userCoordinates);
                                 // myMap2.geoObjects.add(result.geoObjects)
                             },
                             function(err) {
@@ -741,8 +767,15 @@
                             };
                         },
                         geoObjects = [];
-                    for (var i = 0, len = dataGeo.length; i < len; i++) {
-                        geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                    if (dGCounter == 1){
+                        console.log(geoObjects);
+                        for(var i = 0; i <= s-1; i++,sGeo++) {
+                            console.log(sGeo);
+                            geoObjects[i] = new ymaps.Placemark(dataGeoAll[i], getPointData(i), getPointOptions());
+                            if ((p+k) == dl){break}
+                            // for(var i = 0, len = dataGeo.length; i < len; i++) {
+                            // geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                        }
                     }
                     clusterer.options.set({
                         gridSize: 80,
@@ -756,7 +789,6 @@
 
 
                     circle = new ymaps.Circle([userCoordinates, r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 2});
-                    console.log(userCoordinates);
 
                     circle.events.add('drag', function () {
                         // Объекты, попадающие в круг, будут становиться красными.
@@ -903,38 +935,38 @@
 
     </script>
 
-    <script>
-        $(function() {
-            $("[data-sort]").click(function() {
-                var collator = new Intl.Collator(["en", "ru"], {
-                        numeric: true,
-                        bytime: true,
-                        bymonth: true
-                    }),
-                    rank = this.dataset.sort,
-                    order = (this.dataset.order = -(this.dataset.order || -1));
-                comparator = (a, b) => order * collator.compare(
-                    a.dataset[rank],
-                    b.dataset[rank]
-                ),
-                    items = $(".item").sort(comparator);
-                $(".sort-table").append(items);
-            });
-        });
-    </script>
+{{--    <script>--}}
+{{--        $(function() {--}}
+{{--            $("[data-sort]").click(function() {--}}
+{{--                var collator = new Intl.Collator(["en", "ru"], {--}}
+{{--                        numeric: true,--}}
+{{--                        bytime: true,--}}
+{{--                        bymonth: true--}}
+{{--                    }),--}}
+{{--                    rank = this.dataset.sort,--}}
+{{--                    order = (this.dataset.order = -(this.dataset.order || -1));--}}
+{{--                comparator = (a, b) => order * collator.compare(--}}
+{{--                    a.dataset[rank],--}}
+{{--                    b.dataset[rank]--}}
+{{--                ),--}}
+{{--                    items = $(".item").sort(comparator);--}}
+{{--                $(".sort-table").append(items);--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 
-    <script>
-        var $btns = $('.btn').click(function() {
-            if (this.id == 'all') {
-                $('#parent > div').fadeIn(450);
-            } else {
-                var $el = $('.' + this.id).fadeIn(450);
-                $('#parent > div').not($el).hide();
-            }
-            $btns.removeClass('active');
-            $(this).addClass('active');
-        })
+{{--    <script>--}}
+{{--        var $btns = $('.btn').click(function() {--}}
+{{--            if (this.id == 'all') {--}}
+{{--                $('#parent > div').fadeIn(450);--}}
+{{--            } else {--}}
+{{--                var $el = $('.' + this.id).fadeIn(450);--}}
+{{--                $('#parent > div').not($el).hide();--}}
+{{--            }--}}
+{{--            $btns.removeClass('active');--}}
+{{--            $(this).addClass('active');--}}
+{{--        })--}}
 
-    </script>
+{{--    </script>--}}
 
 @endsection

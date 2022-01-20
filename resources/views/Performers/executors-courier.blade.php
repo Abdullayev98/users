@@ -53,11 +53,14 @@
                              <i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i>
                             <span class="text-cyan-500 hover:text-red-600">(197 @lang('lang.exe_feedbacks'))</span>
                         </div> --}}
-                        <!-- <div class="flex flex-row">
-                             <img class="h-24 mt-4 ml-2" src="{{ asset('images/icon_year.svg') }}">
-                             <img class="h-24 mt-4 ml-4" src="{{ asset('images/icon_shield.png') }}">
-                             <img class="h-20 mt-6 ml-4" src="{{ asset('images/icon_bag.png') }}">
-                         </div> -->
+                         <div class="flex gap-2 my-5">
+                            <a href="/badges">
+                                <img class="w-20" src="{{ asset('images/insuranceIcon.png') }}" alt="#">
+                            </a>
+                            <a href="/badges" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+                                <img class="w-20" src="{{ asset('images/goldenCup.png') }}" alt="#">
+                            </a>
+                         </div>
                          <div>
                              <a href="{{url('performers/chat',['id'=>$user->id])}}">
                                  <button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">

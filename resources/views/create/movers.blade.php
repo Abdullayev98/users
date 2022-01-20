@@ -31,7 +31,7 @@
                                 <div id="formulario" class="flex flex-col gap-y-4">
                                     @if(session('cat_id') != 52)
                                     @lang('lang.movers_loadFlat')
-                                    <input id="etaj_po" name="etaj_po" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                    <input id="etaj_po" name="etaj_po" onkeypress='validate(event)' type="text" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                     @lang('lang.movers_elevator')
                                     <select id="lift_po" value="Лифт отсутствует" name="lift_po[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         <option>@lang('lang.movers_noElevator')</option>
@@ -39,7 +39,7 @@
                                         <option>@lang('lang.movers_cargElevator')</option>
                                     </select>
                                     @lang('lang.movers_flat')
-                                    <input id="etaj_za" name="etaj_za" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
+                                    <input id="etaj_za" name="etaj_za" type="text" onkeypress='validate(event)' class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                     @lang('lang.movers_elevator')
                                     <select id="lift_za" value="Лифт отсутствует" name="lift_za[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
                                         <option>@lang('lang.movers_noElevator')</option>
@@ -81,10 +81,31 @@
                         </div>
                     </div>
                 </div>
-                <x-faq/>
             </div>
         </div>
     </form>
 
+    <script>
+        $(".delete-task").click(function (){
+        Swal.fire({
+            title: '@lang('lang.name_deleteAsk')',
+            showDenyButton: true,
+            confirmButtonText: '@lang('lang.name_continue')',
+            denyButtonText: '@lang('lang.name_delete')',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.close()
+            } else if (result.isDenied) {
+                window.location.href = '/';
+                return false;
+            }
+        })
+    })
+        $('div').removeClass('group');
+        $('ul').removeClass('group-hover');
+        $('button').removeClass('hover:text-[#ffa200]');
+        $('button').removeClass('text-gray-500');
+        $('button').addClass('text-gray-400');
+      </script>
 
 @endsection

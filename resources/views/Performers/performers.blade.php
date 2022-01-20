@@ -57,7 +57,7 @@
                             <p>@lang('lang.perfCat_allPerf')</p>
                         </div>
                         <div class="form-check flex flex-row mx-8 mt-10">
-                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" 
+                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox" value="1" onchange="check()" id="online">
                             <label class="form-check-label inline-block text-gray-800" for="online">
                                 @lang('lang.perfCat_nowInSite')
@@ -88,13 +88,16 @@
                     </div>
                 </div>
                 <div class="w-5/12 md:float-none md:float-none">
-                    <div>
+                    <div class="flex items-end gap-x-2">
                         <a href="/performers/{{$user->id}}">
                             <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 "> {{$user->name}} </p>
                         </a>
-                        <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
-                                <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
-                                <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
+                        <a href="/badges">
+                            <img class="w-7" src="{{ asset('images/insuranceIcon.png') }}" alt="#">
+                        </a>
+                        <a href="/badges" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+                            <img class="w-7" src="{{ asset('images/goldenCup.png') }}" alt="#">
+                        </a>
                     </div>
                     <div>
                            @if($user->active_status == 1)
@@ -114,6 +117,7 @@
                         <a href="#" onclick="toggleModal12('modal-id12')" class="hidden lg:block">
                             <button class="rounded-lg py-2 px-3 font-bold bg-[#ffad00] hover:bg-[#ff9500] transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                         </a>
+
                     </div>
                 </div>
             </div>

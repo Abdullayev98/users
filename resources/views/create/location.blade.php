@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 
-    <script id="map_api" src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU" type="text/javascript">
+    <script id="map_api" src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript">
     </script>
 
 <!-- Information section -->
@@ -135,7 +135,9 @@ function init_map(){
 myMap = new ymaps.Map('map', {
     center: [ 41.311151, 69.279737],
     zoom: 3,
-});
+}, {
+            searchControlProvider: 'yandex#search'
+        });
 
 
 }
@@ -169,39 +171,24 @@ function init() {
     });
 
 
-    
-$("#getlocal").click(function(){
-  
-  
-var geolocation = ymaps.geolocation;
-      geolocation.get({
-        provider: 'yandex',
-        mapStateAutoApply: true
-    }).then(function (result) {
-        // We'll mark the position calculated by IP in red.
-        result.geoObjects.options.set('preset', 'islands#redCircleIcon');
-        result.geoObjects.get(0).properties.set({
-            balloonContentBody: 'My location'
-        });
-       
-        var userAddress = result.geoObjects.get(0).properties.get('text');
-        document.getElementById("suggest0").value = userAddress;
-    });
-    
+        
+    $("#getlocal").click(function(){
+      
+      var geolocation = ymaps.geolocation;
         geolocation.get({
-provider: 'browser',
-        mapStateAutoApply: true
-    }).then(function (result) {
-        /**
-         * We'll mark the position obtained through the browser in blue.
-         * If the browser does not support this functionality, the placemark will not be added to the map.
-         */
-        result.geoObjects.options.set('preset', 'islands#blueCircleIcon');
-       
-    });
-    myFunction();
- 
-    });
+            mapStateAutoApply: true,
+        }).then(function (result) {
+            // Синим цветом пометим положение, полученное через браузер.
+            // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
+            var userAddress = result.geoObjects.get(0).properties.get('text');
+            document.getElementById("suggest0").value = userAddress;
+        },
+                                function(err) {
+                                    console.log('Ошибка: ' + err)
+                                });
+            myFunction();
+        
+            });
 
 
 }
@@ -279,7 +266,9 @@ provider: 'browser',
     myMap = new ymaps.Map('map', {
       center: [ 41.311151, 69.279737],
     zoom: 3,
-      });
+      }, {
+            searchControlProvider: 'yandex#search'
+        });
 
       myMap.geoObjects.add(multiRoute);
 
