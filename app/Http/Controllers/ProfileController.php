@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Portfolio_new;
-use File;
+use Illuminate\Support\Facades\File;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\WalletBalance;
@@ -33,9 +33,15 @@ class ProfileController extends Controller
         $user= User::find($id);
         $data = $request->all();
         if($request->hasFile('avatar')){
-            Storage::delete($user->avatar);
-            $filename = request()->file('avatar');
-            $data['avatar'] = $filename->store("images/users", ['disk' => 'avatar']);
+            $destination = 'AvatarImages/'.$user->avatar;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $filename = $request->file('avatar');
+            $imagename = "images/users/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $data['avatar'] =$imagename;
         }
         $user->update($data);
         return  redirect()->route('userprofile');
@@ -58,12 +64,18 @@ class ProfileController extends Controller
         $user= User::find($id);
         $data = $request->all();
         if($request->hasFile('avatar')){
-            Storage::delete($user->avatar);
-            $filename = request()->file('avatar');
-            $data['avatar'] = $filename->store("images/users", ['disk' => 'avatar']);
+            $destination = 'AvatarImages/'.$user->avatar;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $filename = $request->file('avatar');
+            $imagename = "images/users/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $data['avatar'] =$imagename;
         }
         $user->update($data);
-        return  redirect()->route('userprofile');
+        return  redirect()->route('userprofilecash');
     }
 
     //settings
@@ -108,9 +120,15 @@ class ProfileController extends Controller
         $user= User::find($id);
         $data = $request->all();
         if($request->hasFile('avatar')){
-            Storage::delete($user->avatar);
-            $filename = request()->file('avatar');
-            $data['avatar'] = $filename->store("images/users", ['disk' => 'avatar']);
+            $destination = 'AvatarImages/'.$user->avatar;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $filename = $request->file('avatar');
+            $imagename = "images/users/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $data['avatar'] =$imagename;
         }
         $user->update($data);
         return  redirect()->route('editData');

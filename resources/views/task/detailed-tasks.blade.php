@@ -316,7 +316,7 @@
                     </div>
                     @endisset
 
-                       
+
                     <div class="ml-12 flex flex-row mt-4">
                         <h1 class="text-lg font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
                         <p class="text-lg  h-auto w-96">{{$tasks->address}}</p>
@@ -460,7 +460,7 @@
                     </div>
 
                     <!-- Основной контент страницы -->
-                    <div class="modal" style="display: none">
+                    <div class="modal">
                         <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
                             <!-- modal -->
                             <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center text-green-500 py-12 text-3xl">
