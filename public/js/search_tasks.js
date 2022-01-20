@@ -30,6 +30,7 @@ function tasks_list_all(data) {
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
                     <p class="text-sm ml-12">` + data.category_name + `</p>
+                    <p class="text-sm ml-12 mt-2">` + data.user_name + `</p>
                     </div>
                     </div>
                     </div>
@@ -61,6 +62,7 @@ function tasks_list(data) {
                             <div class="float-right w-1/4 text-right " id="about">
                             <a href="#" class="text-lg">` + data.budget + `</a>
                             <p class="text-sm ml-12">` + data.category_name + `</p>
+                            <p class="text-sm ml-12 mt-2">` + data.user_name + `</p>
                             </div>
                             </div>
                             </div>

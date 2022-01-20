@@ -57,7 +57,7 @@
                     </a>
                 </p>
                 <p class="text-lg mb-4">
-                    Еще не с нами?
+                    @lang('lang.singin_withoutUs')
                     <a class="text-sky-500" href="{{ route('register') }}">
                     @lang('lang.signin_registration')
                     </a>

@@ -4,32 +4,8 @@
     <link rel="stylesheet" href="{{asset('css/budjet.css')}}">
     <!-- Information section -->
     <x-roadmap/>
-    @if($category->id == 60)
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 8)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 2)
+    @if(session('current_parent_category')->id == 2)
     <form action="{{route('task.create.construction')}}" method="post">
-    @elseif(session('current_parent_category')->id == 9)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 11)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 12)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 13)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 15)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 16)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 17)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 18)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 19)
-    <form action="{{route('task.create.notes')}}" method="post">
-    @elseif(session('current_parent_category')->id == 213)
-    <form action="{{route('task.create.notes')}}" method="post">
     @else
     <form class="" action="{{route('task.create.notes')}}" method="post">
     @endif
@@ -59,7 +35,7 @@
                                         <div class="a"></div>
                                         <div id="slider-range-min" class="flex"></div>
                                     </div>
-                                    <input type="text" id="amount" name="amount" readonly>
+                                    <input type="text" id="amount" name="amount1" readonly>
 {{--                                    <div class="flex ">--}}
 {{--                                        <div class="cursor-default">--}}
 {{--                                            <div class="w-2 h-2 bg-gray-200 rounded-full -ml-1 -mt-5 z-0"></div>--}}
@@ -86,19 +62,19 @@
                                         <option value="0">
                                             @lang('lang.budget_text')
                                         </option>
-                                        <option value="{{$category->max/5}} UZS">
+                                        <option value="от {{$category->max/5}} UZS">
                                             от {{$category->max/5}} UZS
                                         </option>
-                                        <option value="{{$category->max/5 * 2}} UZS">
+                                        <option value="от {{$category->max/5 * 2}} UZS">
                                             от {{$category->max/5 * 2}} UZS
                                         </option>
-                                        <option value="{{$category->max/5 * 3}} UZS">
+                                        <option value="от {{$category->max/5 * 3}} UZS">
                                             от {{$category->max/5 * 3}} UZS
                                         </option>
-                                        <option value="{{$category->max/5 * 4}} UZS">
+                                        <option value="от {{$category->max/5 * 4}} UZS">
                                             от {{$category->max/5 * 4}} UZS
                                         </option>
-                                        <option value="{{$category->max}} UZS">
+                                        <option value="до {{$category->max}} UZS">
                                             до {{$category->max}} UZS
                                         </option>
                                     </select>

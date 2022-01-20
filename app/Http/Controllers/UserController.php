@@ -71,7 +71,7 @@ class UserController extends Controller
 
     public function customSignup(Request $request)
     {
-        $request->validate(
+       $data = $request->validate(
             [
                 'name'         => 'required|unique:users,name',
                 'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/|unique:users,phone_number',
@@ -90,7 +90,7 @@ class UserController extends Controller
                 'password.min' => 'Пароли должны содержать не менее 6-ми символов'
             ]
         );
-        $check = $this->createUser($request);
+        $check = $this->createUser($data);
         $token   = Str::random(64);
         $sms_otp = Str::random(5);
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();

@@ -80,10 +80,10 @@
                     @else
                         <a href="/register">
                             @endauth
-            <button  class="font-sans mt-8 text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
-              @lang('lang.ver_becomePrefBtn')
-            </button>
-          </a>
+                            <button  class="font-sans mt-8 text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                              @lang('lang.ver_becomePrefBtn')
+                            </button>
+                        </a>
       </div>
 
 

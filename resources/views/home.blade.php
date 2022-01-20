@@ -12,7 +12,7 @@
     @endif
     <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
     <div class="HomepageHeaderSection">
-        <div class=" video-bg">
+        <div class="video-bg">
             @if(setting('site.Video_bg') != null)
             @php
             $array_video = json_decode(setting('site.Video_bg'), true);
@@ -24,7 +24,8 @@
                 $pp = setting('site.foto_bg');
                 $str_replace = str_replace("\\","/",$pp);
             @endphp
-            <img src="storage/{{$str_replace}}" alt="rasm yoq">
+{{--            <img src="storage/{{$str_replace}}" alt="rasm yoq">--}}
+            <img src="{{ asset('/images/uborka1.jpg') }}" alt="rasm yoq">
             @endif
             <div class="effects"></div>
             <div class="video-bg__content"></div>
@@ -34,10 +35,10 @@
         <div class="">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-24">
-                    <h1 class="font-bold text-white text-3xl lg:text-6xl md:text-4xl">
+                    <h1 class="font-bold text-white text-[42px] leading-[50px] lg:text-6xl md:text-4xl">
                         <span class="block xl:block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
+                    <p class="md:font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
                     <div class="w-full mx-auto">
@@ -58,7 +59,7 @@
                         <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
 
 
-                        @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer"> {{$random_category->name}}</span>
+                        @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                         </div>
                     </div>
                     <div class="w-[350px] mx-auto mt-12">
@@ -187,33 +188,33 @@
 @if(($cnt_for_hiw % 2) == 0)
 
                     <div>
-                        <img class="ml-20"
+                        <img class="lg:ml-0  mx-auto "
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
-                    <div class="text-left">
+                    <div class="md:text-left text-center">
                         <h3 class="md:text-4xl text-[24px] font-semibold my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         <a href="/categories/1" class="text-blue-500 underline text-[22px]">@lang('lang.body_createTask')</a>
                     </div>
 
 @else
 
-                    <div class="text-left my-16 md:block hidden">
+                    <div class="md:text-left text-center my-16 md:block hidden">
                         <h3 class="text-4xl font-semibold my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         {{ strip_tags($howitwork->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')) }}
                     </div>
                     <div class="my-16 md:block hidden">
-                        <img
+                        <img class="lg:ml-0  mx-auto "
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
 
                     <div class="my-16 md:hidden block">
-                        <img
+                        <img class="lg:ml-0 mx-auto "
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
-                    <div class="text-left md:hidden block">
+                    <div class="md:text-left text-center md:hidden block">
                         <h3 class="text-2xl font-semibold mt-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         <a href="/categories/1" class="text-blue-500 underline text-[22px]">@lang('lang.body_createTask')</a>
                     </div>
@@ -246,7 +247,7 @@
                 </div>
                 <div class="grid grid-cols-4 w-9/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
-                    <div class="">
+                    <div class="my-auto sm:mr-0 mr-4    ">
                         <img src="/storage/{{$advant->image}}" class="w-32" alt="">
                     </div>
                     <div class="col-span-3">
@@ -254,21 +255,6 @@
                         <p class="text-md">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
                     </div>
                     @endforeach
-                    {{-- <div class=" my-16"> @lang('lang.body_bestPrise') @lang('lang.body_bestPriseCon')
-                        <img src="https://www.freeiconspng.com/uploads/white-like-icon-png-20.png" class="w-32" alt="">
-                    </div>
-                    <div class="col-span-3 my-16">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_reliablePer')</h4>
-                        <p class="text-md">@lang('lang.body_reliablePerCon')</p>
-                    </div>
-                    <div class=" my-16">
-                        <img src="https://www.pngkit.com/png/full/245-2458956_hours-time-icon-png-white.png"
-                             class="w-32" alt="">
-                    </div>
-                    <div class="col-span-3 my-16">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_timeSaving')</h4>
-                        <p class="text-md">@lang('lang.body_timeSavingCon')</p>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -435,6 +421,38 @@
             $("#createhref").attr("href", '/task/create?category_id='+opt.attr('id'));
         });
         });
+    </script>
+    <div class="w-full" x-data="topBtn">
+        <button onclick="topFunction()" id="myBtn" title="Go to top" class="fixed z-10 hidden p-3 bg-gray-100 rounded-full shadow-md bottom-5 right-24 animate-bounce">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18">
+                </path>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     </script>
 
 @endsection
