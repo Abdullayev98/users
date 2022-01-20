@@ -12,7 +12,7 @@
     @endif
     <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
     <div class="HomepageHeaderSection">
-        <div class=" video-bg">
+        <div class="video-bg">
             @if(setting('site.Video_bg') != null)
             @php
             $array_video = json_decode(setting('site.Video_bg'), true);
@@ -24,7 +24,8 @@
                 $pp = setting('site.foto_bg');
                 $str_replace = str_replace("\\","/",$pp);
             @endphp
-            <img src="storage/{{$str_replace}}" alt="rasm yoq">
+{{--            <img src="storage/{{$str_replace}}" alt="rasm yoq">--}}
+            <img src="{{ asset('/images/uborka1.jpg') }}" alt="rasm yoq">
             @endif
             <div class="effects"></div>
             <div class="video-bg__content"></div>
@@ -34,10 +35,10 @@
         <div class="">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-24">
-                    <h1 class="font-bold text-white text-3xl lg:text-6xl md:text-4xl">
+                    <h1 class="font-bold text-white text-[42px] leading-[50px] lg:text-6xl md:text-4xl">
                         <span class="block xl:block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
+                    <p class="md:font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
                     <div class="w-full mx-auto">
@@ -246,7 +247,7 @@
                 </div>
                 <div class="grid grid-cols-4 w-9/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
-                    <div class="">
+                    <div class="my-auto sm:mr-0 mr-4    ">
                         <img src="/storage/{{$advant->image}}" class="w-32" alt="">
                     </div>
                     <div class="col-span-3">
@@ -254,21 +255,6 @@
                         <p class="text-md">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
                     </div>
                     @endforeach
-                    {{-- <div class=" my-16"> @lang('lang.body_bestPrise') @lang('lang.body_bestPriseCon')
-                        <img src="https://www.freeiconspng.com/uploads/white-like-icon-png-20.png" class="w-32" alt="">
-                    </div>
-                    <div class="col-span-3 my-16">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_reliablePer')</h4>
-                        <p class="text-md">@lang('lang.body_reliablePerCon')</p>
-                    </div>
-                    <div class=" my-16">
-                        <img src="https://www.pngkit.com/png/full/245-2458956_hours-time-icon-png-white.png"
-                             class="w-32" alt="">
-                    </div>
-                    <div class="col-span-3 my-16">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_timeSaving')</h4>
-                        <p class="text-md">@lang('lang.body_timeSavingCon')</p>
-                    </div> --}}
                 </div>
             </div>
         </div>

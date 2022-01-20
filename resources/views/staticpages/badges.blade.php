@@ -28,21 +28,22 @@
                     <p class="mt-5"><a href="#" class="text-blue-600 hover:text-red-400">@lang('lang.badgets_ratingOfPer')</a>@lang('lang.badgets_text1')</p>
                     <p class="mt-5">@lang('lang.badgets_text2')<a href="#" class="text-blue-600 hover:text-red-400">@lang('lang.badgets_detailedRating')</a></p>
                     <p class="mt-5">@lang('lang.badgets_icons')<a href="" class="text-blue-600 hover:text-red-400">@lang('lang.badgets_ratingPage')</a>@lang('lang.badgets_text3')</p>
-                    <div class="bg-gray-200">
+                    <div class="bg-gray-200 p-5">
                         <h2 class="text-3xl p-5">@lang('lang.badgets_typeOfCustomers')</h2>
-                        <div class="grid grid-cols-5">
-                            <div class="col-span-1 bg-no-repeat w-50 h-24  bg-black" >
-                                <img src="{{asset('images/titul.svg')}}"  class="mx-auto" />
+                        <div class="grid grid-cols-5 gap-2">
+                            <div class="col-span-1 bg-no-repeat w-50 h-50" >
+                                <img src="{{asset('images/goldenCup.png')}}"  class="mx-auto" />
                             </div>
                             <div class="col-span-4">
                                 <p class=""><span class="text-red-500 italic">@lang('lang.badgets_perOfTheYear')</span>@lang('lang.badgets_text4')</p>
                             </div>
                         </div>
-                        <div class="grid grid-cols-5">
-                            <div class="col-span-1 bg-no-repeat" style="background-image:url('https://mymodel.website/lay/icons/approved-thumb-up.png')">
+                        <div class="grid grid-cols-5 gap-2 mt-2">
+                            <div class="col-span-1 bg-no-repeat w-50 h-50">
+                                <img src="{{asset('images/insuranceIcon.png')}}"  class="mx-auto" />
                             </div>
                             <div class="col-span-4">
-                                <p class="mt-5"><span class="text-red-500 italic">@lang('lang.badgets_perService')</span>@lang('lang.badgets_text5')</p>
+                                <p class=""><span class="text-red-500 italic">@lang('lang.badgets_perService')</span>@lang('lang.badgets_text5')</p>
                             </div>
                         </div>
                         <div></div>

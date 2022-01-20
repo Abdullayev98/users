@@ -11,16 +11,16 @@ use App\Http\Controllers\ProfileController;
 Route::group(['middleware'=>'auth'], function (){
     Route::get('/profile', [ProfileController::class, 'profileData'])->name('userprofile');
 });
-Route::put('/updateuserphoto/{id}', [ProfileController::class, 'update'])->name('updatephoto');
+Route::post('/updateuserphoto', [ProfileController::class, 'updates'])->name('updatephoto');
 
 //Profile cash
 Route::get('/profile/cash', [ProfileController::class, 'profileCash'])->name('userprofilecash');
-Route::post('/updateuserphoto/{id}', [ProfileController::class, 'updateCash'])->name('updatephotocash');
+Route::post('/updateuserphoto', [ProfileController::class, 'updateCash'])->name('updatephotocash');
 
 // Profile settings
 Route::get('/profile/settings', [ProfileController::class, 'editData'])->name('editData');
 Route::post('/profile/settings/update', [ProfileController::class, 'updateData'])->name('updateData');
-Route::post('/updatephoto/{id}', [ProfileController::class, 'imageUpdate'])->name('updateSettingPhoto');
+Route::post('/profile/updatephoto', [ProfileController::class, 'imageUpdate'])->name('updateSettingPhoto');
 
 // Profile delete
 Route::get('/profile/delete', [ProfileController::class, 'destroy'])->name('users.delete');

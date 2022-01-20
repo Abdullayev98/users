@@ -18,9 +18,13 @@
                     <h2 class="font-bold text-lg mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
-                        src="{{asset("AvatarImages/{$user->avatar}")}}" alt="image" width="384"
+                        @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
+                        src='{{asset("AvatarImages/images/users/default.png")}}'
+                        @else   
+                        src="{{asset("AvatarImages/{$user->avatar}")}}" 
+                        @endif alt="image" width="384"
                         height="512">
-                        <form action="{{route('updateSettingPhoto' ,$user->id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
                                 <input type="file" id="file" name="avatar" class="hidden" onclick="fileupdate()">
@@ -183,7 +187,8 @@
                                     <div class="w-4/5 mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. @lang('lang.settings_chooseCat')</h3>
     {{-- choosing categories --}}
-                                        <form action="{{route('get.category')}}" method="post">@csrf
+                                        <form action="{{route('get.category')}}" method="post">
+                                            @csrf
                                             <div class="acordion mt-16">
                                                 @foreach ($categories as $category )
                                                
