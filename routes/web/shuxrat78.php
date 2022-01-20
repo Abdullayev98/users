@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('task.search');
 Route::get('tasks-search', [SearchTaskController::class, 'ajax_tasks'])->name('tasks.search');
-Route::get('task2-search', [SearchTaskController::class, 'ajax_task2'])->name('task2.search');
-Route::get('task3-search', [SearchTaskController::class, 'ajax_task3'])->name('task3.search');
+//Route::get('task2-search', [SearchTaskController::class, 'ajax_task2'])->name('task2.search');
+//Route::get('task3-search', [SearchTaskController::class, 'ajax_task3'])->name('task3.search');
 // Route::get('my-tasks', [SearchTaskController::class, 'my_tasks'])->name('task.mytasks');
 Route::get('search', [SearchTaskController::class, 'search'])->name('search');
