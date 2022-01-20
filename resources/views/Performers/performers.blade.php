@@ -67,11 +67,11 @@
             @foreach($users as $user)
             <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
                 <div class="w-34 float-left">
-                    <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4" 
+                    <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
                     @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
                     src='{{asset("AvatarImages/images/users/default.png")}}'
-                    @else   
-                    src="{{asset("AvatarImages/{$user->avatar}")}}" 
+                    @else
+                    src="{{asset("AvatarImages/{$user->avatar}")}}"
                     @endif
                     alt="user">
                     <div class="flex flex-row text-[12px]">
@@ -144,16 +144,18 @@
             </select>
 
             <div id="hidden_div">
-                <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
                 <button onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
-                    Sent
+                    Предложить работу
                 </button>
+                <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
             </div>
 
+            <a href="/categories/1">
+                <button id="hidden_div2" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto" style="display: none;">
+                    Создать новое задание
+                </button>
+            </a>
 
-            <button id="hidden_div2" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto" style="display: none;">
-                Sent2
-            </button>
 
             <button class="cursor-pointer close text-gray-400 font-bold rounded-lg p-2 px-4 mt-6 absolute -top-6 right-0 text-2xl">
                 x
