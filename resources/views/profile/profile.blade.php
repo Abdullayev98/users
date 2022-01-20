@@ -25,10 +25,8 @@
                             @else   
                             src="{{asset("AvatarImages/{$user->avatar}")}}" 
                             @endif alt="" width="384" height="512">
-                        <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
-                            <form action="{{route('updatephoto',$user->id)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @method('put')
                                 <div class="rounded-md bg-gray-200 sm:w-40 mt-2 px-2" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
                                     <label for="file">

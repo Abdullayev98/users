@@ -30,7 +30,7 @@
                             src="{{asset("AvatarImages/{$user->avatar}")}}" 
                             @endif alt="" width="384" height="512">
                             <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
-                            <form action="{{route('updatephotocash' ,$user->id)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('updatephotocash')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button2">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">

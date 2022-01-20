@@ -19,7 +19,7 @@ function tasks_list_all(data) {
                     `<div class="sort-table print_block" hidden>
                     <div class="sort-table as">
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
-                    <div class="w-11/12 h-12 m-4">
+                    <div class="w-11/12 h-12 md:m-4 sm:m-2 m-0">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
@@ -29,8 +29,8 @@ function tasks_list_all(data) {
                     </div>
                     <div class="float-right w-1/4 text-right " id="about">
                     <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ml-12">` + data.category_name + `</p>
-                    <p class="text-sm ml-12 mt-2">` + data.user_name + `</p>
+                    <p class="text-sm ">` + data.category_name + `</p>
+                    <p class="text-sm  mt-2">` + data.user_name + `</p>
                     </div>
                     </div>
                     </div>
@@ -51,7 +51,7 @@ function tasks_list(data) {
                         $(".show_tasks").append(
                             `<div class="sort-table print_block" hidden>
                             <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="` + data.start_date + `">
-                            <div class="w-11/12 h-12 m-4">
+                            <div class="w-11/12 h-12 md:m-4 sm:m-2 m-0">
                             <div class="float-left w-9/12 " id="results">
                             <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
                             <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
@@ -61,8 +61,8 @@ function tasks_list(data) {
                             </div>
                             <div class="float-right w-1/4 text-right " id="about">
                             <a href="#" class="text-lg">` + data.budget + `</a>
-                            <p class="text-sm ml-12">` + data.category_name + `</p>
-                            <p class="text-sm ml-12 mt-2">` + data.user_name + `</p>
+                            <p class="text-sm ">` + data.category_name + `</p>
+                            <p class="text-sm mt-2">` + data.user_name + `</p>
                             </div>
                             </div>
                             </div>
@@ -194,14 +194,11 @@ $("#price").keyup(function() {
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().show();
-            $(parents).parent().id = 'geoShow';
+            $(parents).parent().id = "geoShow";
             // $(this).show(); // MY CHANGE
             count++;
-            console.log(count);
         }
-        console.log(count);
     });
-    console.log(count);
 });
 
 

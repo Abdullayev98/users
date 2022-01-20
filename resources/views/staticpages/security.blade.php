@@ -4,12 +4,12 @@
 
     <div class="container w-4/5 mx-auto">
 
-        <div class="grid grid-cols-5 justify-center">
-            <div class="col-span-1 mt-7">
+        <div class="flex lg:flex-row flex-col justify-center mt-6">
+            <div class="lg:basis-1/5 basis-full lg:m-0 m-8">
                 <ul class="mb-5">
                     <li><a  href="/geotaskshint" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_howItWorks')</a></li>
                     <li><a  href="/security" class="hover:text-red-500 text-md font-bold cursor-pointer">@lang('lang.secure_security')</a></li>
-                    <li><a  href="/" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_rewards')</a></li>
+                    <li><a  href="/badges" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_rewards')</a></li>
                 </ul>
                 <ul class="mb-5">
                     <li><a  href="/reviews" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_perFeedback')</a></li>
@@ -22,75 +22,74 @@
                     <li><a  href="/job" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_vacancy')</a></li>
                 </ul>
             </div>
-            <div class="col-span-4 ml-1">
-                    <div class="w-full">
-                        <div class="w-4/5">
-                            <h1 class="font-bold text-5xl">@lang('lang.secure_security')</h1>
-                            <br>
-                            <p class="">@lang('lang.secure_generalTask')</p>
-                            <br>
-                            <p class="">@lang('lang.secure_weTry')</p>
+            <div class="lg:basis-4/5 basis-full lg:m-0 m-8">
+                    <div class="">
+                        <h1 class="font-bold text-5xl">@lang('lang.secure_security')</h1>
+                        <br>
+                        <p class="">@lang('lang.secure_generalTask')</p>
+                        <br>
+                        <p class="">@lang('lang.secure_weTry')</p>
+                    </div>
+                    <div class="flex lg:flex-row flex-col mt-10  mx-auto">
+                        <div class="basis-1/2 my-auto text-left" >
+                            <h3 class="text-2xl font-medium mb-4">@lang('lang.secure_testPerfs')</h3>
+                            <p class="w-full">@lang('lang.secure_testPerfsDet')</p>                          
+                            <a href="#" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_testDocs')</a>
                         </div>
-{{--                        <div class="grid grid-cols-10">--}}
-{{--                            <div class="col-span-3 bg-no-repeat mt-20" style="background-image: url('https://cbkg.ru/uploads/articles/82cf7590067ad3b49941bb888c690331.jpg')">--}}
 
-{{--                            </div>--}}
-
-{{--                            <div class="col-span-7 p-5">--}}
-{{--                                <h3 class="text-2xl mb-5">@lang('lang.secure_dealWithoutRisk')</h3>--}}
-{{--                                <p class="w-full">@lang('lang.secure_service')«<a href="#" class="text-blue-500 hover:text-red-500">@lang('lang.secure_dealWithoutRisk')</a>»@lang('lang.secure_paymentSecur')</p>--}}
-{{--                                <p class="mt-5">@lang('lang.secure_garanty')</p>--}}
-{{--                                <p class="mt-5">@lang('lang.secure_inThisCase')</p>--}}
-{{--                                <a href="#" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_detailed')</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                        <div class="grid grid-cols-10 h-96 ">
-                            <div class="col-span-7 p-5 my-auto" >
-                                <h3 class="text-2xl mb-5">@lang('lang.secure_testPerfs')</h3>
-                                <p class="w-full">@lang('lang.secure_testPerfsDet')
-                                </p>
-                                <a href="#" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_testDocs')</a>
-                            </div>
-
-                            <div class="col-span-3 bg-no-repeat mt-20 bg-auto bg-right" style="background-image: url('https://sun9-31.userapi.com/impf/c626417/v626417063/59eb3/Mi90OPQvDa0.jpg?size=560x540&quality=96&sign=9c7a38c94313f19aa9bfc1da41f35f2b&type=album')">
-
-                            </div>
+                        <div class="basis-1/2 ">
+                            <img class="w-76 h-64 mx-auto" src="https://sun9-31.userapi.com/impf/c626417/v626417063/59eb3/Mi90OPQvDa0.jpg?size=560x540&quality=96&sign=9c7a38c94313f19aa9bfc1da41f35f2b&type=album" alt="">
                         </div>
-                        <div class="grid grid-cols-10 h-96">
-                            <div class="col-span-3 bg-no-repeat bg-left " style="background-image: url('https://cdn.shopify.com/s/files/1/0055/6174/5498/files/YZPremiums_-_3.0_rating.png?v=1592434448')">
-                            </div>
-                            <div class="col-span-7 p-5 my-auto">
-                                <h3 class="text-2xl mb-5">@lang('lang.secure_ratingAndFeed')</h3>
-                                <p class="w-full">@lang('lang.secure_finish1')</p>
-                                <p class="mt-5">@lang('lang.secure_finish2')</p>
-                                <a href="/" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_detailedAboutR')</a>
-                            </div>
+                    </div>
+                    <div class="flex lg:flex-row flex-col mt-4  mx-auto">
+                        <div class="basic-1/2 lg:block hidden">
+                            <img class="w-96 h-60 mt-16" src="{{asset('/images/img123.jpg')}}" alt="">
                         </div>
-                        <div class="w-full mt-10">
-                            <h3 class="text-3xl mb-5">@lang('lang.secure_recomends')</h3>
-                            <p>@lang('lang.secure_recomendsText')</p>
-                            <ul class="mt-5 list-decimal ml-10">
-                                <li class="mr-5">@lang('lang.secure_carefull')</li>
-                                <li class="mr-5">@lang('lang.secure_carefull2')</li>
-                                <li class="mr-5">@lang('lang.secure_carefull3')</li>
-                                <li class="mr-5">@lang('lang.secure_carefull4')</li>
-                            </ul>
-                            <a class="block mt-7 text-blue-600 hover:text-orange-300">@lang('lang.secure_beAware')</a>
-                            <a class="block text-blue-600 hover:text-orange-300">@lang('lang.secure_beAware2')</a>
-                            <h3 class="mt-14 text-3xl mb-5">@lang('lang.secure_beAware3')</h3>
-                            <p>@lang('lang.secure_beAware4')</p>
-                            <p class="mt-5">@lang('lang.secure_beAware5')</p>
-                            <div class=" grid grid-cols-5 mt-10">
-                                <div class=" col-span-2">
-                                    <div class="rounded-xl py-5 bg-green-400 w-64 hover:bg-green-300 text-center"><a href="#replain-link" class="text-white text-2xl ">@lang('lang.secure_writeToSupp')</a></div>
-                                </div>
-                                <div class="col-span-3">
-                                    <div class="ring-1 ring-gray-300 text-center py-5 rounded-xl col-span-3 w-64">
-                                        <a href="/contacts" class="text-2xl">
+                        <div class="basic-1/2 text-left ml-4 mt-4 lg:block hidden w-4/5">
+                            <h3 class="text-2xl font-medium mb-4">@lang('lang.secure_ratingAndFeed')</h3>
+                            <p class="w-full">@lang('lang.secure_finish1')</p>
+                            <p class="mt-5">@lang('lang.secure_finish2')</p>
+                            <a href="/" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_detailedAboutR')</a>
+                        </div>
+
+                        <div class="basic-1/2 text-left ml-4 mt-4 lg:hidden block">
+                            <h3 class="text-2xl font-medium mb-4">@lang('lang.secure_ratingAndFeed')</h3>
+                            <p class="w-full">@lang('lang.secure_finish1')</p>
+                            <p class="mt-5">@lang('lang.secure_finish2')</p>
+                            <a href="/" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_detailedAboutR')</a>
+                        </div>
+                        <div class="basic-1/2 lg:hidden block">
+                            <img class="w-76 h-64 mx-auto" src="{{asset('/images/img123.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="w-full mt-10">
+                        <h3 class="text-3xl mb-5">@lang('lang.secure_recomends')</h3>
+                        <p>@lang('lang.secure_recomendsText')</p>
+                        <ul class="mt-5 list-decimal">
+                            <li class="mr-5">@lang('lang.secure_carefull')</li>
+                            <li class="mr-5">@lang('lang.secure_carefull2')</li>
+                            <li class="mr-5">@lang('lang.secure_carefull3')</li>
+                            <li class="mr-5">@lang('lang.secure_carefull4')</li>
+                        </ul>
+                        <a class="block mt-7 text-blue-600 hover:text-orange-300">@lang('lang.secure_beAware')</a>
+                        <a class="block text-blue-600 hover:text-orange-300">@lang('lang.secure_beAware2')</a>
+                        <h3 class="mt-14 text-3xl mb-5">@lang('lang.secure_beAware3')</h3>
+                        <p>@lang('lang.secure_beAware4')</p>
+                        <p class="mt-5">@lang('lang.secure_beAware5')</p>
+                        <div class="flex lg:flex-row flex-col mt-10">
+                            <div class="basis-1/2 mx-auto">
+                                <a href="#replain-link">
+                                    <button  class="font-sans  text-2xl mx-2 font-medium bg-green-400 text-[#fff] hover:bg-green-300 px-10 py-4 rounded">
+                                        @lang('lang.secure_writeToSupp')
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="basis-1/2 mx-auto lg:mt-0 mt-6">
+                                <a href="/contacts">
+                                    <button  class="font-sans  text-2xl mx-2 font-medium  text-black-400 ring-1 ring-gray-300 px-14 py-4 rounded">
                                         @lang('lang.secure_goToContacts')
-                                        </a>
-                                    </div>
-                                </div>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
