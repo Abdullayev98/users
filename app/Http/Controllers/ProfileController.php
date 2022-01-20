@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Portfolio_new;
-use File;
+use Illuminate\Support\Facades\File;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\WalletBalance;
-use App\Models\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use App\Models\UserView;
 use Illuminate\Support\Facades\DB;
 class ProfileController extends Controller
@@ -19,23 +17,29 @@ class ProfileController extends Controller
     //profile
     public function profileData()
     {
-        $user = User::find(Auth::user()->id);
+        $user = Auth::user();
         $vcs = UserView::where('user_id', $user->id)->first();
         $task = Task::where('user_id',Auth::user()->id)->count();
         $ports = Portfolio_new::where('user_id',Auth::user()->id)->get();
         return view('profile.profile', compact('user','vcs','task','ports'));
     }
-    public function update(Request $request, $id)
+    public function updates(Request $request)
     {
         $request->validate([
             'avatar' => 'required|image'
         ]);
-        $user= User::find($id);
+        $user= Auth::user();
         $data = $request->all();
         if($request->hasFile('avatar')){
-            Storage::delete($user->avatar);
-            $filename = request()->file('avatar');
-            $data['avatar'] = $filename->store("images/users", ['disk' => 'avatar']);
+            $destination = 'AvatarImages/'.$user->avatar;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $filename = $request->file('avatar');
+            $imagename = "images/users/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $data['avatar'] = $imagename;
         }
         $user->update($data);
         return  redirect()->route('userprofile');
@@ -44,32 +48,38 @@ class ProfileController extends Controller
     //profile Cash
     public function profileCash()
     {
-        $user = User::find(Auth::user()->id);
+        $user = Auth()->user();
         $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
         $vcs = UserView::where('user_id', $user->id)->first();
         $task = Task::where('user_id',Auth::user()->id)->count();
         return view('profile.cash', compact('user','vcs','balance','task'));
     }
-    public function updateCash(Request $request, $id)
+    public function updateCash(Request $request)
     {
         $request->validate([
             'avatar' => 'required|image'
         ]);
-        $user= User::find($id);
+        $user= Auth::user();
         $data = $request->all();
         if($request->hasFile('avatar')){
-            Storage::delete($user->avatar);
-            $filename = request()->file('avatar');
-            $data['avatar'] = $filename->store("images/users", ['disk' => 'avatar']);
+            $destination = 'AvatarImages/'.$user->avatar;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $filename = $request->file('avatar');
+            $imagename = "images/users/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $data['avatar'] =$imagename;
         }
         $user->update($data);
-        return  redirect()->route('userprofile');
+        return  redirect()->route('userprofilecash');
     }
 
     //settings
     public function editData()
     {
-        $user = User::find(Auth::user()->id);
+        $user = Auth::user();
         $vcs = UserView::where('user_id', $user->id)->first();
         $categories = DB::table('categories')->where('parent_id',Null)->get();
         $task = Task::where('user_id',Auth::user()->id)->count();
@@ -87,8 +97,7 @@ class ProfileController extends Controller
             'location' => 'required',
             'role' => 'required',
         ]);
-        $user = User::find(Auth::user()->id)
-        ->update([
+        Auth::user()->update([
             'name'=>$request->input('name'),
             'settings'=>$request->input('name'),
             'email'=>$request->input('email'),
@@ -100,24 +109,30 @@ class ProfileController extends Controller
         ]);
         return  redirect()->route('editData');
     }
-    public function imageUpdate(Request $request, $id)
+    public function imageUpdate(Request $request)
     {
         $request->validate([
             'avatar' => 'required|image'
         ]);
-        $user= User::find($id);
+        $user= Auth::user();
         $data = $request->all();
         if($request->hasFile('avatar')){
-            Storage::delete($user->avatar);
-            $filename = request()->file('avatar');
-            $data['avatar'] = $filename->store("images/users", ['disk' => 'avatar']);
+            $destination = 'AvatarImages/'.$user->avatar;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $filename = $request->file('avatar');
+            $imagename = "images/users/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $data['avatar'] =$imagename;
         }
         $user->update($data);
         return  redirect()->route('editData');
     }
     public function destroy()
     {
-        User::find(Auth::user()->id)->delete();
+        Auth::user()->delete();
         return  redirect('/');
     }
 
@@ -127,7 +142,7 @@ class ProfileController extends Controller
         $request->validate([
             'category' => 'required'
         ]);
-        $id = Auth::id();
+        $id = Auth::user()->id;
         $checkbox = implode(",", $request->get('category'));
         User::where('id',$id)->update(['category_id'=>$checkbox]);
         return redirect()->back();
@@ -138,7 +153,7 @@ class ProfileController extends Controller
             'district' => 'required',
         ]);
 
-       $user = User::find(Auth::user()->id);
+       $user = Auth::user();
         $user->district = $request->district;
         $user->save();
         return redirect()->back();
@@ -158,7 +173,7 @@ class ProfileController extends Controller
                 $photo->move(public_path().'/AvatarImages/images/portfolios/',$imagename);
                 $portfolio->image = $imagename;
             }
-            $portfolio->user_id= Auth::user()->id;
+            $portfolio->user_id = Auth::user()->id;
             $portfolio->comment = $request->comment;
             $portfolio->save();
             return back();

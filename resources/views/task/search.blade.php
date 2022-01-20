@@ -33,20 +33,20 @@
                                             >@lang('lang.search_find')</button>
                                     </div>
 
-                                    <div class="md:inline-flex block w-full col-span-4">
-                                        <div class="w-7/12 lg:w-7/12 md:w-7/12">
-                                            <label class="text-md mb-1 text-neutral-400">@lang('lang.search_location')</label>
+                                    <div class="md:inline-flex  block w-full col-span-4">
+                                        <div class="w-8/12 2xl:6/12 xl:w-9/12 lg:w-8/12 md:w-9/12 relative">
+                                            <label class="xl:text-base lg:text-sm mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                             <input
-                                                class="address p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
+                                                class="address  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
-                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute left-[37%]" type="button">
+                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute xl:left-[90%] lg:left-[88%] md:left-[90%] sm:left-[90%] left-[86%]" type="button">
                                                 <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                             </button>
                                         </div>
 
-                                        <div class="w-2/5 sm:w-1/5 sm:ml-3">
-                                            <label class="text-md mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                            <select name="" id="selectGeo" class="py-2 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); map_pos(k)">
+                                        <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-4/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
+                                            <label class="xl:text-base lg:text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
+                                            <select name="" id="selectGeo" class="xl:text-base  py-2 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); map_pos(k)">
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
@@ -61,23 +61,25 @@
                                                 <option value="200">200 km</option>
                                             </select>
                                         </div>
-                                        <div class="w-[155px] xl:w-1/4 xl:ml-5 lg:w-2/6 lg:ml-1 md:w-3/12 md:ml-2 sm:w-1/5 sm:ml-5 ml-0">
-                                            <label class=" text-sm  md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
+                                        <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
+                                            <label class=" text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
                                             <input type="text" maxlength="7" class="w-full border-md p-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
                                         </div>
                                     </div>
+                                    <div class="inline-flex  block w-full col-span-4">
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox checkboxByAs  h-5 w-5 text-orange-400"
-                                        ><span class="ml-2 text-gray-700">@lang('lang.search_remoteJob')</span>
+                                        ><span class="sm:ml-2 ml-0.5 text-gray-700 xl:text-base lg:text-sm text-xs">@lang('lang.search_remoteJob')</span>
                                     </label>
-                                    <label class="inline-flex items-center mt-3">
+                                    <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                        ><span class="ml-2 text-gray-700">@lang('lang.search_noCallback')</span>
+                                        ><span class="sm:ml-2  ml-0.5 text-gray-700 xl:text-base lg:text-sm text-xs">@lang('lang.search_noCallback')</span>
                                     </label>
-                                    <label class="inline-flex items-center mt-3">
+                                    <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                        ><span class="ml-2 text-gray-700">@lang('lang.search_onlyVacancy')</span>
+                                        ><span class="sm:ml-2  ml-0.5 text-gray-700 xl:text-base lg:text-sm text-xs">@lang('lang.search_onlyVacancy')</span>
                                     </label>
+                                    </div>
                                 </div>
 
 
