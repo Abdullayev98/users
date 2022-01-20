@@ -82,13 +82,16 @@
                     </div>
                 </div>
                 <div class="w-5/12 md:float-none md:float-none">
-                    <div>
+                    <div class="flex items-end gap-x-2">
                         <a href="/performers/{{$user->id}}">
                             <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 "> {{$user->name}} </p>
                         </a>
-                        <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
-                                <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
-                                <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
+                        <a href="/badges">
+                            <img class="w-7" src="{{ asset('images/insuranceIcon.png') }}" alt="#">
+                        </a>
+                        <a href="/badges" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+                            <img class="w-7" src="{{ asset('images/goldenCup.png') }}" alt="#">
+                        </a>
                     </div>
                     <div>
                            @if($user->active_status == 1)
