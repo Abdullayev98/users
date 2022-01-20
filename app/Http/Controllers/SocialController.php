@@ -16,8 +16,8 @@ class SocialController extends Controller
     }
 
     public function loginWithFacebook(){
-        $user = Socialite::driver('facebook')->user();
-        $findUser = User::where('facebook_id',$user->id)->setScopes(['email'])->first();
+        $user = Socialite::driver('facebook')->setScopes(['email'])->user();
+        $findUser = User::where('facebook_id',$user->id)->first();
         if($findUser){
             Auth::login($findUser);
             return redirect('/');
