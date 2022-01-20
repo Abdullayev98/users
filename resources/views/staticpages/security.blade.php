@@ -9,7 +9,7 @@
                 <ul class="mb-5">
                     <li><a  href="/geotaskshint" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_howItWorks')</a></li>
                     <li><a  href="/security" class="hover:text-red-500 text-md font-bold cursor-pointer">@lang('lang.secure_security')</a></li>
-                    <li><a  href="/" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_rewards')</a></li>
+                    <li><a  href="/badges" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_rewards')</a></li>
                 </ul>
                 <ul class="mb-5">
                     <li><a  href="/reviews" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_perFeedback')</a></li>
@@ -45,7 +45,7 @@
                         <div class="basic-1/2 lg:block hidden">
                             <img class="w-96 h-60 mt-16" src="{{asset('/images/img123.jpg')}}" alt="">
                         </div>
-                        <div class="basic-1/2 text-left ml-4 mt-4 lg:block hidden ">
+                        <div class="basic-1/2 text-left ml-4 mt-4 lg:block hidden w-4/5">
                             <h3 class="text-2xl font-medium mb-4">@lang('lang.secure_ratingAndFeed')</h3>
                             <p class="w-full">@lang('lang.secure_finish1')</p>
                             <p class="mt-5">@lang('lang.secure_finish2')</p>
