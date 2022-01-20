@@ -34,16 +34,6 @@
    </div>
 </footer>
 
-
-{{--<div class="bg-[#333] text-[#a4a4a4] text-center lg:py-[60px] lg:px-[40px] invisible xl:vismd:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block hover:text-amber-500ible -ml-1">--}}
-{{--   <div>--}}
-
-{{--       <span class="inline-block text-[5rem] leading-4 tracking-[4px] mr-[20px]">--}}
-{{--    </span>--}}
-{{--   </div>--}}
-{{--   <p class="inline text-[2rem] leading-[2]">@lang('lang.footer_text2') <span>@lang('lang.footer_text3')</span></p>--}}
-{{--</div>--}}
-
 <script>
     var link = document.location.href.split('/');
     if(link[3] == 'task'){
