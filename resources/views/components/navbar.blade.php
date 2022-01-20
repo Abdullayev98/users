@@ -250,6 +250,10 @@ use Illuminate\Support\Facades\Auth;
                             <li>
                                 <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">Вы получили задание</a>
                             </li>
+@elseif($notification->type == 4)
+                            <li>
+                                <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->task_name}}</a>
+                            </li>
 @endif
 @endforeach
 
@@ -442,6 +446,7 @@ use Illuminate\Support\Facades\Auth;
 @php
 
 $array_cats_user = Auth::user()->category_id;
+$user = Auth::user()->id;
 
 @endphp
 
@@ -523,7 +528,30 @@ if(user_id_for_js3 === Number(data["user_id_fjs"])){
 }
 
     }
+    if(Number(data["type"]) === 4){
 
+    const for_check_cat_id = [<? echo $user ?>];
+
+    let num_cat_id = Number(data["user_id"]);
+
+    let check_arr = for_check_cat_id.includes(num_cat_id);
+
+if(check_arr === true){
+    var content_count = document.getElementById('content_count').innerHTML;
+    let count_for_inner = Number(content_count) + 1;
+    document.getElementById('content_count').innerHTML = count_for_inner;
+
+    let el_for_create = document.getElementById('for_append_notifications');
+
+el_for_create.insertAdjacentHTML('afterend', `
+<li>
+<a href="/detailed-tasks/`+ Number(data["task_id"]) +`" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">`+ data["task_name"] +`</a>
+</li>
+`);
+
+}
+
+}
 
     });
   </script>
