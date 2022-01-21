@@ -719,7 +719,8 @@
                         behaviors: ['default', 'scrollZoomNo']
                     }, {
                         // searchControlProvider: 'yandex#search'
-                        searchControlProvider: 'browser#search'
+                        // searchControlProvider: 'browser#search'
+                        Provider: 'browser'
                     });
 
                         // $("#mpshow").click(function(){
@@ -749,7 +750,7 @@
                             function(result) {
                                 userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
                         clusterer = new ymaps.Clusterer({
-                            preset: 'islands#invertedVioletClusterIcons',
+                            preset: 'islands#greenClusterIcons',
                             groupByCoordinates: false,
                             clusterDisableClickZoom: true,
                             clusterHideIconOnBalloonOpen: false,
@@ -765,7 +766,8 @@
                         },
                         getPointOptions = function () {
                             return {
-                                preset: 'islands#violetIcon'
+                                preset: 'islands#greenClusterIcons',
+                                preset: 'islands#greenDotIcon'
                             };
                         },
                         geoObjects = [];
@@ -781,7 +783,7 @@
                     }
                     clusterer.options.set({
                         gridSize: 80,
-                        clusterDisableClickZoom: false
+                        clusterDisableClickZoom: true
                     });
                     clusterer.add(geoObjects);
                     myMap2.geoObjects.add(clusterer);
@@ -795,9 +797,9 @@
                     circle.events.add('drag', function () {
                         // Объекты, попадающие в круг, будут становиться красными.
                         var objectsInsideCircle = objects.searchInside(circle);
-                        objectsInsideCircle.setOptions('preset', 'islands#redIcon');
+                        objectsInsideCircle.setOptions('preset', 'islands#greenClusterIcons');
                         // Оставшиеся объекты - синими.
-                        objects.remove(objectsInsideCircle).setOptions('preset', 'islands#blueIcon');
+                        objects.remove(objectsInsideCircle).setOptions('preset', 'islands#greenClusterIcons');
                     });
                                 myMap2.geoObjects.add(circle);
                             },
