@@ -116,7 +116,7 @@
                 value: 0,
                 min: {{$category->max}}/5,
                 max: {{$category->max}},
-                step:{{$category->max}}/5,
+                step:90,
                 slide: function( event, ui ) {
                     var maximum = {{$category->max}};
                     if (maximum == ui.value) {
@@ -136,3 +136,5 @@
     </script>
 
 @endsection
+
+

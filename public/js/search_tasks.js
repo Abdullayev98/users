@@ -19,18 +19,18 @@ function tasks_list_all(data) {
                     `<div class="sort-table print_block" hidden>
                     <div class="sort-table as">
                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
-                    <div class="w-11/12 h-12 md:m-4 sm:m-2 m-0">
+                    <div class="sm:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
-                    <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-sm ml-12 mt-4 location">` + data.address + `</p>
-                    <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
-                    <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
+                    <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-sm text-blue-400 hover:text-red-400">` + data.name + `</a>
+                    <p class="sm:text-sm text-xs ml-12 mt-4 location">` + data.address + `</p>
+                    <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
+                    <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
-                    <div class="float-right w-1/4 text-right " id="about">
-                    <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ">` + data.category_name + `</p>
-                    <p class="text-sm  mt-2">` + data.user_name + `</p>
+                    <div class="float-right w-1/4 text-right sm:p-0 p-[5px]" id="about">
+                    <a href="#" class="sm:text-lg text-sm">` + data.budget + `</a>
+                    <p class="sm:text-sm text-xs">` + data.category_name + `</p>
+                    <p class="sm:text-sm text-xs mt-2">` + data.user_name + `</p>
                     </div>
                     </div>
                     </div>
@@ -51,18 +51,18 @@ function tasks_list(data) {
                         $(".show_tasks").append(
                             `<div class="sort-table print_block" hidden>
                             <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="` + data.start_date + `">
-                            <div class="w-11/12 h-12 md:m-4 sm:m-2 m-0">
+                            <div class="sm:w-11/12 w-full h-12 md:m-4 sm:m-2 m-0">
                             <div class="float-left w-9/12 " id="results">
                             <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
-                            <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                            <p class="text-sm ml-10 mt-1 location">` + data.address + `</p>
-                            <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
-                            <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
+                            <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-sm text-blue-400 hover:text-red-400">` + data.name + `</a>
+                            <p class="sm:text-sm text-xs ml-10 mt-1 location">` + data.address + `</p>
+                            <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
+                            <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">` + data.oplata + `</p>
                             </div>
-                            <div class="float-right w-1/4 text-right " id="about">
-                            <a href="#" class="text-lg">` + data.budget + `</a>
-                            <p class="text-sm ">` + data.category_name + `</p>
-                            <p class="text-sm mt-2">` + data.user_name + `</p>
+                            <div class="float-right w-1/4 text-right sm:p-0 p-[5px]" id="about">
+                            <a href="#" class="sm:text-lg text-sm">` + data.budget + `</a>
+                            <p class="sm:text-sm text-xs ">` + data.category_name + `</p>
+                            <p class="sm:text-sm text-xs mt-2">` + data.user_name + `</p>
                             </div>
                             </div>
                             </div>
