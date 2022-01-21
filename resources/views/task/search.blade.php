@@ -157,12 +157,12 @@
                             </div>
                             <div class="b-tasks-sorting">
                                 <div class="inline-flex items-center my-5">
-                                    <span class="title__994cd">@lang('lang.search_filter')</span>
+                                    <span class="title__994cd md:text-lg sm:text-sm text-xs">@lang('lang.search_filter')</span>
 
-                                    <button class="mx-5 byid">@lang('lang.search_byDate')</button>
+                                    <button class="md:text-lg sm:text-sm text-xs sm:mx-5  sm:ml-0 ml-0.5 byid">@lang('lang.search_byDate')</button>
 
-                                    <button id="srochnost" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
-                                    <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
+                                    <button id="srochnost" class=" focus:outline-none md:text-lg sm:text-sm text-xs sm:mx-5 sm:ml-0 ml-0.5 active">@lang('lang.search_byHurry')</button>
+                                    <button id="as" data-sort-type="3"  class="md:text-lg sm:text-sm text-xs sm:ml-0 ml-0.5 sm:mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
                             </div>
                             <div id="scrollbar" class="w-full h-full blog1">
