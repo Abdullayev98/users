@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Task;
 
 use App\Http\Controllers\Controller;
+use App\Models\CustomField;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\UserVerify;
@@ -40,8 +41,20 @@ class CreateController extends Controller
 
 
 
-        return redirect()->route("task.create.address", $task->id);
+        return redirect()->route("task.create.custom.get", $task->id);
     }
+
+
+    public function custom_get(Task $task){
+        $datas = CustomField::query()->where('category_id',$task->category_id)->orderBy('order', 'desc')->get();
+
+        return view('create.custom', compact('datas', 'task'));
+
+    }
+
+
+
+
 
 
     public function address(Task $task){
