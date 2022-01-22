@@ -112,7 +112,7 @@
     </div>
 
     {{-- 2 --}}
-    <div class="w-10/12 mx-auto grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
+    <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:block hidden lg:text-left text-center xl:mr-0 mr-8">
         <h1 class="font-bold text-3xl">@lang('lang.ver_freeTime')</h1>
         <p class="mt-6 text-lg">.@lang('lang.ver_workForYourserf')</p>
@@ -181,7 +181,7 @@
     </div>
 
     {{-- 4 --}}
-    <div class="w-10/12 mx-auto grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
+    <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
       <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:block hidden lg:text-left text-center xl:mr-0 mr-8">
         <h1 class="font-bold text-3xl">@lang('lang.ver_addsEconomy')</h1>
         <p class="mt-6 text-lg">@lang('lang.ver_addsDescr')</p>
