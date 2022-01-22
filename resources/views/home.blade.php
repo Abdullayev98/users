@@ -6,7 +6,7 @@
         <div  id="modal-id2" class="alert alert-success alert-block">
             <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2
             text-lg font-bold">{{ $message }}
-              <button onclick="toggleModal2()" type="button" class="bg-red hover:bg-[#a5f3fc] py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button>
+              <button onclick="toggleModal2()" type="button" class="bg-red-500 hover:bg-blue-200 py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button>
             </div>
         </div>
     @endif
@@ -32,19 +32,19 @@
         </div>
     </div>
     <div class="relative z-999 top-0 left-50">
-        <div class="">
-            <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
-                <div class="text-center md:pt-24 pt-16">
-                    <h1 class="font-bold text-white leading-[50px] text-5xl">
+        <div class="w-xl">
+            <main class="md:w-7/12 w-10/12 mx-auto">
+                <div class="text-center pt-24">
+                    <h1 class="font-bold text-white text-4xl lg:text-5xl">
                         <span class="block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="mt-3 text-xl text-white sm:mt-5 sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
+                    <p class="mt-3 text-sm md:text-xl text-white sm:mt-5 sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
-                    <div class="w-full mx-auto">
-                        <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
+                    <div class="mx-auto">
+                        <div class="md:w-10/12 w-full mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-                                   class="w-auto text-xl md:left-32 focus:outline-none rounded-md text-black md:text-md xl:w-[700px] lg:w-[600px] md:w-[400px] py-3">
+                                   class="w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none md:text-xl">
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
@@ -52,20 +52,18 @@
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
-                                        class="float-right text-xl border bg-[#f70] z-0 border-transparent rounded-md px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24  relative text-white">
+                                        class="float-right md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 mt-1.5 -ml-24 md:-top-14 -top-12 relative text-white">
                                     @lang('lang.header_orderBtn')
                                 </a>
                         </div>
-                        <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-xs">
-
-
-                        @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
+                        <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs  md:ml-20">
+                            @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                         </div>
                     </div>
-                    <div class="w-4/5 mx-auto mt-12">
-                      <a href="/verification" class="text-[#80e6ff] text-center">
+                    <div class="lg:w-6/12 md:w-10/12 w-7/12 mx-auto mt-14">
+                      <a href="/verification" class="text-green-300 text-center">
                         <i class="text-blue fas fa-shield-alt float-left mr-0 text-2xl"></i>
-                        <p class="ml-0 text-base border-b border-dotted border-[#80e6ff]">@lang('lang.header_bePerformer') </p>
+                        <p class="ml-0 text-base underline">@lang('lang.header_bePerformer') </p>
                       </a>
                     </div>
                 </div>
@@ -92,7 +90,7 @@
         </div>
     </div>
     <main>
-        <div class="container md:text-left text-left mx-auto mt-36 md:px-16 px-4">
+        <div class="container md:text-left text-left mx-auto mt-32 md:mt-36 md:px-16 px-4">
             <div class="text-4xl font-bold text-center">
                 @lang('lang.header_over') {{$users_count}}  @lang('lang.header_performers')
             </div>
@@ -101,8 +99,8 @@
             </div>
             <div class="flex flex-wrap w-11/12 mt-14 mx-auto">
                 @foreach ($categories as $category2)
-                    <a  class="flex flex-row lg:w-1/3 w-full items-center my-4 lg:border-0 border-b text-gray-500 hover:text-[#ffa200]" href="{{route('categories', ['id'=> $category2->id])}}">
-                        <i class="{{ $category2->ico }} text-3xl"></i><span class="ml-6 text-base"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
+                    <a  class="flex flex-row lg:w-1/3 w-full items-center my-4 lg:border-0 border-b text-gray-500 hover:text-yellow-500 " href="{{route('categories', ['id'=> $category2->id])}}">
+                        <i class="{{ $category2->ico }} text-3xl"></i><span class="ml-6 text-lg"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
                     </a>
                 @endforeach
             </div>
@@ -115,7 +113,7 @@
             <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 <div class="text-center">
                     <img src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D0%BF%D0%BE%D1%80%D1%82%D0%BC%D0%BE%D0%BD%D0%B0-115076170.jpg"
-                         class="mx-auto h-[200px] w-[200px]" alt="">
+                         class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72" alt="">
                     <h1 class="font-bold text-lg my-4">@lang('lang.body_comfortPay')</h1>
                     <p class="text-sm">
                     @lang('lang.body_securePay')
@@ -124,7 +122,7 @@
                 <div class="text-center mx-4">
                     <img
                         src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%85%D0%BE%D0%BA%D0%BA%D0%B5%D1%8F-%D0%BD%D0%B0-%D0%BB%D1%8C%D0%B4%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%BF%D0%BE%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-117033775.jpg"
-                        class="mx-auto h-[200px] w-[200px]" alt="">
+                        class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72" alt="">
                     <h1 class="font-bold text-lg my-4">@lang('lang.body_loyalPerformer')</h1>
                     <p class="text-sm">
                     @lang('lang.body_performerDocs')
@@ -133,7 +131,7 @@
                 <div class="text-center mx-4">
                     <img
                         src="https://avatars.mds.yandex.net/get-dialogs/1676983/eb0009385cb3f7e62b66/orig"
-                        class="mx-auto h-[150px] w-[150px] m-[25px]" alt="">
+                        class="mx-auto md:h-36 md:w-36 lg:h-52 lg:w-52 my-10" alt="">
                     <h1 class="font-bold text-lg mb-4 mt-10">@lang('lang.body_feedback')</h1>
                     <p class="text-sm">
                     @lang('lang.body_over1mln')
@@ -156,7 +154,7 @@
 @if(($cnt_for_hiw % 2) == 0)
 
                     <div>
-                        <img class="lg:ml-0  mx-auto "
+                        <img class="lg:ml-0  mx-auto  w-full h-full"
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
@@ -172,13 +170,13 @@
                         <h2 class="text-2xl">{{ strip_tags($howitwork->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')) }}</h2>
                     </div>
                     <div class="my-16 md:block hidden">
-                        <img class="lg:ml-0  mx-auto "
+                        <img class="lg:ml-0  mx-auto w-full h-full"
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
 
                     <div class="my-16 md:hidden block">
-                        <img class="lg:ml-0 mx-auto "
+                        <img class="lg:ml-0 mx-auto w-full h-full"
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
@@ -208,7 +206,7 @@
                 <p class="text-xs text-gray-400">@lang('lang.body_ecomomyText')</p>
             </div>
         </div>
-        <div class="bg-[#deeafb]">
+        <div class="bg-blue-100">
             <div class="container mx-auto pb-24">
                 <div class="text-5xl mx-auto py-16 text-center">
                 @lang('lang.body_benefit')
@@ -216,7 +214,7 @@
                 <div class="grid grid-cols-4 w-9/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
                     <div class="my-auto sm:mr-0 mr-4">
-                        <img src="/storage/{{$advant->image}}" class="w-32" alt="">
+                        <img src="/storage/{{$advant->image}}" class="w-32 h-32" alt="">
                     </div>
                     <div class="col-span-3">
                         <h4 class="font-semibold text-3xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
@@ -229,16 +227,16 @@
         <div class="w-full mx-auto lg:shadow-xl">
             <div
                 class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('{{asset('/images/download_hand_User.png')}}')]">
-                <div class="w-full sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-[#00000066]">
-                    <h4 class="font-semibold text-4xl md:text-[#000] text-[#ffff]">@lang('lang.body_personalHelper')</h4>
+                <div class="w-full sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-blue-700">
+                    <h4 class="font-semibold text-4xl md:text-black text-gray-500">@lang('lang.body_personalHelper')</h4>
                     <p class="text-xl mt-8 md:text-[#000]">@lang('lang.body_downloadApp')</p>
                     <a href="#">
-                        <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
+                        <button type="button" class="w-3/10 bg-black hover:bg-yellow-500 rounded-md mt-8"><img
                                 src="{{asset('images/download_ios.svg')}}"
                                 alt=""></button>
                     </a>
                     <a href="#">
-                        <button type="button" class="w-3/10 bg-[#000] hover:bg-[#ffa200] rounded-md mt-8"><img
+                        <button type="button" class="w-3/10 bg-black hover:bg-yellow-500 rounded-md mt-8"><img
                                 src="{{asset('images/download_android.svg')}}"
                                 alt=""></button>
                     </a>
@@ -279,7 +277,7 @@
                     </div>
                     <div class="mt-4">
                         <a href="/task-search/" type="button"
-                                class="text-center py-3 bg-[#4697fa] border-[#005ccd] text-[#fff] text-4xl w-full border-b-4">
+                                class="text-center py-3 bg-blue-500 border-blue-500 text-[#fff] text-4xl w-full border-b-4">
                                 @lang('lang.body_showAllTasks')
                         </a>
                     </div>
@@ -287,17 +285,17 @@
                 <div class="w-full md:col-span-1 h-full col-span-2">
                 <a href="/verification">
                     <div
-                        class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover bg-[url('https://www.roi-selling.com/hs-fs/hub/444749/file-1929610769-jpg/blog-files/team-.jpg')]">
-                        <div class="w-full h-full bg-[#00000066] text-center">
-                            <i class="fas fa-user text-[#84e879] text-5xl pt-8"></i>
-                            <p class="text-4xl text-[#fff]">@lang('lang.body_howToJoin')</p>
+                        class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover" style="background: url('https://www.roi-selling.com/hs-fs/hub/444749/file-1929610769-jpg/blog-files/team-.jpg');">
+                        <div class="w-full h-full bg-black bg-opacity-40 text-center">
+                            <i class="fas fa-user text-green-300 text-5xl pt-8"></i>
+                            <p class="text-4xl font-medium text-white">@lang('lang.body_howToJoin')</p>
                         </div>
                     </div>
                 </a>
                 <a href="/security">
                     <div
-                         class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://3blaws.s3.amazonaws.com/images/bigstock-Green-energy-biofuel-electric-74257315.jpg')]">
-                        <div class="w-full h-full bg-[#00000066] text-center">
+                         class="md:w-full w-full h-1/3 my-8 bg-center bg-cover" style="background: url('https://3blaws.s3.amazonaws.com/images/bigstock-Green-energy-biofuel-electric-74257315.jpg');">
+                        <div class="w-full h-full bg-black bg-opacity-40 text-center">
                             <i class="fas fa-shield-alt text-[#8ae2ed] text-5xl pt-8"></i>
                             <p class="text-4xl text-[#fff]">@lang('lang.body_security')</p>
                         </div>
@@ -305,8 +303,8 @@
                 </a>
                    <a href="/performers">
                         <div
-                            class="md:w-full w-full h-1/3 my-8 bg-center bg-cover bg-[url('https://wallpapercave.com/wp/wp4002616.jpg')]">
-                            <div class="w-full h-full bg-[#00000066] text-center">
+                            class="md:w-full w-full h-1/3 my-8 bg-center bg-cover" style="background: url('https://wallpapercave.com/wp/wp4002616.jpg');">
+                            <div class="w-full h-full bg-black bg-opacity-40 text-center">
                                 <p class="text-4xl pt-8 text-[#ffc730]">@lang('lang.body_perForBusines')</p>
                             </div>
                         </div>
@@ -350,24 +348,6 @@
             x.parentNode.insertBefore(s, x);
         })('https://widget.replain.cc/dist/client.js');
     </script> -->
-    <script>
-        tailwind.config = {
-            module.exports = {
-                purge: [],
-                theme: {
-                    screens: {
-                        'tablet': '700px',
-                    },
-                    colors: {
-                        'orange': '#ff8a00',
-                    },
-                    boxShadowColor: {
-                        'sabzirang': '#ff8a00',
-                    },
-                }
-            }
-        }
-    </script>
     <script>
         setInterval(function () {
             var elem = document.getElementById('scrollbar');
@@ -422,5 +402,16 @@
             document.documentElement.scrollTop = 0;
         }
     </script>
-
+    <script>
+        module.exports = {
+            theme: {
+                textColor: {
+                    'primary': '#3490dc',
+                    'secondary': '#ffed4a',
+                    'danger': '#e3342f',
+                    'whiteblue': '#80e6ff';
+                }
+            }
+        }
+    </script>
 @endsection
