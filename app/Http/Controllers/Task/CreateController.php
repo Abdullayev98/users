@@ -46,6 +46,10 @@ class CreateController extends Controller
     public function custom_get(Task $task){
         $datas = CustomField::query()->where('category_id',$task->category_id)->orderBy('order', 'desc')->get();
 
+        if (!$datas->count()){
+            return redirect()->route('task.create.address', $task->id);
+        }
+
         return view('create.custom', compact('datas', 'task'));
 
     }
@@ -53,6 +57,8 @@ class CreateController extends Controller
     public function custom_store(Request $request, Task $task){
         $datas = CustomField::query()->where('category_id',$task->category_id)->orderBy('order', 'desc')->get();
 
+        if (!$datas){
+        }
 
         foreach ($datas as $data) {
             $value = new CustomFieldsValue();
