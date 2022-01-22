@@ -100,7 +100,7 @@
             @lang('lang.body_helpers')
             </div>
             <div class="flex flex-wrap w-11/12 mt-14 mx-auto">
-                @foreach ($categories as $category2)      
+                @foreach ($categories as $category2)
                     <a  class="flex flex-row lg:w-1/3 w-full items-center my-4 lg:border-0 border-b text-gray-500 hover:text-[#ffa200]" href="{{route('categories', ['id'=> $category2->id])}}">
                         <i class="{{ $category2->ico }} text-3xl"></i><span class="ml-6 text-base"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
                     </a>
@@ -149,7 +149,7 @@
                 </div>
                 <div class="grid md:grid-cols-2 grid-cols-1 mt-8 w-11/12 mx-auto">
 
-@php $cnt_for_hiw = 0; @endphp  
+@php $cnt_for_hiw = 0; @endphp
 
 @foreach($howitworks as $howitwork)
 
