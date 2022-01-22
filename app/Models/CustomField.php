@@ -10,5 +10,9 @@ class CustomField extends Model
 {
     use HasFactory;
     use Translatable;
-    protected $translatable = ['title'];
+
+    protected $casts = [
+        'options' => 'array'
+    ];
+    protected $translatable = ['title','description','placeholder','label'];
 }
