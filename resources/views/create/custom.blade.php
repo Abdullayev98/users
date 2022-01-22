@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-
+@endif
 @if($data->type == 'checkbox')
 
 
@@ -159,6 +159,7 @@
                         </div>
                     </div>
 
+                    @endif
 @if($data->type == 'radio')
 
                     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
@@ -241,6 +242,7 @@
                         </div>
                     </div>
 
+                    @endif
 @if($data->type == 'input')
 
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
