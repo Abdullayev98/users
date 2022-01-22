@@ -3,6 +3,11 @@
     $add  = is_null($dataTypeContent->getKey());
 @endphp
 
+<?php
+ use TCG\Voyager\Models\Category;
+ use App\Models\CustomField;
+ ?>
+
 @extends('voyager::master')
 
 @section('css')
