@@ -13,8 +13,9 @@ Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.pro
 Route::prefix("task")->group(function (){
     Route::prefix("create")->group(function (){
         Route::get('/', [CreateController::class, 'name'])->name('task.create.name');
-        Route::post('/custom/{task}', [CreateController::class, 'custom'])->name('task.create.custom');
+        Route::post('/name/{task}', [CreateController::class, 'name_store'])->name('task.create.name.store');
         Route::get('/custom/{task}', [CreateController::class, 'custom_get'])->name('task.create.custom.get');
+        Route::post('/custom/{task}/store', [CreateController::class, 'custom_store'])->name('task.create.custom.store');
         Route::get('/address/{task}', [CreateController::class, 'address'])->name('task.create.address');
         Route::post('/address/{task}/store', [CreateController::class, 'address_store'])->name('task.create.address.store');
         Route::get('/date/{task}', [CreateController::class, 'date'])->name('task.create.date');
