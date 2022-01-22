@@ -42,6 +42,10 @@
                                                 <input type="email" name="email" placeholder="E-mail"
                                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
                                                 />
+                                                <label for="phone">@lang('lang.contact_number')</label>
+                                                <input type="text" name="phone_number" value="" id="phone"
+                                                       class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+
                                             @else
                                                 <label for="phone">@lang('lang.contact_number')</label>
                                                 <input type="text" name="phone_number" value="+998{{auth()->user()->phone_number}}" id="phone"
