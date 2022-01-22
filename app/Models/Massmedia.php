@@ -10,4 +10,8 @@ class Massmedia extends Model
 {
     use HasFactory;
     use Translatable;
+    protected $translatable = [
+        'title',
+        'description',
+    ];
 }
