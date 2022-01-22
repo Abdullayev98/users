@@ -14,7 +14,8 @@ class MassmediaController extends Controller
      */
     public function index()
     {
-        //
+        $medias = Massmedia::paginate(20);
+        return view('reviews.CMI',compact('medias'));
     }
 
     /**
@@ -22,64 +23,64 @@ class MassmediaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Massmedia  $massmedia
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Massmedia $massmedia)
-    {
-        //
-    }
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  \App\Models\Massmedia  $massmedia
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function show(Massmedia $massmedia)
+    // {
+    //     //
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Massmedia  $massmedia
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Massmedia $massmedia)
-    {
-        //
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  \App\Models\Massmedia  $massmedia
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit(Massmedia $massmedia)
+    // {
+    //     //
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Massmedia  $massmedia
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Massmedia $massmedia)
-    {
-        //
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  \App\Models\Massmedia  $massmedia
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function update(Request $request, Massmedia $massmedia)
+    // {
+    //     //
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Massmedia  $massmedia
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Massmedia $massmedia)
-    {
-        //
-    }
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  \App\Models\Massmedia  $massmedia
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy(Massmedia $massmedia)
+    // {
+    //     //
+    // }
 }
