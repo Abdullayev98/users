@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Advant;
-use App\Models\UserVerify;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Advant;
+use App\Models\UserVerify;
 use App\Models\How_work_it;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
-use Mail;
-use Hash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use TCG\Voyager\Models\Category;
 use PlayMobile\SMS\SmsService;
+use Mail;
+use Hash;
 
 class UserController extends Controller
 {
@@ -162,18 +163,7 @@ class UserController extends Controller
             'user_id' => auth()->user()->id,
             'sms_otp' => $request->sms_otp
         ])->first();
-        if($verifyUser){
-            $user = $verifyUser->user;
-            if(!$user->is_email_verified) {
-                $verifyUser->user->is_email_verified = 1;
-                $verifyUser->user->save();
-                $message = "Your profile is verified. You can now login.";
-            } else {
-                $message = "Your profile is already verified. You can now login.";
-            }
-        }else{
-            $message = "User not found";
-        }
+        $message = $this->checkIsVerified($verifyUser);
         return redirect("/profile")->with('message', $message);
     }
 
@@ -184,6 +174,11 @@ class UserController extends Controller
         }else{
             $verifyUser = UserVerify::where('token', $token)->first();
         }
+        $message = $this->checkIsVerified($verifyUser);
+        return redirect()->route('login')->with('message', $message);
+    }
+
+    public function checkIsVerified($verifyUser){
         $message = 'Sorry your profile cannot be identified.';
         if(!is_null($verifyUser) ){
             $user = $verifyUser->user;
@@ -195,6 +190,6 @@ class UserController extends Controller
                 $message = "Your profile is already verified. You can now login.";
             }
         }
-        return redirect()->route('login')->with('message', $message);
+        return $message;
     }
 }
