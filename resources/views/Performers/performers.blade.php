@@ -53,13 +53,13 @@
 
         <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16">
                 <div class="bg-gray-100 h-40 rounded-xl w-4/5 sm:mx-0 mx-auto">
-                        <div class="font-bold text-2xl mx-8 py-4">
+                        <div class="font-bold text-4xl mx-8 py-4">
                             <p>@lang('lang.perfCat_allPerf')</p>
                         </div>
                         <div class="form-check flex flex-row mx-8 mt-10">
                             <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox" value="1" onchange="check()" id="online">
-                            <label class="form-check-label inline-block text-gray-800" for="online">
+                            <label class="form-check-label inline-block text-gray-800 text-base" for="online">
                                 @lang('lang.perfCat_nowInSite')
                             </label>
                         </div>
@@ -67,20 +67,20 @@
             @foreach($users as $user)
             <input type="text" name="user_id" class="hidden" value="{{ $user->id }}">
             <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
-                <div class="w-34 float-left">
-                    <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
+                <div class="w-48 float-left">
+                    <img class="rounded-lg w-[116px] h-[116px] bg-black mb-4 mr-4"
                     @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
                     src='{{asset("AvatarImages/images/users/default.png")}}'
                     @else
                     src="{{asset("AvatarImages/{$user->avatar}")}}"
                     @endif
                     alt="user">
-                    <div class="flex flex-row text-[12px]">
+                    <div class="flex flex-row text-[19px]">
                         <p>@lang('lang.perfCat_feedbacks')</p>
-                        <i class="far fa-thumbs-up m-1 text-gray-400"></i> 5128
-                        <i class="far fa-thumbs-down m-1 text-gray-400"></i> 21
+                        <i class="far fa-thumbs-up m-1 text-gray-400 w-4 h-4"></i> 5128
+                        <i class="far fa-thumbs-down m-1 text-gray-400 w-4 h-4"></i> 21
                     </div>
-                    <div class="flex flex-row text-[12px]">
+                    <div class="flex flex-row text-[19px]">
                         <i class="fas fa-star text-[#ffad00]"></i>
                         <i class="fas fa-star text-[#ffad00]"></i>
                         <i class="fas fa-star text-[#ffad00]"></i>
@@ -88,10 +88,10 @@
                         <i class="fas fa-star text-[#ffad00]"></i>
                     </div>
                 </div>
-                <div class="w-5/12 md:float-none md:float-none">
+                <div class="ml-5 w-5/12 md:float-none md:float-none">
                     <div class="flex items-end gap-x-2">
                         <a href="/performers/{{$user->id}}">
-                            <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 "> {{$user->name}} </p>
+                            <p class="md:text-4xl text-2xl underline text-blue-500 hover:text-red-500 "> {{$user->name}} </p>
                         </a>
                         <a href="/badges">
                             <img class="w-7" src="{{ asset('images/insuranceIcon.png') }}" alt="#">
@@ -102,19 +102,19 @@
                     </div>
                     <div>
                            @if($user->active_status == 1)
-                        <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 mr-2 mt-1"> </i> @lang('lang.exe_online')</p>
+                        <p class="text-xl text-green-500 my-2"><i class="fa fa-circle text-xs text-green-500 mr-2 mt-1"> </i> @lang('lang.exe_online')</p>
 
                         @else
-                        <p class="text-sm text-gray-500 my-3">@lang('lang.exe_offline')</p>
+                        <p class="text-xl text-gray-500 my-2">@lang('lang.exe_offline')</p>
                         @endif
 
                     </div>
                     <div>
-                        <p class="text-base md:text-[14px] text-[0.9rem] leading-0 md:w-[600px] ">
+                        <p class="md:text-2xl text-xl leading-0 md:w-[600px] mb-4">
                                {{$user->description}}
                         </p>
                     </div>
-                    <div >
+                    <div>
                         <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
                             <button class="rounded-lg py-2 px-3 font-bold bg-[#ffad00] hover:bg-[#ff9500] transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                         </a>
