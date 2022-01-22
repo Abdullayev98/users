@@ -108,6 +108,7 @@
 
 @if($dataTypeContent->id)
 @php $count_for_js = 0; @endphp
+@if($dataTypeContent->options !== NULL)
 @foreach($dataTypeContent->options['options'] as $key => $option)
 @php $count_for_js++; @endphp
 <div>{{$key}}
@@ -115,6 +116,7 @@
 <input type="button" value="x" style="padding:0 8px 2px 8px; margin-left: 3px;" class="btn btn-danger btnX">
 </div>
 @endforeach
+@endif
 
 <script>
 var cntele = <?echo $count_for_js;?>;
