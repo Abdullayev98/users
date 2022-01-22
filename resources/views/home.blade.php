@@ -12,7 +12,7 @@
     @endif
     <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
     <div class="HomepageHeaderSection">
-        <div class=" video-bg">
+        <div class="video-bg">
             @if(setting('site.Video_bg') != null)
             @php
             $array_video = json_decode(setting('site.Video_bg'), true);
@@ -24,7 +24,8 @@
                 $pp = setting('site.foto_bg');
                 $str_replace = str_replace("\\","/",$pp);
             @endphp
-            <img src="storage/{{$str_replace}}" alt="rasm yoq">
+{{--            <img src="storage/{{$str_replace}}" alt="rasm yoq">--}}
+            <img src="{{ asset('/images/uborka1.jpg') }}" alt="rasm yoq">
             @endif
             <div class="effects"></div>
             <div class="video-bg__content"></div>
@@ -34,10 +35,10 @@
         <div class="">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
                 <div class="text-center pt-24">
-                    <h1 class="font-bold text-white text-3xl lg:text-6xl md:text-4xl">
+                    <h1 class="font-bold text-white text-[42px] leading-[50px] lg:text-6xl md:text-4xl">
                         <span class="block xl:block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
+                    <p class="md:font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
                     <div class="w-full mx-auto">
@@ -98,45 +99,18 @@
             <div class="text-sm text-center mt-4">
             @lang('lang.body_helpers')
             </div>
-            <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
-            @foreach ($categories as $category2)
-                <div class="text-gray-500 text-sm my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
-                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="block xl:ml-16">
-                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</i>
+            <div class="flex flex-wrap w-11/12 mt-14 mx-auto">
+                @foreach ($categories as $category2)      
+                    <a  class="flex flex-row lg:w-1/3 w-full items-center my-4 lg:border-0 border-b" href="{{route('categories', ['id'=> $category2->id])}}">
+                        <i class="{{ $category2->ico }} text-3xl text-[#b5adbe]"></i><span class="ml-6 text-md text-black hover:text-[#ffa200]"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
                     </a>
-                </div>
                 @endforeach
-                <!-- <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-hammer text-gray-500"></i> Ремонт и строительство
-                    </a>
-                </div>
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-shipping-fast text-gray-500"></i> Грузоперевозки
-                    </a>
-                </div>
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-soap text-gray-500"></i> Уброка и помощ по хозяйству
-                    </a>
-                </div>
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-tv text-gray-500"></i> Компьютерная помощь
-                    </a>
-                </div>
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-camera-retro text-gray-500"></i> Фото, видео и аудио
-                    </a>
-                </div> -->
-                <div class="md:col-span-3 text-center  col-span-1">
-                    <a href="/categories/1">
-                        <button type="button" class="font-semibold border hover:border-[#000] rounded-md w-64 h-12">@lang('lang.body_allService')
-                        </button>
-                    </a>
-                </div>
+            </div>
+            <div class="mb-4 mt-8 text-center">
+                <a href="/categories/1">
+                    <button type="button" class="font-semibold border hover:border-[#000] rounded-md w-64 h-12">@lang('lang.body_allService')
+                    </button>
+                </a>
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 <div class="text-center">
@@ -246,7 +220,7 @@
                 </div>
                 <div class="grid grid-cols-4 w-9/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
-                    <div class="">
+                    <div class="my-auto sm:mr-0 mr-4    ">
                         <img src="/storage/{{$advant->image}}" class="w-32" alt="">
                     </div>
                     <div class="col-span-3">
@@ -254,21 +228,6 @@
                         <p class="text-md">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
                     </div>
                     @endforeach
-                    {{-- <div class=" my-16"> @lang('lang.body_bestPrise') @lang('lang.body_bestPriseCon')
-                        <img src="https://www.freeiconspng.com/uploads/white-like-icon-png-20.png" class="w-32" alt="">
-                    </div>
-                    <div class="col-span-3 my-16">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_reliablePer')</h4>
-                        <p class="text-md">@lang('lang.body_reliablePerCon')</p>
-                    </div>
-                    <div class=" my-16">
-                        <img src="https://www.pngkit.com/png/full/245-2458956_hours-time-icon-png-white.png"
-                             class="w-32" alt="">
-                    </div>
-                    <div class="col-span-3 my-16">
-                        <h4 class="font-semibold text-2xl">@lang('lang.body_timeSaving')</h4>
-                        <p class="text-md">@lang('lang.body_timeSavingCon')</p>
-                    </div> --}}
                 </div>
             </div>
         </div>

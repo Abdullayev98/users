@@ -16,6 +16,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use App\Models\Task;
 use App\Models\Notification;
+use App\Events\MyEvent;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -37,11 +38,33 @@ class PerformersController extends Controller
 
 
     }
-    public function service(){
+    public function service(Request $request)
+    {
+        $tasks = Task::where('user_id', Auth::id())->get();
         $categories = DB::table('categories')->get();
         $child_categories= DB::table('categories')->get();
         $users= User::where('role_id',2)->paginate(50);
-        return view('Performers/performers',compact('child_categories','categories','users'));
+
+        $task_name = $request->input('task_name');
+        $task_id = $request->input('task_id');
+        $user_id = $request->input('user_id');
+        Notification::create([
+            'task_name' => $task_name,
+            'task_id' => $task_id,
+            'user_id' => $user_id,
+            'description' => 1,
+            'type' => 4,
+        ]);
+        $user_id = $user_id;
+        $task_id = $task_id;
+        $id_cat = NULL;
+        $description = 1;
+        $task_name = $task_name;
+        $type = 4;
+
+               event(new MyEvent($user_id,$task_id,$id_cat,$task_name,$type,$description));
+        
+        return view('Performers/performers',compact('child_categories','categories','users','tasks'));
     }
     public function performer($id){
 

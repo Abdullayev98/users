@@ -57,7 +57,7 @@
                             <p>@lang('lang.perfCat_allPerf')</p>
                         </div>
                         <div class="form-check flex flex-row mx-8 mt-10">
-                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" 
+                            <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox" value="1" onchange="check()" id="online">
                             <label class="form-check-label inline-block text-gray-800" for="online">
                                 @lang('lang.perfCat_nowInSite')
@@ -65,9 +65,16 @@
                         </div>
                 </div>
             @foreach($users as $user)
+            <input type="text" name="user_id" class="hidden" value="{{ $user->id }}">
             <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
                 <div class="w-34 float-left">
-                    <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4" src="{{asset("AvatarImages/{$user->avatar}")}}" alt="user">
+                    <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
+                    @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
+                    src='{{asset("AvatarImages/images/users/default.png")}}'
+                    @else
+                    src="{{asset("AvatarImages/{$user->avatar}")}}"
+                    @endif
+                    alt="user">
                     <div class="flex flex-row text-[12px]">
                         <p>@lang('lang.perfCat_feedbacks')</p>
                         <i class="far fa-thumbs-up m-1 text-gray-400"></i> 5128
@@ -82,13 +89,16 @@
                     </div>
                 </div>
                 <div class="w-5/12 md:float-none md:float-none">
-                    <div>
+                    <div class="flex items-end gap-x-2">
                         <a href="/performers/{{$user->id}}">
                             <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 "> {{$user->name}} </p>
                         </a>
-                        <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
-                                <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
-                                <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
+                        <a href="/badges">
+                            <img class="w-7" src="{{ asset('images/insuranceIcon.png') }}" alt="#">
+                        </a>
+                        <a href="/badges" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+                            <img class="w-7" src="{{ asset('images/goldenCup.png') }}" alt="#">
+                        </a>
                     </div>
                     <div>
                            @if($user->active_status == 1)
@@ -105,8 +115,11 @@
                         </p>
                     </div>
                     <div >
-                        <a href="#" onclick="toggleModal12('modal-id12')" class="hidden lg:block">
+                        <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
                             <button class="rounded-lg py-2 px-3 font-bold bg-[#ffad00] hover:bg-[#ff9500] transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
+                        </a>
+                        <a id="open" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4">
+                            Предложить задание
                         </a>
                     </div>
                 </div>
@@ -118,7 +131,65 @@
 
         </div>
 </div>
+    <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-[rgba(0,0,0,0.5)] hidden text-center">
+        <div class="modal relative bg-white w-[600px] mx-auto p-10 rounded-md justify-center mt-48 ease-in transition duration-500">
+            <h1 class="text-3xl font-semibold">Выберите задание, которое хотите предложить исполнителью</h1>
+            @foreach($tasks as $task)
+            <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
+            @endforeach
+            <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 text-lg mt-6 hover:text-[#ff8a00]  hover:border-[#ff8a00] hover:shadow-xl shadow-[#ff8a00] mx-auto block"><br>
+            
+            @foreach($tasks as $task)  
+            @auth
+            <option value="{{ $task->name }}">
+                    {{ $task->name }}
+                </option>
+            @endauth
+            @endforeach
+                <option value="1">
+                    + новое задание
+                </option>
+            </select>
+            <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
 
+            <div id="hidden_div">
+                <button onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
+                    Предложить работу
+                </button>
+                <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
+            </div>
+
+            <a href="/categories/1">
+                <button id="hidden_div2" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto" style="display: none;">
+                    Создать новое задание
+                </button>
+            </a>
+
+            <button class="cursor-pointer close text-gray-400 font-bold rounded-lg p-2 px-4 mt-6 absolute -top-6 right-0 text-2xl">
+                x
+            </button>
+        </div>
+    </div>
+
+
+
+
+    <!-- Основной контент страницы -->
+    <div id="modal" style="display: none">
+        <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+            <!-- modal -->
+            <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center py-12">
+                <!-- modal header -->
+                <h1 class="text-2xl font-bold">Вы предложили задание "Test" исполнителю Елена Б.</h1>
+                <div class="mx-auto mt-8">
+                    Мы отправили ему уведомление.
+                </div>
+                <button onclick="myFunction1()" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto">
+                    ok
+                </button>
+            </div>
+        </div>
+    </div>
      {{-- Modal start --}}
      <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id12">
         <div class="relative w-auto my-6 mx-auto max-w-3xl"  id="modal-id12">
@@ -188,7 +259,57 @@
         }
       </script>
     {{-- Modal end --}}
+<script>
+    document.getElementById("open").addEventListener("click", function() {
+        document.querySelector(".modal_content").style.display = "block";
+    });
 
+    document.querySelector(".close").addEventListener("click", function() {
+        document.querySelector(".modal_content").style.display = "none";
+    });
+</script>
+<script type="text/javascript">
+    function showDiv(select) {
+        if (select.value == 0) {
+            document.getElementById('hidden_div').style.display = "block";
+        }if(select.value == 1) {
+            document.getElementById('hidden_div').style.display = "none";
+            document.getElementById('hidden_div2').style.display = "block";
+        } else {
+            document.getElementById('hidden_div2').style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    function myFunction() {
+
+        document.getElementById('modal').style.display = "block";
+    };
+    function myFunction1() {
+        document.getElementById('modal').style.display = "none";
+        document.getElementById('modal_content').style.display = "none";
+    };
+</script>
+<script>
+        $("#hidden_div").click(function(event){
+            event.preventDefault();
+            let task_name = $('#task_name option:selected').val();
+            let tasks_id = $("input[name=tasks_id]").val();
+            let _token = $("input[name=csrf]").val();
+            let user_id = $("input[name=user_id]").val();
+            $.ajax({
+                url: "/performers",
+                type:"POST",
+                data:{
+                    task_id:tasks_id,
+                    task_name:task_name,
+                    user_id:user_id,
+                    _token:_token,
+                },
+            });
+        });
+</script>
 @endsection
 
 @section('javasript')
