@@ -34,17 +34,17 @@
     <div class="relative z-999 top-0 left-50">
         <div class="">
             <main class="xl:w-[800px] lg:w-[700px] md:w-[500px] w-[350px] mx-auto">
-                <div class="text-center pt-24">
-                    <h1 class="font-bold text-white text-[42px] leading-[50px] lg:text-6xl md:text-4xl">
-                        <span class="block xl:block">@lang('lang.header_title')</span>
+                <div class="text-center md:pt-24 pt-16">
+                    <h1 class="font-bold text-white leading-[50px] text-5xl">
+                        <span class="block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="md:font-semibold mt-3 text-base text-white sm:mt-5 text-sm sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
+                    <p class="mt-3 text-xl text-white sm:mt-5 sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
                     <div class="w-full mx-auto">
                         <div class="flew bg-white hover:shadow-[0_5px_30px_-0_rgba(255,119,0,4)] transition duration-200 rounded-md mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-                                   class="w-auto md:left-32 focus:outline-none rounded-md text-black md:text-md xl:w-[700px] lg:w-[600px] md:w-[400px] py-3">
+                                   class="w-4/5 focus:outline-none rounded-md text-black text-xl py-3">
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
@@ -52,11 +52,11 @@
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
-                                        class="float-right border bg-[#f70] z-0 border-transparent font-medium  rounded-md text-white px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24  relative text-white">
+                                        class="float-right text-xl border bg-[#f70] z-0 border-transparent rounded-md px-3.5 py-2 mr-1 mt-[3px] md:text-md -ml-24  relative text-white">
                                     @lang('lang.header_orderBtn')
                                 </a>
                         </div>
-                        <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-sm">
+                        <div class="text-left mt-2 text-[hsla(0,0%,100%,.7)] underline-offset-1 text-xs">
 
 
                         @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
@@ -96,19 +96,19 @@
             <div class="text-3xl font-bold text-center">
                 @lang('lang.header_over') {{$users_count}}  @lang('lang.header_performers')
             </div>
-            <div class="text-sm text-center mt-4">
+            <div class="text-base text-center mt-4">
             @lang('lang.body_helpers')
             </div>
             <div class="flex flex-wrap w-11/12 mt-14 mx-auto">
                 @foreach ($categories as $category2)      
-                    <a  class="flex flex-row lg:w-1/3 w-full items-center my-4 lg:border-0 border-b" href="{{route('categories', ['id'=> $category2->id])}}">
-                        <i class="{{ $category2->ico }} text-3xl text-[#b5adbe]"></i><span class="ml-6 text-md text-black hover:text-[#ffa200]"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
+                    <a  class="flex flex-row lg:w-1/3 w-full items-center my-4 lg:border-0 border-b text-gray-500 hover:text-[#ffa200]" href="{{route('categories', ['id'=> $category2->id])}}">
+                        <i class="{{ $category2->ico }} text-3xl"></i><span class="ml-6 text-md"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
                     </a>
                 @endforeach
             </div>
             <div class="mb-4 mt-8 text-center">
                 <a href="/categories/1">
-                    <button type="button" class="font-semibold border hover:border-[#000] rounded-md w-64 h-12">@lang('lang.body_allService')
+                    <button type="button" class="font-semibold border hover:border-[#000] duration-300 rounded-md w-64 h-12">@lang('lang.body_allService')
                     </button>
                 </a>
             </div>
@@ -116,28 +116,28 @@
                 <div class="text-center">
                     <img src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D0%BF%D0%BE%D1%80%D1%82%D0%BC%D0%BE%D0%BD%D0%B0-115076170.jpg"
                          class="mx-auto h-[200px] w-[200px]" alt="">
-                    <div class="font-bold text-xl my-4">@lang('lang.body_comfortPay')</div>
-                    <div class="text-sm">
+                    <h1 class="font-bold text-lg my-4">@lang('lang.body_comfortPay')</h1>
+                    <p class="text-sm">
                     @lang('lang.body_securePay')
-                    </div>
+                    </p>
                 </div>
                 <div class="text-center mx-4">
                     <img
                         src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%85%D0%BE%D0%BA%D0%BA%D0%B5%D1%8F-%D0%BD%D0%B0-%D0%BB%D1%8C%D0%B4%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%BF%D0%BE%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-117033775.jpg"
                         class="mx-auto h-[200px] w-[200px]" alt="">
-                    <div class="font-bold text-xl my-4">@lang('lang.body_loyalPerformer')</div>
-                    <div class="text-sm">
+                    <h1 class="font-bold text-lg my-4">@lang('lang.body_loyalPerformer')</h1>
+                    <p class="text-sm">
                     @lang('lang.body_performerDocs')
-                    </div>
+                    </p>
                 </div>
                 <div class="text-center mx-4">
                     <img
                         src="https://avatars.mds.yandex.net/get-dialogs/1676983/eb0009385cb3f7e62b66/orig"
                         class="mx-auto h-[150px] w-[150px] m-[25px]" alt="">
-                    <div class="font-bold text-xl mb-4 mt-10">@lang('lang.body_feedback')</div>
-                    <div class="text-sm">
+                    <h1 class="font-bold text-lg mb-4 mt-10">@lang('lang.body_feedback')</h1>
+                    <p class="text-sm">
                     @lang('lang.body_over1mln')
-                    </div>
+                    </p>
                 </div>
             </div>
             <!-- <div class="w-3/4 mx-auto my-8">
