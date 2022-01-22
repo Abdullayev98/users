@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
         '/paynet',
         '/paycom',
         '/prepare',
-        '/complete'
+        '/complete',
+        '/sms/*'
     ];
 }

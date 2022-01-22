@@ -164,7 +164,8 @@
 
                             @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
                                 <li class="rounded-sm">
-                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="/task/create?category_id={{ $category2->id }}">
+{{--                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="/task/create?category_id={{ $category2->id }}">--}}
+                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="{{route("task.create.name", ['category_id'=>$category2->id])}}">
                                         {{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                     </a>
                                 </li>
