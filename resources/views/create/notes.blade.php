@@ -4,7 +4,7 @@
 
 <!-- Information section -->
 <x-roadmap/>
-<form class="" action="{{route('task.create.contacts')}}" method="post" enctype="multipart/form-data">
+<form class="" action="{{route('task.create.note.store', $task->id)}}" method="post" enctype="multipart/form-data">
   @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid md:grid-cols-3 gap-x-20">
@@ -45,6 +45,7 @@
 
 
 
+
           </div>
           <div class="mt-4">
                 <div class="w-full border-dashed border border-[#000] rounded-lg py-2 text-center flex justify-center items-center gap-2" type="button">
@@ -63,13 +64,13 @@
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2 h-4 w-4" type="radio" checked name="oplata" value="Оплата через карту">
+                    <input class="mr-2 h-4 w-4" type="radio" checked name="oplata" value="1">
                     <span class="text-lg text-slate- 900">
                         Оплата через карту
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2 h-4 w-4" type="radio" name="oplata" value="Оплата наличными">
+                    <input class="mr-2 h-4 w-4" type="radio" name="oplata" value="2">
                     <span class="text-lg text-slate- 900">
                         Оплата наличными
                     </span>

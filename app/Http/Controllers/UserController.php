@@ -161,7 +161,7 @@ class UserController extends Controller
         $verifyUser = UserVerify::where([
             'user_id' => auth()->user()->id,
             'sms_otp' => $request->sms_otp
-        ])->first(); 
+        ])->first();
         if($verifyUser){
             $user = $verifyUser->user;
             if(!$user->is_email_verified) {
@@ -174,7 +174,7 @@ class UserController extends Controller
         }else{
             $message = "User not found";
         }
-        return redirect()->back()->with('message', $message);
+        return redirect("/profile")->with('message', $message);
     }
 
     public function verifyAccount($token, $is_otp = false)
