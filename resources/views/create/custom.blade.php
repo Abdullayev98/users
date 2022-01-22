@@ -3,7 +3,7 @@
 @section('content')
 
 
-<form class="" action="{{route('task.create.housemaid1')}}" method="post">
+<form class="" action="" method="post">
         @csrf
 
         <div class="mx-auto w-9/12  my-16">
@@ -20,6 +20,8 @@
                             <div style="width: 57%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                         </div>
                     </div>
+
+@foreach($datas as $data)
 
 @if($data->type == 'select')
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
@@ -41,13 +43,6 @@
                                         <option>4-@lang('lang.housem_text2')</option>
                                         <option>@lang('lang.housem_office')</option>
                                         <option>@lang('lang.housem_text3')</option>
-                                    </select>
-                        {{-- $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') --}}
-                                    <select id="how_many" name="how_many[]" type="number" class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"  required>
-                                        <option>@lang('lang.housem_text5')</option>
-                                        <option>@lang('lang.housem_text6')</option>
-                                        <option>@lang('lang.housem_text7')</option>
-                                        <option>@lang('lang.housem_text8')</option>
                                     </select>
                                 </div>
                                 <div class="mt-4">
@@ -73,8 +68,8 @@
                             </div>
                         </div>
                     </div>
-
-@elseif($data->type == 'checkbox')
+@endif
+@if($data->type == 'checkbox')
 
 
                     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
@@ -164,7 +159,8 @@
                         </div>
                     </div>
 
-@elseif($data->type == 'radio')
+                    @endif
+@if($data->type == 'radio')
 
                     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-6 px-20">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
@@ -246,7 +242,8 @@
                         </div>
                     </div>
 
-@elseif($data->type == 'input')
+                    @endif
+@if($data->type == 'input')
 
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
@@ -288,7 +285,7 @@
                         </div>
                     </div>
 @endif
-
+@endforeach
 
                 </div>
                 <x-faq/>
