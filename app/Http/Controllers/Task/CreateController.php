@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Task;
 
-use App\CustomFieldsValue;
+use App\Models\CustomFieldsValue;
 use App\Http\Controllers\Controller;
 use App\Models\CustomField;
 use App\Models\Task;
