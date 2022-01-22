@@ -33,7 +33,7 @@
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
                         @lang('lang.name_howCanWeHelpU')
                     </div>
-                    <form action="{{route("task.create.custom", $task->id)}}" method="post">
+                    <form action="{{route("task.create.name.store", $task->id)}}" method="post">
                         @csrf
 
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">

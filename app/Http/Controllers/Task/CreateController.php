@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Task;
 
+use App\CustomFieldsValue;
 use App\Http\Controllers\Controller;
 use App\Models\CustomField;
 use App\Models\Task;
@@ -30,16 +31,13 @@ class CreateController extends Controller
 
     }
 
-    public function custom(Request $request, Task $task){
+    public function name_store(Request $request, Task $task){
 
 
         $data = $request->validate([
             'name' => 'required|string'
         ]);
         $task->update($data);
-
-
-
 
         return redirect()->route("task.create.custom.get", $task->id);
     }
@@ -52,6 +50,25 @@ class CreateController extends Controller
 
     }
 
+    public function custom_store(Request $request, Task $task){
+        $datas = CustomField::query()->where('category_id',$task->category_id)->orderBy('order', 'desc')->get();
+
+
+        foreach ($datas as $data) {
+            $value = new CustomFieldsValue();
+            $value->task_id = $task->id;
+            $value->custom_field_id = $data->id;
+            $arr = Arr::get($request->all(), $data->name);
+            $value->value = is_array($arr)?json_encode($arr):$arr;
+            $value->save();
+        }
+
+
+
+
+
+        return redirect()->route('task.create.address', $task->id);
+    }
 
 
 
@@ -63,7 +80,6 @@ class CreateController extends Controller
     }
 
     public function address_store(Request $request, Task $task){
-//        dd($request->all());
 
         $data = [];
         $data_inner = [];
@@ -82,6 +98,7 @@ class CreateController extends Controller
                 }
             }
         }
+        $task->coordinates = $request->coordinates0;
         $task->address_add  = json_encode($data);
         $task->save();
 
@@ -130,9 +147,9 @@ class CreateController extends Controller
     public function note_store(Task $task, Request $request){
         $data = $request->validate([
             'description' => 'required|string',
-            'docs'=>'required',
             'oplata' => 'required'
         ]);
+        $data['docs'] = $request->docs?1:null;
         $task->update($data);
         return redirect()->route("task.create.contact", $task->id);
     }
