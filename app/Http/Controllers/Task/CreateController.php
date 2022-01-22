@@ -216,6 +216,7 @@ class CreateController extends Controller
 
 
         $task->user_id = $user->id;
+        $task->phone = $user->phone_number;
         $task->save();
         return redirect('/profile');
 
