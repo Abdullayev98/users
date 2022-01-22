@@ -138,8 +138,8 @@
             <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
             @endforeach
             <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 text-lg mt-6 hover:text-[#ff8a00]  hover:border-[#ff8a00] hover:shadow-xl shadow-[#ff8a00] mx-auto block"><br>
-            
-            @foreach($tasks as $task)  
+
+            @foreach($tasks as $task)
             @auth
             <option value="{{ $task->name }}">
                     {{ $task->name }}
