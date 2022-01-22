@@ -99,45 +99,18 @@
             <div class="text-sm text-center mt-4">
             @lang('lang.body_helpers')
             </div>
-            <div class="grid md:grid-cols-3 grid-cols-1 w-full md:mt-0 mt-4">
-            @foreach ($categories as $category2)
-                <div class="text-gray-500 text-sm my-2 md:my-5 md:border-0 border-b md:p-0 pb-3">
-                    <a href="{{route('categories', ['id'=> $category2->id])}}" class="block xl:ml-16">
-                        <i class="{{ $category2->ico }} text-gray-500 hover:text-[#ffa200]">  {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</i>
+            <div class="flex flex-wrap w-11/12 mt-14 mx-auto">
+                @foreach ($categories as $category2)      
+                    <a  class="flex flex-row lg:w-1/3 w-full items-center my-4 lg:border-0 border-b" href="{{route('categories', ['id'=> $category2->id])}}">
+                        <i class="{{ $category2->ico }} text-3xl text-[#b5adbe]"></i><span class="ml-6 text-md text-black hover:text-[#ffa200]"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
                     </a>
-                </div>
                 @endforeach
-                <!-- <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-hammer text-gray-500"></i> Ремонт и строительство
-                    </a>
-                </div>
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-shipping-fast text-gray-500"></i> Грузоперевозки
-                    </a>
-                </div>
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-soap text-gray-500"></i> Уброка и помощ по хозяйству
-                    </a>
-                </div>
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-tv text-gray-500"></i> Компьютерная помощь
-                    </a>
-                </div>
-                <div class="text-gray-500 text-lg my-8">
-                    <a href="#">
-                        <i class="fas fa-camera-retro text-gray-500"></i> Фото, видео и аудио
-                    </a>
-                </div> -->
-                <div class="md:col-span-3 text-center  col-span-1">
-                    <a href="/categories/1">
-                        <button type="button" class="font-semibold border hover:border-[#000] rounded-md w-64 h-12">@lang('lang.body_allService')
-                        </button>
-                    </a>
-                </div>
+            </div>
+            <div class="mb-4 mt-8 text-center">
+                <a href="/categories/1">
+                    <button type="button" class="font-semibold border hover:border-[#000] rounded-md w-64 h-12">@lang('lang.body_allService')
+                    </button>
+                </a>
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 <div class="text-center">
