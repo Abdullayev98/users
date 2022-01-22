@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <form class="{{route("task.create.custom.store", $task->id)}}" action="" method="post">
+    <form class="" action="{{route("task.create.custom.store", $task->id)}}" method="post">
         @csrf
 
         <div class="mx-auto w-9/12  my-16">
