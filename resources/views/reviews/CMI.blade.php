@@ -40,46 +40,27 @@
                 </a>
             </div>
             <div class="md:w-9/12 md:mt-10 md:pl-12">
+                @foreach ($medias as $media)
                 <div class="mb-12">
+                    @php
+                        \Carbon\Carbon::setLocale('ru');
+                    @endphp
                     <div class="italic text-[#828282]">
-                    6 декабря 2021 г.
+                    
+                        {{ $media->created_at->format('d') }} {{ \Carbon\Carbon::parse($media->created_at)->translatedFormat('F') }}
+                    {{ $media->created_at->format('Y') }} @lang('lang.cmi_year').
                     </div>
                     <h1 class="text-[1.4rem] md:text-[1.8rem]">
-                        <span class="text-red-500">ТАСС</span> / @lang('lang.cmi_priority')
+                        <span class="text-red-500"> {{ $media->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
                     </h1>
                     <p class="mt-4">
                     @lang('lang.cmi_yandex1')
 
-                        <a class="text-blue-500 hover:text-black" href="/">@lang('lang.cmi_yandex2')</a>
+                        <a class="text-blue-500 hover:text-black" href="/"> {{ $media->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}</a>
 
                         @lang('lang.cmi_yandex3')</p>
-                </div>
-                <div class="mb-12">
-                    <div class="italic text-[#828282]">
-                        6 декабря 2021 г.
-                    </div>
-                    <h1 class="text-[1.4rem] md:text-[1.8rem]">
-                        <span class="text-red-500">@lang('lang.cmi_news1')</span> / @lang('lang.cmi_news2')
-                    </h1>
-                    <p class="mt-4">
-                    @lang('lang.cmi_news3')
-
-                        <a class="text-blue-500 hover:text-black" href="/"> @lang('lang.cmi_news4') </a>
-
-                        @lang('lang.cmi_news5')</p>
-                </div>
-                <div class="mb-12">
-                    <div class="italic text-[#828282]">
-                        11 декабря 2021 г.
-                    </div>
-                    <h1 class="text-[1.4rem] md:text-[1.8rem]">
-                        <span class="text-red-500">РБК</span> / @lang('lang.cmi_info1')
-                    </h1>
-                    <p class="mt-4">
-                        <a class="text-blue-500 hover:text-black" href="/">@lang('lang.cmi_info2')</a>,
-
-                        @lang('lang.cmi_info3')</p>
-                </div>
+                </div>                    
+                @endforeach
             </div>
         </div>
     </div>
