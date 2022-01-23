@@ -73,10 +73,10 @@ class UserController extends Controller
     {
         $data = $request->validate(
             [
-                'name' => 'required|unique:users,name',
-                'phone_number' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/|unique:users,phone_number',
+                'name' => 'required',
+                'phone_number' => 'required',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:6',
+                'password' => 'required|min:6|confirmed',
             ],
             [
                 'name.required' => 'Требуется заполнение!',
@@ -87,7 +87,8 @@ class UserController extends Controller
                 'email.required' => 'Требуется заполнение!',
                 'email.unique' => 'Пользователь с такой почтой уже существует!',
                 'password.required' => 'Требуется заполнение!',
-                'password.min' => 'Пароли должны содержать не менее 6-ми символов'
+                'password.min' => 'Пароли должны содержать не менее 6-ми символов',
+                'password.confirmed' => 'Пароль не совпадает'
             ]
         );
         $check = $this->createUser($data);

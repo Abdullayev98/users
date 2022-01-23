@@ -104,13 +104,13 @@
                                 @if ($user->description == Null)
                                     <span class="ml-10">
                                         <i class="fas fa-pencil-alt inline text-gray-700"></i>
-                                        <p class="inline text-gray-300 cursor-pointer" id="padd">Добавить</p>
+                                        <p class="inline text-gray-500 cursor-pointer" id="padd">@lang('lang.profile_add')</p>
                                     </span>
-                                    <p class="text-red-300 desc" >Description kiriting</p>
+                                    <p class="text-red-400 desc mt-4" >@lang('lang.profile_description')</p>
                                 @else
                                     <span class="ml-10">
                                         <i class="fas fa-pencil-alt inline text-gray-700"></i>
-                                        <p class="inline text-gray-300 cursor-pointer" id="padd">@lang('lang.profile_edit')</p>
+                                        <p class="inline text-gray-500 cursor-pointer" id="padd">@lang('lang.profile_edit')</p>
                                     </span> 
                                     <p class="mt-3 w-4/5 desc">{{$user->description}}</p>
                                 @endif
