@@ -89,7 +89,7 @@
 
     {{-- 1 --}}
     <div class="flex lg:flex-row flex-col container mx-auto">
-        <div class="lg:w-3/5 w-full">
+        <div class="lg:w-3/5 w-full xl:ml-0 ml-4">
           <img class="mx-auto" src="{{asset('images/performer1.jpg')}}" alt="#">
         </div>
         <div class="lg:w-2/5 w-full lg:text-left text-center xl:ml-0 ml-8 lg:mt-0 mt-4">
@@ -97,7 +97,7 @@
           <p class="mt-6 text-lg">@lang('lang.ver_earnByTasks')</p>
             <div>
               <hr class="mt-8 mb-8">
-              <p class="mb-16">@lang('lang.ver_maxOrder')</p>
+              <p class="mb-12">@lang('lang.ver_maxOrder')</p>
                 @auth
                     <a href="{{ route('task.search') }}">
                         @else
@@ -113,7 +113,7 @@
 
     {{-- 2 --}}
     <div class="flex lg:flex-row flex-col container mx-auto my-16">
-      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center">
+      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center xl:ml-0 ml-4">
         <h1 class="font-bold text-3xl">@lang('lang.ver_freeTime')</h1>
         <p class="mt-6 text-lg">.@lang('lang.ver_workForYourserf')</p>
           <div>
@@ -158,7 +158,7 @@
 
     {{-- 3 --}}
     <div class="flex lg:flex-row flex-col container mx-auto">
-      <div class="lg:w-3/5 w-full">
+      <div class="lg:w-3/5 w-full xl:ml-0 ml-4">
         <img class="mx-auto" src="{{asset('images/performer3.jpg')}}" alt="#">
       </div>
       <div class="lg:w-2/5 w-full lg:text-left text-center xl:ml-0 ml-8 lg:mt-0 mt-4">
@@ -182,7 +182,7 @@
 
     {{-- 4 --}}
     <div class="flex lg:flex-row flex-col container mx-auto my-16">
-      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center">
+      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center xl:ml-0 ml-4">
         <h1 class="font-bold text-3xl">@lang('lang.ver_addsEconomy')</h1>
         <p class="mt-6 text-lg">@lang('lang.ver_addsDescr')</p>
           <div>
@@ -306,7 +306,7 @@
         </div>
 
       <div class="flex lg:flex-row flex-col container mx-auto mt-16">
-        <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center">
+        <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center xl:ml-0 ml-4">
           <p class=" text-lg">@lang('lang.ver_opinion6')</p>
             <h1 class="font-bold text-6xl mt-4">70 000</h1>
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSPhoto')</p>
