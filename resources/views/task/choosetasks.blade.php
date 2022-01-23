@@ -78,7 +78,7 @@
             @foreach($child_categories as $category)
                 <div class="w-full text-left text-left border-b border-solid md:border-0 mt-4 border-[#e9e9e9]">
                     <a href="/task/create?category_id={{$category->id}}"
-                       class="text-gray-500 hover:text-[#ffa200] block ml-4 md:ml-0 pb-4 hover:underline">{{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</a>
+                       class="text-gray-500 hover:text-yellow-500 block ml-4 md:ml-0 pb-4 hover:underline">{{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</a>
                 </div>
             @endforeach
 

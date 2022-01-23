@@ -59,7 +59,7 @@
                                             </script>
                                         </a>
                                             <input type="submit"
-                                                   class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                                   class="bg-green-500 hover:bg-green-600 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                                    name="" value="@lang('lang.name_next')">
                                         </div>
                                     </div>

@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="w-[100px]  md:w-[200px] xl:hidden">
-                                    <select id="" name="amount" class="border md:ml-14 bg-[#ffa200]  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-[#ffaa00]">
+                                    <select id="" name="amount" class="border md:ml-14 bg-yellow-500  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-[#ffaa00]">
                                         <option value="0">
                                             @lang('lang.budget_text')
                                         </option>
@@ -89,7 +89,7 @@
                                             </script>
                                         </a>
                                         <input type="submit"
-                                               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                               class="bg-green-500 hover:bg-green-600 transition duration-300 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                                name="" value="@lang('lang.name_next')">
                                     </div>
                                 </div>

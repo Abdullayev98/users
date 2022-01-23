@@ -18,7 +18,7 @@
 
                 <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
                     <div class="col-span-2">
-                        <div class="w-full bg-[#f8f7ee] my-5 rounded-md">
+                        <div class="w-full bg-yellow-50 my-5 rounded-md">
                             <div class="px-5 py-5">
                             <!-- <form action="{{route('search')}}" method="get"> -->
                                 <div class="grid grid-cols-4 gap-4 mb-3">
@@ -29,7 +29,7 @@
                                                class="text-[15px] w-10/12 p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                                placeholder="@lang('lang.search_byKey')">
                                         <button
-                                            class="sm:w-2/12 w-4/12 bg-lime-500 hover:bg-lime-600 ml-1 py-1 px-1 rounded-md sm:mt-0 mt-4 text-white"
+                                            class="sm:w-2/12 w-4/12 bg-green-500 hover:bg-green-600 ml-1 py-1 px-1 rounded-md sm:mt-0 mt-4 text-white"
                                             >@lang('lang.search_find')</button>
                                     </div>
 
@@ -39,7 +39,7 @@
                                             <input
                                                 class="text-[14px] address  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
-                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute xl:left-[90%] lg:left-[88%] md:left-[90%] sm:left-[90%] left-[86%]" type="button">
+                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute xl:left-85 xl:-ml-6 lg:left-[88%]  md:left-85 md:-ml-6 left-52 sm:left-72" type="button">
                                                 <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                             </button>
                                         </div>

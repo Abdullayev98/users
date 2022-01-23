@@ -12,7 +12,7 @@
                     @lang('lang.age_lookperformersfortask')  "{{session('name')}}"
                     </div>
                     <div class="w-full text-center my-4 text-[#5f5869]">
-                    @lang('lang.age_text')  
+                    @lang('lang.age_text')
                     </div>
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -42,7 +42,7 @@
                                             </script>
                                         </a>
                                         <input type="submit"
-                                               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                               class="bg-green-500 hover:bg-green-600 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                                name="" value="@lang('lang.name_next')">
 
                                     </div>
@@ -56,7 +56,7 @@
             </div>
         </div>
     </form>
-    
+
     <script>
         $(".delete-task").click(function (){
         Swal.fire({
@@ -75,7 +75,7 @@
     })
         $('div').removeClass('group');
         $('ul').removeClass('group-hover');
-        $('button').removeClass('hover:text-[#ffa200]');
+        $('button').removeClass('hover:text-yellow-500');
         $('button').removeClass('text-gray-500');
         $('button').addClass('text-gray-400');
     </script>
