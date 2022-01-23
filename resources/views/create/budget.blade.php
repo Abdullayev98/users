@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{asset('css/budjet.css')}}">
     <!-- Information section -->
     <x-roadmap/>
-{{--    <form action="{{route('task.create.construction')}}" method="post">--}}
+    {{--    <form action="{{route('task.create.construction')}}" method="post">--}}
     <form class="" action="{{route('task.create.budget.store', $task->id)}}" method="post">
         @csrf
         <div class="mx-auto w-9/12  my-16">
@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                                 <div class="w-[100px]  md:w-[200px] xl:hidden">
-                                    <select id="" name="amount" class="border md:ml-14 bg-[#ffa200]  text-white font-semibold rounded-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-[#ffaa00]">
+                                    <select id="" name="amount" class="border md:ml-14 bg-yellow-500  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-yellow-600">
                                         <option value="0">
                                             @lang('lang.budget_text')
                                         </option>
@@ -80,10 +80,10 @@
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
-                                    <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                        <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
-                                            @lang('lang.notes_back')
-                                            <!-- </button> -->
+                                        @lang('lang.notes_back')
+                                        <!-- </button> -->
                                             <script>
                                                 function myFunction() {
                                                     window.history.back();

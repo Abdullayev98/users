@@ -446,6 +446,8 @@ return [
     'profile_aboutMe' => "O'zim haqimda bir oz",
     'profile_edit' => "Tahrirlash",
     'profile_add' => "Qo'shish",
+    'profile_save' => "Saqlash",
+    'profile_cancel' => "Bekor qilish",
     'profile_description' => "Mijozlar siz haqingizda hech narsa bilishmaydi. Tajribangiz haqida ma'lumot qo'shing.",
     'profile_workExample' => "Ishga misollar",
     'profile_textForJobs' => "ish joylari uchun matn",

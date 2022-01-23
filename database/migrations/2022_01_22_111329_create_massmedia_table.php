@@ -13,10 +13,12 @@ class CreateMassmediaTable extends Migration
      */
     public function up()
     {
+        if (!Schema::hasTable('massmedia')) {
         Schema::create('massmedia', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
+        }
     }
 
     /**

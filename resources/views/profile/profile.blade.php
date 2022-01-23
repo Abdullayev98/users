@@ -118,8 +118,8 @@
                                     @csrf
                                     <textarea name="description" name="description" class="w-full h-32 border border-black-1000 py-2 px-4 mt-3" @if (!$user->description) placeholder="Enter description"@endif >@if ($user->description){{$user->description}}@endif    
                                     </textarea><br>
-                                    <input type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" id="s1" value="Soxranit">
-                                    <button id="s2" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 border border-blue-700 rounded">Otmena</button>
+                                    <input type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" id="s1" value="@lang('lang.profile_save')">
+                                    <button id="s2" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 border border-blue-700 rounded">@lang('lang.profile_cancel')</button>
                                 </form>
                         </div>
                         <h4 class="font-bold mt-5">@lang('lang.profile_workExample')</h4>

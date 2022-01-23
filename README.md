@@ -1,4 +1,4 @@
-# laravel_voyager_youdo
+php artisan key:generate# laravel_voyager_youdo
 
 ### Installing steps
 #### 1-step

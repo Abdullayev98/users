@@ -448,6 +448,8 @@ return [
     'profile_aboutMe' => "Немного о себе",
     'profile_edit' => "Редактировать",
     'profile_add' => "Добавить",
+    'profile_save' => "Сохранить",
+    'profile_cancel' => "Отмена",
     'profile_description' => "Заказчики ничего о вас не знают. Добавьте информацию о вашем опыте.",
     'profile_workExample' => "Примеры работ",
     'profile_textForJobs' => "text for jobs",
