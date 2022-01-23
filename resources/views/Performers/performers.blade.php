@@ -15,17 +15,17 @@
             {{--                             Left column                                       --}}
             {{-----------------------------------------------------------------------------------}}
 
-        <div class="lg:col-span-1 col-span-3 px-8">
+        <div class="md:col-span-1 col-span-3 lg:px-8 md:px-5">
             <div class="flex flex-row shadow-lg rounded-lg mb-8">
-                <div class="basis-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
+                <div class="md:w-1/3 lg:mx-2 md:mx-1 w-3/6 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
                 </div>
-                <div class="basis-1/2 text-xs text-gray-700 text-left my-auto">
+                <div class="md:w-2/3 w-3/6 md:text-sm lg:text-base text-lg text-gray-700 text-left my-auto">
                     @lang('lang.perfCat_becomePerf')
                 </div>
             </div>
 
             <div>
-                <div class="max-w-md mx-left">
+                <div class="md:max-w-md mx-left">
                 @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                                     <div x-data={show:false} class="rounded-sm">
                                         <div class="border border-b-0 bg-gray-100 cursor-pointer" id="{{ str_replace(' ', '', $category->name) }}">
@@ -51,8 +51,8 @@
             </div>
         </div>
 
-        <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16 mb-12">
-                <div class="bg-gray-100 h-40 rounded-xl w-4/5 sm:mx-0 mx-auto">
+        <div class="md:col-span-2 col-span-3 md:mt-0 mt-16 mb-12">
+                <div class="bg-gray-100 h-40 md:rounded-xl md:w-4/5 w-full sm:mx-0 mx-auto">
                         <div class="font-bold text-4xl mx-8 py-4">
                             <p>@lang('lang.perfCat_allPerf')</p>
                         </div>
@@ -81,11 +81,11 @@
                         <i class="far fa-thumbs-down m-1 text-gray-400 w-4 h-4"></i> 21
                     </div>
                     <div class="flex flex-row text-[19px]">
-                        <i class="fas fa-star text-[#ffad00]"></i>
-                        <i class="fas fa-star text-[#ffad00]"></i>
-                        <i class="fas fa-star text-[#ffad00]"></i>
-                        <i class="fas fa-star text-[#ffad00]"></i>
-                        <i class="fas fa-star text-[#ffad00]"></i>
+                        <i class="fas fa-star text-yellow-200"></i>
+                        <i class="fas fa-star text-yellow-200"></i>
+                        <i class="fas fa-star text-yellow-200"></i>
+                        <i class="fas fa-star text-yellow-200"></i>
+                        <i class="fas fa-star text-yellow-200"></i>
                     </div>
                 </div>
                 <div class="ml-5 w-5/12 md:float-none md:float-none">
@@ -109,8 +109,8 @@
                         @endif
 
                     </div>
-                    <div>
-                        <p class="md:text-2xl sm:text-sm text-xs  leading-0 md:w-[600px] w-fit mb-4">
+                    <div >
+                        <p class="lg:text-xl md:text-lg text-sm leading-0 md:w-full mb-4">
                                {{$user->description}}
                         </p>
                     </div>
@@ -118,7 +118,7 @@
                         <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
                             <button class="rounded-lg py-2 px-3 font-bold bg-[#ffad00] hover:bg-[#ff9500] transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                         </a>
-                        <a id="open" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4">
+                        <a id="open" class="cursor-pointer bg-green-500 text-white rounded-lg lg:p-4 lg:px-6 lg:text-lg md:text-base sm:text-sm sm:p-2 sm:px-4 sm:inline-block hidden text-xs">
                             Предложить задание
                         </a>
                     </div>

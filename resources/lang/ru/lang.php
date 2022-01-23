@@ -447,6 +447,8 @@ return [
     'profile_view' => "просмотр",
     'profile_aboutMe' => "Немного о себе",
     'profile_edit' => "Редактировать",
+    'profile_add' => "Добавить",
+    'profile_description' => "Заказчики ничего о вас не знают. Добавьте информацию о вашем опыте.",
     'profile_workExample' => "Примеры работ",
     'profile_textForJobs' => "text for jobs",
     'profile_performer' => "Исполнитель",
@@ -735,6 +737,7 @@ return [
     'signup_elpocta' => "Электронная почта",
     'signup_telnumber' => "Телефон немер",
     'signup_password' => " Пароль",
+    'signup_password_confirm' => " Пароль подтверждать",
     'signup_registration' => " Зарегистрация",
     // signup blade ended
 

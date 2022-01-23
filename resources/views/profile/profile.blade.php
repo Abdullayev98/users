@@ -74,7 +74,7 @@
                             </span>
                             <p class="mt-2">@lang('lang.cash_created') <a href="#">
                                 <span>
-                                    @if ($task == Null)  0
+                                    @if ($task == Null) 0
                                     @else {{$task}}
                                     @endif
                                 </span> @lang('lang.cash_task')</a></p>
@@ -101,11 +101,26 @@
                     <div class="about-me block" id="tab-profile">
                         <div class="about-a-bit mt-10">
                             <h4 class="inline font-bold text-lg">@lang('lang.profile_aboutMe')</h4>
-                            <span class="ml-10">
-                                <i class="fas fa-pencil-alt inline text-gray-300"></i>
-                                <p class="inline text-gray-300 cursor-pointer">@lang('lang.profile_edit')</p>
-                            </span>
-                            <p class="mt-3 w-4/5">{{$user->description}}</p>
+                                @if ($user->description == Null)
+                                    <span class="ml-10">
+                                        <i class="fas fa-pencil-alt inline text-gray-700"></i>
+                                        <p class="inline text-gray-500 cursor-pointer" id="padd">@lang('lang.profile_add')</p>
+                                    </span>
+                                    <p class="text-red-400 desc mt-4" >@lang('lang.profile_description')</p>
+                                @else
+                                    <span class="ml-10">
+                                        <i class="fas fa-pencil-alt inline text-gray-700"></i>
+                                        <p class="inline text-gray-500 cursor-pointer" id="padd">@lang('lang.profile_edit')</p>
+                                    </span> 
+                                    <p class="mt-3 w-4/5 desc">{{$user->description}}</p>
+                                @endif
+                                <form action="{{route('edit.description')}}" method="POST" class="formdesc hidden">
+                                    @csrf
+                                    <textarea name="description" name="description" class="w-full h-32 border border-black-1000 py-2 px-4 mt-3" @if (!$user->description) placeholder="Enter description"@endif >@if ($user->description){{$user->description}}@endif    
+                                    </textarea><br>
+                                    <input type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" id="s1" value="Soxranit">
+                                    <button id="s2" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 border border-blue-700 rounded">Otmena</button>
+                                </form>
                         </div>
                         <h4 class="font-bold mt-5">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
@@ -334,6 +349,16 @@
         $('#modal, #modal:before').on('click', function() {
             // fade out filter layer and modal
             $('#modal:before, #modal').fadeOut(200);
+        });
+
+        $('#padd').click(function(){
+            $('.desc').addClass('hidden')
+            $('.formdesc').removeClass('hidden').addClass('block')
+        });
+        $('#s2').click(function(event){
+            event.preventDefault();
+            $('.desc').addClass('block').removeClass('hidden');
+            $('.formdesc').removeClass('block').addClass('hidden')
         });
     </script>
 @endsection

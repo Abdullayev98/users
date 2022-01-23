@@ -1,37 +1,35 @@
 <footer>
-    <div class="p-10 text-gray-800">
-       <div class="mx-auto text-center md:text-left">
-           <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 lg:gap-x-2 w-full h-full">
-               <div class="mb-5 md:w-3/12 lg:w-2/12 md:float-left md:mr-20 md:ml-24">
-                   <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a><br>
-                   <a class="delete-task faq cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a><br>
-                   <a class="delete-task contact cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/contacts">@lang('lang.footer_contact')</a><br>
-               </div>
-               <div class="mb-5 md:w-5/12 lg:w-3/12 md:float-left -mt-5 md:m-0">
-                   <a class="delete-task review cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/author-reviews">@lang('lang.footer_costumersreviews')</a><br>
-                   <a class="text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="#replain-link">@lang('lang.footer_text')</a>
-               </div>
-               <div class="lg:float-left mx-auto lg:float-none lg:w-8/12 lg:text-right">
-                   <div class="inline-block">
-                       <a class="md:mr-2 rounded-md inline-block" rel="noopener noreferrer" href="#" target="_blank">
-                           <button type="button" class="w-3/10 bg-black rounded-md mt-8 hover:bg-yellow-500"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
-                       </a>
-                       <a class="md:mr-2 rounded-md md:inline-block md:px-3" rel="noopener noreferrer" href="#" target="_blank">
-                           <button type="button" class="w-3/10 bg-black rounded-md mt-8 hover:bg-yellow-500"><img src="{{asset('images/download_android.svg')}}" alt=""> </button>
-                       </a>
-                   </div>
-               </div>
-           </div>
-           <div class="mt-5 md:w-6/16 md:ml-24 pt-5 text-left">
-                   <span class="">
-                   @lang('lang.footer_foot')
-                       <a class="delete-task cursor-pointer md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block hover:text-amber-500" rel="noopener noreferrer">
-                           @lang('lang.footer_text1')
-                       </a>
-                   </span>
-           </div>
-       </div>
-   </div>
+
+    <div class="flex sm:flex-row flex-col container mx-auto my-12">
+        <div class="sm:w-1/2 w-full flex lg:flex-row flex-col lg:text-left text-center md:my-0 my-4">
+            <div class="w-1/2 flex flex-col lg:mx-8 mx-auto">
+                <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a>
+                <a class="delete-task faq cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a>
+                <a class="delete-task contact cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/contacts">@lang('lang.footer_contact')</a>
+            </div>
+            <div class="w-1/2 flex flex-col lg:mx-0 mx-auto">
+                <a class="delete-task review cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/author-reviews">@lang('lang.footer_costumersreviews')</a>
+                <a class="text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="#replain-link">@lang('lang.footer_text')</a>
+            </div>
+        </div>
+        <div class="sm:w-1/2 w-full flex lg:flex-row flex-col md:my-0 my-4">
+            <a class="rounded-md mx-2 sm:mx-0 mx-auto" rel="noopener noreferrer" href="#" target="_blank">
+                <button type="button" class="bg-black rounded-md hover:bg-yellow-500 mx-2"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
+            </a>
+            <a class="rounded-md mx-2 sm:mx-0 mx-auto" rel="noopener noreferrer" href="#" target="_blank">
+                <button type="button" class="bg-black rounded-md hover:bg-yellow-500 mx-2"><img src="{{asset('images/download_android.svg')}}" alt=""> </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="container mx-auto ml-4">
+        <span class="">
+        @lang('lang.footer_foot')
+            <a class=" hover:text-amber-500" rel="noopener noreferrer">
+                @lang('lang.footer_text1')
+            </a>
+        </span>
+    </div>
 </footer>
 <div class="bg-gray-500 text-gray-100 text-center lg:py-16 w-full justify-center hidden xl:block mx-auto">
     <div class="w-8/12 mx-auto">
@@ -58,15 +56,13 @@
                         <path d="M771.38 26.94v1.75h-6.4v12.37h-8.1V28.69h-6.4v-1.75h20.9z" fill="#5C5C5C"></path>
                         <path d="M748.33 34.95a4.1 4.1 0 00-1.21-8h.01-17.18v14.1h8.1v-6.01h2.35l4.22 6.02h8.44l-4.73-6.11zm-7.66-1.52h-2.63v-4.88h2.63a2.44 2.44 0 110 4.88z" fill="#5C5C5C"></path>
                     </g>
-                    <g clip-path="url(#clip5)">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M862.7 45.93a45.9 45.9 0 01-3.34-.55l-.49-.11.04-2.58c.1-6.22.1-9.6.04-12.9-.05-3.24-.07-3.58-.2-4.06-.15-.6-.38-1.02-.65-1.22-.11-.08-.4-.18-.65-.24l-.12-.02c-.42-.1-.57-.13-.63-.23a.432.432 0 01-.04-.22v-.06c-.02-.21 0-.36.06-.4.07-.06 6.81-1.34 7.02-1.34.07 0 .08.86.04 3.83-.02 2.1-.02 3.82 0 3.82s.26-.1.54-.24c.85-.39 1.64-.56 2.77-.6.76-.02 1.11 0 1.5.07 2.54.53 4.42 2.6 5.08 5.62.17.78.23 2.74.12 3.71-.1.84-.37 1.96-.66 2.69a7.98 7.98 0 01-6.51 5.01c-.72.1-2.95.12-3.91.02zm-28.32 0a7.16 7.16 0 01-5.96-5.15 11.77 11.77 0 010-6.78 7.96 7.96 0 013.87-4.57 9.17 9.17 0 018.2.18c2.04 1.2 3.28 3.35 3.63 6.28.1.89.03 2.78-.13 3.56-.68 3.18-2.66 5.41-5.56 6.25-.31.1-.8.2-1.08.24-.59.08-2.4.08-2.97 0zm40.91-6.35c.77 3.41 3.1 5.73 6.38 6.32.72.13 2.36.13 3.08 0a8.47 8.47 0 003-1.15c.92-.62 1.87-1.56 1.87-1.85 0-.18-.32-.59-.46-.59-.06 0-.31.14-.57.3-.9.59-1.76.82-2.96.82-1.66 0-2.7-.4-3.76-1.47a4.22 4.22 0 01-.9-1.2 8.2 8.2 0 01-.87-3.54l-.01-.58 4.88-.01 4.88-.02.02-.33a8.6 8.6 0 00-.05-1.06c-.3-2.96-1.5-5-3.55-6.02-1.8-.9-4.6-.84-6.65.15a7.74 7.74 0 00-4.02 4.75 9.42 9.42 0 00-.47 3.6c.02.95.07 1.44.16 1.88zm19.57 6.38a18.2 18.2 0 01-3.67-.8l-.3-.13-.04-1.5-.06-2.47-.02-.95.18-.1c.1-.04.3-.08.45-.09l.27-.01.23.56c.89 2.18 1.93 3.36 3.29 3.72.52.14 1.5.14 1.88 0a2.33 2.33 0 001.67-2.3c0-1.32-.72-1.96-3.46-3.03-1.7-.66-2.29-1-3-1.72a4.18 4.18 0 01-1.19-2.9 4.86 4.86 0 011.42-3.82 6.34 6.34 0 014.23-1.83c1.62-.15 4.11.2 5.41.75l.24.1.04 1.34.06 2.2v.86l-.31.12c-.5.19-.54.16-.82-.58-.79-2.09-1.7-3.07-3.13-3.38-.86-.18-1.59.02-2.12.58a2.1 2.1 0 00-.6 1.49c-.05.7.08 1.1.51 1.57.54.58 1.41 1.09 3.16 1.82 2.14.9 3.16 1.65 3.71 2.76.37.72.47 1.3.43 2.4-.03.83-.05 1-.24 1.56-.62 1.82-2.01 3.02-4.16 3.58-.73.2-.83.2-2.28.22-.83 0-1.63 0-1.78-.02zm-83.26-.88c0 .3.02.47.08.49.12.05 11.76.05 11.88 0 .16-.06.15-.92-.01-1a6.12 6.12 0 00-.87-.18 5.86 5.86 0 01-1.03-.22c-.76-.34-1.18-1.25-1.34-2.91a63.5 63.5 0 01-.2-5.01v-1.49l.7.02c1.51.05 2.3.13 2.6.27.7.3 1.24 1.14 1.53 2.32l.15.62.54.02.54.02v-7.92l-.54.02-.53.02-.16.62c-.3 1.22-.8 1.96-1.54 2.3-.3.14-.5.17-1.22.22-.47.02-1.13.05-1.47.05h-.6v-1.96c0-1.96.1-6.14.16-6.79l.04-.35h2.08c2.38 0 2.77.05 3.62.47 1.22.6 2.12 1.79 2.9 3.85v.01c.17.45.24.65.39.71.12.06.3 0 .62-.09l.48-.15-.05-3.04a80.8 80.8 0 00-.08-3.3l-.05-.27-9.1-.02c-5 0-9.2 0-9.31.02l-.22.04.02.54.02.54.7.08c.9.11 1.43.36 1.75.83.71 1.05.84 2.47.84 9.25 0 7.21-.15 8.97-.84 9.88-.36.47-.65.62-1.46.77l-.1.02c-.57.1-.79.14-.87.27-.05.08-.05.2-.05.38v.05zm32.59.48c-.06-.04-.08-.2-.07-.51l.02-.46.23-.05.61-.12c.64-.12 1-.46 1.21-1.14.17-.56.24-2.33.25-5.88 0-4.34-.09-5.37-.53-5.95-.24-.32-.4-.4-.99-.52a66.1 66.1 0 01-.66-.13c-.13-.03-.15-.07-.15-.4 0-.3.02-.36.15-.42.2-.08 6.73-1.38 6.94-1.38h.16l-.03.97-.06 1.73-.03.76.23-.43a5.91 5.91 0 012.74-2.73 3.71 3.71 0 011.8-.37c.91 0 1.82.3 1.82.6 0 .2-1.6 4.42-1.7 4.46-.03.01-.35-.1-.69-.27a4.6 4.6 0 00-2.01-.5c-.8 0-1.7.3-2.05.67-.15.17-.15.18-.2 2.6-.03 2.4.05 5.33.19 6.5.11 1 .38 1.5.93 1.73.18.08 1.34.24 1.72.24.03 0 .05.23.03.5l-.01.52-4.88.01c-2.69.01-4.92 0-4.97-.03zm-6.06-2.17c-.31.58-.89 1.12-1.35 1.26-1.8.54-3.1-1.18-3.6-4.78a33.11 33.11 0 010-5.66c.36-2.89 1.25-4.36 2.66-4.36.63 0 .98.15 1.48.65 1.18 1.2 1.74 3.46 1.73 7.03 0 2.85-.29 4.64-.92 5.86zm28.47.6c-.4.35-.77.54-1.25.63-.35.07-.45.07-1.08.02-.26-.02-.32-.05-.38-.2-.08-.21-.18-7.94-.14-11.03l.03-2.41.44-.13c.29-.09.63-.13 1.03-.13.56 0 .63.02 1.1.25 1.14.56 1.91 1.95 2.27 4.07.14.78.15 2.92.03 3.86-.3 2.3-1.05 4.16-2.05 5.06zm17.14-8.84l1.15-.04-.04-.81c-.15-2.88-.85-4.45-2-4.45-1.23 0-2.22 1.6-2.64 4.25-.05.33-.09.72-.09.86v.27l1.24-.02 2.38-.06z" fill="#A0A0A0"></path>
+                    <g clip-path="url(#clip5)"><path fill-rule="evenodd" clip-rule="evenodd" d="M862.7 45.93a45.9 45.9 0 01-3.34-.55l-.49-.11.04-2.58c.1-6.22.1-9.6.04-12.9-.05-3.24-.07-3.58-.2-4.06-.15-.6-.38-1.02-.65-1.22-.11-.08-.4-.18-.65-.24l-.12-.02c-.42-.1-.57-.13-.63-.23a.432.432 0 01-.04-.22v-.06c-.02-.21 0-.36.06-.4.07-.06 6.81-1.34 7.02-1.34.07 0 .08.86.04 3.83-.02 2.1-.02 3.82 0 3.82s.26-.1.54-.24c.85-.39 1.64-.56 2.77-.6.76-.02 1.11 0 1.5.07 2.54.53 4.42 2.6 5.08 5.62.17.78.23 2.74.12 3.71-.1.84-.37 1.96-.66 2.69a7.98 7.98 0 01-6.51 5.01c-.72.1-2.95.12-3.91.02zm-28.32 0a7.16 7.16 0 01-5.96-5.15 11.77 11.77 0 010-6.78 7.96 7.96 0 013.87-4.57 9.17 9.17 0 018.2.18c2.04 1.2 3.28 3.35 3.63 6.28.1.89.03 2.78-.13 3.56-.68 3.18-2.66 5.41-5.56 6.25-.31.1-.8.2-1.08.24-.59.08-2.4.08-2.97 0zm40.91-6.35c.77 3.41 3.1 5.73 6.38 6.32.72.13 2.36.13 3.08 0a8.47 8.47 0 003-1.15c.92-.62 1.87-1.56 1.87-1.85 0-.18-.32-.59-.46-.59-.06 0-.31.14-.57.3-.9.59-1.76.82-2.96.82-1.66 0-2.7-.4-3.76-1.47a4.22 4.22 0 01-.9-1.2 8.2 8.2 0 01-.87-3.54l-.01-.58 4.88-.01 4.88-.02.02-.33a8.6 8.6 0 00-.05-1.06c-.3-2.96-1.5-5-3.55-6.02-1.8-.9-4.6-.84-6.65.15a7.74 7.74 0 00-4.02 4.75 9.42 9.42 0 00-.47 3.6c.02.95.07 1.44.16 1.88zm19.57 6.38a18.2 18.2 0 01-3.67-.8l-.3-.13-.04-1.5-.06-2.47-.02-.95.18-.1c.1-.04.3-.08.45-.09l.27-.01.23.56c.89 2.18 1.93 3.36 3.29 3.72.52.14 1.5.14 1.88 0a2.33 2.33 0 001.67-2.3c0-1.32-.72-1.96-3.46-3.03-1.7-.66-2.29-1-3-1.72a4.18 4.18 0 01-1.19-2.9 4.86 4.86 0 011.42-3.82 6.34 6.34 0 014.23-1.83c1.62-.15 4.11.2 5.41.75l.24.1.04 1.34.06 2.2v.86l-.31.12c-.5.19-.54.16-.82-.58-.79-2.09-1.7-3.07-3.13-3.38-.86-.18-1.59.02-2.12.58a2.1 2.1 0 00-.6 1.49c-.05.7.08 1.1.51 1.57.54.58 1.41 1.09 3.16 1.82 2.14.9 3.16 1.65 3.71 2.76.37.72.47 1.3.43 2.4-.03.83-.05 1-.24 1.56-.62 1.82-2.01 3.02-4.16 3.58-.73.2-.83.2-2.28.22-.83 0-1.63 0-1.78-.02zm-83.26-.88c0 .3.02.47.08.49.12.05 11.76.05 11.88 0 .16-.06.15-.92-.01-1a6.12 6.12 0 00-.87-.18 5.86 5.86 0 01-1.03-.22c-.76-.34-1.18-1.25-1.34-2.91a63.5 63.5 0 01-.2-5.01v-1.49l.7.02c1.51.05 2.3.13 2.6.27.7.3 1.24 1.14 1.53 2.32l.15.62.54.02.54.02v-7.92l-.54.02-.53.02-.16.62c-.3 1.22-.8 1.96-1.54 2.3-.3.14-.5.17-1.22.22-.47.02-1.13.05-1.47.05h-.6v-1.96c0-1.96.1-6.14.16-6.79l.04-.35h2.08c2.38 0 2.77.05 3.62.47 1.22.6 2.12 1.79 2.9 3.85v.01c.17.45.24.65.39.71.12.06.3 0 .62-.09l.48-.15-.05-3.04a80.8 80.8 0 00-.08-3.3l-.05-.27-9.1-.02c-5 0-9.2 0-9.31.02l-.22.04.02.54.02.54.7.08c.9.11 1.43.36 1.75.83.71 1.05.84 2.47.84 9.25 0 7.21-.15 8.97-.84 9.88-.36.47-.65.62-1.46.77l-.1.02c-.57.1-.79.14-.87.27-.05.08-.05.2-.05.38v.05zm32.59.48c-.06-.04-.08-.2-.07-.51l.02-.46.23-.05.61-.12c.64-.12 1-.46 1.21-1.14.17-.56.24-2.33.25-5.88 0-4.34-.09-5.37-.53-5.95-.24-.32-.4-.4-.99-.52a66.1 66.1 0 01-.66-.13c-.13-.03-.15-.07-.15-.4 0-.3.02-.36.15-.42.2-.08 6.73-1.38 6.94-1.38h.16l-.03.97-.06 1.73-.03.76.23-.43a5.91 5.91 0 012.74-2.73 3.71 3.71 0 011.8-.37c.91 0 1.82.3 1.82.6 0 .2-1.6 4.42-1.7 4.46-.03.01-.35-.1-.69-.27a4.6 4.6 0 00-2.01-.5c-.8 0-1.7.3-2.05.67-.15.17-.15.18-.2 2.6-.03 2.4.05 5.33.19 6.5.11 1 .38 1.5.93 1.73.18.08 1.34.24 1.72.24.03 0 .05.23.03.5l-.01.52-4.88.01c-2.69.01-4.92 0-4.97-.03zm-6.06-2.17c-.31.58-.89 1.12-1.35 1.26-1.8.54-3.1-1.18-3.6-4.78a33.11 33.11 0 010-5.66c.36-2.89 1.25-4.36 2.66-4.36.63 0 .98.15 1.48.65 1.18 1.2 1.74 3.46 1.73 7.03 0 2.85-.29 4.64-.92 5.86zm28.47.6c-.4.35-.77.54-1.25.63-.35.07-.45.07-1.08.02-.26-.02-.32-.05-.38-.2-.08-.21-.18-7.94-.14-11.03l.03-2.41.44-.13c.29-.09.63-.13 1.03-.13.56 0 .63.02 1.1.25 1.14.56 1.91 1.95 2.27 4.07.14.78.15 2.92.03 3.86-.3 2.3-1.05 4.16-2.05 5.06zm17.14-8.84l1.15-.04-.04-.81c-.15-2.88-.85-4.45-2-4.45-1.23 0-2.22 1.6-2.64 4.25-.05.33-.09.72-.09.86v.27l1.24-.02 2.38-.06z" fill="#A0A0A0"></path>
                     </g>
                     <defs>
                         <clipPath id="clip0">
                             <path fill="#fff" transform="translate(275.57 22)" d="M0 0h88.5v24H0z"></path>
                         </clipPath>
-                        <clipPath id="clip1">
-                            <path fill="#fff" transform="translate(404.07 10)" d="M0 0h48v48H0z"></path>
+                        <clipPath id="clip1"><path fill="#fff" transform="translate(404.07 10)" d="M0 0h48v48H0z"></path>
                         </clipPath>
                         <clipPath id="clip2">
                             <path fill="#fff" transform="translate(492.07 22)" d="M0 0h69.55v24H0z"></path>

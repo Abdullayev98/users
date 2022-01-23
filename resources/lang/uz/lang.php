@@ -445,6 +445,8 @@ return [
     'profile_view' => "ko'rish",
     'profile_aboutMe' => "O'zim haqimda bir oz",
     'profile_edit' => "Tahrirlash",
+    'profile_add' => "Qo'shish",
+    'profile_description' => "Mijozlar siz haqingizda hech narsa bilishmaydi. Tajribangiz haqida ma'lumot qo'shing.",
     'profile_workExample' => "Ishga misollar",
     'profile_textForJobs' => "ish joylari uchun matn",
     'profile_performer' => "Ijrochi",
@@ -733,6 +735,7 @@ return [
     'signup_elpocta' => "Elektron pochta",
     'signup_telnumber' => "Telefon raqami ornatilmagan",
     'signup_password' => "Parol",
+    'signup_password_confirm' => "Parol tasdiqlash",
     'signup_registration' => "Ro'yxatdan o'tish",
     // signup blade ended
 
