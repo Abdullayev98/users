@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="container mx-auto w-full my-8">
+    <div class="w-11/12 px-6 mx-auto my-8">
         <div class="w-1/2 ml-20">
             <div class="">
                 <h1 class="text-5xl font-bold mb-4"> @lang('lang.contact_title')</h1>

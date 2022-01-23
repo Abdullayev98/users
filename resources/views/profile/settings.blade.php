@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <div class="xl:w-[1266px] lg:w-[1100px] mx-auto">
+    <div class="w-10/12 mx-auto text-lg">
 
 
         <div class="grid grid-cols-3  grid-flow-row mt-10">
@@ -88,7 +88,7 @@
 
 
 {{-- settings start --}}
-                    <div class= "w-full">
+                    <div class= "w-full text-base">
 <!-- settings form TABS -->
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->

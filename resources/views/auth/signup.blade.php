@@ -2,7 +2,7 @@
 
 @section('content')
 
-        <div class="mt-3 text-center">
+        <div class="mt-3 text-center text-base">
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block my-4">
                  @lang('lang.signup_enter')
@@ -50,7 +50,7 @@
                             <br>
                     </div>
                 </div>
-                <button type="submit" class="w-80 h-12 rounded-lg bg-green-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">
+                <button type="submit" class="w-80 h-12 rounded-lg bg-green-500 text-gray-200 uppercase font-semibold hover:bg-green-500 text-gray-100 transition mb-4">
                     @lang('lang.signup_registration')
                 </button>
             </form>
@@ -61,11 +61,11 @@
         var maskOptions = {
             mask: '(00)000-00-00',
             lazy: false
-        } 
+        }
         var mask = new IMask(element, maskOptions);
-        
+
         var element2 = document.getElementById('email');
-        var maskOptions2 = {    
+        var maskOptions2 = {
             mask:function (value) {
                         if(/^[a-z0-9_\.-]+$/.test(value))
                             return true;
@@ -84,7 +84,7 @@
                         return false;
                             },
             lazy: false
-        } 
+        }
         var mask2 = new IMask(element2, maskOptions2);
         </script>
 @endsection

@@ -1,4 +1,4 @@
-<nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start" aria-label="Global">
+<nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start text-base" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
       <!--  mobile menu -->
       <!-- <div class="flex justify-between w-11/12 items-center"> -->
@@ -388,7 +388,7 @@ use Illuminate\Support\Facades\Auth;
 
 
                 <div class="mt-16">
-                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >@lang('lang.navbar_toPayment')</a>
+                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" id="button" href="#" >@lang('lang.navbar_toPayment')</a>
                 </div>
             </div>
         </div>
@@ -583,15 +583,15 @@ el_for_create.insertAdjacentHTML('afterend', `
         var x = document.getElementById("myText").value;
         if(x < 1000){
             document.getElementById('button').removeAttribute("onclick");
-            document.getElementById('button').classList.remove("bg-lime-500");
+            document.getElementById('button').classList.remove("bg-green-500");
             document.getElementById('button').classList.add("bg-gray-500");
-            document.getElementById('button').classList.remove("hover:bg-lime-600");
+            document.getElementById('button').classList.remove("hover:bg-green-500");
             document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
         }else{
             document.getElementById('button').setAttribute("onclick","toggleModal1();");
             document.getElementById('button').classList.remove("bg-gray-500");
-            document.getElementById('button').classList.add("bg-lime-500");
-            document.getElementById('button').classList.add("hover:bg-lime-600");
+            document.getElementById('button').classList.add("bg-green-500");
+            document.getElementById('button').classList.add("hover:bg-green-500");
             document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
         }
     }

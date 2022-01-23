@@ -1,4 +1,4 @@
-@extends('layouts.app')
+ @extends('layouts.app')
 
 @section('content')
     <style>
@@ -9,7 +9,11 @@
         }
     </style>
 
-    <div class="xl:w-10/12 mx-auto mt-16">
+    <div class="text-sm w-full bg-gray-200 my-4 py-3">
+        <p class="w-8/12 mx-auto text-gray-500 font-normal">Вы находитесь в разделе исполнителей U-Ser. <br>
+            Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его профиле.</p>
+    </div>
+    <div class="xl:w-8/12 mx-auto mt-16 text-base">
         <div class="grid grid-cols-3 ">
 
             {{-----------------------------------------------------------------------------------}}
@@ -29,19 +33,14 @@
                     <div class="max-w-md mx-left">
                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                             <div x-data={show:false} class="rounded-sm">
-                                <div class="border border-b-0 bg-gray-100 cursor-pointer" id="{{ str_replace(' ', '', $category->name) }}">
-                                    <button class="underline text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
-                                        <svg class="w-4 h-4 rotate -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                        </svg>
-                                    </button>
+                                <div class="my-3 text-blue-500 hover:text-red-500 cursor-pointer" id="{{ str_replace(' ', '', $category->name) }}">
                                     {{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                 </div>
-                                <div id="{{$category->slug}}" class="border border-b-0 px-8 py-1 hidden">
+                                <div id="{{$category->slug}}" class="px-8 py-1 hidden">
                                     @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                         <div>
-                                            <a href="/perf-ajax/{{ $category2->id }}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
+                                            <a class="text-blue-500 hover:text-red-500 my-1" href="/perf-ajax/{{ $category2->id }}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
                                         </div>
 
                                     @endforeach
@@ -53,7 +52,7 @@
             </div>
 
             <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16">
-                <div class="bg-gray-100 h-40 rounded-xl w-4/5 sm:mx-0 mx-auto">
+                <div class="bg-gray-100 h-40 rounded-xl w-full sm:mx-0 mx-auto">
                     <div class="font-bold text-2xl mx-8 py-4">
                         <p>@lang('lang.perfCat_allPerf')</p>
                     </div>
@@ -72,14 +71,13 @@
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>
                                 <i class="far fa-thumbs-up m-1 text-gray-400"></i> 5128
-                                <i class="far fa-thumbs-down m-1 text-gray-400"></i> 21
                             </div>
                             <div class="flex flex-row text-[12px]">
-                                <i class="fas fa-star text-[#ffad00]"></i>
-                                <i class="fas fa-star text-[#ffad00]"></i>
-                                <i class="fas fa-star text-[#ffad00]"></i>
-                                <i class="fas fa-star text-[#ffad00]"></i>
-                                <i class="fas fa-star text-[#ffad00]"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
                             </div>
                         </div>
                         <div class="w-5/12 md:float-none md:float-none">
@@ -131,7 +129,7 @@
                 @foreach($tasks as $task)
                     <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
                 @endforeach
-                <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 text-lg mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-[#ff8a00] mx-auto block"><br>
+                <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 text-lg mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-yellow-500 mx-auto block"><br>
 
                     @foreach($tasks as $task)
                         @auth
@@ -222,7 +220,7 @@
             @foreach($tasks as $task)
                 <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
             @endforeach
-            <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 mt-6 hover:text-[#ff8a00]  hover:border-[#ff8a00] hover:shadow-xl shadow-[#ff8a00] mx-auto block"><br>
+            <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-yellow-500 mx-auto block"><br>
 
                 @foreach($tasks as $task)
                     @auth
@@ -297,7 +295,7 @@
                 <!--footer-->
                 <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                     <div class="mt-4 ">
-                        <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
+                        <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
                     </div>
                 </div>
             </div>

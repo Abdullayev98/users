@@ -3,16 +3,16 @@
 @section("content")
 
 <div class="mx-auto w-10/12 my-10">
-    <div class="md:grid md:grid-cols-3 md:gap-x-10">
+    <div class="md:grid md:grid-cols-3 md:gap-x-10 text-lg">
         <div class="col-span-2">
             <div class="border-b">
                 <!-- Tabs -->
-                <div class="w-full bg-[#f8f7ee] px-5 py-5">
+                <div class="w-full bg-yellow-50 px-5 py-5">
 
                     <ul id="tabs" class="inline-flex text-center">
-                        <li id="first_tab" class="rounded-t px-3 py-1 md:w-[150px]"><a id="default-tab" href="#first">@lang('lang.mytasks_iAmPerformer')</a></li>
+                        <li id="first_tab" class="rounded-t px-3 py-1 md:w-48"><a id="default-tab" href="#first">@lang('lang.mytasks_iAmPerformer')</a></li>
 
-                        <li id="second_tab" class="rounded-t px-3 py-1 md:w-[150px]"><a href="#second">@lang('lang.mytasks_iAmCustomer')</a></li>
+                        <li id="second_tab" class="rounded-t px-3 py-1 md:w-48"><a href="#second">@lang('lang.mytasks_iAmCustomer')</a></li>
 
                     </ul>
                     <p class="p-5">Всего {{ $tasks->count() }} задание найдено</p>
@@ -30,11 +30,11 @@
                             @auth
                             @if ($task->performer_id == auth()->user()->id)
                             <div>
-                                <div class="w-full border hover:bg-blue-100 h-[100px] ">
+                                <div class="w-full border hover:bg-blue-100 h-24 ">
                                     <div class="w-11/12 h-12 m-4">
                                         <div class="float-left w-9/12 " id="results">
                                             @foreach ($categories as $category)
-                                            @if ($category->id == $task->category_id) 
+                                            @if ($category->id == $task->category_id)
                                             <i class="{{$category->ico}} text-4xl float-left text-blue-400 mr-2"></i>
                                             @endif
                                             @endforeach
@@ -45,7 +45,7 @@
                                             <a href="#" class="text-lg">{{$task->budget}}</a>
                                             @foreach ($categories as $category)
                                             @if ($category->id == $task->category_id)
-                                            <p class="text-sm ml-12">{{$category->name}}</p>                                                
+                                            <p class="text-sm ml-12">{{$category->name}}</p>
                                             @endif
                                             @endforeach
                                         </div>
@@ -89,7 +89,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     @endif
                                     @endauth
                             @endforeach
@@ -102,7 +102,7 @@
 
             <div>
                 {{-- <div class="text-4xl font-semibold my-6">
-                    @lang('lang.mytask_onTask') {{$task_count}} @lang('lang.mytask_callbacks') 
+                    @lang('lang.mytask_onTask') {{$task_count}} @lang('lang.mytask_callbacks')
                 </div> --}}
                 <hr>
                 <div>

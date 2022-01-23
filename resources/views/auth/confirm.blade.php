@@ -30,7 +30,7 @@
                         @endif
                     </div>
                 </div>
-                <button type="submit" class="w-80 h-12 rounded-lg bg-green-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">
+                <button type="submit" class="w-80 h-12 rounded-lg bg-green-500 text-gray-200 uppercase font-semibold hover:bg-green-500 text-gray-100 transition mb-4">
                     @lang('lang.confirm_otp')
                 </button>
             </form>

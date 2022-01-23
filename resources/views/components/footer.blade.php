@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="container mx-auto ml-4 text-base">
+    <div class="container mx-auto ml-4 mb-4 text-base">
         <span class="">
         @lang('lang.footer_foot')
             <a class=" hover:text-amber-500" rel="noopener noreferrer">

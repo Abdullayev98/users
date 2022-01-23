@@ -279,7 +279,7 @@
                     </div>
                     <div class="mt-4">
                         <a href="/task-search/" type="button"
-                                class="text-center py-2 bg-blue-500 border-blue-500 text-[#fff] text-4xl w-full border-b-4">
+                                class="text-center py-2 bg-blue-500 border-blue-500 text-white text-4xl w-full border-b-4">
                                 @lang('lang.body_showAllTasks')
                         </a>
                     </div>

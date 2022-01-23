@@ -29,7 +29,7 @@
                     <div class="flex-initial w-2/3 lg:ml-0 ml-6">
                         <div class="font-medium text-lg">
                           @if($user->phone_verified_at && $user->email_verified_at)
-                            <i class="fas fa-check-circle text-lime-600 text-2xl"></i>
+                            <i class="fas fa-check-circle text-green-500 text-2xl"></i>
                             <span>@lang('lang.exe_docsAccept')</span>
                             @endif
                         </div>
@@ -189,7 +189,7 @@
                     <div class="">
                         <!-- <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-[#fff] far fa-file-image text-2xl bg-lime-500 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white far fa-file-image text-2xl bg-green-500 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Документы</h2>
@@ -198,7 +198,7 @@
                         </div> -->
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-[#fff] fas fa-phone-square text-2xl bg-amber-500 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white fas fa-phone-square text-2xl bg-amber-500 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
@@ -211,7 +211,7 @@
                         </div>
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-[#fff] far fa-envelope text-2xl bg-blue-500 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white far fa-envelope text-2xl bg-blue-500 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Email</h2>
@@ -224,7 +224,7 @@
                         </div>
                         <!-- <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-[#fff] far fa-address-book text-2xl bg-blue-400 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white far fa-address-book text-2xl bg-blue-400 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Вконтакте</h2>
@@ -233,7 +233,7 @@
                         </div> -->
                         <!-- <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class=" fab fa-apple text-2xl bg-gray-400 text-[#fff] py-3 px-4 rounded-lg"></i>
+                                <i class=" fab fa-apple text-2xl bg-gray-400 text-white py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Apple ID</h2>
@@ -269,7 +269,7 @@
             <!--footer-->
             <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                 <div class="mt-4 ">
-                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
+                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
                 </div>
             </div>
           </div>

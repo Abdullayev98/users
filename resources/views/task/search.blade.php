@@ -6,7 +6,7 @@
 
         <div class="border-b container mx-auto">
             <!-- Tabs -->
-            <ul id="tabs" class="inline-flex w-full">
+            <ul id="tabs" class="inline-flex w-full text-lg">
                 <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">@lang('lang.search_allTasks')</a></li>
                 <li class="font-semibold rounded-t pb-3"><a href="#second">@lang('lang.search_recomend')</a></li>
             </ul>
@@ -15,8 +15,7 @@
         <!-- Tab Contents -->
         <div id="tab-contents">
             <div id="first">
-
-                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
+                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto text-base">
                     <div class="col-span-2">
                         <div class="w-full bg-yellow-50 my-5 rounded-md">
                             <div class="px-5 py-5">
@@ -34,12 +33,12 @@
                                     </div>
 
                                     <div class="md:inline-flex  block w-full col-span-4">
-                                        <div class="w-8/12 2xl:6/12 xl:w-9/12 lg:w-8/12 md:w-9/12 relative">
+                                        <div class="w-8/12 2xl:6/12 xl:w-9/12 lg:w-8/12 md:w-9/12 relative -mt-2.5">
                                             <label class="text-[12px] mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                             <input
-                                                class="text-[14px] address  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
+                                                class="text-[14px] address float-left p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
-                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute xl:left-85 xl:-ml-6 lg:left-[88%]  md:left-85 md:-ml-6 left-52 sm:left-72" type="button">
+                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded relative top-10 left-32" type="button">
                                                 <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                             </button>
                                         </div>
