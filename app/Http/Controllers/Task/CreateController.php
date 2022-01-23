@@ -46,8 +46,16 @@ class CreateController extends Controller
 
     public function custom_get(Task $task)
     {
-        $datas = CustomField::query()->where('category_id', $task->category_id)->orderBy('order', 'desc')->get();
 
+        $child_cat = Category::where('id', $task->category_id)->first();
+
+        $parent_datas = CustomField::query()->where('category_id', $child_cat->parent_id)->orderBy('order', 'asc')->get();
+
+        $child_datas = CustomField::query()->where('category_id', $task->category_id)->orderBy('order', 'asc')->get();
+        $datas = new \Illuminate\Database\Eloquent\Collection; //Create empty collection which we know has the merge() method
+        $datas = $datas->merge($parent_datas);
+        $datas = $datas->merge($child_datas);
+// dd($datas);
         if (!$datas->count()) {
             return redirect()->route('task.create.address', $task->id);
         }
