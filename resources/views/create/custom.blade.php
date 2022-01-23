@@ -40,11 +40,12 @@
                                             <select id="where" name="{{$data->name}}"
                                                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
                                                     required>
-
+@if($data->options !== NULL)
                                                 @foreach($data->options['options'] as $key => $option)
                                                     <option @if($key == $data->values) selected
                                                             @endif value="{{$option}}">{{$option}}</option>
                                                 @endforeach
+@endif
                                             </select>
                                         </div>
                                     </div>
@@ -68,7 +69,7 @@
                                             <div>
 
                                                 <div class="mb-3 xl:w-full">
-
+@if($data->options !== NULL)
                                                     @foreach($data->options['options'] as $key => $option)
                                                         <label class="md:w-2/3 block mt-6">
                                                             <input @if($key == $data->values) checked
@@ -79,7 +80,7 @@
                                                     </span>
                                                         </label>
                                                     @endforeach
-
+@endif
                                                 </div>
                                             </div>
 
@@ -111,6 +112,7 @@
 
                                                 <div name="glassSht" class="mb-3 xl:w-full">
 
+@if($data->options !== NULL)
                                                     @foreach($data->options['options'] as $key => $option)
 
                                                         <input @if($key == $data->values) checked @endif type="radio"
@@ -118,7 +120,7 @@
                                                         <label for="1">{{$option}}</label>
                                                         <br><br>
                                                     @endforeach
-
+@endif
                                                 </div>
                                             </div>
 
