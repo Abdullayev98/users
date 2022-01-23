@@ -114,7 +114,7 @@
                                                     @foreach($data->options['options'] as $key => $option)
 
                                                         <input @if($key == $data->values) checked @endif type="radio"
-                                                               id="{{$key}}" name="{{$data->name}}" value="{{$option}}">
+                                                               id="{{$key}}" name="{{$data->name}}[]" value="{{$option}}">
                                                         <label for="1">{{$option}}</label>
                                                         <br><br>
                                                     @endforeach
