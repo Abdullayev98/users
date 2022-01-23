@@ -137,7 +137,7 @@
             @foreach($tasks as $task)
             <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
             @endforeach
-            <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 text-lg mt-6 hover:text-[#ff8a00]  hover:border-[#ff8a00] hover:shadow-xl shadow-[#ff8a00] mx-auto block"><br>
+            <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 mt-6 hover:text-[#ff8a00]  hover:border-[#ff8a00] hover:shadow-xl shadow-[#ff8a00] mx-auto block"><br>
 
             @foreach($tasks as $task)
             @auth
@@ -204,7 +204,7 @@
             </div>
             <!--body-->
             <div class="relative p-6 flex-auto">
-              <p class="my-4  text-lg  text-center">
+              <p class="my-4   text-center">
                 @lang('lang.exe_createTFirst')
               </p>
             </div>

@@ -65,7 +65,7 @@ Route::get('/offer-tasks', function () {
 });
 
 Route::get('/verification', function () {
-    return view('create.verification');
+    return view('verification.verification');
 });
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');

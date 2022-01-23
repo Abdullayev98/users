@@ -122,7 +122,7 @@
                                     <button id="s2" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 border border-blue-700 rounded">@lang('lang.profile_cancel')</button>
                                 </form>
                         </div>
-                        <h4 class="font-bold text-lg mt-5">@lang('lang.profile_workExample')</h4>
+                        <h4 class="font-bold mt-5">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
                             @foreach ($ports as $port)
                                 <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">

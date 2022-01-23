@@ -7,7 +7,7 @@
                 </h3>
             </div>
             <div class="mx-auto flex items-center justify-center w-full">
-                <p class="text-lg mb-4">
+                <p class="mb-4">
                     Укажите телефон, привязанный к вашей учетной записи. Мы отправим СМС с кодом.
                 </p>
             </div>
