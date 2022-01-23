@@ -87,13 +87,13 @@
                           @endauth
                       @endif
                         <li class="mb-1">
-                            <a href="/categories/1" class="task block p-4 text-sm rounded font-medium text-gray-500 hover:text-yellow-500">@lang('lang.navbar_createTask')</a>
+                            <a href="/categories/1" class="task block p-4 text-sm rounded  text-gray-500 hover:text-yellow-500">@lang('lang.navbar_createTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="{{ route('task.search') }}" class="searchs block delete-task cursor-pointer p-4 text-sm rounded font-medium text-gray-500 hover:text-yellow-500">@lang('lang.navbar_findTask')</a>
+                            <a href="{{ route('task.search') }}" class="searchs block delete-task cursor-pointer p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_findTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="/performers" class="performers delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-yellow-500">@lang('lang.navbar_perfs')</a>
+                            <a href="/performers" class="performers delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_perfs')</a>
                         </li>
 
                         @if (Route::has('login'))
@@ -125,14 +125,14 @@
                                     </div>
                                 </li>
 
-                                <div class="font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
+                                <div class="text-gray-500 hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
                                   <a href="{{ route('logout') }}" class="ml-4">@lang('lang.navbar_exit')</a>
                                 </div>
 
                             @else
-                            <div class="font-medium text-gray-500  relative top-60 block w-[400px] ml-4">
-                              <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
-                              <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
+                            <div class="text-gray-500  relative top-60 block w-[400px] ml-4">
+                              <a href="{{ route('login') }}"  class="border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
+                              <a href="{{ route('register') }}"  class=" border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
                             </div>
                             @endauth
                         @endif
@@ -142,8 +142,8 @@
     </div>
     <div class="hidden w-7/12 lg:inline-block xl:ml-12 lg:ml-12 text-base">
         <div class="group inline-block mr-4">
-            <button class="font-medium text-gray-500 hover:text-yellow-500 focus:outline-none">
-                <span class="pr-1  font-[sans-serif] flex-1">@lang('lang.navbar_createTask')</span>
+            <button class="text-gray-500 hover:text-yellow-500 focus:outline-none">
+                <span class="pr-1 flex-1">@lang('lang.navbar_createTask')</span>
                 <span></span>
             </button>
             <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top ">
@@ -201,8 +201,8 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="search cursor-pointer font-medium delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
-        <a href="/performers" class="performer delete-task cursor-pointer font-medium text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
+        <a href="{{ route('task.search') }}" class="search cursor-pointer delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
+        <a href="/performers" class="performer delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
               <a href="{{ route('task.mytasks') }}" class="my-task delete-task cursor-pointer font-medium text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
@@ -331,9 +331,9 @@ use Illuminate\Support\Facades\Auth;
 
 
         @else
-            <div class="w-[400px] text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4">
-                <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
-                <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
+            <div class="w-[400px] text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4 text-base">
+                <a href="{{ route('login') }}"  class="border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
+                <a href="{{ route('register') }}"  class=" border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
             </div>
             <!-- language blog -->
             <div class="flex justify-center text-gray-500 hidden lg:block">

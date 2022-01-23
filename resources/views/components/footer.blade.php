@@ -1,6 +1,6 @@
 <footer>
 
-    <div class="flex sm:flex-row flex-col container mx-auto my-12">
+    <div class="flex sm:flex-row flex-col container mx-auto my-12 text-base">
         <div class="sm:w-1/2 w-full flex lg:flex-row flex-col lg:text-left text-center md:my-0 my-4">
             <div class="w-1/2 flex flex-col lg:mx-8 mx-auto">
                 <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a>
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="container mx-auto ml-4">
+    <div class="container mx-auto ml-4 text-base">
         <span class="">
         @lang('lang.footer_foot')
             <a class=" hover:text-amber-500" rel="noopener noreferrer">
