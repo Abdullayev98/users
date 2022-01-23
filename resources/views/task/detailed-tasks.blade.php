@@ -551,7 +551,7 @@
                                                 <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                     @lang('lang.detT_writeOnChat')
                                                 </a>
-                                                <a class=" send-data text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-[#6fc727] hover:bg-[#5ab82e] font-medium border border-transparent rounded-md">
+                                                <a class=" send-data text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-green-500 hover:bg-green-500 font-medium border border-transparent rounded-md">
                                                     @lang('lang.detT_choose')
                                                 </a>
                                             </div>

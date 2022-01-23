@@ -60,9 +60,9 @@
                             @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                         </div>
                     </div>
-                    <div class="lg:w-6/12 md:w-10/12 w-7/12 mx-auto mt-14">
+                    <div class="lg:w-6/12 md:w-10/12 w-7/12 xl:w-5/12 mx-auto mt-14">
                       <a href="/verification" class="text-green-300 text-center">
-                        <i class="text-blue fas fa-shield-alt float-left mr-0 text-2xl"></i>
+                        <i class="text-blue fas fa-shield-alt float-left xl:-mr-4 text-2xl"></i>
                         <p class="ml-0 text-base underline">@lang('lang.header_bePerformer') </p>
                       </a>
                     </div>
@@ -106,14 +106,14 @@
             </div>
             <div class="mb-4 mt-8 text-center text-base">
                 <a href="/categories/1">
-                    <button type="button" class="font-semibold border hover:border-[#000] duration-300 rounded-md w-64 h-12">@lang('lang.body_allService')
+                    <button type="button" class="font-semibold border hover:border-black duration-300 rounded-md w-64 h-12">@lang('lang.body_allService')
                     </button>
                 </a>
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 <div class="text-center">
-                    <img src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D0%BF%D0%BE%D1%80%D1%82%D0%BC%D0%BE%D0%BD%D0%B0-115076170.jpg"
-                         class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72" alt="">
+                    <img src="{{asset('/images/home_page_1.jpg')}}"
+                         class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
                     <h1 class="font-bold text-lg my-4">@lang('lang.body_comfortPay')</h1>
                     <p class="text-sm">
                     @lang('lang.body_securePay')
@@ -121,8 +121,8 @@
                 </div>
                 <div class="text-center mx-4">
                     <img
-                        src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%85%D0%BE%D0%BA%D0%BA%D0%B5%D1%8F-%D0%BD%D0%B0-%D0%BB%D1%8C%D0%B4%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%BF%D0%BE%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-117033775.jpg"
-                        class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72" alt="">
+                        src="{{ asset('/images/home_page_3.jpg') }}"
+                        class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72 w-52 h-52" alt="">
                     <h1 class="font-bold text-lg my-4">@lang('lang.body_loyalPerformer')</h1>
                     <p class="text-sm">
                     @lang('lang.body_performerDocs')
@@ -130,7 +130,7 @@
                 </div>
                 <div class="text-center mx-4">
                     <img
-                        src="https://avatars.mds.yandex.net/get-dialogs/1676983/eb0009385cb3f7e62b66/orig"
+                        src="{{ asset('images/home_page_2.jfif') }}"
                         class="mx-auto md:h-36 md:w-36 lg:h-52 lg:w-52 my-10" alt="">
                     <h1 class="font-bold text-lg mb-4 mt-10">@lang('lang.body_feedback')</h1>
                     <p class="text-sm">
@@ -140,7 +140,7 @@
             </div>
         </div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-gray-400 to-[#fff] h-1 rounded-full"></div>
-        <div class="w-full bg-gradient-to-r from-[#fff] via-[#f6f8fa] to-[#fff]">
+        <div class="w-full bg-gradient-to-r from-[#fff] via-gray-100 to-[#fff]">
             <div class="container text-center mx-auto px-16">
                 <div class="text-5xl mx-auto py-10 md:py-16">
                 @lang('lang.body_economy')
@@ -154,8 +154,9 @@
 @if(($cnt_for_hiw % 2) == 0)
 
                     <div>
-                        <img class="lg:ml-0  mx-auto  w-full h-full"
+                        <img class="lg:ml-0  mx-auto  w-42 h-42"
                             src="/storage/{{$howitwork->image}}"
+{{--                            src="https://assets.youdo.com/next/_next/static/images/hiw-1-be91158a87ea183e3cd3e3dcc56471a5.png"--}}
                             alt="">
                     </div>
                     <div class="md:text-left text-center">
@@ -170,13 +171,14 @@
                         <h2 class="text-2xl">{{ strip_tags($howitwork->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')) }}</h2>
                     </div>
                     <div class="my-16 md:block hidden">
-                        <img class="lg:ml-0  mx-auto w-full h-full"
+                        <img class="lg:ml-0  mx-auto w-42 h-42"
                             src="/storage/{{$howitwork->image}}"
+{{--                            src="https://assets.youdo.com/next/_next/static/images/hiw-2-aa57365db5ca978385ac301a2ef6a5e8.png"--}}
                             alt="">
                     </div>
 
                     <div class="my-16 md:hidden block">
-                        <img class="lg:ml-0 mx-auto w-full h-full"
+                        <img class="lg:ml-0 mx-auto w-42 h-42"
                             src="/storage/{{$howitwork->image}}"
                             alt="">
                     </div>
@@ -194,7 +196,7 @@
             </div>
             <div class="text-center w-full mx-auto my-4">
                 <a href="/task/create?category_id=31">
-                  <button class="text-center py-4 px-5  bg-yellow-500 border-[#e78900] text-4xl border-b-4">
+                  <button class="text-center py-4 px-5  bg-yellow-500 border-yellow-500 text-4xl border-b-4">
                   @lang('lang.body_putTask')
                   </button>
                 </a>
@@ -207,11 +209,11 @@
             </div>
         </div>
         <div class="bg-blue-100">
-            <div class="container mx-auto pb-24">
+            <div class="w-9/12 mx-auto pb-24">
                 <div class="text-5xl mx-auto py-16 text-center">
                 @lang('lang.body_benefit')
                 </div>
-                <div class="grid grid-cols-4 w-9/12 mx-auto gap-y-12">
+                <div class="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 w-11/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
                     <div class="my-auto sm:mr-0 mr-4">
                         <img src="/storage/{{$advant->image}}" class="w-32 h-32" alt="">
@@ -226,10 +228,10 @@
         </div>
         <div class="w-full mx-auto lg:shadow-xl">
             <div
-                class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('{{asset('/images/download_hand_User.png')}}')]">
-                <div class="w-full sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent bg-blue-700">
+                class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 lg:w-11/12 xl:w-9/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('{{asset('/images/download_hand_User.png')}}')]">
+                <div class="w-11/12 sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent">
                     <h4 class="font-semibold text-4xl md:text-black text-gray-500">@lang('lang.body_personalHelper')</h4>
-                    <p class="text-xl mt-8 md:text-[#000]">@lang('lang.body_downloadApp')</p>
+                    <p class="text-xl mt-8 md:text-black">@lang('lang.body_downloadApp')</p>
                     <a href="#">
                         <button type="button" class="w-3/10 bg-black hover:bg-yellow-500 rounded-md mt-8"><img
                                 src="{{asset('images/download_ios.svg')}}"
@@ -245,7 +247,7 @@
                 <div class="h-64 md:block hidden">
                     <img
                         src="{{asset('/images/download_hand_User.png')}}"
-                        class="relative float-right bottom-24" alt="">
+                        class="relative float-right bottom-5" alt="">
                 </div>
             </div>
         </div>
@@ -258,15 +260,15 @@
                     <div class="w-full overflow-y-scroll w-full h-screen">
 
                         @foreach($tasks as $task)
-                            <div class="w-full border-b-2 h-28 hover:bg-blue-100">
+                            <div class="w-full border-b-2 h-28 hover:bg-blue-100 overflow-hidden">
                                 <div class="icon pt-4">
-                                    <i class="fas fa-user-circle text-6xl float-left text-blue-400"></i>
+                                    <i class="fas fa-user-circle text-6xl mr-4 float-left text-blue-400"></i>
                                 </div>
                                 <div class="mx-auto w-2/3">
-                                    <a href="/detailed-tasks/{{$task->id}}" class="text-2xl text-blue-400 hover:text-red-400">
+                                    <a href="/detailed-tasks/{{$task->id}}" class="xl:text-2xl md:text-xl text-2xl text-blue-400 hover:text-red-400">
                                         {{$task->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </a>
-                                    <p class="text-xl mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
+                                    <p class="text-xl mt-2 overflow-hidden whitespace-nowrap text-ellipsis">
                                         {{$task->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}
                                     </p>
                                 </div>
@@ -277,7 +279,7 @@
                     </div>
                     <div class="mt-4">
                         <a href="/task-search/" type="button"
-                                class="text-center py-3 bg-blue-500 border-blue-500 text-[#fff] text-4xl w-full border-b-4">
+                                class="text-center py-2 bg-blue-500 border-blue-500 text-[#fff] text-4xl w-full border-b-4">
                                 @lang('lang.body_showAllTasks')
                         </a>
                     </div>
@@ -288,7 +290,7 @@
                         class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover" style="background: url('https://www.roi-selling.com/hs-fs/hub/444749/file-1929610769-jpg/blog-files/team-.jpg');">
                         <div class="w-full h-full bg-black bg-opacity-40 text-center">
                             <i class="fas fa-user text-green-300 text-5xl pt-8"></i>
-                            <p class="text-4xl font-medium text-white">@lang('lang.body_howToJoin')</p>
+                            <p class="lg:text-4xl xl:text-4xl md:text-2xl text-4xl font-medium text-white">@lang('lang.body_howToJoin')</p>
                         </div>
                     </div>
                 </a>
@@ -296,8 +298,8 @@
                     <div
                          class="md:w-full w-full h-1/3 my-8 bg-center bg-cover" style="background: url('https://3blaws.s3.amazonaws.com/images/bigstock-Green-energy-biofuel-electric-74257315.jpg');">
                         <div class="w-full h-full bg-black bg-opacity-40 text-center">
-                            <i class="fas fa-shield-alt text-[#8ae2ed] text-5xl pt-8"></i>
-                            <p class="text-4xl text-[#fff]">@lang('lang.body_security')</p>
+                            <i class="fas fa-shield-alt text-blue-400 text-5xl pt-8"></i>
+                            <p class="lg:text-4xl xl:text-4xl md:text-2xl text-4xl text-white">@lang('lang.body_security')</p>
                         </div>
                     </div>
                 </a>
@@ -305,7 +307,7 @@
                         <div
                             class="md:w-full w-full h-1/3 my-8 bg-center bg-cover" style="background: url('https://wallpapercave.com/wp/wp4002616.jpg');">
                             <div class="w-full h-full bg-black bg-opacity-40 text-center">
-                                <p class="text-4xl pt-8 text-[#ffc730]">@lang('lang.body_perForBusines')</p>
+                                <p class="lg:text-4xl xl:text-4xl md:text-2xl text-4xl pt-12 text-yellow-500">@lang('lang.body_perForBusines')</p>
                             </div>
                         </div>
                    </a>

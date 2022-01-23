@@ -153,7 +153,7 @@ class ProfileController extends Controller
             'district' => 'required',
         ]);
 
-       $user = Auth::user();
+        $user = Auth::user();
         $user->district = $request->district;
         $user->save();
         return redirect()->back();
@@ -177,6 +177,13 @@ class ProfileController extends Controller
             $portfolio->comment = $request->comment;
             $portfolio->save();
             return back();
-
         }
+    public function EditDescription(Request $request)
+    {
+        $user = Auth::user();
+        $user->description = $request->description;
+        $user->save();
+        return redirect()->back();
+
+    }
 }

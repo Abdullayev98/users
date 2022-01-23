@@ -2,16 +2,16 @@
 
 
 @section('content')
-<div class="h-screen bg-no-repeat mb-32 bg-[url('https://images.pexels.com/photos/5588400/pexels-photo-5588400.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=768&amp;w=1688')] h-90">
+<div style="background-image: url('https://images.pexels.com/photos/5588400/pexels-photo-5588400.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=768&amp;w=1688')" class="h-screen bg-no-repeat mb-32 h-90">
   <div class="text-center my-auto pt-48">
-    <p class="text-5xl font-bold text-[#fff] ">@lang('lang.ver_becomePerf')</p>
-    <p class="mt-8 mb-12 text-[#fff] text-2xl">@lang('lang.ver_uSerHelps')</p>
+    <p class="text-5xl font-bold text-white ">@lang('lang.ver_becomePerf')</p>
+    <p class="mt-8 mb-12 text-white text-2xl">@lang('lang.ver_uSerHelps')</p>
       @auth
         <a href="{{ route('task.search') }}">
             @else
                 <a href="/register">
             @endauth
-          <button  class="px-10 py-4 font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 rounded-md text-xl">
+          <button  class="px-10 py-4 font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white rounded-md text-xl">
             @lang('lang.ver_becomePrefBtn')
           </button>
         </a>
@@ -49,7 +49,7 @@
               <div class="process grid lg:grid-cols-5 grid-cols-1 items-center">
                   <div class="info ">
                       <div>
-                      <p class="process_number text-[#9e69c7] text-[56px] pb-[22px]">1</p>
+                      <p class="process_number text-purple-600 text-8xl pb-4">1</p>
                       <p class="process_text text-lg text-black">@lang('lang.ver_becomePerf3')</p>
                       </div>
                   </div>
@@ -58,7 +58,7 @@
                   </div>
                   <div class="info ">
                       <div>
-                          <p class="process_number text-[#9e69c7] text-[56px] pb-[22px]">2</p>
+                          <p class="process_number text-purple-600 text-8xl pb-4">2</p>
                           <p class="process_text text-lg text-black">@lang('lang.ver_chooseTask')</p>
                       </div>
                   </div>
@@ -67,7 +67,7 @@
                   </div>
                   <div class="info ">
                       <div>
-                          <p class="process_number text-[#9e69c7] text-[56px] pb-[22px]">3</p>
+                          <p class="process_number text-purple-600 text-8xl pb-4">3</p>
                           <p class="process_text text-lg text-black">@lang('lang.ver_takeMoney')</p>
                       </div>
                   </div>
@@ -80,7 +80,7 @@
                     @else
                         <a href="/register">
                             @endauth
-                            <button  class="font-sans mt-8 text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                            <button  class="font-sans mt-8 text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                               @lang('lang.ver_becomePrefBtn')
                             </button>
                         </a>
@@ -88,11 +88,11 @@
 
 
     {{-- 1 --}}
-    <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
-        <div class="col-span-2 xl:mr-0 mr-8 md:mx-0 mx-6">
-          <img  src="{{asset('images/performer1.jpg')}}" alt="#">
+    <div class="flex lg:flex-row flex-col container mx-auto">
+        <div class="lg:w-3/5 w-full">
+          <img class="mx-auto" src="{{asset('images/performer1.jpg')}}" alt="#">
         </div>
-        <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8  lg:text-left text-center">
+        <div class="lg:w-2/5 w-full lg:text-left text-center xl:ml-0 ml-8 lg:mt-0 mt-4">
           <h1 class="font-bold text-3xl">@lang('lang.ver_goodSalary')</h1>
           <p class="mt-6 text-lg">@lang('lang.ver_earnByTasks')</p>
             <div>
@@ -103,7 +103,7 @@
                         @else
                             <a href="/register">
                                 @endauth
-                <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                   @lang('lang.ver_startEarning')
                 </button>
               </a>
@@ -112,43 +112,43 @@
     </div>
 
     {{-- 2 --}}
-    <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
-      <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:block hidden lg:text-left text-center xl:mr-0 mr-8">
+    <div class="flex lg:flex-row flex-col container mx-auto my-16">
+      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center">
         <h1 class="font-bold text-3xl">@lang('lang.ver_freeTime')</h1>
         <p class="mt-6 text-lg">.@lang('lang.ver_workForYourserf')</p>
           <div>
-            <hr class="mt-12 mb-8">
-            <p class="mb-24">@lang('lang.ver_opinion')</p>
+            <hr class="mt-8 mb-8">
+            <p class="mb-12">@lang('lang.ver_opinion')</p>
               @auth
                   <a href="{{ route('task.search') }}">
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_startEarningForY')
               </button>
             </a>
           </div>
       </div>
-      <div class="col-span-2 mx-auto mr-8 lg:block hidden">
-        <img  src="{{asset('images/performer2.jpg')}}" alt="#">
+      <div class="lg:w-3/5 w-full lg:block hidden xl:ml-0 ml-4">
+        <img class="mx-auto" src="{{asset('images/performer2.jpg')}}" alt="#">
       </div>
 
-      <div class="col-span-2 mx-auto mr-8 lg:hidden block md:ml-0 ml-6">
-        <img  src="{{asset('images/performer2.jpg')}}" alt="#">
+      <div class=" lg:hidden block ">
+        <img class="mx-auto" src="{{asset('images/performer2.jpg')}}" alt="#">
       </div>
-      <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
+      <div class="lg:hidden block lg:text-left text-center lg:mt-0 mt-4">
         <h1 class="font-bold text-3xl">@lang('lang.ver_freeTime')</h1>
         <p class="mt-6 text-lg">@lang('lang.ver_workForYourserf')</p>
           <div>
-            <hr class="mt-12 mb-8">
-            <p class="mb-24">@lang('lang.ver_opinion')</p>
+            <hr class="mt-8 mb-8">
+            <p class="mb-12">@lang('lang.ver_opinion')</p>
               @auth
                   <a href="{{ route('task.search') }}">
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_startEarningForY')
               </button>
             </a>
@@ -157,22 +157,22 @@
     </div>
 
     {{-- 3 --}}
-    <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
-      <div class="col-span-2 xl:mr-0 mr-8 md:mx-0 mx-6">
-        <img  src="{{asset('images/performer3.jpg')}}" alt="#">
+    <div class="flex lg:flex-row flex-col container mx-auto">
+      <div class="lg:w-3/5 w-full">
+        <img class="mx-auto" src="{{asset('images/performer3.jpg')}}" alt="#">
       </div>
-      <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:text-left text-center">
+      <div class="lg:w-2/5 w-full lg:text-left text-center xl:ml-0 ml-8 lg:mt-0 mt-4">
         <h1 class="font-bold text-3xl">@lang('lang.ver_serviceSec')</h1>
         <p class="mt-6 text-lg">Ч@lang('lang.ver_readFeedbacks')</p>
           <div>
-            <hr class="mt-12 mb-8">
-            <p class="mb-24">@lang('lang.ver_securityDescr')</p>
+            <hr class="mt-8 mb-8">
+            <p class="mb-12">@lang('lang.ver_securityDescr')</p>
               @auth
                   <a href="{{ route('task.search') }}">
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_getPerfStatus')
               </button>
             </a>
@@ -181,8 +181,8 @@
     </div>
 
     {{-- 4 --}}
-    <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-32 ">
-      <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:block hidden lg:text-left text-center xl:mr-0 mr-8">
+    <div class="flex lg:flex-row flex-col container mx-auto my-16">
+      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center">
         <h1 class="font-bold text-3xl">@lang('lang.ver_addsEconomy')</h1>
         <p class="mt-6 text-lg">@lang('lang.ver_addsDescr')</p>
           <div>
@@ -193,31 +193,31 @@
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
             </a>
           </div>
       </div>
-      <div class="col-span-2  mx-auto mr-8 lg:block hidden ">
-        <img  src="{{asset('images/performer4.jpg')}}" alt="#">
+      <div class="lg:w-3/5 w-full lg:block hidden xl:ml-0 ml-4">
+        <img class="mx-auto" src="{{asset('images/performer4.jpg')}}" alt="#">
       </div>
 
-      <div class="col-span-2  mx-auto mr-8 lg:hidden block md:ml-0 ml-6">
-        <img  src="{{asset('images/performer4.jpg')}}" alt="#">
+      <div class="lg:hidden block">
+        <img class="mx-auto" src="{{asset('images/performer4.jpg')}}" alt="#">
       </div>
-      <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
+      <div class="lg:hidden block lg:text-left text-center lg:mt-0 mt-4">
         <h1 class="font-bold text-3xl">@lang('lang.ver_addsEconomy')</h1>
         <p class="mt-6 text-lg">@lang('lang.ver_addsDescr')</p>
           <div>
-            <hr class="mt-12 mb-8">
-            <p class="mb-24"> клиентами.@lang('lang.ver_opinion2')</p>
+            <hr class="mt-8 mb-8">
+            <p class="mb-12"> клиентами.@lang('lang.ver_opinion2')</p>
               @auth
                   <a href="{{ route('task.search') }}">
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
             </a>
@@ -228,12 +228,12 @@
 
 
 
-        <div class="w-10/12 mx-auto text-center sm:mt-48 mt-16 mb-16">
+        <div class="w-10/12 mx-auto text-center sm:mt-48 mt-16 mb-16 hidden">
           <h1 class="font-bold text-5xl">@lang('lang.ver_partnershipT')</h1>
           <p class="text-xl mt-8 font-medium">@lang('lang.ver_noTaxes')</p>
         </div>
 
-        <div class="w-10/12 mx-auto grid md:grid-cols-2 grid-cols-1 container mx-auto mb-16">
+        <div class="w-10/12 mx-auto grid md:grid-cols-2 grid-cols-1 container mx-auto mb-16 hidden">
             <div class="grid-cols-1  float-left p-8 rounded-lg w-5/6 shadow-2xl md:ml-0 mx-auto md:mb-0 mb-8">
                 <div class="float-left">
                   <h1 class="font-medium text-2xl">@lang('lang.ver_unlim')</h1>
@@ -267,11 +267,11 @@
             <p class="text-xl mt-8 font-medium">@lang('lang.ver_everyday')</p>
        </div>
 
-      <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
-          <div class="col-span-2">
+      <div class="flex lg:flex-row flex-col container mx-auto">
+          <div class="lg:w-2/3 w-full">
             <iframe class="rounded-lg h-full w-5/6 mx-auto" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-          <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:text-left text-center">
+          <div class="lg:w-1/3 w-full lg:mt-0 mt-8 lg:text-left text-center">
             <p class=" text-lg">@lang('lang.ver_independance')</p>
               <h1 class="font-bold text-6xl mt-4">65 000</h1>
            <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSCour')</p>
@@ -281,7 +281,7 @@
                         @else
                             <a href="/register">
                                 @endauth
-                <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+                <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                   @lang('lang.ver_becomePrefBtn')
                 </button>
               </a>
@@ -305,8 +305,8 @@
             </div>
         </div>
 
-      <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto mt-16  mb-0">
-        <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:block hidden lg:text-left text-center">
+      <div class="flex lg:flex-row flex-col container mx-auto mt-16">
+        <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center">
           <p class=" text-lg">@lang('lang.ver_opinion6')</p>
             <h1 class="font-bold text-6xl mt-4">70 000</h1>
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSPhoto')</p>
@@ -316,20 +316,20 @@
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
             </a>
           </div>
         </div>
-        <div class="col-span-2 lg:block hidden mx-auto mr-8">
+        <div class="lg:w-3/5 w-full lg:block hidden ml-8">
           <iframe class="rounded-lg h-full" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <div class="col-span-2 lg:hidden block mx-auto ">
-        <iframe class="rounded-lg h-full sm:h-[300px] w-full sm:w-[600px]" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="lg:hidden block mx-auto ">
+           <iframe class="rounded-lg h-full sm:h-[300px] w-full sm:w-[600px]" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="col-span-2 lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
+        <div class="lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
           <p class="mt-6 text-lg">@lang('lang.ver_opinion7')</p>
             <h1 class="font-bold text-6xl mt-4">70 000</h1>
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageS3')</p>
@@ -339,13 +339,13 @@
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-[#ff8a00] text-[#fff] hover:bg-orange-500 px-10 py-4 rounded">
+              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
             </a>
           </div>
         </div>
-    </div>
+      </div>
 
 
 

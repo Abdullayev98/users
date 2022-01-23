@@ -1,19 +1,19 @@
 <footer>
     <div class="p-10 text-gray-800">
        <div class="mx-auto text-center md:text-left">
-           <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 gap-x-2 text-lg">
-               <div class="mb-5 md:w-2/12 md:float-left md:mr-20 md:ml-24">
+           <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 lg:gap-x-2 text-lg w-full h-full">
+               <div class="mb-5 md:w-3/12 lg:w-2/12 md:float-left md:mr-20 md:ml-24">
                    <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a><br>
                    <a class="delete-task faq cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a><br>
                    <a class="delete-task contact cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/contacts">@lang('lang.footer_contact')</a><br>
                </div>
-               <div class="mb-5 md:w-2/12 md:float-left -mt-5 md:m-0">
+               <div class="mb-5 md:w-5/12 lg:w-3/12 md:float-left -mt-5 md:m-0">
                    <a class="delete-task review cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/author-reviews">@lang('lang.footer_costumersreviews')</a><br>
                    <a class="text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="#replain-link">@lang('lang.footer_text')</a>
                </div>
-               <div class="mb-5 md:float-left mx-auto lg:float-none md:w-7/12 text-right">
-                   <div class="w-1/1 ml-auto px-auto">
-                       <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block" rel="noopener noreferrer" href="#" target="_blank">
+               <div class="lg:float-left mx-auto lg:float-none lg:w-8/12 lg:text-right">
+                   <div class="inline-block">
+                       <a class="md:mr-2 rounded-md inline-block" rel="noopener noreferrer" href="#" target="_blank">
                            <button type="button" class="w-3/10 bg-black rounded-md mt-8 hover:bg-yellow-500"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
                        </a>
                        <a class="md:mr-2 rounded-md md:inline-block md:px-3" rel="noopener noreferrer" href="#" target="_blank">
@@ -21,19 +21,19 @@
                        </a>
                    </div>
                </div>
-               <div class="mb-5 md:float-left lg:float-none md:w-6/16 md:ml-24 pt-5">
+           </div>
+           <div class="mt-5 md:w-6/16 md:ml-24 pt-5 text-left">
                    <span class="">
                    @lang('lang.footer_foot')
                        <a class="delete-task cursor-pointer md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block hover:text-amber-500" rel="noopener noreferrer">
                            @lang('lang.footer_text1')
                        </a>
                    </span>
-               </div>
            </div>
        </div>
    </div>
 </footer>
-<div class="bg-gray-400 text-gray-100 text-center lg:py-24 w-full justify-center hidden xl:block mx-auto">
+<div class="bg-gray-500 text-gray-100 text-center lg:py-16 w-full justify-center hidden xl:block mx-auto">
     <div class="w-8/12 mx-auto">
         <a href="/press">
             <span class="lazyload-wrapper"><svg width="911" height="68" fill="none" xmlns="http://www.w3.org/2000/svg" class="Press_img__1PE3o" alt="">
