@@ -52,7 +52,7 @@
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
-                                        class="float-right md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 mt-1.5 -ml-24 md:-top-14 -top-12 relative text-white">
+                                   class="float-right md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
                                     @lang('lang.header_orderBtn')
                                 </a>
                         </div>
@@ -132,7 +132,7 @@
                     <img
                         src="{{ asset('images/home_page_2.jfif') }}"
                         class="mx-auto md:h-36 md:w-36 lg:h-52 lg:w-52 my-10" alt="">
-                    <h1 class="font-bold mb-4 mt-10">@lang('lang.body_feedback')</h1>
+                    <h1 class="font-bold mb-4 mt-12 lg:mt-14">@lang('lang.body_feedback')</h1>
                     <p class="text-sm">
                     @lang('lang.body_over1mln')
                     </p>
@@ -209,17 +209,17 @@
             </div>
         </div>
         <div class="bg-blue-100">
-            <div class="w-9/12 mx-auto pb-24">
-                <div class="text-5xl mx-auto py-16 text-center">
+            <div class="w-11/12 md:w-9/12 mx-auto pb-24">
+                <div class="text-4xl md:text-5xl mx-auto py-16 text-center">
                 @lang('lang.body_benefit')
                 </div>
-                <div class="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 w-11/12 mx-auto gap-y-12">
+                <div class="grid lg:grid-cols-4 grid-cols-4 grid-cols-1 w-full md:w-11/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
-                    <div class="my-auto sm:mr-0 mr-4">
-                        <img src="/storage/{{$advant->image}}" class="w-32 h-32" alt="">
+                    <div class="col-span-1 md:my-auto sm:mr-0 mr-4">
+                        <img src="/storage/{{$advant->image}}" class="md:w-32 md:h-32 h-24 w-24" alt="">
                     </div>
-                    <div class="col-span-3">
-                        <h4 class="font-semibold text-3xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
+                    <div class="col-span-3 ml-5">
+                        <h4 class="font-semibold text-2xl md:text-3xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
                         <p class="text-xl">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
                     </div>
                     @endforeach

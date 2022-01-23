@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="md:container mx-auto pt-5 mt-[30px]">
-        <div class="w-full px-12 md:flex md:grid-flow-row md:justify-center md:mx-auto md:max-w-[1300px] mb-4">
-            <div class="lg:w-2/12 h-auto mt-5">
+    <div class="md:container mx-auto pt-5">
+        <div class="w-full px-12 md:flex md:grid-flow-row md:justify-center md:mx-auto md:w-10/12 mb-4">
+            <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8 text-base">
                 <ul>
                     <li>
                         <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">@lang('lang.authors_howItWorks')</a>
@@ -33,33 +33,33 @@
                         <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/vacancies">@lang('lang.authors_vacancy')</a>
                     </li>
                 </ul>
-                <a href class="bg-[url('{{asset('images/shield.svg')}}')] bg-no-repeat"></a>
-                <a href="/verification" class="w-[200px] px-[16px] pb-[15px] block rounded-[8px] shadow-xl hover:shadow-md text-[12px] leading-[16px] tracking-[.2px] text-[#444] mt-5 text-center mb-8">
+                <a href class="bg-no-repeat" style="background: url('{{asset('images/shield.svg')}}');"></a>
+                <a href="/verification" class="w-10/12 px-10 pb-[15px] block rounded-md shadow-xl hover:shadow-md text-base leading-md tracking-sm text-gray-700 mt-5 text-center">
                     <img src="{{asset('images/shield.svg')}}" class="mx-auto pb-3" alt="">
-                    @lang('lang.cmi_bePerf')
+                    @lang('lang.review_bePerformer')
                 </a>
             </div>
-            <div class="md:w-9/12 md:mt-10 md:pl-12">
+            <div class="md:w-9/12 md:pt-5 md:pl-12">
                 @foreach ($medias as $media)
                 <div class="mb-12">
                     @php
                         \Carbon\Carbon::setLocale('ru');
                     @endphp
-                    <div class="italic text-[#828282]">
-                    
+                    <div class="italic text-gray-600">
+
                         {{ $media->created_at->format('d') }} {{ \Carbon\Carbon::parse($media->created_at)->translatedFormat('F') }}
                     {{ $media->created_at->format('Y') }} @lang('lang.cmi_year').
                     </div>
-                    <h1 class="text-[1.4rem] md:text-[1.8rem]">
+                    <h1 class="text-base md:text-lg">
                         <span class="text-red-500"> {{ $media->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
                     </h1>
-                    <p class="mt-4">
+                    <p class="mt-4 text-base">
                     @lang('lang.cmi_yandex1')
 
                         <a class="text-blue-500 hover:text-black" href="/"> {{ $media->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}</a>
 
                         @lang('lang.cmi_yandex3')</p>
-                </div>                    
+                </div>
                 @endforeach
             </div>
         </div>

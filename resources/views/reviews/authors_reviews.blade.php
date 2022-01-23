@@ -3,8 +3,8 @@
 
 @section('content')
     <div class="md:container mx-auto pt-5">
-        <div class="w-full px-12 md:flex md:grid-flow-row md:justify-center md:mx-auto md:max-w-[1000px] mb-4">
-            <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8">
+        <div class="w-full md:flex md:grid-flow-row md:justify-center md:mx-auto md:w-10/12 mb-4">
+            <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8 text-base">
                 <ul>
                     <li>
                         <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">@lang('lang.authors_howItWorks')</a>
@@ -35,28 +35,28 @@
                     </li>
                 </ul>
             </div>
-            <div class="md:w-8/12 mt-8">
-                <h1 class="text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] pb-2 font-semibold">
+            <div class="md:w-8/12 mt-5">
+                <h1 class="text-normal lg:text-2xl pb-2 font-semibold">
                 @lang('lang.authors_CusFeedAboutUser')
                 </h1>
-                <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">@lang('lang.authors_FeedbackInf')</p>
-                <ul class="pt-[20px]">
-                    <li class="border border-solid border-[2px] rounded-[5px]">
-                        <div class="px-[15px] py-[20px]">
-                            <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-[40px] h-[40px] overflow-hidden rounded-[4px] shadow-lg border-b-0 ">
-                                <img class="rounded-full" src="https://scontent.ftas3-2.fna.fbcdn.net/v/t1.6435-1/cp0/p50x50/64781175_2307123356023656_8909452215765172224_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=dbb9e7&_nc_ohc=klwahSm_3gMAX_tofan&_nc_ht=scontent.ftas3-2.fna&edm=AN6CN6oEAAAA&oh=00_AT_c80hQdKhYzNueJG2g3yjwbp7xY7zzZQVH117yRHW74g&oe=61E00AC8">
+                <p class="pb-5 md:text-base leading-lg">@lang('lang.authors_FeedbackInf')</p>
+                <ul class="pt-8">
+                    <li class="border border-solid border-2 rounded-md bg-pink-50">
+                        <div class="px-8 py-6">
+                            <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-16 h-16 overflow-hidden rounded-full shadow-lg border-b-0 mr-4">
+                                <img class="rounded-full" src="https://assets.youdo.com/next/_next/static/images/e_zhilina-027471a79969109990245cf940f9f980.jpg">
                             </a>
-                            <div class="align-top ml-[50px] min-h-[42px]">
+                            <div class="align-top ml-12 min-h-20">
                                 <span>
                                     <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="font-semibold ">Ольга Ивенская</a>
                                 </span>
-                                <div class="text-[.9rem] -mt-2 text-[rgba(78,78,78,.5)]">
+                                <div class="text-base -mt-2 text-gray-400">
                                     <span class="align-middle">
                                         <a href="#">@lang('lang.authors_timeAgo')</a>
                                     </span>
                                 </div>
                             </div>
-                            <div>
+                            <div class="text-base">
                             @lang('lang.authors_feedback')
                             </div>
                             <div class="w-full h-auto py-4">
@@ -65,7 +65,7 @@
                         </div>
                     </li>
                 </ul>
-                <a href="categories/1" class="inline-block mt-7 border-0 outline-0 text-center whitespace-nowrap min-w-[100px] rounded-[8px] text-[2rem] h-[3.5rem] text-white px-[23px] bg-[linear-gradient(180deg,#5dbeff,#4096ef)] hover:bg-[linear-gradient(180deg,#a2d8fc,#6eaff1)">@lang('lang.authors_createTask')</a>
+                <a href="categories/1" class="inline-block mt-7 border-0 outline-0 text-center whitespace-nowrap min-w-20 rounded-md text-lg h-5 text-white px-12 bg-[linear-gradient(180deg,#5dbeff,#4096ef)] hover:bg-[linear-gradient(180deg,#a2d8fc,#6eaff1)">@lang('lang.authors_createTask')</a>
             </div>
         </div>
     </div>
