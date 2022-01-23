@@ -32,4 +32,6 @@ Route::post('/profile/insertdistrict',[ProfileController::class, 'StoreDistrict'
 
 Route::post('/profile/storepicture',[ProfileController::class, 'StorePicture'])->name('storePicture');
 
+//description
+Route::post('/profile/description',[ProfileController::class, 'EditDescription'])->name('edit.description');
 
