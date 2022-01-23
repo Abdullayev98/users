@@ -6,6 +6,7 @@ use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\PerformersController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RefillController;
 use App\Http\Controllers\Task\SearchTaskController;
 use App\Http\Controllers\admin\VoyagerUserController;
@@ -40,6 +41,7 @@ Route::post('ajax-request', [SearchTaskController::class, 'task_response']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    Route::get('/report', [ReportController::class, 'index']);
     Route::get("users/activitiy/{user}", [VoyagerUserController::class, "activity"])->name("users.activity");
     Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.index");
     Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating");

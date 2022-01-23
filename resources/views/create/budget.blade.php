@@ -4,11 +4,8 @@
     <link rel="stylesheet" href="{{asset('css/budjet.css')}}">
     <!-- Information section -->
     <x-roadmap/>
-    @if(session('current_parent_category')->id == 2)
-    <form action="{{route('task.create.construction')}}" method="post">
-    @else
-    <form class="" action="{{route('task.create.notes')}}" method="post">
-    @endif
+{{--    <form action="{{route('task.create.construction')}}" method="post">--}}
+    <form class="" action="{{route('task.create.budget.store', $task->id)}}" method="post">
         @csrf
         <div class="mx-auto w-9/12  my-16">
             <div class="grid grid-cols-3 gap-x-20">
@@ -36,26 +33,26 @@
                                         <div id="slider-range-min" class="flex"></div>
                                     </div>
                                     <input type="text" id="amount" name="amount1" readonly>
-{{--                                    <div class="flex ">--}}
-{{--                                        <div class="cursor-default">--}}
-{{--                                            <div class="w-2 h-2 bg-gray-200 rounded-full -ml-1 -mt-5 z-0"></div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="w-[200px]">--}}
-{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="">--}}
-{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="">--}}
-{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum') </p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="">--}}
-{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="">--}}
-{{--                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum') </p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    <div class="flex ">
+                                        <div class="cursor-default">
+                                            <div class="w-2 h-2 bg-gray-200 rounded-full -ml-1 -mt-5 z-0"></div>
+                                        </div>
+                                        <div class="w-[200px]">
+                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>
+                                        </div>
+                                        <div class="">
+                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>
+                                        </div>
+                                        <div class="">
+                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum') </p>
+                                        </div>
+                                        <div class="">
+                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>
+                                        </div>
+                                        <div class="">
+                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum') </p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="w-[100px]  md:w-[200px] xl:hidden">
                                     <select id="" name="amount" class="border md:ml-14 bg-[#ffa200]  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-[#ffaa00]">
@@ -81,7 +78,7 @@
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
-                                    <a onclick="myFunction()" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                    <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
                                             @lang('lang.notes_back')
                                             <!-- </button> -->
@@ -92,7 +89,7 @@
                                             </script>
                                         </a>
                                         <input type="submit"
-                                               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                               class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                                name="" value="@lang('lang.name_next')">
                                     </div>
                                 </div>
@@ -131,7 +128,7 @@
             $(".ui-slider-range").css("background",'linear-gradient(rgb(255, 132, 56), rgb(255, 255, 255))');
             $(".ui-slider-range").css("top",'-1879%');
             $(".ui-slider-handle").text("<>");
-            $( "#amount" ).val('от ' + $( "#slider-range-min" ).slider( "value") + " cум");
+            $( "#amount" ).val($( "#slider-range-min" ).slider( "value"));
         });
     </script>
 

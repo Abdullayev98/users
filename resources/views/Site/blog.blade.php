@@ -90,9 +90,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList')</a>
+            <a href="#" class="text-yellow-500 text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList')</a>
             <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_strangeDesc')</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
+            <a href="#" class="text-[18px] text-yellow-500 font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -102,9 +102,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList2')</a>
+            <a href="#" class="text-yellow-500 text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList2')</a>
             <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_starngeDesc2')</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
+            <a href="#" class="text-[18px] text-yellow-500 font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -114,9 +114,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList3')</a>
+            <a href="#" class="text-yellow-500 text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList3')</a>
             <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_strangeDesc3')</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
+            <a href="#" class="text-[18px] text-yellow-500 font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -126,9 +126,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList4')</a>
+            <a href="#" class="text-yellow-500 text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList4')</a>
             <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_strangeDesc4')</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
+            <a href="#" class="text-[18px] text-yellow-500 font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -138,9 +138,9 @@
 
         </div>
         <div class="py-8 xl:w-[800px]">
-            <a href="#" class="text-[#ffa200] text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList5')</a>
+            <a href="#" class="text-yellow-500 text-[20px] md:text-[32px] font-bold">@lang('lang.blog_strangeList5')</a>
             <p class="text-[14px] md:text-[18px] py-4 font-[400] leading-[1.55] font-['Ubuntu',Arial,sans-serif]">@lang('lang.blog_strangeDesc5')</p>
-            <a href="#" class="text-[18px] text-[#ffa200] font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
+            <a href="#" class="text-[18px] text-yellow-500 font-[400] font-['Ubuntu',Arial,sans-serif] ">@lang('lang.blog_watch')</a>
         </div>
     </div>
 </div>
@@ -148,7 +148,7 @@
 <div class="bg-[#fff8f0]">
     <div class="my-4">
         <div class="max-w-[500px] mx-auto pt-14">
-            <h1 class="text-[#ffa200] text-[32px] font-bold text-center ">
+            <h1 class="text-yellow-500 text-[32px] font-bold text-center ">
             @lang('lang.blog_vote')
             </h1>
         </div>
@@ -161,15 +161,15 @@
             </div>
             <div>
                 <div class="mt-4">
-                    <label class="cursor-pointer text-[18px]"> &nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList') 🍔</label><br />
-                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList2') 🐭</label><br />
-                    <label class="cursor-pointer text-[18px]"> &nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList3') 👵</label><br />
-                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList4') 🎄</label><br />
-                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-[#ffa200]">&nbsp;@lang('lang.blog_strangeList5') ✈️</label><br />
+                    <label class="cursor-pointer text-[18px]"> &nbsp; <input type="radio" name="#" class="my-5 border-yellow-500">&nbsp;@lang('lang.blog_strangeList') 🍔</label><br />
+                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-yellow-500">&nbsp;@lang('lang.blog_strangeList2') 🐭</label><br />
+                    <label class="cursor-pointer text-[18px]"> &nbsp; <input type="radio" name="#" class="my-5 border-yellow-500">&nbsp;@lang('lang.blog_strangeList3') 👵</label><br />
+                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-yellow-500">&nbsp;@lang('lang.blog_strangeList4') 🎄</label><br />
+                    <label class="cursor-pointer text-[18px]">&nbsp; <input type="radio" name="#" class="my-5 border-yellow-500">&nbsp;@lang('lang.blog_strangeList5') ✈️</label><br />
                 </div>
             </div>
             <div class="py-8 text-center">
-                <a type="button" href="#contact" class="text-white text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#ffa200] rounded-[30px] py-3 px-8">@lang('lang.blog_chooseTask')</a>
+                <a type="button" href="#contact" class="text-white text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-yellow-500 rounded-[30px] py-3 px-8">@lang('lang.blog_chooseTask')</a>
             </div>
         </div>
     </div>
@@ -204,8 +204,8 @@
         </div>
         <div class="xl:w-[800px] mx-auto">
             <table>
-                <input type="text" class="bg-[#f5f5f5] outline-none rounded-[20px] my-4 py-3 px-5 w-8/12 border border-[#ffa200] inline mr-2" />
-                <button type="submit" class="text-white text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#ffa200] rounded-[30px] py-3 px-8">@lang('lang.blog_wantSubscribe')</button>
+                <input type="text" class="bg-[#f5f5f5] outline-none rounded-[20px] my-4 py-3 px-5 w-8/12 border border-yellow-500 inline mr-2" />
+                <button type="submit" class="text-white text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-yellow-500 rounded-[30px] py-3 px-8">@lang('lang.blog_wantSubscribe')</button>
             </table>
         </div>
     </div>

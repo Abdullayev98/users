@@ -3,7 +3,7 @@
 @section("content")
 
     <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
-    <div class="container md:w-4/5 p-3 w-full my-10 mx-auto">
+    <div class="container md:w-4/5 w-full mx-auto">
 
 
         <div class="grid md:grid-cols-3 grid-flow-row mt-10 inline-block">

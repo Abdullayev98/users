@@ -6,7 +6,7 @@
 </style>
 <!-- Information section -->
 <x-roadmap/>
-<form class="" action="{{route('task.create.budget')}}" method="post">
+<form class="" action="{{route('task.create.date.store', $task->id)}}" method="post">
   @csrf
 
 <div class="mx-auto w-9/12  my-16">
@@ -35,24 +35,24 @@
           <div id="formulario" class="flex flex-col gap-y-4">
 
             <div class="flex items-center rounded-lg border py-1">
-                  <select name="start[]" id="periud" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none" aria-label="Default select example">
-                      <option selected value="Начать работу" id="1">@lang('lang.date_startTask')</option>
-                      <option value="Закончить работу" id="2">@lang('lang.date_finishTask')</option>
-                      <option value="Указать период" id="3">@lang('lang.date_givePeriod')</option>
+                  <select name="date_type" id="periud" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none" aria-label="Default select example">
+                      <option selected value="1" id="1">@lang('lang.date_startTask')</option>
+                      <option value="2" id="2">@lang('lang.date_finishTask')</option>
+                      <option value="3" id="3">@lang('lang.date_givePeriod')</option>
                   </select>
             </div>
             <div class="flex items-center rounded-lg border py-1">
-              <input type="date" name="date" value="{{session('deyt')}}" class="mx-auto" required>
-              <input type="time" name="time" value="{{session('taym')}}" required>
-            </div>            
+              <input type="date" name="start_date" value="{{session('deyt')}}" class="mx-auto" required>
+              <input type="time" name="start_time" value="{{session('taym')}}" required>
+            </div>
             <div class="flex items-center rounded-lg border py-1" id="datetime" style="display: none;">
-              <input type="date" name="date2" value="{{session('deyt2')}}" class="mx-auto" >
-              <input type="time" name="time2" value="{{session('taym2')}}" >
+              <input type="date" name="end_date" value="{{session('deyt2')}}" class="mx-auto" >
+              <input type="time" name="end_time" value="{{session('taym2')}}" >
             </div>
           </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
-             <a onclick="myFunction()" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+             <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
                                             @lang('lang.notes_back')
                                             <!-- </button> -->
@@ -63,7 +63,7 @@
                                             </script>
                                         </a>
                <input type="submit"
-                               class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                               class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                name="" value="@lang('lang.name_next')">
 
              </div>

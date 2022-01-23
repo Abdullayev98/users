@@ -18,10 +18,10 @@ function tasks_list_all(data) {
             $(".show_tasks").append(
                     `<div class="sort-table print_block" hidden>
                     <div class="sort-table as">
-                    <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
+                    <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
                     <div class="sm:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
                     <div class="float-left w-9/12 " id="results">
-                    <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
+                    <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-[18px] text-blue-400 hover:text-red-400">` + data.name + `</a>
                     <p class="text-[14px] ml-12 mt-4 location">` + data.address + `</p>
                     <p class="text-[14px] ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
@@ -50,10 +50,10 @@ function tasks_list(data) {
                     dl++
                         $(".show_tasks").append(
                             `<div class="sort-table print_block" hidden>
-                            <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="` + data.start_date + `">
+                            <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="` + data.start_date + `">
                             <div class="sm:w-11/12 w-full h-12 md:m-4 sm:m-2 m-0">
                             <div class="float-left w-9/12 " id="results">
-                            <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
+                            <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
                             <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-sm text-blue-400 hover:text-red-400">` + data.name + `</a>
                             <p class="sm:text-sm text-xs ml-10 mt-1 location">` + data.address + `</p>
                             <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>

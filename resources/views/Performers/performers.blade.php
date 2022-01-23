@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16">
+        <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16 mb-12">
                 <div class="bg-gray-100 h-40 rounded-xl w-4/5 sm:mx-0 mx-auto">
                         <div class="font-bold text-4xl mx-8 py-4">
                             <p>@lang('lang.perfCat_allPerf')</p>
@@ -110,7 +110,7 @@
 
                     </div>
                     <div>
-                        <p class="md:text-2xl text-xl leading-0 md:w-[600px] mb-4">
+                        <p class="md:text-2xl sm:text-sm text-xs  leading-0 md:w-[600px] w-fit mb-4">
                                {{$user->description}}
                         </p>
                     </div>
