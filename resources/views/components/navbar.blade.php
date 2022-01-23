@@ -670,17 +670,34 @@ el_for_create.insertAdjacentHTML('afterend', `
     <script >
             var link = document.location.href.split('/');
             if(link[3] == 'task'){
-                $(".performers").removeAttr("href");
-                $(".performer").removeAttr("href");
-                $(".search").removeAttr("href");
-                $(".searchs").removeAttr("href");
-                $(".my-task").removeAttr("href");
-                $(".my-tasks").removeAttr("href");
-                $(".task").removeAttr("href");
-                $(".setting").removeAttr("href");
-                $(".profile").removeAttr("href");
-                $(".profiles").removeAttr("href");
-                $(".logo").removeAttr("href");
+
+        $('.delete-task').on('click', function () {
+
+        let for_del_task_in = $(this).attr("href");
+       // console.log(for_del_task_in);
+		$(this).removeAttr('href');
+        Swal.fire({
+            title: '@lang('lang.name_deleteAsk')',
+            showDenyButton: true,
+            confirmButtonText: '@lang('lang.name_continue')',
+            denyButtonText: '@lang('lang.name_delete')',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.close()
+            } else if (result.isDenied) {
+if(var_for_id_task){
+$.ajax({
+	url: '/for_del_new_task/'+ var_for_id_task +'',
+	method: 'get',
+});
+}
+              window.location.href = for_del_task_in;
+                return false;
+            }
+        });
+
+	    });
+
             }
     </script>
 

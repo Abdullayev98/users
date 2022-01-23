@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('layouts.fornewtask')
+
 @section('content')
 <style media="screen">
 

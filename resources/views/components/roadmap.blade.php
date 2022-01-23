@@ -33,21 +33,6 @@
 </div>
 
 <script>
-    $(".delete-task").click(function (){
-        Swal.fire({
-            title: '@lang('lang.name_deleteAsk')',
-            showDenyButton: true,
-            confirmButtonText: '@lang('lang.name_continue')',
-            denyButtonText: '@lang('lang.name_delete')',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.close()
-            } else if (result.isDenied) {
-                window.location.href = '/';
-                return false;
-            }
-        })
-    })
     $('div').removeClass('group');
     $('ul').removeClass('group-hover');
     $('button').removeClass('hover:text-yellow-500');

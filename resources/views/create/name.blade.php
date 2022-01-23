@@ -1,13 +1,8 @@
 @extends("layouts.app")
 
-
-
-
+@include('layouts.fornewtask')
 
 @section("content")
-
-
-
 
     <!-- Information section -->
     <!-- <form class="" action="" method="post"> -->

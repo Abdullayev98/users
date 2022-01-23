@@ -11,6 +11,7 @@ use App\Http\Controllers\RefillController;
 use App\Http\Controllers\Task\SearchTaskController;
 use App\Http\Controllers\admin\VoyagerUserController;
 use App\Http\Controllers\MassmediaController;
+use App\Http\Controllers\Task\CreateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ use App\Http\Controllers\MassmediaController;
 |
 */
 
+Route::get('/for_del_new_task/{id}', [CreateController::class, 'deletetask']);
 Route::get('/fordelnotif/{id}/{task_id}', [PerformersController::class, 'del_notif']);
 Route::post('/performers', [PerformersController::class, 'service']);
 Route::get('perf-ajax/{id}', [PerformersController::class, 'perf_ajax']);

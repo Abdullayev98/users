@@ -236,4 +236,9 @@ class CreateController extends Controller
         return view('create.verify');
     }
 
+    public function deletetask($id){
+        Task::where('id',$id)->delete();
+        CustomFieldsValue::where('task_id',$id)->delete();
+    }
+
 }

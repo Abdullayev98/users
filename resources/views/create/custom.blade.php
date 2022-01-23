@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('layouts.fornewtask')
+
 @section('content')
 
 
@@ -37,7 +39,7 @@
                                         <div id="formulario" class="flex flex-col gap-y-4">
 
                                             {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
-                                            <select id="where" name="{{$data->name}}"
+                                            <select id="where" name="{{$data->name}}[]"
                                                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
                                                     required>
 
@@ -147,7 +149,7 @@
                                             {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
                                             <input
                                                 placeholder="{{ $data->getTranslatedAttribute('placeholder',Session::get('lang') , 'fallbackLocale') }}"
-                                                id="car" name="{{$data->name}}" type="text"
+                                                id="car" name="{{$data->name}}[]" type="text"
                                                 class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
                                                 required>
 
