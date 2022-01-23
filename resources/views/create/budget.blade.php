@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="w-[100px]  md:w-[200px] xl:hidden">
-                                    <select id="" name="amount" class="border md:ml-14 bg-[#ffa200]  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-[#ffaa00]">
+                                    <select id="" name="amount" class="border md:ml-14 bg-[#ffa200]  text-white font-semibold rounded-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-[#ffaa00]">
                                         <option value="0">
                                             @lang('lang.budget_text')
                                         </option>

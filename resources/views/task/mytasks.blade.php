@@ -38,7 +38,7 @@
                                             <i class="{{$category->ico}} text-4xl float-left text-blue-400 mr-2"></i>
                                             @endif
                                             @endforeach
-                                            <a href="/detailed-tasks/{{$task->id}}" class="text-lg text-blue-400 hover:text-red-400">{{$task->name}}</a>
+                                            <a href="/detailed-tasks/{{$task->id}}" class="text-blue-400 hover:text-red-400">{{$task->name}}</a>
                                             <p class="text-sm ml-12 mt-4">{{$task->address}}</p>
                                         </div>
                                         <div class="float-right w-1/4 text-right " id="about">
@@ -75,7 +75,7 @@
                                         <div class="md:grid md:grid-cols-10 p-2">
                                             <i class="fas fa-user-circle text-4xl col-span-1 m-auto text-blue-400"></i>
                                             <div class="col-span-6">
-                                                <a href="#" class="text-lg text-blue-400  hover:text-red-400">
+                                                <a href="#" class="text-blue-400  hover:text-red-400">
                                                     {{$task->name}}
                                                 </a>
                                                 <p class="text-sm mt-2">

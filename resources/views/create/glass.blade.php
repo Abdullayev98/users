@@ -84,7 +84,7 @@
                                     </div>
 
                                     <div>
-                                        <!-- <span class="underline hover:text-[#5f5869] text-lg decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+                                        <!-- <span class="underline hover:text-[#5f5869] decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
                                     </div>
                                     <div class="mt-4">
                                         <div class="flex w-full gap-x-4 mt-4">

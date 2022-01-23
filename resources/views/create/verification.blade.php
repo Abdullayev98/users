@@ -11,7 +11,7 @@
             @else
                 <a href="/register">
             @endauth
-          <button  class="px-10 py-4 font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white rounded-md text-xl">
+          <button  class="px-10 py-4 font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white rounded-md text-xl">
             @lang('lang.ver_becomePrefBtn')
           </button>
         </a>
@@ -50,7 +50,7 @@
                   <div class="info ">
                       <div>
                       <p class="process_number text-purple-600 text-8xl pb-4">1</p>
-                      <p class="process_text text-lg text-black">@lang('lang.ver_becomePerf3')</p>
+                      <p class="process_text text-black">@lang('lang.ver_becomePerf3')</p>
                       </div>
                   </div>
                   <div>
@@ -59,7 +59,7 @@
                   <div class="info ">
                       <div>
                           <p class="process_number text-purple-600 text-8xl pb-4">2</p>
-                          <p class="process_text text-lg text-black">@lang('lang.ver_chooseTask')</p>
+                          <p class="process_text text-black">@lang('lang.ver_chooseTask')</p>
                       </div>
                   </div>
                   <div>
@@ -68,7 +68,7 @@
                   <div class="info ">
                       <div>
                           <p class="process_number text-purple-600 text-8xl pb-4">3</p>
-                          <p class="process_text text-lg text-black">@lang('lang.ver_takeMoney')</p>
+                          <p class="process_text text-black">@lang('lang.ver_takeMoney')</p>
                       </div>
                   </div>
 
@@ -80,7 +80,7 @@
                     @else
                         <a href="/register">
                             @endauth
-                            <button  class="font-sans mt-8 text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+                            <button  class="font-sans mt-8  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                               @lang('lang.ver_becomePrefBtn')
                             </button>
                         </a>
@@ -103,7 +103,7 @@
                         @else
                             <a href="/register">
                                 @endauth
-                <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+                <button  class="font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                   @lang('lang.ver_startEarning')
                 </button>
               </a>
@@ -124,7 +124,7 @@
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+              <button  class="font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_startEarningForY')
               </button>
             </a>
@@ -148,7 +148,7 @@
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+              <button  class="font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_startEarningForY')
               </button>
             </a>
@@ -172,7 +172,7 @@
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+              <button  class="font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_getPerfStatus')
               </button>
             </a>
@@ -193,7 +193,7 @@
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+              <button  class="font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
             </a>
@@ -217,7 +217,7 @@
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+              <button  class="font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
             </a>
@@ -274,14 +274,14 @@
           <div class="lg:w-1/3 w-full lg:mt-0 mt-8 lg:text-left text-center">
             <p class=" text-lg">@lang('lang.ver_independance')</p>
               <h1 class="font-bold text-6xl mt-4">65 000</h1>
-           <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSCour')</p>
+           <p class="font-medium mt-4">@lang('lang.ver_avarageSCour')</p>
             <div class="mt-16">
                 @auth
                     <a href="{{ route('task.search') }}">
                         @else
                             <a href="/register">
                                 @endauth
-                <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+                <button  class="font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                   @lang('lang.ver_becomePrefBtn')
                 </button>
               </a>
@@ -293,15 +293,15 @@
         <div class="grid md:grid-cols-3 grid-cols-1 container mx-auto  md:mt-32 mt-16 md:mb-32 mb-16">
             <div class="grid-cols-1 shadow-2xl p-8 rounded-lg md:mt-0 mt-8">
                 <p class="text-lg">@lang('lang.ver_opinion3')</p>
-                <a class="text-lg text-slate-400 hover:text-cyan-400 underline" href="#">@lang('lang.ver_readMore')</a>
+                <a class="text-slate-400 hover:text-cyan-400 underline" href="#">@lang('lang.ver_readMore')</a>
             </div>
             <div class="grid-cols-1 shadow-2xl p-8 rounded-lg ml-4 mr-4 md:mt-0 mt-8">
                 <p class="text-lg">@lang('lang.ver_opinion4')</p>
-                <a class="text-lg text-slate-400 hover:text-cyan-400 underline" href="#">@lang('lang.ver_readMore')</a>
+                <a class="text-slate-400 hover:text-cyan-400 underline" href="#">@lang('lang.ver_readMore')</a>
             </div>
             <div class="grid-cols-1 shadow-2xl p-8 rounded-lg md:mt-0 mt-8">
               <p class="text-lg">@lang('lang.ver_opinion5')</p>
-              <a class="text-lg text-slate-400 hover:text-cyan-400 underline" href="#">@lang('lang.ver_readMore')</a>
+              <a class="text-slate-400 hover:text-cyan-400 underline" href="#">@lang('lang.ver_readMore')</a>
             </div>
         </div>
 
@@ -309,14 +309,14 @@
         <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center">
           <p class=" text-lg">@lang('lang.ver_opinion6')</p>
             <h1 class="font-bold text-6xl mt-4">70 000</h1>
-         <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSPhoto')</p>
+         <p class="font-medium mt-4">@lang('lang.ver_avarageSPhoto')</p>
           <div class="mt-16">
               @auth
                   <a href="{{ route('task.search') }}">
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+              <button  class="font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
             </a>
@@ -332,14 +332,14 @@
         <div class="lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
           <p class="mt-6 text-lg">@lang('lang.ver_opinion7')</p>
             <h1 class="font-bold text-6xl mt-4">70 000</h1>
-         <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageS3')</p>
+         <p class="font-medium mt-4">@lang('lang.ver_avarageS3')</p>
           <div class="mt-16">
               @auth
                   <a href="{{ route('task.search') }}">
                       @else
                           <a href="/register">
                               @endauth
-              <button  class="font-sans  text-lg  font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
+              <button  class="font-sans   font-semibold bg-yellow-500 hover:bg-yellow-600 text-white px-10 py-4 rounded">
                 @lang('lang.ver_becomePrefBtn')
               </button>
             </a>

@@ -1,7 +1,7 @@
 <footer>
     <div class="p-10 text-gray-800">
        <div class="mx-auto text-center md:text-left">
-           <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 lg:gap-x-2 text-lg w-full h-full">
+           <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 lg:gap-x-2 w-full h-full">
                <div class="mb-5 md:w-3/12 lg:w-2/12 md:float-left md:mr-20 md:ml-24">
                    <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a><br>
                    <a class="delete-task faq cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a><br>

@@ -140,7 +140,7 @@
             </div>
             <!--body-->
             <div class="relative p-6 flex-auto">
-              <p class="my-4  text-lg  text-center">
+              <p class="my-4   text-center">
                 @lang('lang.exe_createTFirst')
               </p>
             </div>

@@ -74,7 +74,7 @@
                                                             <input @if($key == $data->values) checked
                                                                    @endif class="mr-2  h-4 w-4" type="checkbox"
                                                                    value="{{$option}}" name="{{$data->name}}[]">
-                                                            <span class="text-lg text-slate-900">
+                                                            <span class="text-slate-900">
                                                     {{$option}}
                                                     </span>
                                                         </label>
@@ -84,7 +84,7 @@
                                             </div>
 
                                             <div>
-                                                <!-- <span class="underline hover:text-[#5f5869] text-lg decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+                                                <!-- <span class="underline hover:text-[#5f5869] decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
                                             </div>
 
 
@@ -123,7 +123,7 @@
                                             </div>
 
                                             <div>
-                                                <!-- <span class="underline hover:text-[#5f5869] text-lg decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+                                                <!-- <span class="underline hover:text-[#5f5869] decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
                                             </div>
 
 

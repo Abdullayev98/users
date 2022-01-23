@@ -107,7 +107,7 @@
                             </span>
                             <p class="mt-3 w-4/5">{{$user->description}}</p>
                         </div>
-                        <h4 class="font-bold text-lg mt-5">@lang('lang.profile_workExample')</h4>
+                        <h4 class="font-bold mt-5">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
                             @foreach ($ports as $port)
                                 <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">

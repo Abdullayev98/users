@@ -35,7 +35,7 @@
                 @foreach ($categories as $category)
                 <label class="md:w-2/3 block mt-6">
                     <input class="mr-2  h-4 w-4" type="radio" value="{{$category}}" name="car_service[]">
-                    <span class="text-lg text-slate-900">
+                    <span class="text-slate-900">
                         {{$category}}
                     </span>
                   </label>
@@ -44,7 +44,7 @@
         </div>
 
         <div>
-            <!-- <span class="underline hover:text-[#5f5869] text-lg decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+            <!-- <span class="underline hover:text-[#5f5869] decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
         </div>
         <div class="mt-4">
             <div class="flex w-full gap-x-4 mt-4">

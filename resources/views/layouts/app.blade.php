@@ -6,7 +6,6 @@
     <title>Universal services </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{$app_logo ?? ''}}"/>
-    <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.css" rel="stylesheet">
 
@@ -19,10 +18,6 @@
     <x-navbar/>
     @yield('content')
     <x-footer/>
-
-
-
-
 
 </body>
 

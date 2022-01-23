@@ -138,7 +138,7 @@
                             <h4 class="font-bold text-md mt-2">@lang('lang.cash_question2')</h4>
                             <p><a href="/home/profile" class="text-blue-500">@lang('lang.cash_makeRequest')</a> -
                             @lang('lang.cash_nswer2')</p>
-                            <!-- <h3 class="font-bold text-lg mt-2">Если у вас остались вопросы об условиях работы с User,
+                            <!-- <h3 class="font-bold mt-2">Если у вас остались вопросы об условиях работы с User,
                                 посмотрите это обучающее видео:</h3>
                             <iframe class="w-full h-auto" src="https://www.youtube.com/embed/Js_5Pal4bOE">
                             </iframe> -->

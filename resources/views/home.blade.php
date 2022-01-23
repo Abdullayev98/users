@@ -5,7 +5,7 @@
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">
             <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2
-            text-lg font-bold">{{ $message }}
+            font-bold">{{ $message }}
               <button onclick="toggleModal2()" type="button" class="bg-red-500 hover:bg-blue-200 py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button>
             </div>
         </div>
@@ -38,7 +38,7 @@
                     <h1 class="font-bold text-white text-4xl lg:text-5xl">
                         <span class="block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="mt-3 text-sm md:text-xl text-white sm:mt-5 sm:mx-auto md:mt-5 md:text-lg md:mt-2 mb-3">
+                    <p class="mt-3 text-sm md:text-xl text-white sm:mt-5 sm:mx-auto md:mt-5 md:md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
                     <div class="mx-auto">
@@ -114,7 +114,7 @@
                 <div class="text-center">
                     <img src="{{asset('/images/home_page_1.jpg')}}"
                          class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
-                    <h1 class="font-bold text-lg my-4">@lang('lang.body_comfortPay')</h1>
+                    <h1 class="font-bold my-4">@lang('lang.body_comfortPay')</h1>
                     <p class="text-sm">
                     @lang('lang.body_securePay')
                     </p>
@@ -123,7 +123,7 @@
                     <img
                         src="{{ asset('/images/home_page_3.jpg') }}"
                         class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72 w-52 h-52" alt="">
-                    <h1 class="font-bold text-lg my-4">@lang('lang.body_loyalPerformer')</h1>
+                    <h1 class="font-bold my-4">@lang('lang.body_loyalPerformer')</h1>
                     <p class="text-sm">
                     @lang('lang.body_performerDocs')
                     </p>
@@ -132,7 +132,7 @@
                     <img
                         src="{{ asset('images/home_page_2.jfif') }}"
                         class="mx-auto md:h-36 md:w-36 lg:h-52 lg:w-52 my-10" alt="">
-                    <h1 class="font-bold text-lg mb-4 mt-10">@lang('lang.body_feedback')</h1>
+                    <h1 class="font-bold mb-4 mt-10">@lang('lang.body_feedback')</h1>
                     <p class="text-sm">
                     @lang('lang.body_over1mln')
                     </p>

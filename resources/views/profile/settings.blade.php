@@ -15,7 +15,7 @@
                         <i class="far fa-eye"> @lang('lang.profile_view')</i>
                     </div>
                     <br>
-                    <h2 class="font-bold text-lg mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
+                    <h2 class="font-bold mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
                         @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
@@ -157,11 +157,11 @@
                                                         <option value="3" {{ $user->role_id==3 ? 'selected' : '' }}>@lang('lang.settings_customer')</option>
                                                     </select>
                                                 </div>
-                                                <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
+                                                <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
                                                 <hr>
                                             </form>
 
-                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">@lang('lang.settings_profile')</a>
+                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -178,7 +178,7 @@
                                             <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
                                             <span class="col-span-9 ml-2">@lang('lang.settings_wantNews')</span>
                                         </div>
-                                        <button class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl" type="submit">@lang('lang.settings_save')</button>
+                                        <button class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl" type="submit">@lang('lang.settings_save')</button>
                                     </div>
 {{-- settings/ second tab -> enable notification end --}}
                                 </div>
@@ -211,7 +211,7 @@
                                                 </div>
                                                 @endforeach
                                             </div>
-                                            <input class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" type="submit" name="submit" value="Сохранить">
+                                            <input class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5" type="submit" name="submit" value="Сохранить">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");

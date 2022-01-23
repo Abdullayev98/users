@@ -34,10 +34,10 @@ class CreateController extends Controller
     public function name_store(Request $request, Task $task)
     {
 
-
         $data = $request->validate([
             'name' => 'required|string'
         ]);
+
         $task->update($data);
 
         return redirect()->route("task.create.custom.get", $task->id);
