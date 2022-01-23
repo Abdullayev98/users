@@ -187,6 +187,7 @@ class CreateController extends Controller
                 'email' => 'required|email',
                 'phone_number' => 'required',
             ]);
+
             $data['password'] = bcrypt('login123');
             $user = User::create($data);
         } else {
@@ -199,7 +200,7 @@ class CreateController extends Controller
 
         $task->status = 1;
         $task->save();
-        $user->phone_number = str_replace('998', '', preg_replace('/[^0-9]/', '', $user->phone_number));
+        $user->phone_number = str_replace('+998', '', preg_replace('/[^0-9]/', '', $user->phone_number));
         $user->save();
 
         if (!$user->is_email_verified) {
