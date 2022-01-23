@@ -20,8 +20,8 @@
                         <img class="rounded-min mx-left overflow-hidden"
                         @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
                         src='{{asset("AvatarImages/images/users/default.png")}}'
-                        @else   
-                        src="{{asset("AvatarImages/{$user->avatar}")}}" 
+                        @else
+                        src="{{asset("AvatarImages/{$user->avatar}")}}"
                         @endif alt="image" width="384"
                         height="512">
                         <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
@@ -191,7 +191,7 @@
                                             @csrf
                                             <div class="acordion mt-16">
                                                 @foreach ($categories as $category )
-                                               
+
                                                 <div class="mb-4 rounded-md border shadow-md">
                                                     <div class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
                                                         {{$category->name}}
@@ -204,7 +204,7 @@
                                                             $res_c_arr = array_search($category2->id,$cat_arr);
                                                             //dd($res_c_arr);
                                                         @endphp
-                                                            <input type="checkbox" @if($res_c_arr !== false) checked @endif name="category[]" value="{{$category2->id}}" class="mr-2 required:border-[#ffa200]" >{{$category2->name}}
+                                                            <input type="checkbox" @if($res_c_arr !== false) checked @endif name="category[]" value="{{$category2->id}}" class="mr-2 required:border-yellow-500" >{{$category2->name}}
                                                         </label>
                                                         @endforeach
                                                     </div>

@@ -50,7 +50,7 @@
     })
     $('div').removeClass('group');
     $('ul').removeClass('group-hover');
-    $('button').removeClass('hover:text-[#ffa200]');
+    $('button').removeClass('hover:text-yellow-500');
     $('button').removeClass('text-gray-500');
     $('button').addClass('text-gray-400');
   </script>
