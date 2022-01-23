@@ -26,7 +26,7 @@
                 <div class="pt-1">
                     <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200 mx-auto ">
                         <div style="width: 14%"
-                                 class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#6fc727]"></div>
+                                 class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                     </div>
                 </div>
                 <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
@@ -111,7 +111,7 @@ $('#for_filter_select'+ id +'').removeClass('hidden');
                             </div>
                         </div>
                         <input type="submit"
-                               class="bg-[#6fc727] hover:bg-[#5ab82e] w-11/12 md:ml-5 ml-2 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
+                               class="bg-green-500 hover:bg-green-500 w-11/12 md:ml-5 ml-2 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
                                name="" value="@lang('lang.name_next')">
                     </form>
                 </div>
