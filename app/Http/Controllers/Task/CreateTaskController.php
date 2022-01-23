@@ -20,10 +20,7 @@ class CreateTaskController extends VoyagerBaseController
 
     public function task_create(Request $request){
 
-        $current_category = Category::find($request->category_id);
-        if (!$current_category){
-            return back();
-        }
+        $current_category = Category::findOrFail($request->category_id);
         $categories = Category::query()->where("parent_id", null)->get();
         $current_parent_category = Category::find($current_category->parent_id);
         $child_categories = Category::query()->where("parent_id", $current_parent_category->id)->get();

@@ -325,6 +325,7 @@ return [
     // CMI.blade start
     'cmi_bePerf' => "Universal Xizmat ijrochisiga aylaning. Va daromad olishni boshlang.",
     'cmi_date' => "2021-yil 6-dekabr",
+    'cmi_year' => "y",
     'cmi_priority' => "Universal Services va 'Yandex.Pro' yakka tartibdagi tadbirkorning portretini tuzdi",
     'cmi_yandex1' => "Yandex.Pro bilan birgalikda amalga oshirdik",
     'cmi_yandex2' => "tadqiqot",

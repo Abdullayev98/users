@@ -1,18 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Advant;
-use App\Models\UserVerify;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Advant;
+use App\Models\UserVerify;
 use App\Models\How_work_it;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use TCG\Voyager\Models\Category;
+use PlayMobile\SMS\SmsService;
 use Mail;
 use Hash;
-use TCG\Voyager\Models\Category;
 
 class UserController extends Controller
 {
@@ -47,9 +49,6 @@ class UserController extends Controller
             'name' => 'required',
             'password' => 'required',
         ]);
-        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
-        $howitworks = How_work_it::all();
         $credentials = $request->only('name', 'password');
         if (Auth::attempt($credentials)) {
             $user = User::find(Auth::user()->id)
@@ -57,13 +56,14 @@ class UserController extends Controller
                     'active_status' => 1,
                 ]);
             $lang = Session::pull('lang');
+            Session::put('lang', $lang);
+            $categories  = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+            $tasks       = Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
+            $howitworks  = How_work_it::all();
             $users_count = User::where('role_id', 2)->count();
             $random_category = Category::all()->random();
-            Session::put('lang', $lang);
             $advants = Advant::all();
-
             return view('home', compact('tasks','advants', 'howitworks', 'categories','users_count','random_category'))->withSuccess('Logged-in');
-
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
@@ -90,28 +90,31 @@ class UserController extends Controller
                 'password.min' => 'Пароли должны содержать не менее 6-ми символов'
             ]
         );
-        $check = $this->createUser($data);
+        $check   = $this->createUser($data);
         $token   = Str::random(64);
-        $sms_otp = Str::random(5);
-        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $tasks      = Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
-        $howitworks = How_work_it::all();
+        $sms_otp = rand(10000,99999);
         UserVerify::create([
             'user_id' => $check->id,
             'token'   => $token,
             'sms_otp' => $sms_otp
         ]);
+
         if($request->has('email')){
             Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
                 $message->to($request->email);
                 $message->subject('Email Verification Mail');
             });
         }elseif($request->has('phone_number')){
-            // TODO: send client sms
+            $phone = str_replace('+998', '', $data['phone_number']);
+            $message = 'Code: {$sms_otp} user.uz';
+            $response = (new SmsService())->send($phone, $message);
         }
-        $random_category= Category::first();
+        $categories  = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        $tasks       = Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
+        $advants     = Advant::all();
+        $howitworks  = How_work_it::all();
         $users_count = User::where('role_id', 2)->count();
-        $advants = Advant::all();
+        $random_category = Category::first();
         return view('home', compact('tasks', 'howitworks', 'categories','random_category','users_count','advants'))->withSuccess('Logged-in');
     }
 
@@ -152,6 +155,18 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function verifyProfil(Request $request){
+        $request->validate([
+            'sms_otp' => 'required',
+        ]);
+        $verifyUser = UserVerify::where([
+            'user_id' => auth()->user()->id,
+            'sms_otp' => $request->sms_otp
+        ])->first();
+        $message = $this->checkIsVerified($verifyUser);
+        return redirect("/profile")->with('message', $message);
+    }
+
     public function verifyAccount($token, $is_otp = false)
     {
         if($is_otp){
@@ -159,6 +174,11 @@ class UserController extends Controller
         }else{
             $verifyUser = UserVerify::where('token', $token)->first();
         }
+        $message = $this->checkIsVerified($verifyUser);
+        return redirect()->route('login')->with('message', $message);
+    }
+
+    public function checkIsVerified($verifyUser){
         $message = 'Sorry your profile cannot be identified.';
         if(!is_null($verifyUser) ){
             $user = $verifyUser->user;
@@ -170,6 +190,6 @@ class UserController extends Controller
                 $message = "Your profile is already verified. You can now login.";
             }
         }
-        return redirect()->route('login')->with('message', $message);
+        return $message;
     }
 }

@@ -1,7 +1,7 @@
 
 
 
-<nav class="z-10 relative flex items-center mr-6 lg:w-11/12 xl:w-10/12 md:mx-auto justify-between  lg:justify-start font-[sans-serif]" aria-label="Global">
+<nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
       <!--  mobile menu -->
       <!-- <div class="flex justify-between w-11/12 items-center"> -->
@@ -16,7 +16,7 @@
                 </button>
             </div>
         </nav>
-        <div class="flex justify-center w-8/12 md:w-full">
+        <div class="flex justify-center w-10/12 md:w-full">
             <a class="logo cursor-pointer delete-task" href="/">
                 <img src="{{asset('/images/logo.png')}}" class="overflow-hidden h-14 lg:h-16 py-2" alt="" />
             </a>
@@ -90,20 +90,20 @@
                           @endauth
                       @endif
                         <li class="mb-1">
-                            <a href="/categories/1" class="task block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_createTask')</a>
+                            <a href="/categories/1" class="task block p-4 text-sm rounded font-medium text-gray-500 hover:text-yellow-500">@lang('lang.navbar_createTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="{{ route('task.search') }}" class="searchs block delete-task cursor-pointer p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_findTask')</a>
+                            <a href="{{ route('task.search') }}" class="searchs block delete-task cursor-pointer p-4 text-sm rounded font-medium text-gray-500 hover:text-yellow-500">@lang('lang.navbar_findTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="/performers" class="performers delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_perfs')</a>
+                            <a href="/performers" class="performers delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-yellow-500">@lang('lang.navbar_perfs')</a>
                         </li>
 
                         @if (Route::has('login'))
                             @auth
 
                             <li class="mb-1">
-                                <a href="{{ route('task.mytasks') }}" class="my-tasks delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_myTasks')</a>
+                                <a href="{{ route('task.mytasks') }}" class="my-tasks delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-yellow-500">@lang('lang.navbar_myTasks')</a>
                             </li>
 
                                    {{-- icon-3 --}}
@@ -143,9 +143,9 @@
             </nav>
         </div>
     </div>
-    <div class="hidden w-[800px] lg:inline-block xl:ml-12 lg:ml-12">
+    <div class="hidden w-7/12 lg:inline-block xl:ml-12 lg:ml-12 text-base">
         <div class="group inline-block mr-4">
-            <button class="font-medium text-gray-500 text-[14px] xl:text-[16px] hover:text-[#ffa200] focus:outline-none">
+            <button class="font-medium text-gray-500 hover:text-yellow-500 focus:outline-none">
                 <span class="pr-1  font-[sans-serif] flex-1">@lang('lang.navbar_createTask')</span>
                 <span></span>
             </button>
@@ -164,7 +164,8 @@
 
                             @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
                                 <li class="rounded-sm">
-                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="/task/create?category_id={{ $category2->id }}">
+{{--                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="/task/create?category_id={{ $category2->id }}">--}}
+                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="{{route("task.create.name", ['category_id'=>$category2->id])}}">
                                         {{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                     </a>
                                 </li>
@@ -203,11 +204,11 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="search cursor-pointer font-medium delete-task text-gray-500 hover:text-[#ffa200] mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
-        <a href="/performers" class="performer delete-task cursor-pointer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
+        <a href="{{ route('task.search') }}" class="search cursor-pointer font-medium delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
+        <a href="/performers" class="performer delete-task cursor-pointer font-medium text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
-              <a href="{{ route('task.mytasks') }}" class="my-task delete-task cursor-pointer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
+              <a href="{{ route('task.mytasks') }}" class="my-task delete-task cursor-pointer font-medium text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
             @else
             @endauth
         @endif
@@ -218,7 +219,7 @@ use Illuminate\Support\Facades\Auth;
 ?>
     @if (Route::has('login'))
         @auth
-    <div class="flex lg:inline-block hidden w-[300px] float-right">
+    <div class="flex lg:inline-block hidden w-3/12 float-right">
                 {{-- icon-1 --}}
                 <div class="max-w-lg mx-auto float-left">
 @php $count_for_not = 0; @endphp
@@ -227,7 +228,7 @@ use Illuminate\Support\Facades\Auth;
 @php $count_for_not++; @endphp
 
 @endforeach
-                <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">{{$count_for_not}}</div>
+                <div id="content_count" class="w- h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
                     <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
                     </button>
                     <!-- Dropdown menu -->

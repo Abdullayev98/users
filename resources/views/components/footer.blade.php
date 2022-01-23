@@ -1,23 +1,23 @@
 <footer>
     <div class="p-10 text-gray-800">
        <div class="mx-auto text-center md:text-left">
-           <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 gap-x-2">
+           <div class="grid-col-1 md:grid-col-2 lg:grid-col-4 gap-x-2 text-lg">
                <div class="mb-5 md:w-2/12 md:float-left md:mr-20 md:ml-24">
-                   <a class="delete-task verification cursor-pointer text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a><br>
-                   <a class="delete-task faq cursor-pointer text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/faq">@lang('lang.footer_ownquestion')</a><br>
-                   <a class="delete-task contact cursor-pointer text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/contacts">@lang('lang.footer_contact')</a><br>
+                   <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a><br>
+                   <a class="delete-task faq cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a><br>
+                   <a class="delete-task contact cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/contacts">@lang('lang.footer_contact')</a><br>
                </div>
                <div class="mb-5 md:w-2/12 md:float-left -mt-5 md:m-0">
-                   <a class="delete-task review cursor-pointer text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="/author-reviews">@lang('lang.footer_costumersreviews')</a><br>
-                   <a class="text-[#5f5869] hover:text-[#ffa200] border-b-2 md:border-0 border-b-[#ffa200]" href="#replain-link">@lang('lang.footer_text')</a>
+                   <a class="delete-task review cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/author-reviews">@lang('lang.footer_costumersreviews')</a><br>
+                   <a class="text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="#replain-link">@lang('lang.footer_text')</a>
                </div>
-               <div class="mb-5 md:float-left mx-auto lg:float-none md:w-6/16">
+               <div class="mb-5 md:float-left mx-auto lg:float-none md:w-7/12 text-right">
                    <div class="w-1/1 ml-auto px-auto">
                        <a class="md:mr-2 rounded-md md:inline-block lg:inline-block xl:inline-block" rel="noopener noreferrer" href="#" target="_blank">
-                           <button type="button" class="w-3/10 bg-[#000] rounded-md mt-8 hover:bg-[#ffa200]"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
+                           <button type="button" class="w-3/10 bg-black rounded-md mt-8 hover:bg-yellow-500"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
                        </a>
                        <a class="md:mr-2 rounded-md md:inline-block md:px-3" rel="noopener noreferrer" href="#" target="_blank">
-                           <button type="button" class="w-3/10 bg-[#000] rounded-md mt-8 hover:bg-[#ffa200]"><img src="{{asset('images/download_android.svg')}}" alt=""> </button>
+                           <button type="button" class="w-3/10 bg-black rounded-md mt-8 hover:bg-yellow-500"><img src="{{asset('images/download_android.svg')}}" alt=""> </button>
                        </a>
                    </div>
                </div>
@@ -33,8 +33,10 @@
        </div>
    </div>
 </footer>
-<div class="bg-[rgb(92,92,92)] text-[#a4a4a4] text-center lg:py-[40px] w-full justify-center hidden xl:block mx-auto">
-    <div class="w-[1000px] mx-auto"><a href="/press"><span class="lazyload-wrapper"><svg width="911" height="68" fill="none" xmlns="http://www.w3.org/2000/svg" class="Press_img__1PE3o" alt="">
+<div class="bg-gray-400 text-gray-100 text-center lg:py-24 w-full justify-center hidden xl:block mx-auto">
+    <div class="w-8/12 mx-auto">
+        <a href="/press">
+            <span class="lazyload-wrapper"><svg width="911" height="68" fill="none" xmlns="http://www.w3.org/2000/svg" class="Press_img__1PE3o" alt="">
                     <path fill="#5C5C5C" d="M0 0h911v68H0z"></path>
                     <path d="M31.8 43.26h-9.2l-5.63-9.34-1.83 1.9v7.44H7.46v-23.5h7.68v7.59l6.6-7.58h9l-8.45 8.76 9.5 14.73zm10.29-8.72c0-1.07-.26-2.05-.76-2.9a2.53 2.53 0 00-2.35-1.3c-.95 0-1.66.43-2.15 1.3a5.9 5.9 0 00-.72 2.9 7 7 0 00.77 3.23c.51 1.01 1.3 1.52 2.36 1.52 1.02 0 1.75-.5 2.19-1.48.44-.98.66-2.07.66-3.27zm5.33 5.3c-1.82 2.69-4.93 3.95-8.15 3.95-3.32 0-6.52-1.25-8.37-4.05a10.2 10.2 0 01-.49-9.5 8.63 8.63 0 015.44-4.25c2.55-.71 5.32-.56 7.77.45 2.29.94 3.99 2.88 4.73 5.18.81 2.52.52 6.05-.93 8.21zm59.56-7.02c-.24-1.12-.64-1.9-1.19-2.33a3.25 3.25 0 00-2.09-.65c-.82 0-1.48.2-1.96.63-.48.42-.84 1.2-1.1 2.35h6.34zm6.57 3.32h-12.84c0 .52.1.99.28 1.4.55 1.22 1.55 2.05 2.98 2.05 1.05 0 2.26-.42 2.49-1.56h6.57a6.17 6.17 0 01-2.61 3.99 10.05 10.05 0 01-4.62 1.65c-2.09.26-4.5.19-6.44-.62a8.84 8.84 0 01-4.84-4.9 9.56 9.56 0 01-.04-6.77 8.6 8.6 0 014.84-4.96 12.05 12.05 0 019.23.27 8.69 8.69 0 014.63 5.67c.33 1.27.45 2.48.37 3.78zm18.42 3.73a7.1 7.1 0 01-6.41 3.9 6 6 0 01-4.72-2.05v7.37H114v-22.9h6.06v2.56c1.32-2.62 4.57-3.57 7.2-2.91 2.86.71 4.79 3.12 5.47 5.82.64 2.52.42 5.96-.76 8.2zm-5.58-5.57c0-.72-.24-1.51-.73-2.36a2.3 2.3 0 00-2.1-1.28c-.92 0-1.62.4-2.11 1.2-.5.8-.74 1.6-.74 2.44 0 1.02.2 1.98.58 2.86.38.89 1.14 1.33 2.27 1.33 1.1 0 1.84-.46 2.24-1.38.36-.88.59-1.85.59-2.8zm21.43 8.76c-2.66.93-6.28 1.07-8.93-.03a8.56 8.56 0 01-4.08-3.42 9.54 9.54 0 01-.73-8.38c.96-2.45 2.61-3.86 5-4.83 2.74-1.12 6.8-1.08 9.4.34a7.3 7.3 0 014.1 5.93h-7a3.56 3.56 0 00-.7-1.8c-.99-1.26-3.21-.65-3.92.6a7.5 7.5 0 00-.48 5.65 3.2 3.2 0 002.82 2.11c1.71 0 2.07-1.15 2.51-2.58h6.78a6.86 6.86 0 01-4.77 6.4zm17.26-6.51c0-.32-.03-.58-.09-.78-.47.26-1.2.49-2.2.68a7.5 7.5 0 00-2.24.68c-.97.48-.92 1.84-.07 2.4.97.58 2.6.53 3.42-.29a3.59 3.59 0 001.18-2.7zm7.62 6.7h-7.01l-.27-1.8c-.51.66-1.65 1.2-2.8 1.65a9.73 9.73 0 01-3.61.65c-1.18 0-2.26-.2-3.24-.62a4.57 4.57 0 01-2.24-1.94 6.72 6.72 0 01-.68-2.92c0-1.26.58-2.3 1.39-3.22.45-.53.9-.83 1.71-1.14.39-.15.77-.28 1.14-.38.37-.1.72-.21 1.05-.26l2.87-.43c1.22-.18 2.4-.34 2.92-.51.32-.11.7-.46.88-.67.19-.22.16-.45.16-.69 0-.32-.16-.59-.47-.8a2.33 2.33 0 00-1.34-.33c-.7 0-1.57.1-1.99.3-.42.22-.69.63-.82 1.25h-6.5c.23-1.12.19-1.77.5-2.46.32-.68.82-1.26 1.5-1.75a7.47 7.47 0 012.82-1.11c.58-.12 1.27-.2 2.05-.27.79-.06 1.66-.1 2.63-.1 2.36 0 4.13.28 5.3.84 1.18.56 1.95 1.01 2.3 1.85.36.84.6 1.92.72 3.25v9.02c0 .93.34 1.62 1.03 2.07v.53zm19.05 0h-6.76v-6.37h-5.01v6.38h-6.7V26.2h6.7v5.7h4.93v-5.7h6.84v17.04zm18.79-12.02h-5.83v12.03h-6.78V31.23h-5.87v-5.02h18.48v5.02zm21.96 6.57c0 1.5-.71 2.81-1.86 3.75-1.5 1.25-3.6 1.7-5.5 1.7h-10.47V31.24h-3.91v-5.02h10.43v5.98h3.57c2 0 4.2.39 5.77 1.7a5.1 5.1 0 011.97 3.91zm-6.74.02c0-1.08-.6-1.53-1.62-1.65l-1.23-.05a42.9 42.9 0 00-1.72-.04v3.3l1.7.03c.46 0 .84-.01 1.14-.03 1.04-.08 1.73-.36 1.73-1.56zM61.92 43.26h-3.29l-3.59-11.4.56 4.47v6.93h-6V26.1h7.7l2.98 9.47 2.98-9.47h7.7v17.15h-6v-6.93l.55-4.46-3.59 11.39zm22.46 0h-3.29l-3.59-11.4.56 4.47v6.93h-6V26.1h7.69l2.99 9.47 2.98-9.47h7.7v17.15h-6v-6.93l.55-4.46-3.59 11.39z" fill="#A0A0A0"></path>
                     <g clip-path="url(#clip0)" fill-rule="evenodd" clip-rule="evenodd" fill="#A0A0A0">
@@ -79,7 +81,9 @@
                             <path fill="#fff" transform="translate(811.6 22)" d="M0 0h91.74v24H0z"></path>
                         </clipPath>
                     </defs>
-                </svg></span></a></div>
+                </svg></span>
+        </a>
+    </div>
 </div>
 
 <script>

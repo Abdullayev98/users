@@ -3,6 +3,11 @@
     $add  = is_null($dataTypeContent->getKey());
 @endphp
 
+<?php
+ use TCG\Voyager\Models\Category;
+ use App\Models\CustomField;
+ ?>
+
 @extends('voyager::master')
 
 @section('css')
@@ -53,9 +58,11 @@
                             <!-- Adding / Editing -->
                             @php
                                 $dataTypeRows = $dataType->{($edit ? 'editRows' : 'addRows' )};
+                                $exclude = ['options'];
                             @endphp
 
                             @foreach($dataTypeRows as $row)
+                            @if(!in_array($row->field, $exclude))
                                 <!-- GET THE DISPLAY OPTIONS -->
                                 @php
                                     $display_options = $row->details->display ?? NULL;
@@ -88,7 +95,80 @@
                                         @endforeach
                                     @endif
                                 </div>
+                                @endif
                             @endforeach
+
+
+                            <div class="form-group">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+                                    <label class="control-label" for="name">Опции</label><br>
+
+<div id="idforradiobtn">
+
+@if($dataTypeContent->id)
+@php $count_for_js = 0; @endphp
+@if($dataTypeContent->options !== NULL)
+@foreach($dataTypeContent->options['options'] as $key => $option)
+@php $count_for_js++; @endphp
+<div>{{$key}}
+<input type="text" name="options[options][{{$key}}]" style="width:50%; border:1px solid #e4eaec; padding: 2px 12px;" value="{{$option}}">
+<input type="button" value="x" style="padding:0 8px 2px 8px; margin-left: 3px;" class="btn btn-danger btnX">
+</div>
+@endforeach
+@endif
+
+<script>
+var cntele = <?echo $count_for_js;?>;
+</script>
+
+@else
+<script>
+var cntele = 0;
+</script>
+@endif
+
+</div>
+
+<script>
+    $( "input.btnX" ).click(function(event) {
+     $(this).closest("div").remove();
+});
+</script>
+
+                                    <input class="btn btn-primary" type="button" id="chutton" value="+">
+
+<script>
+    var idradio=document.getElementById('idforradiobtn');
+      chutton.addEventListener("click", function(){
+
+cntele++;
+
+var roch = document.createElement("div")
+idradio.appendChild(roch);
+
+roch.insertAdjacentHTML('afterBegin', ''+ cntele +' ');
+
+var ninput = document.createElement('INPUT');
+ninput.type = 'text';
+ninput.setAttribute("name", "options[options]["+ cntele +"]");
+ninput.setAttribute("style", "width:50%; border:1px solid #e4eaec; padding: 2px 12px;");
+roch.appendChild(ninput);
+
+var ninputdel = document.createElement('INPUT');
+ninputdel.type = 'button';
+ninputdel.value = 'x';
+ninputdel.setAttribute("style", "padding:0 8px 2px 8px; margin-left: 3px;");
+ninputdel.setAttribute("class", "btn btn-danger btnX");
+roch.appendChild(ninputdel);
+
+$( "input.btnX" ).click(function(event) {
+     $(this).closest("div").remove();
+});
+
+});
+</script>
+                            </div>
 
                         </div><!-- panel-body -->
 

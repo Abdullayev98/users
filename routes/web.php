@@ -10,6 +10,8 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RefillController;
 use App\Http\Controllers\Task\SearchTaskController;
 use App\Http\Controllers\admin\VoyagerUserController;
+use App\Http\Controllers\MassmediaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -107,7 +109,7 @@ Route::view('/reviews','reviews.review');
 
 Route::view('/author-reviews','reviews.authors_reviews');
 
-Route::view('/press','reviews.CMI');
+Route::get('/press',[MassmediaController::class, 'index'])->name('massmedia');
 
 Route::view('/vacancies','reviews.vacancies');
 

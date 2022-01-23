@@ -14,4 +14,8 @@ class Massmedia extends Model
         'title',
         'description',
     ];
+    protected $fillable = [
+        'title',
+        'description',
+    ];
 }

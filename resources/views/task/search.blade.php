@@ -26,7 +26,7 @@
                                     <div class="sm:inline-flex block w-full col-span-4">
                                     <!-- <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
                                         <input id="filter" type="text"
-                                               class="w-10/12 p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
+                                               class="text-[15px] w-10/12 p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                                placeholder="@lang('lang.search_byKey')">
                                         <button
                                             class="sm:w-2/12 w-4/12 bg-lime-500 hover:bg-lime-600 ml-1 py-1 px-1 rounded-md sm:mt-0 mt-4 text-white"
@@ -35,9 +35,9 @@
 
                                     <div class="md:inline-flex  block w-full col-span-4">
                                         <div class="w-8/12 2xl:6/12 xl:w-9/12 lg:w-8/12 md:w-9/12 relative">
-                                            <label class="xl:text-base lg:text-sm mb-1 text-neutral-400">@lang('lang.search_location')</label>
+                                            <label class="text-[12px] mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                             <input
-                                                class="address  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
+                                                class="text-[14px] address  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
                                             <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute xl:left-[90%] lg:left-[88%] md:left-[90%] sm:left-[90%] left-[86%]" type="button">
                                                 <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
@@ -45,8 +45,8 @@
                                         </div>
 
                                         <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-4/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
-                                            <label class="xl:text-base lg:text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                            <select name="" id="selectGeo" class="xl:text-base  py-2 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); map_pos(k)">
+                                            <label class="text-[12px] mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
+                                            <select name="" id="selectGeo" class="text-[14px] py-2 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); map_pos(k)">
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
@@ -62,22 +62,22 @@
                                             </select>
                                         </div>
                                         <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
-                                            <label class=" text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
-                                            <input type="text" maxlength="7" class="w-full border-md p-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
+                                            <label class="text-[12px] mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
+                                            <input type="text" maxlength="7" class="text-[14px] w-full border-md p-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
                                         </div>
                                     </div>
                                     <div class="inline-flex  block w-full col-span-4">
                                     <label class="inline-flex items-center mt-3">
                                         <input type="checkbox" class="form-checkbox checkboxByAs  h-5 w-5 text-orange-400"
-                                        ><span class="sm:ml-2 ml-0.5 text-gray-700 xl:text-base lg:text-sm text-xs">@lang('lang.search_remoteJob')</span>
+                                        ><span class="sm:ml-2 ml-0.5 text-gray-700 text-[14px]">@lang('lang.search_remoteJob')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                        ><span class="sm:ml-2  ml-0.5 text-gray-700 xl:text-base lg:text-sm text-xs">@lang('lang.search_noCallback')</span>
+                                        ><span class="sm:ml-2  ml-0.5 text-gray-700 text-[14px]">@lang('lang.search_noCallback')</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
                                         <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
-                                        ><span class="sm:ml-2  ml-0.5 text-gray-700 xl:text-base lg:text-sm text-xs">@lang('lang.search_onlyVacancy')</span>
+                                        ><span class="sm:ml-2  ml-0.5 text-gray-700 text-[14px]">@lang('lang.search_onlyVacancy')</span>
                                     </label>
                                     </div>
                                 </div>
@@ -157,12 +157,12 @@
                             </div>
                             <div class="b-tasks-sorting">
                                 <div class="inline-flex items-center my-5">
-                                    <span class="title__994cd md:text-lg sm:text-sm text-xs">@lang('lang.search_filter')</span>
+                                    <span class="text-[14px] title__994cd">@lang('lang.search_filter')</span>
 
-                                    <button class="md:text-lg sm:text-sm text-xs sm:mx-5  sm:ml-0 ml-0.5 byid">@lang('lang.search_byDate')</button>
+                                    <button class="text-[14px] sm:mx-5  sm:ml-0 ml-0.5 byid">@lang('lang.search_byDate')</button>
 
-                                    <button id="srochnost" class=" focus:outline-none md:text-lg sm:text-sm text-xs sm:mx-5 sm:ml-0 ml-0.5 active">@lang('lang.search_byHurry')</button>
-                                    <button id="as" data-sort-type="3"  class="md:text-lg sm:text-sm text-xs sm:ml-0 ml-0.5 sm:mx-5 ">@lang('lang.search_byRemote')</button>
+                                    <button id="srochnost" class=" focus:outline-none text-[14px] sm:mx-5 sm:ml-0 ml-0.5 active">@lang('lang.search_byHurry')</button>
+                                    <button id="as" data-sort-type="3"  class="text-[14px] sm:ml-0 ml-0.5 sm:mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
                             </div>
                             <div id="scrollbar" class="w-full h-full blog1">
