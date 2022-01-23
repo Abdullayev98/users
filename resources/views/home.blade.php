@@ -60,9 +60,9 @@
                             @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                         </div>
                     </div>
-                    <div class="lg:w-6/12 md:w-10/12 w-7/12 mx-auto mt-14">
+                    <div class="lg:w-6/12 md:w-10/12 w-7/12 xl:w-5/12 mx-auto mt-14">
                       <a href="/verification" class="text-green-300 text-center">
-                        <i class="text-blue fas fa-shield-alt float-left mr-0 text-2xl"></i>
+                        <i class="text-blue fas fa-shield-alt float-left xl:-mr-4 text-2xl"></i>
                         <p class="ml-0 text-base underline">@lang('lang.header_bePerformer') </p>
                       </a>
                     </div>
