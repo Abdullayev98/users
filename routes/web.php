@@ -58,10 +58,6 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 Route::get('/detailed-tasks/{id}', [SearchTaskController::class, 'task'])->name("tasks.detail");
 
-
-Route::get('/terms', function () {
-    return view('terms.terms');
-});
 Route::get('/offer-tasks', function () {
     return view('task.offertasks');
 });
@@ -74,20 +70,12 @@ Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');
 
 Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('task.mytasks');
 
-Route::get('/refill', function() {
-    return view('/Site/refill');
-});
-
 Route::get('/contacts', function() {
     return view('contacts.contacts');
 });
 
 Route::get('/choose-task', function() {
     return view('task.choosetasks');
-});
-
-Route::get('/terms/doc', function() {
-    return view('terms.pdf');
 });
 
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
