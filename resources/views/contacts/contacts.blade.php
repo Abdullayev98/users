@@ -15,8 +15,8 @@
         </div>
 
         <div class="flex flex-row">
-            <div class="lg:basis-1/2 basis-0"></div>
-            <div class="lg:basis-1/2 basis-full flex md:flex-row flex-col lg:ml-0 ml-20 lg:mt-0 mt-8">
+            <div class="lg:w-1/2 w-0"></div>
+            <div class="lg:w-1/2 w-full flex md:flex-row flex-col lg:ml-0 ml-20 lg:mt-0 mt-8">
                 <div class="mt-8">
                     <h1 class="font-bold text-2xl mb-2"> @lang('lang.contact_text11')</h1>
                      <p> @lang('lang.contact_text12')</p>
