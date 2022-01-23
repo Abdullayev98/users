@@ -106,7 +106,7 @@
             </div>
             <div class="mb-4 mt-8 text-center text-base">
                 <a href="/categories/1">
-                    <button type="button" class="font-semibold border hover:border-[#000] duration-300 rounded-md w-64 h-12">@lang('lang.body_allService')
+                    <button type="button" class="font-semibold border hover:border-black duration-300 rounded-md w-64 h-12">@lang('lang.body_allService')
                     </button>
                 </a>
             </div>

@@ -92,7 +92,7 @@
                                     href="mailto:e.kiselev@user.ru?subject=%D0%92%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20-%20%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%D1%83"
                                     type="button"
                                     target="_self"
-                                    class="bg-[#6fc727] hover:bg-[#5ab82e] text-white py-3 px-6 rounded-md text-[18px] my-4">
+                                    class="bg-green-500 hover:bg-green-500 text-white py-3 px-6 rounded-md text-[18px] my-4">
                                     @lang('lang.vac_reply')
                                 </a>
                             </div>
@@ -121,7 +121,7 @@
                                     href="mailto:e.kiselev@user.ru?subject=%D0%92%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20-%20%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%D1%83"
                                     type="button"
                                     target="_self"
-                                    class="bg-[#6fc727] hover:bg-[#5ab82e] text-white py-3 px-6 rounded-md text-[18px] my-4">
+                                    class="bg-green-500 hover:bg-green-500 text-white py-3 px-6 rounded-md text-[18px] my-4">
                                     @lang('lang.vac_reply')
                                 </a>
                             </div>
@@ -150,7 +150,7 @@
                                     href="mailto:e.kiselev@user.ru?subject=%D0%92%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20-%20%D0%92%D0%B5%D0%B4%D1%83%D1%89%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82-%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%D1%83"
                                     type="button"
                                     target="_self"
-                                    class="bg-[#6fc727] hover:bg-[#5ab82e] text-white py-3 px-6 rounded-md text-[18px] my-4">
+                                    class="bg-green-500 hover:bg-green-500 text-white py-3 px-6 rounded-md text-[18px] my-4">
                                     @lang('lang.vac_reply')
                                 </a>
                             </div>

@@ -40,12 +40,11 @@
                                             <select id="where" name="{{$data->name}}"
                                                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
                                                     required>
-@if($data->options !== NULL)
+
                                                 @foreach($data->options['options'] as $key => $option)
                                                     <option @if($key == $data->values) selected
                                                             @endif value="{{$option}}">{{$option}}</option>
                                                 @endforeach
-@endif
                                             </select>
                                         </div>
                                     </div>
@@ -69,7 +68,7 @@
                                             <div>
 
                                                 <div class="mb-3 xl:w-full">
-@if($data->options !== NULL)
+
                                                     @foreach($data->options['options'] as $key => $option)
                                                         <label class="md:w-2/3 block mt-6">
                                                             <input @if($key == $data->values) checked
@@ -80,7 +79,7 @@
                                                     </span>
                                                         </label>
                                                     @endforeach
-@endif
+
                                                 </div>
                                             </div>
 
@@ -112,7 +111,6 @@
 
                                                 <div name="glassSht" class="mb-3 xl:w-full">
 
-@if($data->options !== NULL)
                                                     @foreach($data->options['options'] as $key => $option)
 
                                                         <input @if($key == $data->values) checked @endif type="radio"
@@ -120,7 +118,7 @@
                                                         <label for="1">{{$option}}</label>
                                                         <br><br>
                                                     @endforeach
-@endif
+
                                                 </div>
                                             </div>
 
@@ -162,7 +160,7 @@
                         <div class="mt-4">
                             <div class="flex w-full gap-x-4 mt-4">
                                 <a onclick="myFunction()"
-                                   class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                   class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                     <!-- <button type="button"> -->
                                 @lang('lang.notes_back')
                                 <!-- </button> -->
@@ -173,7 +171,7 @@
                                     </script>
                                 </a>
                                 <input type="submit"
-                                       class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                       class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                        name="" value="@lang('lang.name_next')">
 
                             </div>

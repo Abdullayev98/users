@@ -9,7 +9,7 @@
                     @lang('lang.contact_text')
                 </p>
                 <a href="#replain-link">
-                    <button type="submit" class="text-white bg-[#6fc727] hover:bg-[#5ab82e] focus:ring-4 focus:ring-[#6fc727] font-medium rounded-lg text-sm px-5 py-2.5 text-center">@lang('lang.contact_text1')</button>
+                    <button type="submit" class="text-white bg-green-500 hover:bg-green-500 focus:ring-4 focus:ring-[#6fc727] font-medium rounded-lg text-sm px-5 py-2.5 text-center">@lang('lang.contact_text1')</button>
                 </a>
             </div>
         </div>
