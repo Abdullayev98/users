@@ -21,44 +21,33 @@
                 @csrf
                 <div>
                     <div class="mb-4">
-                        <label class="block text-gray-500 text-sm" for="name">
-                            @lang('lang.signup_username') <span class="text-red-500">*</span>
-                        </label>
-                            <input type="text" name="name" placeholder="Name" value="{{ request()->input('name', old('name')) }}"
+                            <input type="text" name="name" placeholder="@lang('lang.signup_username')" value="{{ request()->input('name', old('name')) }}"
                             id="name" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
-                        <br>
+                            <br>
                         @if ($errors->has('name'))
                             <span class="text-danger" style="color: red">{{ $errors->first('name') }}</span>
                         @endif
-                        <label class="block text-gray-500 text-sm" for="email_address">
-                            @lang('lang.signup_elpocta')
-                        </label>
-                        <input type="text" name="email" placeholder="Email" value="{{ request()->input('email', old('email')) }}"
-                        id="email_address" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
-                        <br>
+                            <input type="text" name="email" placeholder="@lang('lang.signup_elpocta')" value="{{ request()->input('email', old('email')) }}"
+                            id="email_address" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                            <br>
                         @if ($errors->has('email'))
                             <span class="text-danger" style="color: red">{{ $errors->first('email') }}</span>
                         @endif
-                        <label class="block text-gray-500 text-sm" for="phone_number">
-                            @lang('lang.signup_telnumber') <span class="text-red-500">*</span>
-                        </label>
-                        <input type="text" name="phone_number" placeholder="Phone" value="{{ request()->input('phone_number', old('phone_number')) }}"
-                            id="phone_number" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
-                        <br>
+                            <input type="text" name="phone_number" id="phone_number" placeholder="+998(00)000-00-00" value="{{ request()->input('phone_number', old('phone_number')) }}"
+                                id="phone_number" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                            <br>
                         @if ($errors->has('phone_number'))
                             <span class="text-danger" style="color: red">{{ $errors->first('phone_number') }}</span>
                         @endif
-
-                        <label class="block text-gray-500 text-sm" for="password">
-                            @lang('lang.signup_password') <span class="text-red-500">*</span>
-                        </label>
-                        <input type="password" name="password" placeholder="Password"
-                            id="password" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" required>
-                        <br>
+                            <input type="password" name="password" placeholder="@lang('lang.signup_password')"
+                                id="password" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" required>
+                            <br>
                         @if ($errors->has('password'))
-                        <span class="text-danger" style="color: red">{{ $errors->first('password') }}</span>
+                        <div class="text-danger" style="color: red">{{ $errors->first('password') }}</div>
                         @endif
-
+                            <input type="password" name="password_confirmation" placeholder="@lang('lang.signup_password_confirm')"
+                                id="password_confirmation" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" required>
+                            <br>
                     </div>
                 </div>
                 <button type="submit" class="w-80 h-12 rounded-lg bg-green-500 text-gray-200 uppercase font-semibold hover:bg-lime-600 text-gray-100 transition mb-4">
@@ -66,5 +55,36 @@
                 </button>
             </form>
         </div>
-
+        <script src="https://unpkg.com/imask"></script>
+        <script>
+            var element = document.getElementById('phone_number');
+        var maskOptions = {
+            mask: '(00)000-00-00',
+            lazy: false
+        } 
+        var mask = new IMask(element, maskOptions);
+        
+        var element2 = document.getElementById('email');
+        var maskOptions2 = {    
+            mask:function (value) {
+                        if(/^[a-z0-9_\.-]+$/.test(value))
+                            return true;
+                        if(/^[a-z0-9_\.-]+@$/.test(value))
+                            return true;
+                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
+                            return true;
+                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
+                            return true;
+                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
+                            return true;
+                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.$/.test(value))
+                            return true;
+                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.[a-z]{1,4}$/.test(value))
+                            return true;
+                        return false;
+                            },
+            lazy: false
+        } 
+        var mask2 = new IMask(element2, maskOptions2);
+        </script>
 @endsection
