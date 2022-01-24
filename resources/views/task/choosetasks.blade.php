@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset ('/css/carousel.min.css')}}">
     <script src="{{ asset ('/js/carousel.min.js') }}"></script>
 
-    <div class="container w-10/12 mx-auto text-lg">
+    <div class="container w-10/12 mx-auto text-base">
         <div class="w-10/12 md:w-8/12 mx-auto text-center">
             <h1 class="text-3xl md:text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
             <h3 class="text-xl md:text-2xl my-5 text-gray-500">@lang('lang.chT_weHelp')</h3>
@@ -44,9 +44,9 @@
 
 
         </div>
-        <div class="w-full ml-4 md:text-left mt-8 md:m-0">
+        <div class="w-full ml-4 md:text-left md:m-0">
           @foreach($choosed_category as $choosed)
-            <h4 class="font-bold text-3xl">{{$choosed->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</h4>
+            <h4 class="font-bold text-3xl mt-14 ">{{$choosed->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</h4>
             @endforeach
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 mt-8">

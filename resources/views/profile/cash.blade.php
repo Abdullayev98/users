@@ -11,7 +11,7 @@
 }
 </style>
 
-    <div class="container lg:w-4/5 w-full mx-auto">
+    <div class="container lg:w-4/5 w-full mx-auto text-base">
 
 
         <div class="grid md:grid-cols-3 grid-flow-row mt-10 inline-block">
