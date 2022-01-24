@@ -58,7 +58,7 @@
                                 </a>
                         </div>
                     </div>
-                      <a href="/verification"  class="text-green-300 hover:text-green-400">
+                      <a href="/verification"  class="text-blue-300 hover:text-blue-400">
                         <div class="flex flex-row sm:w-1/2 w-5/6 mx-auto mt-8 items-center">
                           <i class="text-blue fas fa-shield-alt text-2xl mx-2"></i>
                           <p class="text-base underline">@lang('lang.header_bePerformer')</p>
@@ -89,7 +89,7 @@
     </div>
     <main>
         <div class="container md:text-left text-left mx-auto mt-32 md:mt-36 md:px-16 px-4">
-            <div class="text-4xl font-bold text-center">
+            <div class="text-4xl font-bold text-center pt-10">
                 @lang('lang.header_over') {{$users_count}}  @lang('lang.header_performers')
             </div>
             <div class="text-base text-center mt-4">
