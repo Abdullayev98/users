@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Traits\Translatable;
 
 
 class Task extends Model
 {
     use HasFactory;
-    use Translatable;
 
     const STATUS_NEW = 0;
     const STATUS_OPEN = 1;
@@ -20,13 +18,6 @@ class Task extends Model
 
 
     protected $guarded  = [];
-
-    protected $translatable = [
-        'name',
-        'address',
-        'descrtions',
-        'description_private',
-    ];
 
 
     public function custom_field_values(){

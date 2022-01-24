@@ -30,7 +30,7 @@
         </span>
     </div>
 </footer>
-<div class="bg-gray-500 text-gray-100 text-center lg:py-16 w-full justify-center hidden xl:block mx-auto">
+{{-- <div class="bg-gray-500 text-gray-100 text-center lg:py-16 w-full justify-center hidden xl:block mx-auto">
     <div class="w-8/12 mx-auto">
         <a href="/press">
             <span class="lazyload-wrapper"><svg width="911" height="68" fill="none" xmlns="http://www.w3.org/2000/svg" class="Press_img__1PE3o" alt="">
@@ -79,7 +79,7 @@
                 </svg></span>
         </a>
     </div>
-</div>
+</div> --}}
 
 <script>
     var link = document.location.href.split('/');

@@ -143,7 +143,23 @@
 
         <div class="swiper mySwiper lg:w-10/12 h-60 overflow-hidden rounded-xl mt-12">
             <div class="swiper-wrapper">
+                @foreach ($reklamas as $reklama )
                 <div class="swiper-slide w-full ">
+                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
+                        <div class="w-1/2 lg:w-5/12">
+                            <h1 class=" text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{$reklama->title}}</h1>
+                            <p class="text-lg mb-4">{{$reklama->comment}}</p>
+                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
+                        </div>
+                        <div class="w-1/2 lg:w-7/12">
+                            <img src="/storage/{{$reklama->image}}"
+                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
+                                 alt="">
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                {{-- <div class="swiper-slide w-full ">
                     <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
                         <div class="w-1/2 lg:w-5/12">
                             <h1 class=" text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">Добро пожаловать на U-Ser</h1>
@@ -156,35 +172,7 @@
                                  alt="">
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
-                        <div class="w-1/2 lg:w-5/12">
-                            <h1 class=" text-2xl font-semibold mb-4">Добро пожаловать на U-Ser</h1>
-                            <p class="text-lg mb-4">«Проверенные исполнители» подтвердили свои документы на Universal Services.</p>
-                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
-                        </div>
-                        <div class="w-1/2 lg:w-7/12">
-                            <img src="{{ asset('/images/homepage_slide2.jpg') }}"
-                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
-                                 alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
-                        <div class="w-1/2 lg:w-5/12">
-                            <h1 class=" text-2xl font-semibold mb-4">Добро пожаловать на U-Ser</h1>
-                            <p class="text-lg mb-4">«Проверенные исполнители» подтвердили свои документы на Universal Services.</p>
-                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
-                        </div>
-                        <div class="w-1/2 lg:w-7/12">
-                            <img src="{{ asset('/images/homepage_slide3.jpg') }}"
-                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
-                                 alt="">
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
             </div>
             <div class="text-white swiper-button-next"></div>
             <div class="text-white swiper-button-prev"></div>
@@ -328,10 +316,10 @@
                                 </div>
                                 <div class="mx-auto w-2/3">
                                     <a href="/detailed-tasks/{{$task->id}}" class="xl:text-2xl md:text-xl text-2xl text-blue-400 hover:text-red-400">
-                                        {{$task->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
+                                        {{$task->name}}
                                     </a>
                                     <p class="text-xl mt-2 overflow-hidden whitespace-nowrap text-ellipsis">
-                                        {{$task->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}
+                                        {{$task->description}}
                                     </p>
                                 </div>
                             </div>
