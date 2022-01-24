@@ -138,7 +138,7 @@ function init_map(){
 
 myMap = new ymaps.Map('map', {
     center: [ 41.311151, 69.279737],
-    zoom: 3,
+    zoom: 8,
 }, {
             searchControlProvider: 'yandex#search'
         });
@@ -214,6 +214,7 @@ function init() {
     myGeocoder.then(
         function (res) {
           document.getElementById("coordinate").value = res.geoObjects.get(0).geometry.getCoordinates();
+          myMap.setCenter([res.geoObjects.get(0).geometry.getCoordinates()]);
         }
     );
 
@@ -223,6 +224,7 @@ function init() {
       myGeocoder1.then(
           function (res) {
             document.getElementById("coordinate1").value = res.geoObjects.get(0).geometry.getCoordinates();
+            myMap.setCenter([res.geoObjects.get(0).geometry.getCoordinates()]);
           }
       );
     } else {
@@ -235,6 +237,7 @@ function init() {
       myGeocoder2.then(
           function (res) {
             document.getElementById("coordinate2").value = res.geoObjects.get(0).geometry.getCoordinates();
+            myMap.setCenter([res.geoObjects.get(0).geometry.getCoordinates()]);
           }
       );
     }
@@ -248,6 +251,7 @@ function init() {
       myGeocoder3.then(
           function (res) {
             document.getElementById("coordinate3").value = res.geoObjects.get(0).geometry.getCoordinates();
+            myMap.setCenter([res.geoObjects.get(0).geometry.getCoordinates()]);
           }
       );
     }
@@ -261,6 +265,7 @@ function init() {
       myGeocoder4.then(
           function (res) {
             document.getElementById("coordinate4").value = res.geoObjects.get(0).geometry.getCoordinates();
+            myMap.setCenter([res.geoObjects.get(0).geometry.getCoordinates()]);
           }
       );
     } else {
@@ -278,7 +283,7 @@ function init() {
 
     myMap = new ymaps.Map('map', {
       center: [ 41.311151, 69.279737],
-    zoom: 3,
+    zoom: 8,
       }, {
             searchControlProvider: 'yandex#search'
         });
