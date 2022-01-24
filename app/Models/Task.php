@@ -20,8 +20,9 @@ class Task extends Model
     protected $guarded  = [];
 
 
+
     public function custom_field_values(){
-        return $this->belongsTo(CustomFieldsValue::class);
+        return $this->hasMany(CustomFieldsValue::class);
     }
 
     public function category(){
