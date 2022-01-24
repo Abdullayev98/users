@@ -6,7 +6,7 @@
 
         <div class="border-b container mx-auto">
             <!-- Tabs -->
-            <ul id="tabs" class="inline-flex w-full">
+            <ul id="tabs" class="inline-flex w-full text-lg">
                 <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">@lang('lang.search_allTasks')</a></li>
                 <li class="font-semibold rounded-t pb-3"><a href="#second">@lang('lang.search_recomend')</a></li>
             </ul>
@@ -15,10 +15,9 @@
         <!-- Tab Contents -->
         <div id="tab-contents">
             <div id="first">
-
-                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">
+                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto text-base">
                     <div class="col-span-2">
-                        <div class="w-full bg-[#f8f7ee] my-5 rounded-md">
+                        <div class="w-full bg-yellow-50 my-5 rounded-md">
                             <div class="px-5 py-5">
                             <!-- <form action="{{route('search')}}" method="get"> -->
                                 <div class="grid grid-cols-4 gap-4 mb-3">
@@ -26,27 +25,27 @@
                                     <div class="sm:inline-flex block w-full col-span-4">
                                     <!-- <input class="w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
                                         <input id="filter" type="text"
-                                               class="w-10/12 p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
+                                               class="text-[15px] w-10/12 p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                                placeholder="@lang('lang.search_byKey')">
                                         <button
-                                            class="sm:w-2/12 w-4/12 bg-lime-500 hover:bg-lime-600 ml-1 py-1 px-1 rounded-md sm:mt-0 mt-4 text-white"
-                                            >@lang('lang.search_find')</button>
+                                            class="sm:w-2/12 w-4/12 bg-green-500 hover:bg-green-600 ml-1 py-1 px-1 rounded-md sm:mt-0 mt-4 text-white"
+                                        >@lang('lang.search_find')</button>
                                     </div>
 
                                     <div class="md:inline-flex  block w-full col-span-4">
-                                        <div class="w-8/12 2xl:6/12 xl:w-9/12 lg:w-8/12 md:w-9/12 relative">
-                                            <label class="xl:text-base lg:text-sm mb-1 text-neutral-400">@lang('lang.search_location')</label>
+                                        <div class="w-8/12 2xl:6/12 xl:w-9/12 lg:w-8/12 md:w-9/12 relative -mt-2.5">
+                                            <label class="text-[12px] mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                             <input
-                                                class="address  p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
+                                                class="text-[14px] address float-left p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700"
                                                 type="text" id="suggest">
-                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded absolute xl:left-[90%] lg:left-[88%] md:left-[90%] sm:left-[90%] left-[86%]" type="button">
+                                            <button id="mpshow" class="flex-shrink-0 focus:outline-none text-teal-500 text-sm mt-3 rounded relative top-10 left-32" type="button">
                                                 <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                             </button>
                                         </div>
 
                                         <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-4/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
-                                            <label class="xl:text-base lg:text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                            <select name="" id="selectGeo" class="xl:text-base  py-2 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); enDis(r); map_pos(k)">
+                                            <label class="text-[12px] mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
+                                            <select name="" id="selectGeo" class="text-[14px] py-2 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); enDis(r); map_pos(k)">
                                                 <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                                 <option value="1.5">1.5 km</option>
                                                 <option value="3">3 km</option>
