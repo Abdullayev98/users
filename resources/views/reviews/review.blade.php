@@ -63,8 +63,8 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-20 h-[16px] bg-[{{asset('images/star-yellow-light.svg')}}] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-20 h-[16px] bg-[length:16px_16px] relative" style="background-image: url('{{asset('images/star-yellow-light.svg')}}')">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0  bg-[length:16px_16px]" style="background-image: url('{{asset('images/star-yellow.svg')}}')"></div>
                                 </div>
                             </div>
                         </div>
@@ -88,8 +88,8 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-20 h-[16px] bg-[{{asset('images/star-yellow-light.svg')}}] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-20 h-[16px] bg-[length:16px_16px] relative" style="background-image: url('{{asset('images/star-yellow-light.svg')}}')">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[length:16px_16px]" style="url('{{asset('images/star-yellow.svg')}}')"></div>
                                 </div>
                             </div>
                         </div>
@@ -113,8 +113,8 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-20 h-[16px] bg-[{{asset('images/star-yellow-light.svg')}}] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-20 h-[16px] bg-[length:16px_16px] relative" style="background-image: url('{{asset('images/star-yellow-light.svg')}}')">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0  bg-[length:16px_16px]" style="background-image: url('{{asset('images/star-yellow.svg')}}')"></div>
                                 </div>
                             </div>
                         </div>

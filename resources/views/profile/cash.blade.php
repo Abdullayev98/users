@@ -120,10 +120,10 @@
                             </label>
                             <ul class="mt-5">
                                 <li class="inline ml-5"><a href="/home/profile">@lang('lang.cash_allOperations')</a></li>
-                                <li class="inline ml-5 underline text-[#0091e6]">
+                                <li class="inline ml-5 underline text-blue-500">
                                     <a href="/home/profile">@lang('lang.cash_topUpHis')</a>
                                 </li>
-                                <li class="inline ml-5 underline text-[#0091e6]">
+                                <li class="inline ml-5 underline text-blue-500">
                                     <a href="/home/profile">@lang('lang.cash_reciveHis')</a>
                                 </li>
                             </ul>

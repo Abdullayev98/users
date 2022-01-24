@@ -14,7 +14,7 @@
                         <div class="slider__items">
                             @foreach($categories as $category)
                                 <button type="button"
-                                        class="slider__item bg-inherit hover:bg-[#ffebad] border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
+                                        class="slider__item bg-inherit hover:bg-yellow-300 border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
                                     <i class="fas {{ $category->ico }}"></i>
                                     <a href="{{route('categories',['id'=>$category->id])}}" class="text-sm lg:text-lg">
                                         {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
@@ -32,7 +32,7 @@
             <div class="hidden lg:block">
                 @foreach($categories as $category)
                     <button type="button"
-                            class="bg-inherit hover:bg-[#ffebad] border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
+                            class="bg-inherit hover:bg-yellow-300 border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
                         <i class="fas {{ $category->ico }}"></i>
                         <a href="{{route('categories',['id'=>$category->id])}}">
                             {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
@@ -51,9 +51,9 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 mt-8">
             @foreach($child_categories as $category)
-                <div class="w-full text-left text-left border-b border-solid md:border-0 mt-4 border-[#e9e9e9]">
+                <div class="w-full text-left text-left border-b border-solid md:border-0 mt-4 border-gray-200">
                     <a href="/task/create?category_id={{$category->id}}"
-                       class="text-gray-500 hover:text-[#ffa200] block ml-4 md:ml-0 pb-4 hover:underline">{{$category->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale')}}</a>
+                       class="text-gray-500 hover:text-yellow-600 block ml-4 md:ml-0 pb-4 hover:underline">{{$category->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale')}}</a>
                 </div>
             @endforeach
 

@@ -508,7 +508,7 @@
                                             <hr>
                                             @if(isset($task_responses))
                                                 <div class="flex my-2">
-                                                    <div class="mr-2 bg-[#fff6db] px-2">
+                                                    <div class="mr-2 bg-yellow-200 px-2">
                                                         <a href="#">@lang('lang.detT_byRating')</a>
                                                     </div>
                                                     <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
@@ -531,7 +531,7 @@
                                                                 <input type="text" name="performer_id" class="hidden" value="{{$response_users->id}}">
                                                                 <img class="w-7 h-7 ml-2" src="{{asset('images/shield.svg')}}" alt="">
                                                                 <div class="text-gray-700">
-                                                                    <i class="fas fa-star text-[#fff0d0] mr-1"></i>@lang('lang.detT_numByNum')
+                                                                    <i class="fas fa-star text-yellow-200 mr-1"></i>@lang('lang.detT_numByNum')
                                                                 </div>
                                                                 <div class="mt-2">
                                                                     <i class="fas fa-briefcase fa-2x text-blue-300"></i>
@@ -539,7 +539,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="bg-[#f5f5f5] rounded-[10px] p-4">
+                                                        <div class="bg-gray-100 rounded-[10px] p-4">
                                                             <div class="ml-0">
                                                                 <div class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}} сум</div>
                                                                 <div class="text-[17px] text-gray-500">@lang('lang.detT_Hello')</div>

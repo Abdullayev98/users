@@ -4,7 +4,7 @@
 @section('content')
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">
-            <div class="flex flex-row justify-between items-center bg-[#1df700] border-t border-b text-white px-4 py-2
+            <div class="flex flex-row justify-between items-center bg-green-500 border-t border-b text-white px-4 py-2
             font-bold">{{ $message }}
               <button onclick="toggleModal2()" type="button" class="bg-red-500 hover:bg-blue-200 py px-2 rounded-full text-xl font-bold right-0 close" data-dismiss="alert"><i class="text-white hover:text-red-500 fas fa-times"></i></button>
             </div>
@@ -201,8 +201,8 @@
             });
         </script>
 
-        <div class="w-full bg-gradient-to-r from-[#fff] via-gray-400 to-[#fff] h-1 rounded-full"></div>
-        <div class="w-full bg-gradient-to-r from-[#fff] via-gray-100 to-[#fff]">
+        <div class="w-full bg-gradient-to-r from-white via-gray-400 to-white h-1 rounded-full"></div>
+        <div class="w-full bg-gradient-to-r from-white via-gray-100 to-white">
             <div class="container text-center mx-auto px-16">
                 <div class="text-4xl mx-auto py-10 md:py-16">
                 @lang('lang.body_economy')
@@ -290,7 +290,7 @@
         </div>
         <div class="w-full mx-auto lg:shadow-xl">
             <div
-                class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 lg:w-11/12 xl:w-9/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('{{asset('/images/download_hand_User.png')}}')]">
+                class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 lg:w-11/12 xl:w-9/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat" style="background-image: url('{{asset('/images/download_hand_User.png')}}')">
                 <div class="w-11/12 sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent">
                     <h4 class="font-semibold text-3xl md:text-black text-gray-500">@lang('lang.body_personalHelper')</h4>
                     <p class="text-base mt-8 md:text-black">@lang('lang.body_downloadApp')</p>

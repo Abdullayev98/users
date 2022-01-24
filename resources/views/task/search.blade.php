@@ -284,7 +284,7 @@
 
 {{--                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">--}}
 {{--                    <div class="col-span-2">--}}
-{{--                        <div class="w-full bg-[#f8f7ee] my-5 rounded-md">--}}
+{{--                        <div class="w-full  my-5 rounded-md">--}}
 {{--                        </div>--}}
 
 {{--                        <div class="col-span-2 lg:col-span-1 lg:hidden block mx-4 lg:mt-0 mt-8 mb-4">--}}

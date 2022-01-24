@@ -214,7 +214,7 @@
 
         </div>
     </div>
-    <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-[rgba(0,0,0,0.5)] hidden text-center">
+    <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black hidden text-center">
         <div class="modal relative bg-white w-[600px] mx-auto p-10 rounded-md justify-center mt-48 ease-in transition duration-500">
             <h1 class="text-3xl font-semibold">Выберите задание, которое хотите предложить исполнителью</h1>
             @foreach($tasks as $task)

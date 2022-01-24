@@ -193,7 +193,7 @@
                                                 @foreach ($categories as $category )
 
                                                 <div class="mb-4 rounded-md border shadow-md">
-                                                    <div class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
+                                                    <div class="accordion text-gray-700 cursor-pointer p-[18px] w-full text-left text-[15px]">
                                                         {{$category->name}}
                                                     </div>
                                                     <div class="panel overflow-hidden hidden px-[18px] bg-white p-2">
@@ -254,9 +254,9 @@
                                                                     <tbody>
                                                                         <form action="{{route('insert.district')}}" method ="post">
                                                                             @csrf
-                                                                            <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="district" type="text" placeholder="Поиск регионы" value="{{$user->district}}">
+                                                                            <input class="outline-none bg-red-50 rounded-[20px] block my-4 py-3 px-5 w-10/12" name="district" type="text" placeholder="Поиск регионы" value="{{$user->district}}">
 
-                                                                        <input type="submit" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-8 md:px-8 text-center" value = "@lang('lang.settings_remain')">
+                                                                        <input type="submit" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-blue-400 rounded-[30px] py-8 md:px-8 text-center" value = "@lang('lang.settings_remain')">
                                                                         </form>
                                                                     </tbody>
                                                                     <div class="text-right space-x-5">

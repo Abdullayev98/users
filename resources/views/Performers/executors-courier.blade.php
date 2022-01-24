@@ -99,7 +99,7 @@
                             <span>
                                 @foreach ($users as $user)
                                 @if ($user->id == $review->reviewer_id)
-                                <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-[#0091e6] ">{{$user->name}}</a>
+                                <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$user->name}}</a>
                                 @endif
                                 @endforeach
                             </span>
@@ -129,7 +129,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-[#faf5ef] shadow-[-1px_1px_2px] shadow-[#dcdcdc] rounded-[10px] relative text-[#4e4e4e] text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-[#f5f5f5] border-solid">
+                            <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-[10px] relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid">
                                 <div class="text-gray-500 pb-4">
                                     @foreach ($tasks as $task)
                                     @if ($task->id == $review->task_id)
