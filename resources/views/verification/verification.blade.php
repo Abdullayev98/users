@@ -90,7 +90,7 @@
     {{-- 1 --}}
     <div class="flex lg:flex-row flex-col container mx-auto">
         <div class="lg:w-3/5 w-full xl:ml-0 ml-4">
-          <img class="mx-auto" src="{{asset('images/performer1.jpg')}}" alt="#">
+          <img class="lg:mx-0 mx-auto" src="{{asset('images/performer1.jpg')}}" alt="#">
         </div>
         <div class="lg:w-2/5 w-full lg:text-left text-center xl:ml-0 ml-8 lg:mt-0 mt-4">
           <h1 class="font-bold text-3xl">@lang('lang.ver_goodSalary')</h1>
@@ -131,11 +131,11 @@
           </div>
       </div>
       <div class="lg:w-3/5 w-full lg:block hidden xl:ml-0 ml-4">
-        <img class="mx-auto" src="{{asset('images/performer2.jpg')}}" alt="#">
+        <img class="ml-4 xl:float-right float-none" src="{{asset('images/performer2.jpg')}}" alt="#">
       </div>
 
       <div class=" lg:hidden block ">
-        <img class="mx-auto" src="{{asset('images/performer2.jpg')}}" alt="#">
+        <img class="lg:mx-0 mx-auto" src="{{asset('images/performer2.jpg')}}" alt="#">
       </div>
       <div class="lg:hidden block lg:text-left text-center lg:mt-0 mt-4">
         <h1 class="font-bold text-3xl">@lang('lang.ver_freeTime')</h1>
@@ -159,7 +159,7 @@
     {{-- 3 --}}
     <div class="flex lg:flex-row flex-col container mx-auto">
       <div class="lg:w-3/5 w-full xl:ml-0 ml-4">
-        <img class="mx-auto" src="{{asset('images/performer3.jpg')}}" alt="#">
+        <img class="lg:mx-0 mx-auto" src="{{asset('images/performer3.jpg')}}" alt="#">
       </div>
       <div class="lg:w-2/5 w-full lg:text-left text-center xl:ml-0 ml-8 lg:mt-0 mt-4">
         <h1 class="font-bold text-3xl">@lang('lang.ver_serviceSec')</h1>
@@ -187,7 +187,7 @@
         <p class="mt-6 text-lg">@lang('lang.ver_addsDescr')</p>
           <div>
             <hr class="mt-12 mb-8">
-            <p class="mb-24">@lang('lang.ver_opinion2')</p>
+            <p class="mb-12">@lang('lang.ver_opinion2')</p>
               @auth
                   <a href="{{ route('task.search') }}">
                       @else
@@ -200,11 +200,11 @@
           </div>
       </div>
       <div class="lg:w-3/5 w-full lg:block hidden xl:ml-0 ml-4">
-        <img class="mx-auto" src="{{asset('images/performer4.jpg')}}" alt="#">
+        <img class="ml-4 xl:float-right float-none" src="{{asset('images/performer4.jpg')}}" alt="#">
       </div>
 
       <div class="lg:hidden block">
-        <img class="mx-auto" src="{{asset('images/performer4.jpg')}}" alt="#">
+        <img class="lg:mx-0 mx-auto" src="{{asset('images/performer4.jpg')}}" alt="#">
       </div>
       <div class="lg:hidden block lg:text-left text-center lg:mt-0 mt-4">
         <h1 class="font-bold text-3xl">@lang('lang.ver_addsEconomy')</h1>
@@ -269,7 +269,7 @@
 
       <div class="flex lg:flex-row flex-col container mx-auto">
           <div class="lg:w-2/3 w-full">
-            <iframe class="rounded-lg h-full w-5/6 mx-auto" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="rounded-lg h-full w-5/6 lg:mx-0 mx-auto" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="lg:w-1/3 w-full lg:mt-0 mt-8 lg:text-left text-center">
             <p class=" text-lg">@lang('lang.ver_independance')</p>
@@ -323,11 +323,11 @@
           </div>
         </div>
         <div class="lg:w-3/5 w-full lg:block hidden ml-8">
-          <iframe class="rounded-lg h-full" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe class="rounded-lg h-full ml-4 xl:float-right float-none" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <div class="lg:hidden block mx-auto ">
-           <iframe class="rounded-lg h-full sm:h-[300px] w-full sm:w-[600px]" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe class="rounded-lg h-full sm:h-[300px] w-full sm:w-[600px] lg:mx-0 mx-auto" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
           <p class="mt-6 text-lg">@lang('lang.ver_opinion7')</p>
