@@ -100,7 +100,7 @@
                             @auth
 
                             <li class="mb-1">
-                                <a href="{{ route('task.mytasks') }}" class="my-tasks delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-yellow-500">@lang('lang.navbar_myTasks')</a>
+                                <a href="{{ route('task.mytasks') }}" class="my-tasks delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_myTasks')</a>
                             </li>
 
                                    {{-- icon-3 --}}
@@ -205,7 +205,7 @@
         <a href="/performers" class="performer delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
-              <a href="{{ route('task.mytasks') }}" class="my-task delete-task cursor-pointer font-medium text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
+              <a href="{{ route('task.mytasks') }}" class="my-task delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
             @else
             @endauth
         @endif

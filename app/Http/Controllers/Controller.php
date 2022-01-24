@@ -6,6 +6,7 @@ use App\Models\Advant;
 use App\Models\Task;
 use App\Models\How_work_it;
 use App\Models\User;
+use App\Models\Reklama;
 use App\Models\UserView;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -24,7 +25,7 @@ class Controller extends BaseController
 
     public function home(Request $request){
         $categories =Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $tasks  =  Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->get();
+        $tasks  =  Task::where('status', 1)->orderBy('id', 'desc')->get();
         $howitworks = How_work_it::all();
         if (!session()->has('lang')) {
             Session::put('lang', 'ru');
@@ -32,7 +33,8 @@ class Controller extends BaseController
         $random_category= Category::first();
         $users_count = User::where('role_id', 2)->count();
         $advants = Advant::all();
-        return view('home',compact('tasks','howitworks', 'categories','random_category','users_count','advants'));
+        $reklamas = Reklama::all();
+        return view('home',compact('tasks','howitworks', 'categories','random_category','users_count','advants','reklamas'));
     }
 
     public function home_profile()

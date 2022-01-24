@@ -3,17 +3,19 @@
 @section("content")
 
 <div class="mx-auto w-10/12 my-10">
-    <div class="md:grid md:grid-cols-3 md:gap-x-10 text-lg">
+    <div class="lg:grid lg:grid-cols-3 lg:gap-x-10 text-base">
         <div class="col-span-2">
-            <div class="border-b">
+            <div class="">
                 <!-- Tabs -->
-                <div class="w-full bg-yellow-50 px-5 py-5">
+                <div class="w-full bg-gray-50 rounded-md px-5 py-5 border-gray-100">
 
-                    <ul id="tabs" class="inline-flex text-center">
-                        <li id="first_tab" class="rounded-t px-3 py-1 md:w-48"><a id="default-tab" href="#first">@lang('lang.mytasks_iAmPerformer')</a></li>
-
-                        <li id="second_tab" class="rounded-t px-3 py-1 md:w-48"><a href="#second">@lang('lang.mytasks_iAmCustomer')</a></li>
-
+                    <ul  id="tabs" class="flex rounded-sm sm:w-96 w-full divide-x shadow bg-gray-200">
+                        <div id="first_tab" class="w-full text-center">
+                            <a id="default-tab" href="#first" class="inline-block relative py-1 w-full">@lang('lang.mytasks_iAmPerformer')</a>
+                        </div>
+                        <div id="second_tab" class="w-full text-center">
+                            <a href="#second" class="inline-block relative py-1 w-full">@lang('lang.mytasks_iAmCustomer')</a>
+                        </div>
                     </ul>
                     <p class="p-5">Всего {{ $tasks->count() }} задание найдено</p>
 
@@ -75,7 +77,7 @@
                                         <div class="md:grid md:grid-cols-10 p-2">
                                             <i class="fas fa-user-circle text-4xl col-span-1 m-auto text-blue-400"></i>
                                             <div class="col-span-6">
-                                                <a href="#" class="text-blue-400  hover:text-red-400">
+                                                <a href="#" class="text-blue-500 text-xl hover:text-red-500">
                                                     {{$task->name}}
                                                 </a>
                                                 <p class="text-sm mt-2">
@@ -83,9 +85,9 @@
                                                 </p>
                                             </div>
                                             <div class="col-span-3 md:text-right">
-                                                <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                                <p class="text-sm">@lang('lang.mytasks_sportMaster')</p>
-                                                <p class="text-sm">@lang('lang.mytasks_noFeedback')</p>
+                                                <p class="text-xl font-medium text-gray-600">{{$task->budget}} sum</p>
+                                                <a href="#" class="text-sm text-gray-500 hover:text-red-600 my-3">@lang('lang.mytasks_sportMaster')</a>
+                                                <p class="text-sm text-gray-500">@lang('lang.mytasks_noFeedback')</p>
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +113,7 @@
 
             </div>
         </div>
-        <div class="col-span md:block hidden">
+        <div class="col-span lg:block hidden">
             <div class="w-full h-full mt-5">
                 <div id="map" class="h-60 rounded-lg w-full">
                 </div>
@@ -180,14 +182,14 @@
 
         for (let i = 0; i < tabContents.children.length; i++) {
 
-        tabTogglers[i].parentElement.classList.remove("border-blue-400", "border-b",  "-mb-px", "opacity-100");  tabContents.children[i].classList.remove("hidden");
+        tabTogglers[i].parentElement.classList.remove("bg-gray-400","rounded-sm","text-white");  tabContents.children[i].classList.remove("hidden");
         if ("#" + tabContents.children[i].id === tabName) {
         continue;
         }
         tabContents.children[i].classList.add("hidden");
 
         }
-        e.target.parentElement.classList.add("border-blue-400", "border-b-4", "-mb-px", "opacity-100");
+        e.target.parentElement.classList.add("bg-gray-400","rounded-sm","text-white");
         });
         });
 
