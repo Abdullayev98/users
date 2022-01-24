@@ -9,11 +9,11 @@
                 <!-- Tabs -->
                 <div class="w-full bg-gray-50 rounded-md px-5 py-5 border-gray-100">
 
-                    <ul  id="tabs" class="flex rounded-sm sm:w-1/2 w-3/4 divide-x shadow bg-gray-200">
-                        <div id="first_tab" class="w-48 text-center">
+                    <ul  id="tabs" class="flex rounded-sm sm:w-96 w-full divide-x shadow bg-gray-200">
+                        <div id="first_tab" class="w-full text-center">
                             <a id="default-tab" href="#first" class="inline-block relative py-1 w-full">@lang('lang.mytasks_iAmPerformer')</a>
                         </div>
-                        <div id="second_tab" class="w-48 text-center">
+                        <div id="second_tab" class="w-full text-center">
                             <a href="#second" class="inline-block relative py-1 w-full">@lang('lang.mytasks_iAmCustomer')</a>
                         </div>
                     </ul>
@@ -77,7 +77,7 @@
                                         <div class="md:grid md:grid-cols-10 p-2">
                                             <i class="fas fa-user-circle text-4xl col-span-1 m-auto text-blue-400"></i>
                                             <div class="col-span-6">
-                                                <a href="#" class="text-blue-400  hover:text-red-400">
+                                                <a href="#" class="text-blue-500 text-xl hover:text-red-500">
                                                     {{$task->name}}
                                                 </a>
                                                 <p class="text-sm mt-2">
@@ -85,9 +85,9 @@
                                                 </p>
                                             </div>
                                             <div class="col-span-3 md:text-right">
-                                                <a href="#" class="text-lg">{{$task->budget}} sum</a>
-                                                <p class="text-sm">@lang('lang.mytasks_sportMaster')</p>
-                                                <p class="text-sm">@lang('lang.mytasks_noFeedback')</p>
+                                                <p class="text-xl font-medium text-gray-600">{{$task->budget}} sum</p>
+                                                <a href="#" class="text-sm text-gray-500 hover:text-red-600 my-3">@lang('lang.mytasks_sportMaster')</a>
+                                                <p class="text-sm text-gray-500">@lang('lang.mytasks_noFeedback')</p>
                                             </div>
                                         </div>
                                     </div>
