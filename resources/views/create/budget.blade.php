@@ -34,30 +34,10 @@
                                         <div class="a"></div>
                                         <div id="slider-range-min" class="flex"></div>
                                     </div>
-                                    <input type="text" id="amount" name="amount1" readonly>
-                                    <div class="flex ">
-                                        <div class="cursor-default">
-                                            <div class="w-2 h-2 bg-gray-200 rounded-full -ml-1 -mt-5 z-0"></div>
-                                        </div>
-                                        <div class="w-[200px]">
-                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum') </p>
-                                        </div>
-                                        <div class="">
-                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum')</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="text-[12px]  cursor-default">@lang('lang.budget_sum') </p>
-                                        </div>
-                                    </div>
+                                    <input class="mt-8" type="text" id="amount" name="amount1" readonly>
                                 </div>
                                 <div class="w-[100px]  md:w-[200px] xl:hidden">
-                                    <select id="" name="amount" class="border md:ml-14 bg-yellow-500  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-yellow-600">
+                                    <select id="" name="amount" class="border md:ml-14 bg-green-400  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-yellow-600">
                                         <option value="0">
                                             @lang('lang.budget_text')
                                         </option>
@@ -115,7 +95,8 @@
                 value: 0,
                 min: {{$category->max}}/5,
                 max: {{$category->max}},
-                step:90,
+                {{--step:{{$category->max}}/10,--}}
+                step:1000,
                 slide: function( event, ui ) {
                     var maximum = {{$category->max}};
                     if (maximum == ui.value) {
@@ -128,7 +109,7 @@
             });
             $(".ui-slider-range").css("height",'55px');
             $(".ui-slider-range").css("background",'linear-gradient(rgb(255, 132, 56), rgb(255, 255, 255))');
-            $(".ui-slider-range").css("top",'-1879%');
+            $(".ui-slider-range").css("top",'-56px');
             $(".ui-slider-handle").text("<>");
             $( "#amount" ).val($( "#slider-range-min" ).slider( "value"));
         });

@@ -11,6 +11,7 @@
         </div>
     @endif
     <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <div class="HomepageHeaderSection">
         <div class="video-bg">
             @if(setting('site.Video_bg') != null)
@@ -130,15 +131,76 @@
                 </div>
                 <div class="text-center mx-4">
                     <img
-                        src="{{ asset('images/home_page_2.jfif') }}"
-                        class="mx-auto md:h-36 md:w-36 lg:h-52 lg:w-52 my-10" alt="">
-                    <h1 class="font-bold mb-4 mt-12 lg:mt-14">@lang('lang.body_feedback')</h1>
+                        src="{{ asset('images/home_page_2.jpg') }}"
+                        class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72 w-52 h-52" alt="">
+                    <h1 class="font-bold my-4">@lang('lang.body_feedback')</h1>
                     <p class="text-sm">
                     @lang('lang.body_over1mln')
                     </p>
                 </div>
             </div>
         </div>
+
+        <div class="swiper mySwiper lg:w-10/12 h-60 overflow-hidden rounded-xl mt-12">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide w-full ">
+                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
+                        <div class="w-1/2 lg:w-5/12">
+                            <h1 class=" text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">Добро пожаловать на U-Ser</h1>
+                            <p class="text-lg mb-4">«Проверенные исполнители» подтвердили свои документы на Universal Services.</p>
+                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
+                        </div>
+                        <div class="w-1/2 lg:w-7/12">
+                            <img src="{{ asset('/images/homepage_slide1.jfif') }}"
+                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
+                                 alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
+                        <div class="w-1/2 lg:w-5/12">
+                            <h1 class=" text-2xl font-semibold mb-4">Добро пожаловать на U-Ser</h1>
+                            <p class="text-lg mb-4">«Проверенные исполнители» подтвердили свои документы на Universal Services.</p>
+                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
+                        </div>
+                        <div class="w-1/2 lg:w-7/12">
+                            <img src="{{ asset('/images/homepage_slide2.jpg') }}"
+                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
+                                 alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
+                        <div class="w-1/2 lg:w-5/12">
+                            <h1 class=" text-2xl font-semibold mb-4">Добро пожаловать на U-Ser</h1>
+                            <p class="text-lg mb-4">«Проверенные исполнители» подтвердили свои документы на Universal Services.</p>
+                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
+                        </div>
+                        <div class="w-1/2 lg:w-7/12">
+                            <img src="{{ asset('/images/homepage_slide3.jpg') }}"
+                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
+                                 alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-white swiper-button-next"></div>
+            <div class="text-white swiper-button-prev"></div>
+        </div>
+
+        <!-- Swiper JS -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+            var swiper = new Swiper('.mySwiper', {
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        </script>
+
         <div class="w-full bg-gradient-to-r from-[#fff] via-gray-400 to-[#fff] h-1 rounded-full"></div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-gray-100 to-[#fff]">
             <div class="container text-center mx-auto px-16">
