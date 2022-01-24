@@ -30,7 +30,7 @@ class Controller extends BaseController
         if (!session()->has('lang')) {
             Session::put('lang', 'ru');
         }
-        $random_category= Category::first();
+        $random_category= Category::skip(1)->first();
         $users_count = User::where('role_id', 2)->count();
         $advants = Advant::all();
         $reklamas = Reklama::all();

@@ -20,6 +20,6 @@ class CustomField extends Model
 
 
     public function custom_field_values(){
-        return $this->belongsTo(CustomField::class);
+        return $this->hasMany(CustomFieldsValue::class);
     }
 }

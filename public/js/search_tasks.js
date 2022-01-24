@@ -218,7 +218,39 @@ $("#price").keyup(function() {
 //     // $('.butt').attr('style', 'display: none');
 // }
 
-function fourInOne1(){
+function enDis(rr){
+    if (rr == 0){
+        $('#suggest').attr("disabled","disabled")
+        $('#mpshow').attr("disabled","disabled")
+    }else {
+        $('#suggest').removeAttr("disabled")
+        $('#mpshow').removeAttr("disabled")
+    }
+}
+
+function resetCounters(){
+    $('.butt').removeAttr("disabled")
+    s=0, dl=0;
+}
+
+function geo_coords(){
+    dataGeo=[];
+    dataGeoCircle=[];
+    $('.print_block').each(function() {
+        if (!(this.hidden))
+        {
+            dataGeo.push(this.id.split(','));
+            dataGeoCircle.push({type: 'Point', coordinates: this.id.split(',')});
+        }
+    });
+}
+
+function maps_show(){
+    geo_coords()
+    map_pos(k)
+}
+
+function fiveInOne1(){
     resetCounters()
     tasks_list_all(dataAjax)
     if(dl==0){
@@ -226,9 +258,10 @@ function fourInOne1(){
     }else {
         tasks_show()
     }
+    maps_show()
 }
 
-function fourInOne2(){
+function fiveInOne2(){
     resetCounters()
     tasks_list(dataAjax)
     if(dl==0){
@@ -236,6 +269,7 @@ function fourInOne2(){
     }else {
         tasks_show()
     }
+    maps_show()
 }
 
 function tasks_show2(){
