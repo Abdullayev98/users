@@ -316,10 +316,9 @@
                                     </div>
                                 @endisset
 
-
                                 <div class="ml-12 flex flex-row mt-4">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
-                                    <p class=" h-auto w-96">{{$tasks->address}}</p>
+                                    <p class=" h-auto w-96">{{json_decode($tasks->address, true)['location']}}</p>
                                 </div>
                                 <div class="ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_need')</h1>
