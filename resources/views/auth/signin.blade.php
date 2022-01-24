@@ -27,7 +27,7 @@
                         required autofocus>
 
                         @if ($errors->has('name'))
-                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                            <p class="text-danger">{{ $errors->first('name') }}</p>
                         @endif
                     </div>
                     <div class="mb-6">
@@ -35,8 +35,9 @@
                         class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3
                         text-gray-700 mb-3 leading-tight hover:border-amber-500">
 
+
                         @if ($errors->has('password'))
-                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                            <p class="text-danger">{{ $errors->first('password') }}</p>
                         @endif
                     </div>
                     <button type="submit"
