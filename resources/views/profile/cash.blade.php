@@ -11,7 +11,7 @@
 }
 </style>
 
-    <div class="container lg:w-4/5 w-full mx-auto">
+    <div class="container lg:w-4/5 w-full mx-auto text-base">
 
 
         <div class="grid md:grid-cols-3 grid-flow-row mt-10 inline-block">
@@ -82,8 +82,8 @@
                         <ul class="md:col-span-9 col-span-10 items-center w-3/4 md:w-full">
                             <li class="inline mr-1 md:mr-5"><a href="/profile" class="md:text-[18px] text-[14px]" >@lang('lang.cash_aboutMe')</a></li>
                             <li class="inline mr-1 md:mr-5"><a href="/profile/cash" class="md:text-[18px] text-[14px] font-bold" >@lang('lang.cash_check')</a></li>
-                            {{-- <li class="inline mr-1 md:mr-5"><a href="/home/profile" class="md:text-[18px] text-[14px]" >@lang('lang.cash_tariff')</a></li>
-                            <li class="inline mr-1 md:mr-5"><a href="/home/profile" class="md:text-[18px] text-[14px]">@lang('lang.cash_insurance')</a></li> --}}
+                            {{-- <li class="inline mr-1 md:mr-5"><a href="/profile" class="md:text-[18px] text-[14px]" >@lang('lang.cash_tariff')</a></li>
+                            <li class="inline mr-1 md:mr-5"><a href="/profile" class="md:text-[18px] text-[14px]">@lang('lang.cash_insurance')</a></li> --}}
                             <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">@lang('lang.cash_settings')</a></li>
 
                         </ul>
@@ -119,12 +119,12 @@
                                 </select>
                             </label>
                             <ul class="mt-5">
-                                <li class="inline ml-5"><a href="/home/profile">@lang('lang.cash_allOperations')</a></li>
+                                <li class="inline ml-5"><a href="/profile">@lang('lang.cash_allOperations')</a></li>
                                 <li class="inline ml-5 underline text-blue-500">
-                                    <a href="/home/profile">@lang('lang.cash_topUpHis')</a>
+                                    <a href="/profile">@lang('lang.cash_topUpHis')</a>
                                 </li>
                                 <li class="inline ml-5 underline text-blue-500">
-                                    <a href="/home/profile">@lang('lang.cash_reciveHis')</a>
+                                    <a href="/profile">@lang('lang.cash_reciveHis')</a>
                                 </li>
                             </ul>
                             <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
@@ -136,7 +136,7 @@
                             <h4 class="font-bold text-md mt-2">@lang('lang.cash_question1')</h4>
                             <p>@lang('lang.cash_answer1')</p>
                             <h4 class="font-bold text-md mt-2">@lang('lang.cash_question2')</h4>
-                            <p><a href="/home/profile" class="text-blue-500">@lang('lang.cash_makeRequest')</a> -
+                            <p><a href="/profile" class="text-blue-500">@lang('lang.cash_makeRequest')</a> -
                             @lang('lang.cash_nswer2')</p>
                             <!-- <h3 class="font-bold mt-2">Если у вас остались вопросы об условиях работы с User,
                                 посмотрите это обучающее видео:</h3>
