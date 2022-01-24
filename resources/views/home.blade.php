@@ -316,10 +316,10 @@
                                 </div>
                                 <div class="mx-auto w-2/3">
                                     <a href="/detailed-tasks/{{$task->id}}" class="xl:text-2xl md:text-xl text-2xl text-blue-400 hover:text-red-400">
-                                        {{$task->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
+                                        {{$task->name}}
                                     </a>
                                     <p class="text-xl mt-2 overflow-hidden whitespace-nowrap text-ellipsis">
-                                        {{$task->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}
+                                        {{$task->description}}
                                     </p>
                                 </div>
                             </div>
