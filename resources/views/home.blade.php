@@ -204,7 +204,7 @@
         <div class="w-full bg-gradient-to-r from-[#fff] via-gray-400 to-[#fff] h-1 rounded-full"></div>
         <div class="w-full bg-gradient-to-r from-[#fff] via-gray-100 to-[#fff]">
             <div class="container text-center mx-auto px-16">
-                <div class="text-5xl mx-auto py-10 md:py-16">
+                <div class="text-4xl mx-auto py-10 md:py-16">
                 @lang('lang.body_economy')
                 </div>
                 <div class="grid md:grid-cols-2 grid-cols-1 mt-8 w-11/12 mx-auto">
@@ -222,15 +222,15 @@
                             alt="">
                     </div>
                     <div class="md:text-left text-center">
-                        <h3 class="text-4xl my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
-                        <a href="/categories/1" class="text-blue-500 underline text-2xl">@lang('lang.body_createTask')</a>
+                        <h3 class="text-3xl my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
+                        <a href="/categories/1" class="text-blue-500 underline text-xl">@lang('lang.body_createTask')</a>
                     </div>
 
 @else
 
                     <div class="md:text-left text-center my-16 md:block hidden">
-                        <h1 class="text-4xl my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
-                        <h2 class="text-2xl">{{ strip_tags($howitwork->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')) }}</h2>
+                        <h1 class="text-3xl my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
+                        <h2 class="text-xl">{{ strip_tags($howitwork->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')) }}</h2>
                     </div>
                     <div class="my-16 md:block hidden">
                         <img class="lg:ml-0  mx-auto w-42 h-42"
@@ -245,8 +245,8 @@
                             alt="">
                     </div>
                     <div class="md:text-left text-center md:hidden block">
-                        <h3 class="text-4xl mt-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
-                        <a href="/categories/1" class="text-blue-500 underline text-2xl">@lang('lang.body_createTask')</a>
+                        <h3 class="text-3xl mt-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
+                        <a href="/categories/1" class="text-blue-500 underline text-xl">@lang('lang.body_createTask')</a>
                     </div>
 @endif
 
@@ -258,11 +258,11 @@
             </div>
             <div class="text-center w-full mx-auto my-4">
                 <a href="/task/create?category_id=31">
-                  <button class="text-center py-4 px-5  bg-yellow-500 border-yellow-500 text-4xl border-b-4">
+                  <button class="text-center py-4 px-5  bg-yellow-500 border-yellow-500 text-3xl border-b-4">
                   @lang('lang.body_putTask')
                   </button>
                 </a>
-                <div class="text-center text-3xl">
+                <div class="text-center text-2xl">
                 @lang('lang.body_findPerformer')
                 </div>
             </div>
@@ -272,7 +272,7 @@
         </div>
         <div class="bg-blue-100">
             <div class="w-11/12 md:w-9/12 mx-auto pb-24">
-                <div class="text-4xl md:text-5xl mx-auto py-16 text-center">
+                <div class="text-3xl md:text-4xl mx-auto py-16 text-center">
                 @lang('lang.body_benefit')
                 </div>
                 <div class="grid lg:grid-cols-4 grid-cols-4 grid-cols-1 w-full md:w-11/12 mx-auto gap-y-12">
@@ -281,8 +281,8 @@
                         <img src="/storage/{{$advant->image}}" class="md:w-32 md:h-32 h-24 w-24" alt="">
                     </div>
                     <div class="col-span-3 ml-5">
-                        <h4 class="font-semibold text-2xl md:text-3xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
-                        <p class="text-xl">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
+                        <h4 class="font-semibold text-xl md:text-2xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
+                        <p class="text-base">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
                     </div>
                     @endforeach
                 </div>
@@ -292,8 +292,8 @@
             <div
                 class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 lg:w-11/12 xl:w-9/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat bg-[url('{{asset('/images/download_hand_User.png')}}')]">
                 <div class="w-11/12 sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent">
-                    <h4 class="font-semibold text-4xl md:text-black text-gray-500">@lang('lang.body_personalHelper')</h4>
-                    <p class="text-xl mt-8 md:text-black">@lang('lang.body_downloadApp')</p>
+                    <h4 class="font-semibold text-3xl md:text-black text-gray-500">@lang('lang.body_personalHelper')</h4>
+                    <p class="text-base mt-8 md:text-black">@lang('lang.body_downloadApp')</p>
                     <a href="#">
                         <button type="button" class="w-3/10 bg-black hover:bg-yellow-500 rounded-md mt-8"><img
                                 src="{{asset('images/download_ios.svg')}}"
@@ -341,7 +341,7 @@
                     </div>
                     <div class="mt-4">
                         <a href="/task-search/" type="button"
-                                class="text-center py-2 bg-blue-500 border-blue-500 text-white text-4xl w-full border-b-4">
+                                class="text-center py-2 bg-blue-500 border-blue-500 text-white text-3xl w-full border-b-4">
                                 @lang('lang.body_showAllTasks')
                         </a>
                     </div>
