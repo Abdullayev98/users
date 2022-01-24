@@ -123,7 +123,7 @@
                     <div class="w-full my-1">
                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                             <div x-data={show:false} class="rounded-sm">
-                                <div class="border border-b-0 bg-gray-100" id="headingOne">
+                                <div class="my-3 text-blue-500 hover:text-red-500 cursor-pointer" id="headingOne">
                                     <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center my-1 mx-1" type="button">
                                         {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </button>
