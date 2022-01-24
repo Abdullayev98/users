@@ -38,23 +38,34 @@
                                                 <label for="name">@lang('lang.contact_name')</label>
 
                                                 <input type="text" name="name"
-                                                       placeholder="@lang('lang.contact_name')"
-                                                       class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                       placeholder="@lang('lang.contact_name')" value="{{old('name')}}"
+                                                       class="shadow appearance-none border   focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                @error('name')
+                                                <p class="text-red-500">{{$message}}</p>
+                                                @enderror
                                                 <label for="email">E-mail</label>
-                                                <input type="email" name="email" placeholder="E-mail"
+                                                <input type="email" name="email" placeholder="E-mail" value="{!! old('email') !!}"
                                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
                                                 />
+                                                @error('email')
+                                                <p class="text-red-500">{{$message}}</p>
+                                                @enderror
                                                 <label for="phone">@lang('lang.contact_number')</label>
-                                                <input type="text" name="phone_number" value="" id="phone"
+                                                <input type="text" name="phone_number" value="{{old('phone_number')}}" id="phone"
                                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
-
+                                                @error('phone_number')
+                                                <p class="text-red-500">{{$message}}</p>
+                                                @enderror
                                             @else
                                                 <label for="phone">@lang('lang.contact_number')</label>
-                                                <input type="text" name="phone_number" value="+998{{auth()->user()->phone_number}}" id="phone"
+                                                <input type="text" name="phone_number"
+                                                       value="+998{{auth()->user()->phone_number}}" id="phone"
                                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
-
+                                                @error('phone_number')
+                                                <p>{{$message}}</p>
+                                                @enderror
                                             @endif
-                                     </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

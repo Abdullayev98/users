@@ -12,9 +12,11 @@ class Task extends Model
     use HasFactory;
     use Translatable;
 
-    const STATUS_OPEN = 0;
-    const STATUS_IN_PROGRESS = 1;
-    const STATUS_COMPLETE = 2;
+    const STATUS_NEW = 0;
+    const STATUS_OPEN = 1;
+    const STATUS_IN_PROGRESS = 2;
+    const STATUS_COMPLETE = 3;
+    const STATUS_CLOSED = 4;
 
 
     protected $guarded  = [];

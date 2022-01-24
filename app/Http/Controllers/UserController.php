@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Task;
+use App\Http\Requests\UserPhoneRequest;
 use App\Models\Advant;
-use App\Models\UserVerify;
 use App\Models\How_work_it;
-use Illuminate\Support\Str;
+use App\Models\Task;
+use App\Models\User;
+use App\Models\UserVerify;
+use Carbon\Carbon;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use TCG\Voyager\Models\Category;
-use PlayMobile\SMS\SmsService;
+use Illuminate\Support\Str;
 use Mail;
-use Hash;
+use PlayMobile\SMS\SmsService;
+use TCG\Voyager\Models\Category;
 
 class UserController extends Controller
 {
@@ -36,6 +38,60 @@ class UserController extends Controller
     public function reset()
     {
         return view('auth.reset');
+    }
+    public function reset_submit(UserPhoneRequest $request){
+
+        $data = $request->validated();
+        $user = User::query()->where('phone_number', $data['phone_number'])->first();
+        if (!$user){
+            return back();
+        }
+        $sms_otp = rand(100000, 999999);
+        $user->verify_code = $sms_otp;
+        $user->verify_expiration = Carbon::now()->addMinutes(5);
+        $user->save();
+        $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
+        session(['phone' =>$data['phone_number']]);
+
+        return redirect()->route('password.reset.code.view');
+
+    }
+
+    public function reset_code(Request $request){
+        $phone_number = $request->session()->get('phone');
+
+        $user = User::query()->where('phone_number', $phone_number)->first();
+
+        if ($request->code == $user->verify_code){
+            if(strtotime($user->verify_expiration) >= strtotime(Carbon::now())){
+                return redirect()->route('password.reset.password');
+            }else{
+
+            }
+        }
+
+
+    }
+
+
+    public function reset_code_view(){
+
+        return view('auth.code');
+
+    }
+
+    public function reset_password(Request $request){
+        return view('auth.confirm_password');
+
+    }
+
+    public function reset_password_save(Request $request){
+        $user = User::query()->where('phone_number', $request->session()->get('phone'))->first();
+        $user->password = bcrypt($request->password);
+        $user->save();
+        auth()->login($user);
+        return redirect('/profile');
+
     }
 
     public function confirm()

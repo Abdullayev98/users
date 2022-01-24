@@ -93,3 +93,12 @@ Route::prefix("task")->group(function (){
 });
 
 Route::get('/performers-by-category', [PerformerAPIController::class,'getByCategories']);
+Route::post('/reset', [UserController::class,'reset_submit'])->name('password.reset');
+Route::get('/reset/password', [UserController::class,'reset_password'])->name('password.reset.password');
+Route::post('/reset/password', [UserController::class,'reset_password_save'])->name('password.reset.password.save');
+Route::get('/code', [UserController::class,'reset_code_view'])->name('password.reset.code.view');
+Route::post('/code', [UserController::class,'reset_code'])->name('password.reset.code');
+
+
+
+

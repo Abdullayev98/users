@@ -11,20 +11,18 @@
                 Укажите телефон, привязанный к вашей учетной записи. Мы отправим СМС с кодом.
             </p>
         </div>
-        <form action="{{route('password.reset')}}" method="POST">
+        <form action="{{route('password.reset.code')}}" method="POST">
             @csrf
             <div>
                 <div class="mb-4">
                     <label class="block text-gray-500 text-sm" for="phone_number">
                         @lang('lang.signup_telnumber')</span>
                     </label>
-                    <input type="text" placeholder="+998"
-                           value="+998{{ request()->input('phone_number', old('phone_number')) }}"
-                           id="phone_number"
+                    <input type="number"
+                           id="phone_number" name="code"
                            class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                     <br>
-                    <input type="hidden" name="phone_number" id="phone">
-                    @error('phone_number')
+                    @error('code')
                         <span class="text-danger" style="color: red">{{ $message  }}</span>
                     @enderror
                 </div>
@@ -40,27 +38,6 @@
 
 
 @section("javasript")
-
-
-
-    <script src='https://unpkg.com/imask'></script>
-    <script>
-        var element = document.getElementById('phone_number');
-        var maskOptions = {
-            mask: '+998(00)000-00-00',
-            lazy: false
-        }
-        var mask = new IMask(element, maskOptions);
-
-        $("#phone_number").keyup(function (){
-            var text = $(this).val()
-                text = text.replace(/[^0-9.]/g, "")
-            text = text.slice(3)
-            $("#phone").val(text)
-            console.log($("#phone").val())
-        })
-
-    </script>
 
 
 
