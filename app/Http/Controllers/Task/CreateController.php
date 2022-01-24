@@ -65,7 +65,15 @@ class CreateController extends Controller
 
     public function custom_store(Request $request, Task $task)
     {
-        $datas = CustomField::query()->where('category_id', $task->category_id)->orderBy('order', 'desc')->get();
+
+        $child_cat = $task->category;
+
+        $parent_datas = CustomField::query()->where('category_id', $child_cat->parent_id)->orderBy('order', 'asc')->get();
+
+        $child_datas = CustomField::query()->where('category_id', $task->category_id)->orderBy('order', 'asc')->get();
+        $datas = new Collection; //Create empty collection which we know has the merge() method
+        $datas = $datas->merge($parent_datas);
+        $datas = $datas->merge($child_datas);
 
         if (!$datas) {
         }
