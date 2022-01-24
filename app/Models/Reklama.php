@@ -15,4 +15,9 @@ class Reklama extends Model
         'comment',
         'image',
     ];
+    protected $fillable = [
+        'title',
+        'comment',
+        'image',
+    ];
 }

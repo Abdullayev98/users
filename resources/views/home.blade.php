@@ -152,7 +152,7 @@
                             <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
                         </div>
                         <div class="w-1/2 lg:w-7/12">
-                            <img src="{{ asset("images/"{$reklama->image}) }}"
+                            <img src="/storage/{{$reklama->image}}"
                                  class="object-cover object-right-bottom w-full h-full rounded-r-xl"
                                  alt="">
                         </div>
