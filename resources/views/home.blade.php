@@ -43,7 +43,7 @@
                         @lang('lang.header_sub')
                     </p>
                     <div class="mx-auto">
-                        <div class="w-full mx-auto">
+                        <div class="md:w-10/12 w-full mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
                                    class="w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none md:text-xl">
                                 <datalist id="TypeList">
@@ -57,13 +57,16 @@
                                     @lang('lang.header_orderBtn')
                                 </a>
                         </div>
-                    </div>
-                      <a href="/verification"  class="text-blue-300 hover:text-blue-400">
-                        <div class="flex flex-row sm:w-1/2 w-5/6 mx-auto mt-8 items-center">
-                          <i class="text-blue fas fa-shield-alt text-2xl mx-2"></i>
-                          <p class="text-base underline">@lang('lang.header_bePerformer')</p>
+                        <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs  md:ml-20">
+                            @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                         </div>
+                    </div>
+                    <div class="lg:w-6/12 md:w-10/12 w-7/12 xl:w-5/12 mx-auto mt-14">
+                      <a href="/verification" class="text-green-300 text-center">
+                        <i class="text-blue fas fa-shield-alt float-left xl:-mr-4 text-2xl"></i>
+                        <p class="ml-0 text-base underline">@lang('lang.header_bePerformer') </p>
                       </a>
+                    </div>
                 </div>
             </main>
         </div>
@@ -89,7 +92,7 @@
     </div>
     <main>
         <div class="container md:text-left text-left mx-auto mt-32 md:mt-36 md:px-16 px-4">
-            <div class="text-4xl font-bold text-center pt-10">
+            <div class="text-4xl font-bold text-center">
                 @lang('lang.header_over') {{$users_count}}  @lang('lang.header_performers')
             </div>
             <div class="text-base text-center mt-4">
