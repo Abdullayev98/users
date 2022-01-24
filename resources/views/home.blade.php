@@ -294,11 +294,7 @@
                     </a>
 
                 </div>
-                <div class="h-64 md:block hidden">
-                    <img
-                        src="{{asset('/images/download_hand_User.png')}}"
-                        class="relative float-right bottom-5" alt="">
-                </div>
+
             </div>
         </div>
         <div class="container mx-auto md:w-2/3 w-11/12">
