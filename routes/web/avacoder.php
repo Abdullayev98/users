@@ -99,6 +99,11 @@ Route::post('/reset/password', [UserController::class,'reset_password_save'])->n
 Route::get('/code', [UserController::class,'reset_code_view'])->name('password.reset.code.view');
 Route::post('/code', [UserController::class,'reset_code'])->name('password.reset.code');
 
+Route::get('/register/code', [UserController::class,'code'])->name('register.code');
+Route::post('/register/code', [UserController::class,'code_submit'])->name('register.code');
+
+
+
 
 
 
