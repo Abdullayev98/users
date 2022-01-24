@@ -1,7 +1,8 @@
 let dataAjax = {};
-let dataGeoAll = [];
-let dataGeoSroch = [];
-let dataGeoUdal = [];
+let dataGeo = [];
+let dataGeoCircle = [];
+// let dataGeoSroch = [];
+// let dataGeoUdal = [];
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -11,31 +12,58 @@ $(".for_check2 input:checkbox").each(function() {
     this.checked = true;
 });
 
+// function tasks_list_all(data) {
+//     $(".show_tasks").empty();
+//     $.each(data, function(index, data) {
+//         dl++
+//             $(".show_tasks").append(
+//                    `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
+//                     <div class="sort-table as">
+//                     <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
+//                     <div class="w-11/12 h-12 md:m-4 sm:m-2 m-0">
+//                     <div class="float-left w-9/12 " id="results">
+//                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
+//                     <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
+//                     <p class="text-sm ml-12 mt-4 location">` + data.address + `</p>
+//                     <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
+//                     <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
+//                     </div>
+//                     <div class="float-right w-1/4 text-right " id="about">
+//                     <a href="#" class="text-lg">` + data.budget + `</a>
+//                     <p class="text-sm ">` + data.category_name + `</p>
+//                     <p class="text-sm  mt-2">` + data.user_name + `</p>
+//                     </div>
+//                     </div>
+//                     </div>
+//                     </div>`,
+//             )
+//     });
+// }
+
 function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
         dl++
-            $(".show_tasks").append(
-                    `<div class="sort-table print_block" hidden>
-                    <div class="sort-table as">
-                    <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
-                    <div class="w-11/12 h-12 md:m-4 sm:m-2 m-0">
-                    <div class="float-left w-9/12 " id="results">
-                    <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
-                    <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-sm ml-12 mt-4 location">` + data.address + `</p>
-                    <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
-                    <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
-                    </div>
-                    <div class="float-right w-1/4 text-right " id="about">
-                    <a href="#" class="text-lg">` + data.budget + `</a>
-                    <p class="text-sm ">` + data.category_name + `</p>
-                    <p class="text-sm  mt-2">` + data.user_name + `</p>
-                    </div>
-                    </div>
-                    </div>
-                    </div>`,
-            )
+        $(".show_tasks").append(
+            `<div class="sort-table print_block as" id="`+data.coordinates+`" hidden>
+             <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
+             <div class="w-11/12 h-12 md:m-4 sm:m-2 m-0">
+             <div class="float-left w-9/12 " id="results">
+             <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-2 mt-8"></i>
+             <a href="/detailed-tasks/` + data.id + `" class="text-lg text-blue-400 hover:text-red-400">` + data.name + `</a>
+             <p class="text-sm ml-12 mt-4 location">` + data.address + `</p>
+             <p class="text-sm ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
+             <p class="text-sm ml-10 mt-1 pl-4">` + data.oplata + `</p>
+             </div>
+             <div class="float-right w-1/4 text-right " id="about">
+             <a href="#" class="text-lg">` + data.budget + `</a>
+             <p class="text-sm ">` + data.category_name + `</p>
+             <p class="text-sm  mt-2">` + data.user_name + `</p>
+             </div>
+             </div>
+             </div>
+             </div>`,
+        )
     });
 }
 
@@ -49,7 +77,7 @@ function tasks_list(data) {
                 if (data.category_id == id) {
                     dl++
                         $(".show_tasks").append(
-                            `<div class="sort-table print_block" hidden>
+                           `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
                             <div class="w-full border hover:bg-blue-100 h-[140px] item" data-coord="`+data.coordinates+`" data-nomer="` + data.start_date + `">
                             <div class="w-11/12 h-12 md:m-4 sm:m-2 m-0">
                             <div class="float-left w-9/12 " id="results">
@@ -74,9 +102,36 @@ function tasks_list(data) {
     });
 }
 
+function enDis(rr){
+    if (rr == 0){
+        $('#suggest').attr("disabled","disabled")
+        $('#mpshow').attr("disabled","disabled")
+    }else {
+        $('#suggest').removeAttr("disabled")
+        $('#mpshow').removeAttr("disabled")
+    }
+}
+
 function resetCounters(){
     $('.butt').removeAttr("disabled")
     s=0, dl=0;
+}
+
+function geo_coords(){
+    dataGeo=[];
+    dataGeoCircle=[];
+    $('.print_block').each(function() {
+        if (!(this.hidden))
+        {
+            dataGeo.push(this.id.split(','));
+            dataGeoCircle.push({type: 'Point', coordinates: this.id.split(',')});
+        }
+    });
+}
+
+function maps_show(){
+    geo_coords()
+    map_pos(k)
 }
 
 let tabsContainer = document.querySelector("#tabs");
@@ -124,53 +179,53 @@ $("#filter").keyup(function() {
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().hide();
-            $(parents).parent().id = '';
+            // $(parents).parent().id = '';
             // Show the list item if the phrase matches and increase the count by 1
         } else {
             var parent = $(this).parent();
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().show();
-            $(parents).parent().id = 'geoShow';
+            // $(parents).parent().id = 'geoShow';
             // $(this).show(); // MY CHANGE
             count++;
-            console.log(count);
+            // console.log(count);
         }
-        console.log(count);
+        // console.log(count);
     });
-    console.log(count);
-        if (count){
-            tasks_show2();
-        }
+    // console.log(count);
+    //     if (count){
+    //         tasks_show2();
+    //     }
 });
 
-$(".address").keyup(function() {
-
-    // Retrieve the input field text and reset the count to zero
-    var filter = $(this).val(),
-        count = 0;
-
-    // Loop through the comment list
-    $('#results .location').each(function() {
-        // If the list item does not contain the text phrase fade it out
-        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().hide();
-            $(parents).parent().id = '';
-            // Show the list item if the phrase matches and increase the count by 1
-        } else {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().show();
-            $(parents).parent().id = 'geoShow';
-            // $(this).show(); // MY CHANGE
-            count++;
-        }
-    });
-});
+// $(".address").keyup(function() {
+//
+//     // Retrieve the input field text and reset the count to zero
+//     var filter = $(this).val(),
+//         count = 0;
+//
+//     // Loop through the comment list
+//     $('#results .location').each(function() {
+//         // If the list item does not contain the text phrase fade it out
+//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().hide();
+//             $(parents).parent().id = '';
+//             // Show the list item if the phrase matches and increase the count by 1
+//         } else {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().show();
+//             $(parents).parent().id = 'geoShow';
+//             // $(this).show(); // MY CHANGE
+//             count++;
+//         }
+//     });
+// });
 
 
 $("#price").keyup(function() {
@@ -218,7 +273,7 @@ $("#price").keyup(function() {
 //     // $('.butt').attr('style', 'display: none');
 // }
 
-function fourInOne1(){
+function fiveInOne1(){
     resetCounters()
     tasks_list_all(dataAjax)
     if(dl==0){
@@ -226,9 +281,10 @@ function fourInOne1(){
     }else {
         tasks_show()
     }
+    maps_show()
 }
 
-function fourInOne2(){
+function fiveInOne2(){
     resetCounters()
     tasks_list(dataAjax)
     if(dl==0){
@@ -236,6 +292,7 @@ function fourInOne2(){
     }else {
         tasks_show()
     }
+    maps_show()
 }
 
 function tasks_show2(){
@@ -408,7 +465,7 @@ $('.all_cat, .all_cat2').click(function() {
         $('.all_cat2').each(function() {
             this.checked = true;
         });
-        fourInOne1();
+        fiveInOne1();
     }
 });
 
@@ -416,13 +473,13 @@ $('.par_cat, .par_cat2').click(function() {
     if (this.checked == false) {
         parcats_click_false(this.id, this.name)
         if (chicat_check_print()) {
-            fourInOne2();
+            fiveInOne2();
         } else {
             img_show()
         }
     } else {
         parcats_click_true(this.id, this.name)
-        fourInOne2();
+        // fiveInOne2();
     }
 });
 
@@ -430,13 +487,13 @@ $('.chi_cat, .chi_cat2').click(function() {
     if (this.checked == false) {
         chicats_click_false(this.id, this.name)
         if (chicat_check_print()) {
-            fourInOne2();
+            fiveInOne2();
         } else {
             img_show()
         }
     } else {
         chicats_click_true(this.id, this.name)
-        fourInOne2();
+        // fiveInOne2();
     }
 });
 
@@ -471,7 +528,7 @@ function parcats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
-            fourInOne1();
+            fiveInOne1();
         } else {
             this.checked = false;
         }
@@ -511,7 +568,7 @@ function chicats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
-            fourInOne1();
+            fiveInOne1();
         } else {
             this.checked = false;
         }
