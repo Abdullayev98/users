@@ -723,12 +723,6 @@
                     );
                     ///////////////////////////////////////
 
-
-
-
-                    circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
-                    myMap2.geoObjects.add(circle);
-
                     clusterer = new ymaps.Clusterer({
                         preset: 'islands#invertedGreenClusterIcons',
                         hasBalloon: false,
@@ -761,8 +755,10 @@
                     clusterer.add(geoObjects);
                     myMap2.geoObjects.add(clusterer);
                     myMap2.setBounds(clusterer.getBounds(), {
-                        checkZoomRange: true
+                    checkZoomRange: false
                     });
+                    circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
+                    myMap2.geoObjects.add(circle);
                 }
             } else {
                 k=0;
@@ -782,11 +778,7 @@
                             behaviors: ['default', 'scrollZoom']
                         }, {
                             searchControlProvider: 'yandex#search'
-                        }),
-
-
-                    circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: true, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
-                    myMap3.geoObjects.add(circle);
+                        });
 
                         clusterer = new ymaps.Clusterer({
                             preset: 'islands#invertedGreenClusterIcons',
@@ -822,6 +814,9 @@
                     myMap3.setBounds(clusterer.getBounds(), {
                     checkZoomRange: false
                     });
+
+                    circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: true, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
+                    myMap3.geoObjects.add(circle);
 
 
                 }
