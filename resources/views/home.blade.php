@@ -57,9 +57,6 @@
                                     @lang('lang.header_orderBtn')
                                 </a>
                         </div>
-                        <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs  md:ml-20">
-                            @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
-                        </div>
                     </div>
                     <div class="lg:w-6/12 md:w-10/12 w-7/12 xl:w-5/12 mx-auto mt-14">
                       <a href="/verification" class="text-green-300 text-center">
