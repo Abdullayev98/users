@@ -45,282 +45,33 @@
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
                                     <p class=" h-auto w-96">до {{$tasks->budget}}</p>
                                 </div>
-                                @isset($tasks->oplata)
+
+@isset($tasks->custom_field_values)
+@foreach($tasks->custom_field_values as $value)
                                     <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.navbar_payment')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->oplata}}</p>
+
+                                        <h1 class="font-bold h-auto w-48">{{$value->custom_field->title}}</h1>
+                                        <p class=" h-auto w-96">
+@foreach(json_decode($value->value, true) as $value_obj)
+                                                @if ($loop->last)
+                                                    {{$value_obj}}
+                                                @else
+                                                    {{$value_obj}},
+                                                @endif
+@endforeach
+                                        </p>
                                     </div>
-                                @endisset
-                                @isset($tasks->description)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.notes_destcript')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->description}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->need_movers)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_needmovers')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->need_movers}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->car_model)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_carmodel')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->car_model}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->car_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_carservice')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->car_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->pobeg)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_pobeg')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->pobeg}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->no_texpassport)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_notexpassport')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->no_texpassport}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->delivery_weight)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_deliveryweight')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->delivery_weight}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->delivery_width)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_deliverywidth')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->delivery_width}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->delivery_length)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_deliverylength')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->delivery_length}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->delivery_budget)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_deliverybudget')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->delivery_budget}} UZS</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->delivery_car)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_deliverycar')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->delivery_car}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->service_delivery)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_servicedelivery')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->service_delivery}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->buy_delivery_weight)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->buy_delivery_weight}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->buy_delivery_height)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text1')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->buy_delivery_height}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->buy_delivery_width)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text2')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->buy_delivery_width}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->buy_delivery_length)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text3')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->buy_delivery_length}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->construction_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text4')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->construction_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->services)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text5')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->services}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->etaj_po)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text6')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->etaj_po}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->lift_po)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text7')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->lift_po}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->etaj_za)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text8')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->etaj_za}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->lift_za)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text9')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->lift_za}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->peopleCount)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text10')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->peopleCount}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->weight)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_weight')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->weight}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->length)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_length')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->length}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->width)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_width')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->width}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->height)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_height')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->height}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->glassSht)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text11')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->glassSht}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->service1)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text12')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->service1}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->where)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_where')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->where}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->how_many)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_howmany')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->how_many}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->smm_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_smm')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->smm_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->computer_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_comser')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->computer_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->design_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_design')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->design_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->it_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_itservice')</h1><!--it mas ay ti-->
-                                        <p class=" h-auto w-96">{{$tasks->it_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->photo_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_photoser')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->photo_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->remont_ustanovka_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detaieldT_text13')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->remont_ustanovka_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->remont_tex)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text14')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->remont_tex}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->krosata_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text15')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->krosata_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->bugalter_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text16')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->bugalter_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->learning_service)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_text17')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->learning_service}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->age)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.settings_age')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->age}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->time)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_time')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->time}}</p>
-                                    </div>
-                                @endisset
-                                @isset($tasks->training)
-                                    <div class="ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_training')</h1>
-                                        <p class=" h-auto w-96">{{$tasks->training}}</p>
-                                    </div>
-                                @endisset
+@endforeach
+@endisset
 
 
                                 <div class="ml-12 flex flex-row mt-4">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
-                                    <p class=" h-auto w-96">{{$tasks->address}}</p>
+                                    @if($tasks->address !== NULL)
+                                    <p class=" h-auto w-96">{{json_decode($tasks->address, true)['location']}}</p>
+                                    @endif
                                 </div>
+
                                 <div class="ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_need')</h1>
                                     <p class=" h-auto w-96">{{$tasks->description}}</p>

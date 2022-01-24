@@ -19,9 +19,15 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 class SearchTaskController extends VoyagerBaseController
 {
 
+//    public function task_search(){
+//        $tasks = Task::withTranslations(['ru', 'uz'])->where('status',null)->count();
+//        $categories = Category::withTranslations(['ru', 'uz']);
+//        return view('task.search', compact('tasks','categories'));
+//    }
+
     public function task_search(){
-        $tasks = Task::withTranslations(['ru', 'uz'])->where('status',null)->count();
-        $categories = Category::withTranslations(['ru', 'uz']);
+        $tasks = Task::orderBy('id','desc')->where('status',null)->count();
+        $categories = Category::get()->all();
         return view('task.search', compact('tasks','categories'));
     }
 
