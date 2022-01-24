@@ -9,6 +9,7 @@ use App\Models\Task;
 use App\Models\User;
 use App\Models\UserVerify;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -47,15 +48,15 @@ class CreateController extends Controller
     public function custom_get(Task $task)
     {
 
-        $child_cat = Category::where('id', $task->category_id)->first();
+        $child_cat = $task->category;
 
         $parent_datas = CustomField::query()->where('category_id', $child_cat->parent_id)->orderBy('order', 'asc')->get();
 
         $child_datas = CustomField::query()->where('category_id', $task->category_id)->orderBy('order', 'asc')->get();
-        $datas = new \Illuminate\Database\Eloquent\Collection; //Create empty collection which we know has the merge() method
+        $datas = new Collection; //Create empty collection which we know has the merge() method
         $datas = $datas->merge($parent_datas);
         $datas = $datas->merge($child_datas);
-// dd($datas);
+
         if (!$datas->count()) {
             return redirect()->route('task.create.address', $task->id);
         }
@@ -195,9 +196,11 @@ class CreateController extends Controller
                 'email' => 'required|email',
                 'phone_number' => 'required',
             ]);
-
-            $data['password'] = bcrypt('login123');
-            $user = User::create($data);
+            $user = User::query()->where('email', $data['email'])->first();
+            if (!$user) {
+                $data['password'] = bcrypt('login123');
+                $user = User::create($data);
+            }
         } else {
             $user = auth()->user();
             $data = $request->validate(['phone_number' => 'required']);
@@ -205,9 +208,6 @@ class CreateController extends Controller
             $user->fresh();
         }
         auth()->login($user);
-
-        $task->status = 1;
-        $task->save();
         $user->phone_number = str_replace('+998', '', preg_replace('/[^0-9]/', '', $user->phone_number));
         $user->save();
 
@@ -223,7 +223,7 @@ class CreateController extends Controller
             return redirect()->route('task.create.verify');
         }
 
-
+        $task->status = 1;
         $task->user_id = $user->id;
         $task->phone = $user->phone_number;
         $task->save();
@@ -236,9 +236,10 @@ class CreateController extends Controller
         return view('create.verify');
     }
 
-    public function deletetask($id){
-        Task::where('id',$id)->delete();
-        CustomFieldsValue::where('task_id',$id)->delete();
+    public function deletetask($id)
+    {
+        Task::where('id', $id)->delete();
+        CustomFieldsValue::where('task_id', $id)->delete();
     }
 
 }

@@ -26,6 +26,9 @@ class Task extends Model
         return $this->belongsTo(CustomFieldsValue::class);
     }
 
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 
 
 

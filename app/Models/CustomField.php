@@ -15,4 +15,11 @@ class CustomField extends Model
         'options' => 'array'
     ];
     protected $translatable = ['title','description','placeholder','label'];
+
+
+
+
+    public function custom_field_values(){
+        return $this->belongsTo(CustomField::class);
+    }
 }
