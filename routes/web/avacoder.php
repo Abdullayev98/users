@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\PerformerAPIController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Task\CreateController;
 use App\Http\Controllers\Task\CreateTaskController;
@@ -40,9 +41,6 @@ Route::prefix("task")->group(function (){
 
 
 
-        Route::get('/performers-by-category', function (){
-            return ['ss'];
-        });
 
 
         /*
@@ -93,3 +91,5 @@ Route::prefix("task")->group(function (){
     Route::delete("{task}/delete", [CreateTaskController::class, 'delete'])->name("task.delete");
 
 });
+
+Route::get('/performers-by-category', [PerformerAPIController::class,'getByCategories']);

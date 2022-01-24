@@ -383,7 +383,7 @@
             $.ajax({
                 url : '/performers-by-category', //PHP file to execute
                 type : 'GET', //method used POST or GET
-                data : {variable1 : "some data"}, // Parameters passed to the PHP file
+                data : {'category_id' : $(this).data('id')}, // Parameters passed to the PHP file
                 success : function(result){ // Has to be there !
                     console.log(result)
                 },
