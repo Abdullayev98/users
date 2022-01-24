@@ -440,7 +440,7 @@ return [
     // cash.blade end
 
     // login.blade start
-    'login_by' => "Войти через:",
+    'login_by' => "Зарегистрироваться через:",
     // login.blade end
 
     // profile.blade start
@@ -719,10 +719,10 @@ return [
 
 
     // signin blade start
-    'signin_enter' => " Войти через:",
+    'signin_enter' => " Зарегистрироваться через:",
     'signin_google' => "Google",
     'signin_facebook' => "Facebook",
-    'signin_elpocta' => ' Войти по электронной почте',
+    'signin_elpocta' => ' Войти в профиль пользователя',
     'signin_username' => " Имя Фамилия",
     'signin_password' => " Пароль",
     'signin_passwordforgot' => "Забыли пароль?",
@@ -732,15 +732,15 @@ return [
 
     // signup blade start
     'signup_username' => " Имя Фамилия",
-    'signup_enter' => " Войти через:",
+    'signup_enter' => " Зарегистрироваться через:",
     'signup_google' => "Google",
     'signup_facebook' => "Facebook",
-    'signup_endedregistration' => " Завершение регистрации",
+    'signup_endedregistration' => " Заполните форму",
     'signup_elpocta' => "Электронная почта",
     'signup_telnumber' => "Телефон немер",
     'signup_password' => " Пароль",
-    'signup_password_confirm' => " Пароль подтверждать",
-    'signup_registration' => " Зарегистрация",
+    'signup_password_confirm' => " Подтвердите пароль",
+    'signup_registration' => " Зарегистрироваться",
     // signup blade ended
 
     // business blade start
