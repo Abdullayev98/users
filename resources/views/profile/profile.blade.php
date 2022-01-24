@@ -3,7 +3,7 @@
 @section("content")
 
     <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
-    <div class="container md:w-4/5 p-3 w-full my-10 mx-auto">
+    <div class="container md:w-4/5 w-full mx-auto text-base">
 
 
         <div class="grid md:grid-cols-3 grid-flow-row mt-10 inline-block">
@@ -12,18 +12,18 @@
             {{-- user ma'lumotlari --}}
             <div class="col-span-2 mx-auto">
                 <figure class="w-full">
-                    <div class="top-0 right-0 float-right text-gray-500 text-sm">
+                    <div class="top-0 right-0 float-right text-gray-500">
                         <i class="far fa-eye"> @lang('lang.profile_view')</i>
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="grid grid-cols-2">
                         <div class="col-span-1 object-center sm:w-40 h-50">
-                            <img class="rounded-min mx-left overflow-hidden"  
+                            <img class="rounded-min mx-left overflow-hidden"
                             @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
                             src='{{asset("AvatarImages/images/users/default.png")}}'
-                            @else   
-                            src="{{asset("AvatarImages/{$user->avatar}")}}" 
+                            @else
+                            src="{{asset("AvatarImages/{$user->avatar}")}}"
                             @endif alt="" width="384" height="512">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -53,9 +53,9 @@
                                     </button>
                         </div> --}}
 
-                        <div class="md:col-span-2 col-span-3 lg:col-span-1 ml-3 mt-1">
+                        <div class="md:col-span-2 col-span-3 text-base lg:col-span-1 ml-3 mt-1">
                             @if($user->age != "")
-                                <p class="inline-block text-m mr-2">
+                                <p class="inline-block mr-2">
                                     {{$user->age}}
                                     @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
                                     @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) @lang('lang.cash_rusYearGoda')
@@ -74,7 +74,7 @@
                             </span>
                             <p class="mt-2">@lang('lang.cash_created') <a href="#">
                                 <span>
-                                    @if ($task == Null)  0
+                                    @if ($task == Null) 0
                                     @else {{$task}}
                                     @endif
                                 </span> @lang('lang.cash_task')</a></p>
@@ -97,17 +97,32 @@
 
                     </div>
                     <hr>
-                    {{-- BOUT-ME start --}}
+                    {{-- ABOUT-ME start --}}
                     <div class="about-me block" id="tab-profile">
                         <div class="about-a-bit mt-10">
                             <h4 class="inline font-bold text-lg">@lang('lang.profile_aboutMe')</h4>
-                            <span class="ml-10">
-                                <i class="fas fa-pencil-alt inline text-gray-300"></i>
-                                <p class="inline text-gray-300 cursor-pointer">@lang('lang.profile_edit')</p>
-                            </span>
-                            <p class="mt-3 w-4/5">{{$user->description}}</p>
+                                @if ($user->description == Null)
+                                    <span class="ml-10">
+                                        <i class="fas fa-pencil-alt inline text-gray-700"></i>
+                                        <p class="inline text-gray-500 cursor-pointer" id="padd">@lang('lang.profile_add')</p>
+                                    </span>
+                                    <p class="text-red-400 desc mt-4" >@lang('lang.profile_description')</p>
+                                @else
+                                    <span class="ml-10">
+                                        <i class="fas fa-pencil-alt inline text-gray-700"></i>
+                                        <p class="inline text-gray-500 cursor-pointer" id="padd">@lang('lang.profile_edit')</p>
+                                    </span>
+                                    <p class="mt-3 w-4/5 desc">{{$user->description}}</p>
+                                @endif
+                                <form action="{{route('edit.description')}}" method="POST" class="formdesc hidden">
+                                    @csrf
+                                    <textarea name="description" name="description" class="w-full h-32 border border-black-1000 py-2 px-4 mt-3" @if (!$user->description) placeholder="Enter description"@endif >@if ($user->description){{$user->description}}@endif
+                                    </textarea><br>
+                                    <input type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" id="s1" value="@lang('lang.profile_save')">
+                                    <button id="s2" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 border border-blue-700 rounded">@lang('lang.profile_cancel')</button>
+                                </form>
                         </div>
-                        <h4 class="font-bold text-lg mt-5">@lang('lang.profile_workExample')</h4>
+                        <h4 class="font-bold mt-5">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
                             @foreach ($ports as $port)
                                 <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">
@@ -116,8 +131,8 @@
                                              src="{{asset("AvatarImages/{$port->image}")}}">
                                         <div class="w-full bg-gray-700 hover:bg-gray-500 grid grid-cols-5 z-40 rounded-b-xl h-10">
                                             <p class="col-span-4 text-white text-center">
-                                                @if (strlen($port->comment)>10)
-                                                    {{substr($port->comment, 0, 10)}}...
+                                                @if (strlen($port->comment)>20)
+                                                    {{substr($port->comment, 0, 20)}}
                                                 @else
                                                     {{$port->comment}}
                                                 @endif
@@ -283,7 +298,7 @@
                         Выберите регион
                     </h3>
                 </div>
-                <div class="text-center h-64">
+                <div class="text-center h-64 w-80 text-base">
                     <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="file" name="image" id="file" class="outline-none mx-auto bg-amber-200 rounded-xl block my-4 py-3 px-5 w-10/12">
@@ -292,8 +307,8 @@
                             <span>@lang('lang.cash_changeImg')</span>
                         </label> --}}
 
-                        <input type="text" name="comment" class="outline-none mx-auto bg-amber-200 rounded-xl block my-8 py-3 px-5 w-10/12">
-                        <input type="submit" class="py-2 px-4 bg-lime-500 rounded-md text-xl mt-3 mx-auto cursor-pointer">
+                        <input type="text" name="comment" placeholder="Название фото" class="focus:outline-none border border-solid mx-auto bg-amber-200 rounded-xl block my-8 py-3 px-5 w-10/12">
+                        <input type="submit" class="py-2 px-4 bg-green-400 rounded-md text-xl mt-3 mx-auto cursor-pointer">
                     </form>
                 </div>
             </div>
@@ -334,6 +349,16 @@
         $('#modal, #modal:before').on('click', function() {
             // fade out filter layer and modal
             $('#modal:before, #modal').fadeOut(200);
+        });
+
+        $('#padd').click(function(){
+            $('.desc').addClass('hidden')
+            $('.formdesc').removeClass('hidden').addClass('block')
+        });
+        $('#s2').click(function(event){
+            event.preventDefault();
+            $('.desc').addClass('block').removeClass('hidden');
+            $('.formdesc').removeClass('block').addClass('hidden')
         });
     </script>
 @endsection

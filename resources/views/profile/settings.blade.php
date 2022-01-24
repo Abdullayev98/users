@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <div class="xl:w-[1266px] lg:w-[1100px] mx-auto">
+    <div class="w-10/12 mx-auto text-lg">
 
 
         <div class="grid grid-cols-3  grid-flow-row mt-10">
@@ -15,13 +15,13 @@
                         <i class="far fa-eye"> @lang('lang.profile_view')</i>
                     </div>
                     <br>
-                    <h2 class="font-bold text-lg mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
+                    <h2 class="font-bold mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="relative inline-block object-center  w-40 h-50">
                         <img class="rounded-min mx-left overflow-hidden"
                         @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
                         src='{{asset("AvatarImages/images/users/default.png")}}'
-                        @else   
-                        src="{{asset("AvatarImages/{$user->avatar}")}}" 
+                        @else
+                        src="{{asset("AvatarImages/{$user->avatar}")}}"
                         @endif alt="image" width="384"
                         height="512">
                         <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
@@ -88,7 +88,7 @@
 
 
 {{-- settings start --}}
-                    <div class= "w-full">
+                    <div class= "w-full text-base">
 <!-- settings form TABS -->
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->
@@ -157,11 +157,11 @@
                                                         <option value="3" {{ $user->role_id==3 ? 'selected' : '' }}>@lang('lang.settings_customer')</option>
                                                     </select>
                                                 </div>
-                                                <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
+                                                <input type="submit"class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5" name="submit1" value="Сохранить">
                                                 <hr>
                                             </form>
 
-                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase text-lg p-4 rounded-xl">@lang('lang.settings_profile')</a>
+                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}
@@ -178,7 +178,7 @@
                                             <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
                                             <span class="col-span-9 ml-2">@lang('lang.settings_wantNews')</span>
                                         </div>
-                                        <button class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl" type="submit">@lang('lang.settings_save')</button>
+                                        <button class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl" type="submit">@lang('lang.settings_save')</button>
                                     </div>
 {{-- settings/ second tab -> enable notification end --}}
                                 </div>
@@ -191,9 +191,9 @@
                                             @csrf
                                             <div class="acordion mt-16">
                                                 @foreach ($categories as $category )
-                                               
+
                                                 <div class="mb-4 rounded-md border shadow-md">
-                                                    <div class="accordion text-[#444] cursor-pointer p-[18px] w-full text-left text-[15px]">
+                                                    <div class="accordion text-gray-700 cursor-pointer p-[18px] w-full text-left text-[15px]">
                                                         {{$category->name}}
                                                     </div>
                                                     <div class="panel overflow-hidden hidden px-[18px] bg-white p-2">
@@ -204,14 +204,14 @@
                                                             $res_c_arr = array_search($category2->id,$cat_arr);
                                                             //dd($res_c_arr);
                                                         @endphp
-                                                            <input type="checkbox" @if($res_c_arr !== false) checked @endif name="category[]" value="{{$category2->id}}" class="mr-2 required:border-[#ffa200]" >{{$category2->name}}
+                                                            <input type="checkbox" @if($res_c_arr !== false) checked @endif name="category[]" value="{{$category2->id}}" class="mr-2 required:border-yellow-500" >{{$category2->name}}
                                                         </label>
                                                         @endforeach
                                                     </div>
                                                 </div>
                                                 @endforeach
                                             </div>
-                                            <input class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase text-lg p-4 rounded-xl mb-5" type="submit" name="submit" value="Сохранить">
+                                            <input class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5" type="submit" name="submit" value="Сохранить">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");
@@ -254,9 +254,9 @@
                                                                     <tbody>
                                                                         <form action="{{route('insert.district')}}" method ="post">
                                                                             @csrf
-                                                                            <input class="outline-none bg-[#f5f5f5] rounded-[20px] block my-4 py-3 px-5 w-10/12" name="district" type="text" placeholder="Поиск регионы" value="{{$user->district}}">
+                                                                            <input class="outline-none bg-red-50 rounded-[20px] block my-4 py-3 px-5 w-10/12" name="district" type="text" placeholder="Поиск регионы" value="{{$user->district}}">
 
-                                                                        <input type="submit" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-[#5a66ff] rounded-[30px] py-8 md:px-8 text-center" value = "@lang('lang.settings_remain')">
+                                                                        <input type="submit" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-blue-400 rounded-[30px] py-8 md:px-8 text-center" value = "@lang('lang.settings_remain')">
                                                                         </form>
                                                                     </tbody>
                                                                     <div class="text-right space-x-5">

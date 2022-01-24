@@ -2,7 +2,7 @@
 
 @section("content")
 @foreach($users as $user)
-    <div class="xl:w-[1200px] lg:w-[900px] md:w-[700px] mx-auto">
+    <div class="w-10/12 mx-auto">
         <div class="grid grid-cols-3  grid-flow-row mt-10">
         {{-- left sidebar start --}}
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
@@ -15,9 +15,9 @@
                     </div>
                    <div>
                      @if($user->active_status == 1)
-                       <p class="text-lg text-green-500"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-[5px]" > </i>@lang('lang.exe_online')</p>
+                       <p class="text-green-500"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-[5px]" > </i>@lang('lang.exe_online')</p>
                        @else
-                       <p class="text-lg text-gray-500">@lang('lang.exe_offline')</p>
+                       <p class="text-gray-500">@lang('lang.exe_offline')</p>
                        @endif
                        <h1 class="text-3xl font-bold ">{{$user->name}}</h1>
                    </div>
@@ -29,7 +29,7 @@
                     <div class="flex-initial w-2/3 lg:ml-0 ml-6">
                         <div class="font-medium text-lg">
                           @if($user->phone_verified_at && $user->email_verified_at)
-                            <i class="fas fa-check-circle text-lime-600 text-2xl"></i>
+                            <i class="fas fa-check-circle text-green-500 text-2xl"></i>
                             <span>@lang('lang.exe_docsAccept')</span>
                             @endif
                         </div>
@@ -99,7 +99,7 @@
                             <span>
                                 @foreach ($users as $user)
                                 @if ($user->id == $review->reviewer_id)
-                                <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-[#0091e6] ">{{$user->name}}</a>
+                                <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$user->name}}</a>
                                 @endif
                                 @endforeach
                             </span>
@@ -129,7 +129,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-[#faf5ef] shadow-[-1px_1px_2px] shadow-[#dcdcdc] rounded-[10px] relative text-[#4e4e4e] text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-[#f5f5f5] border-solid">
+                            <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-[10px] relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid">
                                 <div class="text-gray-500 pb-4">
                                     @foreach ($tasks as $task)
                                     @if ($task->id == $review->task_id)
@@ -161,17 +161,17 @@
                   <ul>
                     @foreach($child_categories as $cat)
                     @if($cat->parent_id == $category->id)
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">{{$cat->name}}</a> </li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">{{$cat->name}}</a> </li>
                     @endif
                     @endforeach
-                    <!-- <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Услуги пешего курьера</a>  ................................................1 место</li> -->
-                    <!-- <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Другая посылка</a>  ...............................................................1 место</li>
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Срочная доставка</a>  ..........................................................1 место</li>
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Доставка продуктов</a>  .....................................................1 место</li>
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Купить и доставить</a>  .......................................................2 место</li>
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Услуги курьера на легковом авто</a>  .........................4 место</li>
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Доставка еды из ресторанов</a>(нет выполненных заданий) </li>
-                    <li class="text-lg mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Курьер на день</a>(нет выполненных заданий)</li> -->
+                    <!-- <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Услуги пешего курьера</a>  ................................................1 место</li> -->
+                    <!-- <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Другая посылка</a>  ...............................................................1 место</li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Срочная доставка</a>  ..........................................................1 место</li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Доставка продуктов</a>  .....................................................1 место</li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Купить и доставить</a>  .......................................................2 место</li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Услуги курьера на легковом авто</a>  .........................4 место</li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Доставка еды из ресторанов</a>(нет выполненных заданий) </li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Курьер на день</a>(нет выполненных заданий)</li> -->
                   </ul>
                </div>
                 @endif
@@ -189,7 +189,7 @@
                     <div class="">
                         <!-- <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-[#fff] far fa-file-image text-2xl bg-lime-500 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white far fa-file-image text-2xl bg-green-500 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Документы</h2>
@@ -198,7 +198,7 @@
                         </div> -->
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-[#fff] fas fa-phone-square text-2xl bg-amber-500 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white fas fa-phone-square text-2xl bg-amber-500 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
@@ -211,7 +211,7 @@
                         </div>
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-[#fff] far fa-envelope text-2xl bg-blue-500 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white far fa-envelope text-2xl bg-blue-500 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Email</h2>
@@ -224,7 +224,7 @@
                         </div>
                         <!-- <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-[#fff] far fa-address-book text-2xl bg-blue-400 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white far fa-address-book text-2xl bg-blue-400 py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Вконтакте</h2>
@@ -233,7 +233,7 @@
                         </div> -->
                         <!-- <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class=" fab fa-apple text-2xl bg-gray-400 text-[#fff] py-3 px-4 rounded-lg"></i>
+                                <i class=" fab fa-apple text-2xl bg-gray-400 text-white py-3 px-4 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Apple ID</h2>
@@ -262,14 +262,14 @@
             </div>
             <!--body-->
             <div class="relative p-6 flex-auto">
-              <p class="my-4  text-lg  text-center">
+              <p class="my-4   text-center">
                 @lang('lang.exe_createTFirst')
               </p>
             </div>
             <!--footer-->
             <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                 <div class="mt-4 ">
-                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
+                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
                 </div>
             </div>
           </div>

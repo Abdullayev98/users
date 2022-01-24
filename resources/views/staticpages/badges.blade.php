@@ -5,7 +5,7 @@
 <div class="container w-4/5 mx-auto">
 
         <div class="flex lg:flex-row flex-col justify-center mt-6">
-            <div class="lg:basis-1/5 basis-full lg:m-0 m-8">
+            <div class="lg:w-1/5 w-full lg:m-0 m-8 text-base">
                 <ul class="mb-5">
                     <li><a  href="/geotaskshint" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.badgets_howItWorks')</a></li>
                     <li><a  href="/security" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.badgets_security')</a></li>
@@ -22,9 +22,9 @@
                     <li><a  href="/job" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.badgets_vacancy')</a></li>
                 </ul>
             </div>
-            <div class="lg:basis-4/5 basis-full lg:m-0 m-8">
+            <div class="lg:w-4/5 w-full lg:m-0 m-8 text-base">
                 <div class="w-full">
-                    <h1 class="font-bold text-4xl">@lang('lang.badgets_ratingAndRew')</h1>
+                    <h1 class="font-medium text-4xl">@lang('lang.badgets_ratingAndRew')</h1>
                     <p class="mt-5"><a href="#" class="text-blue-600 hover:text-red-400">@lang('lang.badgets_ratingOfPer')</a>@lang('lang.badgets_text1')</p>
                     <p class="mt-5">@lang('lang.badgets_text2')<a href="#" class="text-blue-600 hover:text-red-400">@lang('lang.badgets_detailedRating')</a></p>
                     <p class="mt-5">@lang('lang.badgets_icons')<a href="" class="text-blue-600 hover:text-red-400">@lang('lang.badgets_ratingPage')</a>@lang('lang.badgets_text3')</p>

@@ -3,59 +3,59 @@
 
 @section('content')
     <div class="md:container mx-auto pt-5">
-        <div class="w-full px-12 md:flex md:grid-flow-row md:justify-center md:mx-auto md:max-w-[1000px] mb-4">
-            <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8">
+        <div class="w-full md:flex md:grid-flow-row md:justify-center md:mx-auto md:w-10/12 mb-4">
+            <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8 text-base">
                 <ul>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">@lang('lang.review_howItWorks')</a>
+                        <a class="text-blue-500 hover:text-red-500" href="/geotaskshint">@lang('lang.review_howItWorks')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/security">@lang('lang.review_security')</a>
+                        <a class="text-blue-500 hover:text-red-500" href="/security">@lang('lang.review_security')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/badges">@lang('lang.review_rewards')</a>
+                        <a class="text-blue-500 hover:text-red-500" href="/badges">@lang('lang.review_rewards')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-black font-semibold text-[15px] leading-[1.8rem]" href="/rewievs">@lang('lang.review_PerFeed')</a>
+                        <a class="text-black font-semibold" href="/rewievs">@lang('lang.review_PerFeed')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/author-reviews">@lang('lang.review_CusFeed')</a>
+                        <a class="text-blue-500 hover:text-red-500" href="/author-reviews">@lang('lang.review_CusFeed')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/press">@lang('lang.review_aboutUs')</a>
+                        <a class="text-blue-500 hover:text-red-500" href="/press">@lang('lang.review_aboutUs')</a>
                     </li>
                     <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="">@lang('lang.review_addsInServ')</a>
+                        <a class="text-blue-500 hover:text-red-500" href="">@lang('lang.review_addsInServ')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/contacts">@lang('lang.review_contacts')</a>
+                        <a class="text-blue-500 hover:text-red-500" href="/contacts">@lang('lang.review_contacts')</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/vacancies">@lang('lang.review_vacancy')</a>
+                        <a class="text-blue-500 hover:text-red-500" href="/vacancies">@lang('lang.review_vacancy')</a>
                     </li>
                 </ul>
-                <a href class="bg-[url('{{asset('images/shield.svg')}}')] bg-no-repeat"></a>
-                <a href="/verification" class="w-[200px] px-[16px] pb-[15px] block rounded-[8px] shadow-xl hover:shadow-md text-[12px] leading-[16px] tracking-[.2px] text-[#444] mt-5 text-center">
+                <a href class="bg-no-repeat" style="background: url('{{asset('images/shield.svg')}}');"></a>
+                <a href="/verification" class="w-10/12 px-10 pb-[15px] block rounded-md shadow-xl hover:shadow-md text-base leading-md tracking-sm text-gray-700 mt-5 text-center">
                     <img src="{{asset('images/shield.svg')}}" class="mx-auto pb-3" alt="">
                     @lang('lang.review_bePerformer')
                 </a>
             </div>
-            <div class="md:w-8/12 mt-8">
-                <h1 class="text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] pb-2 font-semibold">
+            <div class="md:w-8/12 pt-5">
+                <h1 class="text-3xl pb-2 font-semibold">
                 @lang('lang.review_feedbackAboutUser')
                 </h1>
-                <p class="pb-5 text-[14.7px] leading-[1.4rem]">@lang('lang.review_text1')</p>
-                <p class="pb-5 md:text-[14.7px] leading-[1.4rem]">@lang('lang.review_text2')</p>
+                <p class="pb-5 text-base">@lang('lang.review_text1')</p>
+                <p class="pb-5 text-base">@lang('lang.review_text2')</p>
                 <ul class="pt-[20px]">
-                    <li class="">
-                        <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-[40px] h-[40px] overflow-hidden rounded-[4px] shadow-lg border-b-0 ">
+                    <li class="mt-6">
+                        <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-18 h-18 overflow-hidden rounded-lg mr-4 shadow-lg border-b-0 ">
                             <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
                         </a>
-                        <div class="align-top ml-[50px] min-h-[42px]">
+                        <div class="align-top ml-[50px] h-24">
                             <span>
-                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-[#0091e6] ">Сергей С.</a>
+                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-blue-400 ">Сергей С.</a>
                             </span>
-                            <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
+                            <div class="text-base text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
                                 @lang('lang.review_finished')
                                     <!-- -->
@@ -63,24 +63,24 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[{{asset('images/star-yellow-light.svg')}}] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-20 h-[16px] bg-[length:16px_16px] relative" style="background-image: url('{{asset('images/star-yellow-light.svg')}}')">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0  bg-[length:16px_16px]" style="background-image: url('{{asset('images/star-yellow.svg')}}')"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-[#f5f5fa] shadow-[-1px_1px_2px] shadow-[#dcdcdc] rounded-[10px] relative text-[#4e4e4e] text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-[#f5f5f5] border-solid">
+                        <div class="p-8 mt-[12px] mr-0 mb-[35px] bg-pink-50 shadow-md shadow-current rounded-lg relative text-gray-700 text-base border-pink-100 border-solid">
                             Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков. Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.
                         </div>
                     </li>
-                    <li class="">
-                        <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-[40px] h-[40px] overflow-hidden rounded-[4px] shadow-lg border-b-0 ">
+                    <li class="mt-8">
+                        <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-18 h-18 overflow-hidden rounded-lg mr-4 shadow-lg border-b-0 ">
                             <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
                         </a>
-                        <div class="align-top ml-[50px] min-h-[42px]">
+                        <div class="align-top ml-[50px] h-24">
                             <span>
-                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-[#0091e6] ">Сергей С.</a>
+                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-blue-400 ">Сергей С.</a>
                             </span>
-                            <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
+                            <div class="text-base text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
                                 @lang('lang.review_finished')
                                     <!-- -->
@@ -88,24 +88,24 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('{{asset('images/star-yellow-light.svg')}}')] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-20 h-[16px] bg-[length:16px_16px] relative" style="background-image: url('{{asset('images/star-yellow-light.svg')}}')">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[length:16px_16px]" style="url('{{asset('images/star-yellow.svg')}}')"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-[#f5f5fa] shadow-[-1px_1px_2px] shadow-[#dcdcdc] rounded-[10px] relative text-[#4e4e4e] text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-[#f5f5f5] border-solid">
+                        <div class="p-8 mt-[12px] mr-0 mb-[35px] bg-pink-50 shadow-md shadow-current rounded-lg relative text-gray-700 text-base border-pink-100 border-solid">
                             Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков. Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.
                         </div>
                     </li>
-                    <li class="">
-                        <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-[40px] h-[40px] overflow-hidden rounded-[4px] shadow-lg border-b-0 ">
+                    <li class="mt-8">
+                        <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-18 h-18 overflow-hidden rounded-lg mr-4 shadow-lg border-b-0 ">
                             <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
                         </a>
-                        <div class="align-top ml-[50px] min-h-[42px]">
+                        <div class="align-top ml-[50px] h-24">
                             <span>
-                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-[#0091e6] ">Сергей С.</a>
+                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-blue-400 ">Сергей С.</a>
                             </span>
-                            <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
+                            <div class="text-base text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
                                 @lang('lang.review_finished')
                                     <!-- -->
@@ -113,37 +113,12 @@
                                     <!-- -->@lang('lang.review_rating')
                                     <!-- -->5
                                 </span>
-                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('{{asset('images/star-yellow-light.svg')}}')] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
+                                <div class="inline-block align-middle w-20 h-[16px] bg-[length:16px_16px] relative" style="background-image: url('{{asset('images/star-yellow-light.svg')}}')">
+                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0  bg-[length:16px_16px]" style="background-image: url('{{asset('images/star-yellow.svg')}}')"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-[#f5f5fa] shadow-[-1px_1px_2px] shadow-[#dcdcdc] rounded-[10px] relative text-[#4e4e4e] text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-[#f5f5f5] border-solid">
-                            Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков. Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.
-                        </div>
-                    </li>
-                    <li class="">
-                        <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-[40px] h-[40px] overflow-hidden rounded-[4px] shadow-lg border-b-0 ">
-                            <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
-                        </a>
-                        <div class="align-top ml-[50px] min-h-[42px]">
-                            <span>
-                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-[#0091e6] ">Сергей С.</a>
-                            </span>
-                            <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
-                                <span class="align-middle">
-                                @lang('lang.review_finished')
-                                    <!-- -->
-                                    <!-- -->341 @lang('lang.review_task')
-                                    <!-- -->@lang('lang.review_rating')
-                                    <!-- -->5
-                                </span>
-                                <div class="inline-block align-middle w-[80px] h-[16px] bg-[url('{{asset('images/star-yellow-light.svg')}}')] bg-[length:16px_16px] relative">
-                                    <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[url('{{asset('images/star-yellow.svg')}}')]  bg-[length:16px_16px]"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-[#f5f5fa] shadow-[-1px_1px_2px] shadow-[#dcdcdc] rounded-[10px] relative text-[#4e4e4e] text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-[#f5f5f5] border-solid">
+                        <div class="p-8 mt-[12px] mr-0 mb-[35px] bg-pink-50 shadow-md shadow-current rounded-lg relative text-gray-700 text-base border-pink-100 border-solid">
                             Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков. Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.
                         </div>
                     </li>

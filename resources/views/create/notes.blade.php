@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+@include('layouts.fornewtask')
+
 @section('content')
 
 <!-- Information section -->
 <x-roadmap/>
-<form class="" action="{{route('task.create.contacts')}}" method="post" enctype="multipart/form-data">
+<form class="" action="{{route('task.create.note.store', $task->id)}}" method="post" enctype="multipart/form-data">
   @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid md:grid-cols-3 gap-x-20">
@@ -12,7 +14,7 @@
     <div class="w-full text-center text-2xl">
     @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
-    <div class="w-full text-center my-4 text-[#5f5869]">
+    <div class="w-full text-center my-4 text-gray-400">
       @lang('lang.notes_percent')
     </div>
     <div class="relative pt-1">
@@ -40,14 +42,15 @@
         </div>
 
         <div>
-            <!-- <span class="underline hover:text-[#5f5869] text-lg decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+            <!-- <span class="underline decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
         </div>
+
 
 
 
           </div>
           <div class="mt-4">
-                <div class="w-full border-dashed border border-[#000] rounded-lg py-2 text-center flex justify-center items-center gap-2" type="button">
+                <div class="w-full border-dashed border border-black rounded-lg py-2 text-center flex justify-center items-center gap-2" type="button">
                   <input type="file" id="file" name="avatar" class="hidden">
                   <label for="file">
                       <i class="fa fa-camera h-4 w-4 text-gray-500"></i>
@@ -57,26 +60,26 @@
              <div>
                 <label class="md:w-2/3 block mt-6">
                     <input class="mr-2 h-4 w-4" type="checkbox" name="docs">
-                    <span class="text-lg text-slate- 900">
+                    <span class="text-slate- 900">
                         Предоставить документы
                         <br><p class="text-sm text-slate-500">Для оформления расписки/доверенности</p>
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2 h-4 w-4" type="radio" checked name="oplata" value="Оплата через карту">
-                    <span class="text-lg text-slate- 900">
+                    <input class="mr-2 h-4 w-4" type="radio" checked name="oplata" value="1">
+                    <span class="text-slate- 900">
                         Оплата через карту
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2 h-4 w-4" type="radio" name="oplata" value="Оплата наличными">
-                    <span class="text-lg text-slate- 900">
+                    <input class="mr-2 h-4 w-4" type="radio" name="oplata" value="2">
+                    <span class="text-slate- 900">
                         Оплата наличными
                     </span>
                   </label>
                   <!-- <label class="md:w-2/3 block mt-6">
                     <input class="mr-2  h-4 w-4" type="checkbox" value="1" name="secret">
-                    <span class="text-lg text-slate-900">
+                    <span class="text-slate-900">
                         Сделать приватным
                         <br>
                         <p class="text-sm text-slate-500">Задание увидят только исполнители, а после завершения - только вы и выбранный исполнитель.</p>
@@ -84,7 +87,7 @@
                   </label> -->
              </div>
              <div class="flex w-full gap-x-4 mt-4">
-             <a onclick="myFunction()" class="w-1/3  border border-[#000]-700 hover:border-[#000] transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+             <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
                                             @lang('lang.notes_back')
                                             <!-- </button> -->
@@ -95,7 +98,7 @@
                                             </script>
                                         </a>
                <input type="submit"
-                class="bg-[#6fc727] hover:bg-[#5ab82e] w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                name="" value="@lang('lang.name_next')">
              </div>
 

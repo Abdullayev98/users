@@ -11,7 +11,7 @@
 }
 </style>
 
-    <div class="container lg:w-4/5 p-5 w-full my-10 mx-auto">
+    <div class="container lg:w-4/5 w-full mx-auto">
 
 
         <div class="grid md:grid-cols-3 grid-flow-row mt-10 inline-block">
@@ -23,11 +23,11 @@
                     <h2 class="font-bold text-2xl mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="grid grid-cols-3 mx-auto md:mx-1">
                         <div class="col-span-1 object-center w-40 h-50">
-                            <img class="rounded-min mx-left overflow-hidden" 
+                            <img class="rounded-min mx-left overflow-hidden"
                             @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
                             src='{{asset("AvatarImages/images/users/default.png")}}'
-                            @else   
-                            src="{{asset("AvatarImages/{$user->avatar}")}}" 
+                            @else
+                            src="{{asset("AvatarImages/{$user->avatar}")}}"
                             @endif alt="" width="384" height="512">
                             <!-- <img class="rounded-min mx-left overflow-hidden" src="{{ asset('storage/app/'.$user->avatar)}}" alt="" width="384" height="512"> -->
                             <form action="{{route('updatephotocash')}}" method="POST" enctype="multipart/form-data">
@@ -96,7 +96,7 @@
                     {{-- "about-me" end --}}
                     {{-- cash --}} <div class="cash block  w-full" id="tab-cash">
                         <div class="head mt-5">
-                            <h2 class="font-bold text-xl">@lang('lang.cash_yourBalance') 
+                            <h2 class="font-bold text-xl">@lang('lang.cash_yourBalance')
                                 @if ($balance == Null) 0
                                 @else {{$balance->balance}} UZS
                                 @endif
@@ -120,10 +120,10 @@
                             </label>
                             <ul class="mt-5">
                                 <li class="inline ml-5"><a href="/home/profile">@lang('lang.cash_allOperations')</a></li>
-                                <li class="inline ml-5 underline text-[#0091e6]">
+                                <li class="inline ml-5 underline text-blue-500">
                                     <a href="/home/profile">@lang('lang.cash_topUpHis')</a>
                                 </li>
-                                <li class="inline ml-5 underline text-[#0091e6]">
+                                <li class="inline ml-5 underline text-blue-500">
                                     <a href="/home/profile">@lang('lang.cash_reciveHis')</a>
                                 </li>
                             </ul>
@@ -138,7 +138,7 @@
                             <h4 class="font-bold text-md mt-2">@lang('lang.cash_question2')</h4>
                             <p><a href="/home/profile" class="text-blue-500">@lang('lang.cash_makeRequest')</a> -
                             @lang('lang.cash_nswer2')</p>
-                            <!-- <h3 class="font-bold text-lg mt-2">Если у вас остались вопросы об условиях работы с User,
+                            <!-- <h3 class="font-bold mt-2">Если у вас остались вопросы об условиях работы с User,
                                 посмотрите это обучающее видео:</h3>
                             <iframe class="w-full h-auto" src="https://www.youtube.com/embed/Js_5Pal4bOE">
                             </iframe> -->
@@ -266,14 +266,14 @@
         var x = document.getElementById("myText1").value;
         if(x < 1000){
             document.getElementById('button2').removeAttribute("onclick");
-            document.getElementById('button2').classList.remove("bg-lime-500");
+            document.getElementById('button2').classList.remove("bg-green-500");
             document.getElementById('button2').classList.add("bg-gray-500");
-            document.getElementById('button2').classList.remove("hover:bg-lime-600");
+            document.getElementById('button2').classList.remove("hover:bg-green-500");
         }else{
             document.getElementById('button2').setAttribute("onclick","toggleModal();");
             document.getElementById('button2').classList.remove("bg-gray-500");
-            document.getElementById('button2').classList.add("bg-lime-500");
-            document.getElementById('button2').classList.add("hover:bg-lime-600");
+            document.getElementById('button2').classList.add("bg-green-500");
+            document.getElementById('button2').classList.add("hover:bg-green-500");
         }
     }
         function fileupdate(){

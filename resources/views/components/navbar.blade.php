@@ -1,7 +1,4 @@
-
-
-
-<nav class="z-10 relative flex items-center mr-6 lg:w-11/12 xl:w-10/12 md:mx-auto justify-between  lg:justify-start font-[sans-serif]" aria-label="Global">
+<nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start text-base" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
       <!--  mobile menu -->
       <!-- <div class="flex justify-between w-11/12 items-center"> -->
@@ -16,7 +13,7 @@
                 </button>
             </div>
         </nav>
-        <div class="flex justify-center w-8/12 md:w-full">
+        <div class="flex justify-center w-10/12 md:w-full">
             <a class="logo cursor-pointer delete-task" href="/">
                 <img src="{{asset('/images/logo.png')}}" class="overflow-hidden h-14 lg:h-16 py-2" alt="" />
             </a>
@@ -40,7 +37,7 @@
                           <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
                       </li>
                       <li>
-                          <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
+                          <a href="#" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                       </li>
                       <li>
                           <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
@@ -90,20 +87,20 @@
                           @endauth
                       @endif
                         <li class="mb-1">
-                            <a href="/categories/1" class="task block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_createTask')</a>
+                            <a href="/categories/1" class="delete-task block p-4 text-sm rounded  text-gray-500 hover:text-yellow-500">@lang('lang.navbar_createTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="{{ route('task.search') }}" class="searchs block delete-task cursor-pointer p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_findTask')</a>
+                            <a href="{{ route('task.search') }}" class="block delete-task cursor-pointer p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_findTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="/performers" class="performers delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_perfs')</a>
+                            <a href="/performers" class="delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_perfs')</a>
                         </li>
 
                         @if (Route::has('login'))
                             @auth
 
                             <li class="mb-1">
-                                <a href="{{ route('task.mytasks') }}" class="my-tasks delete-task cursor-pointer block p-4 text-sm rounded font-medium text-gray-500 hover:text-[#ffa200]">@lang('lang.navbar_myTasks')</a>
+                                <a href="{{ route('task.mytasks') }}" class="delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_myTasks')</a>
                             </li>
 
                                    {{-- icon-3 --}}
@@ -128,14 +125,14 @@
                                     </div>
                                 </li>
 
-                                <div class="font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
-                                  <a href="{{ route('logout') }}" class="ml-4">@lang('lang.navbar_exit')</a>
+                                <div class="text-gray-500 hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
+                                  <a href="{{ route('logout') }}" class="delete-task ml-4">@lang('lang.navbar_exit')</a>
                                 </div>
 
                             @else
-                            <div class="font-medium text-gray-500  relative top-60 block w-[400px] ml-4">
-                              <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
-                              <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
+                            <div class="text-gray-500  relative top-60 block w-[400px] ml-4">
+                              <a href="{{ route('login') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
+                              <a href="{{ route('register') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
                             </div>
                             @endauth
                         @endif
@@ -143,10 +140,10 @@
             </nav>
         </div>
     </div>
-    <div class="hidden w-[800px] lg:inline-block xl:ml-12 lg:ml-12">
+    <div class="hidden w-7/12 lg:inline-block xl:ml-12 lg:ml-12 text-base">
         <div class="group inline-block mr-4">
-            <button class="font-medium text-gray-500 text-[14px] xl:text-[16px] hover:text-[#ffa200] focus:outline-none">
-                <span class="pr-1  font-[sans-serif] flex-1">@lang('lang.navbar_createTask')</span>
+            <button class="text-gray-500 hover:text-yellow-500 focus:outline-none">
+                <span class="pr-1 flex-1">@lang('lang.navbar_createTask')</span>
                 <span></span>
             </button>
             <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top ">
@@ -164,7 +161,8 @@
 
                             @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
                                 <li class="rounded-sm">
-                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="/task/create?category_id={{ $category2->id }}">
+{{--                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="/task/create?category_id={{ $category2->id }}">--}}
+                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="{{route("task.create.name", ['category_id'=>$category2->id])}}">
                                         {{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                     </a>
                                 </li>
@@ -203,11 +201,11 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="search cursor-pointer font-medium delete-task text-gray-500 hover:text-[#ffa200] mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
-        <a href="/performers" class="performer delete-task cursor-pointer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
+        <a href="{{ route('task.search') }}" class="cursor-pointer delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
+        <a href="/performers" class="delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
-              <a href="{{ route('task.mytasks') }}" class="my-task delete-task cursor-pointer font-medium text-gray-500 hover:text-[#ffa200] text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
+              <a href="{{ route('task.mytasks') }}" class="delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
             @else
             @endauth
         @endif
@@ -218,7 +216,7 @@ use Illuminate\Support\Facades\Auth;
 ?>
     @if (Route::has('login'))
         @auth
-    <div class="flex lg:inline-block hidden w-[300px] float-right">
+    <div class="flex lg:inline-block hidden w-3/12 float-right">
                 {{-- icon-1 --}}
                 <div class="max-w-lg mx-auto float-left">
 @php $count_for_not = 0; @endphp
@@ -227,7 +225,7 @@ use Illuminate\Support\Facades\Auth;
 @php $count_for_not++; @endphp
 
 @endforeach
-                <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">{{$count_for_not}}</div>
+                <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
                     <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
                     </button>
                     <!-- Dropdown menu -->
@@ -274,7 +272,7 @@ use Illuminate\Support\Facades\Auth;
 
                 {{-- icon-3 --}}
                 <div class=" float-left">
-                    <a href="/chat">
+                    <a class="delete-task" href="/chat">
                         <i class=" text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
                     </a>
                 </div>
@@ -294,13 +292,13 @@ use Illuminate\Support\Facades\Auth;
                     <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdowndesk">
                         <ul class="py-1" aria-labelledby="dropdowndesk">
                             <li>
-                                <a href="/profile" class="profile delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_profile')</a>
+                                <a href="/profile" class="delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_profile')</a>
                             </li>
                             <li>
-                                <a href="/profile/settings" class="setting delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_set')</a>
+                                <a href="/profile/settings" class="delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_set')</a>
                             </li>
                             <li>
-                                <a href="{{ route('logout') }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_exit')</a>
+                                <a href="{{ route('logout') }}" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_exit')</a>
                             </li>
                         </ul>
                     </div>
@@ -333,9 +331,9 @@ use Illuminate\Support\Facades\Auth;
 
 
         @else
-            <div class="w-[400px] text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4">
-                <a href="{{ route('login') }}"  class="border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
-                <a href="{{ route('register') }}"  class=" border-b border-black border-dotted font-medium text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
+            <div class="w-[400px] text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4 text-base">
+                <a href="{{ route('login') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
+                <a href="{{ route('register') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
             </div>
             <!-- language blog -->
             <div class="flex justify-center text-gray-500 hidden lg:block">
@@ -390,7 +388,7 @@ use Illuminate\Support\Facades\Auth;
 
 
                 <div class="mt-16">
-                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" id="button" href="#" >@lang('lang.navbar_toPayment')</a>
+                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" id="button" href="#" >@lang('lang.navbar_toPayment')</a>
                 </div>
             </div>
         </div>
@@ -585,15 +583,15 @@ el_for_create.insertAdjacentHTML('afterend', `
         var x = document.getElementById("myText").value;
         if(x < 1000){
             document.getElementById('button').removeAttribute("onclick");
-            document.getElementById('button').classList.remove("bg-lime-500");
+            document.getElementById('button').classList.remove("bg-green-500");
             document.getElementById('button').classList.add("bg-gray-500");
-            document.getElementById('button').classList.remove("hover:bg-lime-600");
+            document.getElementById('button').classList.remove("hover:bg-green-500");
             document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
         }else{
             document.getElementById('button').setAttribute("onclick","toggleModal1();");
             document.getElementById('button').classList.remove("bg-gray-500");
-            document.getElementById('button').classList.add("bg-lime-500");
-            document.getElementById('button').classList.add("hover:bg-lime-600");
+            document.getElementById('button').classList.add("bg-green-500");
+            document.getElementById('button').classList.add("hover:bg-green-500");
             document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
         }
     }
@@ -672,17 +670,34 @@ el_for_create.insertAdjacentHTML('afterend', `
     <script >
             var link = document.location.href.split('/');
             if(link[3] == 'task'){
-                $(".performers").removeAttr("href");
-                $(".performer").removeAttr("href");
-                $(".search").removeAttr("href");
-                $(".searchs").removeAttr("href");
-                $(".my-task").removeAttr("href");
-                $(".my-tasks").removeAttr("href");
-                $(".task").removeAttr("href");
-                $(".setting").removeAttr("href");
-                $(".profile").removeAttr("href");
-                $(".profiles").removeAttr("href");
-                $(".logo").removeAttr("href");
+
+        $('.delete-task').on('click', function () {
+
+        let for_del_task_in = $(this).attr("href");
+       // console.log(for_del_task_in);
+		$(this).removeAttr('href');
+        Swal.fire({
+            title: '@lang('lang.name_deleteAsk')',
+            showDenyButton: true,
+            confirmButtonText: '@lang('lang.name_continue')',
+            denyButtonText: '@lang('lang.name_delete')',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.close()
+            } else if (result.isDenied) {
+if(var_for_id_task){
+$.ajax({
+	url: '/for_del_new_task/'+ var_for_id_task +'',
+	method: 'get',
+});
+}
+              window.location.href = for_del_task_in;
+                return false;
+            }
+        });
+
+	    });
+
             }
     </script>
 

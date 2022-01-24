@@ -325,6 +325,7 @@ return [
     // CMI.blade start
     'cmi_bePerf' => "Universal Xizmat ijrochisiga aylaning. Va daromad olishni boshlang.",
     'cmi_date' => "2021-yil 6-dekabr",
+    'cmi_year' => "y",
     'cmi_priority' => "Universal Services va 'Yandex.Pro' yakka tartibdagi tadbirkorning portretini tuzdi",
     'cmi_yandex1' => "Yandex.Pro bilan birgalikda amalga oshirdik",
     'cmi_yandex2' => "tadqiqot",
@@ -444,6 +445,10 @@ return [
     'profile_view' => "ko'rish",
     'profile_aboutMe' => "O'zim haqimda bir oz",
     'profile_edit' => "Tahrirlash",
+    'profile_add' => "Qo'shish",
+    'profile_save' => "Saqlash",
+    'profile_cancel' => "Bekor qilish",
+    'profile_description' => "Mijozlar siz haqingizda hech narsa bilishmaydi. Tajribangiz haqida ma'lumot qo'shing.",
     'profile_workExample' => "Ishga misollar",
     'profile_textForJobs' => "ish joylari uchun matn",
     'profile_performer' => "Ijrochi",
@@ -732,6 +737,7 @@ return [
     'signup_elpocta' => "Elektron pochta",
     'signup_telnumber' => "Telefon raqami ornatilmagan",
     'signup_password' => "Parol",
+    'signup_password_confirm' => "Parol tasdiqlash",
     'signup_registration' => "Ro'yxatdan o'tish",
     // signup blade ended
 

@@ -6,9 +6,13 @@ use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\PerformersController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RefillController;
 use App\Http\Controllers\Task\SearchTaskController;
 use App\Http\Controllers\admin\VoyagerUserController;
+use App\Http\Controllers\MassmediaController;
+use App\Http\Controllers\Task\CreateController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +24,7 @@ use App\Http\Controllers\admin\VoyagerUserController;
 |
 */
 
+Route::get('/for_del_new_task/{id}', [CreateController::class, 'deletetask']);
 Route::get('/fordelnotif/{id}/{task_id}', [PerformersController::class, 'del_notif']);
 Route::post('/performers', [PerformersController::class, 'service']);
 Route::get('perf-ajax/{id}', [PerformersController::class, 'perf_ajax']);
@@ -38,6 +43,7 @@ Route::post('ajax-request', [SearchTaskController::class, 'task_response']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    Route::get('/report', [ReportController::class, 'index']);
     Route::get("users/activitiy/{user}", [VoyagerUserController::class, "activity"])->name("users.activity");
     Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.index");
     Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating");
@@ -52,25 +58,17 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 Route::get('/detailed-tasks/{id}', [SearchTaskController::class, 'task'])->name("tasks.detail");
 
-
-Route::get('/terms', function () {
-    return view('terms.terms');
-});
 Route::get('/offer-tasks', function () {
     return view('task.offertasks');
 });
 
 Route::get('/verification', function () {
-    return view('create.verification');
+    return view('verification.verification');
 });
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');
 
 Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('task.mytasks');
-
-Route::get('/refill', function() {
-    return view('/Site/refill');
-});
 
 Route::get('/contacts', function() {
     return view('contacts.contacts');
@@ -78,10 +76,6 @@ Route::get('/contacts', function() {
 
 Route::get('/choose-task', function() {
     return view('task.choosetasks');
-});
-
-Route::get('/terms/doc', function() {
-    return view('terms.pdf');
 });
 
 Route::get('/ref', 'App\Http\Controllers\RefillController@ref');
@@ -105,7 +99,7 @@ Route::view('/reviews','reviews.review');
 
 Route::view('/author-reviews','reviews.authors_reviews');
 
-Route::view('/press','reviews.CMI');
+Route::get('/press',[MassmediaController::class, 'index'])->name('massmedia');
 
 Route::view('/vacancies','reviews.vacancies');
 

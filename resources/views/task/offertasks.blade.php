@@ -11,12 +11,12 @@
 
                     <div class="grid grid-cols-3 gap-x-10">
                         <div class="col-span-2">
-                            <div class="w-full bg-[#f8f7ee] my-5">
+                            <div class="w-full bg-yellow-100 my-5">
                                 <div class="px-5 py-5">
 
                                     <div class="grid grid-cols-4 gap-4 mb-3">
-                                      <a href="/offer-tasks" class="rounded border bg-gradient-to-b from-[#d4d4d4] to-[#c1c1c1] px-4 py-1">@lang('lang.offerT_iAmPerformer')</a>
-                                      <a href="{{ route('task.mytasks') }}" class="rounded border bg-gradient-to-b from-[#f5f5f5] to-[#e0e0e0] px-4 py-1">@lang('lang.offerT_iAmCustomer')</a>
+                                      <a href="/offer-tasks" class="rounded border bg-gradient-to-b from-gray-300 to-gray-400 px-4 py-1">@lang('lang.offerT_iAmPerformer')</a>
+                                      <a href="{{ route('task.mytasks') }}" class="rounded border bg-gradient-to-b from-gray-100 to-gray-200 px-4 py-1">@lang('lang.offerT_iAmCustomer')</a>
 
 
                                     </div>
@@ -30,7 +30,7 @@
                                     <div class="w-full border hover:bg-blue-100">
                                       <div class="w-11/12 h-12 m-4">
                                         <div class="float-left w-9/12">
-                                          <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-lg text-blue-400 hover:text-red-400">
+                                          <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-blue-400 hover:text-red-400">
                                           @lang('lang.offerT_rateByPhone')
                                           </a>
                                           <p class="text-sm ml-12mt-4">
@@ -43,9 +43,9 @@
                                       </div>
                                       <div class="w-11/12 h-12 m-4">
                                         <div class="mx-auto w-9/12">
-                                          <button type="button" class="bg-[#ffebad] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.offerT_vacancy')</button>
-                                          <button type="button" class="bg-[#f4f0ff] py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.offerT_freeRespond')</button>
-                                          <button type="button" class="bg-[#ffe8e8] py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥@lang('lang.offerT_promo')</button>
+                                          <button type="button" class="bg-yellow-200 py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.offerT_vacancy')</button>
+                                          <button type="button" class="bg-blue-50 py-1 rounded-full px-4 my-4 text-gray-500 text-xs">@lang('lang.offerT_freeRespond')</button>
+                                          <button type="button" class="bg-red-100 py-1  rounded-full px-4 my-4 text-gray-500 text-xs">🔥@lang('lang.offerT_promo')</button>
                                         </div>
                                       </div>
                                     </div>

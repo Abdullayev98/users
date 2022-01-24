@@ -140,14 +140,14 @@
             </div>
             <!--body-->
             <div class="relative p-6 flex-auto">
-              <p class="my-4  text-lg  text-center">
+              <p class="my-4   text-center">
                 @lang('lang.exe_createTFirst')
               </p>
             </div>
             <!--footer-->
             <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                 <div class="mt-4 ">
-                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-lime-500 text-[#fff] hover:bg-lime-600  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
+                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
                 </div>
             </div>
           </div>

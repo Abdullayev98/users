@@ -2,7 +2,7 @@
 
 @section('content')
 <a href="{{route('Site.blog',['id'=>$last2->id])}}">
-<div class="px-8 h-screen border-t-8 w-10/12 mx-auto bg-[url({{asset($last2->img)}})] bg-cover">
+<div style="background-image: url({{asset($last2->img)}})" class="px-8 h-screen border-t-8 w-10/12 mx-auto bg-cover">
 </div>
 <div class="w-10/12 mx-auto my-8">
 <p class="text-3xl font-bold">{{$last2->title}}</p>
