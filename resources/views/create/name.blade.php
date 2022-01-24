@@ -15,7 +15,7 @@
                 <div class="w-full text-center md:text-2xl text-xl">
                     @lang('lang.name_helpToFind')
                 </div>
-                <div class="w-full text-center my-4 text-[#5f5869]">
+                <div class="w-full text-center my-4 text-gray-400">
                     @lang('lang.name_percent')
                 </div>
                 <div class="pt-1">
@@ -33,7 +33,7 @@
 
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
                             <div class="mb-4">
-                                <label class="block text-[#5f5869] text-sm mb-2" for="username">
+                                <label class="block text-gray-400 text-sm mb-2" for="username">
                                     @lang('lang.name_taskName')
                                 </label>
                                 <input

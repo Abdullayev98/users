@@ -14,7 +14,7 @@
                     <div class="w-full text-center text-2xl">
                         @lang('lang.buyd_text') "{{session('name')}}"
                     </div>
-                    <div class="w-full text-center my-4 text-[#5f5869]">
+                    <div class="w-full text-center my-4 text-gray-400">
                         @lang('lang.design_text')
                     </div>
                     <div class="pt-1">
@@ -86,7 +86,7 @@
                                             </div>
 
                                             <div>
-                                                <!-- <span class="underline hover:text-[#5f5869] decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+                                                <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
                                             </div>
 
 
@@ -125,7 +125,7 @@
                                             </div>
 
                                             <div>
-                                                <!-- <span class="underline hover:text-[#5f5869] decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+                                                <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
                                             </div>
 
 

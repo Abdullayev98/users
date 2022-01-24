@@ -14,7 +14,7 @@
                     <div class="w-full text-center text-2xl">
                         @lang('lang.budget_lookingFor') "{{session('name')}}"
                     </div>
-                    <div class="w-full text-center my-4 text-[#5f5869]">
+                    <div class="w-full text-center my-4 text-gray-400">
                         @lang('lang.contact_percent') 99%
                     </div>
                     <div class="relative pt-1">

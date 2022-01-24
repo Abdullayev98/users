@@ -6,25 +6,25 @@
                     <div class="step w-full text-center h-full text-8xl pt-4 text-black">1</div>
                     <div class="w-full col-span-2">
                         <div class="text-left text-xl font-bold pt-4 w-full h-1/2">@lang('lang.roadmap_describeatask')</div>
-                        <div class="text-left text-sm w-full h-1/2 text-[#a199aa] ">@lang('lang.roadmap_text')</div>
+                        <div class="text-left text-sm w-full h-1/2 text-gray-300 ">@lang('lang.roadmap_text')</div>
                     </div>
                 </div>
             </div>
             <div class="text-left h-full">
                 <div class="grid grid-cols-3 h-full">
-                    <div class="step w-full text-center h-full  text-8xl pt-4 text-[#a199aa]">2</div>
+                    <div class="step w-full text-center h-full  text-8xl pt-4 text-gray-300">2</div>
                     <div class="w-full col-span-2">
                         <div class="text-left text-xl font-bold pt-4 w-full h-1/2 ">@lang('lang.roadmap_text1')</div>
-                        <div class="text-left text-sm w-full h-1/2 text-[#a199aa]">@lang('lang.roadmap_text2')</div>
+                        <div class="text-left text-sm w-full h-1/2 text-gray-300">@lang('lang.roadmap_text2')</div>
                     </div>
                 </div>
             </div>
             <div class="text-left h-full">
                 <div class="grid grid-cols-3 h-full">
-                    <div class="step w-full text-center h-full  text-8xl pt-4 text-[#a199aa]">3</div>
+                    <div class="step w-full text-center h-full  text-8xl pt-4 text-gray-300">3</div>
                     <div class="w-full col-span-2">
                         <div class="text-left text-xl font-bold pt-4 w-full h- ">@lang('lang.roadmap_text3')</div>
-                        <div class="text-left text-sm w-full h-1/2 text-[#a199aa]">@lang('lang.roadmap_text4')</div>
+                        <div class="text-left text-sm w-full h-1/2 text-gray-300">@lang('lang.roadmap_text4')</div>
                     </div>
                 </div>
             </div>

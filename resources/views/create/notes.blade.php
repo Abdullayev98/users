@@ -14,7 +14,7 @@
     <div class="w-full text-center text-2xl">
     @lang('lang.budget_lookingFor') "{{session('name')}}"
     </div>
-    <div class="w-full text-center my-4 text-[#5f5869]">
+    <div class="w-full text-center my-4 text-gray-400">
       @lang('lang.notes_percent')
     </div>
     <div class="relative pt-1">
@@ -42,7 +42,7 @@
         </div>
 
         <div>
-            <!-- <span class="underline hover:text-[#5f5869] decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+            <!-- <span class="underline decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
         </div>
 
 
