@@ -143,6 +143,22 @@
 
         <div class="swiper mySwiper lg:w-10/12 h-60 overflow-hidden rounded-xl mt-12">
             <div class="swiper-wrapper">
+                @foreach ($reklamas as $reklama )
+                <div class="swiper-slide w-full ">
+                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
+                        <div class="w-1/2 lg:w-5/12">
+                            <h1 class=" text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{$reklama->title}}</h1>
+                            <p class="text-lg mb-4">{{$reklama->comment}}</p>
+                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
+                        </div>
+                        <div class="w-1/2 lg:w-7/12">
+                            <img src="{{ asset(/images/'{$reklama->image}) }}"
+                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
+                                 alt="">
+                        </div>
+                    </div>
+                </div>
+                @endforeach
                 <div class="swiper-slide w-full ">
                     <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
                         <div class="w-1/2 lg:w-5/12">

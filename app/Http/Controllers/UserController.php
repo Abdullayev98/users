@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Models\Advant;
 use App\Models\UserVerify;
 use App\Models\How_work_it;
+use App\Models\Reklama;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -116,7 +117,8 @@ class UserController extends Controller
         $howitworks = How_work_it::all();
         $users_count = User::where('role_id', 2)->count();
         $random_category = Category::first();
-        return view('home', compact('tasks', 'howitworks', 'categories', 'random_category', 'users_count', 'advants'))->withSuccess('Logged-in');
+        $reklamas = Reklama::all();
+        return view('home', compact('tasks', 'howitworks', 'categories', 'random_category', 'users_count', 'advants','reklamas'))->withSuccess('Logged-in');
     }
 
     public function createUser(array $data)
