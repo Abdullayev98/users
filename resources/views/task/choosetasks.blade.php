@@ -4,32 +4,7 @@
     <link rel="stylesheet" href="{{ asset ('/css/carousel.min.css')}}">
     <script src="{{ asset ('/js/carousel.min.js') }}"></script>
 
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        .slider__wrapper {
-            overflow: hidden;
-        }
-
-        .slider__item {
-            flex: 0 0 33.3333333333%;
-            max-width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: gray;
-            border: 1px solid gray;
-            height: 80px;
-            border-radius: 10px;
-            margin-left: 5px;
-        }
-
-    </style>
-    <div class="container w-10/12 mx-auto">
+    <div class="container w-10/12 mx-auto text-lg">
         <div class="w-10/12 md:w-8/12 mx-auto text-center">
             <h1 class="text-3xl md:text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
             <h3 class="text-xl md:text-2xl my-5 text-gray-500">@lang('lang.chT_weHelp')</h3>
@@ -92,4 +67,29 @@
             });
         });
     </script>
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        .slider__wrapper {
+            overflow: hidden;
+        }
+
+        .slider__item {
+            flex: 0 0 33.3333333333%;
+            max-width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: gray;
+            border: 1px solid gray;
+            height: 80px;
+            border-radius: 10px;
+            margin-left: 5px;
+        }
+    </style>
 @endsection

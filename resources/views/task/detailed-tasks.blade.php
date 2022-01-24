@@ -460,8 +460,8 @@
                                 </div>
 
                                 <!-- Основной контент страницы -->
-                                <div id="modal">
-                                    <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+                                <div class="modal___1" style="display: none">
+                                    <div class="modal__1 h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
                                         <!-- modal -->
                                         <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center text-green-500 py-12 text-3xl">
                                             <!-- modal header -->
@@ -747,12 +747,25 @@
                 $('.bg-opacity-50').hide();
                 window.setTimeout(function() {
                     $('.preloader').hide();
-                    $('#modal').show();
+                    $('.modal___1').show();
                 }, 1000);
                 window.setTimeout(function() {
-                    $('#modal').hide();
+                    $('.modal___1').hide();
                     window.location.reload();
                 }, 3000);
+            });
+        </script>
+        <script>
+            const modal = document.querySelector('.modal');
+            const showModal = document.querySelector('.show-modal');
+            const closeModal = document.querySelectorAll('.close-modal');
+            showModal.addEventListener('click', function (){
+                modal.classList.remove('hidden')
+            });
+            closeModal.forEach(close => {
+                close.addEventListener('click', function (){
+                    modal.classList.add('hidden')
+                });
             });
         </script>
         <script>
@@ -782,19 +795,6 @@
                     error: function(error) {
                         console.log(error);
                     }
-                });
-            });
-        </script>
-        <script>
-            const modal = document.querySelector('.modal');
-            const showModal = document.querySelector('.show-modal');
-            const closeModal = document.querySelectorAll('.close-modal');
-            showModal.addEventListener('click', function (){
-                modal.classList.remove('hidden')
-            });
-            closeModal.forEach(close => {
-                close.addEventListener('click', function (){
-                    modal.classList.add('hidden')
                 });
             });
         </script>
