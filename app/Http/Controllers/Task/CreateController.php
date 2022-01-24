@@ -195,6 +195,7 @@ class CreateController extends Controller
 
     public function contact_store(Task $task, UserRequest $request)
     {
+//        dd($request->all());
         if (!auth()->check()) {
             $data = $request->validated();
 
@@ -202,6 +203,9 @@ class CreateController extends Controller
                 $user = User::create($data);
         } else {
             $user = auth()->user();
+            $data = $request->validate(['phone_number' => 'required']);
+            $user->update($data);
+            $user->fresh();
         }
         auth()->login($user);
         $user->phone_number = str_replace('+998', '', preg_replace('/[^0-9]/', '', $user->phone_number));
