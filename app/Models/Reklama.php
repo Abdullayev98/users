@@ -12,8 +12,7 @@ class Reklama extends Model
     use Translatable;
     protected $translatable = [
         'title',
-        'comment',
-        'image',
+        'comment'
     ];
     protected $fillable = [
         'title',
