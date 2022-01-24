@@ -398,19 +398,20 @@
                                                                 </svg>
                                                             </button>
                                                         </div>
-                                                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" action="#">
+                                                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" action="{{route("task.response.store", $tasks->id)}}" method="post">
+                                                            @csrf
                                                             <header>
                                                                 <h2 class="font-semibold text-2xl mb-4">@lang('lang.detT_addOffers')</h2>
                                                             </header>
-                                                            <form id="ajaxform">
+{{--                                                            <form id="ajaxform">--}}
                                                                 <main>
-                                                                    <textarea class="resize-none rounded-md w-full focus:outline-[rgba(255,119,0,4)] border border p-4  transition duration-200 my-4"  type="text" id="form8" rows="4" name="response_desc"></textarea>
+                                                                    <textarea required class="resize-none rounded-md w-full focus:outline-[rgba(255,119,0,4)] border border p-4  transition duration-200 my-4"  type="text" id="form8" rows="4" name="description"></textarea>
                                                                     <hr>
                                                                     <div class="my-2">
                                                                         <label class=" px-2">
-                                                                            <input type="checkbox" name="notificate" value="1" class="mr-2 my-3 ">@lang('lang.detT_notifMe')<br>
+                                                                            <input type="checkbox" name="notification_on" class="mr-2 my-3 ">@lang('lang.detT_notifMe')<br>
                                                                         </label>
-                                                                        <label class=" px-2">
+                                                                        <label class="px-2">
                                                                             <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>@lang('lang.detT_pointTime')
                                                                         </label>
                                                                         <br>
@@ -427,22 +428,17 @@
                                                                         </select>
                                                                     </div>
                                                                     <label>
-                                                                        <input type="text" checked  name="response_price" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
-                                                                        <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
-                                                                        <input type="text" name="task_id" class="hidden" value="{{$tasks->id}}">
-                                                                        <input type="text" name="name_task" class="hidden" value="{{$tasks->name}}">
-                                                                        <input type="text" name="status" class="hidden" value="1">
-                                                                        <input type="text" name="user_id" class="hidden" value="{{$current_user->id ?? null}}">
+                                                                        <input type="number" checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
                                                                     </label>
                                                                     <hr>
                                                                 </main>
                                                                 <footer class="flex justify-center bg-transparent">
-                                                                    <button
-                                                                        class="save-data bg-yellow-500 font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300">
+                                                                    <button type="submit"
+                                                                        class=" bg-yellow-500 font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300">
                                                                         @lang('lang.detT_next')
                                                                     </button>
                                                                 </footer>
-                                                            </form>
+{{--                                                            </form>--}}
                                                         </form>
                                                     </div>
                                                 </div>

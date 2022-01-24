@@ -23,11 +23,8 @@ class CreateController extends Controller
     {
 
         $current_category = Category::findOrFail($request->category_id);
-        $task = new Task();
-        $task->category_id = $current_category->id;
-        $task->save();
 
-        return view("create.name", compact('task'));
+        return view("create.name", compact('current_category'));
 
 
     }
@@ -36,10 +33,10 @@ class CreateController extends Controller
     {
 
         $data = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'category_id' => 'required'
         ]);
-
-        $task->update($data);
+        $task = Task::create($data);
 
         return redirect()->route("task.create.custom.get", $task->id);
     }

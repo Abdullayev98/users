@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Task\CreateController;
 use App\Http\Controllers\Task\CreateTaskController;
+use App\Http\Controllers\Task\ResponseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,7 @@ Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.pro
 Route::prefix("task")->group(function (){
     Route::prefix("create")->group(function (){
         Route::get('/', [CreateController::class, 'name'])->name('task.create.name');
-        Route::post('/name/{task}', [CreateController::class, 'name_store'])->name('task.create.name.store');
+        Route::post('/name', [CreateController::class, 'name_store'])->name('task.create.name.store');
         Route::get('/custom/{task}', [CreateController::class, 'custom_get'])->name('task.create.custom.get');
         Route::post('/custom/{task}/store', [CreateController::class, 'custom_store'])->name('task.create.custom.store');
         Route::get('/address/{task}', [CreateController::class, 'address'])->name('task.create.address');
@@ -28,6 +29,20 @@ Route::prefix("task")->group(function (){
         Route::post('/contact/{task}/store', [CreateController::class, 'contact_store'])->name('task.create.contact.store');
         Route::get('/verify', [CreateController::class, 'verify'])->name('task.create.verify');
         Route::post('/verify', [UserController::class, 'verifyProfil'])->name('task.create.verification');
+
+
+
+
+        // Responses
+
+        Route::post("/detailed-task/{task}/response", [ResponseController::class,'store'])->name('task.response.store');
+
+
+
+
+        Route::get('/performers-by-category', function (){
+            return ['ss'];
+        });
 
 
         /*

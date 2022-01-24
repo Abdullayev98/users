@@ -40,7 +40,7 @@
                                     @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                         <div>
-                                            <a class="text-blue-500 hover:text-red-500 my-1" href="/perf-ajax/{{ $category2->id }}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
+                                            <a class="text-blue-500 hover:text-red-500 my-1 send-request" data-id="{{$category2->id}}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
                                         </div>
 
                                     @endforeach
@@ -377,4 +377,22 @@
 
 @section('javasript')
     <script src="//unpkg.com/alpinejs" defer></script>
+
+    <script>
+        $('.send-request').click(function (){
+            $.ajax({
+                url : '/performers-by-category', //PHP file to execute
+                type : 'GET', //method used POST or GET
+                data : {variable1 : "some data"}, // Parameters passed to the PHP file
+                success : function(result){ // Has to be there !
+                    console.log(result)
+                },
+
+                error : function(result, statut, error){ // Handle errors
+
+                }
+
+            });
+        })
+    </script>
 @endsection
