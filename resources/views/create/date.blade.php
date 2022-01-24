@@ -87,7 +87,7 @@
 @section("javasript")
 <script>
   $("#periud").change(function(){
-    if($(this).val() == 'Указать период'){
+    if($(this).val() == 2 ){
       $("#datetime").show();
     }else{
       $("#datetime").hide();
