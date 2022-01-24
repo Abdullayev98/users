@@ -1,7 +1,8 @@
 let dataAjax = {};
-let dataGeoAll = [];
-let dataGeoSroch = [];
-let dataGeoUdal = [];
+let dataGeo = [];
+// let dataGeoAll = [];
+// let dataGeoSroch = [];
+// let dataGeoUdal = [];
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -16,7 +17,7 @@ function tasks_list_all(data) {
     $.each(data, function(index, data) {
         dl++
             $(".show_tasks").append(
-                    `<div class="sort-table print_block" hidden>
+                   `<div class="sort-table print_block" hidden>
                     <div class="sort-table as">
                     <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
                     <div class="sm:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
@@ -235,12 +236,12 @@ function resetCounters(){
 
 function geo_coords(){
     dataGeo=[];
-    dataGeoCircle=[];
+    // dataGeoCircle=[];
     $('.print_block').each(function() {
         if (!(this.hidden))
         {
             dataGeo.push(this.id.split(','));
-            dataGeoCircle.push({type: 'Point', coordinates: this.id.split(',')});
+            // dataGeoCircle.push({type: 'Point', coordinates: this.id.split(',')});
         }
     });
 }

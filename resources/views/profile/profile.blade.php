@@ -86,10 +86,8 @@
                 <div class="content mt-20 ">
                     <div class= "grid md:grid-cols-10 w-full">
                         <ul class=" md:col-span-9 items-center w-3/4 md:w-full" id="tabs">
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/home/profile" class=" md:text-[18px] text-[14px] font-bold block " id="default-tab">@lang('lang.cash_aboutMe')</a></li>
+                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile" class=" md:text-[18px] text-[14px] font-bold block " id="default-tab">@lang('lang.cash_aboutMe')</a></li>
                             <li class=" md:mr-5 mr-1 inline-block"><a href="/profile/cash" class=" md:text-[18px] text-[14px]">@lang('lang.cash_check')</a></li>
-                            {{-- <li class=" md:mr-5 mr-1 inline-block"><a href="#third" class=" md:text-[18px] text-[14px]">@lang('lang.cash_tariff')</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/home/profile" class="md:text-[18px] text-[14px]">@lang('lang.cash_insurance')</a></li> --}}
                             <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">@lang('lang.cash_settings')</a></li>
 
                         </ul>
