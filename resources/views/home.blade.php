@@ -118,32 +118,6 @@
                         <p class="text-sm">{{ $trust->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}</p>
                     </div>
                 @endforeach
-                {{-- <div class="text-center">
-                    <img src="{{asset('/images/home_page_1.jpg')}}"
-                         class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
-                    <h1 class="font-bold my-4">@lang('lang.body_comfortPay')</h1>
-                    <p class="text-sm">
-                    @lang('lang.body_securePay')
-                    </p>
-                </div>
-                <div class="text-center mx-4">
-                    <img
-                        src="{{ asset('/images/home_page_3.jpg') }}"
-                        class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72 w-52 h-52" alt="">
-                    <h1 class="font-bold my-4">@lang('lang.body_loyalPerformer')</h1>
-                    <p class="text-sm">
-                    @lang('lang.body_performerDocs')
-                    </p>
-                </div>
-                <div class="text-center mx-4">
-                    <img
-                        src="{{ asset('images/home_page_2.jpg') }}"
-                        class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72 w-52 h-52" alt="">
-                    <h1 class="font-bold my-4">@lang('lang.body_feedback')</h1>
-                    <p class="text-sm">
-                    @lang('lang.body_over1mln')
-                    </p>
-                </div> --}}
             </div>
         </div>
 

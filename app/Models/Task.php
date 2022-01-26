@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use TCG\Voyager\Traits\Translatable;
 
 
 class Task extends Model
 {
     use HasFactory;
+    use Translatable;
 
     const STATUS_NEW = 0;
     const STATUS_OPEN = 1;

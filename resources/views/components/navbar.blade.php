@@ -15,7 +15,7 @@
         </nav>
         <div class="flex justify-center w-10/12 md:w-full">
             <a class="logo cursor-pointer delete-task" href="/">
-                <img src="storage/{!!setting('site.logo')!!}" class="overflow-hidden h-14 lg:h-16 py-2" alt="" />
+                <img src="/storage/{!!setting('site.logo')!!}" class="overflow-hidden h-14 lg:h-16 py-2" alt="" />
             </a>
         </div>
         @if (Route::has('login'))
