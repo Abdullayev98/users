@@ -120,6 +120,14 @@
                     @lang('lang.body_securePay')
                     </p>
                 </div>
+                {{-- <div class="text-center">
+                    <img src="{{asset('/images/home_page_1.jpg')}}"
+                         class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
+                    <h1 class="font-bold my-4">@lang('lang.body_comfortPay')</h1>
+                    <p class="text-sm">
+                    @lang('lang.body_securePay')
+                    </p>
+                </div>
                 <div class="text-center mx-4">
                     <img
                         src="{{ asset('/images/home_page_3.jpg') }}"
@@ -137,7 +145,7 @@
                     <p class="text-sm">
                     @lang('lang.body_over1mln')
                     </p>
-                </div>
+                </div> --}}
             </div>
         </div>
 
@@ -159,20 +167,6 @@
                     </div>
                 </div>
                 @endforeach
-                {{-- <div class="swiper-slide w-full ">
-                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
-                        <div class="w-1/2 lg:w-5/12">
-                            <h1 class=" text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">Добро пожаловать на U-Ser</h1>
-                            <p class="text-lg mb-4">«Проверенные исполнители» подтвердили свои документы на Universal Services.</p>
-                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
-                        </div>
-                        <div class="w-1/2 lg:w-7/12">
-                            <img src="{{ asset('/images/homepage_slide1.jfif') }}"
-                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
-                                 alt="">
-                        </div>
-                    </div>
-                </div> --}}
             </div>
             <div class="text-white swiper-button-next"></div>
             <div class="text-white swiper-button-prev"></div>
