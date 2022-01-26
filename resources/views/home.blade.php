@@ -246,9 +246,9 @@
                 @lang('lang.body_findPerformer')
                 </div>
             </div>
-            <div class="w-2/3 mx-auto my-8 text-center">
-                <p class="text-xs text-gray-400">@lang('lang.body_ecomomyText')</p>
-            </div>
+{{--            <div class="w-2/3 mx-auto my-8 text-center">--}}
+{{--                <p class="text-xs text-gray-400">@lang('lang.body_ecomomyText')</p>--}}
+{{--            </div>--}}
         </div>
         <div class="bg-blue-100">
             <div class="w-11/12 md:w-9/12 mx-auto pb-24">

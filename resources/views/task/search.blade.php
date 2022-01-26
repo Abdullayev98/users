@@ -4,17 +4,17 @@
 
     <div class="mx-auto w-9/12 my-16">
 
-        <div class="border-b container mx-auto">
-            <!-- Tabs -->
-            <ul id="tabs" class="inline-flex w-full text-lg">
-                <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">@lang('lang.search_allTasks')</a></li>
-                <li class="font-semibold rounded-t pb-3"><a href="#second">@lang('lang.search_recomend')</a></li>
-            </ul>
-        </div>
+{{--        <div class="border-b container mx-auto">--}}
+{{--            <!-- Tabs -->--}}
+{{--            <ul id="tabs" class="inline-flex w-full text-lg">--}}
+{{--                <li class="font-semibold rounded-t mr-4 pb-3"><a id="default-tab" href="#first">@lang('lang.search_allTasks')</a></li>--}}
+{{--                <li class="font-semibold rounded-t pb-3"><a href="#second">@lang('lang.search_recomend')</a></li>--}}
+{{--            </ul>--}}
+{{--        </div>--}}
 
         <!-- Tab Contents -->
-        <div id="tab-contents">
-            <div id="first">
+{{--        <div id="tab-contents">--}}
+{{--            <div id="first">--}}
                 <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto text-base">
                     <div class="col-span-2">
                         <div class="w-full bg-yellow-50 my-5 rounded-md">
@@ -162,7 +162,7 @@
 
                                     <button class="mx-5 byid">@lang('lang.search_byDate')</button>
 
-                                    <button id="srochnost" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
+                                    <button id="srochnost" class="  mx-5 active">@lang('lang.search_byHurry')</button>
                                     <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
                             </div>
@@ -178,6 +178,7 @@
                                         <li><button id="loadMore" class="butt mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show(), maps_show();">@lang('lang.search_showMore')</button></li>
                                     </ul>
                                 </div>
+
 {{--                                <div class="w-full h-full lM2" hidden>--}}
 {{--                                    <ul class="text-center">--}}
 {{--                                        <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum2"></span>&nbsp;из&nbsp;<span id="snum2"></span></li>--}}
@@ -185,20 +186,6 @@
 {{--                                    </ul>--}}
 {{--                                </div>--}}
 
-{{--                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
-{{--                                    <div></div>--}}
-{{--                                    <div class="butt col-span-3 text-center w-full h-full">--}}
-{{--                                        <ul class="inline-flex">--}}
-{{--                                            <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span></li>--}}
-{{--                                            <li>&nbsp;из&nbsp;<span id="snum"></span></li>--}}
-{{--                                            <li></li>--}}
-{{--                                        </ul>--}}
-{{--                                        <div>--}}
-{{--                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"--}}
-{{--                                        onclick="tasks_show()">@lang('lang.search_showMore')</button>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -210,18 +197,12 @@
                         <div class="w-full h-full">
                             <div class="max-w-lg mx-auto">
                                 <label class="inline-flex items-center mt-3">
-                                    <input type="checkbox" class="form-checkbox all_cat mr-1  h-5 w-5 text-orange-400"
-                                    ><span class="ml-2 text-gray-700">@lang('lang.search_allCat')</span>
+                                    <input type="checkbox" class="form-checkbox all_cat mr-1 h-5 w-5 text-orange-400">
+                                    <span class="ml-2 text-gray-700">@lang('lang.search_allCat')</span>
                                 </label>
-                                {{--                                <label--}}
-                                {{--                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">--}}
-                                {{--                                    <input type="checkbox"--}}
-                                {{--                                           class="all_cat mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')--}}
-                                {{--                                </label>--}}
 
                                 <div class="w-full my-1 for_check">
 
-{{--                                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)--}}
                                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                                         <div x-data={show:false} class="rounded-sm">
                                             <div class=" mb-2" id="headingOne">
@@ -235,38 +216,22 @@
                                                               stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                     </svg>
                                                 </button>
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox par_cat mr-1  hover:cursor-pointer h-5 w-5 text-orange-400"
+                                                <label class="inline-flex items-center mt-3 hover:cursor-pointer">
+                                                    <input type="checkbox" class="form-checkbox par_cat mr-1 h-5 w-5 text-orange-400 hover:cursor-pointer"
                                                            name="{{$category->id}}"
                                                            id="par{{$category->id}}"><span class="ml-2 text-gray-700">{{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</span>
                                                 </label>
-                                                {{--                                                <label--}}
-                                                {{--                                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">--}}
-
-                                                {{--                                                    <input type="checkbox" class="par_cat mr-1  hover:cursor-pointer"--}}
-                                                {{--                                                           name="{{$category->id}}"--}}
-                                                {{--                                                           id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-                                                {{--                                                </label>--}}
                                             </div>
                                             <div x-show="show" class="border-b-0 px-8 py-0">
 {{--                                                @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)--}}
                                                     @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
-
                                                     <div class="par{{$category->id}}">
-                                                        <label class="inline-flex items-center mt-3">
-                                                            <input type="checkbox" class="form-checkbox chi_cat mr-1   hover:cursor-pointer h-5 w-5 text-orange-400"
+                                                        <label class="inline-flex items-center mt-3 hover:cursor-pointer">
+                                                            <input type="checkbox" class="form-checkbox chi_cat mr-1 h-5 w-5 text-orange-400 hover:cursor-pointer"
                                                                    name="{{$category2->id}}"
                                                                    id="par{{$category->id}}"><span class="ml-2 text-gray-700">{{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</span>
                                                         </label>
-                                                        {{--                                                        <label--}}
-                                                        {{--                                                            class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">--}}
-                                                        {{--                                                            <input type="checkbox"--}}
-                                                        {{--                                                                   class="chi_cat mr-1 hover:cursor-pointer"--}}
-                                                        {{--                                                                   name="{{$category2->id}}"--}}
-                                                        {{--                                                                   id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-                                                        {{--                                                        </label>--}}
                                                     </div>
-
                                                 @endforeach
                                             </div>
                                         </div>
@@ -281,139 +246,8 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-            <div id="second" class="hidden">
-
-{{--                <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto">--}}
-{{--                    <div class="col-span-2">--}}
-{{--                        <div class="w-full bg-[#f8f7ee] my-5 rounded-md">--}}
-{{--                        </div>--}}
-
-{{--                        <div class="col-span-2 lg:col-span-1 lg:hidden block mx-4 lg:mt-0 mt-8 mb-4">--}}
-{{--                            <div id="map1" class="h-60 my-5 rounded-lg w-full static"></div>--}}
-{{--                            <div class="w-full h-full">--}}
-
-{{--                                <div class="max-w-lg mx-auto">--}}
-
-{{--                                    <label--}}
-{{--                                        class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">--}}
-{{--                                        <input type="checkbox"--}}
-{{--                                               class="all_cat2 mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')--}}
-{{--                                    </label>--}}
-
-{{--                                    <div class="w-full my-1 for_check2">--}}
-
-{{--                                        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)--}}
-{{--                                            <div x-data={show:false} class="rounded-sm">--}}
-{{--                                                <div class="border border-b-0 bg-gray-100" id="headingOne">--}}
-{{--                                                    <button @click="show=!show"--}}
-{{--                                                            class="underline text-blue-500 hover:text-blue-700 focus:outline-none"--}}
-{{--                                                            type="button">--}}
-{{--                                                        <svg class="w-4 h-4 rotate -rotate-90" fill="none"--}}
-{{--                                                             stroke="currentColor" viewBox="0 0 24 24"--}}
-{{--                                                             xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                                            <path stroke-linecap="round" stroke-linejoin="round"--}}
-{{--                                                                  stroke-width="2" d="M19 9l-7 7-7-7"></path>--}}
-{{--                                                        </svg>--}}
-{{--                                                    </button>--}}
-{{--                                                    <label--}}
-{{--                                                        class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">--}}
-{{--                                                        <input type="checkbox"--}}
-{{--                                                               class="par_cat2 mr-1 hover:cursor-pointer"--}}
-{{--                                                               name="{{$category->id}}"--}}
-{{--                                                               id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-{{--                                                    </label>--}}
-{{--                                                </div>--}}
-{{--                                                <div x-show="show" class="border border-b-0 px-8 py-0">--}}
-{{--                                                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)--}}
-
-{{--                                                        <div class="par{{$category->id}}">--}}
-{{--                                                            <label--}}
-{{--                                                                class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">--}}
-{{--                                                                <input type="checkbox"--}}
-{{--                                                                       class="chi_cat2 mr-1 hover:cursor-pointer"--}}
-{{--                                                                       name="{{$category2->id}}"--}}
-{{--                                                                       id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-{{--                                                            </label>--}}
-{{--                                                        </div>--}}
-
-{{--                                                    @endforeach--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        @endforeach--}}
-{{--                                    </div>--}}
-
-{{--                                </div>--}}
-
-{{--                                <script--}}
-{{--                                    src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
-
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="">--}}
-{{--                            <div id="scrollbar" class="w-full h-full blog1">--}}
-{{--                                <div class="w-full w-full">--}}
-{{--                                    <div class="show_tasks">--}}
-{{--                                        --}}{{--Show Tasks list --}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
-{{--                                    <div></div>--}}
-{{--                                    <div class="butt col-span-3 text-center w-full h-full" style="display: none">--}}
-{{--                                        <p class="text-center">@lang('lang.search_shown')</p>--}}
-{{--                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"--}}
-{{--                                                onclick="tasks_list(k)">@lang('lang.search_showMore')</button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">--}}
-{{--                        <div class="small-map static">--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-
-{{--                                <script--}}
-{{--                                    src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
-
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="">--}}
-{{--                            <div id="scrollbar" class="w-full h-full blog1">--}}
-{{--                                <div class="w-full w-full">--}}
-{{--                                    <div class="show_tasks">--}}
-{{--                                        --}}{{--Show Tasks list --}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
-{{--                                    <div></div>--}}
-{{--                                    <div class="butt col-span-3 text-center w-full h-full" style="display: none">--}}
-{{--                                        <p class="text-center">@lang('lang.search_shown')</p>--}}
-{{--                                        <button class="mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer"--}}
-{{--                                                onclick="tasks_list(k)">@lang('lang.search_showMore')</button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">--}}
-{{--                        <div class="small-map static">--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-            </div>
-        </div>
+{{--            </div>            --}}
+{{--        </div>--}}
     </div>
 
     <style>
@@ -733,14 +567,14 @@
                         clusterHideIconOnBalloonOpen: false,
                         geoObjectHideIconOnBalloonOpen: false
                     }),
-                        getPointData = function (index) {
-                            return {
-                                balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
-                                balloonContentBody: '<p>Ваше имя: <input name="login"></p><p>Телефон в формате 2xxx-xxx:  <input></p><p><input type="submit" value="Отправить"></p>',
-                                balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
-                                clusterCaption: 'метка <strong>' + index + '</strong>'
-                            };
-                        },
+                        // getPointData = function (index) {
+                        //     return {
+                        //         balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
+                        //         balloonContentBody: '<p>Ваше имя: <input name="login"></p><p>Телефон в формате 2xxx-xxx:  <input></p><p><input type="submit" value="Отправить"></p>',
+                        //         balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
+                        //         clusterCaption: 'метка <strong>' + index + '</strong>'
+                        //     };
+                        // },
                         getPointOptions = function () {
                             return {
                                 preset: 'islands#greenIcon'
@@ -748,7 +582,8 @@
                         },
                         geoObjects = [];
                     for (var i = 0, len = dataGeo.length; i < len; i++) {
-                        geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                        // geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                        geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointOptions());
                     }
                     clusterer.options.set({
                         gridSize: 80,
@@ -791,10 +626,10 @@
                         }),
                         getPointData = function (index) {
                             return {
-                                balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
-                                balloonContentBody: '<p>Ваше имя: <input name="login"></p><p>Телефон в формате 2xxx-xxx:  <input></p><p><input type="submit" value="Отправить"></p>',
-                                balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
-                                clusterCaption: 'метка <strong>' + index + '</strong>'
+                                balloonContentHeader: '<font size=3><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font>',
+                                balloonContentBody: '<br><font size=4><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjax[index].start_date + ' - ' + dataAjax[index].end_date + '</p></font><br><font size=3><p>' + dataAjax[index].budget + '</p></font>',
+                                // balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
+                                clusterCaption: 'Задания <strong>' + dataAjax[index].id + '</strong>'
                             };
                         },
                         getPointOptions = function () {
