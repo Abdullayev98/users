@@ -68,7 +68,8 @@ class UserController extends Controller
             $users_count = User::where('role_id', 2)->count();
             $random_category = Category::all()->random();
             $advants = Advant::all();
-            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category'))->withSuccess('Logged-in');
+            $trusts = Trust::all();
+            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category','trusts'))->withSuccess('Logged-in');
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
