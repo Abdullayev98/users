@@ -46,7 +46,7 @@
                                     id="username" type="text" placeholder="@lang('lang.name_example')" required name="name" value="{{session('neym')}}">
                             </div>
                             <button type='button' id='button' style="color: grey; hover: red;" onclick="myFunction()">@lang('lang.name_subCat2')</button>
-                            <div id="categories">
+                            <div style="display: none;" id="categories">
 
                             <div class="flex justify-center">
   <div class="my-3 xl:w-50 pr-2">
@@ -104,7 +104,7 @@
 
 function func_for_select(id) {
 
-    $('.for_all_hid_ch').addClass('hidden');
+$('.for_all_hid_ch').addClass('hidden');
 
 $('#for_filter_select'+ id +'').removeClass('hidden');
 };
