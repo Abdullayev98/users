@@ -1,5 +1,6 @@
 let dataAjax = {};
 let dataGeo = [];
+// let dataGeoCircle = [];
 // let dataGeoAll = [];
 // let dataGeoSroch = [];
 // let dataGeoUdal = [];
@@ -17,8 +18,7 @@ function tasks_list_all(data) {
     $.each(data, function(index, data) {
         dl++
             $(".show_tasks").append(
-                   `<div class="sort-table print_block" hidden>
-                    <div class="sort-table as">
+                   `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
                     <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
                     <div class="sm:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
                     <div class="float-left w-9/12 " id="results">
@@ -50,7 +50,7 @@ function tasks_list(data) {
                 if (data.category_id == id) {
                     dl++
                         $(".show_tasks").append(
-                            `<div class="sort-table print_block" hidden>
+                           `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
                             <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="` + data.start_date + `">
                             <div class="sm:w-11/12 w-full h-12 md:m-4 sm:m-2 m-0">
                             <div class="float-left w-9/12 " id="results">
@@ -73,11 +73,6 @@ function tasks_list(data) {
             });
         }
     });
-}
-
-function resetCounters(){
-    $('.butt').removeAttr("disabled")
-    s=0, dl=0;
 }
 
 let tabsContainer = document.querySelector("#tabs");
@@ -443,7 +438,7 @@ $('.all_cat, .all_cat2').click(function() {
         $('.all_cat2').each(function() {
             this.checked = true;
         });
-        fourInOne1();
+        fiveInOne1();
     }
 });
 
@@ -451,13 +446,13 @@ $('.par_cat, .par_cat2').click(function() {
     if (this.checked == false) {
         parcats_click_false(this.id, this.name)
         if (chicat_check_print()) {
-            fourInOne2();
+            fiveInOne2();
         } else {
             img_show()
         }
     } else {
         parcats_click_true(this.id, this.name)
-        fourInOne2();
+        fiveInOne2();
     }
 });
 
@@ -465,13 +460,13 @@ $('.chi_cat, .chi_cat2').click(function() {
     if (this.checked == false) {
         chicats_click_false(this.id, this.name)
         if (chicat_check_print()) {
-            fourInOne2();
+            fiveInOne2();
         } else {
             img_show()
         }
     } else {
         chicats_click_true(this.id, this.name)
-        fourInOne2();
+        fiveInOne2();
     }
 });
 
@@ -506,7 +501,7 @@ function parcats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
-            fourInOne1();
+            fiveInOne1();
         } else {
             this.checked = false;
         }
@@ -546,7 +541,7 @@ function chicats_click_true(id, name) {
     $('.all_cat2').each(function() {
         if (parcat2_check()) {
             this.checked = true;
-            fourInOne1();
+            fiveInOne1();
         } else {
             this.checked = false;
         }

@@ -61,11 +61,9 @@
                             @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                         </div>
                     </div>
-                    <div class="lg:w-6/12 md:w-10/12 w-7/12 xl:w-5/12 mx-auto mt-14">
-                      <a href="/verification" class="text-green-300 text-center">
-                        <i class="text-blue fas fa-shield-alt float-left xl:-mr-4 text-2xl"></i>
-                        <p class="ml-0 text-base underline">@lang('lang.header_bePerformer') </p>
-                      </a>
+                    <div class="flex flex-row sm:w-1/2 w-5/6 mx-auto mt-8 items-center text-blue-300 hover:text-blue-400">
+                        <a href="/verification"><i class="text-blue fas fa-shield-alt text-2xl mx-2"></i></a>
+                        <a href="/verification"> <p class="text-base underline">@lang('lang.header_bePerformer')</p></a>
                     </div>
                 </div>
             </main>
@@ -91,7 +89,7 @@
         </div>
     </div>
     <main>
-        <div class="container md:text-left text-left mx-auto mt-32 md:mt-36 md:px-16 px-4">
+        <div class="container md:text-left text-left mx-auto md:px-16 px-4 sm:pt-40 pt-36">
             <div class="text-4xl font-bold text-center">
                 @lang('lang.header_over') {{$users_count}}  @lang('lang.header_performers')
             </div>
@@ -288,11 +286,7 @@
                     </a>
 
                 </div>
-                <div class="h-64 md:block hidden">
-                    <img
-                        src="{{asset('/images/download_hand_User.png')}}"
-                        class="relative float-right bottom-5" alt="">
-                </div>
+
             </div>
         </div>
         <div class="container mx-auto md:w-2/3 w-11/12">
