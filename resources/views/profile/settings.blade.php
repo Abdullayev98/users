@@ -2,94 +2,94 @@
 
 @section("content")
 
-    <div class="w-10/12 mx-auto text-lg">
+    <div class="2xl:w-3/5 w-10/12  mx-auto text-base mt-4">
 
 
         <div class="grid grid-cols-3  grid-flow-row mt-10">
 
 
-            {{-- user ma'lumotlari --}}
+                 {{-- user ma'lumotlari --}}
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
-                    <div class="top-0 right-0 float-right text-gray-500 text-sm">
+                    <div class="float-right mr-8 text-gray-500">
                         <i class="far fa-eye"> @lang('lang.profile_view')</i>
                     </div>
                     <br>
-                    <h2 class="font-bold mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
-                    <div class="relative inline-block object-center  w-40 h-50">
-                        <img class="rounded-min mx-left overflow-hidden"
-                        @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
-                        src='{{asset("AvatarImages/images/users/default.png")}}'
-                        @else
-                        src="{{asset("AvatarImages/{$user->avatar}")}}"
-                        @endif alt="image" width="384"
-                        height="512">
-                        <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button">
-                                <input type="file" id="file" name="avatar" class="hidden" onclick="fileupdate()">
-                                <label for="file">
-                                    <i class="fas fa-camera"></i>
-                                    <span>@lang('lang.cash_changeImg')</span>
-                                </label>
-                            </div>
-                            <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
-                                <input type="submit" id="sub1" class="hidden">
-                                <label for="sub1">
-                                    <i class="fas fa-save"></i>
-                                    <span>@lang('lang.cash_addImg')</span>
-                                </label>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="inline-block ml-3 mt-1">
-                        @if($user->age!="")
-                            <p class="inline-block text-m mr-2">
-                                {{$user->age}}
-                                @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
-                                @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) @lang('lang.cash_rusYearGoda')
-                                @else @lang('lang.cash_rusYearLet')
-                                @endif
-                            </p>
-                        @endif
+                    <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
+                    <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
+                        <div class="sm:w-1/3 w-full">                           
+                                <img class="border border-3 border-gray-400 h-40 w-40"
+                                @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
+                                src='{{asset("images/default_img.jpg")}}'
+                                @else
+                                src="{{asset("AvatarImages/{$user->avatar}")}}"
+                                @endif alt="">
+                            <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="rounded-md bg-gray-200 w-40 mt-2 py-1 text-base" type="button">
+                                    <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
+                                    <label for="file" class="p-3">
+                                        <i class="fas fa-camera"></i>
+                                        <span>@lang('lang.cash_changeImg')</span>
+                                    </label>
+                                </div>
+                                <div class="rounded-md bg-green-400 w-40 hidden mt-3 py-1" type="button" id="buttons" onclick="fileadd()">
+                                    <input type="submit" id="sub1" class="hidden">
+                                    <label for="sub1" class="p-3">
+                                        <i class="fas fa-save"></i>
+                                        <span>@lang('lang.cash_addImg')</span>
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
 
-                        <span class="inline-block">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p class="inline-block text-m">
-                                @if($user->location!="") {{$user->location}} @lang('lang.cash_city')
-                                @else @lang('lang.cash_cityNotGiven')
-                                @endif
-                            </p>
-                        </span>
-                        <p class="mt-2">@lang('lang.cash_created') <a href="#">
-                            <span>
-                                @if ($task == Null)  0
-                                @else {{$task}}
-                                @endif
-                            </span> @lang('lang.cash_task')</a></p>
-                        {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
+                        <div class="w-2/3 text-base text-gray-500 lg:ml-0 ml-4">
+                            @if($user->age != "")
+                                <p class="inline-block mr-2">
+                                    {{$user->age}}
+                                    @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
+                                    @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                    @else @lang('lang.cash_rusYearLet')
+                                    @endif
+                                </p>
+                            @endif
+
+                            <span class="inline-block">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p class="inline-block text-m">
+                                    @if($user->location!="") {{$user->location}} @lang('lang.cash_city')
+                                    @else @lang('lang.cash_cityNotGiven')
+                                    @endif
+                                </p>
+                            </span>
+                            <p class="mt-2">@lang('lang.cash_created') <a href="#">
+                                <span>
+                                    @if ($task == Null) 0
+                                    @else {{$task}}
+                                    @endif
+                                </span> @lang('lang.cash_task')</a></p>
+                            {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
+                        </div>
                     </div>
-                </figure>
-                {{-- user ma'lumotlari tugashi --}}
+                </figure>   
+                    {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 ">
-                <div class="grid grid-cols-10">
+                  <div class="grid grid-cols-10">
                     <ul class=" md:col-span-9 col-span-10 md:items-left sitems-center">
-                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">@lang('lang.cash_aboutMe')</a></li>
-                        <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px]">@lang('lang.cash_check')</a></li>
-                        {{-- <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">@lang('lang.cash_tariff')</a></li>
-                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px]">@lang('lang.cash_insurance')</a></li> --}}
-                        <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">@lang('lang.cash_settings')</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile" class=" text-[14px] md:text-[18px] text-gray-600">@lang('lang.cash_aboutMe')</a></li>
+                        <li class="inline md:mr-5 mr-1"><a href="/profile/cash" class=" text-[14px] md:text-[18px] text-gray-600">@lang('lang.cash_check')</a></li>
+                        <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px] text-gray-700" id="settingsText">@lang('lang.cash_settings')</a></li>
 
                     </ul>
-                    <div class="md:col-span-1 md:block hidden" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl" ></i></a></div>
+                    <div class="md:col-span-1 md:block hidden" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl text-gray-700"></i></a></div>
                 </div>
 
                 <hr>
 
 
-{{-- settings start --}}
+                        {{-- settings start --}}
                     <div class= "w-full text-base">
-<!-- settings form TABS -->
+                            <!-- settings form TABS -->
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->
                             <ul id="tabs" class="md:inline-flex block w-full flex-center px-1 pt-2">
@@ -184,7 +184,7 @@
                                 </div>
                                 <div id="third" class="hidden p-4">
 {{-- settings/ third tab start -> subscribe for some tasks --}}
-                                    <div class="w-4/5 mt-10">
+                                    <div class="sm:w-4/5 w-full mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. @lang('lang.settings_chooseCat')</h3>
     {{-- choosing categories --}}
                                         <form action="{{route('get.category')}}" method="post">
@@ -231,90 +231,7 @@
                                         </script>
 
     {{-- choosing categories end --}}
-    {{-- changing geolocation --}}
-                                        <div class="geolocation">
-                                            <h3 class="font-bold text-3xl mb-7 mt-10">2. @lang('lang.settings_location'). {{$user->location}}</h3>
-                                            <p class=" mt-5 text-sm text-left text-gray-600 ">@lang('lang.settings_chooseRegion')</p>
-                                            <div class="parentCategory rounded-xl bg-gray-200 px-3 py-3">
-                                                <h4 class="font-bold text-gray-900 text-lg">@lang('lang.cash_city') {{$user->location}}</h4>
-                                                <div x-data="{ showModal : false }">
-                                                    <button @click="showModal = !showModal" class="rounded-xl bg-gray-300 h-10 w-2/5 px-10">
-                                                        <i class="fas fa-exchange-alt inline mr-3"></i>
-                                                        <span class="inline">@lang('lang.settings_changeRegion')</span>
-                                                    </button>
-                                                    <!-- Modal Background -->
-                                                    <div x-show="showModal" class="fixed flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-40 left-0 right-0 top-0 bottom-0" x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                                                        <!-- Modal -->
-                                                        <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-10/12 h-auto md:w-4/12 mx-10" @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
-                                                            <div class="mx-auto pl-10 my-10 rounded-[20px] text-black">
-                                                                <table>
-                                                                    <thead>
-                                                                        <div class="md:text-[2rem] text-[1.8rem] md:w-[500px] font-bold font-['Radiance,sans-serif,Noto Sans']">@lang('lang.settings_chooseR')</div>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <form action="{{route('insert.district')}}" method ="post">
-                                                                            @csrf
-                                                                            <input class="outline-none bg-red-50 rounded-[20px] block my-4 py-3 px-5 w-10/12" name="district" type="text" placeholder="Поиск регионы" value="{{$user->district}}">
 
-                                                                        <input type="submit" class="text-white w-10/12 text-[18px] leading-[1.55] font-[500] bg-center border-transparent bg-blue-400 rounded-[30px] py-8 md:px-8 text-center" value = "@lang('lang.settings_remain')">
-                                                                        </form>
-                                                                    </tbody>
-                                                                    <div class="text-right space-x-5">
-                                                                        <button @click="showModal = !showModal" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">@lang('lang.settings_close')</button>
-                                                                    </div>
-                                                                </table>
-                                                            </div>
-                                                            <!-- script modal -->
-                                                            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {{-- <h4 class="font-bold text-gray-900 text-lg">@lang('lang.settings_tashkent')</h4>
-                                                <button id="open-btn" class="rounded-xl bg-gray-300 h-10 w-2/5 px-10 mb-5">
-                                                    <i class="fas fa-exchange-alt inline mr-3"></i>
-                                                    <span class="inline">@lang('lang.settings_changeRegion')</span>
-                                                </button>
-                                                <div>
-                                                    <input type="checkbox" class="w-5 h-5 inline">
-                                                    <p class="text-sm text-center inline ml-2">@lang('lang.settings_sendNotif')</p>
-                                                </div> --}}
-                                                {{-- changing modal --}}
-                                                <div class="fixed hidden z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
-                                                    <div class="relative top-20 mx-auto p-5 border w-2/5 shadow-lg rounded-md bg-white">
-                                                        <div class="mt-3 text-center">
-                                                            <button type="submit" id="close-btn"
-                                                                class="px-4 py-4 bg-gray-300 rounded-md w-100 h-16 right-4 top-4 hover:bg-gray-500">
-                                                                <i class="fas fa-times text-white text-3xl w-full"></i>
-                                                            </button>
-                                                            <div class="mx-auto flex items-center justify-center w-full">
-                                                                <h3 class="font-bold text-4xl block">
-                                                                    @lang('lang.settings_howMuch')
-                                                                </h3>
-                                                            </div>
-                                                            <input class="ml-3 mt-10 w-30 h-20 ring-1 rounded-xl ring-gray-100" type='number' />
-
-                                                            <p class="text-sm leading-6 text-gray-400">@lang('lang.settings_minimum') — 60 000сум</p>
-                                                            <div class="mt-2 px-7 py-3">
-                                                                <input type="checkbox" class="w-5 h-5 rounded-md inline-block " />
-                                                                <p class="text-md inline-block ml-2">@lang('lang.settings_order')</p>
-                                                            </div>
-                                                            <div class="items-center px-4 py-3">
-                                                                <button id="ok-btn"
-                                                                    class="px-4 py-2 bg-green-500 text-white text-xl font-medium rounded-md w-2/5 h-16  shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
-                                                                    @lang('lang.settings_toPay')
-                                                                </button>
-                                                                <p>* — @lang('lang.settings_in')<a href="/home/oferta"
-                                                                        class="cursor-pointer text-sm text-blue-400 underline">@lang('lang.settings_offerta')</a></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                {{-- changing modal end --}}
-                                            </div>
-                                        </div>
-    {{-- changing geolocation end --}}
     {{-- notification type --}}
                                         {{-- <div class="notification">
                                             <h3 class="font-bold text-3xl mb-7 mt-10">3. @lang('lang.settings_notifTypes')</h3>
@@ -374,98 +291,128 @@
                     </div>
                 </div>
             </div>
-{{-- right side bar --}}
-            <div
-                class="md:col-span-1 col-span-3  md:mx-2 mx-auto inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
-                <div class="mt-6 ml-4">
-                    <h3 class="font-bold">@lang('lang.settings_performer')</h3>
-                    <p>@lang('lang.settings_since')</p>
-                </div>
-                <div class="contacts relative ">
-                    <div class="ml-4 h-20 grid grid-cols-4">
-                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 rounded-xl col-span-1"
-                            style="background-color: orange;">
-                            <i class="fas fa-phone-alt text-white"></i>
-                        </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-black block mt-2">@lang('lang.settings_phone')</h5>
-                            @if ($user->phone_number!="")
-                            <p class="font-bold text-black block ">{{$user->phone_number}}</p>
-                            @else
-                            @lang('lang.settings_noNumber')
-                            @endif
-                        </div>
+            {{-- right-side-bar --}}
+        <div class="lg:col-span-1 col-span-2 full rounded-xl ring-1 ring-gray-300 h-auto w-72 ml-8 text-gray-600">
+            <div class="mt-6 ml-4">
+                <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
+                <p>@lang('lang.profile_since')</p>
+            </div>
+            <div class="contacts">
+                <div class="ml-4 h-20 grid grid-cols-4">
+                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
+                        style="background-color: orange;">
+                        <i class="fas fa-phone-alt text-white"></i>
                     </div>
-                    <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 rounded-xl col-span-1"
-                            style="background-color: #0091E6;">
-                            <i class="far fa-envelope text-white"></i>
-                        </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-black block mt-2">Email</h5>
-                            <p class="text-black text-sm block ">{{$user->email}}</p>
-                        </div>
+                    <div class="ml-3 col-span-3">
+                        <h5 class="font-bold text-gray-700 block mt-2">@lang('lang.profile_phone')</h5>
+                        @if ($user->phone_number!="")
+                            <p class="text-gray-600 block ">{{$user->phone_number}}</p>
+                        @else
+                            @lang('lang.profile_noNumber')
+                        @endif
                     </div>
                 </div>
-                <p class="mx-5 my-4">@lang('lang.settings_trust')</p>
                 <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
+                        style="background-color: #0091E6;">
+                        <i class="far fa-envelope text-white"></i>
+                    </div>
+                    <div class="ml-3 col-span-3">
+                        <h5 class="font-bold text-gray-700 block mt-2">Email</h5>
+                        <p class="text-sm">{{$user->email}}</p>
+                    </div>
+                </div>
+                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
+                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
                         style="background-color: #4285F4;">
                         <i class="fab fa-google text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">Google</h5>
-                        <a href="https://www.google.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</p></a>
-                    </div>
-                </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
-                        style="background-color: #4285F4;">
-                        <i class="fab fa-facebook-f text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">Facebook</h5>
-                        <a href="https://www.facebook.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fas fa-fingerprint text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">OneID</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
-                        <i class="far fa-envelope text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">mail.ru</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fab fa-twitter text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">Twitter</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fab fa-apple text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">AppleID</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
+                        <h5 class="font-bold text-gray-700 block mt-2">Google</h5>
+                        <p class="font-bold text-gray-700 block ">@lang('lang.profile_confirmed')</p>
                     </div>
                 </div> --}}
             </div>
-{{-- right side bar end--}}
+            <p class="mx-5 my-4">@lang('lang.cash_boost')</p>
+            <div class="telefon ml-4 h-20 grid grid-cols-4">
+                <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                    style="background-color: #4285F4;">
+                    <i class="fab fa-google text-white"></i>
+                </div>
+                <div class="ml-3 col-span-3">
+                    <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
+                    <a href="https://www.google.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a></p></a>
+                </div>
+            </div>
+            <div class="telefon ml-4 h-20 grid grid-cols-4">
+                <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                    style="background-color: #4285F4;">
+                    <i class="fab fa-facebook-f text-white"></i>
+                </div>
+                <div class="ml-3 col-span-3">
+                    <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
+                    <a href="https://www.facebook.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a>
+                </div>
+            </div>
+            {{-- @foreach ($user->Socials as $social)
+            @if ($social->social_name == 'OneID')
+            <div class="telefon ml-4 h-20 grid grid-cols-4">
+                <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <i class="fas fa-fingerprint text-white"></i>
+                </div>
+                <div class="ml-3 col-span-3">
+                    <h5 class="font-bold text-gray-700 block mt-2 text-md">OneID</h5>
+                    <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
+                </div>
+            </div>
+            @endif
+            @if ($social->social_name == 'mail.ru')
+            <div class="telefon ml-4 h-20 grid grid-cols-4">
+                <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <i class="far fa-envelope text-white"></i>
+                </div>
+                <div class="ml-3 col-span-3">
+                    <h5 class="font-bold text-gray-700 block mt-2 text-md">mail.ru</h5>
+                    <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
+                </div>
+            </div>
+            @endif
+            @if ($social->social_name == 'Facebook')
+            <div class="telefon ml-4 h-20 grid grid-cols-4">
+                <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <i class="fab fa-facebook-f text-white"></i>
+                </div>
+                <div class="ml-3 col-span-3">
+                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook </h5>
+                        <a href="{{$social->social_link}}" target="_blank" class=" block text-sm">{{$social->social_name}}</a>
+                </div>
+            </div>
+            @endif
+            @if ($social->social_name == 'Twitter')
+            <div class="telefon ml-4 h-20 grid grid-cols-4">
+                <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <i class="fab fa-twitter text-white"></i>
+                </div>
+                <div class="ml-3 col-span-3">
+                    <h5 class="font-bold text-gray-700 block mt-2 text-md">Twitter</h5>
+                    <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
+                </div>
+            </div>
+            @endif
+            @if ($social->social_name == 'AppleID')
+            <div class="telefon ml-4 h-20 grid grid-cols-4">
+                <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
+                    <i class="fab fa-apple text-white"></i>
+                </div>
+                <div class="ml-3 col-span-3">
+                    <h5 class="font-bold text-gray-700 block mt-2 text-md">AppleID</h5>
+                    <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
+                </div>
+            </div>
+            @endif
+            @endforeach --}}
+        </div>
+            {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
     <script src="https://unpkg.com/imask"></script>

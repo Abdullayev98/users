@@ -80,7 +80,7 @@
                                 <i class="fas fa-star text-yellow-500"></i>
                             </div>
                         </div>
-                        <div class="w-5/12 md:float-none md:float-none">
+                        <div class="lg:w-4/5 w-1/2 md:float-none md:float-none lg:mx-auto mx-0">
                             <div>
                                 <a href="/performers/{{$user->id}}">
                                     <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 "> {{$user->name}} </p>

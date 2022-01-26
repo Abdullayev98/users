@@ -193,7 +193,7 @@ class CreateController extends Controller
         return view('create.contacts', compact('task'));
     }
 
-    public function contact_store(Task $task, UserRequest $request)
+    public function contact_store(Task $task, Request $request)
     {
 //        dd($request->all());
         if (!auth()->check()) {
@@ -223,6 +223,7 @@ class CreateController extends Controller
             return redirect()->route('task.create.verify');
         }
 
+        $task->status = 1;
         $task->user_id = $user->id;
         $task->phone = $user->phone_number;
         $task->save();

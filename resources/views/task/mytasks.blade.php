@@ -44,7 +44,7 @@
                                             <p class="text-sm ml-12 mt-4">{{$task->address}}</p>
                                         </div>
                                         <div class="float-right w-1/4 text-right " id="about">
-                                            <a href="#" class="text-lg">{{$task->budget}}</a>
+                                            <a href="/detailed-tasks/{{$task->id}}" class="text-lg">{{$task->budget}}</a>
                                             @foreach ($categories as $category)
                                             @if ($category->id == $task->category_id)
                                             <p class="text-sm ml-12">{{$category->name}}</p>
@@ -77,7 +77,7 @@
                                         <div class="md:grid md:grid-cols-10 p-2">
                                             <i class="fas fa-user-circle text-4xl col-span-1 m-auto text-blue-400"></i>
                                             <div class="col-span-6">
-                                                <a href="#" class="text-blue-500 text-xl hover:text-red-500">
+                                                <a href="/detailed-tasks/{{$task->id}}" class="text-blue-500 text-xl hover:text-red-500">
                                                     {{$task->name}}
                                                 </a>
                                                 <p class="text-sm mt-2">

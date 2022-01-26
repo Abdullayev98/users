@@ -422,7 +422,7 @@ return [
     aloqa ma'lumotlari bilan javoblar. Bitta javobning narxi vazifalar toifasiga bog'liq va
     20 rubldan boshlanadi. Fikr qaytarilmaydi. ",
     'cash_question1' => "Depozitning minimal miqdori qancha?",
-    'cash_answer1' => "400 rubl.",
+    'cash_answer1' => "4000 UZS.",
     'cash_question2' => "Universal Xizmatlar hisobimdan qanday qilib pulni qaytarishim mumkin?",
     'cash_nswer2' => "Ushbu havolani bosing va qaytarmoqchi bo'lgan summani kiriting. Odatda pul
     Universal Services-da balans to'ldirilgan hisob raqamiga o'tkaziladi
@@ -708,7 +708,7 @@ return [
     'navbar_profile' => "Profil",
     'navbar_set' => "Sozlamalar",
     'navbar_howMuch' => "Hamyoningizni <br> qanchaga toldirmoqchisiz",
-    'navbar_minimum' => "Minimal toldirish miqdori - 1000 som",
+    'navbar_minimum' => "Minimal toldirish miqdori - 4000 som",
     'navbar_toPayment' => "Tolovga otish",
     'navbar_paymentWay' => "Tolov turlari",
     'navbar_payment' => "Tolov",

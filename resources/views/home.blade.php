@@ -110,32 +110,14 @@
                 </a>
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 my-8">
-                <div class="text-center">
-                    <img src="{{asset('/images/home_page_1.jpg')}}"
-                         class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
-                    <h1 class="font-bold my-4">@lang('lang.body_comfortPay')</h1>
-                    <p class="text-sm">
-                    @lang('lang.body_securePay')
-                    </p>
-                </div>
-                <div class="text-center mx-4">
-                    <img
-                        src="{{ asset('/images/home_page_3.jpg') }}"
-                        class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72 w-52 h-52" alt="">
-                    <h1 class="font-bold my-4">@lang('lang.body_loyalPerformer')</h1>
-                    <p class="text-sm">
-                    @lang('lang.body_performerDocs')
-                    </p>
-                </div>
-                <div class="text-center mx-4">
-                    <img
-                        src="{{ asset('images/home_page_2.jpg') }}"
-                        class="mx-auto md:h-52 md:w-52 lg:h-72 lg:w-72 w-52 h-52" alt="">
-                    <h1 class="font-bold my-4">@lang('lang.body_feedback')</h1>
-                    <p class="text-sm">
-                    @lang('lang.body_over1mln')
-                    </p>
-                </div>
+                @foreach ($trusts as $trust)
+                    <div class="text-center">
+                        <img src="/storage/{{$trust->image}}"
+                            class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
+                        <h1 class="font-bold my-4">{{ $trust->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
+                        <p class="text-sm">{{ $trust->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
 
@@ -157,20 +139,6 @@
                     </div>
                 </div>
                 @endforeach
-                {{-- <div class="swiper-slide w-full ">
-                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
-                        <div class="w-1/2 lg:w-5/12">
-                            <h1 class=" text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">Добро пожаловать на U-Ser</h1>
-                            <p class="text-lg mb-4">«Проверенные исполнители» подтвердили свои документы на Universal Services.</p>
-                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
-                        </div>
-                        <div class="w-1/2 lg:w-7/12">
-                            <img src="{{ asset('/images/homepage_slide1.jfif') }}"
-                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
-                                 alt="">
-                        </div>
-                    </div>
-                </div> --}}
             </div>
             <div class="text-white swiper-button-next"></div>
             <div class="text-white swiper-button-prev"></div>
@@ -252,9 +220,9 @@
                 @lang('lang.body_findPerformer')
                 </div>
             </div>
-            <div class="w-2/3 mx-auto my-8 text-center">
-                <p class="text-xs text-gray-400">@lang('lang.body_ecomomyText')</p>
-            </div>
+{{--            <div class="w-2/3 mx-auto my-8 text-center">--}}
+{{--                <p class="text-xs text-gray-400">@lang('lang.body_ecomomyText')</p>--}}
+{{--            </div>--}}
         </div>
         <div class="bg-blue-100">
             <div class="w-11/12 md:w-9/12 mx-auto pb-24">
