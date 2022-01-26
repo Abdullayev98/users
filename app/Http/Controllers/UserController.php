@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserPhoneRequest;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Trust;
 use App\Models\Advant;
 use App\Models\UserVerify;
 use App\Models\How_work_it;
