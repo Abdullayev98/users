@@ -24,6 +24,11 @@ use App\Http\Controllers\Task\CreateController;
 |
 */
 
+Route::group(['middleware'=>'auth'], function (){
+    Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('task.mytasks');
+});
+
+
 Route::get('/for_del_new_task/{id}', [CreateController::class, 'deletetask']);
 Route::get('/fordelnotif/{id}/{task_id}', [PerformersController::class, 'del_notif']);
 Route::post('/performers', [PerformersController::class, 'service']);
@@ -67,8 +72,6 @@ Route::get('/verification', function () {
 });
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');
-
-Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('task.mytasks');
 
 Route::get('/contacts', function() {
     return view('contacts.contacts');
