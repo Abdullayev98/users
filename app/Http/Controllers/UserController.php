@@ -31,7 +31,8 @@ class UserController extends Controller
         return view('auth.signin');
     }
 
-    public function code(){
+    public function code()
+    {
         return view('auth.register_code');
     }
     public function signup()
@@ -69,8 +70,8 @@ class UserController extends Controller
             $users_count = User::where('role_id', 2)->count();
             $random_category = Category::all()->random();
             $advants = Advant::all();
-            $trusts = Trust::all();
-            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category','trusts'))->withSuccess('Logged-in');
+            $trusts = Trust::orderby('id', 'desc')->get();
+            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category', 'trusts'))->withSuccess('Logged-in');
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
@@ -106,10 +107,10 @@ class UserController extends Controller
         $sms_otp = rand(100000, 999999);
 
         if ($request->has('email')) {
-//            Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
-//                $message->to($request->email);
-//                $message->subject('Email Verification Mail');
-//            });
+            //            Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
+            //                $message->to($request->email);
+            //                $message->subject('Email Verification Mail');
+            //            });
         }
         $message = "Code: {$sms_otp} user.uz";
         $response = (new SmsService())->send($data['phone_number'], $message);
@@ -121,25 +122,25 @@ class UserController extends Controller
         return redirect()->route('register.code');
     }
 
-    public function code_submit(Request $request){
+    public function code_submit(Request $request)
+    {
 
         $user = auth()->user();
-        if ($request->code == $user->verify_code){
-            if(strtotime($user->verify_expiration) >= strtotime(Carbon::now())){
+        if ($request->code == $user->verify_code) {
+            if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
                 return redirect('/profile');
-            }else{
-
+            } else {
             }
         }
-
     }
 
 
-    public function reset_submit(UserPhoneRequest $request){
+    public function reset_submit(UserPhoneRequest $request)
+    {
 
         $data = $request->validated();
         $user = User::query()->where('phone_number', $data['phone_number'])->first();
-        if (!$user){
+        if (!$user) {
             return back();
         }
         $sms_otp = rand(100000, 999999);
@@ -147,47 +148,44 @@ class UserController extends Controller
         $user->verify_expiration = Carbon::now()->addMinutes(5);
         $user->save();
         $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
-        session(['phone' =>$data['phone_number']]);
+        session(['phone' => $data['phone_number']]);
 
         return redirect()->route('password.reset.code.view');
-
     }
 
-    public function reset_code(Request $request){
+    public function reset_code(Request $request)
+    {
         $phone_number = $request->session()->get('phone');
 
         $user = User::query()->where('phone_number', $phone_number)->first();
 
-        if ($request->code == $user->verify_code){
-            if(strtotime($user->verify_expiration) >= strtotime(Carbon::now())){
+        if ($request->code == $user->verify_code) {
+            if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
                 return redirect()->route('password.reset.password');
-            }else{
-
+            } else {
             }
         }
-
-
     }
 
 
-    public function reset_code_view(){
+    public function reset_code_view()
+    {
 
         return view('auth.code');
-
     }
 
-    public function reset_password(Request $request){
+    public function reset_password(Request $request)
+    {
         return view('auth.confirm_password');
-
     }
 
-    public function reset_password_save(Request $request){
+    public function reset_password_save(Request $request)
+    {
         $user = User::query()->where('phone_number', $request->session()->get('phone'))->first();
         $user->password = bcrypt($request->password);
         $user->save();
         auth()->login($user);
         return redirect('/profile');
-
     }
     public function createUser(array $data)
     {
@@ -197,7 +195,6 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
-
     }
 
     public function dashboardView()

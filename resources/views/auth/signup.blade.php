@@ -33,7 +33,7 @@
                         @if ($errors->has('email'))
                             <p class="text-danger" style="color: red">{{ $errors->first('email') }}</p>
                         @endif
-                            <input type="text" id="phone_number" placeholder="+998(00)000-00-00" value="+998{{ request()->input('phone_number', old('phone_number')) }}"
+                            <input type="text" id="phone_number" placeholder="+998(00)000-00-00" value="+998{{ request()->input('phone_number') }}"
                                 id="phone_number" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                             <br>
                         <input type="hidden" name="phone_number" id="phone">
@@ -45,7 +45,7 @@
                             <br>
 
                         @error('phone_number')
-                        <p>{{ $message }}</p>
+                        <p style="color: red">{{ $message }}</p>
                         @enderror
                         @if ($errors->has('password'))
                         <div class="text-danger" style="color: red">{{ $errors->first('password') }}</div>
