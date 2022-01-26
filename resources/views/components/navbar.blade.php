@@ -683,9 +683,9 @@ el_for_create.insertAdjacentHTML('afterend', `
             denyButtonText: '@lang('lang.name_delete')',
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.close()
+                window.location.href = document.location.href;
             } else if (result.isDenied) {
-if(var_for_id_task){
+if(var_for_id_task != null){
 $.ajax({
 	url: '/for_del_new_task/'+ var_for_id_task +'',
 	method: 'get',

@@ -1,9 +1,13 @@
 @extends("layouts.app")
 
-@include('layouts.fornewtask')
+
 
 @section("content")
 
+
+    <script>
+        let var_for_id_task = null;
+    </script>
     <!-- Information section -->
     <!-- <form class="" action="" method="post"> -->
 
