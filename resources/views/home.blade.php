@@ -110,14 +110,14 @@
                 </a>
             </div>
             <div class="grid md:grid-cols-3 grid-cols-1 my-8">
-                <div class="text-center">
-                    <img src="{{asset('/images/home_page_1.jpg')}}"
-                         class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
-                    <h1 class="font-bold my-4">@lang('lang.body_comfortPay')</h1>
-                    <p class="text-sm">
-                    @lang('lang.body_securePay')
-                    </p>
-                </div>
+                @foreach ($trusts as $trust)
+                    <div class="text-center">
+                        <img src="/storage/{{$trust->image}}"
+                            class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
+                        <h1 class="font-bold my-4">{{ $trust->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
+                        <p class="text-sm">{{ $trust->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}</p>
+                    </div>
+                @endforeach
                 {{-- <div class="text-center">
                     <img src="{{asset('/images/home_page_1.jpg')}}"
                          class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">

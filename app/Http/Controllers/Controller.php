@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Models\How_work_it;
 use App\Models\User;
 use App\Models\Reklama;
+use App\Models\Trust;
 use App\Models\UserView;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -34,7 +35,8 @@ class Controller extends BaseController
         $users_count = User::where('role_id', 2)->count();
         $advants = Advant::all();
         $reklamas = Reklama::all();
-        return view('home',compact('tasks','howitworks', 'categories','random_category','users_count','advants','reklamas'));
+        $trusts = Trust::all();
+        return view('home',compact('tasks','howitworks', 'categories','random_category','users_count','advants','reklamas','trusts'));
     }
 
     public function home_profile()
