@@ -3,57 +3,48 @@
 @section("content")
 
     <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
-    <div class="container md:w-4/5 w-full mx-auto text-base">
+    <div class="container mx-auto text-base mt-4">
 
 
-        <div class="grid md:grid-cols-3 grid-flow-row mt-10 inline-block">
+        <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
 
 
-            {{-- user ma'lumotlari --}}
-            <div class="col-span-2 mx-auto">
+                {{-- user ma'lumotlari --}}
+            <div class="col-span-2 w-full md:mx-auto mx-4">
                 <figure class="w-full">
-                    <div class="top-0 right-0 float-right text-gray-500">
+                    <div class="float-right mr-8 text-gray-500">
                         <i class="far fa-eye"> @lang('lang.profile_view')</i>
                     </div>
                     <br>
-                    <h2 class="font-bold text-2xl mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
-                    <div class="grid grid-cols-2">
-                        <div class="col-span-1 object-center sm:w-40 h-50">
-                            <img class="rounded-min mx-left overflow-hidden"
-                            @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
-                            src='{{asset("AvatarImages/images/users/default.png")}}'
-                            @else
-                            src="{{asset("AvatarImages/{$user->avatar}")}}"
-                            @endif alt="" width="384" height="512">
+                    <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
+                    <div class="flex flex-row mt-6">
+                        <div class="w-1/3">                           
+                                <img class="border border-3 border-gray-400 h-40 w-40"
+                                @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
+                                src='{{asset("images/default_img.jpg")}}'
+                                @else
+                                src="{{asset("AvatarImages/{$user->avatar}")}}"
+                                @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="rounded-md bg-gray-200 sm:w-40 mt-2 px-2" type="button">
+                                <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
-                                    <label for="file">
+                                    <label for="file" class="p-3">
                                         <i class="fas fa-camera"></i>
                                         <span>@lang('lang.cash_changeImg')</span>
                                     </label>
                                 </div>
-                                <div class="rounded-md bg-green-500 w-40 mt-2 px-2 hidden" type="button" id="buttons" onclick="fileadd()">
+                                <div class="rounded-md bg-green-400 w-40 hidden mt-3 py-1" type="button" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
-                                    <label for="sub1">
+                                    <label for="sub1" class="p-3">
                                         <i class="fas fa-save"></i>
                                         <span>@lang('lang.cash_addImg')</span>
                                     </label>
                                 </div>
                             </form>
                         </div>
-                        {{-- <div class="relative inline-block object-center  w-40 h-50">
-                            <img class="rounded-min mx-left overflow-hidden"
-                                src="{{asset($user->avatar)}}" alt="" width="384"
-                                height="512">
-                                    <button class="rounded-md bg-gray-200 w-40 mt-2 px-2" type="button" onclick="openpopup()">
-                                        <i class="fas fa-camera"></i>
-                                        <span>@lang('lang.cash_changeImg')</span>
-                                    </button>
-                        </div> --}}
 
-                        <div class="md:col-span-2 col-span-3 text-base lg:col-span-1 ml-3 mt-1">
+                        <div class="w-2/3 text-base text-gray-500 lg:ml-0 ml-4">
                             @if($user->age != "")
                                 <p class="inline-block mr-2">
                                     {{$user->age}}
@@ -86,19 +77,19 @@
                 <div class="content mt-20 ">
                     <div class= "grid md:grid-cols-10 w-full">
                         <ul class=" md:col-span-9 items-center w-3/4 md:w-full" id="tabs">
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile" class=" md:text-[18px] text-[14px] font-bold block " id="default-tab">@lang('lang.cash_aboutMe')</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile/cash" class=" md:text-[18px] text-[14px]">@lang('lang.cash_check')</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px]" id="settingsText">@lang('lang.cash_settings')</a></li>
+                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile" class=" md:text-[18px] text-[14px] font-bold block text-gray-700" id="default-tab">@lang('lang.cash_aboutMe')</a></li>
+                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile/cash" class=" md:text-[18px] text-[14px] text-gray-600">@lang('lang.cash_check')</a></li>
+                            <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px] text-gray-600" id="settingsText">@lang('lang.cash_settings')</a></li>
 
                         </ul>
-                        <div class="md:col-span-1 md:block hidden" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl" ></i></a></div>
+                        <div class="md:col-span-1 md:block hidden text-gray-600" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl" ></i></a></div>
 
                     </div>
                     <hr>
                     {{-- ABOUT-ME start --}}
                     <div class="about-me block" id="tab-profile">
                         <div class="about-a-bit mt-10">
-                            <h4 class="inline font-bold text-lg">@lang('lang.profile_aboutMe')</h4>
+                            <h4 class="inline font-bold text-lg text-gray-700">@lang('lang.profile_aboutMe')</h4>
                                 @if ($user->description == Null)
                                     <span class="ml-10">
                                         <i class="fas fa-pencil-alt inline text-gray-700"></i>
@@ -114,13 +105,13 @@
                                 @endif
                                 <form action="{{route('edit.description')}}" method="POST" class="formdesc hidden">
                                     @csrf
-                                    <textarea name="description" name="description" class="w-full h-32 border border-black-1000 py-2 px-4 mt-3" @if (!$user->description) placeholder="Enter description"@endif >@if ($user->description){{$user->description}}@endif
+                                    <textarea name="description" name="description" class="w-full h-32 border border-gray-400 py-2 px-4 mt-3" @if (!$user->description) placeholder="Enter description"@endif >@if ($user->description){{$user->description}}@endif
                                     </textarea><br>
-                                    <input type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" id="s1" value="@lang('lang.profile_save')">
-                                    <button id="s2" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 border border-blue-700 rounded">@lang('lang.profile_cancel')</button>
+                                    <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="@lang('lang.profile_save')">
+                                    <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">@lang('lang.profile_cancel')</a>
                                 </form>
                         </div>
-                        <h4 class="font-bold mt-5">@lang('lang.profile_workExample')</h4>
+                        <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full mt-2 mx-auto flex flex-wrap">
                             @foreach ($ports as $port)
                                 <div class="lg:w-1/3 md:w-1/2 w-full p-4 rounded-xl hover:bg-gray-100 cursor-pointer ">
@@ -158,23 +149,22 @@
                     {{-- about-me end --}}
                 </div>
             </div>
-            {{-- right-side-bar --}}
-            <div
-                class="md:col-span-1 col-span-3 md:mx-2 mx-auto inline-block w-4/5 float-right right-20 rounded-xl ring-1 ring-gray-100 h-auto">
+                {{-- right-side-bar --}}
+            <div class="lg:col-span-1 col-span-2 full rounded-xl ring-1 ring-gray-300 h-auto w-72 ml-8 text-gray-600">
                 <div class="mt-6 ml-4">
-                    <h3 class="font-bold">@lang('lang.profile_performer')</h3>
+                    <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
                     <p>@lang('lang.profile_since')</p>
                 </div>
-                <div class="contacts  ">
+                <div class="contacts">
                     <div class="ml-4 h-20 grid grid-cols-4">
                         <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
                              style="background-color: orange;">
                             <i class="fas fa-phone-alt text-white"></i>
                         </div>
                         <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-black block mt-2">@lang('lang.profile_phone')</h5>
+                            <h5 class="font-bold text-gray-700 block mt-2">@lang('lang.profile_phone')</h5>
                             @if ($user->phone_number!="")
-                                <p class="font-bold text-black block ">{{$user->phone_number}}</p>
+                                <p class="text-gray-600 block ">{{$user->phone_number}}</p>
                             @else
                                 @lang('lang.profile_noNumber')
                             @endif
@@ -186,7 +176,7 @@
                             <i class="far fa-envelope text-white"></i>
                         </div>
                         <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-black block mt-2">Email</h5>
+                            <h5 class="font-bold text-gray-700 block mt-2">Email</h5>
                             <p class="text-sm">{{$user->email}}</p>
                         </div>
                     </div>
@@ -196,8 +186,8 @@
                             <i class="fab fa-google text-white"></i>
                         </div>
                         <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-black block mt-2">Google</h5>
-                            <p class="font-bold text-black block ">@lang('lang.profile_confirmed')</p>
+                            <h5 class="font-bold text-gray-700 block mt-2">Google</h5>
+                            <p class="font-bold text-gray-700 block ">@lang('lang.profile_confirmed')</p>
                         </div>
                     </div> --}}
                 </div>
@@ -208,7 +198,7 @@
                         <i class="fab fa-google text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">Google</h5>
+                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
                         <a href="https://www.google.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a></p></a>
                     </div>
                 </div>
@@ -218,7 +208,7 @@
                         <i class="fab fa-facebook-f text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">Facebook</h5>
+                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
                         <a href="https://www.facebook.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div>
@@ -229,7 +219,7 @@
                         <i class="fas fa-fingerprint text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">OneID</h5>
+                        <h5 class="font-bold text-gray-700 block mt-2 text-md">OneID</h5>
                         <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div>
@@ -240,7 +230,7 @@
                         <i class="far fa-envelope text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">mail.ru</h5>
+                        <h5 class="font-bold text-gray-700 block mt-2 text-md">mail.ru</h5>
                         <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div>
@@ -251,7 +241,7 @@
                         <i class="fab fa-facebook-f text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-black block mt-2 text-md">Facebook </h5>
+                            <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook </h5>
                             <a href="{{$social->social_link}}" target="_blank" class=" block text-sm">{{$social->social_name}}</a>
                     </div>
                 </div>
@@ -262,7 +252,7 @@
                         <i class="fab fa-twitter text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">Twitter</h5>
+                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Twitter</h5>
                         <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div>
@@ -273,14 +263,14 @@
                         <i class="fab fa-apple text-white"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-black block mt-2 text-md">AppleID</h5>
+                        <h5 class="font-bold text-gray-700 block mt-2 text-md">AppleID</h5>
                         <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
                     </div>
                 </div>
                 @endif
                 @endforeach --}}
             </div>
-            {{-- tugashi o'ng tomon ispolnitel --}}
+                {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
 
