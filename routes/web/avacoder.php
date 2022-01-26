@@ -8,9 +8,9 @@ use App\Http\Controllers\Task\ResponseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-
-
-Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
+Route::group(['middleware'=>'auth'], function (){
+    Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
+});
 
 Route::prefix("task")->group(function (){
     Route::prefix("create")->group(function (){

@@ -545,6 +545,8 @@
 
         function img_show() {
             $(".show_tasks").empty();
+            $(".small-map").empty();
+            $(".big-map").empty();
             $(".show_tasks").append(
                 `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
                 <div></div>
