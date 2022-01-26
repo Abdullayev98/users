@@ -162,7 +162,7 @@
 
                                     <button class="mx-5 byid">@lang('lang.search_byDate')</button>
 
-                                    <button id="srochnost" class=" focus:outline-none mx-5 active">@lang('lang.search_byHurry')</button>
+                                    <button id="srochnost" class="  mx-5 active">@lang('lang.search_byHurry')</button>
                                     <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                                 </div>
                             </div>
