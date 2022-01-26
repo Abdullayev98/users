@@ -25,7 +25,7 @@
           <div class=" float-left ml-8">
                 <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
               <button class="" type="button" data-dropdown-toggle="notification">
-                  <i class="text-xl text-slate-400 hover:text-orange-500 far fa-bell"></i>
+                  <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-bell"></i>
               </button>
               <!-- Dropdown menu -->
               <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="notification">
@@ -47,7 +47,7 @@
           </div>
           <div class="ml-4">
               <a href="/chat">
-                  <i class="text-xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
+                  <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-comment-alt"></i>
               </a>
           </div>
         </div>
@@ -79,7 +79,7 @@
                                 {{-- icon-2 --}}
                                 <div class="max-w-lg mx-auto ml-6">
                                   <a href="/profile" class="delete-task cursor-pointer profiles">
-                                    <button class="" type="button" data-dropdown-toggle="dropdownuser"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
+                                    <button class="" type="button" data-dropdown-toggle="dropdownuser"><i class="text-2xl text-gray-500 hover:text-yellow-500  far fa-user"></i>
                                     </button>
                                   </a>
                                 </div>
@@ -226,7 +226,7 @@ use Illuminate\Support\Facades\Auth;
 
 @endforeach
                 <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
-                    <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
+                    <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                     </button>
                     <!-- Dropdown menu -->
                     <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
@@ -273,7 +273,7 @@ use Illuminate\Support\Facades\Auth;
                 {{-- icon-3 --}}
                 <div class=" float-left">
                     <a class="delete-task" href="/chat">
-                        <i class=" text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
+                        <i class=" text-2xl text-gray-500 hover:text-yellow-500 far fa-comment-alt"></i>
                     </a>
                 </div>
 
@@ -286,7 +286,7 @@ use Illuminate\Support\Facades\Auth;
 
                 {{-- icon-2 --}}
                 <div class="max-w-lg ml-5 float-left">
-                    <button class="" type="button" data-dropdown-toggle="dropdowndesk"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
+                    <button class="" type="button" data-dropdown-toggle="dropdowndesk"><i class="text-2xl text-gray-500 hover:text-yellow-500  far fa-user"></i>
                     </button>
                     <!-- Dropdown menu -->
                     <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdowndesk">

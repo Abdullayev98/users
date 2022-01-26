@@ -708,7 +708,7 @@ return [
     'navbar_profile' => "Profil",
     'navbar_set' => "Sozlamalar",
     'navbar_howMuch' => "Hamyoningizni <br> qanchaga toldirmoqchisiz",
-    'navbar_minimum' => "Minimal toldirish miqdori - 1000 som",
+    'navbar_minimum' => "Minimal toldirish miqdori - 4000 som",
     'navbar_toPayment' => "Tolovga otish",
     'navbar_paymentWay' => "Tolov turlari",
     'navbar_payment' => "Tolov",

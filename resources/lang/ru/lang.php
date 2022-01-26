@@ -710,7 +710,7 @@ return [
     'navbar_profile' => "Профиль",
     'navbar_set' => "Настройки",
     'navbar_howMuch' => "На какую сумму хотите пополнить <br> кошелёк?",
-    'navbar_minimum' => "Сумма пополнения, минимум — 1000 UZS",
+    'navbar_minimum' => "Сумма пополнения, минимум — 4000 UZS",
     'navbar_toPayment' => "К оплате",
     'navbar_paymentWay' => "Способ оплаты",
     'navbar_payment' => "Оплата",
