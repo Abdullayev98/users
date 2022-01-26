@@ -25,23 +25,28 @@
                             id="name" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                             <br>
                         @if ($errors->has('name'))
-                            <span class="text-danger" style="color: red">{{ $errors->first('name') }}</span>
+                            <p class="text-danger" style="color: red">{{ $errors->first('name') }}</p>
                         @endif
                             <input type="text" name="email" placeholder="@lang('lang.signup_elpocta')" value="{{ request()->input('email', old('email')) }}"
                             id="email_address" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                             <br>
                         @if ($errors->has('email'))
-                            <span class="text-danger" style="color: red">{{ $errors->first('email') }}</span>
+                            <p class="text-danger" style="color: red">{{ $errors->first('email') }}</p>
                         @endif
-                            <input type="text" name="phone_number" id="phone_number" placeholder="+998(00)000-00-00" value="{{ request()->input('phone_number', old('phone_number')) }}"
+                            <input type="text" id="phone_number" placeholder="+998(00)000-00-00" value="+998{{ request()->input('phone_number', old('phone_number')) }}"
                                 id="phone_number" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                             <br>
+                        <input type="hidden" name="phone_number" id="phone">
                         @if ($errors->has('phone_number'))
-                            <span class="text-danger" style="color: red">{{ $errors->first('phone_number') }}</span>
+                            <p class="text-danger" style="color: red">{{ $errors->first('phone_number') }}</p>
                         @endif
                             <input type="password" name="password" placeholder="@lang('lang.signup_password')"
                                 id="password" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" required>
                             <br>
+
+                        @error('phone_number')
+                        <p>{{ $message }}</p>
+                        @enderror
                         @if ($errors->has('password'))
                         <div class="text-danger" style="color: red">{{ $errors->first('password') }}</div>
                         @endif
@@ -55,36 +60,23 @@
                 </button>
             </form>
         </div>
-        <script src="https://unpkg.com/imask"></script>
+
+        <script src='https://unpkg.com/imask'></script>
         <script>
             var element = document.getElementById('phone_number');
-        var maskOptions = {
-            mask: '(00)000-00-00',
-            lazy: false
-        }
-        var mask = new IMask(element, maskOptions);
+            var maskOptions = {
+                mask: '+998(00)000-00-00',
+                lazy: false
+            }
+            var mask = new IMask(element, maskOptions);
 
-        var element2 = document.getElementById('email');
-        var maskOptions2 = {
-            mask:function (value) {
-                        if(/^[a-z0-9_\.-]+$/.test(value))
-                            return true;
-                        if(/^[a-z0-9_\.-]+@$/.test(value))
-                            return true;
-                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
-                            return true;
-                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
-                            return true;
-                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
-                            return true;
-                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.$/.test(value))
-                            return true;
-                        if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.[a-z]{1,4}$/.test(value))
-                            return true;
-                        return false;
-                            },
-            lazy: false
-        }
-        var mask2 = new IMask(element2, maskOptions2);
+            $("#phone_number").keyup(function (){
+                var text = $(this).val()
+                text = text.replace(/[^0-9.]/g, "")
+                text = text.slice(3)
+                $("#phone").val(text)
+                console.log($("#phone").val())
+            })
+
         </script>
 @endsection

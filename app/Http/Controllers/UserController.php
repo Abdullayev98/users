@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserPhoneRequest;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Advant;
 use App\Models\UserVerify;
 use App\Models\How_work_it;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use TCG\Voyager\Models\Category;
 use PlayMobile\SMS\SmsService;
-use Mail;
 use Hash;
 
 class UserController extends Controller
@@ -28,6 +30,9 @@ class UserController extends Controller
         return view('auth.signin');
     }
 
+    public function code(){
+        return view('auth.register_code');
+    }
     public function signup()
     {
         return view('auth.signup');
@@ -69,13 +74,15 @@ class UserController extends Controller
         }
     }
 
+
+
     public function customSignup(Request $request)
     {
         $data = $request->validate(
             [
                 'name' => 'required',
-                'phone_number' => 'required',
-                'email' => 'required|email|unique:users,email',
+                'phone_number' => 'required|unique:users',
+                'email' => 'required|email|unique:users|email',
                 'password' => 'required|min:6|confirmed',
             ],
             [
@@ -85,41 +92,101 @@ class UserController extends Controller
                 'phone_number.regex' => 'Неверный формат номера телефона!',
                 'phone_number.unique' => 'Этот номер есть в системе!',
                 'email.required' => 'Требуется заполнение!',
+                'email.email' => 'Требуется заполнение!',
                 'email.unique' => 'Пользователь с такой почтой уже существует!',
                 'password.required' => 'Требуется заполнение!',
                 'password.min' => 'Пароли должны содержать не менее 6-ми символов',
                 'password.confirmed' => 'Пароль не совпадает'
             ]
         );
-        $check = $this->createUser($data);
+        $user = User::create($data);
         $token = Str::random(64);
-        $sms_otp = rand(10000, 99999);
-        UserVerify::create([
-            'user_id' => $check->id,
-            'token' => $token,
-            'sms_otp' => $sms_otp
-        ]);
+        $sms_otp = rand(100000, 999999);
 
         if ($request->has('email')) {
-            Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
-                $message->to($request->email);
-                $message->subject('Email Verification Mail');
-            });
-        } elseif ($request->has('phone_number')) {
-            $phone = str_replace('+998', '', $data['phone_number']);
-            $message = 'Code: {$sms_otp} user.uz';
-            $response = (new SmsService())->send($phone, $message);
+//            Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
+//                $message->to($request->email);
+//                $message->subject('Email Verification Mail');
+//            });
         }
-        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id', 'desc')->take(15)->get();
-        $advants = Advant::all();
-        $howitworks = How_work_it::all();
-        $users_count = User::where('role_id', 2)->count();
-        $random_category = Category::first();
-        $reklamas = Reklama::all();
-        return view('home', compact('tasks', 'howitworks', 'categories', 'random_category', 'users_count', 'advants','reklamas'))->withSuccess('Logged-in');
+        $message = "Code: {$sms_otp} user.uz";
+        $response = (new SmsService())->send($data['phone_number'], $message);
+        $user->verify_code = $sms_otp;
+        $user->verify_expiration = Carbon::now()->addMinutes(5);
+        $user->save();
+        auth()->login($user);
+
+        return redirect()->route('register.code');
     }
 
+    public function code_submit(Request $request){
+
+        $user = auth()->user();
+        if ($request->code == $user->verify_code){
+            if(strtotime($user->verify_expiration) >= strtotime(Carbon::now())){
+                return redirect('/profile');
+            }else{
+
+            }
+        }
+
+    }
+
+
+    public function reset_submit(UserPhoneRequest $request){
+
+        $data = $request->validated();
+        $user = User::query()->where('phone_number', $data['phone_number'])->first();
+        if (!$user){
+            return back();
+        }
+        $sms_otp = rand(100000, 999999);
+        $user->verify_code = $sms_otp;
+        $user->verify_expiration = Carbon::now()->addMinutes(5);
+        $user->save();
+        $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
+        session(['phone' =>$data['phone_number']]);
+
+        return redirect()->route('password.reset.code.view');
+
+    }
+
+    public function reset_code(Request $request){
+        $phone_number = $request->session()->get('phone');
+
+        $user = User::query()->where('phone_number', $phone_number)->first();
+
+        if ($request->code == $user->verify_code){
+            if(strtotime($user->verify_expiration) >= strtotime(Carbon::now())){
+                return redirect()->route('password.reset.password');
+            }else{
+
+            }
+        }
+
+
+    }
+
+
+    public function reset_code_view(){
+
+        return view('auth.code');
+
+    }
+
+    public function reset_password(Request $request){
+        return view('auth.confirm_password');
+
+    }
+
+    public function reset_password_save(Request $request){
+        $user = User::query()->where('phone_number', $request->session()->get('phone'))->first();
+        $user->password = bcrypt($request->password);
+        $user->save();
+        auth()->login($user);
+        return redirect('/profile');
+
+    }
     public function createUser(array $data)
     {
         return User::create([

@@ -8,9 +8,9 @@ use App\Http\Controllers\Task\ResponseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-
-
-Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
+Route::group(['middleware'=>'auth'], function (){
+    Route::get('/home/profile', [Controller::class, 'home_profile'])->name('home.profile');
+});
 
 Route::prefix("task")->group(function (){
     Route::prefix("create")->group(function (){
@@ -98,6 +98,11 @@ Route::get('/reset/password', [UserController::class,'reset_password'])->name('p
 Route::post('/reset/password', [UserController::class,'reset_password_save'])->name('password.reset.password.save');
 Route::get('/code', [UserController::class,'reset_code_view'])->name('password.reset.code.view');
 Route::post('/code', [UserController::class,'reset_code'])->name('password.reset.code');
+
+Route::get('/register/code', [UserController::class,'code'])->name('register.code');
+Route::post('/register/code', [UserController::class,'code_submit'])->name('register.code');
+
+
 
 
 
