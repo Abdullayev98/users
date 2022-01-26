@@ -17,11 +17,9 @@ public function ref(Request $request){
     if($request->get("paymethod") == 'Click'){
 
         $new_article = All_transaction::create([
-
-            'user_id'=> Auth::id(),
-            'amount'=> $request->get("amount"),
-            'method'=> "Click",
-
+            'user_id' => Auth::id(),
+            'amount'  => $request->get("amount"),
+            'method'  => "Click",
         ]);
 
         $amount = $request->get("amount");
@@ -32,15 +30,12 @@ public function ref(Request $request){
       }
 
     if($request->get("paymethod") == 'PayMe'){
-
         $tr = new All_transaction();
         $tr->user_id = Auth::id();
         $tr->amount  = $request->get("amount");
         $tr->method  = $tr::DRIVER_PAYME;
         $tr->state   = $tr::STATE_WAITING_PAY;
         $tr->save();
-
-        // return redirect()->route('paycom.send', ['transaction' => $tr]);
         return view('paycom.send', ['transaction' => $tr]);
     }
 
@@ -54,7 +49,6 @@ public function ref(Request $request){
 public function prepare(Request $request){
 
     $new_prepare = Prepare::create([
-
         'click_trans_id'=> $request->get("click_trans_id"),
         'service_id'=> $request->get("service_id"),
         'click_paydoc_id'=> $request->get("click_paydoc_id"),
@@ -65,8 +59,6 @@ public function prepare(Request $request){
         'error_note'=> $request->get("error_note"),
         'sign_time'=> $request->get("sign_time"),
         'sign_string'=> $request->get("sign_string"),
-
-
     ]);
 
 
@@ -84,7 +76,6 @@ public function prepare(Request $request){
 public function complete(Request $request){
 
     $new_complete = Complete::create([
-
         'click_trans_id'=> $request->get("click_trans_id"),
         'service_id'=> $request->get("service_id"),
         'click_paydoc_id'=> $request->get("click_paydoc_id"),
@@ -96,8 +87,6 @@ public function complete(Request $request){
         'error_note'=> $request->get("error_note"),
         'sign_time'=> $request->get("sign_time"),
         'sign_string'=> $request->get("sign_string"),
-
-
     ]);
 
     $click_trans_id = $new_complete->click_trans_id;
@@ -111,18 +100,16 @@ public function complete(Request $request){
     $balance = WalletBalance::where('user_id', $user->user_id)->first();
 
     if(isset($balance)){
-    $summa = $balance->balance + $user->amount;
+        $summa = 1*$balance->balance + 1*$user->amount;
     }else{
         WalletBalance::create([
-            'user_id'=> $user->id,
-            'amount'=> $user->amount,
+            'user_id' => $user->id,
+            'amount'  => 1*$user->amount,
         ]);
         $summa = $user->amount;
     }
-
-    WalletBalance::where('user_id', $user->user_id)->update(['balance' => $summa]);
+    WalletBalance::where('user_id', $user->user_id)->update(['balance' => 1*$summa]);
     All_transaction::where('id', $user->id)->update(['status' => 1]);
-
     return ['click_trans_id' => $click_trans_id,'merchant_trans_id' => $merchant_trans_id,'merchant_confirm_id' => $merchant_confirm_id,'error' => $error,'error_note' => $error_note];
 
 }
