@@ -2,6 +2,7 @@
 
 return [
     // home.blade start
+    "random_cat" => "Piyoda kurerlik xizmatlari",
     'lang_for_map' => "uz_UZ",
     'header_title' => "Sizni tashvishlardan xalos qilamiz",
     'header_sub' => "Biz sizga har qanday vazifani bajarish uchun ishonchli ijrochi topishga yordam beramiz",
