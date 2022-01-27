@@ -21,27 +21,30 @@
                 <form method="POST" action="{{ route('signin.custom') }}">
                     @csrf
                     <div class="mb-4">
-                        <input type="text" name="name" placeholder="@lang('lang.signin_username')" id="name"
-                        class="shadow appearance-none border border-slate-300 rounded
+                        <input type="text" name="email" placeholder="@lang('lang.signin_username')" id="name"
+                               class="shadow appearance-none border border-slate-300 rounded
                         w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
-                        required autofocus>
-
-                        @if ($errors->has('name'))
-                            <p class="text-danger">{{ $errors->first('name') }}</p>
+                               autofocus>
+                        @if(session()->has('message'))
+                            <p class="text-red-500">Введенный email не существует!</p>
                         @endif
+
+                        @error('email')
+                        <p class="text-red-500">Неправильный Email</p>
+                        @enderror
                     </div>
                     <div class="mb-6">
-                        <input   type="password" name="password" placeholder="@lang('lang.signin_password')" id="password" required
-                        class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3
+                        <input   type="password" name="password" placeholder="@lang('lang.signin_password')" id="password"
+                                 class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3
                         text-gray-700 mb-3 leading-tight hover:border-amber-500">
 
 
                         @if ($errors->has('password'))
-                            <p class="text-danger">{{ $errors->first('password') }}</p>
+                            <p class="text-red-500">Неправильный пароль</p>
                         @endif
                     </div>
                     <button type="submit"
-                        class="w-80 h-12 rounded-lg bg-green-500 text-gray-200 uppercase
+                            class="w-80 h-12 rounded-lg bg-green-500 text-gray-200 uppercase
                         font-semibold hover:bg-green-500 text-gray-100 transition mb-4">
                         Войти
                     </button>

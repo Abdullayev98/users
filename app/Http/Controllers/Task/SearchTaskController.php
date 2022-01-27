@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Task;
 use App\Models\Notification;
 use App\Models\TaskResponse;
+use App\Models\Response;
 use TCG\Voyager\Models\Category;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -45,6 +46,10 @@ class SearchTaskController extends VoyagerBaseController
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
+            }
+            if ($request->orderBy == 'klyuch') {
+                $filter = $request->fltr;
+                $tasks =  DB::table("tasks")->where('name','LIKE',"%$filter%")->orderBy('name','desc')->get();
             }
         }
         return $tasks->all();
@@ -88,6 +93,7 @@ class SearchTaskController extends VoyagerBaseController
 
         $task_responses = TaskResponse::where('task_id', $tasks->id)->get();
         $response_count = TaskResponse::where('task_id', $tasks->id)->count();
+        $response_count_user = Response::where('user_id', Auth::id())->count();
         foreach($task_responses as $response){
           $response_users = User::where('id', $response->user_id)->first();
           }
@@ -101,9 +107,9 @@ class SearchTaskController extends VoyagerBaseController
         $arr = get_defined_vars();
 
         if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count','balance','auth_user'));
+            return view('task.detailed-tasks',compact('tasks','same_tasks','response_count_user','users','categories','current_user','task_responses','response_users','response_count','balance','auth_user'));
         }else {
-          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance','auth_user'));
+          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','response_count_user','current_user','balance','auth_user'));
         }
 
     }

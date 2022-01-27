@@ -193,17 +193,38 @@ class CreateController extends Controller
         return view('create.contacts', compact('task'));
     }
 
-    public function contact_store(Task $task, UserRequest $request)
+    public function contact_store(Task $task, Request $request)
     {
 //        dd($request->all());
         if (!auth()->check()) {
-            $data = $request->validated();
+            $data = $request->validate(
+                [
+                    'name' => 'required|string',
+                    'email' => ['required','email','unique:users'],
+                    'phone_number' => 'required',
+                ],
+                [
+                    'name.required' => 'Name  is required',
+                    'name.string' => 'Name must be a string',
+                    'email.required' => 'Email is required',
+                    'email.email' => 'It must be an email',
+                    'email.unique' => "This email already exists",
+                    'phone_number.required' => 'Phone number is required'
+                ]
+            );
 
                 $data['password'] = bcrypt('login123');
                 $user = User::create($data);
         } else {
             $user = auth()->user();
-            $data = $request->validate(['phone_number' => 'required']);
+            $data = $request->validate(
+                [
+                    'phone_number' => 'required'
+                ],
+                [
+                    'phone_number.required' => 'Требуется заполнение!'
+                ]
+            );
             $user->update($data);
             $user->fresh();
         }
@@ -223,6 +244,7 @@ class CreateController extends Controller
             return redirect()->route('task.create.verify');
         }
 
+        $task->status = 1;
         $task->user_id = $user->id;
         $task->phone = $user->phone_number;
         $task->save();

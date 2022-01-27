@@ -5,7 +5,7 @@
     <div class="2xl:w-3/5 w-10/12  mx-auto text-base mt-4">
 
 
-        <div class="grid grid-cols-3  grid-flow-row mt-10">
+        <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
 
 
                  {{-- user ma'lumotlari --}}

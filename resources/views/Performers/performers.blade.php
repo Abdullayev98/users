@@ -1,4 +1,4 @@
- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <style>
@@ -85,10 +85,10 @@
                                 <i class="fas fa-star text-yellow-500"></i>
                             </div>
                         </div>
-                        <div class="lg:w-4/5 w-1/2 md:float-none md:float-none lg:mx-auto mx-0">
+                        <div class="w-5/12 md:float-none md:float-none">
                             <div>
                                 <a href="/performers/{{$user->id}}">
-                                    <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 "> {{$user->name}} </p>
+                                    <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 {{$user->id}}" id="{{$user->id}}"> {{$user->name}} </p>
                                 </a>
                             <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                                 <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
@@ -109,13 +109,13 @@
                                 </p>
                             </div>
                             <div class="mt-6">
-                                @if($tasks->count() != 0)
-                                    <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
-                                        <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
-                                    </a>
-                                @else
+                                @if($tasks->count() > 0)
                                     <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
                                         Предложить задание
+                                    </a>
+                                @else
+                                    <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
+                                        <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                                     </a>
                                 @endif
                             </div>
@@ -134,27 +134,31 @@
                 @foreach($tasks as $task)
                     <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
                 @endforeach
-                <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 text-lg mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-yellow-500 mx-auto block"><br>
 
-                    @foreach($tasks as $task)
-                        @auth
-                            <option value="{{ $task->name }}">
-                                {{ $task->name }}
-                            </option>
-                        @endauth
-                    @endforeach
-                    <option value="1">
-                        + новое задание
-                    </option>
-                </select>
-                <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
+{{--                <form action="" method="POST">--}}
+                    @csrf
+                    <select name="tasks" id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 text-lg mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-yellow-500 mx-auto block"><br>
 
-                <div id="hidden_div">
-                    <button onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
-                        Предложить работу
-                    </button>
-                    <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
-                </div>
+                        @foreach($tasks as $task)
+                            @auth
+                                <option value="{{ $task->id }}">
+                                    {{ $task->name }}
+                                </option>
+                            @endauth
+                        @endforeach
+                        <option value="1">
+                            + новое задание
+                        </option>
+                    </select>
+                    <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
+
+                    <div id="hidden_div">
+                        <button type="submit" onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
+                            Предложить работу
+                        </button>
+                        <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
+                    </div>
+{{--                </form>--}}
 
 
                 <a href="/categories/1">
@@ -219,7 +223,7 @@
 
         </div>
     </div>
-    <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black hidden text-center">
+    {{-- <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black hidden text-center">
         <div class="modal relative bg-white w-[600px] mx-auto p-10 rounded-md justify-center mt-48 ease-in transition duration-500">
             <h1 class="text-3xl font-semibold">Выберите задание, которое хотите предложить исполнителью</h1>
             @foreach($tasks as $task)
@@ -258,7 +262,7 @@
             </button>
         </div>
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
-    </div>
+    </div> --}}
 
 
 
@@ -279,6 +283,8 @@
             </div>
         </div>
     </div>
+    @csrf
+
     {{-- Modal start --}}
     <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id12">
         <div class="relative w-auto my-6 mx-auto max-w-3xl"  id="modal-id12">
@@ -348,11 +354,29 @@
     {{-- Modal end --}}
     <script>
         @foreach($users as $user)
-        document.getElementById("open{{$user->id}}").addEventListener("click", function() {
-            document.querySelector(".modal_content").style.display = "block";
+        $("#open{{$user->id}}").click(function(){
+            $(".modal_content").show();
+            let user_id = $('.{{$user->id}}').attr('id');
+            $.ajax({
+                url: "/give-task",
+                type:"POST",
+                data:{
+                    user_id:user_id,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success:function(response){
+                    console.log(response);
+                    if(response) {
+                        $('.success').text(response.success);
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
         });
-        document.querySelector(".close").addEventListener("click", function() {
-            document.querySelector(".modal_content").style.display = "none";
+        $(".close").click(function(){
+            $(".modal_content").hide();
         });
         @endforeach
     </script>
@@ -365,6 +389,8 @@
                 document.getElementById('hidden_div2').style.display = "block";
             } else {
                 document.getElementById('hidden_div2').style.display = "none";
+                document.getElementById('hidden_div').style.display = "block";
+
             }
         }
     </script>
@@ -372,6 +398,25 @@
     <script>
         function myFunction() {
             document.getElementById('modal').style.display = "block";
+            document.getElementById('modal_content').style.display = "none";
+            let task_id = $( "#task_name" ).val();
+            $.ajax({
+                url: "/give-task",
+                type:"POST",
+                data:{
+                    task_id:task_id,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success:function(response){
+                    console.log(response);
+                    if(response) {
+                        $('.success').text(response.success);
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
         };
         function myFunction1() {
             document.getElementById('modal').style.display = "none";
@@ -401,3 +446,4 @@
         })
     </script>
 @endsection
+

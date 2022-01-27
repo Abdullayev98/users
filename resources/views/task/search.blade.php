@@ -257,15 +257,15 @@
         let r=0, m=1, p=10, s=0, sGeo=0, dl=0, dlGeo=0, k=1, dGCounter=1;
         let userCoordinates=[[],[]];
         enDis(r);
-        first_ajax('all');
+        first_ajax('all', '');
         module.exports = {
             plugins: [require('@tailwindcss/forms'),]
         };
-        function first_ajax(id) {
+        function first_ajax(id, name) {
             $.ajax({
                 url: "{{route('tasks.search')}}",
                 // dataType: 'json',
-                data: {orderBy: id},
+                data: {orderBy: id, fltr: name},
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
@@ -339,7 +339,7 @@
                     },
                     geoObjects = [];
 
-                    for(var i = 0, len = dataGeo.length; i < len; i++) {
+                    for(var i = 0, len = dataAjax[i].coordinates; i < len; i++) {
                         geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
                     }
 
@@ -478,7 +478,7 @@
                             center: userCoordinates,
                             zoom: 15,
                             controls: ['geolocationControl'],
-                            behaviors: ['default', 'scrollZoom']
+                            behaviors: ['default', 'scrollZoomNo']
                         }, {
                             searchControlProvider: 'yandex#search'
                         });
@@ -527,39 +527,5 @@
         }
 
     </script>
-
-{{--    <script>--}}
-{{--        $(function() {--}}
-{{--            $("[data-sort]").click(function() {--}}
-{{--                var collator = new Intl.Collator(["en", "ru"], {--}}
-{{--                        numeric: true,--}}
-{{--                        bytime: true,--}}
-{{--                        bymonth: true--}}
-{{--                    }),--}}
-{{--                    rank = this.dataset.sort,--}}
-{{--                    order = (this.dataset.order = -(this.dataset.order || -1));--}}
-{{--                comparator = (a, b) => order * collator.compare(--}}
-{{--                    a.dataset[rank],--}}
-{{--                    b.dataset[rank]--}}
-{{--                ),--}}
-{{--                    items = $(".item").sort(comparator);--}}
-{{--                $(".sort-table").append(items);--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
-
-{{--    <script>--}}
-{{--        var $btns = $('.btn').click(function() {--}}
-{{--            if (this.id == 'all') {--}}
-{{--                $('#parent > div').fadeIn(450);--}}
-{{--            } else {--}}
-{{--                var $el = $('.' + this.id).fadeIn(450);--}}
-{{--                $('#parent > div').not($el).hide();--}}
-{{--            }--}}
-{{--            $btns.removeClass('active');--}}
-{{--            $(this).addClass('active');--}}
-{{--        })--}}
-
-{{--    </script>--}}
 
 @endsection
