@@ -58,7 +58,7 @@ class PerformersController extends Controller
             $view->performer_id= $user->id;
             $view->save();
         }
-        $views = UserView::query()->where('performer_id', $id->id)->get();
+        $views = count(UserView::query()->where('performer_id', $id->id)->get());
 
 
         $categories = DB::table('categories')->get();

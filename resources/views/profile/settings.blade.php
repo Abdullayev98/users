@@ -12,7 +12,7 @@
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
                     <div class="float-right mr-8 text-gray-500">
-                        <i class="far fa-eye"> {{$vcs->count}}  @lang('lang.profile_view')</i>
+                        <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>

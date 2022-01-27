@@ -8,8 +8,7 @@
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
-                        <i class="far fa-eye"></i>
-                        {{count($views)}}
+                        <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
                     </div>
                    <div>
                      @if($user->active_status == 1)
@@ -22,7 +21,12 @@
 
                    <div class="flex w-full mt-6">
                     <div class="flex-initial w-1/3">
-                      <img class="h-56 w-56" src="{{ asset($user->avatar) }}" alt="#">
+                      <img class="h-48 w-44" 
+                      @if ($user->avatar == Null)
+                      src='{{asset("images/default_img.jpg")}}'
+                      @else
+                      src="{{asset("AvatarImages/{$user->avatar}")}}"
+                      @endif alt="">
                     </div>
                     <div class="flex-initial w-2/3 lg:ml-0 ml-6">
                         <div class="font-medium text-lg">
@@ -31,10 +35,26 @@
                             <span>@lang('lang.exe_docsAccept')</span>
                             @endif
                         </div>
-                        <div class="text-gray-500 text-base mt-4">
-                            <span>{{$user->age}} @lang('lang.exe_rusYearLet')</span>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>{{$user->location}}</span>
+                        <div class="w-2/3 text-base text-gray-500 lg:ml-0 ml-4">
+                            @if($user->age != "")
+                                <p class="inline-block mr-2">
+                                    {{$user->age}}
+                                    @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
+                                    @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                    @else @lang('lang.cash_rusYearLet')
+                                    @endif
+                                </p>
+                            @endif
+
+                            <span class="inline-block">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p class="inline-block text-m">
+                                    @if($user->location!="") {{$user->location}} @lang('lang.cash_city')
+                                    @else @lang('lang.cash_cityNotGiven')
+                                    @endif
+                                </p>
+                            </span>
+                            
                         </div>
                         <div class="text-gray-500 text-base mt-6">
                             <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
@@ -192,7 +212,7 @@
                         </div> -->
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-white fas fa-phone-square text-2xl bg-amber-500 py-3 px-4 rounded-lg"></i>
+                                <i class="fas fa-phone-alt py-1 px-2 text-2xl bg-amber-500 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
@@ -205,7 +225,7 @@
                         </div>
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-white far fa-envelope text-2xl bg-blue-500 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white far fa-envelope text-2xl bg-blue-500 py-1 px-2 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Email</h2>
