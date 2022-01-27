@@ -13,6 +13,14 @@ function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
         dl++
+        // let json = $.parseJSON(JSON.stringify(data.address));
+        // let json = JSON.stringify(data.address);
+        let json = JSON.parse(data.address);
+        // let json = data.address;
+
+        // console.log(data.address.location);
+        console.log(json.location);
+        // console.log(json['location']);
             $(".show_tasks").append(
                    `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
                     <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
@@ -20,7 +28,7 @@ function tasks_list_all(data) {
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-[18px] text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-[14px] ml-12 mt-4 location">` + data.address + `</p>
+                    <p class="text-[14px] ml-12 mt-4 location">` + json.location + `</p>
                     <p class="text-[14px] ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                     <p class="text-[14px] ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
@@ -52,7 +60,7 @@ function tasks_list(data) {
                             <div class="float-left w-9/12 " id="results">
                             <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
                             <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-sm text-blue-400 hover:text-red-400">` + data.name + `</a>
-                            <p class="sm:text-sm text-xs ml-10 mt-1 location">` + data.address + `</p>
+                            <p class="sm:text-sm text-xs ml-10 mt-1 location">` + data.address[location] + `</p>
                             <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                             <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">` + data.oplata + `</p>
                             </div>
@@ -78,6 +86,11 @@ $(".rotate").click(function() {
 $("#filter").keyup(function() {
     var filter = $(this).val();
 first_ajax('klyuch', filter)
+});
+
+$("#price").keyup(function() {
+    var filter = $(this).val();
+    first_ajax('price', filter)
 });
 
 // $("#filter").keyup(function() {
@@ -107,58 +120,58 @@ first_ajax('klyuch', filter)
 //     });
 // });
 
-$(".address").keyup(function() {
+// $(".address").keyup(function() {
+//
+//     // Retrieve the input field text and reset the count to zero
+//     var filter = $(this).val(),
+//         count = 0;
+//
+//     // Loop through the comment list
+//     $('#results .location').each(function() {
+//         // If the list item does not contain the text phrase fade it out
+//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().hide();
+//             // Show the list item if the phrase matches and increase the count by 1
+//         } else {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().show();
+//             // $(this).show(); // MY CHANGE
+//             count++;
+//         }
+//     });
+// });
 
-    // Retrieve the input field text and reset the count to zero
-    var filter = $(this).val(),
-        count = 0;
 
-    // Loop through the comment list
-    $('#results .location').each(function() {
-        // If the list item does not contain the text phrase fade it out
-        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().hide();
-            // Show the list item if the phrase matches and increase the count by 1
-        } else {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().show();
-            // $(this).show(); // MY CHANGE
-            count++;
-        }
-    });
-});
-
-
-$("#price").keyup(function() {
-
-    // Retrieve the input field text and reset the count to zero
-    var filter = $(this).val(),
-        count = 0;
-
-    // Loop through the comment list
-    $('#about a').each(function() {
-        // If the list item does not contain the text phrase fade it out
-        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().hide();
-            // Show the list item if the phrase matches and increase the count by 1
-        } else {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().show();
-            // $(this).show(); // MY CHANGE
-            count++;
-        }
-    });
-});
+// $("#price").keyup(function() {
+//
+//     // Retrieve the input field text and reset the count to zero
+//     var filter = $(this).val(),
+//         count = 0;
+//
+//     // Loop through the comment list
+//     $('#about a').each(function() {
+//         // If the list item does not contain the text phrase fade it out
+//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().hide();
+//             // Show the list item if the phrase matches and increase the count by 1
+//         } else {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().show();
+//             // $(this).show(); // MY CHANGE
+//             count++;
+//         }
+//     });
+// });
 
 function enDis(rr){
     if (rr == 0){
@@ -176,7 +189,6 @@ function resetCounters(){
 }
 
 function maps_show(){
-    geo_coords()
     map_pos(k)
 }
 
