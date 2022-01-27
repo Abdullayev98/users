@@ -393,6 +393,7 @@
     <script>
         function myFunction() {
             document.getElementById('modal').style.display = "block";
+            document.getElementById('modal_content').style.display = "none";
             let task_id = $( "#task_name" ).val();
             $.ajax({
                 url: "/give-task",
