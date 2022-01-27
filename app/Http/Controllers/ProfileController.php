@@ -80,7 +80,7 @@ class ProfileController extends Controller
     public function editData()
     {
         $user = Auth::user();
-        $vcs = UserView::where('user_id', $user->id)->first();
+        $vcs = UserView::where('user_id', $user->id)->count();
         $categories = DB::table('categories')->where('parent_id',Null)->get();
         $task = Task::where('user_id',Auth::user()->id)->count();
         return view('profile.settings', compact('user','categories','vcs','task'));
