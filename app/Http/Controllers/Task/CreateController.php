@@ -239,7 +239,7 @@ class CreateController extends Controller
             $user->verify_expiration = Carbon::now()->addMinutes(5);
             $user->save();
             $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
-            return redirect()->route('task.create.verify');
+            return redirect()->route('task.create.verify', $task->id);
         }
 
         $task->status = 1;
@@ -250,10 +250,10 @@ class CreateController extends Controller
 
     }
 
-    public function verify()
+    public function verify(Task $task)
     {
 
-        return view('create.verify');
+        return view('create.verify', compact('task'));
     }
 
     public function deletetask($id)

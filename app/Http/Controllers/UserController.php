@@ -235,6 +235,8 @@ class UserController extends Controller
 
     public function verifyProfil(Request $request)
     {
+
+
         $request->validate([
             'sms_otp' => 'required',
         ]);
@@ -243,6 +245,8 @@ class UserController extends Controller
 
         if ($request->sms_otp == $user->verify_code) {
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
+                User::where('id', $user->id)->update(['is_email_verified' => 1]);
+                Task::where('id', $request->for_ver_func)->update(['status' => 1]);
                 return redirect()->route('userprofile');
             } else {
                 return back()->with([
@@ -256,7 +260,6 @@ class UserController extends Controller
         }
 
         $message = $this->checkIsVerified($verifyUser);
-
         return redirect("/profile")->with('message', $message);
     }
 
