@@ -26,7 +26,7 @@
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
-                        <div class="sm:w-1/3 w-full">                           
+                        <div class="sm:w-1/3 w-full">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
                                 src='{{asset("images/default_img.jpg")}}'
@@ -132,7 +132,12 @@
                                     <a href="/profile">@lang('lang.cash_reciveHis')</a>
                                 </li>
                             </ul>
-                            <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
+                            @if ($transactions_count > 0)
+                                <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
+                            @else
+                                <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
+
+                            @endif
                         </div>
                         <div class="FAQ reltive block w-full mt-5 text-gray-600">
                             <h2 class="font-medium text-2xl text-gray-700">@lang('lang.cash_questions')</h2>
@@ -204,7 +209,7 @@
                     <a href="https://www.facebook.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a>
                 </div>
             </div>
-            
+
         </div>
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\WalletBalance;
+use App\Models\All_transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserView;
@@ -52,7 +53,9 @@ class ProfileController extends Controller
         $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
         $vcs = UserView::where('user_id', $user->id)->first();
         $task = Task::where('user_id',Auth::user()->id)->count();
-        return view('profile.cash', compact('user','vcs','balance','task'));
+        $transactions = All_transaction::where('user_id', Auth::id())->get();
+        $transactions_count = All_transaction::where('user_id', Auth::id())->count();
+        return view('profile.cash', compact('transactions_count', 'transactions', 'user', 'vcs', 'balance', 'task'));
     }
     public function updateCash(Request $request)
     {

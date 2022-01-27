@@ -2,6 +2,7 @@
 
 return [
     // home.blade start
+    "count_transactions" => "Количество транзакций",
     "random_cat" => "Piyoda kurerlik xizmatlari",
     'lang_for_map' => "uz_UZ",
     'header_title' => "Sizni tashvishlardan xalos qilamiz",
