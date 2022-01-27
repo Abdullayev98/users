@@ -110,7 +110,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-    <script src='http://unpkg.com/imask'></script>
+    <script src='https://unpkg.com/imask'></script>
     <script>
     $("#phone").attr('placeholder','+998(__)___-__-__');
         var element = document.getElementById('phone');

@@ -1,9 +1,5 @@
 let dataAjax = {};
 let dataGeo = [];
-// let dataGeoCircle = [];
-// let dataGeoAll = [];
-// let dataGeoSroch = [];
-// let dataGeoUdal = [];
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -75,70 +71,41 @@ function tasks_list(data) {
     });
 }
 
-// let tabsContainer = document.querySelector("#tabs");
-// let tabTogglers = tabsContainer.querySelectorAll("a");
-//
-// tabTogglers.forEach(function(toggler) {
-//     toggler.addEventListener("click", function(e) {
-//         e.preventDefault();
-//
-//         let tabName = this.getAttribute("href");
-//
-//         let tabContents = document.querySelector("#tab-contents");
-//
-//         for (let i = 0; i < tabContents.children.length; i++) {
-//
-//             tabTogglers[i].parentElement.classList.remove("border-orange-400", "border-b", "opacity-100");
-//             tabContents.children[i].classList.remove("hidden");
-//             if ("#" + tabContents.children[i].id === tabName) {
-//                 continue;
-//             }
-//             tabContents.children[i].classList.add("hidden");
-//
-//         }
-//         e.target.parentElement.classList.add("border-orange-400", "border-b-2", "opacity-100");
-//     });
-// });
-//
-// document.getElementById("default-tab").click();
-
 $(".rotate").click(function() {
     $(this).toggleClass("rotate-[360deg]");
 });
 
 $("#filter").keyup(function() {
-
-    // Retrieve the input field text and reset the count to zero
-    var filter = $(this).val(),
-        count = 0;
-
-    // Loop through the comment list
-    $('#results a').each(function() {
-        // If the list item does not contain the text phrase fade it out
-        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().hide();
-            $(parents).parent().id = '';
-            // Show the list item if the phrase matches and increase the count by 1
-        } else {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().show();
-            $(parents).parent().id = 'geoShow';
-            // $(this).show(); // MY CHANGE
-            count++;
-            console.log(count);
-        }
-        console.log(count);
-    });
-    console.log(count);
-        if (count){
-            tasks_show2();
-        }
+    var filter = $(this).val();
+first_ajax('klyuch', filter)
 });
+
+// $("#filter").keyup(function() {
+//
+//     // Retrieve the input field text and reset the count to zero
+//     var filter = $(this).val(),
+//         count = 0;
+//
+//     // Loop through the comment list
+//     $('#results a').each(function() {
+//         // If the list item does not contain the text phrase fade it out
+//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().hide();
+//             // Show the list item if the phrase matches and increase the count by 1
+//         } else {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().show();
+//             // $(this).show(); // MY CHANGE
+//             count++;
+//             console.log(count);
+//         }
+//     });
+// });
 
 $(".address").keyup(function() {
 
@@ -154,14 +121,12 @@ $(".address").keyup(function() {
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().hide();
-            $(parents).parent().id = '';
             // Show the list item if the phrase matches and increase the count by 1
         } else {
             var parent = $(this).parent();
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().show();
-            $(parents).parent().id = 'geoShow';
             // $(this).show(); // MY CHANGE
             count++;
         }
@@ -183,36 +148,17 @@ $("#price").keyup(function() {
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().hide();
-            $(parents).parent().id = '';
             // Show the list item if the phrase matches and increase the count by 1
         } else {
             var parent = $(this).parent();
             var parents = $(parent).parent();
             // MY CHANGE
             $(parents).parent().show();
-            $(parents).parent().id = "geoShow";
             // $(this).show(); // MY CHANGE
             count++;
         }
     });
 });
-
-
-// function img_show() {
-//     $(".show_tasks").empty();
-//     $(".show_tasks").append(
-//         `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-//         <div></div>
-//         <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
-//         <div></div>
-//         <div class="col-span-3 text-center w-full h-full">
-//             <p class="text-3xl"><b>Задания не найдены</b></p>
-//             <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
-//         </div>
-//         </div>`
-//     );
-//     // $('.butt').attr('style', 'display: none');
-// }
 
 function enDis(rr){
     if (rr == 0){
@@ -227,18 +173,6 @@ function enDis(rr){
 function resetCounters(){
     $('.butt').removeAttr("disabled")
     s=0, dl=0;
-}
-
-function geo_coords(){
-    dataGeo=[];
-    // dataGeoCircle=[];
-    $('.print_block').each(function() {
-        if (!(this.hidden))
-        {
-            dataGeo.push(this.id.split(','));
-            // dataGeoCircle.push({type: 'Point', coordinates: this.id.split(',')});
-        }
-    });
 }
 
 function maps_show(){
@@ -266,31 +200,6 @@ function fiveInOne2(){
         tasks_show()
     }
     maps_show()
-}
-
-function tasks_show2(){
-    let gg = 0;
-    $('#geoShow').each(function() {
-        this.hidden = true;
-        gg++
-    });
-    console.log(gg)
-    let i=1;
-    $('#geoShow').each(function() {
-        if ((this.hidden) && (i <= p) && (sGeo <= dlGeo))
-        {
-            this.hidden = false;
-            i++
-            sGeo++
-        }
-    });
-    $('.lM2').removeAttr('hidden');
-    // $('.lM').attr("hidden","hidden")
-    $('#pnum2').html(sGeo)
-    $('#snum2').html(dlGeo)
-    if (sGeo==dlGeo){
-        $('.butt2').attr("disabled","disabled")
-    }
 }
 
 function parcats_click_false(id) {
@@ -550,20 +459,19 @@ function chicats_click_true(id, name) {
 $(document).ready(function(){
 
     $("#srochnost").click(function(){
-        first_ajax('sroch')
+        first_ajax('sroch', '')
     });
     $(".byid").click(function(){
-        first_ajax('all')
+        first_ajax('all', '')
     });
     $("#as").click(function(){
-        first_ajax('udal')
+        first_ajax('udal', '')
     });
     $(".checkboxByAs").change(function() {
         if(this.checked) {
-            first_ajax('udal')
+            first_ajax('udal', '')
         }else {
-            first_ajax('all')
+            first_ajax('all', '')
         }
     });
 });
-
