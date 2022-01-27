@@ -54,10 +54,16 @@ class UserController extends Controller
     public function createSignin(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
-        $credentials = $request->only('name', 'password');
+
+        $user = User::where('email', $request->input('email'));
+
+        if(!$user){
+            return redirect()->back()->with('message','Введенный email не существует!');
+        }
+        $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $user = User::find(Auth::user()->id)
                 ->update([
@@ -71,9 +77,7 @@ class UserController extends Controller
             $users_count = User::where('role_id', 2)->count();
             $random_category = Category::all()->random();
             $advants = Advant::all();
-            $trusts = Trust::orderby('id', 'desc')->get();
-            $reklamas = Reklama::all();
-            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category', 'trusts','reklamas'))->withSuccess('Logged-in');
+            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category'))->withSuccess('Logged-in');
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
