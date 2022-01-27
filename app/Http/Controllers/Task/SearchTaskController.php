@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Task;
 use App\Models\Notification;
 use App\Models\TaskResponse;
+use App\Models\Response;
 use TCG\Voyager\Models\Category;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -88,7 +89,7 @@ class SearchTaskController extends VoyagerBaseController
 
         $task_responses = TaskResponse::where('task_id', $tasks->id)->get();
         $response_count = TaskResponse::where('task_id', $tasks->id)->count();
-        $response_count_user = TaskResponse::where('user_id', Auth::id())->count();
+        $response_count_user = Response::where('user_id', Auth::id())->count();
         foreach($task_responses as $response){
           $response_users = User::where('id', $response->user_id)->first();
           }
