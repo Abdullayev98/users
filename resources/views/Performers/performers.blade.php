@@ -85,7 +85,7 @@
                                 <i class="fas fa-star text-yellow-500"></i>
                             </div>
                         </div>
-                        <div class="w-5/12 md:float-none md:float-none">
+                        <div class="w-4/5 md:float-none md:float-none">
                             <div>
                                 <a href="/performers/{{$user->id}}">
                                     <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 {{$user->id}}" id="{{$user->id}}"> {{$user->name}} </p>
