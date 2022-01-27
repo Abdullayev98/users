@@ -21,10 +21,10 @@ class ProfileController extends Controller
     public function profileData()
     {
         $user = Auth::user();
-        $vcs = UserView::where('user_id', $user->id)->first();
+        $views = count( UserView::where('performer_id', $user->id)->get());
         $task = Task::where('user_id',Auth::user()->id)->count();
         $ports = Portfolio_new::where('user_id',Auth::user()->id)->get();
-        return view('profile.profile', compact('user','vcs','task','ports'));
+        return view('profile.profile', compact('user','views','task','ports'));
     }
     public function updates(Request $request)
     {
