@@ -110,39 +110,40 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-
-    <script src='https://unpkg.com/imask'></script>
+    <script src='http://unpkg.com/imask'></script>
     <script>
+    $("#phone").attr('placeholder','+998(__)___-__-__');
         var element = document.getElementById('phone');
         var maskOptions = {
             mask: '+998(00)000-00-00',
             lazy: false
         }
-        var mask = new IMask(element, maskOptions);
 
-        var element2 = document.getElementById('email');
-        var maskOptions2 = {
-            mask: function (value) {
-                if (/^[a-z0-9_\.-]+$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.[a-z]{1,4}$/.test(value))
-                    return true;
-                return false;
-            },
-            lazy: false
+        function setSelectionRange(input, selectionStart, selectionEnd) {
+            if (input.setSelectionRange) {
+                input.focus();
+                input.setSelectionRange(selectionStart, selectionEnd);
+            }
+            else if (input.createTextRange) {
+                var range = input.createTextRange();
+                range.collapse(true);
+                range.moveEnd('character', selectionEnd);
+                range.moveStart('character', selectionStart);
+                range.select();
+            }
         }
-        var mask2 = new IMask(element2, maskOptions2);
+
+        function setCaretToPos (input, pos) {
+            setSelectionRange(input, pos, pos);
+        }
+
+        $( "#phone" ).click(function() {
+            var mask = new IMask(element, maskOptions);
+            setCaretToPos(document.getElementById("phone"), 5);
+        });
+
     </script>
+
 
     <script>
         var x = 1;
