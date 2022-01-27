@@ -39,6 +39,9 @@
                                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
                                                        name="sms_otp">
                                             @endif
+                                            @error('sms_otp')
+                                                <p class="text-red-500">{{$message}}</p>
+                                            @enderror
                                      </div>
                                     </div>
                                 </div>
@@ -83,7 +86,8 @@
 @section("javasript")
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 
     <script src='https://unpkg.com/imask'></script>
     <script>

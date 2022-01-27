@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 class ProfileController extends Controller
 {
 
+
+
     //profile
     public function profileData()
     {
@@ -83,10 +85,11 @@ class ProfileController extends Controller
     public function editData()
     {
         $user = Auth::user();
-        $vcs = UserView::where('user_id', $user->id)->first();
+        $views = count(UserView::where('performer_id', $user->id)->get());
+
         $categories = DB::table('categories')->where('parent_id',Null)->get();
         $task = Task::where('user_id',Auth::user()->id)->count();
-        return view('profile.settings', compact('user','categories','vcs','task'));
+        return view('profile.settings', compact('user','categories','views','task'));
     }
     public function updateData(Request $request)
     {

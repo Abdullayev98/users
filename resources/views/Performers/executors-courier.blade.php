@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-@foreach($users as $user)
+{{--@foreach($users as $user)--}}
     <div class="w-10/12 mx-auto">
         <div class="grid grid-cols-3  grid-flow-row mt-10">
         {{-- left sidebar start --}}
@@ -9,9 +9,7 @@
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
                         <i class="far fa-eye"></i>
-                        @foreach($vcs as $vc)
-                        <span>{{$vc->count}} @lang('lang.exe_viewProfile')</span>
-                        @endforeach
+                        {{count($views)}}
                     </div>
                    <div>
                      @if($user->active_status == 1)
@@ -97,15 +95,12 @@
                             </a>
                             <div class="align-top ml-[50px] min-h-[42px]">
                             <span>
-                                @foreach ($users as $user)
                                 @if ($user->id == $review->reviewer_id)
                                 <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$user->name}}</a>
                                 @endif
-                                @endforeach
                             </span>
                                 <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    @foreach ($users as $user)
                                     @if ($user->id == $review->reviewer_id)
                                     @if ($user->role_id == 2)
                                     Отзыв:
@@ -125,7 +120,6 @@
                                     Заказчик
                                     @endif
                                     @endif
-                                    @endforeach
                                 </span>
                                 </div>
                             </div>
@@ -276,7 +270,6 @@
         </div>
       </div>
       <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
-      @endforeach
       <script type="text/javascript">
         function toggleModal12(modalID12){
           document.getElementById(modalID12).classList.toggle("hidden");

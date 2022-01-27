@@ -235,11 +235,9 @@ class CreateController extends Controller
         if (!$user->is_email_verified) {
             $sms_otp = rand(100000, 999999);
             $token = Str::random(64);
-            UserVerify::create([
-                'user_id' => $user->id,
-                'token' => $token,
-                'sms_otp' => $sms_otp
-            ]);
+            $user->verify_code = $sms_otp;
+            $user->verify_expiration = Carbon::now()->addMinutes(5);
+            $user->save();
             $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
             return redirect()->route('task.create.verify');
         }

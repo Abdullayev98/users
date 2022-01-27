@@ -239,20 +239,21 @@ class UserController extends Controller
             'sms_otp' => 'required',
         ]);
 
-        $verifyUser = UserVerify::where([
-            'user_id' => auth()->user()->id,
-            'sms_otp' => $request->sms_otp
-        ])->first();
+        $user = auth()->user();
 
-        if ($verifyUser === null)
-            if (getenv('APP_DEBUG')) {
-
-                $check = $request->sms_otp === getenv('SMS_OTP');
-                if ($check)
-                    $verifyUser = UserVerify::where([
-                        'user_id' => auth()->user()->id,
-                    ])->first();
+        if ($request->sms_otp == $user->verify_code) {
+            if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
+                return redirect()->route('userprofile');
+            } else {
+                return back()->with([
+                    'alert' => 'Verification code expired'
+                ]);
             }
+        }else{
+            return back()->with([
+                'message' => 'Verification code incorrect'
+            ]);
+        }
 
         $message = $this->checkIsVerified($verifyUser);
 
