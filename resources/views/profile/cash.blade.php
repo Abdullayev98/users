@@ -101,7 +101,7 @@
                     {{-- "about-me" end --}}
                     {{-- cash --}} <div class="cash block  w-full" id="tab-cash">
                         <div class="head mt-5">
-                            <h2 class="font-semibold text-2xl text-gray-700">@lang('lang.cash_yourBalance')
+                            <h2 class="font-semibold text-2xl text-gray-700 mb-4">@lang('lang.cash_yourBalance')
                                 @if ($balance == Null) 0
                                 @else {{$balance->balance}} UZS
                                 @endif
