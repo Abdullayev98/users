@@ -103,7 +103,7 @@
                                                     </div>
                                                 @endif
                                             @else
-                                                <a href="/register">
+                                                <a href="/login">
                                                     <button  class="font-sans mt-8 text-lg  font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-10 py-4 rounded">
                                                         @lang('lang.detailedT_text18')
                                                     </button>
