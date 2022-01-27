@@ -32,8 +32,11 @@
                             <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
                                 <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
                                 @foreach($categories as $category)
-                                    <p>{{$category->name}}</p>
+                                    <p class="pr-3 ">{{$category->name}}</p>
                                 @endforeach
+                                    @if($tasks->user_id == auth()->id())
+                                    <a href="{{route("delete.task", $tasks->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Удалить</a>
+                                    @endif
                             </div>
 
                             <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
