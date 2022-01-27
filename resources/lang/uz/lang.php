@@ -2,7 +2,7 @@
 
 return [
     // home.blade start
-    "count_transactions" => "Количество транзакций",
+    "count_transactions" => "Tranzaksiyalar soni:",
     "random_cat" => "Piyoda kurerlik xizmatlari",
     'lang_for_map' => "uz_UZ",
     'header_title' => "Sizni tashvishlardan xalos qilamiz",

@@ -2,7 +2,7 @@
 
 return [
     // home.blade start
-    "count_transactions" => "Tranzaksiyalar soni",
+    "count_transactions" => "Количество транзакций:",
     'random_cat' => "Услуги пешего курьера",
     'lang_for_map' => "ru_RU",
     'header_title' => "Освободим вас от забот",
