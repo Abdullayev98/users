@@ -47,38 +47,29 @@ class PerformersController extends Controller
 
         return view('Performers/performers',compact('child_categories','categories','users','tasks'));
     }
-    public function performer($id){
+    public function performer(User $id){
 
-        if(session('view_count') == NULL){
+        $user= $id;
 
-            $def_count = UserView::where('user_id', $id)->first();
-
-            if(isset($def_count)){
-
-            $ppi = $def_count->count + 1;
-
-                UserView::where('user_id', $id)->update(['count' => $ppi]);
-
-        }else{
-
-            UserView::create([
-                'user_id'=> $id,
-                'count'=> 1,
-            ]);
-
+        $view = UserView::query()->where('user_id', \auth()->user()->id)->where('performer_id', $user->id)->first();
+        if (!$view){
+            $view = new UserView();
+            $view->user_id = \auth()->user()->id;
+            $view->performer_id= $user->id;
+            $view->save();
         }
-        session()->put('view_count', '1');
-        }
-        $vcs = UserView::where('user_id', $id)->get();
-        $users= User::where('id',$id)->get();
+        $views = count(UserView::query()->where('performer_id', $id->id)->get());
+
+
         $categories = DB::table('categories')->get();
         $child_categories = DB::table('categories')->get();
         $task_count = Task::where('user_id', Auth::id())->count();
         $tasks = Task::get();
         $reviews = Review::get();
-        $reviews_count = Review::where('user_id', $id)->count();
+        $reviews_count = Review::where('user_id', $id->id)->count();
         $review_users= User::get();
-        return view('Performers/executors-courier',compact('reviews_count','tasks','users','categories','child_categories','vcs','task_count','reviews','review_users'));
+
+        return view('Performers/executors-courier',compact('reviews_count','user','views','tasks','categories','child_categories','task_count','reviews','review_users'));
     }
 
 

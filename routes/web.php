@@ -45,6 +45,7 @@ Route::get('/chat/{id}', [PerformersController::class, 'performer_chat']);
 
 Route::post('ajax-request', [SearchTaskController::class, 'task_response']);
 Route::post('give-task', [PerformersController::class, 'give_task']);
+Route::get('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('delete.task');
 
 
 Route::group(['prefix' => 'admin'], function () {

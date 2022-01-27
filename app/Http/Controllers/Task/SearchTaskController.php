@@ -184,4 +184,9 @@ class SearchTaskController extends VoyagerBaseController
       return response()->json(['success'=>$performer_id]);
   }
 
+  public function delete_task(Task $task){
+      DB::delete('DELETE FROM tasks WHERE id = ?', [$task->id]);
+      echo ("User Record deleted successfully.");
+      return redirect('/');
+  }
 }

@@ -66,4 +66,9 @@ class User extends \TCG\Voyager\Models\User
     public function scopeUpdateViews($query, $id) {
         return $query->whereId($id)->increment('views', 1);;
     }
+
+
+    public function views(){
+        return $this->hasMany(UserView::class,'performer_id');
+    }
 }
