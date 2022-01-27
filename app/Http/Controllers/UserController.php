@@ -6,6 +6,7 @@ use App\Http\Requests\UserPhoneRequest;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Trust;
+use App\Models\Reklama;
 use App\Models\Advant;
 use App\Models\UserVerify;
 use App\Models\How_work_it;
@@ -71,7 +72,8 @@ class UserController extends Controller
             $random_category = Category::all()->random();
             $advants = Advant::all();
             $trusts = Trust::orderby('id', 'desc')->get();
-            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category', 'trusts'))->withSuccess('Logged-in');
+            $reklamas = Reklama::all();
+            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category', 'trusts','reklamas'))->withSuccess('Logged-in');
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
@@ -205,7 +207,9 @@ class UserController extends Controller
             $howitworks = How_work_it::all();
             $lang = Session::pull('lang');
             Session::put('lang', $lang);
-            return view('home', compact('tasks', 'howitworks', 'categories'));
+            $reklamas = Reklama::all();
+            $trusts = Trust::orderby('id', 'desc')->get();
+            return view('home', compact('tasks', 'howitworks', 'categories','reklamas','trusts'));
         }
         return redirect("login")->withSuccess('Access is not permitted');
     }
