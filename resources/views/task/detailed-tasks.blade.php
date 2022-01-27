@@ -84,13 +84,13 @@
                                         <div class="max-w-2xl mx-auto mt-4">
                                             @auth
                                                 @if($balance >= 4000 || $response_count_user < setting('site.free_responses'))
-                                                    <button class="font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
+                                                    <button class="font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                             type="button"
                                                             data-modal-toggle="authentication-modal">
                                                         @lang('lang.detT_callback')
                                                     </button>
                                                     @elseif($balance < 4000 || $response_count_user >= setting('site.free_responses'))
-                                                    <a href="#" class='btn open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
+                                                    <a href="#" class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
                                                     <div class='modal' id='modal1'>
                                                         <div class='content'>
                                                             <img src="{{asset('images/cashback.svg')}}" alt="">
