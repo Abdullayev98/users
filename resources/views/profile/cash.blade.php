@@ -123,21 +123,45 @@
                                     <option>@lang('lang.cash_inPeriod')</option>
                                 </select>
                             </label>
-                            <ul class="mt-5">
-                                <li class="inline ml-5"><a href="/profile">@lang('lang.cash_allOperations')</a></li>
-                                <li class="inline ml-5 underline text-blue-500">
-                                    <a href="/profile">@lang('lang.cash_topUpHis')</a>
-                                </li>
-                                <li class="inline ml-5 underline text-blue-500">
-                                    <a href="/profile">@lang('lang.cash_reciveHis')</a>
-                                </li>
+                            <ul id="tabs" class="flex sm:flex-row flex-col rounded-sm w-full shadow bg-gray-200 mt-4">
+                                <div id="first_tab" class="w-full text-center">
+                                    <a id="default-tab" href="#first" class="inline-block relative py-1 w-full">@lang('lang.cash_allOperations')</a>
+                                </div>
+                                <div class="w-full text-center">
+                                    <a href="#second" class="inline-block relative py-1 w-full">@lang('lang.cash_topUpHis')</a>
+                                </div>
+                                <div id="three_tab" class="w-full text-center">
+                                    <a href="#third" class="inline-block relative py-1 w-full">@lang('lang.cash_reciveHis')</a>
+                                </div>
                             </ul>
-                            @if ($transactions_count > 0)
-                                <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
-                            @else
-                                <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
-
-                            @endif
+                            <div id="tab-contents">
+                                <div id="first" class="p-4">
+                                    @if ($transactions_count > 0)
+                                    <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
+                                    @else
+                                        <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
+        
+                                    @endif
+                                </div>
+                                <div id="second" class="hidden p-4">
+                                    @if ($transactions_count > 0)
+                                    <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
+                                    @else
+                                        <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
+        
+                                    @endif
+                                </div>
+                                <div id="third" class="hidden p-4">
+                                    @if ($transactions_count > 0)
+                                    <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
+                                    @else
+                                        <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
+        
+                                    @endif
+                                </div>
+                              </div>
+                            </div>
+                            
                         </div>
                         <div class="FAQ reltive block w-full mt-5 text-gray-600">
                             <h2 class="font-medium text-2xl text-gray-700">@lang('lang.cash_questions')</h2>
@@ -245,6 +269,28 @@
 
                 x.classList.add("hidden");
         }
+    </script>
+    <script>
+        let tabsContainer = document.querySelector("#tabs");
+        let tabTogglers = tabsContainer.querySelectorAll("#tabs a");
+        console.log(tabTogglers);
+        tabTogglers.forEach(function(toggler) {
+        toggler.addEventListener("click", function(e) {
+            e.preventDefault();
+            let tabName = this.getAttribute("href");
+            let tabContents = document.querySelector("#tab-contents");
+            for (let i = 0; i < tabContents.children.length; i++) {
+            tabTogglers[i].parentElement.classList.remove("bg-gray-400","rounded-sm","text-white");  tabContents.children[i].classList.remove("hidden");
+            if ("#" + tabContents.children[i].id === tabName) {
+                continue;
+            }
+            tabContents.children[i].classList.add("hidden");
+            }
+            e.target.parentElement.classList.add("bg-gray-400","rounded-sm","text-white");
+        });
+        });
+
+
     </script>
 
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
