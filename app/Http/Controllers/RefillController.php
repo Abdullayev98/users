@@ -101,14 +101,13 @@ public function complete(Request $request){
 
     if(isset($balance)){
         $summa = 1*$balance->balance + 1*$user->amount;
+        WalletBalance::where('user_id', $user->user_id)->update(['balance' => 1*$summa]);
     }else{
         WalletBalance::create([
-            'user_id' => $user->id,
-            'amount'  => 1*$user->amount,
+            'user_id' => $user->user_id,
+            'balance'  => 1*$user->amount,
         ]);
-        $summa = $user->amount;
     }
-    WalletBalance::where('user_id', $user->user_id)->update(['balance' => 1*$summa]);
     All_transaction::where('id', $user->id)->update(['status' => 1]);
     return ['click_trans_id' => $click_trans_id,'merchant_trans_id' => $merchant_trans_id,'merchant_confirm_id' => $merchant_confirm_id,'error' => $error,'error_note' => $error_note];
 
