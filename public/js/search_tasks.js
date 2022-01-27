@@ -13,14 +13,7 @@ function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
         dl++
-        // let json = $.parseJSON(JSON.stringify(data.address));
-        // let json = JSON.stringify(data.address);
         let json = JSON.parse(data.address);
-        // let json = data.address;
-
-        // console.log(data.address.location);
-        console.log(json.location);
-        // console.log(json['location']);
             $(".show_tasks").append(
                    `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
                     <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
@@ -212,6 +205,24 @@ function fiveInOne2(){
         tasks_show()
     }
     maps_show()
+}
+
+function tasks_show(){
+    let i=1;
+    $('.print_block').each(function() {
+        if ((this.hidden) && (i <= p) && (s <= dl))
+        {
+            this.hidden = false;
+            i++
+            s++
+        }
+    });
+    $('.lM').removeAttr('hidden');
+    $('#pnum').html(s)
+    $('#snum').html(dl)
+    if (s==dl){
+        $('.butt').attr("disabled","disabled")
+    }
 }
 
 function parcats_click_false(id) {

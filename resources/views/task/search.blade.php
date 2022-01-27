@@ -257,7 +257,7 @@
         let r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
         let userCoordinates=[[],[]];
         enDis(r);
-        first_ajax('all', '');
+        first_ajax('all');
         module.exports = {
             plugins: [require('@tailwindcss/forms'),]
         };
@@ -293,24 +293,6 @@
                 </div>`
             );
             $('.lM').attr("hidden","hidden")
-        }
-
-        function tasks_show(){
-            let i=1;
-            $('.print_block').each(function() {
-                if ((this.hidden) && (i <= p) && (s <= dl))
-                {
-                    this.hidden = false;
-                    i++
-                    s++
-                }
-            });
-            $('.lM').removeAttr('hidden');
-            $('#pnum').html(s)
-            $('#snum').html(dl)
-            if (s==dl){
-                $('.butt').attr("disabled","disabled")
-            }
         }
 
         function map1_show(){
