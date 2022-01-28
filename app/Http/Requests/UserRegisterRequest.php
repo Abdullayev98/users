@@ -26,8 +26,8 @@ class UserRegisterRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'phone' =>  'unique:users',
-            'password' => 'required|confirmed',
+            'phone_number' =>  'unique:users|min:9',
+            'password' => 'required|confirmed|min:8',
         ];
     }
     public function messages()
