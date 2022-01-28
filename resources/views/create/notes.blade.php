@@ -184,7 +184,7 @@ console.log(x);
     <script>
         var uppy = new Uppy.Core({
             debug: true,
-            autoProceed: false,
+            autoProceed: true,
             restrictions: {
                 minFileSize: null,
                 maxFileSize: 10000000,
