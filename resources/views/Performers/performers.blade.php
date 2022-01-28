@@ -75,8 +75,8 @@
                                 @endif alt="user">
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>
-                                <i class="far fa-thumbs-up m-1 text-gray-400"></i> 2
-                                <i class="far fa-thumbs-down m-1 text-gray-400"></i>1
+                                <i class="far fa-thumbs-up m-1 text-gray-400">{{$user->reviews->where('good_bad',1)->count()}}</i>
+                                <i class="far fa-thumbs-down m-1 text-gray-400">{{$user->reviews->where('good_bad',0)->count()}}</i>
                             </div>
                             <div class="flex flex-row text-[12px]">
                                 <i class="fas fa-star text-yellow-500"></i>

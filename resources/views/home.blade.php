@@ -49,7 +49,7 @@
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
-                                            value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
+                                            value="{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}" id="{{ $category->id }}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
