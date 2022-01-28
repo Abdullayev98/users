@@ -75,7 +75,8 @@
                                 @endif alt="user">
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>
-                                <i class="far fa-thumbs-up m-1 text-gray-400"></i> 5128
+                                <i class="far fa-thumbs-up m-1 text-gray-400">{{$user->reviews->where('good_bad',1)->count()}}</i>
+                                <i class="far fa-thumbs-down m-1 text-gray-400">{{$user->reviews->where('good_bad',0)->count()}}</i>
                             </div>
                             <div class="flex flex-row text-[12px]">
                                 <i class="fas fa-star text-yellow-500"></i>
@@ -85,7 +86,7 @@
                                 <i class="fas fa-star text-yellow-500"></i>
                             </div>
                         </div>
-                        <div class="w-5/12 md:float-none md:float-none">
+                        <div class="w-4/5 md:float-none md:float-none">
                             <div>
                                 <a href="/performers/{{$user->id}}">
                                     <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 {{$user->id}}" id="{{$user->id}}"> {{$user->name}} </p>
@@ -109,6 +110,7 @@
                                 </p>
                             </div>
                             <div class="mt-6">
+                                @auth
                                 @if($tasks->count() > 0)
                                     <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
                                         Предложить задание
@@ -118,6 +120,7 @@
                                         <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                                     </a>
                                 @endif
+                                @endauth
                             </div>
                         </div>
                     </div>
@@ -182,7 +185,7 @@
                 <!-- modal -->
                 <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center py-12">
                     <!-- modal header -->
-                    <h1 class="text-2xl font-bold">Вы предложили задание "Test" исполнителю Елена Б.</h1>
+                    <h1 class="text-2xl font-bold namem"></h1>
                     <div class="mx-auto mt-8">
                         Мы отправили ему уведомление.
                     </div>
@@ -355,6 +358,8 @@
     <script>
         @foreach($users as $user)
         $("#open{{$user->id}}").click(function(){
+            var username = $(".{{$user->id}}").text();
+            var namem = $(".namem").text('Вы предложили задание исполнителю'+username );
             $(".modal_content").show();
             let user_id = $('.{{$user->id}}').attr('id');
             $.ajax({

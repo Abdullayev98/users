@@ -22,27 +22,28 @@
                 <div>
                     <div class="mb-4">
                             <input type="text" name="name" placeholder="@lang('lang.signup_username')" value="{{ request()->input('name', old('name')) }}"
-                            id="name" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                            id="name" class=" focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                             <br>
                         @if ($errors->has('name'))
                             <p class="text-danger" style="color: red">{{ $errors->first('name') }}</p>
                         @endif
                             <input type="text" name="email" placeholder="@lang('lang.signup_elpocta')" value="{{ request()->input('email', old('email')) }}"
-                            id="email_address" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                            id="email_address" class=" focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                             <br>
                         @if ($errors->has('email'))
                             <p class="text-danger" style="color: red">{{ $errors->first('email') }}</p>
                         @endif
                             <input type="text" id="phone_number" placeholder="+998(00)000-00-00" value="+998{{ request()->input('phone_number') }}"
-                                id="phone_number" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                                id="phone_number" class=" focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                             <br>
                         <input type="hidden" name="phone_number" id="phone">
                         @if ($errors->has('phone_number'))
                             <p class="text-danger" style="color: red">{{ $errors->first('phone_number') }}</p>
                         @endif
                             <input type="password" name="password" placeholder="@lang('lang.signup_password')"
-                                id="password" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" required>
-                            <br>
+                                id="password" class=" focus:outline-none focus:border-yellow-500 ml-6 shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" required>
+                            <i class="fas fa-eye-slash text-gray-500 relative -left-12" id="eye"></i>
+                        <br>
 
                         @error('phone_number')
                         <p style="color: red">{{ $message }}</p>
@@ -51,7 +52,7 @@
                         <div class="text-danger" style="color: red">{{ $errors->first('password') }}</div>
                         @endif
                             <input type="password" name="password_confirmation" placeholder="@lang('lang.signup_password_confirm')"
-                                id="password_confirmation" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" required>
+                                id="password_confirmation" class=" focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500" required>
                             <br>
                     </div>
                 </div>
@@ -78,5 +79,24 @@
                 console.log($("#phone").val())
             })
 
+        </script>
+        <script>
+            $(function(){
+
+                $('#eye').click(function(){
+                    if($(this).hasClass('fa-eye-slash')){
+                        $(this).removeClass('fa-eye-slash');
+                        $(this).addClass('fa-eye');
+                        $('#password').attr('type','text');
+                        $('#password_confirmation').attr('type','text');
+                    }else{
+                        $(this).removeClass('fa-eye');
+                        $(this).addClass('fa-eye-slash');
+                        $('#password').attr('type','password');
+                        $('#password_confirmation').attr('type','password');
+                    }
+                });
+
+            });
         </script>
 @endsection

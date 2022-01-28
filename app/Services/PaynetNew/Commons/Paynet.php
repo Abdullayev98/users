@@ -111,7 +111,7 @@ class Paynet
         $transaction = PaynetTransaction::create([
             'payment_system'        => 'Paynet',
             'system_transaction_id' => $this->request->params['transactionId'],
-            'amount'                => 1 * $this->request->params['amount'],
+            'amount'                => (1 * $this->request->params['amount']) / 100,
             'currency_code'         => PaynetTransaction::CURRENCY_CODE_UZS,
             'state'                 => PaynetTransaction::STATE_CREATED,
             'updated_time'          => 1*$create_time,
@@ -168,7 +168,7 @@ class Paynet
         foreach ($transactions as $transaction){
             $statements = $statements .
                 "<statements>".
-                "<amount>" . $transaction->amount . "</amount>".
+                "<amount>" . $transaction->amount * 100 . "</amount>".
                 "<providerTrnId>" . $transaction->id . "</providerTrnId>".
                 "<transactionId>" . $transaction->system_transaction_id . "</transactionId>".
                 "<transactionTime>".DataFormat::toDateTimeWithTimeZone($transaction->created_at)."</transactionTime>".

@@ -44,8 +44,10 @@ class PerformersController extends Controller
         $categories = DB::table('categories')->get();
         $child_categories= DB::table('categories')->get();
         $users= User::where('role_id',2)->paginate(50);
+        $goods = [];
+        $bads = [];
 
-        return view('Performers/performers',compact('child_categories','categories','users','tasks'));
+        return view('Performers/performers',compact('child_categories','categories','users','tasks','goods','bads'));
     }
     public function performer(User $id){
 
@@ -63,7 +65,7 @@ class PerformersController extends Controller
             $view->performer_id= $user->id;
             $view->save();
         }
-        $views = UserView::query()->where('performer_id', $id->id)->get();
+        $views = count(UserView::query()->where('performer_id', $id->id)->get());
 
 
         $categories = DB::table('categories')->get();
