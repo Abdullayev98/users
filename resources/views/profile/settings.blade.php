@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <div class="2xl:w-3/5 w-10/12  mx-auto text-base mt-4">
+    <div class="w-11/12  mx-auto text-base mt-4">
 
 
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
@@ -16,8 +16,8 @@
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
-                    <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
-                        <div class="sm:w-1/3 w-full">                           
+                    <div class="flex flex-row mt-6" style="width: 500px">
+                        <div class="w-1/3">                           
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
                                 src='{{asset("images/default_img.jpg")}}'
@@ -43,7 +43,7 @@
                             </form>
                         </div>
 
-                        <div class="w-2/3 text-base text-gray-500 lg:ml-0 ml-4">
+                        <div class="w-2/3 text-base text-gray-500 ml-4">
                             @if($user->age != "")
                                 <p class="inline-block mr-2">
                                     {{$user->age}}
@@ -292,7 +292,7 @@
                 </div>
             </div>
             {{-- right-side-bar --}}
-        <div class="lg:col-span-1 col-span-2 full rounded-xl ring-1 ring-gray-300 h-auto w-72 ml-8 text-gray-600">
+        <div class="lg:col-span-1 col-span-2 full rounded-xl ring-1 ring-gray-300 h-auto w-80 text-gray-600 lg:ml-8 ml-0">
             <div class="mt-6 ml-4">
                 <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
                 <p>@lang('lang.profile_since')</p>
