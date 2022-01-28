@@ -15,14 +15,16 @@ use Illuminate\Support\Facades\DB;
 class ProfileController extends Controller
 {
 
+
+
     //profile
     public function profileData()
     {
         $user = Auth::user();
-        $vcs = UserView::where('user_id', $user->id)->first();
+        $views = count( UserView::where('performer_id', $user->id)->get());
         $task = Task::where('user_id',Auth::user()->id)->count();
         $ports = Portfolio_new::where('user_id',Auth::user()->id)->get();
-        return view('profile.profile', compact('user','vcs','task','ports'));
+        return view('profile.profile', compact('user','views','task','ports'));
     }
     public function updates(Request $request)
     {
@@ -51,11 +53,11 @@ class ProfileController extends Controller
     {
         $user = Auth()->user();
         $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
-        $vcs = UserView::where('user_id', $user->id)->first();
+        $views = count( UserView::where('performer_id', $user->id)->get());
         $task = Task::where('user_id',Auth::user()->id)->count();
         $transactions = All_transaction::where('user_id', Auth::id())->get();
         $transactions_count = All_transaction::where('user_id', Auth::id())->count();
-        return view('profile.cash', compact('transactions_count', 'transactions', 'user', 'vcs', 'balance', 'task'));
+        return view('profile.cash', compact('transactions_count', 'transactions', 'user', 'views', 'balance', 'task'));
     }
     public function updateCash(Request $request)
     {
@@ -83,10 +85,10 @@ class ProfileController extends Controller
     public function editData()
     {
         $user = Auth::user();
-        $vcs = UserView::where('user_id', $user->id)->first();
+        $views = count( UserView::where('performer_id', $user->id)->get());
         $categories = DB::table('categories')->where('parent_id',Null)->get();
         $task = Task::where('user_id',Auth::user()->id)->count();
-        return view('profile.settings', compact('user','categories','vcs','task'));
+        return view('profile.settings', compact('user','categories','views','task'));
     }
     public function updateData(Request $request)
     {

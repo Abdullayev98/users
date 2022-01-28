@@ -723,7 +723,7 @@ return [
     'signin_google' => "Google",
     'signin_facebook' => "Facebook",
     'signin_elpocta' => "Elektron pochta orqali tizimga kiring",
-    'signin_username' => "Ism Familiya",
+    'signin_username' => "Email",
     'signin_password' => "Parol",
     'signin_passwordforgot' => "Parolni unutdingizmi?",
     'signin_registration' => "Ro'yxatdan o'tish",

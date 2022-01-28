@@ -254,10 +254,10 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script type="text/javascript">
-        let r=0, m=1, p=10, s=0, sGeo=0, dl=0, dlGeo=0, k=1, dGCounter=1;
+        let r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
         let userCoordinates=[[],[]];
         enDis(r);
-        first_ajax('all', '');
+        first_ajax('all');
         module.exports = {
             plugins: [require('@tailwindcss/forms'),]
         };
@@ -293,24 +293,6 @@
                 </div>`
             );
             $('.lM').attr("hidden","hidden")
-        }
-
-        function tasks_show(){
-            let i=1;
-            $('.print_block').each(function() {
-                if ((this.hidden) && (i <= p) && (s <= dl))
-                {
-                    this.hidden = false;
-                    i++
-                    s++
-                }
-            });
-            $('.lM').removeAttr('hidden');
-            $('#pnum').html(s)
-            $('#snum').html(dl)
-            if (s==dl){
-                $('.butt').attr("disabled","disabled")
-            }
         }
 
         function map1_show(){
@@ -447,9 +429,9 @@
                             };
                         },
                         geoObjects = [];
-                    for (var i = 0, len = dataGeo.length; i < len; i++) {
+                    for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
                         // geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
-                        geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointOptions());
+                        geoObjects[i] = new ymaps.Placemark(dataAjax[i].coordinates, getPointOptions());
                     }
                     clusterer.options.set({
                         gridSize: 80,

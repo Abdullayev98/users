@@ -725,7 +725,7 @@ return [
     'signin_google' => "Google",
     'signin_facebook' => "Facebook",
     'signin_elpocta' => ' Войти в профиль пользователя',
-    'signin_username' => " Имя Фамилия",
+    'signin_username' => " Электронная почта",
     'signin_password' => " Пароль",
     'signin_passwordforgot' => "Забыли пароль?",
     'signin_registration' => "  Зарегистрируйтесь",
