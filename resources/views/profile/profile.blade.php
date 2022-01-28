@@ -15,8 +15,8 @@
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
-                    <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
-                        <div class="sm:w-1/3 w-full">
+                    <div class="flex flex-row w-80 mt-6" style="width:500px">
+                        <div class="w-1/3">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
                                     src='{{asset("images/default_img.jpg")}}'
@@ -42,7 +42,7 @@
                             </form>
                         </div>
 
-                        <div class="w-2/3 text-base text-gray-500 lg:ml-0 ml-4">
+                        <div class="w-2/3 text-base text-gray-500 ml-4">
                             @if($user->age != "")
                                 <p class="inline-block mr-2">
                                     {{$user->age}}
@@ -110,7 +110,7 @@
                                 </form>
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
-                        <div class="example-of-works w-full mx-auto my-10 ">
+                        <div class="example-of-works w-96 my-10">
                            <a onclick="toggleModal123('modal-id123')" class="bg-yellow-500 px-8 py-3 rounded-md text-white text-2xl" href="#">
                             <i class="fas fa-camera"></i>
                             <span>Создать фотоальбом</span>
@@ -121,7 +121,7 @@
                 </div>
             </div>
                 {{-- right-side-bar --}}
-            <div class="lg:col-span-1 col-span-2 full rounded-xl ring-1 ring-gray-300 h-auto w-72 ml-8 text-gray-600">
+            <div class="lg:col-span-1 col-span-2 full rounded-xl ring-1 ring-gray-300 h-auto w-80 text-gray-600 lg:ml-8 ml-0">
                 <div class="mt-6 ml-4">
                     <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
                     <p>@lang('lang.profile_since')</p>
