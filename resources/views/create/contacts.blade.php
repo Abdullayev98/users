@@ -41,7 +41,7 @@
                             </ul>
                             <div class="tab-content" id="tabs-tabContent3">
                                 <div class="tab-pane fade show active" id="tabs-home3" role="tabpanel" aria-labelledby="tabs-home-tab3">
-                                    <form class="" action="{{route('task.create.contact.store', $task->id)}}" method="post">
+                                    <form action="{{route('task.create.contact.store', $task->id)}}" method="post">
                                         @csrf
                                         <div class="py-4 mx-auto  text-left ">
                                             <div class="mb-4">
@@ -74,7 +74,7 @@
                                                             @else
                                                                 <label class="text-sm text-gray-500 mb-2" for="phone">@lang('lang.contact_number')</label>
                                                                 <input type="text" name="phone_number"
-                                                                       value="+998{{auth()->user()->phone_number}}" id="phone"
+                                                                       value="{{auth()->user()->phone_number}}" id="phone"
                                                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
                                                                 @error('phone_number')
                                                                 <p>{{$message}}</p>
@@ -111,6 +111,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="tabs-profile3" role="tabpanel" aria-labelledby="tabs-profile-tab3">
                                     <form action="" method="POST">
+                                        @csrf
                                         <label>
                                             <span class="text-gray-500 text-sm">
                                                 Электронная почта или телефон
