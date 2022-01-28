@@ -36,7 +36,7 @@ class SearchTaskController extends VoyagerBaseController
                     ->get();
             }
             if ($request->orderBy == 'sroch') {
-                $tasks =  DB::table("tasks")->where('status',1)->orderBy('start_date','asc')
+                $tasks =  DB::table("tasks")->where('status','=',1)->orderBy('start_date','asc')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
@@ -51,6 +51,10 @@ class SearchTaskController extends VoyagerBaseController
             if ($request->orderBy == 'klyuch') {
                 $filter = $request->fltr;
                 $tasks =  DB::table("tasks")->where('name','LIKE',"%$filter%")->orderBy('name','desc')->get();
+            }
+            if ($request->orderBy == 'price') {
+                $filter = $request->fltr;
+                $tasks =  DB::table("tasks")->where('budget','LIKE',"%$filter%")->orderBy('name','desc')->get();
             }
         }
         return $tasks->all();
