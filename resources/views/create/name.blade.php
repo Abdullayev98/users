@@ -45,8 +45,8 @@
                                     class="shadow border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
                                     id="username" type="text" placeholder="@lang('lang.name_example')" required name="name" value="{{session('neym')}}">
                             </div>
-                            <button type='button' id='button' style="color: grey; hover: red;" onclick="myFunction()">@lang('lang.name_subCat2')</button>
-                            <div style="display: none;" id="categories">
+                            <p style="color: grey; hover: red;">@lang('lang.name_subCat2')</p>
+                            <div id="categories">
 
                             <div class="flex justify-center">
   <div class="my-3 xl:w-50 pr-2">
@@ -73,7 +73,7 @@
     </select>
   </div>
   @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $cat_for_ch)
-  <div id="for_filter_select{{ $cat_for_ch->id }}" class="my-3 xl:w-50 pl-2 hidden for_all_hid_ch">
+  <div id="for_filter_select{{ $cat_for_ch->id }}" class="my-3 xl:w-50 pl-2 for_all_hid_ch">
     <select onchange="window.location.href = this.options[this.selectedIndex].value" class="form-select
       block
       w-full
@@ -134,22 +134,5 @@ $('#for_filter_select'+ id +'').removeClass('hidden');
 @section("javasript")
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
-    <script>
-        function myFunction() {
-            var x = document.getElementById("categories");
-            var y = document.getElementById("button");
-
-            if (x.style.display === "none") {
-                x.style.display = "block";
-                y.style.display = "none";
-
-            } else {
-                x.style.display = "none";
-                y.style.display = "block";
-            }
-        }
-    </script>
-
 
 @endsection
