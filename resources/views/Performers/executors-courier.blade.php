@@ -105,21 +105,21 @@
                 <p>{{$user->description}}</p>
 
                 <div class="py-12">
-                    <ul>
+                    <ul class="d-flex flex-col gap-y-5">
                         @if (isset($reviews))
                         @foreach ($reviews as $review)
                             @if($review->user_id == $user->id)
-                        <li class="">
-                            <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="block float-left align-top w-[40px] h-[40px] overflow-hidden rounded-[4px] shadow-lg border-b-0 ">
+                        <li class="d-flex flex-col my-10 rounded-lg">
+                            <a href="#" target="_blank" rel="noreferrer noopener" class="w-1 h-1 overflow-hidden rounded-full border-b-0">
                                 <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
                             </a>
-                            <div class="align-top ml-[50px] min-h-[42px]">
+                            <div class="align-top ml-12 min-h-10">
                             <span>
                                 @if ($user->id == $review->reviewer_id)
                                 <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$user->name}}</a>
                                 @endif
                             </span>
-                                <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
+                                <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
                                     @if ($user->id == $review->reviewer_id)
                                     @if ($user->role_id == 2)
@@ -143,8 +143,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <div class="p-[20px] mt-[12px] mr-0 mb-[35px] bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-[10px] relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid">
-                                <div class="text-gray-500 pb-4">
+                            <div class="p-5 mt-3 mr-0 mb-8 bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-2.5 relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid rounded-md">
+                                <div class="text-gray-500 py-4">
                                     @foreach ($tasks as $task)
                                     @if ($task->id == $review->task_id)
                                     <i class="far fa-thumbs-up"></i> Задание "{{$task->name}}" выполнено
@@ -152,7 +152,7 @@
                                     @endforeach
                                 </div>
                                 <hr>
-                                <div class="pt-4">
+                                <div class="py-4">
                                     {{$review->description}}
                                 </div>
                             </div>

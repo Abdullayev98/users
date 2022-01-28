@@ -53,8 +53,12 @@
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
-                                   class="float-right md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
+                                   class="float-right sm:block hidden md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
                                     @lang('lang.header_orderBtn')
+                                </a>
+                                <a href="" type="submit" id="createhref"
+                                   class="float-right sm:hidden block  md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
+                                    Заказать
                                 </a>
                         </div>
                         <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs  md:ml-20">
