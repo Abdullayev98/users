@@ -37,6 +37,7 @@ class UserController extends Controller
     {
         return view('auth.register_code');
     }
+
     public function signup()
     {
         return view('auth.signup');
@@ -57,7 +58,7 @@ class UserController extends Controller
         $data = $request->validated();
         $user = User::where('email', $data['email'])->first();
 
-        if(!$user){
+        if (!$user) {
             session()->flash('message', 'Введенный email не существует!');
             return redirect()->back();
         }
@@ -77,12 +78,11 @@ class UserController extends Controller
             $advants = Advant::all();
             $trusts = Trust::orderby('id', 'desc')->get();
             $reklamas = Reklama::all();
-            return view('home', compact('reklamas','tasks', 'advants', 'howitworks', 'categories', 'users_count','trusts', 'random_category'))->withSuccess('Logged-in');
+            return view('home', compact('reklamas', 'tasks', 'advants', 'howitworks', 'categories', 'users_count', 'trusts', 'random_category'))->withSuccess('Logged-in');
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
     }
-
 
 
     public function customSignup(Request $request)
@@ -193,6 +193,7 @@ class UserController extends Controller
         auth()->login($user);
         return redirect('/profile');
     }
+
     public function createUser(array $data)
     {
         return User::create([
@@ -213,7 +214,7 @@ class UserController extends Controller
             Session::put('lang', $lang);
             $reklamas = Reklama::all();
             $trusts = Trust::orderby('id', 'desc')->get();
-            return view('home', compact('tasks', 'howitworks', 'categories','reklamas','trusts'));
+            return view('home', compact('tasks', 'howitworks', 'categories', 'reklamas', 'trusts'));
         }
         return redirect("login")->withSuccess('Access is not permitted');
     }
@@ -234,14 +235,14 @@ class UserController extends Controller
     public function verifyProfil(Request $request)
     {
 
-$user = auth()->user();
+        $user = auth()->user();
 
         $request->validate([
             'sms_otp' => 'required',
         ],
-        [
+            [
                 'sms_otp.required' => 'Требуется заполнение!'
-        ]
+            ]
         );
 
         if ($request->sms_otp == $user->verify_code) {
@@ -252,7 +253,7 @@ $user = auth()->user();
             } else {
                 return back()->with('expired_message', 'Verification code expired');
             }
-        }else{
+        } else {
             return back()->with('incorrect_message', 'Verification code incorrect');
         }
 

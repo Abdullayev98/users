@@ -251,4 +251,5 @@
             $('.formdesc').removeClass('block').addClass('hidden')
         });
     </script>
+    @include('sweetalert::alert')
 @endsection

@@ -22,8 +22,8 @@
                 <form method="POST" action="{{ route('signin.custom') }}">
                     @csrf
                     <div class="mb-4">
-                        <input type="text" name="email" placeholder="Email" id="name"
-                               class="shadow appearance-none border border-slate-300 rounded
+                        <input type="text" name="email" placeholder="Email" id="name" value="{{  old('email') }}"
+                               class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded
                         w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
                                autofocus>
 
@@ -34,7 +34,7 @@
                     </div>
                     <div class="mb-6">
                         <input   type="password" name="password" placeholder="@lang('lang.signin_password')" id="password"
-                                 class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3
+                                 class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded w-80 py-2 px-3
                         text-gray-700 mb-3 leading-tight hover:border-amber-500">
 
                         @error('password')
