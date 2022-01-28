@@ -33,17 +33,16 @@ class UserRegisterRequest extends FormRequest
     public function messages()
     {
         return [
-                'name.required' => 'Требуется заполнение!',
-                'name.unique' => 'Пользователь с таким именем уже существует!',
-                'phone_number.required' => 'Требуется заполнение!',
-                'phone_number.regex' => 'Неверный формат номера телефона!',
-                'phone_number.unique' => 'Этот номер есть в системе!',
-                'email.required' => 'Требуется заполнение!',
-                'email.email' => 'Требуется заполнение!',
-                'email.unique' => 'Пользователь с такой почтой уже существует!',
-                'password.required' => 'Требуется заполнение!',
-                'password.min' => 'Пароли должны содержать не менее 6-ми символов',
-                'password.confirmed' => 'Пароль не совпадает'
-        ];
+                'name.required' => __('login.name.required'),
+                'name.unique' => __('login.name.unique'),
+                'phone_number.required' => __('login.phone_number.required'),
+                'phone_number.regex' => __('login.phone_number.regex'),
+                'phone_number.unique' => __('login.phone_number.unique'),
+                'email.required' => __('login.email.required'),
+                'email.email' => __('login.email.email'),
+                'email.unique' => __('login.email.unique'),
+                'password.required' => __('login.password.required'),
+                'password.min' => __('login.password.min'),
+                'password.confirmed' => __('login.password.confirmed'),        ];
     }
 }
