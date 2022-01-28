@@ -109,6 +109,7 @@
                                 </p>
                             </div>
                             <div class="mt-6">
+                                @auth
                                 @if($tasks->count() > 0)
                                     <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
                                         Предложить задание
@@ -118,6 +119,7 @@
                                         <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                                     </a>
                                 @endif
+                                @endauth
                             </div>
                         </div>
                     </div>
