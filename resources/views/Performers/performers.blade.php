@@ -75,7 +75,8 @@
                                 @endif alt="user">
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>
-                                <i class="far fa-thumbs-up m-1 text-gray-400"></i> 5128
+                                <i class="far fa-thumbs-up m-1 text-gray-400"></i> 2
+                                <i class="far fa-thumbs-down m-1 text-gray-400"></i>1
                             </div>
                             <div class="flex flex-row text-[12px]">
                                 <i class="fas fa-star text-yellow-500"></i>
@@ -184,7 +185,7 @@
                 <!-- modal -->
                 <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center py-12">
                     <!-- modal header -->
-                    <h1 class="text-2xl font-bold">Вы предложили задание "Test" исполнителю Елена Б.</h1>
+                    <h1 class="text-2xl font-bold namem"></h1>
                     <div class="mx-auto mt-8">
                         Мы отправили ему уведомление.
                     </div>
@@ -357,6 +358,8 @@
     <script>
         @foreach($users as $user)
         $("#open{{$user->id}}").click(function(){
+            var username = $(".{{$user->id}}").text();
+            var namem = $(".namem").text('Вы предложили задание исполнителю'+username );
             $(".modal_content").show();
             let user_id = $('.{{$user->id}}').attr('id');
             $.ajax({
