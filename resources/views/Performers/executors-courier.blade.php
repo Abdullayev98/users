@@ -153,7 +153,7 @@
                                 </div>
                                 <hr>
                                 <div class="py-4">
-                                    {{$review->description}} lorem
+                                    {{$review->description}}
                                 </div>
                             </div>
                         </li>
