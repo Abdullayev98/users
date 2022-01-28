@@ -66,6 +66,9 @@ class LoginController extends Controller
         $user->save();
         Mail::to($user->email)->send(new VerifyEmail($user->verify_code));
 
+
+        Alert::info('Email sent', 'Your verification link has been successfully sent!');
+
         return redirect()->route('userprofile');
     }
 
@@ -85,16 +88,14 @@ class LoginController extends Controller
                 $user->save();
             }else
             {
-                return back()->with([
-                    'message' => 'Code Incorrect'
-                ]);
+                Alert::error('Email Verification', 'Error Message');
+                return back();
             }
-
         }else
         {
             abort(419);
         }
-        Alert::success('Congrats', 'You\'ve Successfully Registered');
+        Alert::success('Congrats', 'Your Email have successfully verified');
 
         return redirect()->route('userprofile');
     }

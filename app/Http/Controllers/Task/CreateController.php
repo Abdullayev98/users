@@ -202,7 +202,7 @@ class CreateController extends Controller
             'description' => 'required|string',
             'oplata' => 'required'
         ]);
-    
+
         $data['photos'] = session()->pull('photo');
         $data['docs'] = $request->docs ? 1 : null;
         $task->update($data);
@@ -215,15 +215,16 @@ class CreateController extends Controller
         return view('create.contacts', compact('task'));
     }
 
+
     public function contact_store(Task $task, Request $request)
     {
-//        dd($request->all());
+
         if (!auth()->check()) {
             $data = $request->validate(
                 [
                     'name' => 'required|string',
                     'email' => ['required','email','unique:users'],
-                    'phone_number' => 'required',
+                    'phone_number' => 'required|unique:users',
                 ],
                 [
                     'name.required' => 'Name  is required',
@@ -231,28 +232,27 @@ class CreateController extends Controller
                     'email.required' => 'Email is required',
                     'email.email' => 'It must be an email',
                     'email.unique' => "This email already exists",
-                    'phone_number.required' => 'Phone number is required'
+                    'phone_number.required' => 'Phone number is required',
+                    'phone_number.unique' => 'Phone number has already an account'
                 ]
             );
-
                 $data['password'] = bcrypt('login123');
                 $user = User::create($data);
         } else {
             $user = auth()->user();
             $data = $request->validate(
                 [
-                    'phone_number' => 'required'
+                    'phone_number' => 'required|unique:users'
                 ],
                 [
-                    'phone_number.required' => 'Требуется заполнение!'
+                    'phone_number.required' => 'Требуется заполнение!',
+                    'phone_number.unique' => 'Phone number has already an account',
                 ]
             );
             $user->update($data);
             $user->fresh();
         }
         auth()->login($user);
-        $user->phone_number = str_replace('+998', '', preg_replace('/[^0-9]/', '', $user->phone_number));
-        $user->save();
 
         if (!$user->is_email_verified) {
             $sms_otp = rand(100000, 999999);
@@ -268,7 +268,7 @@ class CreateController extends Controller
         $task->user_id = $user->id;
         $task->phone = $user->phone_number;
         $task->save();
-        return redirect('/profile');
+        return redirect()->route('userprofile');
 
     }
 
@@ -283,5 +283,8 @@ class CreateController extends Controller
         Task::where('id', $id)->delete();
         CustomFieldsValue::where('task_id', $id)->delete();
     }
+
+
+
 
 }

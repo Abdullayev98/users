@@ -85,48 +85,8 @@ class UserController extends Controller
     }
 
 
-    public function customSignup(Request $request)
-    {
-        $data = $request->validate(
-            [
-                'name' => 'required',
-                'phone_number' => 'required|unique:users',
-                'email' => 'required|email|unique:users|email',
-                'password' => 'required|min:6|confirmed',
-            ],
-            [
-                'name.required' => 'Требуется заполнение!',
-                'name.unique' => 'Пользователь с таким именем уже существует!',
-                'phone_number.required' => 'Требуется заполнение!',
-                'phone_number.regex' => 'Неверный формат номера телефона!',
-                'phone_number.unique' => 'Этот номер есть в системе!',
-                'email.required' => 'Требуется заполнение!',
-                'email.email' => 'Требуется заполнение!',
-                'email.unique' => 'Пользователь с такой почтой уже существует!',
-                'password.required' => 'Требуется заполнение!',
-                'password.min' => 'Пароли должны содержать не менее 6-ми символов',
-                'password.confirmed' => 'Пароль не совпадает'
-            ]
-        );
-        $user = User::create($data);
-        $token = Str::random(64);
-        $sms_otp = rand(100000, 999999);
 
-        if ($request->has('email')) {
-            //            Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
-            //                $message->to($request->email);
-            //                $message->subject('Email Verification Mail');
-            //            });
-        }
-        $message = "Code: {$sms_otp} user.uz";
-        $response = (new SmsService())->send($data['phone_number'], $message);
-        $user->verify_code = $sms_otp;
-        $user->verify_expiration = Carbon::now()->addMinutes(5);
-        $user->save();
-        auth()->login($user);
 
-        return redirect()->route('register.code');
-    }
 
     public function code_submit(Request $request)
     {
@@ -147,7 +107,9 @@ class UserController extends Controller
         $data = $request->validated();
         $user = User::query()->where('phone_number', $data['phone_number'])->first();
         if (!$user) {
-            return back();
+            return back()->with([
+                'message' => "This phone number does not have an account!"
+            ]);
         }
         $sms_otp = rand(100000, 999999);
         $user->verify_code = $sms_otp;
@@ -247,8 +209,8 @@ class UserController extends Controller
 
         if ($request->sms_otp == $user->verify_code) {
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
-                User::where('id', $user->id)->update(['is_email_verified' => 1]);
-                Task::where('id', $request->for_ver_func)->update(['status' => 1]);
+                $user->update(['is_email_verified' => 1]);
+                Task::findOrFail($request->for_ver_func)->update(['status' => 1]);
                 return redirect()->route('userprofile');
             } else {
                 return back()->with('expired_message', 'Verification code expired');
@@ -259,16 +221,6 @@ class UserController extends Controller
 
     }
 
-    public function verifyAccount($token, $is_otp = false)
-    {
-        if ($is_otp) {
-            $verifyUser = UserVerify::where('sms_otp', $token)->first();
-        } else {
-            $verifyUser = UserVerify::where('token', $token)->first();
-        }
-        $message = $this->checkIsVerified($verifyUser);
-        return redirect()->route('login')->with('message', $message);
-    }
 
     public function checkIsVerified($verifyUser)
     {

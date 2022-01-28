@@ -38,11 +38,9 @@
                             Пройдите по ссылке и активируйте вашу электронную почту.
                         </p>
 
-                        <a class='text-gray-800 border-b border-dotted border-gray-700' href="{{route('user.verify.send')}}">Отправить новое
+                        <a class='text-gray-800 border-b sent-email border-dotted border-gray-700' href="{{route('user.verify.send')}}">Отправить новое
                             письмо для подтверждения почты</a><br>
 
-                        <a class='text-gray-800 border-b border-dotted border-gray-700' href="#ddd">Указать другую
-                            почту</a>
 
 
                     </div>
