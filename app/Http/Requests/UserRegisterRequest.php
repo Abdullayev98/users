@@ -26,14 +26,23 @@ class UserRegisterRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'phone' =>  'unique:users',
-            'password' => 'required|confirmed',
+            'phone_number' =>  'unique:users|min:9',
+            'password' => 'required|confirmed|min:8',
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => __('login.welcome')
-        ];
+                'name.required' => __('login.name.required'),
+                'name.unique' => __('login.name.unique'),
+                'phone_number.required' => __('login.phone_number.required'),
+                'phone_number.regex' => __('login.phone_number.regex'),
+                'phone_number.unique' => __('login.phone_number.unique'),
+                'email.required' => __('login.email.required'),
+                'email.email' => __('login.email.email'),
+                'email.unique' => __('login.email.unique'),
+                'password.required' => __('login.password.required'),
+                'password.min' => __('login.password.min'),
+                'password.confirmed' => __('login.password.confirmed'),        ];
     }
 }

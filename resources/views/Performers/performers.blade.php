@@ -75,16 +75,34 @@
                                 @endif alt="user">
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>
-                                <i class="far fa-thumbs-up m-1 text-gray-400">{{$user->reviews->where('good_bad',1)->count()}}</i>
-                                <i class="far fa-thumbs-down m-1 text-gray-400">{{$user->reviews->where('good_bad',0)->count()}}</i>
+                                <i class="far fa-thumbs-up m-1 text-gray-400 like{{$user->id}}">{{$user->reviews->where('good_bad',1)->count()}}</i>
+                                <i class="far fa-thumbs-down m-1 text-gray-400 dislike{{$user->id}}">{{$user->reviews->where('good_bad',0)->count()}}</i>
                             </div>
-                            <div class="flex flex-row text-[12px]">
-                                <i class="fas fa-star text-yellow-500"></i>
-                                <i class="fas fa-star text-yellow-500"></i>
-                                <i class="fas fa-star text-yellow-500"></i>
-                                <i class="fas fa-star text-yellow-500"></i>
-                                <i class="fas fa-star text-yellow-500"></i>
+                            <div class="flex flex-row text-[12px] stars{{$user->id}}">
                             </div>
+                            <script>
+                                $(document).ready(function(){
+                                    var good = $(".like{{$user->id}}").text();
+                                    var bad = $(".dislike{{$user->id}}").text();
+                                    var allcount = (good * 5) + (bad * 2);
+                                    var coundlikes = (good * 1) + (bad * 1);
+                                    var overallStars = allcount / coundlikes;
+                                    var star = overallStars.toFixed();
+                                    console.log(star);
+                                    if (!isNaN(star)) {
+                                        for (let i = 0; i < star; i++) {
+                                            $(".stars{{$user->id}}").append('<i class="fas fa-star text-yellow-500"></i>');
+                                        }
+                                        for (let u = star; u < 5; u++) {
+                                            $(".stars{{$user->id}}").append('<i class="fas fa-star text-gray-500"></i>');
+                                        }
+                                    }else {
+                                        for (let e = 0; e < 5; e++) {
+                                            $(".stars{{$user->id}}").append('<i class="fas fa-star text-gray-500"></i>');
+                                        }
+                                    }
+                                });
+                            </script>
                         </div>
                         <div class="w-4/5 md:float-none md:float-none">
                             <div>
@@ -450,5 +468,6 @@
             });
         })
     </script>
+
 @endsection
 

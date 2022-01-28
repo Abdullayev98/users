@@ -20,9 +20,7 @@ class LoginController extends Controller
 
     public function loginPost(UserLoginRequest $request)
     {
-        $request->validate([
-
-        ]);
+        $request->validated();
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->route('userprofile');
@@ -40,6 +38,7 @@ class LoginController extends Controller
     public function customRegister(UserRegisterRequest $request)
     {
 
+        dd($request->all());
         $request->validated();
 
         $user = new User();
@@ -52,7 +51,6 @@ class LoginController extends Controller
         auth()->login($user);
 
         return redirect()->route('userprofile');
-
 
 
     }
