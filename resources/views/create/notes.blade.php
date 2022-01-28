@@ -32,7 +32,7 @@
         <div class="mb-4">
           <div id="formulario" class="flex flex-col gap-y-4">
 
-        <div>
+        <div class="">
             <div class="mb-3 xl:w-full">
                 <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">
                     @lang('lang.notes_destcript')</label>
@@ -47,9 +47,9 @@
         </div>
 
           </div>
-          <div class="mt-4">
+          <div class="mt-4 ">
                 <div class="w-full border-dashed border border-black rounded-lg py-2 text-center flex justify-center items-center gap-2" type="button">
-                    <div id="photos"></div>
+                    <div class="w-full h-full" id="photos"></div>
                 </div>
              <div>
                 <label class="md:w-2/3 block mt-6">
