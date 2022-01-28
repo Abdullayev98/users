@@ -3,7 +3,7 @@
 @section("content")
 
     <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
-    <div class="2xl:w-3/5 w-10/12  mx-auto text-base mt-4">
+    <div class="w-11/12  mx-auto text-base mt-4">
 
 
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
@@ -16,7 +16,7 @@
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
-                        <div class="sm:w-1/3 w-full">                           
+                        <div class="sm:w-1/3 w-full">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
                                     src='{{asset("images/default_img.jpg")}}'
@@ -110,7 +110,7 @@
                                 </form>
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
-                        <div class="example-of-works w-full mx-auto my-10 ">   
+                        <div class="example-of-works w-full mx-auto my-10 ">
                            <a onclick="toggleModal123('modal-id123')" class="bg-yellow-500 px-8 py-3 rounded-md text-white text-2xl" href="#">
                             <i class="fas fa-camera"></i>
                             <span>Создать фотоальбом</span>
@@ -179,7 +179,7 @@
     </div>
 
             {{-- Modal start --}}
-               
+
             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
                 <div class="relative my-6 mx-auto max-w-3xl" id="modal11">
                     <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
@@ -193,7 +193,7 @@
                         </div>
                         <div class="text-center h-64 w-80 text-base">
                             <form action="#" enctype="multipart/form-data">
-                                <div class="input-images my-4"></div>                          
+                                <div class="input-images my-4"></div>
                               <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
                             </form>
                         </div>
@@ -231,7 +231,7 @@
             label: ''
         });
     </script>
-    
+
     <script>
         function fileupdate(){
             var x = document.getElementById("buttons");

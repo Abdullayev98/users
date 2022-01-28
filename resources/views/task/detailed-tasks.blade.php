@@ -218,7 +218,8 @@
                                     </div>
                                 </div>
                             </div>
-
+                            @if($tasks->user_id == auth()->id())
+                            @else
                             <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">
                                 <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
                                 <p class="mb-10">@lang('lang.detT_fastHelp')</p>
@@ -228,7 +229,7 @@
                                     </button>
                                 </a>
                             </div>
-
+                            @endauth
                             <div class="lg:w-[700px] w-[400px]">
                                 @if (isset($auth_user))
                                     @if ($tasks->user_name == $auth_user->name)
