@@ -43,6 +43,7 @@ class UserRegisterRequest extends FormRequest
                 'email.unique' => __('login.email.unique'),
                 'password.required' => __('login.password.required'),
                 'password.min' => __('login.password.min'),
-                'password.confirmed' => __('login.password.confirmed'),        ];
+                'password.confirmed' => __('login.password.confirmed'),        
+            ];
     }
 }
