@@ -249,7 +249,7 @@
         <div class="w-full mx-auto lg:shadow-xl">
             <div
                 class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 lg:w-11/12 xl:w-9/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat" style="background-image: url('{{asset('/images/download_hand_User.png')}}')">
-                <div class="w-11/12 sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent">
+                <div class="md:w-11/12 w-3/5 sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 md:mx-auto mx-4  md:bg-transparent">
                     <h4 class="font-semibold text-3xl md:text-black text-gray-500">@lang('lang.body_personalHelper')</h4>
                     <p class="text-base mt-8 md:text-black">@lang('lang.body_downloadApp')</p>
                     <a href="#">

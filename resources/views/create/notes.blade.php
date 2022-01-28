@@ -228,7 +228,7 @@ console.log(x);
             .use(Uppy.DropTarget, {target: document.body})
             .use(Uppy.GoldenRetriever)
             .use(Uppy.XHRUpload, {
-                endpoint: '/task/create/uploadImage',
+                endpoint: '/task/create/upload',
                 fieldName: 'file',
                 headers: file => ({
                     'X-CSRF-TOKEN': '{{csrf_token()}}'

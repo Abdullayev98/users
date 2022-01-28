@@ -145,7 +145,7 @@
                                 {{--Show Tasks list --}}
                             </div>
                         </div>
-                        <div class="w-full h-full lM">
+                        <div class="w-full h-full lM" hidden>
                             <ul class="text-center">
                                 <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
                                 <li><button id="loadMore" class="butt mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show(), maps_show();">@lang('lang.search_showMore')</button></li>
@@ -254,10 +254,10 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script type="text/javascript">
-        let r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
+        let allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
         let userCoordinates=[[],[]];
         enDis(r);
-        first_ajax('all');
+        first_ajax('all','');
         module.exports = {
             plugins: [require('@tailwindcss/forms'),]
         };
@@ -284,7 +284,7 @@
             $(".show_tasks").append(
                 `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
                 <div></div>
-                <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
+                <div><img src="{{asset('/images/notlike.png')}}" class="w-full h-full"></div>
                 <div></div>
                 <div class="col-span-3 text-center w-full h-full">
                     <p class="text-3xl"><b>Задания не найдены</b></p>
@@ -293,6 +293,24 @@
                 </div>`
             );
             $('.lM').attr("hidden","hidden")
+        }
+
+        function tasks_show(){
+            let i=1;
+            $('.print_block').each(function() {
+                if ((this.hidden) && (i <= p) && (s <= dl))
+                {
+                    this.hidden = false;
+                    i++
+                    s++
+                }
+            });
+            $('.lM').removeAttr('hidden');
+            $('#pnum').html(s)
+            $('#snum').html(dl)
+            if (s==dl){
+                $('.butt').attr("disabled","disabled")
+            }
         }
 
         function map1_show(){
@@ -321,8 +339,8 @@
                     },
                     geoObjects = [];
 
-                    for(var i = 0, len = dataAjax[i].coordinates; i < len; i++) {
-                        geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
+                        geoObjects[i] = new ymaps.Placemark(dataAjax[i].coordinates, getPointData(i), getPointOptions());
                     }
 
                 clusterer.options.set({
@@ -337,7 +355,7 @@
 
                 circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true }, { fill: false });
                 myMap1.geoObjects.add(circle);
-        };
+        }
         }
 
         function map_pos(mm) {
@@ -414,7 +432,7 @@
                         clusterDisableClickZoom: true,
                         clusterHideIconOnBalloonOpen: false,
                         geoObjectHideIconOnBalloonOpen: false
-                    }),
+                    })
                         // getPointData = function (index) {
                         //     return {
                         //         balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
@@ -427,11 +445,12 @@
                             return {
                                 preset: 'islands#greenIcon'
                             };
-                        },
+                        }
                         geoObjects = [];
                     for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-                        // geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
-                        geoObjects[i] = new ymaps.Placemark(dataAjax[i].coordinates, getPointOptions());
+                        dataGeo = [];
+                        dataGeo.push(dataAjax[i].coordinates.split(','));
+                        geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointOptions());
                     }
                     clusterer.options.set({
                         gridSize: 80,
@@ -453,7 +472,7 @@
                     `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
                     <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(1)"/></div>
                     </div>`
-                ),
+                )
                 ymaps.ready(init);
                 function init() {
                     var myMap3 = new ymaps.Map('map3', {
@@ -484,7 +503,7 @@
                             return {
                                 preset: 'islands#greenIcon'
                             };
-                        },
+                        }
                         geoObjects = [];
                     for (var i = 0, len = dataGeo.length; i < len; i++) {
                         geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
