@@ -50,8 +50,13 @@ class PerformersController extends Controller
     public function performer(User $id){
 
         $user= $id;
+        $view = UserView::query()->where('performer_id', $user->id);
 
-        $view = UserView::query()->where('user_id', \auth()->user()->id)->where('performer_id', $user->id)->first();
+        if (auth()->check()){
+            $view->where('user_id', \auth()->user()->id);
+        }
+        $view->first();
+
         if (!$view){
             $view = new UserView();
             $view->user_id = \auth()->user()->id;
