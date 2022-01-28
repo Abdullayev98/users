@@ -6,6 +6,7 @@ use App\Http\Requests\UserPhoneRequest;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Trust;
+use App\Models\Reklama;
 use App\Models\Advant;
 use App\Models\UserVerify;
 use App\Models\How_work_it;
@@ -53,10 +54,16 @@ class UserController extends Controller
     public function createSignin(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
-        $credentials = $request->only('name', 'password');
+
+        $user = User::where('email', $request->input('email'));
+
+        if(!$user){
+            return redirect()->back()->with('message','Введенный email не существует!');
+        }
+        $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $user = User::find(Auth::user()->id)
                 ->update([
@@ -71,7 +78,8 @@ class UserController extends Controller
             $random_category = Category::all()->random();
             $advants = Advant::all();
             $trusts = Trust::orderby('id', 'desc')->get();
-            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category', 'trusts'))->withSuccess('Logged-in');
+            $reklamas = Reklama::all();
+            return view('home', compact('reklamas','tasks', 'advants', 'howitworks', 'categories', 'users_count','trusts', 'random_category'))->withSuccess('Logged-in');
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
@@ -205,7 +213,9 @@ class UserController extends Controller
             $howitworks = How_work_it::all();
             $lang = Session::pull('lang');
             Session::put('lang', $lang);
-            return view('home', compact('tasks', 'howitworks', 'categories'));
+            $reklamas = Reklama::all();
+            $trusts = Trust::orderby('id', 'desc')->get();
+            return view('home', compact('tasks', 'howitworks', 'categories','reklamas','trusts'));
         }
         return redirect("login")->withSuccess('Access is not permitted');
     }
@@ -225,27 +235,31 @@ class UserController extends Controller
 
     public function verifyProfil(Request $request)
     {
+
+
         $request->validate([
             'sms_otp' => 'required',
         ]);
 
-        $verifyUser = UserVerify::where([
-            'user_id' => auth()->user()->id,
-            'sms_otp' => $request->sms_otp
-        ])->first();
+        $user = auth()->user();
 
-        if ($verifyUser === null)
-            if (getenv('APP_DEBUG')) {
-
-                $check = $request->sms_otp === getenv('SMS_OTP');
-                if ($check)
-                    $verifyUser = UserVerify::where([
-                        'user_id' => auth()->user()->id,
-                    ])->first();
+        if ($request->sms_otp == $user->verify_code) {
+            if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
+                User::where('id', $user->id)->update(['is_email_verified' => 1]);
+                Task::where('id', $request->for_ver_func)->update(['status' => 1]);
+                return redirect()->route('userprofile');
+            } else {
+                return back()->with([
+                    'alert' => 'Verification code expired'
+                ]);
             }
+        }else{
+            return back()->with([
+                'message' => 'Verification code incorrect'
+            ]);
+        }
 
         $message = $this->checkIsVerified($verifyUser);
-
         return redirect("/profile")->with('message', $message);
     }
 

@@ -5,21 +5,21 @@
     <div class="2xl:w-3/5 w-10/12  mx-auto text-base mt-4">
 
 
-        <div class="grid grid-cols-3  grid-flow-row mt-10">
+        <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
 
 
                  {{-- user ma'lumotlari --}}
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
                     <div class="float-right mr-8 text-gray-500">
-                        <i class="far fa-eye"> @lang('lang.profile_view')</i>
+                        <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
                         <div class="sm:w-1/3 w-full">                           
                                 <img class="border border-3 border-gray-400 h-40 w-40"
-                                @if ($user->avatar == 'users/default.png' || $user->avatar == Null)
+                                @if ($user->avatar == Null)
                                 src='{{asset("images/default_img.jpg")}}'
                                 @else
                                 src="{{asset("AvatarImages/{$user->avatar}")}}"

@@ -197,13 +197,34 @@ class CreateController extends Controller
     {
 //        dd($request->all());
         if (!auth()->check()) {
-            $data = $request->validated();
+            $data = $request->validate(
+                [
+                    'name' => 'required|string',
+                    'email' => ['required','email','unique:users'],
+                    'phone_number' => 'required',
+                ],
+                [
+                    'name.required' => 'Name  is required',
+                    'name.string' => 'Name must be a string',
+                    'email.required' => 'Email is required',
+                    'email.email' => 'It must be an email',
+                    'email.unique' => "This email already exists",
+                    'phone_number.required' => 'Phone number is required'
+                ]
+            );
 
                 $data['password'] = bcrypt('login123');
                 $user = User::create($data);
         } else {
             $user = auth()->user();
-            $data = $request->validate(['phone_number' => 'required']);
+            $data = $request->validate(
+                [
+                    'phone_number' => 'required'
+                ],
+                [
+                    'phone_number.required' => 'Требуется заполнение!'
+                ]
+            );
             $user->update($data);
             $user->fresh();
         }
@@ -214,13 +235,11 @@ class CreateController extends Controller
         if (!$user->is_email_verified) {
             $sms_otp = rand(100000, 999999);
             $token = Str::random(64);
-            UserVerify::create([
-                'user_id' => $user->id,
-                'token' => $token,
-                'sms_otp' => $sms_otp
-            ]);
+            $user->verify_code = $sms_otp;
+            $user->verify_expiration = Carbon::now()->addMinutes(5);
+            $user->save();
             $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
-            return redirect()->route('task.create.verify');
+            return redirect()->route('task.create.verify', $task->id);
         }
 
         $task->status = 1;
@@ -231,10 +250,10 @@ class CreateController extends Controller
 
     }
 
-    public function verify()
+    public function verify(Task $task)
     {
 
-        return view('create.verify');
+        return view('create.verify', compact('task'));
     }
 
     public function deletetask($id)

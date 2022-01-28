@@ -2,6 +2,8 @@
 
 return [
     // home.blade start
+    "count_transactions" => "Tranzaksiyalar soni:",
+    "random_cat" => "Piyoda kurerlik xizmatlari",
     'lang_for_map' => "uz_UZ",
     'header_title' => "Sizni tashvishlardan xalos qilamiz",
     'header_sub' => "Biz sizga har qanday vazifani bajarish uchun ishonchli ijrochi topishga yordam beramiz",
@@ -645,22 +647,22 @@ return [
     // services.blade end
 
     // verification.blade start
-    'ver_becomePerf' => "Universal Services Ijrochisiga aylning",
+    'ver_becomePerf' => "Universal Services ijrochisiga aylaning",
     'ver_uSerHelps' => "Universal Services sizga yangi mijozlarni topishga va har qanday <br> xizmatlardan pul ishlashga yordam beradi.",
-    'ver_becomePrefBtn' => "IJROCHI BOLISH",
-    'ver_advantage' => "Avzalliklar",
+    'ver_becomePrefBtn' => "IJROCHI BO'LISH",
+    'ver_advantage' => "Afzalliklar",
     'ver_becomePref2' => "Ijrochi bo'ling va mijozlarning qiziqarli topshiriqlarini <br> o'zingiz uchun qulay vaqtda bajaring.",
     'ver_goodSalary' => "Munosib daromad",
     'ver_freeTime' => "Erkin grafik",
     'ver_safeService' => "Xavfsiz xizmat",
     'ver_addsEconomy' => "Reklamadan tejash",
-    'ver_howToGetTask' => "Qanday qlib topshiriq olish mumkin",
+    'ver_howToGetTask' => "Qanday qilib topshiriq olish mumkin",
     'ver_perfsChoose' => "Universal xizmatlarda ijrochilar buyurtmalar va mijozlarni o'zlari tanlaydilar. Bu juda oddiy.",
-    'ver_becomePerf3' => "Profilni toldiring va Ijrochiga aylaning",
+    'ver_becomePerf3' => "Profilni to'ldiring va ijrochiga aylaning",
     'ver_chooseTask' => "Vazifani tanlang va unga javob bering",
-    'ver_takeMoney' => "Vazifani bajarib bolishingiz blan ish xaqqini oling",
+    'ver_takeMoney' => "Vazifani bajarib bo'lishingiz bilan ish haqqini oling",
     'ver_earnByTasks' => "Universal Services bilan buyurtmalar bo'yicha cheksiz pul ishlang. Xizmatdan qo'shimcha ish uchun foydalaning yoki o'z biznesingizni rivojlantirishni boshlang.",
-    'ver_maxOrder' => "Universal Services.com uchun maksimal buyurtma deyarli 100 000 rublni tashkil etdi, bir necha kun davomida men hech kim hal qilishni istamagan muammoni hal qilardim.",
+    'ver_maxOrder' => "Universal Services uchun maksimal buyurtma deyarli 1000000 so'mni tashkil etdi, bir necha kun davomida men hech kim hal qilishni istamagan muammoni hal qilardim.",
     'ver_startEarning' => "Pul ishlashni boshlang",
     'ver_workForYourserf' => "Universal xizmatlarda siz o'zingiz uchun ishlaysiz va mijozlaringizni tanlaysiz. O'zingizga qulay vaqtda topshiriqlarni bajaring va o'zingiz xohlagan vaqtda dam olish kunlarini tashkil qilasiz",
     'ver_opinion' => "Men users.uz noyob imkoniyatlar xizmati ekanligiga ishonaman. Uning shubhasiz afzalligi shundaki, siz mustaqil ravishda ish jadvalini, buyurtmalarni, o'zingiz uchun mijozlarni tanlashingiz va daromadingizni yaratishingiz mumkin.",
@@ -721,7 +723,7 @@ return [
     'signin_google' => "Google",
     'signin_facebook' => "Facebook",
     'signin_elpocta' => "Elektron pochta orqali tizimga kiring",
-    'signin_username' => "Ism Familiya",
+    'signin_username' => "Email",
     'signin_password' => "Parol",
     'signin_passwordforgot' => "Parolni unutdingizmi?",
     'signin_registration' => "Ro'yxatdan o'tish",

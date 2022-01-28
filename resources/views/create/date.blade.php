@@ -48,24 +48,18 @@
                   <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                       <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                   </div>
-                  <input datepicker type="text" name="start_date" value="{{session('deyt')}}" class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата" required>
-                  <input type="time" name="start_time" value="{{session('taym')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                  <input datepicker type="text" name="start_date" value="{{old('start_date')}}" class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата" required>
+                  <input type="time" name="start_time" value="{{old('start_time')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
               </div>
-{{--            <div class="flex justify-between border border-black rounded-lg">--}}
-{{--              <input type="date" name="start_date" value="{{session('deyt')}}" class="form-input border-none focus:outline-none ml-2 pl-0 mr-5 " required>--}}
-{{--              <input type="time" name="start_time" value="{{session('taym')}}" class="mr-5 border-none " required>--}}
-{{--            </div>--}}
+
               <div class="relative flex" id="datetime" style="display: none;">
                   <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                       <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                   </div>
-                  <input datepicker type="text" name="end_date" value="{{session('deyt2')}}" class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата" required>
-                  <input type="time" name="end_time" value="{{session('taym2')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                  <input datepicker type="text" name="end_date" value="{{old('end_date')}}" class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата">
+                  <input type="time" name="end_time" value="{{old('end_time')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               </div>
-{{--            <div class="flex justify-between rounded-lg border " id="datetime" style="display: none;">--}}
-{{--              <input type="date" name="end_date" value="{{session('deyt2')}}" class="pl-1  rounded-lg border" >--}}
-{{--              <input type="time" name="end_time" value="{{session('taym2')}}" class="pr-1 rounded-lg border" >--}}
-{{--            </div>--}}
+
           </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">

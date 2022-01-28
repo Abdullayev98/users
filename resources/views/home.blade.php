@@ -58,7 +58,7 @@
                                 </a>
                         </div>
                         <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs  md:ml-20">
-                            @lang('lang.header_example')<span href="#" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> {{ $random_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
+                            @lang('lang.header_example')<a href="/task/create?category_id=22" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> @lang('lang.random_cat')</a>
                         </div>
                     </div>
                     <div class="flex flex-row sm:w-1/2 w-5/6 mx-auto mt-8 items-center text-blue-300 hover:text-blue-400">

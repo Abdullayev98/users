@@ -2,6 +2,8 @@
 
 return [
     // home.blade start
+    "count_transactions" => "Количество транзакций:",
+    'random_cat' => "Услуги пешего курьера",
     'lang_for_map' => "ru_RU",
     'header_title' => "Освободим вас от забот",
     'header_sub' => "Поможем найти надежного исполнителя для любых задач",
@@ -723,7 +725,7 @@ return [
     'signin_google' => "Google",
     'signin_facebook' => "Facebook",
     'signin_elpocta' => ' Войти в профиль пользователя',
-    'signin_username' => " Имя Фамилия",
+    'signin_username' => " Электронная почта",
     'signin_password' => " Пароль",
     'signin_passwordforgot' => "Забыли пароль?",
     'signin_registration' => "  Зарегистрируйтесь",
