@@ -3,11 +3,11 @@
 @include('layouts.fornewtask')
 
 @section('content')
-
+    <link rel="stylesheet" href="{{ asset('/css/tabs.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Information section -->
     <x-roadmap/>
-    <form class="" action="{{route('task.create.contact.store', $task->id)}}" method="post">
-        @csrf
+
         <div class="mx-auto w-9/12  my-16">
             <div class="grid md:grid-cols-3 gap-x-20">
                 <div class="col-span-2">
@@ -24,71 +24,121 @@
                         </div>
                     </div>
                     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-2 md:p-6 px-8">
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            @lang('lang.contact_details')
+                        <div class="py-4 mx-auto px-auto text-center text-3xl font-semibold">
+                            Авторизация
                         </div>
+                        <div class="w-10/12 mx-auto">
+                            <ul class="nav nav-tabs flex flex-col md:flex-row text-center flex-wrap list-none border-b-0 pl-0 mb-4 justify-center" id="tabs-tab3"
+                                role="tablist">
+                                <li class="nav-item w-1/2" role="presentation">
+                                    <a href="#tabs-home3" class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active" id="tabs-home-tab3" data-bs-toggle="pill" data-bs-target="#tabs-home3" role="tab" aria-controls="tabs-home3"
+                                       aria-selected="true">РЕГИСТРАЦИЯ</a>
+                                </li>
+                                <li class="nav-item w-1/2" role="presentation">
+                                    <a href="#tabs-profile3" class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3" role="tab"
+                                       aria-controls="tabs-profile3" aria-selected="false">ВХОД</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="tabs-tabContent3">
+                                <div class="tab-pane fade show active" id="tabs-home3" role="tabpanel" aria-labelledby="tabs-home-tab3">
+                                    <form class="" action="{{route('task.create.contact.store', $task->id)}}" method="post">
+                                        @csrf
+                                        <div class="py-4 mx-auto  text-left ">
+                                            <div class="mb-4">
+                                                <div id="formulario" class="flex flex-col gap-y-4">
+                                                    <div>
+                                                        <div class="mb-3 xl:w-full">
+                                                            @if(!auth()->check())
 
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-                                    <div>
-                                        <div class="mb-3 xl:w-full">
-                                            @if(!auth()->check())
+                                                                <label class="text-sm text-gray-500 mb-2" for="name">@lang('lang.contact_name')</label>
 
-                                                <label for="name">@lang('lang.contact_name')</label>
+                                                                <input type="text" name="name"
+                                                                       placeholder="@lang('lang.contact_name')" value="{{old('name')}}"
+                                                                       class="mb-5 shadow appearance-none border   focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                                @error('name')
+                                                                <p class="text-red-500">{{$message}}</p>
+                                                                @enderror
+                                                                <label class="text-sm text-gray-500 mb-2" for="email">E-mail</label>
+                                                                <input type="email" name="email" placeholder="E-mail" value="{!! old('email') !!}"
+                                                                       class="mb-5 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
+                                                                />
+                                                                @error('email')
+                                                                <p class="text-red-500">{{$message}}</p>
+                                                                @enderror
+                                                                <label class="text-sm text-gray-500 mb-2" for="phone">@lang('lang.contact_number')</label>
+                                                                <input type="text" name="phone_number" value="{{old('phone_number')}}" id="phone"
+                                                                       class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                                @error('phone_number')
+                                                                <p class="text-red-500">{{$message}}</p>
+                                                                @enderror
+                                                            @else
+                                                                <label class="text-sm text-gray-500 mb-2" for="phone">@lang('lang.contact_number')</label>
+                                                                <input type="text" name="phone_number"
+                                                                       value="+998{{auth()->user()->phone_number}}" id="phone"
+                                                                       class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                                @error('phone_number')
+                                                                <p>{{$message}}</p>
+                                                                @enderror
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                <input type="text" name="name"
-                                                       placeholder="@lang('lang.contact_name')" value="{{old('name')}}"
-                                                       class="shadow appearance-none border   focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
-                                                @error('name')
-                                                <p class="text-red-500">{{$message}}</p>
-                                                @enderror
-                                                <label for="email">E-mail</label>
-                                                <input type="email" name="email" placeholder="E-mail" value="{!! old('email') !!}"
-                                                       class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
-                                                />
-                                                @error('email')
-                                                <p class="text-red-500">{{$message}}</p>
-                                                @enderror
-                                                <label for="phone">@lang('lang.contact_number')</label>
-                                                <input type="text" name="phone_number" value="{{old('phone_number')}}" id="phone"
-                                                       class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
-                                                @error('phone_number')
-                                                <p class="text-red-500">{{$message}}</p>
-                                                @enderror
-                                            @else
-                                                <label for="phone">@lang('lang.contact_number')</label>
-                                                <input type="text" name="phone_number"
-                                                       value="+998{{auth()->user()->phone_number}}" id="phone"
-                                                       class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
-                                                @error('phone_number')
-                                                <p>{{$message}}</p>
-                                                @enderror
-                                            @endif
+                                            <div class="mt-4">
+                                                <div class="flex w-full gap-x-4 mt-4">
+                                                    <a onclick="myFunction()"
+                                                       class="w-1/3 text-xl  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                                        <!-- <button type="button"> -->
+                                                    @lang('lang.notes_back')
+                                                    <!-- </button> -->
+                                                        <script>
+                                                            function myFunction() {
+                                                                window.history.back();
+                                                            }
+                                                        </script>
+                                                    </a>
+                                                    <input type="submit"
+                                                           class="bg-green-500 text-xl hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                                           name="" value="@lang('lang.contact_send')">
+                                                </div>
+
+
+                                            </div>
                                         </div>
-                                    </div>
+
+                                    </form>
                                 </div>
-                            </div>
+                                <div class="tab-pane fade" id="tabs-profile3" role="tabpanel" aria-labelledby="tabs-profile-tab3">
+                                    <form action="" method="POST">
+                                        <label>
+                                            <span class="text-gray-500 text-sm">
+                                                Электронная почта или телефон
+                                            </span>
+                                            <input type="text"
+                                                   class="mt-2 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                        </label>
 
-                            <div class="mt-4">
-                                <div class="flex w-full gap-x-4 mt-4">
-                                    <a onclick="myFunction()"
-                                       class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
-                                        <!-- <button type="button"> -->
-                                    @lang('lang.notes_back')
-                                    <!-- </button> -->
-                                        <script>
-                                            function myFunction() {
-                                                window.history.back();
-                                            }
-                                        </script>
-                                    </a>
-                                    <input type="submit"
-                                           class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                           name="" value="@lang('lang.contact_send')">
+                                        <div class="mt-4">
+                                            <div class="flex w-full gap-x-4 mt-4">
+                                                <a onclick="myFunction()"
+                                                   class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                                    <!-- <button type="button"> -->
+                                                @lang('lang.notes_back')
+                                                <!-- </button> -->
+                                                    <script>
+                                                        function myFunction() {
+                                                            window.history.back();
+                                                        }
+                                                    </script>
+                                                </a>
+                                                <input type="submit"
+                                                       class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                                       name="" value="@lang('lang.contact_send')">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -97,17 +147,16 @@
                 <div class="col-span mt-5 md:mt-0">
                     <x-faq/>
                 </div>
-            </div>
 
+            </div>
         </div>
-        </div>
-    </form>
+    </div>
 
 
 @endsection
 
 @section("javasript")
-
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
     <script src='https://unpkg.com/imask'></script>
@@ -145,25 +194,6 @@
     </script>
 
 
-    <script>
-        var x = 1;
-        const alp = ["B", "C", "D", "E", "F"];
-        $("#addbtn").click(function () {
-            if (x < 6) {
-                $("#addinput").append('<div class="flex items-center gap-x-2"><div class="flex items-center rounded-lg border  w-full py-1"> <button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  ' + alp[x - 1] + ' </button> <input id="suggest' + x + '" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Город, Улица, Дом" aria-label="Full name">  <button id="addinput' + x + '" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">   <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>  </button> </div><button id="remove_inputs" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.25 2.95v-.2A2.75 2.75 0 0 1 6 0h6a2.75 2.75 0 0 1 2.75 2.75v.2h2.45a.8.8 0 0 1 0 1.6H.8a.8.8 0 1 1 0-1.6h2.45zm10 .05v-.25c0-.69-.56-1.25-1.25-1.25H6c-.69 0-1.25.56-1.25 1.25V3h8.5z" fill="#666"/><path d="M14.704 6.72a.8.8 0 1 1 1.592.16l-.996 9.915a2.799 2.799 0 0 1-2.8 2.802h-7c-1.55 0-2.8-1.252-2.796-2.723l-1-9.994a.8.8 0 1 1 1.592-.16L4.3 16.794c0 .668.534 1.203 1.2 1.203h7c.665 0 1.2-.536 1.204-1.282l1-9.995z" fill="#666"/><path d="M12.344 7.178a.75.75 0 1 0-1.494-.13l-.784 8.965a.75.75 0 0 0 1.494.13l.784-8.965zm-6.779 0a.75.75 0 0 1 1.495-.13l.784 8.965a.75.75 0 0 1-1.494.13l-.785-8.965z" fill="#666"/></svg> </button></div> ');
-
-                x++;
-
-            } else {
-                alert("max ten field allowed");
-            }
-        });
-        $("#addinput").on("click", "#remove_inputs", function () {
-            $(this).parent("div").remove();
-            x--;
-        });
-        console.log(x);
-    </script>
 
 
 @endsection
