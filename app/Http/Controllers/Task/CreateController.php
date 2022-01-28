@@ -13,6 +13,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use PlayMobile\SMS\SmsService;
 use TCG\Voyager\Models\Category;
@@ -176,17 +178,37 @@ class CreateController extends Controller
     {
         return view('create.notes', compact('task'));
     }
+    public function uploadImage(Request $request)
+    {
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $filePath = $request->file('file')
+            ->storeAs('uploads/upload', $fileName, 'public');
 
+            $fileModelname = time() . '_' . $request->file->getClientOriginalName();
+            $fileModelfile_path = '/storage/' . $filePath;
+            $request->session()->put('photo', $fileName);
+            return response()->json([
+                "success" => true,
+                "message" => "File successfully uploaded",
+                "file" => $fileName
+            ]);
+        }
+        $this->note_store();
+    }
     public function note_store(Task $task, Request $request)
     {
         $data = $request->validate([
             'description' => 'required|string',
             'oplata' => 'required'
         ]);
+    
+        $data['photos'] = session()->pull('photo');
         $data['docs'] = $request->docs ? 1 : null;
         $task->update($data);
         return redirect()->route("task.create.contact", $task->id);
     }
+
 
     public function contact(Task $task)
     {
