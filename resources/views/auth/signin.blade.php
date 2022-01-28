@@ -18,36 +18,45 @@
                 </h3>
             </div>
             <div>
+
                 <form method="POST" action="{{ route('signin.custom') }}">
                     @csrf
                     <div class="mb-4">
-                        <input type="text" name="email" placeholder="@lang('lang.signup_elpocta')" value="{{ request()->input('email', old('email')) }}"
-                        id="name" class="shadow focus:outline-none focus:border-yellow-500  appearance-none border border-slate-300 rounded
+                        <input type="text" name="email" placeholder="Email" id="name"
+                               class="shadow appearance-none border border-slate-300 rounded
                         w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
                                autofocus>
-                        @if(session()->has('message'))
-                            <p class="text-red-500">Введенный email не существует!</p>
-                        @endif
+
                         @error('email')
-                        <p class="text-red-500">Неправильный Email</p>
+                        <p class="text-red-500">{{ $message }}</p>
                         @enderror
+
                     </div>
                     <div class="mb-6">
                         <input   type="password" name="password" placeholder="@lang('lang.signin_password')" id="password"
-                                 class="ml-6 focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3
+                                 class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3
                         text-gray-700 mb-3 leading-tight hover:border-amber-500">
-                        <i class="fas fa-eye-slash text-gray-500 relative -left-12" id="eye"></i>
 
-                        @if ($errors->has('password'))
-                            <p class="text-red-500">Неправильный пароль</p>
-                        @endif
+                        @error('password')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
+
+                    @if(session()->has('message'))
+                        <p class="text-red-500 mb-5">
+                            Email or Password is not correct. Try again
+                        </p>
+                    @endif
+                    <p></p>
                     <button type="submit"
                             class="w-80 h-12 rounded-lg bg-green-500 text-gray-200 uppercase
                         font-semibold hover:bg-green-500 text-gray-100 transition mb-4">
                         Войти
                     </button>
+
+
                 </form>
+
                 <p class="mb-4">
                     <a class="text-sky-500" href="{{ route('reset') }}">
                     @lang('lang.signin_passwordforgot')
@@ -61,28 +70,5 @@
                 </p>
             </div>
         </div>
-        <script>
-            $(function(){
 
-                $('#eye').click(function(){
-
-                    if($(this).hasClass('fa-eye-slash')){
-
-                        $(this).removeClass('fa-eye-slash');
-
-                        $(this).addClass('fa-eye');
-
-                        $('#password').attr('type','text');
-
-                    }else{
-
-                        $(this).removeClass('fa-eye');
-
-                        $(this).addClass('fa-eye-slash');
-
-                        $('#password').attr('type','password');
-                    }
-                });
-            });
-        </script>
 @endsection

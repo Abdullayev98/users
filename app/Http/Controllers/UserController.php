@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserPhoneRequest;
 use App\Models\User;
 use App\Models\Task;
@@ -51,17 +52,14 @@ class UserController extends Controller
         return view('auth.confirm');
     }
 
-    public function createSignin(Request $request)
+    public function createSignin(UserLoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        $user = User::where('email', $request->input('email'));
+        $data = $request->validated();
+        $user = User::where('email', $data['email'])->first();
 
         if(!$user){
-            return redirect()->back()->with('message','Введенный email не существует!');
+            session()->flash('message', 'Введенный email не существует!');
+            return redirect()->back();
         }
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
