@@ -44,7 +44,6 @@ class PerformersController extends Controller
         $categories = DB::table('categories')->get();
         $child_categories= DB::table('categories')->get();
         $users= User::where('role_id',2)->paginate(50);
-
         return view('Performers/performers',compact('child_categories','categories','users','tasks'));
     }
     public function performer(User $id){
