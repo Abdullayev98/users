@@ -20,15 +20,34 @@
             </a>
         </div>
     </div>
-
-    <div class="container mx-auto ml-4 mb-4 text-base">
-        <span class="">
-        @lang('lang.footer_foot')
-            <a class=" hover:text-amber-500" rel="noopener noreferrer">
-                @lang('lang.footer_text1')
+    <div class="flex border-t pt-4 w-11/12">
+        <div class="container mx-auto ml-4 mb-4 text-base">
+            <span class="">
+            @lang('lang.footer_foot')
+                <a class=" hover:text-amber-500" rel="noopener noreferrer">
+                    @lang('lang.footer_text1')
+                </a>
+            </span>
+        </div>
+        <div class="w-5/12 text-right">
+            <a href="#">
+                <i class="fab fa-instagram text-gray-500 hover:text-yellow-500 mx-2"></i>
             </a>
-        </span>
+            <a href="#">
+                <i class="fab fa-telegram text-gray-500 hover:text-yellow-500 mx-2"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-whatsapp text-gray-500 hover:text-yellow-500 mx-2"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-youtube text-gray-500 hover:text-yellow-500 mx-2"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-facebook text-gray-500 hover:text-yellow-500 mx-2"></i>
+            </a>
+        </div>
     </div>
+
 </footer>
 {{-- <div class="bg-gray-500 text-gray-100 text-center lg:py-16 w-full justify-center hidden xl:block mx-auto">
     <div class="w-8/12 mx-auto">
