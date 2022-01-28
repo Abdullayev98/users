@@ -30,7 +30,7 @@ Route::prefix("task")->group(function (){
         Route::post('/contact/{task}/store', [CreateController::class, 'contact_store'])->name('task.create.contact.store');
         Route::get('/verify/{task}', [CreateController::class, 'verify'])->name('task.create.verify');
         Route::post('/verify', [UserController::class, 'verifyProfil'])->name('task.create.verification');
-
+        Route::post('/upload', [CreateController::class, 'uploadImage']);
 
 
 
