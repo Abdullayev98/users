@@ -234,12 +234,15 @@ class UserController extends Controller
     public function verifyProfil(Request $request)
     {
 
+$user = auth()->user();
 
         $request->validate([
             'sms_otp' => 'required',
-        ]);
-
-        $user = auth()->user();
+        ],
+        [
+                'sms_otp.required' => 'Требуется заполнение!'
+        ]
+        );
 
         if ($request->sms_otp == $user->verify_code) {
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
@@ -247,18 +250,12 @@ class UserController extends Controller
                 Task::where('id', $request->for_ver_func)->update(['status' => 1]);
                 return redirect()->route('userprofile');
             } else {
-                return back()->with([
-                    'alert' => 'Verification code expired'
-                ]);
+                return back()->with('expired_message', 'Verification code expired');
             }
         }else{
-            return back()->with([
-                'message' => 'Verification code incorrect'
-            ]);
+            return back()->with('incorrect_message', 'Verification code incorrect');
         }
 
-        $message = $this->checkIsVerified($verifyUser);
-        return redirect("/profile")->with('message', $message);
     }
 
     public function verifyAccount($token, $is_otp = false)
