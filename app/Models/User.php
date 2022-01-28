@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Message;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Message;
+//use App\Models\Message;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Facades\Storage;
 
@@ -64,9 +65,11 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Social::class);
     }
     public function scopeUpdateViews($query, $id) {
-        return $query->whereId($id)->increment('views', 1);;
+        return $query->whereId($id)->increment('views', 1);
     }
-
+    public function reviews() {
+        return $this->hasMany(Review::class);
+    }
 
     public function views(){
         return $this->hasMany(UserView::class,'performer_id');
