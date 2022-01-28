@@ -96,8 +96,8 @@ class SearchTaskController extends VoyagerBaseController
           $user_id = $tasks->user_id;
         $same_tasks = Task::where('category_id',$cat_id)->get();
 
-        $task_responses = TaskResponse::where('task_id', $tasks->id)->get();
-        $response_count = TaskResponse::where('task_id', $tasks->id)->count();
+        $task_responses = Response::where('task_id', $tasks->id)->get();
+        $response_count = Response::where('task_id', $tasks->id)->count();
         $response_count_user = Response::where('user_id', Auth::id())->count();
         foreach($task_responses as $response){
           $response_users = User::where('id', $response->user_id)->first();

@@ -9,7 +9,7 @@
                     @endif
                     <div class="mt-8 md:flex mb-8">
                         {{-- left sidebar start --}}
-                        <div class="w-9/12 float-left">
+                        <div class="w-11/12 float-left">
                             <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                             <div class="flex flex-row">
                                 <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">@lang('lang.deteiledT_before') {{$tasks->budget}}</p>
@@ -87,11 +87,13 @@
                                         <div class="max-w-2xl mx-auto mt-4">
                                             @auth
                                                 @if($balance >= 4000 || $response_count_user < setting('site.free_responses'))
+                                                    @if($tasks->user_id != auth()->id())
                                                     <button class="font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                             type="button"
                                                             data-modal-toggle="authentication-modal">
                                                         @lang('lang.detT_callback')
                                                     </button>
+                                                        @endif
                                                     @elseif($balance < 4000 || $response_count_user >= setting('site.free_responses'))
                                                     @if($tasks->user_id != auth()->id())
                                                     <a href="#" class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
@@ -232,7 +234,7 @@
                             @endauth
                             <div class="lg:w-[700px] w-[400px]">
                                 @if (isset($auth_user))
-                                    @if ($tasks->user_name == $auth_user->name)
+                                    @if ($tasks->user_id == $auth_user->id)
                                         <div>
                                             @if(isset($task_responses))
                                                 <div class="text-4xl font-semibold my-6">
@@ -253,17 +255,17 @@
                                             @endif
                                             <hr>
                                             @if(isset($task_responses))
-                                                <div class="flex my-2">
-                                                    <div class="mr-2 bg-yellow-200 px-2">
-                                                        <a href="#">@lang('lang.detT_byRating')</a>
-                                                    </div>
-                                                    <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
-                                                        <a href="">@lang('lang.detT_byTime')</a>
-                                                    </div>
-                                                    <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">
-                                                        <a href="">@lang('lang.detT_byCallbacks')</a>
-                                                    </div>
-                                                </div>
+{{--                                                <div class="flex my-2">--}}
+{{--                                                    <div class="mr-2 bg-yellow-200 px-2">--}}
+{{--                                                        <a href="#">@lang('lang.detT_byRating')</a>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">--}}
+{{--                                                        <a href="">@lang('lang.detT_byTime')</a>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">--}}
+{{--                                                        <a href="">@lang('lang.detT_byCallbacks')</a>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
                                                 @foreach ($task_responses as $response)
                                                     <div class="mb-6">
                                                         <div class="my-10">
@@ -280,24 +282,24 @@
                                                                     <i class="fas fa-star text-yellow-200 mr-1"></i>@lang('lang.detT_numByNum')
                                                                 </div>
                                                                 <div class="mt-2">
-                                                                    <i class="fas fa-briefcase fa-2x text-blue-300"></i>
-                                                                    <i class="fas fa-shield-alt fa-2x text-green-300"></i>
+{{--                                                                    <i class="fas fa-briefcase fa-2x text-blue-300"></i>--}}
+{{--                                                                    <i class="fas fa-shield-alt fa-2x text-green-300"></i>--}}
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="bg-gray-100 rounded-[10px] p-4">
                                                             <div class="ml-0">
-                                                                <div class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}} сум</div>
-                                                                <div class="text-[17px] text-gray-500">@lang('lang.detT_Hello')</div>
+                                                                <div class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}} UZS</div>
+{{--                                                                <div class="text-[17px] text-gray-500">@lang('lang.detT_Hello')</div>--}}
 
                                                                 <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
 
-                                                                <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>
-                                                                <div class="">
+{{--                                                                <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>--}}
+                                                                <div class="w-10/12 mx-auto">
                                                                     <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                                         @lang('lang.detT_writeOnChat')
                                                                     </a>
-                                                                    <a class=" send-data text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-green-500 hover:bg-green-500 font-medium border border-transparent rounded-md">
+                                                                    <a class="cursor-pointer send-data text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-green-500 hover:bg-green-500 font-medium border border-transparent rounded-md">
                                                                         @lang('lang.detT_choose')
                                                                     </a>
                                                                 </div>
