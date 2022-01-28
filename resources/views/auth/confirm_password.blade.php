@@ -15,11 +15,13 @@
                     </label>
                     <input type="password" placeholder="Password"
                            id="phone_number" name="password"
-                       required    class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                       required
+                           class="ml-6 focus:outline-none shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                        <i class="fas fa-eye-slash text-gray-500 relative -left-12" id="eye"></i>
                     <br>
                     <input type="password" placeholder="Confirm password"
                            id="phone_number" name="password"
-                         required  class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                         required  class="shadow focus:outline-none appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
                     <br>
                     @error('code')
                         <span class="text-danger" style="color: red">{{ $message  }}</span>
@@ -38,6 +40,29 @@
 
 @section("javasript")
 
+    <script>
+        $(function(){
 
+            $('#eye').click(function(){
+
+                if($(this).hasClass('fa-eye-slash')){
+
+                    $(this).removeClass('fa-eye-slash');
+
+                    $(this).addClass('fa-eye');
+
+                    $('#password').attr('type','text');
+
+                }else{
+
+                    $(this).removeClass('fa-eye');
+
+                    $(this).addClass('fa-eye-slash');
+
+                    $('#password').attr('type','password');
+                }
+            });
+        });
+    </script>
 
 @endsection
