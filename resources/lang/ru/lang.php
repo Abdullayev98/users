@@ -2,6 +2,8 @@
 
 return [
     // home.blade start
+    "count_transactions" => "Количество транзакций:",
+    'random_cat' => "Услуги пешего курьера",
     'lang_for_map' => "ru_RU",
     'header_title' => "Освободим вас от забот",
     'header_sub' => "Поможем найти надежного исполнителя для любых задач",
@@ -424,7 +426,7 @@ return [
     отклики с контактными данными. Стоимость одного отклика зависит от категории заданий и
     начинается от 20 uzs. Оплата за отклики не возвращается.",
     'cash_question1' => "Какая минимальная сумма для пополнения счета?",
-    'cash_answer1' => "400 uzs.",
+    'cash_answer1' => "4000 UZS.",
     'cash_question2' => "Как сделать возврат денег со своего счета в Universal Services?",
     'cash_nswer2' => "кликните по этой ссылке и укажите сумму, которую вы хотите вернуть. Как правило, деньги
     перечисляются на тот же счет, с которого производилось пополнение баланса в Universal Services, в
@@ -710,7 +712,7 @@ return [
     'navbar_profile' => "Профиль",
     'navbar_set' => "Настройки",
     'navbar_howMuch' => "На какую сумму хотите пополнить <br> кошелёк?",
-    'navbar_minimum' => "Сумма пополнения, минимум — 1000 UZS",
+    'navbar_minimum' => "Сумма пополнения, минимум — 4000 UZS",
     'navbar_toPayment' => "К оплате",
     'navbar_paymentWay' => "Способ оплаты",
     'navbar_payment' => "Оплата",
@@ -723,7 +725,7 @@ return [
     'signin_google' => "Google",
     'signin_facebook' => "Facebook",
     'signin_elpocta' => ' Войти в профиль пользователя',
-    'signin_username' => " Имя Фамилия",
+    'signin_username' => " Электронная почта",
     'signin_password' => " Пароль",
     'signin_passwordforgot' => "Забыли пароль?",
     'signin_registration' => "  Зарегистрируйтесь",

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Task;
 use App\Models\Notification;
 use App\Models\TaskResponse;
+use App\Models\Response;
 use TCG\Voyager\Models\Category;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -18,29 +19,24 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
 class SearchTaskController extends VoyagerBaseController
 {
-
-//    public function task_search(){
-//        $tasks = Task::withTranslations(['ru', 'uz'])->where('status',null)->count();
-//        $categories = Category::withTranslations(['ru', 'uz']);
-//        return view('task.search', compact('tasks','categories'));
-//    }
-
     public function task_search(){
-        $tasks = Task::orderBy('id','desc')->where('status',null)->count();
-        $categories = Category::get()->all();
-        return view('task.search', compact('tasks','categories'));
+//        $tasks = Task::orderBy('id','desc')->where('status',null)->count();
+//        $categories = Category::get()->all();
+//        return view('task.search', compact('tasks','categories'));
+        return view('task.search');
     }
 
     public function ajax_tasks(Request $request){
         if (isset($request->orderBy)) {
             if ($request->orderBy == 'all') {
-                $tasks = DB::table("tasks")->where('status', null)->orderBy('id', 'desc')
+                $tasks = DB::table("tasks")->where('status','=', 1)->orderBy('id', 'desc')
+                    ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+                    ->select('tasks.*', 'users.name as user_name', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'sroch') {
-                $tasks =  DB::table("tasks")->where('status',null)->orderBy('start_date','asc')
+                $tasks =  DB::table("tasks")->where('status',1)->orderBy('start_date','asc')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
@@ -52,39 +48,13 @@ class SearchTaskController extends VoyagerBaseController
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
+            if ($request->orderBy == 'klyuch') {
+                $filter = $request->fltr;
+                $tasks =  DB::table("tasks")->where('name','LIKE',"%$filter%")->orderBy('name','desc')->get();
+            }
         }
         return $tasks->all();
     }
-
-//    public function ajax_tasks(Request $request){
-//
-//              $tasks =  DB::table("tasks")->where('status',null)->orderBy('id','desc')
-//              ->join('categories', 'tasks.category_id', '=', 'categories.id')
-//              ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
-//              ->get();
-//
-//        return $tasks->all();
-//    }
-//
-//    public function ajax_task2(Request $request){
-//        $tasks =  DB::table("tasks")->where('status',null)->orderBy('start_date','asc')
-//            ->join('categories', 'tasks.category_id', '=', 'categories.id')
-//            ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
-//            ->get();
-//
-//        return $tasks->all();
-//    }
-//
-//    public function ajax_task3(Request $request){
-//        $tasks =  DB::table("tasks")->where([['address', '=', null], ['status', '=', null]])
-//            ->orderBy('id','desc')
-//            ->join('categories', 'tasks.category_id', '=', 'categories.id')
-//            ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
-//            ->get();
-//
-//        return $tasks->all();
-//    }
-
 
     public function my_tasks(){
         $tasks = Task::where('user_id', auth()->id())->get();
@@ -124,6 +94,7 @@ class SearchTaskController extends VoyagerBaseController
 
         $task_responses = TaskResponse::where('task_id', $tasks->id)->get();
         $response_count = TaskResponse::where('task_id', $tasks->id)->count();
+        $response_count_user = Response::where('user_id', Auth::id())->count();
         foreach($task_responses as $response){
           $response_users = User::where('id', $response->user_id)->first();
           }
@@ -137,9 +108,9 @@ class SearchTaskController extends VoyagerBaseController
         $arr = get_defined_vars();
 
         if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','task_responses','response_users','response_count','balance','auth_user'));
+            return view('task.detailed-tasks',compact('tasks','same_tasks','response_count_user','users','categories','current_user','task_responses','response_users','response_count','balance','auth_user'));
         }else {
-          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance','auth_user'));
+          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','response_count_user','current_user','balance','auth_user'));
         }
 
     }
@@ -213,4 +184,9 @@ class SearchTaskController extends VoyagerBaseController
       return response()->json(['success'=>$performer_id]);
   }
 
+  public function delete_task(Task $task){
+      DB::delete('DELETE FROM tasks WHERE id = ?', [$task->id]);
+      echo ("User Record deleted successfully.");
+      return redirect('/');
+  }
 }

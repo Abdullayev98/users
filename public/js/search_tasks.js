@@ -1,9 +1,5 @@
 let dataAjax = {};
 let dataGeo = [];
-// let dataGeoCircle = [];
-// let dataGeoAll = [];
-// let dataGeoSroch = [];
-// let dataGeoUdal = [];
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -17,6 +13,7 @@ function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
         dl++
+        let json = JSON.parse(data.address);
             $(".show_tasks").append(
                    `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
                     <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
@@ -24,7 +21,7 @@ function tasks_list_all(data) {
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-[18px] text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-[14px] ml-12 mt-4 location">` + data.address + `</p>
+                    <p class="text-[14px] ml-12 mt-4 location">` + json.location + `</p>
                     <p class="text-[14px] ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                     <p class="text-[14px] ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
@@ -56,7 +53,7 @@ function tasks_list(data) {
                             <div class="float-left w-9/12 " id="results">
                             <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
                             <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-sm text-blue-400 hover:text-red-400">` + data.name + `</a>
-                            <p class="sm:text-sm text-xs ml-10 mt-1 location">` + data.address + `</p>
+                            <p class="sm:text-sm text-xs ml-10 mt-1 location">` + data.address[location] + `</p>
                             <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                             <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">` + data.oplata + `</p>
                             </div>
@@ -75,144 +72,99 @@ function tasks_list(data) {
     });
 }
 
-// let tabsContainer = document.querySelector("#tabs");
-// let tabTogglers = tabsContainer.querySelectorAll("a");
-//
-// tabTogglers.forEach(function(toggler) {
-//     toggler.addEventListener("click", function(e) {
-//         e.preventDefault();
-//
-//         let tabName = this.getAttribute("href");
-//
-//         let tabContents = document.querySelector("#tab-contents");
-//
-//         for (let i = 0; i < tabContents.children.length; i++) {
-//
-//             tabTogglers[i].parentElement.classList.remove("border-orange-400", "border-b", "opacity-100");
-//             tabContents.children[i].classList.remove("hidden");
-//             if ("#" + tabContents.children[i].id === tabName) {
-//                 continue;
-//             }
-//             tabContents.children[i].classList.add("hidden");
-//
-//         }
-//         e.target.parentElement.classList.add("border-orange-400", "border-b-2", "opacity-100");
-//     });
-// });
-//
-// document.getElementById("default-tab").click();
-
 $(".rotate").click(function() {
     $(this).toggleClass("rotate-[360deg]");
 });
 
 $("#filter").keyup(function() {
-
-    // Retrieve the input field text and reset the count to zero
-    var filter = $(this).val(),
-        count = 0;
-
-    // Loop through the comment list
-    $('#results a').each(function() {
-        // If the list item does not contain the text phrase fade it out
-        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().hide();
-            $(parents).parent().id = '';
-            // Show the list item if the phrase matches and increase the count by 1
-        } else {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().show();
-            $(parents).parent().id = 'geoShow';
-            // $(this).show(); // MY CHANGE
-            count++;
-            console.log(count);
-        }
-        console.log(count);
-    });
-    console.log(count);
-        if (count){
-            tasks_show2();
-        }
+    var filter = $(this).val();
+first_ajax('klyuch', filter)
 });
-
-$(".address").keyup(function() {
-
-    // Retrieve the input field text and reset the count to zero
-    var filter = $(this).val(),
-        count = 0;
-
-    // Loop through the comment list
-    $('#results .location').each(function() {
-        // If the list item does not contain the text phrase fade it out
-        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().hide();
-            $(parents).parent().id = '';
-            // Show the list item if the phrase matches and increase the count by 1
-        } else {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().show();
-            $(parents).parent().id = 'geoShow';
-            // $(this).show(); // MY CHANGE
-            count++;
-        }
-    });
-});
-
 
 $("#price").keyup(function() {
-
-    // Retrieve the input field text and reset the count to zero
-    var filter = $(this).val(),
-        count = 0;
-
-    // Loop through the comment list
-    $('#about a').each(function() {
-        // If the list item does not contain the text phrase fade it out
-        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().hide();
-            $(parents).parent().id = '';
-            // Show the list item if the phrase matches and increase the count by 1
-        } else {
-            var parent = $(this).parent();
-            var parents = $(parent).parent();
-            // MY CHANGE
-            $(parents).parent().show();
-            $(parents).parent().id = "geoShow";
-            // $(this).show(); // MY CHANGE
-            count++;
-        }
-    });
+    var filter = $(this).val();
+    first_ajax('price', filter)
 });
 
+// $("#filter").keyup(function() {
+//
+//     // Retrieve the input field text and reset the count to zero
+//     var filter = $(this).val(),
+//         count = 0;
+//
+//     // Loop through the comment list
+//     $('#results a').each(function() {
+//         // If the list item does not contain the text phrase fade it out
+//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().hide();
+//             // Show the list item if the phrase matches and increase the count by 1
+//         } else {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().show();
+//             // $(this).show(); // MY CHANGE
+//             count++;
+//             console.log(count);
+//         }
+//     });
+// });
 
-// function img_show() {
-//     $(".show_tasks").empty();
-//     $(".show_tasks").append(
-//         `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-//         <div></div>
-//         <div><img src="{{asset('/images/notlike.svg')}}" class="w-full h-full"></div>
-//         <div></div>
-//         <div class="col-span-3 text-center w-full h-full">
-//             <p class="text-3xl"><b>Задания не найдены</b></p>
-//             <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
-//         </div>
-//         </div>`
-//     );
-//     // $('.butt').attr('style', 'display: none');
-// }
+// $(".address").keyup(function() {
+//
+//     // Retrieve the input field text and reset the count to zero
+//     var filter = $(this).val(),
+//         count = 0;
+//
+//     // Loop through the comment list
+//     $('#results .location').each(function() {
+//         // If the list item does not contain the text phrase fade it out
+//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().hide();
+//             // Show the list item if the phrase matches and increase the count by 1
+//         } else {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().show();
+//             // $(this).show(); // MY CHANGE
+//             count++;
+//         }
+//     });
+// });
+
+
+// $("#price").keyup(function() {
+//
+//     // Retrieve the input field text and reset the count to zero
+//     var filter = $(this).val(),
+//         count = 0;
+//
+//     // Loop through the comment list
+//     $('#about a').each(function() {
+//         // If the list item does not contain the text phrase fade it out
+//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().hide();
+//             // Show the list item if the phrase matches and increase the count by 1
+//         } else {
+//             var parent = $(this).parent();
+//             var parents = $(parent).parent();
+//             // MY CHANGE
+//             $(parents).parent().show();
+//             // $(this).show(); // MY CHANGE
+//             count++;
+//         }
+//     });
+// });
 
 function enDis(rr){
     if (rr == 0){
@@ -229,20 +181,7 @@ function resetCounters(){
     s=0, dl=0;
 }
 
-function geo_coords(){
-    dataGeo=[];
-    // dataGeoCircle=[];
-    $('.print_block').each(function() {
-        if (!(this.hidden))
-        {
-            dataGeo.push(this.id.split(','));
-            // dataGeoCircle.push({type: 'Point', coordinates: this.id.split(',')});
-        }
-    });
-}
-
 function maps_show(){
-    geo_coords()
     map_pos(k)
 }
 
@@ -268,28 +207,21 @@ function fiveInOne2(){
     maps_show()
 }
 
-function tasks_show2(){
-    let gg = 0;
-    $('#geoShow').each(function() {
-        this.hidden = true;
-        gg++
-    });
-    console.log(gg)
+function tasks_show(){
     let i=1;
-    $('#geoShow').each(function() {
-        if ((this.hidden) && (i <= p) && (sGeo <= dlGeo))
+    $('.print_block').each(function() {
+        if ((this.hidden) && (i <= p) && (s <= dl))
         {
             this.hidden = false;
             i++
-            sGeo++
+            s++
         }
     });
-    $('.lM2').removeAttr('hidden');
-    // $('.lM').attr("hidden","hidden")
-    $('#pnum2').html(sGeo)
-    $('#snum2').html(dlGeo)
-    if (sGeo==dlGeo){
-        $('.butt2').attr("disabled","disabled")
+    $('.lM').removeAttr('hidden');
+    $('#pnum').html(s)
+    $('#snum').html(dl)
+    if (s==dl){
+        $('.butt').attr("disabled","disabled")
     }
 }
 
@@ -550,20 +482,19 @@ function chicats_click_true(id, name) {
 $(document).ready(function(){
 
     $("#srochnost").click(function(){
-        first_ajax('sroch')
+        first_ajax('sroch', '')
     });
     $(".byid").click(function(){
-        first_ajax('all')
+        first_ajax('all', '')
     });
     $("#as").click(function(){
-        first_ajax('udal')
+        first_ajax('udal', '')
     });
     $(".checkboxByAs").change(function() {
         if(this.checked) {
-            first_ajax('udal')
+            first_ajax('udal', '')
         }else {
-            first_ajax('all')
+            first_ajax('all', '')
         }
     });
 });
-

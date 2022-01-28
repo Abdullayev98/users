@@ -1,4 +1,4 @@
-@extends("layouts.app")
+    @extends("layouts.app")
 
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
@@ -32,8 +32,11 @@
                             <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
                                 <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
                                 @foreach($categories as $category)
-                                    <p>{{$category->name}}</p>
+                                    <p class="pr-3 ">{{$category->name}}</p>
                                 @endforeach
+                                    @if($tasks->user_id == auth()->id())
+                                    <a href="{{route("delete.task", $tasks->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Удалить</a>
+                                    @endif
                             </div>
 
                             <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
@@ -83,14 +86,15 @@
                                         <!-- This is an example component -->
                                         <div class="max-w-2xl mx-auto mt-4">
                                             @auth
-                                                @if($balance >= 400)
-                                                    <button class="font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
+                                                @if($balance >= 4000 || $response_count_user < setting('site.free_responses'))
+                                                    <button class="font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                             type="button"
                                                             data-modal-toggle="authentication-modal">
                                                         @lang('lang.detT_callback')
                                                     </button>
-                                                @else
-                                                    <a href="#" class='btn open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
+                                                    @elseif($balance < 4000 || $response_count_user >= setting('site.free_responses'))
+                                                    @if($tasks->user_id != auth()->id())
+                                                    <a href="#" class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
                                                     <div class='modal' id='modal1'>
                                                         <div class='content'>
                                                             <img src="{{asset('images/cashback.svg')}}" alt="">
@@ -102,16 +106,17 @@
                                                         </div>
                                                     </div>
                                                 @endif
+                                                @endif
                                             @else
-                                                <a href="/register">
+                                                <a href="/login">
                                                     <button  class="font-sans mt-8 text-lg  font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-10 py-4 rounded">
                                                         @lang('lang.detailedT_text18')
                                                     </button>
                                                 </a>
                                             @endauth
                                             @auth
-                                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
-                                                    <button id="sendbutton" class="font-sans w-8/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id && $tasks->status == 3)
+                                                    <button id="sendbutton" class="font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="button">
                                                         @lang('lang.detailedT_text19')
                                                     </button>
@@ -127,7 +132,7 @@
                                                             </label>
                                                         </div>
                                                         <input type="text" name="comment" class="border rounded ml-6 mb-4 bg-amber-100 w-8/12 py-2 text-center font-normal" value="">
-                                                        <button class="send-comment font-sans w-8/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                        <button class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             @lang('lang.contact_send')
                                                         </button>
@@ -198,13 +203,6 @@
                                     </div>
                                 </div>
                                 <!--  ------------------------ showModal Откликнуться на это задание end  ------------------------  -->
-                                <!-- Прелоадер -->
-                                <div class="preloader" style="display: none">
-                                    <div class="preloader__row">
-                                        <div class="preloader__item"></div>
-                                        <div class="preloader__item"></div>
-                                    </div>
-                                </div>
 
                                 <!-- Основной контент страницы -->
                                 <div class="modal___1" style="display: none">
@@ -365,67 +363,6 @@
                 </div>
         </div>
 
-        <style>
-            .preloader {
-                /*фиксированное позиционирование*/
-                position: fixed;
-                /* координаты положения */
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
-                z-index: 1001;
-                background: rgba(0,0,0,0.4);
-            }
-            .preloader__row {
-                position: relative;
-                top: 50%;
-                left: 50%;
-                width: 70px;
-                height: 70px;
-                margin-top: -35px;
-                margin-left: -35px;
-                text-align: center;
-                animation: preloader-rotate 2s infinite linear;
-            }
-            .preloader__item {
-                position: absolute;
-                display: inline-block;
-                top: 0;
-                background-color: #337ab7;
-                border-radius: 100%;
-                width: 35px;
-                height: 35px;
-                animation: preloader-bounce 2s infinite ease-in-out;
-            }
-            .preloader__item:last-child {
-                top: auto;
-                bottom: 0;
-                animation-delay: -1s;
-            }
-            @keyframes preloader-rotate {
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-            @keyframes preloader-bounce {
-                0%,
-                100% {
-                    transform: scale(0);
-                }
-                50% {
-                    transform: scale(1);
-                }
-            }
-            .loaded_hiding .preloader {
-                transition: 0.3s opacity;
-                opacity: 0;
-            }
-            .loaded .preloader {
-                display: none;
-            }
-        </style>
         <script>
             $(document).ready(function(){
                 $("#class_demo").click(function(){

@@ -28,7 +28,7 @@ Route::prefix("task")->group(function (){
         Route::post('/note/{task}/store', [CreateController::class, 'note_store'])->name('task.create.note.store');
         Route::get('/contact/{task}', [CreateController::class, 'contact'])->name('task.create.contact');
         Route::post('/contact/{task}/store', [CreateController::class, 'contact_store'])->name('task.create.contact.store');
-        Route::get('/verify', [CreateController::class, 'verify'])->name('task.create.verify');
+        Route::get('/verify/{task}', [CreateController::class, 'verify'])->name('task.create.verify');
         Route::post('/verify', [UserController::class, 'verifyProfil'])->name('task.create.verification');
         Route::post('/upload', [CreateController::class, 'uploadImage']);
 

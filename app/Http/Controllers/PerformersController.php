@@ -45,60 +45,55 @@ class PerformersController extends Controller
         $child_categories= DB::table('categories')->get();
         $users= User::where('role_id',2)->paginate(50);
 
-        $task_name = $request->input('task_name');
-        $task_id = $request->input('task_id');
-        $user_id = $request->input('user_id');
-        Notification::create([
-            'task_name' => $task_name,
-            'task_id' => $task_id,
-            'user_id' => $user_id,
-            'description' => 1,
-            'type' => 4,
-        ]);
-        $user_id = $user_id;
-        $task_id = $task_id;
-        $id_cat = NULL;
-        $description = 1;
-        $task_name = $task_name;
-        $type = 4;
-
-               event(new MyEvent($user_id,$task_id,$id_cat,$task_name,$type,$description));
-        
         return view('Performers/performers',compact('child_categories','categories','users','tasks'));
     }
-    public function performer($id){
+    public function performer(User $id){
 
-        if(session('view_count') == NULL){
+        $user= $id;
 
-            $def_count = UserView::where('user_id', $id)->first();
-
-            if(isset($def_count)){
-
-            $ppi = $def_count->count + 1;
-
-                UserView::where('user_id', $id)->update(['count' => $ppi]);
-
-        }else{
-
-            UserView::create([
-                'user_id'=> $id,
-                'count'=> 1,
-            ]);
-
+        $view = UserView::query()->where('user_id', \auth()->user()->id)->where('performer_id', $user->id)->first();
+        if (!$view){
+            $view = new UserView();
+            $view->user_id = \auth()->user()->id;
+            $view->performer_id= $user->id;
+            $view->save();
         }
-        session()->put('view_count', '1');
-        }
-        $vcs = UserView::where('user_id', $id)->get();
-        $users= User::where('id',$id)->get();
+        $views = count(UserView::query()->where('performer_id', $id->id)->get());
+
+
         $categories = DB::table('categories')->get();
         $child_categories = DB::table('categories')->get();
         $task_count = Task::where('user_id', Auth::id())->count();
         $tasks = Task::get();
         $reviews = Review::get();
-        $reviews_count = Review::where('user_id', $id)->count();
+        $reviews_count = Review::where('user_id', $id->id)->count();
         $review_users= User::get();
-        return view('Performers/executors-courier',compact('reviews_count','tasks','users','categories','child_categories','vcs','task_count','reviews','review_users'));
+
+        return view('Performers/executors-courier',compact('reviews_count','user','views','tasks','categories','child_categories','task_count','reviews','review_users'));
     }
+
+
+public function give_task(Request $request){
+    if ($request->input('user_id') != null) {
+        $request->session()->put('given_id', $request->input('user_id'));
+    }
+
+    $task_id = $request->input('task_id');
+    $task_name = Task::where('id', $task_id)->first();
+    if (isset($task_id)){
+        $users_id = $request->session()->pull('given_id');
+            $notification = Notification::create([
+                'user_id'     => $users_id,
+                'task_id'     => $task_id,
+                'name_task'   => $task_name->name,
+                'description' => '123',
+                'type'        => 4,
+            ]);
+        return response()->json(['success'=>$users_id]);
+    }
+    return response()->json(['success'=>'$users_id']);
+}
+
 
 public function perf_ajax($cf_id){
     // $str = "1,2,3,4,5,6,7,8";

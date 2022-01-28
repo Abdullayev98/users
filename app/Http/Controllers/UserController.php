@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserPhoneRequest;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Trust;
+use App\Models\Reklama;
 use App\Models\Advant;
 use App\Models\UserVerify;
 use App\Models\How_work_it;
@@ -30,7 +32,8 @@ class UserController extends Controller
         return view('auth.signin');
     }
 
-    public function code(){
+    public function code()
+    {
         return view('auth.register_code');
     }
     public function signup()
@@ -51,10 +54,16 @@ class UserController extends Controller
     public function createSignin(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
-        $credentials = $request->only('name', 'password');
+
+        $user = User::where('email', $request->input('email'));
+
+        if(!$user){
+            return redirect()->back()->with('message','Введенный email не существует!');
+        }
+        $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $user = User::find(Auth::user()->id)
                 ->update([
@@ -68,7 +77,9 @@ class UserController extends Controller
             $users_count = User::where('role_id', 2)->count();
             $random_category = Category::all()->random();
             $advants = Advant::all();
-            return view('home', compact('tasks', 'advants', 'howitworks', 'categories', 'users_count', 'random_category'))->withSuccess('Logged-in');
+            $trusts = Trust::orderby('id', 'desc')->get();
+            $reklamas = Reklama::all();
+            return view('home', compact('reklamas','tasks', 'advants', 'howitworks', 'categories', 'users_count','trusts', 'random_category'))->withSuccess('Logged-in');
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
@@ -104,10 +115,10 @@ class UserController extends Controller
         $sms_otp = rand(100000, 999999);
 
         if ($request->has('email')) {
-//            Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
-//                $message->to($request->email);
-//                $message->subject('Email Verification Mail');
-//            });
+            //            Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
+            //                $message->to($request->email);
+            //                $message->subject('Email Verification Mail');
+            //            });
         }
         $message = "Code: {$sms_otp} user.uz";
         $response = (new SmsService())->send($data['phone_number'], $message);
@@ -119,25 +130,25 @@ class UserController extends Controller
         return redirect()->route('register.code');
     }
 
-    public function code_submit(Request $request){
+    public function code_submit(Request $request)
+    {
 
         $user = auth()->user();
-        if ($request->code == $user->verify_code){
-            if(strtotime($user->verify_expiration) >= strtotime(Carbon::now())){
+        if ($request->code == $user->verify_code) {
+            if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
                 return redirect('/profile');
-            }else{
-
+            } else {
             }
         }
-
     }
 
 
-    public function reset_submit(UserPhoneRequest $request){
+    public function reset_submit(UserPhoneRequest $request)
+    {
 
         $data = $request->validated();
         $user = User::query()->where('phone_number', $data['phone_number'])->first();
-        if (!$user){
+        if (!$user) {
             return back();
         }
         $sms_otp = rand(100000, 999999);
@@ -145,47 +156,44 @@ class UserController extends Controller
         $user->verify_expiration = Carbon::now()->addMinutes(5);
         $user->save();
         $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
-        session(['phone' =>$data['phone_number']]);
+        session(['phone' => $data['phone_number']]);
 
         return redirect()->route('password.reset.code.view');
-
     }
 
-    public function reset_code(Request $request){
+    public function reset_code(Request $request)
+    {
         $phone_number = $request->session()->get('phone');
 
         $user = User::query()->where('phone_number', $phone_number)->first();
 
-        if ($request->code == $user->verify_code){
-            if(strtotime($user->verify_expiration) >= strtotime(Carbon::now())){
+        if ($request->code == $user->verify_code) {
+            if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
                 return redirect()->route('password.reset.password');
-            }else{
-
+            } else {
             }
         }
-
-
     }
 
 
-    public function reset_code_view(){
+    public function reset_code_view()
+    {
 
         return view('auth.code');
-
     }
 
-    public function reset_password(Request $request){
+    public function reset_password(Request $request)
+    {
         return view('auth.confirm_password');
-
     }
 
-    public function reset_password_save(Request $request){
+    public function reset_password_save(Request $request)
+    {
         $user = User::query()->where('phone_number', $request->session()->get('phone'))->first();
         $user->password = bcrypt($request->password);
         $user->save();
         auth()->login($user);
         return redirect('/profile');
-
     }
     public function createUser(array $data)
     {
@@ -195,7 +203,6 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
-
     }
 
     public function dashboardView()
@@ -206,7 +213,9 @@ class UserController extends Controller
             $howitworks = How_work_it::all();
             $lang = Session::pull('lang');
             Session::put('lang', $lang);
-            return view('home', compact('tasks', 'howitworks', 'categories'));
+            $reklamas = Reklama::all();
+            $trusts = Trust::orderby('id', 'desc')->get();
+            return view('home', compact('tasks', 'howitworks', 'categories','reklamas','trusts'));
         }
         return redirect("login")->withSuccess('Access is not permitted');
     }
@@ -226,27 +235,31 @@ class UserController extends Controller
 
     public function verifyProfil(Request $request)
     {
+
+
         $request->validate([
             'sms_otp' => 'required',
         ]);
 
-        $verifyUser = UserVerify::where([
-            'user_id' => auth()->user()->id,
-            'sms_otp' => $request->sms_otp
-        ])->first();
+        $user = auth()->user();
 
-        if ($verifyUser === null)
-            if (getenv('APP_DEBUG')) {
-
-                $check = $request->sms_otp === getenv('SMS_OTP');
-                if ($check)
-                    $verifyUser = UserVerify::where([
-                        'user_id' => auth()->user()->id,
-                    ])->first();
+        if ($request->sms_otp == $user->verify_code) {
+            if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
+                User::where('id', $user->id)->update(['is_email_verified' => 1]);
+                Task::where('id', $request->for_ver_func)->update(['status' => 1]);
+                return redirect()->route('userprofile');
+            } else {
+                return back()->with([
+                    'alert' => 'Verification code expired'
+                ]);
             }
+        }else{
+            return back()->with([
+                'message' => 'Verification code incorrect'
+            ]);
+        }
 
         $message = $this->checkIsVerified($verifyUser);
-
         return redirect("/profile")->with('message', $message);
     }
 

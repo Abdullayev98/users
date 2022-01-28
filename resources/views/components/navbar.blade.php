@@ -15,7 +15,7 @@
         </nav>
         <div class="flex justify-center w-10/12 md:w-full">
             <a class="logo cursor-pointer delete-task" href="/">
-                <img src="storage/{!!setting('site.logo')!!}" class="overflow-hidden h-14 lg:h-16 py-2" alt="" />
+                <img src="/storage/{!!setting('site.logo')!!}" class="overflow-hidden h-14 lg:h-16 py-2" alt="" />
             </a>
         </div>
         @if (Route::has('login'))
@@ -25,7 +25,7 @@
           <div class=" float-left ml-8">
                 <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
               <button class="" type="button" data-dropdown-toggle="notification">
-                  <i class="text-xl text-slate-400 hover:text-orange-500 far fa-bell"></i>
+                  <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-bell"></i>
               </button>
               <!-- Dropdown menu -->
               <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="notification">
@@ -47,7 +47,7 @@
           </div>
           <div class="ml-4">
               <a href="/chat">
-                  <i class="text-xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
+                  <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-comment-alt"></i>
               </a>
           </div>
         </div>
@@ -79,7 +79,7 @@
                                 {{-- icon-2 --}}
                                 <div class="max-w-lg mx-auto ml-6">
                                   <a href="/profile" class="delete-task cursor-pointer profiles">
-                                    <button class="" type="button" data-dropdown-toggle="dropdownuser"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
+                                    <button class="" type="button" data-dropdown-toggle="dropdownuser"><i class="text-2xl text-gray-500 hover:text-yellow-500  far fa-user"></i>
                                     </button>
                                   </a>
                                 </div>
@@ -226,7 +226,7 @@ use Illuminate\Support\Facades\Auth;
 
 @endforeach
                 <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
-                    <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-slate-400 hover:text-orange-500 far fa-bell"></i>
+                    <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                     </button>
                     <!-- Dropdown menu -->
                     <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
@@ -273,7 +273,7 @@ use Illuminate\Support\Facades\Auth;
                 {{-- icon-3 --}}
                 <div class=" float-left">
                     <a class="delete-task" href="/chat">
-                        <i class=" text-2xl text-slate-400 hover:text-blue-500 far fa-comment-alt"></i>
+                        <i class=" text-2xl text-gray-500 hover:text-yellow-500 far fa-comment-alt"></i>
                     </a>
                 </div>
 
@@ -286,7 +286,7 @@ use Illuminate\Support\Facades\Auth;
 
                 {{-- icon-2 --}}
                 <div class="max-w-lg ml-5 float-left">
-                    <button class="" type="button" data-dropdown-toggle="dropdowndesk"><i class="text-2xl text-slate-400 hover:text-orange-500  far fa-user"></i>
+                    <button class="" type="button" data-dropdown-toggle="dropdowndesk"><i class="text-2xl text-gray-500 hover:text-yellow-500  far fa-user"></i>
                     </button>
                     <!-- Dropdown menu -->
                     <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdowndesk">
@@ -377,7 +377,7 @@ use Illuminate\Support\Facades\Auth;
             </div>
             <div class="text-center h-64">
                 <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
-                    <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="1000">
+                    <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="4000">
                 </div>
                 <p class="text-sm mt-2 leading-6 text-gray-400">@lang('lang.navbar_minimum')</p>
 
@@ -581,7 +581,7 @@ el_for_create.insertAdjacentHTML('afterend', `
     }
     function inputFunction() {
         var x = document.getElementById("myText").value;
-        if(x < 1000){
+        if(x < 4000){
             document.getElementById('button').removeAttribute("onclick");
             document.getElementById('button').classList.remove("bg-green-500");
             document.getElementById('button').classList.add("bg-gray-500");

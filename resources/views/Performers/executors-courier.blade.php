@@ -1,17 +1,14 @@
 @extends("layouts.app")
 
 @section("content")
-@foreach($users as $user)
+{{--@foreach($users as $user)--}}
     <div class="w-10/12 mx-auto">
         <div class="grid grid-cols-3  grid-flow-row mt-10">
         {{-- left sidebar start --}}
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
                     <div class="top-0 right-0 float-right text-gray-500 text-sm">
-                        <i class="far fa-eye"></i>
-                        @foreach($vcs as $vc)
-                        <span>{{$vc->count}} @lang('lang.exe_viewProfile')</span>
-                        @endforeach
+                        <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
                     </div>
                    <div>
                      @if($user->active_status == 1)
@@ -24,7 +21,12 @@
 
                    <div class="flex w-full mt-6">
                     <div class="flex-initial w-1/3">
-                      <img class="h-56 w-56" src="{{ asset($user->avatar) }}" alt="#">
+                      <img class="h-48 w-44" 
+                      @if ($user->avatar == Null)
+                      src='{{asset("images/default_img.jpg")}}'
+                      @else
+                      src="{{asset("AvatarImages/{$user->avatar}")}}"
+                      @endif alt="">
                     </div>
                     <div class="flex-initial w-2/3 lg:ml-0 ml-6">
                         <div class="font-medium text-lg">
@@ -33,10 +35,26 @@
                             <span>@lang('lang.exe_docsAccept')</span>
                             @endif
                         </div>
-                        <div class="text-gray-500 text-base mt-4">
-                            <span>{{$user->age}} @lang('lang.exe_rusYearLet')</span>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>{{$user->location}}</span>
+                        <div class="w-2/3 text-base text-gray-500 lg:ml-0 ml-4">
+                            @if($user->age != "")
+                                <p class="inline-block mr-2">
+                                    {{$user->age}}
+                                    @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
+                                    @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                    @else @lang('lang.cash_rusYearLet')
+                                    @endif
+                                </p>
+                            @endif
+
+                            <span class="inline-block">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p class="inline-block text-m">
+                                    @if($user->location!="") {{$user->location}} @lang('lang.cash_city')
+                                    @else @lang('lang.cash_cityNotGiven')
+                                    @endif
+                                </p>
+                            </span>
+                            
                         </div>
                         <div class="text-gray-500 text-base mt-6">
                             <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
@@ -97,15 +115,12 @@
                             </a>
                             <div class="align-top ml-[50px] min-h-[42px]">
                             <span>
-                                @foreach ($users as $user)
                                 @if ($user->id == $review->reviewer_id)
                                 <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$user->name}}</a>
                                 @endif
-                                @endforeach
                             </span>
                                 <div class="text-[.9rem] text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    @foreach ($users as $user)
                                     @if ($user->id == $review->reviewer_id)
                                     @if ($user->role_id == 2)
                                     Отзыв:
@@ -125,7 +140,6 @@
                                     Заказчик
                                     @endif
                                     @endif
-                                    @endforeach
                                 </span>
                                 </div>
                             </div>
@@ -198,7 +212,7 @@
                         </div> -->
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-white fas fa-phone-square text-2xl bg-amber-500 py-3 px-4 rounded-lg"></i>
+                                <i class="fas fa-phone-alt py-1 px-2 text-2xl bg-amber-500 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
@@ -211,7 +225,7 @@
                         </div>
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="text-white far fa-envelope text-2xl bg-blue-500 py-3 px-4 rounded-lg"></i>
+                                <i class="text-white far fa-envelope text-2xl bg-blue-500 py-1 px-2 rounded-lg"></i>
                             </div>
                             <div class="flex-initial w-3/4 xl:ml-0 ml-8">
                                 <h2 class="font-medium text-lg">Email</h2>
@@ -276,7 +290,6 @@
         </div>
       </div>
       <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
-      @endforeach
       <script type="text/javascript">
         function toggleModal12(modalID12){
           document.getElementById(modalID12).classList.toggle("hidden");
