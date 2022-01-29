@@ -122,7 +122,7 @@
                                                             type="button">
                                                         @lang('lang.detailedT_text19')
                                                     </button>
-                                                    
+
                                                     @if($tasks->status == 3)
                                                         <button class="done font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
@@ -289,6 +289,7 @@
                                                                 <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
 
 {{--                                                                <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>--}}
+                                                                @if($tasks->status < 3 )
                                                                 <div class="w-10/12 mx-auto">
                                                                     <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                                         @lang('lang.detT_writeOnChat')
@@ -297,6 +298,7 @@
                                                                         @lang('lang.detT_choose')
                                                                     </a>
                                                                 </div>
+                                                                @endif
                                                                 <div class="text-gray-400 text-[14px] my-6">
                                                                     @lang('lang.detT_choosePerf')
                                                                 </div>
@@ -479,10 +481,8 @@
                     $('.preloader').hide();
                     $('.modal___1').show();
                 }, 1000);
-                window.setTimeout(function() {
                     $('.modal___1').hide();
                     window.location.reload();
-                }, 3000);
             });
         </script>
         <script>
