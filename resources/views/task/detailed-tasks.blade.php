@@ -101,7 +101,7 @@
                                                     </button>
                                                         @endif
                                                     @elseif($balance < 4000 || $response_count_user >= setting('site.free_responses'))
-                                                    @if($tasks->user_id != auth()->id())
+                                                    @if($tasks->user_id != auth()->id() && $tasks->status < 3)
                                                     <a href="#" class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
                                                     <div class='modal' id='modal1'>
                                                         <div class='content'>
@@ -396,7 +396,7 @@
                             </div>
                             <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
                                         border border-solid border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"></textarea>
-                            
+
                             <button class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
                                     type="button">
                                 @lang('lang.contact_send')
@@ -614,7 +614,7 @@
             $(".send-comment").click(function(event){
                 event.preventDefault();
                 let good = $(".good:checked").val();
-                let comment = $("input[name=comment]").val();
+                let comment = $("textarea[name=comment]").val();
                 let _token = $("input[name=csrf]").val();
                 let performer_id = $("input[name=performer_id]").val();
                 let task_id = $("input[name=task_id]").val();
@@ -640,9 +640,7 @@
                         console.log(error);
                     }
                 });
-                window.setTimeout(function() {
                     window.location.reload();
-                }, 3000);
             });
         </script>
 

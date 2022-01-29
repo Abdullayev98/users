@@ -17,7 +17,7 @@
                             <a href="#second" class="inline-block relative py-1 w-full">@lang('lang.mytasks_iAmCustomer')</a>
                         </div>
                     </ul>
-                    <p class="p-5">Всего {{ $tasks->count() }} задание найдено</p>
+                    <p class="p-5">@lang('lang.mytask_avarage') {{ $tasks->count() }} @lang('lang.mytask_tasksFound')</p>
 
                 </div>
             </div>

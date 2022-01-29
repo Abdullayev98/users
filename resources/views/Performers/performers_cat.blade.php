@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-</style>
+
     <div class="flex flex-row container mx-auto mx-40 my-8">
 
 {{-----------------------------------------------------------------------------------}}

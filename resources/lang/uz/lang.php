@@ -121,6 +121,8 @@ return [
     'mytasks_allCat' => "Barcha toifalar",
     'mytask_onTask' => "bu topshiriqda sorovlar",
     'mytask_callbacks' => "ta",
+    'mytask_avarage' => "Hammasi bolib",
+    'mytask_tasksFound' => "ta vazifa bor",
     // mytasks.blade end
 
     // offertask.blade start
@@ -1025,7 +1027,9 @@ return [
     'training_minut' => "daqiqa",
     'training_text6' => "Muhim emas",
     // training blade ended
-
+    //date blade
+    'calendar' => "Qaysi oy..",
+    'dateLang' => "uz_latn",
     // detailed tasks blade started
     'deteiledT_before' => "gacha",
     'detailedT_needmovers' => "Ko'chiruvchilar kerak",

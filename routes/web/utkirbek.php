@@ -31,6 +31,11 @@ Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm');
 
 Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth']);
 Route::get('account/verify/', [LoginController::class, 'verifyAccount'])->name('user.verify')->middleware('auth');
-Route::get('account/verification/email', [LoginController::class, 'send_verification'])->name('user.verify.send')->middleware('auth');
+Route::get('account/verification/email', [LoginController::class, 'send_email_verification'])->name('user.verify.send')->middleware('auth');
+Route::get('account/verification/phone', [LoginController::class, 'send_phone_verification'])->name('user.verify.phone.send')->middleware('auth');
+Route::post('account/verification/phone', [LoginController::class, 'verify_phone'])->name('user.verify.phone.submit')->middleware('auth');
+Route::post("account/change/email", [LoginController::class,'change_email'])->name('user.email.change')->middleware('auth');
+Route::post("account/change/phone", [LoginController::class,'change_phone_number'])->name('user.phone.change')->middleware('auth');
+Route::post("account/change/phone/send", [LoginController::class,'verify_phone'])->name('user.phone.verify')->middleware('auth');
 
 

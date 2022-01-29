@@ -121,6 +121,8 @@ return [
     'mytasks_allCat' => "Все категории",
     'mytask_onTask' => "У задания",
     'mytask_callbacks' => "откликов",
+    'mytask_avarage' => "Всего",
+    'mytask_tasksFound' => "задание найдено",
     // mytasks.blade end
 
     // offertask.blade start
@@ -1029,7 +1031,9 @@ return [
     'training_minut' => "минут",
     'training_text6' => "Неважно",
     // training blade ended
-
+    //date blade
+    'calendar' => "Какой месяц..",
+    'dateLang' => "ru",
     // detailed tasks blade started
     'deteiledT_before' => "До",
     'detailedT_needmovers' => "Нужны грузчики",

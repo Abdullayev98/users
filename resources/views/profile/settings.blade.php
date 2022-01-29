@@ -28,14 +28,14 @@
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1 text-base" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
-                                    <label for="file" class="p-3">
+                                    <label for="file" class="p-1">
                                         <i class="fas fa-camera"></i>
                                         <span>@lang('lang.cash_changeImg')</span>
                                     </label>
                                 </div>
                                 <div class="rounded-md bg-green-400 w-40 hidden mt-3 py-1" type="button" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
-                                    <label for="sub1" class="p-3">
+                                    <label for="sub1" class="p-1">
                                         <i class="fas fa-save"></i>
                                         <span>@lang('lang.cash_addImg')</span>
                                     </label>
@@ -145,7 +145,7 @@
                                                         <option value="Buxoro" {{ $user->location=='Buxoro' ? 'selected' : '' }}>Buxoro</option>
                                                         <option value="Navoiy" {{ $user->location=='Navoiy' ? 'selected' : '' }}>Navoiy</option>
                                                         <option value="Xorazm" {{ $user->location=='Xorazm' ? 'selected' : '' }}>Xorazm</option>
-                                                        <option value="Qashqadryo" {{ $user->location=='Qashqadryo' ? 'selected' : '' }}>Qashqadryo</option>
+                                                        <option value="Qashqadryo" {{ $user->location=='Qashqadryo' ? 'selected' : '' }}>Qashqadaryo</option>
                                                         <option value="Surxondaryo" {{ $user->location=='Surxondaryo' ? 'selected' : '' }}>Surxondaryo</option>
                                                         <option value="Qoraqalpog'iston" {{ $user->location=='Qoraqalpog\'iston' ? 'selected' : '' }}>Qoraqalpog'iston</option>
                                                     </select>
