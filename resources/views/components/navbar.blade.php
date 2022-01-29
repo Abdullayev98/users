@@ -1,3 +1,5 @@
+<div class="border-b border-solid border-gray-200 w-full shadow-sm">
+
 <nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start text-base" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
       <!--  mobile menu -->
@@ -361,6 +363,7 @@ use Illuminate\Support\Facades\Auth;
     @endif
 </nav>
 
+</div>
 
 {{-- pay modal start --}}
 <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">

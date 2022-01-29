@@ -21,22 +21,22 @@
                         <div class="w-1/3">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
-                                    src='{{asset("storage/users/default.jpg")}}'
+                                src='{{asset("storage/users/default.jpg")}}'
                                 @else
-                                    src="{{asset("storage/{$user->avatar}")}}"
+                                     src="{{asset("storage/{$user->avatar}")}}"
                                 @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
-                                    <label for="file" class="p-3">
+                                    <label for="file" class="p-1">
                                         <i class="fas fa-camera"></i>
                                         <span>@lang('lang.cash_changeImg')</span>
                                     </label>
                                 </div>
                                 <div class="rounded-md bg-green-400 w-40 hidden mt-3 py-1" type="button" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
-                                    <label for="sub1" class="p-3">
+                                    <label for="sub1" class="p-1">
                                         <i class="fas fa-save"></i>
                                         <span>@lang('lang.cash_addImg')</span>
                                     </label>
@@ -113,7 +113,7 @@
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-96 my-10">
-                           <a onclick="toggleModal123('modal-id123')" class="bg-yellow-500 px-8 py-3 rounded-md text-white text-2xl" href="#">
+                           <a onclick="toggleModal123('modal-id123')" class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="#">
                             <i class="fas fa-camera"></i>
                             <span>Создать фотоальбом</span>
                            </a>
@@ -192,7 +192,7 @@
             {{-- Modal start --}}
 
             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
-                <div class="relative my-6 mx-auto max-w-3xl" id="modal11">
+                <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
                     <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
                         <div class=" text-center p-6  rounded-t">
                             <button type="submit"  onclick="toggleModal123('modal-id123')" class=" w-100 h-16 absolute top-1 right-4">
@@ -202,9 +202,10 @@
                                 Создание альбома
                             </h3>
                         </div>
-                        <div class="text-center h-64 w-80 text-base">
+                        <div class="text-center h-full w-full text-base">
                             <form action="#" enctype="multipart/form-data">
                                 <div class="input-images my-4"></div>
+                                <input type="text" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
                               <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
                             </form>
                         </div>

@@ -3,8 +3,8 @@
 @section("content")
 
     <div class="mx-auto w-9/12 my-16">
-        <div class="grid lg:grid-cols-3 grid-cols-2 container mx-auto text-base">
-            <div class="col-span-2">
+        <div class="grid lg:grid-cols-5 grid-cols-5 container mx-auto text-base">
+            <div class="col-span-3">
                 <div class="w-full bg-yellow-50 my-5 rounded-md">
                     <div class="px-5 py-5">
                     <!-- <form action="{{route('search')}}" method="get"> -->
@@ -154,7 +154,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">
+            <div class="col-span-5 lg:col-span-2 lg:block hidden mx-4 lg:mt-0 mt-32">
                 <div class="small-map static">
                     {{--Map2 show --}}
                 </div>
