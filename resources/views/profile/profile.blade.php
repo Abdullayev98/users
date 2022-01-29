@@ -129,53 +129,62 @@
                     <p>@lang('lang.profile_since')</p>
                 </div>
                 <div class="contacts">
-                    <div class="ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
-                             style="background-color: orange;">
-                            <i class="fas fa-phone-alt text-white"></i>
+                    @if($user->google_id)
+
+                        <div class="telefon ml-4 h-20 grid grid-cols-4">
+                            <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                                 style="background-color: #4285F4;">
+                                <i class="fab fa-google text-white"></i>
+                            </div>
+                            <div class="ml-3 col-span-3">
+                                <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
+                                Подтвержден
+                            </div>
                         </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2">@lang('lang.profile_phone')</h5>
-                            @if ($user->phone_number!="")
-                                <p class="text-gray-600 block ">{{$user->phone_number}}</p>
-                            @else
-                                @lang('lang.profile_noNumber')
-                            @endif
+                    @endif
+                    @if($user->facebook_id)
+                        <div class="telefon ml-4 h-20 grid grid-cols-4">
+                            <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                                 style="background-color: #4285F4;">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </div>
+                            <div class="ml-3 col-span-3">
+                                <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
+                                <p>Подтвержден</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
-                             style="background-color: #0091E6;">
-                            <i class="far fa-envelope text-white"></i>
-                        </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2">Email</h5>
-                            <p class="text-sm">{{$user->email}}</p>
-                        </div>
-                    </div>
+                    @endif
                 </div>
                 <p class="mx-5 my-4">@lang('lang.cash_boost')</p>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
-                         style="background-color: #4285F4;">
-                        <i class="fab fa-google text-white"></i>
+                @if(!$user->google_id)
+
+                    <div class="telefon ml-4 h-20 grid grid-cols-4">
+                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                             style="background-color: #4285F4;">
+                            <i class="fab fa-google text-white"></i>
+                        </div>
+                        <div class="ml-3 col-span-3">
+                            <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
+                            <a href="{{route('auth.google')}}" target="_blank"
+                               class="block text-sm">@lang('lang.cash_bind')</a></p></a>
+                        </div>
                     </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
-                        <a href="https://www.google.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a></p></a>
+                @endif
+                @if(!$user->facebook_id)
+                    <div class="telefon ml-4 h-20 grid grid-cols-4">
+                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
+                             style="background-color: #4285F4;">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </div>
+                        <div class="ml-3 col-span-3">
+                            <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
+                            <a href="{{route('auth.facebook')}}" target="_blank"
+                               class="block text-sm">@lang('lang.cash_bind')</a>
+                        </div>
                     </div>
-                </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
-                         style="background-color: #4285F4;">
-                        <i class="fab fa-facebook-f text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
-                        <a href="https://www.facebook.com/" target="_blank" class="block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
+                @endif
             </div>
+
                 {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
