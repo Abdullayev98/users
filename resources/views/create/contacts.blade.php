@@ -58,45 +58,18 @@
                         <div class="tab-content" id="tabs-tabContent3">
                             <div class="tab-pane fade show active" id="tabs-home3" role="tabpanel"
                                  aria-labelledby="tabs-home-tab3">
-                                <form action="{{route('task.create.contact.store', $task->id)}}" method="post">
-                                    @csrf
-                                    <div class="py-4 mx-auto  text-left ">
-                                        <div class="mb-4">
-                                            <div id="formulario" class="flex flex-col gap-y-4">
-                                                <div>
-                                                    <div class="mb-3 xl:w-full">
-                                                        @if(!auth()->check())
+                                <div class="py-4 mx-auto  text-left ">
+                                    <div class="mb-4">
+                                        <div id="formulario" class="flex flex-col gap-y-4">
+                                            <div>
+                                                <div class="mb-3 xl:w-full">
 
-                                                            <label class="text-sm text-gray-500 mb-2"
-                                                                   for="name">@lang('lang.contact_name')</label>
+                                                    @auth()
+                                                        <form action="{{route('task.create.contact.store.phone', $task->id)}}"
+                                                              method="post">
+                                                            @csrf
 
-                                                            <input type="text" name="name"
-                                                                   placeholder="@lang('lang.contact_name')"
-                                                                   value="{{old('name')}}"
-                                                                   class="mb-5 shadow appearance-none border   focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
-                                                            @error('name')
-                                                            <p class="text-red-500">{{$message}}</p>
-                                                            @enderror
-                                                            <label class="text-sm text-gray-500 mb-2"
-                                                                   for="email">E-mail</label>
-                                                            <input type="email" name="email" placeholder="E-mail"
-                                                                   value="{!! old('email') !!}"
-                                                                   class="mb-5 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
-                                                            />
-                                                            @error('email')
-                                                            <p class="text-red-500">{{$message}}</p>
-                                                            @enderror
-                                                            <label class="text-sm text-gray-500 mb-2"
-                                                                   for="phone">@lang('lang.contact_number')</label>
-                                                            <input type="text"
-                                                                   value="+998{{old('phone_number')}}" id="phone"
-                                                                   class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
-                                                            <input type="hidden" name="phone_number" id="phone_number">
 
-                                                            @error('phone_number')
-                                                            <p class="text-red-500">{{$message}}</p>
-                                                            @enderror
-                                                        @else
                                                             <label class="text-sm text-gray-500 mb-2"
                                                                    for="phone">@lang('lang.contact_number')</label>
                                                             <input type="text" name="phone_number"
@@ -106,35 +79,70 @@
                                                             @error('phone_number')
                                                             <p>{{$message}}</p>
                                                             @enderror
-                                                        @endif
-                                                    </div>
+                                                        </form>
+                                                    @endauth
+
+
+                                                    @if(!auth()->check())
+
+                                                        <label class="text-sm text-gray-500 mb-2"
+                                                               for="name">@lang('lang.contact_name')</label>
+
+                                                        <input type="text" name="name"
+                                                               placeholder="@lang('lang.contact_name')"
+                                                               value="{{old('name')}}"
+                                                               class="mb-5 shadow appearance-none border   focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                        @error('name')
+                                                        <p class="text-red-500">{{$message}}</p>
+                                                        @enderror
+                                                        <label class="text-sm text-gray-500 mb-2"
+                                                               for="email">E-mail</label>
+                                                        <input type="email" name="email" placeholder="E-mail"
+                                                               value="{!! old('email') !!}"
+                                                               class="mb-5 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
+                                                        />
+                                                        @error('email')
+                                                        <p class="text-red-500">{{$message}}</p>
+                                                        @enderror
+                                                        <label class="text-sm text-gray-500 mb-2"
+                                                               for="phone">@lang('lang.contact_number')</label>
+                                                        <input type="text"
+                                                               value="+998{{old('phone_number')}}" id="phone"
+                                                               class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                        <input type="hidden" name="phone_number" id="phone_number">
+
+                                                        @error('phone_number')
+                                                        <p class="text-red-500">{{$message}}</p>
+                                                        @enderror
+                                                    @else
+
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="mt-4">
-                                            <div class="flex w-full gap-x-4 mt-4">
-                                                <a onclick="myFunction()"
-                                                   class="w-1/3 text-xl  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
-                                                    <!-- <button type="button"> -->
-                                                @lang('lang.notes_back')
-                                                <!-- </button> -->
-                                                    <script>
-                                                        function myFunction() {
-                                                            window.history.back();
-                                                        }
-                                                    </script>
-                                                </a>
-                                                <input type="submit"
-                                                       class="bg-green-500 text-xl hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                                       name="" value="@lang('lang.contact_send')">
-                                            </div>
-
-
-                                        </div>
                                     </div>
 
-                                </form>
+                                    <div class="mt-4">
+                                        <div class="flex w-full gap-x-4 mt-4">
+                                            <a onclick="myFunction()"
+                                               class="w-1/3 text-xl  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                                <!-- <button type="button"> -->
+                                            @lang('lang.notes_back')
+                                            <!-- </button> -->
+                                                <script>
+                                                    function myFunction() {
+                                                        window.history.back();
+                                                    }
+                                                </script>
+                                            </a>
+                                            <input type="submit"
+                                                   class="bg-green-500 text-xl hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                                   name="" value="@lang('lang.contact_send')">
+                                        </div>
+
+
+                                    </div>
+                                </div>
                             </div>
                             @guest()
                                 <div class="tab-pane fade" id="tabs-profile3" role="tabpanel"

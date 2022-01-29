@@ -42,4 +42,14 @@ class TaskDateRequest extends FormRequest
 
         }
     }
+
+    public function messages()
+    {
+        return [
+            "start_date.required" => 'Date',
+            "start_date.date" => "date",
+            "end_date.required" => "Required",
+            "end_date.date" => "date",
+        ];
+    }
 }
