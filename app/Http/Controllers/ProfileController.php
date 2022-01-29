@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Task;
 use App\Models\WalletBalance;
 use App\Models\All_transaction;
+use App\Models\Portfoliocomment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserView;
@@ -23,7 +24,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $views = count( UserView::where('performer_id', $user->id)->get());
         $task = Task::where('user_id',Auth::user()->id)->count();
-        $ports = null;
+        $ports = Portfoliocomment::where('user_id',Auth::user()->id)->get();
         return view('profile.profile', compact('user','views','task','ports'));
     }
     public function updates(Request $request)
@@ -166,23 +167,27 @@ class ProfileController extends Controller
 
     //portfolio
     public function StorePicture(Request $request){
-        dd($request->all());
-            $request->validate([
-              'image' => 'required|image'
-            ]);
-            $portfolio = new Portfolio_new;
-            $photo = $request->file('image');
-
-            if($photo){
-                // $image_name = time() . '.' . $photo->getClientOriginalExtension();
-                $imagename = "images/portfolios/".$photo->getClientOriginalName();
-                $photo->move(public_path().'/AvatarImages/images/portfolios/',$imagename);
-                $portfolio->image = $imagename;
-            }
-            $portfolio->comment = $request->comment;
-            $portfolio->save();
-            return back();
+        // $request->validate([
+        //   'images' => 'required|image'
+        // ]);
+        $photos = $request->file('images');
+        if($photos){
+            $comment = new Portfoliocomment;
+            $comment->description = $request->comment;
+            $comment->user_id = auth()->user()->id;
+            $comment->save();
+            foreach ($photos as $imagefile) {
+                $portfolio = new Portfolio_new;
+                $imagename = $imagefile->getClientOriginalName();
+                $portfolio->image= $imagename;
+                $imagefile->move(public_path().'/AvatarImages/images/portfolios/',$imagename);
+                $portfolio->comment_id = $comment->id;
+                $portfolio->save();
+              }
         }
+        return redirect()->back();
+    }
+
     public function EditDescription(Request $request)
     {
         $user = Auth::user();

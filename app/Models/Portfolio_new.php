@@ -9,5 +9,5 @@ class Portfolio_new extends Model
 {
     use HasFactory;
     protected $table = 'portfolios';
-    protected $fillable =['image','comment'];
+    protected $fillable =['image','comment_id'];
 }

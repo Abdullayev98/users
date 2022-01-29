@@ -204,9 +204,10 @@
                         </div>
                         <div class="text-center h-full w-full text-base">
                             <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="input-images my-4"></div>
-                                <input type="text" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
-                              <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
+                                <input type="text" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
+                                <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
                             </form>
                         </div>
                     </div>
