@@ -192,7 +192,7 @@
             {{-- Modal start --}}
 
             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
-                <div class="relative my-6 mx-auto max-w-3xl" id="modal11">
+                <div class="relative my-6 mx-auto max-w-3xl" id="modal123">
                     <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
                         <div class=" text-center p-6  rounded-t">
                             <button type="submit"  onclick="toggleModal123('modal-id123')" class=" w-100 h-16 absolute top-1 right-4">
