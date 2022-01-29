@@ -636,10 +636,6 @@
         }
     });
 
-
-    if (document.getElementById('credit').checked) {
-        alert('Hello');
-    }
 </script>
 
 <script >
@@ -677,7 +673,7 @@
 </script>
 <script >
             var link = document.location.href.split('/');
-            if(link[3] == 'performers'){       
+            if(link[3] == 'performers'){
                 $(".performer").addClass("text-yellow-400");
             }
             else if(link[3] == 'my-tasks'){
