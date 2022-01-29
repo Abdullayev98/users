@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
 
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
@@ -62,7 +63,7 @@
 
               <div class="flatpickr inline-block flex flex-shrink">
                   <div class="flex-shrink">
-                      <input type="text" placeholder="Какой месяц.." data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
+                      <input type="text" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
                   </div>
                   <div class="transform hover:scale-125">
                       <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
@@ -100,7 +101,7 @@
 {{--                </div>--}}
               <div class="flatpickr inline-block flex flex-shrink" style="display: none;" id="datetime">
                   <div class="flex-shrink">
-                      <input type="text" placeholder="Какой месяц.." data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
+                      <input type="text" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
                   </div>
                   <div class="transform hover:scale-125">
                       <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
@@ -140,8 +141,42 @@
   </div>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
 
     <script>
+        // if (){
+        //     flatpickr.localize(flatpickr.l10ns.ru);
+        //     flatpickr(".flatpickr",
+        //         {
+        //             wrap: true,
+        //             enableTime: true,
+        //             allowInput: true,
+        //             altInput: true,
+        //             minDate: "today",
+        //             dateFormat: "Y-m-d /H:i",
+        //             altFormat: "Y-m-d /H:i",
+        //
+        //             locale: "ru",
+        //         },
+        //     )
+        // }
+        // else {
+        //     flatpickr.localize(flatpickr.l10ns.uz_latn);
+        //     flatpickr(".flatpickr",
+        //         {
+        //             wrap: true,
+        //             enableTime: true,
+        //             allowInput: true,
+        //             altInput: true,
+        //             minDate: "today",
+        //             dateFormat: "Y-m-d /H:i",
+        //             altFormat: "Y-m-d /H:i",
+        //
+        //             locale: "uz_latn",
+        //         },
+        //     )
+        // }
+        flatpickr.localize(flatpickr.l10ns.uz_latn);
         flatpickr.localize(flatpickr.l10ns.ru);
         flatpickr(".flatpickr",
             {
@@ -152,7 +187,8 @@
                 minDate: "today",
                 dateFormat: "Y-m-d /H:i",
                 altFormat: "Y-m-d /H:i",
-                locale: "ru",
+
+                locale: "@lang('lang.dateLang')",
             },
         )
     </script>

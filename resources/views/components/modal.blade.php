@@ -126,7 +126,7 @@
                             письмо для подтверждения телефонный номер</a><br>
 
 
-                        <a class='text-gray-800 border-b border-dotted border-gray-700 @if($errors->has('email') || session()->has('email-message') ) hidden @endif change-email cursor-pointer'>Указать
+                        <a class='text-gray-800 border-b border-dotted border-gray-700 @if($errors->has('email') || session()->has('email-message') || !auth()->user()->phone_number) ) hidden @endif change-email cursor-pointer'>Указать
                             другую телефонный номер</a>
 
                         <form action="{{route('user.email.change')}}" id="send-data-form" class="@if(!($errors->has('email') || session()->has('email-message') || !auth()->user()->phone_number)) hidden @endif" method="post">

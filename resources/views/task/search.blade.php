@@ -205,12 +205,6 @@
         </div>
     </div>
 
-    <style>
-        [class*="copyrights-pane"] {
-            display: none !important;
-        }
-    </style>
-
     <link href="https://tailwindcomponents.com/css/component.checkboxes.css" rel="stylesheet">
 
     <div class="w-full" x-data="topBtn">
