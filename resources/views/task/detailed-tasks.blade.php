@@ -122,7 +122,7 @@
                                                             type="button">
                                                         @lang('lang.detailedT_text19')
                                                     </button>
-                                                    
+
                                                     @if($tasks->status == 3)
                                                         <button class="done font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
@@ -289,6 +289,7 @@
                                                                 <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
 
 {{--                                                                <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>--}}
+                                                                @if($tasks->status < 3 )
                                                                 <div class="w-10/12 mx-auto">
                                                                     <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                                         @lang('lang.detT_writeOnChat')
@@ -297,6 +298,7 @@
                                                                         @lang('lang.detT_choose')
                                                                     </a>
                                                                 </div>
+                                                                @endif
                                                                 <div class="text-gray-400 text-[14px] my-6">
                                                                     @lang('lang.detT_choosePerf')
                                                                 </div>
@@ -371,7 +373,7 @@
                             <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                         </button>
                         <h3 class="font-medium text-gray-700 text-3xl block">
-                            Создание альбома
+                            Оставить отзыв
                         </h3>
                     </div>
                     <div class="text-center h-56 w-80 text-base">
@@ -386,7 +388,9 @@
                                     <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-2xl"></i>
                                 </label>
                             </div>
-                            <input type="text" name="comment" class="border rounded mb-4 bg-amber-100 w-full py-2 text-center font-normal mt-6" value="">
+                            <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
+                                        border border-solid border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"></textarea>
+
                             <button class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
                                     type="button">
                                 @lang('lang.contact_send')
@@ -479,10 +483,8 @@
                     $('.preloader').hide();
                     $('.modal___1').show();
                 }, 1000);
-                window.setTimeout(function() {
                     $('.modal___1').hide();
                     window.location.reload();
-                }, 3000);
             });
         </script>
         <script>
@@ -606,7 +608,7 @@
             $(".send-comment").click(function(event){
                 event.preventDefault();
                 let good = $(".good:checked").val();
-                let comment = $("input[name=comment]").val();
+                let comment = $("textarea[name=comment]").val();
                 let _token = $("input[name=csrf]").val();
                 let performer_id = $("input[name=performer_id]").val();
                 let task_id = $("input[name=task_id]").val();
