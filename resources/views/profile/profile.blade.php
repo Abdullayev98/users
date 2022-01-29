@@ -118,6 +118,22 @@
                             <span>Создать фотоальбом</span>
                            </a>
                         </div>
+                        
+                        <div class="flex sm:flex-row flex-col mb-6">
+                            <div class="border border-gray-400 w-56 h-48 cursor-pointer mr-6 sm:mb-0 mb-8">
+                                <div class="h-12 flex mt-36 w-full bg-black opacity-75 items-center">
+                                    <p class="w-2/3 text-center text-base text-white">salom</p>
+                                   <div class="w-1/3 flex items-center">
+                                        <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
+                                        <span class="text-white">5</span>
+                                   </div>
+                                </div>
+                            </div>
+                            <div  onclick="toggleModal123('modal-id123')"  class="flex border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
+                                <i class="fas fa-plus m-auto text-6xl"></i>
+                            </div>
+                        </div>
+
                     </div>
                     {{-- about-me end --}}
                 </div>
