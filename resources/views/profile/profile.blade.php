@@ -21,9 +21,9 @@
                         <div class="w-1/3">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
+                                    src='{{asset("images/default_img.jpg")}}'
                                 src='{{asset("storage/users/default.jpg")}}'
                                 @else
-                                     src="{{asset("storage/{$user->avatar}")}}"
                                 @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -203,10 +203,11 @@
                             </h3>
                         </div>
                         <div class="text-center h-full w-full text-base">
-                            <form action="#" enctype="multipart/form-data">
+                            <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="input-images my-4"></div>
-                                <input type="text" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
-                              <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
+                                <input type="text" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
+                                <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
                             </form>
                         </div>
                     </div>
