@@ -93,17 +93,17 @@
                                 <a href="/categories/1" class="delete-task block p-4 text-sm rounded  text-gray-500 hover:text-yellow-500">@lang('lang.navbar_createTask')</a>
                             </li>
                             <li class="mb-1">
-                                <a href="{{ route('task.search') }}" class="block delete-task cursor-pointer p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_findTask')</a>
+                                <a href="{{ route('task.search') }}" class="task block delete-task cursor-pointer p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_findTask')</a>
                             </li>
                             <li class="mb-1">
-                                <a href="/performers" class="delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_perfs')</a>
+                                <a href="/performers" class="performer delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_perfs')</a>
                             </li>
 
                             @if (Route::has('login'))
                                 @auth
 
                                     <li class="mb-1">
-                                        <a href="{{ route('task.mytasks') }}" class="delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_myTasks')</a>
+                                        <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_myTasks')</a>
                                     </li>
 
                                     {{-- icon-3 --}}
@@ -175,11 +175,11 @@
                     @endforeach
                 </ul>
             </div>
-            <a href="{{ route('task.search') }}" class="cursor-pointer delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
-            <a href="/performers" class="delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
+            <a href="{{ route('task.search') }}" class="task cursor-pointer delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
+            <a href="/performers" class="performer delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ route('task.mytasks') }}" class="delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
+                    <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
                 @else
                 @endauth
             @endif
@@ -338,10 +338,10 @@
 </div>
 
 {{-- pay modal start --}}
-<div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
+<div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color:rgba(0,0,0,0.5)" id="modal-id">
     {{-- 1 --}}
-    <div class="relative w-auto my-6 mx-auto max-w-3xl" id="modal11">
-        <div class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+    <div class="relative w-full my-6 mx-auto max-w-3xl" id="modal11">
+        <div class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col sm:w-4/5 w-full bg-white outline-none focus:outline-none">
             <div class=" text-center p-6  rounded-t">
                 <button type="submit"  onclick="toggleModal()" class="rounded-md w-100 h-16 absolute top-1 right-4">
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
@@ -371,9 +371,9 @@
 </div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 {{-- 2 --}}
-<div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id1">
+<div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color:rgba(0,0,0,0.5)" id="modal-id1">
     <div class="relative w-auto my-6 mx-auto max-w-3xl">
-        <div class="border-2 shadow-2xl rounded-lg bg-gray-100 relative flex flex-col w-5/6 mx-auto mt-16 bg-white outline-none focus:outline-none">
+        <div class="border-2 shadow-2xl rounded-lg bg-gray-100 relative flex flex-col sm:w-4/5 w-full mx-auto mt-16 bg-white outline-none focus:outline-none">
             <div class=" text-center p-6  rounded-t">
                 <button type="submit"  onclick="toggleModal1()" class="rounded-md w-100 h-16 absolute top-1 right-4">
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
@@ -386,17 +386,17 @@
             <div class="container mb-12">
                 <form action="/ref" method="GET">
                     <input type="hidden" name="user_id" value="1">
-                    <div class="my-3 w-1/2 mx-auto">
-                        <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
-                            <input id="credit" onclick="doBlock()" name="paymethod" type="radio" value="PayMe" class="custom-control-input mt-5 w-4 h-4 ">
-                            <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="credit"><img src="https://cdn.paycom.uz/documentation_assets/payme_01.png" alt=""></label> </button>
+                    <div class="my-3 w-3/5 mx-auto">
+                        <div class="custom-control custom-radio mb-4 text-3xl flex flex-row items-center">
+                            <input id="credit" onclick="doBlock()" name="paymethod" checked type="radio" value="PayMe" class="custom-control-input w-5 h-5 ">
+                            <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="credit"><img src="https://cdn.paycom.uz/documentation_assets/payme_01.png" class="h-12" alt=""></label> </button>
                         </div>
-                        <div class="custom-control custom-radio my-8 text-3xl flex flex-row">
-                            <input id="debit" onclick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input mt-8 w-4 h-4 ">
-                            <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit"><img src="https://docs.click.uz/wp-content/themes/click_help/assets/images/logo.png" alt=""></label> </button>
+                        <div class="custom-control custom-radio my-8 text-3xl flex flex-row items-center">
+                            <input id="debit" onclick="doBlock()" name="paymethod" value="Click" type="radio" class="custom-control-input w-5 h-5 ">
+                            <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit"><img src="https://docs.click.uz/wp-content/themes/click_help/assets/images/logo.png" class="h-14" alt=""></label> </button>
                         </div>
-                        <div class="custom-control custom-radio mb-4 text-3xl flex flex-row">
-                            <input id="debit1" onclick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input mt-5 w-4 h-4 ">
+                        <div class="custom-control custom-radio mb-4 text-3xl flex flex-row items-center">
+                            <input id="debit1" onclick="doBlock()" name="paymethod" value="Paynet" type="radio" class="custom-control-input w-5 h-5 ">
                             <button type="button" class=" w-52 focus:border-2 focus:border-dashed focus:border-green-500 mx-8" name="button"><label for="debit1"><img src="https://paynet.uz/medias/article/big/134/logo-paynet.png" alt=""></label> </button>
                         </div>
                         <div class="d-none input-group my-5" id="forhid">
@@ -675,6 +675,18 @@
 
     }
 </script>
+<script >
+            var link = document.location.href.split('/');
+            if(link[3] == 'performers'){       
+                $(".performer").addClass("text-yellow-400");
+            }
+            else if(link[3] == 'my-tasks'){
+                $(".mytask").addClass("text-yellow-400");
+            }
+            else if(link[3] == 'task-search'){
+                $(".task").addClass("text-yellow-400");
+            }
+    </script>
 
 @section("javascript")
 
