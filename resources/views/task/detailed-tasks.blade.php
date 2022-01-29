@@ -82,9 +82,9 @@
                                 <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                 <div>
-                                    <div  class="w-full flex flex-col sm:flex-row justify-center pl-32">
+                                    <div  class="w-full flex flex-col sm:flex-row justify-center">
                                         <!-- This is an example component -->
-                                        <div class="max-w-2xl mx-auto mt-4">
+                                        <div class="w-11/12 mx-auto mt-4">
                                             @auth
                                                 @if($balance >= 4000 || $response_count_user < setting('site.free_responses'))
                                                     @if($tasks->user_id != auth()->id())
@@ -117,8 +117,8 @@
                                                 </a>
                                             @endauth
                                             @auth
-                                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id && $tasks->status == 3)
-                                                    <button id="sendbutton" class="font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
+                                                    <button id="sendbutton" class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="button">
                                                         @lang('lang.detailedT_text19')
                                                     </button>
@@ -139,6 +139,14 @@
                                                             @lang('lang.contact_send')
                                                         </button>
                                                     </div>
+                                                        <button class="done font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                                type="button">
+                                                            Завершен
+                                                        </button>
+                                                        <button class="done font-sans w-1/2 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                                type="button">
+                                                            Не завершен
+                                                        </button>
                                             @endif
                                         @endauth
                                         <!-- Main modal -->
@@ -170,7 +178,7 @@
                                                                             <input type="checkbox" name="notification_on" class="mr-2 my-3 ">@lang('lang.detT_notifMe')<br>
                                                                         </label>
                                                                         <label class="px-2">
-                                                                            <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>@lang('lang.detT_pointTime')
+                                                                            <input class="focus:outline-none   my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>@lang('lang.detT_pointTime')
                                                                         </label>
                                                                         <br>
                                                                         <select name="response_time" id="AttorneyEmpresa" class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500" style="display: none">
@@ -338,11 +346,12 @@
                             <div class="mr-4">
                                 @if (isset($current_user))
                                     <img src="
-                        @if ($current_user->avatar == 'users/default.png')
+                        @if ($current_user->avatar == '')
                                     {{ asset("AvatarImages/images/{$current_user->avatar}") }}
                                     @else
                                     {{ asset("AvatarImages/{$current_user->avatar}") }}
-                                    @endif" class="border-2 border-gray-400 w-32 h-32" alt="#">
+                                    "@endif
+                                         class="border-2 border-gray-400 w-32 h-32" alt="#">
                                 @endif
                             </div>
                             <div class="">
@@ -458,18 +467,15 @@
         <script>
             $(".send-data").click(function(event){
                 event.preventDefault();
-                let _token = $("input[name=csrf]").val();
-                let status = $("input[name=status]").val();
-                let task_id = $("input[name=task_id]").val();
                 let performer_id = $("input[name=performer_id]").val();
                 let name_task = $("input[name=name_task]").val();
                 $.ajax({
                     url: "/ajax-request",
                     type:"POST",
                     data:{
-                        _token:_token,
-                        status:status,
-                        task_id:task_id,
+                        _token:$('meta[name="csrf-token"]').attr('content'),
+                        status:3,
+                        task_id: {{$tasks->id}},
                         performer_id:performer_id,
                         name_task:name_task
                     },
@@ -483,6 +489,7 @@
                         console.log(error);
                     }
                 });
+                location.reload(true);
             });
         </script>
         <script>
@@ -538,6 +545,29 @@
                     $("#sendbutton").hide();
                     $(".hideform").removeClass('hidden');
                 });
+                $(".done").click(function(){
+                    $("#sendbutton").removeClass('hidden');
+                    $(".done").hide();
+                    $.ajax({
+                        url: "/ajax-request",
+                        type:"POST",
+                        data:{
+                            task_id:{{$tasks->id}},
+                            status:4,
+                            _token:$('meta[name="csrf-token"]').attr('content'),
+                        },
+                        success:function(response){
+                            console.log(response);
+                            if(response) {
+                                $('.success').text(response.success);
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                });
+
             });
             $(".send-comment").click(function(event){
                 event.preventDefault();
@@ -556,7 +586,7 @@
                         user_id:user_id,
                         performer_id:performer_id,
                         task_id:task_id,
-                        _token:_token,
+                        _token:$('meta[name="csrf-token"]').attr('content'),
                     },
                     success:function(response){
                         console.log(response);
