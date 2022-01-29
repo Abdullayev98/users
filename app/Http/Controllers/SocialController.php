@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Laravel\Socialite\Facades\Socialite;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,7 +22,7 @@ class SocialController extends Controller
         $user = Socialite::driver('facebook')->setScopes(['email'])->user();
         $findUser = User::where('email', $user->email)->first();
 
-        if (!$findUser) {
+        if (!$user->email) {
             $findUser = User::where('facebook_id', $user->id)->first();
         }
 
@@ -37,6 +38,7 @@ class SocialController extends Controller
             $new_user->name = $user->name;
             $new_user->email = $user->email;
             $new_user->facebook_id = $user->id;
+            $new_user->avatar = self::get_avatar($user);
             $new_user->password = encrypt('123456');
             $new_user->save();
             Auth::login($new_user);
@@ -51,14 +53,26 @@ class SocialController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
+
+    private static function get_avatar($user)
+    {
+        $fileContents = file_get_contents($user->getAvatar());
+        File::put(public_path() . '/storage/users-avatar/' . $user->getId() . ".jpg", $fileContents);
+        $picture = 'users-avatar/' . $user->getId() . ".jpg";
+
+        return $picture;
+    }
+
     public function loginWithGoogle()
     {
 
         try {
             $user = Socialite::driver('google')->setScopes(['openid', 'email'])->user();
+
+
             $findUser = User::where('email', $user->email)->first();
 
-            if (!$findUser) {
+            if (!$user->email) {
                 $findUser = User::where('google_id', $user->id)->first();
 
             }
@@ -74,6 +88,7 @@ class SocialController extends Controller
                 $new_user->name = $user->name;
                 $new_user->email = $user->email;
                 $new_user->google_id = $user->id;
+                $new_user->avatar = self::get_avatar($user);
                 $new_user->password = encrypt('123456');
                 $new_user->save();
                 Auth::login($new_user);
