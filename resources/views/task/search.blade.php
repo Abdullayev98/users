@@ -22,7 +22,7 @@
 
                             <div class="md:inline-flex  block w-full col-span-4">
                                 <div class="w-8/12 2xl:6/12 xl:w-9/12 lg:w-8/12 md:w-9/12 relative">
-                                    <label class="text-[12px] mb-1 text-neutral-400">@lang('lang.search_location')</label>
+                                    <label class="text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                     <div class="bg-white text-[14px] address float-left p-2 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700">
                                         <input
                                             class="float-left bg-transparent border-0 w-11/12 h-full focus:outline-none"
@@ -34,7 +34,7 @@
                                 </div>
 
                                 <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-4/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
-                                    <label class="text-[12px] mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
+                                    <label class="text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
                                     <select name="" id="selectGeo" class="text-[14px] py-2 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); enDis(r); map_pos(k)">
                                         <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                         <option value="1.5">1.5 km</option>
@@ -51,7 +51,7 @@
                                     </select>
                                 </div>
                                 <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
-                                    <label class=" text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
+                                    <label class="text-sm md:text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
                                     <input type="text" maxlength="7" class="w-full border-md p-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
                                 </div>
                             </div>
@@ -74,55 +74,55 @@
                     </div>
                 </div>
 
-                <div class="col-span-2 lg:col-span-1 lg:hidden block mx-4 lg:mt-0 mt-8 mb-4">
-                    <div id="map1" class="h-60 my-5 rounded-lg w-full static"></div>
-                    <div class="w-full h-full">
-                        <div class="max-w-lg mx-auto">
-                            <label
-                                class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">
-                                <input type="checkbox" class="all_cat2 mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')
-                            </label>
-                            <div class="w-full my-1 for_check2">
-                                    @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
-                                    <div x-data={show:false} class="rounded-sm">
-                                        <div class="border border-b-0 bg-gray-100" id="headingOne">
-                                            <button @click="show=!show"
-                                                    class="underline text-blue-500 hover:text-blue-700 focus:outline-none"
-                                                    type="button">
-                                                <svg class="w-4 h-4 rotate -rotate-90" fill="none"
-                                                     stroke="currentColor" viewBox="0 0 24 24"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                            <label
-                                                class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">
-                                                <input type="checkbox" class="par_cat2 mr-1 hover:cursor-pointer"
-                                                       name="{{$category->id}}"
-                                                       id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
-                                            </label>
-                                        </div>
-                                        <div x-show="show" class="border border-b-0 px-8 py-0">
-                                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
-                                                <div class="par{{$category->id}}">
-                                                    <label
-                                                        class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">
-                                                        <input type="checkbox"
-                                                               class="chi_cat2 mr-1 hover:cursor-pointer"
-                                                               name="{{$category2->id}}"
-                                                               id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
-                                                    </label>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-                    </div>
-                </div>
+{{--                <div class="col-span-2 lg:col-span-1 lg:hidden block mx-4 lg:mt-0 mt-8 mb-4">--}}
+{{--                    <div id="map1" class="h-60 my-5 rounded-lg w-full static"></div>--}}
+{{--                    <div class="w-full h-full">--}}
+{{--                        <div class="max-w-lg mx-auto">--}}
+{{--                            <label--}}
+{{--                                class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">--}}
+{{--                                <input type="checkbox" class="all_cat2 mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')--}}
+{{--                            </label>--}}
+{{--                            <div class="w-full my-1 for_check2">--}}
+{{--                                    @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)--}}
+{{--                                    <div x-data={show:false} class="rounded-sm">--}}
+{{--                                        <div class="border border-b-0 bg-gray-100" id="headingOne">--}}
+{{--                                            <button @click="show=!show"--}}
+{{--                                                    class="underline text-blue-500 hover:text-blue-700 focus:outline-none"--}}
+{{--                                                    type="button">--}}
+{{--                                                <svg class="w-4 h-4 rotate -rotate-90" fill="none"--}}
+{{--                                                     stroke="currentColor" viewBox="0 0 24 24"--}}
+{{--                                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                    <path stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                                                          stroke-width="2" d="M19 9l-7 7-7-7"></path>--}}
+{{--                                                </svg>--}}
+{{--                                            </button>--}}
+{{--                                            <label--}}
+{{--                                                class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">--}}
+{{--                                                <input type="checkbox" class="par_cat2 mr-1 hover:cursor-pointer"--}}
+{{--                                                       name="{{$category->id}}"--}}
+{{--                                                       id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
+{{--                                            </label>--}}
+{{--                                        </div>--}}
+{{--                                        <div x-show="show" class="border border-b-0 px-8 py-0">--}}
+{{--                                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)--}}
+{{--                                                <div class="par{{$category->id}}">--}}
+{{--                                                    <label--}}
+{{--                                                        class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">--}}
+{{--                                                        <input type="checkbox"--}}
+{{--                                                               class="chi_cat2 mr-1 hover:cursor-pointer"--}}
+{{--                                                               name="{{$category2->id}}"--}}
+{{--                                                               id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
+{{--                                                    </label>--}}
+{{--                                                </div>--}}
+{{--                                            @endforeach--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="">
                     <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">
                         <div class="big-map static">
@@ -408,15 +408,15 @@
                     });
 
                     ///////////////////////////////////////
-                    var myGeocoder = ymaps.geocode(myInput);
-                    myGeocoder.then(
-                        function (res) {
-                            alert('Координаты объекта :' + res.geoObjects.get(0).geometry.getCoordinates());
-                        },
-                        function (err) {
-                            alert('Ошибка');
-                        }
-                    );
+                    // var myGeocoder = ymaps.geocode(myInput);
+                    // myGeocoder.then(
+                    //     function (res) {
+                    //         alert('Координаты объекта :' + res.geoObjects.get(0).geometry.getCoordinates());
+                    //     },
+                    //     function (err) {
+                    //         alert('Ошибка');
+                    //     }
+                    // );
                     ///////////////////////////////////////
 
                     clusterer = new ymaps.Clusterer({
