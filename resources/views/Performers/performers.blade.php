@@ -1,13 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
-    </style>
 
     <div class="text-sm w-full bg-gray-200 my-4 py-3">
         <p class="w-8/12 mx-auto text-gray-500 font-normal">Вы находитесь в разделе исполнителей U-Ser. <br>
@@ -158,7 +151,7 @@
 
 {{--                <form action="" method="POST">--}}
                     @csrf
-                    <select name="tasks" id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 text-lg mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-yellow-500 mx-auto block"><br>
+                    <select name="tasks" id="task_name" onchange="showDiv(this)" class="appearance-none focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 text-lg mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-yellow-500 mx-auto block"><br>
 
                         @foreach($tasks as $task)
                             @auth

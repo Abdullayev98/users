@@ -2,13 +2,6 @@
 
 @section("content")
 
-<style>
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
 </style>
 
     <div class="w-11/12  mx-auto text-base mt-4">

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('/css/index.css') }}">
 <div class="border-b border-solid border-gray-200 w-full shadow-sm">
 
 <nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start text-base" aria-label="Global">
@@ -174,35 +175,6 @@
                 @endforeach
             </ul>
         </div>
-        <style>
-            /* since nested groupes are not supported we have to use
-               regular css for the nested dropdowns
-            */
-            li>ul {
-                transform: translatex(100%) scale(0)
-            }
-            li:hover>ul {
-                transform: translatex(101%) scale(1)
-            }
-            li>button svg {
-                transform: rotate(-90deg)
-            }
-            li:hover>button svg {
-                transform: rotate(-270deg)
-            }
-            .group:hover .group-hover\:scale-100 {
-                transform: scale(1)
-            }
-            .group:hover .group-hover\:-rotate-180 {
-                transform: rotate(180deg)
-            }
-            .scale-0 {
-                transform: scale(0)
-            }
-            .min-w-32 {
-                min-width: 8rem
-            }
-        </style>
         <a href="{{ route('task.search') }}" class="cursor-pointer delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
         <a href="/performers" class="delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
