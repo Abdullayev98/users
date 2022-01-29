@@ -44,7 +44,7 @@
                       <p class="upload-avatar-details"></p>
                       <label class="app-btn a-btn-primary update" style="background-color:{{$messengerColor}}">
                           Upload New
-                          <input class="upload-avatar" accept="image/*" name="avatar" type="file" style="display: none" />
+                          <input class="focus:outline-none  upload-avatar" accept="image/*" name="avatar" type="file" style="display: none" />
                       </label>
                       {{-- Dark/Light Mode  --}}
                       <p class="divider"></p>

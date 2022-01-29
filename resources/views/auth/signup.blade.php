@@ -71,9 +71,9 @@
                         <input type="password" name="password_confirmation"
                                placeholder="@lang('lang.signup_password_confirm')"
                                id="password_confirmation"
-                               class=" focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
+                               class="ml-6 focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
                                required>
-                        <i class="fas fa-eye-slash text-gray-500 relative -left-12" id="eye"></i>
+                        <i class="fas fa-eye-slash text-gray-500 relative -left-12" id="eye1"></i>
 
                         @error('password')
                         <p class="text-red-500">{{ $message }}</p>
@@ -117,11 +117,26 @@
                     $(this).removeClass('fa-eye-slash');
                     $(this).addClass('fa-eye');
                     $('#password').attr('type', 'text');
-                    $('#password_confirmation').attr('type', 'text');
                 } else {
                     $(this).removeClass('fa-eye');
                     $(this).addClass('fa-eye-slash');
                     $('#password').attr('type', 'password');
+                }
+            });
+
+        });
+    </script>
+    <script>
+        $(function () {
+
+            $('#eye1').click(function () {
+                if ($(this).hasClass('fa-eye-slash')) {
+                    $(this).removeClass('fa-eye-slash');
+                    $(this).addClass('fa-eye');
+                    $('#password_confirmation').attr('type', 'text');
+                } else {
+                    $(this).removeClass('fa-eye');
+                    $(this).addClass('fa-eye-slash');
                     $('#password_confirmation').attr('type', 'password');
                 }
             });

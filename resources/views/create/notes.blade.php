@@ -53,26 +53,26 @@
                 </div>
              <div>
                 <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2 h-4 w-4" type="checkbox" name="docs">
+                    <input class="focus:outline-none  mr-2 h-4 w-4" type="checkbox" name="docs">
                     <span class="text-slate- 900">
                         Предоставить документы
                         <br><p class="text-sm text-slate-500">Для оформления расписки/доверенности</p>
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2 h-4 w-4" type="radio" checked name="oplata" value="1">
+                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" checked name="oplata" value="1">
                     <span class="text-slate- 900">
                         Оплата через карту
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2 h-4 w-4" type="radio" name="oplata" value="2">
+                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" name="oplata" value="2">
                     <span class="text-slate- 900">
                         Оплата наличными
                     </span>
                   </label>
                   <!-- <label class="md:w-2/3 block mt-6">
-                    <input class="mr-2  h-4 w-4" type="checkbox" value="1" name="secret">
+                    <input class="focus:outline-none  mr-2  h-4 w-4" type="checkbox" value="1" name="secret">
                     <span class="text-slate-900">
                         Сделать приватным
                         <br>
