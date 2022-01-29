@@ -200,7 +200,7 @@
                             </h3>
                         </div>
                         <div class="text-center h-64 w-80 text-base">
-                            <form action="#" enctype="multipart/form-data">
+                            <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
                                 <div class="input-images my-4"></div>
                               <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
                             </form>
