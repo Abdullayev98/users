@@ -60,7 +60,7 @@ class LoginController extends Controller
 
     }
 
-    private static function send_verification($needle)
+    public static function send_verification($needle)
     {
         $user = auth()->user();
 

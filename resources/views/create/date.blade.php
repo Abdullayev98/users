@@ -20,7 +20,6 @@
 
     </style>
     <!-- Information section -->
-    <x-roadmap/>
     {{--<script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/datepicker.bundle.js"></script>--}}
 
 
@@ -206,6 +205,7 @@
 
             }
         })
+        $('#start-date').css('display', 'inline-block')
 
 
     </script>

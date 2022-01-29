@@ -5,8 +5,7 @@
 @section('content')
 
     <!-- Information section -->
-    <x-roadmap/>
-    <form class="" action="{{route('task.create.verification')}}" method="post">
+    <form action="{{route('task.create.verification')}}" method="post">
         @csrf
         <div class="mx-auto w-9/12  my-16">
             <div class="grid md:grid-cols-3 gap-x-20">

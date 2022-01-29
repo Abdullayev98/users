@@ -15,7 +15,6 @@
     </script>
 
 <!-- Information section -->
-<x-roadmap/>
 
 <form action="{{route("task.create.address.store", $task->id)}}" method="post" >
 {{--@if ($category->id == 3 )--}}
@@ -81,7 +80,7 @@
                 <input autocomplete="off" oninput="myFunction()" id="suggest0" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="@lang('lang.search2_location')" value="{{session('location2')}}" name="location0" required>
                 <button id="getlocal" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">   <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>  </button>
 
-                
+
               </div>
               <input name="coordinates0" type="hidden" id="coordinate">
             <div id="addinput" class="flex gap-y-2 flex-col">
@@ -136,29 +135,29 @@
 
 
   function init_map(){
-  
+
   myMap = new ymaps.Map('map', {
       center: [ 41.311151, 69.279737],
       zoom: 13,
       controls: ['zoomControl', 'searchControl']
   });
-  
-  
+
+
   }
   ymaps.ready(init_map);
-  
-  
-  
-     
+
+
+
+
      var x = 1;
   function init() {
-    
+
     var suggestView0 = new ymaps.SuggestView('suggest0');
 
     suggestView0.events.add('select', function () {
             myFunction();
         });
-    
+
         const alp = ["B", "C", "D", "E"];
       $("#addbtn").click(function(){
           if(x < 2){
@@ -186,15 +185,15 @@
       });
       $("#addinput").on("click" ,"#remove_inputs" , function(){
           $(this).parent("div").remove();
-  
+
               x--;
               myFunction();
       });
-  
-  
-  
+
+
+
       $("#getlocal").click(function(){
-  
+
         var geolocation = ymaps.geolocation;
           geolocation.get({
               mapStateAutoApply: true,
@@ -204,25 +203,25 @@
               var userAddress = result.geoObjects.get(0).properties.get('text');
               document.getElementById("suggest0").value = userAddress;
               document.getElementById("coordinate").value = result.geoObjects.get(0).geometry.getCoordinates();
-              
+
           },
                                   function(err) {
                                       console.log('Ошибка: ' + err)
                                   });
               myFunction();
-  
+
               });
-  
-  
+
+
   }
-  
+
     // Mapga yuklash joyni
-  
+
     function myFunction() {
-      
-      
-        
-      
+
+
+
+
       place = document.getElementById("suggest0").value;
       var myGeocoder = ymaps.geocode(place);
       myGeocoder.then(
@@ -230,67 +229,67 @@
             document.getElementById("coordinate").value = res.geoObjects.get(0).geometry.getCoordinates();
             myMap.setCenter( res.geoObjects.get(0).geometry.getCoordinates());
           }
-          
+
       );
 
-     
-  
-  
+
+
+
       if(document.getElementById("suggest1")){
         place1 = document.getElementById("suggest1").value;
         var myGeocoder1 = ymaps.geocode(place1);
         myGeocoder1.then(
             function (res) {
               document.getElementById("coordinate1").value = res.geoObjects.get(0).geometry.getCoordinates();
-              
+
             }
         );
       } else {
         place1 ="";
       }
-  
+
       // if(document.getElementById("suggest2")){
       //   place2 = document.getElementById("suggest2").value;
       //   var myGeocoder2 = ymaps.geocode(place2);
       //   myGeocoder2.then(
       //       function (res) {
       //         document.getElementById("coordinate2").value = res.geoObjects.get(0).geometry.getCoordinates();
-              
+
       //       }
       //   );
       // }
       // else {
       //   place2 ="";
       // }
-  
+
       // if(document.getElementById("suggest3")){
       //   place3 = document.getElementById("suggest3").value;
       //   var myGeocoder3 = ymaps.geocode(place3);
       //   myGeocoder3.then(
       //       function (res) {
       //         document.getElementById("coordinate3").value = res.geoObjects.get(0).geometry.getCoordinates();
-              
+
       //       }
-            
+
       //   );
       // }
       // else {
       //   place3 ="";
       // }
-  
+
       // if(document.getElementById("suggest4")){
       //   place4 = document.getElementById("suggest4").value;
       //   var myGeocoder4 = ymaps.geocode(place4);
       //   myGeocoder4.then(
       //       function (res) {
       //         document.getElementById("coordinate4").value = res.geoObjects.get(0).geometry.getCoordinates();
-              
+
       //       }
       //   );
       // } else {
       //   place4 ="";
       // }
-  
+
       myMap.destroy();
 
       function getbound(){
@@ -300,30 +299,30 @@
           return false
         }
       }
-  
+
       multiRoute = new ymaps.multiRouter.MultiRoute({
             referencePoints: [place, place1 /*, place2, place3, place4*/],
-            
+
         }, {
           // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
           boundsAutoApply: getbound()
       });
-  
-  
+
+
       myMap = new ymaps.Map('map', {
         center: [ 41.311151,69.279737],
       zoom: 13,
       controls: ['zoomControl', 'searchControl']
-      
+
         });
-  
+
         myMap.geoObjects.add(multiRoute);
-  
+
       }
     // end
-  
-  
-  
+
+
+
     ymaps.ready(init);
   </script>
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Task;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\LoginController;
 use App\Http\Requests\TaskDateRequest;
+use App\Http\Requests\UserPhoneRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\CustomField;
 use App\Models\CustomFieldsValue;
@@ -201,51 +203,12 @@ class CreateController extends Controller
     }
 
 
-    public function contact_store(Task $task, Request $request)
+    public function contact_store(Task $task, UserPhoneRequest $request)
     {
-
-        if (!auth()->check()) {
-            $data = $request->validate(
-                [
-                    'name' => 'required|string',
-                    'email' => ['required', 'email', 'unique:users'],
-                    'phone_number' => 'required|unique:users',
-                ],
-                [
-                    'name.required' => 'Name  is required',
-                    'name.string' => 'Name must be a string',
-                    'email.required' => 'Email is required',
-                    'email.email' => 'It must be an email',
-                    'email.unique' => "This email already exists",
-                    'phone_number.required' => 'Phone number is required',
-                    'phone_number.unique' => 'Phone number has already an account'
-                ]
-            );
-            $data['password'] = bcrypt('login123');
-            $user = User::create($data);
-        } else {
-            $user = auth()->user();
-            $data = $request->validate(
-                [
-                    'phone_number' => 'required|unique:users'
-                ],
-                [
-                    'phone_number.required' => 'Требуется заполнение!',
-                    'phone_number.unique' => 'Phone number has already an account',
-                ]
-            );
-            $user->update($data);
-            $user->fresh();
-        }
-        auth()->login($user);
-
-        if (!$user->is_email_verified) {
-            $sms_otp = rand(100000, 999999);
-            $token = Str::random(64);
-            $user->verify_code = $sms_otp;
-            $user->verify_expiration = Carbon::now()->addMinutes(5);
-            $user->save();
-            $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
+        $request->validated();
+        $user = auth()->user();
+        if (!$user->is_phone_number_verified) {
+            LoginController::send_verification('phone');
             return redirect()->route('task.create.verify', $task->id);
         }
 
@@ -254,6 +217,31 @@ class CreateController extends Controller
         $task->phone = $user->phone_number;
         $task->save();
         return redirect()->route('userprofile');
+    }
+
+    public function contact_register(Task $task, UserRequest $request)
+    {
+        $data = $request->validated();
+
+        $data['password'] = bcrypt('login123');
+
+        $user = User::create($data);
+
+        auth()->login($user);
+
+
+        LoginController::send_verification('phone');
+        return redirect()->route('task.create.verify', $task->id);
+
+    }
+
+    public function contact_login(Task $task, UserPhoneRequest $request )
+    {
+        $request->validated();
+        $user = User::query()->where('phone_number', $request->phone_number)->first();
+        auth()->login($user);
+        LoginController::send_verification('phone');
+        return redirect()->route('task.create.verify', $task->id)->with(['not-show', 'true']);
 
     }
 

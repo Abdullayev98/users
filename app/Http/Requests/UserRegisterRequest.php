@@ -28,7 +28,7 @@ class UserRegisterRequest extends FormRequest
             'email' => 'required|email|unique:users',
             'phone_number' =>  'unique:users|min:9',
             'password' => 'required|confirmed|min:8',
-        ];
+        ];  
     }
     public function messages()
     {
@@ -43,7 +43,7 @@ class UserRegisterRequest extends FormRequest
                 'email.unique' => __('login.email.unique'),
                 'password.required' => __('login.password.required'),
                 'password.min' => __('login.password.min'),
-                'password.confirmed' => __('login.password.confirmed'),        
+                'password.confirmed' => __('login.password.confirmed'),
             ];
     }
 }

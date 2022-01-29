@@ -24,7 +24,7 @@ class UserPhoneRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone_number' => 'required|int|min:9'
+            'phone_number' => 'required|int|min:9|exists:users'
         ];
     }
 
