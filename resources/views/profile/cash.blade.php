@@ -28,14 +28,14 @@
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
-                                    <label for="file" class="p-3">
+                                    <label for="file" class="p-1">
                                         <i class="fas fa-camera"></i>
                                         <span>@lang('lang.cash_changeImg')</span>
                                     </label>
                                 </div>
                                 <div class="rounded-md bg-green-400 w-40 hidden mt-3 py-1" type="button" id="buttons" onclick="fileadd()">
                                     <input type="submit" id="sub1" class="hidden">
-                                    <label for="sub1" class="p-3">
+                                    <label for="sub1" class="p-1">
                                         <i class="fas fa-save"></i>
                                         <span>@lang('lang.cash_addImg')</span>
                                     </label>

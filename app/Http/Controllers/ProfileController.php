@@ -23,7 +23,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $views = count( UserView::where('performer_id', $user->id)->get());
         $task = Task::where('user_id',Auth::user()->id)->count();
-        $ports = Portfolio_new::where('user_id',Auth::user()->id)->get();
+        $ports = null;
         return view('profile.profile', compact('user','views','task','ports'));
     }
     public function updates(Request $request)
@@ -178,7 +178,6 @@ class ProfileController extends Controller
                 $photo->move(public_path().'/AvatarImages/images/portfolios/',$imagename);
                 $portfolio->image = $imagename;
             }
-            $portfolio->user_id = Auth::user()->id;
             $portfolio->comment = $request->comment;
             $portfolio->save();
             return back();

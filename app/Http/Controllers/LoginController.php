@@ -59,7 +59,8 @@ class LoginController extends Controller
 
     }
 
-    public function send_verification(){
+    public function send_verification()
+    {
         $user = auth()->user();
         $user->verify_code = sha1(time());
         $user->verify_expiration = Carbon::now()->addMinutes(5);
@@ -79,20 +80,17 @@ class LoginController extends Controller
             'code' => 'required'
         ]);
 
-        if (strtotime($user->verify_expiration) >= strtotime(Carbon::now()))
-        {
-            if ($request->code == $user->verify_code){
+        if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
+            if ($request->code == $user->verify_code) {
                 $user->is_email_verified = 1;
                 $user->verify_code = null;
                 $user->verify_expiration = null;
                 $user->save();
-            }else
-            {
+            } else {
                 Alert::error('Email Verification', 'Error Message');
                 return back();
             }
-        }else
-        {
+        } else {
             abort(419);
         }
         Alert::success('Congrats', 'Your Email have successfully verified');
@@ -101,7 +99,72 @@ class LoginController extends Controller
     }
 
 
-    public function logout() {
+    public function change_email(Request $request)
+    {
+
+        $user = auth()->user();
+
+        if ($request->email == $user->email){
+            return back()->with([
+                'email-message' => 'Your email',
+                'email' => $request->email
+            ]);
+        }else{
+            $request->validate([
+                'email' => 'required|unique:users|email'
+            ],
+                [
+                    'email.required' => __('login.email.required'),
+                    'email.email' => __('login.email.email'),
+                    'email.unique' => __('login.email.unique'),
+                ]
+            );
+            $user->email = $request->email;
+            $user->verify_code = sha1(time());
+            $user->verify_expiration = Carbon::now()->addMinutes(5);
+            $user->save();
+            Mail::to($user->email)->send(new VerifyEmail($user->verify_code));
+
+            Alert::success('Congrats', 'Your Email have successfully changed and We have sent to verification link to '.$user->email);
+
+            return redirect()->back();
+        }
+   }
+
+    public function change_phone_number(Request $request)
+    {
+
+        $user = auth()->user();
+
+        if ($request->phone_number == $user->phone_number){
+            return back()->with([
+                'email-message' => 'Your phone',
+                'email' => $request->email
+            ]);
+        }else{
+            $request->validate([
+                'phone_number' => 'required|unique:users|number|min:9'
+            ],
+                [
+                    'phone_number.required' => __('login.phone_number.required'),
+                    'phone_number.regex' => __('login.phone_number.regex'),
+                    'phone_number.unique' => __('login.phone_number.unique'),
+                ]
+            );
+            $user->email = $request->email;
+            $user->verify_code = sha1(time());
+            $user->verify_expiration = Carbon::now()->addMinutes(5);
+            $user->save();
+            Mail::to($user->email)->send(new VerifyEmail($user->verify_code));
+
+            Alert::success('Congrats', 'Your Email have successfully changed and We have sent to verification link to '.$user->email);
+
+            return redirect()->back();
+        }
+    }
+
+    public function logout()
+    {
         Auth::logout();
 
         return redirect('/');

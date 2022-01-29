@@ -32,5 +32,6 @@ Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm');
 Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth']);
 Route::get('account/verify/', [LoginController::class, 'verifyAccount'])->name('user.verify')->middleware('auth');
 Route::get('account/verification/email', [LoginController::class, 'send_verification'])->name('user.verify.send')->middleware('auth');
+Route::post("account/change/email", [LoginController::class,'change_email'])->name('user.email.change')->middleware('auth');
 
 
