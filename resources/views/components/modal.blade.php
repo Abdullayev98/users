@@ -4,7 +4,7 @@
 
             <!-- Modal Background -->
             <div x-show="showModal"
-                 class="fixed flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-40 left-0 right-0 top-0 bottom-0"
+                 class="fixed flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-50 left-0 right-0 top-0 bottom-0"
                  x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0"
                  x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300"
                  x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
@@ -86,7 +86,7 @@
 
             <!-- Modal Background -->
             <div x-show="showModal"
-                 class="fixed flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-40 left-0 right-0 top-0 bottom-0"
+                 class="fixed flex items-center justify-center overflow-auto z-50 bg-opacity-40 left-0 right-0 top-0 bottom-0"
                  x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0"
                  x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300"
                  x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">

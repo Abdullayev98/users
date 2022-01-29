@@ -205,7 +205,7 @@
         </div>
     </div>
 
-    <link href="https://tailwindcomponents.com/css/component.checkboxes.css" rel="stylesheet">
+    <link href="{{ asset('/css/checkboxes.css') }}" rel="stylesheet">
 
     <div class="w-full" x-data="topBtn">
         <button onclick="topFunction()" id="myBtn" title="Go to top" class="fixed z-10 hidden p-3 bg-gray-100 rounded-full shadow-md bottom-5 right-24 animate-bounce">
