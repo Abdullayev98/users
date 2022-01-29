@@ -121,6 +121,8 @@ return [
     'mytasks_allCat' => "Все категории",
     'mytask_onTask' => "У задания",
     'mytask_callbacks' => "откликов",
+    'mytask_avarage' => "Всего",
+    'mytask_tasksFound' => "задание найдено",
     // mytasks.blade end
 
     // offertask.blade start
