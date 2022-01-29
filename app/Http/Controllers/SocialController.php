@@ -6,6 +6,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SocialController extends Controller
 {
@@ -28,8 +29,9 @@ class SocialController extends Controller
         if ($findUser) {
             $findUser->facebook_id = $user->id;
             $findUser->save();
+            Alert::success('Success', 'You\'ve Successfully linked your facebook account');
             Auth::login($findUser);
-            return redirect('/');
+            return redirect()->route('userprofile');
         } else {
             $new_user = new User();
             $new_user->name = $user->name;
@@ -38,7 +40,7 @@ class SocialController extends Controller
             $new_user->password = encrypt('123456');
             $new_user->save();
             Auth::login($new_user);
-            return redirect('/');
+            return redirect()->route('userprofile');
         }
     }
 
@@ -65,7 +67,8 @@ class SocialController extends Controller
                 $findUser->google_id = $user->id;
                 $findUser->save();
                 Auth::login($findUser);
-                return redirect('/');
+                Alert::success('Success', 'You\'ve Successfully linked your google account');
+                return redirect()->route('userprofile');
             } else {
                 $new_user = new User();
                 $new_user->name = $user->name;
@@ -74,7 +77,7 @@ class SocialController extends Controller
                 $new_user->password = encrypt('123456');
                 $new_user->save();
                 Auth::login($new_user);
-                return redirect('/');
+                return redirect()->route('userprofile');
             }
         } catch (Exception $e) {
             dd($e->getMessage());

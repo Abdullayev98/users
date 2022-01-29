@@ -858,7 +858,7 @@ return [
     'footer_how' => "Как",
     'footer_become' => "стать",
     'footer_performer' => "исполнителем",
-    'footer_ownquestion' => "Частые вопросы",
+    'footer_ownquestion' => "Часто задаваемые вопросы",
     'footer_contact' => "Контакты",
     'footer_costumersreviews' => "Отзывы заказчиков",
     'footer_text' => "Служба поддержки",

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,7 +26,11 @@ Route::get('/reset', [UserController::class, 'reset'])->name('reset');
 Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm');
 
 //Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth', 'is_verify_email']);
+
+
+
 Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth']);
-Route::get('account/verify/{token}', [UserController::class, 'verifyAccount'])->name('user.verify');
+Route::get('account/verify/', [LoginController::class, 'verifyAccount'])->name('user.verify')->middleware('auth');
+Route::get('account/verification/email', [LoginController::class, 'send_verification'])->name('user.verify.send')->middleware('auth');
 
 
