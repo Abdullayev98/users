@@ -117,8 +117,8 @@
                                                 </a>
                                             @endauth
                                             @auth
-                                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id && $tasks->status == 4)
-                                                    <button id="sendbutton" class="font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
+                                                    <button id="sendbutton" class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="button">
                                                         @lang('lang.detailedT_text19')
                                                     </button>
@@ -139,12 +139,11 @@
                                                             @lang('lang.contact_send')
                                                         </button>
                                                     </div>
-                                                @elseif($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id && $tasks->status == 3)
-                                                        <button class="font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                        <button class="done font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Завершен
                                                         </button>
-                                                        <button class="font-sans w-1/2 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                        <button class="done font-sans w-1/2 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Не завершен
                                                         </button>
@@ -347,7 +346,7 @@
                             <div class="mr-4">
                                 @if (isset($current_user))
                                     <img src="
-                        @if ($current_user->avatar == 'users/default.png')
+                        @if ($current_user->avatar == '')
                                     {{ asset("AvatarImages/images/{$current_user->avatar}") }}
                                     @else
                                     {{ asset("AvatarImages/{$current_user->avatar}") }}
@@ -546,6 +545,29 @@
                     $("#sendbutton").hide();
                     $(".hideform").removeClass('hidden');
                 });
+                $(".done").click(function(){
+                    $("#sendbutton").removeClass('hidden');
+                    $(".done").hide();
+                    $.ajax({
+                        url: "/ajax-request",
+                        type:"POST",
+                        data:{
+                            task_id:{{$tasks->id}},
+                            status:4,
+                            _token:$('meta[name="csrf-token"]').attr('content'),
+                        },
+                        success:function(response){
+                            console.log(response);
+                            if(response) {
+                                $('.success').text(response.success);
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                });
+
             });
             $(".send-comment").click(function(event){
                 event.preventDefault();
@@ -564,7 +586,7 @@
                         user_id:user_id,
                         performer_id:performer_id,
                         task_id:task_id,
-                        _token:_token,
+                        _token:$('meta[name="csrf-token"]').attr('content'),
                     },
                     success:function(response){
                         console.log(response);
