@@ -178,7 +178,7 @@
                                                                             <input type="checkbox" name="notification_on" class="mr-2 my-3 ">@lang('lang.detT_notifMe')<br>
                                                                         </label>
                                                                         <label class="px-2">
-                                                                            <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>@lang('lang.detT_pointTime')
+                                                                            <input class="focus:outline-none   my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>@lang('lang.detT_pointTime')
                                                                         </label>
                                                                         <br>
                                                                         <select name="response_time" id="AttorneyEmpresa" class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500" style="display: none">

@@ -146,7 +146,7 @@
                                                 Электронная почта
                                             </span>
                                             <input type="text"
-                                                 placeholder="Emal"  class="mt-2 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                 placeholder="E-mail"  class="mt-2 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
                                         </label>
 
 

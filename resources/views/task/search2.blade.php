@@ -30,7 +30,7 @@
 
                                         <div class="col-span-2">
                                             <label class="text-xs">@lang('lang.search2_detLoc')</label>
-                                            <input class="border border-black rounded w-full text-black-700 py-1 px-1" type="text">
+                                            <input class="focus:outline-none  border border-black rounded w-full text-black-700 py-1 px-1" type="text">
                                         </div>
 
                                         <div class="">
@@ -53,27 +53,27 @@
                                         <ul class="inline-flex flex-wrap w-full col-span-3">
                                             <div class="col-span-1 mr-5">
                                                 <li>
-                                                    <input class="" type="checkbox" id="" value=""></span>
+                                                    <input class="focus:outline-none  " type="checkbox" id="" value=""></span>
                                                     <label class="" for="">@lang('lang.search2_distance')</label>
                                                 </li>
                                                 <li>
-                                                    <input class="" type="checkbox" id="" value="">
+                                                    <input class="focus:outline-none  " type="checkbox" id="" value="">
                                                     <label class="" for="">@lang('lang.search2_notRespondedT')</label>
                                                 </li>
                                             </div>
                                             <div class="col-span-1 mr-5">
                                                 <li>
-                                                    <input class="" type="checkbox" id="" value="">
+                                                    <input class="focus:outline-none  " type="checkbox" id="" value="">
                                                     <label class="" for="">@lang('lang.search2_onlyVacancy')</label>
                                                 </li>
 {{--                                                <li>--}}
-{{--                                                    <input class="" type="checkbox" id="" value="">--}}
+{{--                                                    <input class="focus:outline-none  " type="checkbox" id="" value="">--}}
 {{--                                                    <label class="" for="">@lang('lang.search2_dealWithoutRisk')</label>--}}
 {{--                                                </li>--}}
                                             </div>
                                             <div class="col-span-1 mr-5">
                                                 <li>
-                                                    <input class="" type="checkbox" id="" value="">
+                                                    <input class="focus:outline-none  " type="checkbox" id="" value="">
                                                     <label class="" for="">@lang('lang.search2_BusinesTask')</label>
                                                 </li>
                                             </div>

@@ -136,7 +136,7 @@ var cntele = 0;
 });
 </script>
 
-                                    <input class="btn btn-primary" type="button" id="chutton" value="+">
+                                    <input class="focus:outline-none  btn btn-primary" type="button" id="chutton" value="+">
 
 <script>
     var idradio=document.getElementById('idforradiobtn');

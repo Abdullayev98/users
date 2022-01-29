@@ -76,7 +76,7 @@
                                     @endif
                                 </span> @lang('lang.cash_task')</a>
                             </p>
-                            
+
                         </div>
                     </div>
                 </figure>
@@ -89,10 +89,10 @@
                             <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px] text-gray-600" id="settingsText">@lang('lang.cash_settings')</a></li>
                         </ul>
                         <div class="md:col-span-1 md:block hidden" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl text-gray-600" ></i></a></div>
-                    </div>  
+                    </div>
                     <hr>
 
-                             {{-- cash start--}}  
+                             {{-- cash start--}}
                     <div class="cash block  w-full" id="tab-cash">
                         <div class="head mt-5">
                             <h2 class="font-semibold text-2xl text-gray-700 mb-4">@lang('lang.cash_yourBalance')
@@ -101,11 +101,11 @@
                                 @endif
                             </h2>
                             <p class="inline">@lang('lang.cash_topUp')</p>
-                                <input class="inline rounded-xl ml-3 ring-1 text-2xl text-center h-18 w-36 pb-1" onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)' id="myText1" type='number' min="4000" maxlength="7" value="4000"/>
+                                <input class="focus:outline-none  inline rounded-xl ml-3 ring-1 text-2xl text-center h-18 w-36 pb-1" onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)' id="myText1" type='number' min="4000" maxlength="7" value="4000"/>
                                 <span class="ml-1 text-xl">UZS</span>
                                 <button onclick="toggleModal()" type="submit" id="button2"
                                     class="md:inline block md:ml-10 mx-auto mt-5 md:mt-0 h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 md:w-40 w-full">
-                                    @lang('lang.cash_topUpSub') 
+                                    @lang('lang.cash_topUpSub')
                                 </button>
                         </div>
                         <div class="relative mt-10 p-5 bg-gray-100 w-full block">
@@ -135,7 +135,7 @@
                                     <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
                                     @else
                                         <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
-        
+
                                     @endif
                                 </div>
                                 <div id="second" class="hidden p-4">
@@ -143,7 +143,7 @@
                                     <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
                                     @else
                                         <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
-        
+
                                     @endif
                                 </div>
                                 <div id="third" class="hidden p-4">
@@ -151,7 +151,7 @@
                                     <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
                                     @else
                                         <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
-        
+
                                     @endif
                                 </div>
                             </div>
@@ -173,7 +173,7 @@
             </div>
 
 
-                 {{-- right-side-bar --}}   
+                 {{-- right-side-bar --}}
             <div class="lg:col-span-1 col-span-2 rounded-xl ring-1 ring-gray-300 h-auto w-80 text-gray-600 lg:ml-8 ml-0">
                 <div class="mt-6 ml-4">
                     <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
