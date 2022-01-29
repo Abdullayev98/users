@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Task;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaskDateRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\CustomField;
 use App\Models\CustomFieldsValue;
@@ -133,29 +134,11 @@ class CreateController extends Controller
 
     }
 
-    public function date_store(Request $request, Task $task)
+    public function date_store(TaskDateRequest $request, Task $task)
     {
-        $start_time = $request->start_date . " " . $request->start_time;
-        $end_time = $request->end_date . " " . $request->end_time;
-
-        switch ($request->date_type) {
-            case 1:
-                $task->start_date = Carbon::create($start_time);
-                break;
-            case 2:
-                $task->end_date = Carbon::create($end_time);
-                break;
-            case 3:
-                $task->start_date = Carbon::create($start_time);
-                $task->end_date = Carbon::create($end_time);
-                break;
-        }
-
-        $task->date_type = $request->date_type;
-        $task->save();
-
+        $data = $request->validated();
+        $task->update($data);
         return redirect()->route('task.create.budget', $task->id);
-
     }
 
     public function budget(Task $task)
@@ -178,12 +161,13 @@ class CreateController extends Controller
     {
         return view('create.notes', compact('task'));
     }
+
     public function uploadImage(Request $request)
     {
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')
-            ->storeAs('uploads/upload', $fileName, 'public');
+                ->storeAs('uploads/upload', $fileName, 'public');
 
             $fileModelname = time() . '_' . $request->file->getClientOriginalName();
             $fileModelfile_path = '/storage/' . $filePath;
@@ -196,6 +180,7 @@ class CreateController extends Controller
         }
         $this->note_store();
     }
+
     public function note_store(Task $task, Request $request)
     {
         $data = $request->validate([
@@ -223,7 +208,7 @@ class CreateController extends Controller
             $data = $request->validate(
                 [
                     'name' => 'required|string',
-                    'email' => ['required','email','unique:users'],
+                    'email' => ['required', 'email', 'unique:users'],
                     'phone_number' => 'required|unique:users',
                 ],
                 [
@@ -236,8 +221,8 @@ class CreateController extends Controller
                     'phone_number.unique' => 'Phone number has already an account'
                 ]
             );
-                $data['password'] = bcrypt('login123');
-                $user = User::create($data);
+            $data['password'] = bcrypt('login123');
+            $user = User::create($data);
         } else {
             $user = auth()->user();
             $data = $request->validate(
@@ -283,8 +268,6 @@ class CreateController extends Controller
         Task::where('id', $id)->delete();
         CustomFieldsValue::where('task_id', $id)->delete();
     }
-
-
 
 
 }

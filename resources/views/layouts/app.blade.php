@@ -15,6 +15,7 @@
 
 
 
+    @yield('style')
 
 
 </head>
@@ -31,7 +32,6 @@
 
 <x-modal></x-modal>
 </body>
-<script src="{{asset('image_uploader/path/to/cdn/jquery.min.js')}}"></script>
 <script src="{{asset('image_uploader/dist/image-uploader.min.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

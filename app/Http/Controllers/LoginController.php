@@ -118,6 +118,8 @@ class LoginController extends Controller
         }
         return $result;
     }
+
+
     public function verifyAccount(Request $request)
     {
         self::verifyColum($request, 'email');
@@ -137,7 +139,7 @@ class LoginController extends Controller
             return back()->with([
                'code' => 'Code Error!'
             ]);
-            
+
         }
     }
 
