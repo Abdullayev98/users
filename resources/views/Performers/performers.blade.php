@@ -84,7 +84,7 @@
                                 $(document).ready(function(){
                                     var good = $(".like{{$user->id}}").text();
                                     var bad = $(".dislike{{$user->id}}").text();
-                                    var allcount = (good * 5) + (bad * 2);
+                                    var allcount = (good * 5) + (bad * 1);
                                     var coundlikes = (good * 1) + (bad * 1);
                                     var overallStars = allcount / coundlikes;
                                     var star = overallStars.toFixed();

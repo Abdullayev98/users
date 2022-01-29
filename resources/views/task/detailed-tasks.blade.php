@@ -118,27 +118,12 @@
                                             @endauth
                                             @auth
                                                 @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
-                                                    <button id="sendbutton" class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                    <button id="sendbutton" onclick="toggleModal4('modal-id4')" class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="button">
                                                         @lang('lang.detailedT_text19')
                                                     </button>
-                                                    <div class="hideform hidden">
-                                                        <div class="flex flex-row w-1/2 my-4 mx-auto">
-                                                            <label class="mx-4 cursor-pointer">
-                                                                <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
-                                                                <i id="class_demo"  class="text-gray-500 far fa-thumbs-up text-xl"></i>
-                                                            </label>
-                                                            <label class="mx-4 cursor-pointer">
-                                                                <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
-                                                                <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-xl"></i>
-                                                            </label>
-                                                        </div>
-                                                        <input type="text" name="comment" class="border rounded ml-6 mb-4 bg-amber-100 w-8/12 py-2 text-center font-normal" value="">
-                                                        <button class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
-                                                                type="button">
-                                                            @lang('lang.contact_send')
-                                                        </button>
-                                                    </div>
+
+                                                    @if($tasks->status == 3)
                                                         <button class="done font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Завершен
@@ -147,6 +132,7 @@
                                                                 type="button">
                                                             Не завершен
                                                         </button>
+                                                    @endif
                                             @endif
                                         @endauth
                                         <!-- Main modal -->
@@ -303,6 +289,7 @@
                                                                 <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
 
 {{--                                                                <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>--}}
+                                                                @if($tasks->status < 3 )
                                                                 <div class="w-10/12 mx-auto">
                                                                     <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                                         @lang('lang.detT_writeOnChat')
@@ -311,6 +298,7 @@
                                                                         @lang('lang.detT_choose')
                                                                     </a>
                                                                 </div>
+                                                                @endif
                                                                 <div class="text-gray-400 text-[14px] my-6">
                                                                     @lang('lang.detT_choosePerf')
                                                                 </div>
@@ -374,6 +362,56 @@
                     </div>
                 </div>
         </div>
+
+        {{-- Modal start --}}
+
+        <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id4">
+            <div class="relative my-6 mx-auto max-w-3xl" id="modal4">
+                <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+                    <div class=" text-center  rounded-t">
+                        <button type="submit"  onclick="toggleModal4('modal-id4')" class=" w-100 h-16 absolute top-1 right-4">
+                            <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                        </button>
+                        <h3 class="font-medium text-gray-700 text-3xl block">
+                            Оставить отзыв
+                        </h3>
+                    </div>
+                    <div class="text-center h-56 w-80 text-base">
+                        <div class="hideform hidden">
+                            <div class="flex flex-row w-1/3 my-4 mx-auto">
+                                <label class="mx-4 cursor-pointer">
+                                    <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
+                                    <i id="class_demo"  class="text-gray-500 far fa-thumbs-up text-2xl"></i>
+                                </label>
+                                <label class="mx-4 cursor-pointer">
+                                    <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
+                                    <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-2xl"></i>
+                                </label>
+                            </div>
+                            <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
+                                        border border-solid border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"></textarea>
+
+                            <button class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
+                                    type="button">
+                                @lang('lang.contact_send')
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
+
+        {{-- Modal end --}}
+
+        <script type="text/javascript">
+            function toggleModal4(modalID4){
+                document.getElementById(modalID4).classList.toggle("hidden");
+                document.getElementById(modalID4 + "-backdrop").classList.toggle("hidden");
+                document.getElementById(modalID4).classList.toggle("flex");
+                document.getElementById(modalID4 + "-backdrop").classList.toggle("flex");
+            }
+        </script>
 
         <script>
             $(document).ready(function(){
@@ -445,10 +483,8 @@
                     $('.preloader').hide();
                     $('.modal___1').show();
                 }, 1000);
-                window.setTimeout(function() {
                     $('.modal___1').hide();
                     window.location.reload();
-                }, 3000);
             });
         </script>
         <script>
@@ -572,7 +608,7 @@
             $(".send-comment").click(function(event){
                 event.preventDefault();
                 let good = $(".good:checked").val();
-                let comment = $("input[name=comment]").val();
+                let comment = $("textarea[name=comment]").val();
                 let _token = $("input[name=csrf]").val();
                 let performer_id = $("input[name=performer_id]").val();
                 let task_id = $("input[name=task_id]").val();
