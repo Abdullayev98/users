@@ -121,6 +121,8 @@ return [
     'mytasks_allCat' => "Barcha toifalar",
     'mytask_onTask' => "bu topshiriqda sorovlar",
     'mytask_callbacks' => "ta",
+    'mytask_avarage' => "Hammasi bolib",
+    'mytask_tasksFound' => "ta vazifa bor",
     // mytasks.blade end
 
     // offertask.blade start
