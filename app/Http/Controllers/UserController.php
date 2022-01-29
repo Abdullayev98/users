@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserPhoneRequest;
 use App\Models\User;
 use App\Models\Task;
@@ -36,6 +37,7 @@ class UserController extends Controller
     {
         return view('auth.register_code');
     }
+
     public function signup()
     {
         return view('auth.signup');
@@ -51,17 +53,14 @@ class UserController extends Controller
         return view('auth.confirm');
     }
 
-    public function createSignin(Request $request)
+    public function createSignin(UserLoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $data = $request->validated();
+        $user = User::where('email', $data['email'])->first();
 
-        $user = User::where('email', $request->input('email'));
-
-        if(!$user){
-            return redirect()->back()->with('message','Введенный email не существует!');
+        if (!$user) {
+            session()->flash('message', 'Введенный email не существует!');
+            return redirect()->back();
         }
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
@@ -79,7 +78,7 @@ class UserController extends Controller
             $advants = Advant::all();
             $trusts = Trust::orderby('id', 'desc')->get();
             $reklamas = Reklama::all();
-            return view('home', compact('reklamas','tasks', 'advants', 'howitworks', 'categories', 'users_count','trusts', 'random_category'))->withSuccess('Logged-in');
+            return view('home', compact('reklamas', 'tasks', 'advants', 'howitworks', 'categories', 'users_count', 'trusts', 'random_category'))->withSuccess('Logged-in');
         } else {
             return view('auth.signin')->withSuccess('Credentials are wrong.');
         }
@@ -87,48 +86,7 @@ class UserController extends Controller
 
 
 
-    public function customSignup(Request $request)
-    {
-        $data = $request->validate(
-            [
-                'name' => 'required',
-                'phone_number' => 'required|unique:users',
-                'email' => 'required|email|unique:users|email',
-                'password' => 'required|min:6|confirmed',
-            ],
-            [
-                'name.required' => 'Требуется заполнение!',
-                'name.unique' => 'Пользователь с таким именем уже существует!',
-                'phone_number.required' => 'Требуется заполнение!',
-                'phone_number.regex' => 'Неверный формат номера телефона!',
-                'phone_number.unique' => 'Этот номер есть в системе!',
-                'email.required' => 'Требуется заполнение!',
-                'email.email' => 'Требуется заполнение!',
-                'email.unique' => 'Пользователь с такой почтой уже существует!',
-                'password.required' => 'Требуется заполнение!',
-                'password.min' => 'Пароли должны содержать не менее 6-ми символов',
-                'password.confirmed' => 'Пароль не совпадает'
-            ]
-        );
-        $user = User::create($data);
-        $token = Str::random(64);
-        $sms_otp = rand(100000, 999999);
 
-        if ($request->has('email')) {
-            //            Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
-            //                $message->to($request->email);
-            //                $message->subject('Email Verification Mail');
-            //            });
-        }
-        $message = "Code: {$sms_otp} user.uz";
-        $response = (new SmsService())->send($data['phone_number'], $message);
-        $user->verify_code = $sms_otp;
-        $user->verify_expiration = Carbon::now()->addMinutes(5);
-        $user->save();
-        auth()->login($user);
-
-        return redirect()->route('register.code');
-    }
 
     public function code_submit(Request $request)
     {
@@ -149,7 +107,9 @@ class UserController extends Controller
         $data = $request->validated();
         $user = User::query()->where('phone_number', $data['phone_number'])->first();
         if (!$user) {
-            return back();
+            return back()->with([
+                'message' => "This phone number does not have an account!"
+            ]);
         }
         $sms_otp = rand(100000, 999999);
         $user->verify_code = $sms_otp;
@@ -195,6 +155,7 @@ class UserController extends Controller
         auth()->login($user);
         return redirect('/profile');
     }
+
     public function createUser(array $data)
     {
         return User::create([
@@ -215,7 +176,7 @@ class UserController extends Controller
             Session::put('lang', $lang);
             $reklamas = Reklama::all();
             $trusts = Trust::orderby('id', 'desc')->get();
-            return view('home', compact('tasks', 'howitworks', 'categories','reklamas','trusts'));
+            return view('home', compact('tasks', 'howitworks', 'categories', 'reklamas', 'trusts'));
         }
         return redirect("login")->withSuccess('Access is not permitted');
     }
@@ -235,41 +196,31 @@ class UserController extends Controller
 
     public function verifyProfil(Request $request)
     {
-        $request->validate([
-            'sms_otp' => 'required',
-        ]);
 
         $user = auth()->user();
 
+        $request->validate([
+            'sms_otp' => 'required',
+        ],
+            [
+                'sms_otp.required' => 'Требуется заполнение!'
+            ]
+        );
+
         if ($request->sms_otp == $user->verify_code) {
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
+                $user->update(['is_email_verified' => 1]);
+                Task::findOrFail($request->for_ver_func)->update(['status' => 1]);
                 return redirect()->route('userprofile');
             } else {
-                return back()->with([
-                    'alert' => 'Verification code expired'
-                ]);
+                return back()->with('expired_message', 'Verification code expired');
             }
-        }else{
-            return back()->with([
-                'message' => 'Verification code incorrect'
-            ]);
-        }
-
-        $message = $this->checkIsVerified($verifyUser);
-
-        return redirect("/profile")->with('message', $message);
-    }
-
-    public function verifyAccount($token, $is_otp = false)
-    {
-        if ($is_otp) {
-            $verifyUser = UserVerify::where('sms_otp', $token)->first();
         } else {
-            $verifyUser = UserVerify::where('token', $token)->first();
+            return back()->with('incorrect_message', 'Verification code incorrect');
         }
-        $message = $this->checkIsVerified($verifyUser);
-        return redirect()->route('login')->with('message', $message);
+
     }
+
 
     public function checkIsVerified($verifyUser)
     {

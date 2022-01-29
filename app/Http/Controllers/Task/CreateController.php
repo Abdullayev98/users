@@ -13,6 +13,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use PlayMobile\SMS\SmsService;
 use TCG\Voyager\Models\Category;
@@ -176,32 +178,53 @@ class CreateController extends Controller
     {
         return view('create.notes', compact('task'));
     }
+    public function uploadImage(Request $request)
+    {
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $filePath = $request->file('file')
+            ->storeAs('uploads/upload', $fileName, 'public');
 
+            $fileModelname = time() . '_' . $request->file->getClientOriginalName();
+            $fileModelfile_path = '/storage/' . $filePath;
+            $request->session()->put('photo', $fileName);
+            return response()->json([
+                "success" => true,
+                "message" => "File successfully uploaded",
+                "file" => $fileName
+            ]);
+        }
+        $this->note_store();
+    }
     public function note_store(Task $task, Request $request)
     {
         $data = $request->validate([
             'description' => 'required|string',
             'oplata' => 'required'
         ]);
+
+        $data['photos'] = session()->pull('photo');
         $data['docs'] = $request->docs ? 1 : null;
         $task->update($data);
         return redirect()->route("task.create.contact", $task->id);
     }
+
 
     public function contact(Task $task)
     {
         return view('create.contacts', compact('task'));
     }
 
+
     public function contact_store(Task $task, Request $request)
     {
-//        dd($request->all());
+
         if (!auth()->check()) {
             $data = $request->validate(
                 [
                     'name' => 'required|string',
                     'email' => ['required','email','unique:users'],
-                    'phone_number' => 'required',
+                    'phone_number' => 'required|unique:users',
                 ],
                 [
                     'name.required' => 'Name  is required',
@@ -209,28 +232,27 @@ class CreateController extends Controller
                     'email.required' => 'Email is required',
                     'email.email' => 'It must be an email',
                     'email.unique' => "This email already exists",
-                    'phone_number.required' => 'Phone number is required'
+                    'phone_number.required' => 'Phone number is required',
+                    'phone_number.unique' => 'Phone number has already an account'
                 ]
             );
-
                 $data['password'] = bcrypt('login123');
                 $user = User::create($data);
         } else {
             $user = auth()->user();
             $data = $request->validate(
                 [
-                    'phone_number' => 'required'
+                    'phone_number' => 'required|unique:users'
                 ],
                 [
-                    'phone_number.required' => 'Требуется заполнение!'
+                    'phone_number.required' => 'Требуется заполнение!',
+                    'phone_number.unique' => 'Phone number has already an account',
                 ]
             );
             $user->update($data);
             $user->fresh();
         }
         auth()->login($user);
-        $user->phone_number = str_replace('+998', '', preg_replace('/[^0-9]/', '', $user->phone_number));
-        $user->save();
 
         if (!$user->is_email_verified) {
             $sms_otp = rand(100000, 999999);
@@ -239,21 +261,21 @@ class CreateController extends Controller
             $user->verify_expiration = Carbon::now()->addMinutes(5);
             $user->save();
             $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
-            return redirect()->route('task.create.verify');
+            return redirect()->route('task.create.verify', $task->id);
         }
 
         $task->status = 1;
         $task->user_id = $user->id;
         $task->phone = $user->phone_number;
         $task->save();
-        return redirect('/profile');
+        return redirect()->route('userprofile');
 
     }
 
-    public function verify()
+    public function verify(Task $task)
     {
 
-        return view('create.verify');
+        return view('create.verify', compact('task'));
     }
 
     public function deletetask($id)
@@ -261,5 +283,8 @@ class CreateController extends Controller
         Task::where('id', $id)->delete();
         CustomFieldsValue::where('task_id', $id)->delete();
     }
+
+
+
 
 }

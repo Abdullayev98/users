@@ -3,6 +3,8 @@
 @include('layouts.fornewtask')
 
 @section('content')
+
+    <link rel="stylesheet" href="{{asset('css/budget_library.css')}}">
     <link rel="stylesheet" href="{{asset('css/budjet.css')}}">
     <!-- Information section -->
     <x-roadmap/>
@@ -29,13 +31,59 @@
                         </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4 xl:block hidden relative right-14">
-                                    <div class="cube">
-                                        <div class="a"></div>
-                                        <div id="slider-range-min" class="flex"></div>
+                                <div class="content__38cf1 w-8/12 mx-auto">
+                                    <div class="">
+                                        <div class="wrapper__1144f white__d3db2">
+                                            <div class="desktop__66de4">
+                                                <div class="container__dbb1e">
+                                                    <div class="rails__0ca6e">
+                                                        <svg class="triangle__67899" width="1" height="1" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path class="back__d97a2" d="M0,1 L1,0 L1,1 L0,1"></path>
+                                                        </svg>
+                                                        <svg class="triangle__678999" width="1" height="1" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path class="back__d97a222" d="M0,1 L1,0 L1,1 L0,1"></path>
+                                                        </svg>
+                                                        <div id="slider-range-min" class="flex"></div>
+                                                    </div>
+                                                    <div class="handle__27597">
+
+                                                        <input class="mt-8" type="text" id="amount" name="amount1" readonly >
+
+                                                    </div>
+                                                    <div class="tickWrapper__6685b" style="width: 16.6667%; left: 0%;">
+                                                        <div class="dot__b4c97"></div>
+                                                        <div class="bar__f0e59"></div>
+                                                    </div>
+                                                    <div class="tickWrapper__6685b" style="width: 16.6667%; left: 20%;">
+                                                        <div class="dot__b4c97"></div>
+                                                        <div class="bar__f0e59"></div>
+                                                    </div>
+                                                    <div class="tickWrapper__6685b" style="width: 16.6667%; left: 40%;">
+                                                        <div class="dot__b4c97"></div>
+                                                        <div class="bar__f0e59"></div>
+                                                    </div>
+                                                    <div class="tickWrapper__6685b" style="width: 16.6667%; left: 60%;">
+                                                        <div class="dot__b4c97"></div>
+                                                        <div class="bar__f0e59"></div>
+                                                    </div>
+                                                    <div class="tickWrapper__6685b" style="width: 16.6667%; left: 80%;">
+                                                        <div class="dot__b4c97"></div>
+                                                        <div class="bar__f0e59"></div>
+                                                    </div>
+                                                    <div class="tickWrapper__6685b" style="width: 16.6667%; left: 100%;">
+                                                        <div class="dot__b4c97"></div>
+                                                        <div class="bar__f0e59"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <input class="mt-8" type="text" id="amount" name="amount1" readonly>
                                 </div>
+
+
+
+
+                            </div>
                                 <div class="w-[100px]  md:w-[200px] xl:hidden">
                                     <select id="" name="amount" class="border md:ml-14 bg-green-400  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-yellow-600">
                                         <option value="0">
@@ -78,8 +126,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <x-faq/>
+                </div>
+
             </div>
         </div>
     </form>
@@ -88,33 +137,31 @@
 @endsection
 
 @section("javasript")
+
     <script>
         $(function() {
-            $( "#slider-range-min").slider({
+            $("#slider-range-min").slider({
                 range: "min",
                 value: 0,
-                min: {{$category->max}}/5,
+                min: {{$category->max}} / 5,
                 max: {{$category->max}},
-                {{--step:{{$category->max}}/10,--}}
-                step:1000,
-                slide: function( event, ui ) {
+                step: 100,
+                slide: function(event, ui) {
                     var maximum = {{$category->max}};
                     if (maximum == ui.value) {
-                        $("#amount").val( "от " + ui.value + " сум");
-                    }else{
-                        $("#amount").val( "до " + ui.value + " сум");
+                        $("#amount").val("от " + ui.value + " сум");
+                    } else {
+                        $("#amount").val("до " + ui.value + " сум");
                     }
-
                 }
             });
-            $(".ui-slider-range").css("height",'55px');
-            $(".ui-slider-range").css("background",'linear-gradient(rgb(255, 132, 56), rgb(255, 255, 255))');
-            $(".ui-slider-range").css("top",'-56px');
+            $(".ui-slider-range").css("height", '250px');
+            $(".ui-slider-range").css("background", 'linear-gradient(rgb(255, 132, 56)  , rgb(255, 132, 56))');
+            $(".ui-slider-range").css("top", '-255px');
             $(".ui-slider-handle").text("<>");
-            $( "#amount" ).val($( "#slider-range-min" ).slider( "value"));
+            $("#amount").val($("#slider-range-min").slider("value"));
         });
     </script>
-
 @endsection
 
 

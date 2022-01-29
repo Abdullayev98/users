@@ -44,14 +44,21 @@ class PerformersController extends Controller
         $categories = DB::table('categories')->get();
         $child_categories= DB::table('categories')->get();
         $users= User::where('role_id',2)->paginate(50);
+        $goods = [];
+        $bads = [];
 
-        return view('Performers/performers',compact('child_categories','categories','users','tasks'));
+        return view('Performers/performers',compact('child_categories','categories','users','tasks','goods','bads'));
     }
     public function performer(User $id){
 
         $user= $id;
+        $view = UserView::query()->where('performer_id', $user->id);
 
-        $view = UserView::query()->where('user_id', \auth()->user()->id)->where('performer_id', $user->id)->first();
+        if (auth()->check()){
+            $view->where('user_id', \auth()->user()->id);
+        }
+        $view->first();
+
         if (!$view){
             $view = new UserView();
             $view->user_id = \auth()->user()->id;

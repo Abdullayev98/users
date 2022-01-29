@@ -29,13 +29,14 @@ class SearchTaskController extends VoyagerBaseController
     public function ajax_tasks(Request $request){
         if (isset($request->orderBy)) {
             if ($request->orderBy == 'all') {
-                $tasks = DB::table("tasks")->where('status', 1)->orderBy('id', 'desc')
+                $tasks = DB::table("tasks")->where('status','=', 1)->orderBy('id', 'desc')
+                    ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
+                    ->select('tasks.*', 'users.name as user_name', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'sroch') {
-                $tasks =  DB::table("tasks")->where('status',1)->orderBy('start_date','asc')
+                $tasks =  DB::table("tasks")->where('status','=',1)->orderBy('start_date','asc')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
@@ -50,6 +51,10 @@ class SearchTaskController extends VoyagerBaseController
             if ($request->orderBy == 'klyuch') {
                 $filter = $request->fltr;
                 $tasks =  DB::table("tasks")->where('name','LIKE',"%$filter%")->orderBy('name','desc')->get();
+            }
+            if ($request->orderBy == 'price') {
+                $filter = $request->fltr;
+                $tasks =  DB::table("tasks")->where('budget','LIKE',"%$filter%")->orderBy('name','desc')->get();
             }
         }
         return $tasks->all();
@@ -91,8 +96,8 @@ class SearchTaskController extends VoyagerBaseController
           $user_id = $tasks->user_id;
         $same_tasks = Task::where('category_id',$cat_id)->get();
 
-        $task_responses = TaskResponse::where('task_id', $tasks->id)->get();
-        $response_count = TaskResponse::where('task_id', $tasks->id)->count();
+        $task_responses = Response::where('task_id', $tasks->id)->get();
+        $response_count = Response::where('task_id', $tasks->id)->count();
         $response_count_user = Response::where('user_id', Auth::id())->count();
         foreach($task_responses as $response){
           $response_users = User::where('id', $response->user_id)->first();

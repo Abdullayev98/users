@@ -49,12 +49,16 @@
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
-                                            value="{{ $category->name }}" id="{{ $category->id }}">{{ $category->name }}</option>
+                                            value="{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}" id="{{ $category->id }}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
-                                   class="float-right md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
+                                   class="float-right sm:block hidden md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
                                     @lang('lang.header_orderBtn')
+                                </a>
+                                <a href="" type="submit" id="createhref"
+                                   class="float-right sm:hidden block  md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
+                                    Заказать
                                 </a>
                         </div>
                         <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs  md:ml-20">
@@ -245,7 +249,7 @@
         <div class="w-full mx-auto lg:shadow-xl">
             <div
                 class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 lg:w-11/12 xl:w-9/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat" style="background-image: url('{{asset('/images/download_hand_User.png')}}')">
-                <div class="w-11/12 sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 mx-auto md:bg-transparent">
+                <div class="md:w-11/12 w-3/5 sm:pl-0 pl-4 md:mt-64 md:mb-3 mt-0 md:mx-auto mx-4  md:bg-transparent">
                     <h4 class="font-semibold text-3xl md:text-black text-gray-500">@lang('lang.body_personalHelper')</h4>
                     <p class="text-base mt-8 md:text-black">@lang('lang.body_downloadApp')</p>
                     <a href="#">

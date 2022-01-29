@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,21 +12,25 @@ Route::get('/lang/{lang}', [Controller::class, 'lang'])->name('lang');
 
 
 
-Route::get('/login', [UserController::class, 'index'])->name('login');
-Route::post('/', [UserController::class, 'createSignin'])->name('signin.custom');
+Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'loginPost'])->name('signin.custom')->middleware('guest');
 
 
 Route::get('/register', [UserController::class, 'signup'])->name('register');
-Route::post('/create-user', [UserController::class, 'customSignup'])->name('user.registration');
+Route::post('/register', [LoginController::class, 'customRegister'])->name('user.registration');
 
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/reset', [UserController::class, 'reset'])->name('reset');
 
 Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm');
 
 //Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth', 'is_verify_email']);
+
+
+
 Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth']);
-Route::get('account/verify/{token}', [UserController::class, 'verifyAccount'])->name('user.verify');
+Route::get('account/verify/', [LoginController::class, 'verifyAccount'])->name('user.verify')->middleware('auth');
+Route::get('account/verification/email', [LoginController::class, 'send_verification'])->name('user.verify.send')->middleware('auth');
 
 
