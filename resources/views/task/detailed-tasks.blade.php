@@ -390,7 +390,7 @@
                             </div>
                             <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
                                         border border-solid border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"></textarea>
-                            
+
                             <button class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
                                     type="button">
                                 @lang('lang.contact_send')
@@ -608,7 +608,7 @@
             $(".send-comment").click(function(event){
                 event.preventDefault();
                 let good = $(".good:checked").val();
-                let comment = $("input[name=comment]").val();
+                let comment = $("textarea[name=comment]").val();
                 let _token = $("input[name=csrf]").val();
                 let performer_id = $("input[name=performer_id]").val();
                 let task_id = $("input[name=task_id]").val();
