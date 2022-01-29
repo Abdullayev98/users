@@ -185,7 +185,7 @@ class SearchTaskController extends VoyagerBaseController
           ]);
         }
       }
-      return response()->json(['success'=>$performer_id]);
+      return response()->json(['success'=>$status]);
   }
 
   public function delete_task(Task $task){
