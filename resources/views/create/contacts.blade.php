@@ -28,32 +28,32 @@
                 <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-2 md:p-6 px-8">
                     <div class="py-4 mx-auto px-auto text-center text-3xl font-semibold">
                         @auth()
-                         Ваши контакты
+                            Ваши контакты
                         @endauth
                         @guest()
-                                Авторизация
+                            Авторизация
                         @endguest
                     </div>
                     <div class="w-10/12 mx-auto">
                         @guest()
-                        <ul class="nav nav-tabs flex flex-col md:flex-row text-center flex-wrap list-none border-b-0 pl-0 mb-4 justify-center"
-                            id="tabs-tab3"
-                            role="tablist">
-                            <li class="nav-item w-1/2" role="presentation">
-                                <a href="#tabs-home3"
-                                   class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active"
-                                   id="tabs-home-tab3" data-bs-toggle="pill" data-bs-target="#tabs-home3" role="tab"
-                                   aria-controls="tabs-home3"
-                                   aria-selected="true">РЕГИСТРАЦИЯ</a>
-                            </li>
-                            <li class="nav-item w-1/2" role="presentation">
-                                <a href="#tabs-profile3"
-                                   class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
-                                   id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3"
-                                   role="tab"
-                                   aria-controls="tabs-profile3" aria-selected="false">ВХОД</a>
-                            </li>
-                        </ul>
+                            <ul class="nav nav-tabs flex flex-col md:flex-row text-center flex-wrap list-none border-b-0 pl-0 mb-4 justify-center"
+                                id="tabs-tab3"
+                                role="tablist">
+                                <li class="nav-item w-1/2" role="presentation">
+                                    <a href="#tabs-home3"
+                                       class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active"
+                                       id="tabs-home-tab3" data-bs-toggle="pill" data-bs-target="#tabs-home3" role="tab"
+                                       aria-controls="tabs-home3"
+                                       aria-selected="true">РЕГИСТРАЦИЯ</a>
+                                </li>
+                                <li class="nav-item w-1/2" role="presentation">
+                                    <a href="#tabs-profile3"
+                                       class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+                                       id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3"
+                                       role="tab"
+                                       aria-controls="tabs-profile3" aria-selected="false">ВХОД</a>
+                                </li>
+                            </ul>
                         @endguest
                         <div class="tab-content" id="tabs-tabContent3">
                             <div class="tab-pane fade show active" id="tabs-home3" role="tabpanel"
@@ -100,7 +100,8 @@
                                                             <label class="text-sm text-gray-500 mb-2"
                                                                    for="phone">@lang('lang.contact_number')</label>
                                                             <input type="text" name="phone_number"
-                                                                   value="+998{{auth()->user()->phone_number}}" id="phone"
+                                                                   value="+998{{auth()->user()->phone_number}}"
+                                                                   id="phone"
                                                                    class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
                                                             @error('phone_number')
                                                             <p>{{$message}}</p>
@@ -146,9 +147,9 @@
                                                 Электронная почта
                                             </span>
                                             <input type="text"
-                                                 placeholder="E-mail"  class="mt-2 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                   placeholder="E-mail"
+                                                   class="mt-2 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
                                         </label>
-
 
 
                                         <div class="mt-4">

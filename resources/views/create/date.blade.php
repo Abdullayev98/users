@@ -2,6 +2,19 @@
 
 @include('layouts.fornewtask')
 
+@section('style')
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
+
+@endsection
+
+
 @section('content')
 <style media="screen">
 
@@ -12,15 +25,9 @@
 
 
 
-<form class="" action="{{route('task.create.date.store', $task->id)}}" method="post">
+<form  action="{{route('task.create.date.store', $task->id)}}" novalidate method="post">
   @csrf
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
+
 
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
@@ -63,8 +70,11 @@
 
               <div class="flatpickr inline-block flex flex-shrink">
                   <div class="flex-shrink">
-                      <input type="text" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
+                      <input type="text" name="start_date" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
                   </div>
+                  @error('start_date')
+                    <p class="text-red-500">{{ $message }}</p>
+                  @enderror
                   <div class="transform hover:scale-125">
                       <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
                           <i class="far fa-calendar-alt fill-current text-green-600"></i>
@@ -101,8 +111,11 @@
 {{--                </div>--}}
               <div class="flatpickr inline-block flex flex-shrink" style="display: none;" id="datetime">
                   <div class="flex-shrink">
-                      <input type="text" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
+                      <input type="text" name="end_date" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
                   </div>
+                  @error('end_date')
+                  <p class="text-red-500">{{ $message }}</p>
+                  @enderror
                   <div class="transform hover:scale-125">
                       <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
                           <i class="far fa-calendar-alt fill-current text-green-600"></i>
@@ -127,9 +140,9 @@
                                                 }
                                             </script>
                                         </a>
-               <input type="submit"
+               <button type="submit"
                                class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                               name="" value="@lang('lang.name_next')">
+               >@lang('lang.name_next')</button>
 
              </div>
 
@@ -139,59 +152,7 @@
       </div>
     </div>
   </div>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
 
-    <script>
-        // if (){
-        //     flatpickr.localize(flatpickr.l10ns.ru);
-        //     flatpickr(".flatpickr",
-        //         {
-        //             wrap: true,
-        //             enableTime: true,
-        //             allowInput: true,
-        //             altInput: true,
-        //             minDate: "today",
-        //             dateFormat: "Y-m-d /H:i",
-        //             altFormat: "Y-m-d /H:i",
-        //
-        //             locale: "ru",
-        //         },
-        //     )
-        // }
-        // else {
-        //     flatpickr.localize(flatpickr.l10ns.uz_latn);
-        //     flatpickr(".flatpickr",
-        //         {
-        //             wrap: true,
-        //             enableTime: true,
-        //             allowInput: true,
-        //             altInput: true,
-        //             minDate: "today",
-        //             dateFormat: "Y-m-d /H:i",
-        //             altFormat: "Y-m-d /H:i",
-        //
-        //             locale: "uz_latn",
-        //         },
-        //     )
-        // }
-        flatpickr.localize(flatpickr.l10ns.uz_latn);
-        flatpickr.localize(flatpickr.l10ns.ru);
-        flatpickr(".flatpickr",
-            {
-                wrap: true,
-                enableTime: true,
-                allowInput: true,
-                altInput: true,
-                minDate: "today",
-                dateFormat: "Y-m-d /H:i",
-                altFormat: "Y-m-d /H:i",
-
-                locale: "@lang('lang.dateLang')",
-            },
-        )
-    </script>
     <x-faq/>
 </div>
 </div>
@@ -202,61 +163,28 @@
 
 @section("javasript")
 
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
 
     <script>
-  $("#periud").change(function(){
-    if($(this).val() == 2 ){
-      $("#datetime").show();
-      $("#today1").show();
-      $("#tomorrow1").show();
-    }else{
-      $("#datetime").hide();
-    }
 
-});
-</script>
-<script>
-    function date()
-    {
-      var dateObj = new Date();
-      var month = dateObj.getUTCMonth() + 1; //months from 1-12
-      var day = dateObj.getUTCDate();
-      var year = dateObj.getUTCFullYear();
+        flatpickr.localize(flatpickr.l10ns.uz_latn);
+        flatpickr.localize(flatpickr.l10ns.ru);
+        flatpickr(".flatpickr",
+            {
+                wrap: true,
+                enableTime: true,
+                allowInput: true,
+                altInput: true,
+                minDate: "today",
+                dateFormat: "Y-m-d H:i:s",
+                altFormat: "Y-m-d H:i:s",
 
-      newdate = month + "/" + day + "/" + year;
-      document.getElementById("start_date").value = newdate;
-    }
-    function dateYesterday()
-    {
-      var dateObj = new Date();
-      var month = dateObj.getUTCMonth() + 1; //months from 1-12
-      var day = dateObj.getUTCDate()+1;
-      var year = dateObj.getUTCFullYear();
+                locale: "@lang('lang.dateLang')",
+            },
+        )
+    </script>
 
-      newdate = month + "/" + day + "/" + year;
-      document.getElementById("start_date").value = newdate;
-    }
-    function date1()
-    {
-      var dateObj = new Date();
-      var month = dateObj.getUTCMonth() + 1; //months from 1-12
-      var day = dateObj.getUTCDate();
-      var year = dateObj.getUTCFullYear();
 
-      newdate = month + "/" + day + "/" + year;
-      document.getElementById("end_date").value = newdate;
-    }
-    function dateYesterday1()
-    {
-      var dateObj = new Date();
-      var month = dateObj.getUTCMonth() + 1; //months from 1-12
-      var day = dateObj.getUTCDate()+1;
-      var year = dateObj.getUTCFullYear();
-
-      newdate = month + "/" + day + "/" + year;
-      document.getElementById("end_date").value = newdate;
-    }
-</script>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
 @endsection
