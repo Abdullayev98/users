@@ -152,7 +152,6 @@ class SearchTaskController extends VoyagerBaseController
         $response_time = $request->input('response_time');
         $response_price = $request->input('response_price');
         $task_id = $request->input('task_id');
-        $users_id = $request->input('user_id');
         TaskResponse::create([
           'user_id' => Auth::id(),
           'task_id' => $task_id,
@@ -180,8 +179,7 @@ class SearchTaskController extends VoyagerBaseController
             'reviewer_id' => Auth::id(),
             'task_id' => $task_id,
           ]);
-        }
-        if(Auth::id() == $performer_id){
+        }else{
           Review::create([
             'user_id' => $users_id,
             'description' => $comment,
@@ -191,7 +189,7 @@ class SearchTaskController extends VoyagerBaseController
           ]);
         }
       }
-      return response()->json(['success'=>$status]);
+      return response()->json(['success'=>$performer_id]);
   }
 
   public function delete_task(Task $task){

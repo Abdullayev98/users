@@ -15,7 +15,7 @@
                             @foreach($categories as $category)
                                 <button type="button"
                                         class="slider__item bg-inherit hover:bg-yellow-300 border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
-                                    <i class="fas {{ $category->ico }}"></i>
+                                    <i class="fas mr-4 {{ $category->ico }}"></i>
                                     <a href="{{route('categories',['id'=>$category->id])}}" class="text-sm lg:text-lg">
                                         {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </a>
@@ -68,28 +68,4 @@
         });
     </script>
 
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        .slider__wrapper {
-            overflow: hidden;
-        }
-
-        .slider__item {
-            flex: 0 0 33.3333333333%;
-            max-width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: gray;
-            border: 1px solid gray;
-            height: 80px;
-            border-radius: 10px;
-            margin-left: 5px;
-        }
-    </style>
 @endsection
