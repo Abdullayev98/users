@@ -50,7 +50,6 @@ class PerformersController extends Controller
         return view('Performers/performers',compact('child_categories','categories','users','tasks','goods','bads'));
     }
     public function performer(User $id){
-
         $user= $id;
         $view = UserView::query()->where('performer_id', $user->id);
 

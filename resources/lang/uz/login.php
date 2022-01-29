@@ -9,6 +9,7 @@ return [
     'phone_number.required' => 'Majburiy to\'ldirish!',
     'phone_number.regex' => 'Telefon raqami formati noto\'g\'ri!',
     'phone_number.unique' => 'Bu raqam tizimda!',
+    'phone_number.min' => 'Raqam 9 ta xonadan iborat bo\'lishi kerak!',
     'email.required' => 'To\'ldirish talab qilinadi!',
     'email.email' => 'To\'ldirish talab qilinadi!',
     'email.unique' => 'Bunday xatga ega foydalanuvchi allaqachon mavjud!',

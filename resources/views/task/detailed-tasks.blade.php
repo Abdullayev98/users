@@ -41,12 +41,18 @@
 
                             <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
                                 <div class="ml-12 flex flex-row">
-                                    <h1 class="font-bold h-auto w-48">{{$tasks->date_type}}</h1>
+                                    @if($tasks->date_type == 1)
+                                    <h1 class="font-bold h-auto w-48">Начать работу</h1>
+                                    @elseif($tasks->date_type == 2)
+                                    <h1 class="font-bold h-auto w-48">Закончить работу</h1>
+                                    @else
+                                    <h1 class="font-bold h-auto w-48">Указать период</h1>
+                                    @endif
                                     <p class=" h-auto w-96">{{date('d-m-Y', strtotime($tasks->start_date))}}</p>
                                 </div>
                                 <div class="ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
-                                    <p class=" h-auto w-96">до {{$tasks->budget}}</p>
+                                    <p class=" h-auto w-96">{{$tasks->budget}}</p>
                                 </div>
 
 @isset($tasks->custom_field_values)
@@ -95,7 +101,7 @@
                                                     </button>
                                                         @endif
                                                     @elseif($balance < 4000 || $response_count_user >= setting('site.free_responses'))
-                                                    @if($tasks->user_id != auth()->id())
+                                                    @if($tasks->user_id != auth()->id() && $tasks->status < 3)
                                                     <a href="#" class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
                                                     <div class='modal' id='modal1'>
                                                         <div class='content'>
@@ -634,9 +640,7 @@
                         console.log(error);
                     }
                 });
-                window.setTimeout(function() {
                     window.location.reload();
-                }, 3000);
             });
         </script>
 
