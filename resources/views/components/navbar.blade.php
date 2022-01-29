@@ -92,17 +92,17 @@
                             <a href="/categories/1" class="delete-task block p-4 text-sm rounded  text-gray-500 hover:text-yellow-500">@lang('lang.navbar_createTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="{{ route('task.search') }}" class="block delete-task cursor-pointer p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_findTask')</a>
+                            <a href="{{ route('task.search') }}" class="task block delete-task cursor-pointer p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_findTask')</a>
                         </li>
                         <li class="mb-1">
-                            <a href="/performers" class="delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_perfs')</a>
+                            <a href="/performers" class="performer delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_perfs')</a>
                         </li>
 
                         @if (Route::has('login'))
                             @auth
 
                             <li class="mb-1">
-                                <a href="{{ route('task.mytasks') }}" class="delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_myTasks')</a>
+                                <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_myTasks')</a>
                             </li>
 
                                    {{-- icon-3 --}}
@@ -203,11 +203,11 @@
                 min-width: 8rem
             }
         </style>
-        <a href="{{ route('task.search') }}" class="cursor-pointer delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
-        <a href="/performers" class="delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
+        <a href="{{ route('task.search') }}" class="task cursor-pointer delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
+        <a href="/performers" class="performer delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
         @if (Route::has('login'))
             @auth
-              <a href="{{ route('task.mytasks') }}" class="delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
+              <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
             @else
             @endauth
         @endif
@@ -701,6 +701,19 @@ $.ajax({
 
 	    });
 
+            }
+    </script>
+
+    <script >
+            var link = document.location.href.split('/');
+            if(link[3] == 'performers'){       
+                $(".performer").addClass("text-yellow-400");
+            }
+            else if(link[3] == 'my-tasks'){
+                $(".mytask").addClass("text-yellow-400");
+            }
+            else if(link[3] == 'task-search'){
+                $(".task").addClass("text-yellow-400");
             }
     </script>
 
