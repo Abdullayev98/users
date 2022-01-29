@@ -2,6 +2,8 @@
 
 return [
     // home.blade start
+    "cardpay" => "Оплата через карту",
+    "nalpay" => "Оплата наличными",
     "count_transactions" => "Количество транзакций:",
     'random_cat' => "Услуги пешего курьера",
     'lang_for_map' => "ru_RU",

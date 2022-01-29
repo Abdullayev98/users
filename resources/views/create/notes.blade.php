@@ -60,15 +60,15 @@
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" checked name="oplata" value="1">
+                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" checked name="oplata" value="@lang('lang.cardpay')">
                     <span class="text-slate- 900">
-                        Оплата через карту
+                        @lang('lang.cardpay')
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" name="oplata" value="2">
+                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" name="oplata" value="@lang('lang.nalpay')">
                     <span class="text-slate- 900">
-                        Оплата наличными
+                        @lang('lang.nalpay')
                     </span>
                   </label>
                   <!-- <label class="md:w-2/3 block mt-6">

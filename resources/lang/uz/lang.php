@@ -2,6 +2,8 @@
 
 return [
     // home.blade start
+    "cardpay" => "Kartadan to'lov",
+    "nalpay" => "Naqd pul bilan to'lov",
     "count_transactions" => "Tranzaksiyalar soni:",
     "random_cat" => "Piyoda kurerlik xizmatlari",
     'lang_for_map' => "uz_UZ",
