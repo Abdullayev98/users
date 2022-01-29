@@ -22,7 +22,7 @@ class SocialController extends Controller
         $user = Socialite::driver('facebook')->setScopes(['email'])->user();
         $findUser = User::where('email', $user->email)->first();
 
-        if (!$findUser) {
+        if (!$user->email) {
             $findUser = User::where('facebook_id', $user->id)->first();
         }
 
@@ -72,7 +72,7 @@ class SocialController extends Controller
 
             $findUser = User::where('email', $user->email)->first();
 
-            if (!$findUser) {
+            if (!$user->email) {
                 $findUser = User::where('google_id', $user->id)->first();
 
             }
