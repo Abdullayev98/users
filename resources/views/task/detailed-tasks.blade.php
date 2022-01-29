@@ -41,12 +41,18 @@
 
                             <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
                                 <div class="ml-12 flex flex-row">
-                                    <h1 class="font-bold h-auto w-48">{{$tasks->date_type}}</h1>
+                                    @if($tasks->date_type == 1)
+                                    <h1 class="font-bold h-auto w-48">Начать работу</h1>
+                                    @elseif($tasks->date_type == 2)
+                                    <h1 class="font-bold h-auto w-48">Закончить работу</h1>
+                                    @else
+                                    <h1 class="font-bold h-auto w-48">Указать период</h1>
+                                    @endif
                                     <p class=" h-auto w-96">{{date('d-m-Y', strtotime($tasks->start_date))}}</p>
                                 </div>
                                 <div class="ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
-                                    <p class=" h-auto w-96">до {{$tasks->budget}}</p>
+                                    <p class=" h-auto w-96">{{$tasks->budget}}</p>
                                 </div>
 
 @isset($tasks->custom_field_values)
