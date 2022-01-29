@@ -1029,7 +1029,9 @@ return [
     'training_minut' => "минут",
     'training_text6' => "Неважно",
     // training blade ended
-
+    //date blade
+    'calendar' => "Какой месяц..",
+    'dateLang' => "ru",
     // detailed tasks blade started
     'deteiledT_before' => "До",
     'detailedT_needmovers' => "Нужны грузчики",
