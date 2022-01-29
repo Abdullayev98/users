@@ -139,6 +139,7 @@
                                                             @lang('lang.contact_send')
                                                         </button>
                                                     </div>
+                                                    @if($tasks->status == 3)
                                                         <button class="done font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Завершен
@@ -147,6 +148,7 @@
                                                                 type="button">
                                                             Не завершен
                                                         </button>
+                                                    @endif
                                             @endif
                                         @endauth
                                         <!-- Main modal -->
