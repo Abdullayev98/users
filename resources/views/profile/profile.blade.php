@@ -16,13 +16,7 @@
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
-                        <div class="sm:w-1/3 w-full">
-                            <img class="border border-3 border-gray-400 h-40 w-40"
-                                 @if ($user->avatar == Null)
-                                 src='{{asset("images/default_img.jpg")}}'
-                                 @else
-                                 src="{{asset("AvatarImages/{$user->avatar}")}}"
-                                 @endif alt="">
+
                     <div class="flex flex-row w-80 mt-6" style="width:500px">
                         <div class="w-1/3">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
