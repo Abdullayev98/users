@@ -373,7 +373,7 @@
                             <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                         </button>
                         <h3 class="font-medium text-gray-700 text-3xl block">
-                            Создание альбома
+                            Оставить отзыв
                         </h3>
                     </div>
                     <div class="text-center h-56 w-80 text-base">
@@ -388,7 +388,9 @@
                                     <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-2xl"></i>
                                 </label>
                             </div>
-                            <input type="text" name="comment" class="border rounded mb-4 bg-amber-100 w-full py-2 text-center font-normal mt-6" value="">
+                            <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
+                                        border border-solid border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"></textarea>
+                            
                             <button class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
                                     type="button">
                                 @lang('lang.contact_send')

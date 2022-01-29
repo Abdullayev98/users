@@ -8,9 +8,18 @@
 </style>
 <!-- Information section -->
 <x-roadmap/>
-<script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/datepicker.bundle.js"></script>
+{{--<script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/datepicker.bundle.js"></script>--}}
+
+
+
 <form class="" action="{{route('task.create.date.store', $task->id)}}" method="post">
   @csrf
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
@@ -44,36 +53,66 @@
                       <option value="3" id="3">@lang('lang.date_givePeriod')</option>
                   </select>
             </div>
-              <div class="relative flex">
-                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+
+{{--                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">--}}
+{{--                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>--}}
+{{--                  </div>--}}
+{{--                  <input datepicker type="text" id="start_date" name="start_date" value="{{old('start_date')}}" class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата" required>--}}
+{{--                  <input type="time" name="start_time" value="{{old('start_time')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>--}}
+
+              <div class="flatpickr inline-block flex flex-shrink">
+                  <div class="flex-shrink">
+                      <input type="text" placeholder="Какой месяц.." data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
                   </div>
-                  <input datepicker type="text" id="start_date" name="start_date" value="{{old('start_date')}}" class="focus:outline-none  flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата" required>
-                  <input type="time" name="start_time" value="{{old('start_time')}}" class="focus:outline-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                </div>
-                <div>
-                  <p onclick="date()" id="today" class="text-base text-gray-500 hover:text-yellow-500 float-left mr-4 cursor-pointer">
-                    сегодня
-                  </p>
-                  <p onclick="dateYesterday()" id="tomorrow" class="text-base text-gray-500 hover:text-yellow-500 cursor-pointer w-4/12">
-                    завтра
-                  </p>
-                </div>
-              <div class="relative flex" id="datetime" style="display: none;">
-                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                  <div class="transform hover:scale-125">
+                      <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
+                          <i class="far fa-calendar-alt fill-current text-green-600"></i>
+                      </a>
                   </div>
-                  <input datepicker id="end_date" type="text" name="end_date" value="{{old('end_date')}}" class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата">
-                  <input type="time" name="end_time" value="{{old('end_time')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <div class="transform hover:scale-125 ">
+                      <a class="input-button w-1 h-1 sm:pl-3 pl-1  " title="clear" data-clear>
+                          <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
+                      </a>
+                  </div>
               </div>
-              <div>
-                  <p onclick="date1()" style="display: none;" id="today1" class="text-base text-gray-500 hover:text-yellow-500 float-left mr-4 cursor-pointer">
-                    сегодня
-                  </p>
-                  <p onclick="dateYesterday1()" style="display: none;" id="tomorrow1" class="text-base text-gray-500 hover:text-yellow-500 cursor-pointer w-4/12">
-                    завтра
-                  </p>
-                </div>
+{{--                <div>--}}
+{{--                  <p onclick="date()" id="today" class="text-base text-gray-500 hover:text-yellow-500 float-left mr-4 cursor-pointer">--}}
+{{--                    сегодня--}}
+{{--                  </p>--}}
+{{--                  <p onclick="dateYesterday()" id="tomorrow" class="text-base text-gray-500 hover:text-yellow-500 cursor-pointer w-4/12">--}}
+{{--                    завтра--}}
+{{--                  </p>--}}
+{{--                </div>--}}
+{{--              <div class="relative flex" id="datetime" style="display: none;">--}}
+{{--                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">--}}
+{{--                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>--}}
+{{--                  </div>--}}
+{{--                  <input datepicker id="end_date" type="text" name="end_date" value="{{old('end_date')}}" class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата">--}}
+{{--                  <input type="time" name="end_time" value="{{old('end_time')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">--}}
+{{--              </div>--}}
+{{--              <div>--}}
+{{--                  <p onclick="date1()" style="display: none;" id="today1" class="text-base text-gray-500 hover:text-yellow-500 float-left mr-4 cursor-pointer">--}}
+{{--                    сегодня--}}
+{{--                  </p>--}}
+{{--                  <p onclick="dateYesterday1()" style="display: none;" id="tomorrow1" class="text-base text-gray-500 hover:text-yellow-500 cursor-pointer w-4/12">--}}
+{{--                    завтра--}}
+{{--                  </p>--}}
+{{--                </div>--}}
+              <div class="flatpickr inline-block flex flex-shrink" style="display: none;" id="datetime">
+                  <div class="flex-shrink">
+                      <input type="text" placeholder="Какой месяц.." data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
+                  </div>
+                  <div class="transform hover:scale-125">
+                      <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
+                          <i class="far fa-calendar-alt fill-current text-green-600"></i>
+                      </a>
+                  </div>
+                  <div class="transform hover:scale-125 ">
+                      <a class="input-button w-1 h-1 sm:pl-3 pl-1  " title="clear" data-clear>
+                          <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
+                      </a>
+                  </div>
+              </div>
           </div>
           <div class="mt-4">
              <div class="flex w-full gap-x-4 mt-4">
@@ -99,6 +138,24 @@
       </div>
     </div>
   </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+
+    <script>
+        flatpickr.localize(flatpickr.l10ns.ru);
+        flatpickr(".flatpickr",
+            {
+                wrap: true,
+                enableTime: true,
+                allowInput: true,
+                altInput: true,
+                minDate: "today",
+                dateFormat: "Y-m-d /H:i",
+                altFormat: "Y-m-d /H:i",
+                locale: "ru",
+            },
+        )
+    </script>
     <x-faq/>
 </div>
 </div>
@@ -108,7 +165,10 @@
 @endsection
 
 @section("javasript")
-<script>
+
+
+
+    <script>
   $("#periud").change(function(){
     if($(this).val() == 2 ){
       $("#datetime").show();

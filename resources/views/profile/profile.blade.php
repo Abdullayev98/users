@@ -21,9 +21,9 @@
                         <div class="w-1/3">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
-                                    src='{{asset("storage/users/default.jpg")}}'
+                                    src='{{asset("images/default_img.jpg")}}'
                                 @else
-                                    src="{{asset("storage/{$user->avatar}")}}"
+                                    src="{{asset("AvatarImages/{$user->avatar}")}}"
                                 @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -192,7 +192,7 @@
             {{-- Modal start --}}
 
             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
-                <div class="relative my-6 mx-auto max-w-3xl" id="modal123">
+                <div class="relative my-6 mx-auto max-w-3xl" id="modal-id4">
                     <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
                         <div class=" text-center p-6  rounded-t">
                             <button type="submit"  onclick="toggleModal123('modal-id123')" class=" w-100 h-16 absolute top-1 right-4">
