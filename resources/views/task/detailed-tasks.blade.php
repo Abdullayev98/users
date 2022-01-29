@@ -117,37 +117,22 @@
                                                 </a>
                                             @endauth
                                             @auth
-                                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id && $tasks->status == 4)
-                                                    <button id="sendbutton" class="font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
+                                                    <button id="sendbutton" onclick="toggleModal4('modal-id4')" class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="button">
                                                         @lang('lang.detailedT_text19')
                                                     </button>
-                                                    <div class="hideform hidden">
-                                                        <div class="flex flex-row w-1/2 my-4 mx-auto">
-                                                            <label class="mx-4 cursor-pointer">
-                                                                <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
-                                                                <i id="class_demo"  class="text-gray-500 far fa-thumbs-up text-xl"></i>
-                                                            </label>
-                                                            <label class="mx-4 cursor-pointer">
-                                                                <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
-                                                                <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-xl"></i>
-                                                            </label>
-                                                        </div>
-                                                        <input type="text" name="comment" class="border rounded ml-6 mb-4 bg-amber-100 w-8/12 py-2 text-center font-normal" value="">
-                                                        <button class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
-                                                                type="button">
-                                                            @lang('lang.contact_send')
-                                                        </button>
-                                                    </div>
-                                                @elseif($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id && $tasks->status == 3)
-                                                        <button class="font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                    
+                                                    @if($tasks->status == 3)
+                                                        <button class="done font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Завершен
                                                         </button>
-                                                        <button class="font-sans w-1/2 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                        <button class="done font-sans w-1/2 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Не завершен
                                                         </button>
+                                                    @endif
                                             @endif
                                         @endauth
                                         <!-- Main modal -->
@@ -179,7 +164,7 @@
                                                                             <input type="checkbox" name="notification_on" class="mr-2 my-3 ">@lang('lang.detT_notifMe')<br>
                                                                         </label>
                                                                         <label class="px-2">
-                                                                            <input class=" my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>@lang('lang.detT_pointTime')
+                                                                            <input class="focus:outline-none   my-3 coupon_question mr-2" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>@lang('lang.detT_pointTime')
                                                                         </label>
                                                                         <br>
                                                                         <select name="response_time" id="AttorneyEmpresa" class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500" style="display: none">
@@ -347,7 +332,7 @@
                             <div class="mr-4">
                                 @if (isset($current_user))
                                     <img src="
-                        @if ($current_user->avatar == 'users/default.png')
+                        @if ($current_user->avatar == '')
                                     {{ asset("AvatarImages/images/{$current_user->avatar}") }}
                                     @else
                                     {{ asset("AvatarImages/{$current_user->avatar}") }}
@@ -375,6 +360,54 @@
                     </div>
                 </div>
         </div>
+
+        {{-- Modal start --}}
+
+        <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id4">
+            <div class="relative my-6 mx-auto max-w-3xl" id="modal4">
+                <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+                    <div class=" text-center  rounded-t">
+                        <button type="submit"  onclick="toggleModal4('modal-id4')" class=" w-100 h-16 absolute top-1 right-4">
+                            <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                        </button>
+                        <h3 class="font-medium text-gray-700 text-3xl block">
+                            Создание альбома
+                        </h3>
+                    </div>
+                    <div class="text-center h-56 w-80 text-base">
+                        <div class="hideform hidden">
+                            <div class="flex flex-row w-1/3 my-4 mx-auto">
+                                <label class="mx-4 cursor-pointer">
+                                    <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="1">
+                                    <i id="class_demo"  class="text-gray-500 far fa-thumbs-up text-2xl"></i>
+                                </label>
+                                <label class="mx-4 cursor-pointer">
+                                    <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12" value="0">
+                                    <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-2xl"></i>
+                                </label>
+                            </div>
+                            <input type="text" name="comment" class="border rounded mb-4 bg-amber-100 w-full py-2 text-center font-normal mt-6" value="">
+                            <button class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
+                                    type="button">
+                                @lang('lang.contact_send')
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
+
+        {{-- Modal end --}}
+
+        <script type="text/javascript">
+            function toggleModal4(modalID4){
+                document.getElementById(modalID4).classList.toggle("hidden");
+                document.getElementById(modalID4 + "-backdrop").classList.toggle("hidden");
+                document.getElementById(modalID4).classList.toggle("flex");
+                document.getElementById(modalID4 + "-backdrop").classList.toggle("flex");
+            }
+        </script>
 
         <script>
             $(document).ready(function(){
@@ -546,6 +579,29 @@
                     $("#sendbutton").hide();
                     $(".hideform").removeClass('hidden');
                 });
+                $(".done").click(function(){
+                    $("#sendbutton").removeClass('hidden');
+                    $(".done").hide();
+                    $.ajax({
+                        url: "/ajax-request",
+                        type:"POST",
+                        data:{
+                            task_id:{{$tasks->id}},
+                            status:4,
+                            _token:$('meta[name="csrf-token"]').attr('content'),
+                        },
+                        success:function(response){
+                            console.log(response);
+                            if(response) {
+                                $('.success').text(response.success);
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                });
+
             });
             $(".send-comment").click(function(event){
                 event.preventDefault();
@@ -564,7 +620,7 @@
                         user_id:user_id,
                         performer_id:performer_id,
                         task_id:task_id,
-                        _token:_token,
+                        _token:$('meta[name="csrf-token"]').attr('content'),
                     },
                     success:function(response){
                         console.log(response);

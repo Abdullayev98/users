@@ -17,7 +17,7 @@
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="flex flex-row mt-6" style="width: 500px">
-                        <div class="w-1/3">                           
+                        <div class="w-1/3">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
                                 src='{{asset("images/default_img.jpg")}}'
@@ -71,7 +71,7 @@
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                         </div>
                     </div>
-                </figure>   
+                </figure>
                     {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 ">
                   <div class="grid grid-cols-10">
@@ -110,22 +110,22 @@
                                                 @csrf
                                                 <div class="w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="name">@lang('lang.settings_name')</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="name" id="name" value="{{$user->name}}" required>
+                                                    <input class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="name" id="name" value="{{$user->name}}" required>
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="email">Email</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="email" name="email" id="email" value="{{$user->email}}">
+                                                    <input class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900" type="email" name="email" id="email" value="{{$user->email}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="phone_number">Phone number</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number"
+                                                    <input class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900" type="text" name="phone_number" id="phone_number"
                                                     @if ($user->phone_number=="") placeholder="+998(00)000-00-00"
                                                     @else value="{{$user->phone_number}}"
                                                     @endif >
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="age">@lang('lang.settings_age')</label>
-                                                    <input class="rounded-xl border py-2 px-3 w-full text-grey-900" min="18" type="number" name="age" id="age" value="{{$user->age}}">
+                                                    <input class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900" min="18" type="number" name="age" id="age" value="{{$user->age}}">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400" for="textarea">@lang('lang.settings_otherSet')</label>
@@ -211,7 +211,7 @@
                                                 </div>
                                                 @endforeach
                                             </div>
-                                            <input class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5" type="submit" name="submit" value="Сохранить">
+                                            <input class="focus:outline-none  block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5" type="submit" name="submit" value="Сохранить">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");

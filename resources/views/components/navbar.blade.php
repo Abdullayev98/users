@@ -1,3 +1,5 @@
+<div class="border-b border-solid border-gray-200 w-full shadow-sm">
+
 <nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start text-base" aria-label="Global">
     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
       <!--  mobile menu -->
@@ -361,6 +363,7 @@ use Illuminate\Support\Facades\Auth;
     @endif
 </nav>
 
+</div>
 
 {{-- pay modal start --}}
 <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
@@ -377,7 +380,7 @@ use Illuminate\Support\Facades\Auth;
             </div>
             <div class="text-center h-64">
                 <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
-                    <input class="w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="4000">
+                    <input class="focus:outline-none  w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="4000">
                 </div>
                 <p class="text-sm mt-2 leading-6 text-gray-400">@lang('lang.navbar_minimum')</p>
 

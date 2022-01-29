@@ -57,7 +57,7 @@
                         <p>@lang('lang.perfCat_allPerf')</p>
                     </div>
                     <div class="form-check flex flex-row mx-8 mt-10">
-                        <input class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                        <input class="focus:outline-none  form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                type="checkbox" value="1" onchange="check()" id="online">
                         <label class="form-check-label inline-block text-gray-800" for="online">
                             @lang('lang.perfCat_nowInSite')
@@ -84,7 +84,7 @@
                                 $(document).ready(function(){
                                     var good = $(".like{{$user->id}}").text();
                                     var bad = $(".dislike{{$user->id}}").text();
-                                    var allcount = (good * 5) + (bad * 2);
+                                    var allcount = (good * 5) + (bad * 1);
                                     var coundlikes = (good * 1) + (bad * 1);
                                     var overallStars = allcount / coundlikes;
                                     var star = overallStars.toFixed();

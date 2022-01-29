@@ -129,17 +129,23 @@ class SearchTaskController extends VoyagerBaseController
       $users_id = $request->input('user_id');
       $good = $request->input('good');
       if($status){
-        Task::where('id', $task_id)->update([
-          'status' => $status,
-          'performer_id' => $performer_id,
-        ]);
-        Notification::create([
-          'user_id' => $performer_id,
-          'task_id' => $task_id,
-          'name_task' => $name_task,
-          'description' => 1,
-          'type' => 3
-        ]);
+        if ($status == 4){
+            Task::where('id', $task_id)->update([
+                'status' => $status
+            ]);
+        }elseif ($status == 3){
+            Task::where('id', $task_id)->update([
+                'status' => $status,
+                'performer_id' => $performer_id,
+            ]);
+            Notification::create([
+                'user_id' => $performer_id,
+                'task_id' => $task_id,
+                'name_task' => $name_task,
+                'description' => 1,
+                'type' => 3
+            ]);
+        }
       }
       if($description){
         $notificate = $request->input('notificate');
