@@ -1025,7 +1025,9 @@ return [
     'training_minut' => "daqiqa",
     'training_text6' => "Muhim emas",
     // training blade ended
-
+    //date blade
+    'calendar' => "Qaysi oy..",
+    'dateLang' => "uz_latn",
     // detailed tasks blade started
     'deteiledT_before' => "gacha",
     'detailedT_needmovers' => "Ko'chiruvchilar kerak",
