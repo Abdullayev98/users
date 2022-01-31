@@ -106,8 +106,10 @@
                                 @endif
                                 <form action="{{route('edit.description')}}" method="POST" class="formdesc hidden">
                                     @csrf
-                                    <textarea name="description" name="description" class="w-full h-32 border border-gray-400 py-2 px-4 mt-3" @if (!$user->description) placeholder="Enter description"@endif >@if ($user->description){{$user->description}}@endif
-                                    </textarea><br>
+                                    <textarea name="description" name="description"
+                                              class="w-full h-32 border border-gray-400 py-2 px-4 mt-3"
+                                              @if (!$user->description) placeholder="Enter description"@endif
+                                    >@if ($user->description){{$user->description}}@endif</textarea><br>
                                     <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="@lang('lang.profile_save')">
                                     <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">@lang('lang.profile_cancel')</a>
                                 </form>
@@ -119,8 +121,8 @@
                             <span>Создать фотоальбом</span>
                            </a>
                         </div>
-                        
-                       
+
+
                         <div class="flex sm:flex-row flex-col mb-6">
                             <a onclick="toggleModal5('modal-id5')" href="#" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
                                 <img src="{{asset('/images/user2.jpg')}}" alt="#" class="w-56 h-48">
@@ -209,7 +211,7 @@
         </div>
     </div>
 
-            
+
 
             {{-- Modal1 start --}}
             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
@@ -258,7 +260,7 @@
                                         <button type="button" id="buttonns" class="relative bottom-32 left-6">
                                             <i class="fas fa-times text-lg w-full"></i>
                                         </button>
-                                    </div>   
+                                    </div>
                                 </div>
                                 <div class="input-images my-4">
                                 </div>
