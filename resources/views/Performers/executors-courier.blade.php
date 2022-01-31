@@ -23,7 +23,7 @@
                     <div class="flex-initial w-1/3">
                       <img class="h-48 w-44"
                       @if ($user->avatar == Null)
-                      src='{{asset("storage/images/default.jpg")}}'
+                      src='{{asset("storage/users/default.jpg")}}'
                       @else
                       src="{{asset("storage/{$user->avatar}")}}"
                       @endif alt="">

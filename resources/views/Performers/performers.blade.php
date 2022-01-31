@@ -62,7 +62,7 @@
                         <div class="w-34 float-left">
                             <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
                                 @if ($user->avatar == Null)
-                                src='{{asset("storage/default.jpg")}}'
+                                src='{{asset("storage/users/default.jpg")}}'
                                 @else
                                 src="{{asset("storage/{$user->avatar}")}}"
                                 @endif alt="user">
