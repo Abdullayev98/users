@@ -37,7 +37,6 @@ class UserUpdateDataRequest extends FormRequest
         }
         if (auth()->user()->phone_number == $this->request->get('phone_number')) {
             $validation['phone_number'] = "nullable|int|min:9";
-
         }
         return $validation;
     }

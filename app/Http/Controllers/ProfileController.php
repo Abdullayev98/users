@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdateDataRequest;
 use App\Models\Portfolio_new;
+use App\Models\Region;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
 use App\Models\Task;
@@ -91,8 +92,8 @@ class ProfileController extends Controller
         $user = Auth::user();
         $views = count( UserView::where('performer_id', $user->id)->get());
         $categories = DB::table('categories')->where('parent_id',Null)->get();
-        $task = Task::where('user_id',Auth::user()->id)->count();
-        return view('profile.settings', compact('user','categories','views','task'));
+        $regions = Region::all();
+        return view('profile.settings', compact('user','categories','views','regions'));
     }
     public function updateData(UserUpdateDataRequest $request)
     {

@@ -22,23 +22,7 @@ class User extends \TCG\Voyager\Models\User
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'role_id',
-        'email',
-        'phone_number',
-        'age',
-        'password',
-        'description',
-        'location',
-        'text',
-        'status',
-        'facebook_id',
-        'avatar',
-        'google_id',
-        'active_status',
-        'is_email_verified'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -69,6 +53,11 @@ class User extends \TCG\Voyager\Models\User
     }
     public function reviews() {
         return $this->hasMany(Review::class);
+    }
+
+
+    public function tasks(){
+        return $this->hasMany(Task::class);
     }
 
     public function views(){
