@@ -374,7 +374,7 @@
                                         <div class="relative flex flex-wrap">
                                           <div class="w-full relative">
                                             <div class="mt-6">
-                                              <p class="text-sm mt-5">@lang('lang.settings_passRequire')</p>
+                                              <h2 class="text-3xl font-bold">@lang('lang.settings_changePassword')</h2>
                                               <ul class="mt-10">
                                                   <li class="flex gap-2 mt-2">
                                                         <i class="fas fa-check"></i>
