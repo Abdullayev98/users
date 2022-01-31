@@ -92,12 +92,14 @@ class ProfileController extends Controller
         $user = Auth::user();
         $views = count( UserView::where('performer_id', $user->id)->get());
         $categories = DB::table('categories')->where('parent_id',Null)->get();
-        $regions = Region::all();
+        $regions = Region::withTranslations(['ru','uz'])->get();
         return view('profile.settings', compact('user','categories','views','regions'));
     }
     public function updateData(UserUpdateDataRequest $request)
     {
         $data = $request->validated();
+        $data['is_phone_number_verified'] = 0;
+        $data['is_email_verified'] = 0;
         Auth::user()->update($data);
         Alert::success('Success', "Successfully Updated");
         return  redirect()->route('editData');
