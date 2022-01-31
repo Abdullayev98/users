@@ -19,7 +19,7 @@ Route::group(['middleware'=>'auth'], function (){
         Route::post('/updatephoto', [ProfileController::class, 'imageUpdate'])->name('updateSettingPhoto');
 
         // Profile delete
-        Route::get('/delete', [ProfileController::class, 'destroy'])->name('users.delete');
+        Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('users.delete');
 
         //added category id
         Route::post('/getcategory',[ProfileController::class, 'getCategory'])->name('get.category');

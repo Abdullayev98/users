@@ -503,7 +503,7 @@ return [
     'settings_age' => "Возраст",
     'settings_otherSet' => "Другие сведения",
     'settings_city' => "Город",
-    'settings_profile' => "профиль",
+    'settings_profile' => "Удалить профиль",
     'settings_phone' => "Телефон",
     'settings_noNumber' => "номер нет",
     'settings_trust' => "Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.",
