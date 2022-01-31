@@ -526,51 +526,6 @@ $(document).ready(function(){
     });
 });
 
-function map1_show(){
-    ymaps.ready(init);
-    function init() {
-        var myMap1 = new ymaps.Map('map1', {
-                center: [41.317648, 69.230585],
-                zoom: 10,
-                // behaviors: ['default', 'scrollZoom']
-            }, {
-                searchControlProvider: 'yandex#search'
-            }),
-
-            clusterer = new ymaps.Clusterer({
-                preset: 'islands#invertedVioletClusterIcons',
-                groupByCoordinates: false,
-                clusterDisableClickZoom: true,
-                clusterHideIconOnBalloonOpen: false,
-                geoObjectHideIconOnBalloonOpen: false
-            }),
-
-            getPointOptions = function () {
-                return {
-                    preset: 'islands#violetIcon'
-                };
-            },
-            geoObjects = [];
-
-        for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-            geoObjects[i] = new ymaps.Placemark(dataAjax[i].coordinates, getPointData(i), getPointOptions());
-        }
-
-        clusterer.options.set({
-            gridSize: 80,
-            clusterDisableClickZoom: false
-        });
-        clusterer.add(geoObjects);
-        myMap1.geoObjects.add(clusterer);
-        myMap1.setBounds(clusterer.getBounds(), {
-            checkZoomRange: false
-        });
-
-        circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true }, { fill: false });
-        myMap1.geoObjects.add(circle);
-    }
-}
-
 function map_pos(mm) {
     if (mm) {
         k=1;

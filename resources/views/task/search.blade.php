@@ -268,7 +268,6 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    console.log(dataAjax)
                     fiveInOne1();
                 },
                 error: function () {
