@@ -322,6 +322,7 @@
                             <div class="mt-12">
                                 <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
                                 @foreach($same_tasks as $same_task)
+                                    @if($same_task->id != $tasks->id)
                                     <div class="mt-4">
                                         <a href="{{$same_task->id}}" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
                                         @foreach($users as $user)
@@ -330,6 +331,7 @@
                                             @endif
                                         @endforeach
                                     </div>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
