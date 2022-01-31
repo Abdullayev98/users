@@ -2,9 +2,9 @@
 
 
 return [
-    "start_date.required" => 'Sanani kiriting',
-    "start_date.date" => 'Sanani kiriting',
-    "end_date.required" => 'Sanani kiriting',
-    "end_date.date" => 'Sanani kiriting',
+    "start_date.required" => 'Sanani',
+    "start_date.date" => 'Sanani',
+    "end_date.required" => 'Sanani',
+    "end_date.date" => 'Sanani',
 ];
 
