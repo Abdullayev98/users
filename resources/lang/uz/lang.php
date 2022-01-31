@@ -505,6 +505,12 @@ return [
     'settings_phone' => "Telefon",
     'settings_noNumber' => "raqam yo'q",
     'settings_trust' => "Ijtimoiy tarmoqlardagi akkauntlaringizni Servicebox profilingizga ulash orqali foydalanuvchi ishonchini oshiring. Biz sizning kontaktlaringizni maxfiy saqlashga sodiqmiz.",
+    'settings_changePassword' => "Parolni yangilash",
+    'settings_passRequire' => "Quyidagi talablar bilan yangi parol yarating:",
+    'settings_moreThanEight' => "Parol 8 ta belgidan kam bolmasligi lozim",
+    'settings_newPassword' => "Yangi parol",
+    'settings_repeatPassword' => "Parolni takrorlang",
+    'settings_saveNewPass' => "Yangi parolni saqlash",
     // settings.blade end
 
     // executors-courier.blade start
