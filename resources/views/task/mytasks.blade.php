@@ -25,7 +25,7 @@
                 <div id="first">
                     <div id="scrollbar" class="w-full blog1">
                     <div class="w-full scroll-smooth hover:scroll-auto w-full">
-                        <p class="p-5">@lang('lang.mytask_avarage') {{ $perform_tasks->count() }}</p>
+                        <p class="p-5 lenght"></p>
                     @foreach($perform_tasks as $task)
                             @if ($task->performer_id == auth()->user()->id)
                                 <div class="w-full border-t border-solid hover:bg-blue-100 category my-5">
@@ -75,11 +75,11 @@
 
                     <div id="scrollbar" class="w-full blog1">
                             <div class="w-full scroll-smooth hover:scroll-auto w-full">
-                                <p class="p-5">@lang('lang.mytask_avarage') {{ $tasks->count() }}</p>
+                                <p class="p-5 lenght2"></p>
                             @foreach($tasks as $task)
                             @auth
                             @if ($task->user_id == auth()->user()->id)
-                                    <div class="w-full border-t border-solid hover:bg-blue-100 category my-5">
+                                    <div class="w-full border-t border-solid hover:bg-blue-100 category2 my-5">
                                         <div class="md:grid md:grid-cols-10 p-2">
                                             @foreach ($categories as $category)
                                                 @if ($category->id == $task->category_id)
@@ -139,7 +139,7 @@
                 <div id="map" class="h-60 rounded-lg w-full">
                 </div>
                 <div class="w-full h-full mt-5">
-                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center mb-1" type="button">@lang('lang.mytasks_allCat')</button>
+                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center mb-1 allshow" type="button">@lang('lang.mytasks_allCat')</button>
 
                     <div class="w-full my-1">
                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
@@ -233,6 +233,47 @@
                 $("#{{$category->slug}}").addClass('hidden');
             }
         });
+        @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+        $( "#{{$category2->id}}" ).click(function() {
+            var category = $(".categoryid").children("span");
+            $( category ).each(function() {
+
+                if ($(this).attr("about") != {{$category2->id}}){
+                    $(this).parents(".category").hide();
+                }else {
+                    $(this).parents(".category").show();
+                }
+                if ($(this).attr("about") != {{$category2->id}}){
+                    $(this).parents(".category2").hide();
+                }else {
+                    $(this).parents(".category2").show();
+                }
+            });
+        });
         @endforeach
+        @endforeach
+        $( ".allshow" ).click(function() {
+            var category = $(".categoryid").children("span");
+            $( category ).each(function() {
+                if ($(this).parents(".category").is(":hidden")){
+                    $(this).parents(".category").show();
+                }
+                if ($(this).parents(".category2").is(":hidden")){
+                    $(this).parents(".category2").show();
+                }
+                var categories = $(".category");
+                if (categories.is(":visible")){
+                    $(".lenght").text(`@lang("lang.mytask_avarage") ` + categories.length);
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            var category = $(".category");
+            if (category.is(":visible")){
+                    $(".lenght").text(`@lang("lang.mytask_avarage") ` + category.length);
+                }
+        });
     </script>
 @endsection
