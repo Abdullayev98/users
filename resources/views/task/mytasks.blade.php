@@ -28,7 +28,7 @@
                         <p class="p-5">@lang('lang.mytask_avarage') {{ $perform_tasks->count() }}</p>
                     @foreach($perform_tasks as $task)
                             @if ($task->performer_id == auth()->user()->id)
-                                <div class="w-full border-t border-solid hover:bg-blue-100  my-5">
+                                <div class="w-full border-t border-solid hover:bg-blue-100 category my-5">
                                     <div class="md:grid md:grid-cols-10 p-2">
                                         @foreach ($categories as $category)
                                             @if ($category->id == $task->category_id)
@@ -50,11 +50,11 @@
                                                 <p class="text-red-400 font-normal">@lang('lang.detT_close')</p>
                                             @endif
                                         </div>
-                                        <div class="col-span-3 md:text-right">
+                                        <div class="col-span-3 md:text-right categoryid">
                                             <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
                                             @foreach ($categories as $category)
                                                 @if($category->id == $task->category_id)
-                                                    <a class="text-sm text-gray-500 hover:text-red-600 my-3">{{$category->name}}</a>
+                                                    <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{$category->name}}</span>
                                                 @endif
                                             @endforeach
                                             <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
@@ -79,7 +79,7 @@
                             @foreach($tasks as $task)
                             @auth
                             @if ($task->user_id == auth()->user()->id)
-                                    <div class="w-full border-t border-solid hover:bg-blue-100  my-5">
+                                    <div class="w-full border-t border-solid hover:bg-blue-100 category my-5">
                                         <div class="md:grid md:grid-cols-10 p-2">
                                             @foreach ($categories as $category)
                                                 @if ($category->id == $task->category_id)
@@ -101,11 +101,11 @@
                                                     <p class="text-red-400 font-normal">@lang('lang.detT_close')</p>
                                                 @endif
                                             </div>
-                                            <div class="col-span-3 md:text-right">
+                                            <div class="col-span-3 md:text-right categoryid">
                                                 <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
                                                 @foreach ($categories as $category)
                                                     @if($category->id == $task->category_id)
-                                                        <a class="text-sm text-gray-500 hover:text-red-600 my-3">{{$category->name}}</a>
+                                                        <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{$category->name}}</span>
                                                     @endif
                                                 @endforeach
                                                     <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
@@ -144,10 +144,17 @@
                     <div class="w-full my-1">
                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
                             <div x-data={show:false} class="rounded-sm">
-                                <div class="my-3 text-blue-500 hover:text-red-500 cursor-pointer" id="headingOne">
-                                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center my-1 mx-1" type="button">
-                                        {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
-                                    </button>
+                                <div class="my-3 text-blue-500 hover:text-red-500 cursor-pointer" id="{{ str_replace(' ', '', $category->name) }}">
+                                    {{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
+                                </div>
+                                <div id="{{$category->slug}}" class="px-8 py-1 hidden">
+                                    @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
+
+                                        <div class="child_cat">
+                                            <a  class="text-blue-500 hover:text-red-500 my-1 send-request cursor-pointer" id="{{$category2->id}}" data-id="{{$category2->id}}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
+                                        </div>
+
+                                    @endforeach
                                 </div>
                             </div>
                         @endforeach
@@ -217,5 +224,15 @@
         document.getElementById("default-tab").click();
 
         </script>
-
+    <script>
+        @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
+        $( "#{{ str_replace(' ', '', $category->name) }}" ).click(function() {
+            if ($("#{{$category->slug}}").hasClass("hidden")) {
+                $("#{{$category->slug}}").removeClass('hidden');
+            }else{
+                $("#{{$category->slug}}").addClass('hidden');
+            }
+        });
+        @endforeach
+    </script>
 @endsection
