@@ -131,9 +131,9 @@
                     </div>
                 </div>
 
-                <div class="col-span-2 lg:col-span-1 lg:hidden block mx-4 lg:mt-0 mt-8 mb-4">
-                    <div id="map3" class="h-full w-screen my-5 rounded-lg w-full static" style="display: none;"></div>
-                </div>
+                    <div id="big-big" class="h-50 w-screen my-5 rounded-lg w-full static">
+
+                    </div>
 
 {{--                MOBILE VERSION ENDED --}}
 
@@ -345,7 +345,18 @@
             }
         }
 
-        function map1_show(){
+
+
+
+
+function map1_show (){
+
+        $("#big-big").empty();
+        $("#big-big").append(
+            `<div id="map1" class="h-52 overflow-hidden my-5 rounded-lg w-36 static">
+                <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
+            </div>`
+        )
         ymaps.ready(init);
         function init() {
                 var myMap1 = new ymaps.Map('map1', {
@@ -388,7 +399,8 @@
                 circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true }, { fill: false });
                 myMap1.geoObjects.add(circle);
         }
-        }
+
+}
 
         function map_pos(mm) {
             if (mm) {
@@ -584,14 +596,14 @@
     <script>
         $(document).ready(function() {
             $("#show").click(function() {
-                $("#map3").show();
+                map1_show();
                 $("#hide").css('display', 'block');
                 $("#show").css('display', 'none');
                 $("#scrollbar").css('display', 'none');
                 $("footer").css('display', 'none');
             });
             $("#hide").click(function() {
-                $("#map3").hide();
+                $('#big-big').addClass("hidden");
                 $("#hide").css('display', 'none');
                 $("#show").css('display', 'block');
                 $("#scrollbar").css('display', 'block');
