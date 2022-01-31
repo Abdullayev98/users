@@ -65,7 +65,7 @@
                             </span>
                             <p class="mt-2">@lang('lang.cash_created') <a href="#">
                                 <span>
-                                    {{$user->tasks->count()}}
+                                    {{count($user->tasks)}}
                                 </span> @lang('lang.cash_task')</a></p>
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                         </div>
