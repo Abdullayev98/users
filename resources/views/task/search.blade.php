@@ -101,9 +101,7 @@
                     </div>
                 </div>
 
-                    <div id="big-big" class="h-full my-5 rounded-lg w-full static">
-
-                    </div>
+                    <div id="big-big" class="h-full my-5 rounded-lg w-full static hidden"></div>
 
 {{--                MOBILE VERSION ENDED --}}
 
