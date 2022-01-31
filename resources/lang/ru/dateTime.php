@@ -2,9 +2,9 @@
 
 
 return [
-    "start_date.required" => 'Не указали месяц',
-    "start_date.date" => 'Не указали месяц',
-    "end_date.required" => 'Не указали месяц',
-    "end_date.date" => 'Не указали месяц',
+    "start_date.required" => 'Месяц',
+    "start_date.date" => 'Месяц',
+    "end_date.required" => 'Месяц',
+    "end_date.date" => 'Месяц',
 ];
 
