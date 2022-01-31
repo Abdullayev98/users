@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\PerformerAPIController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Task\CreateController;
 use App\Http\Controllers\Task\CreateTaskController;
 use App\Http\Controllers\Task\ResponseController;
@@ -56,6 +57,7 @@ Route::post('/code', [UserController::class,'reset_code'])->name('password.reset
 
 Route::get('/register/code', [UserController::class,'code'])->name('register.code');
 Route::post('/register/code', [UserController::class,'code_submit'])->name('register.code');
+Route::post('/account/password/change', [ProfileController::class,'change_password'])->name('account.password.reset');
 
 
 
