@@ -117,13 +117,12 @@
                                     {{--                  </p>--}}
                                     {{--                </div>--}}
                                     <div id="end-date" class="@if(!$errors->has('end_date')) hidden @endif">
-                                        <div class="flatpickr inline-block flex flex-shrink"
-                                        >
+                                        <div class="flatpickr inline-block flex flex-shrink">
                                             <div class="flex-shrink">
                                                 <input type="text" name="end_date" placeholder="@lang('lang.calendar')"
                                                        data-input
                                                        class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                       required> <!-- input is mandatory -->
+                                                       required > <!-- input is mandatory -->
                                             </div>
                                             @error('end_date')
                                             <p class="text-red-500">{{ $message }}</p>
@@ -191,21 +190,22 @@
         $('#periud').change(function () {
             switch ($(this).val()) {
                 case "1":
-                    $('#start-date').css('display', 'inline-block')
-                    $('#end-date').css('display', 'none');
-                    break;
+                        $('#start-date').css('display', 'inline-block');
+                        $('#end-date').css('display', 'none');
+                        break;
                 case "2":
-                    $('#start-date').css('display', 'none')
-                    $('#end-date').css('display', 'inline-block');
-                    break;
+                        $('#start-date').css('display', 'none');
+                        $('#end-date').css('display', 'inline-block');
+                        break;
                 case "3":
-                    $('#start-date').css('display', 'inline-block')
-                    $('#end-date').css('display', 'inline-block');
-                    break;
-
+                        $('#start-date').css('display', 'inline-block');
+                        $('#end-date').css('display', 'inline-block');
+                        break;
             }
         })
-        $('#start-date').css('display', 'inline-block')
+
+
+        $('#start-date').css('display', 'inline-block');
 
 
     </script>
