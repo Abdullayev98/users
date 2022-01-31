@@ -161,7 +161,7 @@
                                                 <hr>
                                             </form>
 
-                                            <a  onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
+                                            <a href="{{ route('users.delete', $user->id) }}" onclick="ConfirmDelete()" class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
                                         </div>
                                     </div>
 {{-- settings/ first tab -> base settings end--}}

@@ -501,7 +501,7 @@ return [
     'settings_age' => "Yosh",
     'settings_otherSet' => "Boshqa ma'lumotlar",
     'settings_city' => "Shahar",
-    'settings_profile' => "profil",
+    'settings_profile' => "Profilni o'chirib yuborish",
     'settings_phone' => "Telefon",
     'settings_noNumber' => "raqam yo'q",
     'settings_trust' => "Ijtimoiy tarmoqlardagi akkauntlaringizni Servicebox profilingizga ulash orqali foydalanuvchi ishonchini oshiring. Biz sizning kontaktlaringizni maxfiy saqlashga sodiqmiz.",

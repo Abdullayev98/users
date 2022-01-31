@@ -136,9 +136,9 @@ class ProfileController extends Controller
         $user->update($data);
         return  redirect()->route('editData');
     }
-    public function destroy()
-    {
-        Auth::user()->delete();
+    public function destroy($id){
+        $user = User::where('id', $id)->first();
+        $user->delete();
         return  redirect('/');
     }
 
@@ -196,4 +196,5 @@ class ProfileController extends Controller
         return redirect()->back();
 
     }
+
 }
