@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdateDataRequest;
+use \TCG\Voyager\Models\Category;
 use App\Models\Portfolio_new;
 use App\Models\Region;
 use Illuminate\Support\Facades\File;
@@ -91,13 +92,16 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $views = count( UserView::where('performer_id', $user->id)->get());
-        $categories = DB::table('categories')->where('parent_id',Null)->get();
-        $regions = Region::all();
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        $regions = Region::withTranslations(['ru','uz'])->get();
+
         return view('profile.settings', compact('user','categories','views','regions'));
     }
     public function updateData(UserUpdateDataRequest $request)
     {
         $data = $request->validated();
+        $data['is_phone_number_verified'] = 0;
+        $data['is_email_verified'] = 0;
         Auth::user()->update($data);
         Alert::success('Success', "Successfully Updated");
         return  redirect()->route('editData');
@@ -108,16 +112,15 @@ class ProfileController extends Controller
             'avatar' => 'required|image'
         ]);
         $user= Auth::user();
-        $data = $request->all();
         if($request->hasFile('avatar')){
-            $destination = 'AvatarImages/'.$user->avatar;
+            $destination = 'storage/'.$user->avatar;
             if(File::exists($destination))
             {
                 File::delete($destination);
             }
             $filename = $request->file('avatar');
             $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $filename->move(public_path().'/storage/images/users/',$imagename);
             $data['avatar'] =$imagename;
         }
         $user->update($data);

@@ -16,7 +16,7 @@ Route::group(['middleware'=>'auth'], function (){
         // Profile settings
         Route::get('/settings', [ProfileController::class, 'editData'])->name('editData');
         Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('updateData');
-        Route::post('/updatephoto', [ProfileController::class, 'imageUpdate'])->name('updateSettingPhoto');
+        Route::post('/updatephoto', [ProfileController::class, 'imageUpdate'])->name('updateSettingPhoto')->middleware('auth');
 
         // Profile delete
         Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('users.delete');

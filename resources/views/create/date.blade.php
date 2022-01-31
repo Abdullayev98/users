@@ -58,9 +58,9 @@
                                         <select name="date_type" id="periud"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 aria-label="Default select example">
-                                            <option selected value="1" id="1">@lang('lang.date_startTask')</option>
-                                            <option value="2" id="2">@lang('lang.date_finishTask')</option>
-                                            <option value="3" id="3">@lang('lang.date_givePeriod')</option>
+                                            <option {{ old('date_type') == "1" ? 'selected' :null }} value="1" id="1">@lang('lang.date_startTask')</option>
+                                            <option  {{ old('date_type') == "2" ? 'selected' :null }}  value="2" id="2">@lang('lang.date_finishTask')</option>
+                                            <option  {{ old('date_type') == "3" ? 'selected' :null }} value="3" id="3">@lang('lang.date_givePeriod')</option>
                                         </select>
                                     </div>
 
@@ -71,16 +71,15 @@
                                     {{--                  <input type="time" name="start_time" value="{{old('start_time')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>--}}
 
                                     <div id="start-date" class="@if(!$errors->has('start_date')) hidden @endif">
-                                        <div class="flatpickr inline-block flex flex-shrink" >
+                                        <div class="flatpickr inline-block flex flex-shrink">
                                             <div class="flex-shrink">
-                                                <input type="text" name="start_date" placeholder="@lang('lang.calendar')"
+                                                <input type="text" name="start_date"
+                                                       placeholder="@lang('lang.calendar')"
                                                        data-input
                                                        class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                        required> <!-- input is mandatory -->
                                             </div>
-                                            @error('start_date')
-                                            <p class="text-red-500">{{ $message }}</p>
-                                            @enderror
+
                                             <div class="transform hover:scale-125">
                                                 <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
                                                     <i class="far fa-calendar-alt fill-current text-green-600"></i>
@@ -91,6 +90,9 @@
                                                     <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
                                                 </a>
                                             </div>
+                                            @error('start_date')
+                                            <p class="pl-5 text-red-500">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                     {{--                <div>--}}
@@ -122,11 +124,9 @@
                                                 <input type="text" name="end_date" placeholder="@lang('lang.calendar')"
                                                        data-input
                                                        class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                       required > <!-- input is mandatory -->
+                                                       required> <!-- input is mandatory -->
                                             </div>
-                                            @error('end_date')
-                                            <p class="text-red-500">{{ $message }}</p>
-                                            @enderror
+
                                             <div class="transform hover:scale-125">
                                                 <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
                                                     <i class="far fa-calendar-alt fill-current text-green-600"></i>
@@ -137,6 +137,9 @@
                                                     <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
                                                 </a>
                                             </div>
+                                            @error('end_date')
+                                            <p class="pl-5 text-red-500">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -190,23 +193,23 @@
         $('#periud').change(function () {
             switch ($(this).val()) {
                 case "1":
-                        $('#start-date').css('display', 'inline-block');
-                        $('#end-date').css('display', 'none');
-                        break;
+                    $('#start-date').css('display', 'inline-block');
+                    $('#end-date').css('display', 'none');
+                    break;
                 case "2":
-                        $('#start-date').css('display', 'none');
-                        $('#end-date').css('display', 'inline-block');
-                        break;
+                    $('#start-date').css('display', 'none');
+                    $('#end-date').css('display', 'inline-block');
+                    break;
                 case "3":
-                        $('#start-date').css('display', 'inline-block');
-                        $('#end-date').css('display', 'inline-block');
-                        break;
+                    $('#start-date').css('display', 'inline-block');
+                    $('#end-date').css('display', 'inline-block');
+                    break;
             }
         })
 
-
+        @if(!$errors->has('end_date'))
         $('#start-date').css('display', 'inline-block');
-
+        @endif
 
     </script>
 

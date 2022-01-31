@@ -341,9 +341,9 @@
                                 @if (isset($current_user))
                                     <img src="
                         @if ($current_user->avatar == '')
-                                    {{ asset("AvatarImages/images/{$current_user->avatar}") }}
+                                    {{ asset("storage/images/default.png") }}
                                     @else
-                                    {{ asset("AvatarImages/{$current_user->avatar}") }}
+                                    {{ asset("storage/{$current_user->avatar}") }}
                                     "@endif
                                          class="border-2 border-gray-400 w-32 h-32" alt="#">
                                 @endif

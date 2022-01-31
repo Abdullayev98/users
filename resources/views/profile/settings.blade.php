@@ -65,7 +65,7 @@
                             </span>
                             <p class="mt-2">@lang('lang.cash_created') <a href="#">
                                 <span>
-                                    {{$user->tasks->count()}}
+                                    {{count($user->tasks??[])}}
                                 </span> @lang('lang.cash_task')</a></p>
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                         </div>
@@ -125,7 +125,7 @@
                                                     <input
                                                         class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
                                                         type="text" name="name" id="name"
-                                                        value="{{old('email')??$user->name}}"
+                                                        value="{{$user->name??old('email')}}"
                                                         required>
                                                     @error('name')
                                                     <p class="text-red-500">{{ $message }}</p>
@@ -137,7 +137,7 @@
                                                     <input
                                                         class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
                                                         type="email" name="email" id="email"
-                                                        value="{{ old('email')??$user->email}}">
+                                                        value="{{ $user->email??old('email')}}">
                                                     @error('email')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
@@ -148,13 +148,15 @@
                                                     <input
                                                         class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
                                                         type="text" id="phone_number"
-                                                        @if ($user->phone_number=="") placeholder="+998(00)000-00-00"
-                                                        @else value="+998{{$user->phone_number}}"
+                                                        @if (!$user->phone_number) placeholder="+998(00)000-00-00"
+                                                        @else
+                                                        value="+998{{$user->phone_number}}"
                                                         @endif >
                                                     @error('phone_number')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
-                                                    <input type="hidden" name="phone_number" id="phone">
+                                                    <input type="hidden" name="phone_number"
+                                                           value="{{$user->phone_number}}" id="phone">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
@@ -172,7 +174,7 @@
                                                            for="textarea">@lang('lang.settings_otherSet')</label>
                                                     <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900"
                                                               name="description"
-                                                              id="textarea">{{$user->description}}</textarea>
+                                                              id="textarea">{{old('description')??$user->description}}</textarea>
                                                     @error('description')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
@@ -186,7 +188,8 @@
                                                         <option value="">Tanlash</option>
 
                                                         @foreach($regions as $region)
-                                                            <option value="{{$region->name}}">{{$region->name}}</option>
+                                                            <option
+                                                                value="{{$region->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}" {{$region->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') == $user->location??old('location') ? 'selected' : null}}>{{$region->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</option>
                                                         @endforeach
 
                                                     </select>
@@ -249,7 +252,7 @@
                                                     <div class="mb-4 rounded-md border shadow-md">
                                                         <div
                                                             class="accordion text-gray-700 cursor-pointer p-[18px] w-full text-left text-[15px]">
-                                                            {{$category->name}}
+                                                            {{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                                         </div>
                                                         <div
                                                             class="panel overflow-hidden hidden px-[18px] bg-white p-2">
@@ -264,7 +267,7 @@
                                                                            @if($res_c_arr !== false) checked
                                                                            @endif name="category[]"
                                                                            value="{{$category2->id}}"
-                                                                           class="mr-2 required:border-yellow-500">{{$category2->name}}
+                                                                           class="mr-2 required:border-yellow-500">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                                                 </label>
                                                             @endforeach
                                                         </div>
