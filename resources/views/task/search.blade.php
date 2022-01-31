@@ -4,7 +4,7 @@
 
     <div class="mx-auto w-11/12 xl:w-9/12 my-8 md:my-16">
         <div class="grid lg:grid-cols-5 grid-cols-5 container mx-auto text-base">
-            <div class="col-span-5">
+            <div class="col-span-5 md:col-span-3 ">
                 <div class="w-full bg-yellow-50 my-5 rounded-md">
                     <div class="px-5 py-5 hidden md:block">
                     <!-- <form action="{{route('search')}}" method="get"> -->
