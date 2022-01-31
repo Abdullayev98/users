@@ -503,10 +503,16 @@ return [
     'settings_age' => "Возраст",
     'settings_otherSet' => "Другие сведения",
     'settings_city' => "Город",
-    'settings_profile' => "профиль",
+    'settings_profile' => "Удалить профиль",
     'settings_phone' => "Телефон",
     'settings_noNumber' => "номер нет",
     'settings_trust' => "Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.",
+    'settings_changePassword' => "Изменить пароль",
+    'settings_passRequire' => "Придумайте новый пароль с такими требованиями:",
+    'settings_moreThanEight' => "длина — не менее 8 символов",
+    'settings_newPassword' => "Новый пароль",
+    'settings_repeatPassword' => "Повторите пароль",
+    'settings_saveNewPass' => "Сохранить новый пароль",
     // settings.blade end
 
     // executors-courier.blade start
@@ -1083,5 +1089,6 @@ return [
     'detailedT_text18' => "Откликнуться на это задание",
     'detailedT_text19' => "Оставить отзыв",
     //detailed tasks blade ended
+    //data
 
 ];

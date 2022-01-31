@@ -140,8 +140,6 @@
 
 
 
-
-
                 <div class="">
                     <div class="col-span-2 lg:col-span-1 lg:block hidden mx-4 lg:mt-0 mt-32">
                         <div class="big-map static">
@@ -223,6 +221,11 @@
             </div>
         </div>
     </div>
+
+    <style>
+        [class*="copyrights-pane"]
+        {display: none !important;}
+    </style>
 
 
     <div class="w-full" x-data="topBtn">
@@ -306,23 +309,23 @@
             });
         }
 
-        function img_show() {
-            $(".show_tasks").empty();
-            $(".small-map").empty();
-            $(".big-map").empty();
-            $(".show_tasks").append(
-                `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                <div></div>
-                <div><img src="{{asset('/images/notlike.png')}}" class="w-full h-full"></div>
-                <div></div>
-                <div class="col-span-3 text-center w-full h-full">
-                    <p class="text-3xl"><b>Задания не найдены</b></p>
-                    <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
-                </div>
-                </div>`
-            );
-            $('.lM').attr("hidden","hidden")
-        }
+        {{--function img_show() {--}}
+        {{--    $(".show_tasks").empty();--}}
+        {{--    $(".small-map").empty();--}}
+        {{--    $(".big-map").empty();--}}
+        {{--    $(".show_tasks").append(--}}
+        {{--        `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
+        {{--        <div></div>--}}
+        {{--        <div><img src="{{asset('/images/notlike.png')}}" class="w-full h-full"></div>--}}
+        {{--        <div></div>--}}
+        {{--        <div class="col-span-3 text-center w-full h-full">--}}
+        {{--            <p class="text-3xl"><b>Задания не найдены</b></p>--}}
+        {{--            <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>--}}
+        {{--        </div>--}}
+        {{--        </div>`--}}
+        {{--    );--}}
+        {{--    $('.lM').attr("hidden","hidden")--}}
+        {{--}--}}
 
         function tasks_show(){
             let i=1;
@@ -555,6 +558,23 @@
                 }
             }
         }
+        {{--function tasks_show(){--}}
+        {{--    let i=1;--}}
+        {{--    $('.print_block').each(function() {--}}
+        {{--        if ((this.hidden) && (i <= p) && (s <= dl))--}}
+        {{--        {--}}
+        {{--            this.hidden = false;--}}
+        {{--            i++--}}
+        {{--            s++--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--    $('.lM').removeAttr('hidden');--}}
+        {{--    $('#pnum').html(s)--}}
+        {{--    $('#snum').html(dl)--}}
+        {{--    if (s==dl){--}}
+        {{--        $('.butt').attr("disabled","disabled")--}}
+        {{--    }--}}
+        {{--}--}}
 
     </script>
 
