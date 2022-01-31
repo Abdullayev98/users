@@ -252,7 +252,7 @@
                                                     <div class="mb-4 rounded-md border shadow-md">
                                                         <div
                                                             class="accordion text-gray-700 cursor-pointer p-[18px] w-full text-left text-[15px]">
-                                                            {{$category->name}}
+                                                            {{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                                         </div>
                                                         <div
                                                             class="panel overflow-hidden hidden px-[18px] bg-white p-2">
@@ -267,7 +267,7 @@
                                                                            @if($res_c_arr !== false) checked
                                                                            @endif name="category[]"
                                                                            value="{{$category2->id}}"
-                                                                           class="mr-2 required:border-yellow-500">{{$category2->name}}
+                                                                           class="mr-2 required:border-yellow-500">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                                                 </label>
                                                             @endforeach
                                                         </div>
