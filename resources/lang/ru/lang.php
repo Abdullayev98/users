@@ -462,7 +462,7 @@ return [
     'profile_performer' => "Исполнитель",
     'profile_since' => "на Universal Services с 12 сентября 2021 г.",
     'profile_phone' => "Телефон",
-    'profile_noNumber' => "номер нет",
+    'profile_noNumber' => "нет номера",
     'profile_confirmed' => "Подтвержден",
     // profile.blade end
 

@@ -118,7 +118,7 @@
                             <span>Создать фотоальбом</span>
                            </a>
                         </div>
-
+                        
                         <div class="flex sm:flex-row flex-col mb-6">
                             <div class="border border-gray-400 w-56 h-48 cursor-pointer mr-6 sm:mb-0 mb-8">
                                 <img src="" alt="#">
@@ -281,4 +281,5 @@
             $('.formdesc').removeClass('block').addClass('hidden')
         });
     </script>
+    @include('sweetalert::alert')
 @endsection
