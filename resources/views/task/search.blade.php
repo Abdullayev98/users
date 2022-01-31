@@ -205,6 +205,11 @@
         </div>
     </div>
 
+    <style>
+        [class*="copyrights-pane"]
+        {display: none !important;}
+    </style>
+
     <link href="{{ asset('/css/checkboxes.css') }}" rel="stylesheet">
 
     <div class="w-full" x-data="topBtn">
@@ -271,255 +276,41 @@
             });
         }
 
-        function img_show() {
-            $(".show_tasks").empty();
-            $(".small-map").empty();
-            $(".big-map").empty();
-            $(".show_tasks").append(
-                `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                <div></div>
-                <div><img src="{{asset('/images/notlike.png')}}" class="w-full h-full"></div>
-                <div></div>
-                <div class="col-span-3 text-center w-full h-full">
-                    <p class="text-3xl"><b>Задания не найдены</b></p>
-                    <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
-                </div>
-                </div>`
-            );
-            $('.lM').attr("hidden","hidden")
-        }
+        {{--function img_show() {--}}
+        {{--    $(".show_tasks").empty();--}}
+        {{--    $(".small-map").empty();--}}
+        {{--    $(".big-map").empty();--}}
+        {{--    $(".show_tasks").append(--}}
+        {{--        `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">--}}
+        {{--        <div></div>--}}
+        {{--        <div><img src="{{asset('/images/notlike.png')}}" class="w-full h-full"></div>--}}
+        {{--        <div></div>--}}
+        {{--        <div class="col-span-3 text-center w-full h-full">--}}
+        {{--            <p class="text-3xl"><b>Задания не найдены</b></p>--}}
+        {{--            <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>--}}
+        {{--        </div>--}}
+        {{--        </div>`--}}
+        {{--    );--}}
+        {{--    $('.lM').attr("hidden","hidden")--}}
+        {{--}--}}
 
-        function tasks_show(){
-            let i=1;
-            $('.print_block').each(function() {
-                if ((this.hidden) && (i <= p) && (s <= dl))
-                {
-                    this.hidden = false;
-                    i++
-                    s++
-                }
-            });
-            $('.lM').removeAttr('hidden');
-            $('#pnum').html(s)
-            $('#snum').html(dl)
-            if (s==dl){
-                $('.butt').attr("disabled","disabled")
-            }
-        }
-
-        function map1_show(){
-        ymaps.ready(init);
-        function init() {
-                var myMap1 = new ymaps.Map('map1', {
-                        center: [41.317648, 69.230585],
-                        zoom: 10,
-                        // behaviors: ['default', 'scrollZoom']
-                    }, {
-                        searchControlProvider: 'yandex#search'
-                    }),
-
-                    clusterer = new ymaps.Clusterer({
-                        preset: 'islands#invertedVioletClusterIcons',
-                        groupByCoordinates: false,
-                        clusterDisableClickZoom: true,
-                        clusterHideIconOnBalloonOpen: false,
-                        geoObjectHideIconOnBalloonOpen: false
-                    }),
-
-                    getPointOptions = function () {
-                        return {
-                            preset: 'islands#violetIcon'
-                        };
-                    },
-                    geoObjects = [];
-
-                for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-                        geoObjects[i] = new ymaps.Placemark(dataAjax[i].coordinates, getPointData(i), getPointOptions());
-                    }
-
-                clusterer.options.set({
-                    gridSize: 80,
-                    clusterDisableClickZoom: false
-                });
-                clusterer.add(geoObjects);
-                myMap1.geoObjects.add(clusterer);
-                myMap1.setBounds(clusterer.getBounds(), {
-                    checkZoomRange: false
-                });
-
-                circle = new ymaps.Circle([[41.317648, 69.230585], r*1000], null, { draggable: true }, { fill: false });
-                myMap1.geoObjects.add(circle);
-        }
-        }
-
-        function map_pos(mm) {
-            if (mm) {
-                k=1;
-                $(".small-map").empty();
-                $(".big-map").empty();
-                $(".small-map").append(
-                    `<div id="map2" class="h-60 my-5 rounded-lg w-full static">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
-                    </div>`
-                );
-
-                ymaps.ready(init);
-                function init() {
-                    var myInput = document.getElementById("suggest");
-                    var location = ymaps.geolocation;
-
-                        location.get({
-                            mapStateAutoApply: true
-                        })
-                            .then(
-                                function(result) {
-                                    userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
-                                },
-                                function(err) {
-                                    console.log('Ошибка: ' + err)
-                                }
-                            );
-
-
-                    var suggestView1 = new ymaps.SuggestView('suggest');
-                    var myMap2 = new ymaps.Map('map2', {
-                        center: userCoordinates,
-                        zoom: 10,
-                        controls: ['geolocationControl'],
-                        behaviors: ['default', 'scrollZoomNo']
-                    }, {
-                        searchControlProvider: 'yandex#search'
-                    });
-
-                    $("#mpshow").click(function(){
-                        location.get({
-                            mapStateAutoApply: true
-                        })
-                            .then(
-                                function(result) {
-                                    myInput.value = result.geoObjects.get(0).properties.get('text');
-                                    userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
-                                    // myMap2.geoObjects.add(result.geoObjects)
-                                },
-                                function(err) {
-                                    console.log('Ошибка: ' + err)
-                                }
-                            );
-                    });
-
-                    ///////////////////////////////////////
-                    // var myGeocoder = ymaps.geocode(myInput);
-                    // myGeocoder.then(
-                    //     function (res) {
-                    //         alert('Координаты объекта :' + res.geoObjects.get(0).geometry.getCoordinates());
-                    //     },
-                    //     function (err) {
-                    //         alert('Ошибка');
-                    //     }
-                    // );
-                    ///////////////////////////////////////
-
-                    clusterer = new ymaps.Clusterer({
-                        preset: 'islands#invertedGreenClusterIcons',
-                        hasBalloon: false,
-                        groupByCoordinates: false,
-                        clusterDisableClickZoom: true,
-                        clusterHideIconOnBalloonOpen: false,
-                        geoObjectHideIconOnBalloonOpen: false
-                    })
-                        // getPointData = function (index) {
-                        //     return {
-                        //         balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
-                        //         balloonContentBody: '<p>Ваше имя: <input name="login"></p><p>Телефон в формате 2xxx-xxx:  <input></p><p><input type="submit" value="Отправить"></p>',
-                        //         balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
-                        //         clusterCaption: 'метка <strong>' + index + '</strong>'
-                        //     };
-                        // },
-                        getPointOptions = function () {
-                            return {
-                                preset: 'islands#greenIcon'
-                            };
-                        }
-                        geoObjects = [];
-                    for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-                        dataGeo = [];
-                        dataGeo.push(dataAjax[i].coordinates.split(','));
-                        geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointOptions());
-                    }
-                    clusterer.options.set({
-                        gridSize: 80,
-                        clusterDisableClickZoom: true
-                    });
-                    clusterer.add(geoObjects);
-                    myMap2.geoObjects.add(clusterer);
-                    myMap2.setBounds(clusterer.getBounds(), {
-                    checkZoomRange: false
-                    });
-                    circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
-                    myMap2.geoObjects.add(circle);
-                }
-            } else {
-                k=0;
-                $(".big-map").empty();
-                $(".small-map").empty();
-                $(".big-map").append(
-                    `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(1)"/></div>
-                    </div>`
-                )
-                ymaps.ready(init);
-                function init() {
-                    var myMap3 = new ymaps.Map('map3', {
-                            center: userCoordinates,
-                            zoom: 15,
-                            controls: ['geolocationControl'],
-                            behaviors: ['default', 'scrollZoomNo']
-                        }, {
-                            searchControlProvider: 'yandex#search'
-                        });
-
-                        clusterer = new ymaps.Clusterer({
-                            preset: 'islands#invertedGreenClusterIcons',
-                            groupByCoordinates: false,
-                            clusterDisableClickZoom: true,
-                            clusterHideIconOnBalloonOpen: false,
-                            geoObjectHideIconOnBalloonOpen: false
-                        }),
-                        getPointData = function (index) {
-                            return {
-                                balloonContentHeader: '<font size=3><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font>',
-                                balloonContentBody: '<br><font size=4><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjax[index].start_date + ' - ' + dataAjax[index].end_date + '</p></font><br><font size=3><p>' + dataAjax[index].budget + '</p></font>',
-                                // balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
-                                clusterCaption: 'Задания <strong>' + dataAjax[index].id + '</strong>'
-                            };
-                        },
-                        getPointOptions = function () {
-                            return {
-                                preset: 'islands#greenIcon'
-                            };
-                        }
-                        geoObjects = [];
-                    for (var i = 0, len = dataGeo.length; i < len; i++) {
-                        geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
-                    }
-                    clusterer.options.set({
-                        gridSize: 80,
-                        clusterDisableClickZoom: false
-                    });
-
-                    clusterer.add(geoObjects);
-                    myMap3.geoObjects.add(clusterer);
-                    myMap3.setBounds(clusterer.getBounds(), {
-                    checkZoomRange: false
-                    });
-
-                    circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: true, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
-                    myMap3.geoObjects.add(circle);
-
-
-                }
-            }
-        }
+        {{--function tasks_show(){--}}
+        {{--    let i=1;--}}
+        {{--    $('.print_block').each(function() {--}}
+        {{--        if ((this.hidden) && (i <= p) && (s <= dl))--}}
+        {{--        {--}}
+        {{--            this.hidden = false;--}}
+        {{--            i++--}}
+        {{--            s++--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--    $('.lM').removeAttr('hidden');--}}
+        {{--    $('#pnum').html(s)--}}
+        {{--    $('#snum').html(dl)--}}
+        {{--    if (s==dl){--}}
+        {{--        $('.butt').attr("disabled","disabled")--}}
+        {{--    }--}}
+        {{--}--}}
 
     </script>
 

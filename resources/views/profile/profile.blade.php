@@ -21,9 +21,9 @@
                         <div class="w-1/3">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
-                                    src='{{asset("images/default_img.jpg")}}'
-                                src='{{asset("storage/users/default.jpg")}}'
+                                src='{{asset("images/default_img.jpg")}}'
                                 @else
+                                src="{{asset("AvatarImages/{$user->avatar}")}}"
                                 @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -121,6 +121,7 @@
                         
                         <div class="flex sm:flex-row flex-col mb-6">
                             <div class="border border-gray-400 w-56 h-48 cursor-pointer mr-6 sm:mb-0 mb-8">
+                                <img src="" alt="#">
                                 <div class="h-12 flex mt-36 w-full bg-black opacity-75 items-center">
                                     <p class="w-2/3 text-center text-base text-white">salom</p>
                                    <div class="w-1/3 flex items-center">

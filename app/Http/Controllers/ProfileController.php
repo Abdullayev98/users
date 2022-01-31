@@ -93,6 +93,7 @@ class ProfileController extends Controller
     }
     public function updateData(Request $request)
     {
+        
       $int = (int)$request->input('role');
         $request->validate([
             'name' => 'required',
@@ -110,7 +111,7 @@ class ProfileController extends Controller
             'age'=>$request->input('age'),
             'phone_number'=>$request->input('phone_number'),
             'description'=>$request->input('description'),
-            'location'=>$request->input('location'),
+            'location'=>$request->location,
             'role_id'=>$int,
         ]);
         return  redirect()->route('editData');
@@ -167,9 +168,10 @@ class ProfileController extends Controller
 
     //portfolio
     public function StorePicture(Request $request){
-        // $request->validate([
-        //   'images' => 'required|image'
-        // ]);
+        $request->validate([
+          'images' => 'required|image',
+          'comment' => 'required',
+        ]);
         $photos = $request->file('images');
         if($photos){
             $comment = new Portfoliocomment;
