@@ -1,4 +1,5 @@
 let dataAjax = {};
+let dataAjaxPrint = {};
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -186,9 +187,20 @@ function maps_show(){
     map_pos(k)
 }
 
+function fiveInOne(){
+    resetCounters()
+    if(dataAjaxPrint.length == 0){
+        img_show();
+    }else {
+        tasks_list_all(dataAjaxPrint)
+        tasks_show()
+    }
+    maps_show()
+}
+
 function fiveInOne1(){
     resetCounters()
-    tasks_list_all(dataAjax)
+    tasks_list_all(dataAjaxPrint)
     if(dl==0){
         img_show();
     }else {
@@ -391,7 +403,9 @@ $('.all_cat, .all_cat2').click(function() {
             this.checked = true;
         });
         allCheck = 1;
-        fiveInOne1();
+        dataAjaxPrint = {};
+        dataAjaxPrint = dataAjax;
+        fiveInOne();
     }
 });
 
