@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserPasswordRequest;
 use App\Http\Requests\UserUpdateDataRequest;
+use Illuminate\Support\Facades\Hash;
+use \TCG\Voyager\Models\Category;
 use App\Models\Portfolio_new;
 use App\Models\Region;
 use Illuminate\Support\Facades\File;
@@ -91,8 +94,9 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $views = count( UserView::where('performer_id', $user->id)->get());
-        $categories = DB::table('categories')->where('parent_id',Null)->get();
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $regions = Region::withTranslations(['ru','uz'])->get();
+
         return view('profile.settings', compact('user','categories','views','regions'));
     }
     public function updateData(UserUpdateDataRequest $request)
@@ -110,16 +114,15 @@ class ProfileController extends Controller
             'avatar' => 'required|image'
         ]);
         $user= Auth::user();
-        $data = $request->all();
         if($request->hasFile('avatar')){
-            $destination = 'AvatarImages/'.$user->avatar;
+            $destination = 'storage/'.$user->avatar;
             if(File::exists($destination))
             {
                 File::delete($destination);
             }
             $filename = $request->file('avatar');
-            $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $imagename = "user-avatar/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/storage/user-avatar/',$imagename);
             $data['avatar'] =$imagename;
         }
         $user->update($data);
@@ -186,5 +189,23 @@ class ProfileController extends Controller
         return redirect()->back();
 
     }
+
+
+    public function change_password(UserPasswordRequest $request){
+
+        $data = $request->validated();
+
+        $data['password'] = Hash::make($data['password']);
+        auth()->user()->update($data);
+
+        Alert::success("Success!", "Your Password was successfully updated");
+
+        return redirect()->back()->with([
+            'password' => 'password'
+        ]);
+
+
+    }
+
 
 }

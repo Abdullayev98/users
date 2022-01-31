@@ -19,12 +19,12 @@
 
                     <div class="flex flex-row w-80 mt-6" style="width:500px">
                         <div class="w-1/3">
-                                <img class="border border-3 border-gray-400 h-40 w-40"
-                                @if ($user->avatar == Null)
-                                src='{{asset("images/default_img.jpg")}}'
-                                @else
-                                src="{{asset("AvatarImages/{$user->avatar}")}}"
-                                @endif alt="">
+                            <img class="border border-3 border-gray-400 h-40 w-40"
+                            @if ($user->avatar == Null)
+                            src='{{asset("storage/images/default.jpg")}}'
+                            @else
+                            src="{{asset("storage/{$user->avatar}")}}"
+                            @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
@@ -118,20 +118,22 @@
                             <span>Создать фотоальбом</span>
                            </a>
                         </div>
-
+                        
+                       
                         <div class="flex sm:flex-row flex-col mb-6">
-                            <div class="border border-gray-400 w-56 h-48 cursor-pointer mr-6 sm:mb-0 mb-8">
-                                <img src="" alt="#">
-                                <div class="h-12 flex mt-36 w-full bg-black opacity-75 items-center">
+                            <a onclick="toggleModal5('modal-id5')" href="#" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
+                                <img src="{{asset('/images/user2.jpg')}}" alt="#" class="w-56 h-48">
+                                <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
                                     <p class="w-2/3 text-center text-base text-white">salom</p>
                                    <div class="w-1/3 flex items-center">
                                         <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
                                         <span class="text-white">5</span>
                                    </div>
                                 </div>
-                            </div>
-                            <div  onclick="toggleModal123('modal-id123')"  class="flex border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
-                                <i class="fas fa-plus m-auto text-6xl"></i>
+                            </a>
+                            <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
+                                <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
+                                <span class="mx-auto text-xs mt-2">Создать новый альбом</span>
                             </div>
                         </div>
 
@@ -206,8 +208,9 @@
         </div>
     </div>
 
-            {{-- Modal start --}}
+            
 
+            {{-- Modal1 start --}}
             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
                 <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
                     <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
@@ -231,9 +234,45 @@
                 </div>
             </div>
             <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
+            {{-- Modal1 end --}}
 
-            {{-- Modal end --}}
+             {{-- Modal2 start --}}
+             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id5">
+                <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
+                    <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+                        <div class=" text-center p-6  rounded-t">
+                            <button type="submit"  onclick="toggleModal5('modal-id5')" class=" w-100 h-16 absolute top-1 right-4">
+                                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                            </button>
+                            <h3 class="font-medium text-3xl block">
+                                Изменить альбома
+                            </h3>
+                        </div>
+                        <div class="text-center h-full w-full text-base">
+                            <form action="#" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="input-images my-4">
+                                   
+                                </div>
+                                <input type="text" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
+                                <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-pointer" value="Изменить">
+                                <input type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded cursor-pointer" value="Удалить">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id5-backdrop"></div>
+            {{-- Modal2 end --}}
 
+            <script type="text/javascript">
+                function toggleModal5(modalID5){
+                    document.getElementById(modalID5).classList.toggle("hidden");
+                    document.getElementById(modalID5 + "-backdrop").classList.toggle("hidden");
+                    document.getElementById(modalID5).classList.toggle("flex");
+                    document.getElementById(modalID5 + "-backdrop").classList.toggle("flex");
+                }
+            </script>
             <script type="text/javascript">
                 function toggleModal123(modalID123){
                     document.getElementById(modalID123).classList.toggle("hidden");
@@ -281,4 +320,5 @@
             $('.formdesc').removeClass('block').addClass('hidden')
         });
     </script>
+    @include('sweetalert::alert')
 @endsection

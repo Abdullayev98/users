@@ -30,9 +30,6 @@
     @yield('content')
     <x-footer/>
 
-@include('sweetalert::alert')
-
-
 <x-modal></x-modal>
 </body>
 <script src="{{asset('image_uploader/dist/image-uploader.min.js')}}"></script>

@@ -495,7 +495,7 @@ return [
     'settings_push' => "Surish",
     'settings_since' => "Universal xizmatlarda 2021-yil 12-sentabrdan boshlab",
     'settings_allSettings' => "Umumiy sozlamalar",
-    'settings_notifs' => "xabarnoma",
+    'settings_notifs' => "Xabarnoma",
     'settings_subscribeOnTask' => "Vazifalarga obuna bo'lish",
     'settings_security' => "Xavfsizlik",
     'settings_age' => "Yosh",

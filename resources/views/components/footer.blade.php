@@ -1,6 +1,6 @@
 <footer class=" w-10/12 mx-auto">
-    <div class="flex sm:flex-row flex-col my-12 text-base">
-        <div class="sm:w-1/2 w-full flex md:flex-row flex-col md:text-left text-center md:my-0 my-4">
+    <div class="md:flex sm:flex-row flex-col my-12 text-base">
+        <div class="w-1/2 w-full flex md:flex-row flex-col md:text-left text-center md:my-0 my-4">
             <div class="w-3/4 flex flex-col lg:mx-8 mx-auto">
                 <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 verify" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a>
                 <a class="delete-task faq cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a>
@@ -11,7 +11,7 @@
                 <a class="text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="#replain-link">@lang('lang.footer_text')</a>
             </div>
         </div>
-        <div class="md:w-1/2 w-full flex md:flex-row justify-end flex-col md:my-0 my-4 mr-20">
+        <div class="md:flex w-6/12 text-center mx-auto md:flex md:flex-row justify-end flex-col md:my-0 my-4">
             <a class="rounded-md mx-2 sm:mx-0 mx-auto" rel="noopener noreferrer" href="#" target="_blank">
                 <button type="button" class="bg-black rounded-md hover:bg-yellow-500 mx-2"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
             </a>
@@ -20,8 +20,8 @@
             </a>
         </div>
     </div>
-    <div class="md:flex border-t pt-4 mx-10 text-center">
-        <div class="mb-4 text-base md:text-left">
+    <div class="md:flex md:mx-0 mx-auto border-t pt-4 w-11/12">
+        <div class="container mx-auto ml-4 mb-4 text-base">
             <span class="">
             @lang('lang.footer_foot')
                 <a class=" hover:text-amber-500" rel="noopener noreferrer">
@@ -29,7 +29,7 @@
                 </a>
             </span>
         </div>
-        <div class="w-8/12 md:w-5/12 md:mr-0 mx-auto md:text-right mb-8">
+        <div class="w-6/12 mx-auto text-right">
             <a href="#">
                 <i class="fab fa-instagram text-gray-500 hover:text-yellow-500 mx-2"></i>
             </a>

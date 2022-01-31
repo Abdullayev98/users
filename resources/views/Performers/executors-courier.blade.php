@@ -21,11 +21,11 @@
 
                    <div class="flex w-full mt-6">
                     <div class="flex-initial w-1/3">
-                      <img class="h-48 w-44" 
+                      <img class="h-48 w-44"
                       @if ($user->avatar == Null)
-                      src='{{asset("images/default_img.jpg")}}'
+                      src='{{asset("storage/users/default.jpg")}}'
                       @else
-                      src="{{asset("AvatarImages/{$user->avatar}")}}"
+                      src="{{asset("storage/{$user->avatar}")}}"
                       @endif alt="">
                     </div>
                     <div class="flex-initial w-2/3 lg:ml-0 ml-6">
@@ -54,7 +54,7 @@
                                     @endif
                                 </p>
                             </span>
-                            
+
                         </div>
                         <div class="text-gray-500 text-base mt-6">
                             <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
@@ -115,30 +115,30 @@
                             </a>
                             <div class="align-top ml-12 min-h-10">
                             <span>
-                                @if ($user->id == $review->reviewer_id)
+                                @if ($user->id == $review->user_id)
                                 <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$user->name}}</a>
                                 @endif
                             </span>
                                 <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    @if ($user->id == $review->reviewer_id)
-                                    @if ($user->role_id == 2)
-                                    Отзыв:
-                                    @if ($review->good_bad == 1)
-                                    <i class="far fa-thumbs-up"></i>
-                                    @else
-                                    <i class="far fa-thumbs-down"></i>
-                                    @endif
-                                    Исполнитель
-                                    @else
-                                    Отзыв:
-                                    @if ($review->good_bad == 1)
-                                    <i class="far fa-thumbs-up"></i>
-                                    @else
-                                    <i class="far fa-thumbs-down"></i>
-                                    @endif
-                                    Заказчик
-                                    @endif
+                                    @if ($user->id == $review->user_id)
+                                        @if ($user->role_id == 2)
+                                        Отзыв:
+                                            @if ($review->good_bad == 1)
+                                                <i class="far fa-thumbs-up"></i>
+                                            @else
+                                                <i class="far fa-thumbs-down"></i>
+                                            @endif
+                                        Исполнитель
+                                        @else
+                                        Отзыв:
+                                            @if ($review->good_bad == 1)
+                                                <i class="far fa-thumbs-up"></i>
+                                            @else
+                                                <i class="far fa-thumbs-down"></i>
+                                            @endif
+                                        Заказчик
+                                        @endif
                                     @endif
                                 </span>
                                 </div>

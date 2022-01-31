@@ -62,9 +62,9 @@
                         <div class="w-34 float-left">
                             <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
                                 @if ($user->avatar == Null)
-                                src='{{asset("images/default_img.jpg")}}'
+                                src='{{asset("storage/users/default.jpg")}}'
                                 @else
-                                src="{{asset("AvatarImages/{$user->avatar}")}}"
+                                src="{{asset("storage/{$user->avatar}")}}"
                                 @endif alt="user">
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>

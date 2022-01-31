@@ -65,7 +65,7 @@
                             </span>
                             <p class="mt-2">@lang('lang.cash_created') <a href="#">
                                 <span>
-                                    {{$user->tasks->count()}}
+                                    {{count($user->tasks??[])}}
                                 </span> @lang('lang.cash_task')</a></p>
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                         </div>
@@ -252,7 +252,7 @@
                                                     <div class="mb-4 rounded-md border shadow-md">
                                                         <div
                                                             class="accordion text-gray-700 cursor-pointer p-[18px] w-full text-left text-[15px]">
-                                                            {{$category->name}}
+                                                            {{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                                         </div>
                                                         <div
                                                             class="panel overflow-hidden hidden px-[18px] bg-white p-2">
@@ -267,7 +267,7 @@
                                                                            @if($res_c_arr !== false) checked
                                                                            @endif name="category[]"
                                                                            value="{{$category2->id}}"
-                                                                           class="mr-2 required:border-yellow-500">{{$category2->name}}
+                                                                           class="mr-2 required:border-yellow-500">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                                                 </label>
                                                             @endforeach
                                                         </div>
@@ -331,20 +331,21 @@
                                                             <h2 class="font-bold text-black text-3xl">
                                                                 @lang('lang.settings_changePassword')
                                                             </h2>
-                                                            <p class="text-sm mt-5">@lang('lang.settings_passRequire')</p>
                                                             <ul class="mt-10">
                                                                 <li class="flex gap-2 mt-2">
                                                                     <i class="fas fa-check"></i>
                                                                     <p class="text-sm">@lang('lang.settings_moreThanEight')</p>
                                                                 </li>
                                                             </ul>
-                                                            <form class="mt-8">
+                                                            <form class="mt-8" action="{{route('account.password.reset')}}" method="post" >
+                                                                @csrf
+
                                                                 <div class="mx-auto max-w-lg">
                                                                     <div class="py-2" x-data="{ show: true }">
                                                                         <span
                                                                             class="px-1 text-sm text-gray-600">@lang('lang.settings_newPassword')</span>
                                                                         <div class="relative">
-                                                                            <input placeholder=""
+                                                                            <input placeholder="" name="password"
                                                                                    :type="show ? 'password' : 'text'"
                                                                                    class="text-md block px-3 py-2 rounded-lg w-full
                                                     bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
@@ -355,9 +356,9 @@
                                                                             <div
                                                                                 class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
 
-                                                                                <svg class="h-6 text-gray-700"
+                                                                                <svg class="h-4 text-gray-700"
                                                                                      fill="none" @click="show = !show"
-                                                                                     :class="{'hidden': !show, 'block':show }"
+                                                                                     :class="{'hidden': show, 'block':!show }"
                                                                                      xmlns="http://www.w3.org/2000/svg"
                                                                                      viewbox="0 0 576 512">
                                                                                     <path fill="currentColor"
@@ -365,9 +366,9 @@
                                                                                     </path>
                                                                                 </svg>
 
-                                                                                <svg class="h-6 text-gray-700"
+                                                                                <svg class="h-4 text-gray-700"
                                                                                      fill="none" @click="show = !show"
-                                                                                     :class="{'block': !show, 'hidden':show }"
+                                                                                     :class="{'block': show, 'hidden':!show }"
                                                                                      xmlns="http://www.w3.org/2000/svg"
                                                                                      viewbox="0 0 640 512">
                                                                                     <path fill="currentColor"
@@ -382,7 +383,7 @@
                                                                         <span
                                                                             class="px-1 text-sm text-gray-600">@lang('lang.settings_repeatPassword')</span>
                                                                         <div class="relative">
-                                                                            <input placeholder=""
+                                                                            <input placeholder="" name="password_confirmation"
                                                                                    :type="show ? 'password' : 'text'"
                                                                                    class="text-md block px-3 py-2 rounded-lg w-full
                                                     bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
@@ -393,6 +394,9 @@
                                                                         </div>
                                                                     </div>
 
+                                                                    @error('password')
+                                                                    <p class="text-red-500">{{ $message }}</p>
+                                                                    @enderror
                                                                     <button type="submit" class="mt-16 text-lg font-semibold
                                                     bg-green-400 w-50 text-white rounded-lg
                                                     px-6 py-3 block shadow-xl hover:text-white hover:bg-green-500">
@@ -573,6 +577,7 @@
         </div>
     </div>
     <script src="https://unpkg.com/imask"></script>
+    @include('sweetalert::alert')
 
     <script>
         var element = document.getElementById('phone_number');
