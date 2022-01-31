@@ -30,6 +30,9 @@ class Task extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+    public function responses(){
+        return $this->hasMany(Response::class);
+    }
 
 
 

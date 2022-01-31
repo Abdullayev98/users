@@ -17,8 +17,6 @@
                             <a href="#second" class="inline-block relative py-1 w-full">@lang('lang.mytasks_iAmCustomer')</a>
                         </div>
                     </ul>
-                    <p class="p-5">@lang('lang.mytask_avarage') {{ $tasks->count() }} @lang('lang.mytask_tasksFound')</p>
-
                 </div>
             </div>
 
@@ -27,37 +25,44 @@
                 <div id="first">
                     <div id="scrollbar" class="w-full blog1">
                     <div class="w-full scroll-smooth hover:scroll-auto w-full">
-
-                            @foreach($tasks as $task)
-                            @auth
+                        <p class="p-5">@lang('lang.mytask_avarage') {{ $perform_tasks->count() }}</p>
+                    @foreach($perform_tasks as $task)
                             @if ($task->performer_id == auth()->user()->id)
-                            <div>
-                                <div class="w-full border hover:bg-blue-100 h-24 ">
-                                    <div class="w-11/12 h-12 m-4">
-                                        <div class="float-left w-9/12 " id="results">
-                                            @foreach ($categories as $category)
+                                <div class="w-full border-t border-solid hover:bg-blue-100  my-5">
+                                    <div class="md:grid md:grid-cols-10 p-2">
+                                        @foreach ($categories as $category)
                                             @if ($category->id == $task->category_id)
-                                            <i class="{{$category->ico}} text-4xl float-left text-blue-400 mr-2"></i>
+                                                <i class="{{$category->ico}} text-4xl float-left text-blue-400 mr-2"></i>
                                             @endif
-                                            @endforeach
-                                            <a href="/detailed-tasks/{{$task->id}}" class="text-blue-400 hover:text-red-400">{{$task->name}}</a>
-                                            <p class="text-sm ml-12 mt-4">{{$task->address}}</p>
+                                        @endforeach
+                                        <div class="col-span-6">
+                                            <a href="/detailed-tasks/{{$task->id}}" class="text-blue-500 text-xl hover:text-red-500">
+                                                {{$task->name}}
+                                            </a>
+                                            <p class="text-sm mt-2">
+                                                {{$task->description}}
+                                            </p>
+                                            @if ($task->status == 3)
+                                                <p class="text-amber-500 font-normal">@lang('lang.detT_inProsses')</p>
+                                            @elseif($task->status < 3)
+                                                <p class="text-green-400 font-normal">@lang('lang.detT_open')</p>
+                                            @else
+                                                <p class="text-red-400 font-normal">@lang('lang.detT_close')</p>
+                                            @endif
                                         </div>
-                                        <div class="float-right w-1/4 text-right " id="about">
-                                            <a href="/detailed-tasks/{{$task->id}}" class="text-lg">{{$task->budget}}</a>
+                                        <div class="col-span-3 md:text-right">
+                                            <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
                                             @foreach ($categories as $category)
-                                            @if ($category->id == $task->category_id)
-                                            <p class="text-sm ml-12">{{$category->name}}</p>
-                                            @endif
+                                                @if($category->id == $task->category_id)
+                                                    <a class="text-sm text-gray-500 hover:text-red-600 my-3">{{$category->name}}</a>
+                                                @endif
                                             @endforeach
+                                            <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             @endif
-                            @endauth
                             @endforeach
-
                         </div>
                     </div>
 
@@ -70,12 +75,17 @@
 
                     <div id="scrollbar" class="w-full blog1">
                             <div class="w-full scroll-smooth hover:scroll-auto w-full">
+                                <p class="p-5">@lang('lang.mytask_avarage') {{ $tasks->count() }}</p>
                             @foreach($tasks as $task)
                             @auth
                             @if ($task->user_id == auth()->user()->id)
                                     <div class="w-full border-t border-solid hover:bg-blue-100  my-5">
                                         <div class="md:grid md:grid-cols-10 p-2">
-                                            <i class="fas fa-user-circle text-4xl col-span-1 m-auto text-blue-400"></i>
+                                            @foreach ($categories as $category)
+                                                @if ($category->id == $task->category_id)
+                                                    <i class="{{$category->ico}} text-4xl float-left text-blue-400 mr-2"></i>
+                                                @endif
+                                            @endforeach
                                             <div class="col-span-6">
                                                 <a href="/detailed-tasks/{{$task->id}}" class="text-blue-500 text-xl hover:text-red-500">
                                                     {{$task->name}}
@@ -83,11 +93,22 @@
                                                 <p class="text-sm mt-2">
                                                     {{$task->description}}
                                                 </p>
+                                                @if ($task->status == 3)
+                                                    <p class="text-amber-500 font-normal">@lang('lang.detT_inProsses')</p>
+                                                @elseif($task->status < 3)
+                                                    <p class="text-green-400 font-normal">@lang('lang.detT_open')</p>
+                                                @else
+                                                    <p class="text-red-400 font-normal">@lang('lang.detT_close')</p>
+                                                @endif
                                             </div>
                                             <div class="col-span-3 md:text-right">
-                                                <p class="text-xl font-medium text-gray-600">{{$task->budget}} sum</p>
-                                                <a href="#" class="text-sm text-gray-500 hover:text-red-600 my-3">@lang('lang.mytasks_sportMaster')</a>
-                                                <p class="text-sm text-gray-500">@lang('lang.mytasks_noFeedback')</p>
+                                                <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
+                                                @foreach ($categories as $category)
+                                                    @if($category->id == $task->category_id)
+                                                        <a class="text-sm text-gray-500 hover:text-red-600 my-3">{{$category->name}}</a>
+                                                    @endif
+                                                @endforeach
+                                                    <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
                                             </div>
                                         </div>
                                     </div>

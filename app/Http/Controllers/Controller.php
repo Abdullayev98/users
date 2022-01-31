@@ -109,8 +109,9 @@ class Controller extends BaseController
     {
         $tasks = Task::where('user_id', Auth::id())->get();
         $task_count = Task::where('user_id', Auth::id())->count();
+        $perform_tasks = Task::where('performer_id', auth()->id())->get();
         $categories = Category::get();
-        return view('task.mytasks', compact('tasks', 'task_count', 'categories'));
+        return view('task.mytasks', compact('tasks', 'task_count', 'categories','perform_tasks'));
     }
 
     public function category($id)

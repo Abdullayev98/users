@@ -97,7 +97,7 @@ return [
     'detT_onTask' => "Vazifada",
     'detT_callback1' => "sorov",
     'detT_callback2' => "sorov",
-    'detT_callback3' => "sorov",
+    'detT_callback3' => "So'rovlar soni",
     'detT_noCallbacks' => "Ishda sorovlar yo'q",
     'detT_byRating' => "baho bo'yicha",
     'detT_byTime' => "vaqt bo'yicha",
@@ -124,7 +124,7 @@ return [
     'mytasks_allCat' => "Barcha toifalar",
     'mytask_onTask' => "bu topshiriqda sorovlar",
     'mytask_callbacks' => "ta",
-    'mytask_avarage' => "Hammasi bolib",
+    'mytask_avarage' => "Topshiriqlar soni :",
     'mytask_tasksFound' => "ta vazifa bor",
     // mytasks.blade end
 
