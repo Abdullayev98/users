@@ -1083,5 +1083,6 @@ return [
     'detailedT_text18' => "Откликнуться на это задание",
     'detailedT_text19' => "Оставить отзыв",
     //detailed tasks blade ended
+    //data
 
 ];
