@@ -107,21 +107,19 @@ class ProfileController extends Controller
     }
     public function imageUpdate(Request $request)
     {
-        dd($request->all());
         $request->validate([
             'avatar' => 'required|image'
         ]);
         $user= Auth::user();
-        $data = $request->all();
         if($request->hasFile('avatar')){
-            $destination = 'AvatarImages/'.$user->avatar;
+            $destination = 'storage/'.$user->avatar;
             if(File::exists($destination))
             {
                 File::delete($destination);
             }
             $filename = $request->file('avatar');
             $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $filename->move(public_path().'/storage/images/users/',$imagename);
             $data['avatar'] =$imagename;
         }
         $user->update($data);
