@@ -3,6 +3,7 @@
 @section("content")
 
     <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
+    <link href="https://releases.transloadit.com/uppy/v2.1.0/uppy.min.css" rel="stylesheet">
     <div class="w-11/12  mx-auto text-base mt-4">
 
 
@@ -18,7 +19,7 @@
                     <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
 
                     <div class="flex flex-row w-80 mt-6" style="width:500px">
-                        <div class="w-1/3">
+                        <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
                             @if ($user->avatar == Null)
                             src='{{asset("storage/images/default.jpg")}}'
@@ -44,7 +45,7 @@
                             </form>
                         </div>
 
-                        <div class="w-2/3 text-base text-gray-500 ml-4">
+                        <div class="sm:w-2/3 w-full text-base text-gray-500 ml-4">
                             @if($user->age != "")
                                 <p class="inline-block mr-2">
                                     {{$user->age}}
@@ -225,7 +226,7 @@
                         <div class="text-center h-full w-full text-base">
                             <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="input-images my-4"></div>
+                                <div class="w-full h-full" id="photos"></div>
                                 <input type="text" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
                                 <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
                             </form>
@@ -251,11 +252,18 @@
                         <div class="text-center h-full w-full text-base">
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                <div class="flex flex-wrap">
+                                    <div id="div1" class="w-1/4">
+                                        <img src="{{asset('/images/user2.jpg')}}" class="w-32 h-32 my-1" alt="#">
+                                        <button type="button" id="buttonns" class="relative bottom-32 left-6">
+                                            <i class="fas fa-times text-lg w-full"></i>
+                                        </button>
+                                    </div>   
+                                </div>
                                 <div class="input-images my-4">
-                                   
                                 </div>
                                 <input type="text" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
-                                <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-pointer" value="Изменить">
+                                <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-pointer" value="@lang('lang.profile_save')">
                                 <input type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded cursor-pointer" value="Удалить">
                             </form>
                         </div>
@@ -280,6 +288,12 @@
                     document.getElementById(modalID123).classList.toggle("flex");
                     document.getElementById(modalID123 + "-backdrop").classList.toggle("flex");
                 }
+                $(document).ready(function() {
+                    $('#buttonns').click(function() {
+                        $('#div1').addClass('hidden');
+                        $(this).addClass('hidden');
+                    });
+                });
             </script>
     <script>
         $(function(){
@@ -298,6 +312,76 @@
             imagesInputName: 'images',
             preloadedInputName: 'preloaded',
             label: ''
+        });
+    </script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
+    <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
+    <script>
+         var uppy = new Uppy.Core({
+            debug: true,
+            autoProceed: true,
+            restrictions: {
+                minFileSize: null,
+                maxFileSize: 10000000,
+                maxTotalFileSize: null,
+                maxNumberOfFiles: 10,
+                minNumberOfFiles: 0,
+                allowedFileTypes: null,
+                requiredMetaFields: [],
+            },
+            meta: {},
+            onBeforeFileAdded: (currentFile, files) => currentFile,
+            onBeforeUpload: (files) => {
+            },
+            locale: {},
+            store: new Uppy.DefaultStore(),
+            logger: Uppy.justErrorsLogger,
+            infoTimeout: 5000,
+        })
+            .use(Uppy.Dashboard, {
+                trigger: '.UppyModalOpenerBtn',
+                inline: true,
+                target: '#photos',
+                showProgressDetails: true,
+                note: 'Все типы файлов, до 10 МБ',
+                height: 300,
+                metaFields: [
+                    {id: 'name', name: 'Name', placeholder: 'file name'},
+                    {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
+                ],
+                browserBackButtonClose: true
+            })
+
+            .use(Uppy.ImageEditor, {target: Uppy.Dashboard})
+            .use(Uppy.DropTarget, {target: document.body})
+            .use(Uppy.GoldenRetriever)
+            .use(Uppy.XHRUpload, {
+                endpoint: '/task/create/upload',
+                fieldName: 'file',
+                headers: file => ({
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }),
+            });
+
+        uppy.on('upload-success', (file, response) => {
+            const httpStatus = response.status // HTTP status code
+            const httpBody = response.body   // extracted response data
+
+            // do something with file and response
+        });
+
+
+        uppy.on('file-added', (file) => {
+            uppy.setFileMeta(file.id, {
+                size: file.size,
+
+            })
+            console.log(file.name);
+        });
+        uppy.on('complete', result => {
+            console.log('successful files:', result.successful)
+            console.log('failed files:', result.failed)
         });
     </script>
 
