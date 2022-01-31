@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserUpdateDataRequest;
 use App\Models\Portfolio_new;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
@@ -13,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserView;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class ProfileController extends Controller
 {
 
@@ -91,29 +94,11 @@ class ProfileController extends Controller
         $task = Task::where('user_id',Auth::user()->id)->count();
         return view('profile.settings', compact('user','categories','views','task'));
     }
-    public function updateData(Request $request)
+    public function updateData(UserUpdateDataRequest $request)
     {
-        
-      $int = (int)$request->input('role');
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'age' => 'required',
-            'phone_number' => 'required',
-            'description' => 'required',
-            'location' => 'required',
-            'role' => 'required',
-        ]);
-        Auth::user()->update([
-            'name'=>$request->input('name'),
-            'settings'=>$request->input('name'),
-            'email'=>$request->input('email'),
-            'age'=>$request->input('age'),
-            'phone_number'=>$request->input('phone_number'),
-            'description'=>$request->input('description'),
-            'location'=>$request->location,
-            'role_id'=>$int,
-        ]);
+        $data = $request->validated();
+        Auth::user()->update($data);
+        Alert::success('Success', "Successfully Updated");
         return  redirect()->route('editData');
     }
     public function imageUpdate(Request $request)

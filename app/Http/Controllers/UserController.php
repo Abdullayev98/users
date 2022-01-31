@@ -213,7 +213,7 @@ class UserController extends Controller
                 Task::findOrFail($request->for_ver_func)->update(['status' => 1]);
                 return redirect()->route('userprofile');
             } else {
-                return back()->with('expired_message', 'Verification code expired   ');
+                return back()->with('expired_message', 'Verification code expired');
             }
         } else {
             return back()->with('incorrect_message', 'Verification code incorrect');
