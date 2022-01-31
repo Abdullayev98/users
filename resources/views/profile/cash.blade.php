@@ -2,7 +2,7 @@
 
 @section("content")
 
-</style>
+
 
     <div class="w-11/12  mx-auto text-base mt-4">
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
@@ -17,7 +17,7 @@
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="flex flex-row mt-6" style="width:500px">
-                        <div class="w-1/3">
+                        <div class="sm:w-1/3 w-full">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
                                 src='{{asset("images/default_img.jpg")}}'
@@ -43,7 +43,7 @@
                             </form>
                         </div>
 
-                        <div class="w-2/3 text-base text-gray-500 ml-4">
+                        <div class="sm:w-2/3 w-full text-base text-gray-500 ml-4">
                             @if($user->age != "")
                                 <p class="inline-block mr-2">
                                     {{$user->age}}
