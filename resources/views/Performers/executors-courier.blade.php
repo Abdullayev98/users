@@ -115,30 +115,30 @@
                             </a>
                             <div class="align-top ml-12 min-h-10">
                             <span>
-                                @if ($user->id == $review->reviewer_id)
+                                @if ($user->id == $review->user_id)
                                 <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$user->name}}</a>
                                 @endif
                             </span>
                                 <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    @if ($user->id == $review->reviewer_id)
-                                    @if ($user->role_id == 2)
-                                    Отзыв:
-                                    @if ($review->good_bad == 1)
-                                    <i class="far fa-thumbs-up"></i>
-                                    @else
-                                    <i class="far fa-thumbs-down"></i>
-                                    @endif
-                                    Исполнитель
-                                    @else
-                                    Отзыв:
-                                    @if ($review->good_bad == 1)
-                                    <i class="far fa-thumbs-up"></i>
-                                    @else
-                                    <i class="far fa-thumbs-down"></i>
-                                    @endif
-                                    Заказчик
-                                    @endif
+                                    @if ($user->id == $review->user_id)
+                                        @if ($user->role_id == 2)
+                                        Отзыв:
+                                            @if ($review->good_bad == 1)
+                                                <i class="far fa-thumbs-up"></i>
+                                            @else
+                                                <i class="far fa-thumbs-down"></i>
+                                            @endif
+                                        Исполнитель
+                                        @else
+                                        Отзыв:
+                                            @if ($review->good_bad == 1)
+                                                <i class="far fa-thumbs-up"></i>
+                                            @else
+                                                <i class="far fa-thumbs-down"></i>
+                                            @endif
+                                        Заказчик
+                                        @endif
                                     @endif
                                 </span>
                                 </div>
