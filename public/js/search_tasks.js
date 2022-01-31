@@ -1,4 +1,5 @@
 let dataAjax = {};
+let dataAjaxPrint = {};
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -186,9 +187,20 @@ function maps_show(){
     map_pos(k)
 }
 
+function fiveInOne(){
+    resetCounters()
+    if(dataAjaxPrint.length == 0){
+        img_show();
+    }else {
+        tasks_list_all(dataAjaxPrint)
+        tasks_show()
+    }
+    maps_show()
+}
+
 function fiveInOne1(){
     resetCounters()
-    tasks_list_all(dataAjax)
+    tasks_list_all(dataAjaxPrint)
     if(dl==0){
         img_show();
     }else {
@@ -391,7 +403,9 @@ $('.all_cat, .all_cat2').click(function() {
             this.checked = true;
         });
         allCheck = 1;
-        fiveInOne1();
+        dataAjaxPrint = {};
+        dataAjaxPrint = dataAjax;
+        fiveInOne();
     }
 });
 
@@ -694,3 +708,79 @@ function map_pos(mm) {
         }
     }
 }
+
+function map1_show (){
+
+    $("#big-big").empty();
+    $("#big-big").append(
+        `<div id="map1" class="h-52 overflow-hidden my-5 rounded-lg w-36 static">
+                <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
+            </div>`
+    )
+    ymaps.ready(init);
+    function init() {
+        var myMap1 = new ymaps.Map('map1', {
+                center: [41.317648, 69.230585],
+                zoom: 10,
+                // behaviors: ['default', 'scrollZoom']
+            }, {
+                searchControlProvider: 'yandex#search'
+            }),
+
+            clusterer = new ymaps.Clusterer({
+                preset: 'islands#invertedVioletClusterIcons',
+                groupByCoordinates: false,
+                clusterDisableClickZoom: true,
+                clusterHideIconOnBalloonOpen: false,
+                geoObjectHideIconOnBalloonOpen: false
+            }),
+
+            getPointOptions = function () {
+                return {
+                    preset: 'islands#violetIcon'
+                };
+            },
+            geoObjects = [];
+
+        for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
+            geoObjects[i] = new ymaps.Placemark(dataAjax[i].coordinates, getPointData(i), getPointOptions());
+        }
+
+        clusterer.options.set({
+            gridSize: 80,
+            clusterDisableClickZoom: false
+        });
+        clusterer.add(geoObjects);
+        myMap1.geoObjects.add(clusterer);
+        myMap1.setBounds(clusterer.getBounds(), {
+            checkZoomRange: false
+        });
+
+        circle = new ymaps.Circle([[41.317648, 69.230585], r * 1000], null, {draggable: true}, {fill: false});
+        myMap1.geoObjects.add(circle);
+    }
+}
+
+
+
+
+
+
+// script for mobile
+
+$(document).ready(function() {
+    $("#show").click(function() {
+        map1_show();
+        $("#hide").css('display', 'block');
+        $("#show").css('display', 'none');
+        $("#scrollbar").css('display', 'none');
+        $("footer").css('display', 'none');
+    });
+    $("#hide").click(function() {
+        $('#big-big').addClass("hidden");
+        $("#hide").css('display', 'none');
+        $("#show").css('display', 'block');
+        $("#scrollbar").css('display', 'block');
+        $("footer").css('display', 'block');
+    });
+});
