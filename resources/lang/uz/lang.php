@@ -73,6 +73,7 @@ return [
     'detT_dealWithoutRisk' => "Xavfsiz savdo",
     'detT_insuredPer' => "Mijoz sug'urtalangan ijrochilarga ustunlik beradi",
     'detT_open' => "Ochiq",
+    'detT_close' => "Yopiq",
     'detT_budget' => "Byudjet",
     'detT_spot' => "Joy",
     'detT_need' => "Kerak",

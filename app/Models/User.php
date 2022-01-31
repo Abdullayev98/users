@@ -70,8 +70,11 @@ class User extends \TCG\Voyager\Models\User
     public function reviews() {
         return $this->hasMany(Review::class);
     }
-
+    public function review() {
+        return $this->belongsTo(Review::class);
+    }
     public function views(){
         return $this->hasMany(UserView::class,'performer_id');
     }
+
 }

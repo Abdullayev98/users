@@ -73,6 +73,7 @@ return [
     'detT_dealWithoutRisk' => "Сделка без риска",
     'detT_insuredPer' => "Заказчик отдает предпочтение застрахованным исполнителям",
     'detT_open' => "Открыто",
+    'detT_close' => "Закрыто",
     'detT_budget' => "Бюджет",
     'detT_spot' => "Место",
     'detT_need' => "Нужно",
