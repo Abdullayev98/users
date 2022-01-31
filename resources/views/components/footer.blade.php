@@ -108,9 +108,9 @@
         $(".contact").removeAttr("href");
         $(".review").removeAttr("href");
     }
-  
+
             var link = document.location.href.split('/');
-            if(link[3] == 'verification'){       
+            if(link[3] == 'verification'){
                 $(".verify").addClass("text-yellow-400");
             }
             else if(link[3] == 'contacts'){
