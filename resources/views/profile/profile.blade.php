@@ -21,9 +21,9 @@
                         <div class="w-1/3">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
-                                src='{{asset("images/default_img.jpg")}}'
+                                src='{{asset("storage/images/default.jpg")}}'
                                 @else
-                                src="{{asset("AvatarImages/{$user->avatar}")}}"
+                                src="{{asset("storage/{$user->avatar}")}}"
                                 @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf

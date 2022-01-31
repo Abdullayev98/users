@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdateDataRequest;
+use \TCG\Voyager\Models\Category;
 use App\Models\Portfolio_new;
 use App\Models\Region;
 use Illuminate\Support\Facades\File;
@@ -91,7 +92,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $views = count( UserView::where('performer_id', $user->id)->get());
-        $categories = DB::table('categories')->where('parent_id',Null)->get();
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $regions = Region::withTranslations(['ru','uz'])->get();
         return view('profile.settings', compact('user','categories','views','regions'));
     }
@@ -106,6 +107,7 @@ class ProfileController extends Controller
     }
     public function imageUpdate(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'avatar' => 'required|image'
         ]);

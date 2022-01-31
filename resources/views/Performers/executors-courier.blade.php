@@ -21,11 +21,11 @@
 
                    <div class="flex w-full mt-6">
                     <div class="flex-initial w-1/3">
-                      <img class="h-48 w-44" 
+                      <img class="h-48 w-44"
                       @if ($user->avatar == Null)
-                      src='{{asset("images/default_img.jpg")}}'
+                      src='{{asset("storage/images/default.jpg")}}'
                       @else
-                      src="{{asset("AvatarImages/{$user->avatar}")}}"
+                      src="{{asset("storage/{$user->avatar}")}}"
                       @endif alt="">
                     </div>
                     <div class="flex-initial w-2/3 lg:ml-0 ml-6">
@@ -54,7 +54,7 @@
                                     @endif
                                 </p>
                             </span>
-                            
+
                         </div>
                         <div class="text-gray-500 text-base mt-6">
                             <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
