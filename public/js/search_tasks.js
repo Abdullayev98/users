@@ -713,7 +713,7 @@ function map1_show (){
 
     $("#big-big").empty();
     $("#big-big").append(
-        `<div id="map1" class="h-52 overflow-hidden my-5 rounded-lg w-36 static">
+        `<div id="map1" class="h-52 overflow-hidden my-5 rounded-lg w-full static">
                 <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
             </div>`
     )
@@ -775,6 +775,7 @@ $(document).ready(function() {
         $("#show").css('display', 'none');
         $("#scrollbar").css('display', 'none');
         $("footer").css('display', 'none');
+        $('#big-big').removeClass("hidden");
     });
     $("#hide").click(function() {
         $('#big-big').addClass("hidden");

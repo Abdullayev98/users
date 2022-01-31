@@ -2,11 +2,11 @@
 
 @section("content")
 
-    <div class="mx-auto w-9/12 my-16">
+    <div class="mx-auto w-11/12 xl:w-9/12 my-8 md:my-16">
         <div class="grid lg:grid-cols-5 grid-cols-5 container mx-auto text-base">
-            <div class="col-span-3">
+            <div class="col-span-5">
                 <div class="w-full bg-yellow-50 my-5 rounded-md">
-                    <div class="px-5 py-5">
+                    <div class="px-5 py-5 hidden md:block">
                     <!-- <form action="{{route('search')}}" method="get"> -->
                         <div class="grid grid-cols-4 gap-4 mb-3">
 
@@ -101,7 +101,7 @@
                     </div>
                 </div>
 
-                    <div id="big-big" class="h-50 w-screen my-5 rounded-lg w-full static">
+                    <div id="big-big" class="h-full my-5 rounded-lg w-full static">
 
                     </div>
 
@@ -165,7 +165,7 @@
 
                         </div>
                     </div>
-                    <div class="b-tasks-sorting">
+                    <div class="b-tasks-sorting hidden md:block">
                         <div class="inline-flex items-center my-5">
                             <span class="title__994cd">@lang('lang.search_filter')</span>
 
