@@ -94,6 +94,7 @@ class ProfileController extends Controller
         $views = count( UserView::where('performer_id', $user->id)->get());
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $regions = Region::withTranslations(['ru','uz'])->get();
+
         return view('profile.settings', compact('user','categories','views','regions'));
     }
     public function updateData(UserUpdateDataRequest $request)
