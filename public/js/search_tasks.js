@@ -578,8 +578,8 @@ function map_pos(mm) {
         $(".big-map").empty();
         $(".small-map").append(
             `<div id="map2" class="h-60 my-5 rounded-lg w-full static">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
-                    </div>`
+             <div class="relative float-right z-50 ml-1"><img src="images/big-map.png" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
+             </div>`
         );
 
         ymaps.ready(init);
@@ -683,8 +683,8 @@ function map_pos(mm) {
         $(".small-map").empty();
         $(".big-map").append(
             `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
-                    <div class="relative float-right z-50 ml-1"><img src="{{asset('images/small-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(1)"/></div>
-                    </div>`
+             <div class="relative float-right z-50 ml-1"><img src="images/small-map.png" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(1)"/></div>
+             </div>`
         )
         ymaps.ready(init);
         function init() {

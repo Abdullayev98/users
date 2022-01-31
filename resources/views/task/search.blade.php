@@ -205,6 +205,11 @@
         </div>
     </div>
 
+    <style>
+        [class*="copyrights-pane"]
+        {display: none !important;}
+    </style>
+
     <link href="{{ asset('/css/checkboxes.css') }}" rel="stylesheet">
 
     <div class="w-full" x-data="topBtn">
@@ -263,6 +268,7 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
+                    console.log(dataAjax)
                     fiveInOne1();
                 },
                 error: function () {
