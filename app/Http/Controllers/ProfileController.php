@@ -167,9 +167,10 @@ class ProfileController extends Controller
 
     //portfolio
     public function StorePicture(Request $request){
-        // $request->validate([
-        //   'images' => 'required|image'
-        // ]);
+        $request->validate([
+          'images' => 'required|image',
+          'comment' => 'required',
+        ]);
         $photos = $request->file('images');
         if($photos){
             $comment = new Portfoliocomment;
