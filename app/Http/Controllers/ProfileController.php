@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserPasswordRequest;
 use App\Http\Requests\UserUpdateDataRequest;
+use Illuminate\Support\Facades\Hash;
 use \TCG\Voyager\Models\Category;
 use App\Models\Portfolio_new;
 use App\Models\Region;
@@ -187,5 +189,23 @@ class ProfileController extends Controller
         return redirect()->back();
 
     }
+
+
+    public function change_password(UserPasswordRequest $request){
+
+        $data = $request->validated();
+
+        $data['password'] = Hash::make($data['password']);
+        auth()->user()->update($data);
+
+        Alert::success("Success!", "Your Password was successfully updated");
+
+        return redirect()->back()->with([
+            'password' => 'password'
+        ]);
+
+
+    }
+
 
 }
