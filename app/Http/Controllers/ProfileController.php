@@ -119,8 +119,8 @@ class ProfileController extends Controller
                 File::delete($destination);
             }
             $filename = $request->file('avatar');
-            $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/storage/images/users/',$imagename);
+            $imagename = "user-avatar/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/storage/user-avatar/',$imagename);
             $data['avatar'] =$imagename;
         }
         $user->update($data);
