@@ -14,8 +14,11 @@ class ReportController extends Controller
     public function index(Report $report)
     {
         $table = $report->getTable();
+
         $columns = DB::select( 'SHOW FULL COLUMNS FROM reports' );
         $task_parent = Category::where('parent_id', null)->get();
-        //return view('vendor.voyager.report.report', compact('report','table','columns','task_parent'));
+        $task = Task::where('category_id', $task_parent)->count();
+        
+        return view('vendor.voyager.report.report', compact('task','report','table','columns','task_parent'));
     }
 }

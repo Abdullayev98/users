@@ -3,6 +3,7 @@
 @section("content")
 
     <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
+    <link href="https://releases.transloadit.com/uppy/v2.1.0/uppy.min.css" rel="stylesheet">
     <div class="w-11/12  mx-auto text-base mt-4">
 
 
@@ -18,13 +19,13 @@
                     <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
 
                     <div class="flex flex-row w-80 mt-6" style="width:500px">
-                        <div class="w-1/3">
-                                <img class="border border-3 border-gray-400 h-40 w-40"
-                                @if ($user->avatar == Null)
-                                src='{{asset("storage/images/default.jpg")}}'
-                                @else
-                                src="{{asset("storage/{$user->avatar}")}}"
-                                @endif alt="">
+                        <div class="sm:w-1/3 w-full">
+                            <img class="border border-3 border-gray-400 h-40 w-40"
+                            @if ($user->avatar == Null)
+                            src='{{asset("storage/images/default.jpg")}}'
+                            @else
+                            src="{{asset("storage/{$user->avatar}")}}"
+                            @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
@@ -44,7 +45,7 @@
                             </form>
                         </div>
 
-                        <div class="w-2/3 text-base text-gray-500 ml-4">
+                        <div class="sm:w-2/3 w-full text-base text-gray-500 ml-4">
                             @if($user->age != "")
                                 <p class="inline-block mr-2">
                                     {{$user->age}}
@@ -105,8 +106,10 @@
                                 @endif
                                 <form action="{{route('edit.description')}}" method="POST" class="formdesc hidden">
                                     @csrf
-                                    <textarea name="description" name="description" class="w-full h-32 border border-gray-400 py-2 px-4 mt-3" @if (!$user->description) placeholder="Enter description"@endif >@if ($user->description){{$user->description}}@endif
-                                    </textarea><br>
+                                    <textarea name="description" name="description"
+                                              class="w-full h-32 border border-gray-400 py-2 px-4 mt-3"
+                                              @if (!$user->description) placeholder="Enter description"@endif
+                                    >@if ($user->description){{$user->description}}@endif</textarea><br>
                                     <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="@lang('lang.profile_save')">
                                     <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">@lang('lang.profile_cancel')</a>
                                 </form>
@@ -118,20 +121,22 @@
                             <span>Создать фотоальбом</span>
                            </a>
                         </div>
-                        
+
+
                         <div class="flex sm:flex-row flex-col mb-6">
-                            <div class="border border-gray-400 w-56 h-48 cursor-pointer mr-6 sm:mb-0 mb-8">
-                                <img src="" alt="#">
-                                <div class="h-12 flex mt-36 w-full bg-black opacity-75 items-center">
+                            <a onclick="toggleModal5('modal-id5')" href="#" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
+                                <img src="{{asset('/images/user2.jpg')}}" alt="#" class="w-56 h-48">
+                                <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
                                     <p class="w-2/3 text-center text-base text-white">salom</p>
                                    <div class="w-1/3 flex items-center">
                                         <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
                                         <span class="text-white">5</span>
                                    </div>
                                 </div>
-                            </div>
-                            <div  onclick="toggleModal123('modal-id123')"  class="flex border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
-                                <i class="fas fa-plus m-auto text-6xl"></i>
+                            </a>
+                            <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
+                                <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
+                                <span class="mx-auto text-xs mt-2">Создать новый альбом</span>
                             </div>
                         </div>
 
@@ -206,8 +211,9 @@
         </div>
     </div>
 
-            {{-- Modal start --}}
 
+
+            {{-- Modal1 start --}}
             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
                 <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
                     <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
@@ -222,7 +228,7 @@
                         <div class="text-center h-full w-full text-base">
                             <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="input-images my-4"></div>
+                                <div class="w-full h-full" id="photos"></div>
                                 <input type="text" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
                                 <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
                             </form>
@@ -231,9 +237,52 @@
                 </div>
             </div>
             <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
+            {{-- Modal1 end --}}
 
-            {{-- Modal end --}}
+             {{-- Modal2 start --}}
+             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id5">
+                <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
+                    <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+                        <div class=" text-center p-6  rounded-t">
+                            <button type="submit"  onclick="toggleModal5('modal-id5')" class=" w-100 h-16 absolute top-1 right-4">
+                                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                            </button>
+                            <h3 class="font-medium text-3xl block">
+                                Изменить альбома
+                            </h3>
+                        </div>
+                        <div class="text-center h-full w-full text-base">
+                            <form action="#" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="flex flex-wrap">
+                                    <div id="div1" class="w-1/4">
+                                        <img src="{{asset('/images/user2.jpg')}}" class="w-32 h-32 my-1" alt="#">
+                                        <button type="button" id="buttonns" class="relative bottom-32 left-6">
+                                            <i class="fas fa-times text-lg w-full"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="input-images my-4">
+                                </div>
+                                <input type="text" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
+                                <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-pointer" value="@lang('lang.profile_save')">
+                                <input type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded cursor-pointer" value="Удалить">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id5-backdrop"></div>
+            {{-- Modal2 end --}}
 
+            <script type="text/javascript">
+                function toggleModal5(modalID5){
+                    document.getElementById(modalID5).classList.toggle("hidden");
+                    document.getElementById(modalID5 + "-backdrop").classList.toggle("hidden");
+                    document.getElementById(modalID5).classList.toggle("flex");
+                    document.getElementById(modalID5 + "-backdrop").classList.toggle("flex");
+                }
+            </script>
             <script type="text/javascript">
                 function toggleModal123(modalID123){
                     document.getElementById(modalID123).classList.toggle("hidden");
@@ -241,6 +290,12 @@
                     document.getElementById(modalID123).classList.toggle("flex");
                     document.getElementById(modalID123 + "-backdrop").classList.toggle("flex");
                 }
+                $(document).ready(function() {
+                    $('#buttonns').click(function() {
+                        $('#div1').addClass('hidden');
+                        $(this).addClass('hidden');
+                    });
+                });
             </script>
     <script>
         $(function(){
@@ -259,6 +314,76 @@
             imagesInputName: 'images',
             preloadedInputName: 'preloaded',
             label: ''
+        });
+    </script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
+    <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
+    <script>
+         var uppy = new Uppy.Core({
+            debug: true,
+            autoProceed: true,
+            restrictions: {
+                minFileSize: null,
+                maxFileSize: 10000000,
+                maxTotalFileSize: null,
+                maxNumberOfFiles: 10,
+                minNumberOfFiles: 0,
+                allowedFileTypes: null,
+                requiredMetaFields: [],
+            },
+            meta: {},
+            onBeforeFileAdded: (currentFile, files) => currentFile,
+            onBeforeUpload: (files) => {
+            },
+            locale: {},
+            store: new Uppy.DefaultStore(),
+            logger: Uppy.justErrorsLogger,
+            infoTimeout: 5000,
+        })
+            .use(Uppy.Dashboard, {
+                trigger: '.UppyModalOpenerBtn',
+                inline: true,
+                target: '#photos',
+                showProgressDetails: true,
+                note: 'Все типы файлов, до 10 МБ',
+                height: 300,
+                metaFields: [
+                    {id: 'name', name: 'Name', placeholder: 'file name'},
+                    {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
+                ],
+                browserBackButtonClose: true
+            })
+
+            .use(Uppy.ImageEditor, {target: Uppy.Dashboard})
+            .use(Uppy.DropTarget, {target: document.body})
+            .use(Uppy.GoldenRetriever)
+            .use(Uppy.XHRUpload, {
+                endpoint: '/task/create/upload',
+                fieldName: 'file',
+                headers: file => ({
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }),
+            });
+
+        uppy.on('upload-success', (file, response) => {
+            const httpStatus = response.status // HTTP status code
+            const httpBody = response.body   // extracted response data
+
+            // do something with file and response
+        });
+
+
+        uppy.on('file-added', (file) => {
+            uppy.setFileMeta(file.id, {
+                size: file.size,
+
+            })
+            console.log(file.name);
+        });
+        uppy.on('complete', result => {
+            console.log('successful files:', result.successful)
+            console.log('failed files:', result.failed)
         });
     </script>
 

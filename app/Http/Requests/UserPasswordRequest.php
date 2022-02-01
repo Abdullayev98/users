@@ -27,4 +27,13 @@ class UserPasswordRequest extends FormRequest
             'password' => 'required|confirmed|min:6'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'password.required' => __('login.password.required'),
+            'password.confirmed' => __('login.password.confirmed'),
+            'password.min' => __('login.password.min'),
+        ];
+    }
 }

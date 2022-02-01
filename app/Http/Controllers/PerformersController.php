@@ -74,7 +74,6 @@ class PerformersController extends Controller
         $reviews = Review::get();
         $reviews_count = Review::where('user_id', $id->id)->count();
         $review_users= User::get();
-
         return view('Performers/executors-courier',compact('reviews_count','user','views','tasks','categories','child_categories','task_count','reviews','review_users'));
     }
 

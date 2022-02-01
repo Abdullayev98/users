@@ -12,7 +12,7 @@
                         <div class="w-11/12 float-left">
                             <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                             <div class="flex flex-row">
-                                <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">@lang('lang.deteiledT_before') {{$tasks->budget}}</p>
+                                <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">{{$tasks->budget}}</p>
                                 @if ($tasks->email_confirm == 1)
                                     <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
@@ -24,10 +24,12 @@
                                 @endif
                             </div>
                             <div class="flex flex-row text-gray-400 mt-4">
-                                @if ($tasks->status == 1)
+                                @if ($tasks->status == 3)
                                     <p class="text-amber-500 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_inProsses')</p>
-                                @else
+                                @elseif($tasks->status < 3)
                                     <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
+                                @else
+                                    <p class="text-red-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_close')</p>
                                 @endif
                             <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
                                 <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
@@ -320,6 +322,7 @@
                             <div class="mt-12">
                                 <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
                                 @foreach($same_tasks as $same_task)
+                                    @if($same_task->id != $tasks->id)
                                     <div class="mt-4">
                                         <a href="{{$same_task->id}}" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
                                         @foreach($users as $user)
@@ -328,6 +331,7 @@
                                             @endif
                                         @endforeach
                                     </div>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>

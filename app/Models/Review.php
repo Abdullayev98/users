@@ -15,4 +15,8 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function reviewer()
+    {
+        return $this->hasOne(User::class);
+    }
 }

@@ -73,6 +73,7 @@ return [
     'detT_dealWithoutRisk' => "Сделка без риска",
     'detT_insuredPer' => "Заказчик отдает предпочтение застрахованным исполнителям",
     'detT_open' => "Открыто",
+    'detT_close' => "Закрыто",
     'detT_budget' => "Бюджет",
     'detT_spot' => "Место",
     'detT_need' => "Нужно",
@@ -96,7 +97,7 @@ return [
     'detT_onTask' => "У задания",
     'detT_callback1' => "отклик",
     'detT_callback2' => "откликa",
-    'detT_callback3' => "откликов",
+    'detT_callback3' => "Количество откликов :",
     'detT_noCallbacks' => "У задания нет откликов",
     'detT_byRating' => "по рейтингу",
     'detT_byTime' => "по времени",
@@ -123,7 +124,7 @@ return [
     'mytasks_allCat' => "Все категории",
     'mytask_onTask' => "У задания",
     'mytask_callbacks' => "откликов",
-    'mytask_avarage' => "Всего",
+    'mytask_avarage' => "Количество заданий :",
     'mytask_tasksFound' => "задание найдено",
     // mytasks.blade end
 

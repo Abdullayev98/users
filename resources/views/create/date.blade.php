@@ -11,7 +11,8 @@
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
-
+{{--    <style>.flatpickr-calendar{width:230px;} </style>--}}
+    <style>.flatpickr-calendar{max-width: 295px; width: 100%;} </style>
 @endsection
 
 
@@ -71,27 +72,27 @@
                                     {{--                  <input type="time" name="start_time" value="{{old('start_time')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>--}}
 
                                     <div id="start-date" class="@if(!$errors->has('start_date')) hidden @endif">
-                                        <div class="flatpickr inline-block flex flex-shrink">
-                                            <div class="flex-shrink">
+                                        <div class="flatpickr inline-block flex">
+                                            <div class="flex " >
                                                 <input type="text" name="start_date"
                                                        placeholder="@lang('lang.calendar')"
                                                        data-input
-                                                       class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                       class="w-full max-w-[295px] text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                        required> <!-- input is mandatory -->
                                             </div>
-
+                                            <div class="flatpickr-calendar max-w-[295px] w-full sm:text-sm text-[10px]"></div>
                                             <div class="transform hover:scale-125">
-                                                <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
+                                                <a class="input-button w-1 h-1  pl-1 " title="toggle" data-toggle>
                                                     <i class="far fa-calendar-alt fill-current text-green-600"></i>
                                                 </a>
                                             </div>
-                                            <div class="transform hover:scale-125 ">
-                                                <a class="input-button w-1 h-1 sm:pl-3 pl-1  " title="clear" data-clear>
+                                            <div class="transform hover:scale-125">
+                                                <a class="input-button w-1 h-1 md:pl-2 pl-1 " title="clear" data-clear>
                                                     <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
                                                 </a>
                                             </div>
                                             @error('start_date')
-                                            <p class="pl-5 text-red-500">{{ $message }}</p>
+                                            <p class="lg:text-base md:text-xs text-xs pl-1 text-red-500">{{ $message }}</p>
                                             @enderror
                                         </div>
                                     </div>
@@ -119,11 +120,11 @@
                                     {{--                  </p>--}}
                                     {{--                </div>--}}
                                     <div id="end-date" class="@if(!$errors->has('end_date')) hidden @endif">
-                                        <div class="flatpickr inline-block flex flex-shrink">
-                                            <div class="flex-shrink">
+                                        <div class="flatpickr inline-block flex ">
+                                            <div class="flex">
                                                 <input type="text" name="end_date" placeholder="@lang('lang.calendar')"
                                                        data-input
-                                                       class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                       class="w-full max-w-[295px] bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                        required> <!-- input is mandatory -->
                                             </div>
 
@@ -132,13 +133,13 @@
                                                     <i class="far fa-calendar-alt fill-current text-green-600"></i>
                                                 </a>
                                             </div>
-                                            <div class="transform hover:scale-125 ">
-                                                <a class="input-button w-1 h-1 sm:pl-3 pl-1  " title="clear" data-clear>
+                                            <div class="transform hover:scale-125">
+                                                <a class="input-button w-1 h-1 md:pl-2 pl-1  " title="clear" data-clear>
                                                     <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
                                                 </a>
                                             </div>
                                             @error('end_date')
-                                            <p class="pl-5 text-red-500">{{ $message }}</p>
+                                            <p class="lg:text-base md:text-sm text-xs pl-1 text-red-500">{{ $message }}</p>
                                             @enderror
                                         </div>
                                     </div>

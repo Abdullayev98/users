@@ -50,7 +50,7 @@ Route::get('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-    Route::get('/report', [ReportController::class, 'index']);
+    Route::get('/reports', [ReportController::class, 'index'])->name("voyager.reports.index");
     Route::get("users/activitiy/{user}", [VoyagerUserController::class, "activity"])->name("users.activity");
     Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.index");
     Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating");

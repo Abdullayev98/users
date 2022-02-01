@@ -110,35 +110,38 @@
                         @foreach ($reviews as $review)
                             @if($review->user_id == $user->id)
                         <li class="d-flex flex-col my-10 rounded-lg">
-                            <a href="#" target="_blank" rel="noreferrer noopener" class="w-1 h-1 overflow-hidden rounded-full border-b-0">
+                            <a href="#" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
                                 <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
                             </a>
                             <div class="align-top ml-12 min-h-10">
                             <span>
-                                @if ($user->id == $review->reviewer_id)
-                                <a href="/performers/{{$user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$user->name}}</a>
+                                @foreach ($review_users as $r_user)
+                                @if ($user->id == $review->user_id && $review->reviewer_id == $r_user->id)
+                                <a href="/performers/{{$r_user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$r_user->name}}</a>
                                 @endif
+                                @endforeach
+
                             </span>
                                 <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
-                                    @if ($user->id == $review->reviewer_id)
-                                    @if ($user->role_id == 2)
-                                    Отзыв:
-                                    @if ($review->good_bad == 1)
-                                    <i class="far fa-thumbs-up"></i>
-                                    @else
-                                    <i class="far fa-thumbs-down"></i>
-                                    @endif
-                                    Исполнитель
-                                    @else
-                                    Отзыв:
-                                    @if ($review->good_bad == 1)
-                                    <i class="far fa-thumbs-up"></i>
-                                    @else
-                                    <i class="far fa-thumbs-down"></i>
-                                    @endif
-                                    Заказчик
-                                    @endif
+                                    @if ($user->id == $review->user_id)
+                                        @if ($user->role_id == 2)
+                                        Отзыв:
+                                            @if ($review->good_bad == 1)
+                                                <i class="far fa-thumbs-up"></i>
+                                            @else
+                                                <i class="far fa-thumbs-down"></i>
+                                            @endif
+                                        Исполнитель
+                                        @else
+                                        Отзыв:
+                                            @if ($review->good_bad == 1)
+                                                <i class="far fa-thumbs-up"></i>
+                                            @else
+                                                <i class="far fa-thumbs-down"></i>
+                                            @endif
+                                        Заказчик
+                                        @endif
                                     @endif
                                 </span>
                                 </div>
@@ -178,14 +181,6 @@
                     <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">{{$cat->name}}</a> </li>
                     @endif
                     @endforeach
-                    <!-- <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Услуги пешего курьера</a>  ................................................1 место</li> -->
-                    <!-- <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Другая посылка</a>  ...............................................................1 место</li>
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Срочная доставка</a>  ..........................................................1 место</li>
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Доставка продуктов</a>  .....................................................1 место</li>
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Купить и доставить</a>  .......................................................2 место</li>
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Услуги курьера на легковом авто</a>  .........................4 место</li>
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Доставка еды из ресторанов</a>(нет выполненных заданий) </li>
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">Курьер на день</a>(нет выполненных заданий)</li> -->
                   </ul>
                </div>
                 @endif

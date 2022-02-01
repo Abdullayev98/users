@@ -62,8 +62,9 @@ class SearchTaskController extends VoyagerBaseController
 
     public function my_tasks(){
         $tasks = Task::where('user_id', auth()->id())->get();
+        $perform_tasks = Task::where('performer_id', auth()->id())->get();
         $categories = Category::get();
-        return view('/task/mytasks',compact('tasks','categories'));
+        return view('/task/mytasks',compact('tasks','categories','perform_tasks'));
     }
     public function search(Request $request){
       $s = $request->s;
