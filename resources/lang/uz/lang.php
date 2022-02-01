@@ -607,6 +607,8 @@ return [
     'contact_name' => "Ism",
     'contact_number' => "Telefon raqami",
     'contact_send' => "Yuborish",
+    'contact_yourContacts' => "Sizning kontaktlaringiz",
+    'contact_auth' => "Авторизация",
     // contacts.blade end
 
     // date.blade start

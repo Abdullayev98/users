@@ -24,7 +24,7 @@ return [
     'body_performerDocs' => "«Проверенные исполнители» подтвердили свои документы на Universal Services.",
     'body_feedback' => "Доверенные отзывы",
     'body_over1mln' => "Более 1 000 000 отзывов от заказчиков помогут выбрать подходящего исполнителя.",
-    'body_economy' => "С Universal Services вы экономите на услугах до 70%*.<br> Как это возможно?",
+    'body_economy' => "С Universal Services вы экономите на услугах до 70%.<br> Как это возможно?",
     'body_createTask' => "Создать задания",
     'body_putTask' => "Разместите задание прямо сейчас",
     'body_findPerformer' => "и найдите <br> исполнителя за несколько минут",
@@ -609,6 +609,8 @@ return [
     'contact_name' => "Имя",
     'contact_number' => "Номер телефона",
     'contact_send' => "Отправить",
+    'contact_yourContacts' => "Ваши контакты",
+    'contact_auth' => "Авторизация",
     // contacts.blade end
 
     // date.blade start
@@ -898,7 +900,7 @@ return [
     'footer_contact' => "Контакты",
     'footer_costumersreviews' => "Отзывы заказчиков",
     'footer_text' => "Служба поддержки",
-    'footer_foot' => "  © 2021 Universal services (users.uz) ·",
+    'footer_foot' => "  © 2021 Universal services (users.uz)",
     'footer_text1' => "Правила сервиса",
     'footer_text2' => "заданий уже создано",
     'footer_text3' => "в этих категориях",
