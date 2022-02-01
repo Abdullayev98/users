@@ -270,7 +270,7 @@
             <div class="w-full my-16">
                 <h1 class="text-4xl">@lang('lang.body_whatOthersDoing')</h1>
             </div>
-            <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-48">
+            <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-56">
                 <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
                     <div class="w-full overflow-y-scroll w-full h-screen">
 
