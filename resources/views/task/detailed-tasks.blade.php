@@ -440,7 +440,7 @@
                         document.execCommand("copy");
                         $temp.remove();
                         Swal.fire({
-                            position: 'top-end',
+                            position: 'center',
                             icon: 'success',
                             title: 'Ссылка скопирована в буфер обмена!',
                             showConfirmButton: false,

@@ -142,15 +142,15 @@
             $("#slider-range-min").slider({
                 range: "min",
                 value: 0,
-                min: {{$category->max}} / 5,
+                min: {{$category->max}}/5,
                 max: {{$category->max}},
-                step: {{$category->max}} / 6.2,
+                step: {{$category->max}}/6.2,
                 slide: function(event, ui) {
                     var maximum = {{$category->max}};
                     if (maximum == ui.value) {
-                        $("#amount").val("от " + ui.value + " сум");
+                        $("#amount").val("от " + parseInt(ui.value) + " UZS");
                     } else {
-                        $("#amount").val("до " + ui.value + " сум");
+                        $("#amount").val("до " + parseInt(ui.value) + " UZS");
                     }
                 }
             });
@@ -158,7 +158,7 @@
             $(".ui-slider-range").css("background", 'linear-gradient(rgb(255, 132, 56)  , rgb(255, 132, 56))');
             $(".ui-slider-range").css("top", '-255px');
             $(".ui-slider-handle").text("<>");
-            $("#amount").val($("#slider-range-min").slider("value"));
+            $("#amount").val('до ' + $("#slider-range-min").slider("value") + ' UZS');
         });
     </script>
 @endsection

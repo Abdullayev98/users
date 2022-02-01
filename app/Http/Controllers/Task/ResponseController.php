@@ -7,6 +7,7 @@ use App\Models\Response;
 use App\Models\Task;
 use App\Models\WalletBalance;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ResponseController extends Controller
 {
@@ -28,10 +29,16 @@ class ResponseController extends Controller
         }
         $response = Response::create($data);
         $ballance = WalletBalance::where('user_id', auth()->user()->id)->first();
-        $ballance->balance = $ballance->balance - $request->pay;
-//        dd($ballance->balance);
-        $ballance->save();
-        return back();
+        if ($ballance->balance < 4000){
+            Alert::error("Balance", 'asdweqweqw');
+            return back();
+        }else {
+            Alert::success("Success", 'asdweqweqw');
+
+            $ballance->balance = $ballance->balance - $request->pay;
+            $ballance->save();
+            return back();
+        }
     }
 
 
