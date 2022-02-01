@@ -15,7 +15,8 @@
                             @foreach($categories as $category)
                                 <button type="button"
                                         class="slider__item bg-inherit hover:bg-yellow-300 border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
-                                    <i class="fas mr-4 {{ $category->ico }}"></i>
+                                    <style>.slider__item{max-width: 100%; height: 90px}</style>
+                                    <i class="fas sm:mr-4 mr-2 {{ $category->ico }}"></i>
                                     <a href="{{route('categories',['id'=>$category->id])}}" class="text-sm lg:text-lg">
                                         {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </a>
