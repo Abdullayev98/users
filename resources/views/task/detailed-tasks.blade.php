@@ -7,7 +7,7 @@
             @else
                 <div class="mx-auto w-9/12">
                     @endif
-                    <div class="mt-8 md:flex mb-8">
+                    <div class="mt-8 lg:flex mb-8">
                         {{-- left sidebar start --}}
                         <div class="w-11/12 float-left">
                             <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
@@ -31,7 +31,6 @@
                                 @else
                                     <p class="text-red-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_close')</p>
                                 @endif
-                            <!-- <p class="mx-3 px-3 border-x-2 border-gray-400">7 просмотров</p> -->
                                 <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
                                 @foreach($categories as $category)
                                     <p class="pr-3 ">{{$category->name}}</p>
@@ -57,23 +56,23 @@
                                     <p class=" h-auto w-96">{{$tasks->budget}}</p>
                                 </div>
 
-@isset($tasks->custom_field_values)
-@foreach($tasks->custom_field_values as $value)
-                                    <div class="ml-12 flex flex-row mt-8">
+                                    @isset($tasks->custom_field_values)
+                                    @foreach($tasks->custom_field_values as $value)
+                                                    <div class="ml-12 flex flex-row mt-8">
 
-                                        <h1 class="font-bold h-auto w-48">{{$value->custom_field->title}}</h1>
-                                        <p class=" h-auto w-96">
-@foreach(json_decode($value->value, true) as $value_obj)
-                                                @if ($loop->last)
-                                                    {{$value_obj}}
-                                                @else
-                                                    {{$value_obj}},
-                                                @endif
-@endforeach
-                                        </p>
-                                    </div>
-@endforeach
-@endisset
+                                                        <h1 class="font-bold h-auto w-48">{{$value->custom_field->title}}</h1>
+                                                        <p class=" h-auto w-96">
+                                    @foreach(json_decode($value->value, true) as $value_obj)
+                                                                @if ($loop->last)
+                                                                    {{$value_obj}}
+                                                                @else
+                                                                    {{$value_obj}},
+                                                                @endif
+                                    @endforeach
+                                                        </p>
+                                                    </div>
+                                    @endforeach
+                                        @endisset
 
 
                                 <div class="ml-12 flex flex-row mt-4">
@@ -169,7 +168,7 @@
                                                             <header>
                                                                 <h2 class="font-semibold text-2xl mb-4">@lang('lang.detT_addOffers')</h2>
                                                             </header>
-{{--                                                            <form id="ajaxform">--}}
+
                                                                 <main>
                                                                     <textarea required class="resize-none rounded-md w-full focus:outline-[rgba(255,119,0,4)] border border p-4  transition duration-200 my-4"  type="text" id="form8" rows="4" name="description"></textarea>
                                                                     <hr>
@@ -205,7 +204,7 @@
                                                                         @lang('lang.detT_next')
                                                                     </button>
                                                                 </footer>
-{{--                                                            </form>--}}
+
                                                         </form>
                                                     </div>
                                                 </div>
@@ -264,17 +263,6 @@
                                             @endif
                                             <hr>
                                             @if(isset($task_responses))
-{{--                                                <div class="flex my-2">--}}
-{{--                                                    <div class="mr-2 bg-yellow-200 px-2">--}}
-{{--                                                        <a href="#">@lang('lang.detT_byRating')</a>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">--}}
-{{--                                                        <a href="">@lang('lang.detT_byTime')</a>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="mr-2 text-blue-500 border-b border-dotted border-blue-500 hover:text-red-500 hover:border-red-500">--}}
-{{--                                                        <a href="">@lang('lang.detT_byCallbacks')</a>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
                                                 @foreach ($task_responses as $response)
                                                     <div class="mb-6">
                                                         <div class="my-10">
@@ -290,16 +278,11 @@
                                                                 <div class="text-gray-700">
                                                                     <i class="fas fa-star text-yellow-200 mr-1"></i>@lang('lang.detT_numByNum')
                                                                 </div>
-                                                                <div class="mt-2">
-{{--                                                                    <i class="fas fa-briefcase fa-2x text-blue-300"></i>--}}
-{{--                                                                    <i class="fas fa-shield-alt fa-2x text-green-300"></i>--}}
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="bg-gray-100 rounded-[10px] p-4">
                                                             <div class="ml-0">
                                                                 <div class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}} UZS</div>
-{{--                                                                <div class="text-[17px] text-gray-500">@lang('lang.detT_Hello')</div>--}}
 
                                                                 <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
                                                                         @if($response->not_free == 1)
@@ -346,13 +329,19 @@
                     </div>
 
                     {{-- right sidebar start --}}
-                    <div class="w-3/12 lg:mt-0 mt-8">
+                    <div class="lg:w-3/12 w-1/2 lg:mt-0 mt-8 lg:ml-8 ml-0">
+                        <div class="mb-10">
+                            <h1 class="text-xl font-medium mb-4">Задание № {{$tasks->id}}</h1>
+                            <button class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">
+                                <i class="fas fa-link text-gray-500"></i>
+                            </button>
+                        </div>
                         <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                         <div class="flex flex-row mt-4">
                             <div class="mr-4">
                                 @if (isset($current_user))
                                     <img src="
-                        @if ($current_user->avatar == '')
+                            @if ($current_user->avatar == '')
                                     {{ asset("storage/images/default.png") }}
                                     @else
                                     {{ asset("storage/{$current_user->avatar}") }}
@@ -442,6 +431,23 @@
                 $(".pay").click(function(){
                     $(".pays").attr("value", 4000);
                 });
+                    var $temp = $("<input>");
+                    var $url = $(location).attr('href');
+
+                    $('.copylink').on('click', function() {
+                        $("body").append($temp);
+                        $temp.val($url).select();
+                        document.execCommand("copy");
+                        $temp.remove();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Ссылка скопирована в буфер обмена!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    });
+
                 $("#class_demo1").click(function(){
                     $("#class_demo1").removeClass("text-gray-500");
                     $("#class_demo1").addClass("text-amber-500");

@@ -1,5 +1,5 @@
 let dataAjax = {};
-let dataAjaxPrint = {};
+let dataAjaxPrint = [];
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -13,9 +13,9 @@ function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
         let json = JSON.parse(data.address);
-            $(".show_tasks").append(
-                   `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
-                    <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="`+ data.start_date +`">
+        $(".show_tasks").append(
+            `<div class="sort-table print_block" hidden>
+                    <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-nomer="`+ data.start_date +`">
                     <div class="sm:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
@@ -32,8 +32,19 @@ function tasks_list_all(data) {
                     </div>
                     </div>
                     </div>`,
-            )
+        )
         dl++;
+    });
+}
+
+function dataAjaxSort(){
+    dataAjaxPrint = [];
+    $.each(dataAjax, function(index, data) {
+        $('.chi_cat').each(function() {
+            if (this.checked && this.name == data.category_id) {
+                dataAjaxPrint.push(data);
+            }
+        });
     });
 }
 
@@ -46,8 +57,8 @@ function tasks_list(data) {
             $.each(data, function(index, data) {
                 if (data.category_id == id) {
                     dl++
-                        $(".show_tasks").append(
-                           `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
+                    $(".show_tasks").append(
+                        `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
                             <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="` + data.start_date + `">
                             <div class="sm:w-11/12 w-full h-12 md:m-4 sm:m-2 m-0">
                             <div class="float-left w-9/12 " id="results">
@@ -65,7 +76,7 @@ function tasks_list(data) {
                             </div>
                             </div>
                             </div>`,
-                        )
+                    )
                 }
             });
         }
@@ -78,13 +89,13 @@ $(".rotate").click(function() {
 
 $("#filter").keyup(function() {
     var filter = $(this).val();
-first_ajax('klyuch', filter)
+    first_ajax('klyuch', filter)
 });
 
 $("#price").keyup(function() {
     var filter = $(this).val();
     if(allCheck){
-    first_ajax('price', filter)
+        first_ajax('price', filter)
     }
 });
 
@@ -198,28 +209,6 @@ function fiveInOne(){
     maps_show()
 }
 
-function fiveInOne1(){
-    resetCounters()
-    tasks_list_all(dataAjaxPrint)
-    if(dl==0){
-        img_show();
-    }else {
-        tasks_show()
-    }
-    maps_show()
-}
-
-function fiveInOne2(){
-    resetCounters()
-    tasks_list(dataAjax)
-    if(dl==0){
-        img_show();
-    }else {
-        tasks_show()
-    }
-    maps_show()
-}
-
 function img_show() {
     $(".show_tasks").empty();
     $(".small-map").empty();
@@ -270,19 +259,19 @@ function parcats_click_false(id) {
             this.checked = false;
         }
     });
-    $('.par_cat2').each(function() {
-        if (this.id == id) {
-            this.checked = false;
-        }
-    });
-    $('.all_cat2').each(function() {
-        this.checked = false;
-    });
-    $('.chi_cat2').each(function() {
-        if (this.id == id) {
-            this.checked = false;
-        }
-    });
+    // $('.par_cat2').each(function() {
+    //     if (this.id == id) {
+    //         this.checked = false;
+    //     }
+    // });
+    // $('.all_cat2').each(function() {
+    //     this.checked = false;
+    // });
+    // $('.chi_cat2').each(function() {
+    //     if (this.id == id) {
+    //         this.checked = false;
+    //     }
+    // });
 }
 
 function parcat_check() {
@@ -296,16 +285,16 @@ function parcat_check() {
     return i;
 }
 
-function parcat2_check() {
-    let i = 1;
-    $('.par_cat2').each(function() {
-        if (this.checked == false) {
-            i = 0;
-            return false;
-        }
-    });
-    return i;
-}
+// function parcat2_check() {
+//     let i = 1;
+//     $('.par_cat2').each(function() {
+//         if (this.checked == false) {
+//             i = 0;
+//             return false;
+//         }
+//     });
+//     return i;
+// }
 
 function chicats_click_false(id, name) {
     $('.chi_cat').each(function() {
@@ -321,19 +310,19 @@ function chicats_click_false(id, name) {
     $('.all_cat').each(function() {
         this.checked = false;
     });
-    $('.chi_cat2').each(function() {
-        if (this.name == name) {
-            this.checked = false
-        }
-    });
-    $('.par_cat2').each(function() {
-        if (this.id == id) {
-            this.checked = false;
-        }
-    });
-    $('.all_cat2').each(function() {
-        this.checked = false;
-    });
+    // $('.chi_cat2').each(function() {
+    //     if (this.name == name) {
+    //         this.checked = false
+    //     }
+    // });
+    // $('.par_cat2').each(function() {
+    //     if (this.id == id) {
+    //         this.checked = false;
+    //     }
+    // });
+    // $('.all_cat2').each(function() {
+    //     this.checked = false;
+    // });
 }
 
 function chicat_check(id) {
@@ -349,18 +338,18 @@ function chicat_check(id) {
     return i;
 }
 
-function chicat2_check(id) {
-    let i = 1;
-    $('.chi_cat2').each(function() {
-        if (this.id == id) {
-            if (this.checked == false) {
-                i = 0;
-                return false;
-            }
-        }
-    });
-    return i;
-}
+// function chicat2_check(id) {
+//     let i = 1;
+//     $('.chi_cat2').each(function() {
+//         if (this.id == id) {
+//             if (this.checked == false) {
+//                 i = 0;
+//                 return false;
+//             }
+//         }
+//     });
+//     return i;
+// }
 
 function chicat_check_print() {
     let i = 0;
@@ -373,35 +362,36 @@ function chicat_check_print() {
     return i;
 }
 
-$('.all_cat, .all_cat2').click(function() {
+// $('.all_cat, .all_cat2').click(function() {
+$('.all_cat').click(function() {
     if (this.checked == false) {
         $(".for_check input:checkbox").each(function() {
-            this.checked = false;
-        });
-        $(".for_check2 input:checkbox").each(function() {
             this.checked = false;
         });
         $('.all_cat').each(function() {
             this.checked = false;
         });
-        $('.all_cat2').each(function() {
-            this.checked = false;
-        });
+        // $(".for_check2 input:checkbox").each(function() {
+        //     this.checked = false;
+        // });
+        // $('.all_cat2').each(function() {
+        //     this.checked = false;
+        // });
         allCheck = 0;
         img_show();
     } else {
         $(".for_check input:checkbox").each(function() {
             this.checked = true;
         });
-        $(".for_check2 input:checkbox").each(function() {
-            this.checked = true;
-        });
         $('.all_cat').each(function() {
             this.checked = true;
         });
-        $('.all_cat2').each(function() {
-            this.checked = true;
-        });
+        // $(".for_check2 input:checkbox").each(function() {
+        //     this.checked = true;
+        // });
+        // $('.all_cat2').each(function() {
+        //     this.checked = true;
+        // });
         allCheck = 1;
         dataAjaxPrint = {};
         dataAjaxPrint = dataAjax;
@@ -409,12 +399,14 @@ $('.all_cat, .all_cat2').click(function() {
     }
 });
 
-$('.par_cat, .par_cat2').click(function() {
+// $('.par_cat, .par_cat2').click(function() {
+$('.par_cat').click(function() {
     if (this.checked == false) {
         parcats_click_false(this.id, this.name)
         if (chicat_check_print()) {
             allCheck = 1;
-            fiveInOne2();
+            dataAjaxSort()
+            fiveInOne();
         } else {
             allCheck = 0;
             img_show()
@@ -422,16 +414,19 @@ $('.par_cat, .par_cat2').click(function() {
     } else {
         parcats_click_true(this.id, this.name)
         allCheck = 1;
-        fiveInOne2();
+        dataAjaxSort()
+        fiveInOne();
     }
 });
 
-$('.chi_cat, .chi_cat2').click(function() {
+// $('.chi_cat, .chi_cat2').click(function() {
+$('.chi_cat').click(function() {
     if (this.checked == false) {
         chicats_click_false(this.id, this.name)
         if (chicat_check_print()) {
             allCheck = 1;
-            fiveInOne2();
+            dataAjaxSort()
+            fiveInOne();
         } else {
             allCheck = 0;
             img_show()
@@ -439,7 +434,8 @@ $('.chi_cat, .chi_cat2').click(function() {
     } else {
         chicats_click_true(this.id, this.name)
         allCheck = 1;
-        fiveInOne2();
+        dataAjaxSort()
+        fiveInOne();
     }
 });
 
@@ -461,23 +457,23 @@ function parcats_click_true(id, name) {
             this.checked = false;
         }
     });
-    $('.par_cat2').each(function() {
-        if (this.name == name) {
-            this.checked = true;
-        }
-    });
-    $('.chi_cat2').each(function() {
-        if (this.id == id) {
-            this.checked = true;
-        }
-    });
-    $('.all_cat2').each(function() {
-        if (parcat2_check()) {
-            this.checked = true;
-        } else {
-            this.checked = false;
-        }
-    });
+    // $('.par_cat2').each(function() {
+    //     if (this.name == name) {
+    //         this.checked = true;
+    //     }
+    // });
+    // $('.chi_cat2').each(function() {
+    //     if (this.id == id) {
+    //         this.checked = true;
+    //     }
+    // });
+    // $('.all_cat2').each(function() {
+    //     if (parcat2_check()) {
+    //         this.checked = true;
+    //     } else {
+    //         this.checked = false;
+    //     }
+    // });
 }
 
 function chicats_click_true(id, name) {
@@ -499,28 +495,46 @@ function chicats_click_true(id, name) {
             this.checked = false;
         }
     });
-    $('.chi_cat2').each(function() {
-        if (this.name == name) {
-            this.checked = true;
-        }
-    });
-    $('.par_cat2').each(function() {
-        if (this.id == id) {
-            if (chicat2_check(id))
-                this.checked = true;
-        }
-    });
-    $('.all_cat2').each(function() {
-        if (parcat2_check()) {
-            this.checked = true;
-        } else {
-            this.checked = false;
-        }
-    });
+    // $('.chi_cat2').each(function() {
+    //     if (this.name == name) {
+    //         this.checked = true;
+    //     }
+    // });
+    // $('.par_cat2').each(function() {
+    //     if (this.id == id) {
+    //         if (chicat2_check(id))
+    //             this.checked = true;
+    //     }
+    // });
+    // $('.all_cat2').each(function() {
+    //     if (parcat2_check()) {
+    //         this.checked = true;
+    //     } else {
+    //         this.checked = false;
+    //     }
+    // });
 }
 
 
+$(document).ready(function(){
 
+    $("#srochnost").click(function(){
+        first_ajax('sroch', '')
+    });
+    $(".byid").click(function(){
+        first_ajax('all', '')
+    });
+    $("#as").click(function(){
+        first_ajax('udal', '')
+    });
+    $(".checkboxByAs").change(function() {
+        if(this.checked) {
+            first_ajax('udal', '')
+        }else {
+            first_ajax('all', '')
+        }
+    });
+});
 
 function map_pos(mm) {
     if (mm) {
@@ -529,7 +543,7 @@ function map_pos(mm) {
         $(".big-map").empty();
         $(".small-map").append(
             `<div id="map2" class="h-60 my-5 rounded-lg w-full static">
-             <div class="relative float-right z-10 ml-1"><img src="images/big-map.png" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
+             <div class="relative float-right z-50 ml-1"><img src="/images/big-map.png" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
              </div>`
         );
 
@@ -634,7 +648,7 @@ function map_pos(mm) {
         $(".small-map").empty();
         $(".big-map").append(
             `<div id="map3" class="h-80 my-5 rounded-lg w-3/3 static align-items-center">
-             <div class="relative float-right z-10 ml-1"><img src="images/small-map.png" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(1)"/></div>
+             <div class="relative float-right z-50 ml-1"><img src="/images/small-map.png" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kichiklashtirish" onclick="map_pos(1)"/></div>
              </div>`
         )
         ymaps.ready(init);
@@ -692,11 +706,10 @@ function map_pos(mm) {
 }
 
 function map1_show (){
-
     $("#big-big").empty();
     $("#big-big").append(
         `<div id="map1" class="h-52 overflow-hidden my-5 rounded-lg w-full static">
-                <div class="relative float-right z-50 ml-1"><img src="{{asset('images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>
+<!--                <div class="relative float-right z-50 ml-1"><img src="/images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>-->
             </div>`
     )
     ymaps.ready(init);
