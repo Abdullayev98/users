@@ -319,7 +319,7 @@
                                 </div>
                                 <div id="fourth" class="hidden py-4">
                                     <!-- component -->
-                                    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+                                    <script src="https://cdn.js delivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
                                             defer></script>
 
                                     <div class="container max-w-full me-auto">

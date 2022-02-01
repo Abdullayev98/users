@@ -194,6 +194,9 @@ class ProfileController extends Controller
     public function change_password(UserPasswordRequest $request){
 
         $data = $request->validated();
+        if(!$data){
+            return redirect()->route('settings#four');
+        }
 
         $data['password'] = Hash::make($data['password']);
         auth()->user()->update($data);
