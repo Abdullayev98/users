@@ -13,7 +13,7 @@
                             <div class="sm:inline-flex block w-full col-span-4">
                             <!-- <input class="focus:outline-none  w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
                                 <input id="filter" type="text"
-                                       class="w-10/12 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
+                                       class="focus:outline-none w-10/12 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                        placeholder="@lang('lang.search_byKey')">
                                 <button
                                     class="sm:w-2/12 w-4/12 bg-green-500 hover:bg-green-600 ml-1 py-1 px-1 rounded-md sm:mt-0 text-white"
@@ -25,7 +25,7 @@
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                     <div class="bg-white address float-left py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700">
                                         <input
-                                            class="float-left bg-transparent border-0 w-11/12 h-full focus:outline-none"
+                                            class="focus:outline-none float-left bg-transparent border-0 w-11/12 h-full focus:outline-none"
                                         type="text" id="suggest">
                                         <button id="mpshow" class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">
                                             <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
@@ -35,7 +35,7 @@
 
                                 <div class="w-4/12 lg:w-5/12 lg:ml-1 md:ml-1">
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                    <select name="" id="selectGeo" class="text-[14px] py-1 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); enDis(r); map_pos(k)">
+                                    <select name="" id="selectGeo" class="focus:outline-none  py-1 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); enDis(r); map_pos(k)">
                                         <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                         <option value="1.5">1.5 km</option>
                                         <option value="3">3 km</option>
@@ -52,20 +52,20 @@
                                 </div>
                                 <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
-                                    <input type="text" maxlength="7" class="w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
+                                    <input type="text" maxlength="7" class="focus:outline-none w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
                                 </div>
                             </div>
                             <div class="inline-flex  block w-full col-span-4">
                             <label class="inline-flex items-center mt-3">
-                                <input type="checkbox" class="form-checkbox checkboxByAs  h-5 w-5 text-orange-400"
+                                <input type="checkbox" class="focus:outline-none form-checkbox checkboxByAs  h-5 w-5 text-orange-400"
                                 ><span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_remoteJob')</span>
                             </label>
                             <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
-                                <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
+                                <input type="checkbox" class="focus:outline-none form-checkbox  h-5 w-5 text-orange-400"
                                 ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_noCallback')</span>
                             </label>
                             <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
-                                <input type="checkbox" class="form-checkbox  h-5 w-5 text-orange-400"
+                                <input type="checkbox" class="focus:outline-none form-checkbox  h-5 w-5 text-orange-400"
                                 ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_onlyVacancy')</span>
                             </label>
                             </div>
@@ -321,6 +321,7 @@
 @section("javasript")
 
 
+    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
@@ -364,5 +365,92 @@
         });
 
     </script>
+    <script>
+        $(document).ready(function() {
+            $("#show").click(function() {
+                map1_show();
+                $("#hide").css('display', 'block');
+                $("#show").css('display', 'none');
+                $("#scrollbar").css('display', 'none');
+                $("footer").css('display', 'none');
+                $('#big-big').removeClass("hidden");
+            });
+            $("#hide").click(function() {
+                $('#big-big').addClass("hidden");
+                $("#hide").css('display', 'none');
+                $("#show").css('display', 'block');
+                $("#scrollbar").css('display', 'block');
+                $("footer").css('display', 'block');
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        function toggleModal(){
+            document.getElementById("modal-id").classList.toggle("hidden");
+            document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
+            document.getElementById("modal-id").classList.toggle("flex");
+            document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
+        }
+        function toggleModal1(){
+            var element = document.getElementById("modal-id-backdrop");
+            element.classList.add("hidden");
+            var element2 = document.getElementById("modal-id");
+            var b = document.getElementById("myText").value;
+            var u = document.getElementById("amount_u");
+            u.value = b;
+            element2.classList.add("hidden");
+            document.getElementById("modal-id1").classList.toggle("hidden");
+            document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
+            document.getElementById("modal-id1").classList.toggle("flex");
+            document.getElementById("modal-id1" + "-backdrop").classList.toggle("flex");
+        }
+        function borderColor() {
+            var element = document.getElementById("demo");
+            element.classList.add("border-amber-500");
+        }
+        function inputFunction() {
+            var x = document.getElementById("myText").value;
+            if(x < 4000){
+                document.getElementById('button').removeAttribute("onclick");
+                document.getElementById('button').classList.remove("bg-green-500");
+                document.getElementById('button').classList.add("bg-gray-500");
+                document.getElementById('button').classList.remove("hover:bg-green-500");
+                document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+            }else{
+                document.getElementById('button').setAttribute("onclick","toggleModal1();");
+                document.getElementById('button').classList.remove("bg-gray-500");
+                document.getElementById('button').classList.add("bg-green-500");
+                document.getElementById('button').classList.add("hover:bg-green-500");
+                document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+            }
+        }
+        function checkFunction() {
+            var x = document.getElementById("myText").value;
+            var checkBox = document.getElementById("myCheck");
+            if (checkBox.checked == true){
+                document.getElementById("button").innerHTML ="К оплате " + (parseInt(x) + 10000);
+            } else {
+                document.getElementById("button").innerHTML ="К оплате " + x  +"UZS";
+            }
+        }
+        function validate(evt) {
+            var theEvent = evt || window.event;
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+            } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /[0-9]|\./;
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+    </script>
+    {{-- pay modal end --}}
 
 @endsection

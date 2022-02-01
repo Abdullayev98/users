@@ -200,7 +200,8 @@
 
                         @endforeach
                         <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
-                        <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
+                        <button class="" type="button" data-dropdown-toggle="dropdown">
+                            <i class="text-2xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                         </button>
                         <!-- Dropdown menu -->
                         <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
