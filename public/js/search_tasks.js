@@ -219,8 +219,8 @@ function img_show() {
                 <div><img src="images/notlike.png" class="w-full h-full"></div>
                 <div></div>
                 <div class="col-span-3 text-center w-full h-full">
-                    <p class="text-3xl"><b>Задания не найдены</b></p>
-                    <p class="text-lg">Попробуйте уточнить запрос или выбрать другие категории</p>
+                    <p class="text-3xl"><b>@lang('lang.search_tasksNotFound')</b></p>
+                    <p class="text-lg">@lang('lang.search_tryAnOther')</p>
                 </div>
                 </div>`
     );
