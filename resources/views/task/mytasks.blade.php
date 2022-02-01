@@ -272,7 +272,7 @@
         $(document).ready(function(){
             var category = $(".category");
             if (category.is(":visible")){
-                    $(".lenght").text(`@lang("lang.mytask_avarage") ` + category.length);
+                    $(".lenght").text(`@lang("lang.mytask_avarage")` + category.length);
                 }
         });
     </script>
