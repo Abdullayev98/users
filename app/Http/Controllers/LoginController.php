@@ -123,6 +123,7 @@ class LoginController extends Controller
     public function verifyAccount(User $user,$hash, Request $request)
     {
         self::verifyColum($request, 'email', $user, $hash);
+        auth()->login($user);
         Alert::success('Congrats', 'Your Email have successfully verified');
         return redirect()->route('userprofile');
 
