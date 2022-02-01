@@ -92,7 +92,7 @@
                                 <div>
                                     <div  class="w-full flex flex-col sm:flex-row justify-center">
                                         <!-- This is an example component -->
-                                        <div class="w-11/12 mx-auto mt-4">
+                                        <div class="w-full mx-auto mt-4">
                                             @auth
                                                 @if($balance >= 4000 || $response_count_user < setting('site.free_responses'))
                                                     @if($tasks->user_id != auth()->id() && $tasks->status < 3)
