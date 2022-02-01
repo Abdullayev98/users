@@ -12,7 +12,7 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="md:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
-                        @lang('lang.buyd_text') "{{session('name')}}"
+                        @lang('lang.buyd_text') "{{$task->name}}"
                     </div>
                     <div class="w-full text-center my-4 text-gray-400">
                         @lang('lang.design_text')
