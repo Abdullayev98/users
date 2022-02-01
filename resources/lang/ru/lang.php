@@ -575,6 +575,11 @@ return [
     'perfCat_allPerf' => "Все исполнители",
     // performers_cat.blade end
 
+    // performers.bade start
+    'perf_youreInUser' => "Вы находитесь в разделе исполнителей U-Ser.",
+    'perf_forOffer' => "Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его профиле.",
+    // performers.bade end
+
     // budget.blade start
     'budget_lookingFor' => "Ищем исполнителя для задания",
     'budget_percent' => "Задание заполнено на 75%",
@@ -604,6 +609,8 @@ return [
     'contact_name' => "Имя",
     'contact_number' => "Номер телефона",
     'contact_send' => "Отправить",
+    'contact_yourContacts' => "Ваши контакты",
+    'contact_auth' => "Авторизация",
     // contacts.blade end
 
     // date.blade start
@@ -647,6 +654,7 @@ return [
     'name_cencel' => "Отмена",
     'name_subCat2' => "Подкатегории",
     'name_chooseOne' => "Выберите один из пунктов",
+    'name_chooseOtherCat' => "Если хотите выбрать другую категорию",
     // name.blade end
 
     // notes.blade start
@@ -656,6 +664,8 @@ return [
     'notes_example' => "Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня.",
     'notes_addPhoto' => "Добавить фото",
     'notes_back' => "Назад",
+    'notes_giveDocs' => "Предоставить документы",
+    'notes_forAccess' => "Для оформления расписки/доверенности",
     // notes.blade end
 
     // people.blade start

@@ -47,8 +47,7 @@
                     @endphp
                     <div class="italic text-gray-600">
 
-                        {{ $media->created_at->format('d') }} {{ \Carbon\Carbon::parse($media->created_at)->translatedFormat('F') }}
-                    {{ $media->created_at->format('Y') }} @lang('lang.cmi_year').
+                        {{ $media->created_at->format('d.m.Y') }} @lang('lang.cmi_year').
                     </div>
                     <h1 class="text-base md:text-lg">
                         <span class="text-red-500"> {{ $media->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
