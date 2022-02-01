@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="text-sm w-full bg-gray-200 my-4 py-3">
-        <p class="w-8/12 mx-auto text-gray-500 font-normal">Вы находитесь в разделе исполнителей U-Ser. <br>
-            Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его профиле.</p>
+        <p class="w-8/12 mx-auto text-gray-500 font-normal">@lang('lang.perf_youreInUser') <br>
+            @lang('lang.perf_forOffer')</p>
     </div>
     <div class="xl:w-8/12 mx-auto mt-16 text-base">
         <div class="grid grid-cols-3 ">
