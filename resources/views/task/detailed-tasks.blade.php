@@ -95,7 +95,7 @@
                                         <div class="w-11/12 mx-auto mt-4">
                                             @auth
                                                 @if($balance >= 4000 || $response_count_user < setting('site.free_responses'))
-                                                    @if($tasks->user_id != auth()->id())
+                                                    @if($tasks->user_id != auth()->id() && $tasks->status < 3)
                                                         <button class="font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
