@@ -148,7 +148,7 @@
                 slide: function(event, ui) {
                     var maximum = {{$category->max}};
                     if (maximum == ui.value) {
-                        $("#amount").val("от " + parseInt(ui.value) + " UZS");
+                        $("#amount").val("от " + parseInt(maximum) + " UZS");
                     } else {
                         $("#amount").val("до " + parseInt(ui.value) + " UZS");
                     }
