@@ -100,7 +100,7 @@
 
 
                         <!-- Modal -->
-                        <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-10/12 md:w-5/12 mx-10"
+                        <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6"
                              @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform"
                              x-transition:enter-start="opacity-0 scale-90 translate-y-1"
                              x-transition:enter-end="opacity-100 scale-100 translate-y-0"
@@ -117,26 +117,26 @@
 
 
                                 <div
-                                    class="text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
+                                    class="xl:text-2xl lg:text-xl text-lg md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
                                     Подтвердите адрес ваш телефонный номер
                                 </div>
-                                <p class="my-8 text-gray-700 traking-tight">
+                                <p class="my-8 lg:text-base text-sm text-gray-700 traking-tight">
                                     На ваш телефонный номер <strong>{{auth()->user()->phone_number}}</strong> было
                                     отправлено
                                     письмо
                                     со ссылкой для
                                     подтверждения вашей почты на YouDo.
                                 </p>
-                                <p class="my-8 text-gray-700 traking-tight">
+                                <p class="my-8 lg:text-base text-sm text-gray-700 traking-tight">
                                     Пройдите по ссылке и активируйте вашу телефонный номер.
                                 </p>
 
-                                <a class='text-gray-800 send-email border-b sent-email border-dotted @if($errors->has('phone_number') || session()->has('email-message') || !auth()->user()->phone_number)) hidden @endif border-gray-700 cursor-pointer'
+                                <a class='text-gray-800 lg:text-base text-sm send-email border-b sent-email border-dotted @if($errors->has('phone_number') || session()->has('email-message') || !auth()->user()->phone_number)) hidden @endif border-gray-700 cursor-pointer'
                                    href="{{route('user.verify.phone.send')}}">Отправить новое
                                     письмо для подтверждения телефонный номер</a><br>
 
 
-                                <a class='text-gray-800 border-b border-dotted border-gray-700 @if($errors->has('phone_number') || session()->has('email-message') || !auth()->user()->phone_number) ) hidden @endif change-email cursor-pointer'>Указать
+                                <a class='text-gray-800 lg:text-base text-sm border-b border-dotted border-gray-700 @if($errors->has('phone_number') || session()->has('email-message') || !auth()->user()->phone_number) ) hidden @endif change-email cursor-pointer'>Указать
                                     другую телефонный номер</a>
 
 
