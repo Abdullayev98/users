@@ -330,6 +330,12 @@
 
                     {{-- right sidebar start --}}
                     <div class="lg:w-3/12 w-1/2 lg:mt-0 mt-8 lg:ml-8 ml-0">
+                        <div class="mb-10">
+                            <h1 class="text-xl font-medium mb-4">Задание № {{$tasks->id}}</h1>
+                            <button class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">
+                                <i class="fas fa-link text-gray-500"></i>
+                            </button>
+                        </div>
                         <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                         <div class="flex flex-row mt-4">
                             <div class="mr-4">
@@ -359,12 +365,6 @@
                                     @endif
                                 </a>
                             </div>
-                        </div>
-                        <div class="mt-10">
-                            <h1 class="text-xl font-medium mb-4">Задание № 1277</h1>
-                            <a href="#" class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">
-                                <i class="fas fa-link text-gray-500"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -431,6 +431,23 @@
                 $(".pay").click(function(){
                     $(".pays").attr("value", 4000);
                 });
+                    var $temp = $("<input>");
+                    var $url = $(location).attr('href');
+
+                    $('.copylink').on('click', function() {
+                        $("body").append($temp);
+                        $temp.val($url).select();
+                        document.execCommand("copy");
+                        $temp.remove();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Ссылка скопирована в буфер обмена!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    });
+
                 $("#class_demo1").click(function(){
                     $("#class_demo1").removeClass("text-gray-500");
                     $("#class_demo1").addClass("text-amber-500");
