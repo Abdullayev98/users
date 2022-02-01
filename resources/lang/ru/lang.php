@@ -575,6 +575,11 @@ return [
     'perfCat_allPerf' => "Все исполнители",
     // performers_cat.blade end
 
+    // performers.bade start
+    'perf_youreInUser' => "Вы находитесь в разделе исполнителей U-Ser.",
+    'perf_forOffer' => "Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его профиле.",
+    // performers.bade end
+
     // budget.blade start
     'budget_lookingFor' => "Ищем исполнителя для задания",
     'budget_percent' => "Задание заполнено на 75%",

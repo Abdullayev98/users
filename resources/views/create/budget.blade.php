@@ -144,7 +144,7 @@
                 value: 0,
                 min: {{$category->max}} / 5,
                 max: {{$category->max}},
-                step: 100,
+                step: {{$category->max}} / 6.2,
                 slide: function(event, ui) {
                     var maximum = {{$category->max}};
                     if (maximum == ui.value) {

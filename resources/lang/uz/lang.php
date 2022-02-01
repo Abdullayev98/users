@@ -573,6 +573,11 @@ return [
     'perfCat_allPerf' => "Barcha ijrochilar",
     // performers_cat.blade end
 
+    // performers.bade start
+    'perf_youreInUser' => "Siz hozir U-Ser ijrochilari bolimidasiz.",
+    'perf_forOffer' => "Tanlangan ijrochiga ish taklif qilish uchun uning profilidagi 'Vazifa taklif qilish' tugmasini bosishingiz kerak.",
+    // performers.bade end
+
     // budget.blade start
     'budget_lookingFor' => "Vazifa uchun tayinlovchi qidirilmoqda",
     'budget_percent' => "Ish 75% toʻlgan",
