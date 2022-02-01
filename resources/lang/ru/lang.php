@@ -609,6 +609,8 @@ return [
     'contact_name' => "Имя",
     'contact_number' => "Номер телефона",
     'contact_send' => "Отправить",
+    'contact_yourContacts' => "Ваши контакты",
+    'contact_auth' => "Авторизация",
     // contacts.blade end
 
     // date.blade start
@@ -662,6 +664,8 @@ return [
     'notes_example' => "Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня.",
     'notes_addPhoto' => "Добавить фото",
     'notes_back' => "Назад",
+    'notes_giveDocs' => "Предоставить документы",
+    'notes_forAccess' => "Для оформления расписки/доверенности",
     // notes.blade end
 
     // people.blade start
