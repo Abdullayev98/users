@@ -430,7 +430,6 @@
         </div>
     </div>
     <script src="https://unpkg.com/imask"></script>
-    @include('sweetalert::alert')
 
     <script>
 

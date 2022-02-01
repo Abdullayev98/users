@@ -660,6 +660,8 @@ return [
     'notes_example' => "Masalan: yog'ochdan, tomi va ikkita derazali bir qavatli bolalar uyi qurish. Hovlida tez-tez suv yig'iladi, sizga shag'al drenaj kerak bo'ladi.",
     'notes_addPhoto' => "Rasm qo'shish",
     'notes_back' => "Orqaga",
+    'notes_giveDocs' => "Hujjatlarni taqdim etish",
+    'notes_forAccess' => "Kvitansiya/ishonchnoma uchun",
     // notes.blade end
 
     // people.blade start
