@@ -652,6 +652,7 @@ return [
     'name_cencel' => "Отмена",
     'name_subCat2' => "Подкатегории",
     'name_chooseOne' => "Выберите один из пунктов",
+    'name_chooseOtherCat' => "Если хотите выбрать другую категорию",
     // name.blade end
 
     // notes.blade start

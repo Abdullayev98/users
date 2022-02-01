@@ -650,6 +650,7 @@ return [
     'name_cencel' => "Bekor qilish",
     'name_subCat2' => "Subkategorialar",
     'name_chooseOne' => "Bittasini tanlang",
+    'name_chooseOtherCat' => "Agar siz boshqa toifani tanlamoqchi bo'lsangiz",
     // name.blade end
 
     // notes.blade start
