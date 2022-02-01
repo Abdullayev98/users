@@ -11,7 +11,7 @@
             <div class="grid md:grid-cols-3 gap-x-20">
                 <div class="col-span-2">
                     <div class="w-full text-center text-2xl">
-                        @lang('lang.budget_lookingFor') "{{session('name')}}"
+                        @lang('lang.budget_lookingFor') "{{$task->name}}"
                     </div>
                     <div class="w-full text-center my-4 text-gray-400">
                         @lang('lang.contact_percent') 99%
