@@ -51,6 +51,22 @@ return [
     'body_perForBusines' => "Biznes uchun ishonchli ijrochilar",
     // home.blade end
 
+    //modal blade start
+    'modal_email' => "Elektron pochta manzilingizni tasdiqlang",
+    'modal_addres' => "Elektron pochta manzilingizga",
+    'modal_addres1' =>"Universal Services bilan pochtangizni tekshirish uchun havola bilan elektron pochta xabari yuborildi.",
+    'modal_addres2'=>"Havolani kuzatib boring va elektron pochtangizni faollashtiring.",
+    'modal_addres3' =>"Yangi tasdiqlash xatini yuboring",
+    'modal_addres4' =>" Boshqa xatni belgilang",
+    'modal_cencel' => "Bekor qilish",
+    'modal_send' => "Yuborish",
+    'modal_address1' => "Telefon raqamingizga",
+    'modal_address2' =>" Universal Services bilan pochtangizni tekshirish uchun havola bilan elektron pochta xabari yuborildi.",
+    'modal_address3' => "Havolani kuzatib boring va telefon raqamingizni faollashtiring.",
+    'modal_address4' => "Telefon raqamini tasdiqlash uchun yangi elektron pochta xabarini yuboring",
+    'modal_phone' => "Boshqa telefon raqamini belgilang",
+    //modal blade end
+
     // pdf.blade start
     'pdf_terms' => "Universal xizmat ko'rsatish BIZNES qoidalari",
     // pdf.blade end
@@ -83,7 +99,8 @@ return [
     'detT_otherTask' => "Kategoriyadagi boshqa vazifalar",
     'detT_ownerOfThisTask' => "Ushbu topshiriqning mijozi",
     'detT_inProsses' => "Davom etilmoqda",
-    'detT_callback' => "Bu vazifaga javob bering",
+    'detT_callback' => "Vazifaga bepul so'rov qoldirish",
+    'detT_callbackpay' => "Vazifaga to'lov bilan so'rov qoldirish",
     'detT_fill' => "Balansni to'ldirish",
     'detT_balanceReq' => "Javob berish uchun balansingiz 4000 so‘m bo‘lishi kerak. Agar mijoz siz bilan bog‘lanmoqchi bo‘lsa, biz avtomatik ravishda hisobingizdan aloqa narxini yechib olamiz.",
     'detT_balanceReq2' => "Agar siz javob yozsangiz, balansdagi miqdor bloklanmagan - siz boshqa topshiriqlarga javob qoldirishingiz mumkin.",

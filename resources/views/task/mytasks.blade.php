@@ -261,19 +261,22 @@
                 if ($(this).parents(".category2").is(":hidden")){
                     $(this).parents(".category2").show();
                 }
-                var categories = $(".category");
-                if (categories.is(":visible")){
-                    $(".lenght").text(`@lang("lang.mytask_avarage") ` + categories.length);
-                }
             });
         });
     </script>
     <script>
         $(document).ready(function(){
             var category = $(".category");
+            var category2 = $(".category2");
+            $(".lenght2").text(`@lang("lang.mytask_avarage")` + category2.length);
             if (category.is(":visible")){
-                    $(".lenght").text(`@lang("lang.mytask_avarage") ` + category.length);
+                    $(".lenght").text(`@lang("lang.mytask_avarage")` + category.length);
                 }
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+
         });
     </script>
 @endsection

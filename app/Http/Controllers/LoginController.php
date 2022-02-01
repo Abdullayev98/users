@@ -98,6 +98,12 @@ class LoginController extends Controller
         $needle = 'is_'.$needle."_verified";
 
         $user = auth()->user();
+
+        if (!$user)
+        {
+            $user = User::where('verify_code', $request->code)->first();
+        }
+
         $request->validate([
             'code' => 'required'
         ]);

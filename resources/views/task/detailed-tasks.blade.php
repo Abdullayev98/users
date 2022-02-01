@@ -92,20 +92,26 @@
                                 <div>
                                     <div  class="w-full flex flex-col sm:flex-row justify-center">
                                         <!-- This is an example component -->
-                                        <div class="w-11/12 mx-auto mt-4">
+                                        <div class="w-full mx-auto mt-4">
                                             @auth
                                                 @if($balance >= 4000 || $response_count_user < setting('site.free_responses'))
-                                                    @if($tasks->user_id != auth()->id())
-                                                    <button class="font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
-                                                            type="button"
-                                                            data-modal-toggle="authentication-modal">
-                                                        @lang('lang.detT_callback')
-                                                    </button>
-                                                        @endif
+                                                    @if($tasks->user_id != auth()->id() && $tasks->status < 3)
+                                                        <button class="font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
+                                                                type="button"
+                                                                data-modal-toggle="authentication-modal">
+                                                            @lang('lang.detT_callbackpay')
+                                                        </button>
+                                                        <button class="font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
+                                                                type="button"
+                                                                data-modal-toggle="authentication-modal">
+                                                            @lang('lang.detT_callback')
+                                                        </button>
+                                                    @endif
                                                     @elseif($balance < 4000 || $response_count_user >= setting('site.free_responses'))
                                                     @if($tasks->user_id != auth()->id() && $tasks->status < 3)
-                                                    <a href="#" class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
-                                                    <div class='modal' id='modal1'>
+                                                    <a href="#" class='font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callbackpay')</a>
+                                                        <a href="#" class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
+                                                        <div class='modal' id='modal1'>
                                                         <div class='content'>
                                                             <img src="{{asset('images/cashback.svg')}}" alt="">
                                                             <h1 class='title'>@lang('lang.detT_fill')</h1>
@@ -189,6 +195,7 @@
                                                                     </div>
                                                                     <label>
                                                                         <input type="number" checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
+                                                                        <input type="text" name="pay" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="0">
                                                                     </label>
                                                                     <hr>
                                                                 </main>
@@ -295,8 +302,9 @@
 {{--                                                                <div class="text-[17px] text-gray-500">@lang('lang.detT_Hello')</div>--}}
 
                                                                 <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
-
-{{--                                                                <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>--}}
+                                                                        @if($response->not_free == 1)
+                                                                <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>
+                                                                @endif
                                                                 @if($tasks->status < 3 )
                                                                 <div class="w-10/12 mx-auto">
                                                                     <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
@@ -430,6 +438,9 @@
                     $("#class_demo").addClass("text-amber-500");
                     $("#class_demo1").removeClass("text-amber-500");
                     $("#class_demo1").addClass("text-gray-500");
+                });
+                $(".pay").click(function(){
+                    $(".pays").attr("value", 4000);
                 });
                 $("#class_demo1").click(function(){
                     $("#class_demo1").removeClass("text-gray-500");
