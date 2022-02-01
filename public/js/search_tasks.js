@@ -520,25 +520,7 @@ function chicats_click_true(id, name) {
 }
 
 
-$(document).ready(function(){
 
-    $("#srochnost").click(function(){
-        first_ajax('sroch', '')
-    });
-    $(".byid").click(function(){
-        first_ajax('all', '')
-    });
-    $("#as").click(function(){
-        first_ajax('udal', '')
-    });
-    $(".checkboxByAs").change(function() {
-        if(this.checked) {
-            first_ajax('udal', '')
-        }else {
-            first_ajax('all', '')
-        }
-    });
-});
 
 function map_pos(mm) {
     if (mm) {
@@ -783,5 +765,23 @@ $(document).ready(function() {
         $("#show").css('display', 'block');
         $("#scrollbar").css('display', 'block');
         $("footer").css('display', 'block');
+    });
+});
+$(document).ready(function(){
+    $("#srochnost").click(function(){
+        first_ajax('sroch', '')
+    });
+    $(".byid").click(function(){
+        first_ajax('all', '')
+    });
+    $("#as").click(function(){
+        first_ajax('udal', '')
+    });
+    $(".checkboxByAs").change(function() {
+        if(this.checked) {
+            first_ajax('udal', '')
+        }else {
+            first_ajax('all', '')
+        }
     });
 });
