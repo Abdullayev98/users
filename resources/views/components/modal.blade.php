@@ -33,7 +33,7 @@
                                 @lang('lang.modal_email')
                             </div>
                             <p class="my-8 text-gray-700 traking-tight">
-                                @lang('lang.modal_addres') <strong>{{auth()->user()->email}}</strong> 
+                                @lang('lang.modal_addres') <strong>{{auth()->user()->email}}</strong>
                                 @lang('lang.modal_addres1')
                             </p>
                             <p class="my-8 text-gray-700 traking-tight">
@@ -45,7 +45,7 @@
 
 
                             <a class='text-gray-800 border-b border-dotted border-gray-700 @if($errors->has('email') || session()->has('email-message') ) hidden @endif change-email cursor-pointer'>
-                               @lang('lang.modal_addres4')</a>
+                                @lang('lang.modal_addres4')</a>
 
                             <form action="{{route('user.email.change')}}" id="send-data-form"
                                   class="@if(!($errors->has('email') || session()->has('email-message')) ) hidden @endif"
@@ -115,19 +115,19 @@
 
                                 <div
                                     class="text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
-                                   @lang('lang.modal_email')
+                                    @lang('lang.modal_email')
                                 </div>
                                 <p class="my-8 text-gray-700 traking-tight">
                                     @lang('lang.modal_address1')<strong>{{auth()->user()->phone_number}}</strong>
                                     @lang('lang.modal_address2')
                                 </p>
                                 <p class="my-8 text-gray-700 traking-tight">
-                                   @lang('lang.modal_address4')
+                                    @lang('lang.modal_address4')
                                 </p>
 
                                 <a class='text-gray-800 send-email border-b sent-email border-dotted @if($errors->has('phone_number') || session()->has('email-message') || !auth()->user()->phone_number)) hidden @endif border-gray-700 cursor-pointer'
                                    href="{{route('user.verify.phone.send')}}">
-                                   @lang('lang.modal_address4')</a><br>
+                                    @lang('lang.modal_address4')</a><br>
 
 
                                 <a class='text-gray-800 border-b border-dotted border-gray-700 @if($errors->has('phone_number') || session()->has('email-message') || !auth()->user()->phone_number) ) hidden @endif change-email cursor-pointer'>
@@ -159,7 +159,7 @@
 
                                     <button class="w-full h-12 rounded-lg bg-green-500 text-gray-200 uppercase
                         font-semibold hover:bg-green-500 text-gray-100 transition mb-4">
-                                      @lang('lang.modal_send')
+                                        @lang('lang.modal_send')
                                     </button>
                                 </form>
 
@@ -212,7 +212,7 @@
                                 @enderror
                                 <button class="w-full h-12 rounded-lg bg-green-500 text-gray-200 uppercase
                         font-semibold hover:bg-green-500 text-gray-100 transition mb-4">
-                                 @lang('lang.modal_send')
+                                    @lang('lang.modal_send')
                                 </button>
 
                             </form>
@@ -251,11 +251,9 @@
                         text = text.slice(3)
                         $("#phone").val(text)
                     })
-
                 </script>
         @endauth
 
 
 
     @endif
-
