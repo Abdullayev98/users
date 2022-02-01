@@ -66,7 +66,11 @@ class LoginController extends Controller
 
         if ($needle == 'email'){
             $code = sha1(time());
-            Mail::to($user->email)->send(new VerifyEmail($code));
+            $data = [
+                'code' => $code,
+                'user' => auth()->user()->id
+            ];
+            Mail::to($user->email)->send(new VerifyEmail($data));
         }else{
             $code = rand(100000, 999999);
             (new SmsService())->send($user->phone_number, $code);
@@ -93,24 +97,14 @@ class LoginController extends Controller
 
 
 
-    public static function verifyColum($request, $needle)
+    public static function verifyColum($request, $needle, $user, $hash)
     {
         $needle = 'is_'.$needle."_verified";
 
-        $user = auth()->user();
-
-        if (!$user)
-        {
-            $user = User::where('verify_code', $request->code)->first();
-        }
-
-        $request->validate([
-            'code' => 'required'
-        ]);
         $result = false;
 
         if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
-            if ($request->code == $user->verify_code) {
+            if ($hash == $user->verify_code) {
                 $user->$needle = 1;
                 $user->verify_code = null;
                 $user->verify_expiration = null;
@@ -126,9 +120,9 @@ class LoginController extends Controller
     }
 
 
-    public function verifyAccount(Request $request)
+    public function verifyAccount(User $user,$hash, Request $request)
     {
-        self::verifyColum($request, 'email');
+        self::verifyColum($request, 'email', $user, $hash);
         Alert::success('Congrats', 'Your Email have successfully verified');
         return redirect()->route('userprofile');
 
@@ -136,8 +130,13 @@ class LoginController extends Controller
 
     public function verify_phone(Request $request)
     {
-        if (self::verifyColum($request, 'phone_number'))
+
+        $request->validate([
+            'code' => 'required'
+        ]);
+        if (self::verifyColum($request, 'phone_number', auth()->user(),$request->code))
         {
+
             Alert::success('Congrats', 'Your Phone have successfully verified');
             return redirect()->route('userprofile');
         }else
