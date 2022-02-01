@@ -142,15 +142,18 @@
             $("#slider-range-min").slider({
                 range: "min",
                 value: 0,
-                min: {{$category->max}}/5,
+                min: {{$category->max}}/6,
                 max: {{$category->max}},
-                step: {{$category->max}}/6.2,
+                step: {{$category->max}}/6,
                 slide: function(event, ui) {
                     var maximum = {{$category->max}};
-                    if (maximum == ui.value) {
-                        $("#amount").val("от " + parseInt(maximum) + " UZS");
+                    var pre_maximum = Math.floor({{$category->max}} - ({{$category->max}}/6));
+                    if (maximum == Math.floor(ui.value)) {
+                        $("#amount").val("от " + maximum + " UZS");
+                    }else if (pre_maximum == Math.floor(ui.value)){
+                        $("#amount").val("до " + maximum + " UZS");
                     } else {
-                        $("#amount").val("до " + parseInt(ui.value) + " UZS");
+                        $("#amount").val("до " + Math.floor(ui.value) + " UZS");
                     }
                 }
             });
@@ -158,7 +161,7 @@
             $(".ui-slider-range").css("background", 'linear-gradient(rgb(255, 132, 56)  , rgb(255, 132, 56))');
             $(".ui-slider-range").css("top", '-255px');
             $(".ui-slider-handle").text("<>");
-            $("#amount").val('до ' + $("#slider-range-min").slider("value") + ' UZS');
+            $("#amount").val('до ' + Math.floor($("#slider-range-min").slider("value")) + ' UZS');
         });
     </script>
 @endsection
