@@ -29,7 +29,7 @@
                 </a>
             </span>
         </div>
-        <div class="w-6/12 mx-auto text-right">
+        <div class="md:w-6/12 w-10/12 mx-auto text-center md:text-right">
             <a href="#">
                 <i class="fab fa-instagram text-gray-500 hover:text-yellow-500 mx-2"></i>
             </a>

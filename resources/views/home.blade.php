@@ -103,7 +103,7 @@
             <div class="flex flex-wrap w-11/12 mt-14 mx-auto">
                 @foreach ($categories as $category2)
                     <a  class="flex flex-row lg:w-1/3 w-full items-center my-4 lg:border-0 border-b text-gray-500 hover:text-yellow-500 " href="{{route('categories', ['id'=> $category2->id])}}">
-                        <i class="{{ $category2->ico }} text-3xl"></i><span class="ml-6 text-lg"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
+                        <i class="{{ $category2->ico }} text-xl md:text-3xl"></i><span class="ml-6 text-sm md:text-lg"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
                     </a>
                 @endforeach
             </div>
@@ -246,12 +246,11 @@
                 </div>
             </div>
         </div>
-        <div class="w-full mx-auto shadow-xl md:-mt-20">
-            <div
-                class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 lg:w-11/12 xl:w-9/12 w-full mx-auto md:bg-none bg-contain bg-right bg-no-repeat" style="background-image: url('{{asset('/images/download_hand_User.png')}}')">
-                <div class="md:w-11/12 w-3/5 sm:pl-0 pl-4 md:mt-48 md:mb-3 mt-0 md:mx-auto mx-4 md:mt-0 mt-14 md:bg-transparent pb-24">
-                    <h4 class="font-semibold text-3xl md:text-black text-gray-500">@lang('lang.body_personalHelper')</h4>
-                    <p class="text-base mt-8 md:text-black">@lang('lang.body_downloadApp')</p>
+        <div class="w-full mx-auto shadow-xl md:-mt-20 bg-contain bg-right bg-no-repeat" style="background-image: url('{{asset('/images/download_hand_User.png')}}')">
+            <div class="grid md:grid-cols-2 grid-cols-1 md:w-11/12 lg:w-11/12 xl:w-9/12 w-full mx-auto md:bg-transparent  bg-black bg-opacity-50">
+                <div class="md:w-11/12 w-5/5 sm:pl-0 pl-4 md:mt-48 md:mb-3 mt-0 md:mx-auto mx-4 md:mt-0 mt-14 md:bg-transparent pb-24">
+                    <h4 class="font-semibold text-3xl text-white md:text-gray-500">@lang('lang.body_personalHelper')</h4>
+                    <p class="text-base mt-8 text-white md:text-black">@lang('lang.body_downloadApp')</p>
                     <a href="#">
                         <button type="button" class="w-3/10 bg-black hover:bg-yellow-500 rounded-md mt-8"><img
                                 src="{{asset('images/download_ios.svg')}}"
