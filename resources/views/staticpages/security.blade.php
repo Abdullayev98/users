@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container w-4/5 mx-auto">
+    <div class="container sm:w-4/5 w-full mx-auto">
 
         <div class="flex lg:flex-row flex-col justify-center mt-6">
             <div class="lg:w-1/5 w-full lg:m-0 m-8 text-base">
@@ -52,7 +52,7 @@
                             <a href="/" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_detailedAboutR')</a>
                         </div>
 
-                        <div class="lg:w-1/2 w-full text-left ml-4 mt-4 lg:hidden block">
+                        <div class="lg:w-1/2 w-full text-left mt-4 lg:hidden block">
                             <h3 class="text-2xl font-normal mb-4">@lang('lang.secure_ratingAndFeed')</h3>
                             <p class="w-full">@lang('lang.secure_finish1')</p>
                             <p class="mt-5">@lang('lang.secure_finish2')</p>
@@ -77,14 +77,14 @@
                         <p>@lang('lang.secure_beAware4')</p>
                         <p class="mt-5">@lang('lang.secure_beAware5')</p>
                         <div class="flex lg:flex-row flex-col mt-10">
-                            <div class="w-1/2 mx-auto">
+                            <div class="sm:w-1/2 w-full mx-auto">
                                 <a href="#replain-link">
                                     <button  class="font-sans  text-2xl mx-2 font-medium bg-green-400 text-white hover:bg-green-300 px-10 py-4 rounded">
                                         @lang('lang.secure_writeToSupp')
                                     </button>
                                 </a>
                             </div>
-                            <div class="w-1/2 mx-auto lg:mt-0 mt-6">
+                            <div class="sm:w-1/2 w-full mx-auto lg:mt-0 mt-6">
                                 <a href="/contacts">
                                     <button  class="font-sans  text-2xl mx-2 font-medium  text-black-400 ring-1 ring-gray-300 px-14 py-4 rounded">
                                         @lang('lang.secure_goToContacts')

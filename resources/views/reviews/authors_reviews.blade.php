@@ -2,9 +2,9 @@
 
 
 @section('content')
-    <div class="md:container mx-auto pt-5">
-        <div class="w-full md:flex md:grid-flow-row md:justify-center md:mx-auto md:w-10/12 mb-4">
-            <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8 text-base">
+    <div class="container sm:w-4/5 w-full mx-auto">
+        <div class="flex lg:flex-row flex-col justify-center mt-6">
+            <div class="lg:w-1/5 w-full lg:m-0 m-8 text-base">
                 <ul>
                     <li>
                         <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">@lang('lang.authors_howItWorks')</a>
@@ -35,7 +35,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="md:w-8/12 mt-5">
+            <div class="lg:w-4/5 w-full lg:m-0 m-8 text-base">
                 <h1 class="text-normal lg:text-2xl pb-2 font-semibold">
                 @lang('lang.authors_CusFeedAboutUser')
                 </h1>
