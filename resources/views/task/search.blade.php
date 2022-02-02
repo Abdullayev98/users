@@ -328,20 +328,21 @@
     <script type="text/javascript">
         let allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
         let userCoordinates=[[],[]];
-        enDis(r);
-        first_ajax('all','');
         module.exports = {
-            plugins: [require('@tailwindcss/forms'),]
+            plugins: [require('@tailwindcss/forms')]
         };
-        function first_ajax(id, name) {
+        enDis(r);
+        first_ajax('all');
+        // sixInOne();
+
+        function first_ajax(id) {
             $.ajax({
                 url: "{{route('tasks.search')}}",
-                // dataType: 'json',
-                data: {orderBy: id, fltr: name},
+                data: {orderBy: id},
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    fiveInOne1();
+                    console.log(dataAjax)
                 },
                 error: function () {
                     alert("Ajax ishida xatolik...");
