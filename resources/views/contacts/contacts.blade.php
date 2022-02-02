@@ -1,8 +1,8 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="w-11/12 px-6 mx-auto my-8">
-        <div class="w-1/2 ml-20">
+    <div class="w-11/12 mx-auto my-8">
+        <div class="sm:w-1/2 w-full">
             <div class="">
                 <h1 class="text-5xl font-bold mb-4"> @lang('lang.contact_title')</h1>
                 <p class="my-6">
@@ -16,7 +16,7 @@
 
         <div class="flex flex-row">
             <div class="lg:w-1/2 w-0"></div>
-            <div class="lg:w-1/2 w-full flex md:flex-row flex-col lg:ml-0 ml-20 lg:mt-0 mt-8">
+            <div class="lg:w-1/2 w-full flex md:flex-row flex-col lg:mt-0 mt-8">
                 <div class="mt-8">
                     <h1 class="font-bold text-2xl mb-2"> @lang('lang.contact_text11')</h1>
                      <p> @lang('lang.contact_text12')</p>
