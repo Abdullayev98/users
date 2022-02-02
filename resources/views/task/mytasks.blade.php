@@ -173,7 +173,7 @@
 @section("javasript")
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU"
+    <script src="https://api-maps.yandex.ru/2.1/?lang=uz_UZ&apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb"
             type="text/javascript"></script>
     <script type="text/javascript">
         ymaps.ready(init);
