@@ -28,13 +28,13 @@
                     @lang('lang.footer_text1')
                 </a>
             </span>
-<<<<<<< HEAD
+
         </div>
         <div class="md:w-6/12 w-10/12 mx-auto text-center md:pt-0 md:text-right mb-8">
-=======
+
         </div> 
         <div class="md:w-6/12 w-10/12 mx-auto text-center md:text-right mb-8">
->>>>>>> 29df3eae497f97f8568d2eaa53446d820a713868
+
             <a href="#">
                 <i class="fab fa-instagram text-gray-500 hover:text-yellow-500 mx-2"></i>
             </a>
