@@ -59,11 +59,11 @@
                         <div class="text-gray-500 text-base mt-6">
                             <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
                             @if ($reviews_count == 1)
-                            <span>Получил {{$reviews_count}} Отзыв</span>
+                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtziv')</span>
                             @elseif ($reviews_count > 1 && $reviews_count > 5)
-                            <span>Получил {{$reviews_count}} Отзыва</span>
+                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtziva')</span>
                             @else
-                            <span>Получил {{$reviews_count}} Отзывов</span>
+                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtzivov')</span>
                             @endif
                         </div>
                         {{-- <div class="text-gray-500 text-base mt-1">
@@ -126,21 +126,21 @@
                                 <span class="align-middle">
                                     @if ($user->id == $review->user_id)
                                         @if ($user->role_id == 2)
-                                        Отзыв:
+                                        @lang('lang.exe_feedB'):
                                             @if ($review->good_bad == 1)
                                                 <i class="far fa-thumbs-up"></i>
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-                                        Исполнитель
+                                        @lang('lang.exe_performer')
                                         @else
-                                        Отзыв:
+                                        @lang('lang.exe_feedB'):
                                             @if ($review->good_bad == 1)
                                                 <i class="far fa-thumbs-up"></i>
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-                                        Заказчик
+                                        @lang('lang.exe_customer')
                                         @endif
                                     @endif
                                 </span>
