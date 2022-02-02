@@ -482,6 +482,7 @@ return [
     'profile_phone' => "Телефон",
     'profile_noNumber' => "нет номера",
     'profile_confirmed' => "Подтвержден",
+    'profile_createAlbum' => "Создать фотоальбом",
     // profile.blade end
 
     // settings.blade start

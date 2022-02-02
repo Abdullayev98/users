@@ -148,7 +148,7 @@
                         <div class="example-of-works w-96 my-10">
                            <a onclick="toggleModal123('modal-id123')" class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="#">
                             <i class="fas fa-camera"></i>
-                            <span>Создать фотоальбом</span>
+                            <span>@lang('lang.profile_createAlbum')</span>
                            </a>
                         </div>
 
