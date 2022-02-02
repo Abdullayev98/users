@@ -482,6 +482,7 @@ return [
     'profile_phone' => "Телефон",
     'profile_noNumber' => "нет номера",
     'profile_confirmed' => "Подтвержден",
+    'profile_createAlbum' => "Создать фотоальбом",
     // profile.blade end
 
     // settings.blade start
@@ -900,7 +901,7 @@ return [
     'footer_contact' => "Контакты",
     'footer_costumersreviews' => "Отзывы заказчиков",
     'footer_text' => "Служба поддержки",
-    'footer_foot' => "  © 2021 Universal services (users.uz)",
+    'footer_foot' => "  © 2021 Universal services (user.uz)",
     'footer_text1' => "Правила сервиса",
     'footer_text2' => "заданий уже создано",
     'footer_text3' => "в этих категориях",
