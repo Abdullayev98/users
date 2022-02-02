@@ -479,6 +479,7 @@ return [
     'profile_phone' => "Telefon",
     'profile_noNumber' => "raqam yo'q",
     'profile_confirmed' => "Tasdiqlangan",
+    'profile_createAlbum' => "Fotoalbom yaratish",
     // profile.blade end
 
     // settings.blade start
