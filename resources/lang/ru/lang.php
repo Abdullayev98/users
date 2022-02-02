@@ -567,6 +567,12 @@ return [
     'exe_youHaventT' => "У вас пока нет опубликованных <br> заданий",
     'exe_createTFirst' => "Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.",
     'exe_createTask' => "Создать задание",
+    'exe_get' => "Получил",
+    'exe_rusOtziv' => "Отзыв",
+    'exe_rusOtziva' => "Отзыва",
+    'exe_rusOtzivov' => "Отзывов",
+    'exe_customer' => "Заказчик",
+    'exe_feedB' => "Отзыв",
     // executors-courier.blade end
 
     // performers_cat.blade start

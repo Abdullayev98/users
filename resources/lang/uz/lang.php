@@ -564,6 +564,12 @@ return [
     'exe_youHaventT' => "Sizda hali e'lon qilingan topshiriq yo'q",
     'exe_createTFirst' => "Vazifa yarating, shundan so'ng uni bajarish uchun <br> ni taklif qilishingiz mumkin.",
     'exe_createTask' => "Vazifa yaratish",
+    'exe_get' => "",
+    'exe_rusOtziv' => "ta fikr bildirilgan",
+    'exe_rusOtziva' => "ta fikr bildirilgan",
+    'exe_rusOtzivov' => "ta fikr bildirilgan",
+    'exe_customer' => "Mijoz",
+    'exe_feedB' => "Fikr",
     // executors-courier.blade end
 
     // performers_cat.blade start
