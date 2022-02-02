@@ -42,8 +42,7 @@ return [
     'body_timeSavingCon' => "Universal Services-da siz bir necha daqiqada kerakli ijrochini topishingiz mumkin. Ko'pchilik
     ulardan bir kuni, ba'zan esa bir soatda ishga kirishishga tayyor.",
     'body_personalHelper' => "Cho'ntagingizda shaxsiy yordamchi",
-    'body_downloadApp' => "Ilovamizni yuklab oling va Universal xizmatlardan foydalaning,
-    qayerda bo'lsang ham.",
+    'body_downloadApp' => "Ilovamizni yuklab oling va Universal xizmatlardan foydalaning.",
     'body_whatOthersDoing' => "Ular hozir 'Universal xizmat' uchun nima buyurtma berishadi",
     'body_showAllTasks' => "Barcha vazifalarni ko'rsatish",
     'body_howToJoin' => "Qanday qilib ijrochi bo'lish mumkin",
