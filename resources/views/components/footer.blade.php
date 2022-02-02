@@ -1,6 +1,6 @@
 <footer class=" w-10/12 mx-auto">
     <div class="md:flex sm:flex-row flex-col my-12 text-base">
-        <div class="w-1/2 w-full flex md:flex-row flex-col md:text-left text-center md:my-0 my-4">
+        <div class="w-1/2 w-full flex md:flex-row flex-col md:text-left text-center md:my-0 my-10">
             <div class="w-3/4 flex flex-col lg:mx-8 mx-auto">
                 <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 verify" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a>
                 <a class="delete-task faq cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a>
@@ -20,16 +20,16 @@
             </a>
         </div>
     </div>
-    <div class="md:flex md:mx-0 mx-auto border-t pt-4 w-11/12">
-        <div class="container mx-auto ml-4 mb-4 text-base">
+    <div class="md:flex-wrap-reverse md:mx-0 mx-auto border-t pt-4 w-11/12">
+        <div class="container mx-auto ml-4 mb-4 text-center">
             <span class="">
-            @lang('lang.footer_foot')
-                <a class=" hover:text-amber-500" rel="noopener noreferrer">
+            @lang('lang.footer_foot') <br>
+                <a class="hover:text-amber-500 m:mx-auto" rel="noopener noreferrer">
                     @lang('lang.footer_text1')
                 </a>
             </span>
-        </div>
-        <div class="md:w-6/12 w-10/12 mx-auto text-center md:text-right">
+        </div> aaa
+        <div class="md:w-6/12 w-10/12 mx-auto text-center md:text-right mb-8">
             <a href="#">
                 <i class="fab fa-instagram text-gray-500 hover:text-yellow-500 mx-2"></i>
             </a>

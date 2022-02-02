@@ -45,7 +45,7 @@
                                     class="shadow border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
                                     id="username" type="text" placeholder="@lang('lang.name_example')" required name="name" value="{{session('neym')}}">
                             </div>
-                            <p class="text-base text-gray-600 mt-10">Если хотите выбрать другую категорию</p>
+                            <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
                             <div id="categories">
 
                             <div class="flex justify-center">

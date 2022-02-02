@@ -55,8 +55,8 @@
                 <label class="md:w-2/3 block mt-6">
                     <input class="focus:outline-none  mr-2 h-4 w-4" type="checkbox" name="docs">
                     <span class="text-slate- 900">
-                        Предоставить документы
-                        <br><p class="text-sm text-slate-500">Для оформления расписки/доверенности</p>
+                        @lang('lang.notes_giveDocs')
+                        <br><p class="text-sm text-slate-500">@lang('lang.notes_forAccess')</p>
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">

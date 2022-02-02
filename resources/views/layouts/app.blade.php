@@ -29,6 +29,7 @@
     <x-navbar/>
     @yield('content')
     <x-footer/>
+@include('sweetalert::alert')
 
 <x-modal></x-modal>
 </body>

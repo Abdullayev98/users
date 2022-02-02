@@ -26,10 +26,10 @@
                 <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-2 md:p-6 px-8">
                     <div class="py-4 mx-auto px-auto text-center text-3xl font-semibold">
                         @auth()
-                            Ваши контакты
+                            @lang('lang.contact_yourContacts')
                         @endauth
                         @guest()
-                            Авторизация
+                            @lang('lang.contact_auth')
                         @endguest
                     </div>
                     <div class="w-10/12 mx-auto">

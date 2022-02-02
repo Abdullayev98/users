@@ -5,7 +5,8 @@
     <div class="container sm:w-4/5 w-full mx-auto">
 
         <div class="flex lg:flex-row flex-col justify-center mt-6">
-            <div class="lg:w-1/5 w-full lg:m-0 m-8 text-base">
+
+            <div class="lg:w-1/5 w-full text-base">
                 <ul class="mb-5">
                     <li><a  href="/geotaskshint" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_howItWorks')</a></li>
                     <li><a  href="/security" class="hover:text-red-500 text-md font-bold cursor-pointer">@lang('lang.secure_security')</a></li>
@@ -22,7 +23,8 @@
                     <li><a  href="/job" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_vacancy')</a></li>
                 </ul>
             </div>
-            <div class="lg:w-4/5 w-full lg:m-0 m-8 text-base">
+
+            <div class="lg:w-4/5 w-full text-base lg:mt-0 mt-4">
                     <div class="">
                         <h1 class="font-medium text-4xl">@lang('lang.secure_security')</h1>
                         <br>

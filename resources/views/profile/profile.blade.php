@@ -64,6 +64,7 @@
                                     @endif
                                 </p>
                             </span>
+
                             <p class="mt-2">@lang('lang.cash_created') <a href="#">
                                 <span>
                                     @if ($task == Null) 0
@@ -71,6 +72,35 @@
                                     @endif
                                 </span> @lang('lang.cash_task')</a></p>
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
+                                <div class="flex mt-6">
+                                    <div data-tooltip-target="tooltip-animation" class="mx-4">
+                                        <img src="https://assets.youdo.com/_next/static/media/gold.cb6c584ca4fad390a8d8e7130b0d4727.svg" alt="" class="w-16">
+                                        <div id="tooltip-animation" role="tooltip" class="inline-block w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, totam.
+                                            </p>
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
+{{--                                    <div data-tooltip-target="tooltip-animation" class="mx-4" >--}}
+{{--                                        <img src="https://assets.youdo.com/_next/static/media/badge-insurance.f85d1a0eef6ece06a0be8948561b1fc1.svg" alt="" class="w-16">--}}
+{{--                                        <div id="tooltip-animation" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">--}}
+{{--                                            <p>--}}
+{{--                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, voluptatem?--}}
+{{--                                            </p>--}}
+{{--                                            <div class="tooltip-arrow" data-popper-arrow></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div data-tooltip-target="tooltip-animation" class="mx-4" >--}}
+{{--                                        <img src="https://assets.youdo.com/_next/static/media/certificated.7ee80d875a7a2191564e0dee10b9b8a1.png" alt="" class="w-16">--}}
+{{--                                        <div id="tooltip-animation" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">--}}
+{{--                                            <p>--}}
+{{--                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, voluptatem?--}}
+{{--                                            </p>--}}
+{{--                                            <div class="tooltip-arrow" data-popper-arrow></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+                                </div>
                         </div>
                     </div>
                 </figure>
@@ -118,7 +148,7 @@
                         <div class="example-of-works w-96 my-10">
                            <a onclick="toggleModal123('modal-id123')" class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="#">
                             <i class="fas fa-camera"></i>
-                            <span>Создать фотоальбом</span>
+                            <span>@lang('lang.profile_createAlbum')</span>
                            </a>
                         </div>
 

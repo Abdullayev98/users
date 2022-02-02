@@ -42,8 +42,7 @@ return [
     'body_timeSavingCon' => "Universal Services-da siz bir necha daqiqada kerakli ijrochini topishingiz mumkin. Ko'pchilik
     ulardan bir kuni, ba'zan esa bir soatda ishga kirishishga tayyor.",
     'body_personalHelper' => "Cho'ntagingizda shaxsiy yordamchi",
-    'body_downloadApp' => "Ilovamizni yuklab oling va Universal xizmatlardan foydalaning,
-    qayerda bo'lsang ham.",
+    'body_downloadApp' => "Ilovamizni yuklab oling va Universal xizmatlardan foydalaning.",
     'body_whatOthersDoing' => "Ular hozir 'Universal xizmat' uchun nima buyurtma berishadi",
     'body_showAllTasks' => "Barcha vazifalarni ko'rsatish",
     'body_howToJoin' => "Qanday qilib ijrochi bo'lish mumkin",
@@ -480,6 +479,7 @@ return [
     'profile_phone' => "Telefon",
     'profile_noNumber' => "raqam yo'q",
     'profile_confirmed' => "Tasdiqlangan",
+    'profile_createAlbum' => "Fotoalbom yaratish",
     // profile.blade end
 
     // settings.blade start
@@ -573,6 +573,11 @@ return [
     'perfCat_allPerf' => "Barcha ijrochilar",
     // performers_cat.blade end
 
+    // performers.bade start
+    'perf_youreInUser' => "Siz hozir U-Ser ijrochilari bolimidasiz.",
+    'perf_forOffer' => "Tanlangan ijrochiga ish taklif qilish uchun uning profilidagi 'Vazifa taklif qilish' tugmasini bosishingiz kerak.",
+    // performers.bade end
+
     // budget.blade start
     'budget_lookingFor' => "Vazifa uchun tayinlovchi qidirilmoqda",
     'budget_percent' => "Ish 75% toʻlgan",
@@ -602,6 +607,8 @@ return [
     'contact_name' => "Ism",
     'contact_number' => "Telefon raqami",
     'contact_send' => "Yuborish",
+    'contact_yourContacts' => "Sizning kontaktlaringiz",
+    'contact_auth' => "Авторизация",
     // contacts.blade end
 
     // date.blade start
@@ -645,6 +652,7 @@ return [
     'name_cencel' => "Bekor qilish",
     'name_subCat2' => "Subkategorialar",
     'name_chooseOne' => "Bittasini tanlang",
+    'name_chooseOtherCat' => "Agar siz boshqa toifani tanlamoqchi bo'lsangiz",
     // name.blade end
 
     // notes.blade start
@@ -654,6 +662,8 @@ return [
     'notes_example' => "Masalan: yog'ochdan, tomi va ikkita derazali bir qavatli bolalar uyi qurish. Hovlida tez-tez suv yig'iladi, sizga shag'al drenaj kerak bo'ladi.",
     'notes_addPhoto' => "Rasm qo'shish",
     'notes_back' => "Orqaga",
+    'notes_giveDocs' => "Hujjatlarni taqdim etish",
+    'notes_forAccess' => "Kvitansiya/ishonchnoma uchun",
     // notes.blade end
 
     // people.blade start
@@ -887,7 +897,7 @@ return [
     'footer_contact' => "Kontaktlar",
     'footer_costumersreviews' => "Mijozlar sharhlari",
     'footer_text' => "Yordam",
-    'footer_foot' => "© 2021 Universal xizmatlar (foydalanuvchilar) ·",
+    'footer_foot' => "© 2021 Universal xizmatlar (user.uz)",
     'footer_text1' => "Xizmat qoidalari",
     'footer_text2' => "ish o'rinlari",
     'footer_text3' => "ushbu toifalarda",

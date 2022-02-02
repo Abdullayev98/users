@@ -145,7 +145,7 @@
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
-                                                           for="phone_number">Phone number</label>
+                                                           for="phone_number">@lang('lang.settings_phone')</label>
                                                     <input
                                                         class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
                                                         type="text" id="phone_number"
@@ -212,7 +212,7 @@
                                                 </div>
                                                 <input type="submit"
                                                        class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"
-                                                       name="submit1" value="Сохранить">
+                                                       name="submit1" value="@lang('lang.settings_save')">
                                                 <hr>
                                             </form>
 
@@ -277,7 +277,7 @@
                                             </div>
                                             <input
                                                 class="focus:outline-none  block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"
-                                                type="submit" name="submit" value="Сохранить">
+                                                type="submit" name="submit" value="@lang('lang.settings_save')">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");
@@ -430,7 +430,6 @@
         </div>
     </div>
     <script src="https://unpkg.com/imask"></script>
-    @include('sweetalert::alert')
 
     <script>
 

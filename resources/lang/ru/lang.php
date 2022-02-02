@@ -24,7 +24,7 @@ return [
     'body_performerDocs' => "«Проверенные исполнители» подтвердили свои документы на Universal Services.",
     'body_feedback' => "Доверенные отзывы",
     'body_over1mln' => "Более 1 000 000 отзывов от заказчиков помогут выбрать подходящего исполнителя.",
-    'body_economy' => "С Universal Services вы экономите на услугах до 70%*.<br> Как это возможно?",
+    'body_economy' => "С Universal Services вы экономите на услугах до 70%.<br> Как это возможно?",
     'body_createTask' => "Создать задания",
     'body_putTask' => "Разместите задание прямо сейчас",
     'body_findPerformer' => "и найдите <br> исполнителя за несколько минут",
@@ -482,6 +482,7 @@ return [
     'profile_phone' => "Телефон",
     'profile_noNumber' => "нет номера",
     'profile_confirmed' => "Подтвержден",
+    'profile_createAlbum' => "Создать фотоальбом",
     // profile.blade end
 
     // settings.blade start
@@ -575,6 +576,11 @@ return [
     'perfCat_allPerf' => "Все исполнители",
     // performers_cat.blade end
 
+    // performers.bade start
+    'perf_youreInUser' => "Вы находитесь в разделе исполнителей U-Ser.",
+    'perf_forOffer' => "Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его профиле.",
+    // performers.bade end
+
     // budget.blade start
     'budget_lookingFor' => "Ищем исполнителя для задания",
     'budget_percent' => "Задание заполнено на 75%",
@@ -604,6 +610,8 @@ return [
     'contact_name' => "Имя",
     'contact_number' => "Номер телефона",
     'contact_send' => "Отправить",
+    'contact_yourContacts' => "Ваши контакты",
+    'contact_auth' => "Авторизация",
     // contacts.blade end
 
     // date.blade start
@@ -647,6 +655,7 @@ return [
     'name_cencel' => "Отмена",
     'name_subCat2' => "Подкатегории",
     'name_chooseOne' => "Выберите один из пунктов",
+    'name_chooseOtherCat' => "Если хотите выбрать другую категорию",
     // name.blade end
 
     // notes.blade start
@@ -656,6 +665,8 @@ return [
     'notes_example' => "Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня.",
     'notes_addPhoto' => "Добавить фото",
     'notes_back' => "Назад",
+    'notes_giveDocs' => "Предоставить документы",
+    'notes_forAccess' => "Для оформления расписки/доверенности",
     // notes.blade end
 
     // people.blade start
@@ -890,7 +901,7 @@ return [
     'footer_contact' => "Контакты",
     'footer_costumersreviews' => "Отзывы заказчиков",
     'footer_text' => "Служба поддержки",
-    'footer_foot' => "  © 2021 Universal services (users.uz) ·",
+    'footer_foot' => "  © 2021 Universal services (user.uz)",
     'footer_text1' => "Правила сервиса",
     'footer_text2' => "заданий уже создано",
     'footer_text3' => "в этих категориях",
