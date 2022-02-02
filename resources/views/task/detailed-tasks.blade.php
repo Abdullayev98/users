@@ -3,35 +3,35 @@
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task_responses))
-        <div class="flex mx-auto w-9/12">
+        <div class="md:flex mx-auto w-10/12 md:w-9/12">
             @else
                 <div class="mx-auto w-9/12">
                     @endif
                     <div class="mt-8 lg:flex mb-8">
                         {{-- left sidebar start --}}
-                        <div class="w-11/12 float-left">
+                        <div class="w-10/12 md:w-11/12 float-left">
                             <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
-                            <div class="flex flex-row">
-                                <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">{{$tasks->budget}}</p>
+                            <div class="md:flex flex-row">
+                                <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$tasks->budget}}</p>
                                 @if ($tasks->email_confirm == 1)
                                     <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
                                 @endif
                             </div>
-                            <div class="flex flex-row">
+                            <div class="md:flex flex-row">
                                 @if ($tasks->show_only_to_performers == 1)
                                     <p class="mt-4 text-gray-400 font-normal">@lang('lang.detT_insuredPer')</p>
                                 @endif
                             </div>
-                            <div class="flex flex-row text-gray-400 mt-4">
+                            <div class="md:flex flex-row text-gray-400 mt-4">
                                 @if ($tasks->status == 3)
-                                    <p class="text-amber-500 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_inProsses')</p>
+                                    <p class="text-amber-500 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_inProsses')</p>
                                 @elseif($tasks->status < 3)
-                                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
+                                    <p class="text-green-400 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
                                 @else
-                                    <p class="text-red-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_close')</p>
+                                    <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_close')</p>
                                 @endif
-                                <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
+                                <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$tasks->created_at}}</p>
                                 @foreach($categories as $category)
                                     <p class="pr-3 ">{{$category->name}}</p>
                                 @endforeach
@@ -40,8 +40,8 @@
                                     @endif
                             </div>
 
-                            <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
-                                <div class="ml-12 flex flex-row">
+                            <div class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
+                                <div class="ml-4 md:ml-12 flex flex-row">
                                     @if($tasks->date_type == 1)
                                     <h1 class="font-bold h-auto w-48">Начать работу</h1>
                                     @elseif($tasks->date_type == 2)
@@ -51,14 +51,14 @@
                                     @endif
                                     <p class=" h-auto w-96">{{date('d-m-Y', strtotime($tasks->start_date))}}</p>
                                 </div>
-                                <div class="ml-12 flex flex-row mt-8">
+                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
                                     <p class=" h-auto w-96">{{$tasks->budget}}</p>
                                 </div>
 
                                     @isset($tasks->custom_field_values)
                                     @foreach($tasks->custom_field_values as $value)
-                                                    <div class="ml-12 flex flex-row mt-8">
+                                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
 
                                                         <h1 class="font-bold h-auto w-48">{{$value->custom_field->title}}</h1>
                                                         <p class=" h-auto w-96">
@@ -75,14 +75,14 @@
                                         @endisset
 
 
-                                <div class="ml-12 flex flex-row mt-4">
+                                <div class="ml-4 md:ml-12 flex flex-row mt-4">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
                                     @if($tasks->address !== NULL)
                                     <p class=" h-auto w-96">{{json_decode($tasks->address, true)['location']}}</p>
                                     @endif
                                 </div>
 
-                                <div class="ml-12 flex flex-row mt-8">
+                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_need')</h1>
                                     <p class=" h-auto w-96">{{$tasks->description}}</p>
                                 </div>
