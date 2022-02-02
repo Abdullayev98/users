@@ -20,16 +20,16 @@
             </a>
         </div>
     </div>
-    <div class="md:flex-wrap-reverse md:mx-0 mx-auto border-t pt-4 w-11/12">
-        <div class="container mx-auto ml-4 mb-4 text-center">
+    <div class="md:flex-row md:mx-0 mx-auto border-t pt-4 w-11/12 flex flex-wrap-reverse">
+        <div class="container ml-4 mb-4 md:pt-0 md:text-left mx-auto text-center">
             <span class="">
             @lang('lang.footer_foot') <br>
-                <a class="hover:text-amber-500 m:mx-auto" rel="noopener noreferrer">
+                <a class="hover:text-amber-500 md:mx-auto" rel="noopener noreferrer">
                     @lang('lang.footer_text1')
                 </a>
             </span>
-        </div> aaa
-        <div class="md:w-6/12 w-10/12 mx-auto text-center md:text-right mb-8">
+        </div>
+        <div class="md:w-6/12 w-10/12 mx-auto text-center md:pt-0 md:text-right mb-8">
             <a href="#">
                 <i class="fab fa-instagram text-gray-500 hover:text-yellow-500 mx-2"></i>
             </a>
