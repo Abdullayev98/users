@@ -20,7 +20,7 @@
             </a>
         </div>
     </div>
-    <div class="md:flex md:mx-0 mx-auto border-t pt-4 w-11/12">
+    <div class="md:flex-wrap-reverse md:mx-0 mx-auto border-t pt-4 w-11/12">
         <div class="container mx-auto ml-4 mb-4 text-center">
             <span class="">
             @lang('lang.footer_foot') <br>
@@ -28,7 +28,7 @@
                     @lang('lang.footer_text1')
                 </a>
             </span>
-        </div>
+        </div> aaa
         <div class="md:w-6/12 w-10/12 mx-auto text-center md:text-right mb-8">
             <a href="#">
                 <i class="fab fa-instagram text-gray-500 hover:text-yellow-500 mx-2"></i>
