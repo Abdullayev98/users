@@ -3,7 +3,7 @@
 {{--        <div class=" text-left  ml-4">--}}
         @lang('lang.comfaq_ownquestion')
         @foreach(\App\Models\FaqCategories::all() as $faq)
-        <p><a href="/questions/{{$faq->id}}" class="text-blue-500 hover:text-yellow-500 hover:underline text-base">{{$faq->title}}</a></p>
+        <p><a href="/questions/{{$faq->id}}" class="text-blue-500 hover:text-yellow-500 hover:underline text-base">{{ $faq->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</a></p>
         @endforeach
     </div>
 </div>

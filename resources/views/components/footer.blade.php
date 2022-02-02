@@ -2,12 +2,12 @@
     <div class="md:flex sm:flex-row flex-col my-12 text-base">
         <div class="w-1/2 w-full flex md:flex-row flex-col md:text-left text-center md:my-0 my-10">
             <div class="w-3/4 flex flex-col lg:mx-8 mx-auto">
-                <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 verify" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a>
-                <a class="delete-task faq cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a>
-                <a class="delete-task contact cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 contact" href="/contacts">@lang('lang.footer_contact')</a>
+                <a class="cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 verify" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a>
+                <a class="cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a>
+                <a class="cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 contact" href="/contacts">@lang('lang.footer_contact')</a>
             </div>
             <div class="w-3/4 flex flex-col lg:mx-0 mx-auto">
-                <a class="delete-task review cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 rews" href="/author-reviews">@lang('lang.footer_costumersreviews')</a>
+                <a class="cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 rews" href="/author-reviews">@lang('lang.footer_costumersreviews')</a>
                 <a class="text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="#replain-link">@lang('lang.footer_text')</a>
             </div>
         </div>
@@ -20,7 +20,7 @@
             </a>
         </div>
     </div>
-    <div class="md:flex md:mx-0 mx-auto border-t pt-4 w-11/12">
+    <div class="md:flex-wrap-reverse md:mx-0 mx-auto border-t pt-4 w-11/12">
         <div class="container mx-auto ml-4 mb-4 text-center">
             <span class="">
             @lang('lang.footer_foot') <br>
@@ -28,7 +28,7 @@
                     @lang('lang.footer_text1')
                 </a>
             </span>
-        </div>
+        </div> 
         <div class="md:w-6/12 w-10/12 mx-auto text-center md:text-right mb-8">
             <a href="#">
                 <i class="fab fa-instagram text-gray-500 hover:text-yellow-500 mx-2"></i>
@@ -101,14 +101,6 @@
 </div> --}}
 
 <script>
-    var link = document.location.href.split('/');
-    if(link[3] == 'task'){
-        $(".verification").removeAttr("href");
-        $(".faq").removeAttr("href");
-        $(".contact").removeAttr("href");
-        $(".review").removeAttr("href");
-    }
-
             var link = document.location.href.split('/');
             if(link[3] == 'verification'){
                 $(".verify").addClass("text-yellow-400");
