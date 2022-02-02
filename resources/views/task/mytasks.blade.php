@@ -54,7 +54,7 @@
                                             <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
                                             @foreach ($categories as $category)
                                                 @if($category->id == $task->category_id)
-                                                    <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{$category->name}}</span>
+                                                    <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                                                 @endif
                                             @endforeach
                                             <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
@@ -105,7 +105,7 @@
                                                 <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
                                                 @foreach ($categories as $category)
                                                     @if($category->id == $task->category_id)
-                                                        <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{$category->name}}</span>
+                                                        <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                                                     @endif
                                                 @endforeach
                                                     <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
