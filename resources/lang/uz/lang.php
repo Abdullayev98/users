@@ -127,6 +127,7 @@ return [
     'detT_choosePerf' => "Ishnga baho berish uchun ijrochini tanlang.",
     'detT_otherTaskInCat' => "Kategoriyadagi boshqa vazifalar",
     'detT_ordererThisTask' => "Bu topshiriqning buyurtmachisi",
+    'detT_task' => "Vazifa",
     // detailed-tasks.blade end
 
     // mytasks.blade start

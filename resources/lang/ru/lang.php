@@ -128,6 +128,7 @@ return [
     'detT_choosePerf' => "Выберите исполнителя, чтобы потом оставить отзыв о работе.",
     'detT_otherTaskInCat' => "Другие задания в категории",
     'detT_ordererThisTask' => "Заказчик этого задания",
+    'detT_task' => "Задание",
     // detailed-tasks.blade end
 
     // mytasks.blade start
