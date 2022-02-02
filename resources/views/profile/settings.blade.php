@@ -145,7 +145,7 @@
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
-                                                           for="phone_number">Phone number</label>
+                                                           for="phone_number">@lang('lang.settings_phone')</label>
                                                     <input
                                                         class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
                                                         type="text" id="phone_number"
