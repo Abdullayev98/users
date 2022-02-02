@@ -24,7 +24,7 @@ return [
     'body_performerDocs' => "«Tasdiqlangan ijrochilar 'Universal xizmatlar uchun hujjatlarini tasdiqladilar'",
     'body_feedback' => "Ishonchli sharhlar",
     'body_over1mln' => "Mijozlarning 1 000 000 dan ortiq sharhlari to'g'ri ijrochini tanlashga yordam beradi",
-    'body_economy' => "Universal Services bilan xizmatlarni 70% gacha tejashingiz mumkin *.<br> Bu qanday mumkin?",
+    'body_economy' => "Universal Services bilan xizmatlarni 70% gacha tejashingiz mumkin.<br> Bu qanday qilish mumkin?",
     'body_createTask' => "Vazifalarni yarating",
     'body_putTask' => "Topshiriqni hozir topshiring",
     'body_findPerformer' => "va bir necha daqiqada ijrochi toping",
