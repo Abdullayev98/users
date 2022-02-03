@@ -480,6 +480,12 @@ return [
     'profile_noNumber' => "raqam yo'q",
     'profile_confirmed' => "Tasdiqlangan",
     'profile_createAlbum' => "Fotoalbom yaratish",
+    'profile_icon_verify' => "Foydalanuvchining telefon raqami va elektron pochtasi tasdiqlangan",
+    'profile_icon_not_verify' => "Foydalanuvchining telefon raqami va elektron pochtasi tasdiqlanmagan",
+    'profile_icon_best' => "User.uz ijrochilarining TOP-20 taligiga kiritilgan",
+    'profile_icon_not_best' => "User.uz ijrochilarining TOP-20 taligiga kiritilmagan",
+    'profile_icon_50' => "50 tadan ortiq Bajarilgan vazifalar",
+    'profile_icon_not_50' => "Bajarilgan vazifalar 50 tadan kam",
     // profile.blade end
 
     // settings.blade start

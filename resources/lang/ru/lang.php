@@ -483,6 +483,12 @@ return [
     'profile_noNumber' => "нет номера",
     'profile_confirmed' => "Подтвержден",
     'profile_createAlbum' => "Создать фотоальбом",
+    'profile_icon_verify' => "Номер телефона и Е-mail пользователя подтверждены",
+    'profile_icon_not_verify' => "Номер телефона и Е-mail пользователя неподтверждены",
+    'profile_icon_best' => "Невходит в ТОП-20 всех исполнителей User.uz",
+    'profile_icon_not_best' => "Входит в ТОП-20 всех исполнителей User.uz",
+    'profile_icon_50' => "Более 50 выполненных заданий",
+    'profile_icon_not_50' => "Менее 50 выполненных задач",
     // profile.blade end
 
     // settings.blade start
