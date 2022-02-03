@@ -52,7 +52,7 @@
                                   method="post">
                                 @csrf
                                 <a class='text-gray-800  border-b sent-email border-dotted border-gray-700 cursor-pointer'
-                                   id="cancel-email">@lang('lang.modal.cencel')</a>
+                                   id="cancel-email">@lang('lang.modal_cencel')</a>
                                 <br>
                                 <div class="my-2">
                                     <input type="text" name="email" placeholder="Email" id="name"
@@ -139,7 +139,7 @@
                                       method="post">
                                     @csrf
                                     <a class='text-gray-800  border-b sent-email border-dotted border-gray-700 cursor-pointer'
-                                       id="cancel-email">@lang('lang.modal.cencel')</a>
+                                       id="cancel-email">@lang('lang.modal_cencel')</a>
                                     <br>
                                     <div class="my-2">
                                         <input type="text" placeholder="Phone Number" id="phone_number"
