@@ -485,6 +485,12 @@ return [
     'profile_noNumber' => "нет номера",
     'profile_confirmed' => "Подтвержден",
     'profile_createAlbum' => "Создать фотоальбом",
+    'profile_icon_verify' => "Номер телефона и Е-mail пользователя подтверждены",
+    'profile_icon_not_verify' => "Номер телефона и Е-mail пользователя неподтверждены",
+    'profile_icon_best' => "Невходит в ТОП-20 всех исполнителей User.uz",
+    'profile_icon_not_best' => "Входит в ТОП-20 всех исполнителей User.uz",
+    'profile_icon_50' => "Более 50 выполненных заданий",
+    'profile_icon_not_50' => "Менее 50 выполненных задач",
     'profile_enterDesc' => "Введите описание",
     'profile_newAlbum' => "Создать новый альбом",
     'profile_changeAlbum' => "Изменить альбом",
@@ -656,7 +662,7 @@ return [
     'name_percent' => "Задание заполнено на 14%",
     'name_howCanWeHelpU' => "Чем вам помочь?",
     'name_taskName' => "Название задания",
-    'name_example' => "Например, нужен курьер на несколько доставок",
+    'name_example' => "Например, вам нужен маляр",
     'name_subCat' => "Подкатегория",
     'name_pedCourier' => "Услуги пешего курьера",
     'name_next' => "Далее",
@@ -1133,7 +1139,7 @@ return [
     'detailedT_text19' => "Оставить отзыв",
     //detailed tasks blade ended
     //data
-    // personal info 
+    // personal info
     'personalinfo_text1' => "Расскажите о себе",
     'personalinfo_text2' => "Укажите свои контактные данные и выберите категории заданий, в которых вы хотите работать. На всё уйдёт примерно 3 минуты.",
     'personalinfo_text3' => "Как вас представлять заказчикам?",

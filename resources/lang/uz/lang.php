@@ -482,6 +482,12 @@ return [
     'profile_noNumber' => "raqam yo'q",
     'profile_confirmed' => "Tasdiqlangan",
     'profile_createAlbum' => "Fotoalbom yaratish",
+    'profile_icon_verify' => "Foydalanuvchining telefon raqami va elektron pochtasi tasdiqlangan",
+    'profile_icon_not_verify' => "Foydalanuvchining telefon raqami va elektron pochtasi tasdiqlanmagan",
+    'profile_icon_best' => "User.uz ijrochilarining TOP-20 taligiga kiritilgan",
+    'profile_icon_not_best' => "User.uz ijrochilarining TOP-20 taligiga kiritilmagan",
+    'profile_icon_50' => "50 tadan ortiq Bajarilgan vazifalar",
+    'profile_icon_not_50' => "Bajarilgan vazifalar 50 tadan kam",
     'profile_enterDesc' => "Ma'lumotni kiriting",
     'profile_newAlbum' => "Yangi albom yaratish",
     'profile_changeAlbum' => "Albomni ozgartirish",
@@ -653,7 +659,7 @@ return [
     'name_percent' => "Vazifa 14% toʻldi",
     'name_howCanWeHelpU' => "Sizga qanday yordam bera olaman?",
     'name_taskName' => "Vazifa nomi",
-    'name_example' => "Masalan, bir nechta yetkazib berish uchun sizga kurer kerak",
+    'name_example' => "Masalan, bo'yoqchi kerak",
     'name_subCat' => "Subturkum",
     'name_pedCourier' => "Piyodalar uchun kurerlik xizmati",
     'name_next' => "Keyingi",
@@ -1127,7 +1133,7 @@ return [
     'detailedT_text18' => "Bu chaqiruvga javob bering",
     'detailedT_text19' => "Fikr qoldiring",
     //detailed tasks blade ended
-    // personalinfo 
+    // personalinfo
     'personalinfo_text1' => "Bizga o'zingiz haqingizda aytib bering",
     'personalinfo_text2' => "Kontakt ma'lumotlaringizni kiriting va ishlashni xohlagan ish toifalarini tanlang. Hamma narsa taxminan 3 daqiqa davom etadi.",
     'personalinfo_text3' => "O'zingizni mijozlarga qanday tanishtirasiz?",
