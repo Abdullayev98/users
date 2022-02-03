@@ -91,11 +91,13 @@
                                         </div>
                                     </div>
                                     <div data-tooltip-target="tooltip-animation_2" class="mx-4" >
-                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                        <img
+{{--                                            @if ($task_count >= 50)--}}
                                              src="{{ asset('images/best.png') }}"
-                                             @else
-                                             src="{{ asset('images/best_gray.png') }}"
-                                             @endif alt="" class="w-16">
+{{--                                             @else--}}
+{{--                                             src="{{ asset('images/best_gray.png') }}"--}}
+{{--                                             @endif --}}
+alt="" class="w-16">
                                         <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                             <p class="text-center">
                                                 @lang('lang.profile_icon_best')
@@ -104,7 +106,11 @@
                                         </div>
                                     </div>
                                     <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
+                                        @if($task_count >= 50)
                                         <img src="{{ asset('images/50.png') }}" alt="" class="w-16">
+                                        @else
+                                            <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-16">
+                                        @endif
                                         <div id="tooltip-animation_3" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                             <p class="text-center">
                                                 @lang('lang.profile_icon_50')

@@ -32,7 +32,8 @@ class ProfileController extends Controller
         $views = count( UserView::where('performer_id', $user->id)->get());
         $task = Task::where('user_id',Auth::user()->id)->count();
         $ports = Portfoliocomment::where('user_id',Auth::user()->id)->get();
-        return view('profile.profile', compact('user','views','task','ports'));
+        $task_count = Task::where('performer_id', Auth::id())->where('status',4)->count();
+        return view('profile.profile', compact('user','views','task','ports','task_count'));
     }
     public function updates(Request $request)
     {
@@ -233,7 +234,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->born_date = $request->date;
         $user->save();
-        
+
         return  redirect()->route('verification.contact');
     }
     public function verificationContact()
@@ -250,7 +251,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
         $user->save();
-        
+
         return  redirect()->route('verification.photo');
     }
     public function verificationPhoto()
