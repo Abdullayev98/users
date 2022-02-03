@@ -482,18 +482,24 @@ return [
     'profile_noNumber' => "raqam yo'q",
     'profile_confirmed' => "Tasdiqlangan",
     'profile_createAlbum' => "Fotoalbom yaratish",
+    'profile_icon_verify' => "Foydalanuvchining telefon raqami va elektron pochtasi tasdiqlangan",
+    'profile_icon_not_verify' => "Foydalanuvchining telefon raqami va elektron pochtasi tasdiqlanmagan",
+    'profile_icon_best' => "User.uz ijrochilarining TOP-20 taligiga kiritilgan",
+    'profile_icon_not_best' => "User.uz ijrochilarining TOP-20 taligiga kiritilmagan",
+    'profile_icon_50' => "50 tadan ortiq Bajarilgan vazifalar",
+    'profile_icon_not_50' => "Bajarilgan vazifalar 50 tadan kam",
     'profile_enterDesc' => "Ma'lumotni kiriting",
     'profile_newAlbum' => "Yangi albom yaratish",
     'profile_changeAlbum' => "Albomni ozgartirish",
     // profile.blade end
 
     // settings.blade start
-    'settings_personalData' => "Shaxsiy ma'lumotlar",
+    'settings_personalData' => "Shaxsiy ma\'lumotlar",
     'settings_name' => "Ism",
     'settings_profileType' => "Profil turi",
     'settings_performer' => "Ijrochi",
     'settings_customer' => "Mijoz",
-    'settings_delete' => "O'chirish",
+    'settings_delete' => "O\'chirish",
     'settings_takeNotif' => "Bildirishnomalarni olish:",
     'settings_systemNotif' => "Tizim bildirishnomalari",
     'settings_wantNews' => "Men sayt yangiliklarini olmoqchiman",
@@ -653,13 +659,13 @@ return [
     'name_percent' => "Vazifa 14% toʻldi",
     'name_howCanWeHelpU' => "Sizga qanday yordam bera olaman?",
     'name_taskName' => "Vazifa nomi",
-    'name_example' => "Masalan, bir nechta yetkazib berish uchun sizga kurer kerak",
+    'name_example' => "Masalan, bo'yoqchi kerak",
     'name_subCat' => "Subturkum",
     'name_pedCourier' => "Piyodalar uchun kurerlik xizmati",
     'name_next' => "Keyingi",
-    'name_deleteAsk' => "Kiritilgan ma'lumotlar yo'qoladi. <br> Haqiqatan ham vazifani o'chirmoqchimisiz?",
+    'name_deleteAsk' => "Kiritilgan ma\'lumotlar yo\'qoladi. <br> Haqiqatan ham vazifani o\'chirmoqchimisiz?",
     'name_continue' => "Davom etish",
-    'name_delete' => "O'chirish",
+    'name_delete' => "O\'chirish",
     'name_cencel' => "Bekor qilish",
     'name_subCat2' => "Subkategorialar",
     'name_chooseOne' => "Bittasini tanlang",
@@ -741,6 +747,9 @@ return [
     'ver_avarageSPhoto' => "Foto va video <br> uchun o'rtacha oylik daromad",
     'ver_opinion7' => "Ishim shu daraja o'sib bordiki, men mijozlarni va mijozlarni suratga olaman. Ba'zi mijozlar meni o'z do'stlari, tanishlariga tavsiya qilishadi. Va, albatta, Universal Servicesdan juda ko'p buyurtmalar keladi.",
     'ver_avarageS3' => "Foto va video <br> uchun o'rtacha oylik daromad",
+    'verify1'=>"Men Universal Services xizmati kabi narsani topdim. Siz topshiriqlarni bajarasiz, pul olasiz. Pul uchun odatiy 'ishda ishlash'ni ajoyib almashtirish.(Hozir bu reklamaga o'xshardi : Vazifalar har xil, qo'lidan hech narsa kelmaydiganlar uchun ham bor. Gapira olish, yaxshi yoki to'liq ekstremal - yurish uchun etarli ",
+    'verify2'=>"Uberni eslatuvchi juda ajoyib xizmat. Foydalanish qulay, ayniqsa mijoz tomonidan - har qanday murakkab va unchalik katta bo'lmagan muammolar tez va arzon tarzda hal qilinadi. Cheksiz paketlar ustida ishlaydigan ijrochi sifatida aytishim mumkinki, men xarajatlarni to'liq qopladim, qora rangda qoldim, men uzaytirish haqida o'ylayapman. Agar xizmat butun O'zbekiston bo'ylab ishlasa, masalan, Toshkentda yaxshi bo'lar edi. Bir oy dam olishga keldi, kuniga 3 soat ishladi - 2 oy qoldi. Sizga farovonlik va muvaffaqiyat! Men hamkorlik qilishdan juda xursandman!",
+    'verify3'=>"Sekin-asta sayohatga pul topa boshladim. Men Universal Services veb-saytida to'xtadim. U yerda juda ko'p qiziqarli takliflar bor va sayt tizimining o'zi meni juda hayratda qoldiradi.Shunday qilib, asta-sekin, lekin ishonch bilan o'z maqsadim sari intilyapman!",
     // verification.blade end
 
     // navbar.blade start
@@ -1127,7 +1136,7 @@ return [
     'detailedT_text18' => "Bu chaqiruvga javob bering",
     'detailedT_text19' => "Fikr qoldiring",
     //detailed tasks blade ended
-    // personalinfo 
+    // personalinfo
     'personalinfo_text1' => "Bizga o'zingiz haqingizda aytib bering",
     'personalinfo_text2' => "Kontakt ma'lumotlaringizni kiriting va ishlashni xohlagan ish toifalarini tanlang. Hamma narsa taxminan 3 daqiqa davom etadi.",
     'personalinfo_text3' => "O'zingizni mijozlarga qanday tanishtirasiz?",

@@ -33,7 +33,7 @@
                                     @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                         <div>
-                                            <a href="{{route("task.create.name", ['category_id'=>$category2->id])}}" class="text-blue-500 hover:text-red-500 my-1 send-request" data-id="{{$category2->id}}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
+                                            <a href="/perf-ajax/{{ $category2->id }}" class="text-blue-500 cursor-pointer hover:text-red-500 my-1 send-request" data-id="{{$category2->id}}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
                                         </div>
 
                                     @endforeach
@@ -81,7 +81,6 @@
                                     var coundlikes = (good * 1) + (bad * 1);
                                     var overallStars = allcount / coundlikes;
                                     var star = overallStars.toFixed();
-                                    console.log(star);
                                     if (!isNaN(star)) {
                                         for (let i = 0; i < star; i++) {
                                             $(".stars{{$user->id}}").append('<i class="fas fa-star text-yellow-500"></i>');
@@ -100,7 +99,7 @@
                         <div class="w-4/5 md:float-none md:float-none">
                             <div>
                                 <a href="/performers/{{$user->id}}">
-                                    <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 {{$user->id}}" id="{{$user->id}}"> {{$user->name}} </p>
+                                    <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500" id="{{$user->id}}"> {{$user->name}} </p>
                                 </a>
                             <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                                 <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
@@ -451,7 +450,6 @@
                 type : 'GET', //method used POST or GET
                 data : {'category_id' : $(this).data('id')}, // Parameters passed to the PHP file
                 success : function(result){ // Has to be there !
-                    console.log(result)
                 },
 
                 error : function(result, statut, error){ // Handle errors
@@ -461,6 +459,5 @@
             });
         })
     </script>
-
 @endsection
 

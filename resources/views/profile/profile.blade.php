@@ -21,11 +21,11 @@
                     <div class="flex flex-row w-80 mt-6" style="width:500px">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
-                                @if ($user->avatar == Null)
-                                    src='{{asset("AvatarImages/images/default.jpg")}}'
-                                @else
-                                    src="{{asset("AvatarImages/{$user->avatar}")}}"
-                                @endif alt="">
+                            @if ($user->avatar == Null)
+                            src='{{asset("storage/images/default.jpg")}}'
+                            @else
+                            src="{{asset("storage/{$user->avatar}")}}"
+                            @endif alt="avatar">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
@@ -73,35 +73,48 @@
                                 </span> @lang('lang.cash_task')</a></p>
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                                 <div class="flex mt-6">
-                                    <div data-tooltip-target="tooltip-animation" class="mx-4">
-                                        <img src="https://assets.youdo.com/_next/static/media/gold.cb6c584ca4fad390a8d8e7130b0d4727.svg" alt="" class="w-16">
-                                        <div id="tooltip-animation" role="tooltip" class="inline-block w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, totam.
+                                    <div data-tooltip-target="tooltip-animation_1" class="mx-4">
+                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                             src="{{ asset('images/verify.png') }}"
+                                             @else
+                                             src="{{ asset('images/verify_gray.png') }}"
+                                             @endif  alt="" class="w-16">
+                                        <div id="tooltip-animation_1" role="tooltip" class="inline-block w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                            <p class="text-center">
+                                                @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                                    @lang('lang.profile_icon_verify')
+                                                @else
+                                                    @lang('lang.profile_icon_not_verify')
+                                                @endif
                                             </p>
                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                         </div>
                                     </div>
-{{--                                    <div data-tooltip-target="tooltip-animation" class="mx-4" >--}}
-{{--                                        <img src="https://assets.youdo.com/_next/static/media/badge-insurance.f85d1a0eef6ece06a0be8948561b1fc1.svg" alt="" class="w-16">--}}
-{{--                                        <div id="tooltip-animation" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">--}}
-{{--                                            <p>--}}
-{{--                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, voluptatem?--}}
-{{--                                            </p>--}}
-{{--                                            <div class="tooltip-arrow" data-popper-arrow></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div data-tooltip-target="tooltip-animation" class="mx-4" >--}}
-{{--                                        <img src="https://assets.youdo.com/_next/static/media/certificated.7ee80d875a7a2191564e0dee10b9b8a1.png" alt="" class="w-16">--}}
-{{--                                        <div id="tooltip-animation" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">--}}
-{{--                                            <p>--}}
-{{--                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, voluptatem?--}}
-{{--                                            </p>--}}
-{{--                                            <div class="tooltip-arrow" data-popper-arrow></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    <div data-tooltip-target="tooltip-animation_2" class="mx-4" >
+                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                             src="{{ asset('images/best.png') }}"
+                                             @else
+                                             src="{{ asset('images/best_gray.png') }}"
+                                             @endif alt="" class="w-16">
+                                        <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                            <p class="text-center">
+                                                @lang('lang.profile_icon_best')
+                                            </p>
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                    <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
+                                        <img src="{{ asset('images/50.png') }}" alt="" class="w-16">
+                                        <div id="tooltip-animation_3" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                            <p class="text-center">
+                                                @lang('lang.profile_icon_50')
+                                            </p>
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
                                 </div>
                         </div>
+                    </div>
                     </div>
                 </figure>
                 {{-- user ma'lumotlari tugashi --}}
@@ -171,6 +184,45 @@
                         </div>
 
                     </div>
+                    <div class="">
+                                <p class="text-2xl font-semibold">
+                                    Виды выполняемых работ
+                                </p>
+                                <div class="my-4">
+                                    <a href="#" class="text-lg font-semibold underline">
+                                        Курьерские услуги
+                                    </a>
+                                    <ul class="pl-10 leading-7">
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li>  
+                                    </ul>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="#" class="text-lg font-semibold underline">
+                                        Уборка и помощь по хозяйству
+                                    </a>
+                                    <ul class="pl-10 leading-7">
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li>  
+                                    </ul>
+                                </div>
+                            </div>
                     {{-- about-me end --}}
                 </div>
             </div>
