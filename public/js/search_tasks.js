@@ -22,8 +22,6 @@ function dataAjaxSort(){
             });
         });
     }
-    console.log(dataAjax)
-    console.log(dataAjaxPrint)
 }
 
 function tasks_list_all(data) {
@@ -182,21 +180,10 @@ function sixInOne(){
 }
 
 function img_show() {
+    $('.no_tasks').removeAttr('hidden');
     $(".show_tasks").empty();
     $(".small-map").empty();
     $(".big-map").empty();
-    $(".show_tasks").append(
-        `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                <div></div>
-                <div><img src="images/notlike.png" class="w-full h-full"></div>
-                <div></div>
-                <div class="col-span-3 text-center w-full h-full">
-                    <p className="text-3xl"><b></b></p>
-                    <p className="text-lg"></p>
-
-                </div>
-                </div>`
-    );
     $('.lM').attr("hidden","hidden")
 }
 
@@ -212,6 +199,7 @@ function tasks_show(){
             s++
         }
     });
+    $('.no_tasks').attr("hidden","hidden")
     $('.lM').removeAttr('hidden');
     $('#pnum').html(s)
     $('#snum').html(dl)

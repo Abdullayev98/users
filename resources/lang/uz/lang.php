@@ -181,6 +181,7 @@ return [
     'search_byDate' => "nashr qilingan sana bo'yicha",
     'search_byHurry' => "shoshilinch",
     'search_byRemote' => "masofadan",
+    'search_km' => "km",
     // search.blade end
 
     // search2.blade start
