@@ -151,7 +151,7 @@
                     <span class="pr-1 flex-1">@lang('lang.navbar_createTask')</span>
                     <span></span>
                 </button>
-                <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top ">
+                <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top z-10">
                     @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
                         <li class="py-2 px-4 rounded-sm hover:bg-gray-100">
                             <button class="w-full text-left flex items-center outline-none focus:outline-none">
