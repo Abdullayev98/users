@@ -88,7 +88,7 @@
                             </div>
                         </div>
                         <div class="flex w-full gap-x-4 mt-4">
-                            <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                            <a onclick="backPersonalinfo()" class="w-1/3 cursor-pointer	  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                 <!-- <button type="button"> -->
                                 @lang('lang.personalinfo_text11')
 
@@ -120,7 +120,7 @@
         $(".showshad").show()
     })
 
-    function myFunction() {
+    function backPersonalinfo() {
         $(".hidShad").show()
         $(".showshad").hide()
     }
@@ -129,29 +129,25 @@
     flatpickr.localize(flatpickr.l10ns.ru);
     flatpickr(".flatpickr", {
         wrap: true,
-        enableTime: true,
-        allowInput: true,
         altInput: true,
+        altFormat: "F j, Y",
         dateFormat: "Y-m-d",
-
         locale: "@lang('lang.dateLang')",
     }, )
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 <script>
+    function init_map() {
+
+        myMap = new ymaps.Map('map', {
+            center: [41.311151, 69.279737],
+            zoom: 13,
+            controls: ['zoomControl', 'searchControl']
+        });
 
 
-        function init_map() {
-
-            myMap = new ymaps.Map('map', {
-                center: [41.311151, 69.279737],
-                zoom: 13,
-                controls: ['zoomControl', 'searchControl']
-            });
-
-
-        }
+    }
     ymaps.ready(init_map);
 
 

@@ -171,6 +171,45 @@
                         </div>
 
                     </div>
+                    <div class="">
+                                <p class="text-2xl font-semibold">
+                                    Виды выполняемых работ
+                                </p>
+                                <div class="my-4">
+                                    <a href="#" class="text-lg font-semibold underline">
+                                        Курьерские услуги
+                                    </a>
+                                    <ul class="pl-10 leading-7">
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li>  
+                                    </ul>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="#" class="text-lg font-semibold underline">
+                                        Уборка и помощь по хозяйству
+                                    </a>
+                                    <ul class="pl-10 leading-7">
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li>  
+                                    </ul>
+                                </div>
+                            </div>
                     {{-- about-me end --}}
                 </div>
             </div>
