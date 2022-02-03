@@ -183,6 +183,7 @@ return [
     'search_byDate' => "по дате публикации",
     'search_byHurry' => "по срочности",
     'search_byRemote' => "по удалённости",
+    'search_km' => "км",
     // search.blade end
 
     // search2.blade start
