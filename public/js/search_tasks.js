@@ -1,5 +1,5 @@
 let dataAjax = {};
-let dataAjaxPrint = [];
+let dataAjaxPrint = {};
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -9,9 +9,27 @@ $(".for_check2 input:checkbox").each(function() {
     this.checked = true;
 });
 
+function dataAjaxSort(){
+    dataAjaxPrint = {};
+    if(allCheck == 1){
+        dataAjaxPrint = dataAjax;
+    }else {
+        $.each(dataAjax, function (index, data) {
+            $('.chi_cat').each(function () {
+                if (this.checked && this.name == data.category_id) {
+                    dataAjaxPrint.push(data);
+                }
+            });
+        });
+    }
+    console.log(dataAjax)
+    console.log(dataAjaxPrint)
+}
+
 function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
+        dl++;
         let json = JSON.parse(data.address);
         $(".show_tasks").append(
             `<div class="sort-table print_block" hidden>
@@ -33,25 +51,7 @@ function tasks_list_all(data) {
                     </div>
                     </div>`,
         )
-        dl++;
     });
-}
-
-function dataAjaxSort(){
-    dataAjaxPrint = [];
-    if(allCheck == 1){
-        dataAjaxPrint = dataAjax;
-    }else {
-        $.each(dataAjax, function (index, data) {
-            $('.chi_cat').each(function () {
-                if (this.checked && this.name == data.category_id) {
-                    dataAjaxPrint.push(data);
-                }
-            });
-        });
-    }
-    // console.log(dataAjax)
-    // console.log(dataAjaxPrint)
 }
 
 $(".rotate").click(function() {
@@ -178,7 +178,7 @@ function sixInOne(){
         tasks_list_all(dataAjaxPrint)
         tasks_show()
     }
-    maps_show()
+    // maps_show()
 }
 
 function img_show() {
@@ -191,13 +191,16 @@ function img_show() {
                 <div><img src="images/notlike.png" class="w-full h-full"></div>
                 <div></div>
                 <div class="col-span-3 text-center w-full h-full">
-                    <p class="text-3xl"><b>@lang('lang.search_tasksNotFound')</b></p>
-                    <p class="text-lg">@lang('lang.search_tryAnOther')</p>
+                    <p className="text-3xl"><b></b></p>
+                    <p className="text-lg"></p>
+
                 </div>
                 </div>`
     );
     $('.lM').attr("hidden","hidden")
 }
+
+
 
 function tasks_show(){
     let i=1;
@@ -591,6 +594,7 @@ function map_pos(mm) {
                 };
             }
             geoObjects = [];
+            let json = JSON.parse(dataAjaxPrint.address);
             for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
                 // geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i], getPointOptions());
             }
@@ -702,7 +706,7 @@ function map1_show (){
             geoObjects = [];
 
         for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-            // geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i].coordinates, getPointData(i), getPointOptions());
+            geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i].coordinates, getPointData(i), getPointOptions());
         }
 
         clusterer.options.set({
