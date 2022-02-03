@@ -243,7 +243,7 @@
                         </div>
 
                         <div class="w-full w-full">
-                            <div class="no_tasks">
+                            <div class="no_tasks" hidden>
                                 {{--Show no tasks image --}}
                                 <div class=" w-3/5 h-3/5 mx-auto">
                                     <img src="images/notlike.png" class="w-full h-full">
