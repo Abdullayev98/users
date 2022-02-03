@@ -93,9 +93,6 @@
                                 @lang('lang.personalinfo_text11')
 
                                 <!-- </button> -->
-                                <script>
-
-                                </script>
                             </a>
                             <input type="submit" class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" name="" value="@lang('lang.personalinfo_text10')">
                         </div>

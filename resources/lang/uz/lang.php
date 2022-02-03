@@ -652,7 +652,7 @@ return [
     'name_percent' => "Vazifa 14% toʻldi",
     'name_howCanWeHelpU' => "Sizga qanday yordam bera olaman?",
     'name_taskName' => "Vazifa nomi",
-    'name_example' => "Masalan, bir nechta yetkazib berish uchun sizga kurer kerak",
+    'name_example' => "Masalan, bo'yoqchi kerak",
     'name_subCat' => "Subturkum",
     'name_pedCourier' => "Piyodalar uchun kurerlik xizmati",
     'name_next' => "Keyingi",
