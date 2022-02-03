@@ -219,11 +219,11 @@
                                         </li>
                                     @elseif($notification->type == 2)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">У вас новый отклик</a>
+                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveOffer')</a>
                                         </li>
                                     @elseif($notification->type == 3)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">Вы получили задание</a>
+                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveTask')</a>
                                         </li>
                                     @elseif($notification->type == 4)
                                         <li>

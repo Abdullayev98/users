@@ -765,6 +765,8 @@ return [
     'navbar_toPayment' => "К оплате",
     'navbar_paymentWay' => "Способ оплаты",
     'navbar_payment' => "Оплата",
+    'navbar_youHaveTask' => "Вы получили задание",
+    'navbar_youHaveOffer' => "У вас новый отклик",
     // navbar.blade end
 
 

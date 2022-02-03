@@ -762,6 +762,8 @@ return [
     'navbar_toPayment' => "Tolovga otish",
     'navbar_paymentWay' => "Tolov turlari",
     'navbar_payment' => "Tolov",
+    'navbar_youHaveTask' => "Sizda yangi vazifa bor",
+    'navbar_youHaveOffer' => "Sizda yangi habar bor",
     // navbar.blade end
 
 
