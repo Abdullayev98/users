@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset('/css/index.css') }}">
-<div class="border-b border-solid border-gray-200 w-full shadow-sm">
+<div class="border-b border-solid border-gray-200 w-full shadow-sm fixed bg-white top-0 z-10">
 
     <nav class="z-10 relative flex items-center xl:w-11/12 mx-auto lg:justify-start text-base" aria-label="Global">
         <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
