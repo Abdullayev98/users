@@ -494,12 +494,12 @@ return [
     // profile.blade end
 
     // settings.blade start
-    'settings_personalData' => "Shaxsiy ma'lumotlar",
+    'settings_personalData' => "Shaxsiy ma\'lumotlar",
     'settings_name' => "Ism",
     'settings_profileType' => "Profil turi",
     'settings_performer' => "Ijrochi",
     'settings_customer' => "Mijoz",
-    'settings_delete' => "O'chirish",
+    'settings_delete' => "O\'chirish",
     'settings_takeNotif' => "Bildirishnomalarni olish:",
     'settings_systemNotif' => "Tizim bildirishnomalari",
     'settings_wantNews' => "Men sayt yangiliklarini olmoqchiman",
@@ -663,9 +663,9 @@ return [
     'name_subCat' => "Subturkum",
     'name_pedCourier' => "Piyodalar uchun kurerlik xizmati",
     'name_next' => "Keyingi",
-    'name_deleteAsk' => "Kiritilgan ma'lumotlar yo'qoladi. <br> Haqiqatan ham vazifani o'chirmoqchimisiz?",
+    'name_deleteAsk' => "Kiritilgan ma\'lumotlar yo\'qoladi. <br> Haqiqatan ham vazifani o\'chirmoqchimisiz?",
     'name_continue' => "Davom etish",
-    'name_delete' => "O'chirish",
+    'name_delete' => "O\'chirish",
     'name_cencel' => "Bekor qilish",
     'name_subCat2' => "Subkategorialar",
     'name_chooseOne' => "Bittasini tanlang",
