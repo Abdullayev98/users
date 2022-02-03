@@ -5,7 +5,7 @@ return [
     "cardpay" => "Kartadan to'lov",
     "nalpay" => "Naqd pul bilan to'lov",
     "count_transactions" => "Tranzaksiyalar soni:",
-    "random_cat" => "Piyoda kurerlik xizmatlari",
+    "random_cat" => "Piyoda kuryerlik xizmatlari",
     'lang_for_map' => "uz_UZ",
     'header_title' => "Sizni tashvishlardan xalos qilamiz",
     'header_sub' => "Biz sizga har qanday vazifani bajarish uchun ishonchli ijrochi topishga yordam beramiz",
