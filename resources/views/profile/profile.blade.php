@@ -22,7 +22,7 @@
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
                             @if ($user->avatar == Null)
-                            src='{{asset("storage/images/default.jpg")}}'
+                            src='{{asset("storage/images/default_img.jpg")}}'
                             @else
                             src="{{asset("storage/{$user->avatar}")}}"
                             @endif alt="avatar">

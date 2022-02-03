@@ -14,7 +14,7 @@
                 <div class="flex justify-center">
                     <img class="w-20 h-20"
                         @if ($user->avatar == Null)
-                        src='{{asset("AvatarImages/images/default.jpg")}}'
+                        src='{{asset("AvatarImages/images/default_img.jpg")}}'
                         @else
                         src="{{asset("AvatarImages/{$user->avatar}")}}"
                         @endif alt="">

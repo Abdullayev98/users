@@ -62,10 +62,10 @@
                         <div class="w-34 float-left">
                             <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
                                 @if ($user->avatar == Null)
-                                src='{{asset("storage/users/default.jpg")}}'
+                                src='{{asset("AvatarImages/images/default_img.jpg")}}'
                                 @else
-                                src="{{asset("storage/{$user->avatar}")}}"
-                                @endif alt="user">
+                                src="{{asset("AvatarImages/{$user->avatar}")}}"
+                                @endif alt="">
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>
                                 <i class="far fa-thumbs-up m-1 text-gray-400 like{{$user->id}}">{{$user->reviews->where('good_bad',1)->count()}}</i>
