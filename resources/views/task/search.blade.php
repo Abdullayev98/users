@@ -2,8 +2,8 @@
 
 @section("content")
 
-    <div class="mx-auto w-11/12 xl:w-9/12 my-8 md:my-16">
-        <div class="grid lg:grid-cols-5 grid-cols-5 container mx-auto text-base">
+    <div class="mx-auto w-full md:w-11/12 xl:w-9/12 my-8 md:my-16">
+        <div class="grid lg:grid-cols-5 grid-cols-5 container px-2 md:mx-auto text-base ">
             <div class="col-span-5 lg:col-span-3">
                 <div class="w-full bg-yellow-50 my-5 rounded-md">
                     <div class="px-5 py-5 hidden md:block">
@@ -37,17 +37,17 @@
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
                                     <select name="" id="selectGeo" class="focus:outline-none  py-1 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); enDis(r); map_pos(k)">
                                         <option value="0">@lang('lang.search_byMapRadiusNo')</option>
-                                        <option value="1.5">1.5 km</option>
-                                        <option value="3">3 km</option>
-                                        <option value="5">5 km</option>
-                                        <option value="10">10 km</option>
-                                        <option value="15">15 km</option>
-                                        <option value="20">20 km</option>
-                                        <option value="30">30 km</option>
-                                        <option value="50">50 km</option>
-                                        <option value="75">75 km</option>
-                                        <option value="100">100 km</option>
-                                        <option value="200">200 km</option>
+                                        <option value="1.5">1.5 @lang('lang.search_km')</option>
+                                        <option value="3">3 @lang('lang.search_km')</option>
+                                        <option value="5">5 @lang('lang.search_km')</option>
+                                        <option value="10">10 @lang('lang.search_km')</option>
+                                        <option value="15">15 @lang('lang.search_km')</option>
+                                        <option value="20">20 @lang('lang.search_km')</option>
+                                        <option value="30">30 @lang('lang.search_km')</option>
+                                        <option value="50">50 @lang('lang.search_km')</option>
+                                        <option value="75">75 @lang('lang.search_km')</option>
+                                        <option value="100">100 @lang('lang.search_km')</option>
+                                        <option value="200">200 @lang('lang.search_km')</option>
                                     </select>
                                 </div>
                                 <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
@@ -241,6 +241,20 @@
                                 {{--Show Tasks list --}}
                             </div>
                         </div>
+
+                        <div class="w-full w-full">
+                            <div class="no_tasks" hidden>
+                                {{--Show no tasks image --}}
+                                <div class=" w-3/5 h-3/5 mx-auto">
+                                    <img src="images/notlike.png" class="w-full h-full">
+                                    <div class="text-center w-full h-full">
+                                        <p className="text-4xl"><b>@lang('lang.search_tasksNotFound')</b></p>
+                                        <p className="text-xl">@lang('lang.search_tryAnOther')</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="w-full h-full lM" hidden>
                             <ul class="text-center">
                                 <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
@@ -295,7 +309,6 @@
                             @endforeach
                         </div>
                     </div>
-                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                 </div>
             </div>
         </div>
@@ -320,20 +333,18 @@
 
 @section("javasript")
 
-
-    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
-    <script src="{{asset('js/search_tasks.js')}}"></script>
-    <script type="text/javascript">
+{{--    <script src="{{asset('js/search_tasks.js')}}"></script>--}}
+    <script src="/js/search_tasks.js"></script>
+    <script>
         let allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
         let userCoordinates=[[],[]];
-        module.exports = {
-            plugins: [require('@tailwindcss/forms')]
-        };
-        enDis(r);
-        first_ajax('all');
-        // sixInOne();
+
+        // module.exports = {
+        //     plugins: [require('@tailwindcss/forms')]
+        // };
 
         function first_ajax(id) {
             $.ajax({
@@ -342,13 +353,16 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    console.log(dataAjax)
+                    sixInOne();
                 },
                 error: function () {
                     alert("Ajax ishida xatolik...");
                 }
             });
         }
+
+        enDis(r);
+        first_ajax('all');
 
     </script>
     <script>

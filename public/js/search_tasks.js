@@ -1,5 +1,5 @@
 let dataAjax = {};
-let dataAjaxPrint = [];
+let dataAjaxPrint = {};
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -9,36 +9,8 @@ $(".for_check2 input:checkbox").each(function() {
     this.checked = true;
 });
 
-function tasks_list_all(data) {
-    $(".show_tasks").empty();
-    $.each(data, function(index, data) {
-        let json = JSON.parse(data.address);
-        $(".show_tasks").append(
-            `<div class="sort-table print_block" hidden>
-                    <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-nomer="`+ data.start_date +`">
-                    <div class="sm:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
-                    <div class="float-left w-9/12 " id="results">
-                    <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
-                    <a href="/detailed-tasks/` + data.id + `" class="text-[18px] text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-[14px] ml-12 mt-4 location">` + json.location + `</p>
-                    <p class="text-[14px] ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
-                    <p class="text-[14px] ml-10 mt-1 pl-4">` + data.oplata + `</p>
-                    </div>
-                    <div class="float-right w-1/4 text-right sm:p-0 p-[5px]" id="about">
-                    <a href="#" class="text-[20px]">` + data.budget + `</a>
-                    <p class="text-[14px]">` + data.category_name + `</p>
-                    <p class="text-[14px] mt-2">` + data.user_name + `</p>
-                    </div>
-                    </div>
-                    </div>
-                    </div>`,
-        )
-        dl++;
-    });
-}
-
 function dataAjaxSort(){
-    dataAjaxPrint = [];
+    dataAjaxPrint = {};
     if(allCheck == 1){
         dataAjaxPrint = dataAjax;
     }else {
@@ -50,8 +22,34 @@ function dataAjaxSort(){
             });
         });
     }
-    // console.log(dataAjax)
-    // console.log(dataAjaxPrint)
+}
+
+function tasks_list_all(data) {
+    $(".show_tasks").empty();
+    $.each(data, function(index, data) {
+        dl++;
+        let json = JSON.parse(data.address);
+        $(".show_tasks").append(
+            `<div class="sort-table print_block" hidden>
+                    <div class="w-full border-b border-t  md:border pt-3 md:p-0 hover:bg-blue-100 h-44 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
+                    <div class="md:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
+                    <div class="float-left w-9/12 " id="results">
+                    <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
+                    <a href="/detailed-tasks/` + data.id + `" class="text-[18px] text-blue-400 hover:text-red-400">` + data.name + `</a>
+                    <p class="text-[14px] ml-12 mt-4 location">` + json.location + `</p>
+                    <p class="text-[14px] ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
+                    <p class="text-[14px] ml-10 mt-1 pl-4">` + data.oplata + `</p>
+                    </div>
+                    <div class="float-right w-1/4 text-right sm:p-0" id="about">
+                    <a href="#" class="text-[20px]">` + data.budget + `</a>
+                    <p class="text-[14px]">` + data.category_name + `</p>
+                    <p class="text-[14px] mt-2">` + data.user_name + `</p>
+                    </div>
+                    </div>
+                    </div>
+                    </div>`,
+        )
+    });
 }
 
 $(".rotate").click(function() {
@@ -178,26 +176,18 @@ function sixInOne(){
         tasks_list_all(dataAjaxPrint)
         tasks_show()
     }
-    maps_show()
+    // maps_show()
 }
 
 function img_show() {
+    $('.no_tasks').removeAttr('hidden');
     $(".show_tasks").empty();
     $(".small-map").empty();
     $(".big-map").empty();
-    $(".show_tasks").append(
-        `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                <div></div>
-                <div><img src="images/notlike.png" class="w-full h-full"></div>
-                <div></div>
-                <div class="col-span-3 text-center w-full h-full">
-                    <p class="text-3xl"><b>@lang('lang.search_tasksNotFound')</b></p>
-                    <p class="text-lg">@lang('lang.search_tryAnOther')</p>
-                </div>
-                </div>`
-    );
     $('.lM').attr("hidden","hidden")
 }
+
+
 
 function tasks_show(){
     let i=1;
@@ -209,6 +199,7 @@ function tasks_show(){
             s++
         }
     });
+    $('.no_tasks').attr("hidden","hidden")
     $('.lM').removeAttr('hidden');
     $('#pnum').html(s)
     $('#snum').html(dl)
@@ -591,6 +582,7 @@ function map_pos(mm) {
                 };
             }
             geoObjects = [];
+            let json = JSON.parse(dataAjaxPrint.address);
             for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
                 // geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i], getPointOptions());
             }
@@ -702,7 +694,7 @@ function map1_show (){
             geoObjects = [];
 
         for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-            // geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i].coordinates, getPointData(i), getPointOptions());
+            geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i].coordinates, getPointData(i), getPointOptions());
         }
 
         clusterer.options.set({

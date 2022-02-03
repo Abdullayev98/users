@@ -42,14 +42,14 @@
                                        class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active"
                                        id="tabs-home-tab3" data-bs-toggle="pill" data-bs-target="#tabs-home3" role="tab"
                                        aria-controls="tabs-home3"
-                                       aria-selected="true">РЕГИСТРАЦИЯ</a>
+                                       aria-selected="true">@lang('lang.navbar_reg')</a>
                                 </li>
                                 <li class="nav-item w-1/2" role="presentation">
                                     <a href="#tabs-profile3"
                                        class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
                                        id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3"
                                        role="tab"
-                                       aria-controls="tabs-profile3" aria-selected="false">ВХОД</a>
+                                       aria-controls="tabs-profile3" aria-selected="false">@lang('lang.navbar_enter')</a>
                                 </li>
                             </ul>
                         @endguest

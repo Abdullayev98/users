@@ -54,14 +54,14 @@ return [
     //modal blade start
     'modal_email' => "Подтвердите адрес вашей почты",
     'modal_addres' => "На ваш электронный адрес",
-    'modal_addres1' =>"было отправлено письмо со ссылкой для подтверждения вашей почты на Universal Services.",
-    'modal_addres2'=>"Пройдите по ссылке и активируйте вашу электронную почту.",
-    'modal_addres3' =>"Отправить новое письмо для подтверждения почты",
-    'modal_addres4' =>" Указать другую почту",
+    'modal_addres1' => "было отправлено письмо со ссылкой для подтверждения вашей почты на Universal Services.",
+    'modal_addres2' => "Пройдите по ссылке и активируйте вашу электронную почту.",
+    'modal_addres3' => "Отправить новое письмо для подтверждения почты",
+    'modal_addres4' => " Указать другую почту",
     'modal_cencel' => "Отмена",
     'modal_send' => "Отправить",
     'modal_address1' => "На ваш телефонный номер",
-    'modal_address2' =>" было отправлено письмо со ссылкой для подтверждения вашей почты на Universal Services.",
+    'modal_address2' => " было отправлено письмо со ссылкой для подтверждения вашей почты на Universal Services.",
     'modal_address3' => " Пройдите по ссылке и активируйте вашу телефонный номер.",
     'modal_address4' => "Отправить новое письмо для подтверждения телефонный номер",
     'modal_phone' => "Указать другую телефонный номер",
@@ -128,6 +128,7 @@ return [
     'detT_choosePerf' => "Выберите исполнителя, чтобы потом оставить отзыв о работе.",
     'detT_otherTaskInCat' => "Другие задания в категории",
     'detT_ordererThisTask' => "Заказчик этого задания",
+    'detT_task' => "Задание",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -182,6 +183,7 @@ return [
     'search_byDate' => "по дате публикации",
     'search_byHurry' => "по срочности",
     'search_byRemote' => "по удалённости",
+    'search_km' => "км",
     // search.blade end
 
     // search2.blade start
@@ -489,6 +491,9 @@ return [
     'profile_icon_not_best' => "Входит в ТОП-20 всех исполнителей User.uz",
     'profile_icon_50' => "Более 50 выполненных заданий",
     'profile_icon_not_50' => "Менее 50 выполненных задач",
+    'profile_enterDesc' => "Введите описание",
+    'profile_newAlbum' => "Создать новый альбом",
+    'profile_changeAlbum' => "Изменить альбом",
     // profile.blade end
 
     // settings.blade start
@@ -657,7 +662,7 @@ return [
     'name_percent' => "Задание заполнено на 14%",
     'name_howCanWeHelpU' => "Чем вам помочь?",
     'name_taskName' => "Название задания",
-    'name_example' => "Например, нужен курьер на несколько доставок",
+    'name_example' => "Например, вам нужен маляр",
     'name_subCat' => "Подкатегория",
     'name_pedCourier' => "Услуги пешего курьера",
     'name_next' => "Далее",
@@ -767,6 +772,8 @@ return [
     'navbar_toPayment' => "К оплате",
     'navbar_paymentWay' => "Способ оплаты",
     'navbar_payment' => "Оплата",
+    'navbar_youHaveTask' => "Вы получили задание",
+    'navbar_youHaveOffer' => "У вас новый отклик",
     // navbar.blade end
 
 
@@ -781,6 +788,7 @@ return [
     'signin_passwordforgot' => "Забыли пароль?",
     'signin_registration' => "  Зарегистрируйтесь",
     'singin_withoutUs' => "Еще не с нами?",
+    'singin_button' => "Войти",
     // signin blade ended
 
     // signup blade start
@@ -803,7 +811,7 @@ return [
     'business_fastfoundperson' => "Ускорьте поиск исполнителей",
     'business_owndatabaseperformers' => "Собственная база 2.6 млн исполнителей ",
     'business_foryourbusinesswork' => "для задач вашего бизнеса",
-    'business_selectionofselfemployedperformersaccordingtovariouscriteria'=> "Подбор самозанятых исполнителей по различным критериям",
+    'business_selectionofselfemployedperformersaccordingtovariouscriteria' => "Подбор самозанятых исполнителей по различным критериям",
     'business_automate' => "Автоматизируйте",
     'business_interactionwithself-employed' => " взаимодействие с самозанятыми",
     'business_assistancetoperformersinobtainingself-employment' => "Помощь исполнителям в оформлении самозанятости",
@@ -886,7 +894,7 @@ return [
     'business_letstalk' => "Давайте поговорим",
     'business_text49' => "Мы подробнее расскажем о возможностях платформы и ответим на вопросы",
     'business_text50' => "Сколько у вас самозанятых?",
-    'business_footer' => "© 2021 Universal Services",
+    'business_footer' => "© 2022 Universal Services",
     'business_aboutus' => "О нас",
     'business_contact' => "Контакты",
     'business_text50' => "HR-лидогенерация",
@@ -913,7 +921,7 @@ return [
     'footer_contact' => "Контакты",
     'footer_costumersreviews' => "Отзывы заказчиков",
     'footer_text' => "Служба поддержки",
-    'footer_foot' => "  © 2021 Universal services (user.uz)",
+    'footer_foot' => "  © 2022 Universal services (user.uz)",
     'footer_text1' => "Правила сервиса",
     'footer_text2' => "заданий уже создано",
     'footer_text3' => "в этих категориях",
@@ -1131,5 +1139,27 @@ return [
     'detailedT_text19' => "Оставить отзыв",
     //detailed tasks blade ended
     //data
-
+    // personal info
+    'personalinfo_text1' => "Расскажите о себе",
+    'personalinfo_text2' => "Укажите свои контактные данные и выберите категории заданий, в которых вы хотите работать. На всё уйдёт примерно 3 минуты.",
+    'personalinfo_text3' => "Как вас представлять заказчикам?",
+    'personalinfo_text4' => "Эта данные нужны для работы на сервисе и связи с заказчиком. При этом заказчик увидит только ваше имя и телефон.",
+    'personalinfo_text5' => "Город, улица, дом",
+    'personalinfo_text6' => "Имя",
+    'personalinfo_text7' => "Фамилия",
+    'personalinfo_text8' => "Дата рождения",
+    'personalinfo_text9' => "Продолжая верификацию, вы подтверждаете, что проходите её впервые, указали достоверную информацию о себе и соглашаетесь на обработку персональных данных.",
+    'personalinfo_text10' => "Далее",
+    'personalinfo_text11' => "Назад",
+    'personalinfo_text12' => "как с вами связаться?",
+    'personalinfo_text13' => "Заказчики будут контактировать с вами по телефону, либо в чате. На почту будем присылать уведомления.",
+    'personalinfo_text14' => "Электронная почта",
+    "personalinfo_text15" => "Телефон",
+    "personalinfo_text16" => "Начнём",
+    "personalinfo_text17" => "Пользователям с хорошей фотографией больше доверяют. Фото можно добавить потом.",
+    "personalinfo_text18" => "Загрузить фото",
+    "personalinfo_text19" => 'Чем вы хотите заниматься?',
+    "personalinfo_text20" => "Выберите категории заданий, в которых хотите работать. Можно сразу несколько — изменить их всегда можно в профиле.",
+    "personalinfo_text21" => "Стать исполнителем",
+    // personal info end
 ];
