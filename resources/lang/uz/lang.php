@@ -482,6 +482,8 @@ return [
     'profile_confirmed' => "Tasdiqlangan",
     'profile_createAlbum' => "Fotoalbom yaratish",
     'profile_enterDesc' => "Ma'lumotni kiriting",
+    'profile_newAlbum' => "Yangi albom yaratish",
+    'profile_changeAlbum' => "Albomni ozgartirish",
     // profile.blade end
 
     // settings.blade start

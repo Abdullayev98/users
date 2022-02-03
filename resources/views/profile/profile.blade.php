@@ -166,7 +166,7 @@
                             </a>
                             <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
                                 <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
-                                <span class="mx-auto text-xs mt-2">Создать новый альбом</span>
+                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>
                             </div>
                         </div>
 
@@ -192,7 +192,7 @@
                                 <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                             </button>
                             <h3 class="font-medium text-3xl block">
-                                Создание альбома
+                                @lang('lang.profile_createAlbum')
                             </h3>
                         </div>
                         <div class="text-center h-full w-full text-base">
@@ -218,7 +218,7 @@
                                 <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                             </button>
                             <h3 class="font-medium text-3xl block">
-                                Изменить альбома
+                                @lang('lang.profile_changeAlbum')
                             </h3>
                         </div>
                         <div class="text-center h-full w-full text-base">

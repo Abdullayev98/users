@@ -485,6 +485,8 @@ return [
     'profile_confirmed' => "Подтвержден",
     'profile_createAlbum' => "Создать фотоальбом",
     'profile_enterDesc' => "Введите описание",
+    'profile_newAlbum' => "Создать новый альбом",
+    'profile_changeAlbum' => "Изменить альбом",
     // profile.blade end
 
     // settings.blade start
