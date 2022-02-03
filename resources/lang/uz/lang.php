@@ -731,7 +731,7 @@ return [
     'ver_getYourGoals' => "Universal Services bilan daromad oling va maqsadlaringizga erishing",
     'ver_everyday' => "Bizning ijrochilar buni har kuni qilishadi.",
     'ver_independance' => "Bizning ijrochilar buni har kuni qilishadi.",
-    'ver_avarageSCour' => "Средний месячный доход <br> в категории «Курьерские услуги»",
+    'ver_avarageSCour' => "O'rtacha oylik daromad <br> 'Kuryer xizmatlari' turkumidagi",
     'ver_readMore' => "Batafsil o'qish",
     'ver_opinion3' => "Men Universal Xizmatlar kabi narsani kashf qildim. Vazifalarni bajarganingizdan so'ng, siz haq olasiz. Pul uchun odatiy 'ishdagi ish'",
     'ver_opinion4' => "Juda zo'r xizmat, Uberga oxshaydi. Undan foydalanish qulay, ayniqsa mijoz uchun - har qanday murakkab narsa tez va arzon tarzda hal qilinadi",
