@@ -885,7 +885,7 @@ return [
     'business_letstalk' => "Keling, gaplashaylik",
     'business_text49' => "Biz sizga platformaning imkoniyatlari haqida batafsil ma'lumot beramiz va savollarga javob beramiz",
     'business_text50' => "Qancha shaxsiy tadbirkoringiz bor?",
-    'business_footer' => "© 2021 Universal Services",
+    'business_footer' => "© 2022 Universal Services",
     'business_aboutus' => "Biz haqimizda",
     'business_contact' => "Kontaktlar",
     'business_text50' => "HR yetakchi avlodi",
