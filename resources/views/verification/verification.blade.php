@@ -2,12 +2,13 @@
 
 
 @section('content')
-<div style="background-image: url('https://images.pexels.com/photos/5588400/pexels-photo-5588400.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=768&amp;w=1688')" class="h-screen bg-no-repeat mb-32 h-90">
+<div style="background-image: url('https://images.pexels.com/photos/5588400/pexels-photo-5588400.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=768&amp;w=1688')"
+ class="h-screen bg-no-repeat mb-32">
   <div class="text-center my-auto pt-48">
     <p class="text-5xl font-bold text-white ">@lang('lang.ver_becomePerf')</p>
     <p class="mt-8 mb-12 text-white text-2xl">@lang('lang.ver_uSerHelps')</p>
       @auth
-        <a href="{{ route('task.search') }}">
+        <a href="{{ route('verification.info') }}">
             @else
                 <a href="/register">
             @endauth
@@ -19,8 +20,9 @@
 </div>
 
 
+   <div class="container mx-auto px-2">
     <div class="w-10/12 mx-auto text-center mb-16">
-      <h1 class="text-5xl font-bold">@lang('lang.ver_advantage')</h1>
+      <h1 class="text-4xl font-bold">@lang('lang.ver_advantage')</h1>
       <p class="font-bold mt-16">@lang('lang.ver_becomePref2')</p>
         <div class="grid md:grid-cols-4 grid-cols-1 gap-4 pt-16 container mx-auto font-bold text-xl">
           <div>
@@ -76,7 +78,7 @@
               </div>
           </div>
             @auth
-                <a href="{{ route('task.search') }}">
+                <a href="{{ route('verification.info') }}">
                     @else
                         <a href="/register">
                             @endauth
@@ -89,17 +91,17 @@
 
     {{-- 1 --}}
     <div class="flex lg:flex-row flex-col container mx-auto">
-        <div class="lg:w-3/5 w-full xl:ml-0 ml-4">
+        <div class="lg:w-3/5 w-full">
           <img class="lg:mx-0 mx-auto" src="{{asset('images/performer1.jpg')}}" alt="#">
         </div>
-        <div class="lg:w-2/5 w-full lg:text-left text-center xl:ml-0 ml-8 lg:mt-0 mt-4">
+        <div class="lg:w-2/5 w-full lg:text-left text-center lg:mt-0 mt-4 lg:ml-8">
           <h1 class="font-bold text-3xl">@lang('lang.ver_goodSalary')</h1>
           <p class="mt-6 text-lg">@lang('lang.ver_earnByTasks')</p>
             <div>
               <hr class="mt-8 mb-8">
               <p class="mb-12">@lang('lang.ver_maxOrder')</p>
                 @auth
-                    <a href="{{ route('task.search') }}">
+                    <a href="{{ route('verification.info') }}">
                         @else
                             <a href="/register">
                                 @endauth
@@ -113,14 +115,14 @@
 
     {{-- 2 --}}
     <div class="flex lg:flex-row flex-col container mx-auto my-16">
-      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center xl:ml-0 ml-4">
+      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center">
         <h1 class="font-bold text-3xl">@lang('lang.ver_freeTime')</h1>
         <p class="mt-6 text-lg">.@lang('lang.ver_workForYourserf')</p>
           <div>
             <hr class="mt-8 mb-8">
             <p class="mb-12">@lang('lang.ver_opinion')</p>
               @auth
-                  <a href="{{ route('task.search') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -130,7 +132,7 @@
             </a>
           </div>
       </div>
-      <div class="lg:w-3/5 w-full lg:block hidden xl:ml-0 ml-4">
+      <div class="lg:w-3/5 w-full lg:block hidden">
         <img class="ml-4 xl:float-right float-none" src="{{asset('images/performer2.jpg')}}" alt="#">
       </div>
 
@@ -144,7 +146,7 @@
             <hr class="mt-8 mb-8">
             <p class="mb-12">@lang('lang.ver_opinion')</p>
               @auth
-                  <a href="{{ route('task.search') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -158,17 +160,17 @@
 
     {{-- 3 --}}
     <div class="flex lg:flex-row flex-col container mx-auto">
-      <div class="lg:w-3/5 w-full xl:ml-0 ml-4">
+      <div class="lg:w-3/5 w-full">
         <img class="lg:mx-0 mx-auto" src="{{asset('images/performer3.jpg')}}" alt="#">
       </div>
-      <div class="lg:w-2/5 w-full lg:text-left text-center xl:ml-0 ml-8 lg:mt-0 mt-4">
+      <div class="lg:w-2/5 w-full lg:text-left text-center lg:mt-0 mt-4 lg:ml-8">
         <h1 class="font-bold text-3xl">@lang('lang.ver_serviceSec')</h1>
-        <p class="mt-6 text-lg">Ч@lang('lang.ver_readFeedbacks')</p>
+        <p class="mt-6 text-lg">@lang('lang.ver_readFeedbacks')</p>
           <div>
             <hr class="mt-8 mb-8">
             <p class="mb-12">@lang('lang.ver_securityDescr')</p>
               @auth
-                  <a href="{{ route('task.search') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -182,14 +184,14 @@
 
     {{-- 4 --}}
     <div class="flex lg:flex-row flex-col container mx-auto my-16">
-      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center xl:ml-0 ml-4">
+      <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center">
         <h1 class="font-bold text-3xl">@lang('lang.ver_addsEconomy')</h1>
         <p class="mt-6 text-lg">@lang('lang.ver_addsDescr')</p>
           <div>
             <hr class="mt-12 mb-8">
             <p class="mb-12">@lang('lang.ver_opinion2')</p>
               @auth
-                  <a href="{{ route('task.search') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -199,7 +201,7 @@
             </a>
           </div>
       </div>
-      <div class="lg:w-3/5 w-full lg:block hidden xl:ml-0 ml-4">
+      <div class="lg:w-3/5 w-full lg:block hidden">
         <img class="ml-4 xl:float-right float-none" src="{{asset('images/performer4.jpg')}}" alt="#">
       </div>
 
@@ -213,7 +215,7 @@
             <hr class="mt-8 mb-8">
             <p class="mb-12"> клиентами.@lang('lang.ver_opinion2')</p>
               @auth
-                  <a href="{{ route('task.search') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -229,7 +231,7 @@
 
 
         <div class="w-10/12 mx-auto text-center sm:mt-48 mt-16 mb-16 hidden">
-          <h1 class="font-bold text-5xl">@lang('lang.ver_partnershipT')</h1>
+          <h1 class="font-bold text-4xl">@lang('lang.ver_partnershipT')</h1>
           <p class="text-xl mt-8 font-medium">@lang('lang.ver_noTaxes')</p>
         </div>
 
@@ -263,7 +265,7 @@
 
 
        <div class="text-center sm:mt-48 mt-16 mb-16">
-            <h1 class="font-bold text-5xl">@lang('lang.ver_getYourGoals')</h1>
+            <h1 class="font-bold text-4xl">@lang('lang.ver_getYourGoals')</h1>
             <p class="text-xl mt-8 font-medium">@lang('lang.ver_everyday')</p>
        </div>
 
@@ -277,7 +279,7 @@
            <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSCour')</p>
             <div class="mt-16">
                 @auth
-                    <a href="{{ route('task.search') }}">
+                    <a href="{{ route('verification.info') }}">
                         @else
                             <a href="/register">
                                 @endauth
@@ -312,7 +314,7 @@
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSPhoto')</p>
           <div class="mt-16">
               @auth
-                  <a href="{{ route('task.search') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -335,7 +337,7 @@
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageS3')</p>
           <div class="mt-16">
               @auth
-                  <a href="{{ route('task.search') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -346,6 +348,7 @@
           </div>
         </div>
       </div>
+   </div>
 
 
 

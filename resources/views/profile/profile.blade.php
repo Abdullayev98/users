@@ -138,7 +138,7 @@
                                     @csrf
                                     <textarea name="description" name="description"
                                               class="w-full h-32 border border-gray-400 py-2 px-4 mt-3"
-                                              @if (!$user->description) placeholder="Enter description"@endif
+                                              @if (!$user->description) placeholder="@lang('lang.profile_enterDesc')"@endif
                                     >@if ($user->description){{$user->description}}@endif</textarea><br>
                                     <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="@lang('lang.profile_save')">
                                     <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">@lang('lang.profile_cancel')</a>
@@ -166,7 +166,7 @@
                             </a>
                             <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
                                 <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
-                                <span class="mx-auto text-xs mt-2">Создать новый альбом</span>
+                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>
                             </div>
                         </div>
 
@@ -192,7 +192,7 @@
                                 <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                             </button>
                             <h3 class="font-medium text-3xl block">
-                                Создание альбома
+                                @lang('lang.profile_createAlbum')
                             </h3>
                         </div>
                         <div class="text-center h-full w-full text-base">
@@ -218,7 +218,7 @@
                                 <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                             </button>
                             <h3 class="font-medium text-3xl block">
-                                Изменить альбома
+                                @lang('lang.profile_changeAlbum')
                             </h3>
                         </div>
                         <div class="text-center h-full w-full text-base">
