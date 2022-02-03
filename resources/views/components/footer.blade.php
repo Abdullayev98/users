@@ -28,8 +28,12 @@
                     @lang('lang.footer_text1')
                 </a>
             </span>
+
         </div>
-        <div class="md:w-6/12 w-10/12 md:mx-auto mx-0 text-center md:pt-0 md:text-right mb-8">
+        <div class="md:w-6/12 w-10/12 mx-auto text-center md:pt-0 md:text-right mb-8">
+
+        </div> 
+        <div class="md:w-6/12 w-10/12 mx-auto text-center md:text-right mb-8">
 
             <a href="#">
                 <i class="fab fa-instagram text-gray-500 hover:text-yellow-500 mx-2"></i>
