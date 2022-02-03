@@ -19,11 +19,11 @@
                     <div class="flex flex-row mt-6" style="width: 500px">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
-                                 @if ($user->avatar == Null)
-                                 src='{{asset("storage/images/default.jpg")}}'
-                                 @else
-                                 src="{{asset("storage/{$user->avatar}")}}"
-                                 @endif alt="">
+                                @if ($user->avatar == Null)
+                                src='{{asset("AvatarImages/images/default.jpg")}}'
+                                @else
+                                src="{{asset("AvatarImages/{$user->avatar}")}}"
+                                @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1 text-base" type="button">
@@ -198,17 +198,6 @@
                                                     @error('location')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
-                                                </div>
-                                                <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400"
-                                                           for="role">@lang('lang.settings_profileType')</label>
-                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900"
-                                                            name="role_id">
-                                                        <option
-                                                            value="2" {{ $user->role_id==2 ? 'selected' : '' }}>@lang('lang.settings_performer')</option>
-                                                        <option
-                                                            value="3" {{ $user->role_id==3 ? 'selected' : '' }}>@lang('lang.settings_customer')</option>
-                                                    </select>
                                                 </div>
                                                 <input type="submit"
                                                        class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"

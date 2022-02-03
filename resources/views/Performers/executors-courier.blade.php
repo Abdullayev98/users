@@ -170,7 +170,7 @@
                 @foreach($categories as $category)
                  @if($category->id == $user->category_id)
                <div class="mt-8">
-                    <a class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">{{$category->name}}</a>
+                    <a class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
                     <!-- <p class="mt-2 text-gray-400 text-lg">1 место в рейтинге категории в г. Санкт-Петербург, выполнено 199 заданий <br>
                         20 место в общем рейтинге категории</p> -->
                </div>

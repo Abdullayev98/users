@@ -108,8 +108,16 @@
                                                     @endif
                                                     @elseif($balance < 4000 || $response_count_user >= setting('site.free_responses'))
                                                     @if($tasks->user_id != auth()->id() && $tasks->status < 3)
-                                                    <a href="#" class='font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callbackpay')</a>
-                                                        <a href="#" class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
+                                                        <a href="#" class="open-modal" data-modal="#modal1">
+                                                            <button class='font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                @lang('lang.detT_callbackpay')
+                                                            </button>
+                                                        </a>
+                                                        <a href="#" class="open-modal" data-modal="#modal1">
+                                                            <button class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                @lang('lang.detT_callback')
+                                                            </button>
+                                                        </a>
                                                         <div class='modal' id='modal1'>
                                                         <div class='content'>
                                                             <img src="{{asset('images/cashback.svg')}}" alt="">

@@ -22,8 +22,6 @@ function dataAjaxSort(){
             });
         });
     }
-    console.log(dataAjax)
-    console.log(dataAjaxPrint)
 }
 
 function tasks_list_all(data) {
@@ -33,8 +31,8 @@ function tasks_list_all(data) {
         let json = JSON.parse(data.address);
         $(".show_tasks").append(
             `<div class="sort-table print_block" hidden>
-                    <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-nomer="`+ data.start_date +`">
-                    <div class="sm:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
+                    <div class="w-full border-b border-t  md:border pt-3 md:p-0 hover:bg-blue-100 h-44 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
+                    <div class="md:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
                     <div class="float-left w-9/12 " id="results">
                     <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
                     <a href="/detailed-tasks/` + data.id + `" class="text-[18px] text-blue-400 hover:text-red-400">` + data.name + `</a>
@@ -42,7 +40,7 @@ function tasks_list_all(data) {
                     <p class="text-[14px] ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
                     <p class="text-[14px] ml-10 mt-1 pl-4">` + data.oplata + `</p>
                     </div>
-                    <div class="float-right w-1/4 text-right sm:p-0 p-[5px]" id="about">
+                    <div class="float-right w-1/4 text-right sm:p-0" id="about">
                     <a href="#" class="text-[20px]">` + data.budget + `</a>
                     <p class="text-[14px]">` + data.category_name + `</p>
                     <p class="text-[14px] mt-2">` + data.user_name + `</p>
@@ -182,21 +180,10 @@ function sixInOne(){
 }
 
 function img_show() {
+    $('.no_tasks').removeAttr('hidden');
     $(".show_tasks").empty();
     $(".small-map").empty();
     $(".big-map").empty();
-    $(".show_tasks").append(
-        `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                <div></div>
-                <div><img src="images/notlike.png" class="w-full h-full"></div>
-                <div></div>
-                <div class="col-span-3 text-center w-full h-full">
-                    <p className="text-3xl"><b></b></p>
-                    <p className="text-lg"></p>
-
-                </div>
-                </div>`
-    );
     $('.lM').attr("hidden","hidden")
 }
 
@@ -212,6 +199,7 @@ function tasks_show(){
             s++
         }
     });
+    $('.no_tasks').attr("hidden","hidden")
     $('.lM').removeAttr('hidden');
     $('#pnum').html(s)
     $('#snum').html(dl)
