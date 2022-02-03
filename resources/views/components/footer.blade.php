@@ -20,7 +20,7 @@
             </a>
         </div>
     </div>
-    <div class="md:flex md:mx-0 mx-auto border-t pt-4 w-11/12">
+    <div class="md:flex md:mx-0 mx-auto border-t pt-4">
         <div class="container mx-auto ml-4 mb-4 md:text-left text-center">
             <span class="">
             @lang('lang.footer_foot') <br>
