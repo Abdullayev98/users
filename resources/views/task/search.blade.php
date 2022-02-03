@@ -241,6 +241,20 @@
                                 {{--Show Tasks list --}}
                             </div>
                         </div>
+
+                        <div class="w-full w-full">
+                            <div class="no_tasks" hidden>
+                                {{--Show no tasks image --}}
+                                <div class=" w-3/5 h-3/5 mx-auto">
+                                    <img src="images/notlike.png" class="w-full h-full">
+                                    <div class="text-center w-full h-full">
+                                        <p className="text-4xl"><b>@lang('lang.search_tasksNotFound')</b></p>
+                                        <p className="text-xl">@lang('lang.search_tryAnOther')</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="w-full h-full lM" hidden>
                             <ul class="text-center">
                                 <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
@@ -320,20 +334,18 @@
 
 @section("javasript")
 
-
-    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
-    <script src="{{asset('js/search_tasks.js')}}"></script>
-    <script type="text/javascript">
+{{--    <script src="{{asset('js/search_tasks.js')}}"></script>--}}
+    <script src="/js/search_tasks.js"></script>
+    <script>
         let allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
         let userCoordinates=[[],[]];
-        module.exports = {
-            plugins: [require('@tailwindcss/forms')]
-        };
-        enDis(r);
-        first_ajax('all');
-        // sixInOne();
+
+        // module.exports = {
+        //     plugins: [require('@tailwindcss/forms')]
+        // };
 
         function first_ajax(id) {
             $.ajax({
@@ -342,13 +354,16 @@
                 type: 'GET',
                 success: function (data) {
                     dataAjax = $.parseJSON(JSON.stringify(data));
-                    console.log(dataAjax)
+                    sixInOne();
                 },
                 error: function () {
                     alert("Ajax ishida xatolik...");
                 }
             });
         }
+
+        enDis(r);
+        first_ajax('all');
 
     </script>
     <script>
