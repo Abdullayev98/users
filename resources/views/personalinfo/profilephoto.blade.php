@@ -8,11 +8,19 @@
     <div сlass="grid-rows-12  md:px-5 px-1 md:pb-5 pb-1">
         <div class="container p-5">
             <div class="text-center">
+                @php
+                    $user = auth()->user()
+                @endphp
                 <div class="flex justify-center">
-                    <img src="{{asset('images/pofilevector.png')}}" class="w-20	h-20" alt="">
+                    <img class="w-20 h-20"
+                        @if ($user->avatar == Null)
+                        src='{{asset("AvatarImages/images/default.jpg")}}'
+                        @else
+                        src="{{asset("AvatarImages/{$user->avatar}")}}"
+                        @endif alt="">
                 </div>
                 <h3 class="text-2xl font-semibold my-3">
-                    Умфц Фамфм
+                    {{$user->name}}
                 </h3>
             
                 <form action="{{route('verification.photo.store')}}" method="post" enctype="multipart/form-data">

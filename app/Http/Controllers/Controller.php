@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Reklama;
 use App\Models\Trust;
 use App\Models\UserView;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -111,7 +112,10 @@ class Controller extends BaseController
         $task_count = Task::where('user_id', Auth::id())->count();
         $perform_tasks = Task::where('performer_id', auth()->id())->get();
         $categories = Category::get();
-        return view('task.mytasks', compact('tasks', 'task_count', 'categories','perform_tasks'));
+        $datas = new Collection; //Create empty collection which we know has the merge() method
+        $datas = $datas->merge($tasks);
+        $datas = $datas->merge($perform_tasks);
+        return view('task.mytasks', compact('tasks', 'task_count', 'categories','perform_tasks','datas'));
     }
 
     public function category($id)

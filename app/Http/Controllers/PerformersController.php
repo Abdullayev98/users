@@ -112,9 +112,10 @@ public function perf_ajax($cf_id){
     $categories = Category::get();
     $cur_cat = Category::where('id',$cf_id)->get();
     $child_categories= Category::get();
-    $users= User::where('role_id',5)->paginate(50);
+    $users= User::where('role_id',2)->paginate(50);
+    $tasks = Task::where('user_id', Auth::id())->get();
 
-    return view('Performers/performers_cat',compact('child_categories','categories','users','cf_id','cur_cat'));
+    return view('Performers/performers_cat',compact('child_categories','categories','users','cf_id','cur_cat','tasks'));
 
 }
 
