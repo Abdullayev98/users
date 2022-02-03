@@ -6,7 +6,8 @@ use App\Http\Requests\UserPasswordRequest;
 use App\Http\Requests\UserUpdateDataRequest;
 use Illuminate\Support\Facades\Hash;
 use \TCG\Voyager\Models\Category;
-use App\Models\Portfolio_new;
+use App\Models\Portfolio;
+use App\Models\PortfolioImage;
 use App\Models\Region;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
@@ -22,9 +23,40 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
+    //portfolio
+    public function comment(Request $request)
+    {
+        $user = Auth::user();
+        $comment = $request->input('comment');
+        $data['user_id'] = $user->id;
+        $data['comment'] = $comment;
+        $user = Portfolio::where('comment', $comment)->first();
+        return $this->create();
+        
+    }
+    public function create(array $data)
+    {
+        $dd = Portfolio::create($data);
+        return $dd;
+    }
+    public function UploadImage(Request $request)
+    {
+        $user = Auth::user();
+        $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
 
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $filePath = $request->file('file')                
+                ->move(public_path("Portfolio/{$user->name}/{$comment->comment}"), $fileName);
 
-
+            $fileModelname = time() . '_' . $request->file->getClientOriginalName();
+            return response()->json([
+                "success" => true,
+                "message" => "File successfully uploaded",
+                "file" => $fileName
+            ]);
+        }
+    }
     //profile
     public function profileData()
     {
@@ -33,8 +65,7 @@ class ProfileController extends Controller
         $task = Task::where('user_id',Auth::user()->id)->count();
         $ports = Portfoliocomment::where('user_id',Auth::user()->id)->get();
         $task_count = Task::where('performer_id', Auth::id())->where('status',4)->count();
-        return view('profile.profile', compact('user','views','task','ports','task_count'));
-    }
+        return view('profile.profile', compact('user','views','task','ports','task_count'));    }
     public function updates(Request $request)
     {
         $request->validate([
@@ -156,30 +187,6 @@ class ProfileController extends Controller
         $user = Auth::user();
         $user->district = $request->district;
         $user->save();
-        return redirect()->back();
-    }
-
-    //portfolio
-    public function StorePicture(Request $request){
-        $request->validate([
-          'images' => 'required|image',
-          'comment' => 'required',
-        ]);
-        $photos = $request->file('images');
-        if($photos){
-            $comment = new Portfoliocomment;
-            $comment->description = $request->comment;
-            $comment->user_id = auth()->user()->id;
-            $comment->save();
-            foreach ($photos as $imagefile) {
-                $portfolio = new Portfolio_new;
-                $imagename = $imagefile->getClientOriginalName();
-                $portfolio->image= $imagename;
-                $imagefile->move(public_path().'/AvatarImages/images/portfolios/',$imagename);
-                $portfolio->comment_id = $comment->id;
-                $portfolio->save();
-              }
-        }
         return redirect()->back();
     }
 

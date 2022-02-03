@@ -2,8 +2,8 @@
 
 @section("content")
 
-    <div class="mx-auto w-full md:w-11/12 xl:w-9/12 my-8 md:my-16">
-        <div class="grid lg:grid-cols-5 grid-cols-5 container px-2 md:mx-auto text-base ">
+    <div class="mx-auto w-11/12 xl:w-9/12 my-8 md:my-16">
+        <div class="grid lg:grid-cols-5 grid-cols-5 container mx-auto text-sm">
             <div class="col-span-5 lg:col-span-3">
                 <div class="w-full bg-yellow-50 my-5 rounded-md">
                     <div class="px-5 py-5 hidden md:block">
@@ -309,6 +309,7 @@
                             @endforeach
                         </div>
                     </div>
+                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
 
 @section("content")
 
-<div class="shadow-2xl px-10 rounded-md w-full md:w-5/12 mx-auto grid grid-flow-col gap-4 my-5 flex-wrap md:flex-wrap-reverse">
+<div class="shadow-2xl border-t px-10 rounded-md w-full md:w-5/12 mx-auto grid grid-flow-col gap-4 my-5 flex-wrap md:flex-wrap-reverse">
 
     <div сlass="grid-rows-12  md:px-5 px-1 md:pb-5 pb-1">
         <div class="container p-5">
@@ -14,7 +14,7 @@
                 <div class="flex justify-center">
                     <img class="w-20 h-20"
                         @if ($user->avatar == Null)
-                        src='{{asset("AvatarImages/images/default.jpg")}}'
+                        src='{{asset("AvatarImages/images/default_img.jpg")}}'
                         @else
                         src="{{asset("AvatarImages/{$user->avatar}")}}"
                         @endif alt="">
