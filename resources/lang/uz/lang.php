@@ -911,7 +911,7 @@ return [
     'footer_contact' => "Kontaktlar",
     'footer_costumersreviews' => "Mijozlar sharhlari",
     'footer_text' => "Yordam",
-    'footer_foot' => "© 2021 Universal xizmatlar (user.uz)",
+    'footer_foot' => "© 2022 Universal xizmatlar (user.uz)",
     'footer_text1' => "Xizmat qoidalari",
     'footer_text2' => "ish o'rinlari",
     'footer_text3' => "ushbu toifalarda",
