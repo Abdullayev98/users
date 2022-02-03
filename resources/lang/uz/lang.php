@@ -5,7 +5,7 @@ return [
     "cardpay" => "Kartadan to'lov",
     "nalpay" => "Naqd pul bilan to'lov",
     "count_transactions" => "Tranzaksiyalar soni:",
-    "random_cat" => "Piyoda kurerlik xizmatlari",
+    "random_cat" => "Piyoda kuryerlik xizmatlari",
     'lang_for_map' => "uz_UZ",
     'header_title' => "Sizni tashvishlardan xalos qilamiz",
     'header_sub' => "Biz sizga har qanday vazifani bajarish uchun ishonchli ijrochi topishga yordam beramiz",
@@ -181,6 +181,7 @@ return [
     'search_byDate' => "nashr qilingan sana bo'yicha",
     'search_byHurry' => "shoshilinch",
     'search_byRemote' => "masofadan",
+    'search_km' => "km",
     // search.blade end
 
     // search2.blade start
@@ -482,6 +483,8 @@ return [
     'profile_confirmed' => "Tasdiqlangan",
     'profile_createAlbum' => "Fotoalbom yaratish",
     'profile_enterDesc' => "Ma'lumotni kiriting",
+    'profile_newAlbum' => "Yangi albom yaratish",
+    'profile_changeAlbum' => "Albomni ozgartirish",
     // profile.blade end
 
     // settings.blade start
@@ -729,7 +732,7 @@ return [
     'ver_getYourGoals' => "Universal Services bilan daromad oling va maqsadlaringizga erishing",
     'ver_everyday' => "Bizning ijrochilar buni har kuni qilishadi.",
     'ver_independance' => "Bizning ijrochilar buni har kuni qilishadi.",
-    'ver_avarageSCour' => "Средний месячный доход <br> в категории «Курьерские услуги»",
+    'ver_avarageSCour' => "O'rtacha oylik daromad <br> 'Kuryer xizmatlari' turkumidagi",
     'ver_readMore' => "Batafsil o'qish",
     'ver_opinion3' => "Men Universal Xizmatlar kabi narsani kashf qildim. Vazifalarni bajarganingizdan so'ng, siz haq olasiz. Pul uchun odatiy 'ishdagi ish'",
     'ver_opinion4' => "Juda zo'r xizmat, Uberga oxshaydi. Undan foydalanish qulay, ayniqsa mijoz uchun - har qanday murakkab narsa tez va arzon tarzda hal qilinadi",
@@ -760,6 +763,8 @@ return [
     'navbar_toPayment' => "Tolovga otish",
     'navbar_paymentWay' => "Tolov turlari",
     'navbar_payment' => "Tolov",
+    'navbar_youHaveTask' => "Sizda yangi vazifa bor",
+    'navbar_youHaveOffer' => "Sizda yangi habar bor",
     // navbar.blade end
 
 
@@ -880,7 +885,7 @@ return [
     'business_letstalk' => "Keling, gaplashaylik",
     'business_text49' => "Biz sizga platformaning imkoniyatlari haqida batafsil ma'lumot beramiz va savollarga javob beramiz",
     'business_text50' => "Qancha shaxsiy tadbirkoringiz bor?",
-    'business_footer' => "© 2021 Universal Services",
+    'business_footer' => "© 2022 Universal Services",
     'business_aboutus' => "Biz haqimizda",
     'business_contact' => "Kontaktlar",
     'business_text50' => "HR yetakchi avlodi",
@@ -906,7 +911,7 @@ return [
     'footer_contact' => "Kontaktlar",
     'footer_costumersreviews' => "Mijozlar sharhlari",
     'footer_text' => "Yordam",
-    'footer_foot' => "© 2021 Universal xizmatlar (user.uz)",
+    'footer_foot' => "© 2022 Universal xizmatlar (user.uz)",
     'footer_text1' => "Xizmat qoidalari",
     'footer_text2' => "ish o'rinlari",
     'footer_text3' => "ushbu toifalarda",

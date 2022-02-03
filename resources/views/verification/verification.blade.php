@@ -165,7 +165,7 @@
       </div>
       <div class="lg:w-2/5 w-full lg:text-left text-center lg:mt-0 mt-4 lg:ml-8">
         <h1 class="font-bold text-3xl">@lang('lang.ver_serviceSec')</h1>
-        <p class="mt-6 text-lg">Ч@lang('lang.ver_readFeedbacks')</p>
+        <p class="mt-6 text-lg">@lang('lang.ver_readFeedbacks')</p>
           <div>
             <hr class="mt-8 mb-8">
             <p class="mb-12">@lang('lang.ver_securityDescr')</p>

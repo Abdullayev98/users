@@ -183,6 +183,7 @@ return [
     'search_byDate' => "по дате публикации",
     'search_byHurry' => "по срочности",
     'search_byRemote' => "по удалённости",
+    'search_km' => "км",
     // search.blade end
 
     // search2.blade start
@@ -485,6 +486,8 @@ return [
     'profile_confirmed' => "Подтвержден",
     'profile_createAlbum' => "Создать фотоальбом",
     'profile_enterDesc' => "Введите описание",
+    'profile_newAlbum' => "Создать новый альбом",
+    'profile_changeAlbum' => "Изменить альбом",
     // profile.blade end
 
     // settings.blade start
@@ -763,6 +766,8 @@ return [
     'navbar_toPayment' => "К оплате",
     'navbar_paymentWay' => "Способ оплаты",
     'navbar_payment' => "Оплата",
+    'navbar_youHaveTask' => "Вы получили задание",
+    'navbar_youHaveOffer' => "У вас новый отклик",
     // navbar.blade end
 
 
@@ -883,7 +888,7 @@ return [
     'business_letstalk' => "Давайте поговорим",
     'business_text49' => "Мы подробнее расскажем о возможностях платформы и ответим на вопросы",
     'business_text50' => "Сколько у вас самозанятых?",
-    'business_footer' => "© 2021 Universal Services",
+    'business_footer' => "© 2022 Universal Services",
     'business_aboutus' => "О нас",
     'business_contact' => "Контакты",
     'business_text50' => "HR-лидогенерация",
@@ -910,7 +915,7 @@ return [
     'footer_contact' => "Контакты",
     'footer_costumersreviews' => "Отзывы заказчиков",
     'footer_text' => "Служба поддержки",
-    'footer_foot' => "  © 2021 Universal services (user.uz)",
+    'footer_foot' => "  © 2022 Universal services (user.uz)",
     'footer_text1' => "Правила сервиса",
     'footer_text2' => "заданий уже создано",
     'footer_text3' => "в этих категориях",
