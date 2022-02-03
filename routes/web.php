@@ -82,7 +82,7 @@ Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){
     Route::post('/personalinfo/photo',[ProfileController::class, 'verificationPhotoStore'])->name('verification.photo.store');
 
     Route::get('/personalinfo/category',[ProfileController::class, 'verificationCategory'])->name('verification.category');
-    Route::post('/personalinfo/category',[ProfileController::class, 'verificationCategoryStore'])->name('verification.category.store');
+    Route::post('/personalinfo/category',[ProfileController::class, 'getCategory'])->name('verification.category.store');
 });
 
 

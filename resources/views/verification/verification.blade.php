@@ -213,7 +213,7 @@
         <p class="mt-6 text-lg">@lang('lang.ver_addsDescr')</p>
           <div>
             <hr class="mt-8 mb-8">
-            <p class="mb-12"> клиентами.@lang('lang.ver_opinion2')</p>
+            <p class="mb-12">@lang('lang.ver_opinion2')</p>
               @auth
                   <a href="{{ route('verification.info') }}">
                       @else
