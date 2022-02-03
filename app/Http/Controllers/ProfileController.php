@@ -115,14 +115,14 @@ class ProfileController extends Controller
         ]);
         $user= Auth::user();
         if($request->hasFile('avatar')){
-            $destination = 'storage/'.$user->avatar;
+            $destination = 'AvatarImages/'.$user->avatar;
             if(File::exists($destination))
             {
                 File::delete($destination);
             }
             $filename = $request->file('avatar');
             $imagename = "user-avatar/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/storage/user-avatar/',$imagename);
+            $filename->move(public_path().'/AvatarImages/user-avatar/',$imagename);
             $data['avatar'] =$imagename;
         }
         $user->update($data);
@@ -143,7 +143,8 @@ class ProfileController extends Controller
         $id = Auth::user()->id;
         $checkbox = implode(",", $request->get('category'));
         User::where('id',$id)->update(['category_id'=>$checkbox]);
-        return redirect()->back();
+        Auth::user()->role_id =2;
+        return redirect()->route('userprofile');
     }
 
     public function StoreDistrict(Request $request){
@@ -279,11 +280,7 @@ class ProfileController extends Controller
     }
     public function verificationCategory()
     {
-        return view('personalinfo.personalcategoriya');
-    }
-    public function verificationCategoryStore(Request $request)
-    {
-        Auth::user()->role_id =2;
-        return redirect()->route('userprofile');
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        return view('personalinfo.personalcategoriya', compact('categories'));
     }
 }
