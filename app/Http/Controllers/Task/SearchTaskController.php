@@ -32,7 +32,7 @@ class SearchTaskController extends VoyagerBaseController
                 $tasks = DB::table("tasks")->where('status','=', 1)->orderBy('id', 'desc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'users.name as user_name', 'categories.name as category_name', 'categories.ico as icon')
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'sroch') {

@@ -1,5 +1,6 @@
 let dataAjax = {};
 let dataAjaxPrint = {};
+let dataGeo = [];
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -22,6 +23,7 @@ function dataAjaxSort(){
             });
         });
     }
+    // console.log(dataAjaxPrint)
 }
 
 function tasks_list_all(data) {
@@ -31,23 +33,23 @@ function tasks_list_all(data) {
         let json = JSON.parse(data.address);
         $(".show_tasks").append(
             `<div class="sort-table print_block" hidden>
-                    <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-nomer="`+ data.start_date +`">
+                <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-nomer="`+ data.start_date +`">
                     <div class="sm:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
-                    <div class="float-left w-9/12 " id="results">
-                    <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
-                    <a href="/detailed-tasks/` + data.id + `" class="text-[18px] text-blue-400 hover:text-red-400">` + data.name + `</a>
-                    <p class="text-[14px] ml-12 mt-4 location">` + json.location + `</p>
-                    <p class="text-[14px] ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
-                    <p class="text-[14px] ml-10 mt-1 pl-4">` + data.oplata + `</p>
+                        <div class="float-left w-9/12 " id="results">
+                            <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
+                            <a href="/detailed-tasks/` + data.id + `" class="text-[18px] text-blue-400 hover:text-red-400">` + data.name + `</a>
+                            <p class="text-[14px] ml-12 mt-4 location">` + json.location + `</p>
+                            <p class="text-[14px] ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
+                            <p class="text-[14px] ml-10 mt-1 pl-4">` + data.oplata + `</p>
+                        </div>
+                        <div class="float-right w-1/4 text-right sm:p-0 p-[5px]" id="about">
+                            <a href="#" class="text-[20px]">` + data.budget + `</a>
+                            <p class="text-[14px]">` + data.category_name + `</p>
+                            <p class="text-[14px] mt-2">` + data.user_name + `</p>
+                        </div>
                     </div>
-                    <div class="float-right w-1/4 text-right sm:p-0 p-[5px]" id="about">
-                    <a href="#" class="text-[20px]">` + data.budget + `</a>
-                    <p class="text-[14px]">` + data.category_name + `</p>
-                    <p class="text-[14px] mt-2">` + data.user_name + `</p>
-                    </div>
-                    </div>
-                    </div>
-                    </div>`,
+                </div>
+            </div>`,
         )
     });
 }
@@ -164,6 +166,12 @@ function resetCounters(){
 }
 
 function maps_show(){
+    dataGeo = [];
+    for (var i in dataAjaxPrint) {
+        // console.log(dataAjaxPrint[i].coordinates)
+        dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
+    }
+    console.log(dataGeo)
     map_pos(k)
 }
 
@@ -176,7 +184,7 @@ function sixInOne(){
         tasks_list_all(dataAjaxPrint)
         tasks_show()
     }
-    // maps_show()
+    maps_show()
 }
 
 function img_show() {
@@ -186,8 +194,6 @@ function img_show() {
     $(".big-map").empty();
     $('.lM').attr("hidden","hidden")
 }
-
-
 
 function tasks_show(){
     let i=1;
@@ -568,23 +574,23 @@ function map_pos(mm) {
                 clusterHideIconOnBalloonOpen: false,
                 geoObjectHideIconOnBalloonOpen: false
             })
-            // getPointData = function (index) {
-            //     return {
-            //         balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
-            //         balloonContentBody: '<p>Ваше имя: <input name="login"></p><p>Телефон в формате 2xxx-xxx:  <input></p><p><input type="submit" value="Отправить"></p>',
-            //         balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
-            //         clusterCaption: 'метка <strong>' + index + '</strong>'
-            //     };
-            // },
+            getPointData = function (index) {
+                return {
+                    balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
+                    balloonContentBody: '<p>Ваше имя: <input name="login"></p><p>Телефон в формате 2xxx-xxx:  <input></p><p><input type="submit" value="Отправить"></p>',
+                    balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
+                    clusterCaption: 'метка <strong>' + index + '</strong>'
+                };
+            },
             getPointOptions = function () {
                 return {
                     preset: 'islands#greenIcon'
                 };
             }
             geoObjects = [];
-            let json = JSON.parse(dataAjaxPrint.address);
-            for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-                // geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i], getPointOptions());
+
+            for (var i = 0; i <= p-1, sGeo <= dl; i++, sGeo++) {
+                geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData[i], getPointOptions());
             }
             clusterer.options.set({
                 gridSize: 80,
@@ -639,8 +645,8 @@ function map_pos(mm) {
                     };
                 }
             geoObjects = [];
-            for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-                // geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i], getPointData(i), getPointOptions());
+            for (var i = 0; i <= p-1, sGeo <= dl; i++, sGeo++) {
+                geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData[i], getPointOptions());
             }
             clusterer.options.set({
                 gridSize: 80,
@@ -692,9 +698,13 @@ function map1_show (){
                 };
             },
             geoObjects = [];
+            dataGeo = [];
+        for (var i in dataAjaxPrint) {
+            dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
+        }
 
-        for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-            geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i].coordinates, getPointData(i), getPointOptions());
+        for (var i = 0; i <= p-1, sGeo <= dl; i++, sGeo++) {
+            geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData[i], getPointOptions());
         }
 
         clusterer.options.set({
