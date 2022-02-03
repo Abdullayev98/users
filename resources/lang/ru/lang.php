@@ -777,6 +777,7 @@ return [
     'signin_passwordforgot' => "Забыли пароль?",
     'signin_registration' => "  Зарегистрируйтесь",
     'singin_withoutUs' => "Еще не с нами?",
+    'singin_button' => "Войти",
     // signin blade ended
 
     // signup blade start

@@ -774,6 +774,7 @@ return [
     'signin_passwordforgot' => "Parolni unutdingizmi?",
     'signin_registration' => "Ro'yxatdan o'tish",
     'singin_withoutUs' => "Yangimisiz?",
+    'singin_button' => "Kirish",
     // signin blade ended
 
     // signup blade start
