@@ -72,6 +72,19 @@ Route::get('/offer-tasks', function () {
 Route::get('/verification', function () {
     return view('verification.verification');
 });
+Route::get('/verification/personalinfo', function () {
+    return view('personalinfo.personalinfo');
+})->name('personalinfo.personalinfo');
+Route::get('/verification/personalinfo/contact', function () {
+    return view('personalinfo.contact');
+})->name('personalinfo.contact');
+Route::get('/verification/personalinfo/profilephoto', function () {
+    return view('personalinfo.profilephoto');
+})->name('personalinfo.profilephoto');
+Route::get('/verification/personalinfo/category', function () {
+    return view('personalinfo.personalcategoriya');
+})->name('personalinfo.personalcategoriya');
+
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');
 
