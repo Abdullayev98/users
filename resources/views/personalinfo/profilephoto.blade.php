@@ -14,25 +14,27 @@
                 <h3 class="text-2xl font-semibold my-3">
                     Умфц Фамфм
                 </h3>
-                <label for="profilephoto" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">@lang('lang.personalinfo_text18')</label>
-                <input type="file" name="" id="profilephoto" class="hidden">
-                <p class="text-base my-5">
-                @lang('lang.personalinfo_text17')
-                </p>
-                <div class="flex w-full gap-x-4 mt-4">
-                <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
-                    <!-- <button type="button"> -->
-                    @lang('lang.personalinfo_text11')
-
-                    <!-- </button> -->
-                    <script>
-                        function myFunction() {
-                            window.history.back();
-                        }
-                    </script>
-                </a>
-                <input type="submit" class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" name="" value="@lang('lang.personalinfo_text10')">
-            </div>
+            
+                <form action="{{route('verification.photo.store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <label for="profilephoto" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">@lang('lang.personalinfo_text18')</label>
+                    <input type="file" id="profilephoto" name="avatar" class="hidden">
+                    <p class="text-base my-5">
+                    @lang('lang.personalinfo_text17')
+                    </p>
+                    <div class="flex w-full gap-x-4 mt-4">
+                        <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                            <!-- <button type="button"> -->
+                            @lang('lang.personalinfo_text11')
+                            <script>
+                                function myFunction() {
+                                    window.history.back();
+                                }
+                            </script>
+                        </a>
+                        <input type="submit" class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" value="@lang('lang.personalinfo_text10')">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
