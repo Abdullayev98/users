@@ -245,13 +245,11 @@
                         <div class="w-full w-full">
                             <div class="no_tasks">
                                 {{--Show no tasks image --}}
-                                <div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                                    <div></div>
-                                    <div><img src="images/notlike.png" class="w-full h-full"></div>
-                                    <div></div>
-                                    <div class="col-span-3 text-center w-full h-full">
-                                        <p className="text-3xl"><b>@lang('lang.search_tasksNotFound')</b></p>
-                                        <p className="text-lg">@lang('lang.search_tryAnOther')</p>
+                                <div class=" w-3/5 h-3/5 mx-auto">
+                                    <img src="images/notlike.png" class="w-full h-full">
+                                    <div class="text-center w-full h-full">
+                                        <p className="text-4xl"><b>@lang('lang.search_tasksNotFound')</b></p>
+                                        <p className="text-xl">@lang('lang.search_tryAnOther')</p>
                                     </div>
                                 </div>
                             </div>
