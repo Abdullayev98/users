@@ -33,7 +33,7 @@
                                     @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                         <div>
-                                            <a class="text-blue-500 cursor-pointer hover:text-red-500 my-1 send-request {{$category2->id}}" data-id="{{$category2->id}}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
+                                            <a href="/perf-ajax/{{ $category2->id }}" class="text-blue-500 cursor-pointer hover:text-red-500 my-1 send-request" data-id="{{$category2->id}}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
                                         </div>
 
                                     @endforeach
@@ -336,24 +336,6 @@
                 $("#{{$category->slug}}").addClass('hidden');
             }
         });
-        @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
-        $( "#{{$category2->id}}" ).click(function() {
-            var category = $(".categoryid").children("span");
-            $( category ).each(function() {
-
-                if ($(this).attr("about") != {{$category2->id}}){
-                    $(this).parents(".category").hide();
-                }else {
-                    $(this).parents(".category").show();
-                }
-                if ($(this).attr("about") != {{$category2->id}}){
-                    $(this).parents(".category2").hide();
-                }else {
-                    $(this).parents(".category2").show();
-                }
-            });
-        });
-        @endforeach
         @endforeach
     </script>
     <script type="text/javascript">
