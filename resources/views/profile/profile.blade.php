@@ -138,7 +138,7 @@
                                     @csrf
                                     <textarea name="description" name="description"
                                               class="w-full h-32 border border-gray-400 py-2 px-4 mt-3"
-                                              @if (!$user->description) placeholder="Enter description"@endif
+                                              @if (!$user->description) placeholder="@lang('lang.profile_enterDesc')"@endif
                                     >@if ($user->description){{$user->description}}@endif</textarea><br>
                                     <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="@lang('lang.profile_save')">
                                     <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">@lang('lang.profile_cancel')</a>

@@ -481,6 +481,7 @@ return [
     'profile_noNumber' => "raqam yo'q",
     'profile_confirmed' => "Tasdiqlangan",
     'profile_createAlbum' => "Fotoalbom yaratish",
+    'profile_enterDesc' => "Ma'lumotni kiriting",
     // profile.blade end
 
     // settings.blade start

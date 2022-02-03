@@ -484,6 +484,7 @@ return [
     'profile_noNumber' => "нет номера",
     'profile_confirmed' => "Подтвержден",
     'profile_createAlbum' => "Создать фотоальбом",
+    'profile_enterDesc' => "Введите описание",
     // profile.blade end
 
     // settings.blade start
