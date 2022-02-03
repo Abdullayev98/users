@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
@@ -68,22 +69,21 @@ Route::get('/detailed-tasks/{id}', [SearchTaskController::class, 'task'])->name(
 Route::get('/offer-tasks', function () {
     return view('task.offertasks');
 });
+Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){
+    Route::get('/',[ProfileController::class, 'verificationIndex']);
 
-Route::get('/verification', function () {
-    return view('verification.verification');
+    Route::get('/personalinfo',[ProfileController::class, 'verificationInfo'])->name('verification.info');
+    Route::post('/personalinfo',[ProfileController::class, 'verificationInfoStore'])->name('verification.info.store');
+
+    Route::get('/personalinfo/contact',[ProfileController::class, 'verificationContact'])->name('verification.contact');
+    Route::post('/personalinfo/contact',[ProfileController::class, 'verificationContactStore'])->name('verification.contact.store');
+
+    Route::get('/personalinfo/photo',[ProfileController::class, 'verificationPhoto'])->name('verification.photo');
+    Route::post('/personalinfo/photo',[ProfileController::class, 'verificationPhotoStore'])->name('verification.photo.store');
+
+    Route::get('/personalinfo/category',[ProfileController::class, 'verificationCategory'])->name('verification.category');
+    Route::post('/personalinfo/category',[ProfileController::class, 'getCategory'])->name('verification.category.store');
 });
-Route::get('/verification/personalinfo', function () {
-    return view('personalinfo.personalinfo');
-})->name('personalinfo.personalinfo');
-Route::get('/verification/personalinfo/contact', function () {
-    return view('personalinfo.contact');
-})->name('personalinfo.contact');
-Route::get('/verification/personalinfo/profilephoto', function () {
-    return view('personalinfo.profilephoto');
-})->name('personalinfo.profilephoto');
-Route::get('/verification/personalinfo/category', function () {
-    return view('personalinfo.personalcategoriya');
-})->name('personalinfo.personalcategoriya');
 
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');

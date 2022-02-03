@@ -183,6 +183,7 @@ return [
     'search_byDate' => "по дате публикации",
     'search_byHurry' => "по срочности",
     'search_byRemote' => "по удалённости",
+    'search_km' => "км",
     // search.blade end
 
     // search2.blade start
@@ -484,6 +485,12 @@ return [
     'profile_noNumber' => "нет номера",
     'profile_confirmed' => "Подтвержден",
     'profile_createAlbum' => "Создать фотоальбом",
+    'profile_icon_verify' => "Номер телефона и Е-mail пользователя подтверждены",
+    'profile_icon_not_verify' => "Номер телефона и Е-mail пользователя неподтверждены",
+    'profile_icon_best' => "Невходит в ТОП-20 всех исполнителей User.uz",
+    'profile_icon_not_best' => "Входит в ТОП-20 всех исполнителей User.uz",
+    'profile_icon_50' => "Более 50 выполненных заданий",
+    'profile_icon_not_50' => "Менее 50 выполненных задач",
     'profile_enterDesc' => "Введите описание",
     'profile_newAlbum' => "Создать новый альбом",
     'profile_changeAlbum' => "Изменить альбом",
@@ -655,7 +662,7 @@ return [
     'name_percent' => "Задание заполнено на 14%",
     'name_howCanWeHelpU' => "Чем вам помочь?",
     'name_taskName' => "Название задания",
-    'name_example' => "Например, нужен курьер на несколько доставок",
+    'name_example' => "Например, вам нужен маляр",
     'name_subCat' => "Подкатегория",
     'name_pedCourier' => "Услуги пешего курьера",
     'name_next' => "Далее",
@@ -887,7 +894,7 @@ return [
     'business_letstalk' => "Давайте поговорим",
     'business_text49' => "Мы подробнее расскажем о возможностях платформы и ответим на вопросы",
     'business_text50' => "Сколько у вас самозанятых?",
-    'business_footer' => "© 2021 Universal Services",
+    'business_footer' => "© 2022 Universal Services",
     'business_aboutus' => "О нас",
     'business_contact' => "Контакты",
     'business_text50' => "HR-лидогенерация",
@@ -914,7 +921,7 @@ return [
     'footer_contact' => "Контакты",
     'footer_costumersreviews' => "Отзывы заказчиков",
     'footer_text' => "Служба поддержки",
-    'footer_foot' => "  © 2021 Universal services (user.uz)",
+    'footer_foot' => "  © 2022 Universal services (user.uz)",
     'footer_text1' => "Правила сервиса",
     'footer_text2' => "заданий уже создано",
     'footer_text3' => "в этих категориях",
@@ -1132,7 +1139,7 @@ return [
     'detailedT_text19' => "Оставить отзыв",
     //detailed tasks blade ended
     //data
-    // personal info 
+    // personal info
     'personalinfo_text1' => "Расскажите о себе",
     'personalinfo_text2' => "Укажите свои контактные данные и выберите категории заданий, в которых вы хотите работать. На всё уйдёт примерно 3 минуты.",
     'personalinfo_text3' => "Как вас представлять заказчикам?",

@@ -42,7 +42,7 @@
                 <p class="text-base mt-3 text-center ">
                     @lang('lang.personalinfo_text4')
                 </p>
-                <form class="mt-4 w-full">
+                <form class="mt-4 w-full" method="Post" action="{{route('verification.info.store')}}">
                     @csrf
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
                     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
@@ -55,7 +55,7 @@
                             <button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">
                                 A
                             </button>
-                            <input autocomplete="off" oninput="myFunction()" id="suggest0" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="@lang('lang.search2_location')" value="{{session('location2')}}" name="location0" required>
+                            <input autocomplete="off" oninput="myFunction()" name="location" id="suggest0" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="@lang('lang.search2_location')" value="{{session('location2')}}" name="location0" required>
                             <button id="getlocal" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button"> <svg class="h-4 w-4 text-purple-500" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" />
                                     <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" />
@@ -65,16 +65,16 @@
                         </div>
                         <div class="mt-3">
                             <label class="text-gray-500 text-sm" for="name">@lang('lang.personalinfo_text6')</label>
-                            <input type="text" id="name" class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-yellow-200 focus:ring focus:ring-yellow-300" />
+                            <input type="text" id="name" value="{{auth()->user()->name}}" name="name" class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-yellow-200 focus:ring focus:ring-yellow-300" />
                         </div>
                         <div class="mt-3 mb-3">
                             <label class="text-gray-500 text-sm" for="lastname">@lang('lang.personalinfo_text7')</label>
-                            <input type="text" id="lastname" class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-200 focus:ring focus:ring-yellow-300" />
+                            <input type="text" id="lastname" value="{{auth()->user()->last_name}}" name="familya" class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-200 focus:ring focus:ring-yellow-300" />
                         </div>
                         <label for="date" class="mt-3 text-gray-500 text-sm">@lang('lang.personalinfo_text8')</label>
                         <div class="flatpickr inline-block flex flex-shrink">
                             <div class="flex-shrink">
-                                <input type="text" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block pl-10 p-2.5 dark:bg-gray-700 dark:border-yellow-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
+                                <input type="text" name="date" value="{{auth()->user()->date}}" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block pl-10 p-2.5 dark:bg-gray-700 dark:border-yellow-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
                             </div>
                             <div class="transform hover:scale-125">
                                 <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
@@ -93,9 +93,6 @@
                                 @lang('lang.personalinfo_text11')
 
                                 <!-- </button> -->
-                                <script>
-
-                                </script>
                             </a>
                             <input type="submit" class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" name="" value="@lang('lang.personalinfo_text10')">
                         </div>
@@ -136,7 +133,6 @@
         allowInput: true,
         altInput: true,
         dateFormat: "Y-m-d",
-        altFormat: "Y-m-d",
 
         locale: "@lang('lang.dateLang')",
     }, )

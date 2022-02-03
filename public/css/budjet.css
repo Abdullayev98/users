@@ -349,7 +349,7 @@ p {
         transform: rotate(180deg);
         position: absolute;
         top: 0%;
-        z-index: 40;
+        z-index: 2;
         margin-left: 3px;
         left: -1px;
     }
