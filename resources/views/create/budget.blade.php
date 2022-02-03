@@ -149,11 +149,13 @@
                     var maximum = {{$category->max}};
                     var pre_maximum = Math.floor({{$category->max}} - ({{$category->max}}/6));
                     if (maximum == Math.floor(ui.value)) {
-                        $("#amount").val("от " + maximum + " UZS");
+                        $("#amount").val("от " + maximum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
                     }else if (pre_maximum == Math.floor(ui.value)){
-                        $("#amount").val("до " + maximum + " UZS");
+                        $("#amount").val("до " + maximum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
                     } else {
-                        $("#amount").val("до " + Math.floor(ui.value) + " UZS");
+                        var delitel = ui.value / 1000;
+                        var round   = Math.floor(delitel)*1000;
+                        $("#amount").val("до " + round.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
                     }
                 }
             });
@@ -161,7 +163,9 @@
             $(".ui-slider-range").css("background", 'linear-gradient(rgb(255, 132, 56)  , rgb(255, 132, 56))');
             $(".ui-slider-range").css("top", '-255px');
             $(".ui-slider-handle").text("<>");
-            $("#amount").val('до ' + Math.floor($("#slider-range-min").slider("value")) + ' UZS');
+            var delitel = Math.floor($("#slider-range-min").slider("value")) / 1000;
+            var round   = Math.floor(delitel)*1000;
+            $("#amount").val('до ' + round.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' UZS');
         });
     </script>
 @endsection
