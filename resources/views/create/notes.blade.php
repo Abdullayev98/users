@@ -13,7 +13,7 @@
 <div class="grid md:grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-    @lang('lang.budget_lookingFor') "{{session('name')}}"
+    @lang('lang.budget_lookingFor') "{{$task->name}}"
     </div>
     <div class="w-full text-center my-4 text-gray-400">
       @lang('lang.notes_percent')
@@ -55,8 +55,8 @@
                 <label class="md:w-2/3 block mt-6">
                     <input class="focus:outline-none  mr-2 h-4 w-4" type="checkbox" name="docs">
                     <span class="text-slate- 900">
-                        Предоставить документы
-                        <br><p class="text-sm text-slate-500">Для оформления расписки/доверенности</p>
+                        @lang('lang.notes_giveDocs')
+                        <br><p class="text-sm text-slate-500">@lang('lang.notes_forAccess')</p>
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">

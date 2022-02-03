@@ -12,7 +12,7 @@
         <div class="grid md:grid-cols-3 gap-x-20">
             <div class="col-span-2">
                 <div class="w-full text-center text-2xl">
-                    @lang('lang.budget_lookingFor') "{{session('name')}}"
+                    @lang('lang.budget_lookingFor') "{{$task->name}}"
                 </div>
                 <div class="w-full text-center my-4 text-gray-400">
                     @lang('lang.contact_percent') 99%
@@ -26,10 +26,10 @@
                 <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-2 md:p-6 px-8">
                     <div class="py-4 mx-auto px-auto text-center text-3xl font-semibold">
                         @auth()
-                            Ваши контакты
+                            @lang('lang.contact_yourContacts')
                         @endauth
                         @guest()
-                            Авторизация
+                            @lang('lang.contact_auth')
                         @endguest
                     </div>
                     <div class="w-10/12 mx-auto">
@@ -42,14 +42,14 @@
                                        class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active"
                                        id="tabs-home-tab3" data-bs-toggle="pill" data-bs-target="#tabs-home3" role="tab"
                                        aria-controls="tabs-home3"
-                                       aria-selected="true">РЕГИСТРАЦИЯ</a>
+                                       aria-selected="true">@lang('lang.navbar_reg')</a>
                                 </li>
                                 <li class="nav-item w-1/2" role="presentation">
                                     <a href="#tabs-profile3"
                                        class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
                                        id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3"
                                        role="tab"
-                                       aria-controls="tabs-profile3" aria-selected="false">ВХОД</a>
+                                       aria-controls="tabs-profile3" aria-selected="false">@lang('lang.navbar_enter')</a>
                                 </li>
                             </ul>
                         @endguest

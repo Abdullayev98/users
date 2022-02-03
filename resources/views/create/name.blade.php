@@ -42,14 +42,14 @@
                                     @lang('lang.name_taskName')
                                 </label>
                                 <input
-                                    class="shadow border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
+                                    class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
                                     id="username" type="text" placeholder="@lang('lang.name_example')" required name="name" value="{{session('neym')}}">
                             </div>
-                            <p class="text-base text-gray-600 mt-10">Если хотите выбрать другую категорию</p>
+                            <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
                             <div id="categories">
 
-                            <div class="flex justify-center">
-  <div class="my-3 xl:w-50 pr-2">
+                            <div class="justify-center flex md:flex-row flex-col">
+  <div class="my-3 xl:w-50 pr-0 md:pr-2">
     <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));" class="form-select
       block
       w-full
@@ -73,7 +73,7 @@
     </select>
   </div>
   @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $cat_for_ch)
-  <div id="for_filter_select{{ $cat_for_ch->id }}" class="my-3 xl:w-50 pl-2 for_all_hid_ch">
+  <div id="for_filter_select{{ $cat_for_ch->id }}" class="my-3 xl:w-50 for_all_hid_ch">
     <select onchange="window.location.href = this.options[this.selectedIndex].value" class="form-select
       block
       w-full

@@ -28,6 +28,6 @@ class VerifyEmail extends Mailable
      */
     public function build()
     {
-        return $this->from(env("MAIL_USERNAME"))->subject("noreply: Email Verification")->view('email.emailVerificationEmail', ['token'=>$this->email_data]);
+        return $this->from(env("MAIL_USERNAME"))->subject("noreply: Email Verification")->view('email.emailVerificationEmail', ['data'=>$this->email_data]);
     }
 }

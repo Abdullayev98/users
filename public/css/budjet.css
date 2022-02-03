@@ -318,7 +318,7 @@ p {
     }
     .triangle__67899111{
         position: absolute;
-        z-index: 999;
+        z-index: 99;
         width: 100px;
         height: 100px;
         background: white;
@@ -349,7 +349,7 @@ p {
         transform: rotate(180deg);
         position: absolute;
         top: 0%;
-        z-index: 100;
+        z-index: 2;
         margin-left: 3px;
         left: -1px;
     }
@@ -367,7 +367,7 @@ p {
         transform: rotate(180deg);
         position: absolute;
         top: 0%;
-        z-index: 100;
+        z-index: 40;
         margin-left: -10px;
     }
     #rangeValue{

@@ -32,7 +32,7 @@ class SearchTaskController extends VoyagerBaseController
                 $tasks = DB::table("tasks")->where('status','=', 1)->orderBy('id', 'desc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'users.name as user_name', 'categories.name as category_name', 'categories.ico as icon')
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'sroch') {
@@ -48,14 +48,14 @@ class SearchTaskController extends VoyagerBaseController
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
-            if ($request->orderBy == 'klyuch') {
-                $filter = $request->fltr;
-                $tasks =  DB::table("tasks")->where('name','LIKE',"%$filter%")->orderBy('name','desc')->get();
-            }
-            if ($request->orderBy == 'price') {
-                $filter = $request->fltr;
-                $tasks =  DB::table("tasks")->where('budget','LIKE',"%$filter%")->orderBy('name','desc')->get();
-            }
+//            if ($request->orderBy == 'klyuch') {
+////                $filter = $request->fltr;
+//                $tasks =  DB::table("tasks")->where('name','LIKE',"%$filter%")->orderBy('name','desc')->get();
+//            }
+//            if ($request->orderBy == 'price') {
+////                $filter = $request->fltr;
+//                $tasks =  DB::table("tasks")->where('budget','LIKE',"%$filter%")->orderBy('name','desc')->get();
+//            }
         }
         return $tasks->all();
     }
@@ -63,8 +63,9 @@ class SearchTaskController extends VoyagerBaseController
     public function my_tasks(){
         $tasks = Task::where('user_id', auth()->id())->get();
         $perform_tasks = Task::where('performer_id', auth()->id())->get();
+        $all_tasks = Task::where('user_id', Auth::id())->where('performer_id', Auth::id())->get();
         $categories = Category::get();
-        return view('/task/mytasks',compact('tasks','categories','perform_tasks'));
+        return view('/task/mytasks',compact('tasks','categories','perform_tasks','all_tasks'));
     }
     public function search(Request $request){
       $s = $request->s;

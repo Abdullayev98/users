@@ -22,10 +22,10 @@
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
                             @if ($user->avatar == Null)
-                            src='{{asset("storage/images/default.jpg")}}'
+                            src='{{asset("storage/images/default_img.jpg")}}'
                             @else
                             src="{{asset("storage/{$user->avatar}")}}"
-                            @endif alt="">
+                            @endif alt="avatar">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
@@ -64,6 +64,7 @@
                                     @endif
                                 </p>
                             </span>
+
                             <p class="mt-2">@lang('lang.cash_created') <a href="#">
                                 <span>
                                     @if ($task == Null) 0
@@ -71,7 +72,49 @@
                                     @endif
                                 </span> @lang('lang.cash_task')</a></p>
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
+                                <div class="flex mt-6">
+                                    <div data-tooltip-target="tooltip-animation_1" class="mx-4">
+                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                             src="{{ asset('images/verify.png') }}"
+                                             @else
+                                             src="{{ asset('images/verify_gray.png') }}"
+                                             @endif  alt="" class="w-16">
+                                        <div id="tooltip-animation_1" role="tooltip" class="inline-block w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                            <p class="text-center">
+                                                @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                                    @lang('lang.profile_icon_verify')
+                                                @else
+                                                    @lang('lang.profile_icon_not_verify')
+                                                @endif
+                                            </p>
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                    <div data-tooltip-target="tooltip-animation_2" class="mx-4" >
+                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                             src="{{ asset('images/best.png') }}"
+                                             @else
+                                             src="{{ asset('images/best_gray.png') }}"
+                                             @endif alt="" class="w-16">
+                                        <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                            <p class="text-center">
+                                                @lang('lang.profile_icon_best')
+                                            </p>
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                    <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
+                                        <img src="{{ asset('images/50.png') }}" alt="" class="w-16">
+                                        <div id="tooltip-animation_3" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                            <p class="text-center">
+                                                @lang('lang.profile_icon_50')
+                                            </p>
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
+                    </div>
                     </div>
                 </figure>
                 {{-- user ma'lumotlari tugashi --}}
@@ -108,7 +151,7 @@
                                     @csrf
                                     <textarea name="description" name="description"
                                               class="w-full h-32 border border-gray-400 py-2 px-4 mt-3"
-                                              @if (!$user->description) placeholder="Enter description"@endif
+                                              @if (!$user->description) placeholder="@lang('lang.profile_enterDesc')"@endif
                                     >@if ($user->description){{$user->description}}@endif</textarea><br>
                                     <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="@lang('lang.profile_save')">
                                     <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">@lang('lang.profile_cancel')</a>
@@ -118,7 +161,7 @@
                         <div class="example-of-works w-96 my-10">
                            <a onclick="toggleModal123('modal-id123')" class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="#">
                             <i class="fas fa-camera"></i>
-                            <span>Создать фотоальбом</span>
+                            <span>@lang('lang.profile_createAlbum')</span>
                            </a>
                         </div>
                         <div class="flex sm:flex-row flex-col mb-6">
@@ -137,76 +180,55 @@
 
                             <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
                                 <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
-                                <span class="mx-auto text-xs mt-2">Создать новый альбом</span>
+                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>
                             </div>
                         </div>
                     </div>
+                    <div class="">
+                                <p class="text-2xl font-semibold">
+                                    Виды выполняемых работ
+                                </p>
+                                <div class="my-4">
+                                    <a href="#" class="text-lg font-semibold underline">
+                                        Курьерские услуги
+                                    </a>
+                                    <ul class="pl-10 leading-7">
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li>  
+                                    </ul>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="#" class="text-lg font-semibold underline">
+                                        Уборка и помощь по хозяйству
+                                    </a>
+                                    <ul class="pl-10 leading-7">
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li>  
+                                    </ul>
+                                </div>
+                            </div>
                     {{-- about-me end --}}
                 </div>
             </div>
                 {{-- right-side-bar --}}
-            <div class="lg:col-span-1 col-span-2 full rounded-xl ring-1 ring-gray-300 h-auto w-80 text-gray-600 lg:ml-8 ml-0">
-                <div class="mt-6 ml-4">
-                    <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
-                    <p>@lang('lang.profile_since')</p>
-                </div>
-                <div class="contacts">
-                    @if($user->google_id)
 
-                        <div class="telefon ml-4 h-20 grid grid-cols-4">
-                            <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
-                                 style="background-color: #4285F4;">
-                                <i class="fab fa-google text-white"></i>
-                            </div>
-                            <div class="ml-3 col-span-3">
-                                <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
-                                Подтвержден
-                            </div>
-                        </div>
-                    @endif
-                    @if($user->facebook_id)
-                        <div class="telefon ml-4 h-20 grid grid-cols-4">
-                            <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
-                                 style="background-color: #4285F4;">
-                                <i class="fab fa-facebook-f text-white"></i>
-                            </div>
-                            <div class="ml-3 col-span-3">
-                                <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
-                                <p>Подтвержден</p>
-                            </div>
-                        </div>
-                    @endif
-                </div>
-                <p class="mx-5 my-4">@lang('lang.cash_boost')</p>
-                @if(!$user->google_id)
-
-                    <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
-                             style="background-color: #4285F4;">
-                            <i class="fab fa-google text-white"></i>
-                        </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
-                            <a href="{{route('auth.google')}}" target="_blank"
-                               class="block text-sm">@lang('lang.cash_bind')</a></p></a>
-                        </div>
-                    </div>
-                @endif
-                @if(!$user->facebook_id)
-                    <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
-                             style="background-color: #4285F4;">
-                            <i class="fab fa-facebook-f text-white"></i>
-                        </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
-                            <a href="{{route('auth.facebook')}}" target="_blank"
-                               class="block text-sm">@lang('lang.cash_bind')</a>
-                        </div>
-                    </div>
-                @endif
-            </div>
-
+            @include('auth.profile-side-info')
                 {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
@@ -223,7 +245,7 @@
                                 <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                             </button>
                             <h3 class="font-medium text-3xl block">
-                                Создание альбома
+                                @lang('lang.profile_createAlbum')
                             </h3>
                         </div>
                         <div class="text-center h-full w-full text-base">
@@ -271,7 +293,7 @@
                                 <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                             </button>
                             <h3 class="font-medium text-3xl block">
-                                Изменить альбома
+                                @lang('lang.profile_changeAlbum')
                             </h3>
                         </div>
                         <div class="text-center h-full w-full text-base">

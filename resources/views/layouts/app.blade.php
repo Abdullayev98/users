@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{setting('language','en')}}" dir="ltr">
+<html lang="{{session('lang')}}" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +29,7 @@
     <x-navbar/>
     @yield('content')
     <x-footer/>
+@include('sweetalert::alert')
 
 <x-modal></x-modal>
 </body>

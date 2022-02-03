@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="text-sm w-full bg-gray-200 my-4 py-3">
-        <p class="w-8/12 mx-auto text-gray-500 font-normal">Вы находитесь в разделе исполнителей U-Ser. <br>
-            Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его профиле.</p>
+        <p class="w-8/12 mx-auto text-gray-500 font-normal">@lang('lang.perf_youreInUser') <br>
+            @lang('lang.perf_forOffer')</p>
     </div>
     <div class="xl:w-8/12 mx-auto mt-16 text-base">
         <div class="grid grid-cols-3 ">
@@ -33,7 +33,7 @@
                                     @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
 
                                         <div>
-                                            <a href="/create?{{$category->id}}" class="text-blue-500 hover:text-red-500 my-1 send-request" data-id="{{$category2->id}}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
+                                            <a href="/perf-ajax/{{ $category2->id }}" class="text-blue-500 cursor-pointer hover:text-red-500 my-1 send-request" data-id="{{$category2->id}}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
                                         </div>
 
                                     @endforeach
@@ -62,16 +62,16 @@
                         <div class="w-34 float-left">
                             <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
                                 @if ($user->avatar == Null)
-                                src='{{asset("storage/users/default.jpg")}}'
+                                src='{{asset("AvatarImages/images/default_img.jpg")}}'
                                 @else
-                                src="{{asset("storage/{$user->avatar}")}}"
-                                @endif alt="user">
+                                src="{{asset("AvatarImages/{$user->avatar}")}}"
+                                @endif alt="">
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>
                                 <i class="far fa-thumbs-up m-1 text-gray-400 like{{$user->id}}">{{$user->reviews->where('good_bad',1)->count()}}</i>
                                 <i class="far fa-thumbs-down m-1 text-gray-400 dislike{{$user->id}}">{{$user->reviews->where('good_bad',0)->count()}}</i>
                             </div>
-                            <div class="flex flex-row text-[12px] stars{{$user->id}}">
+                            <div class="flex flex-row stars{{$user->id}}">
                             </div>
                             <script>
                                 $(document).ready(function(){
@@ -81,7 +81,6 @@
                                     var coundlikes = (good * 1) + (bad * 1);
                                     var overallStars = allcount / coundlikes;
                                     var star = overallStars.toFixed();
-                                    console.log(star);
                                     if (!isNaN(star)) {
                                         for (let i = 0; i < star; i++) {
                                             $(".stars{{$user->id}}").append('<i class="fas fa-star text-yellow-500"></i>');
@@ -100,7 +99,7 @@
                         <div class="w-4/5 md:float-none md:float-none">
                             <div>
                                 <a href="/performers/{{$user->id}}">
-                                    <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500 {{$user->id}}" id="{{$user->id}}"> {{$user->name}} </p>
+                                    <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500" id="{{$user->id}}"> {{$user->name}} </p>
                                 </a>
                             <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                                 <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
@@ -116,19 +115,19 @@
 
                             </div>
                             <div>
-                                <p class="text-base md:text-[14px] text-[0.9rem] leading-0 md:w-[600px] ">
+                                <p class="text-base  leading-0  ">
                                     {{$user->description}}
                                 </p>
                             </div>
                             <div class="mt-6">
                                 @auth
                                 @if($tasks->count() > 0)
-                                    <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
+                                    <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
                                         Предложить задание
                                     </a>
                                 @else
                                     <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
-                                        <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
+                                        <button class="rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                                     </a>
                                 @endif
                                 @endauth
@@ -451,7 +450,6 @@
                 type : 'GET', //method used POST or GET
                 data : {'category_id' : $(this).data('id')}, // Parameters passed to the PHP file
                 success : function(result){ // Has to be there !
-                    console.log(result)
                 },
 
                 error : function(result, statut, error){ // Handle errors
@@ -461,6 +459,5 @@
             });
         })
     </script>
-
 @endsection
 

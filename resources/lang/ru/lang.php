@@ -24,7 +24,7 @@ return [
     'body_performerDocs' => "«Проверенные исполнители» подтвердили свои документы на Universal Services.",
     'body_feedback' => "Доверенные отзывы",
     'body_over1mln' => "Более 1 000 000 отзывов от заказчиков помогут выбрать подходящего исполнителя.",
-    'body_economy' => "С Universal Services вы экономите на услугах до 70%*.<br> Как это возможно?",
+    'body_economy' => "С Universal Services вы экономите на услугах до 70%.<br> Как это возможно?",
     'body_createTask' => "Создать задания",
     'body_putTask' => "Разместите задание прямо сейчас",
     'body_findPerformer' => "и найдите <br> исполнителя за несколько минут",
@@ -50,6 +50,22 @@ return [
     'body_security' => "Безопасность и гарантии",
     'body_perForBusines' => "Надежные исполнители для бизнеса",
     // home.blade end
+
+    //modal blade start
+    'modal_email' => "Подтвердите адрес вашей почты",
+    'modal_addres' => "На ваш электронный адрес",
+    'modal_addres1' => "было отправлено письмо со ссылкой для подтверждения вашей почты на Universal Services.",
+    'modal_addres2' => "Пройдите по ссылке и активируйте вашу электронную почту.",
+    'modal_addres3' => "Отправить новое письмо для подтверждения почты",
+    'modal_addres4' => " Указать другую почту",
+    'modal_cencel' => "Отмена",
+    'modal_send' => "Отправить",
+    'modal_address1' => "На ваш телефонный номер",
+    'modal_address2' => " было отправлено письмо со ссылкой для подтверждения вашей почты на Universal Services.",
+    'modal_address3' => " Пройдите по ссылке и активируйте вашу телефонный номер.",
+    'modal_address4' => "Отправить новое письмо для подтверждения телефонный номер",
+    'modal_phone' => "Указать другую телефонный номер",
+    //modal blade end
 
     // pdf.blade start
     'pdf_terms' => "Правила Универсал Сервис БИЗНЕС",
@@ -83,7 +99,8 @@ return [
     'detT_otherTask' => "Другие задания в категории",
     'detT_ownerOfThisTask' => "Заказчик этого задания",
     'detT_inProsses' => "В исполнении",
-    'detT_callback' => "Откликнуться на это задание",
+    'detT_callback' => "Откликнуться задание бесплатно",
+    'detT_callbackpay' => "Откликнуться задание платно",
     'detT_fill' => "Пополните баланс",
     'detT_balanceReq' => "Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.",
     'detT_balanceReq2' => "При отклике сумма на балансе не блокируется — можно оставлять отклики и к другим заданиям.",
@@ -111,6 +128,7 @@ return [
     'detT_choosePerf' => "Выберите исполнителя, чтобы потом оставить отзыв о работе.",
     'detT_otherTaskInCat' => "Другие задания в категории",
     'detT_ordererThisTask' => "Заказчик этого задания",
+    'detT_task' => "Задание",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -165,6 +183,7 @@ return [
     'search_byDate' => "по дате публикации",
     'search_byHurry' => "по срочности",
     'search_byRemote' => "по удалённости",
+    'search_km' => "км",
     // search.blade end
 
     // search2.blade start
@@ -465,6 +484,16 @@ return [
     'profile_phone' => "Телефон",
     'profile_noNumber' => "нет номера",
     'profile_confirmed' => "Подтвержден",
+    'profile_createAlbum' => "Создать фотоальбом",
+    'profile_icon_verify' => "Номер телефона и Е-mail пользователя подтверждены",
+    'profile_icon_not_verify' => "Номер телефона и Е-mail пользователя неподтверждены",
+    'profile_icon_best' => "Невходит в ТОП-20 всех исполнителей User.uz",
+    'profile_icon_not_best' => "Входит в ТОП-20 всех исполнителей User.uz",
+    'profile_icon_50' => "Более 50 выполненных заданий",
+    'profile_icon_not_50' => "Менее 50 выполненных задач",
+    'profile_enterDesc' => "Введите описание",
+    'profile_newAlbum' => "Создать новый альбом",
+    'profile_changeAlbum' => "Изменить альбом",
     // profile.blade end
 
     // settings.blade start
@@ -549,6 +578,12 @@ return [
     'exe_youHaventT' => "У вас пока нет опубликованных <br> заданий",
     'exe_createTFirst' => "Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.",
     'exe_createTask' => "Создать задание",
+    'exe_get' => "Получил",
+    'exe_rusOtziv' => "Отзыв",
+    'exe_rusOtziva' => "Отзыва",
+    'exe_rusOtzivov' => "Отзывов",
+    'exe_customer' => "Заказчик",
+    'exe_feedB' => "Отзыв",
     // executors-courier.blade end
 
     // performers_cat.blade start
@@ -557,6 +592,11 @@ return [
     'perfCat_feedbacks' => "Отзывы:",
     'perfCat_allPerf' => "Все исполнители",
     // performers_cat.blade end
+
+    // performers.bade start
+    'perf_youreInUser' => "Вы находитесь в разделе исполнителей U-Ser.",
+    'perf_forOffer' => "Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его профиле.",
+    // performers.bade end
 
     // budget.blade start
     'budget_lookingFor' => "Ищем исполнителя для задания",
@@ -587,6 +627,8 @@ return [
     'contact_name' => "Имя",
     'contact_number' => "Номер телефона",
     'contact_send' => "Отправить",
+    'contact_yourContacts' => "Ваши контакты",
+    'contact_auth' => "Авторизация",
     // contacts.blade end
 
     // date.blade start
@@ -620,7 +662,7 @@ return [
     'name_percent' => "Задание заполнено на 14%",
     'name_howCanWeHelpU' => "Чем вам помочь?",
     'name_taskName' => "Название задания",
-    'name_example' => "Например, нужен курьер на несколько доставок",
+    'name_example' => "Например, вам нужен маляр",
     'name_subCat' => "Подкатегория",
     'name_pedCourier' => "Услуги пешего курьера",
     'name_next' => "Далее",
@@ -630,6 +672,7 @@ return [
     'name_cencel' => "Отмена",
     'name_subCat2' => "Подкатегории",
     'name_chooseOne' => "Выберите один из пунктов",
+    'name_chooseOtherCat' => "Если хотите выбрать другую категорию",
     // name.blade end
 
     // notes.blade start
@@ -639,6 +682,8 @@ return [
     'notes_example' => "Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня.",
     'notes_addPhoto' => "Добавить фото",
     'notes_back' => "Назад",
+    'notes_giveDocs' => "Предоставить документы",
+    'notes_forAccess' => "Для оформления расписки/доверенности",
     // notes.blade end
 
     // people.blade start
@@ -700,11 +745,15 @@ return [
     'ver_readMore' => "Читать дальше",
     'ver_opinion3' => "Открыла для себя такую штуку, как сервис Universal Services. Выполняешь задания — платят. Отличная замена обычной «работе на работе» ради денег",
     'ver_opinion4' => "Очень крутой сервис, напоминает Uber. Удобно пользоваться, особенно со стороны заказчика — быстро и дешево решаются любые сложные",
-    'ver_opinion5' => "Начала потихоньку зарабатывать на поездку. Я остановилась на сайте Universal Services. Там есть много интересных предложений и сама система сайта",
+    'ver_opinion5' => "Начала потихоньку зарабатывать на поездку. Я остановилась на сайте Universal Services. Там есть много интересных предложений и сама система",
     'ver_opinion6' => "Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с Universal Services.",
     'ver_avarageSPhoto' => "Средний месячный доход <br> в категории «Фото и видеоуслуги»",
     'ver_opinion7' => "Сейчас уже дорос уровень до того, что я снимаю и клиентов клиентов. Одни клиенты рекомендуют меня своим друзьям, знакомым. И много, конечно, заказов идет с Universal Services.",
     'ver_avarageS3' => "Средний месячный доход <br> в категории «Фото и видеоуслуги»",
+    'verify1'=>"Открыла для себя такую штуку, как сервис Universal Services. Выполняешь задания — платят. Отличная замена обычной «работе на работе» ради денег.(Щас похоже было на рекламу : Задания разные, найдутся даже для тех, кто ничего не умеет. Достаточно уметь говорить, ну или совсем на крайняк — ходить ",
+    'verify2'=>"Очень крутой сервис, напоминает Uber. Удобно пользоваться, особенно со стороны заказчика — быстро и дешево решаются любые сложныеи не очень проблемы. Как исполнитель, работающий по безлимитным пакетам, могу сказать, что стоимость полностью отбил, остался в плюсе, думаю насчет продления. Было бы круто, чтобы сервис работал по всему Узбекистану, например, в Ташкенте. Прилетел отдыхать на месяц, по 3 часа в день работаешь — остался на 2 месяца. Процветания и успехов вам! Очень рад сотрудничеству!",
+    'verify3'=>"Начала потихоньку зарабатывать на поездку. Я остановилась на сайте Universal Services. Там есть много интересных предложений и сама система сайта мне очень импонирует.Так что медленно, но верно я иду к своей цели!",
+
     // verification.blade end
 
     // navbar.blade start
@@ -727,6 +776,8 @@ return [
     'navbar_toPayment' => "К оплате",
     'navbar_paymentWay' => "Способ оплаты",
     'navbar_payment' => "Оплата",
+    'navbar_youHaveTask' => "Вы получили задание",
+    'navbar_youHaveOffer' => "У вас новый отклик",
     // navbar.blade end
 
 
@@ -741,6 +792,7 @@ return [
     'signin_passwordforgot' => "Забыли пароль?",
     'signin_registration' => "  Зарегистрируйтесь",
     'singin_withoutUs' => "Еще не с нами?",
+    'singin_button' => "Войти",
     // signin blade ended
 
     // signup blade start
@@ -763,7 +815,7 @@ return [
     'business_fastfoundperson' => "Ускорьте поиск исполнителей",
     'business_owndatabaseperformers' => "Собственная база 2.6 млн исполнителей ",
     'business_foryourbusinesswork' => "для задач вашего бизнеса",
-    'business_selectionofselfemployedperformersaccordingtovariouscriteria'=> "Подбор самозанятых исполнителей по различным критериям",
+    'business_selectionofselfemployedperformersaccordingtovariouscriteria' => "Подбор самозанятых исполнителей по различным критериям",
     'business_automate' => "Автоматизируйте",
     'business_interactionwithself-employed' => " взаимодействие с самозанятыми",
     'business_assistancetoperformersinobtainingself-employment' => "Помощь исполнителям в оформлении самозанятости",
@@ -846,7 +898,7 @@ return [
     'business_letstalk' => "Давайте поговорим",
     'business_text49' => "Мы подробнее расскажем о возможностях платформы и ответим на вопросы",
     'business_text50' => "Сколько у вас самозанятых?",
-    'business_footer' => "© 2021 Universal Services",
+    'business_footer' => "© 2022 Universal Services",
     'business_aboutus' => "О нас",
     'business_contact' => "Контакты",
     'business_text50' => "HR-лидогенерация",
@@ -873,7 +925,7 @@ return [
     'footer_contact' => "Контакты",
     'footer_costumersreviews' => "Отзывы заказчиков",
     'footer_text' => "Служба поддержки",
-    'footer_foot' => "  © 2021 Universal services (users.uz) ·",
+    'footer_foot' => "  © 2022 Universal services (user.uz)",
     'footer_text1' => "Правила сервиса",
     'footer_text2' => "заданий уже создано",
     'footer_text3' => "в этих категориях",
@@ -1091,5 +1143,27 @@ return [
     'detailedT_text19' => "Оставить отзыв",
     //detailed tasks blade ended
     //data
-
+    // personal info
+    'personalinfo_text1' => "Расскажите о себе",
+    'personalinfo_text2' => "Укажите свои контактные данные и выберите категории заданий, в которых вы хотите работать. На всё уйдёт примерно 3 минуты.",
+    'personalinfo_text3' => "Как вас представлять заказчикам?",
+    'personalinfo_text4' => "Эта данные нужны для работы на сервисе и связи с заказчиком. При этом заказчик увидит только ваше имя и телефон.",
+    'personalinfo_text5' => "Город, улица, дом",
+    'personalinfo_text6' => "Имя",
+    'personalinfo_text7' => "Фамилия",
+    'personalinfo_text8' => "Дата рождения",
+    'personalinfo_text9' => "Продолжая верификацию, вы подтверждаете, что проходите её впервые, указали достоверную информацию о себе и соглашаетесь на обработку персональных данных.",
+    'personalinfo_text10' => "Далее",
+    'personalinfo_text11' => "Назад",
+    'personalinfo_text12' => "как с вами связаться?",
+    'personalinfo_text13' => "Заказчики будут контактировать с вами по телефону, либо в чате. На почту будем присылать уведомления.",
+    'personalinfo_text14' => "Электронная почта",
+    "personalinfo_text15" => "Телефон",
+    "personalinfo_text16" => "Начнём",
+    "personalinfo_text17" => "Пользователям с хорошей фотографией больше доверяют. Фото можно добавить потом.",
+    "personalinfo_text18" => "Загрузить фото",
+    "personalinfo_text19" => 'Чем вы хотите заниматься?',
+    "personalinfo_text20" => "Выберите категории заданий, в которых хотите работать. Можно сразу несколько — изменить их всегда можно в профиле.",
+    "personalinfo_text21" => "Стать исполнителем",
+    // personal info end
 ];

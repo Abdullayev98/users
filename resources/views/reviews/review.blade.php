@@ -2,9 +2,9 @@
 
 
 @section('content')
-    <div class="md:container mx-auto pt-5">
-        <div class="w-full md:flex md:grid-flow-row md:justify-center md:mx-auto md:w-10/12 mb-4">
-            <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8 text-base">
+    <div class="container w-4/5 mx-auto">
+        <div class="flex lg:flex-row flex-col justify-center mt-6">
+            <div class="lg:w-1/5 w-full text-base">
                 <ul>
                     <li>
                         <a class="text-blue-500 hover:text-red-500" href="/geotaskshint">@lang('lang.review_howItWorks')</a>
@@ -35,12 +35,12 @@
                     </li>
                 </ul>
                 <a href class="bg-no-repeat" style="background: url('{{asset('images/shield.svg')}}');"></a>
-                <a href="/verification" class="w-10/12 px-10 pb-[15px] block rounded-md shadow-xl hover:shadow-md text-base leading-md tracking-sm text-gray-700 mt-5 text-center">
+                <a href="/verification" class="w-10/12 pb-[15px] block rounded-md shadow-xl hover:shadow-md text-base leading-md tracking-sm text-gray-700 mt-5 text-center">
                     <img src="{{asset('images/shield.svg')}}" class="mx-auto pb-3" alt="">
                     @lang('lang.review_bePerformer')
                 </a>
             </div>
-            <div class="md:w-8/12 pt-5">
+            <div class="lg:w-4/5 w-full text-base lg:mt-0 mt-4">
                 <h1 class="text-3xl pb-2 font-semibold">
                 @lang('lang.review_feedbackAboutUser')
                 </h1>

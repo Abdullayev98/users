@@ -5,9 +5,9 @@
     <div class="w-10/12 mx-auto">
         <div class="grid grid-cols-3  grid-flow-row mt-10">
         {{-- left sidebar start --}}
-            <div class="md:col-span-2 col-span-3 px-2 mx-3">
+            <div class="lg:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
-                    <div class="top-0 right-0 float-right text-gray-500 text-sm">
+                    <div class="float-right text-gray-500 text-sm">
                         <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
                     </div>
                    <div>
@@ -19,16 +19,16 @@
                        <h1 class="text-3xl font-bold ">{{$user->name}}</h1>
                    </div>
 
-                   <div class="flex w-full mt-6">
-                    <div class="flex-initial w-1/3">
+                   <div class="flex sm:flex-row flex-col w-full mt-6">
+                    <div class="flex-initial sm:w-1/3 w-full">
                       <img class="h-48 w-44"
-                      @if ($user->avatar == Null)
-                      src='{{asset("storage/users/default.jpg")}}'
-                      @else
-                      src="{{asset("storage/{$user->avatar}")}}"
-                      @endif alt="">
+                        @if ($user->avatar == Null)
+                        src='{{asset("AvatarImages/images/default_img.jpg")}}'
+                        @else
+                        src="{{asset("AvatarImages/{$user->avatar}")}}"
+                        @endif alt="">
                     </div>
-                    <div class="flex-initial w-2/3 lg:ml-0 ml-6">
+                    <div class="flex-initial sm:w-2/3 w-full sm:mt-0 mt-6 sm:ml-8 ml-0">
                         <div class="font-medium text-lg">
                           @if($user->phone_verified_at && $user->email_verified_at)
                             <i class="fas fa-check-circle text-green-500 text-2xl"></i>
@@ -59,11 +59,11 @@
                         <div class="text-gray-500 text-base mt-6">
                             <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
                             @if ($reviews_count == 1)
-                            <span>Получил {{$reviews_count}} Отзыв</span>
+                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtziv')</span>
                             @elseif ($reviews_count > 1 && $reviews_count > 5)
-                            <span>Получил {{$reviews_count}} Отзыва</span>
+                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtziva')</span>
                             @else
-                            <span>Получил {{$reviews_count}} Отзывов</span>
+                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtzivov')</span>
                             @endif
                         </div>
                         {{-- <div class="text-gray-500 text-base mt-1">
@@ -126,21 +126,21 @@
                                 <span class="align-middle">
                                     @if ($user->id == $review->user_id)
                                         @if ($user->role_id == 2)
-                                        Отзыв:
+                                        @lang('lang.exe_feedB'):
                                             @if ($review->good_bad == 1)
                                                 <i class="far fa-thumbs-up"></i>
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-                                        Исполнитель
+                                        @lang('lang.exe_performer')
                                         @else
-                                        Отзыв:
+                                        @lang('lang.exe_feedB'):
                                             @if ($review->good_bad == 1)
                                                 <i class="far fa-thumbs-up"></i>
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-                                        Заказчик
+                                        @lang('lang.exe_customer')
                                         @endif
                                     @endif
                                 </span>
@@ -170,7 +170,7 @@
                 @foreach($categories as $category)
                  @if($category->id == $user->category_id)
                <div class="mt-8">
-                    <a class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">{{$category->name}}</a>
+                    <a class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
                     <!-- <p class="mt-2 text-gray-400 text-lg">1 место в рейтинге категории в г. Санкт-Петербург, выполнено 199 заданий <br>
                         20 место в общем рейтинге категории</p> -->
                </div>
@@ -189,7 +189,7 @@
         {{-- left sidebar end --}}
 
         {{-- right sidebar start --}}
-            <div class="md:col-span-1 col-span-3  md:mx-2 mx-auto inline-block w-4/5 float-right right-20  h-auto">
+            <div class="lg:col-span-1 col-span-3  md:mx-2 mx-auto inline-block w-80 float-right right-20  h-auto">
                 <div class="mt-16 border p-8 rounded-lg border-gray-300">
                     <div>
                         <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
@@ -200,16 +200,16 @@
                             <div class="flex-initial w-1/4">
                                 <i class="text-white far fa-file-image text-2xl bg-green-500 py-3 px-4 rounded-lg"></i>
                             </div>
-                            <div class="flex-initial w-3/4 xl:ml-0 ml-8">
+                            <div class="flex-initial w-3/4">
                                 <h2 class="font-medium text-lg">Документы</h2>
                                 <p>Документы проверены</p>
                             </div>
                         </div> -->
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
-                                <i class="fas fa-phone-alt py-1 px-2 text-2xl bg-amber-500 rounded-lg"></i>
+                                <i class="fas fa-phone-alt text-white text-2xl bg-yellow-500 py-1 px-2 rounded-lg"></i>
                             </div>
-                            <div class="flex-initial w-3/4 xl:ml-0 ml-8">
+                            <div class="flex-initial w-3/4">
                                 <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
                                 @if($user->phone_verified_at)
                                 <p>@lang('lang.exe_verified')</p>
@@ -222,7 +222,7 @@
                             <div class="flex-initial w-1/4">
                                 <i class="text-white far fa-envelope text-2xl bg-blue-500 py-1 px-2 rounded-lg"></i>
                             </div>
-                            <div class="flex-initial w-3/4 xl:ml-0 ml-8">
+                            <div class="flex-initial w-3/4">
                                 <h2 class="font-medium text-lg">Email</h2>
                                 @if($user->email_verified_at)
                                 <p>@lang('lang.exe_verified')</p>
@@ -235,7 +235,7 @@
                             <div class="flex-initial w-1/4">
                                 <i class="text-white far fa-address-book text-2xl bg-blue-400 py-3 px-4 rounded-lg"></i>
                             </div>
-                            <div class="flex-initial w-3/4 xl:ml-0 ml-8">
+                            <div class="flex-initial w-3/4">
                                 <h2 class="font-medium text-lg">Вконтакте</h2>
                                 <p>Подтвержден</p>
                             </div>
@@ -244,7 +244,7 @@
                             <div class="flex-initial w-1/4">
                                 <i class=" fab fa-apple text-2xl bg-gray-400 text-white py-3 px-4 rounded-lg"></i>
                             </div>
-                            <div class="flex-initial w-3/4 xl:ml-0 ml-8">
+                            <div class="flex-initial w-3/4">
                                 <h2 class="font-medium text-lg">Apple ID</h2>
                                 <p>Подтвержден</p>
                             </div>

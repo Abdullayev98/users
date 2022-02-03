@@ -95,7 +95,7 @@ class SocialController extends Controller
                 return redirect()->route('userprofile');
             }
         } catch (Exception $e) {
-            dd($e->getMessage());
+            dd($e);
         }
     }
 }

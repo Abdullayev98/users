@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="{{ asset('/css/index.css') }}">
-<div class="border-b border-solid border-gray-200 w-full shadow-sm">
+<div class="border-b border-solid border-gray-200 w-full shadow-sm fixed bg-white top-0 z-10">
 
-    <nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start text-base" aria-label="Global">
+    <nav class="z-10 relative flex items-center xl:w-11/12 mx-auto lg:justify-start text-base" aria-label="Global">
         <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
             <!--  mobile menu -->
             <!-- <div class="flex justify-between w-11/12 items-center"> -->
-            <nav class="relative w-2/12 lg:w-autopy-4 flex justify-start items-center bg-white md:ml-4">
+            <nav class="relative w-full lg:w-autopy-4 flex justify-start items-center bg-white md:ml-4">
                 <div class="lg:hidden">
                     <button class="navbar-burger flex items-center text-yellow-500 p-3">
                         <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -15,49 +15,51 @@
                         </svg>
                     </button>
                 </div>
-            </nav>
-            <div class="flex justify-center w-10/12 md:w-full">
-                <a class="logo cursor-pointer delete-task" href="/">
-                    <img src="/storage/{!!setting('site.logo')!!}" class="overflow-hidden h-14 lg:h-16 py-2" alt="" />
-                </a>
-            </div>
-            @if (Route::has('login'))
-                @auth
-                    <div class="w-2/12 flex justify-center lg:hidden">
-                        {{-- icon-1 --}}
-                        <div class=" float-left ml-8">
-                            <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
-                            <button class="" type="button" data-dropdown-toggle="notification">
-                                <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-bell"></i>
-                            </button>
-                            <!-- Dropdown menu -->
-                            <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="notification">
-                                <div class="px-4 py-3">
-                                    <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
+
+                <div class="flex justify-center ml-8  w-10/12">
+                    <a class="logo cursor-pointer delete-task" href="/">
+                        <img src="/storage/{!!str_replace("\\","/",setting('site.logo'))!!}" class="overflow-hidden h-14 xl:h-16 lg:h-14 py-2" alt="" />
+                    </a>
+                </div>
+                @if (Route::has('login'))
+                    @auth
+                        <div class="w-2/12 flex justify-center lg:hidden">
+                            {{-- icon-1 --}}
+                            <div class=" float-left">
+                                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
+                                <button class="" type="button" data-dropdown-toggle="notification">
+                                    <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-bell"></i>
+                                </button>
+                                <!-- Dropdown menu -->
+                                <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="notification">
+                                    <div class="px-4 py-3">
+                                        <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
+                                    </div>
+                                    <ul class="py-1" aria-labelledby="notification">
+                                        <li>
+                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="py-1" aria-labelledby="notification">
-                                    <li>
-                                        <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
-                                    </li>
-                                </ul>
+                            </div>
+                            <div class="ml-4">
+                                <a href="/chat">
+                                    <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-comment-alt"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="ml-4">
-                            <a href="/chat">
-                                <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-comment-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- </div> -->
-                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-                @endauth
-            @endif
+                        <!-- </div> -->
+                        <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+                    @endauth
+                @endif
+            </nav>
+
 
 
             <div class="navbar-menu relative z-50 hidden">
@@ -143,13 +145,13 @@
                 </nav>
             </div>
         </div>
-        <div class="hidden w-7/12 lg:inline-block xl:ml-12 lg:ml-12 text-base">
+        <div class="hidden w-7/12 lg:inline-block xl:ml-12 lg:ml-12 md:text-sm xl:text-base">
             <div class="group inline-block mr-4">
                 <button class="text-gray-500 hover:text-yellow-500 focus:outline-none">
                     <span class="pr-1 flex-1">@lang('lang.navbar_createTask')</span>
                     <span></span>
                 </button>
-                <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top ">
+                <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top z-10">
                     @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
                         <li class="py-2 px-4 rounded-sm hover:bg-gray-100">
                             <button class="w-full text-left flex items-center outline-none focus:outline-none">
@@ -200,7 +202,8 @@
 
                         @endforeach
                         <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
-                        <button class="" type="button" data-dropdown-toggle="dropdown"><i class="text-2xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
+                        <button class="" type="button" data-dropdown-toggle="dropdown">
+                            <i class="xl:text-2xl lg:text-xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                         </button>
                         <!-- Dropdown menu -->
                         <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
@@ -216,11 +219,11 @@
                                         </li>
                                     @elseif($notification->type == 2)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">У вас новый отклик</a>
+                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveOffer')</a>
                                         </li>
                                     @elseif($notification->type == 3)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">Вы получили задание</a>
+                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveTask')</a>
                                         </li>
                                     @elseif($notification->type == 4)
                                         <li>
@@ -232,7 +235,7 @@
                                 <div id="for_append_notifications"></div>
 
                                 <li>
-                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
+                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
                                 </li>
                                 <li>
                                     <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
@@ -247,20 +250,20 @@
                     {{-- icon-3 --}}
                     <div class=" float-left">
                         <a class="delete-task" href="/chat">
-                            <i class=" text-2xl text-gray-500 hover:text-yellow-500 far fa-comment-alt"></i>
+                            <i class="xl:text-2xl lg:text-xl text-gray-500 hover:text-yellow-500 far fa-comment-alt"></i>
                         </a>
                     </div>
 
                     <div class="float-left">
                         <a href="#" onclick="toggleModal()">
-                            <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-6 mt-1 HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
+                            <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-6 xl:mt-1 HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
                         </a>
                     </div>
 
 
                     {{-- icon-2 --}}
                     <div class="max-w-lg ml-5 float-left">
-                        <button class="" type="button" data-dropdown-toggle="dropdowndesk"><i class="text-2xl text-gray-500 hover:text-yellow-500  far fa-user"></i>
+                        <button class="" type="button" data-dropdown-toggle="dropdowndesk"><i class="xl:text-2xl lg:text-xl text-gray-500 hover:text-yellow-500 far fa-user"></i>
                         </button>
                         <!-- Dropdown menu -->
                         <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdowndesk">
@@ -280,7 +283,7 @@
                 </div>
 
                 <!-- language blog -->
-                <div class="flex justify-center text-gray-500 hidden lg:block">
+                <div class="flex justify-center text-gray-500 hidden lg:block md:text-sm xl:text-base pr-4">
                     <div class="flex">
                         @if (session('lang') == 'uz')
                             <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
@@ -305,12 +308,12 @@
 
 
             @else
-                <div class="w-[400px] text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4 text-base">
+                <div class="w-3/12 text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4 text-sm xl:text-base">
                     <a href="{{ route('login') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
                     <a href="{{ route('register') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
                 </div>
                 <!-- language blog -->
-                <div class="flex justify-center text-gray-500 hidden lg:block">
+                <div class="flex justify-center text-gray-500 hidden lg:block md:text-sm xl:text-base pr-4">
                     <div class="flex">
                         @if (session('lang') == 'uz')
                             <a href="{{route('lang', ['lang'=>'uz'])}}" class="text-red-500 hover:text-gray-500 mr-2">
@@ -411,7 +414,7 @@
         </div>
     </div>
 </div>
-
+<div class="h-16"></div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal1-id-backdrop"></div>
 @if(Auth::user() !== NULL)

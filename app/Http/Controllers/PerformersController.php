@@ -41,8 +41,8 @@ class PerformersController extends Controller
     public function service(Request $request)
     {
         $tasks = Task::where('user_id', Auth::id())->get();
-        $categories = DB::table('categories')->get();
-        $child_categories= DB::table('categories')->get();
+        $categories = Category::get();
+        $child_categories= Category::get();
         $users= User::where('role_id',2)->paginate(50);
         $goods = [];
         $bads = [];
@@ -67,8 +67,8 @@ class PerformersController extends Controller
         $views = count(UserView::query()->where('performer_id', $id->id)->get());
 
 
-        $categories = DB::table('categories')->get();
-        $child_categories = DB::table('categories')->get();
+        $categories = Category::withTranslations(['ru', 'uz'])->get();
+        $child_categories = Category::withTranslations(['ru', 'uz'])->get();
         $task_count = Task::where('user_id', Auth::id())->count();
         $tasks = Task::get();
         $reviews = Review::get();
@@ -109,12 +109,13 @@ public function perf_ajax($cf_id){
 
     // return $users;
 
-    $categories = DB::table('categories')->get();
-    $cur_cat = DB::table('categories')->where('id',$cf_id)->get();
-    $child_categories= DB::table('categories')->get();
-    $users= User::where('role_id',5)->paginate(50);
+    $categories = Category::get();
+    $cur_cat = Category::where('id',$cf_id)->get();
+    $child_categories= Category::get();
+    $users= User::where('role_id',2)->paginate(50);
+    $tasks = Task::where('user_id', Auth::id())->get();
 
-    return view('Performers/performers_cat',compact('child_categories','categories','users','cf_id','cur_cat'));
+    return view('Performers/performers_cat',compact('child_categories','categories','users','cf_id','cur_cat','tasks'));
 
 }
 

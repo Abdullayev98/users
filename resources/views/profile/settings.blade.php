@@ -19,11 +19,11 @@
                     <div class="flex flex-row mt-6" style="width: 500px">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
-                                 @if ($user->avatar == Null)
-                                 src='{{asset("storage/images/default.jpg")}}'
-                                 @else
-                                 src="{{asset("storage/{$user->avatar}")}}"
-                                 @endif alt="">
+                                @if ($user->avatar == Null)
+                                src='{{asset("AvatarImages/images/default_img.jpg")}}'
+                                @else
+                                src="{{asset("AvatarImages/{$user->avatar}")}}"
+                                @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1 text-base" type="button">
@@ -100,19 +100,20 @@
                         <div class="w-full mx-auto mt-4  rounded">
                             <!-- Tabs -->
                             <ul id="tabs" class="md:inline-flex block w-full flex-center px-1 pt-2">
-                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50">
-                                    <a id="default-tab" href="#first">@lang('lang.settings_allSettings')</a></li>
-                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50">
-                                    <a href="#second">@lang('lang.settings_notifs')</a></li>
-                                <li class="xl:px-2 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50">
+                                <li class="xl:px-4 md:px-2 py-2 tab-name md:ring-0 w-full md:w-inherit font-semibold text-gray-800 border-b-2 border-blue-400 opacity-50">
+                                    <a id="default-tab"
+                                       href="#first">@lang('lang.settings_allSettings')</a></li>
+                                <li class="xl:px-4 md:px-2 py-2  tab-name md:ring-0 w-full md:w-inherit font-semibold text-gray-800 opacity-50">
+                                    <a href="#second" >@lang('lang.settings_notifs')</a></li>
+                                <li class="xl:px-2 md:px-2 py-2 tab-name md:ring-0 w-full md:w-inherit font-semibold text-gray-800 opacity-50">
                                     <a href="#third">@lang('lang.settings_subscribeOnTask')</a></li>
-                                <li class="xl:px-4 md:px-2 py-2  rounded-xl md:ring-0 w-full md:w-inherit font-semibold text-gray-800 rounded-t opacity-50">
-                                    <a href="#fourth">@lang('lang.settings_security')</a></li>
+                                <li class="xl:px-4 md:px-2 tab-name py-2  @if($errors->has('password')) error  @endif  md:ring-0 w-full md:w-inherit font-semibold text-gray-800 opacity-50">
+                                    <a href="#fourth" >@lang('lang.settings_security')</a></li>
                             </ul>
 
                             <!-- Tab Contents -->
                             <div id="tab-contents" class="w-full">
-                                <div id="first" class="p-4 w-full">
+                                <div id="first" class="p-4 tab-pane w-full">
                                     {{-- settings/ first tab -> base settings start --}}
                                     <div class="flex justify-left w-full">
                                         <div class="md:w-3/5 w-full md:m-4 m-0">
@@ -144,7 +145,7 @@
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
-                                                           for="phone_number">Phone number</label>
+                                                           for="phone_number">@lang('lang.settings_phone')</label>
                                                     <input
                                                         class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
                                                         type="text" id="phone_number"
@@ -198,20 +199,9 @@
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
                                                 </div>
-                                                <div class="w-full block w-full mb-4">
-                                                    <label class="mb-2 text-md md:block text-gray-400"
-                                                           for="role">@lang('lang.settings_profileType')</label>
-                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900"
-                                                            name="role_id">
-                                                        <option
-                                                            value="2" {{ $user->role_id==2 ? 'selected' : '' }}>@lang('lang.settings_performer')</option>
-                                                        <option
-                                                            value="3" {{ $user->role_id==3 ? 'selected' : '' }}>@lang('lang.settings_customer')</option>
-                                                    </select>
-                                                </div>
                                                 <input type="submit"
                                                        class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"
-                                                       name="submit1" value="Сохранить">
+                                                       name="submit1" value="@lang('lang.settings_save')">
                                                 <hr>
                                             </form>
 
@@ -221,7 +211,7 @@
                                     </div>
                                     {{-- settings/ first tab -> base settings end--}}
                                 </div>
-                                <div id="second" class="hidden p-4">
+                                <div id="second" class="hidden tab-pane tab-pane p-4">
                                     {{-- settings/ second tab -> enable notification start --}}
                                     <div class="md:w-4/5 w-full mt-5">
                                         <h3 class="font-bold text-3xl">@lang('lang.settings_takeNotif')</h3>
@@ -239,7 +229,7 @@
                                     </div>
                                     {{-- settings/ second tab -> enable notification end --}}
                                 </div>
-                                <div id="third" class="hidden p-4">
+                                <div id="third" class="hidden tab-pane tab-pane p-4">
                                     {{-- settings/ third tab start -> subscribe for some tasks --}}
                                     <div class="sm:w-4/5 w-full mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. @lang('lang.settings_chooseCat')</h3>
@@ -276,7 +266,7 @@
                                             </div>
                                             <input
                                                 class="focus:outline-none  block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"
-                                                type="submit" name="submit" value="Сохранить">
+                                                type="submit" name="submit" value="@lang('lang.settings_save')">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");
@@ -317,10 +307,12 @@
                                     </div>
                                     {{-- settings/ third tab end -> subscribe for some tasks --}}
                                 </div>
-                                <div id="fourth" class="hidden py-4">
+                                <div id="fourth"
+                                     class="hidden tab-pane @if($errors->has('password')) error  @endif py-4">
                                     <!-- component -->
                                     <script src="https://cdn.js delivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
                                             defer></script>
+
 
                                     <div class="container max-w-full me-auto">
                                         <div class="">
@@ -337,7 +329,9 @@
                                                                     <p class="text-sm">@lang('lang.settings_moreThanEight')</p>
                                                                 </li>
                                                             </ul>
-                                                            <form class="mt-8" action="{{route('account.password.reset')}}" method="post" >
+                                                            <form class="mt-8"
+                                                                  action="{{route('account.password.reset')}}"
+                                                                  method="post">
                                                                 @csrf
 
                                                                 <div class="mx-auto max-w-lg">
@@ -383,7 +377,8 @@
                                                                         <span
                                                                             class="px-1 text-sm text-gray-600">@lang('lang.settings_repeatPassword')</span>
                                                                         <div class="relative">
-                                                                            <input placeholder="" name="password_confirmation"
+                                                                            <input placeholder=""
+                                                                                   name="password_confirmation"
                                                                                    :type="show ? 'password' : 'text'"
                                                                                    class="text-md block px-3 py-2 rounded-lg w-full
                                                     bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
@@ -415,171 +410,46 @@
                             </div>
                         </div>
                         {{-- scripts --}}
-                        <script>
-                            let tabsContainer = document.querySelector("#tabs");
-
-                            let tabTogglers = tabsContainer.querySelectorAll("a");
-                            console.log(tabTogglers);
-
-                            tabTogglers.forEach(function (toggler) {
-                                toggler.addEventListener("click", function (e) {
-                                    e.preventDefault();
-
-                                    let tabName = this.getAttribute("href");
-
-                                    let tabContents = document.querySelector("#tab-contents");
-
-                                    for (let i = 0; i < tabContents.children.length; i++) {
-
-                                        tabTogglers[i].parentElement.classList.remove("border-blue-400", "border-b", "-mb-px", "opacity-100");
-                                        tabContents.children[i].classList.remove("hidden");
-                                        if ("#" + tabContents.children[i].id === tabName) {
-                                            continue;
-                                        }
-                                        tabContents.children[i].classList.add("hidden");
-
-                                    }
-                                    e.target.parentElement.classList.add("border-blue-400", "border-b-4", "-mb-px", "opacity-100");
-                                });
-                            });
-
-                            document.getElementById("default-tab").click();
-
-                        </script>
                     </div>
                 </div>
             </div>
             {{-- right-side-bar --}}
-            <div
-                class="lg:col-span-1 col-span-2 full rounded-xl ring-1 ring-gray-300 h-auto w-80 text-gray-600 lg:ml-8 ml-0">
-                <div class="mt-6 ml-4">
-                    <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
-                    <p>@lang('lang.profile_since')</p>
-                </div>
-                <div class="contacts">
-                    <div class="ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
-                             style="background-color: orange;">
-                            <i class="fas fa-phone-alt text-white"></i>
-                        </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2">@lang('lang.profile_phone')</h5>
-                            @if ($user->phone_number!="")
-                                <p class="text-gray-600 block ">{{$user->phone_number}}</p>
-                            @else
-                                @lang('lang.profile_noNumber')
-                            @endif
-                        </div>
-                    </div>
-                    <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
-                             style="background-color: #0091E6;">
-                            <i class="far fa-envelope text-white"></i>
-                        </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2">Email</h5>
-                            <p class="text-sm">{{$user->email}}</p>
-                        </div>
-                    </div>
-                    {{-- <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
-                            style="background-color: #4285F4;">
-                            <i class="fab fa-google text-white"></i>
-                        </div>
-                        <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2">Google</h5>
-                            <p class="font-bold text-gray-700 block ">@lang('lang.profile_confirmed')</p>
-                        </div>
-                    </div> --}}
-                </div>
-                <p class="mx-5 my-4">@lang('lang.cash_boost')</p>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
-                         style="background-color: #4285F4;">
-                        <i class="fab fa-google text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
-                        <a href="https://www.google.com/" target="_blank"
-                           class="block text-sm">@lang('lang.cash_bind')</a></p></a>
-                    </div>
-                </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
-                         style="background-color: #4285F4;">
-                        <i class="fab fa-facebook-f text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
-                        <a href="https://www.facebook.com/" target="_blank"
-                           class="block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                {{-- @foreach ($user->Socials as $social)
-                @if ($social->social_name == 'OneID')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fas fa-fingerprint text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">OneID</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                @endif
-                @if ($social->social_name == 'mail.ru')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="far fa-envelope text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">mail.ru</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                @endif
-                @if ($social->social_name == 'Facebook')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fab fa-facebook-f text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook </h5>
-                            <a href="{{$social->social_link}}" target="_blank" class=" block text-sm">{{$social->social_name}}</a>
-                    </div>
-                </div>
-                @endif
-                @if ($social->social_name == 'Twitter')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fab fa-twitter text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Twitter</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                @endif
-                @if ($social->social_name == 'AppleID')
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
-                    <div class="w-14 h-14 text-center mx-auto my-auto py-3 bg-gray-300 rounded-xl col-span-1">
-                        <i class="fab fa-apple text-white"></i>
-                    </div>
-                    <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">AppleID</h5>
-                        <a href="#" class=" block text-sm">@lang('lang.cash_bind')</a>
-                    </div>
-                </div>
-                @endif
-                @endforeach --}}
-            </div>
+            @include('auth.profile-side-info')
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
     <script src="https://unpkg.com/imask"></script>
-    @include('sweetalert::alert')
 
     <script>
+
+        let tabsContainer = document.querySelector("#tabs");
+
+        let tabTogglers = tabsContainer.querySelectorAll("a");
+        console.log(tabTogglers);
+
+        tabTogglers.forEach(function (toggler) {
+            toggler.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                let tabName = this.getAttribute("href");
+
+                let tabContents = document.querySelector("#tab-contents");
+
+                for (let i = 0; i < tabContents.children.length; i++) {
+
+                    tabTogglers[i].parentElement.classList.remove("border-blue-400", "border-b", "-mb-px", "opacity-100");
+                    tabContents.children[i].classList.remove("hidden");
+                    if ("#" + tabContents.children[i].id === tabName) {
+                        continue;
+                    }
+                    tabContents.children[i].classList.add("hidden");
+
+                }
+                e.target.parentElement.classList.add("border-blue-400", "border-b-4", "-mb-px", "opacity-100");
+            });
+        });
+
+        document.getElementById("default-tab").click();
         var element = document.getElementById('phone_number');
         var maskOptions = {
             mask: '+998 00 000-00-00',
@@ -594,30 +464,14 @@
             $("#phone").val(text)
         })
 
-        var element2 = document.getElementById('email');
-        var maskOptions2 = {
-            mask: function (value) {
-                if (/^[a-z0-9_\.-]+$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.$/.test(value))
-                    return true;
-                if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.[a-z]{1,4}$/.test(value))
-                    return true;
-                return false;
-            },
-            lazy: false
+        if ($('#tab-contents').children(".error").length) {
+            $('#tab-contents').children('.tab-pane').addClass('hidden')
+            $('.error').removeClass('hidden')
+            $('#tabs').children('.tab-name').removeClass("border-blue-400 border-b-4  -mb-px opacity-100")
+            $('#tabs').children('.error').addClass("border-blue-400 border-b-4  -mb-px opacity-100")
+
         }
-        var mask2 = new IMask(element2, maskOptions2);
-    </script>
-    <script type="text/javascript">
+
         function fileupdate() {
             var x = document.getElementById("buttons");
             x.style.display = "block";

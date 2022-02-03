@@ -8,14 +8,14 @@
         <div class="w-10/12 md:w-8/12 mx-auto text-center">
             <h1 class="text-3xl md:text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
             <h3 class="text-xl md:text-2xl my-5 text-gray-500">@lang('lang.chT_weHelp')</h3>
-            <div class="max-w-full container mx-auto lg:hidden">
-                <div class="slider">
-                    <div class="slider__wrapper">
+            <div class="max-w-full container mx-auto md:hidden">
+                <div class="slider" >
+                    <div class="slider__wrapper" >
                         <div class="slider__items">
                             @foreach($categories as $category)
                                 <button type="button"
                                         class="slider__item bg-inherit hover:bg-yellow-300 border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
-                                    <i class="fas mr-4 {{ $category->ico }}"></i>
+                                    <i class="fas sm:mr-4 mr-2 {{ $category->ico }}"></i>
                                     <a href="{{route('categories',['id'=>$category->id])}}" class="text-sm lg:text-lg">
                                         {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </a>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden lg:block">
+            <div class="hidden md:block">
                 @foreach($categories as $category)
                     <button type="button"
                             class="bg-inherit hover:bg-yellow-300 border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
@@ -62,9 +62,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const slider = new ChiefSlider('.slider', {
-                loop: false
-            });
+
+            // const slider = new ChiefSlider('.slider', {
+            //     loop: false,
+            //     refresh:true
+            // });
+            var elms = document.querySelectorAll('.slider');
+            for (var i = 0, len = elms.length; i < len; i++) {
+                // инициализация elms[i] в качестве слайдера
+                new ChiefSlider(elms[i]);
+            }
         });
     </script>
 

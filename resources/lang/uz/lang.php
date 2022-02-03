@@ -5,7 +5,7 @@ return [
     "cardpay" => "Kartadan to'lov",
     "nalpay" => "Naqd pul bilan to'lov",
     "count_transactions" => "Tranzaksiyalar soni:",
-    "random_cat" => "Piyoda kurerlik xizmatlari",
+    "random_cat" => "Piyoda kuryerlik xizmatlari",
     'lang_for_map' => "uz_UZ",
     'header_title' => "Sizni tashvishlardan xalos qilamiz",
     'header_sub' => "Biz sizga har qanday vazifani bajarish uchun ishonchli ijrochi topishga yordam beramiz",
@@ -24,7 +24,7 @@ return [
     'body_performerDocs' => "«Tasdiqlangan ijrochilar 'Universal xizmatlar uchun hujjatlarini tasdiqladilar'",
     'body_feedback' => "Ishonchli sharhlar",
     'body_over1mln' => "Mijozlarning 1 000 000 dan ortiq sharhlari to'g'ri ijrochini tanlashga yordam beradi",
-    'body_economy' => "Universal Services bilan xizmatlarni 70% gacha tejashingiz mumkin *.<br> Bu qanday mumkin?",
+    'body_economy' => "Universal Services bilan xizmatlarni 70% gacha tejashingiz mumkin.<br> Bu qanday qilish mumkin?",
     'body_createTask' => "Vazifalarni yarating",
     'body_putTask' => "Topshiriqni hozir topshiring",
     'body_findPerformer' => "va bir necha daqiqada ijrochi toping",
@@ -42,14 +42,29 @@ return [
     'body_timeSavingCon' => "Universal Services-da siz bir necha daqiqada kerakli ijrochini topishingiz mumkin. Ko'pchilik
     ulardan bir kuni, ba'zan esa bir soatda ishga kirishishga tayyor.",
     'body_personalHelper' => "Cho'ntagingizda shaxsiy yordamchi",
-    'body_downloadApp' => "Ilovamizni yuklab oling va Universal xizmatlardan foydalaning,
-    qayerda bo'lsang ham.",
+    'body_downloadApp' => "Ilovamizni yuklab oling va Universal xizmatlardan foydalaning.",
     'body_whatOthersDoing' => "Ular hozir 'Universal xizmat' uchun nima buyurtma berishadi",
     'body_showAllTasks' => "Barcha vazifalarni ko'rsatish",
     'body_howToJoin' => "Qanday qilib ijrochi bo'lish mumkin",
     'body_security' => "Xavfsizlik va kafolatlar",
     'body_perForBusines' => "Biznes uchun ishonchli ijrochilar",
     // home.blade end
+
+    //modal blade start
+    'modal_email' => "Elektron pochta manzilingizni tasdiqlang",
+    'modal_addres' => "Elektron pochta manzilingizga",
+    'modal_addres1' => "Universal Services bilan pochtangizni tekshirish uchun havola bilan elektron pochta xabari yuborildi.",
+    'modal_addres2' => "Havolani kuzatib boring va elektron pochtangizni faollashtiring.",
+    'modal_addres3' => "Yangi tasdiqlash xatini yuboring",
+    'modal_addres4' => " Boshqa xatni belgilang",
+    'modal_cencel' => "Bekor qilish",
+    'modal_send' => "Yuborish",
+    'modal_address1' => "Telefon raqamingizga",
+    'modal_address2' => " Universal Services bilan pochtangizni tekshirish uchun havola bilan elektron pochta xabari yuborildi.",
+    'modal_address3' => "Havolani kuzatib boring va telefon raqamingizni faollashtiring.",
+    'modal_address4' => "Telefon raqamini tasdiqlash uchun yangi elektron pochta xabarini yuboring",
+    'modal_phone' => "Boshqa telefon raqamini belgilang",
+    //modal blade end
 
     // pdf.blade start
     'pdf_terms' => "Universal xizmat ko'rsatish BIZNES qoidalari",
@@ -83,7 +98,8 @@ return [
     'detT_otherTask' => "Kategoriyadagi boshqa vazifalar",
     'detT_ownerOfThisTask' => "Ushbu topshiriqning mijozi",
     'detT_inProsses' => "Davom etilmoqda",
-    'detT_callback' => "Bu vazifaga javob bering",
+    'detT_callback' => "Vazifaga bepul so'rov qoldirish",
+    'detT_callbackpay' => "Vazifaga to'lov bilan so'rov qoldirish",
     'detT_fill' => "Balansni to'ldirish",
     'detT_balanceReq' => "Javob berish uchun balansingiz 4000 so‘m bo‘lishi kerak. Agar mijoz siz bilan bog‘lanmoqchi bo‘lsa, biz avtomatik ravishda hisobingizdan aloqa narxini yechib olamiz.",
     'detT_balanceReq2' => "Agar siz javob yozsangiz, balansdagi miqdor bloklanmagan - siz boshqa topshiriqlarga javob qoldirishingiz mumkin.",
@@ -111,6 +127,7 @@ return [
     'detT_choosePerf' => "Ishnga baho berish uchun ijrochini tanlang.",
     'detT_otherTaskInCat' => "Kategoriyadagi boshqa vazifalar",
     'detT_ordererThisTask' => "Bu topshiriqning buyurtmachisi",
+    'detT_task' => "Vazifa",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -164,6 +181,7 @@ return [
     'search_byDate' => "nashr qilingan sana bo'yicha",
     'search_byHurry' => "shoshilinch",
     'search_byRemote' => "masofadan",
+    'search_km' => "km",
     // search.blade end
 
     // search2.blade start
@@ -463,15 +481,25 @@ return [
     'profile_phone' => "Telefon",
     'profile_noNumber' => "raqam yo'q",
     'profile_confirmed' => "Tasdiqlangan",
+    'profile_createAlbum' => "Fotoalbom yaratish",
+    'profile_icon_verify' => "Foydalanuvchining telefon raqami va elektron pochtasi tasdiqlangan",
+    'profile_icon_not_verify' => "Foydalanuvchining telefon raqami va elektron pochtasi tasdiqlanmagan",
+    'profile_icon_best' => "User.uz ijrochilarining TOP-20 taligiga kiritilgan",
+    'profile_icon_not_best' => "User.uz ijrochilarining TOP-20 taligiga kiritilmagan",
+    'profile_icon_50' => "50 tadan ortiq Bajarilgan vazifalar",
+    'profile_icon_not_50' => "Bajarilgan vazifalar 50 tadan kam",
+    'profile_enterDesc' => "Ma'lumotni kiriting",
+    'profile_newAlbum' => "Yangi albom yaratish",
+    'profile_changeAlbum' => "Albomni ozgartirish",
     // profile.blade end
 
     // settings.blade start
-    'settings_personalData' => "Shaxsiy ma'lumotlar",
+    'settings_personalData' => "Shaxsiy ma\'lumotlar",
     'settings_name' => "Ism",
     'settings_profileType' => "Profil turi",
     'settings_performer' => "Ijrochi",
     'settings_customer' => "Mijoz",
-    'settings_delete' => "O'chirish",
+    'settings_delete' => "O\'chirish",
     'settings_takeNotif' => "Bildirishnomalarni olish:",
     'settings_systemNotif' => "Tizim bildirishnomalari",
     'settings_wantNews' => "Men sayt yangiliklarini olmoqchiman",
@@ -547,6 +575,12 @@ return [
     'exe_youHaventT' => "Sizda hali e'lon qilingan topshiriq yo'q",
     'exe_createTFirst' => "Vazifa yarating, shundan so'ng uni bajarish uchun <br> ni taklif qilishingiz mumkin.",
     'exe_createTask' => "Vazifa yaratish",
+    'exe_get' => "",
+    'exe_rusOtziv' => "ta fikr bildirilgan",
+    'exe_rusOtziva' => "ta fikr bildirilgan",
+    'exe_rusOtzivov' => "ta fikr bildirilgan",
+    'exe_customer' => "Mijoz",
+    'exe_feedB' => "Fikr",
     // executors-courier.blade end
 
     // performers_cat.blade start
@@ -555,6 +589,11 @@ return [
     'perfCat_feedbacks' => "Sharhlar:",
     'perfCat_allPerf' => "Barcha ijrochilar",
     // performers_cat.blade end
+
+    // performers.bade start
+    'perf_youreInUser' => "Siz hozir U-Ser ijrochilari bolimidasiz.",
+    'perf_forOffer' => "Tanlangan ijrochiga ish taklif qilish uchun uning profilidagi 'Vazifa taklif qilish' tugmasini bosishingiz kerak.",
+    // performers.bade end
 
     // budget.blade start
     'budget_lookingFor' => "Vazifa uchun tayinlovchi qidirilmoqda",
@@ -585,6 +624,8 @@ return [
     'contact_name' => "Ism",
     'contact_number' => "Telefon raqami",
     'contact_send' => "Yuborish",
+    'contact_yourContacts' => "Sizning kontaktlaringiz",
+    'contact_auth' => "Avtorizatsiya",
     // contacts.blade end
 
     // date.blade start
@@ -618,16 +659,17 @@ return [
     'name_percent' => "Vazifa 14% toʻldi",
     'name_howCanWeHelpU' => "Sizga qanday yordam bera olaman?",
     'name_taskName' => "Vazifa nomi",
-    'name_example' => "Masalan, bir nechta yetkazib berish uchun sizga kurer kerak",
+    'name_example' => "Masalan, bo'yoqchi kerak",
     'name_subCat' => "Subturkum",
     'name_pedCourier' => "Piyodalar uchun kurerlik xizmati",
     'name_next' => "Keyingi",
-    'name_deleteAsk' => "Kiritilgan ma'lumotlar yo'qoladi. <br> Haqiqatan ham vazifani o'chirmoqchimisiz?",
+    'name_deleteAsk' => "Kiritilgan ma\'lumotlar yo\'qoladi. <br> Haqiqatan ham vazifani o\'chirmoqchimisiz?",
     'name_continue' => "Davom etish",
-    'name_delete' => "O'chirish",
+    'name_delete' => "O\'chirish",
     'name_cencel' => "Bekor qilish",
     'name_subCat2' => "Subkategorialar",
     'name_chooseOne' => "Bittasini tanlang",
+    'name_chooseOtherCat' => "Agar siz boshqa toifani tanlamoqchi bo'lsangiz",
     // name.blade end
 
     // notes.blade start
@@ -637,6 +679,8 @@ return [
     'notes_example' => "Masalan: yog'ochdan, tomi va ikkita derazali bir qavatli bolalar uyi qurish. Hovlida tez-tez suv yig'iladi, sizga shag'al drenaj kerak bo'ladi.",
     'notes_addPhoto' => "Rasm qo'shish",
     'notes_back' => "Orqaga",
+    'notes_giveDocs' => "Hujjatlarni taqdim etish",
+    'notes_forAccess' => "Kvitansiya/ishonchnoma uchun",
     // notes.blade end
 
     // people.blade start
@@ -694,7 +738,7 @@ return [
     'ver_getYourGoals' => "Universal Services bilan daromad oling va maqsadlaringizga erishing",
     'ver_everyday' => "Bizning ijrochilar buni har kuni qilishadi.",
     'ver_independance' => "Bizning ijrochilar buni har kuni qilishadi.",
-    'ver_avarageSCour' => "Средний месячный доход <br> в категории «Курьерские услуги»",
+    'ver_avarageSCour' => "O'rtacha oylik daromad <br> 'Kuryer xizmatlari' turkumidagi",
     'ver_readMore' => "Batafsil o'qish",
     'ver_opinion3' => "Men Universal Xizmatlar kabi narsani kashf qildim. Vazifalarni bajarganingizdan so'ng, siz haq olasiz. Pul uchun odatiy 'ishdagi ish'",
     'ver_opinion4' => "Juda zo'r xizmat, Uberga oxshaydi. Undan foydalanish qulay, ayniqsa mijoz uchun - har qanday murakkab narsa tez va arzon tarzda hal qilinadi",
@@ -703,6 +747,9 @@ return [
     'ver_avarageSPhoto' => "Foto va video <br> uchun o'rtacha oylik daromad",
     'ver_opinion7' => "Ishim shu daraja o'sib bordiki, men mijozlarni va mijozlarni suratga olaman. Ba'zi mijozlar meni o'z do'stlari, tanishlariga tavsiya qilishadi. Va, albatta, Universal Servicesdan juda ko'p buyurtmalar keladi.",
     'ver_avarageS3' => "Foto va video <br> uchun o'rtacha oylik daromad",
+    'verify1'=>"Men Universal Services xizmati kabi narsani topdim. Siz topshiriqlarni bajarasiz, pul olasiz. Pul uchun odatiy 'ishda ishlash'ni ajoyib almashtirish.(Hozir bu reklamaga o'xshardi : Vazifalar har xil, qo'lidan hech narsa kelmaydiganlar uchun ham bor. Gapira olish, yaxshi yoki to'liq ekstremal - yurish uchun etarli ",
+    'verify2'=>"Uberni eslatuvchi juda ajoyib xizmat. Foydalanish qulay, ayniqsa mijoz tomonidan - har qanday murakkab va unchalik katta bo'lmagan muammolar tez va arzon tarzda hal qilinadi. Cheksiz paketlar ustida ishlaydigan ijrochi sifatida aytishim mumkinki, men xarajatlarni to'liq qopladim, qora rangda qoldim, men uzaytirish haqida o'ylayapman. Agar xizmat butun O'zbekiston bo'ylab ishlasa, masalan, Toshkentda yaxshi bo'lar edi. Bir oy dam olishga keldi, kuniga 3 soat ishladi - 2 oy qoldi. Sizga farovonlik va muvaffaqiyat! Men hamkorlik qilishdan juda xursandman!",
+    'verify3'=>"Sekin-asta sayohatga pul topa boshladim. Men Universal Services veb-saytida to'xtadim. U yerda juda ko'p qiziqarli takliflar bor va sayt tizimining o'zi meni juda hayratda qoldiradi.Shunday qilib, asta-sekin, lekin ishonch bilan o'z maqsadim sari intilyapman!",
     // verification.blade end
 
     // navbar.blade start
@@ -725,6 +772,8 @@ return [
     'navbar_toPayment' => "Tolovga otish",
     'navbar_paymentWay' => "Tolov turlari",
     'navbar_payment' => "Tolov",
+    'navbar_youHaveTask' => "Sizda yangi vazifa bor",
+    'navbar_youHaveOffer' => "Sizda yangi habar bor",
     // navbar.blade end
 
 
@@ -739,6 +788,7 @@ return [
     'signin_passwordforgot' => "Parolni unutdingizmi?",
     'signin_registration' => "Ro'yxatdan o'tish",
     'singin_withoutUs' => "Yangimisiz?",
+    'singin_button' => "Kirish",
     // signin blade ended
 
     // signup blade start
@@ -833,7 +883,7 @@ return [
     'business_text42' => "Yakka tartibdagi tadbirkorlar va biznes uchun eslatma",
     'business_text43' => "Universal xizmatlar Federal Soliq xizmati va Rostrud bilan birgalikda eslatma tayyorladi, unda ekspertlar biznes va yakka tartibdagi tadbirkorlar o'rtasidagi hamkorlik bo'yicha asosiy fikrlarni tushuntirdilar. Hujjat foydalidir, chunki u har ikki tomon uchun mavjud xavflarni tavsiflaydi. , chunki huquqni qo'llash amaliyoti endigina shakllantirilmoqda va barcha kompaniyalar ham o'z-o'zini ish bilan ta'minlovchilar bilan qanday qilib malakali ishlashni bilishmaydi. ",
     'business_text44' => "So'rov: rossiyalik yakka tartibdagi tadbirkorlarning yarmi barcha daromadlarini maishiy ehtiyojlarga sarflaydi",
-    'business_text45' => "Biz tadqiqot o'tkazdik va qanchadan-qancha o'z-o'zini ish bilan band bo'lganlar frilanserni asosiy ishi bilan birlashtirgani, ular faqat o'zlari uchun ishlaydiganlar, koronavirus inqirozi tufayli frilanserlikka kelganlar, odamlarning frilanserlikni birlashtirishiga nima sabab bo'lganini aniqladik. yollanma mehnat bilan va boshqalar." ,
+    'business_text45' => "Biz tadqiqot o'tkazdik va qanchadan-qancha o'z-o'zini ish bilan band bo'lganlar frilanserni asosiy ishi bilan birlashtirgani, ular faqat o'zlari uchun ishlaydiganlar, koronavirus inqirozi tufayli frilanserlikka kelganlar, odamlarning frilanserlikni birlashtirishiga nima sabab bo'lganini aniqladik. yollanma mehnat bilan va boshqalar.",
     'business_text46' => "Federal soliq xizmatining 30 yilligiga bag'ishlangan video",
     'business_text47' => "Biz bo'limning yubileyiga bag'ishlangan filmda ishtirok etdik, ularning Federal Soliq Xizmati bilan o'zaro hamkorlik tajribasi va NAP rejimini rivojlantirish bo'yicha ishchi guruhdagi ishtiroki haqida suhbatlashdik.",
     'business_manynews' => "Yana yangiliklar",
@@ -844,7 +894,7 @@ return [
     'business_letstalk' => "Keling, gaplashaylik",
     'business_text49' => "Biz sizga platformaning imkoniyatlari haqida batafsil ma'lumot beramiz va savollarga javob beramiz",
     'business_text50' => "Qancha shaxsiy tadbirkoringiz bor?",
-    'business_footer' => "© 2021 Universal Services",
+    'business_footer' => "© 2022 Universal Services",
     'business_aboutus' => "Biz haqimizda",
     'business_contact' => "Kontaktlar",
     'business_text50' => "HR yetakchi avlodi",
@@ -870,7 +920,7 @@ return [
     'footer_contact' => "Kontaktlar",
     'footer_costumersreviews' => "Mijozlar sharhlari",
     'footer_text' => "Yordam",
-    'footer_foot' => "© 2021 Universal xizmatlar (foydalanuvchilar) ·",
+    'footer_foot' => "© 2022 Universal xizmatlar (user.uz)",
     'footer_text1' => "Xizmat qoidalari",
     'footer_text2' => "ish o'rinlari",
     'footer_text3' => "ushbu toifalarda",
@@ -927,86 +977,86 @@ return [
     //age blade ended
 
     //bugalter blade started
-   'bugalter_taskready' => "Topshiriq 33% bajarildi",
-   'bugalter_placeofservice' => "Xizmat ko'rsatish joyi",
-   //bugalter blade ended
+    'bugalter_taskready' => "Topshiriq 33% bajarildi",
+    'bugalter_placeofservice' => "Xizmat ko'rsatish joyi",
+    //bugalter blade ended
 
-   //buy delivery blade started
-   'buyd_text' => "Biz vazifani bajaruvchini qidirmoqdamiz",
-   'buyd_text1' => "Topshiriq 43% bajarildi",
-   'buyd_text2' => "Yuk tashish imkoniyatlari qanday?",
-   'buyd_text3' => "Posilka og'irligi, kg",
-   'buyd_text4' => "Uzunlik, m",
-   'buyd_text5' => "Kengligi, m",
-   'buyd_text6' => "Balandligi, m",
-   // buy delivery ended
+    //buy delivery blade started
+    'buyd_text' => "Biz vazifani bajaruvchini qidirmoqdamiz",
+    'buyd_text1' => "Topshiriq 43% bajarildi",
+    'buyd_text2' => "Yuk tashish imkoniyatlari qanday?",
+    'buyd_text3' => "Posilka og'irligi, kg",
+    'buyd_text4' => "Uzunlik, m",
+    'buyd_text5' => "Kengligi, m",
+    'buyd_text6' => "Balandligi, m",
+    // buy delivery ended
 
-   // computer blade started
-   'comp_text' => "Topshiriq 20% bajarildi",
-   // computer blade ended
+    // computer blade started
+    'comp_text' => "Topshiriq 20% bajarildi",
+    // computer blade ended
 
-   // construction blade started
-   'const_text' => "Topshiriq 80% bajarildi",
-   'const_text1' => "Qanday xizmatlar kerak bo'ladi?",
-   // construction blade started
+    // construction blade started
+    'const_text' => "Topshiriq 80% bajarildi",
+    'const_text1' => "Qanday xizmatlar kerak bo'ladi?",
+    // construction blade started
 
-   // delivery avto blade started
-   'delA_text' => "Topshiriq 65% bajarildi",
-   'delA_text1' => "Kuryer qaysi transport vositasida bo'lishi kerak?",
-   'delA_text2' => "Talab qilinmaydi",
-   'delA_text3' => "Yengil avtomobil bilan",
-   'delA_text4' => "Yuk mashinasida",
-   // delivery avto blade ended
+    // delivery avto blade started
+    'delA_text' => "Topshiriq 65% bajarildi",
+    'delA_text1' => "Kuryer qaysi transport vositasida bo'lishi kerak?",
+    'delA_text2' => "Talab qilinmaydi",
+    'delA_text3' => "Yengil avtomobil bilan",
+    'delA_text4' => "Yuk mashinasida",
+    // delivery avto blade ended
 
-   // deloivery blade started
-   'delivery_text' => "Posilka qiymati, uzs.",
-   // delivery blade ended
+    // deloivery blade started
+    'delivery_text' => "Posilka qiymati, uzs.",
+    // delivery blade ended
 
-   // delivery1 blade started
-   'del1_text' => "Topshiriq 75% bajarildi",
-   'del1_text1' => "Xarid uchun qanday to'lashni rejalashtiryapsiz?",
-   // delivery1 blade ended
+    // delivery1 blade started
+    'del1_text' => "Topshiriq 75% bajarildi",
+    'del1_text1' => "Xarid uchun qanday to'lashni rejalashtiryapsiz?",
+    // delivery1 blade ended
 
-   // design blade started
-   'design_text' => "Topshiriq 25% bajarildi",
-   // design blade ended
+    // design blade started
+    'design_text' => "Topshiriq 25% bajarildi",
+    // design blade ended
 
-   // glass blade started
-   'glass_text' => "Topshiriq 44% bajarildi",
-   'glass_text1' => "Qancha oynani tozalash kerak?",
-   'glass_text2' => "dona.",
-   // glass blade ended
+    // glass blade started
+    'glass_text' => "Topshiriq 44% bajarildi",
+    'glass_text1' => "Qancha oynani tozalash kerak?",
+    'glass_text2' => "dona.",
+    // glass blade ended
 
-   // housemaid blade started
-   'housem_wheretoclean' => "Qayerda tozalash kerak?",
-   'housem_text' => "Ijrochilar tegishli transportni tanlashlari uchun vazn va o'lchamlarni ko'rsating.",
-   'housem_text1' => "bino",
-   'housem_text2' => "xonali kvartira",
-   'housem_office' => "Idora",
-   'housem_text3' => "Xususiy uy (dacha)",
-   'housem_text4' => "Qanchalik tez-tez tozalash kerak",
-   'housem_text5' => "Bir martalik tozalash",
-   'housem_text6' => "Oyiga 1 marta",
-   'housem_text7' => "Oyiga 2 marta",
-   'housem_text8' => "Har hafta",
-   // housemaid blade ended
+    // housemaid blade started
+    'housem_wheretoclean' => "Qayerda tozalash kerak?",
+    'housem_text' => "Ijrochilar tegishli transportni tanlashlari uchun vazn va o'lchamlarni ko'rsating.",
+    'housem_text1' => "bino",
+    'housem_text2' => "xonali kvartira",
+    'housem_office' => "Idora",
+    'housem_text3' => "Xususiy uy (dacha)",
+    'housem_text4' => "Qanchalik tez-tez tozalash kerak",
+    'housem_text5' => "Bir martalik tozalash",
+    'housem_text6' => "Oyiga 1 marta",
+    'housem_text7' => "Oyiga 2 marta",
+    'housem_text8' => "Har hafta",
+    // housemaid blade ended
 
-   // housemaid1 blade started
-   'housem1_text' => "Derazalarni yuvish",
-   'housem1_text1' => "Kiyim dazmollash",
-   'housem1_text2' => "Idishlarni yuvish",
-   'housem1_text3' => "Muzlatkich ichida",
-   'housem1_text4' => "Pech ichida",
-   'housem1_text5' => "Mikrato'lqinli pech ichida",
-   'housem1_text6' => "Shkaflar ichida",
-   // housemaid1 blade ended
+    // housemaid1 blade started
+    'housem1_text' => "Derazalarni yuvish",
+    'housem1_text1' => "Kiyim dazmollash",
+    'housem1_text2' => "Idishlarni yuvish",
+    'housem1_text3' => "Muzlatkich ichida",
+    'housem1_text4' => "Pech ichida",
+    'housem1_text5' => "Mikrato'lqinli pech ichida",
+    'housem1_text6' => "Shkaflar ichida",
+    // housemaid1 blade ended
 
-   // info car blade stared
-   'infoc_text' => "Topshiriq 30% bajarildi",
-   'infoc_text1' => "Kilometr qancha?",
-   'infoc_text2' => "Yurgan masofasi, km",
-   'infoc_text3' => "Ro‘yxatdan o‘tish raqami",
-   // info car blade ended
+    // info car blade stared
+    'infoc_text' => "Topshiriq 30% bajarildi",
+    'infoc_text1' => "Kilometr qancha?",
+    'infoc_text2' => "Yurgan masofasi, km",
+    'infoc_text3' => "Ro‘yxatdan o‘tish raqami",
+    // info car blade ended
 
     // krosata blade stared
     'krosata_text' => "Topshiriq 23% bajarildi",
@@ -1086,5 +1136,26 @@ return [
     'detailedT_text18' => "Bu chaqiruvga javob bering",
     'detailedT_text19' => "Fikr qoldiring",
     //detailed tasks blade ended
-
+    // personalinfo
+    'personalinfo_text1' => "Bizga o'zingiz haqingizda aytib bering",
+    'personalinfo_text2' => "Kontakt ma'lumotlaringizni kiriting va ishlashni xohlagan ish toifalarini tanlang. Hamma narsa taxminan 3 daqiqa davom etadi.",
+    'personalinfo_text3' => "O'zingizni mijozlarga qanday tanishtirasiz?",
+    'personalinfo_text4' => "Ushbu ma'lumotlar xizmat ustida ishlash va mijoz bilan muloqot qilish uchun kerak. Bunday holda, mijoz faqat sizning ismingiz va telefon raqamingizni ko'radi.",
+    'personalinfo_text5' => "Shahar, ko'cha, uy",
+    'personalinfo_text6' => "Ism",
+    'personalinfo_text7' => "Familiya",
+    'personalinfo_text8' => "Tug'ilgan kun",
+    'personalinfo_text9' => "Tekshiruvni davom ettirish orqali siz uni birinchi marta o'tkazayotganingizni, o'zingiz haqingizda ishonchli ma'lumotlarni taqdim etganingizni va shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz.",
+    'personalinfo_text10' => "Keyingisi",
+    'personalinfo_text11' => "Orqaga",
+    'personalinfo_text12' => "Siz bilan qanday bog'lanish mumkin?",
+    'personalinfo_text13' => "Mijozlar siz bilan telefon yoki chat orqali bog'lanadi. Biz bildirishnomalarni elektron pochta orqali yuboramiz.",
+    'personalinfo_text14' => "Elektron pochta",
+    "personalinfo_text15" => "Telefon",
+    "personalinfo_text16" => "Boshlaylik",
+    "personalinfo_text17" => "Yaxshi suratga ega foydalanuvchilar ko'proq ishonchli. Rasmlarni keyinroq qo'shish mumkin.",
+    "personalinfo_text18" => "Surat yuklang",
+    "personalinfo_text19" => 'Siz nima qiilishni hohlaysiz?',
+    "personalinfo_text20" => "Ishlamoqchi bo'lgan ish toifalarini tanlang. Siz bir vaqtning o'zida bir nechtasiga ega bo'lishingiz mumkin - ularni har doim profilingizda o'zgartirishingiz mumkin.",
+    "personalinfo_text21" => "Ijrochiga aylaning",
 ];

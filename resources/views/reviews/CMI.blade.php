@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="md:container mx-auto pt-5">
-        <div class="w-full px-12 md:flex md:grid-flow-row md:justify-center md:mx-auto md:w-10/12 mb-4">
-            <div class="md:w-3/12 h-auto md:mt-12 lg:mt-5 border-b md:border-0 md:mr-8 text-base">
+    <div class="container w-4/5 mx-auto">
+        <div class="flex lg:flex-row flex-col justify-center mt-6">
+            <div class="lg:w-1/5 w-full text-base">
                 <ul>
                     <li>
                         <a class="text-blue-500 hover:text-red-500 text-[15px] leading-[1.8rem]" href="/geotaskshint">@lang('lang.authors_howItWorks')</a>
@@ -39,7 +39,7 @@
                     @lang('lang.review_bePerformer')
                 </a>
             </div>
-            <div class="md:w-9/12 md:pt-5 md:pl-12">
+            <div class="lg:w-4/5 w-full text-base lg:mt-0 mt-4">
                 @foreach ($medias as $media)
                 <div class="mb-12">
                     @php
@@ -47,8 +47,7 @@
                     @endphp
                     <div class="italic text-gray-600">
 
-                        {{ $media->created_at->format('d') }} {{ \Carbon\Carbon::parse($media->created_at)->translatedFormat('F') }}
-                    {{ $media->created_at->format('Y') }} @lang('lang.cmi_year').
+                        {{ $media->created_at->format('d.m.Y') }} @lang('lang.cmi_year').
                     </div>
                     <h1 class="text-base md:text-lg">
                         <span class="text-red-500"> {{ $media->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}

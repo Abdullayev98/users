@@ -20,7 +20,7 @@
                         <div class="sm:w-1/3 w-full">
                                 <img class="border border-3 border-gray-400 h-40 w-40"
                                 @if ($user->avatar == Null)
-                                src='{{asset("images/default_img.jpg")}}'
+                                src='{{asset("AvatarImages/images/default_img.jpg")}}'
                                 @else
                                 src="{{asset("AvatarImages/{$user->avatar}")}}"
                                 @endif alt="">
