@@ -8,7 +8,7 @@
     <p class="text-5xl font-bold text-white ">@lang('lang.ver_becomePerf')</p>
     <p class="mt-8 mb-12 text-white text-2xl">@lang('lang.ver_uSerHelps')</p>
       @auth
-        <a href="{{ route('personalinfo.personalinfo') }}">
+        <a href="{{ route('verification.info') }}">
             @else
                 <a href="/register">
             @endauth
@@ -78,7 +78,7 @@
               </div>
           </div>
             @auth
-                <a href="{{ route('personalinfo.personalinfo') }}">
+                <a href="{{ route('verification.info') }}">
                     @else
                         <a href="/register">
                             @endauth
@@ -101,7 +101,7 @@
               <hr class="mt-8 mb-8">
               <p class="mb-12">@lang('lang.ver_maxOrder')</p>
                 @auth
-                    <a href="{{ route('personalinfo.personalinfo') }}">
+                    <a href="{{ route('verification.info') }}">
                         @else
                             <a href="/register">
                                 @endauth
@@ -122,7 +122,7 @@
             <hr class="mt-8 mb-8">
             <p class="mb-12">@lang('lang.ver_opinion')</p>
               @auth
-                  <a href="{{ route('personalinfo.personalinfo') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -146,7 +146,7 @@
             <hr class="mt-8 mb-8">
             <p class="mb-12">@lang('lang.ver_opinion')</p>
               @auth
-                  <a href="{{ route('personalinfo.personalinfo') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -170,7 +170,7 @@
             <hr class="mt-8 mb-8">
             <p class="mb-12">@lang('lang.ver_securityDescr')</p>
               @auth
-                  <a href="{{ route('personalinfo.personalinfo') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -191,7 +191,7 @@
             <hr class="mt-12 mb-8">
             <p class="mb-12">@lang('lang.ver_opinion2')</p>
               @auth
-                  <a href="{{ route('personalinfo.personalinfo') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -213,9 +213,9 @@
         <p class="mt-6 text-lg">@lang('lang.ver_addsDescr')</p>
           <div>
             <hr class="mt-8 mb-8">
-            <p class="mb-12"> клиентами.@lang('lang.ver_opinion2')</p>
+            <p class="mb-12">@lang('lang.ver_opinion2')</p>
               @auth
-                  <a href="{{ route('personalinfo.personalinfo') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -279,7 +279,7 @@
            <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSCour')</p>
             <div class="mt-16">
                 @auth
-                    <a href="{{ route('personalinfo.personalinfo') }}">
+                    <a href="{{ route('verification.info') }}">
                         @else
                             <a href="/register">
                                 @endauth
@@ -314,7 +314,7 @@
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageSPhoto')</p>
           <div class="mt-16">
               @auth
-                  <a href="{{ route('personalinfo.personalinfo') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
@@ -337,7 +337,7 @@
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageS3')</p>
           <div class="mt-16">
               @auth
-                  <a href="{{ route('personalinfo.personalinfo') }}">
+                  <a href="{{ route('verification.info') }}">
                       @else
                           <a href="/register">
                               @endauth
