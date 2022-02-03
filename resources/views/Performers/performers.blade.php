@@ -71,7 +71,7 @@
                                 <i class="far fa-thumbs-up m-1 text-gray-400 like{{$user->id}}">{{$user->reviews->where('good_bad',1)->count()}}</i>
                                 <i class="far fa-thumbs-down m-1 text-gray-400 dislike{{$user->id}}">{{$user->reviews->where('good_bad',0)->count()}}</i>
                             </div>
-                            <div class="flex flex-row text-[12px] stars{{$user->id}}">
+                            <div class="flex flex-row stars{{$user->id}}">
                             </div>
                             <script>
                                 $(document).ready(function(){
@@ -116,19 +116,19 @@
 
                             </div>
                             <div>
-                                <p class="text-base md:text-[14px] text-[0.9rem] leading-0 md:w-[600px] ">
+                                <p class="text-base  leading-0  ">
                                     {{$user->description}}
                                 </p>
                             </div>
                             <div class="mt-6">
                                 @auth
                                 @if($tasks->count() > 0)
-                                    <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
+                                    <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
                                         Предложить задание
                                     </a>
                                 @else
                                     <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
-                                        <button class="rounded-lg py-2 px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
+                                        <button class="rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                                     </a>
                                 @endif
                                 @endauth

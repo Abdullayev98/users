@@ -43,7 +43,7 @@
                         @lang('lang.header_sub')
                     </p>
                     <div class="mx-auto">
-                        <div class="md:w-10/12 w-full mx-auto">
+                        <div class="lg:w-10/12 w-full mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
                                    class="w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none md:text-xl">
                                 <datalist id="TypeList">
@@ -53,7 +53,7 @@
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
-                                   class="float-right sm:block hidden md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
+                                   class="float-right sm:block hidden md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2.2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
                                     @lang('lang.header_orderBtn')
                                 </a>
                                 <a href="" type="submit" id="createhref"
@@ -131,9 +131,9 @@
                 <div class="swiper-slide w-full ">
                     <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
                         <div class="w-1/2 lg:w-5/12">
-                            <h1 class=" text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{$reklama->title}}</h1>
-                            <p class="text-lg mb-4">{{$reklama->comment}}</p>
-                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">Создать задание</a>
+                            <h1 class=" text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{ $reklama->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
+                            <p class="text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
+                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
                         </div>
                         <div class="w-1/2 lg:w-7/12">
                             <img src="/storage/{{$reklama->image}}"

@@ -2,9 +2,9 @@
 
 
 @section('content')
-    <div class="container sm:w-4/5 w-full mx-auto">
+    <div class="container w-4/5 mx-auto">
         <div class="flex lg:flex-row flex-col justify-center mt-6">
-            <div class="lg:w-1/5 w-full lg:m-0 m-8 text-base">
+            <div class="lg:w-1/5 w-full text-base">
                 <ul>
                     <li>
                         <a class="text-blue-500 hover:text-red-500" href="/geotaskshint">@lang('lang.review_howItWorks')</a>
@@ -40,7 +40,7 @@
                     @lang('lang.review_bePerformer')
                 </a>
             </div>
-            <div class="lg:w-4/5 w-full lg:m-0 m-8 text-base">
+            <div class="lg:w-4/5 w-full text-base lg:mt-0 mt-4">
                 <h1 class="text-3xl pb-2 font-semibold">
                 @lang('lang.review_feedbackAboutUser')
                 </h1>

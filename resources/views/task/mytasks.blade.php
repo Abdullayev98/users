@@ -54,7 +54,7 @@
                                             <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
                                             @foreach ($categories as $category)
                                                 @if($category->id == $task->category_id)
-                                                    <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{$category->name}}</span>
+                                                    <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                                                 @endif
                                             @endforeach
                                             <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
@@ -105,7 +105,7 @@
                                                 <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
                                                 @foreach ($categories as $category)
                                                     @if($category->id == $task->category_id)
-                                                        <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{$category->name}}</span>
+                                                        <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                                                     @endif
                                                 @endforeach
                                                     <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
@@ -173,7 +173,7 @@
 @section("javasript")
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=ru_RU"
+    <script src="https://api-maps.yandex.ru/2.1/?lang={{app()->getLocale()}}&apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb"
             type="text/javascript"></script>
     <script type="text/javascript">
         ymaps.ready(init);

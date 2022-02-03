@@ -3,64 +3,64 @@
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task_responses))
-        <div class="flex mx-auto w-9/12">
+        <div class="md:flex mx-auto w-10/12 md:w-9/12">
             @else
                 <div class="mx-auto w-9/12">
                     @endif
                     <div class="mt-8 lg:flex mb-8">
                         {{-- left sidebar start --}}
-                        <div class="w-11/12 float-left">
+                        <div class="w-10/12 md:w-11/12 float-left">
                             <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
-                            <div class="flex flex-row">
-                                <p class="py-2 px-3 bg-amber-200 text-black-500 rounded-lg">{{$tasks->budget}}</p>
+                            <div class="md:flex flex-row">
+                                <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$tasks->budget}}</p>
                                 @if ($tasks->email_confirm == 1)
                                     <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
                                 @endif
                             </div>
-                            <div class="flex flex-row">
+                            <div class="md:flex flex-row">
                                 @if ($tasks->show_only_to_performers == 1)
                                     <p class="mt-4 text-gray-400 font-normal">@lang('lang.detT_insuredPer')</p>
                                 @endif
                             </div>
-                            <div class="flex flex-row text-gray-400 mt-4">
+                            <div class="md:flex flex-row text-gray-400 mt-4">
                                 @if ($tasks->status == 3)
-                                    <p class="text-amber-500 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_inProsses')</p>
+                                    <p class="text-amber-500 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_inProsses')</p>
                                 @elseif($tasks->status < 3)
-                                    <p class="text-green-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
+                                    <p class="text-green-400 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
                                 @else
-                                    <p class="text-red-400 font-normal border-r-2 border-gray-400 pr-2">@lang('lang.detT_close')</p>
+                                    <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_close')</p>
                                 @endif
-                                <p class="mr-3 pl-2 pr-3 border-r-2 border-gray-400">{{$tasks->created_at}}</p>
+                                <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$tasks->created_at}}</p>
                                 @foreach($categories as $category)
-                                    <p class="pr-3 ">{{$category->name}}</p>
+                                    <p class="pr-3 ">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</p>
                                 @endforeach
                                     @if($tasks->user_id == auth()->id())
                                     <a href="{{route("delete.task", $tasks->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Удалить</a>
                                     @endif
                             </div>
 
-                            <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
-                                <div class="ml-12 flex flex-row">
+                            <div class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
+                                <div class="ml-4 md:ml-12 flex flex-row">
                                     @if($tasks->date_type == 1)
-                                    <h1 class="font-bold h-auto w-48">Начать работу</h1>
+                                    <h1 class="font-bold h-auto w-48">@lang('lang.date_startTask')</h1>
                                     @elseif($tasks->date_type == 2)
-                                    <h1 class="font-bold h-auto w-48">Закончить работу</h1>
+                                    <h1 class="font-bold h-auto w-48">@lang('lang.date_finishTask')</h1>
                                     @else
-                                    <h1 class="font-bold h-auto w-48">Указать период</h1>
+                                    <h1 class="font-bold h-auto w-48">@lang('lang.date_givePeriod')</h1>
                                     @endif
                                     <p class=" h-auto w-96">{{date('d-m-Y', strtotime($tasks->start_date))}}</p>
                                 </div>
-                                <div class="ml-12 flex flex-row mt-8">
+                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
                                     <p class=" h-auto w-96">{{$tasks->budget}}</p>
                                 </div>
 
                                     @isset($tasks->custom_field_values)
                                     @foreach($tasks->custom_field_values as $value)
-                                                    <div class="ml-12 flex flex-row mt-8">
+                                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
 
-                                                        <h1 class="font-bold h-auto w-48">{{$value->custom_field->title}}</h1>
+                                                        <h1 class="font-bold h-auto w-48">{{ $value->custom_field->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                                                         <p class=" h-auto w-96">
                                     @foreach(json_decode($value->value, true) as $value_obj)
                                                                 @if ($loop->last)
@@ -75,14 +75,14 @@
                                         @endisset
 
 
-                                <div class="ml-12 flex flex-row mt-4">
+                                <div class="ml-4 md:ml-12 flex flex-row mt-4">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
                                     @if($tasks->address !== NULL)
                                     <p class=" h-auto w-96">{{json_decode($tasks->address, true)['location']}}</p>
                                     @endif
                                 </div>
 
-                                <div class="ml-12 flex flex-row mt-8">
+                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_need')</h1>
                                     <p class=" h-auto w-96">{{$tasks->description}}</p>
                                 </div>
@@ -108,8 +108,16 @@
                                                     @endif
                                                     @elseif($balance < 4000 || $response_count_user >= setting('site.free_responses'))
                                                     @if($tasks->user_id != auth()->id() && $tasks->status < 3)
-                                                    <a href="#" class='font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callbackpay')</a>
-                                                        <a href="#" class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2 open-modal' data-modal="#modal1">@lang('lang.detT_callback')</a>
+                                                        <a href="#" class="open-modal" data-modal="#modal1">
+                                                            <button class='font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                @lang('lang.detT_callbackpay')
+                                                            </button>
+                                                        </a>
+                                                        <a href="#" class="open-modal" data-modal="#modal1">
+                                                            <button class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                @lang('lang.detT_callback')
+                                                            </button>
+                                                        </a>
                                                         <div class='modal' id='modal1'>
                                                         <div class='content'>
                                                             <img src="{{asset('images/cashback.svg')}}" alt="">
@@ -331,7 +339,7 @@
                     {{-- right sidebar start --}}
                     <div class="lg:w-3/12 w-1/2 lg:mt-0 mt-8 lg:ml-8 ml-0">
                         <div class="mb-10">
-                            <h1 class="text-xl font-medium mb-4">Задание № {{$tasks->id}}</h1>
+                            <h1 class="text-xl font-medium mb-4">@lang('lang.detT_task') № {{$tasks->id}}</h1>
                             <button class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">
                                 <i class="fas fa-link text-gray-500"></i>
                             </button>

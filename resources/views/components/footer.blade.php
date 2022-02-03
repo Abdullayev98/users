@@ -20,8 +20,8 @@
             </a>
         </div>
     </div>
-    <div class="md:flex md:mx-0 mx-auto border-t pt-4 w-11/12">
-        <div class="container mx-auto ml-4 mb-4 text-center">
+    <div class="md:flex md:mx-0 mx-auto border-t pt-4">
+        <div class="container mx-auto ml-4 mb-4 md:text-left text-center">
             <span class="">
             @lang('lang.footer_foot') <br>
                 <a class="hover:text-amber-500 m:mx-auto" rel="noopener noreferrer">
@@ -108,15 +108,14 @@
         $(".contact").removeAttr("href");
         $(".review").removeAttr("href");
     }
-
-            var link = document.location.href.split('/');
-            if(link[3] == 'verification'){
-                $(".verify").addClass("text-yellow-400");
-            }
-            else if(link[3] == 'contacts'){
-                $(".contact").addClass("text-yellow-400");
-            }
-            else if(link[3] == 'author-reviews'){
-                $(".rews").addClass("text-yellow-400");
-            }
+    var link = document.location.href.split('/');
+    if(link[3] == 'verification'){
+        $(".verify").addClass("text-yellow-400");
+    }
+    else if(link[3] == 'contacts'){
+        $(".contact").addClass("text-yellow-400");
+    }
+    else if(link[3] == 'author-reviews'){
+        $(".rews").addClass("text-yellow-400");
+    }
 </script>

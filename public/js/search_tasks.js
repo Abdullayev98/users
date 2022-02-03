@@ -1,5 +1,5 @@
 let dataAjax = {};
-let dataAjaxPrint = [];
+let dataAjaxPrint = {};
 $('.all_cat').click();
 $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
@@ -9,9 +9,25 @@ $(".for_check2 input:checkbox").each(function() {
     this.checked = true;
 });
 
+function dataAjaxSort(){
+    dataAjaxPrint = {};
+    if(allCheck == 1){
+        dataAjaxPrint = dataAjax;
+    }else {
+        $.each(dataAjax, function (index, data) {
+            $('.chi_cat').each(function () {
+                if (this.checked && this.name == data.category_id) {
+                    dataAjaxPrint.push(data);
+                }
+            });
+        });
+    }
+}
+
 function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
+        dl++;
         let json = JSON.parse(data.address);
         $(".show_tasks").append(
             `<div class="sort-table print_block" hidden>
@@ -33,53 +49,6 @@ function tasks_list_all(data) {
                     </div>
                     </div>`,
         )
-        dl++;
-    });
-}
-
-function dataAjaxSort(){
-    dataAjaxPrint = [];
-    $.each(dataAjax, function(index, data) {
-        $('.chi_cat').each(function() {
-            if (this.checked && this.name == data.category_id) {
-                dataAjaxPrint.push(data);
-            }
-        });
-    });
-}
-
-function tasks_list(data) {
-    $(".show_tasks").empty();
-    let id;
-    $('.chi_cat').each(function() {
-        if (this.checked) {
-            id = this.name
-            $.each(data, function(index, data) {
-                if (data.category_id == id) {
-                    dl++
-                    $(".show_tasks").append(
-                        `<div class="sort-table print_block" id="`+data.coordinates+`" hidden>
-                            <div class="w-full border hover:bg-blue-100 h-44 item overflow-hidden" data-coord="`+data.coordinates+`" data-nomer="` + data.start_date + `">
-                            <div class="sm:w-11/12 w-full h-12 md:m-4 sm:m-2 m-0">
-                            <div class="float-left w-9/12 " id="results">
-                            <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
-                            <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-sm text-blue-400 hover:text-red-400">` + data.name + `</a>
-                            <p class="sm:text-sm text-xs ml-10 mt-1 location">` + json.location + `</p>
-                            <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
-                            <p class="sm:text-sm text-xs ml-10 mt-1 pl-4">` + data.oplata + `</p>
-                            </div>
-                            <div class="float-right w-1/4 text-right sm:p-0 p-[5px]" id="about">
-                            <a href="#" class="sm:text-lg text-sm">` + data.budget + `</a>
-                            <p class="sm:text-sm text-xs ">` + data.category_name + `</p>
-                            <p class="sm:text-sm text-xs mt-2">` + data.user_name + `</p>
-                            </div>
-                            </div>
-                            </div>
-                            </div>`,
-                    )
-                }
-            });
-        }
     });
 }
 
@@ -198,34 +167,27 @@ function maps_show(){
     map_pos(k)
 }
 
-function fiveInOne(){
+function sixInOne(){
     resetCounters()
+    dataAjaxSort()
     if(dataAjaxPrint.length == 0){
         img_show();
     }else {
         tasks_list_all(dataAjaxPrint)
         tasks_show()
     }
-    maps_show()
+    // maps_show()
 }
 
 function img_show() {
+    $('.no_tasks').removeAttr('hidden');
     $(".show_tasks").empty();
     $(".small-map").empty();
     $(".big-map").empty();
-    $(".show_tasks").append(
-        `<div class="grid grid-cols-3 gap-3 content-center w-full h-full">
-                <div></div>
-                <div><img src="images/notlike.png" class="w-full h-full"></div>
-                <div></div>
-                <div class="col-span-3 text-center w-full h-full">
-                    <p class="text-3xl"><b>@lang('lang.search_tasksNotFound')</b></p>
-                    <p class="text-lg">@lang('lang.search_tryAnOther')</p>
-                </div>
-                </div>`
-    );
     $('.lM').attr("hidden","hidden")
 }
+
+
 
 function tasks_show(){
     let i=1;
@@ -237,6 +199,7 @@ function tasks_show(){
             s++
         }
     });
+    $('.no_tasks').attr("hidden","hidden")
     $('.lM').removeAttr('hidden');
     $('#pnum').html(s)
     $('#snum').html(dl)
@@ -393,9 +356,7 @@ $('.all_cat').click(function() {
         //     this.checked = true;
         // });
         allCheck = 1;
-        dataAjaxPrint = {};
-        dataAjaxPrint = dataAjax;
-        fiveInOne();
+        sixInOne();
     }
 });
 
@@ -405,8 +366,7 @@ $('.par_cat').click(function() {
         parcats_click_false(this.id, this.name)
         if (chicat_check_print()) {
             allCheck = 1;
-            dataAjaxSort()
-            fiveInOne();
+            sixInOne();
         } else {
             allCheck = 0;
             img_show()
@@ -414,8 +374,7 @@ $('.par_cat').click(function() {
     } else {
         parcats_click_true(this.id, this.name)
         allCheck = 1;
-        dataAjaxSort()
-        fiveInOne();
+        sixInOne();
     }
 });
 
@@ -425,8 +384,7 @@ $('.chi_cat').click(function() {
         chicats_click_false(this.id, this.name)
         if (chicat_check_print()) {
             allCheck = 1;
-            dataAjaxSort()
-            fiveInOne();
+            sixInOne();
         } else {
             allCheck = 0;
             img_show()
@@ -434,8 +392,7 @@ $('.chi_cat').click(function() {
     } else {
         chicats_click_true(this.id, this.name)
         allCheck = 1;
-        dataAjaxSort()
-        fiveInOne();
+        sixInOne();
     }
 });
 
@@ -519,19 +476,19 @@ function chicats_click_true(id, name) {
 $(document).ready(function(){
 
     $("#srochnost").click(function(){
-        first_ajax('sroch', '')
+        first_ajax('sroch')
     });
     $(".byid").click(function(){
-        first_ajax('all', '')
+        first_ajax('all')
     });
     $("#as").click(function(){
-        first_ajax('udal', '')
+        first_ajax('udal')
     });
     $(".checkboxByAs").change(function() {
         if(this.checked) {
-            first_ajax('udal', '')
+            first_ajax('udal')
         }else {
-            first_ajax('all', '')
+            first_ajax('all')
         }
     });
 });
@@ -625,10 +582,9 @@ function map_pos(mm) {
                 };
             }
             geoObjects = [];
+            let json = JSON.parse(dataAjaxPrint.address);
             for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-                dataGeo = [];
-                dataGeo.push(dataAjax[i].coordinates.split(','));
-                geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointOptions());
+                // geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i], getPointOptions());
             }
             clusterer.options.set({
                 gridSize: 80,
@@ -683,8 +639,8 @@ function map_pos(mm) {
                     };
                 }
             geoObjects = [];
-            for (var i = 0, len = dataGeo.length; i < len; i++) {
-                geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+            for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
+                // geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i], getPointData(i), getPointOptions());
             }
             clusterer.options.set({
                 gridSize: 80,
@@ -738,7 +694,7 @@ function map1_show (){
             geoObjects = [];
 
         for (var i = sGeo; i <= p, sGeo <= dl; i++, sGeo++) {
-            geoObjects[i] = new ymaps.Placemark(dataAjax[i].coordinates, getPointData(i), getPointOptions());
+            geoObjects[i] = new ymaps.Placemark(dataAjaxPrint[i].coordinates, getPointData(i), getPointOptions());
         }
 
         clusterer.options.set({
