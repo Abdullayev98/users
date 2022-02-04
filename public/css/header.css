@@ -100,3 +100,8 @@ video {
 #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
     color: #2b6cb0;  /*Set to match the Tailwind colour you want the active one to be */
 }
+
+.input_text:hover{
+    box-shadow: 0px 0px 15px rgb(255, 174, 0);
+    transition: ease 0.5s;
+}

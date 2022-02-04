@@ -41,13 +41,11 @@ class PerformersController extends Controller
     public function service(Request $request)
     {
         $tasks = Task::where('user_id', Auth::id())->get();
-        $categories = Category::get();
-        $child_categories= Category::get();
-        $users= User::where('role_id',2)->paginate(50);
-        $goods = [];
-        $bads = [];
+        $users = User::withCount(['reviews' => function ($query) {
+            $query->where('good_bad', 1);
+        }])->where('role_id',2)->orderByDesc('reviews_count')->paginate(50);
 
-        return view('Performers/performers',compact('child_categories','categories','users','tasks','goods','bads'));
+        return view('Performers/performers',compact('users','tasks'));
     }
     public function performer(User $id){
         $user= $id;
@@ -112,9 +110,10 @@ public function perf_ajax($cf_id){
     $categories = Category::get();
     $cur_cat = Category::where('id',$cf_id)->get();
     $child_categories= Category::get();
-    $users= User::where('role_id',5)->paginate(50);
+    $users= User::where('role_id',2)->paginate(50);
+    $tasks = Task::where('user_id', Auth::id())->get();
 
-    return view('Performers/performers_cat',compact('child_categories','categories','users','cf_id','cur_cat'));
+    return view('Performers/performers_cat',compact('child_categories','categories','users','cf_id','cur_cat','tasks'));
 
 }
 

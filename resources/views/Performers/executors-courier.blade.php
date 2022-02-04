@@ -22,11 +22,11 @@
                    <div class="flex sm:flex-row flex-col w-full mt-6">
                     <div class="flex-initial sm:w-1/3 w-full">
                       <img class="h-48 w-44"
-                      @if ($user->avatar == Null)
-                      src='{{asset("storage/users/default.jpg")}}'
-                      @else
-                      src="{{asset("storage/{$user->avatar}")}}"
-                      @endif alt="">
+                        @if ($user->avatar == Null)
+                        src='{{asset("AvatarImages/images/default_img.jpg")}}'
+                        @else
+                        src="{{asset("AvatarImages/{$user->avatar}")}}"
+                        @endif alt="">
                     </div>
                     <div class="flex-initial sm:w-2/3 w-full sm:mt-0 mt-6 sm:ml-8 ml-0">
                         <div class="font-medium text-lg">
@@ -71,21 +71,54 @@
                              <i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i>
                             <span class="text-cyan-500 hover:text-red-600">(197 @lang('lang.exe_feedbacks'))</span>
                         </div> --}}
-                         <div class="flex gap-2 my-5">
-                            <a href="/badges">
-                                <img class="w-20" src="{{ asset('images/insuranceIcon.png') }}" alt="#">
-                            </a>
-                            <a href="/badges" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
-                                <img class="w-20" src="{{ asset('images/goldenCup.png') }}" alt="#">
-                            </a>
-                         </div>
-                         <div>
-                             <a href="{{url('performers/chat',['id'=>$user->id])}}">
-                                 <button class="bg-gray-300 text-inherit mt-6 disabled font-bold py-2 px-4 rounded opacity-50 ">
-                                    @lang('lang.exe_ask')
-                                </button>
-                             </a>
-                         </div>
+                        <div class="flex mt-6">
+
+                        <div data-tooltip-target="tooltip-animation_1" class="mx-4">
+                            <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                 src="{{ asset('images/verify.png') }}"
+                                 @else
+                                 src="{{ asset('images/verify_gray.png') }}"
+                                 @endif  alt="" class="w-16">
+                            <div id="tooltip-animation_1" role="tooltip" class="inline-block w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                <p class="text-center">
+                                    @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                        @lang('lang.profile_icon_verify')
+                                    @else
+                                        @lang('lang.profile_icon_not_verify')
+                                    @endif
+                                </p>
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                        </div>
+                        <div data-tooltip-target="tooltip-animation_2" class="mx-4" >
+                            <img
+                            @if ($task_count >= 50)
+                                src="{{ asset('images/best.png') }}"
+                             @else
+                                 src="{{ asset('images/best_gray.png') }}"
+                             @endif
+                                alt="" class="w-16">
+                            <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                <p class="text-center">
+                                    @lang('lang.profile_icon_best')
+                                </p>
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                        </div>
+                        <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
+                            @if($task_count >= 50)
+                                <img src="{{ asset('images/50.png') }}" alt="" class="w-16">
+                            @else
+                                <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-16">
+                            @endif
+                            <div id="tooltip-animation_3" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                <p class="text-center">
+                                    @lang('lang.profile_icon_50')
+                                </p>
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                        </div>
+                        </div>
                          <a class="md:hidden block mt-8" href="#">
                             <button  class="bg-amber-600 hover:bg-amber-500 md:text-2xl text-white font-medium py-4 md:px-12  rounded">
                                 @lang('lang.exe_giveTask')
