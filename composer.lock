@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "222722cf444c2de7adff497d3cebd864",
+    "content-hash": "c190dc11e8100670d9be6b51e74e9e64",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -2415,6 +2415,86 @@
                 "source": "https://github.com/rxcod9/joy-voyager-api/tree/v1.0.1"
             },
             "time": "2021-06-24T22:28:41+00:00"
+        },
+        {
+            "name": "joy/voyager-api-auth",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rxcod9/joy-voyager-api-auth.git",
+                "reference": "794752dc7e6be63c5fa7f175333d924c5598d53e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rxcod9/joy-voyager-api-auth/zipball/794752dc7e6be63c5fa7f175333d924c5598d53e",
+                "reference": "794752dc7e6be63c5fa7f175333d924c5598d53e",
+                "shasum": ""
+            },
+            "require": {
+                "cebe/php-openapi": "^1.5",
+                "darkaonline/l5-swagger": "^8.0",
+                "illuminate/support": "^7|^8",
+                "larapack/hooks": "^1.0.5",
+                "php": "^7.3|^8.0",
+                "tcg/voyager": "^1.4"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.5.2",
+                "ext-pdo_sqlite": "*",
+                "ext-zip": "*",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "guzzlehttp/guzzle": "^6.3|^7.0",
+                "mockery/mockery": "^1.3",
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^9.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Joy\\VoyagerApiAuth\\VoyagerApiAuthServiceProvider",
+                        "Joy\\VoyagerApiAuth\\ResourcesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Joy\\VoyagerApiAuth\\": "src"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ramakant Gangwar",
+                    "email": "gangwar.ramakant@gmail.com",
+                    "homepage": "https://github.com/rxcod9",
+                    "role": "Tech Lead"
+                }
+            ],
+            "description": "This Laravel/Voyager module adds REST Api Auth to Voyager.",
+            "homepage": "https://github.com/rxcod9/joy-voyager-api-auth",
+            "keywords": [
+                "api",
+                "cms",
+                "joy",
+                "joy-voyager-api-auth",
+                "laravel",
+                "swagger",
+                "swagger-ui",
+                "voyager",
+                "voyager-api-auth"
+            ],
+            "support": {
+                "issues": "https://github.com/rxcod9/joy-voyager-api-auth/issues",
+                "source": "https://github.com/rxcod9/joy-voyager-api-auth/tree/v1.0.0"
+            },
+            "time": "2021-06-26T11:31:07+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -11467,5 +11547,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
