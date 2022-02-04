@@ -100,22 +100,22 @@
     </div>
 </div> --}}
 
-<script>
-    var link = document.location.href.split('/');
-    if(link[3] == 'task'){
-        $(".verification").removeAttr("href");
-        $(".faq").removeAttr("href");
-        $(".contact").removeAttr("href");
-        $(".review").removeAttr("href");
-    }
-    var link = document.location.href.split('/');
-    if(link[3] == 'verification'){
-        $(".verify").addClass("text-yellow-400");
-    }
-    else if(link[3] == 'contacts'){
-        $(".contact").addClass("text-yellow-400");
-    }
-    else if(link[3] == 'author-reviews'){
-        $(".rews").addClass("text-yellow-400");
-    }
-</script>
+{{--<script>--}}
+{{--    var link = document.location.href.split('/');--}}
+{{--    if(link[3] == 'task'){--}}
+{{--        $(".verification").removeAttr("href");--}}
+{{--        $(".faq").removeAttr("href");--}}
+{{--        $(".contact").removeAttr("href");--}}
+{{--        $(".review").removeAttr("href");--}}
+{{--    }--}}
+{{--    var link = document.location.href.split('/');--}}
+{{--    if(link[3] == 'verification'){--}}
+{{--        $(".verify").addClass("text-yellow-400");--}}
+{{--    }--}}
+{{--    else if(link[3] == 'contacts'){--}}
+{{--        $(".contact").addClass("text-yellow-400");--}}
+{{--    }--}}
+{{--    else if(link[3] == 'author-reviews'){--}}
+{{--        $(".rews").addClass("text-yellow-400");--}}
+{{--    }--}}
+{{--</script>--}}
