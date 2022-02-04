@@ -21,10 +21,11 @@
                     <div class="flex flex-row w-80 mt-6" style="width:500px">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
-                            @if ($user->avatar == Null)
-                            src='{{asset("storage/images/default_img.jpg")}}'
-                            @else
-                            src="{{asset("storage/{$user->avatar}")}}"
+                                 @if ($user->avatar == Null)
+                                 src='{{asset("storage/images/default.jpg")}}'
+                                 @else
+                                 src="{{asset("storage/{$user->avatar}")}}"
+                                 @endif alt="avatar">
                             @endif alt="avatar">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -203,12 +204,12 @@ alt="" class="w-16">
                                             <a href="#" class="underline">
                                                 Услуги курьера на легковом авто (нет выполненных заданий)
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li>
                                             <a href="#" class="underline">
                                                 Услуги курьера на легковом авто (нет выполненных заданий)
                                             </a>
-                                        </li>  
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="mt-4">
@@ -220,12 +221,12 @@ alt="" class="w-16">
                                             <a href="#" class="underline">
                                                 Услуги курьера на легковом авто (нет выполненных заданий)
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li>
                                             <a href="#" class="underline">
                                                 Услуги курьера на легковом авто (нет выполненных заданий)
                                             </a>
-                                        </li>  
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -444,7 +445,7 @@ alt="" class="w-16">
             console.log('successful files:', result.successful)
             console.log('failed files:', result.failed)
         });
-         
+
     </script>
 
     <script>
@@ -475,7 +476,7 @@ alt="" class="w-16">
                         _token:$('meta[name="csrf-token"]').attr('content'),
                     },
                 });
-                toggleModal6('modal-id6'); 
+                toggleModal6('modal-id6');
             });
     </script>
     @include('sweetalert::alert')
