@@ -32,7 +32,7 @@ function tasks_list_all(data) {
         dl++;
         let json = JSON.parse(data.address);
         $(".show_tasks").append(
-            `<div class="w-full border-b border-t  md:border pt-3 md:p-0 hover:bg-blue-100 h-44 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
+            `<div class="w-full border-b border-t  md:border pt-3 md:p-0 hover:bg-blue-100 h-36 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
                 <div class="md:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
                     <div class="float-left w-7/12 " id="results">
                         <i class="` + data.icon + ` text-2xl float-left text-blue-400 mr-4"></i>
