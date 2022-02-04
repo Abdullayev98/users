@@ -533,6 +533,7 @@ return [
     'settings_age' => "Возраст",
     'settings_otherSet' => "Другие сведения",
     'settings_city' => "Город",
+    'settings_choose' => "Выбирать",
     'settings_profile' => "Удалить профиль",
     'settings_phone' => "Телефон",
     'settings_noNumber' => "номер нет",

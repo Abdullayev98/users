@@ -530,6 +530,7 @@ return [
     'settings_age' => "Yosh",
     'settings_otherSet' => "Boshqa ma'lumotlar",
     'settings_city' => "Shahar",
+    'settings_choose' => "Tanlash",
     'settings_profile' => "Profilni o'chirib yuborish",
     'settings_phone' => "Telefon",
     'settings_noNumber' => "raqam yo'q",

@@ -186,7 +186,7 @@
                                                            for="location">@lang('lang.settings_city')</label>
                                                     <select class="border rounded-xl py-2 px-3 w-full text-grey-900"
                                                             name="location">
-                                                        <option value="">Tanlash</option>
+                                                        <option value="">@lang('lang.settings_choose')</option>
 
                                                         @foreach($regions as $region)
                                                             <option
