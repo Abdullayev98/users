@@ -22,11 +22,11 @@
                    <div class="flex sm:flex-row flex-col w-full mt-6">
                     <div class="flex-initial sm:w-1/3 w-full">
                       <img class="h-48 w-44"
-                        @if ($user->avatar == Null)
-                        src='{{asset("AvatarImages/images/default_img.jpg")}}'
-                        @else
-                        src="{{asset("AvatarImages/{$user->avatar}")}}"
-                        @endif alt="">
+                           @if ($user->avatar == Null)
+                           src='{{asset("storage/images/default.jpg")}}'
+                           @else
+                           src="{{asset("storage/{$user->avatar}")}}"
+                           @endif alt="avatar">
                     </div>
                     <div class="flex-initial sm:w-2/3 w-full sm:mt-0 mt-6 sm:ml-8 ml-0">
                         <div class="font-medium text-lg">
