@@ -45,7 +45,7 @@
                     <div class="mx-auto">
                         <div class="lg:w-10/12 w-full mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-                                   class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none md:text-xl">
+                                   class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none  md:text-xl">
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
@@ -419,15 +419,6 @@
         }
     </script>
     <script>
-        module.exports = {
-            theme: {
-                textColor: {
-                    'primary': '#3490dc',
-                    'secondary': '#ffed4a',
-                    'danger': '#e3342f',
-                    'whiteblue': '#80e6ff';
-                }
-            }
-        }
+      
     </script>
 @endsection

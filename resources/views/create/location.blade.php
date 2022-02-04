@@ -98,12 +98,12 @@
              </button>
              <div id="map" class="h-60 mt-4 rounded-lg w-full" ></div>
              <div class="flex w-full gap-x-4 mt-4">
-             <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+             <a onclick="backfunctionlocation()" class="w-1/3 cursor-pointer  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
                                             @lang('lang.notes_back')
                                             <!-- </button> -->
                                             <script>
-                                                function myFunction() {
+                                                function backfunctionlocation() {
                                                     window.history.back();
                                                 }
                                             </script>

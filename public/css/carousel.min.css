@@ -52,7 +52,7 @@
 }
 @media (min-width: 330px) {
     .slider__item {
-        flex: 0 0 40%;
-        max-width: 35%;
+        flex: 0 0 70%;
+        max-width: 60%;
     }
 }
