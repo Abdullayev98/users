@@ -224,9 +224,80 @@ class ProfileController extends Controller
         return redirect()->back()->with([
             'password' => 'password'
         ]);
-
-
     }
+    //personal info Ijrochi uchun
 
+    public function verificationIndex()
+    {
+        return view('verification.verification');
+    }
+    public function verificationInfo()
+    {
+        return view('personalinfo.personalinfo');
+    }
+    public function verificationInfoStore(Request $request)
+    {
+        $request->validate([
+            'location' => 'required',
+            'name' => 'required',
+            'familya' => 'required',
+            'date' => 'required',
+        ]);
+        $user = Auth::user();
+        $user->location = $request->location;
+        $user->last_name = $request->familya;
+        $user->name = $request->name;
+        $user->born_date = $request->date;
+        $user->save();
+
+        return  redirect()->route('verification.contact');
+    }
+    public function verificationContact()
+    {
+        return view('personalinfo.contact');
+    }
+    public function verificationContactStore(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'phone_number' => 'required',
+        ]);
+        $user = Auth::user();
+        $user->email = $request->email;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+
+        return  redirect()->route('verification.photo');
+    }
+    public function verificationPhoto()
+    {
+        return view('personalinfo.profilephoto');
+    }
+    public function verificationPhotoStore(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image'
+        ]);
+        $user= Auth::user();
+        $data = $request->all();
+        if($request->hasFile('avatar')){
+            $destination = 'AvatarImages/'.$user->avatar;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $filename = $request->file('avatar');
+            $imagename = "images/users/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $data['avatar'] = $imagename;
+        }
+        $user->update($data);
+        return  redirect()->route('verification.category');
+    }
+    public function verificationCategory()
+    {
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        return view('personalinfo.personalcategoriya', compact('categories'));
+    }
 
 }
