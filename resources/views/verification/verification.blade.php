@@ -5,8 +5,8 @@
 <div style="background-image: url('https://images.pexels.com/photos/5588400/pexels-photo-5588400.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=768&amp;w=1688')"
  class="h-screen bg-no-repeat mb-32">
   <div class="text-center my-auto pt-48">
-    <p class="text-5xl font-bold text-white ">@lang('lang.ver_becomePerf')</p>
-    <p class="mt-8 mb-12 text-white text-2xl">@lang('lang.ver_uSerHelps')</p>
+    <p class="text-4xl lg:text-6xl font-bold text-white ">@lang('lang.ver_becomePerf')</p>
+    <p class="mt-8 mb-12 text-white text-xl lg:text-2xl">@lang('lang.ver_uSerHelps')</p>
       @auth
         <a href="{{ route('verification.info') }}">
             @else
