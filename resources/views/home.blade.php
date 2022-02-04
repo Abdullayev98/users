@@ -39,7 +39,7 @@
                     <h1 class="font-bold text-white text-4xl lg:text-5xl">
                         <span class="block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="mt-3 text-sm md:text-xl text-white sm:mt-5 sm:mx-auto md:mt-5 md:md:mt-2 mb-3">
+                    <p class="mt-3 text-sm md:text-base text-white sm:mt-5 sm:mx-auto md:mt-3 md:md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
                     <div class="mx-auto">
