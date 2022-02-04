@@ -419,15 +419,6 @@
         }
     </script>
     <script>
-        module.exports = {
-            theme: {
-                textColor: {
-                    'primary': '#3490dc',
-                    'secondary': '#ffed4a',
-                    'danger': '#e3342f',
-                    'whiteblue': '#80e6ff';
-                }
-            }
-        }
+      
     </script>
 @endsection
