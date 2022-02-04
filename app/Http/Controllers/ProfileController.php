@@ -31,7 +31,8 @@ class ProfileController extends Controller
         $data['user_id'] = $user->id;
         $data['comment'] = $comment;
         $user = Portfolio::where('comment', $comment)->first();
-        return $this->create();
+        $dd = Portfolio::create($data);
+        return $dd;
         
     }
     public function create(array $data)
@@ -66,7 +67,12 @@ class ProfileController extends Controller
         $task_count = Task::where('performer_id', Auth::id())->where('status',4)->count();
         $ports = Portfoliocomment::where('user_id', Auth::user()->id)->get();
         $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
-        $image = File::glob(public_path("Portfolio/{$user->name}/{$comment->comment}").'/*');
+        if($comment != null){
+            $image = File::glob(public_path("Portfolio/{$user->name}/{$comment->comment}").'/*');
+        }else{
+            $image = [0,1];
+        }
+        
         $a = File::directories(public_path("Portfolio"));
         $file = "Portfolio/{$user->name}";
         if($a == []){
