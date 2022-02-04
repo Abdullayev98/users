@@ -12,7 +12,7 @@ return [
     'header_orderBtn' => "Buyurtma berish",
     'header_example' => "Masalan:",
     'header_airCon' => "konditsionerni osib qo'ying",
-    'header_exampleSearch' => "Qanday yordam kerak? yozing...",
+    'header_exampleSearch' => "Yordam kerakmi?",
     'header_bePerformer' => "ijrochi bo'ling va daromad olishni boshlang",
     'header_over' => "",
     'header_performers' => "dan ortiq ijrochilar",
