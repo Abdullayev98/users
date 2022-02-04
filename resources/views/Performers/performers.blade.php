@@ -62,10 +62,10 @@
                         <div class="w-34 float-left">
                             <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
                                 @if ($user->avatar == Null)
-                                src='{{asset("storage/users/default.jpg")}}'
+                                src='{{asset("AvatarImages/images/default_img.jpg")}}'
                                 @else
-                                src="{{asset("storage/{$user->avatar}")}}"
-                                @endif alt="user">
+                                src="{{asset("AvatarImages/{$user->avatar}")}}"
+                                @endif alt="">
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>
                                 <i class="far fa-thumbs-up m-1 text-gray-400 like{{$user->id}}">{{$user->reviews->where('good_bad',1)->count()}}</i>
@@ -98,8 +98,8 @@
                         </div>
                         <div class="w-4/5 md:float-none md:float-none">
                             <div>
-                                <a href="/performers/{{$user->id}}">
-                                    <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500" id="{{$user->id}}"> {{$user->name}} </p>
+                                <a class="user" href="/performers/{{$user->id}}">
+                                    <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500" id="{{$user->id}}"> {{$user->name}}</p>
                                 </a>
                             <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
                                 <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">

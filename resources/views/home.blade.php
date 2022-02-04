@@ -39,13 +39,13 @@
                     <h1 class="font-bold text-white text-4xl lg:text-5xl">
                         <span class="block">@lang('lang.header_title')</span>
                     </h1>
-                    <p class="mt-3 text-sm md:text-xl text-white sm:mt-5 sm:mx-auto md:mt-5 md:md:mt-2 mb-3">
+                    <p class="mt-3 text-sm md:text-base text-white sm:mt-5 sm:mx-auto md:mt-3 md:md:mt-2 mb-3">
                         @lang('lang.header_sub')
                     </p>
                     <div class="mx-auto">
                         <div class="lg:w-10/12 w-full mx-auto">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-                                   class="w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none md:text-xl">
+                                   class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none  md:text-xl">
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
@@ -58,11 +58,11 @@
                                 </a>
                                 <a href="" type="submit" id="createhref"
                                    class="float-right sm:hidden block  md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
-                                    Заказать
+                                    @lang('lang.header_orderBtn')
                                 </a>
-                        </div>
-                        <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs md:ml-10 lg:ml-14  xl:ml-20">
-                            @lang('lang.header_example')<a href="/task/create?category_id=22" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> @lang('lang.random_cat')</a>
+                                <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs">
+                                    @lang('lang.header_example')<a href="/task/create?category_id=22" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> @lang('lang.random_cat')</a>
+                                </div>
                         </div>
                     </div>
                     <div class="flex flex-row sm:w-1/2 w-5/6 mx-auto mt-8 items-center text-blue-300 hover:text-blue-400">

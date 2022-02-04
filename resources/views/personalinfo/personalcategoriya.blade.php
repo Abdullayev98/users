@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-<div class="shadow-2xl sxXE px-10 rounded-md w-full md:w-7/12 mx-auto grid grid-flow-col gap-4 my-5 flex flex-wrap md:flex-wrap-reverse">
+<div class="shadow-2xl border-t sxXE px-10 rounded-md w-full md:w-7/12 mx-auto grid grid-flow-col gap-4 my-5 flex flex-wrap md:flex-wrap-reverse">
     @php
         $user = auth()->user();
     @endphp

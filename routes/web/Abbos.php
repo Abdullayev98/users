@@ -26,7 +26,8 @@ Route::group(['middleware'=>'auth'], function (){
 
         Route::post('/insertdistrict',[ProfileController::class, 'StoreDistrict'])->name('insert.district');
 
-        Route::post('/storepicture',[ProfileController::class, 'StorePicture'])->name('storePicture');
+        Route::post('/storepicture',[ProfileController::class, 'UploadImage'])->name('storePicture');
+        Route::post('/comment',[ProfileController::class, 'comment'])->name('comment');
 
         //description
         Route::post('/description',[ProfileController::class, 'EditDescription'])->name('edit.description');

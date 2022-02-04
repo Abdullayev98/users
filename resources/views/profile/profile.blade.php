@@ -22,7 +22,7 @@
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
                             @if ($user->avatar == Null)
-                            src='{{asset("storage/images/default.jpg")}}'
+                            src='{{asset("storage/images/default_img.jpg")}}'
                             @else
                             src="{{asset("storage/{$user->avatar}")}}"
                             @endif alt="avatar">
@@ -91,11 +91,13 @@
                                         </div>
                                     </div>
                                     <div data-tooltip-target="tooltip-animation_2" class="mx-4" >
-                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                        <img
+{{--                                            @if ($task_count >= 50)--}}
                                              src="{{ asset('images/best.png') }}"
-                                             @else
-                                             src="{{ asset('images/best_gray.png') }}"
-                                             @endif alt="" class="w-16">
+{{--                                             @else--}}
+{{--                                             src="{{ asset('images/best_gray.png') }}"--}}
+{{--                                             @endif --}}
+alt="" class="w-16">
                                         <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                             <p class="text-center">
                                                 @lang('lang.profile_icon_best')
@@ -104,7 +106,11 @@
                                         </div>
                                     </div>
                                     <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
+                                        @if($task_count >= 50)
                                         <img src="{{ asset('images/50.png') }}" alt="" class="w-16">
+                                        @else
+                                            <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-16">
+                                        @endif
                                         <div id="tooltip-animation_3" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                             <p class="text-center">
                                                 @lang('lang.profile_icon_50')
@@ -164,26 +170,65 @@
                             <span>@lang('lang.profile_createAlbum')</span>
                            </a>
                         </div>
-
-
                         <div class="flex sm:flex-row flex-col mb-6">
+                        @foreach($directories as $directory)
                             <a onclick="toggleModal5('modal-id5')" href="#" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
-                                <img src="{{asset('/images/user2.jpg')}}" alt="#" class="w-56 h-48">
+                                <img src="$image[0]" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
-                                    <p class="w-2/3 text-center text-base text-white">salom</p>
+                                    <p class="w-2/3 text-center text-base text-white">{{$directory}}</p>
                                    <div class="w-1/3 flex items-center">
                                         <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
-                                        <span class="text-white">5</span>
+                                        <span class="text-white">{{count($image)}}</span>
                                    </div>
                                 </div>
                             </a>
+                        @endforeach
+
                             <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
                                 <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
                                 <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>
                             </div>
                         </div>
-
                     </div>
+                    <div class="">
+                                <p class="text-2xl font-semibold">
+                                    Виды выполняемых работ
+                                </p>
+                                <div class="my-4">
+                                    <a href="#" class="text-lg font-semibold underline">
+                                        Курьерские услуги
+                                    </a>
+                                    <ul class="pl-10 leading-7">
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li>  
+                                    </ul>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="#" class="text-lg font-semibold underline">
+                                        Уборка и помощь по хозяйству
+                                    </a>
+                                    <ul class="pl-10 leading-7">
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="#" class="underline">
+                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            </a>
+                                        </li>  
+                                    </ul>
+                                </div>
+                            </div>
                     {{-- about-me end --}}
                 </div>
             </div>
@@ -197,6 +242,7 @@
 
 
             {{-- Modal1 start --}}
+            <!-- 1 -->
             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
                 <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
                     <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
@@ -209,10 +255,31 @@
                             </h3>
                         </div>
                         <div class="text-center h-full w-full text-base">
-                            <form action="{{route('storePicture')}}" method="POST" enctype="multipart/form-data">
+                            <form enctype="multipart/form-data">
                                 @csrf
-                                <div class="w-full h-full" id="photos"></div>
-                                <input type="text" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
+                                <input type="text" id="comment" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
+                                <button id="button_comment" type="button" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
+            <!-- 2 -->
+            <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id6">
+                <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id6">
+                    <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+                        <div class=" text-center p-6  rounded-t">
+                            <button type="submit"  onclick="toggleModal6('modal-id6')" class=" w-100 h-16 absolute top-1 right-4">
+                                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                            </button>
+                            <h3 class="font-medium text-3xl block">
+                                Создание альбома
+                            </h3>
+                        </div>
+                        <div class="text-center h-full w-full text-base">
+                            <form enctype="multipart/form-data">
+                                <div id="photos"></div>
                                 <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
                             </form>
                         </div>
@@ -220,6 +287,7 @@
                 </div>
             </div>
             <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
+            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id6-backdrop"></div>
             {{-- Modal1 end --}}
 
              {{-- Modal2 start --}}
@@ -238,12 +306,14 @@
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="flex flex-wrap">
+                                @foreach($image as $path)
                                     <div id="div1" class="w-1/4">
-                                        <img src="{{asset('/images/user2.jpg')}}" class="w-32 h-32 my-1" alt="#">
+                                        <img class="relative bottom-32 left-6" src="{{ str_replace(public_path(), '', $path) }}">
                                         <button type="button" id="buttonns" class="relative bottom-32 left-6">
                                             <i class="fas fa-times text-lg w-full"></i>
                                         </button>
                                     </div>
+                                    @endforeach
                                 </div>
                                 <div class="input-images my-4">
                                 </div>
@@ -273,12 +343,18 @@
                     document.getElementById(modalID123).classList.toggle("flex");
                     document.getElementById(modalID123 + "-backdrop").classList.toggle("flex");
                 }
-                $(document).ready(function() {
-                    $('#buttonns').click(function() {
-                        $('#div1').addClass('hidden');
-                        $(this).addClass('hidden');
-                    });
-                });
+            </script>
+            <script type="text/javascript">
+                function toggleModal6(modalID6){
+                    var element = document.getElementById("modal-id123-backdrop");
+                    element.classList.add("hidden");
+                    var element2 = document.getElementById("modal-id123");
+                    element2.classList.add("hidden");
+                    document.getElementById(modalID6).classList.toggle("hidden");
+                    document.getElementById(modalID6 + "-backdrop").classList.toggle("hidden");
+                    document.getElementById(modalID6).classList.toggle("flex");
+                    document.getElementById(modalID6 + "-backdrop").classList.toggle("flex");
+                }
             </script>
     <script>
         $(function(){
@@ -303,7 +379,7 @@
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
     <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
     <script>
-         var uppy = new Uppy.Core({
+            var uppy = new Uppy.Core({
             debug: true,
             autoProceed: true,
             restrictions: {
@@ -342,7 +418,7 @@
             .use(Uppy.DropTarget, {target: document.body})
             .use(Uppy.GoldenRetriever)
             .use(Uppy.XHRUpload, {
-                endpoint: '/task/create/upload',
+                endpoint: '/profile/storepicture',
                 fieldName: 'file',
                 headers: file => ({
                     'X-CSRF-TOKEN': '{{csrf_token()}}'
@@ -368,6 +444,7 @@
             console.log('successful files:', result.successful)
             console.log('failed files:', result.failed)
         });
+         
     </script>
 
     <script>
@@ -388,6 +465,18 @@
             $('.desc').addClass('block').removeClass('hidden');
             $('.formdesc').removeClass('block').addClass('hidden')
         });
+        $("#button_comment").click(function(event){
+                let comment = $("input[name=comment]").val();
+                $.ajax({
+                    url: "{{route('comment')}}",
+                    type:"POST",
+                    data:{
+                        comment:comment,
+                        _token:$('meta[name="csrf-token"]').attr('content'),
+                    },
+                });
+                toggleModal6('modal-id6'); 
+            });
     </script>
     @include('sweetalert::alert')
 @endsection
