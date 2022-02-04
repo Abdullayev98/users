@@ -12,7 +12,7 @@ return [
     'header_orderBtn' => "Заказать услугу",
     'header_example' => "Например:",
     'header_airCon' => "повесить кондиционер",
-    'header_exampleSearch' => "Напишите, чем вам помочь...",
+    'header_exampleSearch' => "Чем вам помочь...",
     'header_bePerformer' => "стать исполнителем и начать зарабатывать",
     'header_over' => "Более",
     'header_performers' => "исполнителей",

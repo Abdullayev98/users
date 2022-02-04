@@ -34,17 +34,16 @@ function tasks_list_all(data) {
         $(".show_tasks").append(
             `<div class="w-full border-b border-t  md:border pt-3 md:p-0 hover:bg-blue-100 h-44 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
                 <div class="md:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
-                    <div class="float-left w-9/12 " id="results">
-                        <i class="` + data.icon + ` text-4xl float-left text-blue-400 mr-4 mt-8"></i>
-                        <a href="/detailed-tasks/` + data.id + `" class="text-[18px] text-blue-400 hover:text-red-400">` + data.name + `</a>
-                        <p class="text-[14px] ml-12 mt-4 location">` + json.location + `</p>
-                        <p class="text-[14px] ml-10 mt-1 pl-4">Начать ` + data.start_date + `</p>
-                        <p class="text-[14px] ml-10 mt-1 pl-4">` + data.oplata + `</p>
+                    <div class="float-left w-7/12 " id="results">
+                        <i class="` + data.icon + ` text-2xl float-left text-blue-400 mr-4"></i>
+                        <a href="/detailed-tasks/` + data.id + `" class="text-lg font-semibold text-blue-400 hover:text-red-400">` + data.name + `</a>
+                        <p class="text-xs ml-12 mt-4 location">` + json.location + `</p>
+                        <p class="text-xs ml-8 mt-1 pl-4">Начать ` + data.start_date + `</p>
                     </div>
-                    <div class="float-right w-1/4 text-right sm:p-0" id="about">
-                        <a href="#" class="text-[20px]">` + data.budget + `</a>
-                        <p class="text-[14px]">` + data.category_name + `</p>
-                        <p class="text-[14px] mt-2">` + data.user_name + `</p>
+                    <div class="float-right w-4/12 text-right sm:p-0" id="about">
+                        <a href="#" class="text-lg font-semibold">` + data.budget + `</a>
+                        <p class="text-xs mt-5">` + data.category_name + `</p>
+                        <p class="text-xs mt-2">` + data.user_name + `</p>
                     </div>
                 </div>
             </div>`,
