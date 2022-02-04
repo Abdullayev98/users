@@ -54,11 +54,7 @@
                             </ul>
                         @endguest
 
-                        @if(session()->has('phone'))
 
-                            @dd(123123)
-
-                            @endif
                         <div class="tab-content" id="tabs-tabContent3">
                             <div class="tab-pane fade show active " id="tabs-home3" role="tabpanel"
                                  aria-labelledby="tabs-home-tab3">
@@ -74,13 +70,13 @@
                                                             method="post">
                                                             @csrf
 
-
                                                             <label class="text-sm text-gray-500 mb-2"
                                                                    for="phone">@lang('lang.contact_number')</label>
                                                             <input type="text"
-                                                                   value="+998{{auth()->user()->phone_number}}"
+
                                                                    class="shadow appearance-none border phone focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
                                                             <input type="hidden" name="phone_number"
+                                                            <input type="hidden" name="phone_number" value="{{auth()->user()->phone_number}}"
                                                                    class="phone-number">
                                                             @error('phone_number')
                                                             <p>{{$message}}</p>
@@ -273,6 +269,7 @@
             text = text.replace(/[^0-9.]/g, "")
             text = text.slice(3)
             $(".phone-number").val(text)
+            alert(text)
         })
 
 
