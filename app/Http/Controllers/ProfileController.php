@@ -96,12 +96,12 @@ class ProfileController extends Controller
             $images = [0,1];
         }
 
-        $a = File::directories(public_path("Portfolio/{$user->name}"));
-        $file = "Portfolio/{$user->name}";
+
         //dd($a);
-        if(!$a){
-            File::makeDirectory($file);
+        if($file = "Portfolio/{$user->name}"){
+        File::makeDirectory($file);
         }
+
         $b = File::directories(public_path("Portfolio/{$user->name}"));
         $directories = array_map('basename', $b);
         return view('profile.profile', compact('images','directories','task_count','image','user','views','task','ports'));
