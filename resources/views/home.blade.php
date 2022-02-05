@@ -58,7 +58,7 @@
                                 </a>
                                 <a href="" type="submit" id="createhref"
                                    class="float-right sm:hidden block  md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
-                                    @lang('lang.header_orderBtn')
+                                    Заказать
                                 </a>
                                 <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs">
                                     @lang('lang.header_example')<a href="/task/create?category_id=22" id="span_demo" onclick="myFunction()" class="hover:text-slate-400  hover:text-gray-200 cursor-pointer"> @lang('lang.random_cat')</a>
@@ -419,6 +419,6 @@
         }
     </script>
     <script>
-      
+
     </script>
 @endsection
