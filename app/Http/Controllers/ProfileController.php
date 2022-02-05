@@ -98,8 +98,9 @@ class ProfileController extends Controller
 
 
         //dd($a);
-        if($file = "Portfolio/{$user->name}"){
-        File::makeDirectory($file);
+        $file = "Portfolio/{$user->name}";
+        if(!file_exists($file)){
+            File::makeDirectory($file);
         }
 
         $b = File::directories(public_path("Portfolio/{$user->name}"));
