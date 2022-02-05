@@ -32,6 +32,11 @@ Route::group(['middleware'=>'auth'], function (){
 
         //description
         Route::post('/description',[ProfileController::class, 'EditDescription'])->name('edit.description');
+
+        //create_port
+        Route::get('/create', function () {
+            return view('profile/create_port');
+        });
     });
 });
 

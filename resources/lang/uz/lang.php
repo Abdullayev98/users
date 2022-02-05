@@ -64,6 +64,8 @@ return [
     'modal_address3' => "Havolani kuzatib boring va telefon raqamingizni faollashtiring.",
     'modal_address4' => "Telefon raqamini tasdiqlash uchun yangi elektron pochta xabarini yuboring",
     'modal_phone' => "Boshqa telefon raqamini belgilang",
+    'modal_alert' => "Siz topshiriqni ijrochiga taklif qildingiz",
+    'modal_alert1' => "Biz xabarnoma yubordik.",
     //modal blade end
 
     // pdf.blade start
@@ -494,12 +496,12 @@ return [
     // profile.blade end
 
     // settings.blade start
-    'settings_personalData' => "Shaxsiy ma\'lumotlar",
+    'settings_personalData' => "Shaxsiy ma'lumotlar",
     'settings_name' => "Ism",
     'settings_profileType' => "Profil turi",
     'settings_performer' => "Ijrochi",
     'settings_customer' => "Mijoz",
-    'settings_delete' => "O\'chirish",
+    'settings_delete' => "O'chirish",
     'settings_takeNotif' => "Bildirishnomalarni olish:",
     'settings_systemNotif' => "Tizim bildirishnomalari",
     'settings_wantNews' => "Men sayt yangiliklarini olmoqchiman",
@@ -581,6 +583,7 @@ return [
     'exe_rusOtziva' => "ta fikr bildirilgan",
     'exe_rusOtzivov' => "ta fikr bildirilgan",
     'exe_customer' => "Mijoz",
+    'exe_performer' => "Ijrochi",
     'exe_feedB' => "Fikr",
     // executors-courier.blade end
 
@@ -664,9 +667,9 @@ return [
     'name_subCat' => "Subturkum",
     'name_pedCourier' => "Piyodalar uchun kurerlik xizmati",
     'name_next' => "Keyingi",
-    'name_deleteAsk' => "Kiritilgan ma\'lumotlar yo\'qoladi. <br> Haqiqatan ham vazifani o\'chirmoqchimisiz?",
+    'name_deleteAsk' => "Kiritilgan ma'lumotlar yo'qoladi. <br> Haqiqatan ham vazifani o'chirmoqchimisiz?",
     'name_continue' => "Davom etish",
-    'name_delete' => "O\'chirish",
+    'name_delete' => "O'chirish",
     'name_cencel' => "Bekor qilish",
     'name_subCat2' => "Subkategorialar",
     'name_chooseOne' => "Bittasini tanlang",

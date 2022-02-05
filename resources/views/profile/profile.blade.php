@@ -21,11 +21,11 @@
                     <div class="flex flex-row w-80 mt-6" style="width:500px">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
-                            @if ($user->avatar == Null)
-                            src='{{asset("storage/images/default_img.jpg")}}'
-                            @else
-                            src="{{asset("storage/{$user->avatar}")}}"
-                            @endif alt="avatar">
+                                 @if ($user->avatar == Null)
+                                 src='{{asset("storage/images/default.jpg")}}'
+                                 @else
+                                 src="{{asset("storage/{$user->avatar}")}}"
+                                 @endif alt="avatar">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
@@ -165,7 +165,7 @@ alt="" class="w-16">
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-96 my-10">
-                           <a onclick="toggleModal123('modal-id123')" class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="#">
+                           <a class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="/profile/create">
                             <i class="fas fa-camera"></i>
                             <span>@lang('lang.profile_createAlbum')</span>
                            </a>
@@ -184,10 +184,10 @@ alt="" class="w-16">
                             </a>
                         @endforeach
 
-                            <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
-                                <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
-                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>
-                            </div>
+{{--                            <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">--}}
+{{--                                <i class="fas fa-plus mx-auto text-7xl mt-14"></i>--}}
+{{--                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                     <div class="">
@@ -314,7 +314,7 @@ alt="" class="w-16">
                                             <i class="fas fa-times text-lg w-full"></i>
                                         </button>
                                     </div>
-                                    @endforeach
+                                @endforeach
                                 </div>
                                 <div class="input-images my-4">
                                 </div>

@@ -22,11 +22,11 @@
                    <div class="flex sm:flex-row flex-col w-full mt-6">
                     <div class="flex-initial sm:w-1/3 w-full">
                       <img class="h-48 w-44"
-                        @if ($user->avatar == Null)
-                        src='{{asset("AvatarImages/images/default_img.jpg")}}'
-                        @else
-                        src="{{asset("AvatarImages/{$user->avatar}")}}"
-                        @endif alt="">
+                           @if ($user->avatar == Null)
+                           src='{{asset("storage/images/default.jpg")}}'
+                           @else
+                           src="{{asset("storage/{$user->avatar}")}}"
+                           @endif alt="avatar">
                     </div>
                     <div class="flex-initial sm:w-2/3 w-full sm:mt-0 mt-6 sm:ml-8 ml-0">
                         <div class="font-medium text-lg">
@@ -173,7 +173,8 @@
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-                                        @lang('lang.exe_customer')
+{{--                                            @lang('lang.exe_customer')--}}
+{{--                                            @lang('lang.exe_performer')--}}
                                         @endif
                                     @endif
                                 </span>
@@ -200,24 +201,18 @@
                 </div>
 
                 <h1 class="mt-12 text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
-                @foreach($categories as $category)
-                 @if($category->id == $user->category_id)
-               <div class="mt-8">
-                    <a class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
-                    <!-- <p class="mt-2 text-gray-400 text-lg">1 место в рейтинге категории в г. Санкт-Петербург, выполнено 199 заданий <br>
-                        20 место в общем рейтинге категории</p> -->
-               </div>
+
                <div>
                   <ul>
-                    @foreach($child_categories as $cat)
-                    @if($cat->parent_id == $category->id)
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">{{$cat->name}}</a> </li>
-                    @endif
+                    @foreach(explode(',', $user->category_id) as $user_cat)
+                    @foreach($categories as $cat)
+                        @if($cat->id == $user_cat)
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="/categories/{{$cat->parent_id}}">{{$cat->name}}</a> </li>
+                              @endif
+                          @endforeach
                     @endforeach
                   </ul>
                </div>
-                @endif
-              @endforeach
             </div>
         {{-- left sidebar end --}}
 
