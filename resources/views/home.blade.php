@@ -43,9 +43,9 @@
                         @lang('lang.header_sub')
                     </p>
                     <div class="mx-auto">
-                        <div class="lg:w-10/12 w-full mx-auto">
+                        <div class="lg:w-10/12 w-full mx-auto flex-1">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-                                   class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none  md:text-xl">
+                                   class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none flex-1 md:text-xl text-lg">
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
@@ -53,11 +53,11 @@
                                     @endforeach
                                 </datalist>
                                 <a href="" type="submit" id="createhref"
-                                   class="float-right sm:block hidden md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2.2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
+                                   class="float-right sm:block hidden md:text-xl text-lg border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2.2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
                                     @lang('lang.header_orderBtn')
                                 </a>
                                 <a href="" type="submit" id="createhref"
-                                   class="float-right sm:hidden block  md:text-xl border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
+                                   class="float-right sm:hidden block  md:text-xl  text-lg border bg-yellow-500 z-0 border-transparent rounded-md md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
                                     Заказать
                                 </a>
                                 <div class="text-left mt-2 text-gray-300 font-semibold underline-offset-1 text-xs">
