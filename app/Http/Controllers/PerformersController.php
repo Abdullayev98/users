@@ -64,8 +64,6 @@ class PerformersController extends Controller
             $view->save();
         }
         $views = count(UserView::query()->where('performer_id', $id->id)->get());
-
-
         $categories = Category::withTranslations(['ru', 'uz'])->get();
         $child_categories = Category::withTranslations(['ru', 'uz'])->get();
         $task_count = Task::where('user_id', Auth::id())->count();
