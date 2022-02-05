@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Response;
 use App\Models\WalletBalance;
 use App\Models\Review;
 use Illuminate\Support\Facades\DB;
@@ -34,9 +35,6 @@ class PerformersController extends Controller
         }else{
             return redirect()->back();
         }
-
-
-
     }
     public function service(Request $request)
     {
@@ -44,7 +42,6 @@ class PerformersController extends Controller
         $users = User::withCount(['reviews' => function ($query) {
             $query->where('good_bad', 1);
         }])->where('role_id',2)->orderByDesc('reviews_count')->paginate(50);
-
         return view('Performers/performers',compact('users','tasks'));
     }
     public function performer(User $id){
@@ -134,8 +131,11 @@ public function del_notif($id,$task_id){
   $users = User::all();
   $current_user = User::find($user_id);
   $categories = Category::where('id',$cat_id)->get();
+    $task_responses = Response::where('task_id', $tasks->id)->get();
+    $response_count = Response::where('task_id', $tasks->id)->count();
+    $response_count_user = Response::where('user_id', Auth::id())->count();
   // dd($current_user);
-  return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user','balance'));
+  return view('task.detailed-tasks',compact('response_count_user','response_count','tasks','same_tasks','users','categories','current_user','balance','task_responses'));
 }
 
 }

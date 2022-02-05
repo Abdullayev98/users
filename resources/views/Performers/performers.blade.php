@@ -57,8 +57,9 @@
                         </label>
                     </div>
                 </div>
+                <div class="sortable">
                 @foreach($users as $user)
-                    <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
+                    <div class="score w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
                         <div class="w-34 float-left">
                             <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
                                 @if ($user->avatar == Null)
@@ -77,7 +78,7 @@
                                 $(document).ready(function(){
                                     var good = $(".like{{$user->id}}").text();
                                     var bad = $(".dislike{{$user->id}}").text();
-                                    var allcount = (good * 5) + (bad * 1);
+                                    var allcount = (good * 5) + (bad * 0);
                                     var coundlikes = (good * 1) + (bad * 1);
                                     var overallStars = allcount / coundlikes;
                                     var star = overallStars.toFixed();
@@ -137,8 +138,7 @@
 
                 @endforeach
 
-                {{ $users->links() }}
-
+                </div>
             </div>
         </div>
         <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black bg-opacity-50 hidden text-center">
@@ -232,53 +232,8 @@
                 </div>
             </div>
 
-            {{ $users->links() }}
-
         </div>
     </div>
-    {{-- <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black hidden text-center">
-        <div class="modal relative bg-white w-[600px] mx-auto p-10 rounded-md justify-center mt-48 ease-in transition duration-500">
-            <h1 class="text-3xl font-semibold">Выберите задание, которое хотите предложить исполнителью</h1>
-            @foreach($tasks as $task)
-                <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
-            @endforeach
-            <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-yellow-500 mx-auto block"><br>
-
-                @foreach($tasks as $task)
-                    @auth
-                        <option value="{{ $task->name }}">
-                            {{ $task->name }}
-                        </option>
-                    @endauth
-                @endforeach
-                <option value="1">
-                    + новое задание
-                </option>
-            </select>
-            <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
-
-            <div id="hidden_div">
-                <button onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
-                    Предложить работу
-                </button>
-                <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
-            </div>
-
-            <a href="/categories/1">
-                <button id="hidden_div2" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto" style="display: none;">
-                    Создать новое задание
-                </button>
-            </a>
-
-            <button class="cursor-pointer close text-gray-400 font-bold rounded-lg p-2 px-4 mt-6 absolute -top-6 right-0 text-2xl">
-                x
-            </button>
-        </div>
-        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
-    </div> --}}
-
-
-
 
     <!-- Основной контент страницы -->
     <div id="modal" style="display: none">
