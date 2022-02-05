@@ -184,7 +184,7 @@
                 <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center py-12">
                     <h1 class="text-2xl font-bold namem"></h1>
                     <div class="mx-auto mt-8">
-                        Мы отправили ему уведомление.
+                        @lang('lang.modal_alert1')
                     </div>
                     <button onclick="myFunction1()" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto">
                         ok
@@ -310,7 +310,7 @@
         @foreach($users as $user)
         $("#open{{$user->id}}").click(function(){
             var username = $(".{{$user->id}}").text();
-            var namem = $(".namem").text('Вы предложили задание исполнителю'+username );
+            var namem = $(".namem").text('@lang('lang.modal_alert')'+username );
             $(".modal_content").show();
             let user_id = $('.{{$user->id}}').attr('id');
             $.ajax({
