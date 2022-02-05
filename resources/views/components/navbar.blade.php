@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ asset('/css/index.css') }}">
 <div class="border-b border-solid border-gray-200 w-full shadow-sm fixed bg-white top-0 z-10">
 
-    <nav class="z-10 relative flex items-center xl:w-11/12 mx-auto lg:justify-start text-base" aria-label="Global">
+    <nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start text-base" aria-label="Global">
         <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
             <!--  mobile menu -->
             <!-- <div class="flex justify-between w-11/12 items-center"> -->
@@ -16,7 +16,7 @@
                     </button>
                 </div>
 
-                <div class="flex justify-center ml-8  w-10/12">
+                <div class="flex justify-center xl:w-full w-10/12">
                     <a class="logo cursor-pointer delete-task" href="/">
                         <img src="/storage/{!!str_replace("\\","/",setting('site.logo'))!!}" class="overflow-hidden h-14 xl:h-16 lg:h-14 py-2" alt="" />
                     </a>
@@ -36,11 +36,11 @@
                                         <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
                                     </div>
                                     <ul class="py-1" aria-labelledby="notification">
+{{--                                        <li>--}}
+{{--                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
+{{--                                        </li>--}}
                                         <li>
-                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
+                                            <a href="/profile/settings" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                                         </li>
                                         <li>
                                             <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
@@ -201,7 +201,9 @@
                             @php $count_for_not++; @endphp
 
                         @endforeach
+                        @if($count_for_not > 0)
                         <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
+                        @endif
                         <button class="" type="button" data-dropdown-toggle="dropdown">
                             <i class="xl:text-2xl lg:text-xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                         </button>
@@ -210,38 +212,38 @@
                             <div class="px-4 py-3">
                                 <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
                             </div>
-                            <ul class="py-1" aria-labelledby="dropdown">
+                            <ul class="py-1 overflow-y-auto max-h-96" id="notifs" aria-labelledby="dropdown">
 
                                 @foreach(Notification::where('user_id', Auth::user()->id)->get() as $notification)
                                     @if($notification->type == 1)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
                                         </li>
                                     @elseif($notification->type == 2)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveOffer')</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveOffer')</a>
                                         </li>
                                     @elseif($notification->type == 3)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveTask')</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveTask')</a>
                                         </li>
                                     @elseif($notification->type == 4)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->task_name}}</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
                                         </li>
                                     @endif
                                 @endforeach
 
                                 <div id="for_append_notifications"></div>
 
+{{--                                <li>--}}
+{{--                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
+{{--                                </li>--}}
                                 <li>
-                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
+                                    <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
+                                    <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2 see_all">@lang('lang.navbar_markAsRead')</a>
                                 </li>
                             </ul>
                         </div>
@@ -641,9 +643,25 @@
 </script>
 
 <script >
+    $('.see_all').click(function(){
+        $.ajax({
+            url: "/del-notif",
+            type:"POST",
+            data:{
+                _token:$('meta[name="csrf-token"]').attr('content'),
+            },
+            success:function(response){
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+        $("#notifs").load(location.href + " #notifs");
+        $("#content_count").addClass('hidden');
+    });
     var link = document.location.href.split('/');
     if(link[3] == 'task'){
-
         $('.delete-task').on('click', function () {
 
             let for_del_task_in = $(this).attr("href");

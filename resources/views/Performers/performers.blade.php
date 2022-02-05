@@ -57,19 +57,15 @@
                         </label>
                     </div>
                 </div>
+                <div class="sortable">
                 @foreach($users as $user)
-                    <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
+                    <div class="score w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
                         <div class="w-34 float-left">
-                            <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
-                                @if ($user->avatar == Null)
-                                src='{{asset("AvatarImages/images/default_img.jpg")}}'
-                                @else
-                                src="{{asset("AvatarImages/{$user->avatar}")}}"
-                                @endif alt="">
+                            <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4" @if ($user->avatar == Null)src='{{asset("storage/images/default.jpg")}}' @else src="{{asset("storage/{$user->avatar}")}}" @endif alt="avatar">
                             <div class="flex flex-row text-[12px]">
                                 <p>@lang('lang.perfCat_feedbacks')</p>
-                                <i class="far fa-thumbs-up m-1 text-gray-400 like{{$user->id}}">{{$user->reviews->where('good_bad',1)->count()}}</i>
-                                <i class="far fa-thumbs-down m-1 text-gray-400 dislike{{$user->id}}">{{$user->reviews->where('good_bad',0)->count()}}</i>
+                                <i class="far fa-thumbs-up m-1 text-gray-400 like{{$user->id}}">{{ $user->reviews()->where('good_bad',1)->count()}}</i>
+                                <i class="far fa-thumbs-down m-1 text-gray-400 dislike{{$user->id}}">{{ $user->reviews()->where('good_bad',0)->count()}}</i>
                             </div>
                             <div class="flex flex-row stars{{$user->id}}">
                             </div>
@@ -77,7 +73,7 @@
                                 $(document).ready(function(){
                                     var good = $(".like{{$user->id}}").text();
                                     var bad = $(".dislike{{$user->id}}").text();
-                                    var allcount = (good * 5) + (bad * 1);
+                                    var allcount = good * 5;
                                     var coundlikes = (good * 1) + (bad * 1);
                                     var overallStars = allcount / coundlikes;
                                     var star = overallStars.toFixed();
@@ -101,9 +97,6 @@
                                 <a class="user" href="/performers/{{$user->id}}">
                                     <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500" id="{{$user->id}}"> {{$user->name}}</p>
                                 </a>
-                            <!-- <img class="h-8 ml-2" src="{{ asset('images/icon_year.svg') }}">
-                                <img class="h-8 ml-2" src="{{ asset('images/icon_shield.png') }}">
-                                <img class="h-8 ml-2" src="{{ asset('images/icon_bag.png') }}"> -->
                             </div>
                             <div>
                                 @if($user->active_status == 1)
@@ -134,18 +127,17 @@
                             </div>
                         </div>
                     </div>
-
                 @endforeach
-
-                {{ $users->links() }}
-
+                </div>
             </div>
         </div>
         <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black bg-opacity-50 hidden text-center">
             <div class="modal relative bg-white w-5/12 mx-auto p-10 rounded-md justify-center mt-48 ease-in transition duration-500">
                 <h1 class="text-3xl font-semibold">Выберите задание, которое хотите предложить исполнителью</h1>
                 @foreach($tasks as $task)
-                    <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
+                    <label>
+                        <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
+                    </label>
                 @endforeach
 
 {{--                <form action="" method="POST">--}}
@@ -163,15 +155,17 @@
                             + новое задание
                         </option>
                     </select>
+                <label>
                     <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
+                </label>
 
-                    <div id="hidden_div">
+                <div id="hidden_div">
                         <button type="submit" onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
                             Предложить работу
                         </button>
                         <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
                     </div>
-{{--                </form>--}}
+
 
 
                 <a href="/categories/1">
@@ -185,19 +179,12 @@
                 </button>
             </div>
         </div>
-
-
-
-
-        <!-- Основной контент страницы -->
         <div id="modal" style="display: none">
             <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
-                <!-- modal -->
                 <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center py-12">
-                    <!-- modal header -->
                     <h1 class="text-2xl font-bold namem"></h1>
                     <div class="mx-auto mt-8">
-                        Мы отправили ему уведомление.
+                        @lang('lang.modal_alert1')
                     </div>
                     <button onclick="myFunction1()" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto">
                         ok
@@ -223,7 +210,6 @@
                             @lang('lang.exe_createTFirst')
                         </p>
                     </div>
-                    <!--footer-->
                     <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                         <div class="mt-4 ">
                             <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-600  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
@@ -232,53 +218,8 @@
                 </div>
             </div>
 
-            {{ $users->links() }}
-
         </div>
     </div>
-    {{-- <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black hidden text-center">
-        <div class="modal relative bg-white w-[600px] mx-auto p-10 rounded-md justify-center mt-48 ease-in transition duration-500">
-            <h1 class="text-3xl font-semibold">Выберите задание, которое хотите предложить исполнителью</h1>
-            @foreach($tasks as $task)
-                <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
-            @endforeach
-            <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-yellow-500 mx-auto block"><br>
-
-                @foreach($tasks as $task)
-                    @auth
-                        <option value="{{ $task->name }}">
-                            {{ $task->name }}
-                        </option>
-                    @endauth
-                @endforeach
-                <option value="1">
-                    + новое задание
-                </option>
-            </select>
-            <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
-
-            <div id="hidden_div">
-                <button onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
-                    Предложить работу
-                </button>
-                <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
-            </div>
-
-            <a href="/categories/1">
-                <button id="hidden_div2" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto" style="display: none;">
-                    Создать новое задание
-                </button>
-            </a>
-
-            <button class="cursor-pointer close text-gray-400 font-bold rounded-lg p-2 px-4 mt-6 absolute -top-6 right-0 text-2xl">
-                x
-            </button>
-        </div>
-        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
-    </div> --}}
-
-
-
 
     <!-- Основной контент страницы -->
     <div id="modal" style="display: none">
@@ -369,7 +310,7 @@
         @foreach($users as $user)
         $("#open{{$user->id}}").click(function(){
             var username = $(".{{$user->id}}").text();
-            var namem = $(".namem").text('Вы предложили задание исполнителю'+username );
+            var namem = $(".namem").text('@lang('lang.modal_alert')'+username );
             $(".modal_content").show();
             let user_id = $('.{{$user->id}}').attr('id');
             $.ajax({

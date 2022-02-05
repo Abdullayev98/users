@@ -30,7 +30,6 @@ class UserUpdateDataRequest extends FormRequest
             'phone_number' => 'nullable|int|min:9|unique:users',
             'description' => 'nullable',
             'location' => 'nullable',
-            'role_id' => 'required',
         ];
         if (auth()->user()->email == $this->request->get('email')) {
             $validation['email'] = "required|email";
