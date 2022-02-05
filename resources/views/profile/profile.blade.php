@@ -184,10 +184,10 @@ alt="" class="w-16">
                             </a>
                         @endforeach
 
-{{--                            <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">--}}
-{{--                                <i class="fas fa-plus mx-auto text-7xl mt-14"></i>--}}
-{{--                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>--}}
-{{--                            </div>--}}
+                            <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
+                                <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
+                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>
+                            </div>
                         </div>
                     </div>
                     <div class="">
