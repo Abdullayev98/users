@@ -584,6 +584,7 @@ return [
     'exe_rusOtziva' => "Отзыва",
     'exe_rusOtzivov' => "Отзывов",
     'exe_customer' => "Заказчик",
+    'exe_performer' => "Исполнитель",
     'exe_feedB' => "Отзыв",
     // executors-courier.blade end
 
