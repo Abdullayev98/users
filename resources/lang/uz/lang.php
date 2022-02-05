@@ -64,6 +64,8 @@ return [
     'modal_address3' => "Havolani kuzatib boring va telefon raqamingizni faollashtiring.",
     'modal_address4' => "Telefon raqamini tasdiqlash uchun yangi elektron pochta xabarini yuboring",
     'modal_phone' => "Boshqa telefon raqamini belgilang",
+    'modal_alert' => "Siz topshiriqni ijrochiga taklif qildingiz",
+    'modal_alert1' => "Biz xabarnoma yubordik.",
     //modal blade end
 
     // pdf.blade start
