@@ -581,6 +581,7 @@ return [
     'exe_rusOtziva' => "ta fikr bildirilgan",
     'exe_rusOtzivov' => "ta fikr bildirilgan",
     'exe_customer' => "Mijoz",
+    'exe_performer' => "Ijrochi",
     'exe_feedB' => "Fikr",
     // executors-courier.blade end
 

@@ -173,7 +173,8 @@
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-                                        @lang('lang.exe_customer')
+{{--                                            @lang('lang.exe_customer')--}}
+{{--                                            @lang('lang.exe_performer')--}}
                                         @endif
                                     @endif
                                 </span>
