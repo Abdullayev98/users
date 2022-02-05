@@ -212,7 +212,7 @@
                             <div class="px-4 py-3">
                                 <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
                             </div>
-                            <ul class="py-1" aria-labelledby="dropdown">
+                            <ul class="py-1 overflow-y-auto max-h-96" id="notifs" aria-labelledby="dropdown">
 
                                 @foreach(Notification::where('user_id', Auth::user()->id)->get() as $notification)
                                     @if($notification->type == 1)
@@ -243,7 +243,7 @@
                                     <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
+                                    <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2 see_all">@lang('lang.navbar_markAsRead')</a>
                                 </li>
                             </ul>
                         </div>
@@ -643,9 +643,25 @@
 </script>
 
 <script >
+    $('.see_all').click(function(){
+        $.ajax({
+            url: "/del-notif",
+            type:"POST",
+            data:{
+                _token:$('meta[name="csrf-token"]').attr('content'),
+            },
+            success:function(response){
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+        $("#notifs").load(location.href + " #notifs");
+        $("#content_count").addClass('hidden');
+    });
     var link = document.location.href.split('/');
     if(link[3] == 'task'){
-
         $('.delete-task').on('click', function () {
 
             let for_del_task_in = $(this).attr("href");
