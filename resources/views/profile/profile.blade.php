@@ -172,7 +172,7 @@ alt="" class="w-16">
                         </div>
                         <div class="flex sm:flex-row flex-col mb-6">
                         @foreach($directories as $directory)
-                            <a onclick="toggleModal5('modal-id5')" href="#" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
+                            <a onclick="toggleModal5('modal-id5')" href="#102" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
                                 <img src="$image[0]" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
                                     <p class="w-2/3 text-center text-base text-white">{{$directory}}</p>
@@ -203,12 +203,12 @@ alt="" class="w-16">
                                             <a href="#" class="underline">
                                                 Услуги курьера на легковом авто (нет выполненных заданий)
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li>
                                             <a href="#" class="underline">
                                                 Услуги курьера на легковом авто (нет выполненных заданий)
                                             </a>
-                                        </li>  
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="mt-4">
@@ -220,12 +220,12 @@ alt="" class="w-16">
                                             <a href="#" class="underline">
                                                 Услуги курьера на легковом авто (нет выполненных заданий)
                                             </a>
-                                        </li> 
+                                        </li>
                                         <li>
                                             <a href="#" class="underline">
                                                 Услуги курьера на легковом авто (нет выполненных заданий)
                                             </a>
-                                        </li>  
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -278,7 +278,8 @@ alt="" class="w-16">
                             </h3>
                         </div>
                         <div class="text-center h-full w-full text-base">
-                            <form enctype="multipart/form-data">
+                            <form action="{{route('testBase')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div id="photos"></div>
                                 <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
                             </form>
@@ -306,9 +307,9 @@ alt="" class="w-16">
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="flex flex-wrap">
-                                @foreach($image as $path)
+                                @foreach($images as $path)
                                     <div id="div1" class="w-1/4">
-                                        <img class="relative bottom-32 left-6" src="{{ str_replace(public_path(), '', $path) }}">
+                                        <img class="relative bottom-32 left-6" src="{{ asset($path) }}">
                                         <button type="button" id="buttonns" class="relative bottom-32 left-6">
                                             <i class="fas fa-times text-lg w-full"></i>
                                         </button>
@@ -444,7 +445,7 @@ alt="" class="w-16">
             console.log('successful files:', result.successful)
             console.log('failed files:', result.failed)
         });
-         
+
     </script>
 
     <script>
@@ -475,7 +476,7 @@ alt="" class="w-16">
                         _token:$('meta[name="csrf-token"]').attr('content'),
                     },
                 });
-                toggleModal6('modal-id6'); 
+                toggleModal6('modal-id6');
             });
     </script>
     @include('sweetalert::alert')

@@ -33,7 +33,7 @@ class ProfileController extends Controller
         $user = Portfolio::where('comment', $comment)->first();
         $dd = Portfolio::create($data);
         return $dd;
-        
+
     }
     public function create(array $data)
     {
@@ -47,16 +47,35 @@ class ProfileController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')                
+            $filePath = $request->file('file')
                 ->move(public_path("Portfolio/{$user->name}/{$comment->comment}"), $fileName);
 
             $fileModelname = time() . '_' . $request->file->getClientOriginalName();
+            $a = $request->file->getClientOriginalName();
+            $request->session()->put('image', $a);
             return response()->json([
                 "success" => true,
                 "message" => "File successfully uploaded",
                 "file" => $fileName
             ]);
         }
+    }
+    public function testBase(Request $request)
+    {
+        $user = Auth::user();
+        $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
+        $image = File::allFiles("Portfolio/{$user->name}/{$comment->comment}");
+        $json = implode(',',$image);
+        $data['image'] = $json;
+        $id = $comment->id;
+        $base = new Portfolio;
+        if($base->where('id',$comment->id)->update($data)){
+            return redirect()->route('userprofile');
+        }else{
+            return dd(false);
+        }
+
+
     }
     //profile
     public function profileData()
@@ -66,21 +85,26 @@ class ProfileController extends Controller
         $task = Task::where('user_id',Auth::user()->id)->count();
         $task_count = Task::where('performer_id', Auth::id())->where('status',4)->count();
         $ports = Portfoliocomment::where('user_id', Auth::user()->id)->get();
-        $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
+        $comment = Portfolio::where('user_id', $user->id)->where('image', '!=', null)->first();
+
         if($comment != null){
-            $image = File::glob(public_path("Portfolio/{$user->name}/{$comment->comment}").'/*');
+            $image = $comment["image"];
+            $images = explode(',',$image);
+            $image = File::glob(public_path("Portfolio/{$user->name}/{$comment}").'/*');
         }else{
             $image = [0,1];
+            $images = [0,1];
         }
-        
-        $a = File::directories(public_path("Portfolio"));
+
+        $a = File::directories(public_path("Portfolio/{$user->name}"));
         $file = "Portfolio/{$user->name}";
-        if($a == []){
+        //dd($a);
+        if(!$a){
             File::makeDirectory($file);
         }
         $b = File::directories(public_path("Portfolio/{$user->name}"));
         $directories = array_map('basename', $b);
-        return view('profile.profile', compact('directories','task_count','image','user','views','task','ports'));
+        return view('profile.profile', compact('images','directories','task_count','image','user','views','task','ports'));
     }
     public function updates(Request $request)
     {
