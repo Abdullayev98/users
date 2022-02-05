@@ -26,7 +26,6 @@
                                  @else
                                  src="{{asset("storage/{$user->avatar}")}}"
                                  @endif alt="avatar">
-                            @endif alt="avatar">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">

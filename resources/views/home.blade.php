@@ -128,12 +128,12 @@
         <div class="swiper mySwiper lg:w-10/12 h-60 overflow-hidden rounded-xl mt-12">
             <div class="swiper-wrapper">
                 @foreach ($reklamas as $reklama )
-                <div class="swiper-slide w-full ">
+                <div class="swiper-slide w-full items-center  mt-12">
                     <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
                         <div class="w-1/2 lg:w-5/12">
-                            <h1 class=" text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{ $reklama->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
-                            <p class="text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
-                            <a href="/categories/1" class="py-2 px-4 border-solid bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
+                            <h1 class="text-lg md:text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{ $reklama->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
+                            <p class="text-base md:text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
+                            <a href="/categories/1" class="py-2 px-4 border-solid md:text-base text-sm bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
                         </div>
                         <div class="w-1/2 lg:w-7/12">
                             <img src="/storage/{{$reklama->image}}"

@@ -16,7 +16,7 @@
                     </button>
                 </div>
 
-                <div class="flex justify-center ml-8  w-10/12">
+                <div class="flex justify-center w-10/12">
                     <a class="logo cursor-pointer delete-task" href="/">
                         <img src="/storage/{!!str_replace("\\","/",setting('site.logo'))!!}" class="overflow-hidden h-14 xl:h-16 lg:h-14 py-2" alt="" />
                     </a>
