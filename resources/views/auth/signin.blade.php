@@ -13,7 +13,7 @@
                <a href="{{route("auth.facebook")}}"> <button class="w-40 h-12 rounded-lg bg-blue-500 text-gray-200 uppercase font-semibold hover:bg-blue-700 text-gray-100 transition mb-4"> @lang('lang.signin_facebook')</button></a>
             </div>
             <div class="mx-auto">
-                <a href="#"> <button class="w-40 h-12 rounded-lg bg-yellow-500 text-gray-200 uppercase font-semibold hover:bg-yellow-700 text-gray-100 transition mb-4 mr-4"> ONE ID</button></a>
+                <a href="{{ route('one.auth') }}"> <button class="w-40 h-12 rounded-lg bg-yellow-500 text-gray-200 uppercase font-semibold hover:bg-yellow-700 text-gray-100 transition mb-4 mr-4"> ONE ID</button></a>
             </div>
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4 mt-4">
