@@ -49,7 +49,8 @@
                                        class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
                                        id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3"
                                        role="tab"
-                                       aria-controls="tabs-profile3" aria-selected="false">@lang('lang.navbar_enter')</a>
+                                       aria-controls="tabs-profile3"
+                                       aria-selected="false">@lang('lang.navbar_enter')</a>
                                 </li>
                             </ul>
                         @endguest
@@ -73,9 +74,11 @@
                                                             <label class="text-sm text-gray-500 mb-2"
                                                                    for="phone">@lang('lang.contact_number')</label>
                                                             <input type="text"
-                                                                   value="+998{{auth()->user()->phone_number}}" placeholder="+998(00)000-00-00" id="phone"
-                                                                   class="shadow appearance-none border phone focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
-                                                            <input type="hidden" name="phone_number" value="{{auth()->user()->phone_number}}"
+                                                                   value="+998{{auth()->user()->phone_number}}"
+                                                                   placeholder="+998(00)000-00-00" id="phone"
+                                                                   class="shadow appearance-none phone border phone focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                            <input type="hidden" name="phone_number"
+                                                                   value="{{auth()->user()->phone_number}}"
                                                                    class="phone-number">
                                                             @error('phone_number')
                                                             <p>{{$message}}</p>
@@ -174,19 +177,23 @@
                                 </div>
                             </div>
                             @guest()
-                                <div class="tab-pane fade @if($errors->has('phone_number')) show active @endif " id="tabs-profile3" role="tabpanel"
+                                <div class="tab-pane fade @if($errors->has('phone_number')) show active @endif "
+                                     id="tabs-profile3" role="tabpanel"
 
                                      aria-labelledby="tabs-profile-tab3">
-                                    <form action="{{route('task.create.contact.store.login', $task->id)}}" method="POST">
+                                    <form action="{{route('task.create.contact.store.login', $task->id)}}"
+                                          method="POST">
                                         @csrf
                                         <label>
                                             <span class="text-gray-500 text-sm">
                                                 Telefon nomer
                                             </span>
                                             <input type="text"
-                                                   placeholder="Phone Number" id="phone2" value="+998{{ old('phone_number') }}"
+                                                   placeholder="Phone Number" id="phone2"
+                                                   value="+998{{ old('phone_number') }}"
                                                    class="mt-2 shadow appearance-none phone border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
-                                            <input type="hidden" name="phone_number" value="{{ old('phone_number') }}" class="phone-number">
+                                            <input type="hidden" name="phone_number" value="{{ old('phone_number') }}"
+                                                   class="phone-number">
                                         </label>
                                         @error('phone_number')
                                         <p class="text-red-500">{{ $message }}</p>
@@ -225,7 +232,6 @@
 
         </div>
     </div>
-    </div>
 
 
 @endsection
@@ -244,7 +250,8 @@
             lazy: false
         }
         var mask = new IMask(element, maskOptions);
-        var mask = new IMask(element2, maskOptions);
+        if (element2)
+            var mask2 = new IMask(element2, maskOptions);
 
         function setSelectionRange(input, selectionStart, selectionEnd) {
             if (input.setSelectionRange) {
