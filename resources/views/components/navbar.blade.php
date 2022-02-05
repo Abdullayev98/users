@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ asset('/css/index.css') }}">
 <div class="border-b border-solid border-gray-200 w-full shadow-sm fixed bg-white top-0 z-10">
 
-    <nav class="z-10 relative flex items-center xl:w-11/12 mx-auto lg:justify-start text-base" aria-label="Global">
+    <nav class="z-10 relative flex items-center xl:w-10/12 mx-auto lg:justify-start text-base" aria-label="Global">
         <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
             <!--  mobile menu -->
             <!-- <div class="flex justify-between w-11/12 items-center"> -->
@@ -16,7 +16,7 @@
                     </button>
                 </div>
 
-                <div class="flex justify-center ml-8  w-10/12">
+                <div class="flex justify-center xl:w-full w-10/12">
                     <a class="logo cursor-pointer delete-task" href="/">
                         <img src="/storage/{!!str_replace("\\","/",setting('site.logo'))!!}" class="overflow-hidden h-14 xl:h-16 lg:h-14 py-2" alt="" />
                     </a>
