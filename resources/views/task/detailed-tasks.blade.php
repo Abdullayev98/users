@@ -203,6 +203,7 @@
                                                                     <label>
                                                                         <input type="number" checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
                                                                         <input type="text" name="pay" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="0">
+                                                                        <input type="text" name="task_user_id" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="{{$tasks->user_id}}">
                                                                     </label>
                                                                     <hr>
                                                                 </main>
@@ -486,7 +487,7 @@
                 let response_price = $("input[name=response_price]").val();
                 let task_id = $("input[name=task_id]").val();
                 let _token = $("input[name=csrf]").val();
-                let user_id = $("input[name=user_id]").val();
+                let user_id = $("input[name=task_user_id]").val();
                 let name_task = $("input[name=name_task]").val();
                 $.ajax({
                     url: "/ajax-request",
@@ -647,7 +648,7 @@
                 let _token = $("input[name=csrf]").val();
                 let performer_id = $("input[name=performer_id]").val();
                 let task_id = $("input[name=task_id]").val();
-                let user_id = $("input[name=user_id]").val();
+                let user_id = $("input[name=task_user_id]").val();
                 $.ajax({
                     url: "/ajax-request",
                     type:"POST",
@@ -669,7 +670,10 @@
                         console.log(error);
                     }
                 });
-                    window.location.reload();
+                window.setTimeout(function() {
+
+                }, 3000);
+                window.location.reload();
             });
         </script>
 

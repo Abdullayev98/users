@@ -41,10 +41,7 @@ class PerformersController extends Controller
     {
         $tasks = Task::where('user_id', Auth::id())->get();
 
-        $users = User::withCount(['reviews' => function ($query) {
-            $query->where('good_bad', 1);
-        }])->where('role_id',2)->orderByDesc('reviews_count')->paginate(50);
-
+        $users = User::where('role_id',2)->orderbyDesc('reviews')->paginate(50);
         return view('Performers/performers',compact('users','tasks'));
     }
 
