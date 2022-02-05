@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="{{asset('image_uploader/dist/image-uploader.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/fonts/fonts.css') }}">
+    <link href="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.css" rel="stylesheet">
 
 
 
@@ -33,6 +34,7 @@
 
 <x-modal></x-modal>
 </body>
+
 <script src="{{asset('image_uploader/dist/image-uploader.min.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

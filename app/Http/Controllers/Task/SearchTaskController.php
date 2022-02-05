@@ -181,6 +181,12 @@ class SearchTaskController extends VoyagerBaseController
             'reviewer_id' => Auth::id(),
             'task_id' => $task_id,
           ]);
+                $user_reviews_good = Review::where('user_id',$performer_id)->where('good_bad',1)->count();
+                $user_reviews_bad = Review::where('user_id',$performer_id)->where('good_bad',0)->count();
+                $all_count = $user_reviews_good -$user_reviews_bad;
+                User::where('id', $performer_id)->update([
+                    'reviews' => $all_count
+                ]);
         }else{
           Review::create([
             'user_id' => $users_id,
@@ -189,9 +195,15 @@ class SearchTaskController extends VoyagerBaseController
             'reviewer_id' => Auth::id(),
             'task_id' => $task_id,
           ]);
+            $user_reviews_good = Review::where('user_id',$users_id)->where('good_bad',1)->count();
+            $user_reviews_bad = Review::where('user_id',$users_id)->where('good_bad',0)->count();
+            $all_count = $user_reviews_good -$user_reviews_bad;
+            User::where('id', $users_id)->update([
+                'reviews' => $all_count
+            ]);
         }
       }
-      return response()->json(['success'=>$performer_id]);
+      return response()->json(['success'=>$all_count]);
   }
 
   public function delete_task(Task $task){
