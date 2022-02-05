@@ -29,8 +29,7 @@
             </div>
         </div>
     </div>
-    @include('auth.profile-side-info')
-
+    
     <script>
         $(function(){
             $('.input-images').imageUploader();
