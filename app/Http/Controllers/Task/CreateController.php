@@ -247,7 +247,9 @@ class CreateController extends Controller
 
     public function verify(Task $task)
     {
-
+        if (auth()->user()->is_phone_number_verified){
+            return redirect()->route('userprofile');
+        }
         return view('create.verify', compact('task'));
     }
 

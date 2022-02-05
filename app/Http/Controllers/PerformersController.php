@@ -36,14 +36,18 @@ class PerformersController extends Controller
             return redirect()->back();
         }
     }
+
     public function service(Request $request)
     {
         $tasks = Task::where('user_id', Auth::id())->get();
+
         $users = User::withCount(['reviews' => function ($query) {
             $query->where('good_bad', 1);
         }])->where('role_id',2)->orderByDesc('reviews_count')->paginate(50);
+
         return view('Performers/performers',compact('users','tasks'));
     }
+
     public function performer(User $id){
         $user= $id;
         $view = UserView::query()->where('performer_id', $user->id);
@@ -60,8 +64,6 @@ class PerformersController extends Controller
             $view->save();
         }
         $views = count(UserView::query()->where('performer_id', $id->id)->get());
-
-
         $categories = Category::withTranslations(['ru', 'uz'])->get();
         $child_categories = Category::withTranslations(['ru', 'uz'])->get();
         $task_count = Task::where('user_id', Auth::id())->count();
@@ -137,5 +139,11 @@ public function del_notif($id,$task_id){
   // dd($current_user);
   return view('task.detailed-tasks',compact('response_count_user','response_count','tasks','same_tasks','users','categories','current_user','balance','task_responses'));
 }
+    public function del_all_notif(){
+        Notification::where('user_id',Auth::id())->delete();
+
+
+        return response()->json(['success']);
+    }
 
 }

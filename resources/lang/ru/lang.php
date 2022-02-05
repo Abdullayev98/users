@@ -65,11 +65,14 @@ return [
     'modal_address3' => " Пройдите по ссылке и активируйте вашу телефонный номер.",
     'modal_address4' => "Отправить новое письмо для подтверждения телефонный номер",
     'modal_phone' => "Указать другую телефонный номер",
+    'modal_alert' => "Вы предложили задание исполнителю",
+    'modal_alert1' =>"Уведомления отправлено.",
     //modal blade end
 
     // pdf.blade start
     'pdf_terms' => "Правила Универсал Сервис БИЗНЕС",
     // pdf.blade end
+
 
     // terms.blade start
     'terms_requisites' => "Реквизиты",
@@ -584,6 +587,7 @@ return [
     'exe_rusOtziva' => "Отзыва",
     'exe_rusOtzivov' => "Отзывов",
     'exe_customer' => "Заказчик",
+    'exe_performer' => "Исполнитель",
     'exe_feedB' => "Отзыв",
     // executors-courier.blade end
 
