@@ -215,7 +215,8 @@ class ProfileController extends Controller
         $id = Auth::user()->id;
         $checkbox = implode(",", $request->get('category'));
         User::where('id',$id)->update(['category_id'=>$checkbox]);
-        return redirect()->back();
+        auth()->user()->role_id=2;
+        return redirect()->route('userprofile');
     }
 
     public function StoreDistrict(Request $request){
