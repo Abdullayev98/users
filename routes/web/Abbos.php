@@ -28,6 +28,7 @@ Route::group(['middleware'=>'auth'], function (){
 
         Route::post('/storepicture',[ProfileController::class, 'UploadImage'])->name('storePicture');
         Route::post('/comment',[ProfileController::class, 'comment'])->name('comment');
+        Route::post('/testBase',[ProfileController::class, 'testBase'])->name('testBase');
 
         //description
         Route::post('/description',[ProfileController::class, 'EditDescription'])->name('edit.description');

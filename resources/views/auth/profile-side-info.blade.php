@@ -1,6 +1,16 @@
 <div class="lg:col-span-1 col-span-2 full rounded-xl ring-1 ring-gray-300 h-auto w-80 text-gray-600 lg:ml-8 ml-0">
+    @if(auth()->user()->role_id!=2)
+        <a href="/verification" class="flex flex-row shadow-lg rounded-lg mb-8">
+            <div class="w-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url(http://user.uz/images/like.png);">
+            </div>
+            <div class=" text-xs text-gray-700 text-left my-auto">
+                Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.                    </div>
+        </a>
+    @endif
     <div class="mt-6 ml-4">
-        <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
+        @if (auth()->user()->role_id==2)
+            <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
+        @endif
         <p>@lang('lang.profile_since')</p>
     </div>
     <div class="contacts">
