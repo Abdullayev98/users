@@ -77,6 +77,12 @@ class ProfileController extends Controller
 
 
     }
+    public function portfolio($id)
+    {
+        $user = Auth::user();
+        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
+        return view('profile/portfolio', compact('comment'));
+    }
     //profile
     public function profileData()
     {
