@@ -36,11 +36,11 @@
                                         <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
                                     </div>
                                     <ul class="py-1" aria-labelledby="notification">
+{{--                                        <li>--}}
+{{--                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
+{{--                                        </li>--}}
                                         <li>
-                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
+                                            <a href="/profile/settings" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                                         </li>
                                         <li>
                                             <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
@@ -201,7 +201,9 @@
                             @php $count_for_not++; @endphp
 
                         @endforeach
+                        @if($count_for_not > 0)
                         <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
+                        @endif
                         <button class="" type="button" data-dropdown-toggle="dropdown">
                             <i class="xl:text-2xl lg:text-xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                         </button>
@@ -215,30 +217,30 @@
                                 @foreach(Notification::where('user_id', Auth::user()->id)->get() as $notification)
                                     @if($notification->type == 1)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->task_name}}</a>
                                         </li>
                                     @elseif($notification->type == 2)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveOffer')</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveOffer')</a>
                                         </li>
                                     @elseif($notification->type == 3)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveTask')</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveTask')</a>
                                         </li>
                                     @elseif($notification->type == 4)
                                         <li>
-                                            <a href="/detailed-tasks/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->task_name}}</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->task_name}}</a>
                                         </li>
                                     @endif
                                 @endforeach
 
                                 <div id="for_append_notifications"></div>
 
+{{--                                <li>--}}
+{{--                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
+{{--                                </li>--}}
                                 <li>
-                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
+                                    <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                                 </li>
                                 <li>
                                     <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
