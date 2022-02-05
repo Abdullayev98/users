@@ -217,7 +217,7 @@
                                 @foreach(Notification::where('user_id', Auth::user()->id)->get() as $notification)
                                     @if($notification->type == 1)
                                         <li>
-                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->task_name}}</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
                                         </li>
                                     @elseif($notification->type == 2)
                                         <li>
@@ -229,7 +229,7 @@
                                         </li>
                                     @elseif($notification->type == 4)
                                         <li>
-                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->task_name}}</a>
+                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
                                         </li>
                                     @endif
                                 @endforeach
