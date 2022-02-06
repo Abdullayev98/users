@@ -101,6 +101,7 @@ class ProfileController extends Controller
             $images = [0,1];
         }
 
+        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
 
         //dd($a);
         $file = "Portfolio/{$user->name}";
@@ -110,7 +111,9 @@ class ProfileController extends Controller
 
         $b = File::directories(public_path("Portfolio/{$user->name}"));
         $directories = array_map('basename', $b);
-        return view('profile.profile', compact('image','comment','directories','task_count','user','views','task','ports'));
+        $categories = Category::withTranslations(['ru', 'uz'])->get();
+
+        return view('profile.profile', compact('categories','image','about','comment','directories','task_count','user','views','task','ports'));
     }
     public function updates(Request $request)
     {

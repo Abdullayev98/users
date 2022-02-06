@@ -170,6 +170,8 @@
     <script src="https://api-maps.yandex.ru/2.1/?lang={{app()->getLocale()}}&apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb"
             type="text/javascript"></script>
     <script type="text/javascript">
+        let mytaskCoordinates = [];
+        mytaskCoordinates = $.parseJSON(JSON.stringify({!! $datas !!}));
         ymaps.ready(function () {
             var myMap = new ymaps.Map('map', {
                     center: [41.311081, 69.240562],
@@ -190,11 +192,26 @@
                 }),
 
                 getPointData = function (index) {
+                let status = mytaskCoordinates[index].status;
+                    if(status == 4){
                     return {
-                        balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
-                        balloonContentBody: '<p>Название: </p>',
-                        clusterCaption: 'Задание <strong>' + index + '</strong>'
-                    };
+                        balloonContentBody: '<p>Название: <a class="text-blue-500" href="detailed-tasks/'+mytaskCoordinates[index].id+'">' + mytaskCoordinates[index].name +'</a></p>',
+                        clusterCaption: 'Задание <strong> №' + mytaskCoordinates[index].id + '</strong>',
+                        balloonContentFooter:'Статус задания:<strong>Закрыто</strong>'
+                        };
+                    }else if(status == 3){
+                        return {
+                            balloonContentBody: '<p>Название: <a class="text-blue-500" href="detailed-tasks/'+mytaskCoordinates[index].id+'">' + mytaskCoordinates[index].name +'</p>',
+                            clusterCaption: 'Задание <strong> №' + mytaskCoordinates[index].id + '</strong>',
+                            balloonContentFooter:'Статус задания:<strong>В Исполнении</strong>'
+                        };
+                    }else{
+                        return {
+                            balloonContentBody: '<p>Название: <a class="text-blue-500" href="detailed-tasks/'+mytaskCoordinates[index].id+'">' + mytaskCoordinates[index].name +'</p>',
+                            clusterCaption: 'Задание <strong> №' + mytaskCoordinates[index].id + '</strong>',
+                            balloonContentFooter:'Статус задания:<strong>Открыто</strong>'
+                        };
+                    }
                 },
 
                 getPointOptions = function () {
