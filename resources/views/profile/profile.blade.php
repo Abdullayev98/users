@@ -165,12 +165,10 @@
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-96 my-10">
-                            @if($comment == null)
                            <a class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="/profile/create">
                             <i class="fas fa-camera"></i>
                             <span>@lang('lang.profile_createAlbum')</span>
                            </a>
-                           @endif
                         </div>
                         <div class="flex sm:flex-row flex-col mb-6">
                         @foreach($comment as $comments)
