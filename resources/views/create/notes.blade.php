@@ -48,8 +48,8 @@
 
           </div>
           <div class="mt-4 ">
-                <div class="w-full border border-black rounded-lg py-2 text-center flex justify-center items-center gap-2" type="button">
-                    <div class="h-full" id="photos"></div>
+                <div class="w-full text-center flex justify-center items-center gap-2" type="button">
+                    <div id="photos"></div>
                 </div>
              <div>
                 <label class="md:w-2/3 block mt-6">
@@ -209,8 +209,8 @@ console.log(x);
                 target: '#photos',
                 showProgressDetails: true,
                 note: 'Все типы файлов, до 10 МБ',
-                width: '100%',
-                height: '100%',
+                width: '600px',
+                height: '600px',
                 metaFields: [
                     {id: 'name', name: 'Name', placeholder: 'file name'},
                     {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
