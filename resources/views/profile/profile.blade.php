@@ -171,11 +171,11 @@ alt="" class="w-16">
                            </a>
                         </div>
                         <div class="flex sm:flex-row flex-col mb-6">
-                        @foreach($directories as $directory)
-                            <a onclick="toggleModal5('modal-id5')" href="#102" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
+                        @foreach($comment as $comments)
+                            <a href="/profile/portfolio/{{$comments->id}}" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
                                 <img src="$image[0]" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
-                                    <p class="w-2/3 text-center text-base text-white">{{$directory}}</p>
+                                    <p class="w-2/3 text-center text-base text-white">{{$comments->id}}</p>
                                    <div class="w-1/3 flex items-center">
                                         <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
                                         <span class="text-white">{{count($image)}}</span>
@@ -184,10 +184,10 @@ alt="" class="w-16">
                             </a>
                         @endforeach
 
-{{--                            <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">--}}
-{{--                                <i class="fas fa-plus mx-auto text-7xl mt-14"></i>--}}
-{{--                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>--}}
-{{--                            </div>--}}
+                            <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
+                                <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
+                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>
+                            </div>
                         </div>
                     </div>
                     <div class="">
@@ -307,7 +307,7 @@ alt="" class="w-16">
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="flex flex-wrap">
-                                @foreach($images as $path)
+                                @foreach($comment as $path)
                                     <div id="div1" class="w-1/4">
                                         <img class="relative bottom-32 left-6" src="{{ asset($path) }}">
                                         <button type="button" id="buttonns" class="relative bottom-32 left-6">

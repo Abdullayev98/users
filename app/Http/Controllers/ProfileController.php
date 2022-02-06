@@ -77,6 +77,12 @@ class ProfileController extends Controller
 
 
     }
+    public function portfolio($id)
+    {
+        $user = Auth::user();
+        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
+        return view('profile/portfolio', compact('comment'));
+    }
     //profile
     public function profileData()
     {
@@ -85,11 +91,10 @@ class ProfileController extends Controller
         $task = Task::where('user_id',Auth::user()->id)->count();
         $task_count = Task::where('performer_id', Auth::id())->where('status',4)->count();
         $ports = Portfoliocomment::where('user_id', Auth::user()->id)->get();
-        $comment = Portfolio::where('user_id', $user->id)->where('image', '!=', null)->first();
-
+        $comment = Portfolio::where('user_id', $user->id)->where('image', '!=', null)->get();
         if($comment != null){
-            $image = $comment["image"];
-            $images = explode(',',$image);
+            //$image = $comment->image;
+            //$images = explode(',',$image);
             $image = File::glob(public_path("Portfolio/{$user->name}/{$comment}").'/*');
         }else{
             $image = [0,1];
@@ -105,7 +110,7 @@ class ProfileController extends Controller
 
         $b = File::directories(public_path("Portfolio/{$user->name}"));
         $directories = array_map('basename', $b);
-        return view('profile.profile', compact('images','directories','task_count','image','user','views','task','ports'));
+        return view('profile.profile', compact('image','comment','directories','task_count','user','views','task','ports'));
     }
     public function updates(Request $request)
     {
@@ -216,7 +221,8 @@ class ProfileController extends Controller
         $id = Auth::user()->id;
         $checkbox = implode(",", $request->get('category'));
         User::where('id',$id)->update(['category_id'=>$checkbox]);
-        return redirect()->back();
+        auth()->user()->role_id=2;
+        return redirect()->route('userprofile');
     }
 
     public function StoreDistrict(Request $request){
