@@ -28,9 +28,10 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $comment = $request->input('comment');
+        $description = $request->input('description');
         $data['user_id'] = $user->id;
         $data['comment'] = $comment;
-        $user = Portfolio::where('comment', $comment)->first();
+        $data['description'] = $description;
         $dd = Portfolio::create($data);
         return $dd;
 
@@ -51,8 +52,6 @@ class ProfileController extends Controller
                 ->move(public_path("Portfolio/{$user->name}/{$comment->comment}"), $fileName);
 
             $fileModelname = time() . '_' . $request->file->getClientOriginalName();
-            $a = $request->file->getClientOriginalName();
-            $request->session()->put('image', $a);
             return response()->json([
                 "success" => true,
                 "message" => "File successfully uploaded",
