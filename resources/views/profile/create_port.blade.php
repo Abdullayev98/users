@@ -17,7 +17,7 @@
                     <label class="text-sm text-gray-500" for="textarea">Описание</label><br>
                     <input name="description"  required class="border text-sm mb-8 focus:outline-none border-gray-200 rounded-md w-full px-4 py-2" type="textarea" placeholder='Опишите какие работы представлены в этом альбоме, в чем их особенность, когда они были выполнены, в каких целях и т.д.'>
                     <div class="text-center h-full w-full text-base">
-                    <input id="button1" type="submit" class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 w-4/12 mb-4 rounded" value="@lang('lang.profile_save')">
+                    <input id="button1" type="submit" class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 w-4/12 mb-4 rounded" value="Далее">
                     </div>
                 </div>
 
