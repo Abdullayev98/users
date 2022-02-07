@@ -44,7 +44,7 @@
                             aria-label="Default select example">
                         <option disabled>@lang('lang.name_chooseOne')</option>
                         @foreach($categories2 as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}"  {{ $category->id == $task->category_id ? 'selected' : null }} >{{ $category->name }}</option>
                         @endforeach
                     </select>
                     {{--                    @error('category_id')--}}
