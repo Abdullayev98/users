@@ -78,8 +78,8 @@
                                              src="{{ asset('images/verify.png') }}"
                                              @else
                                              src="{{ asset('images/verify_gray.png') }}"
-                                             @endif  alt="" class="w-16">
-                                        <div id="tooltip-animation_1" role="tooltip" class="inline-block w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                             @endif  alt="" class="w-24">
+                                        <div id="tooltip-animation_1" role="tooltip" class="inline-block sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                             <p class="text-center">
                                                 @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
                                                     @lang('lang.profile_icon_verify')
@@ -93,8 +93,8 @@
                                     @foreach($about as $rating)
                                         @if($rating->id == $user->id)
                                             <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
-                                                <img src="{{ asset('images/best.png') }}"alt="" class="w-16">
-                                                <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                                <img src="{{ asset('images/best.png') }}"alt="" class="w-24">
+                                                <div id="tooltip-animation_2" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                                     <p class="text-center">
                                                         @lang('lang.profile_icon_best')
                                                     </p>
@@ -107,11 +107,11 @@
                                     @endforeach
                                     <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
                                         @if($task_count >= 50)
-                                        <img src="{{ asset('images/50.png') }}" alt="" class="w-16">
+                                        <img src="{{ asset('images/50.png') }}" alt="" class="w-24">
                                         @else
-                                            <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-16">
+                                            <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-24">
                                         @endif
-                                        <div id="tooltip-animation_3" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                        <div id="tooltip-animation_3" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                             <p class="text-center">
                                                 @lang('lang.profile_icon_50')
                                             </p>
@@ -187,10 +187,7 @@
                             </a>
                         @endforeach
 
-                            <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">
-                                <i class="fas fa-plus mx-auto text-7xl mt-14"></i>
-                                <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>
-                            </div>
+
                         </div>
                     </div>
                     <div class="">
@@ -222,91 +219,7 @@
                 {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
-             {{-- Modal2 start --}}
-             <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id5">
-                <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
-                    <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
-                        <div class=" text-center p-6  rounded-t">
-                            <button type="submit"  onclick="toggleModal5('modal-id5')" class=" w-100 h-16 absolute top-1 right-4">
-                                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
-                            </button>
-                            <h3 class="font-medium text-3xl block">
-                                @lang('lang.profile_changeAlbum')
-                            </h3>
-                        </div>
-                        <div class="text-center h-full w-full text-base">
-                            <form action="#" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="flex flex-wrap">
-                                @foreach($comment as $path)
-                                    <div id="div1" class="w-1/4">
-                                        <img class="relative bottom-32 left-6" src="{{ asset($path) }}">
-                                        <button type="button" id="buttonns" class="relative bottom-32 left-6">
-                                            <i class="fas fa-times text-lg w-full"></i>
-                                        </button>
-                                    </div>
-                                @endforeach
-                                </div>
-                                <div class="input-images my-4">
-                                </div>
-                                <input type="text" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
-                                <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-pointer" value="@lang('lang.profile_save')">
-                                <input type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded cursor-pointer" value="Удалить">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id5-backdrop"></div>
-            {{-- Modal2 end --}}
 
-            <script type="text/javascript">
-                function toggleModal5(modalID5){
-                    document.getElementById(modalID5).classList.toggle("hidden");
-                    document.getElementById(modalID5 + "-backdrop").classList.toggle("hidden");
-                    document.getElementById(modalID5).classList.toggle("flex");
-                    document.getElementById(modalID5 + "-backdrop").classList.toggle("flex");
-                }
-            </script>
-            <script type="text/javascript">
-                function toggleModal123(modalID123){
-                    document.getElementById(modalID123).classList.toggle("hidden");
-                    document.getElementById(modalID123 + "-backdrop").classList.toggle("hidden");
-                    document.getElementById(modalID123).classList.toggle("flex");
-                    document.getElementById(modalID123 + "-backdrop").classList.toggle("flex");
-                }
-            </script>
-            <script type="text/javascript">
-                function toggleModal6(modalID6){
-                    var element = document.getElementById("modal-id123-backdrop");
-                    element.classList.add("hidden");
-                    var element2 = document.getElementById("modal-id123");
-                    element2.classList.add("hidden");
-                    document.getElementById(modalID6).classList.toggle("hidden");
-                    document.getElementById(modalID6 + "-backdrop").classList.toggle("hidden");
-                    document.getElementById(modalID6).classList.toggle("flex");
-                    document.getElementById(modalID6 + "-backdrop").classList.toggle("flex");
-                }
-            </script>
-    <script>
-        $(function(){
-            $('.input-images').imageUploader();
-        });
-        $('.input-images').imageUploader({
-        preloaded: preloaded
-        });
-        $('.input-images').imageUploader({
-            extensions: ['.jpg', '.jpeg', '.png', '.svg'],
-            mimes: ['image/jpeg', 'image/png', 'image/svg+xml'],
-            maxSize: undefined,
-            maxFiles: undefined,
-        });
-        $('.input-images').imageUploader({
-            imagesInputName: 'images',
-            preloadedInputName: 'preloaded',
-            label: ''
-        });
-    </script>
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
     <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
@@ -412,7 +325,7 @@
     </script>
     <script>
         if($('.tooltip-2').length === 0){
-            $( "<div data-tooltip-target='tooltip-animation_2' class='mx-4 tooltip-2' ><img src='{{ asset("images/best_gray.png") }}'alt='' class='w-16'><div id='tooltip-animation_2' role='tooltip' class='inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700'><p class='text-center'>@lang('lang.profile_icon_best')</p><div class='tooltip-arrow' data-popper-arrow></div> </div></div>" ).insertAfter( $( ".tooltip-1" ) );
+            $( "<div data-tooltip-target='tooltip-animation_2' class='mx-4 tooltip-2' ><img src='{{ asset("images/best_gray.png") }}'alt='' class='w-24'><div id='tooltip-animation_2' role='tooltip' class='inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700'><p class='text-center'>@lang('lang.profile_icon_best')</p><div class='tooltip-arrow' data-popper-arrow></div> </div></div>" ).insertAfter( $( ".tooltip-1" ) );
         }
     </script>
     @include('sweetalert::alert')

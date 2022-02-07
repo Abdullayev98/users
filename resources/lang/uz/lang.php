@@ -59,7 +59,7 @@ return [
     'modal_addres4' => " Boshqa xatni belgilang",
     'modal_cencel' => "Bekor qilish",
     'modal_send' => "Yuborish",
-    'modal_address1' => "Telefon raqamingizga",
+    'modal_phone1' => "Telefon raqamini tasdiqlang",
     'modal_address2' => " Universal Services bilan pochtangizni tekshirish uchun havola bilan elektron pochta xabari yuborildi.",
     'modal_address3' => "Havolani kuzatib boring va telefon raqamingizni faollashtiring.",
     'modal_address4' => "Telefon raqamini tasdiqlash uchun yangi elektron pochta xabarini yuboring",

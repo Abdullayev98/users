@@ -250,16 +250,13 @@ class CreateController extends Controller
 
     public function verify(Task $task)
     {
-        if (auth()->user()->is_phone_number_verified){
-            return redirect()->route('userprofile');
-        }
         return view('create.verify', compact('task'));
     }
 
-    public function deletetask($id)
+    public function deletetask(Task $task)
     {
-        Task::where('id', $id)->delete();
-        CustomFieldsValue::where('task_id', $id)->delete();
+        $task->delete();
+        CustomFieldsValue::where('task_id', $task)->delete();
     }
 
 

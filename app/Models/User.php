@@ -77,4 +77,10 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(UserView::class,'performer_id');
     }
 
+    public function responses()
+    {
+        return $this->hasMany(Response::class);
+
+    }
+
 }
