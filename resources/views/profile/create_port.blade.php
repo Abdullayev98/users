@@ -29,7 +29,6 @@
             </div>
         </div>
     </div>
-    
     <script>
         $(function(){
             $('.input-images').imageUploader();
