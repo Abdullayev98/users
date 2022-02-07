@@ -23,6 +23,7 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        session()->flash('phone_another');
         return [
             'name' => 'required|string',
             'email' => ['required','email','unique:users'],
