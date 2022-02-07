@@ -23,8 +23,9 @@ class UserPhoneRequest extends FormRequest
      */
     public function rules()
     {
+        session()->flash('phone');
         return [
-            'phone_number' => 'required|integer|min:9|unique:users'
+            'phone_number' => 'required|integer|min:9|exists:users'
         ];
     }
 
@@ -35,6 +36,8 @@ class UserPhoneRequest extends FormRequest
             'phone_number.integer' => 'The Phone must be a number',
             'phone_number.min' => 'The Phone length must be 9',
             'phone_number.unique' => 'The Phone is already exists',
+            'phone' => 'This must an integer'
+
         ];
 
     }
