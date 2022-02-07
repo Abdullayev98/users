@@ -9,8 +9,8 @@
 <x-roadmap/>
 <form class="" action="{{route('task.create.note.store', $task->id)}}" method="post" enctype="multipart/form-data">
   @csrf
-<div class="mx-auto w-9/12  my-16">
-<div class="grid md:grid-cols-3 gap-x-20">
+<div class="mx-auto md:w-9/12  w-11/12 my-8">
+<div class="grid md:grid-cols-3 lg:gap-x-20 md:gap-x-15">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
     @lang('lang.budget_lookingFor') "{{$task->name}}"
@@ -23,7 +23,7 @@
         <div style="width: 90%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
       </div>
     </div>
-    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full px-6 p-6 md:px-20">
+    <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl px-6 mb-6 p-6 md:px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
         @lang('lang.notes_details')
       </div>
@@ -49,9 +49,9 @@
           </div>
           <div class="mt-4 ">
                 <div class="w-full text-center flex justify-center items-center gap-2" type="button">
-                    <div id="photos"></div>
+                    <div id="photos" class="w-full"></div>
                 </div>
-             <div>
+             <div class="my-6">
                 <label class="md:w-2/3 block mt-6">
                     <input class="focus:outline-none  mr-2 h-4 w-4" type="checkbox" name="docs">
                     <span class="text-slate- 900">
@@ -101,12 +101,13 @@
         </div>
       </div>
     </div>
+
   </div>
-  <div class="col-span">
-    <x-faq/>
-  </div>
+        <x-faq/>
+
 </div>
 </div>
+
 </form>
 
 
@@ -209,7 +210,7 @@ console.log(x);
                 target: '#photos',
                 showProgressDetails: true,
                 note: 'Все типы файлов, до 10 МБ',
-                width: '600px',
+                width: 'auto',
                 height: '600px',
                 metaFields: [
                     {id: 'name', name: 'Name', placeholder: 'file name'},
