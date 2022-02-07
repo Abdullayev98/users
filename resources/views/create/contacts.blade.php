@@ -39,14 +39,25 @@
                                 role="tablist">
                                 <li class="nav-item w-1/2" role="presentation">
                                     <a href="#tabs-home3"
-                                       class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active"
+                                       class="nav-link w-full block font-medium text-xs
+                                        tab-name
+                                        @if(session("phone_another"))
+                                           error
+                                           @endif
+
+                                       leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active"
                                        id="tabs-home-tab3" data-bs-toggle="pill" data-bs-target="#tabs-home3" role="tab"
                                        aria-controls="tabs-home3"
                                        aria-selected="true">@lang('lang.navbar_reg')</a>
                                 </li>
                                 <li class="nav-item w-1/2" role="presentation">
                                     <a href="#tabs-profile3"
-                                       class="nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+                                       class="nav-link w-full block font-medium text-xs leading-tight
+                                             @if(session("phone"))
+                                           error
+                                           @endif
+                                        uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent
+                                         hover:bg-gray-100 focus:border-transparent tab-name  "
                                        id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3"
                                        role="tab"
                                        aria-controls="tabs-profile3"
@@ -57,7 +68,7 @@
 
 
                         <div class="tab-content" id="tabs-tabContent3">
-                            <div class="tab-pane fade show active " id="tabs-home3" role="tabpanel"
+                            <div class="tab-pane fade show active    @if(session()->has('phone_another') ) error @endif" id="tabs-home3" role="tabpanel"
                                  aria-labelledby="tabs-home-tab3">
                                 <div class="py-4 mx-auto  text-left ">
                                     <div class="mb-4">
@@ -177,20 +188,21 @@
                                 </div>
                             </div>
                             @guest()
-                                <div class="tab-pane fade @if($errors->has('phone_number')) show active @endif "
+                                <div class="tab-pane fade   @if(session()->has('phone') ) error @endif "
                                      id="tabs-profile3" role="tabpanel"
 
                                      aria-labelledby="tabs-profile-tab3">
                                     <form action="{{route('task.create.contact.store.login', $task->id)}}"
                                           method="POST">
                                         @csrf
+
                                         <label>
                                             <span class="text-gray-500 text-sm">
                                                 Telefon nomer
                                             </span>
-                                            <input type="text"
+                                            <input type="number"
                                                    placeholder="Phone Number" id="phone2"
-                                                   value="+998{{ old('phone_number') }}"
+                                                   value="{{ old('phone_number') }}"
                                                    class="mt-2 shadow appearance-none phone border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
                                             <input type="hidden" name="phone_number" value="{{ old('phone_number') }}"
                                                    class="phone-number">
@@ -198,6 +210,8 @@
                                         @error('phone_number')
                                         <p class="text-red-500">{{ $message }}</p>
                                         @enderror
+
+
 
 
                                         <div class="mt-4">
@@ -242,11 +256,17 @@
 
     <script src='https://unpkg.com/imask'></script>
     <script>
+        if ($('.tab-content').children(".error").length) {
+            $('.tab-content').children('.tab-pane').removeClass('show active')
+            $('.tab-name').removeClass('active')
+            $('.error').addClass('show active')
+
+        }
+
         $("#phone").attr('placeholder', '+998(__)___-__-__');
         var element = document.getElementById('phone');
         var element2 = document.getElementById('phone2');
         var maskOptions = {
-            mask: '+998(00)000-00-00',
             lazy: false
         }
         var mask = new IMask(element, maskOptions);
@@ -276,6 +296,8 @@
             text = text.slice(3)
             $(".phone-number").val(text)
         })
+
+
 
 
     </script>
