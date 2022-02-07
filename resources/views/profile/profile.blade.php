@@ -172,13 +172,16 @@
                         </div>
                         <div class="flex sm:flex-row flex-col mb-6">
                         @foreach($comment as $comments)
+                        @php
+                            $images = explode(',', $comments->image);
+                        @endphp
                             <a href="/profile/portfolio/{{$comments->id}}" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
-                                <img src="$image[0]" alt="#" class="w-56 h-48">
+                                <img src="{{$images[0]}}" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
-                                    <p class="w-2/3 text-center text-base text-white">{{$comments->id}}</p>
+                                    <p class="w-2/3 text-center text-base text-white">{{$comments->comment}}</p>
                                    <div class="w-1/3 flex items-center">
                                         <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
-                                        <span class="text-white">{{count($image)}}</span>
+                                        <span class="text-white">{{count($images)}}</span>
                                    </div>
                                 </div>
                             </a>
@@ -219,59 +222,6 @@
                 {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
-
-
-
-            {{-- Modal1 start --}}
-            <!-- 1 -->
-            <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
-                <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
-                    <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
-                        <div class=" text-center p-6  rounded-t">
-                            <button type="submit"  onclick="toggleModal123('modal-id123')" class=" w-100 h-16 absolute top-1 right-4">
-                                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
-                            </button>
-                            <h3 class="font-medium text-3xl block">
-                                @lang('lang.profile_createAlbum')
-                            </h3>
-                        </div>
-                        <div class="text-center h-full w-full text-base">
-                            <form enctype="multipart/form-data">
-                                @csrf
-                                <input type="text" id="comment" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
-                                <button id="button_comment" type="button" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')"></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
-            <!-- 2 -->
-            <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id6">
-                <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id6">
-                    <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
-                        <div class=" text-center p-6  rounded-t">
-                            <button type="submit"  onclick="toggleModal6('modal-id6')" class=" w-100 h-16 absolute top-1 right-4">
-                                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
-                            </button>
-                            <h3 class="font-medium text-3xl block">
-                                Создание альбома
-                            </h3>
-                        </div>
-                        <div class="text-center h-full w-full text-base">
-                            <form action="{{route('testBase')}}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div id="photos"></div>
-                                <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
-            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id6-backdrop"></div>
-            {{-- Modal1 end --}}
-
              {{-- Modal2 start --}}
              <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id5">
                 <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">

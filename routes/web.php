@@ -67,6 +67,8 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 Route::get('/detailed-tasks/{id}', [SearchTaskController::class, 'task'])->name("tasks.detail");
 
+Route::get('/change-task', [SearchTaskController::class, 'change_task'])->name("task.changetask");
+
 Route::get('/offer-tasks', function () {
     return view('task.offertasks');
 });
