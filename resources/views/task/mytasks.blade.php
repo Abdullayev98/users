@@ -28,7 +28,7 @@
                         <p class="p-5 lenght"></p>
                     @foreach($perform_tasks as $task)
 
-                                <div class="w-full border-t border-solid hover:bg-blue-100 category my-5">
+                                <div class="w-full border-t border-solid hover:bg-blue-100 category">
                                     <div class="md:grid md:grid-cols-10 p-2">
                                         @foreach ($categories as $category)
                                             @if ($category->id == $task->category_id)
