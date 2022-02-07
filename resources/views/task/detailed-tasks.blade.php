@@ -95,7 +95,7 @@
                                         <!-- This is an example component -->
                                         <div class="w-full mx-auto mt-4">
                                             @auth
-                                                @if($balance >= 4000 || $response_count_user < setting('site.free_responses'))
+                                                @if($balance >= 4000 || $task->responses->count() < setting('site.free_responses'))
                                                     @if($task->user_id != auth()->id() && $task->status < 3)
                                                         <button class="font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                                 type="button"
@@ -323,7 +323,7 @@
                             @endif
                             <div class="mt-12">
                                 <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
-                                @foreach($same_tasks as $same_task)
+                                @foreach($task->category->tasks()->take(10) as $same_task)
                                     @if($same_task->id != $task->id)
                                     <div class="mt-4">
                                         <a href="{{$same_task->id}}" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
