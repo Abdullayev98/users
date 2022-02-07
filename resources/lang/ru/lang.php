@@ -1172,4 +1172,9 @@ return [
     "personalinfo_text20" => "Выберите категории заданий, в которых хотите работать. Можно сразу несколько — изменить их всегда можно в профиле.",
     "personalinfo_text21" => "Стать исполнителем",
     // personal info end
+
+    // stat ispoltitelom
+    "stat_ispoltitelomcon" => "Станьте исполнителем",
+    "stat_ispoltitelomcon1" => " U-ser. И начните ",
+    "stat_ispoltitelomcon2" => "зарабатывать."
 ];
