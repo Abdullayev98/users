@@ -165,7 +165,6 @@
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-                                        @lang('lang.exe_performer')
                                         @else
                                         @lang('lang.exe_feedB'):
                                             @if ($review->good_bad == 1)
@@ -173,8 +172,6 @@
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-{{--                                            @lang('lang.exe_customer')--}}
-{{--                                            @lang('lang.exe_performer')--}}
                                         @endif
                                     @endif
                                 </span>
@@ -207,7 +204,7 @@
                     @foreach(explode(',', $user->category_id) as $user_cat)
                     @foreach($categories as $cat)
                         @if($cat->id == $user_cat)
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="/categories/{{$cat->parent_id}}">{{$cat->name}}</a> </li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="/categories/{{$cat->parent_id}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
                               @endif
                           @endforeach
                     @endforeach
