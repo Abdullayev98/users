@@ -51,8 +51,8 @@
                     </div>
 
                     <div class="my-3">
-                        <input type="text" id="phone_number" placeholder="+998(00)000-00-00"
-                               value="+998{{ request()->input('phone_number') }}"
+                        <input type="number" id="phone_number" placeholder="+998 00 000 00 00"
+                               value="{{ request()->input('phone_number') }}"
                                id="phone_number"
                                class=" focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 leading-tight hover:border-amber-500">
                         <br>
@@ -98,7 +98,6 @@
     <script>
         var element = document.getElementById('phone_number');
         var maskOptions = {
-            mask: '+998(00)000-00-00',
             lazy: false
         }
         var mask = new IMask(element, maskOptions);
