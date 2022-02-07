@@ -1,4 +1,4 @@
-<div class="my-0 md:col-span-1 col-span-3">
+<div class="my-0 md:col-span-1 col-span-3 sm:mt-0 mt-4">
     <div class=" md:text-left text-center text-2xl text-gray-500 md:ml-4 ml-0">
 {{--        <div class=" text-left  ml-4">--}}
         @lang('lang.comfaq_ownquestion')
