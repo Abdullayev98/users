@@ -10,7 +10,7 @@
 <form class="" action="{{route('task.create.note.store', $task->id)}}" method="post" enctype="multipart/form-data">
   @csrf
 <div class="mx-auto md:w-9/12  w-11/12 my-8">
-<div class="grid md:grid-cols-3 gap-x-20">
+<div class="grid md:grid-cols-3 lg:gap-x-20 md:gap-x-15">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
     @lang('lang.budget_lookingFor') "{{$task->name}}"
@@ -101,13 +101,13 @@
         </div>
       </div>
     </div>
-      <div class="col-span-1">
-          <x-faq/>
-      </div>
+
   </div>
+        <x-faq/>
 
 </div>
 </div>
+
 </form>
 
 
