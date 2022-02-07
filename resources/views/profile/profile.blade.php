@@ -73,7 +73,7 @@
                                 </span> @lang('lang.cash_task')</a></p>
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                                 <div class="flex mt-6">
-                                    <div data-tooltip-target="tooltip-animation_1" class="mx-4">
+                                    <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
                                         <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
                                              src="{{ asset('images/verify.png') }}"
                                              @else
@@ -90,21 +90,21 @@
                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                         </div>
                                     </div>
-                                    <div data-tooltip-target="tooltip-animation_2" class="mx-4" >
-                                        <img
-{{--                                            @if ($task_count >= 50)--}}
-                                             src="{{ asset('images/best.png') }}"
-{{--                                             @else--}}
-{{--                                             src="{{ asset('images/best_gray.png') }}"--}}
-{{--                                             @endif --}}
-alt="" class="w-16">
-                                        <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                            <p class="text-center">
-                                                @lang('lang.profile_icon_best')
-                                            </p>
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                        </div>
-                                    </div>
+                                    @foreach($about as $rating)
+                                        @if($rating->id == $user->id)
+                                            <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
+                                                <img src="{{ asset('images/best.png') }}"alt="" class="w-16">
+                                                <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                                    <p class="text-center">
+                                                        @lang('lang.profile_icon_best')
+                                                    </p>
+                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                </div>
+                                            </div>
+                                        @else
+                                            @continue
+                                        @endif
+                                    @endforeach
                                     <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
                                         @if($task_count >= 50)
                                         <img src="{{ asset('images/50.png') }}" alt="" class="w-16">
@@ -171,14 +171,17 @@ alt="" class="w-16">
                            </a>
                         </div>
                         <div class="flex sm:flex-row flex-col mb-6">
-                        @foreach($directories as $directory)
-                            <a onclick="toggleModal5('modal-id5')" href="#102" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
-                                <img src="$image[0]" alt="#" class="w-56 h-48">
+                        @foreach($comment as $comments)
+                        @php
+                            $images = explode(',', $comments->image);
+                        @endphp
+                            <a href="/profile/portfolio/{{$comments->id}}" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
+                                <img src="{{$images[0]}}" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
-                                    <p class="w-2/3 text-center text-base text-white">{{$directory}}</p>
+                                    <p class="w-2/3 text-center text-base text-white">{{$comments->comment}}</p>
                                    <div class="w-1/3 flex items-center">
                                         <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
-                                        <span class="text-white">{{count($image)}}</span>
+                                        <span class="text-white">{{count($images)}}</span>
                                    </div>
                                 </div>
                             </a>
@@ -192,40 +195,21 @@ alt="" class="w-16">
                     </div>
                     <div class="">
                                 <p class="text-2xl font-semibold">
-                                    Виды выполняемых работ
+                                    @lang('lang.exe_typeOfDone')
                                 </p>
                                 <div class="my-4">
-                                    <a href="#" class="text-lg font-semibold underline">
-                                        Курьерские услуги
-                                    </a>
                                     <ul class="pl-10 leading-7">
+                                        @foreach(explode(',', $user->category_id) as $user_cat)
+                                            @foreach($categories as $cat)
+                                                @if($cat->id == $user_cat)
                                         <li>
-                                            <a href="#" class="underline">
-                                                Услуги курьера на легковом авто (нет выполненных заданий)
+                                            <a href="/categories/{{$cat->parent_id}}" class="underline">
+                                                {{$cat->name}}
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#" class="underline">
-                                                Услуги курьера на легковом авто (нет выполненных заданий)
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="mt-4">
-                                    <a href="#" class="text-lg font-semibold underline">
-                                        Уборка и помощь по хозяйству
-                                    </a>
-                                    <ul class="pl-10 leading-7">
-                                        <li>
-                                            <a href="#" class="underline">
-                                                Услуги курьера на легковом авто (нет выполненных заданий)
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="underline">
-                                                Услуги курьера на легковом авто (нет выполненных заданий)
-                                            </a>
-                                        </li>
+                                                @endif
+                                            @endforeach
+                                            @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -238,59 +222,6 @@ alt="" class="w-16">
                 {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
-
-
-
-            {{-- Modal1 start --}}
-            <!-- 1 -->
-            <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id123">
-                <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
-                    <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
-                        <div class=" text-center p-6  rounded-t">
-                            <button type="submit"  onclick="toggleModal123('modal-id123')" class=" w-100 h-16 absolute top-1 right-4">
-                                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
-                            </button>
-                            <h3 class="font-medium text-3xl block">
-                                @lang('lang.profile_createAlbum')
-                            </h3>
-                        </div>
-                        <div class="text-center h-full w-full text-base">
-                            <form enctype="multipart/form-data">
-                                @csrf
-                                <input type="text" id="comment" name="comment" class="w-full h-9 border border-gray-300 rounded-sm mb-4 text-center">
-                                <button id="button_comment" type="button" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')"></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
-            <!-- 2 -->
-            <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id6">
-                <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id6">
-                    <div class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
-                        <div class=" text-center p-6  rounded-t">
-                            <button type="submit"  onclick="toggleModal6('modal-id6')" class=" w-100 h-16 absolute top-1 right-4">
-                                <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
-                            </button>
-                            <h3 class="font-medium text-3xl block">
-                                Создание альбома
-                            </h3>
-                        </div>
-                        <div class="text-center h-full w-full text-base">
-                            <form action="{{route('testBase')}}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div id="photos"></div>
-                                <input type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-6 rounded cursor-" value="@lang('lang.profile_save')">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id123-backdrop"></div>
-            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id6-backdrop"></div>
-            {{-- Modal1 end --}}
-
              {{-- Modal2 start --}}
              <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" style="background-color: rgba(0, 0, 0,0.5)" id="modal-id5">
                 <div class="relative my-6 mx-auto w-full max-w-3xl" id="modal-id4">
@@ -307,7 +238,7 @@ alt="" class="w-16">
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="flex flex-wrap">
-                                @foreach($images as $path)
+                                @foreach($comment as $path)
                                     <div id="div1" class="w-1/4">
                                         <img class="relative bottom-32 left-6" src="{{ asset($path) }}">
                                         <button type="button" id="buttonns" class="relative bottom-32 left-6">
@@ -478,6 +409,11 @@ alt="" class="w-16">
                 });
                 toggleModal6('modal-id6');
             });
+    </script>
+    <script>
+        if($('.tooltip-2').length === 0){
+            $( "<div data-tooltip-target='tooltip-animation_2' class='mx-4 tooltip-2' ><img src='{{ asset("images/best_gray.png") }}'alt='' class='w-16'><div id='tooltip-animation_2' role='tooltip' class='inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700'><p class='text-center'>@lang('lang.profile_icon_best')</p><div class='tooltip-arrow' data-popper-arrow></div> </div></div>" ).insertAfter( $( ".tooltip-1" ) );
+        }
     </script>
     @include('sweetalert::alert')
 @endsection

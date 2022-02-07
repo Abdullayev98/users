@@ -39,8 +39,8 @@
                                 @foreach($categories as $category)
                                     <p class="pr-3 ">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</p>
                                 @endforeach
-                                    @if($tasks->user_id == auth()->id())
-                                    <a href="{{route("delete.task", $tasks->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Удалить</a>
+                                    @if($tasks->user_id == auth()->id() && $tasks->status == 1)
+                                    <a href="{{route("delete.task", $tasks->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Отменить</a>
                                     @endif
                             </div>
 
@@ -529,11 +529,9 @@
         </script>
         <script>
             const modal = document.querySelector('.modal');
-            const showModal = document.querySelector('.show-modal');
+
             const closeModal = document.querySelectorAll('.close-modal');
-            showModal.addEventListener('click', function (){
-                modal.classList.remove('hidden')
-            });
+
             closeModal.forEach(close => {
                 close.addEventListener('click', function (){
                     modal.classList.add('hidden')
