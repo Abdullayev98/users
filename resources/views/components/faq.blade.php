@@ -1,5 +1,5 @@
 <div class="my-0 md:col-span-1 col-span-3">
-    <div class=" md:text-left text-center text-2xl text-gray-500 w-11/12 ml-4">
+    <div class=" md:text-left text-center text-2xl text-gray-500 md:ml-4 ml-0">
 {{--        <div class=" text-left  ml-4">--}}
         @lang('lang.comfaq_ownquestion')
         @foreach(\App\Models\FaqCategories::all() as $faq)
@@ -7,3 +7,11 @@
         @endforeach
     </div>
 </div>
+
+<script>
+    $('div').removeClass('group');
+    $('ul').removeClass('group-hover');
+    $('button').removeClass('hover:text-yellow-500');
+    $('button').removeClass('text-gray-500');
+    $('button').addClass('text-gray-400');
+</script>
