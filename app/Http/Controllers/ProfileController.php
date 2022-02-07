@@ -41,11 +41,16 @@ class ProfileController extends Controller
         $user = Auth::user();
         $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
         foreach ($comment as $comments){
-            $images = explode(',', str_replace('Portfolio/admin/','',$comments->image));
+            $directory = $comments->comment;
         }
-        $comment1 = Portfolio::where('id', $id)->where('user_id', $user->id)->delete();
-        File::deleteDirectory($images);
-        return redirect()->route('userprofile');
+        $file = File::deleteDirectory("Portfolio/{$user->name}/{$directory}");
+        if($file) {
+            Portfolio::where('id', $id)->where('user_id', $user->id)->delete();
+            return dd(true);
+        }else{
+            return dd(false);
+        }
+
     }
     public function UploadImage(Request $request)
     {

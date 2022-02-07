@@ -21,7 +21,7 @@
             @endfor
             </div>
 
-            <form action="/delete/portfolio/{{$comments->id}}" method="POST" enctype="multipart/form-data">
+            <form action="/profile/delete/portfolio/{{$comments->id}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
                 <input type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-10 w-4/12 mb-4 rounded" value="@lang('lang.profile_save')">
