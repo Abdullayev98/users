@@ -8,8 +8,6 @@
                 <a class="text-sm text-blue-500 hover:text-red-500" href="/profile"><i class="fas fa-arrow-left"></i> Венруться в профиль</a>
                 <h1 class="font-semibold md:text-2xl text-lg ">Создание нового альбома</h1>
             </div>
-            <!-- <form action="{{route('storePicture')}}" method="POST">
-                @csrf -->
                 <div id="comdes" class="bg-yellow-50 p-8 rounded-md my-6">
                     <label class="text-sm text-gray-500 " for="name">Название</label><br>
                     <input name="comment" class="border focus:outline-none mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" placeholder='Например "Ремонт кухни" или "Свадебная фотосессия"'>
@@ -32,6 +30,7 @@
                 </div>
         </div>
     </div>
+
     <script>
         $("#button1").click(function(){
             let comment = $("input[name=comment]").val();
