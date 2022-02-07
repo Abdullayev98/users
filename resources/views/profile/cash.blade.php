@@ -111,9 +111,10 @@
                                     <option>@lang('lang.cash_inPeriod')</option>
                                 </select>
                             </label>
+
                             <ul id="tabs" class="flex sm:flex-row flex-col rounded-sm w-full shadow bg-gray-200 mt-4">
                                 <div id="first_tab" class="w-full text-center">
-                                    <a id="default-tab" href="#first" class="inline-block relative py-1 w-full">@lang('lang.cash_allOperations')</a>
+                                    <a id="default-tab" href="#first" class="inline-block relative py-1 w-full ">@lang('lang.cash_allOperations')</a>
                                 </div>
                                 <div class="w-full text-center">
                                     <a href="#second" class="inline-block relative py-1 w-full">@lang('lang.cash_topUpHis')</a>
@@ -124,28 +125,49 @@
                             </ul>
                             <div id="tab-contents">
                                 <div id="first" class="p-4">
-                                    @if ($transactions_count > 0)
-                                    <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
-                                    @else
-                                        <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
 
-                                    @endif
+                                        <table class="">
+                                            <thead>
+                                            <th class="text-center w-1/4 border">дата транзакции</th>
+                                            <th class="text-center w-1/4 border">сумма транзакции</th>
+                                            <th class="text-center w-1/4 border">Оператор</th>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($user->tranzactions as $tranzaction)
+                                                    <tr>
+                                                    <td class="text-center w-1/4 border">{{ $tranzaction->created_at->format('d.m.Y') }}</td>
+                                                    <td class="text-center w-1/4 border">{{$tranzaction->amount}}</td>
+                                                    <td class="text-center w-1/4 border">{{$tranzaction->method}}</td>
+                                                    </tr>
+
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+
                                 </div>
                                 <div id="second" class="hidden p-4">
-                                    @if ($transactions_count > 0)
-                                    <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
-                                    @else
-                                        <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
+                                        <table class="">
+                                            <thead>
+                                            <th class="text-center w-1/4 border">дата транзакции</th>
+                                            <th class="text-center w-1/4 border">сумма транзакции</th>
+                                            <th class="text-center w-1/4 border">Оператор</th>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($user->tranzactions as $tranzaction)
+                                                    <tr>
 
-                                    @endif
+                                                    <td class="text-center w-1/4 border">{{$tranzaction->created_at->format('d.m.Y') }}</td>
+                                                    <td class="text-center w-1/4 border">{{$tranzaction->amount}}</td>
+                                                    <td class="text-center w-1/4 border">{{$tranzaction->method}}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                 </div>
                                 <div id="third" class="hidden p-4">
-                                    @if ($transactions_count > 0)
-                                    <p class="italic ml-5 mt-3">@lang('lang.count_transactions') {{$transactions_count}}</p>
-                                    @else
-                                        <p class="italic ml-5 mt-3">@lang('lang.cash_noTransactions')</p>
-
-                                    @endif
+                                    @foreach($user->tranzactions as $tranzaction)
+                                        <td>{{$tranzaction->action}}</td>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

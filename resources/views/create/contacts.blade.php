@@ -9,7 +9,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!-- Information section -->
     <div class="mx-auto w-9/12  my-16">
-        <div class="grid md:grid-cols-3 gap-x-20">
+        <div class="grid md:grid-cols-3 lg:gap-x-20 md:gap-x-14">
             <div class="col-span-2">
                 <div class="w-full text-center text-2xl">
                     @lang('lang.budget_lookingFor') "{{$task->name}}"
@@ -200,9 +200,9 @@
                                             <span class="text-gray-500 text-sm">
                                                 Telefon nomer
                                             </span>
-                                            <input type="number"
+                                            <input type="text"
                                                    placeholder="Phone Number" id="phone2"
-                                                   value="{{ old('phone_number') }}"
+                                                   value="+998{{ old('phone_number') }}"
                                                    class="mt-2 shadow appearance-none phone border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
                                             <input type="hidden" name="phone_number" value="{{ old('phone_number') }}"
                                                    class="phone-number">
@@ -240,9 +240,9 @@
                 </div>
             </div>
 
-            <div class="col-span mt-5 md:mt-0">
+
                 <x-faq/>
-            </div>
+
 
         </div>
     </div>
@@ -267,9 +267,13 @@
         var element = document.getElementById('phone');
         var element2 = document.getElementById('phone2');
         var maskOptions = {
+            mask: '+998(00)000-00-00',
             lazy: false
         }
+
         var mask = new IMask(element, maskOptions);
+        // console.log(mask);
+        //
         if (element2)
             var mask2 = new IMask(element2, maskOptions);
 
