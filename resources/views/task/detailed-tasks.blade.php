@@ -13,7 +13,7 @@
                             <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                             <div class="md:flex flex-row">
                                 <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$tasks->budget}}</p>
-                                <a href="{{ route('tasks.change',$tasks->id) }}"
+                                <a href="{{ route('task.changetask', $tasks->id) }}"
                                 class="py-2 px-2 text-gray-500 hover:text-red-500">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
