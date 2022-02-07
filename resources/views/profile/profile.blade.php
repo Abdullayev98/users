@@ -59,7 +59,7 @@
                             <span class="inline-block">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <p class="inline-block text-m">
-                                    @if($user->location!="") {{$user->location}} @lang('lang.cash_city')
+                                    @if($user->location!="")@lang('lang.cash_city') {{$user->location}}
                                     @else @lang('lang.cash_cityNotGiven')
                                     @endif
                                 </p>
@@ -204,7 +204,7 @@
                                                 @if($cat->id == $user_cat)
                                         <li>
                                             <a href="/categories/{{$cat->parent_id}}" class="underline">
-                                                {{$cat->name}}
+                                                {{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                             </a>
                                         </li>
                                                 @endif

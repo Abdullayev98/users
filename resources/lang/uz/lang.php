@@ -421,7 +421,7 @@ return [
     'cash_rusYearGod' => "yil",
     'cash_rusYearGoda' => "yillar",
     'cash_rusYearLet' => "yillar",
-    'cash_city' => "shahar",
+    'cash_city' => "Joylashuvi:",
     'cash_cityNotGiven' => "shahar kiritilmagan",
     'cash_created' => "Yaratilgan",
     'cash_task' => "vazifa",
