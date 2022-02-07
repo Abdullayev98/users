@@ -30,7 +30,7 @@ Route::group(['middleware'=>'auth'], function (){
 });
 
 
-Route::get('/for_del_new_task/{id}', [CreateController::class, 'deletetask']);
+Route::get('/for_del_new_task/{task}', [CreateController::class, 'deletetask']);
 Route::get('/fordelnotif/{id}/{task_id}', [PerformersController::class, 'del_notif']);
 Route::post('del-notif', [PerformersController::class, 'del_all_notif']);
 Route::post('/performers', [PerformersController::class, 'service']);

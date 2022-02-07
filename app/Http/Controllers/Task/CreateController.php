@@ -253,10 +253,10 @@ class CreateController extends Controller
         return view('create.verify', compact('task'));
     }
 
-    public function deletetask($id)
+    public function deletetask(Task $task)
     {
-        Task::where('id', $id)->delete();
-        CustomFieldsValue::where('task_id', $id)->delete();
+        $task->delete();
+        CustomFieldsValue::where('task_id', $task)->delete();
     }
 
 
