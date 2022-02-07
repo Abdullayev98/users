@@ -12,7 +12,7 @@
         @csrf
         <div class="mx-auto w-9/12  my-16">
             <div class="grid grid-cols-3 gap-x-20">
-                <div class="lg:col-span-2 col-span-3">
+                <div class="lg:col-span-2 col-span-3">zz
                     <div class="w-full text-center text-2xl">
                         @lang('lang.budget_lookingFor') "{{$task->name}}"
                     </div>

@@ -44,7 +44,6 @@ Route::prefix("task")->group(function (){
 
 
     });
-    Route::delete("{task}/delete", [CreateTaskController::class, 'delete'])->name("task.delete");
 
 });
 

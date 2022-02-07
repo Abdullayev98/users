@@ -236,13 +236,13 @@
                         </div>
                     </div>
                     <div id="scrollbar" class="w-full h-full blog1">
-                        <div class="w-full w-full">
+                        <div class="w-full">
                             <div class="show_tasks">
                                 {{--Show Tasks list --}}
                             </div>
                         </div>
 
-                        <div class="w-full w-full">
+                        <div class="w-full">
                             <div class="no_tasks" hidden>
                                 {{--Show no tasks image --}}
                                 <div class=" w-3/5 h-3/5 mx-auto">

@@ -80,4 +80,10 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(All_transaction::class);
     }
 
+    public function responses()
+    {
+        return $this->hasMany(Response::class);
+
+    }
+
 }

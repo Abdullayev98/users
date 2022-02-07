@@ -8,29 +8,45 @@
                 <a class="text-sm text-blue-500 hover:text-red-500" href="/profile"><i class="fas fa-arrow-left"></i> Венруться в профиль</a>
                 <h1 class="font-semibold md:text-2xl text-lg ">Создание нового альбома</h1>
             </div>
-            <div class="bg-yellow-50 p-8 rounded-md my-6">
-                <label class="text-sm text-gray-500 " for="name">Название</label><br>
-                <input class="border focus:outline-none mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" placeholder='Например "Ремонт кухни" или "Свадебная фотосессия"'>
+                <div id="comdes" class="bg-yellow-50 p-8 rounded-md my-6">
+                    <label class="text-sm text-gray-500 " for="name">Название</label><br>
+                    <input name="comment" class="border focus:outline-none mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" placeholder='Например "Ремонт кухни" или "Свадебная фотосессия"'>
 
-                <label class="text-sm text-gray-500" for="textarea">Описание</label><br>
-                <textarea required class="border text-sm mb-8 focus:outline-none border-gray-200 rounded-md w-full px-4 py-2" type="textarea" placeholder='Опишите какие работы представлены в этом альбоме, в чем их особенность, когда они были выполнены, в каких целях и т.д.'></textarea>
-            </div>
-            <div>
-{{--                <div  onclick="toggleModal123('modal-id123')"  class="flex flex-col border-dashed border-4 border-gray-400 hover:border-blue-300 text-gray-400 hover:text-blue-300 w-56 h-48 cursor-pointer">--}}
-{{--                    <i class="fas fa-plus mx-auto text-7xl mt-14"></i>--}}
-{{--                    <span class="mx-auto text-xs mt-2">@lang('lang.profile_newAlbum')</span>--}}
-{{--                </div>--}}
-                <div class="text-center h-full w-full text-base">
-                    <form enctype="multipart/form-data">
-                        <input type="submit" class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 w-4/12 mb-4 rounded " value="@lang('lang.profile_save')">
-                        <div id="photos"></div>
-                    </form>
+                    <label class="text-sm text-gray-500" for="textarea">Описание</label><br>
+                    <input name="description"  required class="border text-sm mb-8 focus:outline-none border-gray-200 rounded-md w-full px-4 py-2" type="textarea" placeholder='Опишите какие работы представлены в этом альбоме, в чем их особенность, когда они были выполнены, в каких целях и т.д.'>
+                    <div class="text-center h-full w-full text-base">
+                    <input id="button1" type="submit" class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 w-4/12 mb-4 rounded" value="Далее">
+                    </div>
                 </div>
-            </div>
+
+                <div>
+                    <div id="comdes1" class="text-center h-full w-full text-base hidden">
+                        <form action="{{route('testBase')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
+                            <input type="submit" class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 w-4/12 mb-4 rounded" value="@lang('lang.profile_save')">
+                        </form>
+                    </div>
+                </div>
         </div>
     </div>
-    
+
     <script>
+        $("#button1").click(function(){
+            let comment = $("input[name=comment]").val();
+            let description = $("input[name=description]").val();
+                $.ajax({
+                    url: "{{route('comment')}}",
+                    type:"POST",
+                    data:{
+                        comment:comment,
+                        description:description,
+                        _token:$('meta[name="csrf-token"]').attr('content'),
+                    },
+                });
+                    $("#comdes").addClass("hidden");
+                    $("#comdes1").removeClass("hidden");
+                });
         $(function(){
             $('.input-images').imageUploader();
         });

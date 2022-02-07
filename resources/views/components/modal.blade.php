@@ -29,7 +29,8 @@
                             </div>
 
 
-                            <div class="text-lg sm:text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
+                            <div
+                                class="text-lg sm:text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
                                 @lang('lang.modal_email')
                             </div>
                             <p class="text-sm sm:text-xl my-2 sm:my-8 text-gray-700 traking-tight">
@@ -115,7 +116,7 @@
 
                                 <div
                                     class="text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
-                                    @lang('lang.modal_email')
+                                    @lang('lang.modal_phone1')
                                 </div>
                                 <p class="my-8 text-gray-700 traking-tight">
                                     @lang('lang.modal_address1')<strong>{{auth()->user()->phone_number}}</strong>
@@ -244,7 +245,8 @@
                         mask: '+998(00)000-00-00',
                         lazy: false
                     }
-                    var mask = new IMask(element, maskOptions);
+                    if (element)
+                        var mask = new IMask(element, maskOptions);
                     $("#phone_number").keyup(function () {
                         var text = $(this).val()
                         text = text.replace(/[^0-9.]/g, "")
