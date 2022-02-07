@@ -30,8 +30,8 @@ Route::group(['middleware'=>'auth'], function (){
 });
 
 
-Route::get('/for_del_new_task/{id}', [CreateController::class, 'deletetask']);
-Route::get('/fordelnotif/{id}/{task_id}', [PerformersController::class, 'del_notif']);
+Route::get('/for_del_new_task/{task}', [CreateController::class, 'deletetask']);
+Route::get('/fordelnotif/{notification}/{task}', [PerformersController::class, 'del_notif']);
 Route::post('del-notif', [PerformersController::class, 'del_all_notif']);
 Route::post('/performers', [PerformersController::class, 'service']);
 Route::get('perf-ajax/{id}', [PerformersController::class, 'perf_ajax']);
@@ -65,9 +65,10 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 
 
-Route::get('/detailed-tasks/{id}', [SearchTaskController::class, 'task'])->name("tasks.detail");
+Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail");
 
-Route::get('/change-task', [SearchTaskController::class, 'change_task'])->name("task.changetask");
+Route::get('/change-task/{task}', [SearchTaskController::class, 'change_task'])->name("task.changetask");
+Route::put('/change-task/{task}', [SearchTaskController::class, 'update_task'])->name("task.update");
 
 Route::get('/offer-tasks', function () {
     return view('task.offertasks');

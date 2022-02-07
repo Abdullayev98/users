@@ -10,58 +10,56 @@
                     <div class="mt-8 lg:flex mb-8">
                         {{-- left sidebar start --}}
                         <div class="w-10/12 md:w-11/12 float-left">
-                            <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
+                            <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                             <div class="md:flex flex-row">
-                                <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$tasks->budget}}</p>
-                                <a href="{{ route('task.changetask', $tasks->id) }}"
+                                <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$task->budget}}</p>
+                                <a href="{{ route('task.changetask', $task->id) }}"
                                 class="py-2 px-2 text-gray-500 hover:text-red-500">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
-                                @if ($tasks->email_confirm == 1)
+                                @if ($task->email_confirm == 1)
                                     <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
                                 @endif
                             </div>
                             <div class="md:flex flex-row float-left">
-                                @if ($tasks->show_only_to_performers == 1)
+                                @if ($task->show_only_to_performers == 1)
                                     <p class="mt-4 text-gray-400 font-normal">@lang('lang.detT_insuredPer')</p>
                                 @endif
                             </div>
                             <div class="md:flex flex-row text-gray-400 mt-4">
-                                @if ($tasks->status == 3)
+                                @if ($task->status == 3)
                                     <p class="text-amber-500 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_inProsses')</p>
-                                @elseif($tasks->status < 3)
+                                @elseif($task->status < 3)
                                     <p class="text-green-400 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
                                 @else
                                     <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_close')</p>
                                 @endif
-                                <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$tasks->created_at}}</p>
-                                @foreach($categories as $category)
-                                    <p class="pr-3 ">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</p>
-                                @endforeach
-                                    @if($tasks->user_id == auth()->id() && $tasks->status == 1)
-                                    <a href="{{route("delete.task", $tasks->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Отменить</a>
+                                <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
+                                    <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</p>
+                                    @if($task->user_id == auth()->id() && $task->status == 1)
+                                    <a href="{{route("delete.task", $task->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Отменить</a>
                                     @endif
                             </div>
 
                             <div class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
                                 <div class="ml-4 md:ml-12 flex flex-row">
-                                    @if($tasks->date_type == 1)
+                                    @if($task->date_type == 1)
                                     <h1 class="font-bold h-auto w-48">@lang('lang.date_startTask')</h1>
-                                    @elseif($tasks->date_type == 2)
+                                    @elseif($task->date_type == 2)
                                     <h1 class="font-bold h-auto w-48">@lang('lang.date_finishTask')</h1>
                                     @else
                                     <h1 class="font-bold h-auto w-48">@lang('lang.date_givePeriod')</h1>
                                     @endif
-                                    <p class=" h-auto w-96">{{date('d-m-Y', strtotime($tasks->start_date))}}</p>
+                                    <p class=" h-auto w-96">{{date('d-m-Y', strtotime($task->start_date))}}</p>
                                 </div>
                                 <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
-                                    <p class=" h-auto w-96">{{$tasks->budget}}</p>
+                                    <p class=" h-auto w-96">{{$task->budget}}</p>
                                 </div>
 
-                                    @isset($tasks->custom_field_values)
-                                    @foreach($tasks->custom_field_values as $value)
+                                    @isset($task->custom_field_values)
+                                    @foreach($task->custom_field_values as $value)
                                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
 
                                                         <h1 class="font-bold h-auto w-48">{{ $value->custom_field->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
@@ -81,14 +79,14 @@
 
                                 <div class="ml-4 md:ml-12 flex flex-row mt-4">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
-                                    @if($tasks->address !== NULL)
-                                    <p class=" h-auto w-96">{{json_decode($tasks->address, true)['location']}}</p>
+                                    @if($task->address !== NULL)
+                                    <p class=" h-auto w-96">{{json_decode($task->address, true)['location']}}</p>
                                     @endif
                                 </div>
 
                                 <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                     <h1 class="font-bold h-auto w-48">@lang('lang.detT_need')</h1>
-                                    <p class=" h-auto w-96">{{$tasks->description}}</p>
+                                    <p class=" h-auto w-96">{{$task->description}}</p>
                                 </div>
                                 <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
@@ -97,8 +95,8 @@
                                         <!-- This is an example component -->
                                         <div class="w-full mx-auto mt-4">
                                             @auth
-                                                @if($balance >= 4000 || $response_count_user < setting('site.free_responses'))
-                                                    @if($tasks->user_id != auth()->id() && $tasks->status < 3)
+                                                @if($balance >= 4000 || $task->responses->count() < setting('site.free_responses'))
+                                                    @if($task->user_id != auth()->id() && $task->status < 3)
                                                         <button class="font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
@@ -111,7 +109,7 @@
                                                         </button>
                                                     @endif
                                                     @elseif($balance < 4000 || $response_count_user >= setting('site.free_responses'))
-                                                    @if($tasks->user_id != auth()->id() && $tasks->status < 3)
+                                                    @if($task->user_id != auth()->id() && $task->status < 3)
                                                         <a href="#" class="open-modal" data-modal="#modal1">
                                                             <button class='font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
                                                                 @lang('lang.detT_callbackpay')
@@ -142,13 +140,13 @@
                                                 </a>
                                             @endauth
                                             @auth
-                                                @if ($tasks->performer_id == auth()->user()->id || $tasks->user_id == auth()->user()->id)
+                                                @if ($task->performer_id == auth()->user()->id || $task->user_id == auth()->user()->id)
                                                     <button id="sendbutton" onclick="toggleModal4('modal-id4')" class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="button">
                                                         @lang('lang.detailedT_text19')
                                                     </button>
 
-                                                    @if($tasks->status == 3)
+                                                    @if($task->status == 3)
                                                         <button class="done font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Завершен
@@ -175,7 +173,7 @@
                                                                 </svg>
                                                             </button>
                                                         </div>
-                                                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" action="{{route("task.response.store", $tasks->id)}}" method="post">
+                                                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" action="{{route("task.response.store", $task->id)}}" method="post">
                                                             @csrf
                                                             <header>
                                                                 <h2 class="font-semibold text-2xl mb-4">@lang('lang.detT_addOffers')</h2>
@@ -207,7 +205,7 @@
                                                                     <label>
                                                                         <input type="number" checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
                                                                         <input type="text" name="pay" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="0">
-                                                                        <input type="text" name="task_user_id" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="{{$tasks->user_id}}">
+                                                                        <input type="text" name="task_user_id" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="{{$task->user_id}}">
                                                                     </label>
                                                                     <hr>
                                                                 </main>
@@ -241,7 +239,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @if($tasks->user_id == auth()->id())
+                            @if($task->user_id == auth()->id())
                             @else
                             <div class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">
                                 <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
@@ -255,7 +253,7 @@
                             @endauth
                             <div class="lg:w-[700px] w-[400px]">
                                 @if (isset($auth_user))
-                                    @if ($tasks->user_id == $auth_user->id)
+                                    @if ($task->user_id == $auth_user->id)
                                         <div>
                                             @if(isset($task_responses))
                                                 <div class="text-4xl font-semibold my-6">
@@ -301,7 +299,7 @@
                                                                         @if($response->not_free == 1)
                                                                 <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>
                                                                 @endif
-                                                                @if($tasks->status < 3 )
+                                                                @if($task->status < 3 )
                                                                 <div class="w-10/12 mx-auto">
                                                                     <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                                         @lang('lang.detT_writeOnChat')
@@ -325,8 +323,8 @@
                             @endif
                             <div class="mt-12">
                                 <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
-                                @foreach($same_tasks as $same_task)
-                                    @if($same_task->id != $tasks->id)
+                                @foreach($task->category->tasks()->take(10) as $same_task)
+                                    @if($same_task->id != $task->id)
                                     <div class="mt-4">
                                         <a href="{{$same_task->id}}" class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
                                         @foreach($users as $user)
@@ -344,7 +342,7 @@
                     {{-- right sidebar start --}}
                     <div class="lg:w-3/12 w-1/2 lg:mt-0 mt-8 lg:ml-8 ml-0">
                         <div class="mb-10">
-                            <h1 class="text-xl font-medium mb-4">@lang('lang.detT_task') № {{$tasks->id}}</h1>
+                            <h1 class="text-xl font-medium mb-4">@lang('lang.detT_task') № {{$task->id}}</h1>
                             <button class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">
                                 <i class="fas fa-link text-gray-500"></i>
                             </button>
@@ -363,7 +361,7 @@
                                 @endif
                             </div>
                             <div class="">
-                                <a href="@if (isset($current_user))/performers/{{$current_user->id}}@else @endif" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $tasks->user_name}}</a> <br>
+                                <a href="@if (isset($current_user))/performers/{{$current_user->id}}@else @endif" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $task->user_name}}</a> <br>
                                 <a href="#" class="text-xl text-gray-500">
                                     @if (isset($current_user))
                                         @if($current_user->age != "")
@@ -549,7 +547,7 @@
                     data:{
                         _token:$('meta[name="csrf-token"]').attr('content'),
                         status:3,
-                        task_id: {{$tasks->id}},
+                        task_id: {{$task->id}},
                         performer_id:performer_id,
                         name_task:name_task
                     },
@@ -626,7 +624,7 @@
                         url: "/ajax-request",
                         type:"POST",
                         data:{
-                            task_id:{{$tasks->id}},
+                            task_id:{{$task->id}},
                             status:4,
                             _token:$('meta[name="csrf-token"]').attr('content'),
                         },

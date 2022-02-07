@@ -59,7 +59,7 @@ return [
     'modal_addres4' => " Boshqa xatni belgilang",
     'modal_cencel' => "Bekor qilish",
     'modal_send' => "Yuborish",
-    'modal_address1' => "Telefon raqamingizga",
+    'modal_phone1' => "Telefon raqamini tasdiqlang",
     'modal_address2' => " Universal Services bilan pochtangizni tekshirish uchun havola bilan elektron pochta xabari yuborildi.",
     'modal_address3' => "Havolani kuzatib boring va telefon raqamingizni faollashtiring.",
     'modal_address4' => "Telefon raqamini tasdiqlash uchun yangi elektron pochta xabarini yuboring",
@@ -1162,4 +1162,9 @@ return [
     "personalinfo_text19" => 'Siz nima qiilishni hohlaysiz?',
     "personalinfo_text20" => "Ishlamoqchi bo'lgan ish toifalarini tanlang. Siz bir vaqtning o'zida bir nechtasiga ega bo'lishingiz mumkin - ularni har doim profilingizda o'zgartirishingiz mumkin.",
     "personalinfo_text21" => "Ijrochiga aylaning",
+
+    // STAT ISPOLTITELOM
+    "stat_ispoltitelomcon" => "U-ser. boshlang ",
+    "stat_ispoltitelomcon1" => "Ijrochiga aylaning",
+    "stat_ispoltitelomcon2" => "ishlab toping."
 ];
