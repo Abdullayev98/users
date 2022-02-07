@@ -425,7 +425,7 @@ return [
     'cash_rusYearGod' => "год",
     'cash_rusYearGoda' => "года",
     'cash_rusYearLet' => "лет",
-    'cash_city' => "город",
+    'cash_city' => "Местоположение:",
     'cash_cityNotGiven' => "город не включен",
     'cash_created' => "Создал",
     'cash_task' => "задание",
