@@ -9,7 +9,7 @@
 <x-roadmap/>
 <form class="" action="{{route('task.create.note.store', $task->id)}}" method="post" enctype="multipart/form-data">
   @csrf
-<div class="mx-auto w-9/12  my-16">
+<div class="mx-auto md:w-9/12  w-11/12 my-16">
 <div class="grid md:grid-cols-3 gap-x-20">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
@@ -102,7 +102,7 @@
       </div>
     </div>
   </div>
-  <div class="col-span">
+  <div class="col-span-1">
     <x-faq/>
   </div>
 </div>
@@ -209,7 +209,7 @@ console.log(x);
                 target: '#photos',
                 showProgressDetails: true,
                 note: 'Все типы файлов, до 10 МБ',
-                width: '600px',
+                width: 'auto',
                 height: '600px',
                 metaFields: [
                     {id: 'name', name: 'Name', placeholder: 'file name'},
