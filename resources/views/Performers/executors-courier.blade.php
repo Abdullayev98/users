@@ -73,7 +73,7 @@
                         </div> --}}
                         <div class="flex mt-6">
 
-                        <div data-tooltip-target="tooltip-animation_1" class="mx-4">
+                        <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
                             <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
                                  src="{{ asset('images/verify.png') }}"
                                  @else
@@ -90,22 +90,22 @@
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
                         </div>
-                        <div data-tooltip-target="tooltip-animation_2" class="mx-4" >
-                            <img
-                            @if ($task_count >= 50)
-                                src="{{ asset('images/best.png') }}"
-                             @else
-                                 src="{{ asset('images/best_gray.png') }}"
-                             @endif
-                                alt="" class="w-16">
-                            <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                <p class="text-center">
-                                    @lang('lang.profile_icon_best')
-                                </p>
-                                <div class="tooltip-arrow" data-popper-arrow></div>
-                            </div>
-                        </div>
-                        <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
+                            @foreach($about as $rating)
+                                @if($rating->id == $user->id)
+                                    <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
+                                        <img src="{{ asset('images/best.png') }}"alt="" class="w-16">
+                                        <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                            <p class="text-center">
+                                                @lang('lang.profile_icon_best')
+                                            </p>
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                    @else
+                                    @continue
+                                @endif
+                            @endforeach
+                            <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
                             @if($task_count >= 50)
                                 <img src="{{ asset('images/50.png') }}" alt="" class="w-16">
                             @else
@@ -224,15 +224,6 @@
                         <p class="text-gray-400">@lang('lang.exe_since') {{date('d-m-Y', strtotime($user->created_at))}}</p>
                     </div>
                     <div class="">
-                        <!-- <div class="flex w-full mt-4">
-                            <div class="flex-initial w-1/4">
-                                <i class="text-white far fa-file-image text-2xl bg-green-500 py-3 px-4 rounded-lg"></i>
-                            </div>
-                            <div class="flex-initial w-3/4">
-                                <h2 class="font-medium text-lg">Документы</h2>
-                                <p>Документы проверены</p>
-                            </div>
-                        </div> -->
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
                                 <i class="fas fa-phone-alt text-white text-2xl bg-yellow-500 py-1 px-2 rounded-lg"></i>
@@ -259,24 +250,6 @@
                                 @endif
                             </div>
                         </div>
-                        <!-- <div class="flex w-full mt-4">
-                            <div class="flex-initial w-1/4">
-                                <i class="text-white far fa-address-book text-2xl bg-blue-400 py-3 px-4 rounded-lg"></i>
-                            </div>
-                            <div class="flex-initial w-3/4">
-                                <h2 class="font-medium text-lg">Вконтакте</h2>
-                                <p>Подтвержден</p>
-                            </div>
-                        </div> -->
-                        <!-- <div class="flex w-full mt-4">
-                            <div class="flex-initial w-1/4">
-                                <i class=" fab fa-apple text-2xl bg-gray-400 text-white py-3 px-4 rounded-lg"></i>
-                            </div>
-                            <div class="flex-initial w-3/4">
-                                <h2 class="font-medium text-lg">Apple ID</h2>
-                                <p>Подтвержден</p>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -321,5 +294,6 @@
           document.getElementById(modalID12 + "-backdrop").classList.toggle("flex");
         }
       </script>
+c
     {{-- Modal end --}}
 @endsection

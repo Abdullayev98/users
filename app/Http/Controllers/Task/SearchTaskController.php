@@ -211,4 +211,11 @@ class SearchTaskController extends VoyagerBaseController
       echo ("User Record deleted successfully.");
       return redirect('/');
   }
+
+    public function change_task(Task $task){
+        $current_category = Category::where('id', $task->category_id)->first();
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id',null)->get();
+        $categories2 = Category::withTranslations(['ru', 'uz'])->where('parent_id',"!=",null)->get();
+        return view('task.changetask',compact('current_category','categories','categories2'));
+    }
 }

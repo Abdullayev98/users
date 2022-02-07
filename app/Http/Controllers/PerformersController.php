@@ -45,7 +45,7 @@ class PerformersController extends Controller
         return view('Performers/performers',compact('users','tasks'));
     }
 
-    public function performer(User $id){
+    public function performer(User $id, Request $request){
         $user= $id;
         $view = UserView::query()->where('performer_id', $user->id);
 
@@ -60,15 +60,16 @@ class PerformersController extends Controller
             $view->performer_id= $user->id;
             $view->save();
         }
-        $views = count(UserView::query()->where('performer_id', $id->id)->get());
+        $views = count(UserView::query()->where('performer_id', $user->id)->get());
         $categories = Category::withTranslations(['ru', 'uz'])->get();
         $child_categories = Category::withTranslations(['ru', 'uz'])->get();
-        $task_count = Task::where('user_id', Auth::id())->count();
+        $task_count = Task::where('performer_id', $user->id)->count();
         $tasks = Task::get();
         $reviews = Review::get();
-        $reviews_count = Review::where('user_id', $id->id)->count();
+        $reviews_count = Review::where('user_id', $user->id)->count();
         $review_users= User::get();
-        return view('Performers/executors-courier',compact('reviews_count','user','views','tasks','categories','child_categories','task_count','reviews','review_users'));
+        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
+        return view('Performers/executors-courier',compact('about','reviews_count','user','views','tasks','categories','child_categories','task_count','reviews','review_users'));
     }
 
 

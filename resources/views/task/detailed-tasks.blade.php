@@ -13,12 +13,16 @@
                             <h1 class="text-3xl font-bold mb-2">{{$tasks->name}}</h1>
                             <div class="md:flex flex-row">
                                 <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$tasks->budget}}</p>
+                                <a href="{{ route('task.changetask', $tasks->id) }}"
+                                class="py-2 px-2 text-gray-500 hover:text-red-500">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
                                 @if ($tasks->email_confirm == 1)
                                     <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
                                 @endif
                             </div>
-                            <div class="md:flex flex-row">
+                            <div class="md:flex flex-row float-left">
                                 @if ($tasks->show_only_to_performers == 1)
                                     <p class="mt-4 text-gray-400 font-normal">@lang('lang.detT_insuredPer')</p>
                                 @endif
@@ -35,8 +39,8 @@
                                 @foreach($categories as $category)
                                     <p class="pr-3 ">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</p>
                                 @endforeach
-                                    @if($tasks->user_id == auth()->id())
-                                    <a href="{{route("delete.task", $tasks->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Удалить</a>
+                                    @if($tasks->user_id == auth()->id() && $tasks->status == 1)
+                                    <a href="{{route("delete.task", $tasks->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Отменить</a>
                                     @endif
                             </div>
 
@@ -525,11 +529,9 @@
         </script>
         <script>
             const modal = document.querySelector('.modal');
-            const showModal = document.querySelector('.show-modal');
+
             const closeModal = document.querySelectorAll('.close-modal');
-            showModal.addEventListener('click', function (){
-                modal.classList.remove('hidden')
-            });
+
             closeModal.forEach(close => {
                 close.addEventListener('click', function (){
                     modal.classList.add('hidden')
