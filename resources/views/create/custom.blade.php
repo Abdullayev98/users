@@ -8,7 +8,7 @@
     <form class="" action="{{route("task.create.custom.store", $task->id)}}" method="post">
         @csrf
 
-        <div class="mx-auto w-9/12  my-16">
+        <div class="mx-auto sm:w-9/12 w-11/12 my-16">
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="md:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">

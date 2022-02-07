@@ -24,9 +24,9 @@
                     <label class="text-sm">
                         Мне нужно
                         <input type="text" name="name"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">
+                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full" value="{{ $task->name }}">
                         @error('name')
-                            <p class="text-red-500">{{ $message }}</p>
+                        <p class="text-red-500">{{ $message }}</p>
                         @enderror
                     </label>
                 </div>
@@ -35,12 +35,11 @@
                             class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             aria-label="Default select example">
                         <option disabled>@lang('lang.name_chooseOne')</option>
-                        @foreach($categories as $category)
-                            <option>{{ $category->name }}</option>
-                        @endforeach
+                        <option>{{ $task->category->name }}</option>
                     </select>
 
-                    <select name="category_id"  onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
+                    <select name="category_id"
+                            onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
                             class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             aria-label="Default select example">
                         <option disabled>@lang('lang.name_chooseOne')</option>
@@ -48,9 +47,9 @@
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
-{{--                    @error('category_id')--}}
-{{--                    <p class="text-red-500">{{ $message }}</p>--}}
-{{--                    @enderror--}}
+                    {{--                    @error('category_id')--}}
+                    {{--                    <p class="text-red-500">{{ $message }}</p>--}}
+                    {{--                    @enderror--}}
                 </div>
                 <div class="my-2">
                     <label class="text-xs text-gray-500">
@@ -207,13 +206,14 @@
                             class="border border-gray-200 md:mx-4 md:px-2 py-2 pr-2 rounded-md focus:outline-none text-right"
                             placeholder="SUMMA" name="budget" value="до ">SUM
                         @error('budget')
-                            <p class="text-red-500">{{ $message }}</p>
+                        <p class="text-red-500">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
                 <div class="text-base my-4 ">
                     <h1 class="text-xl font-semibold py-2">Ваши контакты</h1>
-                    <input name="phone" class="text-base border border-gray-200 md:w-1/2 focus:outline-none py-2 px-3 rounded-md"
+                    <input name="phone"
+                           class="text-base border border-gray-200 md:w-1/2 focus:outline-none py-2 px-3 rounded-md"
                            type="text"
                            placeholder="+998(00)000-00-00">
                     @error('phone')
@@ -221,7 +221,10 @@
                     @enderror
                 </div>
                 <div class="text-base my-5 mt-8">
-                    <button type="submit" class="text-2xl mr-5 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-md ">Сохранить</button>
+                    <button type="submit"
+                            class="text-2xl mr-5 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-md ">
+                        Сохранить
+                    </button>
                     <a href="#"
                        class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">Отмена</a>
                 </div>
