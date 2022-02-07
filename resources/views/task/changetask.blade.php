@@ -55,7 +55,7 @@
                     <label class="text-xs text-gray-500">
                         Ценность покупки, SUM
                         <input type="number"
-                               name=""
+                               name="budget" value="{{ $task->budget }}"
                                class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">
 
                     </label>
