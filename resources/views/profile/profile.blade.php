@@ -204,7 +204,7 @@
                                                 @if($cat->id == $user_cat)
                                         <li>
                                             <a href="/categories/{{$cat->parent_id}}" class="underline">
-                                                {{$cat->name}}
+                                                {{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                             </a>
                                         </li>
                                                 @endif
