@@ -116,13 +116,14 @@
 
                                 <div
                                     class="text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
-                                    @lang('lang.modal_phone')
+                                    @lang('lang.modal_phone1')
                                 </div>
                                 <p class="my-8 text-gray-700 traking-tight">
-
+                                    @lang('lang.modal_address1')<strong>{{auth()->user()->phone_number}}</strong>
+                                    @lang('lang.modal_address2')
                                 </p>
                                 <p class="my-8 text-gray-700 traking-tight">
-
+                                    @lang('lang.modal_address4')
                                 </p>
 
                                 <a class='text-gray-800 send-email border-b sent-email border-dotted @if($errors->has('phone_number') || session()->has('email-message') || !auth()->user()->phone_number)) hidden @endif border-gray-700 cursor-pointer'
