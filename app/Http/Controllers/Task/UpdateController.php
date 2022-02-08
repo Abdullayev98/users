@@ -18,19 +18,7 @@ class UpdateController extends Controller
         $data = $this->getAddress($data);
         $task->update($data);
 
-
-        $this->deleteAllValues($task);
-
-
-        foreach ($task->category->custom_fields as $data) {
-            $value = new CustomFieldsValue();
-            $value->task_id = $task->id;
-            $value->custom_field_id = $data->id;
-            $arr = Arr::get(request()->all(), $data->name);
-            $value->value = is_array($arr) ? json_encode($arr) : $arr;
-            $value->save();
-        }
-
+        $this->syncCustomFields($task);
 
         Alert::success('Success');
 
@@ -48,6 +36,7 @@ class UpdateController extends Controller
     }
 
     public function syncCustomFields($task){
+        $this->deleteAllValues($task);
 
         foreach ($task->category->custom_fields as $data) {
             $value = new CustomFieldsValue();
@@ -57,6 +46,7 @@ class UpdateController extends Controller
             $value->value = is_array($arr) ? json_encode($arr) : $arr;
             $value->save();
         }
+
     }
 
     public function deleteAllValues($task){
