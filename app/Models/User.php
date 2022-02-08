@@ -76,14 +76,8 @@ class User extends \TCG\Voyager\Models\User
     public function views(){
         return $this->hasMany(UserView::class,'performer_id');
     }
-    public function tranzactions(){
-        return $this->hasMany(All_transaction::class);
-    }
-
-    public function responses()
-    {
-        return $this->hasMany(Response::class);
-
-    }
+//    public function tasks(){
+//        return $this->hasMany(Task::class);
+//    }
 
 }

@@ -9,7 +9,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!-- Information section -->
     <div class="mx-auto w-9/12  my-16">
-        <div class="grid md:grid-cols-3 gap-x-20">
+        <div class="grid md:grid-cols-3 lg:gap-x-20 md:gap-x-14">
             <div class="col-span-2">
                 <div class="w-full text-center text-2xl">
                     @lang('lang.budget_lookingFor') "{{$task->name}}"
@@ -240,9 +240,9 @@
                 </div>
             </div>
 
-            <div class="col-span mt-5 md:mt-0">
+
                 <x-faq/>
-            </div>
+
 
         </div>
     </div>

@@ -5,16 +5,11 @@
     <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
     <link href="https://releases.transloadit.com/uppy/v2.1.0/uppy.min.css" rel="stylesheet">
     <div class="w-11/12  mx-auto text-base mt-4">
-
-
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
             {{-- user ma'lumotlari --}}
             <div class="col-span-2 w-full md:mx-auto mx-4">
                 <figure class="w-full">
-                    <div class="float-right mr-8 text-gray-500">
-                        <i class="far fa-eye"> {{$views}} @lang('lang.profile_view')</i>
-                    </div>
-                    <br>
+
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
 

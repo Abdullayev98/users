@@ -22,7 +22,7 @@ class SearchTaskController extends VoyagerBaseController
 {
     public function task_search()
     {
-//        $tasks = Task::orderBy('id','desc')->where('status',null)->count();
+//        $task = Task::orderBy('id','desc')->where('status',null)->count();
 //        $categories = Category::get()->all();
 //        return view('task.search', compact('tasks','categories'));
         return view('task.search');
@@ -51,10 +51,14 @@ class SearchTaskController extends VoyagerBaseController
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
-//            if ($request->orderBy == 'klyuch') {
-////                $filter = $request->fltr;
-//                $tasks =  DB::table("tasks")->where('name','LIKE',"%$filter%")->orderBy('name','desc')->get();
-//            }
+            if ($request->orderBy == 'klyuch') {
+                $filter = $request->fltr;
+                $tasks = Task::where('status', '=', 1)
+                    ->where('name', 'LIKE', "%$filter%")
+                    ->orderBy('id', 'asc')
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
+                    ->get()->load('user','category');
+            }
 //            if ($request->orderBy == 'price') {
 ////                $filter = $request->fltr;
 //                $tasks =  DB::table("tasks")->where('budget','LIKE',"%$filter%")->orderBy('name','desc')->get();
@@ -92,7 +96,7 @@ class SearchTaskController extends VoyagerBaseController
 
     }
 
-    public function task($id)
+    public function task(Task $task)
     {
         $balance = WalletBalance::where('user_id', Auth::id())->first();
         if ($balance) {
@@ -101,30 +105,15 @@ class SearchTaskController extends VoyagerBaseController
             $balance = 0;
         }
 
-        $tasks = Task::where('id', $id)->first();
-        $cat_id = $tasks->category_id;
-        $user_id = $tasks->user_id;
-        $same_tasks = Task::where('category_id', $cat_id)->get();
-
-        $task_responses = Response::where('task_id', $tasks->id)->get();
-        $response_count = Response::where('task_id', $tasks->id)->count();
-        $response_count_user = Response::where('user_id', Auth::id())->count();
-        foreach ($task_responses as $response) {
-            $response_users = User::where('id', $response->user_id)->first();
-        }
-
         $users = User::all();
-        $current_user = User::find($user_id);
-        $categories = Category::where('id', $cat_id)->get();
 
-        $auth_user = Auth::user();
 
         $arr = get_defined_vars();
 
         if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks', compact('tasks', 'same_tasks', 'response_count_user', 'users', 'categories', 'current_user', 'task_responses', 'response_users', 'response_count', 'balance', 'auth_user'));
+            return view('task.detailed-tasks', compact('task',  'users',));
         } else {
-            return view('task.detailed-tasks', compact('tasks', 'same_tasks', 'users', 'categories', 'response_count_user', 'current_user', 'balance', 'auth_user'));
+            return view('task.detailed-tasks', compact('task',  'users',  'balance'));
         }
 
     }
@@ -224,10 +213,9 @@ class SearchTaskController extends VoyagerBaseController
 
     public function change_task(Task $task)
     {
-        $current_category = Category::where('id', $task->category_id)->first();
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $categories2 = Category::withTranslations(['ru', 'uz'])->where('parent_id', "!=", null)->get();
-        return view('task.changetask', compact('current_category', 'categories', 'categories2', 'task', ));
+        return view('task.changetask', compact('categories', 'categories2', 'task', ));
     }
 
     public function update_task(Task $task, UpdateRequest $request)
