@@ -205,7 +205,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <label>
-                                                                        <input type="number" checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
+                                                                        <input type="text" onkeypress='validate(event)' checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
                                                                         <input type="text" name="pay" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="0">
                                                                         <input type="text" name="task_user_id" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="{{$task->user_id}}">
                                                                     </label>

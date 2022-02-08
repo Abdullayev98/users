@@ -34,7 +34,7 @@
                                         <div class="mb-3 xl:w-full">
                                             @if(auth()->check())
                                                 <label for="phone">Verification Code</label>
-                                                <input type="number"
+                                                <input type="text" onkeypress='validate(event)'
                                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
                                                        name="sms_otp">
                                             @endif
