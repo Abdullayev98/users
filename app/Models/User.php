@@ -80,8 +80,16 @@ class User extends \TCG\Voyager\Models\User
     public function transactions(){
         return $this->hasMany(All_transaction::class)->orderBy('created_at',"DESC");
     }
-//    public function tasks(){
-//        return $this->hasMany(Task::class);
-//    }
+    public function alerts(){
+        return $this->hasMany(Notification::class);
+    }
+
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
+
+
+
+
 
 }

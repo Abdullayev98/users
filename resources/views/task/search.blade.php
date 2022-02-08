@@ -29,14 +29,15 @@
                                             class="focus:outline-none float-left bg-transparent border-0 w-11/12 h-full focus:outline-none"
                                         type="text" id="suggest">
                                         <button id="mpshow" class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">
-                                            <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
+                                            <svg class="h-4 w-4 text-purple-500" id="geoBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
+                                            <svg class="h-4 w-4 text-purple-500" id="closeBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
                                         </button>
                                     </div>
                                 </div>
 
                                 <div class="w-4/12 lg:w-4/12 lg:ml-1 md:ml-1">
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                    <select name="" id="selectGeo" class="focus:outline-none  py-1 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); enDis(r); map_pos(k)">
+                                    <select name="" id="selectGeo" class="focus:outline-none  py-1 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); if(r>0){$('#geoBut').show()}else {$('#geoBut').hide()}; enDis(r); map_pos(k)">
                                         <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                         <option value="1.5">1.5 @lang('lang.search_km')</option>
                                         <option value="3">3 @lang('lang.search_km')</option>
@@ -347,10 +348,10 @@
         //     plugins: [require('@tailwindcss/forms')]
         // };
 
-        function first_ajax(id, filter) {
+        function first_ajax(id, filter, address, price) {
             $.ajax({
                 url: "{{route('tasks.search')}}",
-                data: {orderBy: id, fltr: filter},
+                data: {orderBy: id, fltr: filter, addr: address, prc: price},
                 type: 'GET',
                 success: function (data) {
                     if (id == 'all') {

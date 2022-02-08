@@ -7,6 +7,7 @@ use App\Models\WalletBalance;
 use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use TCG\Voyager\Models\Category;
 use App\Models\User;
 use App\Models\BrowsingHistory;
@@ -118,24 +119,11 @@ class PerformersController extends Controller
 
     }
 
-    public function del_notif(Notification $notification, Task $task)
+    public function deleteNotification(Notification $notification)
     {
-        $balance = WalletBalance::where('user_id', Auth::id())->first();
-        if ($balance) {
-            $balance = $balance->balance;
-        } else {
-            $balance = 0;
-        }
-        $same_tasks = $task->category->tasks;
-
-        $users = User::all();
-        $current_user = $task->user;
-        $task_responses = $task->responses;
-        $response_count = $task_responses->count();
-        $response_count_user = auth()->user()->responses->count();
-
-        return view('task.detailed-tasks', compact('response_count_user', 'response_count', 'task', 'same_tasks', 'users', 'current_user', 'balance', 'task_responses'));
-    }
+        $notification->delete();
+        return back();
+   }
 
     public function del_all_notif()
     {
