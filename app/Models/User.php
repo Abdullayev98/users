@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 //use App\Models\Message;
 use Laravel\Passport\HasApiTokens;
+use App\Models\All_transaction;
 use Illuminate\Support\Facades\Storage;
 
 class User extends \TCG\Voyager\Models\User
@@ -76,14 +77,19 @@ class User extends \TCG\Voyager\Models\User
     public function views(){
         return $this->hasMany(UserView::class,'performer_id');
     }
-    public function tranzactions(){
-        return $this->hasMany(All_transaction::class);
+    public function transactions(){
+        return $this->hasMany(All_transaction::class)->orderBy('created_at',"DESC");
+    }
+    public function alerts(){
+        return $this->hasMany(Notification::class);
     }
 
-    public function responses()
-    {
-        return $this->hasMany(Response::class);
-
+    public function tasks(){
+        return $this->hasMany(Task::class);
     }
+
+
+
+
 
 }

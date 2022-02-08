@@ -212,7 +212,7 @@ class UserController extends Controller
         if ($request->sms_otp == $user->verify_code) {
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
                 $user->update(['is_phone_number_verified' => 1]);
-                Task::findOrFail($request->for_ver_func)->update(['status' => 1, 'user_id' => auth()->user()->id]);
+                Task::findOrFail($request->for_ver_func)->update(['status' => 1, 'user_id' => auth()->user()->id, 'phone' => auth()->user()->phone_number]);
                 return redirect()->route('userprofile');
             } else {
                 return back()->with('expired_message', 'Verification code expired');

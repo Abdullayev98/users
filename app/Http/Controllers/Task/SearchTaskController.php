@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Task;
 
 use App\Http\Requests\Task\UpdateRequest;
+use App\Models\CustomField;
+use App\Models\CustomFieldsValue;
 use App\Models\WalletBalance;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 use App\Models\User;
 use App\Models\Task;
@@ -35,7 +38,7 @@ class SearchTaskController extends VoyagerBaseController
                 $tasks = DB::table("tasks")->where('status', '=', 1)->orderBy('id', 'desc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'categories.name as category_name', 'categories.ico as icon')
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name','users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'sroch') {
@@ -51,10 +54,18 @@ class SearchTaskController extends VoyagerBaseController
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
-//            if ($request->orderBy == 'klyuch') {
-////                $filter = $request->fltr;
-//                $tasks =  DB::table("tasks")->where('name','LIKE',"%$filter%")->orderBy('name','desc')->get();
-//            }
+            if ($request->orderBy == 'klyuch') {
+                $filter = $request->fltr;
+                $address = $request->addr;
+                $price = $request->prc;
+                $tasks = Task::where('status', '=', 1)
+                    ->where('name', 'LIKE', "%$filter%")
+                    ->where('address', 'LIKE', "%$address%")
+                    ->where('budget', 'LIKE', "%$price%")
+                    ->orderBy('id', 'asc')
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
+                    ->get()->load('user','category');
+            }
 //            if ($request->orderBy == 'price') {
 ////                $filter = $request->fltr;
 //                $tasks =  DB::table("tasks")->where('budget','LIKE',"%$filter%")->orderBy('name','desc')->get();
@@ -222,4 +233,9 @@ class SearchTaskController extends VoyagerBaseController
         dd($data);
 
     }
+
+
+
+
+
 }
