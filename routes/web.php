@@ -32,7 +32,11 @@ Route::group(['middleware'=>'auth'], function (){
 
 
 Route::get('/for_del_new_task/{task}', [CreateController::class, 'deletetask']);
-Route::get('/fordelnotif/{notification}/{task}', [PerformersController::class, 'del_notif']);
+Route::group(['middleware'=> 'auth'], function (){
+    Route::delete('/fordelnotif/{notification}/', [PerformersController::class, 'deleteNotification'])->name('notification.delete');
+
+});
+
 Route::post('del-notif', [PerformersController::class, 'del_all_notif']);
 Route::post('/performers', [PerformersController::class, 'service']);
 Route::get('perf-ajax/{id}', [PerformersController::class, 'perf_ajax']);
