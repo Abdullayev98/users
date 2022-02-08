@@ -64,13 +64,6 @@
                                             <option  {{ old('date_type') == "3" ? 'selected' :null }} value="3" id="3">@lang('lang.date_givePeriod')</option>
                                         </select>
                                     </div>
-
-                                    {{--                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">--}}
-                                    {{--                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>--}}
-                                    {{--                  </div>--}}
-                                    {{--                  <input datepicker type="text" id="start_date" name="start_date" value="{{old('start_date')}}" class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата" required>--}}
-                                    {{--                  <input type="time" name="start_time" value="{{old('start_time')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>--}}
-
                                     <div id="start-date" class="@if(!$errors->has('start_date')) hidden @endif">
                                         <div class="flatpickr inline-block flex">
                                             <div class="flex " >
@@ -96,29 +89,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    {{--                <div>--}}
-                                    {{--                  <p onclick="date()" id="today" class="text-base text-gray-500 hover:text-yellow-500 float-left mr-4 cursor-pointer">--}}
-                                    {{--                    сегодня--}}
-                                    {{--                  </p>--}}
-                                    {{--                  <p onclick="dateYesterday()" id="tomorrow" class="text-base text-gray-500 hover:text-yellow-500 cursor-pointer w-4/12">--}}
-                                    {{--                    завтра--}}
-                                    {{--                  </p>--}}
-                                    {{--                </div>--}}
-                                    {{--              <div class="relative flex" id="datetime" style="display: none;">--}}
-                                    {{--                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">--}}
-                                    {{--                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>--}}
-                                    {{--                  </div>--}}
-                                    {{--                  <input datepicker id="end_date" type="text" name="end_date" value="{{old('end_date')}}" class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Дата">--}}
-                                    {{--                  <input type="time" name="end_time" value="{{old('end_time')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">--}}
-                                    {{--              </div>--}}
-                                    {{--              <div>--}}
-                                    {{--                  <p onclick="date1()" style="display: none;" id="today1" class="text-base text-gray-500 hover:text-yellow-500 float-left mr-4 cursor-pointer">--}}
-                                    {{--                    сегодня--}}
-                                    {{--                  </p>--}}
-                                    {{--                  <p onclick="dateYesterday1()" style="display: none;" id="tomorrow1" class="text-base text-gray-500 hover:text-yellow-500 cursor-pointer w-4/12">--}}
-                                    {{--                    завтра--}}
-                                    {{--                  </p>--}}
-                                    {{--                </div>--}}
                                     <div id="end-date" class="@if(!$errors->has('end_date')) hidden @endif">
                                         <div class="flatpickr inline-block flex ">
                                             <div class="flex">
@@ -213,16 +183,10 @@
         @endif
 
     </script>
-
-
 @endsection
 
 @section("javasript")
-
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
-
-
-
 @endsection

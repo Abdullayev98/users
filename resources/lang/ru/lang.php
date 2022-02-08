@@ -668,7 +668,7 @@ return [
     'name_percent' => "Задание заполнено на 14%",
     'name_howCanWeHelpU' => "Чем вам помочь?",
     'name_taskName' => "Название задания",
-    'name_example' => "Например, вам нужен маляр",
+    'name_example' => "Например, ",
     'name_subCat' => "Подкатегория",
     'name_pedCourier' => "Услуги пешего курьера",
     'name_next' => "Далее",
