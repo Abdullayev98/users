@@ -81,29 +81,30 @@
 
 {{--                MOBILE VERSION --}}
                 <div class="w-full my-5 rounded-md md:hidden block">
-                    <div class="inline-flex block w-full col-span-4">
+                    <div class="inline-flex block w-full grid grid-cols-3">
                     <!-- <input class="focus:outline-none  w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
                         <input id="filter" type="text"
-                               class="focus:outline-none focus:placeholder-transparent text-base w-10/12 px-4 py-1 text-black border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4 bg-gray-200"
+                               class="col-span-3 focus:outline-none focus:placeholder-transparent text-base md:w-10/12 px-4 py-1 text-black border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 md:mr-4 mr-0 bg-gray-200"
                                placeholder="@lang('lang.search_byKey')">
 
                         <button
-                            class="w-2/12 md:w-4/12 bg-green-500 hover:bg-green-600 rounded-md text-white"
+                            class="col-span-2 md:w-4/12 w-2/3 md:mt-0 mt-2 bg-green-500 hover:bg-green-600 rounded-md text-white"
                         >@lang('lang.search_find')</button>
-                        <div class="flex text-center">
-                            <button id="show_2" class="w-10 ml-2 focus:outline-none">
+                        <div class="col-span-1 flex justify-evenly inline-block md:mt-0 mt-2">
+                            <button id="show_2" class=" w-10 md:ml-2  focus:outline-none">
                                 <i class="fas fa-bars fa-2x ml-1.5 text-gray-500"></i>
                             </button>
-                            <button id="hide_2" class="w-10 ml-2 focus:outline-none" style="display: none">
+                            <button id="hide_2" class=" w-10 md:ml-2  focus:outline-none" style="display: none">
                                 <i class="fas fa-times fa-2x ml-1.5 text-gray-500"></i>
                             </button>
-                            <button id="show" class="w-10 ml-2 focus:outline-none">
+                            <button id="show" class="w-10 md:ml-2 focus:outline-none">
                                 <i class="far fa-map fa-2x text-gray-500"></i>
                             </button>
-                            <button id="hide" class="w-10 ml-2 focus:outline-none" style="display: none">
+                            <button id="hide" class="w-10 md:ml-2  focus:outline-none" style="display: none">
                                 <i class="fas fa-list fa-2x text-gray-500"></i>
                             </button>
                         </div>
+
                     </div>
                 </div>
 
