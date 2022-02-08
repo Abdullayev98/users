@@ -14,7 +14,7 @@
     {{--    Created Road map for Create a New Tast--}}
     <x-roadmap/>
     <div class="mx-auto lg:w-2/3 w-4/5 my-16">
-        <div class="grid grid-cols-3 h-full">
+        <div class="grid grid-cols-3  lg:gap-x-20 md:gap-x-14 h-full">
             <div class="md:col-span-2 col-span-3">
                 <div class="w-full text-center md:text-2xl text-xl">
                     @lang('lang.name_helpToFind')
