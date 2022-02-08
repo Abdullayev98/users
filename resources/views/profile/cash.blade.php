@@ -204,7 +204,7 @@
 
 
             {{-- right-side-bar --}}
-            <div class="lg:col-span-1 col-span-2 rounded-xl ring-1 ring-gray-300 h-auto w-80 text-gray-600 lg:ml-8 ml-0">
+            <div class="lg:col-span-1 col-span-2 rounded-xl ring-1 ring-gray-300 h-auto w-80 text-gray-600 m-4">
                 <div class="mt-6 ml-4">
                     <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
                     <p>@lang('lang.profile_since')</p>
