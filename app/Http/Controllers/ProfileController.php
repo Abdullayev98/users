@@ -151,7 +151,10 @@ class ProfileController extends Controller
         $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
         $views   = UserView::where('performer_id', $user->id)->count();
         $task    = Task::where('user_id',Auth::user()->id)->count();
-        return view('profile.cash', compact('user', 'views', 'balance', 'task'));
+        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
+        $task_count = Task::where('performer_id', auth()->user()->id)->count();
+
+        return view('profile.cash', compact('user', 'views', 'balance', 'task','about','task_count'));
     }
     public function updateCash(Request $request)
     {
@@ -182,8 +185,9 @@ class ProfileController extends Controller
         $views = count( UserView::where('performer_id', $user->id)->get());
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $regions = Region::withTranslations(['ru','uz'])->get();
-
-        return view('profile.settings', compact('user','categories','views','regions'));
+        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
+        $task_count = Task::where('performer_id', $user->id)->count();
+        return view('profile.settings', compact('user','categories','views','regions','about','task_count'));
     }
     public function updateData(UserUpdateDataRequest $request)
     {
