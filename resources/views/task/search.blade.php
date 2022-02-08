@@ -337,28 +337,33 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
-{{--    <script src="https://api-maps.yandex.ru/2.1/?apikey=fe6ba029-0855-4dbc-9468-b53a3f64fac1&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>--}}
     <script src="{{asset('js/search_tasks.js')}}"></script>
 {{--    <script src="/js/search_tasks.js"></script>--}}
     <script>
-        let allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
-
-        // let userCoordinates=[[],[]];
-
 
         // module.exports = {
         //     plugins: [require('@tailwindcss/forms')]
         // };
 
-        function first_ajax(id) {
+        function first_ajax(id, filter) {
             $.ajax({
                 url: "{{route('tasks.search')}}",
-                data: {orderBy: id},
+                data: {orderBy: id, fltr: filter},
                 type: 'GET',
                 success: function (data) {
-                    dataAjax = $.parseJSON(JSON.stringify(data));
-                    sixInOne();
+                    if (id == 'all') {
+                        dataAjax = $.parseJSON(JSON.stringify(data));
+                        sixInOne();
+                    }
+                    if (id == 'klyuch') {
+                        dataAjax2 = $.parseJSON(JSON.stringify(data));
+                        dataAjaxCheck=2
+                        sixInOne();
+                    }
                 },
+                error: function () {
+                    alert("Ajax ishida xatolik...");
+                }
             });
         }
 

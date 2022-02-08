@@ -46,11 +46,8 @@ class ProfileController extends Controller
         $file = File::deleteDirectory("Portfolio/{$user->name}/{$directory}");
         if($file) {
             Portfolio::where('id', $id)->where('user_id', $user->id)->delete();
-            return dd(true);
-        }else{
-            return dd(false);
+            return redirect()->route('userprofile');
         }
-
     }
     public function UploadImage(Request $request)
     {
