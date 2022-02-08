@@ -45,7 +45,7 @@
                     <div class="mx-auto">
                         <div class="lg:w-10/12 w-full mx-auto flex-1">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-                                   class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:outline-none flex-1 md:text-xl text-lg">
+                                   class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:placeholder-transparent focus:outline-none flex-1 md:text-xl text-lg">
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option

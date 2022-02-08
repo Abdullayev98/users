@@ -36,10 +36,21 @@ class ProfileController extends Controller
         return $dd;
 
     }
-    public function create(array $data)
+    public function delete($id)
     {
-        $dd = Portfolio::create($data);
-        return $dd;
+        $user = Auth::user();
+        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
+        foreach ($comment as $comments){
+            $directory = $comments->comment;
+        }
+        $file = File::deleteDirectory("Portfolio/{$user->name}/{$directory}");
+        if($file) {
+            Portfolio::where('id', $id)->where('user_id', $user->id)->delete();
+            return dd(true);
+        }else{
+            return dd(false);
+        }
+
     }
     public function UploadImage(Request $request)
     {
@@ -80,7 +91,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
-        return view('profile/portfolio', compact('comment'));
+        return view('profile/portfolio', compact('comment','user'));
     }
     //profile
     public function profileData()
