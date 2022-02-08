@@ -59,7 +59,7 @@
                 </div>
                 <div class="sortable">
                 @foreach($users as $user)
-                    <div class="score w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
+                    <div class="score scores{{$user->id}} w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}" about="">
                         <div class="w-34 float-left">
                             <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4" @if ($user->avatar == Null)src='{{asset("storage/images/default.jpg")}}' @else src="{{asset("storage/{$user->avatar}")}}" @endif alt="avatar">
                             <div class="flex flex-row text-[12px]">
@@ -93,9 +93,9 @@
                             </script>
                         </div>
                         <div class="w-4/5 md:float-none md:float-none">
-                            <div>
-                                <a class="user" href="/performers/{{$user->id}}">
-                                    <p class="lg:text-3xl text-2xl underline text-blue-500 hover:text-red-500" id="{{$user->id}}"> {{$user->name}}</p>
+                            <div >
+                                <a class="user" href="performers/{{$user->id}}">
+                                    <p class="lg:text-3xl text-2xl underline text-blue-500 performer-page{{$user->id}} hover:text-red-500" id="{{$user->id}}"> {{$user->name}}</p>
                                 </a>
                             </div>
                             <div>
@@ -383,8 +383,31 @@
 
 @section('javasript')
     <script src="//unpkg.com/alpinejs" defer></script>
-
     <script>
+        $(".score").slice(0,2).attr('about',1);
+    </script>
+    <script>
+        @foreach($users as $user)
+        $('.performer-page{{$user->id}}').click(function(){
+            $.ajax({
+                url: "/performers/{{$user->id}}",
+                type:"GET",
+                data:{
+                    about:$( ".scores{{$user->id}}" ).attr( 'about' ),
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success:function(response){
+                    console.log(response);
+                    if(response) {
+                        $('.success').text(response.success);
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+        @endforeach
         $('.send-request').click(function (){
             $.ajax({
                 url : '/performers-by-category', //PHP file to execute

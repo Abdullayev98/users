@@ -28,9 +28,10 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $comment = $request->input('comment');
+        $description = $request->input('description');
         $data['user_id'] = $user->id;
         $data['comment'] = $comment;
-        $user = Portfolio::where('comment', $comment)->first();
+        $data['description'] = $description;
         $dd = Portfolio::create($data);
         return $dd;
 
@@ -51,8 +52,6 @@ class ProfileController extends Controller
                 ->move(public_path("Portfolio/{$user->name}/{$comment->comment}"), $fileName);
 
             $fileModelname = time() . '_' . $request->file->getClientOriginalName();
-            $a = $request->file->getClientOriginalName();
-            $request->session()->put('image', $a);
             return response()->json([
                 "success" => true,
                 "message" => "File successfully uploaded",
@@ -77,6 +76,12 @@ class ProfileController extends Controller
 
 
     }
+    public function portfolio($id)
+    {
+        $user = Auth::user();
+        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
+        return view('profile/portfolio', compact('comment'));
+    }
     //profile
     public function profileData()
     {
@@ -85,17 +90,17 @@ class ProfileController extends Controller
         $task = Task::where('user_id',Auth::user()->id)->count();
         $task_count = Task::where('performer_id', Auth::id())->where('status',4)->count();
         $ports = Portfoliocomment::where('user_id', Auth::user()->id)->get();
-        $comment = Portfolio::where('user_id', $user->id)->where('image', '!=', null)->first();
-
+        $comment = Portfolio::where('user_id', $user->id)->where('image', '!=', null)->get();
         if($comment != null){
-            $image = $comment["image"];
-            $images = explode(',',$image);
+            //$image = $comment->image;
+            //$images = explode(',',$image);
             $image = File::glob(public_path("Portfolio/{$user->name}/{$comment}").'/*');
         }else{
             $image = [0,1];
             $images = [0,1];
         }
 
+        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
 
         //dd($a);
         $file = "Portfolio/{$user->name}";
@@ -105,7 +110,9 @@ class ProfileController extends Controller
 
         $b = File::directories(public_path("Portfolio/{$user->name}"));
         $directories = array_map('basename', $b);
-        return view('profile.profile', compact('images','directories','task_count','image','user','views','task','ports'));
+        $categories = Category::withTranslations(['ru', 'uz'])->get();
+
+        return view('profile.profile', compact('categories','image','about','comment','directories','task_count','user','views','task','ports'));
     }
     public function updates(Request $request)
     {
