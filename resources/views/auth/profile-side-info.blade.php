@@ -4,7 +4,7 @@
             <div class="w-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
             </div>
             <div class="font-bold text-xs text-gray-700 text-left my-auto">
-            @lang('stat_ispoltitelomcon')<br>@lang('stat_ispoltitelomcon1')<br> @lang('stat_ispoltitelomcon2')                    </div>
+            @lang('lang.stat_ispoltitelomcon')<br>@lang('lang.stat_ispoltitelomcon1')<br> @lang('lang.stat_ispoltitelomcon2')                    </div>
         </a>
     @endif
     <div class="mt-6 ml-4">
