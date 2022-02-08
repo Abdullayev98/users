@@ -25,14 +25,14 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'phone' => 'required|string',
+            'phone' => 'required|min:9',
             'description' => 'required|string',
             'start_date' => 'required|string',
             'date_type' => 'required|string',
-//            'location0' => 'required',
-//            'location1' => 'required|string',
             'budget' => 'required|string',
             'category_id' => 'required',
+            'coordinates' => 'required',
+            'address' => 'required'
         ];
     }
 
@@ -44,8 +44,6 @@ class UpdateRequest extends FormRequest
             'description.required' => 'Пополните полю',
             'start_date.required' => 'Required',
             'date_type.required' => 'Required',
-//            'location0.required' => 'Ошибка',
-//            'location1.required' => 'Required',
             'budget.required' => 'Required',
             'category_id.required' => 'Required',
         ];
