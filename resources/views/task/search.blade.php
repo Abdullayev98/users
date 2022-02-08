@@ -15,7 +15,7 @@
                                 <input id="filter" type="text"
                                        class="focus:outline-none focus:placeholder-transparent w-10/12 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                        placeholder="@lang('lang.search_byKey')">
-                                <svg class="h-4 w-4 text-gray-400 fill-current absolute left-3/4 top-2" id="svgClose" width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
+                                <svg class="h-3 w-3 fill-current absolute left-3/4 top-2" id="svgClose" hidden onclick="$('#filter').val(''); $('#svgClose').hide();" width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
                                 <button
                                     class="sm:w-2/12 w-4/12 bg-green-500 hover:bg-green-600 ml-1 py-1 px-1 rounded-md sm:mt-0 text-white" onclick="ajaxFilter()"
                                 >@lang('lang.search_find')</button>
@@ -28,10 +28,10 @@
                                         <input
                                             class="focus:outline-none float-left bg-transparent border-0 w-11/12 h-full focus:outline-none"
                                         type="text" id="suggest">
-                                        <button id="mpshow" class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">
-                                            <svg class="h-4 w-4 text-purple-500" id="geoBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
-                                            <svg class="h-4 w-4 text-gray-400 fill-current" id="closeBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
-                                        </button>
+{{--                                        <button id="mpshow" class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">--}}
+                                            <svg class="h-4 w-4 text-purple-500" id="geoBut" onclick="$('#closeBut').show(); $('#geoBut').hide();" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
+                                            <svg class="h-3 w-3 fill-current" id="closeBut" onclick="$('#suggest').val(''); $('#closeBut').hide(); $('#geoBut').show();" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
+{{--                                        </button>--}}
                                     </div>
                                 </div>
 
@@ -55,7 +55,7 @@
                                 <div class="relative w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
                                     <input type="text" maxlength="7" class="focus:outline-none focus:placeholder-transparent w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
-                                    <svg class="h-4 w-4 text-gray-400 fill-current absolute top-7 left-28" id="svgClose" width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
+                                    <svg class="h-3 w-3 fill-current absolute top-7 left-28" id="prcClose" hidden onclick="$('#price').val(''); $('#prcClose').hide();" width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
                                 </div>
                             </div>
                             <div class="inline-flex  block w-full col-span-4">
@@ -81,29 +81,30 @@
 
 {{--                MOBILE VERSION --}}
                 <div class="w-full my-5 rounded-md md:hidden block">
-                    <div class="inline-flex block w-full col-span-4">
+                    <div class="inline-flex block w-full grid grid-cols-3">
                     <!-- <input class="focus:outline-none  w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
                         <input id="filter" type="text"
-                               class="focus:outline-none focus:placeholder-transparent text-base w-10/12 px-4 py-1 text-black border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4 bg-gray-200"
+                               class="col-span-3 focus:outline-none focus:placeholder-transparent text-base md:w-10/12 px-4 py-1 text-black border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 md:mr-4 mr-0 bg-gray-200"
                                placeholder="@lang('lang.search_byKey')">
 
                         <button
-                            class="w-2/12 md:w-4/12 bg-green-500 hover:bg-green-600 rounded-md text-white"
+                            class="col-span-2 md:w-4/12 w-2/3 md:mt-0 mt-2 bg-green-500 hover:bg-green-600 rounded-md text-white"
                         >@lang('lang.search_find')</button>
-                        <div class="flex text-center">
-                            <button id="show_2" class="w-10 ml-2 focus:outline-none">
+                        <div class="col-span-1 flex justify-evenly inline-block md:mt-0 mt-2">
+                            <button id="show_2" class=" w-10 md:ml-2  focus:outline-none">
                                 <i class="fas fa-bars fa-2x ml-1.5 text-gray-500"></i>
                             </button>
-                            <button id="hide_2" class="w-10 ml-2 focus:outline-none" style="display: none">
+                            <button id="hide_2" class=" w-10 md:ml-2  focus:outline-none" style="display: none">
                                 <i class="fas fa-times fa-2x ml-1.5 text-gray-500"></i>
                             </button>
-                            <button id="show" class="w-10 ml-2 focus:outline-none">
+                            <button id="show" class="w-10 md:ml-2 focus:outline-none">
                                 <i class="far fa-map fa-2x text-gray-500"></i>
                             </button>
-                            <button id="hide" class="w-10 ml-2 focus:outline-none" style="display: none">
+                            <button id="hide" class="w-10 md:ml-2  focus:outline-none" style="display: none">
                                 <i class="fas fa-list fa-2x text-gray-500"></i>
                             </button>
                         </div>
+
                     </div>
                 </div>
 
