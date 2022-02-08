@@ -27,17 +27,21 @@ class TaskDateRequest extends FormRequest
             case 1:
                 return [
                     'start_date'=>'required|date',
+                    'date_type' => 'required'
                 ];
                 break;
             case 2:
                 return [
                     'end_date'=>'required|date',
+                    'date_type' => 'required'
                 ];
                 break;
             case 3:
                 return [
                     'start_date'=>'required|date',
                     'end_date'=>'required|date',
+                    'date_type' => 'required'
+
                 ];
 
         }

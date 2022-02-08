@@ -43,7 +43,7 @@
                                 </label>
                                 <input
                                     class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
-                                    id="username" type="text" placeholder="@lang('lang.name_example')" required name="name" value="{{session('neym')}}">
+                                    id="username" type="text" placeholder="@lang('lang.name_example') {{ $current_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}" required name="name" value="{{session('neym')}}">
                             </div>
                             <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
                             <div id="categories">

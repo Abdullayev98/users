@@ -38,44 +38,56 @@ function dataAjaxCopy2(){
     }
 }
 
+function ajaxFilter() {
+    nameVal1 = $('#filter').val()
+    nameVal2 = $('#suggest').val()
+    nameVal3 = $('#price').val()
+        if ($.trim(nameVal1) != '' || $.trim(nameVal2) != '' || $.trim(nameVal3) != ''){
+            first_ajax('klyuch', nameVal1, nameVal2, nameVal3)
+        }
+}
+
+$("#filter").keyup(function() {
+    if ($('#filter').val().trim().length == 0) {
+        $('#svgClose').hide();
+    }else{
+        $('#svgClose').show();
+    }
+});
 
 $('#filter').on('keypress',function(e) {
-    nameVal = $('#filter').val()
-    if ($('#filter').val().trim().length == 0) {
-        // console.log('Hech vaqo!!!')
-        $('#svgClose').attr("hidden", "hidden");
-    }else{
-        $('#svgClose').removeAttr('hidden');
-    }
-    // if(e.which == 127) {
-    //     alert('Delete');
-    //     if (nameVal==''){
-    //         // $('#svgClose').attr("hidden","hidden");
-    //     }
-    // }
     if(e.which == 13) {
-        if ($.trim(nameVal) != ''){
-            // dataAjaxSortBy()
-            first_ajax('klyuch', nameVal)
-        }
+        ajaxFilter()
+    }
+});
+
+$("#suggest").keyup(function() {
+    if ($('#suggest').val().trim().length == 0) {
+        $('#closeBut').hide();
+        $('#geoBut').show();
+    }else{
+        $('#geoBut').hide();
+        $('#closeBut').show();
     }
 });
 
 $('#suggest').on('keypress',function(e) {
     if(e.which == 13) {
-        nameVal = $('#suggest').val()
-        if (nameVal != '') {
-            dataAjaxSortBy()
-        }
+        ajaxFilter()
+    }
+});
+
+$("#price").keyup(function() {
+    if ($('#price').val().trim().length == 0) {
+        $('#prcClose').hide();
+    }else{
+        $('#prcClose').show();
     }
 });
 
 $('#price').on('keypress',function(e) {
     if(e.which == 13) {
-        nameVal = $('#price').val()
-        if (nameVal != '') {
-            dataAjaxSortBy()
-        }
+        ajaxFilter()
     }
 });
 
@@ -129,8 +141,8 @@ function tasks_list_all(data) {
                         </div>
                         <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 sm:mt-1 mt-0" id="about">
                             <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
-                            <p class="text-sm sm:mt-5 sm:mt-1 mt-0">` + data.category_name + `</p>
-                            <a href="#" class="text-sm sm:mt-1 mt-0 border-b-2 border-gray-300 hover:border-red-400 hover:text-red-600 ">` + data.user_name + `</a>
+                            <p class="text-sm sm:mt-5 sm:mt-1 mt-0">` + (dataAjaxCheck==1 ? data.category_name : data.category.name) + `</p>
+                            <a href="/performers/` + data.userid + `" class="text-sm sm:mt-1 mt-0 border-b-2 border-gray-300 hover:border-red-400 hover:text-red-600 ">` + (dataAjaxCheck==1 ? data.user_name : data.user.name) + `</a>
                         </div>
                     </div>
                 </div>
@@ -160,14 +172,19 @@ function resetCounters(){
 
 function maps_show(){
     dataGeo = [];
-    for (var i in dataAjaxPrint) {
-        dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
+    if(dataAjaxPrint.length != 0) {
+        for (var i in dataAjaxPrint) {
+            dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
+        }
     }
     map_pos(k)
 }
 
 function sixInOne(){
     resetCounters()
+    if(dataAjaxCheck == 0) {
+        dataAjaxPrint = [];
+    }
     if(dataAjaxCheck == 1) {
         dataAjaxCopy()
     }else {
@@ -185,8 +202,8 @@ function sixInOne(){
 function img_show() {
     $('.no_tasks').removeAttr('hidden');
     $(".show_tasks").empty();
-    $(".small-map").empty();
-    $(".big-map").empty();
+    // $(".small-map").empty();
+    // $(".big-map").empty();
     $('.lM').attr("hidden","hidden")
 }
 
@@ -205,7 +222,8 @@ function tasks_show(){
     $('#pnum').html(s)
     $('#snum').html(dl)
     if (s==dl){
-        $('.butt').attr("disabled","disabled")
+        // $('.butt').attr("disabled","disabled")
+        $('.butt').hide()
     }
 }
 
@@ -516,7 +534,7 @@ function map_pos(mm) {
                     }
                 );
 
-            $("#mpshow").click(function(){
+            $("#geoBut").click(function(){
                 location.get({
                     mapStateAutoApply: true
                 })
@@ -566,8 +584,10 @@ function map_pos(mm) {
             //     geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData[i], getPointOptions());
             // }
             geoObjects = [];
-            for (var i = 0; i < dataGeo.length; i++) {
-                geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+            if(dataGeo.length != 0) {
+                for (var i = 0; i < dataGeo.length; i++) {
+                    geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                }
             }
 
 
