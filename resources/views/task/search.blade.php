@@ -15,8 +15,9 @@
                                 <input id="filter" type="text"
                                        class="focus:outline-none focus:placeholder-transparent w-10/12 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                        placeholder="@lang('lang.search_byKey')">
+                                <svg class="h-4 w-4 text-purple-500" id="svgClose" width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
                                 <button
-                                    class="sm:w-2/12 w-4/12 bg-green-500 hover:bg-green-600 ml-1 py-1 px-1 rounded-md sm:mt-0 text-white"
+                                    class="sm:w-2/12 w-4/12 bg-green-500 hover:bg-green-600 ml-1 py-1 px-1 rounded-md sm:mt-0 text-white" onclick="ajaxFilter()"
                                 >@lang('lang.search_find')</button>
                             </div>
 
@@ -53,6 +54,7 @@
                                 <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
                                     <input type="text" maxlength="7" class="focus:outline-none focus:placeholder-transparent w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
+                                    <svg class="h-4 w-4 text-purple-500" id="svgClose" width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
                                 </div>
                             </div>
                             <div class="inline-flex  block w-full col-span-4">
@@ -271,7 +273,7 @@
                 <div class="w-full h-full">
                     <div class="max-w-lg mx-auto">
                         <label class="inline-flex items-center mt-3">
-                            <input type="checkbox" class="form-checkbox all_cat mr-1 h-5 w-5 text-orange-400">
+                            <input type="checkbox" class="form-checkbox all_cat ml-5 h-5 w-5 text-orange-400">
                             <span class="ml-2 text-gray-700">@lang('lang.search_allCat')</span>
                         </label>
                         <div class="w-full my-1 for_check">
@@ -334,7 +336,7 @@
 
 @section("javasript")
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+{{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>

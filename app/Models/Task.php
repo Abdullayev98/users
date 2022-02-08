@@ -36,4 +36,9 @@ class Task extends Model
     public function responses(){
         return $this->hasMany(Response::class);
     }
+    public function getPriceAttribute(){
+        return preg_replace('/[^0-9.]+/', '', $this->budget);
+    }
+
+
 }

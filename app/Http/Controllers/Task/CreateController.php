@@ -152,7 +152,7 @@ class CreateController extends Controller
 
     public function budget_store(Task $task, Request $request)
     {
-        $task->budget = $request->amount1;
+        $task->budget = preg_replace('/[^0-9.]+/', '', $request->amount1);
         $task->save();
 
         return redirect()->route('task.create.note', $task->id);
