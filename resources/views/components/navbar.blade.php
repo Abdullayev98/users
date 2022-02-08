@@ -214,24 +214,21 @@
                             </div>
                             <ul class="py-1 overflow-y-auto max-h-96" id="notifs" aria-labelledby="dropdown">
 
-                                @foreach(Notification::where('user_id', Auth::user()->id)->get() as $notification)
-                                    @if($notification->type == 1)
+                                @foreach(auth()->user()->alerts as $notification)
+{{--                                    @switch($notification->type)--}}
+
+{{--                                        @case(1)--}}
                                         <li>
-                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
+                                            <form action="{{ route('notification.delete', $notification->id ) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</button>
+
+                                            </form>
                                         </li>
-                                    @elseif($notification->type == 2)
-                                        <li>
-                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveOffer')</a>
-                                        </li>
-                                    @elseif($notification->type == 3)
-                                        <li>
-                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_youHaveTask')</a>
-                                        </li>
-                                    @elseif($notification->type == 4)
-                                        <li>
-                                            <a href="/fordelnotif/{{$notification->id}}/{{$notification->task_id}}" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</a>
-                                        </li>
-                                    @endif
+{{--                                        @break--}}
+
+{{--                                    @endswitch--}}
                                 @endforeach
 
                                 <div id="for_append_notifications"></div>
@@ -240,7 +237,7 @@
 {{--                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
 {{--                                </li>--}}
                                 <li>
-                                    <a href="/profile/settings" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
+                                    <a href="{{ route('editData')}}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                                 </li>
                                 <li>
                                     <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2 see_all">@lang('lang.navbar_markAsRead')</a>
