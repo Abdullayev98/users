@@ -155,7 +155,6 @@ class SearchTaskController extends VoyagerBaseController
                 'notificate' => $notificate,
                 'time' => $response_time,
                 'price' => $response_price,
-                'price' => $response_price,
                 'creator_id' => $users_id
             ]);
             Notification::create([
