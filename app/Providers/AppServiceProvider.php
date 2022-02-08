@@ -25,5 +25,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Voyager::addAction(\App\Actions\ActiveAction::class);
+        foreach (glob(__DIR__.'/../Helpers/*.php') as $filename) {
+            require_once $filename;
+        }
     }
 }
