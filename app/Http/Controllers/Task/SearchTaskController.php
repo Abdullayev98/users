@@ -53,8 +53,12 @@ class SearchTaskController extends VoyagerBaseController
             }
             if ($request->orderBy == 'klyuch') {
                 $filter = $request->fltr;
+                $address = $request->addr;
+                $price = $request->prc;
                 $tasks = Task::where('status', '=', 1)
                     ->where('name', 'LIKE', "%$filter%")
+                    ->where('name', 'LIKE', "%$address%")
+                    ->where('name', 'LIKE', "%$price%")
                     ->orderBy('id', 'asc')
                     ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
                     ->get()->load('user','category');

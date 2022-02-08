@@ -39,9 +39,11 @@ function dataAjaxCopy2(){
 }
 
 function ajaxFilter() {
-    nameVal = $('#filter').val()
-        if ($.trim(nameVal) != ''){
-            first_ajax('klyuch', nameVal)
+    nameVal1 = $('#filter').val()
+    nameVal2 = $('#suggest').val()
+    nameVal3 = $('#price').val()
+        if ($.trim(nameVal1) != '' || $.trim(nameVal2) != '' || $.trim(nameVal3) != ''){
+            first_ajax('klyuch', nameVal1, nameVal2, nameVal3)
         }
 }
 
