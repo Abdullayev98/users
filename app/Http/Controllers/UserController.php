@@ -101,10 +101,12 @@ class UserController extends Controller
     }
 
 
-    public function reset_submit(UserPhoneRequest $request)
+    public function reset_submit(Request $request)
     {
 
-        $data = $request->validated();
+        $data = $request->validate([
+            'phone_number' => 'required|integer|exists:users,phone_number'
+        ]);
         $user = User::query()->where('phone_number', $data['phone_number'])->first();
         if (!$user) {
             return back()->with([
@@ -115,7 +117,7 @@ class UserController extends Controller
         $user->verify_code = $sms_otp;
         $user->verify_expiration = Carbon::now()->addMinutes(5);
         $user->save();
-        $response = (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
+        (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
         session(['phone' => $data['phone_number']]);
 
         return redirect()->route('password.reset.code.view');
@@ -210,7 +212,7 @@ class UserController extends Controller
         if ($request->sms_otp == $user->verify_code) {
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
                 $user->update(['is_phone_number_verified' => 1]);
-                Task::findOrFail($request->for_ver_func)->update(['status' => 1]);
+                Task::findOrFail($request->for_ver_func)->update(['status' => 1, 'user_id' => auth()->user()->id, 'phone' => auth()->user()->phone_number]);
                 return redirect()->route('userprofile');
             } else {
                 return back()->with('expired_message', 'Verification code expired');

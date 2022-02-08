@@ -36,10 +36,18 @@ class ProfileController extends Controller
         return $dd;
 
     }
-    public function create(array $data)
+    public function delete($id)
     {
-        $dd = Portfolio::create($data);
-        return $dd;
+        $user = Auth::user();
+        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
+        foreach ($comment as $comments){
+            $directory = $comments->comment;
+        }
+        $file = File::deleteDirectory("Portfolio/{$user->name}/{$directory}");
+        if($file) {
+            Portfolio::where('id', $id)->where('user_id', $user->id)->delete();
+            return redirect()->route('userprofile');
+        }
     }
     public function UploadImage(Request $request)
     {
@@ -80,7 +88,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
-        return view('profile/portfolio', compact('comment'));
+        return view('profile/portfolio', compact('comment','user'));
     }
     //profile
     public function profileData()
@@ -139,13 +147,11 @@ class ProfileController extends Controller
     //profile Cash
     public function profileCash()
     {
-        $user = Auth()->user();
+        $user = Auth()->user()->load('transactions');
         $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
-        $views = count( UserView::where('performer_id', $user->id)->get());
-        $task = Task::where('user_id',Auth::user()->id)->count();
-        $transactions = All_transaction::where('user_id', Auth::id())->get();
-        $transactions_count = All_transaction::where('user_id', Auth::id())->count();
-        return view('profile.cash', compact('transactions_count', 'transactions', 'user', 'views', 'balance', 'task'));
+        $views   = UserView::where('performer_id', $user->id)->count();
+        $task    = Task::where('user_id',Auth::user()->id)->count();
+        return view('profile.cash', compact('user', 'views', 'balance', 'task'));
     }
     public function updateCash(Request $request)
     {

@@ -61,10 +61,11 @@ return [
     'modal_cencel' => "Отмена",
     'modal_send' => "Отправить",
     'modal_address1' => "На ваш телефонный номер",
+    'modal_phone1' => "Подтвердите номер телефона",
     'modal_address2' => " было отправлено письмо со ссылкой для подтверждения вашей почты на Universal Services.",
     'modal_address3' => " Пройдите по ссылке и активируйте вашу телефонный номер.",
-    'modal_address4' => "Отправить новое письмо для подтверждения телефонный номер",
-    'modal_phone' => "Указать другую телефонный номер",
+    'modal_address4' => "Отправить новый код для подтверждения телефонный номер",
+    'modal_phone' => "Указать другой телефонный номер",
     'modal_alert' => "Вы предложили задание исполнителю",
     'modal_alert1' =>"Уведомления отправлено.",
     //modal blade end
@@ -425,7 +426,7 @@ return [
     'cash_rusYearGod' => "год",
     'cash_rusYearGoda' => "года",
     'cash_rusYearLet' => "лет",
-    'cash_city' => "город",
+    'cash_city' => "Местоположение:",
     'cash_cityNotGiven' => "город не включен",
     'cash_created' => "Создал",
     'cash_task' => "задание",
@@ -1171,4 +1172,9 @@ return [
     "personalinfo_text20" => "Выберите категории заданий, в которых хотите работать. Можно сразу несколько — изменить их всегда можно в профиле.",
     "personalinfo_text21" => "Стать исполнителем",
     // personal info end
+
+    // stat ispoltitelom
+    "stat_ispoltitelomcon" => "Станьте исполнителем",
+    "stat_ispoltitelomcon1" => " U-ser. И начните ",
+    "stat_ispoltitelomcon2" => "зарабатывать."
 ];
