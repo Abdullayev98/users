@@ -377,7 +377,7 @@
         @foreach($users as $user)
         $("#open{{$user->id}}").click(function(){
             var username = $(".{{$user->id}}").text();
-            var namem = $(".namem").text('Вы предложили задание исполнителю'+username );
+            var namem = $(".namem").text('@lang('lang.modal_alert')'+username );
             $(".modal_content").show();
             let user_id = $('.{{$user->id}}').attr('id');
             $.ajax({

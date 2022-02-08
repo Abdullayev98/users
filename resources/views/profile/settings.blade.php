@@ -4,14 +4,16 @@
 
     <div class="w-11/12  mx-auto text-base mt-4">
 
-
+        <div class="block md:hidden float-right -mr-8 text-gray-500">
+            <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
+        </div>
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
 
 
             {{-- user ma'lumotlari --}}
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
                 <figure class="w-full">
-                    <div class="float-right mr-8 text-gray-500">
+                    <div class="hidden md:block float-right mr-8 text-gray-500">
                         <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
                     </div>
                     <br>
@@ -19,11 +21,11 @@
                     <div class="flex flex-row mt-6" style="width: 500px">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
-                                @if ($user->avatar == Null)
-                                src='{{asset("AvatarImages/images/default_img.jpg")}}'
-                                @else
-                                src="{{asset("AvatarImages/{$user->avatar}")}}"
-                                @endif alt="">
+                                 @if ($user->avatar == Null)
+                                 src='{{asset("storage/images/default.jpg")}}'
+                                 @else
+                                 src="{{asset("storage/{$user->avatar}")}}"
+                                 @endif alt="">
                             <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1 text-base" type="button">
@@ -58,7 +60,7 @@
                             <span class="inline-block">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <p class="inline-block text-m">
-                                    @if($user->location!="") {{$user->location}} @lang('lang.cash_city')
+                                    @if($user->location!="")@lang('lang.cash_city') {{$user->location}}
                                     @else @lang('lang.cash_cityNotGiven')
                                     @endif
                                 </p>
@@ -186,7 +188,7 @@
                                                            for="location">@lang('lang.settings_city')</label>
                                                     <select class="border rounded-xl py-2 px-3 w-full text-grey-900"
                                                             name="location">
-                                                        <option value="">Tanlash</option>
+                                                        <option value="">@lang('lang.settings_choose')</option>
 
                                                         @foreach($regions as $region)
                                                             <option
@@ -198,6 +200,7 @@
                                                     @error('location')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
+
                                                 </div>
                                                 <input type="submit"
                                                        class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"

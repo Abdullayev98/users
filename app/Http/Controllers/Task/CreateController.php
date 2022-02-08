@@ -205,9 +205,12 @@ class CreateController extends Controller
 
     public function contact_store(Task $task, UserPhoneRequest $request)
     {
-        $request->validated();
+        $data = $request->validated();
         $user = auth()->user();
-        if (!$user->is_phone_number_verified) {
+        if (!$user->is_phone_number_verified || $user->phone_number != $data['phone_number']) {
+            $data['is_phone_number_verified'] = 0;
+            $user->update($data);
+
             LoginController::send_verification('phone');
             return redirect()->route('task.create.verify', $task->id);
         }
@@ -247,14 +250,13 @@ class CreateController extends Controller
 
     public function verify(Task $task)
     {
-
         return view('create.verify', compact('task'));
     }
 
-    public function deletetask($id)
+    public function deletetask(Task $task)
     {
-        Task::where('id', $id)->delete();
-        CustomFieldsValue::where('task_id', $id)->delete();
+        $task->delete();
+        CustomFieldsValue::where('task_id', $task)->delete();
     }
 
 

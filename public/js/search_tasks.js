@@ -34,18 +34,18 @@ function tasks_list_all(data) {
         let json = JSON.parse(data.address);
         $(".show_tasks").append(
             `<div class="sort-table print_block" hidden>
-                <div class="w-full border-b border-t  md:border pt-3 md:p-0 hover:bg-blue-100 h-36 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
-                    <div class="md:w-11/12 w-full ml-0.5 h-12 md:m-4 sm:m-2 m-0">
-                        <div class="float-left w-7/12 " id="results">
-                            <i class="` + data.icon + ` text-2xl float-left text-blue-400 mr-4"></i>
-                            <a href="/detailed-tasks/` + data.id + `" class="text-lg font-semibold text-blue-400 hover:text-red-400">` + data.name + `</a>
-                            <p class="text-xs ml-12 mt-4 location">` + json.location + `</p>
-                            <p class="text-xs ml-8 mt-1 pl-4">Начать ` + data.start_date + `</p>
+                <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-36 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
+                    <div class="md:w-11/12 w-full sm:ml-0.5  md:m-4 sm:m-2 m-0 ml-2">
+                        <div class="sm:float-left sm:w-7/12 w-full" id="results">
+                            <i class="` + data.icon + ` text-2xl float-left text-blue-400 sm:mr-4 mr-3"></i>
+                            <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-base font-semibold text-blue-500 hover:text-red-600">` + data.name + `</a>
+                            <p class="text-sm sm:ml-12 ml-10 sm:mt-4 sm:mt-1 mt-0 location ">` + json.location + `</p>
+                            <p class="text-sm sm:ml-8 ml-6 sm:mt-1 mt-0 pl-4 ">Начать ` + data.start_date + `</p>
                         </div>
-                        <div class="float-right w-4/12 text-right sm:p-0" id="about">
-                            <a href="#" class="text-lg font-semibold">` + data.budget + `</a>
-                            <p class="text-xs mt-5">` + data.category_name + `</p>
-                            <p class="text-xs mt-2">` + data.user_name + `</p>
+                        <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 sm:mt-1 mt-0" id="about">
+                            <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
+                            <p class="text-sm sm:mt-5 sm:mt-1 mt-0">` + data.category_name + `</p>
+                            <a href="#" class="text-sm sm:mt-1 mt-0 border-b-2 border-gray-300 hover:border-red-400 hover:text-red-600 ">` + data.user_name + `</a>
                         </div>
                     </div>
                 </div>

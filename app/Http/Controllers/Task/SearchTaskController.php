@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Task;
 
+use App\Http\Requests\Task\UpdateRequest;
 use App\Models\WalletBalance;
 use Illuminate\Support\Arr;
 use App\Models\User;
@@ -19,31 +20,33 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
 class SearchTaskController extends VoyagerBaseController
 {
-    public function task_search(){
-//        $tasks = Task::orderBy('id','desc')->where('status',null)->count();
+    public function task_search()
+    {
+//        $task = Task::orderBy('id','desc')->where('status',null)->count();
 //        $categories = Category::get()->all();
 //        return view('task.search', compact('tasks','categories'));
         return view('task.search');
     }
 
-    public function ajax_tasks(Request $request){
+    public function ajax_tasks(Request $request)
+    {
         if (isset($request->orderBy)) {
             if ($request->orderBy == 'all') {
-                $tasks = DB::table("tasks")->where('status','=', 1)->orderBy('id', 'desc')
+                $tasks = DB::table("tasks")->where('status', '=', 1)->orderBy('id', 'desc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
                     ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'sroch') {
-                $tasks =  DB::table("tasks")->where('status','=',1)->orderBy('start_date','asc')
+                $tasks = DB::table("tasks")->where('status', '=', 1)->orderBy('start_date', 'asc')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'udal') {
-                $tasks =  DB::table("tasks")->where([['address', '=', null], ['status', '=', null]])
-                    ->orderBy('id','desc')
+                $tasks = DB::table("tasks")->where([['address', '=', null], ['status', '=', null]])
+                    ->orderBy('id', 'desc')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
                     ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
@@ -60,143 +63,164 @@ class SearchTaskController extends VoyagerBaseController
         return $tasks->all();
     }
 
-    public function my_tasks(){
+    public function my_tasks()
+    {
         $tasks = Task::where('user_id', auth()->id())->get();
         $perform_tasks = Task::where('performer_id', auth()->id())->get();
         $all_tasks = Task::where('user_id', Auth::id())->where('performer_id', Auth::id())->get();
         $categories = Category::get();
-        return view('/task/mytasks',compact('tasks','categories','perform_tasks','all_tasks'));
+        return view('/task/mytasks', compact('tasks', 'categories', 'perform_tasks', 'all_tasks'));
     }
-    public function search(Request $request){
-      $s = $request->s;
-      $a = $request->a;
-      $p = $request->p;
-      // dd($s);
-      if ($request->s) {
-      $tasks = Task::where('name','LIKE',"%$s%")->orderBy('name')->paginate(10);
-    }elseif ($request->a) {
-      $tasks = Task::where('address','LIKE',"%$a%")->orderBy('name')->paginate(10);
-    }elseif ($request->p) {
-      $tasks = Task::where('budget','LIKE',"%$p%")->orderBy('name')->paginate(10);
-    }else {
-      $tasks = Task::where('name','LIKE',"%$s%")->orWhere('address','LIKE',"%$a%")->orWhere('budget','LIKE',"%$p%")->orderBy('name')->paginate(10);
-    }
-    $categories = Category::all();
-      return view('task.search', compact('tasks','s','a','p','categories'));
+
+    public function search(Request $request)
+    {
+        $s = $request->s;
+        $a = $request->a;
+        $p = $request->p;
+        // dd($s);
+        if ($request->s) {
+            $tasks = Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
+        } elseif ($request->a) {
+            $tasks = Task::where('address', 'LIKE', "%$a%")->orderBy('name')->paginate(10);
+        } elseif ($request->p) {
+            $tasks = Task::where('budget', 'LIKE', "%$p%")->orderBy('name')->paginate(10);
+        } else {
+            $tasks = Task::where('name', 'LIKE', "%$s%")->orWhere('address', 'LIKE', "%$a%")->orWhere('budget', 'LIKE', "%$p%")->orderBy('name')->paginate(10);
+        }
+        $categories = Category::all();
+        return view('task.search', compact('tasks', 's', 'a', 'p', 'categories'));
 
     }
-    public function task($id){
-        $balance = WalletBalance::where('user_id',Auth::id())->first();
-        if ($balance){
-            $balance =  $balance->balance;
-        }else{
+
+    public function task(Task $task)
+    {
+        $balance = WalletBalance::where('user_id', Auth::id())->first();
+        if ($balance) {
+            $balance = $balance->balance;
+        } else {
             $balance = 0;
         }
 
-        $tasks = Task::where('id',$id)->first();
-          $cat_id = $tasks->category_id;
-          $user_id = $tasks->user_id;
-        $same_tasks = Task::where('category_id',$cat_id)->get();
+        $users = User::all();
 
-        $task_responses = Response::where('task_id', $tasks->id)->get();
-        $response_count = Response::where('task_id', $tasks->id)->count();
-        $response_count_user = Response::where('user_id', Auth::id())->count();
-        foreach($task_responses as $response){
-          $response_users = User::where('id', $response->user_id)->first();
-          }
-
-          $users = User::all();
-          $current_user = User::find($user_id);
-          $categories = Category::where('id',$cat_id)->get();
-
-          $auth_user = Auth::user();
 
         $arr = get_defined_vars();
 
         if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks',compact('tasks','same_tasks','response_count_user','users','categories','current_user','task_responses','response_users','response_count','balance','auth_user'));
-        }else {
-          return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','response_count_user','current_user','balance','auth_user'));
+            return view('task.detailed-tasks', compact('task',  'users',));
+        } else {
+            return view('task.detailed-tasks', compact('task',  'users',  'balance'));
         }
 
     }
 
-    public function task_response(Request $request){
-      $status = $request->input('status');
-      $performer_id = $request->input('performer_id');
-      $task_id = $request->input('task_id');
-      $description = $request->input('response_desc');
-      $comment = $request->input('comment');
-      $name_task = $request->input('name_task');
-      $users_id = $request->input('user_id');
-      $good = $request->input('good');
-      if($status){
-        if ($status == 4){
-            Task::where('id', $task_id)->update([
-                'status' => $status
-            ]);
-        }elseif ($status == 3){
-            Task::where('id', $task_id)->update([
-                'status' => $status,
-                'performer_id' => $performer_id,
+    public function task_response(Request $request)
+    {
+        $status = $request->input('status');
+        $performer_id = $request->input('performer_id');
+        $task_id = $request->input('task_id');
+        $description = $request->input('response_desc');
+        $comment = $request->input('comment');
+        $name_task = $request->input('name_task');
+        $users_id = $request->input('user_id');
+        $good = $request->input('good');
+        if ($status) {
+            if ($status == 4) {
+                Task::where('id', $task_id)->update([
+                    'status' => $status
+                ]);
+            } elseif ($status == 3) {
+                Task::where('id', $task_id)->update([
+                    'status' => $status,
+                    'performer_id' => $performer_id,
+                ]);
+                Notification::create([
+                    'user_id' => $performer_id,
+                    'task_id' => $task_id,
+                    'name_task' => $name_task,
+                    'description' => 1,
+                    'type' => 3
+                ]);
+            }
+        }
+        if ($description) {
+            $notificate = $request->input('notificate');
+            $response_time = $request->input('response_time');
+            $response_price = $request->input('response_price');
+            $task_id = $request->input('task_id');
+            TaskResponse::create([
+                'user_id' => Auth::id(),
+                'task_id' => $task_id,
+                'description' => $description,
+                'notificate' => $notificate,
+                'time' => $response_time,
+                'price' => $response_price,
+                'price' => $response_price,
+                'creator_id' => $users_id
             ]);
             Notification::create([
-                'user_id' => $performer_id,
+                'user_id' => $users_id,
                 'task_id' => $task_id,
                 'name_task' => $name_task,
                 'description' => 1,
-                'type' => 3
+                'type' => 2
             ]);
         }
-      }
-      if($description){
-        $notificate = $request->input('notificate');
-        $response_time = $request->input('response_time');
-        $response_price = $request->input('response_price');
-        $task_id = $request->input('task_id');
-        TaskResponse::create([
-          'user_id' => Auth::id(),
-          'task_id' => $task_id,
-          'description' => $description,
-          'notificate' => $notificate,
-          'time' => $response_time,
-          'price' => $response_price,
-          'price' => $response_price,
-          'creator_id' => $users_id
-        ]);
-        Notification::create([
-          'user_id' => $users_id,
-          'task_id' => $task_id,
-          'name_task' => $name_task,
-          'description' => 1,
-          'type' => 2
-        ]);
-      }
-      if($comment){
-        if(Auth::id() == $users_id){
-          Review::create([
-            'user_id' => $performer_id,
-            'description' => $comment,
-            'good_bad' => $good,
-            'reviewer_id' => Auth::id(),
-            'task_id' => $task_id,
-          ]);
-        }else{
-          Review::create([
-            'user_id' => $users_id,
-            'description' => $comment,
-            'good_bad' => $good,
-            'reviewer_id' => Auth::id(),
-            'task_id' => $task_id,
-          ]);
+        if ($comment) {
+            if (Auth::id() == $users_id) {
+                Review::create([
+                    'user_id' => $performer_id,
+                    'description' => $comment,
+                    'good_bad' => $good,
+                    'reviewer_id' => Auth::id(),
+                    'task_id' => $task_id,
+                ]);
+                $user_reviews_good = Review::where('user_id', $performer_id)->where('good_bad', 1)->count();
+                $user_reviews_bad = Review::where('user_id', $performer_id)->where('good_bad', 0)->count();
+                $all_count = $user_reviews_good - $user_reviews_bad;
+                User::where('id', $performer_id)->update([
+                    'reviews' => $all_count
+                ]);
+            } else {
+                Review::create([
+                    'user_id' => $users_id,
+                    'description' => $comment,
+                    'good_bad' => $good,
+                    'reviewer_id' => Auth::id(),
+                    'task_id' => $task_id,
+                ]);
+                $user_reviews_good = Review::where('user_id', $users_id)->where('good_bad', 1)->count();
+                $user_reviews_bad = Review::where('user_id', $users_id)->where('good_bad', 0)->count();
+                $all_count = $user_reviews_good - $user_reviews_bad;
+                User::where('id', $users_id)->update([
+                    'reviews' => $all_count
+                ]);
+            }
         }
-      }
-      return response()->json(['success'=>$performer_id]);
-  }
+        return response()->json(['success' => $all_count]);
+    }
 
-  public function delete_task(Task $task){
-      DB::delete('DELETE FROM tasks WHERE id = ?', [$task->id]);
-      echo ("User Record deleted successfully.");
-      return redirect('/');
-  }
+    public function delete_task(Task $task)
+    {
+        DB::delete('DELETE FROM tasks WHERE id = ?', [$task->id]);
+        echo("User Record deleted successfully.");
+        return redirect('/');
+    }
+
+    public function change_task(Task $task)
+    {
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        $categories2 = Category::withTranslations(['ru', 'uz'])->where('parent_id', "!=", null)->get();
+        return view('task.changetask', compact('categories', 'categories2', 'task', ));
+    }
+
+    public function update_task(Task $task, UpdateRequest $request)
+    {
+
+        $data = $request->validated();
+        $task->update($data);
+
+        dd($data);
+
+    }
 }

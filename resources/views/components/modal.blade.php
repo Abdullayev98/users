@@ -29,22 +29,23 @@
                             </div>
 
 
-                            <div class="text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
+                            <div
+                                class="text-lg sm:text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
                                 @lang('lang.modal_email')
                             </div>
-                            <p class="my-8 text-gray-700 traking-tight">
+                            <p class="text-sm sm:text-xl my-2 sm:my-8 text-gray-700 traking-tight">
                                 @lang('lang.modal_addres') <strong>{{auth()->user()->email}}</strong>
                                 @lang('lang.modal_addres1')
                             </p>
-                            <p class="my-8 text-gray-700 traking-tight">
+                            <p class="text-sm sm:text-xl my-2 sm:my-8 text-gray-700 traking-tight">
                                 @lang('lang.modal_addres2')
                             </p>
 
-                            <a class='text-gray-800 send-email border-b sent-email border-dotted @if($errors->has('email') || session()->has('email-message')) hidden @endif border-gray-700 cursor-pointer'
+                            <a class='text-sm sm:text-xl text-gray-800 send-email border-b sent-email border-dotted @if($errors->has('email') || session()->has('email-message')) hidden @endif border-gray-700 cursor-pointer'
                                href="{{route('user.verify.send')}}">@lang('lang.modal_addres3')</a><br>
 
 
-                            <a class='text-gray-800 border-b border-dotted border-gray-700 @if($errors->has('email') || session()->has('email-message') ) hidden @endif change-email cursor-pointer'>
+                            <a class='text-sm sm:text-xl text-gray-800 border-b border-dotted border-gray-700 @if($errors->has('email') || session()->has('email-message') ) hidden @endif change-email cursor-pointer'>
                                 @lang('lang.modal_addres4')</a>
 
                             <form action="{{route('user.email.change')}}" id="send-data-form"
@@ -115,7 +116,7 @@
 
                                 <div
                                     class="text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
-                                    @lang('lang.modal_email')
+                                    @lang('lang.modal_phone1')
                                 </div>
                                 <p class="my-8 text-gray-700 traking-tight">
                                     @lang('lang.modal_address1')<strong>{{auth()->user()->phone_number}}</strong>
@@ -244,7 +245,8 @@
                         mask: '+998(00)000-00-00',
                         lazy: false
                     }
-                    var mask = new IMask(element, maskOptions);
+                    if (element)
+                        var mask = new IMask(element, maskOptions);
                     $("#phone_number").keyup(function () {
                         var text = $(this).val()
                         text = text.replace(/[^0-9.]/g, "")

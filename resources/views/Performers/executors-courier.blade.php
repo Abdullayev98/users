@@ -22,11 +22,11 @@
                    <div class="flex sm:flex-row flex-col w-full mt-6">
                     <div class="flex-initial sm:w-1/3 w-full">
                       <img class="h-48 w-44"
-                        @if ($user->avatar == Null)
-                        src='{{asset("AvatarImages/images/default_img.jpg")}}'
-                        @else
-                        src="{{asset("AvatarImages/{$user->avatar}")}}"
-                        @endif alt="">
+                           @if ($user->avatar == Null)
+                           src='{{asset("storage/images/default.jpg")}}'
+                           @else
+                           src="{{asset("storage/{$user->avatar}")}}"
+                           @endif alt="avatar">
                     </div>
                     <div class="flex-initial sm:w-2/3 w-full sm:mt-0 mt-6 sm:ml-8 ml-0">
                         <div class="font-medium text-lg">
@@ -73,7 +73,7 @@
                         </div> --}}
                         <div class="flex mt-6">
 
-                        <div data-tooltip-target="tooltip-animation_1" class="mx-4">
+                        <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
                             <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
                                  src="{{ asset('images/verify.png') }}"
                                  @else
@@ -90,22 +90,22 @@
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
                         </div>
-                        <div data-tooltip-target="tooltip-animation_2" class="mx-4" >
-                            <img
-                            @if ($task_count >= 50)
-                                src="{{ asset('images/best.png') }}"
-                             @else
-                                 src="{{ asset('images/best_gray.png') }}"
-                             @endif
-                                alt="" class="w-16">
-                            <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                <p class="text-center">
-                                    @lang('lang.profile_icon_best')
-                                </p>
-                                <div class="tooltip-arrow" data-popper-arrow></div>
-                            </div>
-                        </div>
-                        <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
+                            @foreach($about as $rating)
+                                @if($rating->id == $user->id)
+                                    <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
+                                        <img src="{{ asset('images/best.png') }}"alt="" class="w-16">
+                                        <div id="tooltip-animation_2" role="tooltip" class="inline-block  w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                            <p class="text-center">
+                                                @lang('lang.profile_icon_best')
+                                            </p>
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    </div>
+                                    @else
+                                    @continue
+                                @endif
+                            @endforeach
+                            <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
                             @if($task_count >= 50)
                                 <img src="{{ asset('images/50.png') }}" alt="" class="w-16">
                             @else
@@ -165,7 +165,6 @@
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-                                        @lang('lang.exe_performer')
                                         @else
                                         @lang('lang.exe_feedB'):
                                             @if ($review->good_bad == 1)
@@ -173,7 +172,6 @@
                                             @else
                                                 <i class="far fa-thumbs-down"></i>
                                             @endif
-                                        @lang('lang.exe_customer')
                                         @endif
                                     @endif
                                 </span>
@@ -200,24 +198,18 @@
                 </div>
 
                 <h1 class="mt-12 text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
-                @foreach($categories as $category)
-                 @if($category->id == $user->category_id)
-               <div class="mt-8">
-                    <a class="text-2xl font-medium hover:text-red-500 underline underline-offset-4 ">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a>
-                    <!-- <p class="mt-2 text-gray-400 text-lg">1 место в рейтинге категории в г. Санкт-Петербург, выполнено 199 заданий <br>
-                        20 место в общем рейтинге категории</p> -->
-               </div>
+
                <div>
                   <ul>
-                    @foreach($child_categories as $cat)
-                    @if($cat->parent_id == $category->id)
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="#">{{$cat->name}}</a> </li>
-                    @endif
+                    @foreach(explode(',', $user->category_id) as $user_cat)
+                    @foreach($categories as $cat)
+                        @if($cat->id == $user_cat)
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="/categories/{{$cat->parent_id}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
+                              @endif
+                          @endforeach
                     @endforeach
                   </ul>
                </div>
-                @endif
-              @endforeach
             </div>
         {{-- left sidebar end --}}
 
@@ -229,15 +221,6 @@
                         <p class="text-gray-400">@lang('lang.exe_since') {{date('d-m-Y', strtotime($user->created_at))}}</p>
                     </div>
                     <div class="">
-                        <!-- <div class="flex w-full mt-4">
-                            <div class="flex-initial w-1/4">
-                                <i class="text-white far fa-file-image text-2xl bg-green-500 py-3 px-4 rounded-lg"></i>
-                            </div>
-                            <div class="flex-initial w-3/4">
-                                <h2 class="font-medium text-lg">Документы</h2>
-                                <p>Документы проверены</p>
-                            </div>
-                        </div> -->
                         <div class="flex w-full mt-4">
                             <div class="flex-initial w-1/4">
                                 <i class="fas fa-phone-alt text-white text-2xl bg-yellow-500 py-1 px-2 rounded-lg"></i>
@@ -264,24 +247,6 @@
                                 @endif
                             </div>
                         </div>
-                        <!-- <div class="flex w-full mt-4">
-                            <div class="flex-initial w-1/4">
-                                <i class="text-white far fa-address-book text-2xl bg-blue-400 py-3 px-4 rounded-lg"></i>
-                            </div>
-                            <div class="flex-initial w-3/4">
-                                <h2 class="font-medium text-lg">Вконтакте</h2>
-                                <p>Подтвержден</p>
-                            </div>
-                        </div> -->
-                        <!-- <div class="flex w-full mt-4">
-                            <div class="flex-initial w-1/4">
-                                <i class=" fab fa-apple text-2xl bg-gray-400 text-white py-3 px-4 rounded-lg"></i>
-                            </div>
-                            <div class="flex-initial w-3/4">
-                                <h2 class="font-medium text-lg">Apple ID</h2>
-                                <p>Подтвержден</p>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -326,5 +291,6 @@
           document.getElementById(modalID12 + "-backdrop").classList.toggle("flex");
         }
       </script>
+c
     {{-- Modal end --}}
 @endsection

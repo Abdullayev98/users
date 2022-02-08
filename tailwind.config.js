@@ -9,7 +9,7 @@
                     'primary': '#3490dc',
                     'secondary': '#ffed4a',
                     'danger': '#e3342f',
-                    'whiteblue': '#80e6ff';
+                    'whiteblue': '#80e6ff',
                 }
             }
         },

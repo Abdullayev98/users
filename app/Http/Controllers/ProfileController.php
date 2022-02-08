@@ -28,16 +28,29 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $comment = $request->input('comment');
+        $description = $request->input('description');
         $data['user_id'] = $user->id;
         $data['comment'] = $comment;
-        $user = Portfolio::where('comment', $comment)->first();
-        return $this->create();
-        
-    }
-    public function create(array $data)
-    {
+        $data['description'] = $description;
         $dd = Portfolio::create($data);
         return $dd;
+
+    }
+    public function delete($id)
+    {
+        $user = Auth::user();
+        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
+        foreach ($comment as $comments){
+            $directory = $comments->comment;
+        }
+        $file = File::deleteDirectory("Portfolio/{$user->name}/{$directory}");
+        if($file) {
+            Portfolio::where('id', $id)->where('user_id', $user->id)->delete();
+            return dd(true);
+        }else{
+            return dd(false);
+        }
+
     }
     public function UploadImage(Request $request)
     {
@@ -46,7 +59,7 @@ class ProfileController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')                
+            $filePath = $request->file('file')
                 ->move(public_path("Portfolio/{$user->name}/{$comment->comment}"), $fileName);
 
             $fileModelname = time() . '_' . $request->file->getClientOriginalName();
@@ -57,6 +70,29 @@ class ProfileController extends Controller
             ]);
         }
     }
+    public function testBase(Request $request)
+    {
+        $user = Auth::user();
+        $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
+        $image = File::allFiles("Portfolio/{$user->name}/{$comment->comment}");
+        $json = implode(',',$image);
+        $data['image'] = $json;
+        $id = $comment->id;
+        $base = new Portfolio;
+        if($base->where('id',$comment->id)->update($data)){
+            return redirect()->route('userprofile');
+        }else{
+            return dd(false);
+        }
+
+
+    }
+    public function portfolio($id)
+    {
+        $user = Auth::user();
+        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
+        return view('profile/portfolio', compact('comment','user'));
+    }
     //profile
     public function profileData()
     {
@@ -65,16 +101,29 @@ class ProfileController extends Controller
         $task = Task::where('user_id',Auth::user()->id)->count();
         $task_count = Task::where('performer_id', Auth::id())->where('status',4)->count();
         $ports = Portfoliocomment::where('user_id', Auth::user()->id)->get();
-        $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
-        $image = File::glob(public_path("Portfolio/{$user->name}/{$comment->comment}").'/*');
-        $a = File::directories(public_path("Portfolio"));
+        $comment = Portfolio::where('user_id', $user->id)->where('image', '!=', null)->get();
+        if($comment != null){
+            //$image = $comment->image;
+            //$images = explode(',',$image);
+            $image = File::glob(public_path("Portfolio/{$user->name}/{$comment}").'/*');
+        }else{
+            $image = [0,1];
+            $images = [0,1];
+        }
+
+        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
+
+        //dd($a);
         $file = "Portfolio/{$user->name}";
-        if($a == []){
+        if(!file_exists($file)){
             File::makeDirectory($file);
         }
+
         $b = File::directories(public_path("Portfolio/{$user->name}"));
         $directories = array_map('basename', $b);
-        return view('profile.profile', compact('directories','task_count','image','user','views','task','ports'));
+        $categories = Category::withTranslations(['ru', 'uz'])->get();
+
+        return view('profile.profile', compact('categories','image','about','comment','directories','task_count','user','views','task','ports'));
     }
     public function updates(Request $request)
     {
@@ -185,7 +234,8 @@ class ProfileController extends Controller
         $id = Auth::user()->id;
         $checkbox = implode(",", $request->get('category'));
         User::where('id',$id)->update(['category_id'=>$checkbox]);
-        return redirect()->back();
+        auth()->user()->role_id=2;
+        return redirect()->route('userprofile');
     }
 
     public function StoreDistrict(Request $request){
@@ -224,9 +274,80 @@ class ProfileController extends Controller
         return redirect()->back()->with([
             'password' => 'password'
         ]);
-
-
     }
+    //personal info Ijrochi uchun
 
+    public function verificationIndex()
+    {
+        return view('verification.verification');
+    }
+    public function verificationInfo()
+    {
+        return view('personalinfo.personalinfo');
+    }
+    public function verificationInfoStore(Request $request)
+    {
+        $request->validate([
+            'location' => 'required',
+            'name' => 'required',
+            'familya' => 'required',
+            'date' => 'required',
+        ]);
+        $user = Auth::user();
+        $user->location = $request->location;
+        $user->last_name = $request->familya;
+        $user->name = $request->name;
+        $user->born_date = $request->date;
+        $user->save();
+
+        return  redirect()->route('verification.contact');
+    }
+    public function verificationContact()
+    {
+        return view('personalinfo.contact');
+    }
+    public function verificationContactStore(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'phone_number' => 'required',
+        ]);
+        $user = Auth::user();
+        $user->email = $request->email;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+
+        return  redirect()->route('verification.photo');
+    }
+    public function verificationPhoto()
+    {
+        return view('personalinfo.profilephoto');
+    }
+    public function verificationPhotoStore(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image'
+        ]);
+        $user= Auth::user();
+        $data = $request->all();
+        if($request->hasFile('avatar')){
+            $destination = 'AvatarImages/'.$user->avatar;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $filename = $request->file('avatar');
+            $imagename = "images/users/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $data['avatar'] = $imagename;
+        }
+        $user->update($data);
+        return  redirect()->route('verification.category');
+    }
+    public function verificationCategory()
+    {
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        return view('personalinfo.personalcategoriya', compact('categories'));
+    }
 
 }
