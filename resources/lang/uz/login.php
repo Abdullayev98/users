@@ -16,4 +16,5 @@ return [
     'password.required' => 'To\'ldirish talab qilinadi!',
     'password.min' => 'Parollar kamida 6 ta belgidan iborat bo\'lishi kerak',
     'password.confirmed' => 'Parol mos emas',
+    'emailError' => 'Elektron pochta yoki parol noto`g`ri. Qayta urinib ko`ring',
 ];

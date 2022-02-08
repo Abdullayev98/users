@@ -48,7 +48,7 @@
 
                     @if(session()->has('message'))
                         <p class="text-red-500 mb-5">
-                            Email or Password is not correct. Try again
+                            @lang('login.emailError')
                         </p>
                     @endif
                     <p></p>

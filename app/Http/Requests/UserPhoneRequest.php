@@ -37,7 +37,6 @@ class UserPhoneRequest extends FormRequest
             'phone_number.min' => 'The Phone length must be 9',
             'phone_number.unique' => 'The Phone is already exists',
             'phone_number.exists' => 'This phone number does not exist'
-
         ];
 
     }
