@@ -13,7 +13,7 @@
                             <div class="sm:inline-flex block w-full col-span-4">
                             <!-- <input class="focus:outline-none  w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
                                 <input id="filter" type="text"
-                                       class="focus:outline-none w-10/12 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
+                                       class="focus:outline-none focus:placeholder-transparent w-10/12 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                        placeholder="@lang('lang.search_byKey')">
                                 <button
                                     class="sm:w-2/12 w-4/12 bg-green-500 hover:bg-green-600 ml-1 py-1 px-1 rounded-md sm:mt-0 text-white"
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
-                                    <input type="text" maxlength="7" class="focus:outline-none w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
+                                    <input type="text" maxlength="7" class="focus:outline-none focus:placeholder-transparent w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
                                 </div>
                             </div>
                             <div class="inline-flex  block w-full col-span-4">
@@ -81,7 +81,7 @@
                     <div class="inline-flex block w-full col-span-4">
                     <!-- <input class="focus:outline-none  w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
                         <input id="filter" type="text"
-                               class="focus:outline-none text-base w-10/12 px-4 py-1 text-black border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4 bg-gray-200"
+                               class="focus:outline-none focus:placeholder-transparent text-base w-10/12 px-4 py-1 text-black border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4 bg-gray-200"
                                placeholder="@lang('lang.search_byKey')">
 
                         <button
@@ -143,7 +143,7 @@
 
                     <div class=" w-11/12 mx-auto border-b pb-4">
                         <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
-                        <input type="text" maxlength="7" class="w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
+                        <input type="text" maxlength="7" class="w-full focus:placeholder-transparent border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
                     </div>
 
                     <div class="w-11/12 mx-auto">
@@ -337,28 +337,33 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
-{{--    <script src="https://api-maps.yandex.ru/2.1/?apikey=fe6ba029-0855-4dbc-9468-b53a3f64fac1&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>--}}
     <script src="{{asset('js/search_tasks.js')}}"></script>
 {{--    <script src="/js/search_tasks.js"></script>--}}
     <script>
-        let allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
-
-        // let userCoordinates=[[],[]];
-
 
         // module.exports = {
         //     plugins: [require('@tailwindcss/forms')]
         // };
 
-        function first_ajax(id) {
+        function first_ajax(id, filter) {
             $.ajax({
                 url: "{{route('tasks.search')}}",
-                data: {orderBy: id},
+                data: {orderBy: id, fltr: filter},
                 type: 'GET',
                 success: function (data) {
-                    dataAjax = $.parseJSON(JSON.stringify(data));
-                    sixInOne();
+                    if (id == 'all') {
+                        dataAjax = $.parseJSON(JSON.stringify(data));
+                        sixInOne();
+                    }
+                    if (id == 'klyuch') {
+                        dataAjax2 = $.parseJSON(JSON.stringify(data));
+                        dataAjaxCheck=2
+                        sixInOne();
+                    }
                 },
+                error: function () {
+                    alert("Ajax ishida xatolik...");
+                }
             });
         }
 

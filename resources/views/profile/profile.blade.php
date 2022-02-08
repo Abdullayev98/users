@@ -85,6 +85,7 @@
                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                         </div>
                                     </div>
+                                    @if($user->role_id == 2)
                                     @foreach($about as $rating)
                                         @if($rating->id == $user->id)
                                             <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
@@ -113,6 +114,7 @@
                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                         </div>
                                     </div>
+                                        @endif
                                 </div>
                         </div>
                     </div>
@@ -165,12 +167,12 @@
                             <span>@lang('lang.profile_createAlbum')</span>
                            </a>
                         </div>
-                        <div class="flex sm:flex-row flex-col mb-6">
+                        <div class="grid md:grid-cols-3 grid-cols-1 w-full mx-auto">
                         @foreach($comment as $comments)
                         @php
                             $images = explode(',', $comments->image);
                         @endphp
-                            <a href="/profile/portfolio/{{$comments->id}}" class="border border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
+                            <a href="/profile/portfolio/{{$comments->id}}" class="border my-6 border-gray-400 w-56 h-48 mr-6 sm:mb-0 mb-8">
                                 <img src="{{$images[0]}}" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
                                     <p class="w-2/3 text-center text-base text-white">{{$comments->comment}}</p>
@@ -318,10 +320,12 @@
                 toggleModal6('modal-id6');
             });
     </script>
-    <script>
+    @if($user->role_id == 2)
+        <script>
         if($('.tooltip-2').length === 0){
             $( "<div data-tooltip-target='tooltip-animation_2' class='mx-4 tooltip-2' ><img src='{{ asset("images/best_gray.png") }}'alt='' class='w-24'><div id='tooltip-animation_2' role='tooltip' class='inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700'><p class='text-center'>@lang('lang.profile_icon_best')</p><div class='tooltip-arrow' data-popper-arrow></div> </div></div>" ).insertAfter( $( ".tooltip-1" ) );
         }
     </script>
+    @endif
     @include('sweetalert::alert')
 @endsection

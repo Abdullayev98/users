@@ -17,7 +17,7 @@
                 <a href="/verification" class="flex flex-row shadow-lg rounded-lg mb-8">
                     <div class="w-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
                     </div>
-                    <div class=" text-xs text-gray-700 text-left my-auto">
+                    <div class="font-bold text-xs text-gray-700 text-left my-auto">
                         @lang('lang.perfCat_becomePerf')
                     </div>
                 </a>

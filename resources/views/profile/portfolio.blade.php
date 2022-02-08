@@ -13,17 +13,14 @@
 
             @php
                 $images = explode(',', $comments->image);
-                $a = array($images);
+                $a = sizeof($images)-1;
             @endphp
-        @if(sizeof($images) != 1)
-            @for($i = 0; $i <= sizeof($a); $i++)
+            @for($i = 0; $i <= $a; $i++)
                 <img class="w-40 h-40 mx-2" src="{{asset($images[$i])}}" alt="Images not found">
                 {{--@dd($image);--}}
             @endfor
-        @else
-                <img src="{{asset($images[0])}}" alt="Images not found">
-        @endif
             </div>
+
             <form action="/profile/delete/portfolio/{{$comments->id}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
