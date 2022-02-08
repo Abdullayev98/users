@@ -66,8 +66,8 @@
                         </div>
                     </div>
                     <div class="flex flex-row sm:w-1/2 w-5/6 mx-auto mt-8 items-center text-blue-300 hover:text-blue-400">
-                        <a href="/verification"><i class="text-blue fas fa-shield-alt text-2xl mx-2"></i></a>
-                        <a href="/verification"> <p class="text-base underline">@lang('lang.header_bePerformer')</p></a>
+                        <a href="{{route('verification')}}"><i class="text-blue fas fa-shield-alt text-2xl mx-2"></i></a>
+                        <a href="{{route('verification')}}"> <p class="text-base underline">@lang('lang.header_bePerformer')</p></a>
                     </div>
                 </div>
             </main>
@@ -293,14 +293,14 @@
 
                     </div>
                     <div class="mt-4">
-                        <a href="/task-search/" type="button"
+                        <a href="{{route('task.search')}}" type="button"
                                 class="text-center py-2 bg-blue-500 border-blue-500 text-white text-3xl w-full border-b-4">
                                 @lang('lang.body_showAllTasks')
                         </a>
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">
-                <a href="/verification">
+                <a href="{{route('verification')}}">
                     <div
                         class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover" style="background: url('https://www.roi-selling.com/hs-fs/hub/444749/file-1929610769-jpg/blog-files/team-.jpg');">
                         <div class="w-full h-full bg-black bg-opacity-40 text-center">
@@ -309,7 +309,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="/security">
+                <a href="{{route('security')}}">
                     <div
                          class="md:w-full w-full h-1/3 my-8 bg-center bg-cover" style="background: url('https://3blaws.s3.amazonaws.com/images/bigstock-Green-energy-biofuel-electric-74257315.jpg');">
                         <div class="w-full h-full bg-black bg-opacity-40 text-center">
@@ -318,7 +318,7 @@
                         </div>
                     </div>
                 </a>
-                   <a href="/performers">
+                   <a href="{{route('performers')}}">
                         <div
                             class="md:w-full w-full h-1/3 my-8 bg-center bg-cover" style="background: url('https://wallpapercave.com/wp/wp4002616.jpg');">
                             <div class="w-full h-full bg-black bg-opacity-40 text-center">
