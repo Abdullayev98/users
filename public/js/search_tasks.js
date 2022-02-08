@@ -128,7 +128,7 @@ function tasks_list_all(data) {
                         <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 sm:mt-1 mt-0" id="about">
                             <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
                             <p class="text-sm sm:mt-5 sm:mt-1 mt-0">` + (dataAjaxCheck==1 ? data.category_name : data.category.name) + `</p>
-                            <a href="#" class="text-sm sm:mt-1 mt-0 border-b-2 border-gray-300 hover:border-red-400 hover:text-red-600 ">` + (dataAjaxCheck==1 ? data.user_name : data.user.name) + `</a>
+                            <a href="/performers/` + data.userid + `" class="text-sm sm:mt-1 mt-0 border-b-2 border-gray-300 hover:border-red-400 hover:text-red-600 ">` + (dataAjaxCheck==1 ? data.user_name : data.user.name) + `</a>
                         </div>
                     </div>
                 </div>
