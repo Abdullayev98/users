@@ -75,9 +75,7 @@ Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->nam
 Route::get('/change-task/{task}', [SearchTaskController::class, 'change_task'])->name("task.changetask");
 Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("task.update");
 
-Route::get('/offer-tasks', function () {
-    return view('task.offertasks');
-});
+Route::view('/offer-tasks','task.offertasks');
 Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){
     Route::get('/',[ProfileController::class, 'verificationIndex']);
 
