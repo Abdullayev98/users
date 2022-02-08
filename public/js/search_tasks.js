@@ -1,21 +1,17 @@
-let dataAjax = {};
-let dataAjaxPrint = {};
-let dataGeo = [];
-let userCoordinates = [];
+let nameVal = '', dataAjaxCheck=1, allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
+let dataAjax = [], dataAjax2 = [], dataAjaxPrint = [];
+let dataGeo = [], userCoordinates = [];
 $('.all_cat').click();
-// $('.all_cat2').click();
 $(".for_check input:checkbox").each(function() {
     this.checked = true;
 });
-$(".for_check2 input:checkbox").each(function() {
-    this.checked = true;
-});
 
-function dataAjaxSort(){
-    dataAjaxPrint = {};
-    if(allCheck == 1){
+function dataAjaxCopy(){
+    dataAjaxPrint = [];
+    if (allCheck == 1){
         dataAjaxPrint = dataAjax;
-    }else {
+    }
+    if (allCheck == 2){
         $.each(dataAjax, function (index, data) {
             $('.chi_cat').each(function () {
                 if (this.checked && this.name == data.category_id) {
@@ -24,7 +20,96 @@ function dataAjaxSort(){
             });
         });
     }
-    // console.log(dataAjaxPrint)
+}
+
+function dataAjaxCopy2(){
+    dataAjaxPrint = [];
+    if (allCheck == 1) {
+        dataAjaxPrint = dataAjax2;
+    }
+    if (allCheck == 2){
+        $.each(dataAjax2, function (index, data) {
+            $('.chi_cat').each(function () {
+                if (this.checked && this.name == data.category_id) {
+                    dataAjaxPrint.push(data);
+                }
+            });
+        });
+    }
+}
+
+
+$('#filter').on('keypress',function(e) {
+    nameVal = $('#filter').val()
+    if ($('#filter').val().trim().length == 0) {
+        // console.log('Hech vaqo!!!')
+        $('#svgClose').attr("hidden", "hidden");
+    }else{
+        $('#svgClose').removeAttr('hidden');
+    }
+    // if(e.which == 127) {
+    //     alert('Delete');
+    //     if (nameVal==''){
+    //         // $('#svgClose').attr("hidden","hidden");
+    //     }
+    // }
+    if(e.which == 13) {
+        if ($.trim(nameVal) != ''){
+            // dataAjaxSortBy()
+            first_ajax('klyuch', nameVal)
+        }
+    }
+});
+
+$('#suggest').on('keypress',function(e) {
+    if(e.which == 13) {
+        nameVal = $('#suggest').val()
+        if (nameVal != '') {
+            dataAjaxSortBy()
+        }
+    }
+});
+
+$('#price').on('keypress',function(e) {
+    if(e.which == 13) {
+        nameVal = $('#price').val()
+        if (nameVal != '') {
+            dataAjaxSortBy()
+        }
+    }
+});
+
+function dataAjaxSortBy() {
+    // let nameVal = $('#filter').val()
+    // var msk = filterByCity(myArray, nameVal);
+    if (nameVal != '') {
+        dataAjaxPrint = [];
+        if (allCheck == 1) {
+            $.each(dataAjax, function (index, data) {
+                // console.log(data.name)
+                // console.log((data.name.search(new RegExp(nameVal, "i")) < 0))
+                // if (data.name.search(new RegExp(nameVal, "i")) > 0) {
+                // if (data.name.match(nameVal)) {
+                console.log(data.name.search(nameVal))
+                if (data.name.search(nameVal) !== -1) {
+                    dataAjaxPrint.push(data);
+
+                }
+            })
+        } else {
+            $.each(dataAjax, function (index, data) {
+                $('.chi_cat').each(function () {
+                    if (this.checked && this.name == data.category_id) {
+                        if (data.name.search(new RegExp(nameVal, "i")) > 0) {
+                            dataAjaxPrint.push(data);
+                            console.log('allcheck != 1')
+                        }
+                    }
+                });
+            });
+        }
+        sixInOne();
+    }
 }
 
 function tasks_list_all(data) {
@@ -54,103 +139,9 @@ function tasks_list_all(data) {
     });
 }
 
-
-
 $(".rotate").click(function() {
     $(this).toggleClass("rotate-[360deg]");
 });
-
-$("#filter").keyup(function() {
-    var filter = $(this).val();
-    first_ajax('klyuch', filter)
-});
-
-$("#price").keyup(function() {
-    var filter = $(this).val();
-    if(allCheck){
-        first_ajax('price', filter)
-    }
-});
-
-// $("#filter").keyup(function() {
-//
-//     // Retrieve the input field text and reset the count to zero
-//     var filter = $(this).val(),
-//         count = 0;
-//
-//     // Loop through the comment list
-//     $('#results a').each(function() {
-//         // If the list item does not contain the text phrase fade it out
-//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-//             var parent = $(this).parent();
-//             var parents = $(parent).parent();
-//             // MY CHANGE
-//             $(parents).parent().hide();
-//             // Show the list item if the phrase matches and increase the count by 1
-//         } else {
-//             var parent = $(this).parent();
-//             var parents = $(parent).parent();
-//             // MY CHANGE
-//             $(parents).parent().show();
-//             // $(this).show(); // MY CHANGE
-//             count++;
-//             console.log(count);
-//         }
-//     });
-// });
-
-// $(".address").keyup(function() {
-//
-//     // Retrieve the input field text and reset the count to zero
-//     var filter = $(this).val(),
-//         count = 0;
-//
-//     // Loop through the comment list
-//     $('#results .location').each(function() {
-//         // If the list item does not contain the text phrase fade it out
-//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-//             var parent = $(this).parent();
-//             var parents = $(parent).parent();
-//             // MY CHANGE
-//             $(parents).parent().hide();
-//             // Show the list item if the phrase matches and increase the count by 1
-//         } else {
-//             var parent = $(this).parent();
-//             var parents = $(parent).parent();
-//             // MY CHANGE
-//             $(parents).parent().show();
-//             // $(this).show(); // MY CHANGE
-//             count++;
-//         }
-//     });
-// });
-
-
-// $("#price").keyup(function() {
-//
-//     // Retrieve the input field text and reset the count to zero
-//     var filter = $(this).val(),
-//         count = 0;
-//
-//     // Loop through the comment list
-//     $('#about a').each(function() {
-//         // If the list item does not contain the text phrase fade it out
-//         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-//             var parent = $(this).parent();
-//             var parents = $(parent).parent();
-//             // MY CHANGE
-//             $(parents).parent().hide();
-//             // Show the list item if the phrase matches and increase the count by 1
-//         } else {
-//             var parent = $(this).parent();
-//             var parents = $(parent).parent();
-//             // MY CHANGE
-//             $(parents).parent().show();
-//             // $(this).show(); // MY CHANGE
-//             count++;
-//         }
-//     });
-// });
 
 function enDis(rr){
     if (rr == 0){
@@ -170,7 +161,6 @@ function resetCounters(){
 function maps_show(){
     dataGeo = [];
     for (var i in dataAjaxPrint) {
-        // console.log(dataAjaxPrint[i].coordinates)
         dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
     }
     map_pos(k)
@@ -178,10 +168,14 @@ function maps_show(){
 
 function sixInOne(){
     resetCounters()
-    dataAjaxSort()
+    if(dataAjaxCheck == 1) {
+        dataAjaxCopy()
+    }else {
+        dataAjaxCopy2()
+    }
     if(dataAjaxPrint.length == 0){
         img_show();
-    }else {
+    }else{
         tasks_list_all(dataAjaxPrint)
         tasks_show()
     }
@@ -215,6 +209,71 @@ function tasks_show(){
     }
 }
 
+$('.all_cat').click(function() {
+    if (this.checked == false) {
+        $(".for_check input:checkbox").each(function() {
+            this.checked = false;
+        });
+        allCheck = 0;
+        img_show();
+    } else {
+        $(".for_check input:checkbox").each(function() {
+            this.checked = true;
+        });
+        allCheck = 1;
+        sixInOne();
+    }
+});
+
+$('.par_cat').click(function() {
+    if (this.checked == false) {
+        parcats_click_false(this.id, this.name)
+        if (chicat_check_print()) {
+            allCheck = 2;
+            sixInOne();
+        } else {
+            allCheck = 0;
+            img_show()
+        }
+    } else {
+        parcats_click_true(this.id, this.name)
+        sixInOne();
+    }
+});
+
+$('.chi_cat').click(function() {
+    if (this.checked == false) {
+        chicats_click_false(this.id, this.name)
+        if (chicat_check_print()) {
+            allCheck = 2;
+            sixInOne();
+        } else {
+            allCheck = 0;
+            img_show()
+        }
+    } else {
+        chicats_click_true(this.id, this.name)
+        sixInOne();
+    }
+});
+
+function parcats_click_true(id, name) {
+    $('.chi_cat').each(function() {
+        if (this.id == id) {
+            this.checked = true;
+        }
+    });
+    $('.all_cat').each(function() {
+        if (parcat_check()) {
+            this.checked = true;
+            allCheck = 1;
+        } else {
+            this.checked = false;
+            allCheck = 2;
+        }
+    });
+}
+
 function parcats_click_false(id) {
     $('.par_cat').each(function() {
         if (this.id == id) {
@@ -229,19 +288,6 @@ function parcats_click_false(id) {
             this.checked = false;
         }
     });
-    // $('.par_cat2').each(function() {
-    //     if (this.id == id) {
-    //         this.checked = false;
-    //     }
-    // });
-    // $('.all_cat2').each(function() {
-    //     this.checked = false;
-    // });
-    // $('.chi_cat2').each(function() {
-    //     if (this.id == id) {
-    //         this.checked = false;
-    //     }
-    // });
 }
 
 function parcat_check() {
@@ -253,191 +299,6 @@ function parcat_check() {
         }
     });
     return i;
-}
-
-// function parcat2_check() {
-//     let i = 1;
-//     $('.par_cat2').each(function() {
-//         if (this.checked == false) {
-//             i = 0;
-//             return false;
-//         }
-//     });
-//     return i;
-// }
-
-function chicats_click_false(id, name) {
-    $('.chi_cat').each(function() {
-        if (this.name == name) {
-            this.checked = false
-        }
-    });
-    $('.par_cat').each(function() {
-        if (this.id == id) {
-            this.checked = false;
-        }
-    });
-    $('.all_cat').each(function() {
-        this.checked = false;
-    });
-    // $('.chi_cat2').each(function() {
-    //     if (this.name == name) {
-    //         this.checked = false
-    //     }
-    // });
-    // $('.par_cat2').each(function() {
-    //     if (this.id == id) {
-    //         this.checked = false;
-    //     }
-    // });
-    // $('.all_cat2').each(function() {
-    //     this.checked = false;
-    // });
-}
-
-function chicat_check(id) {
-    let i = 1;
-    $('.chi_cat').each(function() {
-        if (this.id == id) {
-            if (this.checked == false) {
-                i = 0;
-                return false;
-            }
-        }
-    });
-    return i;
-}
-
-// function chicat2_check(id) {
-//     let i = 1;
-//     $('.chi_cat2').each(function() {
-//         if (this.id == id) {
-//             if (this.checked == false) {
-//                 i = 0;
-//                 return false;
-//             }
-//         }
-//     });
-//     return i;
-// }
-
-function chicat_check_print() {
-    let i = 0;
-    $('.chi_cat').each(function() {
-        if (this.checked) {
-            i = 1;
-            return false;
-        }
-    });
-    return i;
-}
-
-// $('.all_cat, .all_cat2').click(function() {
-$('.all_cat').click(function() {
-    if (this.checked == false) {
-        $(".for_check input:checkbox").each(function() {
-            this.checked = false;
-        });
-        $('.all_cat').each(function() {
-            this.checked = false;
-        });
-        // $(".for_check2 input:checkbox").each(function() {
-        //     this.checked = false;
-        // });
-        // $('.all_cat2').each(function() {
-        //     this.checked = false;
-        // });
-        allCheck = 0;
-        img_show();
-    } else {
-        $(".for_check input:checkbox").each(function() {
-            this.checked = true;
-        });
-        $('.all_cat').each(function() {
-            this.checked = true;
-        });
-        // $(".for_check2 input:checkbox").each(function() {
-        //     this.checked = true;
-        // });
-        // $('.all_cat2').each(function() {
-        //     this.checked = true;
-        // });
-        allCheck = 1;
-        sixInOne();
-    }
-});
-
-// $('.par_cat, .par_cat2').click(function() {
-$('.par_cat').click(function() {
-    if (this.checked == false) {
-        parcats_click_false(this.id, this.name)
-        if (chicat_check_print()) {
-            allCheck = 1;
-            sixInOne();
-        } else {
-            allCheck = 0;
-            img_show()
-        }
-    } else {
-        parcats_click_true(this.id, this.name)
-        allCheck = 1;
-        sixInOne();
-    }
-});
-
-// $('.chi_cat, .chi_cat2').click(function() {
-$('.chi_cat').click(function() {
-    if (this.checked == false) {
-        chicats_click_false(this.id, this.name)
-        if (chicat_check_print()) {
-            allCheck = 1;
-            sixInOne();
-        } else {
-            allCheck = 0;
-            img_show()
-        }
-    } else {
-        chicats_click_true(this.id, this.name)
-        allCheck = 1;
-        sixInOne();
-    }
-});
-
-function parcats_click_true(id, name) {
-    $('.par_cat').each(function() {
-        if (this.name == name) {
-            this.checked = true;
-        }
-    });
-    $('.chi_cat').each(function() {
-        if (this.id == id) {
-            this.checked = true;
-        }
-    });
-    $('.all_cat').each(function() {
-        if (parcat_check()) {
-            this.checked = true;
-        } else {
-            this.checked = false;
-        }
-    });
-    // $('.par_cat2').each(function() {
-    //     if (this.name == name) {
-    //         this.checked = true;
-    //     }
-    // });
-    // $('.chi_cat2').each(function() {
-    //     if (this.id == id) {
-    //         this.checked = true;
-    //     }
-    // });
-    // $('.all_cat2').each(function() {
-    //     if (parcat2_check()) {
-    //         this.checked = true;
-    //     } else {
-    //         this.checked = false;
-    //     }
-    // });
 }
 
 function chicats_click_true(id, name) {
@@ -455,50 +316,68 @@ function chicats_click_true(id, name) {
     $('.all_cat').each(function() {
         if (parcat_check()) {
             this.checked = true;
+            allCheck = 1;
         } else {
+            this.checked = false;
+            allCheck = 2;
+        }
+    });
+}
+
+function chicats_click_false(id, name) {
+    $('.par_cat').each(function() {
+        if (this.id == id) {
             this.checked = false;
         }
     });
-    // $('.chi_cat2').each(function() {
-    //     if (this.name == name) {
-    //         this.checked = true;
-    //     }
-    // });
-    // $('.par_cat2').each(function() {
-    //     if (this.id == id) {
-    //         if (chicat2_check(id))
-    //             this.checked = true;
-    //     }
-    // });
-    // $('.all_cat2').each(function() {
-    //     if (parcat2_check()) {
-    //         this.checked = true;
-    //     } else {
-    //         this.checked = false;
-    //     }
-    // });
+    $('.all_cat').each(function() {
+        this.checked = false;
+    });
 }
 
-
-$(document).ready(function(){
-
-    $("#srochnost").click(function(){
-        first_ajax('sroch')
-    });
-    $(".byid").click(function(){
-        first_ajax('all')
-    });
-    $("#as").click(function(){
-        first_ajax('udal')
-    });
-    $(".checkboxByAs").change(function() {
-        if(this.checked) {
-            first_ajax('udal')
-        }else {
-            first_ajax('all')
+function chicat_check(id) {
+    let i = 1;
+    $('.chi_cat').each(function() {
+        if (this.id == id) {
+            if (this.checked == false) {
+                i = 0;
+                return false;
+            }
         }
     });
-});
+    return i;
+}
+
+function chicat_check_print() {
+    let i = 0;
+    $('.chi_cat').each(function() {
+        if (this.checked) {
+            i = 1;
+            return false;
+        }
+    });
+    return i;
+}
+
+// $(document).ready(function(){
+//
+//     $("#srochnost").click(function(){
+//         first_ajax('sroch')
+//     });
+//     $(".byid").click(function(){
+//         first_ajax('all')
+//     });
+//     $("#as").click(function(){
+//         first_ajax('udal')
+//     });
+//     $(".checkboxByAs").change(function() {
+//         if(this.checked) {
+//             first_ajax('udal')
+//         }else {
+//             first_ajax('all')
+//         }
+//     });
+// });
 
 function map_pos(mm) {
     if (mm) {
@@ -620,39 +499,39 @@ function map_pos(mm) {
         ymaps.ready(init);
         function init() {
 
-                var myInput = document.getElementById("suggest");
-                var location = ymaps.geolocation;
+            var myInput = document.getElementById("suggest");
+            var location = ymaps.geolocation;
 
+            location.get({
+                mapStateAutoApply: true
+            })
+                .then(
+                    function(result) {
+                        let userCoord = result.geoObjects.get(0).geometry.getCoordinates();
+                        userCoordinates = userCoord;
+
+                    },
+                    function(err) {
+                        console.log('Ошибка: ' + err)
+                    }
+                );
+
+            $("#mpshow").click(function(){
                 location.get({
                     mapStateAutoApply: true
                 })
                     .then(
                         function(result) {
-                            let userCoord = result.geoObjects.get(0).geometry.getCoordinates();
-                            userCoordinates = userCoord;
-
+                            myInput.value = result.geoObjects.get(0).properties.get('text');
+                            userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
+                            // myMap2.geoObjects.add(result.geoObjects)
                         },
                         function(err) {
                             console.log('Ошибка: ' + err)
                         }
                     );
-
-            $("#mpshow").click(function(){
-                        location.get({
-                            mapStateAutoApply: true
-                        })
-                            .then(
-                                function(result) {
-                                    myInput.value = result.geoObjects.get(0).properties.get('text');
-                                    userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
-                                    // myMap2.geoObjects.add(result.geoObjects)
-                                },
-                                function(err) {
-                                    console.log('Ошибка: ' + err)
-                                }
-                            );
-                    });
-
+            });
+            // var suggestView1 = new ymaps.SuggestView('suggest');
             var myMap2 = new ymaps.Map('map2', {
                 // center: userCoordinates,
                 center: [41.317648, 69.230585],
@@ -672,10 +551,10 @@ function map_pos(mm) {
             });
             getPointData = function (index) {
                 return {
-                    balloonContentHeader: '<font size=3><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font>',
-                    balloonContentBody: '<br><font size=4><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjax[index].start_date + ' - ' + dataAjax[index].end_date + '</p></font><br><font size=3><p>' + dataAjax[index].budget + '</p></font>',
+                    // balloonContentHeader: '<font size=3><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font>',
+                    balloonContentBody: '<br><font size=4><b><a href="/detailed-tasks/' + dataAjaxPrint[index].id + '">' + dataAjaxPrint[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjaxPrint[index].start_date + ' - ' + dataAjaxPrint[index].end_date + '</p></font><br><font size=3><p>' + dataAjaxPrint[index].budget + '</p></font>',
                     // balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
-                    clusterCaption: 'Задания <strong>' + dataAjax[index].id + '</strong>'
+                    clusterCaption: 'Задания <strong>' + dataAjaxPrint[index].id + '</strong>'
                 };
             }
             getPointOptions = function () {
@@ -690,9 +569,12 @@ function map_pos(mm) {
             for (var i = 0; i < dataGeo.length; i++) {
                 geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
             }
+
+
+
             clusterer.options.set({
                 gridSize: 80,
-                clusterDisableClickZoom: false
+                clusterDisableClickZoom: true
             });
 
             clusterer.add(geoObjects);
@@ -701,7 +583,26 @@ function map_pos(mm) {
                 checkZoomRange: false
             });
             circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
+            circle.events.add('drag', function () {
+                // Объекты, попадающие в круг, будут становиться красными.
+                var objectsInsideCircle = objects.searchInside(circle);
+                objectsInsideCircle.setOptions('preset', 'twirl#redIcon');
+                // Оставшиеся объекты - синими.
+                // objects.remove(objectsInsideCircle).setOptions('preset', 'twirl#blueIcon');
+                objects.remove(objectsInsideCircle).removeOverlay(geoObjects);
+            });
             myMap2.geoObjects.add(circle);
+
+
+            // myMap2.geoObjects.add(searchIntersect(myMap2));
+            // ymaps.geoQuery(geoObjects).addToMap(myMap2);
+            // ymaps.geoQuery(myMap2.geoObjects).searchIntersect(myMap2);
+            // geoQuery(geoObjects).addToMap(myMap2);
+            // geoQuery(myMap2.geoObjects).searchIntersect(myMap2);
+
+            // $distance = 2 * asin(sqrt( pow(sin(deg2rad( ($lat1-$lat2) / 2)), 2) +
+            //     cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
+            //     pow(sin(deg2rad(($lng1- $lng2) / 2)), 2))) * 6378245;
         }
 
     } else {
@@ -732,14 +633,14 @@ function map_pos(mm) {
                 clusterHideIconOnBalloonOpen: false,
                 geoObjectHideIconOnBalloonOpen: false
             });
-                getPointData = function (index) {
-                    return {
-                        balloonContentHeader: '<font size=3><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font>',
-                        balloonContentBody: '<br><font size=4><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjax[index].start_date + ' - ' + dataAjax[index].end_date + '</p></font><br><font size=3><p>' + dataAjax[index].budget + '</p></font>',
-                        // balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
-                        clusterCaption: 'Задания <strong>' + dataAjax[index].id + '</strong>'
-                    };
-                }
+            getPointData = function (index) {
+                return {
+                    // balloonContentHeader: '<font size=3><b><a href="/detailed-tasks/' + dataAjaxPrint[index].id + '">' + dataAjaxPrint[index].name + '</a></b></font>',
+                    balloonContentBody: '<br><font size=4><b><a href="/detailed-tasks/' + dataAjaxPrint[index].id + '">' + dataAjaxPrint[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjaxPrint[index].start_date + ' - ' + dataAjaxPrint[index].end_date + '</p></font><br><font size=3><p>' + dataAjaxPrint[index].budget + '</p></font>',
+                    // balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
+                    clusterCaption: 'Задания <strong>' + dataAjaxPrint[index].id + '</strong>'
+                };
+            }
             getPointOptions = function () {
                 return {
                     preset: 'islands#greenIcon'
@@ -801,7 +702,7 @@ function map1_show (){
                 };
             },
             geoObjects = [];
-            dataGeo = [];
+        dataGeo = [];
         for (var i in dataAjaxPrint) {
             dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
         }
@@ -824,11 +725,6 @@ function map1_show (){
         myMap1.geoObjects.add(circle);
     }
 }
-
-
-
-
-
 
 // script for mobile
 
