@@ -28,12 +28,16 @@
                         @foreach($datas as $data)
 
                             @if($data->type == 'select')
+                                @if($data->title !== NULL)
                                 <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
                                     {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
                                 </div>
+                                @endif
+                                @if($data->description !== NULL)
                                 <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                                     {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
                                 </div>
+                                @endif
                                 <div class="py-4 mx-auto  text-left ">
                                     <div class="mb-4">
                                         <div id="formulario" class="flex flex-col gap-y-4">
@@ -56,12 +60,16 @@
                             @if($data->type == 'checkbox')
 
 
-                                <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                                    {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                                </div>
-                                <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                                    {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                                </div>
+                                    @if($data->title !== NULL)
+                                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
+                                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
+                                        </div>
+                                    @endif
+                                    @if($data->description !== NULL)
+                                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
+                                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
+                                        </div>
+                                    @endif
 
                                 <div class="py-4 mx-auto  text-left ">
                                     <div class="mb-4">
@@ -98,12 +106,17 @@
                             @endif
                             @if($data->type == 'radio')
 
-                                <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                                    {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                                </div>
-                                <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                                    {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                                </div>
+
+                                    @if($data->title !== NULL)
+                                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
+                                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
+                                        </div>
+                                    @endif
+                                    @if($data->description !== NULL)
+                                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
+                                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
+                                        </div>
+                                    @endif
 
                                 <div class="py-4 mx-auto  text-left ">
                                     <div class="mb-4">
@@ -136,12 +149,16 @@
                                 <div class="border-b-4"></div>
                             @endif
                             @if($data->type == 'input')
-                                <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                                    {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                                </div>
-                                <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                                    {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                                </div>
+                                    @if($data->title !== NULL)
+                                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
+                                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
+                                        </div>
+                                    @endif
+                                    @if($data->description !== NULL)
+                                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
+                                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
+                                        </div>
+                                    @endif
 
                                 <div class="py-4 mx-auto  text-left ">
                                     <div class="mb-4">
