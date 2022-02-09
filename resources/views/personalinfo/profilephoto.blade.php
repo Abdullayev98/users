@@ -13,18 +13,19 @@
                 @endphp
                 <div class="flex justify-center">
                     <img class="w-20 h-20"
-                        @if ($user->avatar == Null)
-                        src='{{asset("AvatarImages/images/default_img.jpg")}}'
-                        @else
-                        src="{{asset("AvatarImages/{$user->avatar}")}}"
-                        @endif alt="">
+                         @if ($user->avatar == Null)
+                         src='{{asset("storage/images/default.jpg")}}'
+                         @else
+                         src="{{asset("storage/{$user->avatar}")}}"
+                         @endif alt="avatar">
                 </div>
                 <h3 class="text-2xl font-semibold my-3">
                     {{$user->name}}
                 </h3>
             
-                <form action="{{route('verification.photo.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('update.photo')}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <label for="profilephoto" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">@lang('lang.personalinfo_text18')</label>
                     <input type="file" id="profilephoto" name="avatar" class="hidden">
                     <p class="text-base my-5">

@@ -14,13 +14,15 @@
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{ $user->name }}!</h2>
                     <div class="flex flex-row mt-6" style="width:500px">
                         <div class="sm:w-1/3 w-full">
-                            <img class="border border-3 border-gray-400 h-40 w-40" @if ($user->avatar == null)
-                            src='{{ asset('AvatarImages/images/default_img.jpg') }}'
-                        @else
-                            src="{{ asset("AvatarImages/{$user->avatar}") }}"
-                            @endif alt="">
-                            <form action="{{ route('updateSettingPhoto') }}" method="POST" enctype="multipart/form-data">
+                            <img class="border border-3 border-gray-400 h-40 w-40"
+                                 @if ($user->avatar == Null)
+                                 src='{{asset("storage/images/default.jpg")}}'
+                                 @else
+                                 src="{{asset("storage/{$user->avatar}")}}"
+                                 @endif alt="">
+                            <form action="{{ route('update.photo') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()"
                                         class="hidden">
@@ -186,15 +188,15 @@
                             </ul>
                             <div id="tab-contents">
                                 <div id="first" class="p-4">
-                                    <table class="">
+                                    <table class="" id="example">
                                         <thead>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_date')</th>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_amount')</th>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_method')</th>
                                         </thead>
                                         <tbody>
-                                            @if ($user->transactions)
-                                                @foreach ($user->transactions as $transaction)
+                                            @if ($transactions)
+                                                @foreach ($transactions as $transaction)
                                                     <tr>
                                                         <td class="text-center w-1/4 border">
                                                             {{ $transaction->created_at->format('d.m.Y') }}</td>
@@ -208,14 +210,14 @@
                                     </table>
                                 </div>
                                 <div id="second" class="hidden p-4">
-                                    <table class="">
+                                    <table class="" id="example">
                                         <thead>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_date')</th>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_amount')</th>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_method')</th>
                                         </thead>
                                         <tbody>
-                                            @foreach ($user->transactions as $transaction)
+                                            @foreach ($transactions as $transaction)
                                                 <tr>
 
                                                     <td class="text-center w-1/4 border">
@@ -228,9 +230,12 @@
                                     </table>
                                 </div>
                                 <div id="third" class="hidden p-4">
-                                    @foreach ($user->transactions as $transaction)
+                                    @foreach ($transactions as $transaction)
                                         <td>{{ $transaction->action }}</td>
                                     @endforeach
+                                </div>
+                                <div id="third" class="p-4">
+                                    {{$transactions->links()}}
                                 </div>
                             </div>
                         </div>
@@ -318,26 +323,22 @@
             var x = document.getElementById("myText1").value;
             if (x < 4000) {
                 document.getElementById('button2').removeAttribute("onclick");
-                document.getElementById('button2').classList.remove("bg-green-500");
+                document.getElementById('button2').classList.remove("bg-green-500","hover:bg-green-500");
                 document.getElementById('button2').classList.add("bg-gray-500");
-                document.getElementById('button2').classList.remove("hover:bg-green-500");
             } else {
                 document.getElementById('button2').setAttribute("onclick", "toggleModal();");
                 document.getElementById('button2').classList.remove("bg-gray-500");
-                document.getElementById('button2').classList.add("bg-green-500");
-                document.getElementById('button2').classList.add("hover:bg-green-500");
+                document.getElementById('button2').classList.add("bg-green-500","hover:bg-green-500");
             }
         }
 
         function fileupdate() {
             var x = document.getElementById("buttons");
             x.style.display = "block";
-
         }
 
         function fileadd() {
             var x = document.getElementById("buttons");
-
             x.classList.add("hidden");
         }
     </script>
@@ -363,6 +364,5 @@
             });
         });
     </script>
-
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 @endsection

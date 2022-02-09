@@ -26,8 +26,9 @@
                                  @else
                                  src="{{asset("storage/{$user->avatar}")}}"
                                  @endif alt="">
-                            <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('update.photo')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1 text-base" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
                                     <label for="file" class="p-1">
