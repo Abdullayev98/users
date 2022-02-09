@@ -192,8 +192,12 @@ class ProfileController extends Controller
     public function updateData(UserUpdateDataRequest $request)
     {
         $data = $request->validated();
-        $data['is_phone_number_verified'] = 0;
-        $data['is_email_verified'] = 0;
+        if ($data['email'] != auth()->user()->email){
+            $data['is_phone_number_verified'] = 0;
+        }
+        if ($data['phone_number'] != auth()->user()->phone_number){
+            $data['is_phone_number_verified'] = 0;
+        }
         Auth::user()->update($data);
         Alert::success('Success', "Successfully Updated");
         return  redirect()->route('editData');
