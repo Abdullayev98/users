@@ -352,30 +352,26 @@
                         <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                         <div class="flex flex-row mt-4">
                             <div class="mr-4">
-                                @if (isset($current_user))
                                     <img src="
-                            @if ($current_user->avatar == '')
+                            @if ($task->user->avatar == '')
                                     {{ asset("storage/images/default.png") }}
                                     @else
-                                    {{ asset("storage/{$current_user->avatar}") }}
+                                    {{ asset("storage/{$task->user->avatar}") }}
                                     "@endif
                                          class="border-2 border-gray-400 w-32 h-32" alt="#">
-                                @endif
                             </div>
                             <div class="">
-                                <a href="@if (isset($current_user))/performers/{{$current_user->id}}@else @endif" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $task->user_name}}</a> <br>
+                                <a href="/performers/{{$task->user->id}}" class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}</a> <br>
                                 <a href="#" class="text-xl text-gray-500">
-                                    @if (isset($current_user))
-                                        @if($current_user->age != "")
+                                        @if($task->user->age != "")
                                             <p class="inline-block text-m mr-2">
-                                                {{$current_user->age}}
-                                                @if($current_user->age>20 && $current_user->age%10==1) @lang('lang.cash_rusYearGod')
-                                                @elseif ($current_user->age>20 && ($current_user->age%10==2 || $current_user->age%10==3 || $current_user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                                {{$task->user->age}}
+                                                @if($task->user->age>20 && $task->user->age%10==1) @lang('lang.cash_rusYearGod')
+                                                @elseif ($task->user->age>20 && ($task->user->age%10==2 || $task->user->age%10==3 || $task->user->age%10==1)) @lang('lang.cash_rusYearGoda')
                                                 @else @lang('lang.cash_rusYearLet')
                                                 @endif
                                             </p>
                                         @endif
-                                    @endif
                                 </a>
                             </div>
                         </div>
