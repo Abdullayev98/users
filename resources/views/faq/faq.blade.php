@@ -65,10 +65,6 @@
         <p>@lang('lang.faq_text2')</p>
     </footer>
 
-
-
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-<script src="https://cdn.tailwindcss.com"></script>
 <script>
     $(function() {
     $("#inp").focus(function(){
