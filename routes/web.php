@@ -44,7 +44,7 @@ Route::get('/executors-courier', function () {
     return view('Performers/executors-courier');
 });
 Route::group(['prefix' => 'performers'], function () {
-Route::get('/', [PerformersController::class, 'service']);
+Route::get('/', [PerformersController::class, 'service'])->name('performers');
 Route::get('/{id}', [PerformersController::class, 'performer'])->name('performer.main');
 Route::get('/chat/{id}', [PerformersController::class, 'performer_chat']);
 
@@ -77,7 +77,7 @@ Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("t
 
 Route::view('/offer-tasks','task.offertasks');
 Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){
-    Route::get('/',[ProfileController::class, 'verificationIndex']);
+    Route::get('/',[ProfileController::class, 'verificationIndex'])->name('verification');
 
     Route::get('/personalinfo',[ProfileController::class, 'verificationInfo'])->name('verification.info');
     Route::post('/personalinfo',[ProfileController::class, 'verificationInfoStore'])->name('verification.info.store');

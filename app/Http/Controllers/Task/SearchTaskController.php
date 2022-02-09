@@ -60,8 +60,8 @@ class SearchTaskController extends VoyagerBaseController
                 $price = $request->prc;
                 $tasks = Task::where('status', '=', 1)
                     ->where('name', 'LIKE', "%$filter%")
-                    ->where('name', 'LIKE', "%$address%")
-                    ->where('name', 'LIKE', "%$price%")
+                    ->where('address', 'LIKE', "%$address%")
+                    ->where('budget', 'LIKE', "%$price%")
                     ->orderBy('id', 'asc')
                     ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
                     ->get()->load('user','category');
@@ -165,7 +165,6 @@ class SearchTaskController extends VoyagerBaseController
                 'description' => $description,
                 'notificate' => $notificate,
                 'time' => $response_time,
-                'price' => $response_price,
                 'price' => $response_price,
                 'creator_id' => $users_id
             ]);
