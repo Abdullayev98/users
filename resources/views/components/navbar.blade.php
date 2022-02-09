@@ -255,7 +255,7 @@
 
                     <div class="max-w-lg ml-5 float-left">
                         <a href="#" onclick="toggleModal()">
-                            <i class="xl:text-2xl lg:text-xl text-green-500 hover:text-yellow-500 fas fa-wallet"></i>
+                            <i class="xl:text-2xl lg:text-xl text-green-400 hover:text-yellow-500 fas fa-wallet"></i>
                         </a>
                     </div>
 
