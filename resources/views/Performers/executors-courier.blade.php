@@ -146,12 +146,17 @@
                         @foreach ($reviews as $review)
                             @if($review->user_id == $user->id)
                         <li class="d-flex flex-col my-10 rounded-lg">
-                            <a href="/performers/{{$review->user->id}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
-                                <img class="UsersReviews_picture__aB22p" src="{{asset("storage/{$review->user->avatar}")}}">
+                            <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
+                                <img class="UsersReviews_picture__aB22p"
+                                     @if ($user->avatar == Null)
+                                     src='{{asset("storage/images/default.jpg")}}'
+                                     @else
+                                     src="{{asset("storage/{$review->user->avatar}")}}"
+                                     @endif alt="avatar">
                             </a>
                             <div class="align-top ml-12 h-16">
                             <span>
-                                <a href="/performers/{{$review->user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$review->user->name}}</a>
+                                <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$review->user->name}}</a>
                             </span>
                                 <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
@@ -204,7 +209,7 @@
                     @foreach(explode(',', $user->category_id) as $user_cat)
                     @foreach($categories as $cat)
                         @if($cat->id == $user_cat)
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="/categories/{{$cat->parent_id}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="{{route('categories',$cat->parent_id)}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
                               @endif
                           @endforeach
                     @endforeach
