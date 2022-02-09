@@ -70,7 +70,7 @@
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                                 <div class="flex mt-6">
                                     <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
-                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                        <img @if ($user->is_email_verified != Null && $user->is_phone_number_verified != Null && $user->is_phone_number_verified != 0 && $user->is_email_verified != 0)
                                              src="{{ asset('images/verify.png') }}"
                                              @else
                                              src="{{ asset('images/verify_gray.png') }}"
@@ -173,7 +173,7 @@
                         @php
                             $images = explode(',', $comments->image);
                         @endphp
-                            <a href="/profile/portfolio/{{$comments->id}}" class="border my-6 border-gray-400 mx-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
+                            <a href="/profile/portfolio/{{$comments->id}}" class="border my-6 border-gray-400 mr-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
                                 <img src="{{$images[0]}}" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
                                     <p class="w-2/3 text-center text-base text-white">{{$comments->comment}}</p>
