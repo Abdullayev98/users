@@ -122,14 +122,12 @@ class PerformersController extends Controller
     public function deleteNotification(Notification $notification)
     {
         $notification->delete();
-        return back();
+        return redirect()->route('tasks.detail',$notification->task_id);
    }
 
     public function del_all_notif()
     {
         Notification::where('user_id', Auth::id())->delete();
-
-
         return response()->json(['success']);
     }
 
