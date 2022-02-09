@@ -71,55 +71,55 @@
                                     {{count($user->tasks??[])}}
                                 </span> @lang('lang.cash_task')</a></p>
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
-                                <div class="flex mt-6">
-                                    <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
-                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
-                                             src="{{ asset('images/verify.png') }}"
-                                             @else
-                                             src="{{ asset('images/verify_gray.png') }}"
-                                             @endif  alt="" class="w-24">
-                                        <div id="tooltip-animation_1" role="tooltip" class="inline-block sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                            <div class="flex mt-6">
+                                <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
+                                    <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                         src="{{ asset('images/verify.png') }}"
+                                         @else
+                                         src="{{ asset('images/verify_gray.png') }}"
+                                         @endif  alt="" class="w-24">
+                                    <div id="tooltip-animation_1" role="tooltip" class="inline-block sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                        <p class="text-center">
+                                            @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                                @lang('lang.profile_icon_verify')
+                                            @else
+                                                @lang('lang.profile_icon_not_verify')
+                                            @endif
+                                        </p>
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                </div>
+                                @if($user->role_id == 2)
+                                    @foreach($about as $rating)
+                                        @if($rating->id == $user->id)
+                                            <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
+                                                <img src="{{ asset('images/best.png') }}"alt="" class="w-24">
+                                                <div id="tooltip-animation_2" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                                    <p class="text-center">
+                                                        @lang('lang.profile_icon_best')
+                                                    </p>
+                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                </div>
+                                            </div>
+                                        @else
+                                            @continue
+                                        @endif
+                                    @endforeach
+                                    <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
+                                        @if($task_count >= 50)
+                                            <img src="{{ asset('images/50.png') }}" alt="" class="w-24">
+                                        @else
+                                            <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-24">
+                                        @endif
+                                        <div id="tooltip-animation_3" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                             <p class="text-center">
-                                                @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
-                                                    @lang('lang.profile_icon_verify')
-                                                @else
-                                                    @lang('lang.profile_icon_not_verify')
-                                                @endif
+                                                @lang('lang.profile_icon_50')
                                             </p>
                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                         </div>
                                     </div>
-                                    @if($user->role_id == 2)
-                                        @foreach($about as $rating)
-                                            @if($rating->id == $user->id)
-                                                <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
-                                                    <img src="{{ asset('images/best.png') }}"alt="" class="w-24">
-                                                    <div id="tooltip-animation_2" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                                        <p class="text-center">
-                                                            @lang('lang.profile_icon_best')
-                                                        </p>
-                                                        <div class="tooltip-arrow" data-popper-arrow></div>
-                                                    </div>
-                                                </div>
-                                            @else
-                                                @continue
-                                            @endif
-                                        @endforeach
-                                        <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
-                                            @if($task_count >= 50)
-                                                <img src="{{ asset('images/50.png') }}" alt="" class="w-24">
-                                            @else
-                                                <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-24">
-                                            @endif
-                                            <div id="tooltip-animation_3" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                                <p class="text-center">
-                                                    @lang('lang.profile_icon_50')
-                                                </p>
-                                                <div class="tooltip-arrow" data-popper-arrow></div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </figure>
@@ -140,7 +140,7 @@
 
                         </ul>
                         <div class="md:col-span-1 md:block hidden" id="settingsIcon"><a href="/profile/settings"><i
-                                    class="fas fa-user-cog text-3xl text-gray-700"></i></a></div>
+                                        class="fas fa-user-cog text-3xl text-gray-700"></i></a></div>
                     </div>
 
                     <hr>
@@ -176,10 +176,10 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="name">@lang('lang.settings_name')</label>
                                                     <input
-                                                        class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
-                                                        type="text" name="name" id="name"
-                                                        value="{{$user->name??old('email')}}"
-                                                        required>
+                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            type="text" name="name" id="name"
+                                                            value="{{$user->name??old('email')}}"
+                                                            required>
                                                     @error('name')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
@@ -188,9 +188,9 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="email">Email</label>
                                                     <input
-                                                        class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
-                                                        type="email" name="email" id="email"
-                                                        value="{{ $user->email??old('email')}}">
+                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            type="email" name="email" id="email"
+                                                            value="{{ $user->email??old('email')}}">
                                                     @error('email')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
@@ -199,12 +199,12 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="phone_number">@lang('lang.settings_phone')</label>
                                                     <input
-                                                        class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
-                                                        type="text" id="phone_number"
-                                                        @if (!$user->phone_number) placeholder="+998(00)000-00-00"
-                                                        @else
-                                                        value="+998{{$user->phone_number}}"
-                                                        @endif >
+                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            type="text" id="phone_number"
+                                                            @if (!$user->phone_number) placeholder="+998(00)000-00-00"
+                                                            @else
+                                                            value="+998{{$user->phone_number}}"
+                                                            @endif >
                                                     @error('phone_number')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
@@ -215,9 +215,9 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="age">@lang('lang.settings_age')</label>
                                                     <input
-                                                        class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
-                                                        min="18" type="number" name="age" id="age"
-                                                        value="{{$user->age}}">
+                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            min="18" type="number" name="age" id="age"
+                                                            value="{{$user->age}}">
                                                     @error('age')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
@@ -225,7 +225,7 @@
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="textarea">@lang('lang.settings_otherSet')</label>
-                                                    <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900"
+                                                    <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900 outline-none"
                                                               name="description"
                                                               id="textarea">{{old('description')??$user->description}}</textarea>
                                                     @error('description')
@@ -236,13 +236,13 @@
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="location">@lang('lang.settings_city')</label>
-                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900"
+                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900 outline-none"
                                                             name="location">
                                                         <option value="">@lang('lang.settings_choose')</option>
 
                                                         @foreach($regions as $region)
                                                             <option
-                                                                value="{{$region->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}" {{$region->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') == $user->location??old('location') ? 'selected' : null}}>{{$region->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</option>
+                                                                    value="{{$region->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}" {{$region->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') == $user->location??old('location') ? 'selected' : null}}>{{$region->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</option>
                                                         @endforeach
 
                                                     </select>
@@ -259,7 +259,7 @@
                                             </form>
 
                                             <a href="{{ route('users.delete', $user->id) }}" onclick="ConfirmDelete()"
-                                               class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
+                                               class="block md:w-3/5 w-full text-center bg-red-400 hover:bg-red-600 text-white mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
                                         </div>
                                     </div>
                                     {{-- settings/ first tab -> base settings end--}}
@@ -277,8 +277,8 @@
                                             <span class="col-span-9 ml-2">@lang('lang.settings_wantNews')</span>
                                         </div>
                                         <button
-                                            class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl"
-                                            type="submit">@lang('lang.settings_save')</button>
+                                                class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl"
+                                                type="submit">@lang('lang.settings_save')</button>
                                     </div>
                                     {{-- settings/ second tab -> enable notification end --}}
                                 </div>
@@ -294,11 +294,11 @@
 
                                                     <div class="mb-4 rounded-md border shadow-md">
                                                         <div
-                                                            class="accordion text-gray-700 cursor-pointer p-[18px] w-full text-left text-[15px]">
+                                                                class="accordion text-gray-700 cursor-pointer p-[18px] w-full text-left text-[15px]">
                                                             {{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                                         </div>
                                                         <div
-                                                            class="panel overflow-hidden hidden px-[18px] bg-white p-2">
+                                                                class="panel overflow-hidden hidden px-[18px] bg-white p-2">
                                                             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
                                                                 <label class="block">
                                                                     @php
@@ -318,8 +318,8 @@
                                                 @endforeach
                                             </div>
                                             <input
-                                                class="focus:outline-none  block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"
-                                                type="submit" name="submit" value="@lang('lang.settings_save')">
+                                                    class="focus:outline-none  block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"
+                                                    type="submit" name="submit" value="@lang('lang.settings_save')">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");
@@ -390,7 +390,7 @@
                                                                 <div class="mx-auto max-w-lg">
                                                                     <div class="py-2" x-data="{ show: true }">
                                                                         <span
-                                                                            class="px-1 text-sm text-gray-600">@lang('lang.settings_newPassword')</span>
+                                                                                class="px-1 text-sm text-gray-600">@lang('lang.settings_newPassword')</span>
                                                                         <div class="relative">
                                                                             <input placeholder="" name="password"
                                                                                    :type="show ? 'password' : 'text'"
@@ -401,7 +401,7 @@
                                                     focus:border-yellow-400
                                                     focus:outline-none">
                                                                             <div
-                                                                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+                                                                                    class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
 
                                                                                 <svg class="h-4 text-gray-700"
                                                                                      fill="none" @click="show = !show"
@@ -428,7 +428,7 @@
                                                                     </div>
                                                                     <div class="py-2" x-data="{ show: true }">
                                                                         <span
-                                                                            class="px-1 text-sm text-gray-600">@lang('lang.settings_repeatPassword')</span>
+                                                                                class="px-1 text-sm text-gray-600">@lang('lang.settings_repeatPassword')</span>
                                                                         <div class="relative">
                                                                             <input placeholder=""
                                                                                    name="password_confirmation"
