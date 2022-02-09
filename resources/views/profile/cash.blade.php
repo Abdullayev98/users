@@ -149,12 +149,12 @@
                             </h2>
                             <p class="inline">@lang('lang.cash_topUp')</p>
                             <input
-                                class="focus:outline-none  inline rounded-xl ml-3 ring-1 text-2xl text-center h-18 w-36 pb-1"
+                                class="focus:outline-none  inline rounded-xl xl:ml-3 ring-1 text-2xl text-center h-18 w-36  pb-1"
                                 onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)'
                                 id="myText1" type='number' min="4000" maxlength="7" value="4000" />
-                            <span class="ml-1 text-xl">UZS</span>
+                            <span class="xl:ml-1 xl:text-xl lg:text-lg text-xl">UZS</span>
                             <button onclick="toggleModal()" type="submit" id="button2"
-                                class="md:inline block md:ml-10 mx-auto mt-5 md:mt-0 h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 md:w-40 w-full">
+                                class="md:inline block xl:ml-10 lg:ml-2 mx-auto mt-5 md:mt-0 h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 md:w-40 w-full">
                                 @lang('lang.cash_topUpSub')
                             </button>
                         </div>
@@ -162,7 +162,7 @@
                             <h2 class="inline-block font-medium text-2xl text-gray-700">@lang('lang.cash_history')</h2>
                             <label class="text-left md:inline-block w-full  md:w-1/2">
                                 <select
-                                    class="form-select block md:w-36 w-full h-10 rounded-xl ring-1 ring-black md:0 md:ml-5">
+                                    class="form-select block md:w-36 w-full h-10 rounded-xl focus:outline-none ring-1 ring-black md:0 md:ml-5">
                                     <option>@lang('lang.cash_inMonth')</option>
                                     <option>@lang('lang.cash_inWeek')</option>
                                     <option>@lang('lang.cash_inYear')</option>
@@ -280,7 +280,7 @@
                         </div>
                         <div class="ml-3 col-span-3">
                             <h5 class="font-bold text-gray-700 block mt-2">Email</h5>
-                            <p class="text-sm">{{ $user->email }}</p>
+                            <p class="text-sm break-all">{{ $user->email }}</p>
                         </div>
                     </div>
                 </div>
