@@ -26,7 +26,6 @@ function init() {
     const alp = ["B", "C", "D", "E", "F"];
 
     $("#addbtn").click(function(){
-        alert(23432)
         if(x < 2){
             $("#addinput").append('<div class="flex items-center gap-x-2">' +
                 '<div class="flex items-center rounded-lg border  w-full py-1"> ' +
