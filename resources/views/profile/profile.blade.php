@@ -168,7 +168,7 @@
                             <span>@lang('lang.profile_createAlbum')</span>
                            </a>
                         </div>
-                        <div class="grid md:grid-cols-3 grid-cols-1 w-full mx-auto">
+                        <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mx-auto">
                         @foreach($comment as $comments)
                         @php
                             $images = explode(',', $comments->image);
