@@ -223,7 +223,6 @@
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</button>
-
                                             </form>
                                         </li>
 {{--                                        @break--}}
