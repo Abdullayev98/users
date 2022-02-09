@@ -146,17 +146,12 @@
                         @foreach ($reviews as $review)
                             @if($review->user_id == $user->id)
                         <li class="d-flex flex-col my-10 rounded-lg">
-                            <a href="#" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
-                                <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
+                            <a href="/performers/{{$review->user->id}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
+                                <img class="UsersReviews_picture__aB22p" src="{{asset("storage/{$review->user->avatar}")}}">
                             </a>
-                            <div class="align-top ml-12 min-h-10">
+                            <div class="align-top ml-12 h-16">
                             <span>
-                                @foreach ($review_users as $r_user)
-                                @if ($user->id == $review->user_id && $review->reviewer_id == $r_user->id)
-                                <a href="/performers/{{$r_user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$r_user->name}}</a>
-                                @endif
-                                @endforeach
-
+                                <a href="/performers/{{$review->user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$review->user->name}}</a>
                             </span>
                                 <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
@@ -182,11 +177,13 @@
                             </div>
                             <div class="p-5 mt-3 mr-0 mb-8 bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-2.5 relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid rounded-md">
                                 <div class="text-gray-500 py-4">
-                                    @foreach ($tasks as $task)
-                                    @if ($task->id == $review->task_id)
-                                    <i class="far fa-thumbs-up"></i> Задание "{{$task->name}}" выполнено
+                                    @if ($review->good_bad == 1)
+                                        <i class="far fa-thumbs-up"></i>
+                                    @else
+                                        <i class="far fa-thumbs-down"></i>
                                     @endif
-                                    @endforeach
+                                    Задание "{{$review->task->name}}"
+
                                 </div>
                                 <hr>
                                 <div class="py-4">
