@@ -59,12 +59,12 @@
                         </div>
                         <div class="text-gray-500 text-base mt-6">
                             <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
-                            @if ($reviews_count == 1)
-                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtziv')</span>
-                            @elseif ($reviews_count > 1 && $reviews_count > 5)
-                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtziva')</span>
+                            @if ($user->reviews()->count() == 1)
+                            <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziv')</span>
+                            @elseif ($user->reviews()->count() > 1 && $user->reviews()->count() > 5)
+                            <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziva')</span>
                             @else
-                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtzivov')</span>
+                            <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtzivov')</span>
                             @endif
                         </div>
                         {{-- <div class="text-gray-500 text-base mt-1">
@@ -142,7 +142,6 @@
 
                 <div class="py-12">
                     <ul class="d-flex flex-col gap-y-5">
-                        @if (isset($reviews))
                         @foreach ($reviews as $review)
                             @if($review->user_id == $user->id)
                         <li class="d-flex flex-col my-10 rounded-lg">
@@ -198,7 +197,6 @@
                         </li>
                         @endif
                         @endforeach
-                        @endif
                     </ul>
                 </div>
 
