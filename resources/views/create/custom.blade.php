@@ -28,12 +28,12 @@
                         @foreach($datas as $data)
 
                             @if($data->type == 'select')
-                                @if($data->title !== NULL)
+                                @if($data->title !== "")
                                 <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
                                     {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
                                 </div>
                                 @endif
-                                @if($data->description !== NULL)
+                                @if($data->description !== "")
                                 <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                                     {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
                                 </div>
@@ -60,12 +60,12 @@
                             @if($data->type == 'checkbox')
 
 
-                                    @if($data->title !== NULL)
+                                    @if($data->title !== "")
                                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
                                             {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
                                         </div>
                                     @endif
-                                    @if($data->description !== NULL)
+                                    @if($data->description !== "")
                                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                                             {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
                                         </div>
@@ -107,12 +107,12 @@
                             @if($data->type == 'radio')
 
 
-                                    @if($data->title !== NULL)
+                                    @if($data->title !== "")
                                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
                                             {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
                                         </div>
                                     @endif
-                                    @if($data->description !== NULL)
+                                    @if($data->description !== "")
                                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                                             {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
                                         </div>
@@ -149,12 +149,12 @@
                                 <div class="border-b-4"></div>
                             @endif
                             @if($data->type == 'input')
-                                    @if($data->title !== NULL)
+                                    @if($data->title !== "")
                                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
                                             {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
                                         </div>
                                     @endif
-                                    @if($data->description !== NULL)
+                                    @if($data->description !== "")
                                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                                             {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
                                         </div>
@@ -173,7 +173,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="border-b-4"></div>
                             @endif
                         @endforeach
                         <div class="mt-4">
