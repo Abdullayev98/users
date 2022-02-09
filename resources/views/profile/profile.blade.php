@@ -70,7 +70,7 @@
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                                 <div class="flex mt-6">
                                     <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
-                                        <img @if ($user->is_email_verified != Null && $user->is_phone_number_verified != Null || $user->is_phone_number_verified != 0)
+                                        <img @if ($user->is_email_verified != Null && $user->is_phone_number_verified != Null && $user->is_phone_number_verified != 0 && $user->is_email_verified != 0)
                                              src="{{ asset('images/verify.png') }}"
                                              @else
                                              src="{{ asset('images/verify_gray.png') }}"
