@@ -225,7 +225,7 @@
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="textarea">@lang('lang.settings_otherSet')</label>
-                                                    <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900"
+                                                    <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900 outline-none"
                                                               name="description"
                                                               id="textarea">{{old('description')??$user->description}}</textarea>
                                                     @error('description')
@@ -236,7 +236,7 @@
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="location">@lang('lang.settings_city')</label>
-                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900"
+                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900 outline-none"
                                                             name="location">
                                                         <option value="">@lang('lang.settings_choose')</option>
 
@@ -259,7 +259,7 @@
                                             </form>
 
                                             <a href="{{ route('users.delete', $user->id) }}" onclick="ConfirmDelete()"
-                                               class="block md:w-3/5 w-full text-center bg-red-300 hover:bg-red-600 mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
+                                               class="block md:w-3/5 w-full text-center bg-red-400 hover:bg-red-600 text-white mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
                                         </div>
                                     </div>
                                     {{-- settings/ first tab -> base settings end--}}
