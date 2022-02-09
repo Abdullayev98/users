@@ -13,10 +13,14 @@ class Review extends Model
     protected $fillable = ['user_id','description','good_bad','reviewer_id','task_id'];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'reviewer_id');
     }
     public function reviewer()
     {
         return $this->hasOne(User::class);
+    }
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
     }
 }

@@ -76,31 +76,12 @@ class SearchTaskController extends VoyagerBaseController
 
     public function my_tasks()
     {
-        $tasks = Task::where('user_id', auth()->id())->get();
-        $perform_tasks = Task::where('performer_id', auth()->id())->get();
-        $all_tasks = Task::where('user_id', Auth::id())->where('performer_id', Auth::id())->get();
+        $user= auth()->user();
+        $tasks = $user->tasks();
+        $perform_tasks = Task::where('performer_id', $user->id())->get();
+        $all_tasks = Task::where('user_id', $user->id)->where('performer_id', $user->id)->get();
         $categories = Category::get();
         return view('/task/mytasks', compact('tasks', 'categories', 'perform_tasks', 'all_tasks'));
-    }
-
-    public function search(Request $request)
-    {
-        $s = $request->s;
-        $a = $request->a;
-        $p = $request->p;
-        // dd($s);
-        if ($request->s) {
-            $tasks = Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
-        } elseif ($request->a) {
-            $tasks = Task::where('address', 'LIKE', "%$a%")->orderBy('name')->paginate(10);
-        } elseif ($request->p) {
-            $tasks = Task::where('budget', 'LIKE', "%$p%")->orderBy('name')->paginate(10);
-        } else {
-            $tasks = Task::where('name', 'LIKE', "%$s%")->orWhere('address', 'LIKE', "%$a%")->orWhere('budget', 'LIKE', "%$p%")->orderBy('name')->paginate(10);
-        }
-        $categories = Category::all();
-        return view('task.search', compact('tasks', 's', 'a', 'p', 'categories'));
-
     }
 
     public function task(Task $task)
@@ -116,11 +97,12 @@ class SearchTaskController extends VoyagerBaseController
 
 
         $arr = get_defined_vars();
+        $task_responses = $task->responses()->get();
 
         if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks', compact('task',  'users',));
+            return view('task.detailed-tasks', compact('task',  'users','task_responses'));
         } else {
-            return view('task.detailed-tasks', compact('task',  'users',  'balance'));
+            return view('task.detailed-tasks', compact('task',  'users',  'balance','task_responses'));
         }
 
     }
@@ -212,8 +194,7 @@ class SearchTaskController extends VoyagerBaseController
 
     public function delete_task(Task $task)
     {
-        DB::delete('DELETE FROM tasks WHERE id = ?', [$task->id]);
-        echo("User Record deleted successfully.");
+        $task->delete();
         return redirect('/');
     }
 

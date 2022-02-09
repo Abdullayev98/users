@@ -87,7 +87,9 @@ class User extends \TCG\Voyager\Models\User
     public function tasks(){
         return $this->hasMany(Task::class);
     }
-
+    public function responses(){
+        return $this->hasMany(Response::class);
+    }
 
 
 
