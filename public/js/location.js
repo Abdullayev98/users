@@ -38,7 +38,8 @@ function init() {
                 '<path d="M12.344 7.178a.75.75 0 1 0-1.494-.13l-.784 8.965a.75.75 0 0 0 1.494.13l.784-8.965zm-6.779 0a.75.75 0 0 1 1.495-.13l.784 8.965a.75.75 0 0 1-1.494.13l-.785-8.965z" fill="#666"/></svg> </button> ' +
                 '<input name="coordinates'+ x +'" type="hidden" id="coordinate'+ x +'"> </div>    ');
             x++;
-        }else{
+        }
+        if(x == 10){
             $("#addbtn").hide();
         }
         var suggestView = [];
@@ -51,9 +52,10 @@ function init() {
     });
     $("#addinput").on("click" ,"#remove_inputs" , function(){
         $(this).parent("div").remove();
-        $("#addbtn").show();
-
         x--;
+        if(x < 10){
+            $("#addbtn").show();
+        }
         myFunction();
     });
 
@@ -98,9 +100,6 @@ function myFunction() {
         }
 
     );
-
-
-
 
     if(document.getElementById("suggest1")){
         place1 = document.getElementById("suggest1").value;
