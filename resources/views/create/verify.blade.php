@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="col-span mt-5 md:mt-0">
+                <div class="lg:col-span-1 col-span-2 lg:mt-0 mt-8">
                     <x-faq/>
                 </div>
             </div>

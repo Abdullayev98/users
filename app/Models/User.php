@@ -70,10 +70,7 @@ class User extends \TCG\Voyager\Models\User
         return $query->whereId($id)->increment('views', 1);
     }
     public function reviews() {
-        return $this->hasMany(Review::class);
-    }
-    public function review() {
-        return $this->belongsTo(Review::class);
+        return $this->hasMany(Review::class,'user_id','id');
     }
     public function views(){
         return $this->hasMany(UserView::class,'performer_id');
