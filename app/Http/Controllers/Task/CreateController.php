@@ -80,20 +80,21 @@ class CreateController extends Controller
         $datas = $datas->merge($parent_datas);
         $datas = $datas->merge($child_datas);
 
-        if (!$datas) {
-        }
-
-        foreach ($datas as $data) {
+        if ($datas) {
+            foreach ($datas as $data) {
             $value = new CustomFieldsValue();
             $value->task_id = $task->id;
             $value->custom_field_id = $data->id;
             $arr = Arr::get($request->all(), $data->name);
             $value->value = is_array($arr) ? json_encode($arr) : $arr;
             $value->save();
+            }
+
+
+            return redirect()->route('task.create.address', $task->id);
         }
 
 
-        return redirect()->route('task.create.address', $task->id);
     }
 
 
@@ -152,7 +153,7 @@ class CreateController extends Controller
 
     public function budget_store(Task $task, Request $request)
     {
-        $task->budget = $request->amount1;
+        $task->budget = preg_replace('/[^0-9.]+/', '', $request->amount1);
         $task->save();
 
         return redirect()->route('task.create.note', $task->id);

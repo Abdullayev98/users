@@ -13,10 +13,14 @@
                             <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                             <div class="md:flex flex-row">
                                 <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$task->budget}}</p>
+                                @auth
+                                @if($task->user_id == auth()->user()->id)
                                 <a href="{{ route('task.changetask', $task->id) }}"
                                 class="py-2 px-2 text-gray-500 hover:text-red-500">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
+                                @endif
+                                @endauth
                                 @if ($task->email_confirm == 1)
                                     <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
@@ -37,9 +41,11 @@
                                 @endif
                                 <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
                                     <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</p>
+                                    @auth
                                     @if($task->user_id == auth()->id() && $task->status == 1)
                                     <a href="{{route("delete.task", $task->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Отменить</a>
                                     @endif
+                                    @endauth
                             </div>
 
                             <div class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
@@ -203,7 +209,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <label>
-                                                                        <input type="number" checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
+                                                                        <input type="text" onkeypress='validate(event)' checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
                                                                         <input type="text" name="pay" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="0">
                                                                         <input type="text" name="task_user_id" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="{{$task->user_id}}">
                                                                     </label>
@@ -350,30 +356,26 @@
                         <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                         <div class="flex flex-row mt-4">
                             <div class="mr-4">
-                                @if (isset($current_user))
                                     <img src="
-                            @if ($current_user->avatar == '')
+                            @if ($task->user->avatar == '')
                                     {{ asset("storage/images/default.png") }}
                                     @else
-                                    {{ asset("storage/{$current_user->avatar}") }}
+                                    {{ asset("storage/{$task->user->avatar}") }}
                                     "@endif
                                          class="border-2 border-gray-400 w-32 h-32" alt="#">
-                                @endif
                             </div>
                             <div class="">
-                                <a href="@if (isset($current_user))/performers/{{$current_user->id}}@else @endif" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $task->user_name}}</a> <br>
+                                <a href="/performers/{{$task->user->id}}" class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}</a> <br>
                                 <a href="#" class="text-xl text-gray-500">
-                                    @if (isset($current_user))
-                                        @if($current_user->age != "")
+                                        @if($task->user->age != "")
                                             <p class="inline-block text-m mr-2">
-                                                {{$current_user->age}}
-                                                @if($current_user->age>20 && $current_user->age%10==1) @lang('lang.cash_rusYearGod')
-                                                @elseif ($current_user->age>20 && ($current_user->age%10==2 || $current_user->age%10==3 || $current_user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                                {{$task->user->age}}
+                                                @if($task->user->age>20 && $task->user->age%10==1) @lang('lang.cash_rusYearGod')
+                                                @elseif ($task->user->age>20 && ($task->user->age%10==2 || $task->user->age%10==3 || $task->user->age%10==1)) @lang('lang.cash_rusYearGoda')
                                                 @else @lang('lang.cash_rusYearLet')
                                                 @endif
                                             </p>
                                         @endif
-                                    @endif
                                 </a>
                             </div>
                         </div>

@@ -11,6 +11,7 @@ class Category extends Model
 {
     use HasFactory;
     use Translatable;
+
     protected $table = "categories";
 
     public function tasks()
@@ -18,5 +19,11 @@ class Category extends Model
         return $this->hasMany(Task::class);
 
     }
+
+
+    public function custom_fields(){
+        return $this->hasMany(CustomField::class);
+    }
+
 
 }

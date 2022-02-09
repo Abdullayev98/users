@@ -24,13 +24,157 @@
                     <label class="text-sm">
                         Мне нужно
                         <input type="text" name="name"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full" value="{{ $task->name }}">
+                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full"
+                               value="{{ $task->name }}">
                         @error('name')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
                     </label>
                 </div>
-                <div class="md:flex">
+
+                @foreach($task->category->custom_fields as $data)
+
+                    @if($data->type == 'select')
+                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
+                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
+                        </div>
+                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
+                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
+                        </div>
+                        <div class="py-4 mx-auto  text-left ">
+                            <div class="mb-4">
+                                <div id="formulario" class="flex flex-col gap-y-4">
+
+                                    {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
+                                    <select id="where" name="{{$data->name}}[]"
+                                            class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                                            required>
+
+                                        @foreach($data->options['options'] as $key => $option)
+                                            <option
+
+                                                {{ $data->custom_field_values()->where('task_id', $task->id)->first()?$data->custom_field_values()->where('task_id', $task->id)->first()->value == $option ? 'selected' : null : null }}
+
+                                                value="{{$option}}">{{$option}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-b-4"></div>
+                    @endif
+                    @if($data->type == 'checkbox')
+
+
+                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
+                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
+                        </div>
+                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
+                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
+                        </div>
+
+                        <div class="py-4 mx-auto  text-left ">
+                            <div class="mb-4">
+                                <div id="formulario" class="flex flex-col gap-y-4">
+
+                                    <div>
+
+                                        <div class="mb-3 xl:w-full">
+
+                                            @foreach($data->options['options'] as $key => $option)
+                                                <label class="md:w-2/3 block mt-6">
+                                                    <input @if($key == $data->values) checked
+                                                           @endif class="mr-2  h-4 w-4" type="checkbox"
+                                                           {{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null }}
+                                                           value="{{$option}}" name="{{$data->name}}[]">
+                                                    <span class="text-slate-900">
+                                                    {{$option}}
+                                                    </span>
+                                                </label>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-b-4"></div>
+                    @endif
+                    @if($data->type == 'radio')
+
+                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
+                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
+                        </div>
+                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
+                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
+                        </div>
+
+                        <div class="py-4 mx-auto  text-left ">
+                            <div class="mb-4">
+                                <div id="formulario" class="flex flex-col gap-y-4">
+
+                                    <div>
+
+                                        <div name="glassSht" class="mb-3 xl:w-full">
+
+
+
+                                            @foreach($data->options['options'] as $key => $option)
+
+                                                <input  {{ $data->custom_field_values()->where('task_id', $task->id)->first() ? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null  }} type="radio"
+                                                       id="{{$key}}" name="{{$data->name}}[]" value="{{$option}}">
+                                                <label for="{{$key}}">{{$option}}</label>
+                                                <br><br>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-b-4"></div>
+                    @endif
+                    @if($data->type == 'input')
+                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
+                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
+                        </div>
+                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
+                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
+                        </div>
+
+                        <div class="py-4 mx-auto  text-left ">
+                            <div class="mb-4">
+                                <div id="formulario" class="flex flex-col gap-y-4">
+                                    {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
+                                    <input
+                                        placeholder="{{ $data->getTranslatedAttribute('placeholder',Session::get('lang') , 'fallbackLocale') }}"
+                                        id="car" name="{{$data->name}}[]" type="text" value="{{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] : null }}"
+                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                                        required>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-b-4"></div>
+                    @endif
+                @endforeach
+
+
+                <div class="md:flex mt-5">
                     <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
                             class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             aria-label="Default select example">
@@ -44,7 +188,8 @@
                             aria-label="Default select example">
                         <option disabled>@lang('lang.name_chooseOne')</option>
                         @foreach($categories2 as $category)
-                            <option value="{{ $category->id }}"  {{ $category->id == $task->category_id ? 'selected' : null }} >{{ $category->name }}</option>
+                            <option
+                                value="{{ $category->id }}" {{ $category->id == $task->category_id ? 'selected' : null }} >{{ $category->name }}</option>
                         @endforeach
                     </select>
                     {{--                    @error('category_id')--}}
@@ -55,7 +200,7 @@
                     <label class="text-xs text-gray-500">
                         Ценность покупки, SUM
                         <input type="number"
-                               name=""
+                               name="budget" value="{{ $task->price }}"
                                class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">
 
                     </label>
@@ -65,7 +210,7 @@
                         Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу
                         <textarea type="number"
                                   name="description"
-                                  class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full"></textarea>
+                                  class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">{{ $task->description }}</textarea>
                         @error('description')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
@@ -83,31 +228,61 @@
                             <select name="date_type" id="periud"
                                     class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     aria-label="Default select example">
-                                <option value="1" id="1">Начать работу</option>
-                                <option value="2" id="2">Закончить работу</option>
-                                <option value="3" id="3">Указать период</option>
+                                <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">Начать работу
+                                </option>
+                                <option value="2" {{ $task->date_type == 2 ? 'selected' : null }}   id="2">Закончить
+                                    работу
+                                </option>
+                                <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">Указать
+                                    период
+                                </option>
                             </select>
                         </div>
-                        <div id="start-date" class=" hidden " style="display: inline-block;">
-                            <div class="flatpickr inline-block flex">
-                                <div class="flex ">
-                                    <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
-                                           class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
-                                           required="" value="2022-02-17 12:00:0">
-                                </div>
-                                <div class="flatpickr-calendar w-full sm:text-sm"></div>
-                                <div class="transform hover:scale-125">
-                                    <a class="input-button w-1 h-1  pl-1 " title="toggle" data-toggle="">
-                                        <i class="far fa-calendar-alt fa-2x mt-1 fill-current text-green-600"></i>
-                                    </a>
-                                </div>
-                                <div class="transform hover:scale-125">
-                                    <a class="input-button w-1 h-1 md:pl-2 pl-1 " title="clear" data-clear="">
-                                        <i class="fas fa-trash-alt fa-2x mt-1 stroke-current text-red-600 "></i>
-                                    </a>
+                        @if($task->start_date)
+                            <div id="start-date" class=" hidden " style="display: inline-block;">
+                                <div class="flatpickr inline-block flex">
+                                    <div class="flex ">
+                                        <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
+                                               class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
+                                               required="" value="{{ $task->start_date }}">
+                                    </div>
+                                    <div class="flatpickr-calendar w-full sm:text-sm"></div>
+                                    <div class="transform hover:scale-125">
+                                        <a class="input-button w-1 h-1  pl-1 " title="toggle" data-toggle="">
+                                            <i class="far fa-calendar-alt fa-2x mt-1 fill-current text-green-600"></i>
+                                        </a>
+                                    </div>
+                                    <div class="transform hover:scale-125">
+                                        <a class="input-button w-1 h-1 md:pl-2 pl-1 " title="clear" data-clear="">
+                                            <i class="fas fa-trash-alt fa-2x mt-1 stroke-current text-red-600 "></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
+
+                        @if($task->end_date)
+                            <div id="start-date" class=" hidden " style="display: inline-block;">
+                                <div class="flatpickr inline-block flex">
+                                    <div class="flex ">
+                                        <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
+                                               class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
+                                               required="" value="{{ $task->end_date }}">
+                                    </div>
+                                    <div class="flatpickr-calendar w-full sm:text-sm"></div>
+                                    <div class="transform hover:scale-125">
+                                        <a class="input-button w-1 h-1  pl-1 " title="toggle" data-toggle="">
+                                            <i class="far fa-calendar-alt fa-2x mt-1 fill-current text-green-600"></i>
+                                        </a>
+                                    </div>
+                                    <div class="transform hover:scale-125">
+                                        <a class="input-button w-1 h-1 md:pl-2 pl-1 " title="clear" data-clear="">
+                                            <i class="fas fa-trash-alt fa-2x mt-1 stroke-current text-red-600 "></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </label>
                 </div>
                 <div>
@@ -124,8 +299,9 @@
                                     style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;"></ymaps>
                                 <input autocomplete="off" oninput="myFunction()" id="suggest0"
                                        class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                                       type="text" placeholder="Город, Улица, Дом" value="" name="location0">
-                                @error('location0')
+                                       type="text" placeholder="Город, Улица, Дом"
+                                       value="{{ json_decode($task->address)->location }}" name="address">
+                                @error('address')
                                 <p class="text-red-500">{{ $message }}</p>
                                 @enderror
                                 <button id="getlocal"
@@ -142,7 +318,8 @@
 
 
                             </div>
-                            <input name="coordinates0" type="hidden" id="coordinate">
+                            <input name="coordinates" type="hidden" id="coordinate"
+                                   value="{{ json_decode($task->address)->latitude.",".json_decode($task->address)->longitude }}">
                             <div id="addinput" class="flex gap-y-2 flex-col">
 
 
@@ -187,14 +364,20 @@
                     <div>
                         <select class="border border-gray-300 rounded-md w-full focus:outline-none py-2 px-4"
                                 name="budget" id="budget">
-                            <option value="1">
-                                1000
+                            <option value="{{$task->category->max/5}}">
+                                {{$task->category->max/5}} UZS
                             </option>
-                            <option value="1">
-                                10000
+                            <option value="{{$task->category->max/5*2}}">
+                                {{$task->category->max/5*2}} UZS
                             </option>
-                            <option value="1">
-                                100000
+                            <option value="{{$task->category->max/5*3}}">
+                                {{$task->category->max/5*3}} UZS
+                            </option>
+                            <option value="{{$task->category->max/5*4}}">
+                                {{$task->category->max/5*4}} UZS
+                            </option>
+                            <option value="{{$task->category->max}}">
+                                {{$task->category->max/5}} UZS
                             </option>
                         </select>
                     </div>
@@ -204,7 +387,7 @@
                     </span>
                         <input
                             class="border border-gray-200 md:mx-4 md:px-2 py-2 pr-2 rounded-md focus:outline-none text-right"
-                            placeholder="SUMMA" name="budget" value="до ">SUM
+                            placeholder="SUMMA" name="budget" value="{{ $task->price }}">SUM
                         @error('budget')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
@@ -212,10 +395,11 @@
                 </div>
                 <div class="text-base my-4 ">
                     <h1 class="text-xl font-semibold py-2">Ваши контакты</h1>
-                    <input name="phone"
+                    <input id="phone_number"
                            class="text-base border border-gray-200 md:w-1/2 focus:outline-none py-2 px-3 rounded-md"
-                           type="text"
+                           type="text" value="+998{{ $task->phone }}"
                            placeholder="+998(00)000-00-00">
+                    <input type="hidden" id="phone" name="phone" value="{{ $task->phone }}">
                     @error('phone')
                     <p class="text-red-500">{{ $message }}</p>
                     @enderror
@@ -237,6 +421,7 @@
     </form>
 
 
+    <script src='https://unpkg.com/imask'></script>
 
     <script>
         var myMap;
@@ -248,7 +433,19 @@
             type="text/javascript">
     </script>
     <script>
+        var element = document.getElementById('phone');
+        var maskOptions = {
+            mask: '+998(00)000-00-00',
+            lazy: false
+        }
+        var mask = new IMask(element, maskOptions);
 
+        $("#phone_number").keyup(function () {
+            var text = $(this).val()
+            text = text.replace(/[^0-9.]/g, "")
+            text = text.slice(3)
+            $("#phone").val(text)
+        })
         flatpickr.localize(flatpickr.l10ns.uz_latn);
         flatpickr.localize(flatpickr.l10ns.ru);
         flatpickr(".flatpickr",
@@ -320,7 +517,7 @@
 
             const alp = ["B", "C", "D", "E"];
             $("#addbtn").click(function () {
-                if (x < 2) {
+                if (x < 5) {
                     $("#addinput").append('<div class="flex items-center gap-x-2">' +
                         '<div class="bg-white hover:bg-gray-200 flex items-center rounded-lg border  w-full py-1"> ' +
                         '<button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  ' + alp[x - 1] + ' </button>' +
