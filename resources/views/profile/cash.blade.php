@@ -4,7 +4,7 @@
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
 
             {{-- user ma'lumotlari --}}
-            <div class="col-span-2 w-full md:mx-auto mx-4">
+            <div class="col-span-2 w-full mx-auto">
 
                 <figure class="w-full">
                     <div class="float-right mr-8 text-gray-500">
@@ -12,7 +12,7 @@
                     </div>
                     <br>
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{ $user->name }}!</h2>
-                    <div class="flex flex-row mt-6" style="width:500px">
+                    <div class="flex flex-row mt-6">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40" @if ($user->avatar == null)
                             src='{{ asset('AvatarImages/images/default_img.jpg') }}'
@@ -253,7 +253,7 @@
 
 
             {{-- right-side-bar --}}
-            <div class="lg:col-span-1 col-span-2 rounded-xl ring-1 ring-gray-300 h-auto w-80 text-gray-600 m-4">
+            <div class="lg:col-span-1 col-span-2 rounded-xl ring-1 ring-gray-300 h-auto text-gray-600 sm:ml-8 ml-0">
                 <div class="mt-6 ml-4">
                     <h3 class="font-medium text-gray-700 text-3xl">@lang('lang.profile_performer')</h3>
                     <p>@lang('lang.profile_since')</p>

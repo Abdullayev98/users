@@ -7,13 +7,13 @@
     <div class="w-11/12  mx-auto text-base mt-4">
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
             {{-- user ma'lumotlari --}}
-            <div class="col-span-2 w-full md:mx-auto mx-4">
+            <div class="col-span-2 w-full mx-auto">
                 <figure class="w-full">
 
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
 
-                    <div class="flex flex-row w-80 mt-6" style="width:500px">
+                    <div class="flex flex-row w-full mt-6">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
                                  @if ($user->avatar == Null)
@@ -162,7 +162,7 @@
                                 </form>
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
-                        <div class="example-of-works w-96 my-10">
+                        <div class="example-of-works w-full my-10">
                            <a class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="/profile/create">
                             <i class="fas fa-camera"></i>
                             <span>@lang('lang.profile_createAlbum')</span>
