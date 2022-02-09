@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-<div class="shadow-2xl border-t sxXE px-10 rounded-md w-full md:w-7/12 mx-auto grid grid-flow-col gap-4 my-5 flex flex-wrap md:flex-wrap-reverse">
+<div class="sm:shadow-2xl shadow-none sm:border-t border-none sxXE sm:px-10 px-0 rounded-md w-full md:w-7/12 mx-auto grid grid-flow-col gap-4 my-5 flex flex-wrap md:flex-wrap-reverse">
     @php
         $user = auth()->user();
     @endphp
@@ -55,7 +55,7 @@
                         </script>
                     </a>
     
-                    <input type="submit"  class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" name="" value="@lang('lang.personalinfo_text21')">
+                    <input type="submit"  class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 sm:px-5 px-1 rounded" name="" value="@lang('lang.personalinfo_text21')">
     
                 </div>
             </form>
