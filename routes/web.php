@@ -72,7 +72,7 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail");
 
-Route::get('/change-task/{task}', [SearchTaskController::class, 'change_task'])->name("task.changetask");
+Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask");
 Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("task.update");
 
 Route::view('/offer-tasks','task.offertasks');

@@ -217,7 +217,7 @@ class SearchTaskController extends VoyagerBaseController
         return redirect('/');
     }
 
-    public function change_task(Task $task)
+    public function changeTask(Task $task)
     {
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $categories2 = Category::withTranslations(['ru', 'uz'])->where('parent_id', "!=", null)->get();
