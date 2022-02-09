@@ -33,6 +33,9 @@ class Task extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function review(){
+        return $this->hasOne(Review::class);
+    }
     public function responses(){
         return $this->hasMany(Response::class);
     }
