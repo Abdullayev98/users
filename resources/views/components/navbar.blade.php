@@ -145,6 +145,9 @@
                 </nav>
             </div>
         </div>
+        @foreach (categories() as $category)
+
+        @endforeach
         <div class="hidden w-7/12 lg:inline-block xl:ml-12 lg:ml-12 md:text-sm xl:text-base">
             <div class="group inline-block mr-4">
                 <button class="text-gray-500 hover:text-yellow-500 focus:outline-none">
@@ -152,10 +155,10 @@
                     <span></span>
                 </button>
                 <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top z-10">
-                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
+                    @foreach (categories() as $category)
                         <li class="py-2 px-4 rounded-sm hover:bg-gray-100">
                             <button class="w-full text-left flex items-center outline-none focus:outline-none">
-                                <span class="pr-1 flex-1 font-semibold text-sm hover:text-blue-700">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
+                                <span class="pr-1 flex-1 font-semibold text-sm hover:text-blue-700">{{ $category[0]->parent->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                                 <span class="mr-auto">
                                 <svg class="fill-current h-4 w-4 transition duration-150 ease-in-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
@@ -164,9 +167,8 @@
                             </button>
                             <ul class="bg-white border rounded-sm absolute h-full overflow-y-auto top-0 right-0 transition duration-150 ease-in-out origin-top-left w-100">
 
-                                @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
+                                @foreach ($category as $category2)
                                     <li class="rounded-sm">
-                                        {{--                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="/task/create?category_id={{ $category2->id }}">--}}
                                         <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="{{route("task.create.name", ['category_id'=>$category2->id])}}">
                                             {{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                         </a>
