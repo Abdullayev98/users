@@ -38,7 +38,7 @@ class SearchTaskController extends VoyagerBaseController
                 $tasks = DB::table("tasks")->where('status', '=', 1)->orderBy('id', 'desc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'categories.name as category_name', 'categories.ico as icon')
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name','users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'sroch') {
@@ -60,8 +60,8 @@ class SearchTaskController extends VoyagerBaseController
                 $price = $request->prc;
                 $tasks = Task::where('status', '=', 1)
                     ->where('name', 'LIKE', "%$filter%")
-                    ->where('name', 'LIKE', "%$address%")
-                    ->where('name', 'LIKE', "%$price%")
+                    ->where('address', 'LIKE', "%$address%")
+                    ->where('budget', 'LIKE', "%$price%")
                     ->orderBy('id', 'asc')
                     ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
                     ->get()->load('user','category');
@@ -166,7 +166,6 @@ class SearchTaskController extends VoyagerBaseController
                 'notificate' => $notificate,
                 'time' => $response_time,
                 'price' => $response_price,
-                'price' => $response_price,
                 'creator_id' => $users_id
             ]);
             Notification::create([
@@ -218,7 +217,7 @@ class SearchTaskController extends VoyagerBaseController
         return redirect('/');
     }
 
-    public function change_task(Task $task)
+    public function changeTask(Task $task)
     {
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $categories2 = Category::withTranslations(['ru', 'uz'])->where('parent_id', "!=", null)->get();

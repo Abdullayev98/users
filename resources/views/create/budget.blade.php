@@ -36,10 +36,10 @@
                                             <div class="desktop__66de4">
                                                 <div class="container__dbb1e">
                                                     <div class="rails__0ca6e">
-                                                        <svg class="triangle__67899" width="1" height="1" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <svg class="triangle__67899" width="1" height="1" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="https://www.w3.org/2000/svg">
                                                             <path class="back__d97a2" d="M0,1 L1,0 L1,1 L0,1"></path>
                                                         </svg>
-                                                        <svg class="triangle__678999" width="1" height="1" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <svg class="triangle__678999" width="1" height="1" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="https://www.w3.org/2000/svg">
                                                             <path class="back__d97a222" d="M0,1 L1,0 L1,1 L0,1"></path>
                                                         </svg>
                                                         <div id="slider-range-min" class="flex"></div>
@@ -132,7 +132,7 @@
         </div>
     </form>
 
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 @endsection
 
 @section("javasript")

@@ -49,9 +49,9 @@ function ajaxFilter() {
 
 $("#filter").keyup(function() {
     if ($('#filter').val().trim().length == 0) {
-        $('#svgClose').attr("hidden", "hidden");
+        $('#svgClose').hide();
     }else{
-        $('#svgClose').removeAttr('hidden');
+        $('#svgClose').show();
     }
 });
 
@@ -61,22 +61,67 @@ $('#filter').on('keypress',function(e) {
     }
 });
 
+$("#suggest").keyup(function() {
+    if ($('#suggest').val().trim().length == 0) {
+        $('#closeBut').hide();
+        $('#geoBut').show();
+    }else{
+        $('#geoBut').hide();
+        $('#closeBut').show();
+    }
+});
+
 $('#suggest').on('keypress',function(e) {
     if(e.which == 13) {
-        nameVal = $('#suggest').val()
-        if (nameVal != '') {
-            dataAjaxSortBy()
-        }
+        ajaxFilter()
+    }
+});
+
+$("#price").keyup(function() {
+    if ($('#price').val().trim().length == 0) {
+        $('#prcClose').hide();
+    }else{
+        $('#prcClose').show();
     }
 });
 
 $('#price').on('keypress',function(e) {
     if(e.which == 13) {
-        nameVal = $('#price').val()
-        if (nameVal != '') {
-            dataAjaxSortBy()
-        }
+        ajaxFilter()
     }
+});
+
+$("#svgClose").click(function() {
+    $('#filter').val('');
+    $('#svgClose').hide();
+});
+
+$("#findBut").click(function() {
+    ajaxFilter();
+});
+
+$("#geoBut").click(function() {
+    $('#closeBut').show();
+    $('#geoBut').hide();
+});
+
+$("#closeBut").click(function() {
+    $('#suggest').val('');
+    $('#closeBut').hide();
+    $('#geoBut').show();
+});
+
+$("#selectGeo").change(function() {
+    r = $('#selectGeo').val();
+    if(r > 0){
+        $('#geoBut').show();
+        $('#suggest').removeAttr('disabled');
+    }else {
+        $('#geoBut').hide()
+        $('#suggest').attr('disabled','disabled')
+    }
+    // enDis(r)
+    map_pos(k)
 });
 
 function dataAjaxSortBy() {
@@ -130,7 +175,7 @@ function tasks_list_all(data) {
                         <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 sm:mt-1 mt-0" id="about">
                             <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
                             <p class="text-sm sm:mt-5 sm:mt-1 mt-0">` + (dataAjaxCheck==1 ? data.category_name : data.category.name) + `</p>
-                            <a href="#" class="text-sm sm:mt-1 mt-0 border-b-2 border-gray-300 hover:border-red-400 hover:text-red-600 ">` + (dataAjaxCheck==1 ? data.user_name : data.user.name) + `</a>
+                            <a href="/performers/` + data.userid + `" class="text-sm sm:mt-1 mt-0 hover:text-red-600 ">` + (dataAjaxCheck==1 ? data.user_name : data.user.name) + `</a>
                         </div>
                     </div>
                 </div>
@@ -143,15 +188,15 @@ $(".rotate").click(function() {
     $(this).toggleClass("rotate-[360deg]");
 });
 
-function enDis(rr){
-    if (rr == 0){
-        $('#suggest').attr("disabled","disabled")
-        $('#mpshow').attr("disabled","disabled")
-    }else {
-        $('#suggest').removeAttr("disabled")
-        $('#mpshow').removeAttr("disabled")
-    }
-}
+// function enDis(rr){
+//     if (rr == 0){
+//
+//         // $('#mpshow').attr("disabled","disabled")
+//     }else {
+//
+//         // $('#mpshow').removeAttr("disabled")
+//     }
+// }
 
 function resetCounters(){
     $('.butt').removeAttr("disabled")
@@ -522,7 +567,7 @@ function map_pos(mm) {
                     }
                 );
 
-            $("#mpshow").click(function(){
+            $("#geoBut").click(function(){
                 location.get({
                     mapStateAutoApply: true
                 })
