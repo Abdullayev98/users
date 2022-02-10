@@ -142,6 +142,7 @@
 
                 <div class="py-12">
                     <ul class="d-flex flex-col gap-y-5">
+                        @isset($reviews)
                         @foreach ($reviews as $review)
                             @if($review->user_id == $user->id)
                         <li class="d-flex flex-col my-10 rounded-lg">
@@ -186,6 +187,7 @@
                                     @else
                                         <i class="far fa-thumbs-down"></i>
                                     @endif
+
                                     Задание "{{$review->task->name}}"
 
                                 </div>
@@ -197,6 +199,7 @@
                         </li>
                         @endif
                         @endforeach
+                        @endisset
                     </ul>
                 </div>
 
