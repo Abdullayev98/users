@@ -13,12 +13,14 @@
                             <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                             <div class="md:flex flex-row">
                                 <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$task->budget}}</p>
+                                @auth()
                                 @if($task->user_id == auth()->user()->id)
                                 <a href="{{ route('task.changetask', $task->id) }}"
                                 class="py-2 px-2 text-gray-500 hover:text-red-500">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
                                 @endif
+                                @endauth
                                 @if ($task->email_confirm == 1)
                                     <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
                                     <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
@@ -269,6 +271,7 @@
                             </div>
                             @endauth
                             <div class="lg:w-[700px] w-[400px]">
+                                @auth()
                                     @if ($task->user_id == auth()->user()->id)
                                         <div>
                                             @if(isset($task_responses))
@@ -334,6 +337,7 @@
                                         </div>
                             </div>
                             @endif
+                            @endauth
                             <div class="mt-12">
                                 <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
                                 @foreach($task->category->tasks()->take(10) as $same_task)
