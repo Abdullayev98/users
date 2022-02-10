@@ -168,7 +168,7 @@
                                                                 type="button">
                                                             Завершен
                                                         </button>
-                                                        <button class="done font-sans sm:w-1/2 w-full text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                        <button class="not_done font-sans w-1/2 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Не завершен
                                                         </button>
@@ -565,12 +565,14 @@
                         if(response) {
                             $('.success').text(response.success);
                         }
+
                     },
                     error: function(error) {
                         console.log(error);
                     }
                 });
                 location.reload(true);
+
             });
         </script>
         <script>
@@ -629,6 +631,7 @@
                 $(".done").click(function(){
                     $("#sendbutton").removeClass('hidden');
                     $(".done").hide();
+                    $(".not_done").hide();
                     $.ajax({
                         url: "/ajax-request",
                         type:"POST",
@@ -648,7 +651,32 @@
                         }
                     });
                 });
+                $(".not_done").click(function(){
+                    $("#sendbutton").removeClass('hidden');
+                    $(".done").hide();
+                    $(".not_done").hide();
+                    $.ajax({
+                        url: "/ajax-request",
+                        type:"POST",
+                        data:{
+                            task_id:{{$task->id}},
+                            status:2,
+                            _token:$('meta[name="csrf-token"]').attr('content'),
+                        },
+                        success:function(response){
+                            console.log(response);
+                            if(response) {
+                                $('.success').text(response.success);
+                                location.reload();
 
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+
+                    });
+                });
             });
             $(".send-comment").click(function(event){
                 event.preventDefault();
