@@ -27,7 +27,7 @@
                     <div class="mb-4">
                         <input type="text" name="email" placeholder="Email" id="name" value="{{  old('email') }}"
                                class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded
-                        sm:w-80 w-60 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
+                        sm:w-80 w-72 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
                                autofocus>
 
                         @error('email')
@@ -37,8 +37,8 @@
                     </div>
 
                     <div class="mb-6">
-                        <input   type="password" name="password" placeholder="@lang('lang.signin_password')" id="password"
-                                 class="ml-6 shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded sm:w-80 w-60 py-2 px-3
+                        <input   type="password" maxlength="20" name="password" placeholder="@lang('lang.signin_password')" id="password"
+                                 class="ml-6 shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded sm:w-80 w-72 py-2 px-3
                         text-gray-700 mb-3 leading-tight hover:border-amber-500">
                         <i class="fas fa-eye-slash text-gray-500 relative -left-12" id="eye"></i>
 
@@ -54,7 +54,7 @@
                     @endif
                     <div>
                         <button type="submit"
-                                class="sm:w-80 w-40 h-12 rounded-lg bg-green-500 text-white uppercase
+                                class="sm:w-80 w-72 h-12 rounded-lg bg-green-500 text-white uppercase
                         font-semibold hover:bg-green-500 transition mb-4">
                             @lang('lang.singin_button')
                         </button>

@@ -42,6 +42,11 @@ class User extends \TCG\Voyager\Models\User
         'is_email_verified'
     ];
 
+
+
+    protected $withCount = ['views', 'tasks'];
+
+
     /*
      * The attributes that should be hidden for serialization.
      *
@@ -82,10 +87,13 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Notification::class);
     }
 
+    public function closedResponses(){
+        return $this->hasMany(Task::class, 'performer_id')->where('status', Task::STATUS_COMPLETE);
+    }
+
     public function tasks(){
         return $this->hasMany(Task::class);
-    }
-    public function walletBalance(){
+    }public function walletBalance(){
         return $this->hasOne(WalletBalance::class);
     }
     public function portfoliocomments(){

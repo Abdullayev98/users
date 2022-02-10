@@ -125,6 +125,7 @@ class ProfileController extends Controller
             'avatar' => 'required|image'
         ]);
         $user= Auth::user();
+        $data = $request->all();
         if($request->hasFile('avatar')){
             $destination = 'storage/'.$user->avatar;
             if(File::exists($destination))
@@ -175,7 +176,7 @@ class ProfileController extends Controller
             $data['is_phone_number_verified'] = 0;
         }
         Auth::user()->update($data);
-        Alert::success('Success', "Successfully Updated");
+        Alert::success(__('lang.settings_Success'), __('lang.settings_Successfully'));
         return  redirect()->route('editData');
     }
     public function destroy($id){
@@ -282,10 +283,14 @@ class ProfileController extends Controller
     }
     public function verificationPhotoStore(Request $request)
     {
-        $request->validate([
-            'avatar' => 'required|image'
-        ]);
         $user= Auth::user();
+        if(!$user->avatar)
+        {
+            $request->validate([
+                'avatar' => 'required|image'
+            ]);
+        }
+        $data = $request->all();
         if($request->hasFile('avatar')){
             $destination = 'storage/'.$user->avatar;
             if(File::exists($destination))

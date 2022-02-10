@@ -24,16 +24,16 @@
                             <div class="text-right -mt-5 ">
                                 <button @click="showModal = !showModal"
                                         class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">
-                                    x
+                                        x
                                 </button>
                             </div>
 
 
                             <div
-                                class="text-lg sm:text-2xl md:w-[500px] -mt-5 font-bold font-['Radiance,sans-serif,Noto Sans']">
+                                class="text-lg m-auto py-5 sm:text-2xl md:w-[500px] -mt-3 font-bold font-['Radiance,sans-serif,Noto Sans']">
                                 @lang('lang.modal_email')
                             </div>
-                            <p class="text-sm sm:text-xl my-2 sm:my-8 text-gray-700 traking-tight">
+                            <p class="text-sm sm:text-xl sm:my-8 xl:my-2 text-gray-700 traking-tight">
                                 @lang('lang.modal_addres') <strong>{{auth()->user()->email}}</strong>
                                 @lang('lang.modal_addres1')
                             </p>
@@ -143,7 +143,7 @@
                                        id="cancel-email">@lang('lang.modal_cencel')</a>
                                     <br>
                                     <div class="my-2">
-                                        <input type="text" placeholder="Phone Number" id="phone_number"
+                                        <input type="text" placeholder="@lang('lang.contact_number')" id="phone_number"
                                                value="{{  old('email').session()->has('email')?session('email'):null  }}"
                                                class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded
                         w-full py-2 px-3 text-gray-700 mb-1 leading-tight hover:border-amber-500"
@@ -201,7 +201,7 @@
 
                             <form action="{{route('user.verify.phone.submit')}}" method="post">
                                 @csrf
-                                <input type="text" placeholder="Code" name="code"
+                                <input type="text" placeholder="@lang('lang.modal_code')" name="code"
                                        class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded
                         w-full py-2 px-3 text-gray-700 mb-1 leading-tight hover:border-amber-500"
                                        autofocus>
@@ -225,8 +225,6 @@
 
 
                 @endif
-                <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-                <script src='https://unpkg.com/imask'></script>
 
 
                 <script>
