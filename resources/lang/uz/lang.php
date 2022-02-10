@@ -1143,6 +1143,8 @@ return [
     'detailedT_training' => "Ta'lim",
     'detailedT_text18' => "Bu chaqiruvga javob bering",
     'detailedT_text19' => "Fikr qoldiring",
+    'detailedT_Image' => "Rasim",
+    'detailedT_ImageNot' => "Rasim tanlanmadi",
     //detailed tasks blade ended
     // personalinfo
     'personalinfo_text1' => "Bizga o'zingiz haqingizda aytib bering",
