@@ -90,7 +90,7 @@ class LoginController extends Controller
     public function send_phone_verification(){
         self::send_verification('phone');
         return redirect()->back()->with([
-            'code' => 'Code Sent'
+            'code' => 'Код отправлено!'
         ]);
     }
 
@@ -202,7 +202,7 @@ class LoginController extends Controller
             self::send_verification('phone_number');
 
             return redirect()->back()->with([
-                'code' => 'Code sent!'
+                'code' => 'Код отправлено!'
             ]);
         }
     }

@@ -254,13 +254,13 @@
 
                                                 </div>
                                                 <input type="submit"
-                                                       class="block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"
+                                                       class="block xl:w-3/5 lg:w-3/4 sm:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"
                                                        name="submit1" value="@lang('lang.settings_save')">
                                                 <hr>
                                             </form>
 
                                             <a href="{{ route('users.delete', $user->id) }}" onclick="ConfirmDelete()"
-                                               class="block md:w-3/5 w-full text-center bg-red-400 hover:bg-red-600 text-white mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
+                                               class="block xl:w-3/5 lg:w-3/4 sm:w-3/5 w-full text-center bg-red-400 hover:bg-red-600 text-white mt-5 uppercase p-4 rounded-xl">@lang('lang.settings_profile')</a>
                                         </div>
                                     </div>
                                     {{-- settings/ first tab -> base settings end--}}
