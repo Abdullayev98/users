@@ -1,4 +1,4 @@
-let nameVal = '', dataAjaxCheck=1, allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
+let dataAjaxCheck=1, allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
 let dataAjax = [], dataAjax2 = [], dataAjaxPrint = [];
 let dataGeo = [], userCoordinates = [];
 $('.all_cat').click();

@@ -68,6 +68,7 @@ return [
     'modal_phone' => "Указать другой телефонный номер",
     'modal_alert' => "Вы предложили задание исполнителю",
     'modal_alert1' =>"Уведомления отправлено.",
+    'modal_code' => "Код",
     //modal blade end
 
     // pdf.blade start
