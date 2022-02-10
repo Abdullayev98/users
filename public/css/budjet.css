@@ -1,11 +1,17 @@
+div{
+    font-family: 'Montserrat', sans-serif;
+}
+a{
+    font-family: 'Montserrat', sans-serif;
+}
+button{
+    font-family: 'Montserrat', sans-serif;
+}
 
-
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,900);
-@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro);
-@import url(http://fonts.googleapis.com/css?family=Exo:300,800);
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Montserrat', sans-serif;
 }
 .cube {
     position: relative;

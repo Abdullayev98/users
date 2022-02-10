@@ -13,13 +13,13 @@ class Task extends Model
 
     const STATUS_NEW = 0;
     const STATUS_OPEN = 1;
-    const STATUS_IN_PROGRESS = 2;
-    const STATUS_COMPLETE = 3;
-    const STATUS_CLOSED = 4;
+    const STATUS_RESPONSE = 2;
+    const STATUS_IN_PROGRESS = 3;
+    const STATUS_COMPLETE = 4;
 
     protected $guarded  = [];
 
-//    protected $with = ['responses','category','user','translations','custom_field_values','performer'];
+    protected $withCount = ['responses'];
 
     public function custom_field_values(){
         return $this->hasMany(CustomFieldsValue::class);

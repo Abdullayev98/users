@@ -54,4 +54,6 @@ function getAllCategories(){
     return Category::withTranslations(['ru', 'uz'])->get();
 }
 
-
+function getAuthUserBalance(){
+    return auth()->user() && auth()->user()->walletBalance ? auth()->user()->walletBalance->balance : null;
+}

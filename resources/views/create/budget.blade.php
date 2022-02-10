@@ -3,7 +3,6 @@
 @include('layouts.fornewtask')
 
 @section('content')
-
     <link rel="stylesheet" href="{{asset('css/budget_library.css')}}">
     <link rel="stylesheet" href="{{asset('css/budjet.css')}}">
     <!-- Information section -->
