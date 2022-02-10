@@ -125,6 +125,7 @@ class ProfileController extends Controller
             'avatar' => 'required|image'
         ]);
         $user= Auth::user();
+        $data = $request->all();
         if($request->hasFile('avatar')){
             $destination = 'storage/'.$user->avatar;
             if(File::exists($destination))
@@ -282,10 +283,14 @@ class ProfileController extends Controller
     }
     public function verificationPhotoStore(Request $request)
     {
-        $request->validate([
-            'avatar' => 'required|image'
-        ]);
         $user= Auth::user();
+        if(!$user->avatar)
+        {
+            $request->validate([
+                'avatar' => 'required|image'
+            ]);
+        }
+        $data = $request->all();
         if($request->hasFile('avatar')){
             $destination = 'storage/'.$user->avatar;
             if(File::exists($destination))

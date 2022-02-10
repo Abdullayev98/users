@@ -201,7 +201,7 @@
 
                             <form action="{{route('user.verify.phone.submit')}}" method="post">
                                 @csrf
-                                <input type="text" placeholder="Code" name="code"
+                                <input type="text" placeholder="@lang('lang.modal_code')" name="code"
                                        class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded
                         w-full py-2 px-3 text-gray-700 mb-1 leading-tight hover:border-amber-500"
                                        autofocus>

@@ -66,6 +66,7 @@ return [
     'modal_phone' => "Boshqa telefon raqamini belgilang",
     'modal_alert' => "Siz topshiriqni ijrochiga taklif qildingiz",
     'modal_alert1' => "Biz xabarnoma yubordik.",
+    'modal_code' => "Kod",
     //modal blade end
 
     // pdf.blade start
@@ -533,7 +534,7 @@ return [
     'settings_otherSet' => "Boshqa ma'lumotlar",
     'settings_city' => "Shahar",
     'settings_choose' => "Tanlash",
-    'settings_profile' => "Profilni o'chirib yuborish",
+    'settings_profile' => "Profilni o'chirish",
     'settings_phone' => "Telefon",
     'settings_noNumber' => "raqam yo'q",
     'settings_trust' => "Ijtimoiy tarmoqlardagi akkauntlaringizni Servicebox profilingizga ulash orqali foydalanuvchi ishonchini oshiring. Biz sizning kontaktlaringizni maxfiy saqlashga sodiqmiz.",

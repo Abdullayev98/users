@@ -118,7 +118,7 @@ class SearchTaskController extends VoyagerBaseController
         $users_id = $request->input('user_id');
         $good = $request->input('good');
         if ($status) {
-            if ($status == 4) {
+            if ($status == 4 || $status == 2) {
                 Task::where('id', $task_id)->update([
                     'status' => $status
                 ]);
