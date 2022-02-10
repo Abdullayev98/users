@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Task\UpdateRequest;
 use App\Models\CustomFieldsValue;
 use App\Models\Task;
+use App\Services\Payme\Request;
 use Illuminate\Support\Arr;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -54,6 +55,25 @@ class UpdateController extends Controller
             $custom_fields_value->delete();
 
         }
+    }
+
+
+    public function completed(Task $task){
+        $data = [
+            'status' => Task::STATUS_COMPLETE
+        ];
+        $task->update($data);
+
+        Alert::success('Success');
+
+        return back();
+
+    }
+
+
+    public function sendReview(Request $request){
+
+        return 23423;
     }
 
 
