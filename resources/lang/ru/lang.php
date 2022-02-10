@@ -548,6 +548,9 @@ return [
     'settings_newPassword' => "Новый пароль",
     'settings_repeatPassword' => "Повторите пароль",
     'settings_saveNewPass' => "Сохранить новый пароль",
+    'settings_delete' => "Вы уверены, что хотите удалить?",
+    'settings_Success' => "Успешно",
+    'settings_Successfully' => "Успешно обновлено",
     // settings.blade end
 
     // executors-courier.blade start

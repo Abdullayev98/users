@@ -543,6 +543,9 @@ return [
     'settings_newPassword' => "Yangi parol",
     'settings_repeatPassword' => "Parolni takrorlang",
     'settings_saveNewPass' => "Yangi parolni saqlash",
+    'settings_delete' => "Haqiqatan ham oʻchirib tashlamoqchimisiz?",
+    'settings_Success' => "Saqlandi",
+    'settings_Successfully' => "Muvaffaqiyatli yangilandi",
     // settings.blade end
 
     // executors-courier.blade start

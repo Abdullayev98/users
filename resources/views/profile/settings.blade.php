@@ -537,7 +537,7 @@
         }
 
         function ConfirmDelete() {
-            var result = confirm("Are you sure you want to delete?");
+            var result = confirm(" @lang('lang.settings_delete')");
             if (result == true) {
                 window.location.href = "http://" + window.location.hostname + "/profile/delete";
                 return true;
