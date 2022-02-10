@@ -165,12 +165,13 @@ class CreateController extends Controller
         return view('create.notes', compact('task'));
     }
 
-    public function uploadImage(Request $request)
+    public function uploadImage(Task $task,Request $request)
     {
+        $folder_task = Task::orderBy('created_at', 'desc')->first();
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')
-                ->storeAs('uploads/upload', $fileName, 'public');
+                ->move(public_path("Uploads/{$folder_task->name}"), $fileName);
 
             $fileModelname = time() . '_' . $request->file->getClientOriginalName();
             $fileModelfile_path = '/storage/' . $filePath;
@@ -190,8 +191,9 @@ class CreateController extends Controller
             'description' => 'required|string',
             'oplata' => 'required'
         ]);
-
-        $data['photos'] = session()->pull('photo');
+        $folder_task = Task::orderBy('created_at', 'desc')->first();
+        $image = File::allFiles("Uploads/{$folder_task->name}");
+        $data['photos'] = implode(',',$image);
         $data['docs'] = $request->docs ? 1 : null;
         $task->update($data);
         return redirect()->route("task.create.contact", $task->id);
