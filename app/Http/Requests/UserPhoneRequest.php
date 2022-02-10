@@ -32,7 +32,7 @@ class UserPhoneRequest extends FormRequest
     public function messages()
     {
         return [
-            'phone_number.required' => 'The Phone is requierd',
+            'phone_number.required' => __('lang.contact_phone'),
             'phone_number.integer' => 'The Phone must be a number',
             'phone_number.min' => 'The Phone length must be 9',
             'phone_number.unique' => 'The Phone is already exists',

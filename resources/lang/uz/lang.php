@@ -59,6 +59,7 @@ return [
     'modal_addres4' => " Boshqa xatni belgilang",
     'modal_cencel' => "Bekor qilish",
     'modal_send' => "Yuborish",
+    'modal_address1' => "Telefon raqamizga ",
     'modal_phone1' => "Telefon raqamini tasdiqlang",
     'modal_address2' => " Universal Services bilan pochtangizni tekshirish uchun havola bilan elektron pochta xabari yuborildi.",
     'modal_address3' => "Havolani kuzatib boring va telefon raqamingizni faollashtiring.",
@@ -634,6 +635,10 @@ return [
     'contact_send' => "Yuborish",
     'contact_yourContacts' => "Sizning kontaktlaringiz",
     'contact_auth' => "Avtorizatsiya",
+    'contact_verify' => "Registratsiya kodi",
+    'contact_notVerify' => "Notog'ri kod",
+    'contact_expired' => "Kod muddati tugagan",
+    'contact_phone' => "Raqamni yozin",
     // contacts.blade end
 
     // date.blade start

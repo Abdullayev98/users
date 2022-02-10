@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="md:flex md:mx-0 mx-auto border-t pt-4">
-        <div class="container mx-auto ml-4 mb-4 md:text-left text-center">
+        <div class="container mx-auto sm:ml-4 ml-0 mb-4 md:text-left text-center">
             <span class="">
             @lang('lang.footer_foot') <br>
                 <a class="hover:text-amber-500 m:mx-auto" rel="noopener noreferrer">

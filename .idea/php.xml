@@ -158,6 +158,8 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
       <path value="$PROJECT_DIR$/vendor/joy/voyager-api-auth" />
       <path value="$PROJECT_DIR$/vendor/temprodev/laravel-one-auth" />
+<<<<<<< HEAD
+=======
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-signal-aware-command" />
       <path value="$PROJECT_DIR$/vendor/spatie/temporary-directory" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-backup" />
@@ -166,6 +168,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+>>>>>>> cca6c75ca14e9c65a5d78780772060cd9b9ba20f
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
