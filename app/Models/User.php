@@ -88,7 +88,7 @@ class User extends \TCG\Voyager\Models\User
     }
 
     public function closedResponses(){
-        return $this->hasMany(Task::class, 'performer_id')->where('status', Task::STATUS_CLOSED);
+        return $this->hasMany(Task::class, 'performer_id')->where('status', Task::STATUS_COMPLETE);
     }
 
     public function tasks(){
