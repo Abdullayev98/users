@@ -143,7 +143,7 @@
                                        id="cancel-email">@lang('lang.modal_cencel')</a>
                                     <br>
                                     <div class="my-2">
-                                        <input type="text" placeholder="Phone Number" id="phone_number"
+                                        <input type="text" placeholder="@lang('lang.contact_number')" id="phone_number"
                                                value="{{  old('email').session()->has('email')?session('email'):null  }}"
                                                class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded
                         w-full py-2 px-3 text-gray-700 mb-1 leading-tight hover:border-amber-500"
