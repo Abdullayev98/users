@@ -66,8 +66,8 @@
                         </div>
                     </div>
                     <div class="flex flex-row sm:w-1/2 w-5/6 mx-auto mt-8 items-center text-blue-300 hover:text-blue-400">
-                        <a href="/verification"><i class="text-blue fas fa-shield-alt text-2xl mx-2"></i></a>
-                        <a href="/verification"> <p class="text-base underline">@lang('lang.header_bePerformer')</p></a>
+                        <a href="{{route('verification')}}"><i class="text-blue fas fa-shield-alt text-2xl mx-2"></i></a>
+                        <a href="{{route('verification')}}"> <p class="text-base underline">@lang('lang.header_bePerformer')</p></a>
                     </div>
                 </div>
             </main>
@@ -125,17 +125,17 @@
             </div>
         </div>
 
-        <div class="swiper mySwiper lg:w-10/12 h-60 overflow-hidden rounded-xl mt-12">
+        <div class="swiper mySwiper xl:w-10/12 lg:w-11/12 md:w-10/12 h-60 overflow-hidden rounded-xl mt-12">
             <div class="swiper-wrapper">
                 @foreach ($reklamas as $reklama )
                 <div class="swiper-slide w-full items-center  mt-12">
-                    <div class="flex border-xl w-10/12 lg:w-11/12 mx-auto">
-                        <div class="w-1/2 lg:w-5/12">
-                            <h1 class="text-lg md:text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{ $reklama->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
-                            <p class="text-base md:text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
-                            <a href="/categories/1" class="py-2 px-4 border-solid md:text-base text-sm bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
+                    <div class="flex border-xl sm:w-10/12 w-3/4 lg:w-11/12 mx-auto">
+                        <div class="w-1/2 lg:pl-8  md:pl-6 sm:pl-4 lg:w-5/12">
+                            <h1 class="sm:text-lg text-base md:text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{ $reklama->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
+                            <p class="sm:text-base text-sm md:text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
+                            <a href="/categories/1" class="py-2 sm:px-4 px-2 border-solid md:text-base text-xs bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
                         </div>
-                        <div class="w-1/2 lg:w-7/12">
+                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12">
                             <img src="/storage/{{$reklama->image}}"
                                  class="object-cover object-right-bottom w-full h-full rounded-r-xl"
                                  alt="">
@@ -293,14 +293,14 @@
 
                     </div>
                     <div class="mt-4">
-                        <a href="/task-search/" type="button"
+                        <a href="{{route('task.search')}}" type="button"
                                 class="text-center py-2 bg-blue-500 border-blue-500 text-white text-3xl w-full border-b-4">
                                 @lang('lang.body_showAllTasks')
                         </a>
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">
-                <a href="/verification">
+                <a href="{{route('verification')}}">
                     <div
                         class="md:w-full w-full h-1/3 md:my-8 mt-32 mb-8 bg-center bg-cover" style="background: url('https://www.roi-selling.com/hs-fs/hub/444749/file-1929610769-jpg/blog-files/team-.jpg');">
                         <div class="w-full h-full bg-black bg-opacity-40 text-center">
@@ -309,7 +309,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="/security">
+                <a href="{{route('security')}}">
                     <div
                          class="md:w-full w-full h-1/3 my-8 bg-center bg-cover" style="background: url('https://3blaws.s3.amazonaws.com/images/bigstock-Green-energy-biofuel-electric-74257315.jpg');">
                         <div class="w-full h-full bg-black bg-opacity-40 text-center">
@@ -318,7 +318,7 @@
                         </div>
                     </div>
                 </a>
-                   <a href="/performers">
+                   <a href="{{route('performers')}}">
                         <div
                             class="md:w-full w-full h-1/3 my-8 bg-center bg-cover" style="background: url('https://wallpapercave.com/wp/wp4002616.jpg');">
                             <div class="w-full h-full bg-black bg-opacity-40 text-center">

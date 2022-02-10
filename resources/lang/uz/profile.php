@@ -11,7 +11,7 @@ return [
     'role_default'        => 'Роль по умолчанию',
     'roles_additional'    => 'Дополнительные роли',
     'user_role'           => 'Группа пользователя',
-    'transactions_date'   => 'Дата транзакции',
-    'transactions_amount' => 'Сумма транзакции',
-    'transactions_method' => 'Оператор',
+    'transactions_date'   => 'Tranzaksiya kuni',
+    'transactions_amount' => 'Tranzaksiya summasi',
+    'transactions_method' => 'Operator',
 ];

@@ -11,6 +11,7 @@ class Category extends Model
 {
     use HasFactory;
     use Translatable;
+    protected $translatable = ['name'];
 
     protected $table = "categories";
 
@@ -23,6 +24,10 @@ class Category extends Model
 
     public function custom_fields(){
         return $this->hasMany(CustomField::class);
+    }
+
+    public function parent(){
+        return $this->belongsTo(Category::class, 'parent_id', 'id');
     }
 
 

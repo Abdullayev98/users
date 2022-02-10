@@ -68,11 +68,9 @@ class PerformersController extends Controller
         $child_categories = Category::withTranslations(['ru', 'uz'])->get();
         $task_count = Task::where('performer_id', $user->id)->count();
         $tasks = Task::get();
-        $reviews = Review::get();
-        $reviews_count = Review::where('user_id', $user->id)->count();
-        $review_users = User::get();
         $about = User::where('role_id', 2)->orderBy('reviews', 'desc')->take(20)->get();
-        return view('Performers/executors-courier', compact('about', 'reviews_count', 'user', 'views', 'tasks', 'categories', 'child_categories', 'task_count', 'reviews', 'review_users'));
+        $reviews = $user->reviews()->get();
+        return view('Performers/executors-courier', compact('reviews','about', 'user', 'views', 'tasks', 'categories', 'child_categories', 'task_count'));
     }
 
 
@@ -122,14 +120,12 @@ class PerformersController extends Controller
     public function deleteNotification(Notification $notification)
     {
         $notification->delete();
-        return back();
+        return redirect()->route('tasks.detail',$notification->task_id);
    }
 
     public function del_all_notif()
     {
         Notification::where('user_id', Auth::id())->delete();
-
-
         return response()->json(['success']);
     }
 

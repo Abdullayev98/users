@@ -145,6 +145,9 @@
                 </nav>
             </div>
         </div>
+        @foreach (categories() as $category)
+
+        @endforeach
         <div class="hidden w-7/12 lg:inline-block xl:ml-12 lg:ml-12 md:text-sm xl:text-base">
             <div class="group inline-block mr-4">
                 <button class="text-gray-500 hover:text-yellow-500 focus:outline-none">
@@ -152,10 +155,10 @@
                     <span></span>
                 </button>
                 <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top z-10">
-                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
+                    @foreach (categories() as $category)
                         <li class="py-2 px-4 rounded-sm hover:bg-gray-100">
                             <button class="w-full text-left flex items-center outline-none focus:outline-none">
-                                <span class="pr-1 flex-1 font-semibold text-sm hover:text-blue-700">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
+                                <span class="pr-1 flex-1 font-semibold text-sm hover:text-blue-700">{{ $category[0]->parent->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                                 <span class="mr-auto">
                                 <svg class="fill-current h-4 w-4 transition duration-150 ease-in-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
@@ -164,9 +167,8 @@
                             </button>
                             <ul class="bg-white border rounded-sm absolute h-full overflow-y-auto top-0 right-0 transition duration-150 ease-in-out origin-top-left w-100">
 
-                                @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
+                                @foreach ($category as $category2)
                                     <li class="rounded-sm">
-                                        {{--                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="/task/create?category_id={{ $category2->id }}">--}}
                                         <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="{{route("task.create.name", ['category_id'=>$category2->id])}}">
                                             {{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                         </a>
@@ -223,7 +225,6 @@
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</button>
-
                                             </form>
                                         </li>
 {{--                                        @break--}}
@@ -253,9 +254,9 @@
                         </a>
                     </div>
 
-                    <div class="float-left">
+                    <div class="max-w-lg ml-5 float-left">
                         <a href="#" onclick="toggleModal()">
-                            <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-6 xl:mt-1 HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
+                            <i class="xl:text-2xl lg:text-xl text-green-400 hover:text-yellow-500 fas fa-wallet"></i>
                         </a>
                     </div>
 

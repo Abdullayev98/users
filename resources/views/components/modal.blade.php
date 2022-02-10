@@ -1,7 +1,7 @@
 @if(!session()->has('not-show'))
 
     @auth()
-        @if(!auth()->user()->is_email_verified)
+        @if(!auth()->user()->is_email_verified || auth()->user()->is_email_verified == 0)
             <div x-data="{ showModal : true }" class="md:py-8 py-6">
 
                 <!-- Modal Background -->

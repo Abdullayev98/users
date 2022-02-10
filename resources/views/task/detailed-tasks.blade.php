@@ -39,8 +39,12 @@
                                 @endif
                                 <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
                                     <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</p>
-                                    @if($task->user_id == auth()->id() && $task->status == 1)
-                                    <a href="{{route("delete.task", $task->id)}}" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Отменить</a>
+                                    @if($task->user_id == auth()->id() )
+                                        <form action="{{route("delete.task", $task->id)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Отменить</button>
+                                        </form>
                                     @endif
                             </div>
 
@@ -149,11 +153,11 @@
                                                     </button>
 
                                                     @if($task->status == 3)
-                                                        <button class="done font-sans w-1/3 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                        <button class="done font-sans sm:w-1/3 w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Завершен
                                                         </button>
-                                                        <button class="done font-sans w-1/2 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                        <button class="done font-sans sm:w-1/2 w-full text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                                 type="button">
                                                             Не завершен
                                                         </button>
@@ -205,7 +209,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <label>
-                                                                        <input type="number" checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
+                                                                        <input type="text" onkeypress='validate(event)' checked  name="budget" class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
                                                                         <input type="text" name="pay" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="0">
                                                                         <input type="text" name="task_user_id" class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden" value="{{$task->user_id}}">
                                                                     </label>
@@ -254,19 +258,18 @@
                             </div>
                             @endauth
                             <div class="lg:w-[700px] w-[400px]">
-                                @if (isset($auth_user))
-                                    @if ($task->user_id == $auth_user->id)
+                                    @if ($task->user_id == auth()->user()->id)
                                         <div>
                                             @if(isset($task_responses))
                                                 <div class="text-4xl font-semibold my-6">
-                                                    @if ($response_count <= 4)
-                                                        @if ($response_count == 1)
-                                                            @lang('lang.detT_onTask') {{$response_count}} отклик
+                                                    @if ($task->responses->count() <= 4)
+                                                        @if ($task->responses->count() == 1)
+                                                            @lang('lang.detT_onTask') {{$task->responses->count()}} отклик
                                                         @else
-                                                            @lang('lang.detT_onTask') {{$response_count}} откликa
+                                                            @lang('lang.detT_onTask') {{$task->responses->count()}} откликa
                                                         @endif
                                                     @else
-                                                        @lang('lang.detT_onTask') {{$response_count}} откликов
+                                                        @lang('lang.detT_onTask') {{$task->responses->count()}} откликов
                                                     @endif
                                                 </div>
                                             @else
@@ -275,7 +278,6 @@
                                                 </div>
                                             @endif
                                             <hr>
-                                            @if(isset($task_responses))
                                                 @foreach ($task_responses as $response)
                                                     <div class="mb-6">
                                                         <div class="my-10">
@@ -283,10 +285,10 @@
                                                                 <img class="w-24 h-24" src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%85%D0%BE%D0%BA%D0%BA%D0%B5%D1%8F-%D0%BD%D0%B0-%D0%BB%D1%8C%D0%B4%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%BF%D0%BE%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-117033775.jpg" alt="">
                                                             </div>
                                                             <div class="">
-                                                                <a href="/performers/{{$response_users->id}}" class="text-blue-500 text-xl font-semibold float-left">
-                                                                    {{$response_users->name}}
+                                                                <a href="/performers/{{$response->user->id}}" class="text-blue-500 text-xl font-semibold float-left">
+                                                                    {{$response->user->name}}
                                                                 </a>
-                                                                <input type="text" name="performer_id" class="hidden" value="{{$response_users->id}}">
+                                                                <input type="text" name="performer_id" class="hidden" value="{{$response->user->id}}">
                                                                 <img class="w-7 h-7 ml-2" src="{{asset('images/shield.svg')}}" alt="">
                                                                 <div class="text-gray-700">
                                                                     <i class="fas fa-star text-yellow-200 mr-1"></i>@lang('lang.detT_numByNum')
@@ -298,12 +300,12 @@
                                                                 <div class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}} UZS</div>
 
                                                                 <div class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
-                                                                        @if($response->not_free == 1)
-                                                                <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response_users->phone_number}}</div>
+                                                                @if($response->not_free == 1)
+                                                                <div class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response->user->phone_number}}</div>
                                                                 @endif
                                                                 @if($task->status < 3 )
                                                                 <div class="w-10/12 mx-auto">
-                                                                    <a href="/chat/{{$response_users->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
+                                                                    <a href="/chat/{{$response->user->id}}" class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                                         @lang('lang.detT_writeOnChat')
                                                                     </a>
                                                                     <a class="cursor-pointer send-data text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-green-500 hover:bg-green-500 font-medium border border-transparent rounded-md">
@@ -319,9 +321,7 @@
                                                     </div>
                                                 @endforeach
                                         </div>
-                                    @endif
                             </div>
-                            @endif
                             @endif
                             <div class="mt-12">
                                 <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
@@ -352,30 +352,26 @@
                         <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                         <div class="flex flex-row mt-4">
                             <div class="mr-4">
-                                @if (isset($current_user))
                                     <img src="
-                            @if ($current_user->avatar == '')
+                            @if ($task->user->avatar == '')
                                     {{ asset("storage/images/default.png") }}
                                     @else
-                                    {{ asset("storage/{$current_user->avatar}") }}
+                                    {{ asset("storage/{$task->user->avatar}") }}
                                     "@endif
                                          class="border-2 border-gray-400 w-32 h-32" alt="#">
-                                @endif
                             </div>
                             <div class="">
-                                <a href="@if (isset($current_user))/performers/{{$current_user->id}}@else @endif" class="text-2xl text-blue-500 hover:text-red-500">{{$current_user->name ?? $task->user_name}}</a> <br>
+                                <a href="/performers/{{$task->user->id}}" class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}</a> <br>
                                 <a href="#" class="text-xl text-gray-500">
-                                    @if (isset($current_user))
-                                        @if($current_user->age != "")
+                                        @if($task->user->age != "")
                                             <p class="inline-block text-m mr-2">
-                                                {{$current_user->age}}
-                                                @if($current_user->age>20 && $current_user->age%10==1) @lang('lang.cash_rusYearGod')
-                                                @elseif ($current_user->age>20 && ($current_user->age%10==2 || $current_user->age%10==3 || $current_user->age%10==1)) @lang('lang.cash_rusYearGoda')
+                                                {{$task->user->age}}
+                                                @if($task->user->age>20 && $task->user->age%10==1) @lang('lang.cash_rusYearGod')
+                                                @elseif ($task->user->age>20 && ($task->user->age%10==2 || $task->user->age%10==3 || $task->user->age%10==1)) @lang('lang.cash_rusYearGoda')
                                                 @else @lang('lang.cash_rusYearLet')
                                                 @endif
                                             </p>
                                         @endif
-                                    @endif
                                 </a>
                             </div>
                         </div>
