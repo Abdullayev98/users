@@ -22,7 +22,7 @@ class UpdateController extends Controller
 
         Alert::success('Success');
 
-        return back();
+        return redirect()->route('tasks.detail', $task->id);
 
 
     }

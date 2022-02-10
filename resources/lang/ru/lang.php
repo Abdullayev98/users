@@ -60,7 +60,7 @@ return [
     'modal_addres4' => " Указать другую почту",
     'modal_cencel' => "Отмена",
     'modal_send' => "Отправить",
-    'modal_address1' => "На ваш телефонный номер",
+    'modal_address1' => "На ваш телефонный номер ",
     'modal_phone1' => "Подтвердите номер телефона",
     'modal_address2' => " было отправлено письмо со кодом для подтверждения вашего аккаунта на Universal Services.",
     'modal_address3' => " Пройдите по ссылке и активируйте вашу телефонный номер.",
@@ -549,6 +549,9 @@ return [
     'settings_newPassword' => "Новый пароль",
     'settings_repeatPassword' => "Повторите пароль",
     'settings_saveNewPass' => "Сохранить новый пароль",
+    'settings_delete' => "Вы уверены, что хотите удалить?",
+    'settings_Success' => "Успешно",
+    'settings_Successfully' => "Успешно обновлено",
     // settings.blade end
 
     // executors-courier.blade start
@@ -636,6 +639,10 @@ return [
     'contact_send' => "Отправить",
     'contact_yourContacts' => "Ваши контакты",
     'contact_auth' => "Авторизация",
+    'contact_verify' => "Код авторизация",
+    'contact_notVerify' => "Неверный код",
+    'contact_expired' => "Срок действия кода истек",
+    'contact_phone' => "Укажите номер",
     // contacts.blade end
 
     // date.blade start
@@ -1148,6 +1155,8 @@ return [
     'detailedT_training' => "Обучение",
     'detailedT_text18' => "Откликнуться на это задание",
     'detailedT_text19' => "Оставить отзыв",
+    'detailedT_Image' => "Рисунок",
+    'detailedT_ImageNot' => "Изображение не выбрано",
     //detailed tasks blade ended
     //data
     // personal info
