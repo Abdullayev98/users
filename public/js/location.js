@@ -23,10 +23,10 @@ function init() {
         myFunction();
     });
 
-    const alp = ["B", "C", "D", "E", "F"];
+    const alp = ["B", "C", "D", "E", "F","G","H","I","J"];
 
     $("#addbtn").click(function(){
-        if(x < 2){
+        if(x < 10){
             $("#addinput").append('<div class="flex items-center gap-x-2">' +
                 '<div class="flex items-center rounded-lg border  w-full py-1"> ' +
                 '<button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  '+ alp[x-1] +' </button>' +
@@ -38,8 +38,9 @@ function init() {
                 '<path d="M12.344 7.178a.75.75 0 1 0-1.494-.13l-.784 8.965a.75.75 0 0 0 1.494.13l.784-8.965zm-6.779 0a.75.75 0 0 1 1.495-.13l.784 8.965a.75.75 0 0 1-1.494.13l-.785-8.965z" fill="#666"/></svg> </button> ' +
                 '<input name="coordinates'+ x +'" type="hidden" id="coordinate'+ x +'"> </div>    ');
             x++;
-        }else{
-            alert("max five field allowed");
+        }
+        if(x == 10){
+            $("#addbtn").hide();
         }
         var suggestView = [];
         for(var i=1; i<=x; i++){
@@ -51,8 +52,10 @@ function init() {
     });
     $("#addinput").on("click" ,"#remove_inputs" , function(){
         $(this).parent("div").remove();
-
         x--;
+        if(x < 10){
+            $("#addbtn").show();
+        }
         myFunction();
     });
 
@@ -98,9 +101,6 @@ function myFunction() {
 
     );
 
-
-
-
     if(document.getElementById("suggest1")){
         place1 = document.getElementById("suggest1").value;
         var myGeocoder1 = ymaps.geocode(place1);
@@ -114,47 +114,110 @@ function myFunction() {
         place1 ="";
     }
 
-    // if(document.getElementById("suggest2")){
-    //   place2 = document.getElementById("suggest2").value;
-    //   var myGeocoder2 = ymaps.geocode(place2);
-    //   myGeocoder2.then(
-    //       function (res) {
-    //         document.getElementById("coordinate2").value = res.geoObjects.get(0).geometry.getCoordinates();
+    if(document.getElementById("suggest2")){
+      place2 = document.getElementById("suggest2").value;
+      var myGeocoder2 = ymaps.geocode(place2);
+      myGeocoder2.then(
+          function (res) {
+            document.getElementById("coordinate2").value = res.geoObjects.get(0).geometry.getCoordinates();
 
-    //       }
-    //   );
-    // }
-    // else {
-    //   place2 ="";
-    // }
+          }
+      );
+    }
+    else {
+      place2 ="";
+    }
 
-    // if(document.getElementById("suggest3")){
-    //   place3 = document.getElementById("suggest3").value;
-    //   var myGeocoder3 = ymaps.geocode(place3);
-    //   myGeocoder3.then(
-    //       function (res) {
-    //         document.getElementById("coordinate3").value = res.geoObjects.get(0).geometry.getCoordinates();
+    if(document.getElementById("suggest3")){
+      place3 = document.getElementById("suggest3").value;
+      var myGeocoder3 = ymaps.geocode(place3);
+      myGeocoder3.then(
+          function (res) {
+            document.getElementById("coordinate3").value = res.geoObjects.get(0).geometry.getCoordinates();
 
-    //       }
+          }
 
-    //   );
-    // }
-    // else {
-    //   place3 ="";
-    // }
+      );
+    }
+    else {
+      place3 ="";
+    }
 
-    // if(document.getElementById("suggest4")){
-    //   place4 = document.getElementById("suggest4").value;
-    //   var myGeocoder4 = ymaps.geocode(place4);
-    //   myGeocoder4.then(
-    //       function (res) {
-    //         document.getElementById("coordinate4").value = res.geoObjects.get(0).geometry.getCoordinates();
+    if(document.getElementById("suggest4")){
+      place4 = document.getElementById("suggest4").value;
+      var myGeocoder4 = ymaps.geocode(place4);
+      myGeocoder4.then(
+          function (res) {
+            document.getElementById("coordinate4").value = res.geoObjects.get(0).geometry.getCoordinates();
 
-    //       }
-    //   );
-    // } else {
-    //   place4 ="";
-    // }
+          }
+      );
+    } else {
+      place4 ="";
+    }
+
+    if(document.getElementById("suggest5")){
+        place5 = document.getElementById("suggest5").value;
+        var myGeocoder5 = ymaps.geocode(place5);
+        myGeocoder5.then(
+            function (res) {
+                document.getElementById("coordinate5").value = res.geoObjects.get(0).geometry.getCoordinates();
+
+            }
+        );
+    } else {
+        place5 ="";
+    }
+
+    if(document.getElementById("suggest6")){
+        place6 = document.getElementById("suggest6").value;
+        var myGeocoder6 = ymaps.geocode(place6);
+        myGeocoder6.then(
+            function (res) {
+                document.getElementById("coordinate6").value = res.geoObjects.get(0).geometry.getCoordinates();
+
+            }
+        );
+    } else {
+        place6 ="";
+    }
+
+    if(document.getElementById("suggest7")){
+        place7 = document.getElementById("suggest7").value;
+        var myGeocoder7 = ymaps.geocode(place7);
+        myGeocoder7.then(
+            function (res) {
+                document.getElementById("coordinate7").value = res.geoObjects.get(0).geometry.getCoordinates();
+
+            }
+        );
+    } else {
+        place7 ="";
+    }
+
+    if(document.getElementById("suggest8")){
+        place8 = document.getElementById("suggest8").value;
+        var myGeocoder8 = ymaps.geocode(place8);
+        myGeocoder8.then(
+            function (res) {
+                document.getElementById("coordinate8").value = res.geoObjects.get(0).geometry.getCoordinates();
+            }
+        );
+    } else {
+        place8 ="";
+    }
+
+    if(document.getElementById("suggest9")){
+        place9 = document.getElementById("suggest9").value;
+        var myGeocoder9 = ymaps.geocode(place9);
+        myGeocoder9.then(
+            function (res) {
+                document.getElementById("coordinate9").value = res.geoObjects.get(0).geometry.getCoordinates();
+            }
+        );
+    } else {
+        place9 ="";
+    }
 
     myMap.destroy();
 
@@ -167,7 +230,7 @@ function myFunction() {
     }
 
     multiRoute = new ymaps.multiRouter.MultiRoute({
-        referencePoints: [place, place1 /*, place2, place3, place4*/],
+        referencePoints: [place, place1 , place2, place3, place4, place5, place6, place7, place8, place9],
 
     }, {
         // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.

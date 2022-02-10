@@ -7,13 +7,13 @@
     <div class="w-11/12  mx-auto text-base mt-4">
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
             {{-- user ma'lumotlari --}}
-            <div class="col-span-2 w-full md:mx-auto mx-4">
+            <div class="col-span-2 w-full mx-auto">
                 <figure class="w-full">
 
                     <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
                     <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
 
-                    <div class="flex flex-row w-80 mt-6" style="width:500px">
+                    <div class="flex flex-row w-full mt-6">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
                                  @if ($user->avatar == Null)
@@ -21,8 +21,9 @@
                                  @else
                                  src="{{asset("storage/{$user->avatar}")}}"
                                  @endif alt="avatar">
-                            <form action="{{route('updateSettingPhoto')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('update.photo')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
                                     <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
                                     <label for="file" class="p-1">
@@ -70,7 +71,7 @@
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
                                 <div class="flex mt-6">
                                     <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
-                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
+                                        <img @if ($user->is_email_verified != Null && $user->is_phone_number_verified != Null && $user->is_phone_number_verified != 0 && $user->is_email_verified != 0)
                                              src="{{ asset('images/verify.png') }}"
                                              @else
                                              src="{{ asset('images/verify_gray.png') }}"
@@ -162,18 +163,18 @@
                                 </form>
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
-                        <div class="example-of-works w-96 my-10">
+                        <div class="example-of-works w-full my-10">
                            <a class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="/profile/create">
                             <i class="fas fa-camera"></i>
                             <span>@lang('lang.profile_createAlbum')</span>
                            </a>
                         </div>
-                        <div class="grid md:grid-cols-3 grid-cols-1 w-full mx-auto">
+                        <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mx-auto">
                         @foreach($comment as $comments)
                         @php
                             $images = explode(',', $comments->image);
                         @endphp
-                            <a href="/profile/portfolio/{{$comments->id}}" class="border my-6 border-gray-400 mx-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
+                            <a href="/profile/portfolio/{{$comments->id}}" class="border my-6 border-gray-400 mr-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
                                 <img src="{{$images[0]}}" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
                                     <p class="w-2/3 text-center text-base text-white">{{$comments->comment}}</p>

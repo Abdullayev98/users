@@ -45,7 +45,7 @@ class ProfileController extends Controller
         }
         $file = File::deleteDirectory("Portfolio/{$user->name}/{$directory}");
         if($file) {
-            Portfolio::where('id', $id)->where('user_id', $user->id)->delete();
+            $user->portfolios()->where('id', $id)->delete();
             return redirect()->route('userprofile');
         }
     }
@@ -70,7 +70,7 @@ class ProfileController extends Controller
     public function testBase(Request $request)
     {
         $user = Auth::user();
-        $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
+        $comment = $user->portfolios()->orderBy('created_at', 'desc')->first();
         $image = File::allFiles("Portfolio/{$user->name}/{$comment->comment}");
         $json = implode(',',$image);
         $data['image'] = $json;
@@ -87,18 +87,18 @@ class ProfileController extends Controller
     public function portfolio($id)
     {
         $user = Auth::user();
-        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
+        $comment = $user->portfolios()->where('id', $id)->get();
         return view('profile/portfolio', compact('comment','user'));
     }
     //profile
     public function profileData()
     {
         $user = Auth::user();
-        $views = count( UserView::where('performer_id', $user->id)->get());
-        $task = Task::where('user_id',Auth::user()->id)->count();
-        $task_count = Task::where('performer_id', Auth::id())->where('status',4)->count();
-        $ports = Portfoliocomment::where('user_id', Auth::user()->id)->get();
-        $comment = Portfolio::where('user_id', $user->id)->where('image', '!=', null)->get();
+        $views = $user->views()->count();
+        $task = $user->tasks()->count();
+        $task_count = Task::where('performer_id',$user->id)->where('status',4)->count();
+        $ports = $user->portfoliocomments;
+        $comment = $user->portfolios()->where('image', '!=', null)->get();
         if($comment != null){
             //$image = $comment->image;
             //$images = explode(',',$image);
@@ -107,15 +107,12 @@ class ProfileController extends Controller
             $image = [0,1];
             $images = [0,1];
         }
-
         $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
-
         //dd($a);
         $file = "Portfolio/{$user->name}";
         if(!file_exists($file)){
             File::makeDirectory($file);
         }
-
         $b = File::directories(public_path("Portfolio/{$user->name}"));
         $directories = array_map('basename', $b);
         $categories = Category::withTranslations(['ru', 'uz'])->get();
@@ -123,82 +120,6 @@ class ProfileController extends Controller
         return view('profile.profile', compact('categories','image','about','comment','directories','task_count','user','views','task','ports'));
     }
     public function updates(Request $request)
-    {
-        $request->validate([
-            'avatar' => 'required|image'
-        ]);
-        $user= Auth::user();
-        $data = $request->all();
-        if($request->hasFile('avatar')){
-            $destination = 'AvatarImages/'.$user->avatar;
-            if(File::exists($destination))
-            {
-                File::delete($destination);
-            }
-            $filename = $request->file('avatar');
-            $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
-            $data['avatar'] = $imagename;
-        }
-        $user->update($data);
-        return  redirect()->route('userprofile');
-    }
-
-    //profile Cash
-    public function profileCash()
-    {
-        $user = Auth()->user()->load('transactions');
-        $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
-        $views   = UserView::where('performer_id', $user->id)->count();
-        $task    = Task::where('user_id',Auth::user()->id)->count();
-        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
-        $task_count = Task::where('performer_id', auth()->user()->id)->count();
-
-        return view('profile.cash', compact('user', 'views', 'balance', 'task','about','task_count'));
-    }
-    public function updateCash(Request $request)
-    {
-        $request->validate([
-            'avatar' => 'required|image'
-        ]);
-        $user= Auth::user();
-        $data = $request->all();
-        if($request->hasFile('avatar')){
-            $destination = 'AvatarImages/'.$user->avatar;
-            if(File::exists($destination))
-            {
-                File::delete($destination);
-            }
-            $filename = $request->file('avatar');
-            $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
-            $data['avatar'] =$imagename;
-        }
-        $user->update($data);
-        return  redirect()->route('userprofilecash');
-    }
-
-    //settings
-    public function editData()
-    {
-        $user = Auth::user();
-        $views = count( UserView::where('performer_id', $user->id)->get());
-        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $regions = Region::withTranslations(['ru','uz'])->get();
-        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
-        $task_count = Task::where('performer_id', $user->id)->count();
-        return view('profile.settings', compact('user','categories','views','regions','about','task_count'));
-    }
-    public function updateData(UserUpdateDataRequest $request)
-    {
-        $data = $request->validated();
-        $data['is_phone_number_verified'] = 0;
-        $data['is_email_verified'] = 0;
-        Auth::user()->update($data);
-        Alert::success('Success', "Successfully Updated");
-        return  redirect()->route('editData');
-    }
-    public function imageUpdate(Request $request)
     {
         $request->validate([
             'avatar' => 'required|image'
@@ -216,11 +137,49 @@ class ProfileController extends Controller
             $data['avatar'] =$imagename;
         }
         $user->update($data);
+        return  redirect()->back();
+    }
+
+    //profile Cash
+    public function profileCash()
+    {
+        $user = Auth()->user()->load('transactions');
+
+        $balance = $user->walletBalance;
+        $views   = $user->views()->count();
+        $task    = $user->tasks()->count();
+        $transactions = $user->transactions()->paginate(15);
+        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
+        $task_count = Task::where('performer_id',$user->id)->count();
+
+        return view('profile.cash', compact('user', 'views', 'balance', 'task','about','task_count','transactions'));
+    }
+//settings
+    public function editData()
+    {
+        $user = Auth::user();
+        $views = $user->views()->count();
+        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
+        $regions = Region::withTranslations(['ru','uz'])->get();
+        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
+        $task_count = Task::where('performer_id', $user->id)->count();
+        return view('profile.settings', compact('user','categories','views','regions','about','task_count'));
+    }
+    public function updateData(UserUpdateDataRequest $request)
+    {
+        $data = $request->validated();
+        if ($data['email'] != auth()->user()->email){
+            $data['is_phone_number_verified'] = 0;
+        }
+        if ($data['phone_number'] != auth()->user()->phone_number){
+            $data['is_phone_number_verified'] = 0;
+        }
+        Auth::user()->update($data);
+        Alert::success('Success', "Successfully Updated");
         return  redirect()->route('editData');
     }
     public function destroy($id){
-        $user = User::where('id', $id)->first();
-        $user->delete();
+        auth()->user()->delete();
         return  redirect('/');
     }
 
@@ -230,10 +189,10 @@ class ProfileController extends Controller
         $request->validate([
             'category' => 'required'
         ]);
-        $id = Auth::user()->id;
+        $user = Auth::user();
         $checkbox = implode(",", $request->get('category'));
-        User::where('id',$id)->update(['category_id'=>$checkbox]);
-        auth()->user()->role_id=2;
+        $user->update(['category_id'=>$checkbox]);
+        $user->role_id=2;
         return redirect()->route('userprofile');
     }
 
@@ -298,7 +257,6 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->born_date = $request->date;
         $user->save();
-
         return  redirect()->route('verification.contact');
     }
     public function verificationContact()
@@ -328,17 +286,16 @@ class ProfileController extends Controller
             'avatar' => 'required|image'
         ]);
         $user= Auth::user();
-        $data = $request->all();
         if($request->hasFile('avatar')){
-            $destination = 'AvatarImages/'.$user->avatar;
+            $destination = 'storage/'.$user->avatar;
             if(File::exists($destination))
             {
                 File::delete($destination);
             }
             $filename = $request->file('avatar');
-            $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
-            $data['avatar'] = $imagename;
+            $imagename = "user-avatar/".$filename->getClientOriginalName();
+            $filename->move(public_path().'/storage/user-avatar/',$imagename);
+            $data['avatar'] =$imagename;
         }
         $user->update($data);
         return  redirect()->route('verification.category');
@@ -350,3 +307,4 @@ class ProfileController extends Controller
     }
 
 }
+
