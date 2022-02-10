@@ -164,9 +164,11 @@
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
                         <div class="example-of-works w-full my-10">
-                           <a class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl" href="/profile/create">
-                            <i class="fas fa-camera"></i>
-                            <span>@lang('lang.profile_createAlbum')</span>
+                           <a href="/profile/create">
+                               <button class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl">
+                                   <i class="fas fa-camera"></i>
+                                   <span>@lang('lang.profile_createAlbum')</span>
+                               </button>
                            </a>
                         </div>
                         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mx-auto">
