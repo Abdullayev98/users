@@ -50,3 +50,8 @@ function categories(){
 }
 
 
+function getAllCategories(){
+    return Category::withTranslations(['ru', 'uz'])->get();
+}
+
+

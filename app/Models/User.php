@@ -42,6 +42,11 @@ class User extends \TCG\Voyager\Models\User
         'is_email_verified'
     ];
 
+
+
+    protected $withCount = ['views', 'tasks'];
+
+
     /*
      * The attributes that should be hidden for serialization.
      *
@@ -80,6 +85,10 @@ class User extends \TCG\Voyager\Models\User
     }
     public function alerts(){
         return $this->hasMany(Notification::class);
+    }
+
+    public function closedResponses(){
+        return $this->hasMany(Task::class, 'performer_id')->where('status', Task::STATUS_CLOSED);
     }
 
     public function tasks(){
