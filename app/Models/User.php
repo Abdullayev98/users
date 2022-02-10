@@ -93,14 +93,7 @@ class User extends \TCG\Voyager\Models\User
 
     public function tasks(){
         return $this->hasMany(Task::class);
-    }
-<<<<<<< HEAD
-
-
-
-
-=======
-    public function walletBalance(){
+    }public function walletBalance(){
         return $this->hasOne(WalletBalance::class);
     }
     public function portfoliocomments(){
@@ -109,5 +102,4 @@ class User extends \TCG\Voyager\Models\User
     public function portfolios(){
         return $this->hasMany(Portfolio::class);
     }
->>>>>>> cca6c75ca14e9c65a5d78780772060cd9b9ba20f
 }
