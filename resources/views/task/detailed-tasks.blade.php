@@ -99,9 +99,9 @@
                                     $a = sizeof($images)-1;
                                 @endphp
                                 <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                    <h1 class="font-bold h-auto w-48">Images</h1>
+                                    <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_Image')</h1>
                                 @for($i = 0; $i <= $a; $i++)
-                                        <img class="w-40 h-40 mx-2" src="{{asset($images[$i])}}" alt="Images not found">
+                                        <img class="w-40 h-40 mx-2" src="{{asset($images[$i])}}" alt="@lang('lang.detailedT_ImageNot')">
                                     {{--@dd($image);--}}
                                 @endfor
                                 </div>
