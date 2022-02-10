@@ -66,6 +66,7 @@ return [
     'modal_phone' => "Boshqa telefon raqamini belgilang",
     'modal_alert' => "Siz topshiriqni ijrochiga taklif qildingiz",
     'modal_alert1' => "Biz xabarnoma yubordik.",
+    'modal_code' => "Kod",
     //modal blade end
 
     // pdf.blade start
