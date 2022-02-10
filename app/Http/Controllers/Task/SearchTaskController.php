@@ -86,7 +86,7 @@ class SearchTaskController extends VoyagerBaseController
 
     public function task(Task $task)
     {
-        $balance = auth()->user()->walletBalance;
+        $balance = auth()->user()?auth()->user()->walletBalance:null;
         if ($balance) {
             $balance = $balance->balance;
         } else {
@@ -97,7 +97,7 @@ class SearchTaskController extends VoyagerBaseController
 
 
         $arr = get_defined_vars();
-        $task_responses = $task->responses()->with('responses')->get();
+        $task_responses = $task->responses()->get();
 
         if (Arr::exists($arr, 'response_users')) {
             return view('task.detailed-tasks', compact('task',  'users','task_responses'));

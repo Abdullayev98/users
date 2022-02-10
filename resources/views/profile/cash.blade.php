@@ -187,7 +187,7 @@
                                 </div>
                             </ul>
                             <div id="tab-contents">
-                                <div id="first" class="p-4">
+                                <div id="first" class="py-4">
                                     <table class="" id="example">
                                         <thead>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_date')</th>
@@ -209,7 +209,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="second" class="hidden p-4">
+                                <div id="second" class="hidden py-4">
                                     <table class="" id="example">
                                         <thead>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_date')</th>
@@ -229,12 +229,12 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="third" class="hidden p-4">
+                                <div id="third" class="hidden py-4">
                                     @foreach ($transactions as $transaction)
                                         <td>{{ $transaction->action }}</td>
                                     @endforeach
                                 </div>
-                                <div id="third" class="p-4">
+                                <div id="third" class="py-4">
                                     {{$transactions->links()}}
                                 </div>
                             </div>
