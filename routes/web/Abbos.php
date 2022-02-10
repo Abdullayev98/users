@@ -7,16 +7,14 @@ Route::group(['middleware'=>'auth'], function (){
     Route::prefix('profile')->group(function () {
         //Profile
         Route::get('/', [ProfileController::class, 'profileData'])->name('userprofile');
-        Route::post('/updateuserphoto', [ProfileController::class, 'updates'])->name('updatephoto');
+        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('update.photo');
 
         //Profile cash
         Route::get('/cash', [ProfileController::class, 'profileCash'])->name('userprofilecash');
-        Route::post('/updateuserphoto', [ProfileController::class, 'updateCash'])->name('updatephotocash');
 
         // Profile settings
         Route::get('/settings', [ProfileController::class, 'editData'])->name('editData');
         Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('updateData');
-        Route::post('/updatephoto', [ProfileController::class, 'imageUpdate'])->name('updateSettingPhoto')->middleware('auth');
 
         // Profile delete
         Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('users.delete');

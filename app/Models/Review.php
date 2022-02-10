@@ -17,7 +17,7 @@ class Review extends Model
     }
     public function reviewer()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
     public function task()
     {
