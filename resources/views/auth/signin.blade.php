@@ -4,19 +4,19 @@
 
         <div class="mt-3 text-center text-base">
             <div class="mx-auto flex items-center justify-center w-full">
-                <h3 class="font-bold text-2xl block mb-4">
+                <h3 class="font-bold text-2xl block mb-4 text-gray-700">
                    @lang('lang.signin_enter')
                 </h3>
             </div>
-            <div class="mt-4 flex flex-col justify-center">
-               <a href="{{route('auth.google')}}"> <button class="w-40 h-12 rounded-lg bg-red-500 text-gray-200 uppercase font-semibold hover:bg-red-700 text-gray-100 transition mb-4"> @lang('lang.signin_google')</button></a>
-               <a href="{{route("auth.facebook")}}"> <button class="w-40 h-12 rounded-lg bg-blue-500 text-gray-200 uppercase font-semibold hover:bg-blue-700 text-gray-100 transition mb-4"> @lang('lang.signin_facebook')</button></a>
-            </div>
-            <div class="mx-auto">
-                <a href="{{ route('one.auth') }}"> <button class="w-40 h-12 rounded-lg bg-yellow-500 text-gray-200 uppercase font-semibold hover:bg-yellow-700 text-gray-100 transition mb-4"> ONE ID</button></a>
+            <div class="mt-4 flex flex-row justify-center">
+                <a class="border-2 py-2 px-6 rounded-lg bg-red-500" href="{{route('auth.google')}}"><i class="fab fa-google text-2xl text-white"> </i></a>
+                <a class="border-2 py-2 px-4 rounded-lg mx-3 text-2xl font-bold bg-yellow-500 text-white my-auto" href="{{ route('one.auth') }}">
+                    ONE ID
+                </a>
+               <a class="border-2 py-2 px-6 rounded-lg bg-blue-700" href="{{route("auth.facebook")}}"> <i class="fab fa-facebook text-2xl text-white"></i></a>
             </div>
             <div class="mx-auto flex items-center justify-center w-full">
-                <h3 class="font-bold text-2xl block mb-4 mt-4">
+                <h3 class="font-bold text-2xl block mb-4 mt-4 text-gray-700">
                  @lang('lang.signin_elpocta')
                 </h3>
             </div>
@@ -27,7 +27,7 @@
                     <div class="mb-4">
                         <input type="text" name="email" placeholder="Email" id="name" value="{{  old('email') }}"
                                class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded
-                        sm:w-80 w-60 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
+                        sm:w-80 w-72 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
                                autofocus>
 
                         @error('email')
@@ -37,8 +37,8 @@
                     </div>
 
                     <div class="mb-6">
-                        <input   type="password" name="password" placeholder="@lang('lang.signin_password')" id="password"
-                                 class="ml-6 shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded sm:w-80 w-60 py-2 px-3
+                        <input   type="password" maxlength="20" name="password" placeholder="@lang('lang.signin_password')" id="password"
+                                 class="ml-6 shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded sm:w-80 w-72 py-2 px-3
                         text-gray-700 mb-3 leading-tight hover:border-amber-500">
                         <i class="fas fa-eye-slash text-gray-500 relative -left-12" id="eye"></i>
 
@@ -54,8 +54,8 @@
                     @endif
                     <div>
                         <button type="submit"
-                                class="sm:w-80 w-40 h-12 rounded-lg bg-green-500 text-gray-200 uppercase
-                        font-semibold hover:bg-green-500 text-gray-100 transition mb-4">
+                                class="sm:w-80 w-72 h-12 rounded-lg bg-green-500 text-white uppercase
+                        font-semibold hover:bg-green-500 transition mb-4">
                             @lang('lang.singin_button')
                         </button>
                     </div>

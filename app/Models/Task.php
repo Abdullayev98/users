@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
 
-
 class Task extends Model
 {
     use HasFactory;
@@ -18,10 +17,9 @@ class Task extends Model
     const STATUS_COMPLETE = 3;
     const STATUS_CLOSED = 4;
 
-
     protected $guarded  = [];
 
-
+//    protected $with = ['responses','category','user','translations','custom_field_values','performer'];
 
     public function custom_field_values(){
         return $this->hasMany(CustomFieldsValue::class);
@@ -33,13 +31,19 @@ class Task extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function performer(){
+        return $this->belongsTo(User::class,'performer_id');
+    }
+
+
+    public function review(){
+        return $this->hasOne(Review::class);
+    }
     public function responses(){
         return $this->hasMany(Response::class);
     }
     public function getPriceAttribute(){
         return preg_replace('/[^0-9.]+/', '', $this->budget);
     }
-
-
-
 }

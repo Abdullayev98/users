@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Portfolio;
+use App\Models\Portfoliocomment;
 use App\Models\Message;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,10 +19,10 @@ class User extends \TCG\Voyager\Models\User
 
     protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
+/*
+* The attributes that are mass assignable.
+*
+* @var array<int, string>
      */
     protected $fillable = [
         'name',
@@ -41,7 +42,12 @@ class User extends \TCG\Voyager\Models\User
         'is_email_verified'
     ];
 
-    /**
+
+
+    protected $withCount = ['views', 'tasks'];
+
+
+    /*
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -69,10 +75,7 @@ class User extends \TCG\Voyager\Models\User
         return $query->whereId($id)->increment('views', 1);
     }
     public function reviews() {
-        return $this->hasMany(Review::class);
-    }
-    public function review() {
-        return $this->belongsTo(Review::class);
+        return $this->hasMany(Review::class,'user_id','id');
     }
     public function views(){
         return $this->hasMany(UserView::class,'performer_id');
@@ -84,11 +87,27 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Notification::class);
     }
 
+    public function closedResponses(){
+        return $this->hasMany(Task::class, 'performer_id')->where('status', Task::STATUS_CLOSED);
+    }
+
     public function tasks(){
         return $this->hasMany(Task::class);
     }
+<<<<<<< HEAD
 
 
 
 
+=======
+    public function walletBalance(){
+        return $this->hasOne(WalletBalance::class);
+    }
+    public function portfoliocomments(){
+        return $this->hasMany(Portfoliocomment::class);
+    }
+    public function portfolios(){
+        return $this->hasMany(Portfolio::class);
+    }
+>>>>>>> cca6c75ca14e9c65a5d78780772060cd9b9ba20f
 }

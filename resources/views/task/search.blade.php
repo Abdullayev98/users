@@ -12,7 +12,7 @@
 
                             <div class="sm:inline-flex block w-full col-span-4 relative">
                             <!-- <input class="focus:outline-none  w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
-                                <input id="filter" type="text"
+                                <input id="filter" type="search"
                                        class="focus:outline-none focus:placeholder-transparent w-10/12 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                        placeholder="@lang('lang.search_byKey')">
                                 <svg class="h-3 w-3 fill-current absolute left-3/4 top-2" id="svgClose" hidden width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
@@ -30,7 +30,7 @@
                                         type="text" id="suggest" disabled>
 {{--                                        <button id="mpshow" class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">--}}
                                             <svg class="h-4 w-4 text-purple-500" id="geoBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
-                                            <svg class="h-3 w-3 fill-current" id="closeBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
+                                            <img src="images/close.png" id="closeBut" alt="Delete text" hidden>
 {{--                                        </button>--}}
                                     </div>
                                 </div>
@@ -54,23 +54,24 @@
                                 </div>
                                 <div class="relative w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
-                                    <input type="text" maxlength="7" class="focus:outline-none focus:placeholder-transparent w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
-                                    <svg class="h-3 w-3 fill-current absolute top-7 left-28" id="prcClose" hidden onclick="$('#price').val(''); $('#prcClose').hide();" width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
+                                    <input type="number" min="1" maxlength="7" class="appearance-none focus:outline-none focus:placeholder-transparent w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
+                                    <svg class="h-3 w-3 fill-current absolute top-7 left-28" id="prcClose" hidden width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
                                 </div>
                             </div>
                             <div class="inline-flex  block w-full col-span-4">
                             <label class="inline-flex items-center mt-3">
-                                <input type="checkbox" class="focus:outline-none form-checkbox checkboxByAs  h-5 w-5 text-orange-400"
-                                ><span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_remoteJob')</span>
+                                <input type="checkbox" id="remJob" class="focus:outline-none form-checkbox checkboxByAs  h-5 w-5 text-orange-400">
+                                <span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_remoteJob')</span>
                             </label>
                             <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
-                                <input type="checkbox" class="focus:outline-none form-checkbox  h-5 w-5 text-orange-400"
-                                ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_noCallback')</span>
+                                <input type="checkbox" id="noResp" class="focus:outline-none form-checkbox  h-5 w-5 text-orange-400">
+                                <span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_noCallback')</span>
                             </label>
-                            <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
-                                <input type="checkbox" class="focus:outline-none form-checkbox  h-5 w-5 text-orange-400"
-                                ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_onlyVacancy')</span>
-                            </label>
+{{--                                "Только вакансии" под вопрос--}}
+{{--                            <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">--}}
+{{--                                <input type="checkbox" class="focus:outline-none form-checkbox  h-5 w-5 text-orange-400"--}}
+{{--                                ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_onlyVacancy')</span>--}}
+{{--                            </label>--}}
                             </div>
                         </div>
                         <!-- </form> -->
@@ -232,11 +233,9 @@
                     <div class="b-tasks-sorting hidden md:block">
                         <div class="inline-flex items-center my-5">
                             <span class="title__994cd">@lang('lang.search_filter')</span>
-
-                            <button class="mx-5 byid">@lang('lang.search_byDate')</button>
-
-                            <button id="srochnost" class="  mx-5 active">@lang('lang.search_byHurry')</button>
-                            <button id="as" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
+                            <button id="byDate" class="mx-5">@lang('lang.search_byDate')</button>
+                            <button id="bySroch" class="mx-5 active">@lang('lang.search_byHurry')</button>
+                            <button id="byRem" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
                         </div>
                     </div>
                     <div id="scrollbar" class="w-full h-full blog1">
@@ -259,7 +258,7 @@
                             </div>
                         </div>
 
-                        <div class="w-full h-full lM" hidden>
+                        <div class="w-full h-full lM mt-5" hidden>
                             <ul class="text-center">
                                 <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
                                 <li><button id="loadMore" class="butt mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show(), maps_show();">@lang('lang.search_showMore')</button></li>
@@ -339,7 +338,9 @@
 @section("javasript")
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
+    <script type="text/javascript" src="https://enterprise.api-maps.yandex.ru/2.1.78/?load=package.full&mode=release&lang=ru_RU&coordorder=latlong&apikey=f79d7563-b21d-46b7-8bc4-9f95399340fa" async="true"></script>
+{{--    <script type="text/javascript" src="https://enterprise.api-maps.yandex.ru/2.1.78/?load=package.full&mode=release&lang=ru_RU&coordorder=latlong&apikey=f79d7563-b21d-46b7-8bc4-9f95399340fa&onload=YoudoInitAllMaps" async="true"></script>--}}
+{{--    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>--}}
     <script src="{{asset('js/search_tasks.js')}}"></script>
 {{--    <script src="/js/search_tasks.js"></script>--}}
     <script>

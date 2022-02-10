@@ -52,7 +52,7 @@ Route::get('/chat/{id}', [PerformersController::class, 'performer_chat']);
 
 Route::post('ajax-request', [SearchTaskController::class, 'task_response']);
 Route::post('give-task', [PerformersController::class, 'give_task']);
-Route::get('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('delete.task');
+Route::delete('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('delete.task');
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -86,7 +86,7 @@ Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){
     Route::post('/personalinfo/contact',[ProfileController::class, 'verificationContactStore'])->name('verification.contact.store');
 
     Route::get('/personalinfo/photo',[ProfileController::class, 'verificationPhoto'])->name('verification.photo');
-    Route::post('/personalinfo/photo',[ProfileController::class, 'verificationPhotoStore'])->name('verification.photo.store');
+    Route::put('/personalinfo/photo',[ProfileController::class, 'verificationPhotoStore'])->name('verification.photo.store');
 
     Route::get('/personalinfo/category',[ProfileController::class, 'verificationCategory'])->name('verification.category');
     Route::post('/personalinfo/category',[ProfileController::class, 'getCategory'])->name('verification.category.store');

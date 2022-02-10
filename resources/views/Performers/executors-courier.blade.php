@@ -59,12 +59,12 @@
                         </div>
                         <div class="text-gray-500 text-base mt-6">
                             <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
-                            @if ($reviews_count == 1)
-                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtziv')</span>
-                            @elseif ($reviews_count > 1 && $reviews_count > 5)
-                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtziva')</span>
+                            @if ($user->reviews()->count() == 1)
+                            <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziv')</span>
+                            @elseif ($user->reviews()->count() > 1 && $user->reviews()->count() > 5)
+                            <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziva')</span>
                             @else
-                            <span>@lang('lang.exe_get') {{$reviews_count}} @lang('lang.exe_rusOtzivov')</span>
+                            <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtzivov')</span>
                             @endif
                         </div>
                         {{-- <div class="text-gray-500 text-base mt-1">
@@ -142,21 +142,20 @@
 
                 <div class="py-12">
                     <ul class="d-flex flex-col gap-y-5">
-                        @if (isset($reviews))
                         @foreach ($reviews as $review)
                             @if($review->user_id == $user->id)
                         <li class="d-flex flex-col my-10 rounded-lg">
-                            <a href="#" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
-                                <img class="UsersReviews_picture__aB22p" src="https://shivinfotech.co/assests/images/download.png">
+                            <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
+                                <img class="UsersReviews_picture__aB22p"
+                                     @if ($user->avatar == Null)
+                                     src='{{asset("storage/images/default.jpg")}}'
+                                     @else
+                                     src="{{asset("storage/{$review->user->avatar}")}}"
+                                     @endif alt="avatar">
                             </a>
-                            <div class="align-top ml-12 min-h-10">
+                            <div class="align-top ml-12 h-16">
                             <span>
-                                @foreach ($review_users as $r_user)
-                                @if ($user->id == $review->user_id && $review->reviewer_id == $r_user->id)
-                                <a href="/performers/{{$r_user->id}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$r_user->name}}</a>
-                                @endif
-                                @endforeach
-
+                                <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$review->user->name}}</a>
                             </span>
                                 <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
@@ -182,11 +181,13 @@
                             </div>
                             <div class="p-5 mt-3 mr-0 mb-8 bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-2.5 relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid rounded-md">
                                 <div class="text-gray-500 py-4">
-                                    @foreach ($tasks as $task)
-                                    @if ($task->id == $review->task_id)
-                                    <i class="far fa-thumbs-up"></i> Задание "{{$task->name}}" выполнено
+                                    @if ($review->good_bad == 1)
+                                        <i class="far fa-thumbs-up"></i>
+                                    @else
+                                        <i class="far fa-thumbs-down"></i>
                                     @endif
-                                    @endforeach
+                                    Задание "{{$review->task->name}}"
+
                                 </div>
                                 <hr>
                                 <div class="py-4">
@@ -196,7 +197,6 @@
                         </li>
                         @endif
                         @endforeach
-                        @endif
                     </ul>
                 </div>
 
@@ -207,7 +207,7 @@
                     @foreach(explode(',', $user->category_id) as $user_cat)
                     @foreach($categories as $cat)
                         @if($cat->id == $user_cat)
-                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="/categories/{{$cat->parent_id}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
+                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="{{route('categories',$cat->parent_id)}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
                               @endif
                           @endforeach
                     @endforeach

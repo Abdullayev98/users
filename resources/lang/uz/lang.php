@@ -59,6 +59,7 @@ return [
     'modal_addres4' => " Boshqa xatni belgilang",
     'modal_cencel' => "Bekor qilish",
     'modal_send' => "Yuborish",
+    'modal_address1' => "Telefon raqamizga ",
     'modal_phone1' => "Telefon raqamini tasdiqlang",
     'modal_address2' => " Universal Services bilan pochtangizni tekshirish uchun havola bilan elektron pochta xabari yuborildi.",
     'modal_address3' => "Havolani kuzatib boring va telefon raqamingizni faollashtiring.",
@@ -66,6 +67,7 @@ return [
     'modal_phone' => "Boshqa telefon raqamini belgilang",
     'modal_alert' => "Siz topshiriqni ijrochiga taklif qildingiz",
     'modal_alert1' => "Biz xabarnoma yubordik.",
+    'modal_code' => "Kod",
     //modal blade end
 
     // pdf.blade start
@@ -533,7 +535,7 @@ return [
     'settings_otherSet' => "Boshqa ma'lumotlar",
     'settings_city' => "Shahar",
     'settings_choose' => "Tanlash",
-    'settings_profile' => "Profilni o'chirib yuborish",
+    'settings_profile' => "Profilni o'chirish",
     'settings_phone' => "Telefon",
     'settings_noNumber' => "raqam yo'q",
     'settings_trust' => "Ijtimoiy tarmoqlardagi akkauntlaringizni Servicebox profilingizga ulash orqali foydalanuvchi ishonchini oshiring. Biz sizning kontaktlaringizni maxfiy saqlashga sodiqmiz.",
@@ -543,6 +545,9 @@ return [
     'settings_newPassword' => "Yangi parol",
     'settings_repeatPassword' => "Parolni takrorlang",
     'settings_saveNewPass' => "Yangi parolni saqlash",
+    'settings_delete' => "Haqiqatan ham oʻchirib tashlamoqchimisiz?",
+    'settings_Success' => "Saqlandi",
+    'settings_Successfully' => "Muvaffaqiyatli yangilandi",
     // settings.blade end
 
     // executors-courier.blade start
@@ -630,6 +635,10 @@ return [
     'contact_send' => "Yuborish",
     'contact_yourContacts' => "Sizning kontaktlaringiz",
     'contact_auth' => "Avtorizatsiya",
+    'contact_verify' => "Registratsiya kodi",
+    'contact_notVerify' => "Notog'ri kod",
+    'contact_expired' => "Kod muddati tugagan",
+    'contact_phone' => "Raqamni yozin",
     // contacts.blade end
 
     // date.blade start
@@ -680,7 +689,7 @@ return [
     'notes_percent' => "Vazifa 90% toʻldi",
     'notes_details' => "Tafsilotlarni ko'rsating",
     'notes_destcript' => "Ta'rif",
-    'notes_example' => "Masalan: yog'ochdan, tomi va ikkita derazali bir qavatli bolalar uyi qurish. Hovlida tez-tez suv yig'iladi, sizga shag'al drenaj kerak bo'ladi.",
+    'notes_example' => "Masalan: ",
     'notes_addPhoto' => "Rasm qo'shish",
     'notes_back' => "Orqaga",
     'notes_giveDocs' => "Hujjatlarni taqdim etish",
@@ -1139,6 +1148,8 @@ return [
     'detailedT_training' => "Ta'lim",
     'detailedT_text18' => "Bu chaqiruvga javob bering",
     'detailedT_text19' => "Fikr qoldiring",
+    'detailedT_Image' => "Rasim",
+    'detailedT_ImageNot' => "Rasim tanlanmadi",
     //detailed tasks blade ended
     // personalinfo
     'personalinfo_text1' => "Bizga o'zingiz haqingizda aytib bering",
