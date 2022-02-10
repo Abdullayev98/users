@@ -23,7 +23,7 @@
                     {{$user->name}}
                 </h3>
             
-                <form action="{{route('update.photo')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('verification.photo.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <label for="profilephoto" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">@lang('lang.personalinfo_text18')</label>

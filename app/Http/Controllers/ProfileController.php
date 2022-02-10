@@ -137,10 +137,7 @@ class ProfileController extends Controller
             $data['avatar'] =$imagename;
         }
         $user->update($data);
-
         return  redirect()->back();
-
-
     }
 
     //profile Cash
