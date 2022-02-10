@@ -176,14 +176,9 @@
                                                 <div class="w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="name">@lang('lang.settings_name')</label>
-                                                    <input
-                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
-                                                            type="text" name="name" id="name"
-                                                            value="{{$user->name??old('email')}}"
-                                                            required>
-                                                    @error('name')
-                                                    <p class="text-red-500">{{ $message }}</p>
-                                                    @enderror
+                                                    <div class="focus:outline-none w-full rounded-xl border py-2 px-3 w-full text-grey-900">
+                                                        <p>{{$user->name}}</p>
+                                                    </div>
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
