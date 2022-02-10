@@ -1151,6 +1151,8 @@ return [
     'detailedT_training' => "Обучение",
     'detailedT_text18' => "Откликнуться на это задание",
     'detailedT_text19' => "Оставить отзыв",
+    'detailedT_Image' => "Рисунок",
+    'detailedT_ImageNot' => "Изображение не выбрано",
     //detailed tasks blade ended
     //data
     // personal info
