@@ -162,7 +162,7 @@
             $(".ui-slider-range").css("height", '250px');
             $(".ui-slider-range").css("background", 'linear-gradient(rgb(255, 132, 56)  , rgb(255, 132, 56))');
             $(".ui-slider-range").css("top", '-255px');
-            $(".ui-slider-handle").text("<>");
+            $(".ui-slider-handle").css("display", 'block');
             var delitel = Math.floor($("#slider-range-min").slider("value")) / 1000;
             var round   = Math.floor(delitel)*1000;
             $("#amount").val('до ' + round.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' UZS');
