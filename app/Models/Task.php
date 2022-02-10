@@ -19,6 +19,8 @@ class Task extends Model
 
     protected $guarded  = [];
 
+//    protected $with = ['responses','category','user','translations','custom_field_values','performer'];
+
     public function custom_field_values(){
         return $this->hasMany(CustomFieldsValue::class);
     }
@@ -29,6 +31,12 @@ class Task extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function performer(){
+        return $this->belongsTo(User::class,'performer_id');
+    }
+
+
     public function review(){
         return $this->hasOne(Review::class);
     }

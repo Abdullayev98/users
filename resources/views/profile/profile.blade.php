@@ -103,7 +103,7 @@
                                             @continue
                                         @endif
                                     @endforeach
-                                    <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
+                                    <div data-tooltip-target="tooltip-animation_3" class="mx-4 pt-1 sm:pt-2" >
                                         @if($task_count >= 50)
                                         <img src="{{ asset('images/50.png') }}" alt="" class="w-24">
                                         @else
