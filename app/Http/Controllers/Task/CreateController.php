@@ -171,7 +171,7 @@ class CreateController extends Controller
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')
-                ->move(public_path("Uploads/{$folder_task->name}"), $fileName);
+                ->move(public_path("storage/Uploads/{$folder_task->name}"), $fileName);
 
             $fileModelname = time() . '_' . $request->file->getClientOriginalName();
             $fileModelfile_path = '/storage/' . $filePath;
@@ -192,7 +192,7 @@ class CreateController extends Controller
             'oplata' => 'required'
         ]);
         $folder_task = Task::orderBy('created_at', 'desc')->first();
-        $image = File::allFiles("Uploads/{$folder_task->name}");
+        $image = File::allFiles("storage/Uploads/{$folder_task->name}");
         $data['photos'] = implode(',',$image);
         $data['docs'] = $request->docs ? 1 : null;
         $task->update($data);
