@@ -60,7 +60,7 @@ return [
     'modal_addres4' => " Указать другую почту",
     'modal_cencel' => "Отмена",
     'modal_send' => "Отправить",
-    'modal_address1' => "На ваш телефонный номер",
+    'modal_address1' => "На ваш телефонный номер ",
     'modal_phone1' => "Подтвердите номер телефона",
     'modal_address2' => " было отправлено письмо со кодом для подтверждения вашего аккаунта на Universal Services.",
     'modal_address3' => " Пройдите по ссылке и активируйте вашу телефонный номер.",
@@ -639,6 +639,10 @@ return [
     'contact_send' => "Отправить",
     'contact_yourContacts' => "Ваши контакты",
     'contact_auth' => "Авторизация",
+    'contact_verify' => "Код авторизация",
+    'contact_notVerify' => "Неверный код",
+    'contact_expired' => "Срок действия кода истек",
+    'contact_phone' => "Укажите номер",
     // contacts.blade end
 
     // date.blade start

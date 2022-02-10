@@ -215,10 +215,10 @@ class UserController extends Controller
                 Task::findOrFail($request->for_ver_func)->update(['status' => 1, 'user_id' => auth()->user()->id, 'phone' => auth()->user()->phone_number]);
                 return redirect()->route('userprofile');
             } else {
-                return back()->with('expired_message', 'Verification code expired');
+                return back()->with('expired_message', __('lang.contact_expired'));
             }
         } else {
-            return back()->with('incorrect_message', 'Verification code incorrect');
+            return back()->with('incorrect_message', __('lang.contact_notVerify'));
         }
 
     }
