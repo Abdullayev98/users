@@ -47,13 +47,13 @@ function ajaxFilter() {
         }
 }
 
-$("#filter").keyup(function() {
-    if ($('#filter').val().trim().length == 0) {
-        $('#svgClose').hide();
-    }else{
-        $('#svgClose').show();
-    }
-});
+// $("#filter").keyup(function() {
+//     if ($('#filter').val().trim().length == 0) {
+//         $('#svgClose').hide();
+//     }else{
+//         $('#svgClose').show();
+//     }
+// });
 
 $('#filter').on('keypress',function(e) {
     if(e.which == 13) {
@@ -77,13 +77,13 @@ $('#suggest').on('keypress',function(e) {
     }
 });
 
-$("#price").keyup(function() {
-    if ($('#price').val().trim().length == 0) {
-        $('#prcClose').hide();
-    }else{
-        $('#prcClose').show();
-    }
-});
+// $("#price").keyup(function() {
+//     if ($('#price').val().trim().length == 0) {
+//         $('#prcClose').hide();
+//     }else{
+//         $('#prcClose').show();
+//     }
+// });
 
 $('#price').on('keypress',function(e) {
     if(e.which == 13) {
@@ -91,10 +91,10 @@ $('#price').on('keypress',function(e) {
     }
 });
 
-$("#svgClose").click(function() {
-    $('#filter').val('');
-    $('#svgClose').hide();
-});
+// $("#svgClose").click(function() {
+//     $('#filter').val('');
+//     $('#svgClose').hide();
+// });
 
 $("#findBut").click(function() {
     ajaxFilter();
@@ -112,16 +112,32 @@ $("#closeBut").click(function() {
 });
 
 $("#selectGeo").change(function() {
+    let r0 = r;
     r = $('#selectGeo').val();
-    if(r > 0){
+    if(r0 == 0 && r > 0){
         $('#geoBut').show();
         $('#suggest').removeAttr('disabled');
-    }else {
+    }
+    if(r == 0){
+        $('#suggest').val('')
         $('#geoBut').hide()
+        $('#closeBut').hide();
         $('#suggest').attr('disabled','disabled')
     }
-    // enDis(r)
     map_pos(k)
+});
+
+// $("#prcClose").click(function() {
+//     $('#price').val('');
+//     $('#prcClose').hide();
+// });
+
+$("#remJob").click(function() {
+    if (this.checked == true){
+        $('#byRem').hide();
+    }else {
+        $('#byRem').show();
+    }
 });
 
 function dataAjaxSortBy() {
@@ -585,13 +601,17 @@ function map_pos(mm) {
             // var suggestView1 = new ymaps.SuggestView('suggest');
             var myMap2 = new ymaps.Map('map2', {
                 // center: userCoordinates,
-                center: [41.317648, 69.230585],
+                // center: [41.317648, 69.230585],
+                center: [55.10, 37.45],
                 zoom: 15,
                 controls: ['geolocationControl'],
                 behaviors: ['default', 'scrollZoomNo']
             }, {
                 searchControlProvider: 'yandex#search'
             });
+
+            circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: true, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
+            myMap2.geoObjects.add(circle);
 
             clusterer = new ymaps.Clusterer({
                 preset: 'islands#invertedGreenClusterIcons',
@@ -623,8 +643,6 @@ function map_pos(mm) {
                 }
             }
 
-
-
             clusterer.options.set({
                 gridSize: 80,
                 clusterDisableClickZoom: true
@@ -635,16 +653,30 @@ function map_pos(mm) {
             myMap2.setBounds(clusterer.getBounds(), {
                 checkZoomRange: false
             });
-            circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
-            circle.events.add('drag', function () {
-                // Объекты, попадающие в круг, будут становиться красными.
-                var objectsInsideCircle = objects.searchInside(circle);
-                objectsInsideCircle.setOptions('preset', 'twirl#redIcon');
-                // Оставшиеся объекты - синими.
-                // objects.remove(objectsInsideCircle).setOptions('preset', 'twirl#blueIcon');
-                objects.remove(objectsInsideCircle).removeOverlay(geoObjects);
+
+
+
+            // objects.searchInside(circle).addToMap(myMap2);
+                // И затем добавим найденные объекты на карту.
+
+
+            myMap2.events.add('boundschange', function () {
+                // После каждого сдвига карты будем смотреть, какие объекты попадают в видимую область.
+                var visibleObjects = objects.searchInside(circle).addToMap(myMap2);
+                // Оставшиеся объекты будем удалять с карты.
+                objects.remove(visibleObjects).removeFromMap(myMap2);
             });
-            myMap2.geoObjects.add(circle);
+
+            // circle.events.add('visible', function () {
+            //     // Объекты, попадающие в круг, будут становиться красными.
+            //     var objectsInsideCircle = objects.searchInside(circle);
+            //     objectsInsideCircle.setOptions('visible', 'true');
+            //     // Оставшиеся объекты - синими.
+            //     objects.remove(objectsInsideCircle).setOptions('visible', 'false');
+            // });
+
+
+
 
 
             // myMap2.geoObjects.add(searchIntersect(myMap2));
