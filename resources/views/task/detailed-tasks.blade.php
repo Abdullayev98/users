@@ -75,6 +75,7 @@
 
                                             <h1 class="font-bold h-auto w-48">{{ $value->custom_field->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                                             <p class=" h-auto w-96">
+                                                @isset($value->value)
                                                 @foreach(json_decode($value->value, true) as $value_obj)
                                                     @if ($loop->last)
                                                         {{$value_obj}}
@@ -82,6 +83,7 @@
                                                         {{$value_obj}},
                                                     @endif
                                                 @endforeach
+                                                @endisset
                                             </p>
                                         </div>
                                     @endforeach
