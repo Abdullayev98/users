@@ -170,7 +170,7 @@
                                             @endauth
                                             @auth
                                                 @if ($task->performer_id == auth()->user()->id || $task->user_id == auth()->user()->id)
-                                                    <button id="sendbutton" onclick="toggleModal4('modal-id4')"
+                                                    <button id="sendbutton"
                                                             class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="button">
                                                         @lang('lang.detailedT_text19')
@@ -182,12 +182,14 @@
                                                         @csrf
 
                                                         <button
-                                                            class="done sm:w-2/5 w-9/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6  pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                            id="modal-open-id5"
+                                                            class=" sm:w-2/5 w-9/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6  pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="submit">
                                                             Завершен
                                                         </button>
                                                         {{--                                                            </form>--}}
                                                         <button
+                                                            id="modal-open-id4"
                                                             class="not_done  sm:w-2/5 w-9/12 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-5 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="button">
                                                             Не завершен
@@ -482,36 +484,36 @@
         {{-- Modal start --}}
 
         <div
-            class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
-            style="background-color: rgba(0, 0, 0,0.5)" id="modal-id4">
-            <div class="relative my-6 mx-auto max-w-3xl" id="modal4">
-                <div
-                    class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+            class="hidden overflow-x-auto bg-black bg-opacity-50 overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+            id="modal-id4">
+            <div class="relative my-6 mx-auto max-w-xl" id="modal4">
+                <div class="border-0 top-32 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
                     <div class=" text-center  rounded-t">
-                        <button type="submit"
+                        <button type="submit" id="close-id4"
                                 class=" w-100 h-16 absolute top-1 right-4">
-                            <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
+                            <i class="fas fa-times text-gray-500 text-slate-400 hover:text-slate-600 text-xl w-full"
+                            ></i>
                         </button>
-                        <h3 class="font-medium text-gray-700 text-3xl block">
+                        <h3 class="font-semibold text-gray-700 text-3xl block">
                             Оставить отзыв
                         </h3>
                     </div>
-                    <div class="text-center h-56 w-80 text-base">
-                        <div class="hideform hidden">
-                            <div class="flex flex-row w-1/3 my-4 mx-auto">
-                                <label class="mx-4 cursor-pointer">
+                    <div class="text-center h-56 w-full mx-auto text-base">
+                        <div class="">
+                            <div class="flex flex-row justify-center w-full my-4 mx-auto">
+                                <label id="class_demo"  class="cursor-pointer w-32 text-gray-500 border rounded-l hover:bg-green-500 transition duration-300 hover:text-white">
                                     <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12"
                                            value="1">
-                                    <i id="class_demo" class="text-gray-500 far fa-thumbs-up text-2xl"></i>
+                                    <i class="far fa-thumbs-up text-2xl mr-2"></i><span class="relative -top-1">good</span>
                                 </label>
-                                <label class="mx-4 cursor-pointer">
-                                    <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12"
+                                <label id="class_demo1" class="cursor-pointer w-32 text-gray-500 border rounded-r hover:bg-red-500 transition duration-300 hover:text-white">
+                                    <input type="radio" name="good" class="good border hidden rounded ml-6  w-8/12"
                                            value="0">
-                                    <i id="class_demo1" class="text-gray-500 far fa-thumbs-down text-2xl"></i>
+                                    <i class="far fa-thumbs-down text-2xl mr-2"></i><span class="relative -top-1">bad</span>
                                 </label>
                             </div>
-                            <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
-                                        border border-solid border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"></textarea>
+                            <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white shadow-lg drop-shadow-xl
+                                        border resize-none w-full border-solid border-gray-200 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-300 focus:outline-none"></textarea>
 
                             <button
                                 class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
@@ -529,22 +531,29 @@
         <input type="hidden" id="token" value="{!! csrf_field() !!}">
         {{-- Modal end --}}
 
-        <script type="text/javascript">
-            function toggleModal4(modalID4) {
-                document.getElementById(modalID4).classList.toggle("hidden");
-                document.getElementById(modalID4 + "-backdrop").classList.toggle("hidden");
-                document.getElementById(modalID4).classList.toggle("flex");
-                document.getElementById(modalID4 + "-backdrop").classList.toggle("flex");
-            }
-        </script>
 
+{{--        <script>--}}
+{{--            $(document).ready(function () {--}}
+{{--                $("#class_demo").click(function () {--}}
+{{--                   $("#class_demo"). --}}
+{{--                });--}}
+{{--            })--}}
+{{--        </script>--}}
         <script>
             $(document).ready(function () {
                 $("#class_demo").click(function () {
+                    $("#class_demo").addClass("bg-green-500");
+                    $("#class_demo").addClass("text-white");
                     $("#class_demo").removeClass("text-gray-500");
-                    $("#class_demo").addClass("text-amber-500");
-                    $("#class_demo1").removeClass("text-amber-500");
+                    $("#class_demo1").removeClass("bg-red-500");
                     $("#class_demo1").addClass("text-gray-500");
+                });
+                $("#class_demo1").click(function () {
+                    $("#class_demo1").addClass("bg-red-500");
+                    $("#class_demo1").addClass("text-white");
+                    $("#class_demo1").removeClass("text-gray-500");
+                    $("#class_demo").removeClass("bg-green-500");
+                    $("#class_demo").addClass("text-gray-500");
                 });
                 $(".pay").click(function () {
                     $(".pays").attr("value", 4000);
@@ -564,13 +573,6 @@
                         showConfirmButton: false,
                         timer: 1500
                     })
-                });
-
-                $("#class_demo1").click(function () {
-                    $("#class_demo1").removeClass("text-gray-500");
-                    $("#class_demo1").addClass("text-amber-500");
-                    $("#class_demo").removeClass("text-amber-500");
-                    $("#class_demo").addClass("text-gray-500");
                 });
             });
 
@@ -728,35 +730,21 @@
                     $(".hideform").removeClass('hidden');
                 });
                 $(".done").click(async function () {
-
-
                 });
-                $(".not_done").click(function () {
-                    $("#sendbutton").removeClass('hidden');
-                    $(".done").hide();
-                    $(".not_done").hide();
-                    $.ajax({
-                        url: "/ajax-request",
-                        type: "POST",
-                        data: {
-                            task_id: {{$task->id}},
-                            status: 2,
-                            _token: $('meta[name="csrf-token"]').attr('content'),
-                        },
-                        success: function (response) {
-                            console.log(response);
-                            if (response) {
-                                $('.success').text(response.success);
-                                location.reload();
-
-                            }
-                        },
-                        error: function (error) {
-                            console.log(error);
-                        }
-
-                    });
+                $("#close-id4").click(function () {
+                    $("#modal-id4").hide();
+                    $("#modal-id4-backdrop").hide();
                 });
+                $("#modal-open-id4").click(function () {
+                    $("#modal-id4").show();
+                    $("#class_demo1").click();
+                });
+                $("#modal-open-id5").click(function () {
+                    $("#modal-id4").show();
+                    $("#class_demo").click();
+                });
+
+
             });
             $(".send-comment").click(function (event) {
                 event.preventDefault();
