@@ -36,9 +36,9 @@
                                         <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
                                     </div>
                                     <ul class="py-1" aria-labelledby="notification">
-{{--                                        <li>--}}
-{{--                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
-{{--                                        </li>--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
+                                        {{--                                        </li>--}}
                                         <li>
                                             <a href="/profile/settings" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                                         </li>
@@ -204,7 +204,7 @@
 
                         @endforeach
                         @if($count_for_not > 0)
-                        <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
+                            <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
                         @endif
                         <button class="" type="button" data-dropdown-toggle="dropdown">
                             <i class="xl:text-2xl lg:text-xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
@@ -217,26 +217,26 @@
                             <ul class="py-1 overflow-y-auto max-h-96" id="notifs" aria-labelledby="dropdown">
 
                                 @foreach(auth()->user()->alerts as $notification)
-{{--                                    @switch($notification->type)--}}
+                                    {{--                                    @switch($notification->type)--}}
 
-{{--                                        @case(1)--}}
-                                        <li>
-                                            <form action="{{ route('notification.delete', $notification->id ) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</button>
-                                            </form>
-                                        </li>
-{{--                                        @break--}}
+                                    {{--                                        @case(1)--}}
+                                    <li>
+                                        <form action="{{ route('notification.delete', $notification->id ) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</button>
+                                        </form>
+                                    </li>
+                                    {{--                                        @break--}}
 
-{{--                                    @endswitch--}}
+                                    {{--                                    @endswitch--}}
                                 @endforeach
 
                                 <div id="for_append_notifications"></div>
 
-{{--                                <li>--}}
-{{--                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
-{{--                                </li>--}}
+                                {{--                                <li>--}}
+                                {{--                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
+                                {{--                                </li>--}}
                                 <li>
                                     <a href="{{ route('editData')}}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
                                 </li>
@@ -531,177 +531,174 @@
 
         });
     </script>
-@endif
+    @endif
 
-<script type="text/javascript">
-    function toggleModal(){
-        document.getElementById("modal-id").classList.toggle("hidden");
-        document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
-        document.getElementById("modal-id").classList.toggle("flex");
-        document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
-    }
-    function toggleModal1(){
-        var element = document.getElementById("modal-id-backdrop");
-        element.classList.add("hidden");
-        var element2 = document.getElementById("modal-id");
-        var b = document.getElementById("myText").value;
-        var u = document.getElementById("amount_u");
-        u.value = b;
-        element2.classList.add("hidden");
-        document.getElementById("modal-id1").classList.toggle("hidden");
-        document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
-        document.getElementById("modal-id1").classList.toggle("flex");
-        document.getElementById("modal-id1" + "-backdrop").classList.toggle("flex");
-    }
-    function borderColor() {
-        var element = document.getElementById("demo");
-        element.classList.add("border-amber-500");
-    }
-    function inputFunction() {
-        var x = document.getElementById("myText").value;
-        if(x < 4000){
-            document.getElementById('button').removeAttribute("onclick");
-            document.getElementById('button').classList.remove("bg-green-500");
-            document.getElementById('button').classList.add("bg-gray-500");
-            document.getElementById('button').classList.remove("hover:bg-green-500");
-            document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
-        }else{
-            document.getElementById('button').setAttribute("onclick","toggleModal1();");
-            document.getElementById('button').classList.remove("bg-gray-500");
-            document.getElementById('button').classList.add("bg-green-500");
-            document.getElementById('button').classList.add("hover:bg-green-500");
-            document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+    <script type="text/javascript">
+        function toggleModal(){
+            document.getElementById("modal-id").classList.toggle("hidden");
+            document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
+            document.getElementById("modal-id").classList.toggle("flex");
+            document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
         }
-    }
-    function checkFunction() {
-        var x = document.getElementById("myText").value;
-        var checkBox = document.getElementById("myCheck");
-        if (checkBox.checked == true){
-            document.getElementById("button").innerHTML ="К оплате " + (parseInt(x) + 10000);
-        } else {
-            document.getElementById("button").innerHTML ="К оплате " + x  +"UZS";
+        function toggleModal1(){
+            var element = document.getElementById("modal-id-backdrop");
+            element.classList.add("hidden");
+            var element2 = document.getElementById("modal-id");
+            var b = document.getElementById("myText").value;
+            var u = document.getElementById("amount_u");
+            u.value = b;
+            element2.classList.add("hidden");
+            document.getElementById("modal-id1").classList.toggle("hidden");
+            document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
+            document.getElementById("modal-id1").classList.toggle("flex");
+            document.getElementById("modal-id1" + "-backdrop").classList.toggle("flex");
         }
-    }
-    function validate(evt) {
-        var theEvent = evt || window.event;
-        // Handle paste
-        if (theEvent.type === 'paste') {
-            key = event.clipboardData.getData('text/plain');
-        } else {
-            // Handle key press
-            var key = theEvent.keyCode || theEvent.which;
-            key = String.fromCharCode(key);
+        function borderColor() {
+            var element = document.getElementById("demo");
+            element.classList.add("border-amber-500");
         }
-        var regex = /[0-9]|\./;
-        if( !regex.test(key) ) {
-            theEvent.returnValue = false;
-            if(theEvent.preventDefault) theEvent.preventDefault();
-        }
-    }
-</script>
-{{-- pay modal end --}}
-
-<script>
-    // Burger menus
-    document.addEventListener('DOMContentLoaded', function() {
-        // open
-        const burger = document.querySelectorAll('.navbar-burger');
-        const menu = document.querySelectorAll('.navbar-menu');
-        if (burger.length && menu.length) {
-            for (var i = 0; i < burger.length; i++) {
-                burger[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
+        function inputFunction() {
+            var x = document.getElementById("myText").value;
+            if(x < 4000){
+                document.getElementById('button').removeAttribute("onclick");
+                document.getElementById('button').classList.remove("bg-green-500");
+                document.getElementById('button').classList.add("bg-gray-500");
+                document.getElementById('button').classList.remove("hover:bg-green-500");
+                document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+            }else{
+                document.getElementById('button').setAttribute("onclick","toggleModal1();");
+                document.getElementById('button').classList.remove("bg-gray-500");
+                document.getElementById('button').classList.add("bg-green-500");
+                document.getElementById('button').classList.add("hover:bg-green-500");
+                document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
             }
         }
-        // close
-        const close = document.querySelectorAll('.navbar-close');
-        const backdrop = document.querySelectorAll('.navbar-backdrop');
-        if (close.length) {
-            for (var i = 0; i < close.length; i++) {
-                close[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
+        function checkFunction() {
+            var x = document.getElementById("myText").value;
+            var checkBox = document.getElementById("myCheck");
+            if (checkBox.checked == true){
+                document.getElementById("button").innerHTML ="К оплате " + (parseInt(x) + 10000);
+            } else {
+                document.getElementById("button").innerHTML ="К оплате " + x  +"UZS";
             }
         }
-        if (backdrop.length) {
-            for (var i = 0; i < backdrop.length; i++) {
-                backdrop[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
+        function validate(evt) {
+            var theEvent = evt || window.event;
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+            } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /[0-9]|\./;
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
             }
         }
-    });
-</script>
+    </script>
+    {{-- pay modal end --}}
 
-<script >
-    $('.see_all').click(function(){
-        $.ajax({
-            url: "/del-notif",
-            type:"POST",
-            data:{
-                _token:$('meta[name="csrf-token"]').attr('content'),
-            },
-            success:function(response){
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-        $("#notifs").load(location.href + " #notifs");
-        $("#content_count").addClass('hidden');
-    });
-    var link = document.location.href.split('/');
-    if(link[3] == 'task'){
-        $('.delete-task').on('click', function () {
-
-            let for_del_task_in = $(this).attr("href");
-            // console.log(for_del_task_in);
-            $(this).removeAttr('href');
-            Swal.fire({
-                title: '@lang('lang.name_deleteAsk')',
-                showDenyButton: true,
-                confirmButtonText: '@lang('lang.name_continue')',
-                denyButtonText: '@lang('lang.name_delete')',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = document.location.href;
-                } else if (result.isDenied) {
-                    if(var_for_id_task != null){
-                        $.ajax({
-                            url: '/for_del_new_task/'+ var_for_id_task +'',
-                            method: 'get',
-                        });
-                    }
-                    window.location.href = for_del_task_in;
-                    return false;
+    <script>
+        // Burger menus
+        document.addEventListener('DOMContentLoaded', function() {
+            // open
+            const burger = document.querySelectorAll('.navbar-burger');
+            const menu = document.querySelectorAll('.navbar-menu');
+            if (burger.length && menu.length) {
+                for (var i = 0; i < burger.length; i++) {
+                    burger[i].addEventListener('click', function() {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
                 }
-            });
-
+            }
+            // close
+            const close = document.querySelectorAll('.navbar-close');
+            const backdrop = document.querySelectorAll('.navbar-backdrop');
+            if (close.length) {
+                for (var i = 0; i < close.length; i++) {
+                    close[i].addEventListener('click', function() {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
+            if (backdrop.length) {
+                for (var i = 0; i < backdrop.length; i++) {
+                    backdrop[i].addEventListener('click', function() {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
         });
-
-    }
-</script>
-<script >
-            var link = document.location.href.split('/');
-            if(link[3] == 'performers'){
-                $(".performer").addClass("text-yellow-400");
-            }
-            else if(link[3] == 'my-tasks'){
-                $(".mytask").addClass("text-yellow-400");
-            }
-            else if(link[3] == 'task-search'){
-                $(".task").addClass("text-yellow-400");
-            }
     </script>
 
-@section("javascript")
+    <script >
+        $('.see_all').click(function(){
+            $.ajax({
+                url: "/del-notif",
+                type:"POST",
+                data:{
+                    _token:$('meta[name="csrf-token"]').attr('content'),
+                },
+                success:function(response){
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+            $("#notifs").load(location.href + " #notifs");
+            $("#content_count").addClass('hidden');
+        });
+        var link = document.location.href.split('/');
+        if(link[3] == 'task'){
+            $('.delete-task').on('click', function () {
 
-@endsection
+                let for_del_task_in = $(this).attr("href");
+                // console.log(for_del_task_in);
+                $(this).removeAttr('href');
+                Swal.fire({
+                    title: '@lang('lang.name_deleteAsk')',
+                    showDenyButton: true,
+                    confirmButtonText: '@lang('lang.name_continue')',
+                    denyButtonText: '@lang('lang.name_delete')',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = document.location.href;
+                    } else if (result.isDenied) {
+                        if(var_for_id_task != null){
+                            $.ajax({
+                                url: '/for_del_new_task/'+ var_for_id_task +'',
+                                method: 'get',
+                            });
+                        }
+                        window.location.href = for_del_task_in;
+                        return false;
+                    }
+                });
+
+            });
+
+        }
+    </script>
+    <script >
+        var link = document.location.href.split('/');
+        if(link[3] == 'performers'){
+            $(".performer").addClass("text-yellow-400");
+        }
+        else if(link[3] == 'my-tasks'){
+            $(".mytask").addClass("text-yellow-400");
+        }
+        else if(link[3] == 'task-search'){
+            $(".task").addClass("text-yellow-400");
+        }
+    </script>
+
