@@ -15,7 +15,7 @@
                                 <input id="filter" type="search"
                                        class="focus:outline-none focus:placeholder-transparent w-10/12 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                        placeholder="@lang('lang.search_byKey')">
-                                <svg class="h-3 w-3 fill-current absolute left-3/4 top-2" id="svgClose" hidden width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
+{{--                                <svg class="h-3 w-3 fill-current absolute left-3/4 top-2 cursor-pointer" id="svgClose" hidden width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>--}}
                                 <button
                                     class="sm:w-2/12 w-4/12 bg-green-500 hover:bg-green-600 ml-1 py-1 px-1 rounded-md sm:mt-0 text-white" id="findBut"
                                 >@lang('lang.search_find')</button>
@@ -30,7 +30,7 @@
                                         type="text" id="suggest" disabled>
 {{--                                        <button id="mpshow" class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">--}}
                                             <svg class="h-4 w-4 text-purple-500" id="geoBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
-                                            <img src="images/close.png" id="closeBut" alt="Delete text" hidden>
+                                            <img src="images/close.png" class="cursor-pointer" id="closeBut" hidden>
 {{--                                        </button>--}}
                                     </div>
                                 </div>
@@ -54,8 +54,9 @@
                                 </div>
                                 <div class="relative w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
-                                    <input type="number" min="1" maxlength="7" class="appearance-none focus:outline-none focus:placeholder-transparent w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
-                                    <svg class="h-3 w-3 fill-current absolute top-7 left-28" id="prcClose" hidden width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>
+                                    <input type="number" min="1" max="999999999" class="focus:outline-none focus:placeholder-transparent w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
+{{--                                    <svg class="h-3 w-3 fill-current absolute top-7 left-28" id="prcClose" hidden width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>--}}
+                                    <img src="images/close.png" class="-mt-6 ml-32 cursor-pointer" id="prcClose" hidden>
                                 </div>
                             </div>
                             <div class="inline-flex  block w-full col-span-4">
@@ -312,7 +313,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+{{--                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
                 </div>
             </div>
         </div>
@@ -321,6 +322,12 @@
     <style>
         [class*="copyrights-pane"]
         {display: none !important;}
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     </style>
 
 
@@ -357,6 +364,7 @@
                 success: function (data) {
                     if (id == 'all') {
                         dataAjax = $.parseJSON(JSON.stringify(data));
+                        dataAjaxCheck=1
                         sixInOne();
                     }
                     if (id == 'klyuch') {

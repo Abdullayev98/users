@@ -1,4 +1,4 @@
-let dataAjaxCheck=1, allCheck=1, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
+let dataAjaxCheck=1, allCheck=1, fltrCheck = 0, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
 let dataAjax = [], dataAjax2 = [], dataAjaxPrint = [];
 let dataGeo = [], userCoordinates = [];
 $('.all_cat').click();
@@ -6,13 +6,13 @@ $(".for_check input:checkbox").each(function() {
     this.checked = true;
 });
 
-function dataAjaxCopy(){
+function dataAjaxCopy(dataA){
     dataAjaxPrint = [];
     if (allCheck == 1){
-        dataAjaxPrint = dataAjax;
+        dataAjaxPrint = dataA;
     }
     if (allCheck == 2){
-        $.each(dataAjax, function (index, data) {
+        $.each(dataA, function (index, data) {
             $('.chi_cat').each(function () {
                 if (this.checked && this.name == data.category_id) {
                     dataAjaxPrint.push(data);
@@ -22,19 +22,23 @@ function dataAjaxCopy(){
     }
 }
 
-function dataAjaxCopy2(){
+function dataAjaxCopyRemJob(dataA) {
     dataAjaxPrint = [];
-    if (allCheck == 1) {
-        dataAjaxPrint = dataAjax2;
+    if (allCheck == 1){
+        $.each(dataA, function (index, data) {
+            if (data.address == null) {
+                dataAjaxPrint.push(data);
+            }
+        });
     }
     if (allCheck == 2){
-        $.each(dataAjax2, function (index, data) {
-            $('.chi_cat').each(function () {
-                if (this.checked && this.name == data.category_id) {
-                    dataAjaxPrint.push(data);
-                }
-            });
+    $.each(dataA, function (index, data) {
+        $('.chi_cat').each(function () {
+            if (this.checked && this.name == data.category_id && data.address == null) {
+                dataAjaxPrint.push(data);
+            }
         });
+    });
     }
 }
 
@@ -77,13 +81,13 @@ $('#suggest').on('keypress',function(e) {
     }
 });
 
-// $("#price").keyup(function() {
-//     if ($('#price').val().trim().length == 0) {
-//         $('#prcClose').hide();
-//     }else{
-//         $('#prcClose').show();
-//     }
-// });
+$("#price").keyup(function() {
+    if ($('#price').val().trim().length == 0) {
+        $('#prcClose').hide();
+    }else{
+        $('#prcClose').show();
+    }
+});
 
 $('#price').on('keypress',function(e) {
     if(e.which == 13) {
@@ -127,17 +131,26 @@ $("#selectGeo").change(function() {
     map_pos(k)
 });
 
-// $("#prcClose").click(function() {
-//     $('#price').val('');
-//     $('#prcClose').hide();
-// });
+$("#prcClose").click(function() {
+    $('#price').val('');
+    $('#prcClose').hide();
+});
 
 $("#remJob").click(function() {
     if (this.checked == true){
         $('#byRem').hide();
+        sixInOne2()
     }else {
         $('#byRem').show();
+        sixInOne()
     }
+
+    // if (dataAjaxCheck == 1) {
+    //     resetCounters()
+    //     tasks_list_remJob(dataAjax)
+    // }else{
+    //     tasks_list_remJob(dataAjax2)
+    // }
 });
 
 function dataAjaxSortBy() {
@@ -185,7 +198,7 @@ function tasks_list_all(data) {
                         <div class="sm:float-left sm:w-7/12 w-full" id="results">
                             <i class="` + data.icon + ` text-2xl float-left text-blue-400 sm:mr-4 mr-3"></i>
                             <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-base font-semibold text-blue-500 hover:text-red-600">` + data.name + `</a>
-                            <p class="text-sm sm:ml-12 ml-10 sm:mt-4 sm:mt-1 mt-0 location ">` + json.location + `</p>
+                            <p class="text-sm sm:ml-12 ml-10 sm:mt-4 sm:mt-1 mt-0 location ">` + (data.address != null ? json.location : 'Можно выполнить удаленно') + `</p>
                             <p class="text-sm sm:ml-8 ml-6 sm:mt-1 mt-0 pl-4 ">Начать ` + data.start_date + `</p>
                         </div>
                         <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 sm:mt-1 mt-0" id="about">
@@ -197,6 +210,32 @@ function tasks_list_all(data) {
                 </div>
             </div>`,
         )
+    });
+}
+
+function tasks_list_remJob(data) {
+    $(".show_tasks").empty();
+    $.each(data, function(index, data) {
+        dl++;
+            $(".show_tasks").append(
+                `<div class="sort-table print_block" hidden>
+                <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-36 item md:overflow-hidden" data-nomer="` + data.start_date + `">
+                    <div class="md:w-11/12 w-full sm:ml-0.5  md:m-4 sm:m-2 m-0 ml-2">
+                        <div class="sm:float-left sm:w-7/12 w-full" id="results">
+                            <i class="` + data.icon + ` text-2xl float-left text-blue-400 sm:mr-4 mr-3"></i>
+                            <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-base font-semibold text-blue-500 hover:text-red-600">` + data.name + `</a>
+                            <p class="text-sm sm:ml-12 ml-10 sm:mt-4 sm:mt-1 mt-0 location ">Можно выполнить удаленно</p>
+                            <p class="text-sm sm:ml-8 ml-6 sm:mt-1 mt-0 pl-4 ">Начать ` + data.start_date + `</p>
+                        </div>
+                        <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 sm:mt-1 mt-0" id="about">
+                            <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
+                            <p class="text-sm sm:mt-5 sm:mt-1 mt-0">` + (dataAjaxCheck == 1 ? data.category_name : data.category.name) + `</p>
+                            <a href="/performers/` + data.userid + `" class="text-sm sm:mt-1 mt-0 hover:text-red-600 ">` + (dataAjaxCheck == 1 ? data.user_name : data.user.name) + `</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`,
+            )
     });
 }
 
@@ -235,17 +274,38 @@ function sixInOne(){
         dataAjaxPrint = [];
     }
     if(dataAjaxCheck == 1) {
-        dataAjaxCopy()
+        dataAjaxCopy(dataAjax)
     }else {
-        dataAjaxCopy2()
+        dataAjaxCopy(dataAjax2)
+    }
+    if(dataAjaxPrint.length == 0){
+        img_show();
+    }else {
+        tasks_list_all(dataAjaxPrint)
+        tasks_show()
+        maps_show()
+    }
+}
+
+function sixInOne2(){
+    resetCounters()
+    if(dataAjaxCheck == 0) {
+        dataAjaxPrint = [];
+    }
+    if(dataAjaxCheck == 1) {
+        dataAjaxCopyRemJob(dataAjax)
+        console.log(dataAjaxPrint)
+    }else {
+        dataAjaxCopyRemJob(dataAjax2)
+        console.log(dataAjaxPrint)
     }
     if(dataAjaxPrint.length == 0){
         img_show();
     }else{
-        tasks_list_all(dataAjaxPrint)
+        tasks_list_remJob(dataAjaxPrint)
         tasks_show()
+        maps_show()
     }
-    maps_show()
 }
 
 function img_show() {
