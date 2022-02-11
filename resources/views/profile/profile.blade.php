@@ -191,7 +191,7 @@
 
                         </div>
                     </div>
-                    <div class="">
+                    <div class="mt-8">
                                 <p class="text-2xl font-semibold">
                                     @lang('lang.exe_typeOfDone')
                                 </p>
