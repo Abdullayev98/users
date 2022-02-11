@@ -497,6 +497,13 @@ return [
     'profile_enterDesc' => "Ma'lumotni kiriting",
     'profile_newAlbum' => "Yangi albom yaratish",
     'profile_changeAlbum' => "Albomni ozgartirish",
+    'profile_text1' => "Sahifaga qaytish",
+    'profile_text2' => "Yangi albom yaratish",
+    'profile_text3' => "Nomi",
+    'profile_text4' => "Tavsif",
+    'profile_text5' => "Misol uchun Oshxona Ta'mirlash yoki To'y foto lavhalari",
+    'profile_text6' => "Ushbu albomda qanday asarlar taqdim etilgani, ular nima ekanligini tasvirlab bering, xususiyati, ular qachon amalga oshirilganligi,  qanday maqsadlarda  va boshqalar",
+    'profile_text7' => "Keyingisi",
     // profile.blade end
 
     // settings.blade start
