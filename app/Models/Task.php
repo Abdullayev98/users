@@ -16,6 +16,7 @@ class Task extends Model
     const STATUS_RESPONSE = 2;
     const STATUS_IN_PROGRESS = 3;
     const STATUS_COMPLETE = 4;
+    const STATUS_COMPLETE_WITHOUT_REVIEWS = 5;
 
     protected $guarded  = [];
 
@@ -41,8 +42,10 @@ class Task extends Model
         return $this->hasOne(Review::class);
     }
     public function responses(){
-        return $this->hasMany(Response::class);
+        return $this->hasMany(TaskResponse::class);
     }
+
+
     public function getPriceAttribute(){
         return preg_replace('/[^0-9.]+/', '', $this->budget);
     }
