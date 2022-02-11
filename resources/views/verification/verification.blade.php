@@ -293,15 +293,15 @@
 
 
         <div class="grid md:grid-cols-3 grid-cols-1 container mx-auto  md:mt-32 mt-16 md:mb-32 mb-16">
-            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg md:mt-0 mt-8">
+            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg m-4 ">
                 <p class="text-base">@lang('lang.ver_opinion3'). ...</p>
                 <button onclick="toggleModal8('modal-id8')" class="text-base text-gray-500 hover:text-blue-400 hover:border-blue-400 border-solid border-b-2">@lang('lang.ver_readMore')</button>
             </div>
-            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg ml-4 mr-4 md:mt-0 mt-8">
+            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg m-4">
                 <p class="text-base">@lang('lang.ver_opinion4')</p>
                 <button onclick="toggleModal9('modal-id9')" class="text-base text-gray-500 hover:text-blue-400 hover:border-blue-400 border-solid border-b-2">@lang('lang.ver_readMore')</button>
             </div>
-            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg md:mt-0 mt-8">
+            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg m-4">
               <p class="text-base">@lang('lang.ver_opinion5')</p>
               <button onclick="toggleModal10('modal-id10')" class="text-base text-gray-500 hover:text-blue-400 hover:border-blue-400 border-solid border-b-2">@lang('lang.ver_readMore')</button>
             </div>
