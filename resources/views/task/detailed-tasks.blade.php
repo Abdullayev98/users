@@ -423,7 +423,7 @@
                                 @if($task->category->tasks_count > 1)
 
                                     <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
-                                    @foreach($task->category->tasks()->take(10)->get() as $same_task)
+                                    @foreach($task->category->tasks()->where('user_id','!=', null)->take(10)->get() as $same_task)
                                         @if($same_task->id != $task->id)
                                             <div class="mt-4">
                                                 <a href="{{$same_task->id}}"
@@ -728,41 +728,6 @@
                     $(".hideform").removeClass('hidden');
                 });
                 $(".done").click(async function () {
-                    Swal.fire({
-                        input: 'textarea',
-                        inputLabel: 'Review',
-                        inputPlaceholder: 'Type your message here...',
-                        inputAttributes: {
-                            'aria-label': 'Type your message here'
-                        },
-                        showCancelButton: true,
-                        showConfirmButton: true
-                    }).then((response) => {
-                        if (response) {
-                            if (response.isConfirmed) {
-                                $.ajax({
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    url: "/send-review111/" + $('#task').val(),
-                                    type: "POST",
-
-                                    async: false,
-                                    success: function (result) {
-                                        console.log(result);
-
-                                    },
-                                    error: function (error) {
-                                        console.log(error);
-                                    }
-
-                                });
-
-                            }
-                        } else {
-                            alert(23432)
-                        }
-                    })
 
 
                 });
