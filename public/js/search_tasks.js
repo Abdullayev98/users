@@ -1,4 +1,5 @@
-let dataAjaxCheck=1, allCheck=1, fltrCheck = 0, r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
+let r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
+let dataAjaxCheck = 1, allCheck = 1, fltrCheck = 0, remJobCheck = 0, bezOtkCheck = 0;
 let dataAjax = [], dataAjax2 = [], dataAjaxPrint = [];
 let dataGeo = [], userCoordinates = [];
 $('.all_cat').click();
@@ -8,10 +9,31 @@ $(".for_check input:checkbox").each(function() {
 
 function dataAjaxCopy(dataA){
     dataAjaxPrint = [];
-    if (allCheck == 1){
+    if (allCheck == 1 && remJobCheck == 0 && bezOtkCheck == 0){
         dataAjaxPrint = dataA;
     }
-    if (allCheck == 2){
+    if (allCheck == 1 && remJobCheck == 1 && bezOtkCheck == 0){
+        $.each(dataA, function (index, data) {
+            if (data.address == null) {
+                dataAjaxPrint.push(data);
+            }
+        });
+    }
+    if (allCheck == 1 && remJobCheck == 0 && bezOtkCheck == 1){
+        $.each(dataA, function (index, data) {
+            if (data.address != null && data.status == 1) {
+                dataAjaxPrint.push(data);
+            }
+        });
+    }
+    if (allCheck == 1 && remJobCheck == 1 && bezOtkCheck == 1){
+        $.each(dataA, function (index, data) {
+            if (data.address == null && data.status == 1) {
+                dataAjaxPrint.push(data);
+            }
+        });
+    }
+    if (allCheck == 2 && remJobCheck == 0 && bezOtkCheck == 0){
         $.each(dataA, function (index, data) {
             $('.chi_cat').each(function () {
                 if (this.checked && this.name == data.category_id) {
@@ -20,27 +42,54 @@ function dataAjaxCopy(dataA){
             });
         });
     }
+    if (allCheck == 2 && remJobCheck == 1 && bezOtkCheck == 0){
+        $.each(dataA, function (index, data) {
+            $('.chi_cat').each(function () {
+                if (this.checked && this.name == data.category_id && data.address == null) {
+                    dataAjaxPrint.push(data);
+                }
+            });
+        });
+    }
+    if (allCheck == 2 && remJobCheck == 0 && bezOtkCheck == 1){
+        $.each(dataA, function (index, data) {
+            $('.chi_cat').each(function () {
+                if (this.checked && this.name == data.category_id && data.status == 1) {
+                    dataAjaxPrint.push(data);
+                }
+            });
+        });
+    }
+    if (allCheck == 2 && remJobCheck == 1 && bezOtkCheck == 1){
+        $.each(dataA, function (index, data) {
+            $('.chi_cat').each(function () {
+                if (this.checked && this.name == data.category_id && data.address == null && data.status == 1) {
+                    dataAjaxPrint.push(data);
+                }
+            });
+        });
+    }
 }
 
-function dataAjaxCopyRemJob(dataA) {
-    dataAjaxPrint = [];
-    if (allCheck == 1){
-        $.each(dataA, function (index, data) {
-            if (data.address == null) {
-                dataAjaxPrint.push(data);
-            }
-        });
-    }
-    if (allCheck == 2){
-    $.each(dataA, function (index, data) {
-        $('.chi_cat').each(function () {
-            if (this.checked && this.name == data.category_id && data.address == null) {
-                dataAjaxPrint.push(data);
-            }
-        });
-    });
-    }
-}
+// function dataAjaxCopyRemJob(dataA) {
+//     dataAjaxPrint = [];
+//     if (allCheck == 1){
+//         $.each(dataA, function (index, data) {
+//             if (data.address == null) {
+//                 dataAjaxPrint.push(data);
+//             }
+//         });
+//     }
+//     if (allCheck == 2){
+//     $.each(dataA, function (index, data) {
+//         $('.chi_cat').each(function () {
+//             if (this.checked && this.name == data.category_id && data.address == null) {
+//                 dataAjaxPrint.push(data);
+//             }
+//         });
+//     });
+//     }
+// }
 
 function ajaxFilter() {
     nameVal1 = $('#filter').val()
@@ -138,19 +187,24 @@ $("#prcClose").click(function() {
 
 $("#remJob").click(function() {
     if (this.checked == true){
+        remJobCheck = 1;
         $('#byRem').hide();
-        sixInOne2()
+        sixInOne()
     }else {
+        remJobCheck = 0;
         $('#byRem').show();
         sixInOne()
     }
+});
 
-    // if (dataAjaxCheck == 1) {
-    //     resetCounters()
-    //     tasks_list_remJob(dataAjax)
-    // }else{
-    //     tasks_list_remJob(dataAjax2)
-    // }
+$("#noResp").click(function() {
+    if (this.checked == true) {
+        bezOtkCheck = 1;
+        sixInOne()
+    } else {
+        bezOtkCheck = 0;
+        sixInOne()
+    }
 });
 
 function dataAjaxSortBy() {
@@ -218,7 +272,7 @@ function tasks_list_remJob(data) {
     $.each(data, function(index, data) {
         dl++;
             $(".show_tasks").append(
-                `<div class="sort-table print_block" hidden>
+               `<div class="sort-table print_block" hidden>
                 <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-36 item md:overflow-hidden" data-nomer="` + data.start_date + `">
                     <div class="md:w-11/12 w-full sm:ml-0.5  md:m-4 sm:m-2 m-0 ml-2">
                         <div class="sm:float-left sm:w-7/12 w-full" id="results">
@@ -287,26 +341,26 @@ function sixInOne(){
     }
 }
 
-function sixInOne2(){
-    resetCounters()
-    if(dataAjaxCheck == 0) {
-        dataAjaxPrint = [];
-    }
-    if(dataAjaxCheck == 1) {
-        dataAjaxCopyRemJob(dataAjax)
-        console.log(dataAjaxPrint)
-    }else {
-        dataAjaxCopyRemJob(dataAjax2)
-        console.log(dataAjaxPrint)
-    }
-    if(dataAjaxPrint.length == 0){
-        img_show();
-    }else{
-        tasks_list_remJob(dataAjaxPrint)
-        tasks_show()
-        maps_show()
-    }
-}
+// function sixInOne2(){
+//     resetCounters()
+//     if(dataAjaxCheck == 0) {
+//         dataAjaxPrint = [];
+//     }
+//     if(dataAjaxCheck == 1) {
+//         dataAjaxCopyRemJob(dataAjax)
+//         console.log(dataAjaxPrint)
+//     }else {
+//         dataAjaxCopyRemJob(dataAjax2)
+//         console.log(dataAjaxPrint)
+//     }
+//     if(dataAjaxPrint.length == 0){
+//         img_show();
+//     }else{
+//         tasks_list_remJob(dataAjaxPrint)
+//         tasks_show()
+//         maps_show()
+//     }
+// }
 
 function img_show() {
     $('.no_tasks').removeAttr('hidden');
@@ -330,9 +384,10 @@ function tasks_show(){
     $('.lM').removeAttr('hidden');
     $('#pnum').html(s)
     $('#snum').html(dl)
-    if (s==dl){
-        // $('.butt').attr("disabled","disabled")
+    if (s==dl) {
         $('.butt').hide()
+    }else{
+        $('.butt').show()
     }
 }
 

@@ -388,32 +388,5 @@
   </div>
 </div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id10-backdrop"></div>
-{{-- Modal3 end --}}
-
-  <script type="text/javascript">
-      function toggleModal8(modalID8){
-          document.getElementById(modalID8).classList.toggle("hidden");
-          document.getElementById(modalID8 + "-backdrop").classList.toggle("hidden");
-          document.getElementById(modalID8).classList.toggle("flex");
-          document.getElementById(modalID8 + "-backdrop").classList.toggle("flex");
-      }
-  </script>
-  <script type="text/javascript">
-    function toggleModal9(modalID9){
-        document.getElementById(modalID9).classList.toggle("hidden");
-        document.getElementById(modalID9 + "-backdrop").classList.toggle("hidden");
-        document.getElementById(modalID9).classList.toggle("flex");
-        document.getElementById(modalID9 + "-backdrop").classList.toggle("flex");
-    }
-</script>
-<script type="text/javascript">
-  function toggleModal10(modalID10){
-      document.getElementById(modalID10).classList.toggle("hidden");
-      document.getElementById(modalID10 + "-backdrop").classList.toggle("hidden");
-      document.getElementById(modalID10).classList.toggle("flex");
-      document.getElementById(modalID10 + "-backdrop").classList.toggle("flex");
-  }
-</script>
-
-
+<script src="{{ asset('js/verification.js') }}"></script>
 @endsection

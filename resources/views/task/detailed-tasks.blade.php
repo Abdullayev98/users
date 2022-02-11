@@ -425,7 +425,7 @@
                                 @if($task->category->tasks_count > 1)
 
                                     <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
-                                    @foreach($task->category->tasks()->take(10)->get() as $same_task)
+                                    @foreach($task->category->tasks()->where('user_id','!=', null)->take(10)->get() as $same_task)
                                         @if($same_task->id != $task->id)
                                             <div class="mt-4">
                                                 <a href="{{$same_task->id}}"
@@ -730,7 +730,6 @@
                     $(".hideform").removeClass('hidden');
                 });
                 $(".done").click(async function () {
-
                 });
                 $("#close-id4").click(function () {
                     $("#modal-id4").hide();

@@ -35,10 +35,11 @@ class SearchTaskController extends VoyagerBaseController
     {
         if (isset($request->orderBy)) {
             if ($request->orderBy == 'all') {
-                $tasks = Task::where('status', 1, 2, null)->orderBy('id', 'desc')
+                $tasks = Task::where('status', 1, 2)->orderBy('id', 'desc')
+//                    $tasks = Task::where([['status', '=', 1],['status', '=', 2],['address','=', null]])->orderBy('id', 'desc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.status', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'klyuch') {
@@ -50,7 +51,7 @@ class SearchTaskController extends VoyagerBaseController
                     ->where('address', 'LIKE', "%$address%")
                     ->where('budget', 'LIKE', "%$price%")
                     ->orderBy('id', 'asc')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.status', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
                     ->get()->load('user', 'category');
             }
         }
