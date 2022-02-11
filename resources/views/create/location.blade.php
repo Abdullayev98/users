@@ -128,11 +128,3 @@
 <script src="{{ asset('js/location.js') }}"></script>
 
 @endsection
-
-@section("javasript")
-
-
-
-
-
-@endsection
