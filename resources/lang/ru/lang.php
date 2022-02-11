@@ -502,6 +502,13 @@ return [
     'profile_enterDesc' => "Введите описание",
     'profile_newAlbum' => "Создать новый альбом",
     'profile_changeAlbum' => "Изменить альбом",
+    'profile_text1' => "Венруться в профиль",
+    'profile_text2' => "Создание нового альбома",
+    'profile_text3' => "Название",
+    'profile_text4' => "Описание",
+    'profile_text5' => 'Например "Ремонт кухни" или "Свадебная фотосессия"',
+    'profile_text6' => "Опишите какие работы представлены в этом альбоме, в чем их особенность, когда они были выполнены, в каких целях и т.д.",
+    'profile_text7' => "Далее",
     // profile.blade end
 
     // settings.blade start
