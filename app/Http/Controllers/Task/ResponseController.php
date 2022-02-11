@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Task;
 use App\Http\Controllers\Controller;
 use App\Models\Response;
 use App\Models\Task;
+use App\Models\TaskResponse;
 use App\Models\WalletBalance;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,6 +16,7 @@ class ResponseController extends Controller
 
     public function store(Request $request, Task $task)
     {
+
         $data = $request->validate([
             'description' => 'required|string',
             'budget' => 'required|int',
@@ -44,6 +46,21 @@ class ResponseController extends Controller
         }
         return back();
 
+    }
+
+
+    public function selectPerformer(TaskResponse $response)
+    {
+        if ($response->task->status >= 3) {
+            abort(403);
+        }
+        $data = [
+            'performer_id' => $response->user_id,
+            'status' => Task::STATUS_IN_PROGRESS
+        ];
+        $response->task->update($data);
+        Alert::success('Success');
+        return back();
     }
 
 

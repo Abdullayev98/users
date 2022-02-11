@@ -14,6 +14,7 @@ class Category extends Model
     protected $translatable = ['name'];
 
     protected $table = "categories";
+    protected $withCount = ['tasks'];
 
     public function tasks()
     {
@@ -28,6 +29,10 @@ class Category extends Model
 
     public function parent(){
         return $this->belongsTo(Category::class, 'parent_id', 'id');
+    }
+
+    public function childs(){
+        return $this->hasMany(Category::class,'parent_id','id');
     }
 
 

@@ -153,10 +153,10 @@
                             <input
                                 class="focus:outline-none  inline rounded-xl xl:ml-3 ring-1 text-2xl text-center h-18 w-36  pb-1"
                                 onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)'
-                                id="myText1" type='number' min="4000" maxlength="7" value="4000" />
+                                id="myText1" type='text' min="4000" maxlength="7" value="4000" />
                             <span class="xl:ml-1 xl:text-xl lg:text-lg text-xl">UZS</span>
                             <button onclick="toggleModal()" type="submit" id="button2"
-                                class="md:inline block xl:ml-10 lg:ml-2 mx-auto mt-5 md:mt-0 h-10 rounded-xl ring-0 hover:bg-green-700 text-white bg-green-400 md:w-40 w-full">
+                                class="md:inline block xl:ml-10 lg:ml-2 mx-auto mt-5 md:mt-0 h-10 rounded-xl ring-0 hover:bg-green-600 text-white bg-green-500 md:w-40 w-full">
                                 @lang('lang.cash_topUpSub')
                             </button>
                         </div>
@@ -187,7 +187,7 @@
                                 </div>
                             </ul>
                             <div id="tab-contents">
-                                <div id="first" class="p-4">
+                                <div id="first" class="py-4">
                                     <table class="" id="example">
                                         <thead>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_date')</th>
@@ -209,7 +209,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="second" class="hidden p-4">
+                                <div id="second" class="hidden py-4">
                                     <table class="" id="example">
                                         <thead>
                                             <th class="text-center w-1/4 border">@lang('profile.transactions_date')</th>
@@ -229,12 +229,12 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="third" class="hidden p-4">
+                                <div id="third" class="hidden py-4">
                                     @foreach ($transactions as $transaction)
                                         <td>{{ $transaction->action }}</td>
                                     @endforeach
                                 </div>
-                                <div id="third" class="p-4">
+                                <div id="third" class="py-4">
                                     {{$transactions->links()}}
                                 </div>
                             </div>
@@ -323,12 +323,12 @@
             var x = document.getElementById("myText1").value;
             if (x < 4000) {
                 document.getElementById('button2').removeAttribute("onclick");
-                document.getElementById('button2').classList.remove("bg-green-500","hover:bg-green-500");
+                document.getElementById('button2').classList.remove("bg-green-500","hover:bg-green-600");
                 document.getElementById('button2').classList.add("bg-gray-500");
             } else {
                 document.getElementById('button2').setAttribute("onclick", "toggleModal();");
                 document.getElementById('button2').classList.remove("bg-gray-500");
-                document.getElementById('button2').classList.add("bg-green-500","hover:bg-green-500");
+                document.getElementById('button2').classList.add("bg-green-500","hover:bg-green-600");
             }
         }
 

@@ -59,6 +59,7 @@ return [
     'modal_addres4' => " Boshqa xatni belgilang",
     'modal_cencel' => "Bekor qilish",
     'modal_send' => "Yuborish",
+    'modal_address1' => "Telefon raqamizga ",
     'modal_phone1' => "Telefon raqamini tasdiqlang",
     'modal_address2' => " Universal Services bilan pochtangizni tekshirish uchun havola bilan elektron pochta xabari yuborildi.",
     'modal_address3' => "Havolani kuzatib boring va telefon raqamingizni faollashtiring.",
@@ -348,6 +349,8 @@ return [
     'authors_timeAgo' => "taxminan 2 yil oldin",
     'authors_feedback' => "Men vaqti-vaqti bilan Universal xizmatlardan foydalanaman, bu foydali narsa. Kecha kurer poyezdga posilka yetkazib berdi. Bahorda tajribali hamshira singan oyog‘iga polimer bandaj qo‘ydi. Va men u yerda tozalashni buyuraman. - yuqori sifatli va arzon. Umuman olganda, tavsiya qilaman.",
     'authors_createTask' => "Vazifa yaratish",
+    'authors_codeText1' => "Parolingizni qayta tiklang",
+    'authors_codeText2' => " Sahifangizga biriktirilgan telefon raqamingizni kiriting, va biz faol kodni yuboramiz",
     // authors_reviews.blade end
 
     // CMI.blade start
@@ -544,6 +547,9 @@ return [
     'settings_newPassword' => "Yangi parol",
     'settings_repeatPassword' => "Parolni takrorlang",
     'settings_saveNewPass' => "Yangi parolni saqlash",
+    'settings_delete' => "Haqiqatan ham oʻchirib tashlamoqchimisiz?",
+    'settings_Success' => "Saqlandi",
+    'settings_Successfully' => "Muvaffaqiyatli yangilandi",
     // settings.blade end
 
     // executors-courier.blade start
@@ -631,6 +637,10 @@ return [
     'contact_send' => "Yuborish",
     'contact_yourContacts' => "Sizning kontaktlaringiz",
     'contact_auth' => "Avtorizatsiya",
+    'contact_verify' => "Registratsiya kodi",
+    'contact_notVerify' => "Notog'ri kod",
+    'contact_expired' => "Kod muddati tugagan",
+    'contact_phone' => "Raqamni yozin",
     // contacts.blade end
 
     // date.blade start
@@ -1140,6 +1150,8 @@ return [
     'detailedT_training' => "Ta'lim",
     'detailedT_text18' => "Bu chaqiruvga javob bering",
     'detailedT_text19' => "Fikr qoldiring",
+    'detailedT_Image' => "Rasim",
+    'detailedT_ImageNot' => "Rasim tanlanmadi",
     //detailed tasks blade ended
     // personalinfo
     'personalinfo_text1' => "Bizga o'zingiz haqingizda aytib bering",

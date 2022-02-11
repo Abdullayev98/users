@@ -38,7 +38,7 @@ class SearchTaskController extends VoyagerBaseController
                 $tasks = Task::where('status', 1, 2, null)->orderBy('id', 'desc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name','users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'klyuch') {
@@ -51,7 +51,7 @@ class SearchTaskController extends VoyagerBaseController
                     ->where('budget', 'LIKE', "%$price%")
                     ->orderBy('id', 'asc')
                     ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
-                    ->get()->load('user','category');
+                    ->get()->load('user', 'category');
             }
         }
         return $tasks->all();
@@ -59,7 +59,7 @@ class SearchTaskController extends VoyagerBaseController
 
     public function my_tasks()
     {
-        $user= auth()->user();
+        $user = auth()->user();
         $tasks = $user->tasks();
         $perform_tasks = Task::where('performer_id', $user->id())->get();
         $all_tasks = Task::where('user_id', $user->id)->where('performer_id', $user->id)->get();
@@ -69,26 +69,15 @@ class SearchTaskController extends VoyagerBaseController
 
     public function task(Task $task)
     {
-        $balance = WalletBalance::where('user_id', Auth::id())->first();
-        if ($balance) {
-            $balance = $balance->balance;
-        } else {
-            $balance = 0;
-        }
-
-        $users = User::all();
+        return view('task.detailed-tasks', compact('task'));
+    }
 
 
-        $arr = get_defined_vars();
-        $task_responses = $task->responses()->get();
-
-        if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks', compact('task',  'users','task_responses'));
-        } else {
-            return view('task.detailed-tasks', compact('task',  'users',  'balance','task_responses'));
-        }
+    public function selectPerformer(TaskResponse $response){
+        dd(23423);
 
     }
+
 
     public function task_response(Request $request)
     {
@@ -183,9 +172,7 @@ class SearchTaskController extends VoyagerBaseController
 
     public function changeTask(Task $task)
     {
-        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $categories2 = Category::withTranslations(['ru', 'uz'])->where('parent_id', "!=", null)->get();
-        return view('task.changetask', compact('categories', 'categories2', 'task', ));
+        return view('task.changetask', compact('task'));
     }
 
     public function update_task(Task $task, UpdateRequest $request)
@@ -197,9 +184,6 @@ class SearchTaskController extends VoyagerBaseController
         dd($data);
 
     }
-
-
-
 
 
 }
