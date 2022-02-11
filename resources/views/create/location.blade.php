@@ -125,14 +125,6 @@
 
 </form>
 
-
-@endsection
-
-@section("javasript")
-
-
-    <script src="{{ asset('js/location.js') }}"></script>
-
-
+<script src="{{ asset('js/location.js') }}"></script>
 
 @endsection
