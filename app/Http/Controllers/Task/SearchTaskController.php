@@ -35,30 +35,17 @@ class SearchTaskController extends VoyagerBaseController
     {
         if (isset($request->orderBy)) {
             if ($request->orderBy == 'all') {
-                $tasks = DB::table("tasks")->where('status', '=', 1)->orderBy('id', 'desc')
+                $tasks = Task::where('status', 1, 2, null)->orderBy('id', 'desc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
                     ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name','users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
-                    ->get();
-            }
-            if ($request->orderBy == 'sroch') {
-                $tasks = DB::table("tasks")->where('status', '=', 1)->orderBy('start_date', 'asc')
-                    ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
-                    ->get();
-            }
-            if ($request->orderBy == 'udal') {
-                $tasks = DB::table("tasks")->where([['address', '=', null], ['status', '=', null]])
-                    ->orderBy('id', 'desc')
-                    ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
                     ->get();
             }
             if ($request->orderBy == 'klyuch') {
                 $filter = $request->fltr;
                 $address = $request->addr;
                 $price = $request->prc;
-                $tasks = Task::where('status', '=', 1)
+                $tasks = Task::where('status', '=', 1)->where('status', '=', 2)->where('address', '=', null)
                     ->where('name', 'LIKE', "%$filter%")
                     ->where('address', 'LIKE', "%$address%")
                     ->where('budget', 'LIKE', "%$price%")
@@ -66,10 +53,6 @@ class SearchTaskController extends VoyagerBaseController
                     ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
                     ->get()->load('user','category');
             }
-//            if ($request->orderBy == 'price') {
-////                $filter = $request->fltr;
-//                $tasks =  DB::table("tasks")->where('budget','LIKE',"%$filter%")->orderBy('name','desc')->get();
-//            }
         }
         return $tasks->all();
     }
