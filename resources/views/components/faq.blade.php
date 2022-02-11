@@ -8,9 +8,6 @@
     </div>
 </div>
 
-<script>
-    $('div').removeClass('group');
-    $('ul').removeClass('group-hover');
-    $('button').removeClass('hover:text-yellow-500');
-    $('button').removeClass('text-gray-500');
-</script>
+@section("javasript")
+    <script src="{{ asset('js/components/faq.js') }}"></script>
+@endsection
