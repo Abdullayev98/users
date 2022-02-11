@@ -153,10 +153,7 @@
                             </div>
                         @endforeach
                     </div>
-
                 </div>
-
-                {{--                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
             </div>
         </div>
     </div>
@@ -172,6 +169,8 @@
     <script type="text/javascript">
         let mytaskCoordinates = [];
         mytaskCoordinates = $.parseJSON(JSON.stringify({!! $datas !!}));
+        console.log(mytaskCoordinates.length);
+
         ymaps.ready(function () {
             var myMap = new ymaps.Map('map', {
                     center: [41.311081, 69.240562],

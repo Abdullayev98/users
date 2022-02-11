@@ -11,9 +11,6 @@ function init_map(){
 }
 ymaps.ready(init_map);
 
-
-
-
 var x = 1;
 function init() {
 
@@ -22,7 +19,6 @@ function init() {
     suggestView0.events.add('select', function () {
         myFunction();
     });
-    var lang = document.documentElement.lang;
     var alp =  ["B", "C", "D", "E", "F","G","H","I","J"];
 
     $("#addbtn").click(function(){

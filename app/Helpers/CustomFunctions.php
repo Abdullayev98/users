@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\FaqCategories;
 
 if (!function_exists('amount_format')) {
     function amount_format($amount)
@@ -17,7 +18,7 @@ function getMyText(){
 function categories(){
 
 
-    $datas = Category::withTranslations(['ru', 'uz'])->get();
+    $datas = Category::with('translations')->get();
 
     $child_categories = [];
     $parent_categories = [];
@@ -51,7 +52,14 @@ function categories(){
 
 
 function getAllCategories(){
-    return Category::withTranslations(['ru', 'uz'])->get();
+    return Category::withTranslations()->get();
+}
+
+function getCategoriesByParent($parent){
+    return Category::withTranslations()->where('parent_id', $parent)->get();
+}
+function getFaqCategories(){
+    return FaqCategories::all();
 }
 
 function getAuthUserBalance(){

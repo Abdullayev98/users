@@ -7,20 +7,25 @@ use App\Http\Requests\Task\UpdateRequest;
 use App\Models\CustomFieldsValue;
 use App\Models\Task;
 use App\Services\Payme\Request;
+use App\Services\Task\CreateService;
 use Illuminate\Support\Arr;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UpdateController extends Controller
 {
+    protected $service;
+
+    public function __construct()
+    {
+        $this->service = new CreateService::class;
+    }
 
     public function __invoke(UpdateRequest $request, Task $task)
     {
         $data = $request->validated();
         $data = $this->getAddress($data);
         $task->update($data);
-
-        $this->syncCustomFields($task);
-
+        $this->service->syncCustomFields($task);
         Alert::success('Success');
 
         return redirect()->route('tasks.detail', $task->id);
@@ -36,26 +41,8 @@ class UpdateController extends Controller
         return $data;
     }
 
-    public function syncCustomFields($task){
-        $this->deleteAllValues($task);
 
-        foreach ($task->category->custom_fields as $data) {
-            $value = new CustomFieldsValue();
-            $value->task_id = $task->id;
-            $value->custom_field_id = $data->id;
-            $arr = Arr::get(request()->all(), $data->name);
-            $value->value = is_array($arr) ? json_encode($arr) : $arr;
-            $value->save();
-        }
 
-    }
-
-    public function deleteAllValues($task){
-        foreach ($task->custom_field_values as $custom_fields_value) {
-            $custom_fields_value->delete();
-
-        }
-    }
 
 
     public function completed(Task $task){
