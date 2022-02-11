@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Task;
 use TCG\Voyager\Traits\Translatable;
 
 class Category extends Model
@@ -27,6 +26,27 @@ class Category extends Model
         return $this->hasMany(CustomField::class);
     }
 
+    public function customFieldsInName(){
+        return $this->hasMany(CustomField::class)->where('route', CustomField::ROUTE_NAME);
+    }
+    public function customFieldsInAddress(){
+        return $this->hasMany(CustomField::class)->where('route', CustomField::ROUTE_ADDRESS);
+    }
+    public function customFieldsInBudget(){
+        return $this->hasMany(CustomField::class)->where('route', CustomField::ROUTE_BUDGET);
+    }
+    public function customFieldsInNote(){
+        return $this->hasMany(CustomField::class)->where('route', CustomField::ROUTE_NOTE);
+    }
+    public function customFieldsInContacts(){
+        return $this->hasMany(CustomField::class)->where('route', CustomField::ROUTE_CONTACTS);
+    }
+    public function customFieldsInCustom(){
+        return $this->hasMany(CustomField::class)->where('route', CustomField::ROUTE_CUSTOM);
+    }
+    public function customFieldsInDate(){
+        return $this->hasMany(CustomField::class)->where('route', CustomField::ROUTE_DATE);
+    }
     public function parent(){
         return $this->belongsTo(Category::class, 'parent_id', 'id');
     }

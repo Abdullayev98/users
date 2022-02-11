@@ -59,20 +59,6 @@
 
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
-            // const slider = new ChiefSlider('.slider', {
-            //     loop: false,
-            //     refresh:true
-            // });
-            var elms = document.querySelectorAll('.slider');
-            for (var i = 0, len = elms.length; i < len; i++) {
-                // инициализация elms[i] в качестве слайдера
-                new ChiefSlider(elms[i]);
-            }
-        });
-    </script>
+    <script src="{{ asset('js/changetask.js') }}"></script>
 
 @endsection

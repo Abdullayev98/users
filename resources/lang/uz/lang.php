@@ -501,7 +501,7 @@ return [
     'profile_text2' => "Yangi albom yaratish",
     'profile_text3' => "Nomi",
     'profile_text4' => "Tavsif",
-    'profile_text5' => "Misol uchun Oshxona Ta'mirlash yoki To'y foto lavhalari",
+    'profile_text5' => "Misol: Oshxona ta`mirlash",
     'profile_text6' => "Ushbu albomda qanday asarlar taqdim etilgani, ular nima ekanligini tasvirlab bering, xususiyati, ular qachon amalga oshirilganligi,  qanday maqsadlarda  va boshqalar",
     'profile_text7' => "Keyingisi",
     // profile.blade end
