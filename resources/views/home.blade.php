@@ -74,18 +74,6 @@
         </div>
     </div>
 
-    <script>
-         function toggleModal2() {
-        document.getElementById("modal-id2").classList.toggle("hidden");
-         }
-    </script>
-
-    <script>
-        function myFunction() {
-            document.getElementById("header_input").value = document.getElementById("span_demo").innerHTML;
-        }
-    </script>
-
     <div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
         <!--modal content-->
         <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
@@ -147,18 +135,6 @@
             <div class="text-white swiper-button-next"></div>
             <div class="text-white swiper-button-prev"></div>
         </div>
-
-        <!-- Swiper JS -->
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script>
-            var swiper = new Swiper('.mySwiper', {
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            });
-        </script>
-
         <div class="w-full bg-gradient-to-r from-white via-gray-400 to-white h-1 rounded-full"></div>
         <div class="w-full bg-gradient-to-r from-white via-gray-100 to-white">
             <div class="container text-center mx-auto px-16">
@@ -174,10 +150,7 @@
 @if(($cnt_for_hiw % 2) == 0)
 
                     <div>
-                        <img class="lg:ml-0  mx-auto  w-42 h-42"
-                            src="/storage/{{$howitwork->image}}"
-{{--                            src="https://assets.youdo.com/next/_next/static/images/hiw-1-be91158a87ea183e3cd3e3dcc56471a5.png"--}}
-                            alt="">
+                        <img class="lg:ml-0  mx-auto  w-42 h-42" src="/storage/{{$howitwork->image}}" alt="">
                     </div>
                     <div class="md:text-left text-center">
                         <h3 class="text-3xl my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
@@ -191,10 +164,7 @@
                         <h2 class="text-xl">{{ strip_tags($howitwork->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')) }}</h2>
                     </div>
                     <div class="my-16 md:block hidden">
-                        <img class="lg:ml-0  mx-auto w-42 h-42"
-                            src="/storage/{{$howitwork->image}}"
-{{--                            src="https://assets.youdo.com/next/_next/static/images/hiw-2-aa57365db5ca978385ac301a2ef6a5e8.png"--}}
-                            alt="">
+                        <img class="lg:ml-0  mx-auto w-42 h-42" src="/storage/{{$howitwork->image}}" alt="">
                     </div>
 
                     <div class="my-16 md:hidden block">
@@ -206,12 +176,9 @@
                         <h3 class="text-3xl mt-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         <a href="/categories/1" class="text-blue-500 underline text-xl">@lang('lang.body_createTask')</a>
                     </div>
-@endif
-
+                @endif
                     @php $cnt_for_hiw++ @endphp
-
-@endforeach
-
+            @endforeach
                 </div>
             </div>
             <div class="text-center w-full mx-auto my-4">
@@ -224,9 +191,6 @@
                 @lang('lang.body_findPerformer')
                 </div>
             </div>
-{{--            <div class="w-2/3 mx-auto my-8 text-center">--}}
-{{--                <p class="text-xs text-gray-400">@lang('lang.body_ecomomyText')</p>--}}
-{{--            </div>--}}
         </div>
         <div class="bg-blue-100">
             <div class="w-11/12 md:w-9/12 mx-auto pb-24">
@@ -330,53 +294,7 @@
             </div>
         </div>
     </main>
-    <script>
-        // Grabs all the Elements by their IDs which we had given them
-        let modal = document.getElementById("my-modal");
-
-        let btn = document.getElementById("open-btn");
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
-    <!-- <script>
-        window.replainSettings = {id: '38d8d3f0-b690-4857-a153-f1e5e8b462a8'};
-        (function (u) {
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = u;
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
-        })('https://widget.replain.cc/dist/client.js');
-    </script> -->
-    <script>
-        setInterval(function () {
-            var elem = document.getElementById('scrollbar');
-            elem.scrollTop = elem.scrollHeight;
-        }, 5000);
-    </script>
-    <script>
-    function myFunctionesse() {
-      var elems = document.getElementsByClassName("chat");
-        elems.style.display = "block";
-    }
-    </script>
-    <script>
-        $("input[name=TypeList]").focusout(function(){
-        });
-        $(function() {
-        $('#header_input').on('input',function() {
-            var opt = $('option[value="'+$(this).val()+'"]');
-            $("#createhref").attr("href", '/task/create?category_id='+opt.attr('id'));
-        });
-        });
-    </script>
-    <div class="w-full" x-data="topBtn">
+    <div class="w-full">
         <button onclick="topFunction()" id="myBtn" title="Go to top" class="fixed z-10 hidden p-3 bg-gray-100 rounded-full shadow-md bottom-5 right-24 animate-bounce">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18">
@@ -384,30 +302,8 @@
             </svg>
         </button>
     </div>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
 
-    <script>
-        //Get the button
-        var mybutton = document.getElementById("myBtn");
-
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {
-            scrollFunction()
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            $('html,body').animate({ scrollTop: 0 }, 'slow');
-        }
-    </script>
-    <script>
-
-    </script>
 @endsection

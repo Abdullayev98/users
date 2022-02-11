@@ -44,7 +44,7 @@
         </div>
     </div>
 
-        <div class="zakza w-9/12 mx-auto text-center font-serif mb-32 mt-32">
+        <div class="zakaz w-9/12 mx-auto text-center font-serif my-32">
           <div class="info">
               <h2 class="zakaz_title font-sans text-5xl pb-8 font-bold">@lang('lang.ver_howToGetTask')</h2>
               <p class="zakaz_text font-sans text-xl pb-16 font-medium">@lang('lang.ver_perfsChoose')</p>
@@ -230,12 +230,12 @@
 
 
 
-        <div class="w-10/12 mx-auto text-center sm:mt-48 mt-16 mb-16 hidden">
+        <div class="w-10/12 mx-auto text-center my-16 hidden">
           <h1 class="font-bold text-4xl">@lang('lang.ver_partnershipT')</h1>
           <p class="text-xl mt-8 font-medium">@lang('lang.ver_noTaxes')</p>
         </div>
 
-        <div class="w-10/12 mx-auto grid md:grid-cols-2 grid-cols-1 container mx-auto mb-16 hidden">
+        <div class="w-10/12 mx-auto grid md:grid-cols-2 grid-cols-1 container mb-16 hidden">
             <div class="grid-cols-1  float-left p-8 rounded-lg w-5/6 shadow-2xl md:ml-0 mx-auto md:mb-0 mb-8">
                 <div class="float-left">
                   <h1 class="font-medium text-2xl">@lang('lang.ver_unlim')</h1>
@@ -264,7 +264,7 @@
         </div>
 
 
-       <div class="text-center sm:mt-48 mt-16 mb-16">
+       <div class="text-center my-16">
             <h1 class="font-bold text-4xl">@lang('lang.ver_getYourGoals')</h1>
             <p class="text-xl mt-8 font-medium">@lang('lang.ver_everyday')</p>
        </div>
@@ -292,22 +292,22 @@
       </div>
 
 
-        <div class="grid md:grid-cols-3 grid-cols-1 container mx-auto  md:mt-32 mt-16 md:mb-32 mb-16">
-            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg md:mt-0 mt-8">
+        <div class="grid md:grid-cols-3 grid-cols-1 container mx-auto  md:my-32 my-16">
+            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg m-4 ">
                 <p class="text-base">@lang('lang.ver_opinion3'). ...</p>
-                <button onclick="toggleModal8('modal-id8')" class="text-base text-gray-500 hover:text-blue-400 hover:border-blue-400 border-solid border-b-2">@lang('lang.ver_readMore')</button>
+                <button onclick="toggleModal8('modal-id8')" class="text-base text-gray-500 hover:text-yellow-400 hover:border-yellow-400 border-solid border-b-2">@lang('lang.ver_readMore')</button>
             </div>
-            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg ml-4 mr-4 md:mt-0 mt-8">
+            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg m-4">
                 <p class="text-base">@lang('lang.ver_opinion4')</p>
-                <button onclick="toggleModal9('modal-id9')" class="text-base text-gray-500 hover:text-blue-400 hover:border-blue-400 border-solid border-b-2">@lang('lang.ver_readMore')</button>
+                <button onclick="toggleModal9('modal-id9')" class="text-base text-gray-500 hover:text-yellow-400 hover:border-yellow-400 border-solid border-b-2">@lang('lang.ver_readMore')</button>
             </div>
-            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg md:mt-0 mt-8">
+            <div class="grid-cols-1 shadow-2xl p-8 rounded-lg m-4">
               <p class="text-base">@lang('lang.ver_opinion5')</p>
-              <button onclick="toggleModal10('modal-id10')" class="text-base text-gray-500 hover:text-blue-400 hover:border-blue-400 border-solid border-b-2">@lang('lang.ver_readMore')</button>
+              <button onclick="toggleModal10('modal-id10')" class="text-base text-gray-500 hover:text-yellow-400 hover:border-yellow-400 border-solid border-b-2">@lang('lang.ver_readMore')</button>
             </div>
         </div>
 
-      <div class="flex lg:flex-row flex-col container mx-auto mt-16">
+      <div class="flex lg:flex-row flex-col container mx-auto my-16">
         <div class="lg:w-2/5 w-full lg:block hidden lg:text-left text-center xl:ml-0 ml-4">
           <p class=" text-lg">@lang('lang.ver_opinion6')</p>
             <h1 class="font-bold text-6xl mt-4">70 000</h1>
@@ -328,10 +328,10 @@
           <iframe class="rounded-lg h-full ml-4 xl:float-right float-none" width="644" height="362" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <div class="lg:hidden block mx-auto ">
+        <div class="lg:hidden block mx-auto">
            <iframe class="rounded-lg h-full sm:h-[300px] w-full sm:w-[600px] lg:mx-0 mx-auto" src="https://www.youtube.com/embed/2J7xlDH4QkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center">
+        <div class="lg:col-span-1 lg:mt-0 mt-8 lg:hidden block lg:text-left text-center mb-12">
           <p class="mt-6 text-lg">@lang('lang.ver_opinion7')</p>
             <h1 class="font-bold text-6xl mt-4">70 000</h1>
          <p class="text-lg font-medium mt-4">@lang('lang.ver_avarageS3')</p>
@@ -388,32 +388,5 @@
   </div>
 </div>
 <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id10-backdrop"></div>
-{{-- Modal3 end --}}
-
-  <script type="text/javascript">
-      function toggleModal8(modalID8){
-          document.getElementById(modalID8).classList.toggle("hidden");
-          document.getElementById(modalID8 + "-backdrop").classList.toggle("hidden");
-          document.getElementById(modalID8).classList.toggle("flex");
-          document.getElementById(modalID8 + "-backdrop").classList.toggle("flex");
-      }
-  </script>
-  <script type="text/javascript">
-    function toggleModal9(modalID9){
-        document.getElementById(modalID9).classList.toggle("hidden");
-        document.getElementById(modalID9 + "-backdrop").classList.toggle("hidden");
-        document.getElementById(modalID9).classList.toggle("flex");
-        document.getElementById(modalID9 + "-backdrop").classList.toggle("flex");
-    }
-</script>
-<script type="text/javascript">
-  function toggleModal10(modalID10){
-      document.getElementById(modalID10).classList.toggle("hidden");
-      document.getElementById(modalID10 + "-backdrop").classList.toggle("hidden");
-      document.getElementById(modalID10).classList.toggle("flex");
-      document.getElementById(modalID10 + "-backdrop").classList.toggle("flex");
-  }
-</script>
-
-
+<script src="{{ asset('js/verification.js') }}"></script>
 @endsection
