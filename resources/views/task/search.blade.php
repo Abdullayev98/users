@@ -13,7 +13,7 @@
                             <div class="sm:inline-flex block w-full col-span-4 relative">
                             <!-- <input class="focus:outline-none  w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
                                 <input id="filter" type="search"
-                                       class="focus:outline-none focus:placeholder-transparent w-10/12 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
+                                       class="focus:outline-none focus:placeholder-transparent w-4/5 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 mr-4"
                                        placeholder="@lang('lang.search_byKey')">
 {{--                                <svg class="h-3 w-3 fill-current absolute left-3/4 top-2 cursor-pointer" id="svgClose" hidden width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>--}}
                                 <button
@@ -21,23 +21,24 @@
                                 >@lang('lang.search_find')</button>
                             </div>
 
-                            <div class="md:inline-flex  block w-full col-span-4">
-                                <div class="w-8/12 md:w-7/12 relative">
-                                    <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_location')</label>
-                                    <div class="bg-white address float-left py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700">
+                            <div class="md:inline-flex  block w-full col-span-4 ">
+                                <div class="w-8/12 md:w-4/5 relative">
+                                    <label class="lg:text-base md:text-sm mb-1 text-neutral-400">@lang('lang.search_location')</label>
+                                    <div class="relative bg-white address float-left py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700">
                                         <input
-                                            class="focus:outline-none float-left bg-transparent border-0 w-11/12 h-full focus:outline-none"
+                                            class="focus:outline-none float-left bg-transparent border-0 w-11/12 mr-3.5 h-full focus:outline-none"
                                         type="text" id="suggest" disabled>
 {{--                                        <button id="mpshow" class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">--}}
-                                            <svg class="h-4 w-4 text-purple-500" id="geoBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
-                                            <img src="images/close.png" class="cursor-pointer" id="closeBut" hidden>
+                                            <svg class="absolute right-2 bottom-1.5 h-4 w-4 text-purple-500" id="geoBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
+                                            <img src="images/close.png" class="absolute right-2 bottom-1.5 cursor-pointer" id="closeBut" hidden>
 {{--                                        </button>--}}
                                     </div>
                                 </div>
-
-                                <div class="w-4/12 lg:w-4/12 lg:ml-1 md:ml-1">
-                                    <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                    <select name="" id="selectGeo" class="focus:outline-none  py-1 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="">
+                            </div>
+                            <div class="md:inline-flex  block w-full col-span-4 ">
+                                <div class="md:w-2/5 pr-5">
+                                    <label class="lg:text-base md:text-sm mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
+                                    <select name="" id="selectGeo" class="focus:outline-none  py-1 px-2 w-full text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="">
                                         <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                         <option value="1.5">1.5 @lang('lang.search_km')</option>
                                         <option value="3">3 @lang('lang.search_km')</option>
@@ -52,11 +53,11 @@
                                         <option value="200">200 @lang('lang.search_km')</option>
                                     </select>
                                 </div>
-                                <div class="relative w-5/12 2xl:w-3/12 xl:w-4/12 xl:ml-2 lg:w-5/12 lg:ml-1 md:w-4/12 md:ml-1 sm:w-5/12">
-                                    <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
+                                <div class="relative pl-5 md:w-2/5">
+                                    <label class="lg:text-base md:text-sm mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
                                     <input type="number" min="1" max="999999999" class="focus:outline-none focus:placeholder-transparent w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
 {{--                                    <svg class="h-3 w-3 fill-current absolute top-7 left-28" id="prcClose" hidden width="12" height="12" viewBox="0 0 26 26" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 21.734375 19.640625 L 19.636719 21.734375 C 19.253906 22.121094 18.628906 22.121094 18.242188 21.734375 L 13 16.496094 L 7.761719 21.734375 C 7.375 22.121094 6.746094 22.121094 6.363281 21.734375 L 4.265625 19.640625 C 3.878906 19.253906 3.878906 18.628906 4.265625 18.242188 L 9.503906 13 L 4.265625 7.761719 C 3.882813 7.371094 3.882813 6.742188 4.265625 6.363281 L 6.363281 4.265625 C 6.746094 3.878906 7.375 3.878906 7.761719 4.265625 L 13 9.507813 L 18.242188 4.265625 C 18.628906 3.878906 19.257813 3.878906 19.636719 4.265625 L 21.734375 6.359375 C 22.121094 6.746094 22.121094 7.375 21.738281 7.761719 L 16.496094 13 L 21.734375 18.242188 C 22.121094 18.628906 22.121094 19.253906 21.734375 19.640625 Z"/></svg>--}}
-                                    <img src="images/close.png" class="-mt-6 ml-32 cursor-pointer" id="prcClose" hidden>
+                                    <img src="images/close.png" class="absolute right-2 bottom-2.5 cursor-pointer" id="prcClose" hidden>
                                 </div>
                             </div>
                             <div class="inline-flex  block w-full col-span-4">

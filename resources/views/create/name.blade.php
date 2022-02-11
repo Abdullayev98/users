@@ -25,7 +25,7 @@
                 <div class="pt-1">
                     <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200 mx-auto ">
                         <div style="width: 14%"
-                                 class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                             class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                     </div>
                 </div>
                 <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
@@ -43,14 +43,18 @@
                                 </label>
                                 <input
                                     class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
-                                    id="username" type="text" placeholder="@lang('lang.name_example') {{ $current_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}" required name="name" value="{{session('neym')}}">
+                                    id="username" type="text"
+                                    placeholder="@lang('lang.name_example') {{ $current_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}"
+                                    required name="name" value="{{session('neym')}}">
                             </div>
                             <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
                             <div id="categories">
 
-                            <div class="justify-center flex md:flex-row flex-col">
-  <div class="my-3 xl:w-50 pr-0 md:pr-2">
-    <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));" class="form-select
+                                <div class="justify-center flex md:flex-row flex-col">
+                                    <div class="my-3 xl:w-50 pr-0 md:pr-2">
+                                        <select
+                                            onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
+                                            class="form-select
       block
       w-full
       px-3
@@ -66,15 +70,19 @@
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
 
-        <option  disabled>@lang('lang.name_chooseOne')</option>
-        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $cat_for_p)
-        <option  {{$current_category->parent_id == $cat_for_p->id? 'selected':''}} value="{{$cat_for_p->id}}">{{ $cat_for_p->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
-        @endforeach
-    </select>
-  </div>
-  @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $cat_for_ch)
-  <div id="for_filter_select{{ $cat_for_ch->id }}" class="my-3 xl:w-50 for_all_hid_ch">
-    <select onchange="window.location.href = this.options[this.selectedIndex].value" class="form-select
+                                            <option disabled>@lang('lang.name_chooseOne')</option>
+                                            @foreach (getCategoriesByParent(null) as $cat_for_p)
+                                                <option
+                                                    {{$current_category->parent_id == $cat_for_p->id? 'selected':''}} value="{{$cat_for_p->id}}">{{ $cat_for_p->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @foreach (categories() as $cat_for_ch)
+                                        <div id="for_filter_select{{ $cat_for_ch[0]->parent_id }}"
+                                             class="my-3 xl:w-50 for_all_hid_ch">
+                                            <select
+                                                onchange="window.location.href = this.options[this.selectedIndex].value"
+                                                class="form-select
       block
       w-full
       px-3
@@ -89,39 +97,46 @@
       ease-in-out
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-        <option  disabled>Выберите один из пунктов</option>
-        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $cat_for_ch->id)->get() as $category2)
-        <option {{$current_category->id == $category2->id? 'selected':''}} value="/task/create?category_id={{ $category2->id }}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
-        @endforeach
-    </select>
-  </div>
-  @endforeach
-</div>
+                                                <option disabled>Выберите один из пунктов</option>
+                                                @foreach ($cat_for_ch as $category2)
+                                                    <option
+                                                        {{$current_category->id == $category2->id? 'selected':''}} value="/task/create?category_id={{ $category2->id }}">{{ $category2->getTranslatedAttribute('name') }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endforeach
+                                </div>
 
-<script>
+                                <script>
 
-    func_for_select(Number(<? echo $current_category->parent_id ?>));
+                                    func_for_select(Number(<? echo $current_category->parent_id ?>));
 
-function func_for_select(id) {
+                                    function func_for_select(id) {
 
-$('.for_all_hid_ch').addClass('hidden');
+                                        $('.for_all_hid_ch').addClass('hidden');
 
-$('#for_filter_select'+ id +'').removeClass('hidden');
-};
-</script>
-
+                                        $('#for_filter_select' + id + '').removeClass('hidden');
+                                    };
+                                </script>
 
                             </div>
+                                @foreach($current_category->customFieldsInName as $data)
+                                    @include('create.custom-fields')
+                                @endforeach
+
+
                         </div>
                         <input type="submit"
                                class="bg-green-500 hover:bg-green-500 w-11/12 md:ml-5 ml-2 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
                                name="" value="@lang('lang.name_next')">
+
+
                     </form>
                 </div>
             </div>
 
             <x-faq>
-            {{--            Created Component for Frequently Asked Questions--}}
+                {{--            Created Component for Frequently Asked Questions--}}
             </x-faq>
         </div>
     </div>
