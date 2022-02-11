@@ -124,13 +124,19 @@
                                                             class="font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                             type="button"
                                                             data-modal-toggle="authentication-modal">
-                                                            @lang('lang.detT_callbackpay')
+                                                            @lang('lang.detT_callbackpay')<br>
+                                                            <span class="text-xs">
+                                                                @lang('lang.detT_callbackpay2')<br>
+                                                            </span>
                                                         </button>
                                                         <button
                                                             class="font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
                                                             type="button"
                                                             data-modal-toggle="authentication-modal">
-                                                            @lang('lang.detT_callback')
+                                                            @lang('lang.detT_callback')<br>
+                                                            <span class="text-xs">
+                                                                @lang('lang.detT_callback23')
+                                                            </span>
                                                         </button>
                                                     @endif
                                                 @elseif(getAuthUserBalance() < 4000 || $response_count_user >= setting('site.free_responses'))
@@ -150,7 +156,7 @@
                                                         <div class='modal' id='modal1'>
                                                             <div class='content'>
                                                                 <img src="{{asset('images/cashback.svg')}}" alt="">
-                                                                <h1 class='title'>@lang('lang.detT_fill')</h1>
+                                                                <h1 class="title">@lang('lang.detT_fill')</h1>
                                                                 <p>
                                                                     @lang('lang.detT_balanceReq')
                                                                 </p>
@@ -187,7 +193,6 @@
                                                             type="submit">
                                                             Завершен
                                                         </button>
-                                                        {{--                                                            </form>--}}
                                                         <button
                                                             id="modal-open-id4"
                                                             class="not_done  sm:w-2/5 w-9/12 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-5 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
@@ -197,7 +202,7 @@
                                                 @endif
                                             @endif
                                         @endauth
-                                        <!-- Main modal -->
+{{--                                        <!-- Main modal -->--}}
                                             <div id="authentication-modal"
                                                  aria-hidden="true"
                                                  class="btn-preloader hidden overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center">
@@ -224,13 +229,11 @@
                                                             <header>
                                                                 <h2 class="font-semibold text-2xl mb-4">@lang('lang.detT_addOffers')</h2>
                                                             </header>
-
                                                             <main>
                                                                 <textarea required
-                                                                          class="resize-none rounded-md w-full focus:outline-[rgba(255,119,0,4)] border border p-4  transition duration-200 my-4"
+                                                                          class="resize-none rounded-md w-full focus:outline-none border border p-4  transition duration-200 my-4"
                                                                           type="text" id="form8" rows="4"
                                                                           name="description"></textarea>
-                                                                <hr>
                                                                 <div class="my-2">
                                                                     <label class=" px-2">
                                                                         <input type="checkbox" name="notification_on"
@@ -328,7 +331,7 @@
                                 </div>
                             @endauth
 
-                            <div class="lg:w-[700px] w-[400px]">
+                            <div class="">
                                 @auth()
                                     @if ($task->user_id == auth()->user()->id)
                                         <div>
@@ -528,258 +531,252 @@
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
 
         <input type="hidden" id="task" value="{{ $task->id }}">
-        <input type="hidden" id="token" value="{!! csrf_field() !!}">
-        {{-- Modal end --}}
 
 
-{{--        <script>--}}
-{{--            $(document).ready(function () {--}}
-{{--                $("#class_demo").click(function () {--}}
-{{--                   $("#class_demo"). --}}
-{{--                });--}}
-{{--            })--}}
-{{--        </script>--}}
-        <script>
-            $(document).ready(function () {
-                $("#class_demo").click(function () {
-                    $("#class_demo").addClass("bg-green-500");
-                    $("#class_demo").addClass("text-white");
-                    $("#class_demo").removeClass("text-gray-500");
-                    $("#class_demo1").removeClass("bg-red-500");
-                    $("#class_demo1").addClass("text-gray-500");
-                });
-                $("#class_demo1").click(function () {
-                    $("#class_demo1").addClass("bg-red-500");
-                    $("#class_demo1").addClass("text-white");
-                    $("#class_demo1").removeClass("text-gray-500");
-                    $("#class_demo").removeClass("bg-green-500");
-                    $("#class_demo").addClass("text-gray-500");
-                });
-                $(".pay").click(function () {
-                    $(".pays").attr("value", 4000);
-                });
-                var $temp = $("<input>");
-                var $url = $(location).attr('href');
 
-                $('.copylink').on('click', function () {
-                    $("body").append($temp);
-                    $temp.val($url).select();
-                    document.execCommand("copy");
-                    $temp.remove();
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Ссылка скопирована в буфер обмена!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                });
+@endsection
+@section('javascript')
+    <script>
+        $(document).ready(function () {
+            $("#class_demo").click(function () {
+                $("#class_demo").addClass("bg-green-500");
+                $("#class_demo").addClass("text-white");
+                $("#class_demo").removeClass("text-gray-500");
+                $("#class_demo1").removeClass("bg-red-500");
+                $("#class_demo1").addClass("text-gray-500");
             });
+            $("#class_demo1").click(function () {
+                $("#class_demo1").addClass("bg-red-500");
+                $("#class_demo1").addClass("text-white");
+                $("#class_demo1").removeClass("text-gray-500");
+                $("#class_demo").removeClass("bg-green-500");
+                $("#class_demo").addClass("text-gray-500");
+            });
+            $(".pay").click(function () {
+                $(".pays").attr("value", 4000);
+            });
+            var $temp = $("<input>");
+            var $url = $(location).attr('href');
 
-            function valueChanged() {
-                if ($('.coupon_question').is(":checked"))
-                    $(".answer").show();
-                else
-                    $(".answer").hide();
+            $('.copylink').on('click', function () {
+                $("body").append($temp);
+                $temp.val($url).select();
+                document.execCommand("copy");
+                $temp.remove();
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Ссылка скопирована в буфер обмена!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            });
+        });
+
+        function valueChanged() {
+            if ($('.coupon_question').is(":checked"))
+                $(".answer").show();
+            else
+                $(".answer").hide();
+        }
+
+        $(".save-data").click(function (event) {
+            event.preventDefault();
+            let response_desc = $('textarea#form8').val();
+            var notificate = null;
+            if ($("input[name=notificate]").is(':checked')) {
+                var notificate = 1;
+            } else {
+                var notificate = 0;
             }
-
-            $(".save-data").click(function (event) {
-                event.preventDefault();
-                let response_desc = $('textarea#form8').val();
-                var notificate = null;
-                if ($("input[name=notificate]").is(':checked')) {
-                    var notificate = 1;
-                } else {
-                    var notificate = 0;
+            var response_time = null;
+            if ($('.answer').is(':visible')) {
+                var response_time = 1;
+            }
+            let response_price = $("input[name=response_price]").val();
+            let task_id = $("input[name=task_id]").val();
+            let _token = $("input[name=csrf]").val();
+            let user_id = $("input[name=task_user_id]").val();
+            let name_task = $("input[name=name_task]").val();
+            $.ajax({
+                url: "/ajax-request",
+                type: "POST",
+                data: {
+                    response_desc: response_desc,
+                    notificate: notificate,
+                    response_time: response_time,
+                    response_price: response_price,
+                    task_id: task_id,
+                    _token: _token,
+                    user_id: user_id,
+                    name: name_task
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response) {
+                        $('.success').text(response.success);
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
                 }
-                var response_time = null;
-                if ($('.answer').is(':visible')) {
-                    var response_time = 1;
+            });
+            $('.preloader').show();
+            $('.btn-preloader').hide();
+            $('.bg-opacity-50').hide();
+            window.setTimeout(function () {
+                $('.preloader').hide();
+                $('.modal___1').show();
+            }, 1000);
+            $('.modal___1').hide();
+            window.location.reload();
+        });
+    </script>
+    <script>
+        const modal = document.querySelector('.modal');
+
+        const closeModal = document.querySelectorAll('.close-modal');
+
+        closeModal.forEach(close => {
+            close.addEventListener('click', function () {
+                modal.classList.add('hidden')
+            });
+        });
+    </script>
+    <script>
+        $(".send-data").click(function (event) {
+            event.preventDefault();
+            let performer_id = $("input[name=performer_id]").val();
+            let name_task = $("input[name=name_task]").val();
+            $.ajax({
+                url: "/ajax-request",
+                type: "POST",
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    status: 3,
+                    task_id: {{$task->id}},
+                    performer_id: performer_id,
+                    name_task: name_task
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response) {
+                        $('.success').text(response.success);
+                    }
+
+                },
+                error: function (error) {
+                    console.log(error);
                 }
-                let response_price = $("input[name=response_price]").val();
-                let task_id = $("input[name=task_id]").val();
-                let _token = $("input[name=csrf]").val();
-                let user_id = $("input[name=task_user_id]").val();
-                let name_task = $("input[name=name_task]").val();
-                $.ajax({
-                    url: "/ajax-request",
-                    type: "POST",
-                    data: {
-                        response_desc: response_desc,
-                        notificate: notificate,
-                        response_time: response_time,
-                        response_price: response_price,
-                        task_id: task_id,
-                        _token: _token,
-                        user_id: user_id,
-                        name: name_task
-                    },
-                    success: function (response) {
-                        console.log(response);
-                        if (response) {
-                            $('.success').text(response.success);
-                        }
-                    },
-                    error: function (error) {
-                        console.log(error);
+            });
+            location.reload(true);
+
+        });
+    </script>
+    <script>
+        $(".modal").each(function () {
+            $(this).wrap('<div class="overlay"></div>')
+        });
+
+        $(".open-modal").on('click', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation;
+
+            var $this = $(this),
+                modal = $($this).data("modal");
+
+            $(modal).parents(".overlay").addClass("open");
+            setTimeout(function () {
+                $(modal).addClass("open");
+            }, 350);
+
+            $(document).on('click', function (e) {
+                var target = $(e.target);
+
+                if ($(target).hasClass("overlay")) {
+                    $(target).find(".modal").each(function () {
+                        $(this).removeClass("open");
+                    });
+                    setTimeout(function () {
+                        $(target).removeClass("open");
+                    }, 350);
+                }
+
+            });
+
+        });
+
+        $(".close-modal").on('click', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation;
+
+            var $this = $(this),
+                modal = $($this).data("modal");
+
+            $(modal).removeClass("open");
+            setTimeout(function () {
+                $(modal).parents(".overlay").removeClass("open");
+            }, 50);
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#sendbutton").click(function () {
+                $("#sendbutton").hide();
+                $(".hideform").removeClass('hidden');
+            });
+            $(".done").click(async function () {
+            });
+            $("#close-id4").click(function () {
+                $("#modal-id4").hide();
+                $("#modal-id4-backdrop").hide();
+            });
+            $("#modal-open-id4").click(function () {
+                $("#modal-id4").show();
+                $("#class_demo1").click();
+            });
+            $("#modal-open-id5").click(function () {
+                $("#modal-id4").show();
+                $("#class_demo").click();
+            });
+
+
+        });
+        $(".send-comment").click(function (event) {
+            event.preventDefault();
+            let good = $(".good:checked").val();
+            let comment = $("textarea[name=comment]").val();
+            let _token = $("input[name=csrf]").val();
+            let performer_id = $("input[name=performer_id]").val();
+            let task_id = $("input[name=task_id]").val();
+            let user_id = $("input[name=task_user_id]").val();
+            $.ajax({
+                url: "/ajax-request",
+                type: "POST",
+                data: {
+                    good: good,
+                    comment: comment,
+                    user_id: user_id,
+                    performer_id: performer_id,
+                    task_id: task_id,
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response) {
+                        $('.success').text(response.success);
                     }
-                });
-                $('.preloader').show();
-                $('.btn-preloader').hide();
-                $('.bg-opacity-50').hide();
-                window.setTimeout(function () {
-                    $('.preloader').hide();
-                    $('.modal___1').show();
-                }, 1000);
-                $('.modal___1').hide();
-                window.location.reload();
+                },
+                error: function (error) {
+                    console.log(error);
+                }
             });
-        </script>
-        <script>
-            const modal = document.querySelector('.modal');
+            window.setTimeout(function () {
 
-            const closeModal = document.querySelectorAll('.close-modal');
-
-            closeModal.forEach(close => {
-                close.addEventListener('click', function () {
-                    modal.classList.add('hidden')
-                });
-            });
-        </script>
-        <script>
-            $(".send-data").click(function (event) {
-                event.preventDefault();
-                let performer_id = $("input[name=performer_id]").val();
-                let name_task = $("input[name=name_task]").val();
-                $.ajax({
-                    url: "/ajax-request",
-                    type: "POST",
-                    data: {
-                        _token: $('meta[name="csrf-token"]').attr('content'),
-                        status: 3,
-                        task_id: {{$task->id}},
-                        performer_id: performer_id,
-                        name_task: name_task
-                    },
-                    success: function (response) {
-                        console.log(response);
-                        if (response) {
-                            $('.success').text(response.success);
-                        }
-
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
-                location.reload(true);
-
-            });
-        </script>
-        <script>
-            $(".modal").each(function () {
-                $(this).wrap('<div class="overlay"></div>')
-            });
-
-            $(".open-modal").on('click', function (e) {
-                e.preventDefault();
-                e.stopImmediatePropagation;
-
-                var $this = $(this),
-                    modal = $($this).data("modal");
-
-                $(modal).parents(".overlay").addClass("open");
-                setTimeout(function () {
-                    $(modal).addClass("open");
-                }, 350);
-
-                $(document).on('click', function (e) {
-                    var target = $(e.target);
-
-                    if ($(target).hasClass("overlay")) {
-                        $(target).find(".modal").each(function () {
-                            $(this).removeClass("open");
-                        });
-                        setTimeout(function () {
-                            $(target).removeClass("open");
-                        }, 350);
-                    }
-
-                });
-
-            });
-
-            $(".close-modal").on('click', function (e) {
-                e.preventDefault();
-                e.stopImmediatePropagation;
-
-                var $this = $(this),
-                    modal = $($this).data("modal");
-
-                $(modal).removeClass("open");
-                setTimeout(function () {
-                    $(modal).parents(".overlay").removeClass("open");
-                }, 50);
-
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#sendbutton").click(function () {
-                    $("#sendbutton").hide();
-                    $(".hideform").removeClass('hidden');
-                });
-                $(".done").click(async function () {
-                });
-                $("#close-id4").click(function () {
-                    $("#modal-id4").hide();
-                    $("#modal-id4-backdrop").hide();
-                });
-                $("#modal-open-id4").click(function () {
-                    $("#modal-id4").show();
-                    $("#class_demo1").click();
-                });
-                $("#modal-open-id5").click(function () {
-                    $("#modal-id4").show();
-                    $("#class_demo").click();
-                });
-
-
-            });
-            $(".send-comment").click(function (event) {
-                event.preventDefault();
-                let good = $(".good:checked").val();
-                let comment = $("textarea[name=comment]").val();
-                let _token = $("input[name=csrf]").val();
-                let performer_id = $("input[name=performer_id]").val();
-                let task_id = $("input[name=task_id]").val();
-                let user_id = $("input[name=task_user_id]").val();
-                $.ajax({
-                    url: "/ajax-request",
-                    type: "POST",
-                    data: {
-                        good: good,
-                        comment: comment,
-                        user_id: user_id,
-                        performer_id: performer_id,
-                        task_id: task_id,
-                        _token: $('meta[name="csrf-token"]').attr('content'),
-                    },
-                    success: function (response) {
-                        console.log(response);
-                        if (response) {
-                            $('.success').text(response.success);
-                        }
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
-                window.setTimeout(function () {
-
-                }, 3000);
-                window.location.reload();
-            });
-        </script>
+            }, 3000);
+            window.location.reload();
+        });
+    </script>
 
 @endsection
