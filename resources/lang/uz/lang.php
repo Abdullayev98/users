@@ -349,6 +349,8 @@ return [
     'authors_timeAgo' => "taxminan 2 yil oldin",
     'authors_feedback' => "Men vaqti-vaqti bilan Universal xizmatlardan foydalanaman, bu foydali narsa. Kecha kurer poyezdga posilka yetkazib berdi. Bahorda tajribali hamshira singan oyog‘iga polimer bandaj qo‘ydi. Va men u yerda tozalashni buyuraman. - yuqori sifatli va arzon. Umuman olganda, tavsiya qilaman.",
     'authors_createTask' => "Vazifa yaratish",
+    'authors_codeText1' => "Parolingizni qayta tiklang",
+    'authors_codeText2' => " Sahifangizga biriktirilgan telefon raqamingizni kiriting, va biz faol kodni yuboramiz",
     // authors_reviews.blade end
 
     // CMI.blade start

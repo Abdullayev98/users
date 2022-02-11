@@ -86,10 +86,15 @@ class SearchTaskController extends VoyagerBaseController
 
     public function task(Task $task)
     {
-        dd(Task::whereDate('created_at', '<=', now()->addDay()->toDateTimeString())->where('user_id',null)->get());
-        $users = User::all();
-        return view('task.detailed-tasks', compact('task', 'users'));
+        return view('task.detailed-tasks', compact('task'));
     }
+
+
+    public function selectPerformer(TaskResponse $response){
+        dd(23423);
+
+    }
+
 
     public function task_response(Request $request)
     {
@@ -184,9 +189,7 @@ class SearchTaskController extends VoyagerBaseController
 
     public function changeTask(Task $task)
     {
-        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $categories2 = Category::withTranslations(['ru', 'uz'])->where('parent_id', "!=", null)->get();
-        return view('task.changetask', compact('categories', 'categories2', 'task',));
+        return view('task.changetask', compact('task'));
     }
 
     public function update_task(Task $task, UpdateRequest $request)

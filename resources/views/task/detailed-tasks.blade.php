@@ -177,11 +177,16 @@
                                                     </button>
 
                                                     @if($task->status == 3)
+
+                                                        {{--                                                            <form action="{{ route('task.completed', $task->id) }}" method="post">--}}
+                                                        @csrf
+
                                                         <button
-                                                            class="done  sm:w-2/5 w-9/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6  pt-2 pb-3 rounded transition-all duration-300 m-2"
-                                                            type="button">
+                                                            class="done sm:w-2/5 w-9/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6  pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                            type="submit">
                                                             Завершен
                                                         </button>
+                                                        {{--                                                            </form>--}}
                                                         <button
                                                             class="not_done  sm:w-2/5 w-9/12 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-5 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
                                                             type="button">
@@ -320,11 +325,12 @@
                                     </a>
                                 </div>
                             @endauth
+
                             <div class="lg:w-[700px] w-[400px]">
                                 @auth()
                                     @if ($task->user_id == auth()->user()->id)
                                         <div>
-                                            @if(isset($task->responses))
+                                            @if($task->responses_count)
                                                 <div class="text-4xl font-semibold my-6">
                                                     @if ($task->responses_count <= 4)
                                                         @if ($task->responses_count == 1)
@@ -377,17 +383,31 @@
                                                                 <div
                                                                     class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response->user->phone_number}}</div>
                                                             @endif
-                                                            @if($task->status < 3 )
+
+                                                            @if($task->status == 3 && $response->user_id == $task->performer_id)
                                                                 <div class="w-10/12 mx-auto">
-                                                                    <a href="/chat/{{$response->user->id}}"
+                                                                    <a href="{{ route('personal.chat', $response->user->id) }}"
                                                                        class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                                         @lang('lang.detT_writeOnChat')
                                                                     </a>
-                                                                    <a class="cursor-pointer send-data text-semibold text-center w-[200px] md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition duration-200 text-white bg-green-500 hover:bg-green-500 font-medium border border-transparent rounded-md">
-                                                                        @lang('lang.detT_choose')
-                                                                    </a>
+
                                                                 </div>
+                                                            @elseif($task->status <= 2)
+                                                                <form
+                                                                    action="{{ route('performer.select', $response->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    <button
+                                                                        type="submit"
+                                                                        class="cursor-pointer text-semibold text-center w-[200px]
+                                                                 md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition
+                                                                 duration-200 text-white bg-green-500 hover:bg-green-500 font-medium
+                                                                 border border-transparent rounded-md"> @lang('lang.detT_choose')</button>
+
+                                                                </form>
                                                             @endif
+
+
                                                             <div class="text-gray-400 text-[14px] my-6">
                                                                 @lang('lang.detT_choosePerf')
                                                             </div>
@@ -400,17 +420,20 @@
                             @endif
                             @endauth
                             <div class="mt-12">
-                                <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
-                                @foreach($task->category->tasks()->take(10)->get() as $same_task)
-                                    @if($same_task->id != $task->id)
-                                        <div class="mt-4">
-                                            <a href="{{$same_task->id}}"
-                                               class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
-                                                    <p class="text-gray-400 text-base">{{$same_task->user->name}}
-                                                        , {{$same_task->user->budget}}</p>
-                                        </div>
-                                    @endif
-                                @endforeach
+                                @if($task->category->tasks_count > 1)
+
+                                    <h1 class="text-3xl font-medium ">@lang('lang.detT_otherTaskInCat')</h1>
+                                    @foreach($task->category->tasks()->take(10)->get() as $same_task)
+                                        @if($same_task->id != $task->id)
+                                            <div class="mt-4">
+                                                <a href="{{$same_task->id}}"
+                                                   class="underline text-gray-800 hover:text-red-500 text-lg">{{$same_task->name}}</a>
+                                                <p class="text-gray-400 text-base">{{$same_task->user->name}}
+                                                    , {{$same_task->user->budget}}</p>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -465,7 +488,7 @@
                 <div
                     class="border-0 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
                     <div class=" text-center  rounded-t">
-                        <button type="submit" onclick="toggleModal4('modal-id4')"
+                        <button type="submit"
                                 class=" w-100 h-16 absolute top-1 right-4">
                             <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                         </button>
@@ -502,6 +525,8 @@
         </div>
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
 
+        <input type="hidden" id="task" value="{{ $task->id }}">
+        <input type="hidden" id="token" value="{!! csrf_field() !!}">
         {{-- Modal end --}}
 
         <script type="text/javascript">
@@ -702,28 +727,44 @@
                     $("#sendbutton").hide();
                     $(".hideform").removeClass('hidden');
                 });
-                $(".done").click(function () {
-                    $("#sendbutton").removeClass('hidden');
-                    $(".done").hide();
-                    $(".not_done").hide();
-                    $.ajax({
-                        url: "/ajax-request",
-                        type: "POST",
-                        data: {
-                            task_id: {{$task->id}},
-                            status: 4,
-                            _token: $('meta[name="csrf-token"]').attr('content'),
+                $(".done").click(async function () {
+                    Swal.fire({
+                        input: 'textarea',
+                        inputLabel: 'Review',
+                        inputPlaceholder: 'Type your message here...',
+                        inputAttributes: {
+                            'aria-label': 'Type your message here'
                         },
-                        success: function (response) {
-                            console.log(response);
-                            if (response) {
-                                $('.success').text(response.success);
+                        showCancelButton: true,
+                        showConfirmButton: true
+                    }).then((response) => {
+                        if (response) {
+                            if (response.isConfirmed) {
+                                $.ajax({
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    url: "/send-review111/" + $('#task').val(),
+                                    type: "POST",
+
+                                    async: false,
+                                    success: function (result) {
+                                        console.log(result);
+
+                                    },
+                                    error: function (error) {
+                                        console.log(error);
+                                    }
+
+                                });
+
                             }
-                        },
-                        error: function (error) {
-                            console.log(error);
+                        } else {
+                            alert(23432)
                         }
-                    });
+                    })
+
+
                 });
                 $(".not_done").click(function () {
                     $("#sendbutton").removeClass('hidden');

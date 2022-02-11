@@ -3,12 +3,12 @@
     <div class="mt-3 text-center text-base">
         <div class="mx-auto flex items-center justify-center w-full">
             <h3 class="font-bold text-2xl block mb-4">
-                Восстановление пароля
+                @lang('lang.authors_codeText1')
             </h3>
         </div>
         <div class="mx-auto flex items-center justify-center w-full">
             <p class="mb-4">
-                Укажите телефон, привязанный к вашей учетной записи. Мы отправим СМС с кодом.
+                @lang('lang.authors_codeText2')
             </p>
         </div>
         <form action="{{route('password.reset')}}" method="POST">
