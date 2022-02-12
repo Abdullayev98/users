@@ -130,42 +130,7 @@
                         </div>
                     </div>
                 </figure>
-                <div class="col-span-1 inline-block w-80 float-right h-auto">
-                    <div class="mt-16 border p-8 rounded-lg border-gray-300">
-                        <div>
-                            <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
-                            <p class="text-gray-400">@lang('lang.exe_since') {{date('d-m-Y', strtotime($user->created_at))}}</p>
-                        </div>
-                        <div class="">
-                            <div class="flex w-full mt-4">
-                                <div class="flex-initial w-1/4">
-                                    <i class="fas fa-phone-alt text-white text-2xl bg-yellow-500 py-1 px-2 rounded-lg"></i>
-                                </div>
-                                <div class="flex-initial w-3/4">
-                                    <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
-                                    @if($user->phone_verified_at)
-                                        <p>@lang('lang.exe_verified')</p>
-                                    @else
-                                        <p>@lang('lang.exe_notVerified')</p>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="flex w-full mt-4">
-                                <div class="flex-initial w-1/4">
-                                    <i class="text-white far fa-envelope text-2xl bg-blue-500 py-1 px-2 rounded-lg"></i>
-                                </div>
-                                <div class="flex-initial w-3/4">
-                                    <h2 class="font-medium text-lg">Email</h2>
-                                    @if($user->email_verified_at)
-                                        <p>@lang('lang.exe_verified')</p>
-                                    @else
-                                        <p>@lang('lang.exe_notVerified')</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 {{-- right sidebar end --}}
                 <div class="col-span-2">
                     <h1 class="text-3xl font-semibold text-gray-700">@lang('lang.exe_aboutMe')</h1>
@@ -235,18 +200,55 @@
                 </div>
             </div>
 
-            <h1 class="text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
-            <div>
-                <ul>
-                    @foreach(explode(',', $user->category_id) as $user_cat)
-                        @foreach($categories as $cat)
-                            @if($cat->id == $user_cat)
-                                <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="{{route('categories',$cat->parent_id)}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
-                            @endif
+            <div class="col-span-1 inline-block w-80 float-right">
+                <div class="mt-16 border p-8 rounded-lg border-gray-300">
+                    <div>
+                        <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
+                        <p class="text-gray-400">@lang('lang.exe_since') {{date('d-m-Y', strtotime($user->created_at))}}</p>
+                    </div>
+                    <div class="">
+                        <div class="flex w-full mt-4">
+                            <div class="flex-initial w-1/4">
+                                <i class="fas fa-phone-alt text-white text-2xl bg-yellow-500 py-1 px-2 rounded-lg"></i>
+                            </div>
+                            <div class="flex-initial w-3/4">
+                                <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
+                                @if($user->phone_verified_at)
+                                    <p>@lang('lang.exe_verified')</p>
+                                @else
+                                    <p>@lang('lang.exe_notVerified')</p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="flex w-full mt-4">
+                            <div class="flex-initial w-1/4">
+                                <i class="text-white far fa-envelope text-2xl bg-blue-500 py-1 px-2 rounded-lg"></i>
+                            </div>
+                            <div class="flex-initial w-3/4">
+                                <h2 class="font-medium text-lg">Email</h2>
+                                @if($user->email_verified_at)
+                                    <p>@lang('lang.exe_verified')</p>
+                                @else
+                                    <p>@lang('lang.exe_notVerified')</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <h1 class="text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
+                    <ul>
+                        @foreach(explode(',', $user->category_id) as $user_cat)
+                            @foreach($categories as $cat)
+                                @if($cat->id == $user_cat)
+                                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="{{route('categories',$cat->parent_id)}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
+                                @endif
+                            @endforeach
                         @endforeach
-                    @endforeach
-                </ul>
+                    </ul>
+                </div>
             </div>
+
         </div>
 
             </div>
