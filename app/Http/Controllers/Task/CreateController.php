@@ -46,7 +46,7 @@ class CreateController extends Controller
             'category_id' => 'required'
         ]);
         $task = Task::create($data);
-        $this->service->attachCustomFieldsByRoute($task,'name');
+        $this->service->attachCustomFieldsByRoute($task,CustomField::ROUTE_NAME);
 
         return redirect()->route("task.create.custom.get", $task->id);
     }
@@ -65,7 +65,7 @@ class CreateController extends Controller
 
     public function custom_store(Request $request, Task $task)
     {
-        $this->service->attachCustomFieldsByRoute($task, 'custom');
+        $this->service->attachCustomFieldsByRoute($task, CustomField::ROUTE_CUSTOM);
         return redirect()->route('task.create.address', $task->id);
     }
 
@@ -98,6 +98,7 @@ class CreateController extends Controller
         $task->coordinates = $request->coordinates0;
         $task->address_add = json_encode($data);
         $task->save();
+        $this->service->attachCustomFieldsByRoute($task,CustomField::ROUTE_ADDRESS);
 
         return redirect()->route("task.create.date", $task->id);
 
@@ -113,6 +114,8 @@ class CreateController extends Controller
     {
         $data = $request->validated();
         $task->update($data);
+        $this->service->attachCustomFieldsByRoute($task,CustomField::ROUTE_DATE);
+
         return redirect()->route('task.create.budget', $task->id);
     }
 
@@ -127,6 +130,8 @@ class CreateController extends Controller
     {
         $task->budget = preg_replace('/[^0-9.]+/', '', $request->amount1);
         $task->save();
+        $this->service->attachCustomFieldsByRoute($task,CustomField::ROUTE_BUDGET);
+
 
         return redirect()->route('task.create.note', $task->id);
 

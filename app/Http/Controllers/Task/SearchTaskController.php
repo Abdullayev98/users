@@ -69,7 +69,9 @@ class SearchTaskController extends VoyagerBaseController
 
     public function task(Task $task)
     {
-        return view('task.detailed-tasks', compact('task'));
+        $review = Review::where('reviewer_id', auth()->id())->where('task_id',$task->id)->first();
+
+        return view('task.detailed-tasks', compact('task', 'review'));
     }
 
 

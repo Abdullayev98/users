@@ -21,8 +21,8 @@ class CustomField extends Model
     const ROUTE_ADDRESS = 'address';
     const ROUTE_CUSTOM = 'custom';
     const ROUTE_DATE = 'date';
-    const ROUTE_NOTE = 'budget';
-    const ROUTE_BUDGET = 'notes';
+    const ROUTE_NOTE = 'note';
+    const ROUTE_BUDGET = 'budget';
     const ROUTE_CONTACTS = 'contacts';
 
 

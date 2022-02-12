@@ -62,7 +62,7 @@ Route::post('/account/password/change', [ProfileController::class, 'change_passw
 
 Route::post('select-performer/{response}', [ResponseController::class, 'selectPerformer'])->name('performer.select');
 Route::post('tasks/{task}/complete', [UpdateController::class, 'completed'])->name('task.completed');
-Route::post('send-review111/{task}', [UpdateController::class, 'sendReview']);
+Route::post('send-review-user/{task}', [UpdateController::class, 'sendReview'])->name('send.review');
 
 
 

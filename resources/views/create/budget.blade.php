@@ -104,6 +104,9 @@
                                         </option>
                                     </select>
                                 </div>
+                            @foreach($task->category->customFieldsInBudget as $data)
+                                @include('create.custom-fields')
+                            @endforeach
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
                                         <a onclick="myFunction()" class="w-1/3 cursor-pointer border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
