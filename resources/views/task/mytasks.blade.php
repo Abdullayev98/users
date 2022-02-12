@@ -40,7 +40,7 @@
                                                 {{$task->name}}
                                             </a>
                                             <p class="text-sm mt-2">
-                                                {{$task->description}}
+                                                {{substr($task->description, 0, 10)}}
                                             </p>
                                             @if ($task->status == 3)
                                                 <p class="text-amber-500 font-normal">@lang('lang.detT_inProsses')</p>
@@ -153,10 +153,7 @@
                             </div>
                         @endforeach
                     </div>
-
                 </div>
-
-                {{--                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
             </div>
         </div>
     </div>
@@ -172,6 +169,8 @@
     <script type="text/javascript">
         let mytaskCoordinates = [];
         mytaskCoordinates = $.parseJSON(JSON.stringify({!! $datas !!}));
+        console.log(mytaskCoordinates.length);
+
         ymaps.ready(function () {
             var myMap = new ymaps.Map('map', {
                     center: [41.311081, 69.240562],

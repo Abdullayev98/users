@@ -133,10 +133,6 @@
 
                 <div class="mt-8">
                     <h1 class="text-3xl font-semibold text-gray-700">@lang('lang.exe_aboutMe')</h1>
-                    {{-- <div class="mt-4 mb-4 bg-orange-100 py-4 rounded-xl">
-                        <p class="ml-6"> @lang('lang.exe_pushBtn')<a class="text-red-500 hover:text-red-900" onclick="toggleModal12('modal-id12')" href="#">@lang('lang.exe_giveTbtn')</a>. <br>
-                            @lang('lang.exe_work')</p>
-                    </div> --}}
                 </div>
                 <p>{{$user->description}}</p>
 
@@ -261,42 +257,6 @@
     </div>
 
 
-    {{-- Modal start --}}
-      <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id12">
-        <div class="relative w-auto my-6 mx-auto max-w-3xl"  id="modal-id12">
-          <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-            <div class=" text-center p-12  rounded-t">
-                  <button type="submit"  onclick="toggleModal12('modal-id12')" class="rounded-md w-100 h-16 absolute top-1 right-4">
-                    <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
-                  </button>
-                <h3 class="font-medium text-4xl block mt-4">
-                    @lang('lang.exe_youHaventT')
-                </h3>
-            </div>
-            <!--body-->
-            <div class="relative p-6 flex-auto">
-              <p class="my-4   text-center">
-                @lang('lang.exe_createTFirst')
-              </p>
-            </div>
-            <!--footer-->
-            <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
-                <div class="mt-4 ">
-                    <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
-      <script type="text/javascript">
-        function toggleModal12(modalID12){
-          document.getElementById(modalID12).classList.toggle("hidden");
-          document.getElementById(modalID12 + "-backdrop").classList.toggle("hidden");
-          document.getElementById(modalID12).classList.toggle("flex");
-          document.getElementById(modalID12 + "-backdrop").classList.toggle("flex");
-        }
-      </script>
 @if($user->role_id == 2)
     <script>
         if($('.tooltip-2').length === 0){
@@ -304,5 +264,5 @@
         }
     </script>
 @endif
-    {{-- Modal end --}}
+
 @endsection

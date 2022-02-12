@@ -111,7 +111,8 @@
                             </div>
                             <div>
                                 <p class="text-base  leading-0  ">
-                                    {{$user->description}}
+                                    {{substr($user->description, 0, 100)}}...
+
                                 </p>
                             </div>
                             <div class="mt-6">

@@ -7,23 +7,26 @@ use App\Http\Controllers\LoginController;
 use App\Http\Requests\TaskDateRequest;
 use App\Http\Requests\UserPhoneRequest;
 use App\Http\Requests\UserRequest;
+use App\Models\Category;
 use App\Models\CustomField;
 use App\Models\CustomFieldsValue;
 use App\Models\Task;
 use App\Models\User;
-use App\Models\UserVerify;
-use Carbon\Carbon;
+use App\Services\Task\CreateService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-use PlayMobile\SMS\SmsService;
-use TCG\Voyager\Models\Category;
 
 class CreateController extends Controller
 {
+    protected $service;
+
+    public function __construct()
+    {
+        $this->service = new CreateService();
+    }
+
 
     public function name(Request $request)
     {
@@ -35,7 +38,7 @@ class CreateController extends Controller
 
     }
 
-    public function name_store(Request $request, Task $task)
+    public function name_store(Request $request)
     {
 
         $data = $request->validate([
@@ -43,6 +46,7 @@ class CreateController extends Controller
             'category_id' => 'required'
         ]);
         $task = Task::create($data);
+        $this->service->attachCustomFieldsByRoute($task,'name');
 
         return redirect()->route("task.create.custom.get", $task->id);
     }
@@ -51,50 +55,18 @@ class CreateController extends Controller
     public function custom_get(Task $task)
     {
 
-        $child_cat = $task->category;
-
-        $parent_datas = CustomField::query()->where('category_id', $child_cat->parent_id)->orderBy('order', 'asc')->get();
-
-        $child_datas = CustomField::query()->where('category_id', $task->category_id)->orderBy('order', 'asc')->get();
-        $datas = new Collection; //Create empty collection which we know has the merge() method
-        $datas = $datas->merge($parent_datas);
-        $datas = $datas->merge($child_datas);
-
-        if (!$datas->count()) {
+        if (!$task->category->customFieldsInCustom->count()) {
             return redirect()->route('task.create.address', $task->id);
         }
 
-        return view('create.custom', compact('datas', 'task'));
+        return view('create.custom', compact('task'));
 
     }
 
     public function custom_store(Request $request, Task $task)
     {
-
-        $child_cat = $task->category;
-
-        $parent_datas = CustomField::query()->where('category_id', $child_cat->parent_id)->orderBy('order', 'asc')->get();
-
-        $child_datas = CustomField::query()->where('category_id', $task->category_id)->orderBy('order', 'asc')->get();
-        $datas = new Collection; //Create empty collection which we know has the merge() method
-        $datas = $datas->merge($parent_datas);
-        $datas = $datas->merge($child_datas);
-
-        if ($datas) {
-            foreach ($datas as $data) {
-            $value = new CustomFieldsValue();
-            $value->task_id = $task->id;
-            $value->custom_field_id = $data->id;
-            $arr = Arr::get($request->all(), $data->name);
-            $value->value = is_array($arr) ? json_encode($arr) : $arr;
-            $value->save();
-            }
-
-
-            return redirect()->route('task.create.address', $task->id);
-        }
-
-
+        $this->service->attachCustomFieldsByRoute($task, 'custom');
+        return redirect()->route('task.create.address', $task->id);
     }
 
 
@@ -165,7 +137,7 @@ class CreateController extends Controller
         return view('create.notes', compact('task'));
     }
 
-    public function uploadImage(Task $task,Request $request)
+    public function uploadImage(Task $task, Request $request)
     {
         $folder_task = Task::orderBy('created_at', 'desc')->first();
         if ($request->file()) {
@@ -193,7 +165,7 @@ class CreateController extends Controller
         ]);
         $folder_task = Task::orderBy('created_at', 'desc')->first();
         $image = File::allFiles("storage/Uploads/{$folder_task->name}");
-        $data['photos'] = implode(',',$image);
+        $data['photos'] = implode(',', $image);
         $data['docs'] = $request->docs ? 1 : null;
         $task->update($data);
         return redirect()->route("task.create.contact", $task->id);
@@ -241,7 +213,7 @@ class CreateController extends Controller
 
     }
 
-    public function contact_login(Task $task, UserPhoneRequest $request )
+    public function contact_login(Task $task, UserPhoneRequest $request)
     {
         $request->validated();
         $user = User::query()->where('phone_number', $request->phone_number)->first();
