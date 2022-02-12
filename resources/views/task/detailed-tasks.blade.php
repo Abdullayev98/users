@@ -70,7 +70,7 @@
                                         <p class=" h-auto w-96">{{$task->budget}}</p>
                                     </div>
 
-                                    @isset($task->custom_field_values)
+                                    @isset($value)
                                         @foreach($task->custom_field_values as $value)
                                             <div class="ml-4 md:ml-12 flex flex-row mt-8">
 
