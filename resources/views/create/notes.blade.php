@@ -71,14 +71,9 @@
                         @lang('lang.nalpay')
                     </span>
                   </label>
-                  <!-- <label class="md:w-2/3 block mt-6">
-                    <input class="focus:outline-none  mr-2  h-4 w-4" type="checkbox" value="1" name="secret">
-                    <span class="text-slate-900">
-                        Сделать приватным
-                        <br>
-                        <p class="text-sm text-slate-500">Задание увидят только исполнители, а после завершения - только вы и выбранный исполнитель.</p>
-                    </span>
-                  </label> -->
+                 @foreach($task->category->customFieldsInNote as $data)
+                     @include('create.custom-fields')
+                 @endforeach
              </div>
              <div class="flex w-full gap-x-4 mt-4">
              <a onclick="myFunction()" class="w-1/3 cursor-pointer  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
@@ -91,6 +86,7 @@
                                                 }
                                             </script>
                                         </a>
+
                <input type="submit"
                 class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                name="" value="@lang('lang.name_next')">

@@ -51,6 +51,7 @@
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                             @lang('lang.date_startDate')
                         </div>
+
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
@@ -114,6 +115,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                @foreach($task->category->customFieldsInDate as $data)
+                                    @include('create.custom-fields')
+                                @endforeach
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
                                         <a onclick="myFunction()"
