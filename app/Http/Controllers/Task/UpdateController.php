@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Task;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Task\UpdateRequest;
 use App\Models\CustomFieldsValue;
+use App\Models\Notification;
 use App\Models\Task;
 use App\Review;
 use Illuminate\Http\Request;
@@ -80,6 +81,13 @@ class UpdateController extends Controller
             }else{
                 $review->user_id = $task->user_id;
             }
+            Notification::create([
+                'user_id' => $task->user_id,
+                'task_id' => $task->id,
+                'name_task' => $task->name,
+                'description' => 1,
+                'type' => 2
+            ]);
             $review->save();
         }catch (Exception $exception){
             DB::rollBack();
