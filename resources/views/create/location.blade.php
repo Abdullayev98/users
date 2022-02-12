@@ -17,36 +17,6 @@
 <!-- Information section -->
 
 <form action="{{route("task.create.address.store", $task->id)}}" method="post" >
-{{--@if ($category->id == 3 )--}}
-{{--    @if(session('cat_id') == 50)--}}
-{{--        <form action="{{route('task.create.peopleTransported')}}" method="post">--}}
-{{--            @elseif(session('cat_id') == 53)--}}
-{{--                <form action="{{route('task.create.date')}}" method="post">--}}
-{{--            @else--}}
-{{--        <form action="{{route('task.create.cargo')}}" method="post">--}}
-{{--    @endif--}}
-{{--  <form action="{{route('task.create.cargo')}}" method="post">--}}
-{{--  @elseif($category->id == 1)--}}
-{{--    @if(session('cat_id') == 22)--}}
-{{--      <form action="{{route('task.create.delivery')}}" method="post">--}}
-{{--    @elseif(session('cat_id') == 23)--}}
-{{--      <form action="{{route('task.create.delivery')}}" method="post">--}}
-{{--    @elseif(session('cat_id') == 25)--}}
-{{--      <form action="{{route('task.create.delivery')}}" method="post">--}}
-{{--      @elseif(session('cat_id') == 28)--}}
-{{--      <form action="{{route('task.create.delivery')}}" method="post">--}}
-{{--    @elseif(session('cat_id') == 29)--}}
-{{--      <form action="{{route('task.create.delivery')}}" method="post">--}}
-{{--    @elseif(session('cat_id') == 24)--}}
-{{--      <form action="{{route('task.create.buy_delivery')}}" method="post">--}}
-{{--    @elseif(session('cat_id') == 27)--}}
-{{--      <form action="{{route('task.create.buy_delivery')}}" method="post">--}}
-{{--    @else--}}
-{{--        <form action="{{route('task.create.buy_delivery')}}" method="post">--}}
-{{--    @endif--}}
-{{--  @else--}}
-{{--  <form action="{{route('task.create.date')}}" method="post">--}}
-{{--@endif--}}
   @csrf
 <div class="mx-auto w-9/12  my-16">
 <div class="grid grid-cols-3 gap-x-20">
@@ -63,12 +33,14 @@
       </div>
     </div>
     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
+
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
         @lang('lang.loc_whereTask')
       </div>
       <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
         @lang('lang.loc_giveLocation')
       </div>
+
       <div class="py-4 mx-auto  text-left ">
         <div class="mb-4">
           <div id="formulario" class="flex flex-col gap-y-4">
@@ -88,6 +60,7 @@
 
             </div>
           </div>
+
           <div class="mt-4">
             <button id="addbtn" type="button"  class="w-full border-dashed border border-black rounded-lg py-2 text-center flex justify-center items-center gap-2" name="button">
               <svg class="h-4 w-4 text-gray-500 "  fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -97,6 +70,9 @@
               <span >@lang('lang.loc_add')</span>
              </button>
              <div id="map" class="h-60 mt-4 rounded-lg w-full" ></div>
+              @foreach($task->category->customFieldsInAddress as $data)
+                  @include('create.custom-fields')
+              @endforeach
              <div class="flex w-full gap-x-4 mt-4">
              <a onclick="backfunctionlocation()" class="w-1/3 cursor-pointer  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
@@ -116,6 +92,8 @@
           </div>
         </div>
       </div>
+
+
     </div>
   </div>
     <x-faq/>

@@ -27,7 +27,7 @@ class CreateService
     }
     public function attachCustomFieldsByRoute($task, $routeName){
         foreach ($task->category->custom_fields()->where('route',$routeName)->get() as $data) {
-            $value = new CustomFieldsValue();
+            $value = $task->custom_field_values()->where('custom_field_id', $data->id)->first()?? new CustomFieldsValue();
             $value->task_id = $task->id;
             $value->custom_field_id = $data->id;
             $arr = Arr::get(request()->all(), $data->name);
