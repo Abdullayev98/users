@@ -64,13 +64,5 @@
         <h2>user.uz</h2>
         <p>@lang('lang.faq_text2')</p>
     </footer>
-
-<script>
-    $(function() {
-    $("#inp").focus(function(){
-        $("svg").toggleClass("text-white");
-        $("svg").addClass("text-black");
-    });
-});
-</script>
+    <script src="{{ asset('js/faq/faq.js') }}"></script>
 </body>
