@@ -63,14 +63,14 @@ class LoginController extends Controller
     {
         $user = auth()->user();
 
-        if ($needle == 'email'){
+        if ($needle == 'email') {
             $code = sha1(time());
             $data = [
                 'code' => $code,
                 'user' => auth()->user()->id
             ];
             Mail::to($user->email)->send(new VerifyEmail($data));
-        }else{
+        } else {
             $code = rand(100000, 999999);
             (new SmsService())->send($user->phone_number, $code);
         }
@@ -81,13 +81,15 @@ class LoginController extends Controller
         return redirect()->route('userprofile');
     }
 
-    public function send_email_verification(){
+    public function send_email_verification()
+    {
         self::send_verification('email');
         Alert::info('Email sent', 'Your verification link has been successfully sent!');
         return redirect()->route('userprofile');
     }
 
-    public function send_phone_verification(){
+    public function send_phone_verification()
+    {
         self::send_verification('phone');
         return redirect()->back()->with([
             'code' => 'Код отправлено!'
@@ -95,10 +97,9 @@ class LoginController extends Controller
     }
 
 
-
     public static function verifyColum($request, $needle, $user, $hash)
     {
-        $needle = 'is_'.$needle."_verified";
+        $needle = 'is_' . $needle . "_verified";
 
         $result = false;
 
@@ -107,7 +108,8 @@ class LoginController extends Controller
                 $user->$needle = 1;
                 $user->save();
                 $result = true;
-                self::send_verification('phone');
+                if ($needle != 'is_phone_number_verified')
+                    self::send_verification('phone');
             } else {
                 $result = false;
             }
@@ -118,7 +120,7 @@ class LoginController extends Controller
     }
 
 
-    public function verifyAccount(User $user,$hash, Request $request)
+    public function verifyAccount(User $user, $hash, Request $request)
     {
         self::verifyColum($request, 'email', $user, $hash);
         auth()->login($user);
@@ -132,14 +134,12 @@ class LoginController extends Controller
         $request->validate([
             'code' => 'required'
         ]);
-        if (self::verifyColum($request, 'phone_number', auth()->user(),$request->code))
-        {
+        if (self::verifyColum($request, 'phone_number', auth()->user(), $request->code)) {
             Alert::success('Congrats', 'Your Phone have successfully verified');
             return redirect()->route('userprofile');
-        }else
-        {
+        } else {
             return back()->with([
-               'code' => 'Code Error!'
+                'code' => 'Code Error!'
             ]);
 
         }

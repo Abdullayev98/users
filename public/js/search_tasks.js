@@ -1,5 +1,5 @@
 let r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
-let dataAjaxCheck = 1, allCheck = 1, fltrCheck = 0, remJobCheck = 0, bezOtkCheck = 0;
+let dataAjaxCheck = 1, allCheck = 1, remJobCheck = 0, bezOtkCheck = 0;
 let dataAjax = [], dataAjax2 = [], dataAjaxPrint = [];
 let dataGeo = [], userCoordinates = [];
 $('.all_cat').click();
@@ -71,42 +71,14 @@ function dataAjaxCopy(dataA){
     }
 }
 
-// function dataAjaxCopyRemJob(dataA) {
-//     dataAjaxPrint = [];
-//     if (allCheck == 1){
-//         $.each(dataA, function (index, data) {
-//             if (data.address == null) {
-//                 dataAjaxPrint.push(data);
-//             }
-//         });
-//     }
-//     if (allCheck == 2){
-//     $.each(dataA, function (index, data) {
-//         $('.chi_cat').each(function () {
-//             if (this.checked && this.name == data.category_id && data.address == null) {
-//                 dataAjaxPrint.push(data);
-//             }
-//         });
-//     });
-//     }
-// }
-
 function ajaxFilter() {
     nameVal1 = $('#filter').val()
     nameVal2 = $('#suggest').val()
     nameVal3 = $('#price').val()
-        if ($.trim(nameVal1) != '' || $.trim(nameVal2) != '' || $.trim(nameVal3) != ''){
-            first_ajax('klyuch', nameVal1, nameVal2, nameVal3)
-        }
+    if ($.trim(nameVal1) != '' || $.trim(nameVal2) != '' || $.trim(nameVal3) != ''){
+        first_ajax('klyuch', nameVal1, nameVal2, nameVal3)
+    }
 }
-
-// $("#filter").keyup(function() {
-//     if ($('#filter').val().trim().length == 0) {
-//         $('#svgClose').hide();
-//     }else{
-//         $('#svgClose').show();
-//     }
-// });
 
 $('#filter').on('keypress',function(e) {
     if(e.which == 13) {
@@ -143,11 +115,6 @@ $('#price').on('keypress',function(e) {
         ajaxFilter()
     }
 });
-
-// $("#svgClose").click(function() {
-//     $('#filter').val('');
-//     $('#svgClose').hide();
-// });
 
 $("#findBut").click(function() {
     ajaxFilter();
@@ -188,56 +155,56 @@ $("#prcClose").click(function() {
 $("#remJob").click(function() {
     if (this.checked == true){
         remJobCheck = 1;
+        $('#geoBut').hide();
+        $('#closeBut').hide();
+        $('#selectGeo').attr('disabled','disabled');
+        $('#suggest').attr('disabled','disabled');
         $('#byRem').hide();
-        sixInOne()
     }else {
         remJobCheck = 0;
-        $('#byRem').show();
-        sixInOne()
+    if ($('#suggest').val().trim().length == 0 && r > 0) {
+        $('#geoBut').show();
+    }else{
+        if ($('#suggest').val().trim().length != 0 && r > 0) {
+        $('#closeBut').show();
+        }
     }
+        $('#selectGeo').removeAttr('disabled');
+        $('#suggest').removeAttr('disabled');
+        $('#byRem').show();
+    }
+    sixInOne();
 });
 
 $("#noResp").click(function() {
     if (this.checked == true) {
         bezOtkCheck = 1;
-        sixInOne()
     } else {
         bezOtkCheck = 0;
-        sixInOne()
     }
+    sixInOne()
 });
 
-function dataAjaxSortBy() {
-    // let nameVal = $('#filter').val()
-    // var msk = filterByCity(myArray, nameVal);
-    if (nameVal != '') {
-        dataAjaxPrint = [];
-        if (allCheck == 1) {
-            $.each(dataAjax, function (index, data) {
-                // console.log(data.name)
-                // console.log((data.name.search(new RegExp(nameVal, "i")) < 0))
-                // if (data.name.search(new RegExp(nameVal, "i")) > 0) {
-                // if (data.name.match(nameVal)) {
-                console.log(data.name.search(nameVal))
-                if (data.name.search(nameVal) !== -1) {
-                    dataAjaxPrint.push(data);
+$("#byDate").click(function() {
+    dataAjaxSortByDS(dataAjaxPrint, 1)
+});
+$("#bySroch").click(function() {
+    dataAjaxSortByDS(dataAjaxPrint, 2)
+});
 
-                }
-            })
-        } else {
-            $.each(dataAjax, function (index, data) {
-                $('.chi_cat').each(function () {
-                    if (this.checked && this.name == data.category_id) {
-                        if (data.name.search(new RegExp(nameVal, "i")) > 0) {
-                            dataAjaxPrint.push(data);
-                            console.log('allcheck != 1')
-                        }
-                    }
-                });
-            });
-        }
-        sixInOne();
+function dataAjaxSortByDS(arr, numb) {
+    if (numb == 1) {
+        arr.sort((a, b) => a.updated_at > b.updated_at ? 1 : -1);
+        resetCounters()
+        tasks_list_all(dataAjaxPrint)
+        tasks_show()
+    }else{
+        arr.sort((a, b) => a.end_date > b.end_date ? 1 : -1);
+        resetCounters()
+        tasks_list_all(dataAjaxPrint)
+        tasks_show()
     }
+
 }
 
 function tasks_list_all(data) {
@@ -246,7 +213,7 @@ function tasks_list_all(data) {
         dl++;
         let json = JSON.parse(data.address);
         $(".show_tasks").append(
-            `<div class="sort-table print_block" hidden>
+            `<div class="sort-table print_block" id="` + data.id + `" hidden>
                 <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-36 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
                     <div class="md:w-11/12 w-full sm:ml-0.5  md:m-4 sm:m-2 m-0 ml-2">
                         <div class="sm:float-left sm:w-7/12 w-full" id="results">
@@ -258,7 +225,7 @@ function tasks_list_all(data) {
                         <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 sm:mt-1 mt-0" id="about">
                             <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
                             <p class="text-sm sm:mt-5 sm:mt-1 mt-0">` + (dataAjaxCheck==1 ? data.category_name : data.category.name) + `</p>
-                            <a href="/performers/` + data.userid + `" class="text-sm sm:mt-1 mt-0 hover:text-red-600 ">` + (dataAjaxCheck==1 ? data.user_name : data.user.name) + `</a>
+                            <a href="/performers/` + data.user_id + `" class="text-sm sm:mt-1 mt-0 hover:text-red-600 ">` + (dataAjaxCheck==1 ? data.user_name : data.user.name) + `</a>
                         </div>
                     </div>
                 </div>
@@ -267,45 +234,9 @@ function tasks_list_all(data) {
     });
 }
 
-function tasks_list_remJob(data) {
-    $(".show_tasks").empty();
-    $.each(data, function(index, data) {
-        dl++;
-            $(".show_tasks").append(
-               `<div class="sort-table print_block" hidden>
-                <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-36 item md:overflow-hidden" data-nomer="` + data.start_date + `">
-                    <div class="md:w-11/12 w-full sm:ml-0.5  md:m-4 sm:m-2 m-0 ml-2">
-                        <div class="sm:float-left sm:w-7/12 w-full" id="results">
-                            <i class="` + data.icon + ` text-2xl float-left text-blue-400 sm:mr-4 mr-3"></i>
-                            <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-base font-semibold text-blue-500 hover:text-red-600">` + data.name + `</a>
-                            <p class="text-sm sm:ml-12 ml-10 sm:mt-4 sm:mt-1 mt-0 location ">Можно выполнить удаленно</p>
-                            <p class="text-sm sm:ml-8 ml-6 sm:mt-1 mt-0 pl-4 ">Начать ` + data.start_date + `</p>
-                        </div>
-                        <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 sm:mt-1 mt-0" id="about">
-                            <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
-                            <p class="text-sm sm:mt-5 sm:mt-1 mt-0">` + (dataAjaxCheck == 1 ? data.category_name : data.category.name) + `</p>
-                            <a href="/performers/` + data.userid + `" class="text-sm sm:mt-1 mt-0 hover:text-red-600 ">` + (dataAjaxCheck == 1 ? data.user_name : data.user.name) + `</a>
-                        </div>
-                    </div>
-                </div>
-            </div>`,
-            )
-    });
-}
-
 $(".rotate").click(function() {
     $(this).toggleClass("rotate-[360deg]");
 });
-
-// function enDis(rr){
-//     if (rr == 0){
-//
-//         // $('#mpshow').attr("disabled","disabled")
-//     }else {
-//
-//         // $('#mpshow').removeAttr("disabled")
-//     }
-// }
 
 function resetCounters(){
     $('.butt').removeAttr("disabled")
@@ -313,12 +244,12 @@ function resetCounters(){
 }
 
 function maps_show(){
-    dataGeo = [];
-    if(dataAjaxPrint.length != 0) {
-        for (var i in dataAjaxPrint) {
-            dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
-        }
-    }
+    // dataGeo = [];
+    // if(dataAjaxPrint.length != 0) {
+    //     for (var i in dataAjaxPrint) {
+    //         dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
+    //     }
+    // }
     map_pos(k)
 }
 
@@ -341,40 +272,24 @@ function sixInOne(){
     }
 }
 
-// function sixInOne2(){
-//     resetCounters()
-//     if(dataAjaxCheck == 0) {
-//         dataAjaxPrint = [];
-//     }
-//     if(dataAjaxCheck == 1) {
-//         dataAjaxCopyRemJob(dataAjax)
-//         console.log(dataAjaxPrint)
-//     }else {
-//         dataAjaxCopyRemJob(dataAjax2)
-//         console.log(dataAjaxPrint)
-//     }
-//     if(dataAjaxPrint.length == 0){
-//         img_show();
-//     }else{
-//         tasks_list_remJob(dataAjaxPrint)
-//         tasks_show()
-//         maps_show()
-//     }
-// }
-
 function img_show() {
     $('.no_tasks').removeAttr('hidden');
     $(".show_tasks").empty();
-    // $(".small-map").empty();
-    // $(".big-map").empty();
     $('.lM').attr("hidden","hidden")
 }
 
 function tasks_show(){
-    let i=1;
+    if (s == 0){dataGeo = []}
+    let i = 1, id;
     $('.print_block').each(function() {
         if ((this.hidden) && (i <= p) && (s <= dl))
         {
+            id = this.id
+            $.each(dataAjaxPrint, function (index, data) {
+                if (data.id == id) {
+                    dataGeo.push(data.coordinates.split(','));
+                }
+            });
             this.hidden = false;
             i++
             s++
@@ -418,14 +333,14 @@ $('.par_cat').click(function() {
             img_show()
         }
     } else {
-        parcats_click_true(this.id, this.name)
+        parcats_click_true(this.id)
         sixInOne();
     }
 });
 
 $('.chi_cat').click(function() {
     if (this.checked == false) {
-        chicats_click_false(this.id, this.name)
+        chicats_click_false(this.id)
         if (chicat_check_print()) {
             allCheck = 2;
             sixInOne();
@@ -439,7 +354,7 @@ $('.chi_cat').click(function() {
     }
 });
 
-function parcats_click_true(id, name) {
+function parcats_click_true(id) {
     $('.chi_cat').each(function() {
         if (this.id == id) {
             this.checked = true;
@@ -506,7 +421,7 @@ function chicats_click_true(id, name) {
     });
 }
 
-function chicats_click_false(id, name) {
+function chicats_click_false(id) {
     $('.par_cat').each(function() {
         if (this.id == id) {
             this.checked = false;
@@ -540,26 +455,6 @@ function chicat_check_print() {
     });
     return i;
 }
-
-// $(document).ready(function(){
-//
-//     $("#srochnost").click(function(){
-//         first_ajax('sroch')
-//     });
-//     $(".byid").click(function(){
-//         first_ajax('all')
-//     });
-//     $("#as").click(function(){
-//         first_ajax('udal')
-//     });
-//     $(".checkboxByAs").change(function() {
-//         if(this.checked) {
-//             first_ajax('udal')
-//         }else {
-//             first_ajax('all')
-//         }
-//     });
-// });
 
 function map_pos(mm) {
     if (mm) {

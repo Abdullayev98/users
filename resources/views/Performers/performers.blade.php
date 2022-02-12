@@ -64,10 +64,10 @@
                             <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4" @if ($user->avatar == Null)src='{{asset("storage/images/default.jpg")}}' @else src="{{asset("storage/{$user->avatar}")}}" @endif alt="avatar">
                             <div class="flex flex-row items-center text-base">
                                 <p class="text-black ">@lang('lang.perfCat_feedbacks')</p>
-                                <i class="far fa-thumbs-up text-blue-500 ml-1 mb-1 like{{$user->id}}"></i>
-                                <span class="text-gray-800 mr-2">{{ $user->reviews()->where('good_bad',1)->count()}}</span>
-                                <i class="far fa-thumbs-down mt-0.5 text-blue-500 dislike{{$user->id}}"></i>
-                                <span class="text-gray-800 ">{{ $user->reviews()->where('good_bad',0)->count()}}</span>
+                                <i class="far fa-thumbs-up text-blue-500 ml-1 mb-1"></i>
+                                <span class="text-gray-800 mr-2 like{{$user->id}}">{{ $user->reviews()->where('good_bad',1)->count()}}</span>
+                                <i class="far fa-thumbs-down mt-0.5 text-blue-500"></i>
+                                <span class="text-gray-800 dislike{{$user->id}}">{{ $user->reviews()->where('good_bad',0)->count()}}</span>
                             </div>
                             <div class="flex flex-row stars{{$user->id}}">
                             </div>
@@ -78,6 +78,7 @@
                                     var allcount = good * 5;
                                     var coundlikes = (good * 1) + (bad * 1);
                                     var overallStars = allcount / coundlikes;
+                                    console.log(overallStars);
                                     var star = overallStars.toFixed();
                                     if (!isNaN(star)) {
                                         for (let i = 0; i < star; i++) {
@@ -111,7 +112,10 @@
                             </div>
                             <div>
                                 <p class="text-base  leading-0  ">
-                                    {{$user->description}}
+                                    {{substr($user->description,0,100)}}
+                                    @if(strlen($user->description) >= 100)
+                                        ...
+                                    @endif
                                 </p>
                             </div>
                             <div class="mt-6">
