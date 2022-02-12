@@ -47,7 +47,8 @@
                                             @csrf
                                             @method('delete')
                                             <button type="submit"
-                                                    class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">Отменить
+                                                    class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">
+                                                Отменить
                                             </button>
                                         </form>
                                     @endif
@@ -210,7 +211,8 @@
                                                      class="btn-preloader hidden overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center">
                                                     <div class="relative w-full max-w-md px-4 h-full md:h-auto">
                                                         <!-- Modal content -->
-                                                        <div class="bg-white rounded-lg shadow relative dark:bg-gray-700">
+                                                        <div
+                                                            class="bg-white rounded-lg shadow relative dark:bg-gray-700">
                                                             <div class="flex justify-end p-2">
                                                                 <button type="button"
                                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
@@ -238,7 +240,8 @@
                                                                           name="description"></textarea>
                                                                     <div class="my-2">
                                                                         <label class=" px-2">
-                                                                            <input type="checkbox" name="notification_on"
+                                                                            <input type="checkbox"
+                                                                                   name="notification_on"
                                                                                    class="mr-2 my-3 ">@lang('lang.detT_notifMe')
                                                                             <br>
                                                                         </label>
@@ -250,7 +253,8 @@
                                                                                 onchange="valueChanged()"/>@lang('lang.detT_pointTime')
                                                                         </label>
                                                                         <br>
-                                                                        <select name="response_time" id="AttorneyEmpresa"
+                                                                        <select name="response_time"
+                                                                                id="AttorneyEmpresa"
                                                                                 class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500"
                                                                                 style="display: none">
                                                                             <option value="1" class="">
@@ -331,97 +335,101 @@
                                             </button>
                                         </a>
                                     </div>
-                                @endauth
+                                @endif
 
-                                @if ($task->user_id == auth()->user()->id)
-                                    <div class="">
+                                @auth()
+                                    @if ($task->user_id == auth()->user()->id)
+                                        <div class="">
 
-                                        <div class="text-4xl font-semibold my-6">
-                                            @if ($task->responses_count <= 4)
-                                                @if ($task->responses_count == 1)
-                                                    @lang('lang.detT_onTask') {{$task->responses_count}} отклик
-                                                @else
-                                                    @lang('lang.detT_onTask') {{$task->responses_count}} откликa
-                                                @endif
-                                            @else
-                                                @lang('lang.detT_onTask') {{$task->responses_count}} откликов
-                                            @endif
-                                        </div>
-                                        @else
                                             <div class="text-4xl font-semibold my-6">
-                                                @lang('lang.detT_noCallbacks')
+                                                @if ($task->responses_count <= 4)
+                                                    @if ($task->responses_count == 1)
+                                                        @lang('lang.detT_onTask') {{$task->responses_count}} отклик
+                                                    @else
+                                                        @lang('lang.detT_onTask') {{$task->responses_count}} откликa
+                                                    @endif
+                                                @else
+                                                    @lang('lang.detT_onTask') {{$task->responses_count}} откликов
+                                                @endif
                                             </div>
-                                        @endif
-                                        <hr>
-
-                                        @foreach ($task->responses as $response)
-                                            <div class="mb-6">
-                                                <div class="my-10">
-                                                    <div class="rounded-md bg-black h-24 float-left mr-5">
-                                                        <img class="w-24 h-24"
-                                                             src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%85%D0%BE%D0%BA%D0%BA%D0%B5%D1%8F-%D0%BD%D0%B0-%D0%BB%D1%8C%D0%B4%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%BF%D0%BE%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-117033775.jpg"
-                                                             alt="">
-                                                    </div>
-                                                    <div class="">
-                                                        <a href="/performers/{{$response->user->id}}"
-                                                           class="text-blue-500 text-xl font-semibold float-left">
-                                                            {{$response->user->name}}
-                                                        </a>
-                                                        <input type="text" name="performer_id" class="hidden"
-                                                               value="{{$response->user->id}}">
-                                                        <img class="w-7 h-7 ml-2"
-                                                             src="{{asset('images/shield.svg')}}" alt="">
-                                                        <div class="text-gray-700">
-                                                            <i class="fas fa-star text-yellow-200 mr-1"></i>@lang('lang.detT_numByNum')
-                                                        </div>
-                                                    </div>
+                                            @else
+                                                <div class="text-4xl font-semibold my-6">
+                                                    @lang('lang.detT_noCallbacks')
                                                 </div>
-                                                <div class="bg-gray-100 rounded-[10px] p-4">
-                                                    <div class="ml-0">
-                                                        <div
-                                                            class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}}
-                                                            UZS
+                                            @endif
+                                            <hr>
+                                            @endauth
+
+                                            @foreach ($task->responses as $response)
+                                                <div class="mb-6">
+                                                    <div class="my-10">
+                                                        <div class="rounded-md bg-black h-24 float-left mr-5">
+                                                            <img class="w-24 h-24"
+                                                                 src="https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%85%D0%BE%D0%BA%D0%BA%D0%B5%D1%8F-%D0%BD%D0%B0-%D0%BB%D1%8C%D0%B4%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%BF%D0%BE%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-117033775.jpg"
+                                                                 alt="">
                                                         </div>
-
-                                                        <div
-                                                            class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
-                                                        @if($response->not_free == 1)
-                                                            <div
-                                                                class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response->user->phone_number}}</div>
-                                                        @endif
-
-                                                        @if($task->status == 3 && $response->user_id == $task->performer_id)
-                                                            <div class="w-10/12 mx-auto">
-                                                                <a href="{{ route('personal.chat', $response->user->id) }}"
-                                                                   class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
-                                                                    @lang('lang.detT_writeOnChat')
-                                                                </a>
-
+                                                        <div class="">
+                                                            <a href="/performers/{{$response->user->id}}"
+                                                               class="text-blue-500 text-xl font-semibold float-left">
+                                                                {{$response->user->name}}
+                                                            </a>
+                                                            <input type="text" name="performer_id" class="hidden"
+                                                                   value="{{$response->user->id}}">
+                                                            <img class="w-7 h-7 ml-2"
+                                                                 src="{{asset('images/shield.svg')}}" alt="">
+                                                            <div class="text-gray-700">
+                                                                <i class="fas fa-star text-yellow-200 mr-1"></i>@lang('lang.detT_numByNum')
                                                             </div>
-                                                        @elseif($task->status <= 2)
-                                                            <form
-                                                                action="{{ route('performer.select', $response->id) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                <button
-                                                                    type="submit"
-                                                                    class="cursor-pointer text-semibold text-center w-[200px]
+                                                        </div>
+                                                    </div>
+                                                    <div class="bg-gray-100 rounded-[10px] p-4">
+                                                        <div class="ml-0">
+                                                            <div
+                                                                class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}}
+                                                                UZS
+                                                            </div>
+
+                                                            <div
+                                                                class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
+                                                            @if($response->not_free == 1)
+                                                                <div
+                                                                    class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response->user->phone_number}}</div>
+                                                            @endif
+
+                                                            @auth()
+                                                            @if($task->status == 3 && $response->user_id == $task->performer_id)
+                                                                <div class="w-10/12 mx-auto">
+                                                                    <a href="{{ route('personal.chat', $response->user->id) }}"
+                                                                       class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
+                                                                        @lang('lang.detT_writeOnChat')
+                                                                    </a>
+
+                                                                </div>
+                                                            @elseif($task->status <= 2)
+                                                                <form
+                                                                    action="{{ route('performer.select', $response->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    <button
+                                                                        type="submit"
+                                                                        class="cursor-pointer text-semibold text-center w-[200px]
                                                                  md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition
                                                                  duration-200 text-white bg-green-500 hover:bg-green-500 font-medium
                                                                  border border-transparent rounded-md"> @lang('lang.detT_choose')</button>
 
-                                                            </form>
-                                                        @endif
+                                                                </form>
+                                                            @endif
 
+                                                            @endauth
 
-                                                        <div class="text-gray-400 text-[14px] my-6">
-                                                            @lang('lang.detT_choosePerf')
+                                                            <div class="text-gray-400 text-[14px] my-6">
+                                                                @lang('lang.detT_choosePerf')
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                            @endforeach
+                                        </div>
                             </div>
                         </div>
                         {{-- right sidebar start --}}
@@ -475,43 +483,47 @@
                 @csrf
                 <div class="relative my-6 mx-auto max-w-xl" id="modal4">
                     <input type="text" hidden name="status" id="status" value="">
-                <div class="border-0 top-32 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
-                    <div class=" text-center  rounded-t">
-                        <button id="close-id4"
-                                class=" w-100 h-16 absolute top-1 right-4">
-{{--                            <i class="fas fa-times text-gray-500 text-slate-400 hover:text-slate-600 text-xl w-full"--}}
-{{--                            ></i>--}}
-                        </button>
-                        <h3 class="font-semibold text-gray-700 text-3xl block">
-                            Оставить отзыв
-                        </h3>
-                    </div>
-                    <div class="text-center h-56 w-full mx-auto text-base">
-                        <div class="">
-                            <div class="flex flex-row justify-center w-full my-4 mx-auto">
-                                <label id="class_demo"  class="cursor-pointer w-32 text-gray-500 border rounded-l hover:bg-green-500 transition duration-300 hover:text-white">
-                                    <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12"
-                                           value="1">
-                                    <i class="far fa-thumbs-up text-2xl mr-2"></i><span class="relative -top-1">good</span>
-                                </label>
-                                <label id="class_demo1" class="cursor-pointer w-32 text-gray-500 border rounded-r hover:bg-red-500 transition duration-300 hover:text-white">
-                                    <input type="radio" name="good" class="good border hidden rounded ml-6  w-8/12"
-                                           value="0">
-                                    <i class="far fa-thumbs-down text-2xl mr-2"></i><span class="relative -top-1">bad</span>
-                                </label>
-                            </div>
-                            <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white shadow-lg drop-shadow-xl
+                    <div
+                        class="border-0 top-32 rounded-lg shadow-2xl px-10 py-10 relative flex mx-auto flex-col w-full bg-white outline-none focus:outline-none">
+                        <div class=" text-center  rounded-t">
+                            <button id="close-id4"
+                                    class=" w-100 h-16 absolute top-1 right-4">
+                                {{--                            <i class="fas fa-times text-gray-500 text-slate-400 hover:text-slate-600 text-xl w-full"--}}
+                                {{--                            ></i>--}}
+                            </button>
+                            <h3 class="font-semibold text-gray-700 text-3xl block">
+                                Оставить отзыв
+                            </h3>
+                        </div>
+                        <div class="text-center h-56 w-full mx-auto text-base">
+                            <div class="">
+                                <div class="flex flex-row justify-center w-full my-4 mx-auto">
+                                    <label id="class_demo"
+                                           class="cursor-pointer w-32 text-gray-500 border rounded-l hover:bg-green-500 transition duration-300 hover:text-white">
+                                        <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12"
+                                               value="1">
+                                        <i class="far fa-thumbs-up text-2xl mr-2"></i><span
+                                            class="relative -top-1">good</span>
+                                    </label>
+                                    <label id="class_demo1"
+                                           class="cursor-pointer w-32 text-gray-500 border rounded-r hover:bg-red-500 transition duration-300 hover:text-white">
+                                        <input type="radio" name="good" class="good border hidden rounded ml-6  w-8/12"
+                                               value="0">
+                                        <i class="far fa-thumbs-down text-2xl mr-2"></i><span class="relative -top-1">bad</span>
+                                    </label>
+                                </div>
+                                <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white shadow-lg drop-shadow-xl
                                         border resize-none w-full border-solid border-gray-200 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-300 focus:outline-none"></textarea>
 
-                            <button
-                                class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
-                                type="submit">
-                                @lang('lang.contact_send')
-                            </button>
+                                <button
+                                    class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
+                                    type="submit">
+                                    @lang('lang.contact_send')
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </form>
         </div>
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
