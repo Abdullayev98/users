@@ -25,11 +25,9 @@
                                 <div class="w-8/12 md:w-7/12 relative">
                                     <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                     <div class="bg-white address float-left py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700">
-                                        <input
-                                            class="focus:outline-none float-left bg-transparent border-0 w-11/12 h-full focus:outline-none"
-                                        type="text" id="suggest" disabled>
+                                        <input class="focus:outline-none float-left bg-transparent border-0 w-11/12 h-full focus:outline-none" type="text" id="suggest" disabled>
 {{--                                        <button id="mpshow" class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">--}}
-                                            <svg class="h-4 w-4 text-purple-500" id="geoBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
+                                            <svg class="h-4 w-4 text-purple-500 cursor-pointer" id="geoBut" width="12" height="12" hidden viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                             <img src="images/close.png" class="cursor-pointer" id="closeBut" hidden>
 {{--                                        </button>--}}
                                     </div>
