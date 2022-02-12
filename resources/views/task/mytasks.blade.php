@@ -40,7 +40,7 @@
                                                 {{$task->name}}
                                             </a>
                                             <p class="text-sm mt-2">
-                                                {{$task->description}}
+                                                {{substr($task->description, 0, 100)}}...
                                             </p>
                                             @if ($task->status == 3)
                                                 <p class="text-amber-500 font-normal">@lang('lang.detT_inProsses')</p>

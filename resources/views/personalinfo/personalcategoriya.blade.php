@@ -48,11 +48,6 @@
                         @lang('lang.personalinfo_text11')
     
                         <!-- </button> -->
-                        <script>
-                            function myFunction() {
-                                window.history.back();
-                            }
-                        </script>
                     </a>
     
                     <input type="submit"  class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 sm:px-5 px-1 rounded" name="" value="@lang('lang.personalinfo_text21')">
@@ -65,38 +60,5 @@
 
 @endsection
 @section('javasript')
-
-
-
-<script>
-    $(".showcategory").click(function() {
-        $(".hidecategory").toggle(100)
-    })
-
-    var w = window.outerWidth;
-    //var h = window.outerHeight;
-
-    // if (window.onload.innerWidth > 500 || window.onresize.innerWidth > 500) {
-    //     $(".innerhtml-ctat").text("Стать")
-    // } else {
-    //     $(".innerhtml-ctat").text("Стать исполнителем")
-    // }
-</script>
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        });
-    }
-</script>
-
+    <script src="{{ asset('js/personalinfo/personalcategoriya.js') }}"></script>
 @endsection

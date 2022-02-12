@@ -228,6 +228,8 @@
 
 
                 @section("javasript")
+                    <script src="https://unpkg.com/imask"></script>
+
                     <script src="{{ asset('js/components/modal.js') }}"></script>
                 @endsection
         @endauth
