@@ -31,40 +31,7 @@
         </div>
     </div>
 
-    <script>
-        $("#button1").click(function(){
-            let comment = $("input[name=comment]").val();
-            let description = $("input[name=description]").val();
-                $.ajax({
-                    url: "{{route('comment')}}",
-                    type:"POST",
-                    data:{
-                        comment:comment,
-                        description:description,
-                        _token:$('meta[name="csrf-token"]').attr('content'),
-                    },
-                });
-                    $("#comdes").addClass("hidden");
-                    $("#comdes1").removeClass("hidden");
-                });
-        $(function(){
-            $('.input-images').imageUploader();
-        });
-        $('.input-images').imageUploader({
-            preloaded: preloaded
-        });
-        $('.input-images').imageUploader({
-            extensions: ['.jpg', '.jpeg', '.png', '.svg'],
-            mimes: ['image/jpeg', 'image/png', 'image/svg+xml'],
-            maxSize: undefined,
-            maxFiles: undefined,
-        });
-        $('.input-images').imageUploader({
-            imagesInputName: 'images',
-            preloadedInputName: 'preloaded',
-            label: ''
-        });
-    </script>
+    <script src="{{ asset('js/profile/create_port.js') }}"></script>
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
     <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
