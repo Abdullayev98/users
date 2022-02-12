@@ -112,8 +112,10 @@
                             </div>
                             <div>
                                 <p class="text-base  leading-0  ">
-                                    {{substr($user->description, 0, 100)}}...
-
+                                    {{substr($user->description,0,100)}}
+                                    @if(strlen($user->description) >= 100)
+                                        ...
+                                    @endif
                                 </p>
                             </div>
                             <div class="mt-6">
