@@ -6,7 +6,7 @@
 
     <div class="container w-10/12 mx-auto text-base">
         <div class="w-10/12 md:w-8/12 mx-auto text-center">
-            <h1 class="text-3xl md:text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
+            <h1 class="text-3xl pt-5 md:text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
             <h3 class="text-xl md:text-2xl my-5 text-gray-500">@lang('lang.chT_weHelp')</h3>
             <div class="max-w-full container mx-auto md:hidden">
                 <div class="slider" >
