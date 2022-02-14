@@ -51,9 +51,9 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 mt-8">
             @foreach($child_categories as $category)
-                <div class="w-full text-left text-left border-b border-solid md:border-0 mt-4 border-gray-200">
+                <div class="w-full text-left text-left border-b border-solid md:border-0 mt-1 border-gray-200">
                     <a href="/task/create?category_id={{$category->id}}"
-                       class="text-gray-500 hover:text-yellow-600 block ml-4 md:ml-0 pb-4 hover:underline">{{$category->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale')}}</a>
+                       class="text-gray-500 hover:text-yellow-600 block ml-4 md:ml-0 pb-1 hover:underline">{{$category->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale')}}</a>
                 </div>
             @endforeach
 
