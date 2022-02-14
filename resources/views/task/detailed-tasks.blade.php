@@ -123,7 +123,8 @@
                                                     @if(getAuthUserBalance() >= 4000 || $task->responses_count< setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
                                                             <button
-                                                                class="font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
+                                                                class="w-full font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300 m-2"
+                                                                id="btn1"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
                                                                 @lang('lang.detT_callbackpay')<br>
@@ -132,7 +133,8 @@
                                                             </span>
                                                             </button>
                                                             <button
-                                                                class="font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
+                                                                class="w-full font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300 m-2"
+                                                                id="btn2"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
                                                                 @lang('lang.detT_callback')<br>
@@ -145,7 +147,7 @@
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
                                                             <a href="#" class="open-modal" data-modal="#modal1">
                                                                 <button
-                                                                    class='font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                    class='w-1/2 font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
                                                                     @lang('lang.detT_callbackpay')
                                                                 </button>
                                                             </a>
@@ -238,6 +240,7 @@
                                                                           class="resize-none rounded-md w-full focus:outline-none border border p-4  transition duration-200 my-4"
                                                                           type="text" id="form8" rows="4"
                                                                           name="description"></textarea>
+                                                                    <p id="text1" class="hidden text-lg">Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта</p>
                                                                     <div class="my-2">
                                                                         <label class=" px-2">
                                                                             <input type="checkbox"
@@ -433,7 +436,7 @@
                             </div>
                         </div>
                         {{-- right sidebar start --}}
-                        <div class="lg:w-3/12 w-1/2 lg:mt-0 mt-8 lg:ml-8 ml-0">
+                        <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
                                 <h1 class="text-xl font-medium mb-4">@lang('lang.detT_task') № {{$task->id}}</h1>
                                 <button
@@ -532,4 +535,5 @@
 
 
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
+
 @endsection

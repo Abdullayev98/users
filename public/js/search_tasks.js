@@ -1,7 +1,7 @@
 let r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
-let dataAjaxCheck = 1, allCheck = 1, remJobCheck = 0, bezOtkCheck = 0;
+let dataAjaxCheck = 1, allCheck = 1, sortByDateCheck = 0, sortBySrochCheck = 0, remJobCheck = 0, bezOtkCheck = 0;
 let dataAjax = [], dataAjax2 = [], dataAjaxPrint = [];
-let dataGeo = [], userCoordinates = [];
+let dataGeo = [], userCoordinates = [[],[]];
 $('.all_cat').click();
 $(".for_check input:checkbox").each(function() {
     this.checked = true;
@@ -187,9 +187,13 @@ $("#noResp").click(function() {
 
 $("#byDate").click(function() {
     dataAjaxSortByDS(dataAjaxPrint, 1)
+    $('#byDate').attr('disabled','disabled');
+    $('#bySroch').removeAttr('disabled');
 });
 $("#bySroch").click(function() {
     dataAjaxSortByDS(dataAjaxPrint, 2)
+    $('#bySroch').attr('disabled','disabled');
+    $('#byDate').removeAttr('disabled');
 });
 
 function dataAjaxSortByDS(arr, numb) {
@@ -244,13 +248,8 @@ function resetCounters(){
 }
 
 function maps_show(){
-    // dataGeo = [];
-    // if(dataAjaxPrint.length != 0) {
-    //     for (var i in dataAjaxPrint) {
-    //         dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
-    //     }
-    // }
     map_pos(k)
+    map1_show()
 }
 
 function sixInOne(){
@@ -467,112 +466,6 @@ function map_pos(mm) {
              </div>`
         );
 
-        // ymaps.ready(init);
-        // function init() {
-        //     var myInput = document.getElementById("suggest");
-        //     var location = ymaps.geolocation;
-        //
-        //     location.get({
-        //         mapStateAutoApply: true
-        //     })
-        //         .then(
-        //             function(result) {
-        //                 let userCoord = result.geoObjects.get(0).geometry.getCoordinates();
-        //                 userCoordinates = userCoord;
-        //
-        //             },
-        //             function(err) {
-        //                 console.log('Ошибка: ' + err)
-        //             }
-        //         );
-        //
-        //
-        //     var suggestView1 = new ymaps.SuggestView('suggest');
-        //     var myMap2 = new ymaps.Map('map2', {
-        //         center: userCoordinates,
-        //         // center: [41.317648, 69.230585],
-        //         zoom: 10,
-        //         controls: ['geolocationControl'],
-        //         behaviors: ['default', 'scrollZoomNo']
-        //     }, {
-        //         // searchControlProvider: 'yandex#search'
-        //     });
-        //
-        //     $("#mpshow").click(function(){
-        //         location.get({
-        //             mapStateAutoApply: true
-        //         })
-        //             .then(
-        //                 function(result) {
-        //                     myInput.value = result.geoObjects.get(0).properties.get('text');
-        //                     userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
-        //                     // myMap2.geoObjects.add(result.geoObjects)
-        //                 },
-        //                 function(err) {
-        //                     console.log('Ошибка: ' + err)
-        //                 }
-        //             );
-        //     });
-        //
-        //     ///////////////////////////////////////
-        //     // var myGeocoder = ymaps.geocode(myInput);
-        //     // myGeocoder.then(
-        //     //     function (res) {
-        //     //         alert('Координаты объекта :' + res.geoObjects.get(0).geometry.getCoordinates());
-        //     //     },
-        //     //     function (err) {
-        //     //         alert('Ошибка');
-        //     //     }
-        //     // );
-        //     ///////////////////////////////////////
-        //
-        //     clusterer = new ymaps.Clusterer({
-        //         preset: 'islands#invertedGreenClusterIcons',
-        //         hasBalloon: false,
-        //         groupByCoordinates: false,
-        //         clusterDisableClickZoom: true,
-        //         clusterHideIconOnBalloonOpen: false,
-        //         geoObjectHideIconOnBalloonOpen: false
-        //     });
-        //     getPointData = function (index) {
-        //         return {
-        //             balloonContentHeader: '<font size=3><b><a target="_blank" href="https://yandex.ru">Здесь может быть ваша ссылка</a></b></font>',
-        //             balloonContentBody: '<p>Ваше имя: <input name="login"></p><p>Телефон в формате 2xxx-xxx:  <input></p><p><input type="submit" value="Отправить"></p>',
-        //             balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
-        //             clusterCaption: 'метка <strong>' + index + '</strong>'
-        //         };
-        //     }
-        //     getPointOptions = function () {
-        //         return {
-        //             preset: 'islands#greenIcon'
-        //         };
-        //     }
-        // // , sGeo <= dl
-        // //     for (var i = 0, k = 1; k <= p; i++, k++, sGeo++) {
-        // //         if (k > dataGeo.length || sGeo>dl){break}
-        // //         geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData[i], getPointOptions());
-        // //     }
-        // //     geoObjects = [];
-        //     // for (var i = 0; i < dataGeo.length; i++) {
-        //     //     geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
-        //     // }
-        //     geoObjects = [];
-        //     for (var i = 0; i < dataGeo.length; i++) {
-        //         geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
-        //     }
-        //     clusterer.options.set({
-        //         gridSize: 80,
-        //         clusterDisableClickZoom: true
-        //     });
-        //     clusterer.add(geoObjects);
-        //     myMap2.geoObjects.add(clusterer);
-        //     myMap2.setBounds(clusterer.getBounds(), {
-        //         checkZoomRange: true
-        //     });
-        //     circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
-        //     myMap2.geoObjects.add(circle);
-        // }
-
         ymaps.ready(init);
         function init() {
 
@@ -610,21 +503,20 @@ function map_pos(mm) {
             });
             // var suggestView1 = new ymaps.SuggestView('suggest');
             var myMap2 = new ymaps.Map('map2', {
-                // center: userCoordinates,
-                // center: [41.317648, 69.230585],
-                center: [55.10, 37.45],
-                zoom: 15,
+                center: [userCoordinates[0], userCoordinates[1]],
+                zoom: 10,
                 controls: ['geolocationControl'],
                 behaviors: ['default', 'scrollZoomNo']
             }, {
-                searchControlProvider: 'yandex#search'
+                // searchControlProvider: 'yandex#search'
             });
 
-            circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: true, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
+            circle = new ymaps.Circle([userCoordinates, r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
             myMap2.geoObjects.add(circle);
 
             clusterer = new ymaps.Clusterer({
                 preset: 'islands#invertedGreenClusterIcons',
+                hasBalloon: false,
                 groupByCoordinates: false,
                 clusterDisableClickZoom: true,
                 clusterHideIconOnBalloonOpen: false,
@@ -632,9 +524,7 @@ function map_pos(mm) {
             });
             getPointData = function (index) {
                 return {
-                    // balloonContentHeader: '<font size=3><b><a href="/detailed-tasks/' + dataAjax[index].id + '">' + dataAjax[index].name + '</a></b></font>',
-                    balloonContentBody: '<br><font size=4><b><a href="/detailed-tasks/' + dataAjaxPrint[index].id + '">' + dataAjaxPrint[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjaxPrint[index].start_date + ' - ' + dataAjaxPrint[index].end_date + '</p></font><br><font size=3><p>' + dataAjaxPrint[index].budget + '</p></font>',
-                    // balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
+                    balloonContentBody: '<br><font size=4><b><a href="">' + dataAjaxPrint[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjaxPrint[index].start_date + ' - ' + dataAjaxPrint[index].end_date + '</p></font><br><font size=3><p>' + dataAjaxPrint[index].budget + '</p></font>',
                     clusterCaption: 'Задания <strong>' + dataAjaxPrint[index].id + '</strong>'
                 };
             }
@@ -643,11 +533,9 @@ function map_pos(mm) {
                     preset: 'islands#greenIcon'
                 };
             }
-            // for (var i = 0; i <= p-1, sGeo <= dl; i++, sGeo++) {
-            //     geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData[i], getPointOptions());
-            // }
+
             geoObjects = [];
-            if(dataGeo.length != 0) {
+            if (dataGeo.length != 0) {
                 for (var i = 0; i < dataGeo.length; i++) {
                     geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
                 }
@@ -661,40 +549,16 @@ function map_pos(mm) {
             clusterer.add(geoObjects);
             myMap2.geoObjects.add(clusterer);
             myMap2.setBounds(clusterer.getBounds(), {
-                checkZoomRange: false
-            });
-
-
-
-            // objects.searchInside(circle).addToMap(myMap2);
-                // И затем добавим найденные объекты на карту.
-
-
-            myMap2.events.add('boundschange', function () {
-                // После каждого сдвига карты будем смотреть, какие объекты попадают в видимую область.
-                var visibleObjects = objects.searchInside(circle).addToMap(myMap2);
-                // Оставшиеся объекты будем удалять с карты.
-                objects.remove(visibleObjects).removeFromMap(myMap2);
+                checkZoomRange: true
             });
 
             // circle.events.add('visible', function () {
-            //     // Объекты, попадающие в круг, будут становиться красными.
             //     var objectsInsideCircle = objects.searchInside(circle);
             //     objectsInsideCircle.setOptions('visible', 'true');
-            //     // Оставшиеся объекты - синими.
             //     objects.remove(objectsInsideCircle).setOptions('visible', 'false');
             // });
 
-
-
-
-
-            // myMap2.geoObjects.add(searchIntersect(myMap2));
-            // ymaps.geoQuery(geoObjects).addToMap(myMap2);
-            // ymaps.geoQuery(myMap2.geoObjects).searchIntersect(myMap2);
-            // geoQuery(geoObjects).addToMap(myMap2);
-            // geoQuery(myMap2.geoObjects).searchIntersect(myMap2);
-
+            // Circle ichiga joylashish nuqtasini hisoblash formulasi...
             // $distance = 2 * asin(sqrt( pow(sin(deg2rad( ($lat1-$lat2) / 2)), 2) +
             //     cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
             //     pow(sin(deg2rad(($lng1- $lng2) / 2)), 2))) * 6378245;
@@ -712,13 +576,12 @@ function map_pos(mm) {
         ymaps.ready(init);
         function init() {
             var myMap3 = new ymaps.Map('map3', {
-                // center: userCoordinates,
-                center: [41.317648, 69.230585],
-                zoom: 15,
+                center: [userCoordinates[0], userCoordinates[1]],
+                zoom: 10,
                 controls: ['geolocationControl'],
                 behaviors: ['default', 'scrollZoomNo']
             }, {
-                searchControlProvider: 'yandex#search'
+                // searchControlProvider: 'yandex#search'
             });
 
             clusterer = new ymaps.Clusterer({
@@ -730,9 +593,7 @@ function map_pos(mm) {
             });
             getPointData = function (index) {
                 return {
-                    // balloonContentHeader: '<font size=3><b><a href="/detailed-tasks/' + dataAjaxPrint[index].id + '">' + dataAjaxPrint[index].name + '</a></b></font>',
                     balloonContentBody: '<br><font size=4><b><a href="/detailed-tasks/' + dataAjaxPrint[index].id + '">' + dataAjaxPrint[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjaxPrint[index].start_date + ' - ' + dataAjaxPrint[index].end_date + '</p></font><br><font size=3><p>' + dataAjaxPrint[index].budget + '</p></font>',
-                    // balloonContentFooter: '<font size=1>Информация предоставлена: </font> балуном <strong>метки ' + index + '</strong>',
                     clusterCaption: 'Задания <strong>' + dataAjaxPrint[index].id + '</strong>'
                 };
             }
@@ -741,16 +602,16 @@ function map_pos(mm) {
                     preset: 'islands#greenIcon'
                 };
             }
-            // for (var i = 0; i <= p-1, sGeo <= dl; i++, sGeo++) {
-            //     geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData[i], getPointOptions());
-            // }
+
             geoObjects = [];
-            for (var i = 0; i < dataGeo.length; i++) {
-                geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+            if (dataGeo.length != 0) {
+                for (var i = 0; i < dataGeo.length; i++) {
+                    geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                }
             }
             clusterer.options.set({
                 gridSize: 80,
-                clusterDisableClickZoom: false
+                clusterDisableClickZoom: true
             });
 
             clusterer.add(geoObjects);
@@ -761,7 +622,6 @@ function map_pos(mm) {
             circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
             myMap3.geoObjects.add(circle);
 
-
         }
     }
 }
@@ -770,45 +630,80 @@ function map1_show (){
     $("#big-big").empty();
     $("#big-big").append(
         `<div id="map1" class="h-52 overflow-hidden my-5 rounded-lg w-full static">
-<!--                <div class="relative float-right z-10 ml-1"><img src="/images/big-map.png')}}" class="hover:cursor-pointer bg-white w-8 h-auto mt-2 mr-2 p-1 rounded-md drop-shadow-lg" title="Kartani kattalashtirish" onclick="map_pos(0)"/></div>-->
-            </div>`
+         </div>`
     )
     ymaps.ready(init);
     function init() {
+
+        var myInput2 = document.getElementById("suggest2");
+        var location = ymaps.geolocation;
+
+        location.get({
+            mapStateAutoApply: true
+        })
+            .then(
+                function(result) {
+                    userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
+                },
+                function(err) {
+                    console.log('Ошибка: ' + err)
+                }
+            );
+
+        $("#geoBut2").click(function(){
+            location.get({
+                mapStateAutoApply: true
+            })
+                .then(
+                    function(result) {
+                        myInput2.value = result.geoObjects.get(0).properties.get('text');
+                        userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
+                    },
+                    function(err) {
+                        console.log('Ошибка: ' + err)
+                    }
+                );
+        });
+
         var myMap1 = new ymaps.Map('map1', {
-                center: [41.317648, 69.230585],
+                center: [userCoordinates[0], userCoordinates[1]],
+                controls: ['geolocationControl'],
                 zoom: 10,
                 // behaviors: ['default', 'scrollZoom']
             }, {
-                searchControlProvider: 'yandex#search'
+                // searchControlProvider: 'yandex#search'
             }),
 
             clusterer = new ymaps.Clusterer({
-                preset: 'islands#invertedVioletClusterIcons',
+                preset: 'islands#invertedGreenClusterIcons',
                 groupByCoordinates: false,
                 clusterDisableClickZoom: true,
                 clusterHideIconOnBalloonOpen: false,
                 geoObjectHideIconOnBalloonOpen: false
             }),
 
+            getPointData = function (index) {
+                return {
+                    balloonContentBody: '<br><font size=4><b><a href="">' + dataAjaxPrint[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjaxPrint[index].start_date + ' - ' + dataAjaxPrint[index].end_date + '</p></font><br><font size=3><p>' + dataAjaxPrint[index].budget + '</p></font>',
+                    clusterCaption: 'Задания <strong>' + dataAjaxPrint[index].id + '</strong>'
+                };
+            }
+
             getPointOptions = function () {
                 return {
-                    preset: 'islands#violetIcon'
+                    preset: 'islands#greenIcon'
                 };
             },
             geoObjects = [];
-        dataGeo = [];
-        for (var i in dataAjaxPrint) {
-            dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
-        }
-
-        for (var i = 0; i <= p-1, sGeo <= dl; i++, sGeo++) {
-            geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData[i], getPointOptions());
-        }
+            if (dataGeo.length != 0) {
+                for (var i = 0; i < dataGeo.length; i++) {
+                    geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
+                }
+            }
 
         clusterer.options.set({
             gridSize: 80,
-            clusterDisableClickZoom: false
+            clusterDisableClickZoom: true
         });
         clusterer.add(geoObjects);
         myMap1.geoObjects.add(clusterer);
@@ -816,7 +711,7 @@ function map1_show (){
             checkZoomRange: false
         });
 
-        circle = new ymaps.Circle([[41.317648, 69.230585], r * 1000], null, {draggable: true}, {fill: false});
+        circle = new ymaps.Circle([[userCoordinates[0],userCoordinates[1]], r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
         myMap1.geoObjects.add(circle);
     }
 }
@@ -839,4 +734,112 @@ $(document).ready(function() {
         $("#scrollbar").css('display', 'block');
         $("footer").css('display', 'block');
     });
+});
+
+$(document).ready(function() {
+    $("#show_2").click(function() {
+        $("#hide_2").css('display', 'block');
+        $("#show_2").css('display', 'none');
+        $("#mobile_bar").css('display', 'block');
+    });
+    $("#hide_2").click(function() {
+        $("#hide_2").css('display', 'none');
+        $("#show_2").css('display', 'block');
+        $("#mobile_bar").css('display', 'none');
+    });
+});
+
+$(document).ready(function() {
+    $("#show").click(function() {
+        map1_show();
+        $("#hide").css('display', 'block');
+        $("#show").css('display', 'none');
+        $("#scrollbar").css('display', 'none');
+        $("footer").css('display', 'none');
+        $('#big-big').removeClass("hidden");
+    });
+    $("#hide").click(function() {
+        $('#big-big').addClass("hidden");
+        $("#hide").css('display', 'none');
+        $("#show").css('display', 'block');
+        $("#scrollbar").css('display', 'block');
+        $("footer").css('display', 'block');
+    });
+});
+
+function toggleModal(){
+    document.getElementById("modal-id").classList.toggle("hidden");
+    document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
+    document.getElementById("modal-id").classList.toggle("flex");
+    document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
+}
+function toggleModal1(){
+    var element = document.getElementById("modal-id-backdrop");
+    element.classList.add("hidden");
+    var element2 = document.getElementById("modal-id");
+    var b = document.getElementById("myText").value;
+    var u = document.getElementById("amount_u");
+    u.value = b;
+    element2.classList.add("hidden");
+    document.getElementById("modal-id1").classList.toggle("hidden");
+    document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
+    document.getElementById("modal-id1").classList.toggle("flex");
+    document.getElementById("modal-id1" + "-backdrop").classList.toggle("flex");
+}
+function borderColor() {
+    var element = document.getElementById("demo");
+    element.classList.add("border-amber-500");
+}
+function inputFunction() {
+    var x = document.getElementById("myText").value;
+    if(x < 4000){
+        document.getElementById('button').removeAttribute("onclick");
+        document.getElementById('button').classList.remove("bg-green-500");
+        document.getElementById('button').classList.add("bg-gray-500");
+        document.getElementById('button').classList.remove("hover:bg-green-500");
+        document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+    }else{
+        document.getElementById('button').setAttribute("onclick","toggleModal1();");
+        document.getElementById('button').classList.remove("bg-gray-500");
+        document.getElementById('button').classList.add("bg-green-500");
+        document.getElementById('button').classList.add("hover:bg-green-500");
+        document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+    }
+}
+function checkFunction() {
+    var x = document.getElementById("myText").value;
+    var checkBox = document.getElementById("myCheck");
+    if (checkBox.checked == true){
+        document.getElementById("button").innerHTML ="К оплате " + (parseInt(x) + 10000);
+    } else {
+        document.getElementById("button").innerHTML ="К оплате " + x  +"UZS";
+    }
+}
+function validate(evt) {
+    var theEvent = evt || window.event;
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = event.clipboardData.getData('text/plain');
+    } else {
+        // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+    var regex = /[0-9]|\./;
+    if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+}
+//{{-- pay modal end --}}
+
+$('.has-clear input[type="text"]').on('input propertychange', function() {
+    var $this = $(this);
+    var visible = Boolean($this.val());
+    $this.siblings('.form-control-clear').toggleClass('hidden', !visible);
+}).trigger('propertychange');
+
+$('.form-control-clear').click(function() {
+    $(this).siblings('input[type="text"]').val('')
+        .trigger('propertychange').focus();
 });

@@ -86,7 +86,7 @@
                 <div class="w-full my-5 rounded-md md:hidden block">
                     <div class="inline-flex block w-full grid grid-cols-3">
                     <!-- <input class="focus:outline-none  w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
-                        <input id="filter" type="text"
+                        <input id="filter2" type="text"
                                class="col-span-3 focus:outline-none focus:placeholder-transparent text-base md:w-10/12 px-4 py-1 text-black border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 md:mr-4 mr-0 bg-gray-200"
                                placeholder="@lang('lang.search_byKey')">
 
@@ -119,17 +119,17 @@
                             <div class="w-full relative">
                                 <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                 <div class="bg-white address float-left py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700">
-                                    <input
-                                        class="float-left bg-transparent border-0 w-11/12 h-full focus:outline-none"
-                                        type="text" id="suggest">
-                                    <button id="mpshow" class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">
-                                        <svg class="h-4 w-4 text-purple-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
-                                    </button>
+                                    <input class="float-left bg-transparent border-0 w-11/12 h-full focus:outline-none"
+                                        type="text" id="suggest2">
+{{--                                    <button class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">--}}
+                                        <svg class="h-4 w-4 text-purple-500" id="geobut2" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
+                                        <img src="images/close.png" class="absolute right-2 bottom-1.5 cursor-pointer" id="closeBut2" hidden>
+{{--                                    </button>--}}
                                 </div>
                             </div>
                             <div class="w-full">
                                 <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
-                                <select name="" id="selectGeo" class="w-full py-1 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded" onchange="r=$('#selectGeo').val(); enDis(r); map_pos(k)">
+                                <select id="selectGeo2" class="w-full py-1 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded">
                                     <option value="0">@lang('lang.search_byMapRadiusNo')</option>
                                     <option value="1.5">1.5 km</option>
                                     <option value="3">3 km</option>
@@ -150,71 +150,24 @@
 
                     <div class=" w-11/12 mx-auto border-b pb-4">
                         <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
-                        <input type="text" maxlength="7" class="w-full focus:placeholder-transparent border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
+                        <input type="text" maxlength="7" class="w-full focus:placeholder-transparent border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price2">
+                        <img src="images/close.png" class="absolute right-2 bottom-2.5 cursor-pointer" id="prcClose2" hidden>
                     </div>
 
                     <div class="w-11/12 mx-auto">
                         <label class="block w-full border-b pb-4 items-center mt-3">
-                            <input type="checkbox" class="form-checkbox checkboxByAs mr-4  h-5 w-5 text-orange-400"
+                            <input type="checkbox" id="remJob2" class="form-checkbox checkboxByAs mr-4  h-5 w-5 text-orange-400"
                             ><span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_remoteJob')</span>
                         </label>
                         <label class="block w-full border-b pb-4 items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
-                            <input type="checkbox" class="form-checkbox mr-4  h-5 w-5 text-orange-400"
+                            <input type="checkbox" id="noResp2" class="form-checkbox mr-4  h-5 w-5 text-orange-400"
                             ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_noCallback')</span>
                         </label>
-                        <label class="block w-full border-b pb-4 items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
-                            <input type="checkbox" class="form-checkbox mr-4  h-5 w-5 text-orange-400"
-                            ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_onlyVacancy')</span>
-                        </label>
+{{--                        <label class="block w-full border-b pb-4 items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">--}}
+{{--                            <input type="checkbox" class="form-checkbox mr-4  h-5 w-5 text-orange-400"--}}
+{{--                            ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_onlyVacancy')</span>--}}
+{{--                        </label>--}}
                     </div>
-{{--                <div>--}}
-{{--                    accordion for categories--}}
-{{--                    <div class="max-w-lg mx-auto">--}}
-{{--                        <div class="w-full my-1 for_check2">--}}
-{{--                            <label--}}
-{{--                                class="font-medium rounded-lg text-sm text-center inline-flex items-center ml-5 hover:cursor-pointer">--}}
-{{--                                <input type="checkbox" class="all_cat2 mr-1 hover:cursor-pointer"/> @lang('lang.search_allCat')--}}
-{{--                            </label>--}}
-{{--                                @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)--}}
-{{--                                <div x-data={show:false} class="rounded-sm">--}}
-{{--                                    <div @click="show=!show" class="" id="headingOne">--}}
-{{--                                        <button--}}
-{{--                                                class="underline text-blue-500 hover:text-blue-700 focus:outline-none"--}}
-{{--                                                type="button">--}}
-{{--                                            <svg class="w-4 h-4 rotate -rotate-90" fill="none"--}}
-{{--                                                 stroke="currentColor" viewBox="0 0 24 24"--}}
-{{--                                                 xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                                <path stroke-linecap="round" stroke-linejoin="round"--}}
-{{--                                                      stroke-width="2" d="M19 9l-7 7-7-7"></path>--}}
-{{--                                            </svg>--}}
-{{--                                        </button>--}}
-{{--                                        <label--}}
-{{--                                            class="font-medium rounded-lg text-sm text-center inline-flex items-center hover:cursor-pointer">--}}
-{{--                                            <input type="checkbox" class="par_cat2 mr-1 hover:cursor-pointer"--}}
-{{--                                                   name="{{$category->id}}"--}}
-{{--                                                   id="par{{$category->id}}"/> {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-{{--                                        </label>--}}
-{{--                                    </div>--}}
-{{--                                    <div x-show="show" class="border border-b-0 px-8 py-0">--}}
-{{--                                            @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)--}}
-{{--                                            <div class="par{{$category->id}}">--}}
-{{--                                                <label--}}
-{{--                                                    class="font-medium rounded-lg text-sm text-left inline-flex items-baseline hover:cursor-pointer">--}}
-{{--                                                    <input type="checkbox"--}}
-{{--                                                           class="chi_cat2 mr-1 hover:cursor-pointer"--}}
-{{--                                                           name="{{$category2->id}}"--}}
-{{--                                                           id="par{{$category->id}}"/> {{$category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}--}}
-{{--                                                </label>--}}
-{{--                                            </div>--}}
-{{--                                        @endforeach--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>--}}
-{{--                </div>--}}
-
 {{--                mobile bar end--}}
 
 {{--                mobile map--}}
@@ -237,7 +190,7 @@
                             <span class="title__994cd">@lang('lang.search_filter')</span>
                             <button id="byDate" class="mx-5">@lang('lang.search_byDate')</button>
                             <button id="bySroch" class="mx-5 active">@lang('lang.search_byHurry')</button>
-                            <button id="byRem" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>
+{{--                            <button id="byRem" data-sort-type="3"  class="mx-5 ">@lang('lang.search_byRemote')</button>--}}
                         </div>
                     </div>
                     <div id="scrollbar" class="w-full h-full blog1">
@@ -346,11 +299,9 @@
 @section("javasript")
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script type="text/javascript" src="https://enterprise.api-maps.yandex.ru/2.1.78/?load=package.full&mode=release&lang=ru_RU&coordorder=latlong&apikey=f79d7563-b21d-46b7-8bc4-9f95399340fa" async="true"></script>
-{{--    <script type="text/javascript" src="https://enterprise.api-maps.yandex.ru/2.1.78/?load=package.full&mode=release&lang=ru_RU&coordorder=latlong&apikey=f79d7563-b21d-46b7-8bc4-9f95399340fa&onload=YoudoInitAllMaps" async="true"></script>--}}
-{{--    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>--}}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
-{{--    <script src="/js/search_tasks.js"></script>--}}
+    {{--    <script src="/js/search_tasks.js"></script>--}}
     <script>
 
         // module.exports = {
@@ -383,117 +334,117 @@
 
     </script>
     <script>
-        $(document).ready(function() {
-            $("#show_2").click(function() {
-                $("#hide_2").css('display', 'block');
-                $("#show_2").css('display', 'none');
-                $("#mobile_bar").css('display', 'block');
-            });
-            $("#hide_2").click(function() {
-                $("#hide_2").css('display', 'none');
-                $("#show_2").css('display', 'block');
-                $("#mobile_bar").css('display', 'none');
-            });
-        });
+        // $(document).ready(function() {
+        //     $("#show_2").click(function() {
+        //         $("#hide_2").css('display', 'block');
+        //         $("#show_2").css('display', 'none');
+        //         $("#mobile_bar").css('display', 'block');
+        //     });
+        //     $("#hide_2").click(function() {
+        //         $("#hide_2").css('display', 'none');
+        //         $("#show_2").css('display', 'block');
+        //         $("#mobile_bar").css('display', 'none');
+        //     });
+        // });
 
     </script>
     <script>
-        $(document).ready(function() {
-            $("#show").click(function() {
-                map1_show();
-                $("#hide").css('display', 'block');
-                $("#show").css('display', 'none');
-                $("#scrollbar").css('display', 'none');
-                $("footer").css('display', 'none');
-                $('#big-big').removeClass("hidden");
-            });
-            $("#hide").click(function() {
-                $('#big-big').addClass("hidden");
-                $("#hide").css('display', 'none');
-                $("#show").css('display', 'block');
-                $("#scrollbar").css('display', 'block');
-                $("footer").css('display', 'block');
-            });
-        });
+        // $(document).ready(function() {
+        //     $("#show").click(function() {
+        //         map1_show();
+        //         $("#hide").css('display', 'block');
+        //         $("#show").css('display', 'none');
+        //         $("#scrollbar").css('display', 'none');
+        //         $("footer").css('display', 'none');
+        //         $('#big-big').removeClass("hidden");
+        //     });
+        //     $("#hide").click(function() {
+        //         $('#big-big').addClass("hidden");
+        //         $("#hide").css('display', 'none');
+        //         $("#show").css('display', 'block');
+        //         $("#scrollbar").css('display', 'block');
+        //         $("footer").css('display', 'block');
+        //     });
+        // });
 
     </script>
     <script type="text/javascript">
-        function toggleModal(){
-            document.getElementById("modal-id").classList.toggle("hidden");
-            document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
-            document.getElementById("modal-id").classList.toggle("flex");
-            document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
-        }
-        function toggleModal1(){
-            var element = document.getElementById("modal-id-backdrop");
-            element.classList.add("hidden");
-            var element2 = document.getElementById("modal-id");
-            var b = document.getElementById("myText").value;
-            var u = document.getElementById("amount_u");
-            u.value = b;
-            element2.classList.add("hidden");
-            document.getElementById("modal-id1").classList.toggle("hidden");
-            document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
-            document.getElementById("modal-id1").classList.toggle("flex");
-            document.getElementById("modal-id1" + "-backdrop").classList.toggle("flex");
-        }
-        function borderColor() {
-            var element = document.getElementById("demo");
-            element.classList.add("border-amber-500");
-        }
-        function inputFunction() {
-            var x = document.getElementById("myText").value;
-            if(x < 4000){
-                document.getElementById('button').removeAttribute("onclick");
-                document.getElementById('button').classList.remove("bg-green-500");
-                document.getElementById('button').classList.add("bg-gray-500");
-                document.getElementById('button').classList.remove("hover:bg-green-500");
-                document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
-            }else{
-                document.getElementById('button').setAttribute("onclick","toggleModal1();");
-                document.getElementById('button').classList.remove("bg-gray-500");
-                document.getElementById('button').classList.add("bg-green-500");
-                document.getElementById('button').classList.add("hover:bg-green-500");
-                document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
-            }
-        }
-        function checkFunction() {
-            var x = document.getElementById("myText").value;
-            var checkBox = document.getElementById("myCheck");
-            if (checkBox.checked == true){
-                document.getElementById("button").innerHTML ="К оплате " + (parseInt(x) + 10000);
-            } else {
-                document.getElementById("button").innerHTML ="К оплате " + x  +"UZS";
-            }
-        }
-        function validate(evt) {
-            var theEvent = evt || window.event;
-            // Handle paste
-            if (theEvent.type === 'paste') {
-                key = event.clipboardData.getData('text/plain');
-            } else {
-                // Handle key press
-                var key = theEvent.keyCode || theEvent.which;
-                key = String.fromCharCode(key);
-            }
-            var regex = /[0-9]|\./;
-            if( !regex.test(key) ) {
-                theEvent.returnValue = false;
-                if(theEvent.preventDefault) theEvent.preventDefault();
-            }
-        }
+        // function toggleModal(){
+        //     document.getElementById("modal-id").classList.toggle("hidden");
+        //     document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
+        //     document.getElementById("modal-id").classList.toggle("flex");
+        //     document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
+        // }
+        // function toggleModal1(){
+        //     var element = document.getElementById("modal-id-backdrop");
+        //     element.classList.add("hidden");
+        //     var element2 = document.getElementById("modal-id");
+        //     var b = document.getElementById("myText").value;
+        //     var u = document.getElementById("amount_u");
+        //     u.value = b;
+        //     element2.classList.add("hidden");
+        //     document.getElementById("modal-id1").classList.toggle("hidden");
+        //     document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
+        //     document.getElementById("modal-id1").classList.toggle("flex");
+        //     document.getElementById("modal-id1" + "-backdrop").classList.toggle("flex");
+        // }
+        // function borderColor() {
+        //     var element = document.getElementById("demo");
+        //     element.classList.add("border-amber-500");
+        // }
+        // function inputFunction() {
+        //     var x = document.getElementById("myText").value;
+        //     if(x < 4000){
+        //         document.getElementById('button').removeAttribute("onclick");
+        //         document.getElementById('button').classList.remove("bg-green-500");
+        //         document.getElementById('button').classList.add("bg-gray-500");
+        //         document.getElementById('button').classList.remove("hover:bg-green-500");
+        //         document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+        //     }else{
+        //         document.getElementById('button').setAttribute("onclick","toggleModal1();");
+        //         document.getElementById('button').classList.remove("bg-gray-500");
+        //         document.getElementById('button').classList.add("bg-green-500");
+        //         document.getElementById('button').classList.add("hover:bg-green-500");
+        //         document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+        //     }
+        // }
+        // function checkFunction() {
+        //     var x = document.getElementById("myText").value;
+        //     var checkBox = document.getElementById("myCheck");
+        //     if (checkBox.checked == true){
+        //         document.getElementById("button").innerHTML ="К оплате " + (parseInt(x) + 10000);
+        //     } else {
+        //         document.getElementById("button").innerHTML ="К оплате " + x  +"UZS";
+        //     }
+        // }
+        // function validate(evt) {
+        //     var theEvent = evt || window.event;
+        //     // Handle paste
+        //     if (theEvent.type === 'paste') {
+        //         key = event.clipboardData.getData('text/plain');
+        //     } else {
+        //         // Handle key press
+        //         var key = theEvent.keyCode || theEvent.which;
+        //         key = String.fromCharCode(key);
+        //     }
+        //     var regex = /[0-9]|\./;
+        //     if( !regex.test(key) ) {
+        //         theEvent.returnValue = false;
+        //         if(theEvent.preventDefault) theEvent.preventDefault();
+        //     }
+        // }
     </script>
     {{-- pay modal end --}}
     <script>
-        $('.has-clear input[type="text"]').on('input propertychange', function() {
-            var $this = $(this);
-            var visible = Boolean($this.val());
-            $this.siblings('.form-control-clear').toggleClass('hidden', !visible);
-        }).trigger('propertychange');
-
-        $('.form-control-clear').click(function() {
-            $(this).siblings('input[type="text"]').val('')
-                .trigger('propertychange').focus();
-        });
+        // $('.has-clear input[type="text"]').on('input propertychange', function() {
+        //     var $this = $(this);
+        //     var visible = Boolean($this.val());
+        //     $this.siblings('.form-control-clear').toggleClass('hidden', !visible);
+        // }).trigger('propertychange');
+        //
+        // $('.form-control-clear').click(function() {
+        //     $(this).siblings('input[type="text"]').val('')
+        //         .trigger('propertychange').focus();
+        // });
     </script>
 @endsection
