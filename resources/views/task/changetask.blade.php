@@ -21,7 +21,7 @@
                     <label class="text-sm">
                         Мне нужно
                         <input type="text" name="name"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full"
+                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full"
                                value="{{ $task->name }}">
                         @error('name')
                         <p class="text-red-500">{{ $message }}</p>
@@ -160,7 +160,7 @@
                                     <input
                                         placeholder="{{ $data->getTranslatedAttribute('placeholder',Session::get('lang') , 'fallbackLocale') }}"
                                         id="car" name="{{$data->name}}[]" type="text" value="{{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] : null }}"
-                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                                        class="shadow appearance-none border focus:outline-none  focus:border-yellow-500 rounded w-full py-2 px-3 text-gray-700 leading-tight"
                                         required>
 
                                 </div>
@@ -196,9 +196,9 @@
                 <div class="my-2">
                     <label class="text-xs text-gray-500">
                         Ценность покупки, SUM
-                        <input type="number"
+                        <input type="text"  onkeypress='validate(event)'
                                name="budget" value="{{ $task->price }}"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">
+                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">
 
                     </label>
                 </div>
@@ -207,7 +207,7 @@
                         Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу
                         <textarea type="number"
                                   name="description"
-                                  class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">{{ $task->description }}</textarea>
+                                  class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">{{ $task->description }}</textarea>
                         @error('description')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
@@ -295,7 +295,7 @@
                                 <ymaps
                                     style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;"></ymaps>
                                 <input autocomplete="off" oninput="myFunction()" id="suggest0"
-                                       class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                                       class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
                                        type="text" placeholder="Город, Улица, Дом"
                                        value="{{ json_decode($task->address)->location }}" name="address">
                                 @error('address')
@@ -383,7 +383,7 @@
                         или укажите другую сумму &nbsp
                     </span>
                         <input
-                            class="border border-gray-200 md:mx-4 md:px-2 py-2 pr-2 rounded-md focus:outline-none text-right"
+                            class="border border-gray-200 md:mx-4 md:px-2 py-2 pr-2 rounded-md focus:outline-none focus:border-yellow-500 text-right"
                             placeholder="SUMMA" name="budget" value="{{ $task->price }}">SUM
                         @error('budget')
                         <p class="text-red-500">{{ $message }}</p>
@@ -393,7 +393,7 @@
                 <div class="text-base my-4 ">
                     <h1 class="text-xl font-semibold py-2">Ваши контакты</h1>
                     <input id="phone_number"
-                           class="text-base border border-gray-200 md:w-1/2 focus:outline-none py-2 px-3 rounded-md"
+                           class="text-base border border-gray-200 md:w-1/2 focus:outline-none focus:border-yellow-500 py-2 px-3 rounded-md"
                            type="text" value="+998{{ $task->phone }}"
                            placeholder="+998(00)000-00-00">
                     <input type="hidden" id="phone" name="phone" value="{{ $task->phone }}">

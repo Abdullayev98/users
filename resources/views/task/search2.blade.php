@@ -24,13 +24,13 @@
                                     <div class="grid grid-cols-4 gap-4 mb-3">
 
                                         <div class="inline-flex w-full col-span-4">
-                                            <input id="suggest" class="w-full text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="@lang('lang.search2_location')" aria-label="Full name">
+                                            <input id="suggest" class="w-full focus:outline-none focus:border-yellow-500 text-black-700 border border-black rounded mr-3 px-1" type="text" placeholder="@lang('lang.search2_location')" aria-label="Full name">
                                             <button id="mpshow" class="bg-green-500 px-4 py-1 rounded">@lang('lang.search2_find')</button>
                                         </div>
 
                                         <div class="col-span-2">
                                             <label class="text-xs">@lang('lang.search2_detLoc')</label>
-                                            <input class="focus:outline-none  border border-black rounded w-full text-black-700 py-1 px-1" type="text">
+                                            <input class="focus:outline-none focus:border-yellow-500  border border-black rounded w-full text-black-700 py-1 px-1" type="text">
                                         </div>
 
                                         <div class="">
