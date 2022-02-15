@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Task;
 
 use App\Http\Controllers\Controller;
-use App\Models\Response;
 use App\Models\Task;
 use App\Models\TaskResponse;
 use App\Models\WalletBalance;
@@ -29,7 +28,7 @@ class ResponseController extends Controller
         } else {
             $data['not_free'] = 1;
         }
-        $response = Response::create($data);
+        $response = TaskResponse::create($data);
         $ballance = WalletBalance::where('user_id', auth()->user()->id)->first();
         if ($ballance) {
             if ($ballance->balance < 4000) {
