@@ -28,7 +28,7 @@
                         <input type="text" name="name" placeholder="@lang('lang.signup_username')"
                                value="{{ request()->input('name', old('name')) }}"
                                id="name"
-                               class=" focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded sm:w-80 w-72 py-2 px-3 text-gray-700 leading-tight hover:border-amber-500">
+                               class="focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded sm:w-80 w-72 py-2 px-3 text-gray-700 leading-tight hover:border-amber-500">
                         @error('name')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
