@@ -2,10 +2,10 @@
 
 @section("content")
     {{--@foreach($users as $user)--}}
-    <div class="w-10/12 mx-auto">
-        <div class="grid grid-cols-3  grid-flow-row mt-10">
+    <div class="xl:w-9/12 w-10/12 mx-auto">
+        <div class="grid grid-cols-3 grid-flow-row mt-10">
             {{-- left sidebar start --}}
-            <div class="col-span-2 px-2 mx-3 float-left">
+            <div class="lg:col-span-2 col-span-3">
                 <figure class="w-full">
                     <div class="float-right text-gray-500 text-sm">
                         <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
@@ -72,7 +72,7 @@
                                  <i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i>
                                 <span class="text-cyan-500 hover:text-red-600">(197 @lang('lang.exe_feedbacks'))</span>
                             </div> --}}
-                            <div class="flex mt-6">
+                            <div class="flex mt-6 items-center">
 
                                 <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
                                     <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
@@ -200,7 +200,7 @@
                 </div>
             </div>
 
-            <div class="col-span-1 inline-block w-80 float-right">
+            <div class="lg:col-span-1 col-span-2 w-80">
                 <div class="mt-16 border p-8 rounded-lg border-gray-300">
                     <div>
                         <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
@@ -235,7 +235,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-2">
+                <div class="mt-8">
                     <h1 class="text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
                     <ul>
                         @foreach(explode(',', $user->category_id) as $user_cat)

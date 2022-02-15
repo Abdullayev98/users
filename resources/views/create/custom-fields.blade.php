@@ -151,7 +151,7 @@ json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->f
                     placeholder="{{ $data->getTranslatedAttribute('placeholder') }}"
 
                     id="car" name="{{$data->name}}[]" type="text" value="{{ isset($task) && $task->custom_field_values()->where('custom_field_id', $data->id)->first() ? json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)[0] :null }}"
-                    class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                    class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
                     required>
 
             </div>

@@ -45,7 +45,7 @@
                                                     </div>
                                                     <div class="handle__27597">
 
-                                                        <input class="focus:outline-none  mt-8" type="text" id="amount" name="amount1" readonly >
+                                                        <input class="focus:outline-none focus:border-yellow-500  mt-8" type="text" id="amount" name="amount1" readonly >
 
                                                     </div>
                                                     <div class="tickWrapper__6685b" style="width: 16.6667%; left: 0%;">

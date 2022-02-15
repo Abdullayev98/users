@@ -6,9 +6,9 @@
             <div class="bg-yellow-50 p-8 rounded-md my-6 flex flex-wrap">
                 @foreach($comment as $comments)
                 Portfilio Name
-                <input class="border focus:outline-none mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" disabled value="{{$comments->comment}}">
+                <input class="border focus:outline-none focus:border-yellow-500 mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" disabled value="{{$comments->comment}}">
                 Portfolio Description
-                <input class="border focus:outline-none mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" disabled value="{{$comments->description}}">
+                <input class="border focus:outline-none focus:border-yellow-500 mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" disabled value="{{$comments->description}}">
 
 
             @php

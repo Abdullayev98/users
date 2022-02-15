@@ -236,7 +236,7 @@
                                                                 </header>
                                                                 <main>
                                                                 <textarea required
-                                                                          class="resize-none rounded-md w-full focus:outline-none border border p-4  transition duration-200 my-4"
+                                                                          class="resize-none rounded-md w-full focus:outline-none  focus:border-yellow-500 border border p-4  transition duration-200 my-4"
                                                                           type="text" id="form8" rows="4"
                                                                           name="description"></textarea>
                                                                     <p id="text1" class="hidden text-lg">Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта</p>
@@ -244,12 +244,12 @@
                                                                         <label class=" px-2">
                                                                             <input type="checkbox"
                                                                                    name="notification_on"
-                                                                                   class="mr-2 my-3 ">@lang('lang.detT_notifMe')
+                                                                                   class="mr-2 my-3 focus:outline-none  focus:border-yellow-500">@lang('lang.detT_notifMe')
                                                                             <br>
                                                                         </label>
                                                                         <label class="px-2">
                                                                             <input
-                                                                                class="focus:outline-none   my-3 coupon_question mr-2"
+                                                                                class="focus:outline-none  focus:border-yellow-500   my-3 coupon_question mr-2"
                                                                                 type="checkbox" name="coupon_question"
                                                                                 value="1"
                                                                                 onchange="valueChanged()"/>@lang('lang.detT_pointTime')
@@ -281,13 +281,13 @@
                                                                     </div>
                                                                     <label>
                                                                         <input type="text" onkeypress='validate(event)'
-                                                                               checked name="budget"
-                                                                               class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
+                                                                               checked name="price"
+                                                                               class="border rounded-md px-2 border-solid focus:outline-none  focus:border-yellow-500 mr-3 my-2">UZS
                                                                         <input type="text" name="pay"
-                                                                               class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden"
+                                                                               class="pays border rounded-md px-2 border-solid focus:outline-none  focus:border-yellow-500 mr-3 my-2 hidden"
                                                                                value="0">
                                                                         <input type="text" name="task_user_id"
-                                                                               class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden"
+                                                                               class="pays border rounded-md px-2 border-solid focus:outline-none  focus:border-yellow-500 mr-3 my-2 hidden"
                                                                                value="{{$task->user_id}}">
                                                                     </label>
                                                                     <hr>
@@ -446,12 +446,8 @@
                             <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                             <div class="flex flex-row mt-4">
                                 <div class="mr-4">
-                                    <img src="
-                                    @if ($task->user->avatar == '')
-                                    {{ asset("storage/images/default.png") }}
-                                    @else
-                                    {{ asset("storage/{$task->user->avatar}") }}
-                                        " @endif
+                                    <img src="@if ($task->user->avatar == ''){{ asset("storage/images/default.png") }}
+                                    @else{{asset("storage/{$task->user->avatar}") }}" @endif
                                          class="border-2 border-gray-400 w-32 h-32" alt="#">
                                 </div>
                                 <div class="">
@@ -516,7 +512,7 @@
                                     </label>
                                 </div>
                                 <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white shadow-lg drop-shadow-xl
-                                        border resize-none w-full border-solid border-gray-200 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-300 focus:outline-none"></textarea>
+                                        border resize-none w-full border-solid border-gray-200 rounded transition ease-in-out m-0 focus:outline-none  focus:border-yellow-500 "></textarea>
 
                                 <button
                                     class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
