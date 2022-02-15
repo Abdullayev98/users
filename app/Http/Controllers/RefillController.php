@@ -38,7 +38,7 @@ public function ref(Request $request){
             return view('paycom.send', ['transaction' => $tr]);
         break;
         case 'Paynet':
-            dd('Paynet testing');
+            return redirect()->to("https://paynet.uz/");
         break;
     }
 
