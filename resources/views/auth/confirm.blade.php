@@ -23,7 +23,7 @@
                             @lang('lang.confirm_otp') <span class="text-red-500">*</span>
                         </label>
                             <input type="text" name="confirm_otp" placeholder="sms code" value="{{ request()->input('confirm_otp', old('confirm_otp')) }}"
-                            id="confirm_otp" class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                            id="confirm_otp" class="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:border-yellow-500">
                         <br>
                         @if ($errors->has('confirm_otp'))
                             <span class="text-danger" style="color: red">{{ $errors->first('confirm_otp') }}</span>
