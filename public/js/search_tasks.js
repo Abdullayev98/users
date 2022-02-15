@@ -1,5 +1,5 @@
 let r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
-let dataAjaxCheck = 1, allCheck = 1, sortByDateCheck = 0, sortBySrochCheck = 0, remJobCheck = 0, bezOtkCheck = 0;
+let dataAjaxCheck = 1, allCheck = 1, remJobCheck = 0, bezOtkCheck = 0;
 let dataAjax = [], dataAjax2 = [], dataAjaxPrint = [];
 let dataGeo = [], userCoordinates = [[],[]];
 $('.all_cat').click();
@@ -78,7 +78,20 @@ function ajaxFilter() {
     if ($.trim(nameVal1) != '' || $.trim(nameVal2) != '' || $.trim(nameVal3) != ''){
         first_ajax('klyuch', nameVal1, nameVal2, nameVal3)
     }
+    if ($.trim(nameVal1) == '' && $.trim(nameVal2) == '' && $.trim(nameVal3) == ''){
+        dataAjaxCheck = 1;
+        sixInOne();
+    }
 }
+
+$("#filter").keyup(function() {
+    if ($('#filter').val().trim().length == 0) {
+        $('#svgClose').hide();
+        ajaxFilter()
+    }else{
+        $('#svgClose').show();
+    }
+});
 
 $('#filter').on('keypress',function(e) {
     if(e.which == 13) {
@@ -86,10 +99,17 @@ $('#filter').on('keypress',function(e) {
     }
 });
 
+$("#svgClose").click(function() {
+    $('#filter').val('');
+    $('#svgClose').hide();
+    ajaxFilter();
+});
+
 $("#suggest").keyup(function() {
     if ($('#suggest').val().trim().length == 0) {
         $('#closeBut').hide();
         $('#geoBut').show();
+        ajaxFilter()
     }else{
         $('#geoBut').hide();
         $('#closeBut').show();
@@ -105,6 +125,7 @@ $('#suggest').on('keypress',function(e) {
 $("#price").keyup(function() {
     if ($('#price').val().trim().length == 0) {
         $('#prcClose').hide();
+        ajaxFilter()
     }else{
         $('#prcClose').show();
     }
@@ -129,49 +150,25 @@ $("#closeBut").click(function() {
     $('#suggest').val('');
     $('#closeBut').hide();
     $('#geoBut').show();
+    ajaxFilter()
 });
 
 $("#selectGeo").change(function() {
-    let r0 = r;
     r = $('#selectGeo').val();
-    if(r0 == 0 && r > 0){
-        $('#geoBut').show();
-        $('#suggest').removeAttr('disabled');
-    }
-    if(r == 0){
-        $('#suggest').val('')
-        $('#geoBut').hide()
-        $('#closeBut').hide();
-        $('#suggest').attr('disabled','disabled')
-    }
     map_pos(k)
 });
 
 $("#prcClose").click(function() {
     $('#price').val('');
     $('#prcClose').hide();
+    ajaxFilter();
 });
 
 $("#remJob").click(function() {
     if (this.checked == true){
         remJobCheck = 1;
-        $('#geoBut').hide();
-        $('#closeBut').hide();
-        $('#selectGeo').attr('disabled','disabled');
-        $('#suggest').attr('disabled','disabled');
-        $('#byRem').hide();
     }else {
         remJobCheck = 0;
-    if ($('#suggest').val().trim().length == 0 && r > 0) {
-        $('#geoBut').show();
-    }else{
-        if ($('#suggest').val().trim().length != 0 && r > 0) {
-        $('#closeBut').show();
-        }
-    }
-        $('#selectGeo').removeAttr('disabled');
-        $('#suggest').removeAttr('disabled');
-        $('#byRem').show();
     }
     sixInOne();
 });
@@ -248,8 +245,14 @@ function resetCounters(){
 }
 
 function maps_show(){
+    dataGeo = [];
+    if (dataAjaxPrint.length != 0) {
+        for (var i = 0; i < dataAjaxPrint.length; i++) {
+            dataGeo.push(dataAjaxPrint[i].coordinates.split(','));
+        }
+    }
     map_pos(k)
-    map1_show()
+    // map1_show()
 }
 
 function sixInOne(){
@@ -278,17 +281,11 @@ function img_show() {
 }
 
 function tasks_show(){
-    if (s == 0){dataGeo = []}
     let i = 1, id;
     $('.print_block').each(function() {
         if ((this.hidden) && (i <= p) && (s <= dl))
         {
             id = this.id
-            $.each(dataAjaxPrint, function (index, data) {
-                if (data.id == id) {
-                    dataGeo.push(data.coordinates.split(','));
-                }
-            });
             this.hidden = false;
             i++
             s++
@@ -508,7 +505,7 @@ function map_pos(mm) {
                 controls: ['geolocationControl'],
                 behaviors: ['default', 'scrollZoomNo']
             }, {
-                // searchControlProvider: 'yandex#search'
+                searchControlProvider: 'yandex#search'
             });
 
             circle = new ymaps.Circle([userCoordinates, r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
@@ -516,7 +513,7 @@ function map_pos(mm) {
 
             clusterer = new ymaps.Clusterer({
                 preset: 'islands#invertedGreenClusterIcons',
-                hasBalloon: false,
+                // hasBalloon: false,
                 groupByCoordinates: false,
                 clusterDisableClickZoom: true,
                 clusterHideIconOnBalloonOpen: false,
@@ -524,7 +521,7 @@ function map_pos(mm) {
             });
             getPointData = function (index) {
                 return {
-                    balloonContentBody: '<br><font size=4><b><a href="">' + dataAjaxPrint[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjaxPrint[index].start_date + ' - ' + dataAjaxPrint[index].end_date + '</p></font><br><font size=3><p>' + dataAjaxPrint[index].budget + '</p></font>',
+                    balloonContentBody: '<br><font size=4><b><a href="/detailed-tasks/' + dataAjaxPrint[index].id + '">' + dataAjaxPrint[index].name + '</a></b></font><br><br><font size=3><p>' + dataAjaxPrint[index].start_date + ' - ' + dataAjaxPrint[index].end_date + '</p></font><br><font size=3><p>' + dataAjaxPrint[index].budget + '</p></font>',
                     clusterCaption: 'Задания <strong>' + dataAjaxPrint[index].id + '</strong>'
                 };
             }
@@ -581,7 +578,7 @@ function map_pos(mm) {
                 controls: ['geolocationControl'],
                 behaviors: ['default', 'scrollZoomNo']
             }, {
-                // searchControlProvider: 'yandex#search'
+                searchControlProvider: 'yandex#search'
             });
 
             clusterer = new ymaps.Clusterer({
