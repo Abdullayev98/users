@@ -13,40 +13,33 @@ use Illuminate\Support\Facades\Auth;
 class RefillAPIController extends Controller
 {
     public function ref(Request $request){
+        
+        $payment = $request->get("paymethod");
+        switch($payment){
+            case 'Click':
+                $new_article = All_transaction::create([
+                    'user_id' => Auth::id(),
+                    'amount'  => $request->get("amount"),
+                    'method'  => "Click",
+                ]);
 
-        if($request->get("paymethod") == 'Click'){
+                $amount = $request->get("amount");
+                $article_id = $new_article->id;
 
-            $new_article = All_transaction::create([
-
-                'user_id'=> Auth::id(),
-                'amount'=> $request->get("amount"),
-                'method'=> "Click",
-
-            ]);
-
-            $amount = $request->get("amount");
-            $article_id = $new_article->id;
-
-            return redirect()->to("https://my.click.uz/services/pay?service_id=19839&merchant_id=14364&amount=$amount.00&transaction_param=$article_id&return_url=https://youdo.teampro.uz");
-
-        }
-
-        if($request->get("paymethod") == 'PayMe'){
-
-            $tr = new All_transaction();
-            $tr->user_id = Auth::id();
-            $tr->amount  = $request->get("amount");
-            $tr->method  = $tr::DRIVER_PAYME;
-            $tr->state   = $tr::STATE_WAITING_PAY;
-            $tr->save();
-
-            // return redirect()->route('paycom.send', ['transaction' => $tr]);
-            return view('paycom.send', ['transaction' => $tr]);
-        }
-
-
-        if($request->get("paymethod") == 'Paynet'){
-            dd('Paynet testing');
+                return redirect()->to("https://my.click.uz/services/pay?service_id=19839&merchant_id=14364&amount=$amount.00&transaction_param=$article_id&return_url=https://user.uz/profile");
+                break;
+            case 'PayMe':
+                $tr = new All_transaction();
+                $tr->user_id = Auth::id();
+                $tr->amount  = $request->get("amount");
+                $tr->method  = $tr::DRIVER_PAYME;
+                $tr->state   = $tr::STATE_WAITING_PAY;
+                $tr->save();
+                return view('paycom.send', ['transaction' => $tr]);
+                break;
+            case 'Paynet':
+                dd('Paynet testing');
+                break;
         }
 
     }
