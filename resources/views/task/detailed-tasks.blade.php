@@ -281,7 +281,7 @@
                                                                     </div>
                                                                     <label>
                                                                         <input type="text" onkeypress='validate(event)'
-                                                                               checked name="budget"
+                                                                               checked name="price"
                                                                                class="border rounded-md px-2 border-solid focus:outline-none  focus:border-yellow-500 mr-3 my-2">UZS
                                                                         <input type="text" name="pay"
                                                                                class="pays border rounded-md px-2 border-solid focus:outline-none  focus:border-yellow-500 mr-3 my-2 hidden"
@@ -446,12 +446,8 @@
                             <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                             <div class="flex flex-row mt-4">
                                 <div class="mr-4">
-                                    <img src="
-                                    @if ($task->user->avatar == '')
-                                    {{ asset("storage/images/default.png") }}
-                                    @else
-                                    {{ asset("storage/{$task->user->avatar}") }}
-                                        " @endif
+                                    <img src="@if ($task->user->avatar == ''){{ asset("storage/images/default.png") }}
+                                    @else{{asset("storage/{$task->user->avatar}") }}" @endif
                                          class="border-2 border-gray-400 w-32 h-32" alt="#">
                                 </div>
                                 <div class="">
