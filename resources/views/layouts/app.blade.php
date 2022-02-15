@@ -27,6 +27,11 @@
     }
 
 </style>
+<div class="preloader-wrapper">
+    <div class="preloader">
+        <img src="https://c.tenor.com/8ZhQShCQe9UAAAAC/loader.gif" alt="NILA">
+    </div>
+</div>
     <x-navbar/>
     @yield('content')
     <x-footer/>
@@ -44,4 +49,15 @@ var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
 })('https://widget.replain.cc/dist/client.js');
 </script>
 @yield("javasript")
+<script>
+        $(document).ready(function($) {
+        var Body = $('body');
+        Body.addClass('preloader-site');
+    });
+        window.addEventListener('load', function () {
+            $('.preloader-wrapper').fadeOut();
+            var Body = $('body');
+            Body.removeClass('preloader-site');
+        })
+</script>
 </html>

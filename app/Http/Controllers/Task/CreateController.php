@@ -13,10 +13,10 @@ use App\Models\CustomFieldsValue;
 use App\Models\Task;
 use App\Models\User;
 use App\Services\Task\CreateService;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CreateController extends Controller
 {
@@ -142,6 +142,21 @@ class CreateController extends Controller
         return view('create.notes', compact('task'));
     }
 
+    public function images_store(Task $task, Request $request){
+
+        $imgData = [];
+
+            if($request->hasFile('images'))
+            {
+                $files = $request->file('images');
+                Storage::put('public/uploads', $files );
+                $imgData[] = 'uploads'.$files->getClientOriginalName();
+            }
+
+        $task->photos = json_encode($imgData);
+        $task->save();
+    }
+
     public function uploadImage(Task $task, Request $request)
     {
         $folder_task = Task::orderBy('created_at', 'desc')->first();
@@ -168,10 +183,7 @@ class CreateController extends Controller
             'description' => 'required|string',
             'oplata' => 'required'
         ]);
-        $folder_task = Task::orderBy('created_at', 'desc')->first();
-        $image = File::allFiles("storage/Uploads/{$folder_task->name}");
-        $data['photos'] = implode(',', $image);
-        $data['docs'] = $request->docs ? 1 : null;
+
         $task->update($data);
         return redirect()->route("task.create.contact", $task->id);
     }

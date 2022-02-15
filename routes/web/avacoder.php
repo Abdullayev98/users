@@ -29,6 +29,7 @@ Route::prefix("task")->group(function () {
         Route::post('/budget/{task}/store', [CreateController::class, 'budget_store'])->name('task.create.budget.store');
         Route::get('/note/{task}', [CreateController::class, 'note'])->name('task.create.note');
         Route::post('/note/{task}/store', [CreateController::class, 'note_store'])->name('task.create.note.store');
+        Route::post('/note/{task}/images/store', [CreateController::class, 'images_store'])->name('task.create.images.store');
         Route::get('/contact/{task}', [CreateController::class, 'contact'])->name('task.create.contact');
         Route::post('/contact/{task}/store', [CreateController::class, 'contact_store'])->name('task.create.contact.store.phone')->middleware('auth');
         Route::post('/contact/{task}/store/register', [CreateController::class, 'contact_register'])->name('task.create.contact.store.register')->middleware('guest');

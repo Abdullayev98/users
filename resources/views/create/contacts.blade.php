@@ -246,11 +246,6 @@
 
         </div>
     </div>
-
-
-@endsection
-
-@section("javasript")
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
@@ -275,7 +270,8 @@
         // console.log(mask);
         //
         if (element2)
-            var mask2 = new IMask(element2, maskOptions);
+            console.log(element2);
+        var mask2 = new IMask(element2, maskOptions);
 
         function setSelectionRange(input, selectionStart, selectionEnd) {
             if (input.setSelectionRange) {
@@ -306,6 +302,11 @@
 
     </script>
 
+
+
+@endsection
+
+@section("javasript")
 
 
 
