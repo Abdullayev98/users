@@ -1,5 +1,7 @@
 @extends("layouts.app")
 
+
+
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task->responses))
@@ -54,7 +56,8 @@
                                     @endif
                                 </div>
 
-                                <div class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
+                                <div
+                                    class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
                                     <div class="ml-4 md:ml-12 flex flex-row">
                                         @if($task->date_type == 1)
                                             <h1 class="font-bold h-auto w-48">@lang('lang.date_startTask')</h1>
@@ -169,7 +172,7 @@
                                                             </div>
                                                         @endif
                                                     @endif
-                                                    @else
+                                                @else
                                                     <a href="/login">
                                                         <button
                                                             class="font-sans mt-8 text-lg  font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-10 py-4 rounded">
@@ -239,7 +242,9 @@
                                                                           class="resize-none rounded-md w-full focus:outline-none  focus:border-yellow-500 border border p-4  transition duration-200 my-4"
                                                                           type="text" id="form8" rows="4"
                                                                           name="description"></textarea>
-                                                                    <p id="text1" class="hidden text-lg">Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта</p>
+                                                                    <p id="text1" class="hidden text-lg">Если заказчик
+                                                                        захочет с вами связаться, мы автоматически
+                                                                        спишем стоимость контакта с вашего счёта</p>
                                                                     <div class="my-2">
                                                                         <label class=" px-2">
                                                                             <input type="checkbox"
@@ -399,28 +404,28 @@
                                                             @endif
 
                                                             @auth()
-                                                            @if($task->status == 3 && $response->user_id == $task->performer_id)
-                                                                <div class="w-10/12 mx-auto">
-                                                                    <a href="{{ route('personal.chat', $response->user->id) }}"
-                                                                       class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
-                                                                        @lang('lang.detT_writeOnChat')
-                                                                    </a>
+                                                                @if($task->status == 3 && $response->user_id == $task->performer_id)
+                                                                    <div class="w-10/12 mx-auto">
+                                                                        <a href="{{ route('personal.chat', $response->user->id) }}"
+                                                                           class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
+                                                                            @lang('lang.detT_writeOnChat')
+                                                                        </a>
 
-                                                                </div>
-                                                            @elseif($task->status <= 2)
-                                                                <form
-                                                                    action="{{ route('performer.select', $response->id) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    <button
-                                                                        type="submit"
-                                                                        class="cursor-pointer text-semibold text-center w-[200px]
+                                                                    </div>
+                                                                @elseif($task->status <= 2)
+                                                                    <form
+                                                                        action="{{ route('performer.select', $response->id) }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        <button
+                                                                            type="submit"
+                                                                            class="cursor-pointer text-semibold text-center w-[200px]
                                                                  md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition
                                                                  duration-200 text-white bg-green-500 hover:bg-green-500 font-medium
                                                                  border border-transparent rounded-md"> @lang('lang.detT_choose')</button>
 
-                                                                </form>
-                                                            @endif
+                                                                    </form>
+                                                                @endif
 
                                                             @endauth
 
@@ -454,7 +459,7 @@
                                     <a href="/performers/{{$task->user->id}}"
                                        class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
                                     </a>
-                                        <br>
+                                    <br>
                                     <a href="#" class="text-xl text-gray-500">
                                         @if($task->user->age != "")
                                             <p class="inline-block text-m mr-2">
@@ -531,5 +536,26 @@
 
 
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
+
+@endsection
+
+
+@section('javasript')
+
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-rotate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-video.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/fancybox.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/mediateka.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fancybox.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lightgallery.css') }}">
 
 @endsection

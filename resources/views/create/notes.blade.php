@@ -43,6 +43,29 @@
         </div>
 
         <div>
+
+            <div id="drag-drop-area"></div>
+
+            <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
+            <script>
+                var uppy = new Uppy.Core()
+                    .use(Uppy.Dashboard, {
+                        inline: true,
+                        target: '#drag-drop-area',
+                        autoProceed: true,
+                        height: 200
+                    })
+                    .use(Uppy.XHRUpload, {
+                        endpoint: '{{ route('task.create.images.store', $task->id)}}',
+                        fieldName: 'images',
+                        headers: {
+                            'X-CSRF-Token': " {{ csrf_token() }} "
+                        }})
+
+                uppy.on('complete', (result) => {
+                    console.log(result)
+                })
+            </script>
             <!-- <span class="underline decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
         </div>
 

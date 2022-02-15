@@ -19,7 +19,8 @@
         "realrashid/sweet-alert": "^4.1",
         "tcg/voyager": "^1.5",
         "teamprodev/playmobile-sms": "^1.0",
-        "temprodev/laravel-one-auth": "dev-main"
+        "temprodev/laravel-one-auth": "dev-main",
+      "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
