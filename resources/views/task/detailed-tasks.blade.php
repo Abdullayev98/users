@@ -3,14 +3,14 @@
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task->responses))
-        <div class="lg:flex container w-10/12 mx-auto">
-            <div class="md:flex mx-auto w-10/12">
+        <div class="lg:flex container xl:w-9/12 w-11/12 mx-auto">
+            <div class="md:flex mx-auto w-full">
                 @else
-                    <div class="md:flex mx-auto w-10/12 md:w-9/12">
+                    <div class="md:flex mx-auto w-full">
                         @endif
                         <div class="mt-8 lg:flex mb-8">
                             {{-- left sidebar start --}}
-                            <div class="w-10/12 md:w-11/12 float-left">
+                            <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
                                     <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$task->budget}}</p>
@@ -54,8 +54,7 @@
                                     @endif
                                 </div>
 
-                                <div
-                                    class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
+                                <div class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
                                     <div class="ml-4 md:ml-12 flex flex-row">
                                         @if($task->date_type == 1)
                                             <h1 class="font-bold h-auto w-48">@lang('lang.date_startTask')</h1>
@@ -105,7 +104,7 @@
                                         $images = explode(',', $task->photos);
                                         $a = sizeof($images)-1;
                                     @endphp
-                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                    <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
                                         <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_Image')</h1>
                                         @for($i = 0; $i <= $a; $i++)
                                             <img class="w-40 h-40 mx-2" src="{{asset($images[$i])}}"
@@ -123,22 +122,22 @@
                                                     @if(getAuthUserBalance() >= 4000 || $task->responses_count< setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
                                                             <button
-                                                                class="w-full font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300 m-2"
+                                                                class="w-full font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-green-600 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300"
                                                                 id="btn1"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
                                                                 @lang('lang.detT_callbackpay')<br>
-                                                                <span class="text-xs">
+                                                                <span class="text-sm">
                                                                 @lang('lang.detT_callbackpay2')<br>
                                                             </span>
                                                             </button>
                                                             <button
-                                                                class="w-full font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300 m-2"
+                                                                class="w-full font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-yellow-600 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300"
                                                                 id="btn2"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
                                                                 @lang('lang.detT_callback')<br>
-                                                                <span class="text-xs">
+                                                                <span class="text-sm">
                                                                 @lang('lang.detT_callback23')
                                                             </span>
                                                             </button>
@@ -170,7 +169,7 @@
                                                             </div>
                                                         @endif
                                                     @endif
-                                                @else
+                                                    @else
                                                     <a href="/login">
                                                         <button
                                                             class="font-sans mt-8 text-lg  font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-10 py-4 rounded">
@@ -448,7 +447,7 @@
                             <div class="flex flex-row mt-4">
                                 <div class="mr-4">
                                     <img src="
-                            @if ($task->user->avatar == '')
+                                    @if ($task->user->avatar == '')
                                     {{ asset("storage/images/default.png") }}
                                     @else
                                     {{ asset("storage/{$task->user->avatar}") }}
@@ -457,8 +456,9 @@
                                 </div>
                                 <div class="">
                                     <a href="/performers/{{$task->user->id}}"
-                                       class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}</a>
-                                    <br>
+                                       class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
+                                    </a>
+                                        <br>
                                     <a href="#" class="text-xl text-gray-500">
                                         @if($task->user->age != "")
                                             <p class="inline-block text-m mr-2">
