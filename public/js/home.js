@@ -55,9 +55,11 @@ window.onclick = function (event) {
 }
 //Ads swiper
 var swiper = new Swiper('.mySwiper', {
+    autoplay: true,
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
+
     },
 });
 
