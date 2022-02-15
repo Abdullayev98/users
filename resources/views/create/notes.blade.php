@@ -42,33 +42,6 @@
               </div>
         </div>
 
-        <div>
-
-            <div id="drag-drop-area"></div>
-
-            <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
-            <script>
-                var uppy = new Uppy.Core()
-                    .use(Uppy.Dashboard, {
-                        inline: true,
-                        target: '#drag-drop-area',
-                        autoProceed: true,
-                        height: 200
-                    })
-                    .use(Uppy.XHRUpload, {
-                        endpoint: '{{ route('task.create.images.store', $task->id)}}',
-                        fieldName: 'images',
-                        headers: {
-                            'X-CSRF-Token': " {{ csrf_token() }} "
-                        }})
-
-                uppy.on('complete', (result) => {
-                    console.log(result)
-                })
-            </script>
-            <!-- <span class="underline decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
-        </div>
-
           </div>
           <div class="mt-4 ">
                 <div class="w-full text-center flex justify-center items-center gap-2" type="button">
@@ -128,14 +101,88 @@
 </div>
 
 </form>
+<script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
+<script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
+<script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
+
+<script>
+    var uppy = new Uppy.Core({
+        debug: true,
+        autoProceed: true,
+        restrictions: {
+            minFileSize: null,
+            maxFileSize: 10000000,
+            maxTotalFileSize: null,
+            maxNumberOfFiles: 10,
+            minNumberOfFiles: 0,
+            allowedFileTypes: null,
+            requiredMetaFields: [],
+        },
+        meta: {},
+        onBeforeFileAdded: (currentFile, files) => currentFile,
+        onBeforeUpload: (files) => {
+        },
+        locale: {},
+        store: new Uppy.DefaultStore(),
+        logger: Uppy.justErrorsLogger,
+        infoTimeout: 5000,
+    })
+        .use(Uppy.Dashboard, {
+            trigger: '.UppyModalOpenerBtn',
+            inline: true,
+            target: '#photos',
+            showProgressDetails: true,
+            note: 'Все типы файлов, до 10 МБ',
+            width: 'auto',
+            height: '600px',
+            metaFields: [
+                {id: 'name', name: 'Name', placeholder: 'file name'},
+                {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
+            ],
+            browserBackButtonClose: true
+        })
+
+        .use(Uppy.GoogleDrive, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
+        .use(Uppy.Dropbox, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
+        .use(Uppy.Instagram, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
+        .use(Uppy.Facebook, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
+        .use(Uppy.OneDrive, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
+        .use(Uppy.Webcam, {target: Uppy.Dashboard})
+        .use(Uppy.ScreenCapture, {target: Uppy.Dashboard})
+        .use(Uppy.ImageEditor, {target: Uppy.Dashboard})
+        .use(Uppy.DropTarget, {target: document.body})
+        .use(Uppy.GoldenRetriever)
+        .use(Uppy.XHRUpload, {
+            endpoint: '/task/create/upload',
+            fieldName: 'file',
+            headers: file => ({
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
+            }),
+        });
+
+    uppy.on('upload-success', (file, response) => {
+        const httpStatus = response.status // HTTP status code
+        const httpBody = response.body   // extracted response data
+
+        // do something with file and response
+    });
 
 
+    uppy.on('file-added', (file) => {
+        uppy.setFileMeta(file.id, {
+            size: file.size,
+
+        })
+        console.log(file.name);
+    });
+    uppy.on('complete', result => {
+        console.log('successful files:', result.successful)
+        console.log('failed files:', result.failed)
+    });
+</script>
 @endsection
 
 @section("javasript")
-    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
-    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
-    <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
@@ -201,79 +248,5 @@ $("#addinput").on("click" ,"#remove_inputs" , function(){
 console.log(x);
 </script>
 
-    <script>
-        var uppy = new Uppy.Core({
-            debug: true,
-            autoProceed: true,
-            restrictions: {
-                minFileSize: null,
-                maxFileSize: 10000000,
-                maxTotalFileSize: null,
-                maxNumberOfFiles: 10,
-                minNumberOfFiles: 0,
-                allowedFileTypes: null,
-                requiredMetaFields: [],
-            },
-            meta: {},
-            onBeforeFileAdded: (currentFile, files) => currentFile,
-            onBeforeUpload: (files) => {
-            },
-            locale: {},
-            store: new Uppy.DefaultStore(),
-            logger: Uppy.justErrorsLogger,
-            infoTimeout: 5000,
-        })
-            .use(Uppy.Dashboard, {
-                trigger: '.UppyModalOpenerBtn',
-                inline: true,
-                target: '#photos',
-                showProgressDetails: true,
-                note: 'Все типы файлов, до 10 МБ',
-                width: 'auto',
-                height: '600px',
-                metaFields: [
-                    {id: 'name', name: 'Name', placeholder: 'file name'},
-                    {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
-                ],
-                browserBackButtonClose: true
-            })
 
-            .use(Uppy.GoogleDrive, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-            .use(Uppy.Dropbox, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-            .use(Uppy.Instagram, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-            .use(Uppy.Facebook, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-            .use(Uppy.OneDrive, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-            .use(Uppy.Webcam, {target: Uppy.Dashboard})
-            .use(Uppy.ScreenCapture, {target: Uppy.Dashboard})
-            .use(Uppy.ImageEditor, {target: Uppy.Dashboard})
-            .use(Uppy.DropTarget, {target: document.body})
-            .use(Uppy.GoldenRetriever)
-            .use(Uppy.XHRUpload, {
-                endpoint: '/task/create/upload',
-                fieldName: 'file',
-                headers: file => ({
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
-                }),
-            });
-
-        uppy.on('upload-success', (file, response) => {
-            const httpStatus = response.status // HTTP status code
-            const httpBody = response.body   // extracted response data
-
-            // do something with file and response
-        });
-
-
-        uppy.on('file-added', (file) => {
-            uppy.setFileMeta(file.id, {
-                size: file.size,
-
-            })
-            console.log(file.name);
-        });
-        uppy.on('complete', result => {
-            console.log('successful files:', result.successful)
-            console.log('failed files:', result.failed)
-        });
-    </script>
 @endsection

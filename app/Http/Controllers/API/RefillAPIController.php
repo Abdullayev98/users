@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class RefillAPIController extends Controller
 {
     public function ref(Request $request){
-        
+
         $payment = $request->get("paymethod");
         switch($payment){
             case 'Click':
