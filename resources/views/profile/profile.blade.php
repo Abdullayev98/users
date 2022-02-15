@@ -155,7 +155,7 @@
                                 <form action="{{route('edit.description')}}" method="POST" class="formdesc hidden">
                                     @csrf
                                     <textarea name="description" name="description"
-                                              class="w-full h-32 border border-gray-400 py-2 px-4 mt-3"
+                                              class="w-full h-32 border border-gray-400 focus:outline-none focus:border-yellow-500 py-2 px-4 mt-3"
                                               @if (!$user->description) placeholder="@lang('lang.profile_enterDesc')"@endif
                                     >@if ($user->description){{$user->description}}@endif</textarea><br>
                                     <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="@lang('lang.profile_save')">
