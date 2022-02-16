@@ -36,7 +36,7 @@
                                 @endif
                             </div>
                             <div class="w-2/3 text-base text-gray-500 lg:ml-0 ml-4">
-                                @if($user->age != "")
+                                @isset($user->age)
                                     <p class="inline-block mr-2">
                                         {{$user->age}}
                                         @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
@@ -44,28 +44,31 @@
                                         @else @lang('lang.cash_rusYearLet')
                                         @endif
                                     </p>
-                                @endif
+                                @endisset
 
                                 <span class="inline-block">
                                 <p class="inline-block text-m">
-                                    @if($user->location!="")
+                                    @isset($user->location)
                                         <i class="fas fa-map-marker-alt"></i>
                                         @lang('lang.cash_city') {{$user->location}}
                                     @else @lang('lang.cash_cityNotGiven')
-                                    @endif
+                                    @endisset
                                 </p>
                             </span>
 
                             </div>
                             <div class="text-gray-500 text-base mt-6">
                                 <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
-                                @if ($user->reviews()->count() == 1)
-                                    <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziv')</span>
-                                @elseif ($user->reviews()->count() > 1 && $user->reviews()->count() > 5)
-                                    <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziva')</span>
-                                @else
-                                    <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtzivov')</span>
-                                @endif
+                                @switch($user->reviews()->count())
+                                    @case(1)
+                                        <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziv')</span>
+                                        @break
+                                    @case(1 && 5)
+                                        <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziva')</span>
+                                        @break
+                                    @default
+                                        <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtzivov')</span>
+                                @endswitch
                             </div>
                             {{-- <div class="text-gray-500 text-base mt-1">
                                 <span>@lang('lang.exe_averageRating'): 4,9</span>
