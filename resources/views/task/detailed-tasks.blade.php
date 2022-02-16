@@ -100,6 +100,13 @@
                                     </div>
 
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_payment')</h1>
+                                        <div class=" h-auto w-96">
+                                            <a class="cursor-pointer underline text-blue-400" href="#">@lang('lang.detT_card')</a> @lang('lang.detT_or') <a class="cursor-pointer underline text-blue-400" href="#">@lang('lang.detT_cash')</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                         <h1 class="font-bold h-auto w-48">@lang('lang.detT_need')</h1>
                                         <p class=" h-auto w-96">{{$task->description}}</p>
                                     </div>

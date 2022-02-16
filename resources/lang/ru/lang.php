@@ -136,6 +136,10 @@ return [
     'detT_otherTaskInCat' => "Другие задания в категории",
     'detT_ordererThisTask' => "Заказчик этого задания",
     'detT_task' => "Задание",
+    'detT_payment' => "Оплата задания",
+    'detT_card' => "Карта",
+    'detT_or' => "или",
+    'detT_cash' => "Наличные",
     // detailed-tasks.blade end
 
     // mytasks.blade start
