@@ -44,7 +44,7 @@
 
                                     {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
                                     <select id="where" name="{{$data->name}}[]"
-                                            class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                                            class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
                                             required>
 
                                         @foreach($data->options['options'] as $key => $option)
@@ -174,7 +174,7 @@
 
                 <div class="md:flex mt-5">
                     <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
                         <option disabled>@lang('lang.name_chooseOne')</option>
                         <option>{{ $task->category->name }}</option>
@@ -182,7 +182,7 @@
 
                     <select name="category_id"
                             onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
                         <option disabled>@lang('lang.name_chooseOne')</option>
                         @foreach($task->category->parent->childs as $category)
@@ -224,7 +224,7 @@
                         Дата и время <br>
                         <div>
                             <select name="date_type" id="periud"
-                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-yellow-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 "
                                     aria-label="Default select example">
                                 <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">Начать работу
                                 </option>
@@ -394,7 +394,7 @@
                 <div class="text-base my-6 bg-white rounded-md shadow-md p-4">
                     <h1 class="text-xl font-semibold py-4">На какой бюджет вы рассчитываете?</h1>
                     <div>
-                        <select class="border border-gray-300 rounded-md w-full focus:outline-none py-2 px-4"
+                        <select class="border border-gray-300 rounded-md w-full focus:outline-none focus:border-yellow-500 py-2 px-4"
                                 name="budget" id="budget">
                             <option value="{{$task->category->max/5}}">
                                 {{$task->category->max/5}} UZS
