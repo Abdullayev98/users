@@ -78,6 +78,7 @@ class UpdateController extends Controller
             $review->good_bad = $request->good;
             $review->task_id = $task->id;
             $review->reviewer_id = auth()->id();
+            if ($task->reviews_count==2) $task->status = Task::STATUS_COMPLETE;
             if($task->user_id == auth()->id()){
                 $review->user_id = $task->performer_id;
             }else{
