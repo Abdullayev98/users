@@ -167,7 +167,6 @@ class CreateController extends Controller
 
             $fileModelname = time() . '_' . $request->file->getClientOriginalName();
             $fileModelfile_path = '/storage/' . $filePath;
-            $request->session()->put('photo', $fileName);
             return response()->json([
                 "success" => true,
                 "message" => "File successfully uploaded",

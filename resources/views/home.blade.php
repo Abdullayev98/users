@@ -113,6 +113,7 @@
             </div>
         </div>
         <div class="bg-gray-50">
+<<<<<<< HEAD
             <div class="swiper mySwiper xl:w-10/12 lg:w-11/12 md:w-10/12 h-60 overflow-hidden rounded-xl mt-12 ">
                 <div class="swiper-wrapper">
                     @foreach ($reklamas as $reklama )
@@ -129,12 +130,36 @@
                                          alt="">
                                 </div>
                             </div>
+=======
+        <div class="swiper mySwiper xl:w-10/12 lg:w-11/12 md:w-10/12 h-60 overflow-hidden rounded-xl mt-12 ">
+            <div class="swiper-wrapper">
+                @foreach ($reklamas as $reklama )
+                <div class="swiper-slide w-full items-center  mt-12" >
+                    <div class="flex border-xl sm:w-10/12 w-3/4 lg:w-11/12 mx-auto">
+                        <div class="w-1/2 lg:pl-8  md:pl-6 sm:pl-4 lg:w-5/12">
+                            <h1 class="sm:text-lg text-base md:text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{ $reklama->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
+                            <p class="sm:text-base text-sm md:text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
+                            <a href="/categories/1" class="py-2 sm:px-4 px-2 border-solid md:text-base text-xs bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
+                        </div>
+                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12 ">
+                            <img src="/storage/{{$reklama->image}}"
+                                 class="object-cover object-right-bottom w-full h-full  "
+                                 alt="">
+>>>>>>> b8ea39cfe0cd128899a4687ad71694fff44a3c71
                         </div>
                     @endforeach
                 </div>
+<<<<<<< HEAD
                 <div class="text-white swiper-button-next"></div>
                 <div class="text-white swiper-button-prev"></div>
             </div></div>
+=======
+                @endforeach
+            </div>
+            <div class="text-white swiper-button-next"></div>
+            <div class="text-white swiper-button-prev"></div>
+        </div></div>
+>>>>>>> b8ea39cfe0cd128899a4687ad71694fff44a3c71
         <div class="w-full bg-gradient-to-r from-white via-gray-400 to-white h-1 rounded-full"></div>
         <div class="w-full bg-gradient-to-r from-white via-gray-100 to-white">
             <div class="container text-center mx-auto px-16">
@@ -199,6 +224,7 @@
                 </div>
                 <div class="grid lg:grid-cols-4 grid-cols-4 grid-cols-1 w-full md:w-11/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
+<<<<<<< HEAD
                         <div class="col-span-1 md:my-auto sm:mr-0 mr-4">
                             <img src="/storage/{{$advant->image}}" class="md:w-32 md:h-32 h-24 w-24" alt="">
                         </div>
@@ -206,6 +232,15 @@
                             <h4 class="font-semibold text-xl md:text-2xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
                             <p class="text-base">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
                         </div>
+=======
+                    <div class="col-span-1 md:my-auto sm:mr-0 mr-4 rounded-lg">
+                        <img src="/storage/{{$advant->image}}" class="md:w-32 md:h-32 h-24 w-24 rounded-lg"  alt="">
+                    </div>
+                    <div class="col-span-3 ml-5">
+                        <h4 class="font-semibold text-xl md:text-2xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
+                        <p class="text-base">{{$advant->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')}}</p>
+                    </div>
+>>>>>>> b8ea39cfe0cd128899a4687ad71694fff44a3c71
                     @endforeach
                 </div>
             </div>
