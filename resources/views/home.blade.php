@@ -256,9 +256,9 @@
 
 
                     </div>
-                    <div class="mt-4">
+                    <div class="mt-8">
                         <a href="{{route('task.search')}}" type="button"
-                                class="text-center py-2 bg-blue-500 border-blue-500 text-white text-3xl w-full border-b-4">
+                                class="text-center py-2 bg-blue-500 border-blue-500 text-white text-base w-1/2 border-b-4 mx-auto">
                                 @lang('lang.body_showAllTasks')
                         </a>
                     </div>
