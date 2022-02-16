@@ -21,10 +21,10 @@
                     <div class="flex flex-row mt-6">
                         <div class="sm:w-1/3 w-full">
                             <img class="border border-3 border-gray-400 h-40 w-40"
-                                 @if ($user->avatar == Null)
-                                 src='{{asset("storage/images/default.jpg")}}'
-                                 @else
+                                 @if ($user->avatar != Null)
                                  src="{{asset("storage/{$user->avatar}")}}"
+                                 @else
+                                 src='{{asset("storage/images/default.jpg")}}'
                                  @endif alt="">
                             <form action="{{route('update.photo')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="sm:w-2/3 w-full text-base text-gray-500 ml-4">
-                            @if($user->age != "")
+                            @isset($user->age)
                                 <p class="inline-block mr-2">
                                     {{$user->age}}
                                     @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
@@ -56,15 +56,15 @@
                                     @else @lang('lang.cash_rusYearLet')
                                     @endif
                                 </p>
-                            @endif
+                            @endisset
 
                             <span class="inline-block">
                                 <p class="inline-block text-m">
-                                    @if($user->location!="")
+                                    @isset($user->location)
                                         <i class="fas fa-map-marker-alt"></i>
                                         @lang('lang.cash_city') {{$user->location}}
                                     @else @lang('lang.cash_cityNotGiven')
-                                    @endif
+                                    @endisset
                                 </p>
                             </span>
                             <p class="mt-2">@lang('lang.cash_created') <a href="#">
