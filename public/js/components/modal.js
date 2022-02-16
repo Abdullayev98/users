@@ -1,4 +1,3 @@
-
 $('.change-email').click(function () {
     $('#send-data-form').css('display', 'block')
     $(this).css('display', 'none')

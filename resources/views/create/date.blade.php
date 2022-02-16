@@ -51,17 +51,17 @@
                         <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
                             @lang('lang.date_startDate')
                         </div>
+
                         <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
+                            <div class="mb-4 ">
                                 <div id="formulario" class="flex flex-col gap-y-4">
 
-                                    <div class="flex items-center ">
-                                        <select name="date_type" id="periud"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    <div class="flex items-center">
+                                        <select name="date_type" id="periud" class=" bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
                                                 aria-label="Default select example">
-                                            <option {{ old('date_type') == "1" ? 'selected' :null }} value="1" id="1">@lang('lang.date_startTask')</option>
-                                            <option  {{ old('date_type') == "2" ? 'selected' :null }}  value="2" id="2">@lang('lang.date_finishTask')</option>
-                                            <option  {{ old('date_type') == "3" ? 'selected' :null }} value="3" id="3">@lang('lang.date_givePeriod')</option>
+                                            <option {{ old('date_type') == "1" ? 'selected' :null }} value="1" id="1" class="text-base">@lang('lang.date_startTask')</option>
+                                            <option  {{ old('date_type') == "2" ? 'selected' :null }}  value="2" id="2" class="text-base">@lang('lang.date_finishTask')</option>
+                                            <option  {{ old('date_type') == "3" ? 'selected' :null }} value="3" id="3" class="text-base">@lang('lang.date_givePeriod')</option>
                                         </select>
                                     </div>
                                     <div id="start-date" class="@if(!$errors->has('start_date')) hidden @endif">
@@ -70,7 +70,7 @@
                                                 <input type="text" name="start_date"
                                                        placeholder="@lang('lang.calendar')"
                                                        data-input
-                                                       class="w-full max-w-[295px] text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                       class="w-full max-w-[295px] text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-base text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                        required> <!-- input is mandatory -->
                                             </div>
                                             <div class="flatpickr-calendar max-w-[295px] w-full sm:text-sm text-[10px]"></div>
@@ -114,6 +114,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                @foreach($task->category->customFieldsInDate as $data)
+                                    @include('create.custom-fields')
+                                @endforeach
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
                                         <a onclick="myFunction()"

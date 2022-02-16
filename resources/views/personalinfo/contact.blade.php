@@ -19,10 +19,12 @@
                 </div>
                 <div class="mt-3">
                     <label class="text-gray-500 text-sm" for="name"> @lang('lang.personalinfo_text15')</label>
-                    <input type="text" id="phone_number" value="{{auth()->user()->phone_number}}"
+                    <input type="text" id="phone_number" value="+998{{auth()->user()->phone_number}}"
                     placeholder="+998(00)000-00-00"
-                     name="phone_number" class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-200 focus:ring focus:ring-indigo-500" />
+                      class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-yellow-500" />
                 </div>
+
+                <input type="hidden" name="phone_number" id="phone" value="{{auth()->user()->phone_number}}">
                 <div class="flex w-full gap-x-4 mt-4">
                 <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                     <!-- <button type="button"> -->
@@ -43,12 +45,4 @@
 </div>
 @endsection
 <script src="https://unpkg.com/imask"></script>
-<script>
-  var element = document.getElementById('phone_number');
-var maskOptions = {
-  mask: '+998(00)000-00-00',
-  lazy: false
-} 
-var mask = new IMask(element, maskOptions);
-
-</script>
+<script src="{{ asset('js/personalinfo/contact.js') }}"></script>

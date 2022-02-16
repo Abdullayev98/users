@@ -35,8 +35,8 @@ class SearchTaskController extends VoyagerBaseController
     {
         if (isset($request->orderBy)) {
             if ($request->orderBy == 'all') {
-                $tasks = Task::where('status', 1, 2)->orderBy('id', 'desc')
-//                    $tasks = Task::where([['status', '=', 1],['status', '=', 2],['address','=', null]])->orderBy('id', 'desc')
+            $tasks = Task::whereIn('status', [1,2])
+                    ->orderBy('id', 'asc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
                     ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.status', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
@@ -46,7 +46,7 @@ class SearchTaskController extends VoyagerBaseController
                 $filter = $request->fltr;
                 $address = $request->addr;
                 $price = $request->prc;
-                $tasks = Task::where('status', '=', 1)->where('status', '=', 2)->where('address', '=', null)
+                $tasks = Task::whereIn('status', [1,2])
                     ->where('name', 'LIKE', "%$filter%")
                     ->where('address', 'LIKE', "%$address%")
                     ->where('budget', 'LIKE', "%$price%")
@@ -70,7 +70,10 @@ class SearchTaskController extends VoyagerBaseController
 
     public function task(Task $task)
     {
-        return view('task.detailed-tasks', compact('task'));
+        $review = null;
+        if ($task->reviews_count == 2) $review == true;
+
+        return view('task.detailed-tasks', compact('task', 'review'));
     }
 
 
@@ -173,12 +176,14 @@ class SearchTaskController extends VoyagerBaseController
 
     public function changeTask(Task $task)
     {
+        taskGuard($task);
+
         return view('task.changetask', compact('task'));
     }
 
     public function update_task(Task $task, UpdateRequest $request)
     {
-
+        taskGuard($task);
         $data = $request->validated();
         $task->update($data);
 

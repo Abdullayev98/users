@@ -65,3 +65,9 @@ function getFaqCategories(){
 function getAuthUserBalance(){
     return auth()->user() && auth()->user()->walletBalance ? auth()->user()->walletBalance->balance : null;
 }
+
+function taskGuard($task){
+          if ($task->user_id != auth()->user()->id){
+              abort(403);
+          }
+}

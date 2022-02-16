@@ -42,7 +42,8 @@
                                     @lang('lang.name_taskName')
                                 </label>
                                 <input
-                                    class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
+                                    class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none
+                                    focus:border-yellow-500 "
                                     id="username" type="text"
                                     placeholder="@lang('lang.name_example') {{ $current_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}"
                                     required name="name" value="{{session('neym')}}">
@@ -68,7 +69,7 @@
       transition
       ease-in-out
       m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+      focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none" aria-label="Default select example">
 
                                             <option disabled>@lang('lang.name_chooseOne')</option>
                                             @foreach (getCategoriesByParent(null) as $cat_for_p)
@@ -96,7 +97,7 @@
       transition
       ease-in-out
       m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+      focus:text-gray-700 focus:bg-white focus:border-yellow-600 focus:outline-none" aria-label="Default select example">
                                                 <option disabled>Выберите один из пунктов</option>
                                                 @foreach ($cat_for_ch as $category2)
                                                     <option

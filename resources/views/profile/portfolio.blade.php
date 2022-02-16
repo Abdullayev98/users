@@ -6,19 +6,18 @@
             <div class="bg-yellow-50 p-8 rounded-md my-6 flex flex-wrap">
                 @foreach($comment as $comments)
                 Portfilio Name
-                <input class="border focus:outline-none mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" disabled value="{{$comments->comment}}">
+                <input class="border focus:outline-none focus:border-yellow-500 mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" disabled value="{{$comments->comment}}">
                 Portfolio Description
-                <input class="border focus:outline-none mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" disabled value="{{$comments->description}}">
+                <input class="border focus:outline-none focus:border-yellow-500 mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" disabled value="{{$comments->description}}">
 
 
             @php
-                $images = explode(',', $comments->image);
-                $a = sizeof($images)-1;
+                $images = json_decode($comments->image);
             @endphp
-            @for($i = 0; $i <= $a; $i++)
-                <img class="w-40 h-40 mx-2" src="{{asset($images[$i])}}" alt="Images not found">
+            @foreach($images as $image)
+                <img class="w-40 h-40 mx-2" src="{{asset('storage/'.$image)}}" alt="Images not found">
                 {{--@dd($image);--}}
-            @endfor
+            @endforeach
             </div>
 
             <form action="/profile/delete/portfolio/{{$comments->id}}" method="POST" enctype="multipart/form-data">

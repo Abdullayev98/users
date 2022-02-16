@@ -1,14 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-<script>
-    var myMap;
-    var multiRoute;
-    var place, place1 = "",
-        place2 = "",
-        place3 = "",
-        place4 = "";
-</script>
+
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 
@@ -55,7 +48,7 @@
                             <button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">
                                 A
                             </button>
-                            <input autocomplete="off" oninput="myFunction()" name="location" id="suggest0" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="@lang('lang.search2_location')" value="{{session('location2')}}" name="location0" required>
+                            <input autocomplete="off" oninput="myFunction()" name="location" id="suggest0" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500" type="text" placeholder="@lang('lang.search2_location')" value="{{session('location2')}}" name="location0" required>
                             <button id="getlocal" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button"> <svg class="h-4 w-4 text-purple-500" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" />
                                     <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" />
@@ -65,17 +58,25 @@
                         </div>
                         <div class="mt-3">
                             <label class="text-gray-500 text-sm" for="name">@lang('lang.personalinfo_text6')</label>
-                            <input type="text" id="name" value="{{auth()->user()->name}}" name="name" class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-yellow-200 focus:ring focus:ring-yellow-300" />
+                            <input type="text" id="name" value="{{auth()->user()->name}}" name="name" class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-yellow-500 focus:ring focus:ring-yellow-300" />
                         </div>
+                        @error('name')
+                        <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                         <div class="mt-3 mb-3">
                             <label class="text-gray-500 text-sm" for="lastname">@lang('lang.personalinfo_text7')</label>
-                            <input type="text" id="lastname" value="{{auth()->user()->last_name}}" name="familya" class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-200 focus:ring focus:ring-yellow-300" />
+                            <input type="text" id="lastname" value="{{auth()->user()->last_name}}" name="last_name" class="block px-2 w-full border  border-grey-300 py-2 rounded-lg shadow-sm focus:outline-none focus:border-yellow-500" />
                         </div>
+                        @error('last_name')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
+
                         <label for="date" class="mt-3 text-gray-500 text-sm">@lang('lang.personalinfo_text8')</label>
                         <div class="flatpickr inline-block flex flex-shrink">
                             <div class="flex-shrink">
-                                <input type="text" name="date" value="{{auth()->user()->date}}" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block pl-10 p-2.5 dark:bg-gray-700 dark:border-yellow-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
+                                <input type="text" name="born_date" value="{{auth()->user()->born_date}}" placeholder="@lang('lang.calendar')" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:outline-none focus:border-yellow-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-yellow-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
                             </div>
+
                             <div class="transform hover:scale-125">
                                 <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
                                     <i class="far fa-calendar-alt fill-current text-green-600"></i>
@@ -86,6 +87,9 @@
                                     <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
                                 </a>
                             </div>
+                            @error('born_date')
+                            <p class="text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="flex w-full gap-x-4 mt-4">
                             <a onclick="backPersonalinfo()" class="w-1/3 cursor-pointer	  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
@@ -112,154 +116,7 @@
 
 @section('javasript')
 
-
-
-<script>
-    $("#btnclck").click(function() {
-        $(".hidShad").hide()
-        $(".showshad").show()
-    })
-
-    function backPersonalinfo() {
-        $(".hidShad").show()
-        $(".showshad").hide()
-    }
-
-    flatpickr.localize(flatpickr.l10ns.uz_latn);
-    flatpickr.localize(flatpickr.l10ns.ru);
-    flatpickr(".flatpickr", {
-        wrap: true,
-        altInput: true,
-        altFormat: "F j, Y",
-        dateFormat: "Y-m-d",
-        locale: "@lang('lang.dateLang')",
-    }, )
-</script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-<script>
-    function init_map() {
-
-        myMap = new ymaps.Map('map', {
-            center: [41.311151, 69.279737],
-            zoom: 13,
-            controls: ['zoomControl', 'searchControl']
-        });
-
-
-    }
-    ymaps.ready(init_map);
-
-
-
-
-    var x = 1;
-
-    function init() {
-
-        var suggestView0 = new ymaps.SuggestView('suggest0');
-
-        suggestView0.events.add('select', function() {
-            myFunction();
-        });
-
-        const alp = ["B", "C", "D", "E"];
-
-
-
-        $("#getlocal").click(function() {
-
-            var geolocation = ymaps.geolocation;
-            geolocation.get({
-                mapStateAutoApply: true,
-            }).then(function(result) {
-                    // Синим цветом пометим положение, полученное через браузер.
-                    // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
-                    var userAddress = result.geoObjects.get(0).properties.get('text');
-                    document.getElementById("suggest0").value = userAddress;
-                    document.getElementById("coordinate").value = result.geoObjects.get(0).geometry.getCoordinates();
-
-                },
-                function(err) {
-                    console.log('Ошибка: ' + err)
-                });
-            myFunction();
-
-        });
-
-
-    }
-
-    // Mapga yuklash joyni
-
-    function myFunction() {
-
-
-
-
-        place = document.getElementById("suggest0").value;
-        var myGeocoder = ymaps.geocode(place);
-        myGeocoder.then(
-            function(res) {
-                document.getElementById("coordinate").value = res.geoObjects.get(0).geometry.getCoordinates();
-                myMap.setCenter(res.geoObjects.get(0).geometry.getCoordinates());
-            }
-
-        );
-
-
-
-
-        if (document.getElementById("suggest1")) {
-            place1 = document.getElementById("suggest1").value;
-            var myGeocoder1 = ymaps.geocode(place1);
-            myGeocoder1.then(
-                function(res) {
-                    document.getElementById("coordinate1").value = res.geoObjects.get(0).geometry.getCoordinates();
-
-                }
-            );
-        } else {
-            place1 = "";
-        }
-
-        myMap.destroy();
-
-        function getbound() {
-            if (place1 != "") {
-                return true;
-            } else {
-                return false
-            }
-        }
-
-        multiRoute = new ymaps.multiRouter.MultiRoute({
-            referencePoints: [place, place1 /*, place2, place3, place4*/ ],
-
-        }, {
-            // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
-            boundsAutoApply: getbound()
-        });
-
-
-        myMap = new ymaps.Map('map', {
-            center: [41.311151, 69.279737],
-            zoom: 13,
-            controls: ['zoomControl', 'searchControl']
-
-        });
-
-        myMap.geoObjects.add(multiRoute);
-
-    }
-    // end
-
-
-
-    ymaps.ready(init);
-</script>
-
-</script>
-
-
+<script src="{{ asset('js/personalinfo/personalinfo.js') }}"></script>
 @endsection

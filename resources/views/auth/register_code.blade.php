@@ -20,7 +20,7 @@
                     </label>
                     <input type="number"
                            id="phone_number" name="code"
-                           class="shadow appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500">
+                           class="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:border-yellow-500">
                     <br>
                     @error('code')
                     <span class="text-danger" style="color: red">{{ $message  }}</span>

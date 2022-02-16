@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="handle__27597">
 
-                                                        <input class="focus:outline-none  mt-8" type="text" id="amount" name="amount1" readonly >
+                                                        <input class="focus:outline-none focus:border-yellow-500  mt-8" type="text" id="amount" name="amount1" readonly >
 
                                                     </div>
                                                     <div class="tickWrapper__6685b" style="width: 16.6667%; left: 0%;">
@@ -111,6 +111,9 @@
                                         </option>
                                     </select>
                                 </div>
+                            @foreach($task->category->customFieldsInBudget as $data)
+                                @include('create.custom-fields')
+                            @endforeach
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
                                         <a onclick="myFunction()" class="w-1/3 cursor-pointer border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
@@ -123,6 +126,7 @@
                                                 }
                                             </script>
                                         </a>
+
                                         <input type="submit"
                                                class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                                name="" value="@lang('lang.name_next')">
@@ -140,9 +144,7 @@
     </form>
 
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
     <script src="{{ asset('/js/flowbite.js') }}"></script>
-
     <script>
         $(function() {
             $("#slider-range-min").slider({
@@ -152,9 +154,11 @@
                 max: {{$category->max}},
                 step: {{$category->max}}/6,
                 slide: function(event, ui) {
+
                     var maximum = {{$category->max}};
                     var pre_maximum = Math.floor({{$category->max}} - ({{$category->max}}/6));
                     if (maximum == Math.floor(ui.value)) {
+
                         $("#amount").val("от " + maximum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
                         $("#amount2").val("от " + maximum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
                     }else if (pre_maximum == Math.floor(ui.value)){
@@ -165,7 +169,9 @@
                         var round   = Math.floor(delitel)*1000;
                         $("#amount").val("до " + round.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
                         $("#amount2").val("до " + round.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
+
                     }
+
                 }
             });
             $('.ui-slider-handle').attr('data-tooltip-target', 'tooltip-no-arrow');

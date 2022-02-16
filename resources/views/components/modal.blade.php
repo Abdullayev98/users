@@ -59,7 +59,7 @@
                                     <input type="text" name="email" placeholder="Email" id="name"
                                            value="{{  old('email').session()->has('email')?session('email'):null  }}"
                                            class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded
-                        w-full py-2 px-3 text-gray-700 mb-1 leading-tight hover:border-amber-500"
+                        w-full py-2 px-3 text-gray-700 mb-1 leading-tight"
                                            autofocus>
                                     @if(session()->has('email-message'))
                                         <p class="text-red-500"> {{ session('email-message') }}</p>
@@ -228,6 +228,8 @@
 
 
                 @section("javasript")
+                    <script src="https://unpkg.com/imask"></script>
+
                     <script src="{{ asset('js/components/modal.js') }}"></script>
                 @endsection
         @endauth

@@ -50,7 +50,7 @@
                         <p>@lang('lang.perfCat_allPerf')</p>
                     </div>
                     <div class="form-check flex flex-row mx-8 mt-10">
-                        <input class="focus:outline-none  form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                        <input class="focus:outline-none  form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none focus:border-yellow-500 transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                type="checkbox" value="1" onchange="check()" id="online">
                         <label class="form-check-label inline-block text-gray-800" for="online">
                             @lang('lang.perfCat_nowInSite')
@@ -244,47 +244,6 @@
 
         </div>
     </div>
-    {{-- <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black hidden text-center">
-        <div class="modal relative bg-white w-[600px] mx-auto p-10 rounded-md justify-center mt-48 ease-in transition duration-500">
-            <h1 class="text-3xl font-semibold">Выберите задание, которое хотите предложить исполнителью</h1>
-            @foreach($tasks as $task)
-                <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
-            @endforeach
-            <select id="task_name" onchange="showDiv(this)" class="focus:outline-none border border-solid border-gray-500 rounded-lg text-gray-500 px-6 py-2 mt-6 hover:text-yellow-500  hover:border-yellow-500 hover:shadow-xl shadow-yellow-500 mx-auto block"><br>
-
-                @foreach($tasks as $task)
-                    @auth
-                        <option value="{{ $task->name }}">
-                            {{ $task->name }}
-                        </option>
-                    @endauth
-                @endforeach
-                <option value="1">
-                    + новое задание
-                </option>
-            </select>
-            <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
-
-            <div id="hidden_div">
-                <button onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
-                    Предложить работу
-                </button>
-                <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
-            </div>
-
-            <a href="/categories/1">
-                <button id="hidden_div2" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto" style="display: none;">
-                    Создать новое задание
-                </button>
-            </a>
-
-            <button class="cursor-pointer close text-gray-400 font-bold rounded-lg p-2 px-4 mt-6 absolute -top-6 right-0 text-2xl">
-                x
-            </button>
-        </div>
-        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id12-backdrop"></div>
-    </div> --}}
-
 
 
 

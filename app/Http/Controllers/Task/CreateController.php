@@ -13,10 +13,11 @@ use App\Models\CustomFieldsValue;
 use App\Models\Task;
 use App\Models\User;
 use App\Services\Task\CreateService;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CreateController extends Controller
 {
@@ -46,7 +47,7 @@ class CreateController extends Controller
             'category_id' => 'required'
         ]);
         $task = Task::create($data);
-        $this->service->attachCustomFieldsByRoute($task,'name');
+        $this->service->attachCustomFieldsByRoute($task, CustomField::ROUTE_NAME);
 
         return redirect()->route("task.create.custom.get", $task->id);
     }
@@ -65,7 +66,7 @@ class CreateController extends Controller
 
     public function custom_store(Request $request, Task $task)
     {
-        $this->service->attachCustomFieldsByRoute($task, 'custom');
+        $this->service->attachCustomFieldsByRoute($task, CustomField::ROUTE_CUSTOM);
         return redirect()->route('task.create.address', $task->id);
     }
 
@@ -98,6 +99,7 @@ class CreateController extends Controller
         $task->coordinates = $request->coordinates0;
         $task->address_add = json_encode($data);
         $task->save();
+        $this->service->attachCustomFieldsByRoute($task, CustomField::ROUTE_ADDRESS);
 
         return redirect()->route("task.create.date", $task->id);
 
@@ -113,6 +115,8 @@ class CreateController extends Controller
     {
         $data = $request->validated();
         $task->update($data);
+        $this->service->attachCustomFieldsByRoute($task, CustomField::ROUTE_DATE);
+
         return redirect()->route('task.create.budget', $task->id);
     }
 
@@ -127,6 +131,8 @@ class CreateController extends Controller
     {
         $task->budget = preg_replace('/[^0-9.]+/', '', $request->amount1);
         $task->save();
+        $this->service->attachCustomFieldsByRoute($task, CustomField::ROUTE_BUDGET);
+
 
         return redirect()->route('task.create.note', $task->id);
 
@@ -135,6 +141,24 @@ class CreateController extends Controller
     public function note(Task $task)
     {
         return view('create.notes', compact('task'));
+    }
+
+    public function images_store(Task $task, Request $request)
+    {
+
+        $imgData = json_decode($task->photos);
+
+        if ($request->hasFile('images')) {
+
+            $files = $request->file('images');
+            $name = Storage::put('public/uploads', $files);
+            $name = str_replace('public/','', $name);
+            $imgData[] = $name;
+
+        }
+
+        $task->photos = json_encode($imgData);
+        $task->save();
     }
 
     public function uploadImage(Task $task, Request $request)
@@ -147,7 +171,6 @@ class CreateController extends Controller
 
             $fileModelname = time() . '_' . $request->file->getClientOriginalName();
             $fileModelfile_path = '/storage/' . $filePath;
-            $request->session()->put('photo', $fileName);
             return response()->json([
                 "success" => true,
                 "message" => "File successfully uploaded",
@@ -163,10 +186,7 @@ class CreateController extends Controller
             'description' => 'required|string',
             'oplata' => 'required'
         ]);
-        $folder_task = Task::orderBy('created_at', 'desc')->first();
-        $image = File::allFiles("storage/Uploads/{$folder_task->name}");
-        $data['photos'] = implode(',', $image);
-        $data['docs'] = $request->docs ? 1 : null;
+
         $task->update($data);
         return redirect()->route("task.create.contact", $task->id);
     }
@@ -234,5 +254,12 @@ class CreateController extends Controller
         CustomFieldsValue::where('task_id', $task)->delete();
     }
 
+    public function deleteAllImages(Task $task){
+        taskGuard($task);
+        $task->photos = null;
+        $task->save();
+        Alert::success('success');
+        return back();
+    }
 
 }

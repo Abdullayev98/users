@@ -29,6 +29,7 @@ Route::prefix("task")->group(function () {
         Route::post('/budget/{task}/store', [CreateController::class, 'budget_store'])->name('task.create.budget.store');
         Route::get('/note/{task}', [CreateController::class, 'note'])->name('task.create.note');
         Route::post('/note/{task}/store', [CreateController::class, 'note_store'])->name('task.create.note.store');
+        Route::post('/note/{task}/images/store', [CreateController::class, 'images_store'])->name('task.create.images.store');
         Route::get('/contact/{task}', [CreateController::class, 'contact'])->name('task.create.contact');
         Route::post('/contact/{task}/store', [CreateController::class, 'contact_store'])->name('task.create.contact.store.phone')->middleware('auth');
         Route::post('/contact/{task}/store/register', [CreateController::class, 'contact_register'])->name('task.create.contact.store.register')->middleware('guest');
@@ -36,6 +37,7 @@ Route::prefix("task")->group(function () {
         Route::get('/verify/{task}', [CreateController::class, 'verify'])->name('task.create.verify');
         Route::post('/verify', [UserController::class, 'verifyProfil'])->name('task.create.verification')->middleware('auth');
         Route::post('/upload', [CreateController::class, 'uploadImage']);
+        Route::get('task/{task}/images/delete', [CreateController::class, 'deleteAllImages'])->name('task.images.delete')->middleware('auth');
 
 
         // Responses
@@ -62,7 +64,7 @@ Route::post('/account/password/change', [ProfileController::class, 'change_passw
 
 Route::post('select-performer/{response}', [ResponseController::class, 'selectPerformer'])->name('performer.select');
 Route::post('tasks/{task}/complete', [UpdateController::class, 'completed'])->name('task.completed');
-Route::post('send-review111/{task}', [UpdateController::class, 'sendReview']);
+Route::post('send-review-user/{task}', [UpdateController::class, 'sendReview'])->name('send.review');
 
 
 

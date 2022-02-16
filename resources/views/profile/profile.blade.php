@@ -155,7 +155,7 @@
                                 <form action="{{route('edit.description')}}" method="POST" class="formdesc hidden">
                                     @csrf
                                     <textarea name="description" name="description"
-                                              class="w-full h-32 border border-gray-400 py-2 px-4 mt-3"
+                                              class="w-full h-32 border border-gray-400 focus:outline-none focus:border-yellow-500 py-2 px-4 mt-3"
                                               @if (!$user->description) placeholder="@lang('lang.profile_enterDesc')"@endif
                                     >@if ($user->description){{$user->description}}@endif</textarea><br>
                                     <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="@lang('lang.profile_save')">
@@ -173,16 +173,13 @@
                         </div>
                         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mx-auto">
                         @foreach($comment as $comments)
-                        @php
-                            $images = explode(',', $comments->image);
-                        @endphp
                             <a href="/profile/portfolio/{{$comments->id}}" class="border my-6 border-gray-400 mr-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
-                                <img src="{{$images[0]}}" alt="#" class="w-56 h-48">
+                                <img src="{{ asset('storage/'.json_decode($comments->image)[0])  }}" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
                                     <p class="w-2/3 text-center text-base text-white">{{$comments->comment}}</p>
                                    <div class="w-1/3 flex items-center">
                                         <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
-                                        <span class="text-white">{{count($images)}}</span>
+                                        <span class="text-white">{{count(json_decode($comments->image))}}</span>
                                    </div>
                                 </div>
                             </a>
@@ -221,109 +218,7 @@
         </div>
     </div>
 
-    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
-    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
-    <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
-    <script>
-            var uppy = new Uppy.Core({
-            debug: true,
-            autoProceed: true,
-            restrictions: {
-                minFileSize: null,
-                maxFileSize: 10000000,
-                maxTotalFileSize: null,
-                maxNumberOfFiles: 10,
-                minNumberOfFiles: 0,
-                allowedFileTypes: null,
-                requiredMetaFields: [],
-            },
-            meta: {},
-            onBeforeFileAdded: (currentFile, files) => currentFile,
-            onBeforeUpload: (files) => {
-            },
-            locale: {},
-            store: new Uppy.DefaultStore(),
-            logger: Uppy.justErrorsLogger,
-            infoTimeout: 5000,
-        })
-            .use(Uppy.Dashboard, {
-                trigger: '.UppyModalOpenerBtn',
-                inline: true,
-                target: '#photos',
-                showProgressDetails: true,
-                note: 'Все типы файлов, до 10 МБ',
-                height: 300,
-                metaFields: [
-                    {id: 'name', name: 'Name', placeholder: 'file name'},
-                    {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
-                ],
-                browserBackButtonClose: true
-            })
-
-            .use(Uppy.ImageEditor, {target: Uppy.Dashboard})
-            .use(Uppy.DropTarget, {target: document.body})
-            .use(Uppy.GoldenRetriever)
-            .use(Uppy.XHRUpload, {
-                endpoint: '/profile/storepicture',
-                fieldName: 'file',
-                headers: file => ({
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
-                }),
-            });
-
-        uppy.on('upload-success', (file, response) => {
-            const httpStatus = response.status // HTTP status code
-            const httpBody = response.body   // extracted response data
-
-            // do something with file and response
-        });
-
-
-        uppy.on('file-added', (file) => {
-            uppy.setFileMeta(file.id, {
-                size: file.size,
-
-            })
-            console.log(file.name);
-        });
-        uppy.on('complete', result => {
-            console.log('successful files:', result.successful)
-            console.log('failed files:', result.failed)
-        });
-
-    </script>
-
-    <script>
-        function fileupdate(){
-            var x = document.getElementById("buttons");
-            x.style.display = "block";
-        }
-        function fileadd(){
-            var x = document.getElementById("buttons");
-            x.classList.add("hidden");
-        }
-        $('#padd').click(function(){
-            $('.desc').addClass('hidden')
-            $('.formdesc').removeClass('hidden').addClass('block')
-        });
-        $('#s2').click(function(event){
-            event.preventDefault();
-            $('.desc').addClass('block').removeClass('hidden');
-            $('.formdesc').removeClass('block').addClass('hidden')
-        });
-        $("#button_comment").click(function(event){
-                let comment = $("input[name=comment]").val();
-                $.ajax({
-                    url: "{{route('comment')}}",
-                    type:"POST",
-                    data:{
-                        comment:comment,
-                        _token:$('meta[name="csrf-token"]').attr('content'),
-                    },
-                });
-                toggleModal6('modal-id6');
-            });
-    </script>
+    <script src="{{ asset('js/profile/profile.js') }}"></script>
     @if($user->role_id == 2)
         <script>
         if($('.tooltip-2').length === 0){

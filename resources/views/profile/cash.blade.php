@@ -151,7 +151,7 @@
                             </h2>
                             <p class="inline">@lang('lang.cash_topUp')</p>
                             <input
-                                class="focus:outline-none  inline rounded-xl xl:ml-3 ring-1 text-2xl text-center h-18 w-36  pb-1"
+                                class="focus:outline-none focus:border-yellow-500  inline rounded-xl xl:ml-3 ring-1 text-2xl text-center h-18 w-36  pb-1"
                                 onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)'
                                 id="myText1" type='text' min="4000" maxlength="7" value="4000" />
                             <span class="xl:ml-1 xl:text-xl lg:text-lg text-xl">UZS</span>
@@ -318,51 +318,7 @@
     </div>
 
 
-    <script>
-        function inputCash() {
-            var x = document.getElementById("myText1").value;
-            if (x < 4000) {
-                document.getElementById('button2').removeAttribute("onclick");
-                document.getElementById('button2').classList.remove("bg-green-500","hover:bg-green-600");
-                document.getElementById('button2').classList.add("bg-gray-500");
-            } else {
-                document.getElementById('button2').setAttribute("onclick", "toggleModal();");
-                document.getElementById('button2').classList.remove("bg-gray-500");
-                document.getElementById('button2').classList.add("bg-green-500","hover:bg-green-600");
-            }
-        }
 
-        function fileupdate() {
-            var x = document.getElementById("buttons");
-            x.style.display = "block";
-        }
-
-        function fileadd() {
-            var x = document.getElementById("buttons");
-            x.classList.add("hidden");
-        }
-    </script>
-    <script>
-        let tabsContainer = document.querySelector("#tabs");
-        let tabTogglers = tabsContainer.querySelectorAll("#tabs a");
-        console.log(tabTogglers);
-        tabTogglers.forEach(function(toggler) {
-            toggler.addEventListener("click", function(e) {
-                e.preventDefault();
-                let tabName = this.getAttribute("href");
-                let tabContents = document.querySelector("#tab-contents");
-                for (let i = 0; i < tabContents.children.length; i++) {
-                    tabTogglers[i].parentElement.classList.remove("bg-gray-400", "rounded-sm",
-                    "text-white");
-                    tabContents.children[i].classList.remove("hidden");
-                    if ("#" + tabContents.children[i].id === tabName) {
-                        continue;
-                    }
-                    tabContents.children[i].classList.add("hidden");
-                }
-                e.target.parentElement.classList.add("bg-gray-400", "rounded-sm", "text-white");
-            });
-        });
-    </script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/profile/cash.js') }}"></script>
 @endsection
