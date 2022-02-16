@@ -75,8 +75,8 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail");
 
-Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask");
-Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("task.update");
+Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask")->middleware('auth');
+Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("task.update")->middleware('auth');
 
 Route::view('/offer-tasks','task.offertasks');
 Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){

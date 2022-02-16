@@ -108,7 +108,6 @@
 <script>
     var uppy = new Uppy.Core({
         debug: true,
-        autoProceed: true,
         restrictions: {
             minFileSize: null,
             maxFileSize: 10000000,
@@ -134,27 +133,17 @@
             showProgressDetails: true,
             note: 'Все типы файлов, до 10 МБ',
             width: 'auto',
-            height: '600px',
+            height: '400px',
             metaFields: [
                 {id: 'name', name: 'Name', placeholder: 'file name'},
                 {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
             ],
             browserBackButtonClose: true
         })
-
-        .use(Uppy.GoogleDrive, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-        .use(Uppy.Dropbox, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-        .use(Uppy.Instagram, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-        .use(Uppy.Facebook, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-        .use(Uppy.OneDrive, {target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io'})
-        .use(Uppy.Webcam, {target: Uppy.Dashboard})
-        .use(Uppy.ScreenCapture, {target: Uppy.Dashboard})
-        .use(Uppy.ImageEditor, {target: Uppy.Dashboard})
-        .use(Uppy.DropTarget, {target: document.body})
-        .use(Uppy.GoldenRetriever)
         .use(Uppy.XHRUpload, {
-            endpoint: '/task/create/upload',
-            fieldName: 'file',
+            endpoint: '{{route('task.create.images.store', $task->id)}}',
+            formData: true,
+            fieldName: 'images',
             headers: file => ({
                 'X-CSRF-TOKEN': '{{csrf_token()}}'
             }),

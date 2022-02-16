@@ -122,11 +122,11 @@
                                         <div name="glassSht" class="mb-3 xl:w-full">
 
 
-
                                             @foreach($data->options['options'] as $key => $option)
 
-                                                <input  {{ $data->custom_field_values()->where('task_id', $task->id)->first() ? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null  }} type="radio"
-                                                       id="{{$key}}" name="{{$data->name}}[]" value="{{$option}}">
+                                                <input
+                                                    {{ $data->custom_field_values()->where('task_id', $task->id)->first() ? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null  }} type="radio"
+                                                    id="{{$key}}" name="{{$data->name}}[]" value="{{$option}}">
                                                 <label for="{{$key}}">{{$option}}</label>
                                                 <br><br>
                                             @endforeach
@@ -159,7 +159,8 @@
                                     {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
                                     <input
                                         placeholder="{{ $data->getTranslatedAttribute('placeholder',Session::get('lang') , 'fallbackLocale') }}"
-                                        id="car" name="{{$data->name}}[]" type="text" value="{{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] : null }}"
+                                        id="car" name="{{$data->name}}[]" type="text"
+                                        value="{{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] : null }}"
                                         class="shadow appearance-none border focus:outline-none  focus:border-yellow-500 rounded w-full py-2 px-3 text-gray-700 leading-tight"
                                         required>
 
@@ -196,7 +197,7 @@
                 <div class="my-2">
                     <label class="text-xs text-gray-500">
                         Ценность покупки, SUM
-                        <input type="text"  onkeypress='validate(event)'
+                        <input type="text" onkeypress='validate(event)'
                                name="budget" value="{{ $task->price }}"
                                class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">
 
@@ -315,6 +316,7 @@
 
 
                             </div>
+
                             <input name="coordinates" type="hidden" id="coordinate"
                                    value="{{ json_decode($task->address)->latitude.",".json_decode($task->address)->longitude }}">
                             <div id="addinput" class="flex gap-y-2 flex-col">
@@ -323,6 +325,7 @@
                             </div>
                         </div>
                         <div>
+
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
 
@@ -355,6 +358,38 @@
                             Отдаю предпочтение застрахованным исполнительям ?
                         </label>
                     </div>
+                    <div>
+                        <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
+                            <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_Image')</h1>
+                            @foreach(json_decode($task->photos)??[] as $key => $image)
+                                {{--                                            @if ($loop->first)--}}
+
+                                <div class="relative boxItem">
+                                    <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
+                                       data-fancybox="img1"
+                                       data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                        <div class="mediateka_photo_content">
+                                            <img src="{{ asset('storage/'.$image) }}" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                                {{--                                            @endif--}}
+                            @endforeach
+                            @if($task->photos)
+                                <div class="relative boxItem">
+                                    @csrf
+                                    <a href="{{ route('task.images.delete', $task->id) }}" type="submit">
+                                        <div class="mediateka_photo_content text-center">
+                                            <i class="fas fa-trash text-black-50" style="font-size: 72px"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                        <div id="photos" class="w-full"></div>
+
+                    </div>
+
                 </div>
                 <div class="text-base my-6 bg-white rounded-md shadow-md p-4">
                     <h1 class="text-xl font-semibold py-4">На какой бюджет вы рассчитываете?</h1>
@@ -379,12 +414,6 @@
                         </select>
                     </div>
                     <div class="my-4 text-base">
-                    <span>
-                        или укажите другую сумму &nbsp
-                    </span>
-                        <input
-                            class="border border-gray-200 md:mx-4 md:px-2 py-2 pr-2 rounded-md focus:outline-none focus:border-yellow-500 text-right"
-                            placeholder="SUMMA" name="budget" value="{{ $task->price }}">SUM
                         @error('budget')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
@@ -432,10 +461,130 @@
         $('#start-date').css('display', 'inline-block');
         @endif
     </script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
+    <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
     <script src="{{ asset('js/changetask.js') }}"></script>
+    <script>
+        var element = document.getElementById('phone_number');
+        var maskOptions = {
+            mask: '+998(00)000-00-00',
+            lazy: false
+        }
+        var mask = new IMask(element, maskOptions);
+
+        $("#phone_number").keyup(function () {
+            var text = $(this).val()
+            text = text.replace(/[^0-9.]/g, "")
+            text = text.slice(3)
+            $("#phone").val(text)
+        })
+        var uppy = new Uppy.Core({
+            debug: true,
+            restrictions: {
+                minFileSize: null,
+                maxFileSize: 10000000,
+                maxTotalFileSize: null,
+                maxNumberOfFiles: 10,
+                minNumberOfFiles: 0,
+                allowedFileTypes: null,
+                requiredMetaFields: [],
+            },
+            meta: {},
+            onBeforeFileAdded: (currentFile, files) => currentFile,
+            onBeforeUpload: (files) => {
+            },
+            locale: {},
+            store: new Uppy.DefaultStore(),
+            logger: Uppy.justErrorsLogger,
+            infoTimeout: 5000,
+        })
+            .use(Uppy.Dashboard, {
+                trigger: '.UppyModalOpenerBtn',
+                inline: true,
+                target: '#photos',
+                showProgressDetails: true,
+                note: 'Все типы файлов, до 10 МБ',
+                width: 'auto',
+                height: '400px',
+                metaFields: [
+                    {id: 'name', name: 'Name', placeholder: 'file name'},
+                    {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
+                ],
+                browserBackButtonClose: true
+            })
+            .use(Uppy.XHRUpload, {
+                endpoint: '{{route('task.create.images.store', $task->id)}}',
+                formData: true,
+                fieldName: 'images',
+                headers: file => ({
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }),
+            });
+
+        uppy.on('upload-success', (file, response) => {
+            const httpStatus = response.status // HTTP status code
+            const httpBody = response.body   // extracted response data
+
+            // do something with file and response
+        });
+
+
+        uppy.on('file-added', (file) => {
+            uppy.setFileMeta(file.id, {
+                size: file.size,
+
+            })
+            console.log(file.name);
+        });
+        uppy.on('complete', result => {
+            console.log('successful files:', result.successful)
+            console.log('failed files:', result.failed)
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script
+        src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+    <script
+        src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-rotate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-video.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/fancybox.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/mediateka.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lightgallery.css') }}">
+
+    <div style="display: none;">
+
+        @foreach(json_decode($task->photos)??[] as $key => $image)
+            @if ($loop->first)
+
+            @else
+                <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
+                   data-fancybox="img1"
+                   data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                    <div class="mediateka_photo_content">
+                        <img src="{{ asset('storage/'.$image)  }}" alt="">
+                    </div>
+                </a>
+            @endif
+        @endforeach
+    </div>
 
 @endsection
+
+@section('javasript')
+
+
+@endsection
+
