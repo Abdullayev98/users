@@ -221,7 +221,7 @@
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="textarea">@lang('lang.settings_otherSet')</label>
-                                                    <textarea class="border rounded-xl py-2 px-3 w-full text-grey-900 outline-none"
+                                                    <textarea class="border rounded-xl py-2 px-3 w-full  text-grey-900 focus:outline-none focus:border-yellow-500"
                                                               name="description"
                                                               id="textarea">{{old('description')??$user->description}}</textarea>
                                                     @error('description')
