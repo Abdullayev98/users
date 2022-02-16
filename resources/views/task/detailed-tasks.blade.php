@@ -3,6 +3,39 @@
 
 
 @section("content")
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb" type="text/javascript"></script>
+    <script>
+        ymaps.ready(init);
+
+        function init() {
+            var myMap = new ymaps.Map("map", {
+                    center: [{{$task->coordinates}}],
+                    zoom: 10,
+                    controls: []
+                }),
+
+                // Создаем геообъект с типом геометрии "Точка".
+                myGeoObject = new ymaps.GeoObject({
+                    // Описание геометрии.
+                }, {
+                    // Опции.
+                    // Иконка метки будет растягиваться под размер ее содержимого.
+                    preset: 'islands#blackStretchyIcon',
+                    // Метку можно перемещать.
+                    draggable: true
+                });
+
+            myMap.geoObjects
+                .add(myGeoObject)
+                .add(new ymaps.Placemark([{{$task->coordinates}}], {
+                    balloonContent: '{{$task->name}}'
+                }, {
+                    preset: 'islands#icon',
+                    iconColor: '#0095b6'
+                }));
+        }
+
+    </script>
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task->responses))
         <div class="lg:flex container xl:w-9/12 w-11/12 mx-auto">
@@ -57,9 +90,16 @@
                                 </div>
 
                                 <div
-                                    class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
-                                    <div class="ml-4 md:ml-12 flex flex-row">
-                                        @if($task->date_type == 1)
+                                    class="mt-12 border-2 py-2 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
+                                    <div id="map" class="h-64 mb-4 -mt-2" ></div>
+                                    <div class="ml-4 md:ml-12 flex flex-row my-4">
+                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
+                                        @if($task->address !== NULL)
+                                            <p class=" h-auto w-96">{{json_decode($task->address, true)['location']}}</p>
+                                        @endif
+                                    </div>
+                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                    @if($task->date_type == 1)
                                             <h1 class="font-bold h-auto w-48">@lang('lang.date_startTask')</h1>
                                         @elseif($task->date_type == 2)
                                             <h1 class="font-bold h-auto w-48">@lang('lang.date_finishTask')</h1>
@@ -73,31 +113,25 @@
                                         <p class=" h-auto w-96">{{$task->budget}}</p>
                                     </div>
 
-                                    @isset($value)
-                                        @foreach($task->custom_field_values as $value)
+                                @isset($value)
+                                    @foreach($task->custom_field_values as $value)
                                             <div class="ml-4 md:ml-12 flex flex-row mt-8">
 
                                                 <h1 class="font-bold h-auto w-48">{{ $value->custom_field->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                                                 <p class=" h-auto w-96">
-                                                    @foreach(json_decode($value->value, true) as $value_obj)
-                                                        @if ($loop->last)
-                                                            {{$value_obj}}
-                                                        @else
-                                                            {{$value_obj}},
-                                                        @endif
-                                                    @endforeach
+                                            @foreach(json_decode($value->value, true) as $value_obj)
+                                                @if ($loop->last)
+                                                        {{$value_obj}}
+                                                    @else
+                                                        {{$value_obj}},
+                                                @endif
+                                                @endforeach
                                                 </p>
                                             </div>
                                         @endforeach
                                     @endisset
 
 
-                                    <div class="ml-4 md:ml-12 flex flex-row mt-4">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
-                                        @if($task->address !== NULL)
-                                            <p class=" h-auto w-96">{{json_decode($task->address, true)['location']}}</p>
-                                        @endif
-                                    </div>
 
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                         <h1 class="font-bold h-auto w-48">@lang('lang.detT_payment')</h1>
