@@ -19,7 +19,7 @@
             $array_video = json_decode(setting('site.Video_bg'), true);
                 $str_replace = str_replace("\\","/",$array_video);
             @endphp
-            <video src="storage/{{$array_video['0']['download_link']}}" type="video/mp4" autoplay muted loop></video>
+            <video src="{{asset('storage/'.$array_video['0']['download_link'])}}" type="video/mp4" autoplay muted loop></video>
             @else
             @php
                 $pp = setting('site.foto_bg');
@@ -104,7 +104,7 @@
             <div class="grid md:grid-cols-3 grid-cols-1 my-8">
                 @foreach ($trusts as $trust)
                     <div class="text-center">
-                        <img src="/storage/{{$trust->image}}"
+                        <img src="{{ asset('storage/'.$trust->image) }}"
                             class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
                         <h1 class="font-bold my-4">{{ $trust->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                         <p class="text-sm">{{ $trust->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}</p>
@@ -124,7 +124,7 @@
                             <a href="/categories/1" class="py-2 sm:px-4 px-2 border-solid md:text-base text-xs bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
                         </div>
                         <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12 ">
-                            <img src="/storage/{{$reklama->image}}"
+                            <img src="{{ asset('storage/'.$reklama->image) }}"
                                  class="object-cover object-right-bottom w-full h-full  "
                                  alt="">
                         </div>
@@ -150,7 +150,7 @@
 @if(($cnt_for_hiw % 2) == 0)
 
                     <div>
-                        <img class="lg:ml-0  mx-auto  w-42 h-42" src="/storage/{{$howitwork->image}}" alt="">
+                        <img class="lg:ml-0  mx-auto  w-42 h-42" src="{{ asset('storage/'.$howitwork->image) }}" alt="">
                     </div>
                     <div class="md:text-left text-center">
                         <h3 class="text-3xl my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
@@ -166,12 +166,12 @@
                         <h2 class="text-xl">{{ strip_tags($howitwork->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale')) }}</h2>
                     </div>
                     <div class="my-16 md:block hidden">
-                        <img class="lg:ml-0  mx-auto w-42 h-42" src="/storage/{{$howitwork->image}}" alt="">
+                        <img class="lg:ml-0  mx-auto w-42 h-42" src="{{ asset('storage/'.$howitwork->image) }}" alt="">
                     </div>
 
                     <div class="my-16 md:hidden block">
                         <img class="lg:ml-0 mx-auto w-42 h-42"
-                            src="/storage/{{$howitwork->image}}"
+                            src="{{ asset('storage/'.$howitwork->image) }}"
                             alt="">
                     </div>
                     <div class="md:text-left text-center md:hidden block">
@@ -179,7 +179,7 @@
                         <a href="/categories/1" class="text-blue-500 underline text-xl">@lang('lang.body_createTask')</a>
                     </div>
                 @endif
-                    @php $cnt_for_hiw++ @endphp
+                    @php $cnt_for_hiw++; @endphp
             @endforeach
                 </div>
             </div>
@@ -202,7 +202,7 @@
                 <div class="grid lg:grid-cols-4 grid-cols-4 grid-cols-1 w-full md:w-11/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
                     <div class="col-span-1 md:my-auto sm:mr-0 mr-4 rounded-lg">
-                        <img src="/storage/{{$advant->image}}" class="md:w-32 md:h-32 h-24 w-24 rounded-lg"  alt="">
+                        <img src="{{ asset('storage/'.$advant->image) }}" class="md:w-32 md:h-32 h-24 w-24 rounded-lg"  alt="">
                     </div>
                     <div class="col-span-3 ml-5">
                         <h4 class="font-semibold text-xl md:text-2xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
