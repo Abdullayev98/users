@@ -154,7 +154,9 @@
                     </div>
                     <div class="md:text-left text-center">
                         <h3 class="text-3xl my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
-                        <a href="/categories/1" class="text-blue-500 underline text-xl">@lang('lang.body_createTask')</a>
+                        <a href="/categories/1" class="">
+                            <button class="bg-transparent hover:bg-yellow-500 text-yellow-500 hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">@lang('lang.body_createTask')</button>
+                        </a>
                     </div>
 
 @else
@@ -181,13 +183,13 @@
             @endforeach
                 </div>
             </div>
-            <div class="text-center w-full mx-auto my-4">
+            <div class="text-center w-full mx-auto mt-12 pb-8">
                 <a href="/task/create?category_id=31">
-                  <button class="text-center py-4 px-5  bg-yellow-500 border-yellow-500 text-3xl border-b-4">
+                  <button class="text-center text-white py-4 px-5  bg-yellow-500 border-yellow-500 text-3xl rounded">
                   @lang('lang.body_putTask')
                   </button>
                 </a>
-                <div class="text-center text-2xl">
+                <div class="text-center text-xl mt-4">
                 @lang('lang.body_findPerformer')
                 </div>
             </div>
@@ -258,7 +260,7 @@
                     </div>
                     <div class="mt-8 flex justify-center">
                         <a href="{{route('task.search')}}" type="button"
-                           class="text-center p-4 bg-blue-500 border-blue-500 text-white text-base  border-b-4 rounded-lg">
+                           class="text-center p-4 bg-blue-500 border-blue-500 text-white text-base  rounded-lg">
                             @lang('lang.body_showAllTasks')
                         </a>
 
