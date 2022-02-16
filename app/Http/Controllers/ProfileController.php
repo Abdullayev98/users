@@ -39,18 +39,10 @@ class ProfileController extends Controller
         return $dd;
 
     }
-    public function delete($id)
+    public function delete(Portfolio $id)
     {
-        $user = Auth::user();
-        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
-        foreach ($comment as $comments){
-            $directory = $comments->comment;
-        }
-        $file = File::deleteDirectory("Portfolio/{$user->name}/{$directory}");
-        if($file) {
-            $user->portfolios()->where('id', $id)->delete();
-            return redirect()->route('userprofile');
-        }
+        $id->delete();
+        return redirect()->route('userprofile');
     }
     public function UploadImage(Request $request)
     {
@@ -301,7 +293,7 @@ class ProfileController extends Controller
         $data = $request->validated();
 
         $data['user_id'] = auth()->user()->id;
-        $data['image'] = json_encode(session()->has('images')?session():null);
+        $data['image'] = json_encode(session()->has('images')?session('images'):null);
 
         Portfolio::create($data);
         return redirect()->route('userprofile');
