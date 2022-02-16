@@ -140,7 +140,7 @@
                     <ul class="d-flex flex-col gap-y-5">
                         @isset($reviews)
                             @foreach ($reviews as $review)
-                                @if($review->user_id == $user->id)
+                                @if($review->user_id == $user->id && $review->task)
                                     <li class="d-flex flex-col my-10 rounded-lg">
                                         <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
                                             <img class="UsersReviews_picture__aB22p"
