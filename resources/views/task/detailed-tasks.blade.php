@@ -463,13 +463,12 @@
                         <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
                                 <h1 class="text-xl font-medium mb-4">@lang('lang.detT_task') № {{$task->id}}</h1>
-{{--                                <button--}}
-{{--                                    class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">--}}
-{{--                                    <i class="fas fa-link text-gray-500"></i>--}}
-{{--                                </button>--}}
-{{--                                <div class="fb-share-button" data-href="{{Request::url()}}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>--}}
-                                <div class="sharethis-inline-share-buttons"></div>
-{{--                                <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>--}}
+                                <button
+                                    class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">
+                                    <i class="fas fa-link text-gray-500"></i>
+                                </button>
+                                <div class="fb-share-button" data-href="{{Request::url()}}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                                <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>
                             </div>
                             <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                             <div class="flex flex-row mt-4">
@@ -563,14 +562,14 @@
 
 
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
-        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=620cba4733b7500019540f3c&product=inline-share-buttons' async='async'></script>        <script>
             $(document).ready(function(){
                $('#st-cmp-v2').addClass('hidden');
             });
         </script>
         <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0" nonce="Ah8xKkvU"></script>
-@endsection
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0" nonce="Ah8xKkvU"></script>
+
+            @endsection
 
 
 @section('javasript')
