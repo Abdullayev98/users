@@ -50,14 +50,23 @@ var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
 </script>
 @yield("javasript")
 <script>
+
         $(document).ready(function($) {
         var Body = $('body');
         Body.addClass('preloader-site');
-    });
+            $('#st-cmp-v2').addClass('hidden');
+            $('.sharethisbutton').click(function(){
+                $('.st-logo').addClass('hidden');
+                $('.st-close').attr('style', 'position:fixed !important;top: 20px !important');
+                $('.st-disclaimer').addClass('hidden');
+            });
+        });
         window.addEventListener('load', function () {
             $('.preloader-wrapper').fadeOut();
             var Body = $('body');
             Body.removeClass('preloader-site');
+            $('#st-cmp-v2').addClass('hidden');
+
         })
 </script>
 </html>
