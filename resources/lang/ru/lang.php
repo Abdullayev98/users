@@ -45,7 +45,7 @@ return [
     'body_downloadApp' => "Скачайте наше приложение и пользуйтесь Universal Services,
                         где бы вы ни находились.",
     'body_whatOthersDoing' => "Что заказывают на «Универсал Сервис» прямо сейчас",
-    'body_showAllTasks' => "Показать все задания",
+    'body_showAllTasks' => "Показать ещё задания",
     'body_howToJoin' => "Как стать исполнителем",
     'body_security' => "Безопасность и гарантии",
     'body_perForBusines' => "Надежные исполнители для бизнеса",
