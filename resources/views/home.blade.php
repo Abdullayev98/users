@@ -236,7 +236,7 @@
             </div>
             <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-56">
                 <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
-                    <div class="w-full overflow-y-scroll w-full h-screen">
+                    <div class="w-full overflow-y-scroll h-screen">
 
                         @foreach($tasks as $task)
                             <div class="w-full border-b-2 h-28 hover:bg-blue-100 overflow-hidden">
@@ -256,11 +256,12 @@
 
 
                     </div>
-                    <div class="mt-8">
+                    <div class="mt-8 flex justify-center">
                         <a href="{{route('task.search')}}" type="button"
-                                class="text-center py-2 bg-blue-500 border-blue-500 text-white text-base w-1/2 border-b-4 mx-auto">
-                                @lang('lang.body_showAllTasks')
+                           class="text-center p-4 bg-blue-500 border-blue-500 text-white text-base  border-b-4 rounded-lg">
+                            @lang('lang.body_showAllTasks')
                         </a>
+
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">
