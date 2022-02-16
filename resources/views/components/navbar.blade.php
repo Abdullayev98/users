@@ -26,7 +26,7 @@
                         <div class="w-2/12 flex justify-center lg:hidden">
                             {{-- icon-1 --}}
                             <div class=" float-left">
-                                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
+                                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-center">1</div>
                                 <button class="" type="button" data-dropdown-toggle="notification">
                                     <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                                 </button>

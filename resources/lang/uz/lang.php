@@ -44,7 +44,7 @@ return [
     'body_personalHelper' => "Cho'ntagingizda shaxsiy yordamchi",
     'body_downloadApp' => "Ilovamizni yuklab oling va Universal Services-dan foydalaning.",
     'body_whatOthersDoing' => "Ular hozir 'Universal Services' uchun nima buyurtma berishadi",
-    'body_showAllTasks' => "Barcha vazifalarni ko'rsatish",
+    'body_showAllTasks' => "Ko'proq vazifalarni ko'rsatish",
     'body_howToJoin' => "Qanday qilib ijrochi bo'lish mumkin",
     'body_security' => "Xavfsizlik va kafolatlar",
     'body_perForBusines' => "Biznes uchun ishonchli ijrochilar",
