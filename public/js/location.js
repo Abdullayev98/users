@@ -1,4 +1,18 @@
-
+var i = 0;
+$('#suggest0').on('input',function(e){
+        if($(".ymaps-2-1-79-i-custom-scroll").length && i<1){
+            $("#getlocal").hide();
+            var children = $(".ymaps-2-1-79-i-custom-scroll").children().last();
+            $( '<hr><button id="getlocale" class="flex-shrink-0 border-transparent w-24 getlocale border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">   <svg class="h-4 w-4 text-purple-500" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"></path>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3"></path></svg>  </button>' ).insertAfter( children );
+            i++
+            $("#getlocale").click();
+        }
+        if ($('#suggest0').val() == ""){
+            $("#getlocal").show();
+        }else{
+            $("#getlocal").hide();
+        }
+});
 function init_map(){
 
     myMap = new ymaps.Map('map', {
@@ -75,7 +89,12 @@ function init() {
                 console.log('Ошибка: ' + err)
             });
         myFunction();
+        $("#getlocal").hide();
 
+    });
+
+    $("#getlocale").click(function(){
+        $("#getlocal").click();
     });
 
 
@@ -84,10 +103,6 @@ function init() {
 // Mapga yuklash joyni
 
 function myFunction() {
-
-
-
-
     place = document.getElementById("suggest0").value;
     var myGeocoder = ymaps.geocode(place);
     myGeocoder.then(
@@ -95,7 +110,6 @@ function myFunction() {
             document.getElementById("coordinate").value = res.geoObjects.get(0).geometry.getCoordinates();
             myMap.setCenter( res.geoObjects.get(0).geometry.getCoordinates());
         }
-
     );
 
     if(document.getElementById("suggest1")){
