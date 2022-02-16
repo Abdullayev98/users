@@ -132,6 +132,10 @@ return [
     'detT_otherTaskInCat' => "Kategoriyadagi boshqa vazifalar",
     'detT_ordererThisTask' => "Bu topshiriqning buyurtmachisi",
     'detT_task' => "Vazifa",
+    'detT_payment' => "Tolov trui",
+    'detT_card' => "Karta",
+    'detT_or' => "yoki",
+    'detT_cash' => "Naqt pul",
     // detailed-tasks.blade end
 
     // mytasks.blade start
