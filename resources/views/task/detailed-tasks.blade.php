@@ -15,7 +15,7 @@
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
-                                    <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$task->budget}}</p>
+                                    <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg bg-yellow-400">{{$task->budget}}</p>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id && $task->status < 2)
                                             <a href="{{ route('task.changetask', $task->id) }}"
