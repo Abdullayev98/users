@@ -150,3 +150,11 @@ $(".close-modal").on('click', function (e) {
 
 });
 
+// modal add text
+
+    $('#btn2').click(function (){
+        $( "#text1" ).removeClass( "hidden" );
+    })
+    $('#btn1').click(function (){
+        $( "#text1" ).addClass( "hidden" );
+    })

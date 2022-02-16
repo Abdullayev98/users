@@ -151,7 +151,7 @@
                             </h2>
                             <p class="inline">@lang('lang.cash_topUp')</p>
                             <input
-                                class="focus:outline-none  inline rounded-xl xl:ml-3 ring-1 text-2xl text-center h-18 w-36  pb-1"
+                                class="focus:outline-none focus:border-yellow-500  inline rounded-xl xl:ml-3 ring-1 text-2xl text-center h-18 w-36  pb-1"
                                 onkeyup="myText.value = this.value" oninput="inputCash()" onkeypress='validate(event)'
                                 id="myText1" type='text' min="4000" maxlength="7" value="4000" />
                             <span class="xl:ml-1 xl:text-xl lg:text-lg text-xl">UZS</span>

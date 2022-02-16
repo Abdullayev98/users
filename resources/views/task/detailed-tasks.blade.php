@@ -1,16 +1,18 @@
 @extends("layouts.app")
 
+
+
 @section("content")
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task->responses))
-        <div class="lg:flex container w-10/12 mx-auto">
-            <div class="md:flex mx-auto w-10/12">
+        <div class="lg:flex container xl:w-9/12 w-11/12 mx-auto">
+            <div class="md:flex mx-auto w-full">
                 @else
-                    <div class="md:flex mx-auto w-10/12 md:w-9/12">
+                    <div class="md:flex mx-auto w-full">
                         @endif
                         <div class="mt-8 lg:flex mb-8">
                             {{-- left sidebar start --}}
-                            <div class="w-10/12 md:w-11/12 float-left">
+                            <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
                                     <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$task->budget}}</p>
@@ -98,21 +100,35 @@
                                     </div>
 
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_payment')</h1>
+                                        <div class=" h-auto w-96">
+                                            <a class="cursor-pointer underline text-blue-400" href="#">@lang('lang.detT_card')</a> @lang('lang.detT_or') <a class="cursor-pointer underline text-blue-400" href="#">@lang('lang.detT_cash')</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                         <h1 class="font-bold h-auto w-48">@lang('lang.detT_need')</h1>
                                         <p class=" h-auto w-96">{{$task->description}}</p>
                                     </div>
-                                    @php
-                                        $images = explode(',', $task->photos);
-                                        $a = sizeof($images)-1;
-                                    @endphp
-                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
+
+                                    <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
                                         <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_Image')</h1>
-                                        @for($i = 0; $i <= $a; $i++)
-                                            <img class="w-40 h-40 mx-2" src="{{asset($images[$i])}}"
-                                                 alt="@lang('lang.detailedT_ImageNot')">
-                                            {{--@dd($image);--}}
-                                        @endfor
+                                        @foreach(json_decode($task->photos)??[] as $key => $image)
+{{--                                            @if ($loop->first)--}}
+
+                                            <div class="relative boxItem">
+                                                <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
+                                                   data-fancybox="img1"
+                                                   data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                                    <div class="mediateka_photo_content">
+                                                        <img src="{{ asset('storage/'.$image) }}" alt="">
+                                                    </div>
+                                                </a>
+                                            </div>
+{{--                                            @endif--}}
+                                        @endforeach
                                     </div>
+
                                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                     <div>
@@ -123,33 +139,37 @@
                                                     @if(getAuthUserBalance() >= 4000 || $task->responses_count< setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
                                                             <button
-                                                                class="font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
+                                                                class="w-full font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-green-600 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300"
+                                                                id="btn1"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
                                                                 @lang('lang.detT_callbackpay')<br>
-                                                                <span class="text-xs">
+                                                                <span class="text-sm">
                                                                 @lang('lang.detT_callbackpay2')<br>
                                                             </span>
                                                             </button>
                                                             <button
-                                                                class="font-sans text-lg font-semibold bg-green-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2"
+                                                                class="w-full font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-yellow-600 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300"
+                                                                id="btn2"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
                                                                 @lang('lang.detT_callback')<br>
-                                                                <span class="text-xs">
+                                                                <span class="text-sm">
                                                                 @lang('lang.detT_callback23')
                                                             </span>
                                                             </button>
                                                         @endif
                                                     @elseif(getAuthUserBalance() < 4000 || $response_count_user >= setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
-                                                            <a href="#" class="open-modal" data-modal="#modal1">
+                                                            <a href="#" class="open-modal"
+                                                               data-modal="#modal1">
                                                                 <button
-                                                                    class='font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                    class='w-1/2 font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
                                                                     @lang('lang.detT_callbackpay')
                                                                 </button>
                                                             </a>
-                                                            <a href="#" class="open-modal" data-modal="#modal1">
+                                                            <a href="#" class="open-modal"
+                                                               data-modal="#modal1">
                                                                 <button
                                                                     class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
                                                                     @lang('lang.detT_callback')
@@ -157,7 +177,9 @@
                                                             </a>
                                                             <div class='modal' id='modal1'>
                                                                 <div class='content'>
-                                                                    <img src="{{asset('images/cashback.svg')}}" alt="">
+                                                                    <img
+                                                                        src="{{asset('images/cashback.svg')}}"
+                                                                        alt="">
                                                                     <h1 class="title">@lang('lang.detT_fill')</h1>
                                                                     <p>
                                                                         @lang('lang.detT_balanceReq')
@@ -209,7 +231,8 @@
                                                 <div id="authentication-modal"
                                                      aria-hidden="true"
                                                      class="btn-preloader hidden overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center">
-                                                    <div class="relative w-full max-w-md px-4 h-full md:h-auto">
+                                                    <div
+                                                        class="relative w-full max-w-md px-4 h-full md:h-auto">
                                                         <!-- Modal content -->
                                                         <div
                                                             class="bg-white rounded-lg shadow relative dark:bg-gray-700">
@@ -226,29 +249,37 @@
                                                                     </svg>
                                                                 </button>
                                                             </div>
-                                                            <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8"
-                                                                  action="{{route("task.response.store", $task->id)}}"
-                                                                  method="post">
+                                                            <form
+                                                                class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8"
+                                                                action="{{route("task.response.store", $task->id)}}"
+                                                                method="post">
                                                                 @csrf
                                                                 <header>
                                                                     <h2 class="font-semibold text-2xl mb-4">@lang('lang.detT_addOffers')</h2>
                                                                 </header>
                                                                 <main>
                                                                 <textarea required
-                                                                          class="resize-none rounded-md w-full focus:outline-none border border p-4  transition duration-200 my-4"
+                                                                          class="resize-none rounded-md w-full focus:outline-none  focus:border-yellow-500 border border p-4  transition duration-200 my-4"
                                                                           type="text" id="form8" rows="4"
                                                                           name="description"></textarea>
+                                                                    <p id="text1" class="hidden text-lg">
+                                                                        Если заказчик
+                                                                        захочет с вами связаться, мы
+                                                                        автоматически
+                                                                        спишем стоимость контакта с вашего
+                                                                        счёта</p>
                                                                     <div class="my-2">
                                                                         <label class=" px-2">
                                                                             <input type="checkbox"
                                                                                    name="notification_on"
-                                                                                   class="mr-2 my-3 ">@lang('lang.detT_notifMe')
+                                                                                   class="mr-2 my-3 focus:outline-none  focus:border-yellow-500">@lang('lang.detT_notifMe')
                                                                             <br>
                                                                         </label>
                                                                         <label class="px-2">
                                                                             <input
-                                                                                class="focus:outline-none   my-3 coupon_question mr-2"
-                                                                                type="checkbox" name="coupon_question"
+                                                                                class="focus:outline-none  focus:border-yellow-500   my-3 coupon_question mr-2"
+                                                                                type="checkbox"
+                                                                                name="coupon_question"
                                                                                 value="1"
                                                                                 onchange="valueChanged()"/>@lang('lang.detT_pointTime')
                                                                         </label>
@@ -278,19 +309,22 @@
                                                                         </select>
                                                                     </div>
                                                                     <label>
-                                                                        <input type="text" onkeypress='validate(event)'
-                                                                               checked name="budget"
-                                                                               class="border rounded-md px-2 border-solid outline-0 mr-3 my-2">UZS
+                                                                        <input type="text"
+                                                                               onkeypress='validate(event)'
+                                                                               checked name="price"
+                                                                               class="border rounded-md px-2 border-solid focus:outline-none  focus:border-yellow-500 mr-3 my-2">UZS
                                                                         <input type="text" name="pay"
-                                                                               class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden"
+                                                                               class="pays border rounded-md px-2 border-solid focus:outline-none  focus:border-yellow-500 mr-3 my-2 hidden"
                                                                                value="0">
-                                                                        <input type="text" name="task_user_id"
-                                                                               class="pays border rounded-md px-2 border-solid outline-0 mr-3 my-2 hidden"
+                                                                        <input type="text"
+                                                                               name="task_user_id"
+                                                                               class="pays border rounded-md px-2 border-solid focus:outline-none  focus:border-yellow-500 mr-3 my-2 hidden"
                                                                                value="{{$task->user_id}}">
                                                                     </label>
                                                                     <hr>
                                                                 </main>
-                                                                <footer class="flex justify-center bg-transparent">
+                                                                <footer
+                                                                    class="flex justify-center bg-transparent">
                                                                     <button type="submit"
                                                                             class=" bg-yellow-500 font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300">
                                                                         @lang('lang.detT_next')
@@ -397,28 +431,28 @@
                                                             @endif
 
                                                             @auth()
-                                                            @if($task->status == 3 && $response->user_id == $task->performer_id)
-                                                                <div class="w-10/12 mx-auto">
-                                                                    <a href="{{ route('personal.chat', $response->user->id) }}"
-                                                                       class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
-                                                                        @lang('lang.detT_writeOnChat')
-                                                                    </a>
+                                                                @if($task->status == 3 && $response->user_id == $task->performer_id)
+                                                                    <div class="w-10/12 mx-auto">
+                                                                        <a href="{{ route('personal.chat', $response->user->id) }}"
+                                                                           class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
+                                                                            @lang('lang.detT_writeOnChat')
+                                                                        </a>
 
-                                                                </div>
-                                                            @elseif($task->status <= 2)
-                                                                <form
-                                                                    action="{{ route('performer.select', $response->id) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    <button
-                                                                        type="submit"
-                                                                        class="cursor-pointer text-semibold text-center w-[200px]
+                                                                    </div>
+                                                                @elseif($task->status <= 2)
+                                                                    <form
+                                                                        action="{{ route('performer.select', $response->id) }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        <button
+                                                                            type="submit"
+                                                                            class="cursor-pointer text-semibold text-center w-[200px]
                                                                  md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition
                                                                  duration-200 text-white bg-green-500 hover:bg-green-500 font-medium
                                                                  border border-transparent rounded-md"> @lang('lang.detT_choose')</button>
 
-                                                                </form>
-                                                            @endif
+                                                                    </form>
+                                                                @endif
 
                                                             @endauth
 
@@ -433,28 +467,29 @@
                             </div>
                         </div>
                         {{-- right sidebar start --}}
-                        <div class="lg:w-3/12 w-1/2 lg:mt-0 mt-8 lg:ml-8 ml-0">
+                        <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
                                 <h1 class="text-xl font-medium mb-4">@lang('lang.detT_task') № {{$task->id}}</h1>
-                                <button
-                                    class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">
-                                    <i class="fas fa-link text-gray-500"></i>
-                                </button>
+{{--                                <button--}}
+{{--                                    class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">--}}
+{{--                                    <i class="fas fa-link text-gray-500"></i>--}}
+{{--                                </button>--}}
+{{--                                <div class="fb-share-button" data-href="{{Request::url()}}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>--}}
+                                <div class="sharethisbutton sharethis-inline-share-buttons"></div>
+{{--                                <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>--}}
                             </div>
                             <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                             <div class="flex flex-row mt-4">
                                 <div class="mr-4">
-                                    <img src="
-                            @if ($task->user->avatar == '')
-                                    {{ asset("storage/images/default.png") }}
-                                    @else
-                                    {{ asset("storage/{$task->user->avatar}") }}
-                                        " @endif
-                                         class="border-2 border-gray-400 w-32 h-32" alt="#">
+                                    <img
+                                        src="@if ($task->user->avatar == ''){{ asset("storage/images/default.png") }}
+                                        @else{{asset("storage/{$task->user->avatar}") }}" @endif
+                                        class="border-2 border-gray-400 w-32 h-32" alt="#">
                                 </div>
                                 <div class="">
                                     <a href="/performers/{{$task->user->id}}"
-                                       class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}</a>
+                                       class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
+                                    </a>
                                     <br>
                                     <a href="#" class="text-xl text-gray-500">
                                         @if($task->user->age != "")
@@ -500,20 +535,23 @@
                                 <div class="flex flex-row justify-center w-full my-4 mx-auto">
                                     <label id="class_demo"
                                            class="cursor-pointer w-32 text-gray-500 border rounded-l hover:bg-green-500 transition duration-300 hover:text-white">
-                                        <input type="radio" name="good" class="good border hidden rounded ml-6 w-8/12"
+                                        <input type="radio" name="good"
+                                               class="good border hidden rounded ml-6 w-8/12"
                                                value="1">
                                         <i class="far fa-thumbs-up text-2xl mr-2"></i><span
                                             class="relative -top-1">good</span>
                                     </label>
                                     <label id="class_demo1"
                                            class="cursor-pointer w-32 text-gray-500 border rounded-r hover:bg-red-500 transition duration-300 hover:text-white">
-                                        <input type="radio" name="good" class="good border hidden rounded ml-6  w-8/12"
+                                        <input type="radio" name="good"
+                                               class="good border hidden rounded ml-6  w-8/12"
                                                value="0">
-                                        <i class="far fa-thumbs-down text-2xl mr-2"></i><span class="relative -top-1">bad</span>
+                                        <i class="far fa-thumbs-down text-2xl mr-2"></i><span
+                                            class="relative -top-1">bad</span>
                                     </label>
                                 </div>
                                 <textarea name="comment" class="h-24 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white shadow-lg drop-shadow-xl
-                                        border resize-none w-full border-solid border-gray-200 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-300 focus:outline-none"></textarea>
+                                        border resize-none w-full border-solid border-gray-200 rounded transition ease-in-out m-0 focus:outline-none  focus:border-yellow-500 "></textarea>
 
                                 <button
                                     class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
@@ -529,7 +567,50 @@
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
 
         <input type="hidden" id="task" value="{{ $task->id }}">
-
-
+        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=620cba4733b7500019540f3c&product=inline-share-buttons' async='async'></script>
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
+
+        <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0" nonce="Ah8xKkvU"></script>
+
+            @endsection
+
+
+@section('javasript')
+
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script
+        src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+    <script
+        src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-rotate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-video.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/fancybox.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/mediateka.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lightgallery.css') }}">
+
+    <div style="display: none;">
+
+        @foreach(json_decode($task->photos)??[] as $key => $image)
+            @if ($loop->first)
+
+            @else
+                <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
+                   data-fancybox="img1"
+                   data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                    <div class="mediateka_photo_content">
+                        <img src="{{ asset('storage/'.$image)  }}" alt="">
+                    </div>
+                </a>
+            @endif
+        @endforeach
+    </div>
 @endsection
+

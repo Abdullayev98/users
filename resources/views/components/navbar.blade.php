@@ -355,7 +355,7 @@
             </div>
             <div class="text-center h-64">
                 <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
-                    <input class="focus:outline-none  w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="4000">
+                    <input class="focus:outline-none focus:border-yellow-500  w-full h-full text-4xl text-center " maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="4000">
                 </div>
                 <p class="text-sm mt-2 leading-6 text-gray-400">@lang('lang.navbar_minimum')</p>
 

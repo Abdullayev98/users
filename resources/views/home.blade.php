@@ -45,7 +45,7 @@
                     <div class="mx-auto">
                         <div class="lg:w-10/12 w-full mx-auto flex-1">
                             <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="@lang('lang.header_exampleSearch')"
-                                   class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:placeholder-transparent focus:outline-none flex-1 md:text-xl text-lg">
+                                   class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-md focus:placeholder-transparent focus:outline-none focus:border-yellow-500 flex-1 md:text-xl text-lg">
                                 <datalist id="TypeList">
                                     @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                         <option
@@ -112,20 +112,20 @@
                 @endforeach
             </div>
         </div>
-
-        <div class="swiper mySwiper xl:w-10/12 lg:w-11/12 md:w-10/12 h-60 overflow-hidden rounded-xl mt-12">
+        <div class="bg-gray-50">
+        <div class="swiper mySwiper xl:w-10/12 lg:w-11/12 md:w-10/12 h-60 overflow-hidden rounded-xl mt-12 ">
             <div class="swiper-wrapper">
                 @foreach ($reklamas as $reklama )
-                <div class="swiper-slide w-full items-center  mt-12">
+                <div class="swiper-slide w-full items-center  mt-12" >
                     <div class="flex border-xl sm:w-10/12 w-3/4 lg:w-11/12 mx-auto">
                         <div class="w-1/2 lg:pl-8  md:pl-6 sm:pl-4 lg:w-5/12">
                             <h1 class="sm:text-lg text-base md:text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{ $reklama->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                             <p class="sm:text-base text-sm md:text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
                             <a href="/categories/1" class="py-2 sm:px-4 px-2 border-solid md:text-base text-xs bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
                         </div>
-                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12">
+                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12 ">
                             <img src="/storage/{{$reklama->image}}"
-                                 class="object-cover object-right-bottom w-full h-full rounded-r-xl"
+                                 class="object-cover object-right-bottom w-full h-full  "
                                  alt="">
                         </div>
                     </div>
@@ -134,7 +134,7 @@
             </div>
             <div class="text-white swiper-button-next"></div>
             <div class="text-white swiper-button-prev"></div>
-        </div>
+        </div></div>
         <div class="w-full bg-gradient-to-r from-white via-gray-400 to-white h-1 rounded-full"></div>
         <div class="w-full bg-gradient-to-r from-white via-gray-100 to-white">
             <div class="container text-center mx-auto px-16">
@@ -154,7 +154,9 @@
                     </div>
                     <div class="md:text-left text-center">
                         <h3 class="text-3xl my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
-                        <a href="/categories/1" class="text-blue-500 underline text-xl">@lang('lang.body_createTask')</a>
+                        <a href="/categories/1" class="">
+                            <button class="bg-transparent hover:bg-yellow-500 text-yellow-500 hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">@lang('lang.body_createTask')</button>
+                        </a>
                     </div>
 
 @else
@@ -181,13 +183,13 @@
             @endforeach
                 </div>
             </div>
-            <div class="text-center w-full mx-auto my-4">
+            <div class="text-center w-full mx-auto mt-12 pb-8">
                 <a href="/task/create?category_id=31">
-                  <button class="text-center py-4 px-5  bg-yellow-500 border-yellow-500 text-3xl border-b-4">
+                  <button class="text-center text-white py-4 px-5  bg-yellow-500 border-yellow-500 text-3xl rounded">
                   @lang('lang.body_putTask')
                   </button>
                 </a>
-                <div class="text-center text-2xl">
+                <div class="text-center text-xl mt-4">
                 @lang('lang.body_findPerformer')
                 </div>
             </div>
@@ -199,8 +201,8 @@
                 </div>
                 <div class="grid lg:grid-cols-4 grid-cols-4 grid-cols-1 w-full md:w-11/12 mx-auto gap-y-12">
                     @foreach ($advants as $advant )
-                    <div class="col-span-1 md:my-auto sm:mr-0 mr-4">
-                        <img src="/storage/{{$advant->image}}" class="md:w-32 md:h-32 h-24 w-24" alt="">
+                    <div class="col-span-1 md:my-auto sm:mr-0 mr-4 rounded-lg">
+                        <img src="/storage/{{$advant->image}}" class="md:w-32 md:h-32 h-24 w-24 rounded-lg"  alt="">
                     </div>
                     <div class="col-span-3 ml-5">
                         <h4 class="font-semibold text-xl md:text-2xl">{{$advant->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</h4>
@@ -236,12 +238,12 @@
             </div>
             <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-56">
                 <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
-                    <div class="w-full overflow-y-scroll w-full h-screen">
+                    <div class="w-full overflow-y-scroll h-screen">
 
                         @foreach($tasks as $task)
                             <div class="w-full border-b-2 h-28 hover:bg-blue-100 overflow-hidden">
                                 <div class="icon pt-4">
-                                    <i class="fas fa-user-circle text-6xl mr-4 float-left text-blue-400"></i>
+                                    <i class="{{$task->category->ico}} text-3xl ml-4 float-left text-blue-400"></i>
                                 </div>
                                 <div class="mx-auto w-2/3">
                                     <a href="/detailed-tasks/{{$task->id}}" class="xl:text-2xl md:text-xl text-2xl text-blue-400 hover:text-red-400">
@@ -256,11 +258,12 @@
 
 
                     </div>
-                    <div class="mt-4">
+                    <div class="mt-8 flex justify-center">
                         <a href="{{route('task.search')}}" type="button"
-                                class="text-center py-2 bg-blue-500 border-blue-500 text-white text-3xl w-full border-b-4">
-                                @lang('lang.body_showAllTasks')
+                           class="text-center p-4 bg-blue-500 border-blue-500 text-white text-base  rounded-lg">
+                            @lang('lang.body_showAllTasks')
                         </a>
+
                     </div>
                 </div>
                 <div class="w-full md:col-span-1 h-full col-span-2">

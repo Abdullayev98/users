@@ -45,7 +45,7 @@
                                                     </div>
                                                     <div class="handle__27597">
 
-                                                        <input class="focus:outline-none  mt-8" type="text" id="amount" name="amount1" readonly >
+                                                        <input class="focus:outline-none focus:border-yellow-500  mt-8" type="text" id="amount" name="amount1" readonly >
 
                                                     </div>
                                                     <div class="tickWrapper__6685b" style="width: 16.6667%; left: 0%;">
@@ -119,6 +119,7 @@
                                                 }
                                             </script>
                                         </a>
+
                                         <input type="submit"
                                                class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                                name="" value="@lang('lang.name_next')">
@@ -135,9 +136,6 @@
     </form>
 
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-@endsection
-
-@section("javasript")
 
     <script>
         $(function() {
@@ -148,9 +146,11 @@
                 max: {{$category->max}},
                 step: {{$category->max}}/6,
                 slide: function(event, ui) {
+
                     var maximum = {{$category->max}};
                     var pre_maximum = Math.floor({{$category->max}} - ({{$category->max}}/6));
                     if (maximum == Math.floor(ui.value)) {
+
                         $("#amount").val("от " + maximum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
                     }else if (pre_maximum == Math.floor(ui.value)){
                         $("#amount").val("до " + maximum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
@@ -158,9 +158,12 @@
                         var delitel = ui.value / 1000;
                         var round   = Math.floor(delitel)*1000;
                         $("#amount").val("до " + round.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " UZS");
+
                     }
+
                 }
             });
+
             $(".ui-slider-range").css("height", '250px');
             $(".ui-slider-range").css("background", 'linear-gradient(rgb(255, 132, 56)  , rgb(255, 132, 56))');
             $(".ui-slider-range").css("top", '-255px');
