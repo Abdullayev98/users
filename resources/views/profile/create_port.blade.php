@@ -2,33 +2,50 @@
 
 @section("content")
 
+
     <div class="w-10/12 mx-auto mt-8">
-        <div class="w-full">
-            <div>
-                <a class="text-sm text-blue-500 hover:text-red-500" href="/profile"><i class="fas fa-arrow-left"></i> @lang('lang.profile_text1')</a>
-                <h1 class="font-semibold md:text-2xl text-lg ">@lang('lang.profile_text2')</h1>
-            </div>
+        <form action="{{ route('portfolio.create') }}" method="post">
+            @csrf
+            <div class="w-full">
+                <div>
+                    <a class="text-sm text-blue-500 hover:text-red-500" href="/profile"><i
+                            class="fas fa-arrow-left"></i> @lang('lang.profile_text1')</a>
+                    <h1 class="font-semibold md:text-2xl text-lg ">@lang('lang.profile_text2')</h1>
+                </div>
                 <div id="comdes" class="bg-yellow-50 p-8 rounded-md my-6">
                     <label class="text-sm text-gray-500 " for="name">@lang('lang.profile_text3')</label><br>
-                    <input name="comment" class="border break-all focus:outline-none focus:border-yellow-500 mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2" type="text" placeholder='@lang('lang.profile_text5')'>
+                    <input name="comment"
+                           class="border break-all focus:outline-none focus:border-yellow-500 mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2"
+                           type="text" placeholder='@lang('lang.profile_text5')'>
+                    @error('comment')
+                    <p>{{ $message }}</p>
+                    @enderror
 
                     <label class="text-sm text-gray-500" for="textarea">@lang('lang.profile_text4')</label><br>
-                    <textarea name="description" placeholder='@lang('lang.profile_text6')' required class="border break-all text-sm mb-8 focus:outline-none focus:border-yellow-500 border-gray-200 rounded-md w-full px-4 py-2" cols="30" rows="10"></textarea>
+                    <textarea name="description" placeholder='@lang('lang.profile_text6')' required
+                              class="border break-all text-sm mb-8 focus:outline-none focus:border-yellow-500 border-gray-200 rounded-md w-full px-4 py-2"
+                              cols="30" rows="10"></textarea>
                     <div class="text-center mx-auto text-base">
-                    <input id="button1" type="submit" class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 mb-4 rounded" value="@lang('lang.profile_text7')">
+                        <input id="button1" type="button"
+                               class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 mb-4 rounded"
+                               value="@lang('lang.profile_text7')">
+                        @error('comment')
+                        <p>{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
                 <div>
                     <div id="comdes1" class="text-center h-full w-full text-base hidden">
-                        <form action="{{route('testBase')}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
-                            <input type="submit" class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 w-4/12 mb-4 rounded" value="@lang('lang.profile_save')">
-                        </form>
+                        @csrf
+                        <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
+                        <input type="submit"
+                               class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 w-4/12 mb-4 rounded"
+                               value="@lang('lang.profile_save')">
                     </div>
                 </div>
-        </div>
+            </div>
+        </form>
     </div>
 
     <script src="{{ asset('js/profile/create_port.js') }}"></script>

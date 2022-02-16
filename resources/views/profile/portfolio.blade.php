@@ -12,13 +12,12 @@
 
 
             @php
-                $images = explode(',', $comments->image);
-                $a = sizeof($images)-1;
+                $images = json_decode($comments->image);
             @endphp
-            @for($i = 0; $i <= $a; $i++)
-                <img class="w-40 h-40 mx-2" src="{{asset($images[$i])}}" alt="Images not found">
+            @foreach($images as $image)
+                <img class="w-40 h-40 mx-2" src="{{asset('storage/'.$image)}}" alt="Images not found">
                 {{--@dd($image);--}}
-            @endfor
+            @endforeach
             </div>
 
             <form action="/profile/delete/portfolio/{{$comments->id}}" method="POST" enctype="multipart/form-data">
