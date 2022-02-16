@@ -166,9 +166,9 @@
                                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                     <div>
-                                        <div class="w-full flex flex-col sm:flex-row justify-center">
+                                        <div class="w-full flex flex-col sm:flex-row sm:p-6 p-2">
                                             <!-- This is an example component -->
-                                            <div class="w-full mx-auto mt-4">
+                                            <div class="sm:w-3/5 w-full">
                                                 @auth
                                                     @if(getAuthUserBalance() >= 4000 || $task->responses_count< setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
@@ -646,5 +646,5 @@
             @endif
         @endforeach
     </div>
-@endsection
+
 
