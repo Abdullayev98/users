@@ -49,7 +49,7 @@
                 <i class="fab fa-google text-white text-2xl"></i>
             </div>
             <div class="ml-3 col-span-3">
-                <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
+                <h5 class="font-bold text-gray-700 block mt-4 text-md">Google</h5>
                 <a href="{{route('auth.google')}}" target="_blank"
                    class="block text-sm">@lang('lang.cash_bind')</a></p></a>
             </div>
@@ -62,7 +62,7 @@
                 <i class="fab fa-facebook-f text-white text-2xl"></i>
             </div>
             <div class="ml-3 col-span-3">
-                <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
+                <h5 class="font-bold text-gray-700 block mt-4 text-md">Facebook</h5>
                 <a href="{{route('auth.facebook')}}" target="_blank"
                    class="block text-sm">@lang('lang.cash_bind')</a>
             </div>
