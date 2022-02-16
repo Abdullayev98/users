@@ -241,7 +241,7 @@
                         @foreach($tasks as $task)
                             <div class="w-full border-b-2 h-28 hover:bg-blue-100 overflow-hidden">
                                 <div class="icon pt-4">
-                                    <i class="fas fa-user-circle text-6xl mr-4 float-left text-blue-400"></i>
+                                    <i class="{{$task->category->ico}} text-3xl ml-4 float-left text-blue-400"></i>
                                 </div>
                                 <div class="mx-auto w-2/3">
                                     <a href="/detailed-tasks/{{$task->id}}" class="xl:text-2xl md:text-xl text-2xl text-blue-400 hover:text-red-400">
