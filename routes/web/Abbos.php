@@ -40,5 +40,7 @@ Route::group(['middleware'=>'auth'], function (){
     });
 });
 
+Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('portfolio.create')->middleware('auth');
+
 
 
