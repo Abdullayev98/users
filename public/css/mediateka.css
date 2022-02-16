@@ -49,10 +49,11 @@
 }
 
 .boxItem .mediateka_photo_content{
-    width: 100%;
-    height: 250px;
+    width: 150px;
+    height: 100px;
     border-radius: 20px;
     overflow: hidden;
+    margin: 10px;
 }
 .boxItem .mediateka_photo_content img{
     width: 100%;

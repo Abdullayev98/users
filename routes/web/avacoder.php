@@ -37,6 +37,7 @@ Route::prefix("task")->group(function () {
         Route::get('/verify/{task}', [CreateController::class, 'verify'])->name('task.create.verify');
         Route::post('/verify', [UserController::class, 'verifyProfil'])->name('task.create.verification')->middleware('auth');
         Route::post('/upload', [CreateController::class, 'uploadImage']);
+        Route::get('task/{task}/images/delete', [CreateController::class, 'deleteAllImages'])->name('task.images.delete')->middleware('auth');
 
 
         // Responses
