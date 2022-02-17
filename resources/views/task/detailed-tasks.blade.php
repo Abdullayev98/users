@@ -545,7 +545,7 @@
                                                     <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>
                                                 </div>
                                                 <div>
-                                                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                                                    <iframe src="https://www.facebook.com/plugins/share_button.php?href={{Request::url()}}&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                                                 </div>
                                                 <div>
                                                     <a href="mailto:?subject=Universal Services&amp;body={{Request::url()}}"
