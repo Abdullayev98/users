@@ -61,13 +61,13 @@
                                 <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
                                 @switch($user->reviews()->count())
                                     @case(1)
-                                        <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziv')</span>
-                                        @break
+                                    <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziv')</span>
+                                    @break
                                     @case(1 && 5)
-                                        <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziva')</span>
-                                        @break
+                                    <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziva')</span>
+                                    @break
                                     @default
-                                        <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtzivov')</span>
+                                    <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtzivov')</span>
                                 @endswitch
                             </div>
                             {{-- <div class="text-gray-500 text-base mt-1">
@@ -131,29 +131,33 @@
                                 </button>
                             </a>
                         </div>
-                        <div class="mt-6">
-                            <h1 class="text-3xl font-semibold text-gray-700">@lang('lang.exe_aboutMe')</h1>
-                            <p>{{$user->description}}</p>
-                        </div>
-                        <div class="py-12">
-                            <ul class="d-flex flex-col gap-y-5">
-                                @isset($reviews)
-                                    @foreach ($reviews as $review)
-                                        @if($review->user_id == $user->id && $review->task)
-                                            <li class="d-flex flex-col my-10 rounded-lg">
-                                                <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
-                                                    <img class="UsersReviews_picture__aB22p"
-                                                         @if ($user->avatar == Null)
-                                                         src='{{asset("storage/images/default.jpg")}}'
-                                                         @else
-                                                         src="{{asset("storage/{$review->user->avatar}")}}"
-                                                         @endif alt="avatar">
-                                                </a>
-                                                <div class="align-top ml-12 h-16">
+                    </div>
+                </figure>
+
+                {{-- right sidebar end --}}
+                <div class="col-span-2">
+                    <h1 class="text-3xl font-semibold text-gray-700">@lang('lang.exe_aboutMe')</h1>
+                    <p>{{$user->description}}</p>
+                </div>
+                <div class="py-12 col-span-2">
+                    <ul class="d-flex flex-col gap-y-5">
+                        @isset($reviews)
+                            @foreach ($reviews as $review)
+                                @if($review->user_id == $user->id && $review->task)
+                                    <li class="d-flex flex-col my-10 rounded-lg">
+                                        <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
+                                            <img class="UsersReviews_picture__aB22p"
+                                                 @if ($user->avatar == Null)
+                                                 src='{{asset("storage/images/default.jpg")}}'
+                                                 @else
+                                                 src="{{asset("storage/{$review->user->avatar}")}}"
+                                                 @endif alt="avatar">
+                                        </a>
+                                        <div class="align-top ml-12 h-16">
                             <span>
                                 <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$review->user->name}}</a>
                             </span>
-                                                    <div class="text-4 text-[rgba(78,78,78,.5)]">
+                                            <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
                                     @if ($user->id == $review->user_id)
                                         @if ($user->role_id == 2)
@@ -173,87 +177,84 @@
                                         @endif
                                     @endif
                                 </span>
-                                                    </div>
-                                                </div>
-                                                <div class="p-5 mt-3 mr-0 mb-8 bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-2.5 relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid rounded-md">
-                                                    <div class="text-gray-500 py-4">
-                                                        @if ($review->good_bad == 1)
-                                                            <i class="far fa-thumbs-up"></i>
-                                                        @else
-                                                            <i class="far fa-thumbs-down"></i>
-                                                        @endif
-                                                        Задание "{{ Arr::get('name',$review->task)}}"
+                                            </div>
+                                        </div>
+                                        <div class="p-5 mt-3 mr-0 mb-8 bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-2.5 relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid rounded-md">
+                                            <div class="text-gray-500 py-4">
+                                                @if ($review->good_bad == 1)
+                                                    <i class="far fa-thumbs-up"></i>
+                                                @else
+                                                    <i class="far fa-thumbs-down"></i>
+                                                @endif
+                                                Задание "{{ Arr::get('name',$review->task)}}"
 
-                                                    </div>
-                                                    <hr>
-                                                    <div class="py-4">
-                                                        {{$review->description}}
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                @endisset
-                            </ul>
-                        </div>
-                    </div>
-
-                </figure>
-                <div class="lg:col-span-1 lg:ml-4 col-span-2 w-80">
-                    <div class="mt-6 border p-8 rounded-lg border-gray-300">
-                        <div>
-                            <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
-                            <p class="text-gray-400">@lang('lang.exe_since') {{date('d-m-Y', strtotime($user->created_at))}}</p>
-                        </div>
-                        <div class="">
-                            <div class="flex w-full mt-4">
-                                <div class="flex-initial w-1/4">
-                                    <i class="fas fa-phone-alt text-white text-2xl bg-yellow-500 py-1 px-2 rounded-lg"></i>
-                                </div>
-                                <div class="flex-initial w-3/4">
-                                    <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
-                                    @if($user->phone_verified_at)
-                                        <p>@lang('lang.exe_verified')</p>
-                                    @else
-                                        <p>@lang('lang.exe_notVerified')</p>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="flex w-full mt-4">
-                                <div class="flex-initial w-1/4">
-                                    <i class="text-white far fa-envelope text-2xl bg-blue-500 py-1 px-2 rounded-lg"></i>
-                                </div>
-                                <div class="flex-initial w-3/4">
-                                    <h2 class="font-medium text-lg">Email</h2>
-                                    @if($user->email_verified_at)
-                                        <p>@lang('lang.exe_verified')</p>
-                                    @else
-                                        <p>@lang('lang.exe_notVerified')</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-8">
-                        <h1 class="text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
-                        <ul>
-                            @foreach(explode(',', $user->category_id) as $user_cat)
-                                @foreach($categories as $cat)
-                                    @if($cat->id == $user_cat)
-                                        <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="{{route('categories',$cat->parent_id)}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
-                                    @endif
-                                @endforeach
+                                            </div>
+                                            <hr>
+                                            <div class="py-4">
+                                                {{$review->description}}
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endif
                             @endforeach
-                        </ul>
-                    </div>
+                        @endisset
+                    </ul>
                 </div>
-                {{-- right sidebar end --}}
-
             </div>
 
-
+            <div class="lg:col-span-1 col-span-2 w-80">
+                <div class="mt-16 border p-8 rounded-lg border-gray-300">
+                    <div>
+                        <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
+                        <p class="text-gray-400">@lang('lang.exe_since') {{date('d-m-Y', strtotime($user->created_at))}}</p>
+                    </div>
+                    <div class="">
+                        <div class="flex w-full mt-4">
+                            <div class="flex-initial w-1/4">
+                                <i class="fas fa-phone-alt text-white text-2xl bg-yellow-500 py-1 px-2 rounded-lg"></i>
+                            </div>
+                            <div class="flex-initial w-3/4">
+                                <h2 class="font-medium text-lg">@lang('lang.exe_phone')</h2>
+                                @if($user->phone_verified_at)
+                                    <p>@lang('lang.exe_verified')</p>
+                                @else
+                                    <p>@lang('lang.exe_notVerified')</p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="flex w-full mt-4">
+                            <div class="flex-initial w-1/4">
+                                <i class="text-white far fa-envelope text-2xl bg-blue-500 py-1 px-2 rounded-lg"></i>
+                            </div>
+                            <div class="flex-initial w-3/4">
+                                <h2 class="font-medium text-lg">Email</h2>
+                                @if($user->email_verified_at)
+                                    <p>@lang('lang.exe_verified')</p>
+                                @else
+                                    <p>@lang('lang.exe_notVerified')</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <h1 class="text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
+                    <ul>
+                        @foreach(explode(',', $user->category_id) as $user_cat)
+                            @foreach($categories as $cat)
+                                @if($cat->id == $user_cat)
+                                    <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="{{route('categories',$cat->parent_id)}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
+                                @endif
+                            @endforeach
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
 
         </div>
+
+    </div>
+    </div>
     </div>
 
 
