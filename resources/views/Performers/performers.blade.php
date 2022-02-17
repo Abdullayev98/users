@@ -139,7 +139,7 @@
         </div>
         <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black bg-opacity-50 hidden text-center">
             <div class="modal relative bg-white w-5/12 mx-auto p-10 rounded-md justify-center mt-28 ease-in transition duration-500">
-                <h1 class="text-3xl font-semibold">Выберите задание, которое хотите предложить исполнителью</h1>
+                <h1 class="text-3xl font-semibold">@lang('lang.perf_modalText')</h1>
                 @foreach($tasks as $task)
                     <label>
                         <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
@@ -158,7 +158,7 @@
                             @endauth
                         @endforeach
                         <option value="1">
-                            + новое задание
+                            + @lang('lang.perf_newTask')
                         </option>
                     </select>
                 <label>
@@ -167,16 +167,16 @@
 
                 <div id="hidden_div">
                         <button type="submit" onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
-                            Предложить работу
+                            @lang('lang.perf_jobOffer')
                         </button>
-                        <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
+                        <p class="py-7">@lang('lang.perf_modalText2')</p>
                     </div>
 
 
 
                 <a href="/categories/1">
                     <button id="hidden_div2" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto" style="display: none;">
-                        Создать новое задание
+                        @lang('lang.perf_createNewTask')
                     </button>
                 </a>
 
@@ -235,7 +235,7 @@
                 <!-- modal header -->
                 <h1 class="text-2xl font-bold">Вы предложили задание "Test" исполнителю Елена Б.</h1>
                 <div class="mx-auto mt-8">
-                    Мы отправили ему уведомление.
+                    @lang('lang.perf_weSend')
                 </div>
                 <button onclick="myFunction1()" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto">
                     ok

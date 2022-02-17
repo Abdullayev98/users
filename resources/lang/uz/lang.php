@@ -617,6 +617,12 @@ return [
     // performers.bade start
     'perf_youreInUser' => "Siz hozir U-Ser ijrochilari bolimidasiz.",
     'perf_forOffer' => "Tanlangan ijrochiga ish taklif qilish uchun uning profilidagi 'Vazifa taklif qilish' tugmasini bosishingiz kerak.",
+    'perf_modalText' => "Ijrochiga taklif qilmoqchi bo'lgan vazifani tanlang",
+    'perf_newTask' => "yangi vazifa",
+    'perf_jobOffer' => "Ish taklif qilish",
+    'perf_modalText2' => "Har bir vazifani katalogdan besh nafar ijrochiga taklif qilish mumkin. ijrochilar sizning vazifangizga havola bilan SMS oladi.",
+    'perf_createNewTask' => "Yangi vazifa yaratish",
+    'perf_weSend' => "Biz unga xabarnoma yubordik.",
     // performers.bade end
 
     // budget.blade start
