@@ -2,7 +2,7 @@
 
 @section("content")
     {{--@foreach($users as $user)--}}
-    <div class="xl:w-9/12 w-10/12 mx-auto">
+    <div class="xl:w-9/12 w-10/12 mx-auto flex">
         <div class="grid grid-cols-3 grid-flow-row mt-10">
             {{-- left sidebar start --}}
             <div class="lg:col-span-2 col-span-3">
@@ -139,6 +139,7 @@
                     <h1 class="text-3xl font-semibold text-gray-700">@lang('lang.exe_aboutMe')</h1>
                     <p>{{$user->description}}</p>
                 </div>
+
                 <div class="py-12 col-span-2">
                     <ul class="d-flex flex-col gap-y-5">
                         @isset($reviews)
@@ -157,7 +158,7 @@
                             <span>
                                 <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$review->user->name}}</a>
                             </span>
-                                            <div class="text-4 text-[rgba(78,78,78,.5)]">
+                            <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
                                     @if ($user->id == $review->user_id)
                                         @if ($user->role_id == 2)
@@ -177,7 +178,7 @@
                                         @endif
                                     @endif
                                 </span>
-                                            </div>
+                            </div>
                                         </div>
                                         <div class="p-5 mt-3 mr-0 mb-8 bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-2.5 relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid rounded-md">
                                             <div class="text-gray-500 py-4">
@@ -201,7 +202,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="lg:col-span-1 col-span-2 w-80">
                 <div class="mt-16 border p-8 rounded-lg border-gray-300">
                     <div>
@@ -249,10 +249,6 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
-
-        </div>
-
             </div>
         </div>
     </div>
