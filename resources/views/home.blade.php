@@ -123,9 +123,9 @@
                             <p class="sm:text-base text-sm md:text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
                             <a href="/categories/1" class="py-2 sm:px-4 px-2 border-solid md:text-base text-xs bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
                         </div>
-                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12 ">
+                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12 rounded-lg">
                             <img src="{{ asset('storage/'.$reklama->image) }}"
-                                 class="object-cover object-right-bottom w-full h-full  "
+                                 class="object-cover rounded-lg object-right-bottom w-full h-full  "
                                  alt="">
                         </div>
                     </div>
