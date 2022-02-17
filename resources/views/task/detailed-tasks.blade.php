@@ -3,6 +3,39 @@
 
 
 @section("content")
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb" type="text/javascript"></script>
+    <script>
+        ymaps.ready(init);
+
+        function init() {
+            var myMap = new ymaps.Map("map", {
+                    center: [{{$task->coordinates}}],
+                    zoom: 10,
+                    controls: []
+                }),
+
+                // Создаем геообъект с типом геометрии "Точка".
+                myGeoObject = new ymaps.GeoObject({
+                    // Описание геометрии.
+                }, {
+                    // Опции.
+                    // Иконка метки будет растягиваться под размер ее содержимого.
+                    preset: 'islands#blackStretchyIcon',
+                    // Метку можно перемещать.
+                    draggable: true
+                });
+
+            myMap.geoObjects
+                .add(myGeoObject)
+                .add(new ymaps.Placemark([{{$task->coordinates}}], {
+                    balloonContent: '{{$task->name}}'
+                }, {
+                    preset: 'islands#icon',
+                    iconColor: '#0095b6'
+                }));
+        }
+
+    </script>
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task->responses))
         <div class="lg:flex container xl:w-9/12 w-11/12 mx-auto">
@@ -15,7 +48,7 @@
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
-                                    <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg">{{$task->budget}}</p>
+                                    <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg bg-yellow-400">{{$task->budget}}</p>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id && $task->status < 2)
                                             <a href="{{ route('task.changetask', $task->id) }}"
@@ -57,9 +90,16 @@
                                 </div>
 
                                 <div
-                                    class="mt-12 border-2 py-2 md:p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
-                                    <div class="ml-4 md:ml-12 flex flex-row">
-                                        @if($task->date_type == 1)
+                                    class="mt-12 border-2 py-2 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
+                                    <div id="map" class="h-64 mb-4 -mt-2" ></div>
+                                    <div class="ml-4 md:ml-12 flex flex-row my-4">
+                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
+                                        @if($task->address !== NULL)
+                                            <p class=" h-auto w-96">{{json_decode($task->address, true)['location']}}</p>
+                                        @endif
+                                    </div>
+                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                    @if($task->date_type == 1)
                                             <h1 class="font-bold h-auto w-48">@lang('lang.date_startTask')</h1>
                                         @elseif($task->date_type == 2)
                                             <h1 class="font-bold h-auto w-48">@lang('lang.date_finishTask')</h1>
@@ -73,30 +113,31 @@
                                         <p class=" h-auto w-96">{{$task->budget}}</p>
                                     </div>
 
-                                    @isset($value)
-                                        @foreach($task->custom_field_values as $value)
+                                @isset($value)
+                                    @foreach($task->custom_field_values as $value)
                                             <div class="ml-4 md:ml-12 flex flex-row mt-8">
 
                                                 <h1 class="font-bold h-auto w-48">{{ $value->custom_field->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                                                 <p class=" h-auto w-96">
-                                                    @foreach(json_decode($value->value, true) as $value_obj)
-                                                        @if ($loop->last)
-                                                            {{$value_obj}}
-                                                        @else
-                                                            {{$value_obj}},
-                                                        @endif
-                                                    @endforeach
+                                            @foreach(json_decode($value->value, true) as $value_obj)
+                                                @if ($loop->last)
+                                                        {{$value_obj}}
+                                                    @else
+                                                        {{$value_obj}},
+                                                @endif
+                                                @endforeach
                                                 </p>
                                             </div>
                                         @endforeach
                                     @endisset
 
 
-                                    <div class="ml-4 md:ml-12 flex flex-row mt-4">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
-                                        @if($task->address !== NULL)
-                                            <p class=" h-auto w-96">{{json_decode($task->address, true)['location']}}</p>
-                                        @endif
+
+                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_payment')</h1>
+                                        <div class=" h-auto w-96">
+                                            <a class="cursor-pointer underline text-blue-400" href="#">@lang('lang.detT_card')</a> @lang('lang.detT_or') <a class="cursor-pointer underline text-blue-400" href="#">@lang('lang.detT_cash')</a>
+                                        </div>
                                     </div>
 
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
@@ -125,9 +166,9 @@
                                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                     <div>
-                                        <div class="w-full flex flex-col sm:flex-row justify-center">
+                                        <div class="w-full flex flex-col sm:flex-row sm:p-6 p-2">
                                             <!-- This is an example component -->
-                                            <div class="w-full mx-auto mt-4">
+                                            <div class="sm:w-3/5 w-full">
                                                 @auth
                                                     @if(getAuthUserBalance() >= 4000 || $task->responses_count< setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
@@ -463,12 +504,13 @@
                         <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
                                 <h1 class="text-xl font-medium mb-4">@lang('lang.detT_task') № {{$task->id}}</h1>
-                                <button
-                                    class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">
-                                    <i class="fas fa-link text-gray-500"></i>
-                                </button>
-                                <div class="fb-share-button" data-href="{{Request::url()}}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-                                <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>
+{{--                                <button--}}
+{{--                                    class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">--}}
+{{--                                    <i class="fas fa-link text-gray-500"></i>--}}
+{{--                                </button>--}}
+{{--                                <div class="fb-share-button" data-href="{{Request::url()}}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>--}}
+                                <div class="sharethisbutton sharethis-inline-share-buttons"></div>
+{{--                                <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>--}}
                             </div>
                             <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                             <div class="flex flex-row mt-4">
@@ -559,20 +601,16 @@
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
 
         <input type="hidden" id="task" value="{{ $task->id }}">
-
-
+        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=620cba4733b7500019540f3c&product=inline-share-buttons' async='async'></script>
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
-            $(document).ready(function(){
-               $('#st-cmp-v2').addClass('hidden');
-            });
-        </script>
+
         <div id="fb-root"></div>
             <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0" nonce="Ah8xKkvU"></script>
 
             @endsection
 
 
-@section('javasript')
+        <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
 
     <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
     <script
@@ -608,5 +646,5 @@
             @endif
         @endforeach
     </div>
-@endsection
+
 

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PortfolioRequest;
 use App\Http\Requests\User\PerformerCreateRequest;
 use App\Http\Requests\UserPasswordRequest;
 use App\Http\Requests\UserUpdateDataRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use \TCG\Voyager\Models\Category;
 use App\Models\Portfolio;
 use App\Models\PortfolioImage;
@@ -37,36 +39,23 @@ class ProfileController extends Controller
         return $dd;
 
     }
-    public function delete($id)
+    public function delete(Portfolio $id)
     {
-        $user = Auth::user();
-        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
-        foreach ($comment as $comments){
-            $directory = $comments->comment;
-        }
-        $file = File::deleteDirectory("Portfolio/{$user->name}/{$directory}");
-        if($file) {
-            $user->portfolios()->where('id', $id)->delete();
-            return redirect()->route('userprofile');
-        }
+        $id->delete();
+        return redirect()->route('userprofile');
     }
     public function UploadImage(Request $request)
     {
-        $user = Auth::user();
-        $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
+        if ($request->hasFile('file')) {
 
-        if ($request->file()) {
-            $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')
-                ->move(public_path("Portfolio/{$user->name}/{$comment->comment}"), $fileName);
+            $files = $request->file('file');
+            $name = Storage::put('public/uploads', $files);
+            $name = str_replace('public/','', $name);
+            $imgData[] = $name;
 
-            $fileModelname = time() . '_' . $request->file->getClientOriginalName();
-            return response()->json([
-                "success" => true,
-                "message" => "File successfully uploaded",
-                "file" => $fileName
-            ]);
         }
+        session()->put('images', $imgData);
+
     }
     public function testBase(Request $request)
     {
@@ -299,6 +288,17 @@ class ProfileController extends Controller
     {
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         return view('personalinfo.personalcategoriya', compact('categories'));
+    }
+    public function createPortfolio(PortfolioRequest $request){
+        $data = $request->validated();
+
+        $data['user_id'] = auth()->user()->id;
+        $data['image'] = json_encode(session()->has('images')?session('images'):null);
+
+        Portfolio::create($data);
+        return redirect()->route('userprofile');
+
+
     }
 
 }
