@@ -61,13 +61,13 @@
                                 <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
                                 @switch($user->reviews()->count())
                                     @case(1)
-                                        <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziv')</span>
-                                        @break
+                                    <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziv')</span>
+                                    @break
                                     @case(1 && 5)
-                                        <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziva')</span>
-                                        @break
+                                    <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziva')</span>
+                                    @break
                                     @default
-                                        <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtzivov')</span>
+                                    <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtzivov')</span>
                                 @endswitch
                             </div>
                             {{-- <div class="text-gray-500 text-base mt-1">
@@ -183,7 +183,7 @@
                                         <div class="p-5 mt-3 mr-0 mb-8 bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-2.5 relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid rounded-md">
                                             <div class="text-gray-500 py-4">
                                                 @if ($review->good_bad == 1)
-                                                      <i class="far fa-thumbs-up"></i>
+                                                    <i class="far fa-thumbs-up"></i>
                                                 @else
                                                     <i class="far fa-thumbs-down"></i>
                                                 @endif
