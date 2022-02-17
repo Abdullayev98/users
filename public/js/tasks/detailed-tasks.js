@@ -38,20 +38,6 @@
     });
     var $temp = $("<input>");
     var $url = $(location).attr('href');
-
-    $('.copylink').on('click', function () {
-    $("body").append($temp);
-    $temp.val($url).select();
-    document.execCommand("copy");
-    $temp.remove();
-    Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'Ссылка скопирована в буфер обмена!',
-    showConfirmButton: false,
-    timer: 1500
-})
-});
 });
 
     function valueChanged() {
