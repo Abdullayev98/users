@@ -90,6 +90,8 @@ return [
 
     // detailed-tasks.blade start
     'detT_dealWithoutRisk' => "Xavfsiz savdo",
+    'detT_callbackpay2' => "va mijozga kontaktlarni yuboring",
+    'detT_callback23' => "javob - 0 so'm, mijoz bilan bog'lanish - 5000 so'm",
     'detT_insuredPer' => "Mijoz sug'urtalangan ijrochilarga ustunlik beradi",
     'detT_open' => "Ochiq",
     'detT_close' => "Yopiq",

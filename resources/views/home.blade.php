@@ -97,7 +97,7 @@
             </div>
             <div class="mb-4 mt-8 text-center text-base">
                 <a href="/categories/1">
-                    <button type="button" class="font-semibold border hover:border-black duration-300 rounded-md w-64 h-12">@lang('lang.body_allService')
+                    <button type="button" class="font-semibold text-yellow-500 hover:text-white border border-yellow-500 duration-300 hover:bg-yellow-500 rounded-md w-64 h-12">@lang('lang.body_allService')
                     </button>
                 </a>
             </div>
@@ -123,9 +123,9 @@
                             <p class="sm:text-base text-sm md:text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
                             <a href="/categories/1" class="py-2 sm:px-4 px-2 border-solid md:text-base text-xs bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
                         </div>
-                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12 ">
+                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12 rounded-lg">
                             <img src="{{ asset('storage/'.$reklama->image) }}"
-                                 class="object-cover object-right-bottom w-full h-full  "
+                                 class="object-cover rounded-lg object-right-bottom w-full h-full  "
                                  alt="">
                         </div>
                     </div>

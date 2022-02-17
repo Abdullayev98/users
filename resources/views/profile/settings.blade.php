@@ -72,7 +72,7 @@
                                     {{count($user->tasks??[])}}
                                 </span> @lang('lang.cash_task')</a></p>
                             {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
-                            <div class="flex mt-6">
+                            <div class="flex mt-6 items-center">
                                 <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
                                     <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
                                          src="{{ asset('images/verify.png') }}"
