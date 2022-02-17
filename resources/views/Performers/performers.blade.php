@@ -122,7 +122,7 @@
                                 @auth
                                 @if($tasks->count() > 0)
                                     <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
-                                        Предложить задание
+                                        @lang('lang.exe_giveTask')
                                     </a>
                                 @else
                                     <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
