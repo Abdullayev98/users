@@ -1,4 +1,4 @@
-<footer class=" w-10/12 mx-auto">
+<footer class="ml-6 w-10/12 mx-auto">
     <div class="md:flex sm:flex-row flex-col my-8 text-base">
         <div class="w-1/2 w-full flex md:flex-row flex-col md:text-left text-center md:my-0 my-10">
             <div class="w-3/4 flex flex-col lg:mx-8 mx-auto">
