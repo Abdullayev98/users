@@ -13,7 +13,7 @@
                     <h1 class="font-semibold md:text-2xl text-lg ">@lang('lang.profile_text2')</h1>
                 </div>
                 <div id="comdes" class="bg-yellow-100 p-8 rounded-md my-6">
-                    <label class="text-sm text-gray-500 " for="name">@lang('lang.profile_text3')</label><br>
+                    <label class="text-sm" for="name">@lang('lang.profile_text3')</label><br>
                     <input name="comment"
                            class="border break-all focus:outline-none focus:border-yellow-500 mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2"
                            type="text" placeholder='@lang('lang.profile_text5')'>
@@ -21,7 +21,7 @@
                     <p>{{ $message }}</p>
                     @enderror
 
-                    <label class="text-sm text-gray-500" for="textarea">@lang('lang.profile_text4')</label><br>
+                    <label class="text-sm" for="textarea">@lang('lang.profile_text4')</label><br>
                     <textarea name="description" placeholder='@lang('lang.profile_text6')' required
                               class="border break-all text-sm mb-8 focus:outline-none focus:border-yellow-500 border-gray-200 rounded-md w-full px-4 py-2"
                               cols="30" rows="10"></textarea>
