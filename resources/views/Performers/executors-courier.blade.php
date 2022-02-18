@@ -2,10 +2,10 @@
 
 @section("content")
     {{--@foreach($users as $user)--}}
-    <div class="w-10/12 mx-auto">
-        <div class="grid grid-cols-3  grid-flow-row mt-10">
+    <div class="xl:w-9/12 w-10/12 mx-auto lg:flex">
+        <div class="grid grid-cols-3 grid-flow-row mt-10">
             {{-- left sidebar start --}}
-            <div class="col-span-2 px-2 mx-3 float-left">
+            <div class="lg:col-span-2 col-span-3">
                 <figure class="w-full">
                     <div class="float-right text-gray-500 text-sm">
                         <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
@@ -36,7 +36,7 @@
                                 @endif
                             </div>
                             <div class="w-2/3 text-base text-gray-500 lg:ml-0 ml-4">
-                                @if($user->age != "")
+                                @isset($user->age)
                                     <p class="inline-block mr-2">
                                         {{$user->age}}
                                         @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
@@ -44,35 +44,38 @@
                                         @else @lang('lang.cash_rusYearLet')
                                         @endif
                                     </p>
-                                @endif
+                                @endisset
 
                                 <span class="inline-block">
                                 <p class="inline-block text-m">
-                                    @if($user->location!="")
+                                    @isset($user->location)
                                         <i class="fas fa-map-marker-alt"></i>
                                         @lang('lang.cash_city') {{$user->location}}
                                     @else @lang('lang.cash_cityNotGiven')
-                                    @endif
+                                    @endisset
                                 </p>
                             </span>
 
                             </div>
                             <div class="text-gray-500 text-base mt-6">
                                 <span>@lang('lang.exe_create') {{$task_count}} @lang('lang.exe_counttask')</span> ,
-                                @if ($user->reviews()->count() == 1)
+                                @switch($user->reviews()->count())
+                                    @case(1)
                                     <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziv')</span>
-                                @elseif ($user->reviews()->count() > 1 && $user->reviews()->count() > 5)
+                                    @break
+                                    @case(1 && 5)
                                     <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtziva')</span>
-                                @else
+                                    @break
+                                    @default
                                     <span>@lang('lang.exe_get') {{$user->reviews()->count()}} @lang('lang.exe_rusOtzivov')</span>
-                                @endif
+                                @endswitch
                             </div>
                             {{-- <div class="text-gray-500 text-base mt-1">
                                 <span>@lang('lang.exe_averageRating'): 4,9</span>
                                  <i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i><i  class="fas fa-star text-amber-500"></i>
                                 <span class="text-cyan-500 hover:text-red-600">(197 @lang('lang.exe_feedbacks'))</span>
                             </div> --}}
-                            <div class="flex mt-6">
+                            <div class="flex mt-6 items-center">
 
                                 <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
                                     <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
@@ -136,11 +139,12 @@
                     <h1 class="text-3xl font-semibold text-gray-700">@lang('lang.exe_aboutMe')</h1>
                     <p>{{$user->description}}</p>
                 </div>
+
                 <div class="py-12 col-span-2">
                     <ul class="d-flex flex-col gap-y-5">
                         @isset($reviews)
                             @foreach ($reviews as $review)
-                                @if($review->user_id == $user->id)
+                                @if($review->user_id == $user->id && $review->task)
                                     <li class="d-flex flex-col my-10 rounded-lg">
                                         <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
                                             <img class="UsersReviews_picture__aB22p"
@@ -154,7 +158,7 @@
                             <span>
                                 <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="text-blue-500 ">{{$review->user->name}}</a>
                             </span>
-                                            <div class="text-4 text-[rgba(78,78,78,.5)]">
+                            <div class="text-4 text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
                                     @if ($user->id == $review->user_id)
                                         @if ($user->role_id == 2)
@@ -174,7 +178,7 @@
                                         @endif
                                     @endif
                                 </span>
-                                            </div>
+                            </div>
                                         </div>
                                         <div class="p-5 mt-3 mr-0 mb-8 bg-yellow-50 shadow-[-1px_1px_2px] shadow-gray-300 rounded-2.5 relative text-gray-600 text-[14.7px] leading-[1.1rem] before:content-[''] before:w-0 before:h-0 before:absolute before:top-[-11px] before:left-[-9px] before:z-[2] before:rotate-[-45deg before:border-transparent border-b-gray-100 border-solid rounded-md">
                                             <div class="text-gray-500 py-4">
@@ -183,8 +187,7 @@
                                                 @else
                                                     <i class="far fa-thumbs-down"></i>
                                                 @endif
-
-                                                Задание "{{$review->task->name}}"
+                                                Задание "{{ Arr::get('name',$review->task)}}"
 
                                             </div>
                                             <hr>
@@ -199,8 +202,7 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="col-span-1 inline-block w-80 float-right">
+            <div class="lg:col-span-1 col-span-2 w-80">
                 <div class="mt-16 border p-8 rounded-lg border-gray-300">
                     <div>
                         <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
@@ -235,7 +237,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-2">
+                <div class="mt-8">
                     <h1 class="text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
                     <ul>
                         @foreach(explode(',', $user->category_id) as $user_cat)
@@ -247,10 +249,6 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
-
-        </div>
-
             </div>
         </div>
     </div>

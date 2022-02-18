@@ -45,7 +45,7 @@ return [
     'body_downloadApp' => "Скачайте наше приложение и пользуйтесь Universal Services,
                         где бы вы ни находились.",
     'body_whatOthersDoing' => "Что заказывают на «Универсал Сервис» прямо сейчас",
-    'body_showAllTasks' => "Показать все задания",
+    'body_showAllTasks' => "Показать ещё задания",
     'body_howToJoin' => "Как стать исполнителем",
     'body_security' => "Безопасность и гарантии",
     'body_perForBusines' => "Надежные исполнители для бизнеса",
@@ -136,6 +136,10 @@ return [
     'detT_otherTaskInCat' => "Другие задания в категории",
     'detT_ordererThisTask' => "Заказчик этого задания",
     'detT_task' => "Задание",
+    'detT_payment' => "Оплата задания",
+    'detT_card' => "Карта",
+    'detT_or' => "или",
+    'detT_cash' => "Наличные",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -618,6 +622,12 @@ return [
     // performers.bade start
     'perf_youreInUser' => "Вы находитесь в разделе исполнителей U-Ser.",
     'perf_forOffer' => "Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его профиле.",
+    'perf_modalText' => "Выберите задание, которое хотите предложить исполнителью",
+    'perf_newTask' => "новое задание",
+    'perf_jobOffer' => "Предложить работу",
+    'perf_modalText2' => "Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.",
+    'perf_createNewTask' => "Создать новое задание",
+    'perf_weSend' => "Мы отправили ему уведомление.",
     // performers.bade end
 
     // budget.blade start

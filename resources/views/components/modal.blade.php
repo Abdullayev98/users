@@ -6,7 +6,8 @@
 
                 <!-- Modal Background -->
                 <div x-show="showModal"
-                     class="fixed flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-50 left-0 right-0 top-0 bottom-0"
+                     class="fixed flex items-center justify-center overflow-auto z-100 bg-black bg-opacity-50 left-0 right-0 top-0 bottom-0"
+                     style="z-index: 101;!important;"
                      x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0"
                      x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300"
                      x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
@@ -59,7 +60,7 @@
                                     <input type="text" name="email" placeholder="Email" id="name"
                                            value="{{  old('email').session()->has('email')?session('email'):null  }}"
                                            class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded
-                        w-full py-2 px-3 text-gray-700 mb-1 leading-tight hover:border-amber-500"
+                        w-full py-2 px-3 text-gray-700 mb-1 leading-tight"
                                            autofocus>
                                     @if(session()->has('email-message'))
                                         <p class="text-red-500"> {{ session('email-message') }}</p>

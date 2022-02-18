@@ -87,7 +87,7 @@
                                                             <input type="text"
                                                                    value="+998{{auth()->user()->phone_number}}"
                                                                    placeholder="+998(00)000-00-00" id="phone"
-                                                                   class="shadow appearance-none phone border phone focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                                   class="shadow appearance-none phone border phone  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"/>
                                                             <input type="hidden" name="phone_number"
                                                                    value="{{auth()->user()->phone_number}}"
                                                                    class="phone-number">
@@ -132,7 +132,7 @@
                                                             <input type="text" name="name"
                                                                    placeholder="@lang('lang.contact_name')"
                                                                    value="{{old('name')}}"
-                                                                   class="mb-5 shadow appearance-none border   focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                                   class="mb-5 shadow appearance-none border   focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500 "/>
                                                             @error('name')
                                                             <p class="text-red-500">{{$message}}</p>
                                                             @enderror
@@ -140,7 +140,7 @@
                                                                    for="email">E-mail</label>
                                                             <input type="email" name="email" placeholder="E-mail"
                                                                    value="{!! old('email') !!}"
-                                                                   class="mb-5 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
+                                                                   class="mb-5 shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
                                                             />
                                                             @error('email')
                                                             <p class="text-red-500">{{$message}}</p>
@@ -149,7 +149,7 @@
                                                                    for="phone">@lang('lang.contact_number')</label>
                                                             <input type="text"
                                                                    value="+998{{old('phone_number')}}" id="phone"
-                                                                   class="shadow appearance-none border phone focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                                   class="shadow appearance-none border phone focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500 "/>
                                                             <input type="hidden" value="{{ old('phone_number') }}"
                                                                    name="phone_number" class="phone-number">
 
@@ -203,7 +203,7 @@
                                             <input type="text"
                                                    placeholder="@lang('lang.contact_number')" id="phone2"
                                                    value="+998{{ old('phone_number') }}"
-                                                   class="mt-2 shadow appearance-none phone border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "/>
+                                                   class="mt-2 shadow appearance-none phone border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"/>
                                             <input type="hidden" name="phone_number" value="{{ old('phone_number') }}"
                                                    class="phone-number">
                                         </label>
@@ -246,11 +246,6 @@
 
         </div>
     </div>
-
-
-@endsection
-
-@section("javasript")
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
@@ -275,7 +270,8 @@
         // console.log(mask);
         //
         if (element2)
-            var mask2 = new IMask(element2, maskOptions);
+            console.log(element2);
+        var mask2 = new IMask(element2, maskOptions);
 
         function setSelectionRange(input, selectionStart, selectionEnd) {
             if (input.setSelectionRange) {
@@ -306,6 +302,11 @@
 
     </script>
 
+
+
+@endsection
+
+@section("javasript")
 
 
 

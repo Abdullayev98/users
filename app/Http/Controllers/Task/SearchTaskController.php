@@ -62,7 +62,8 @@ class SearchTaskController extends VoyagerBaseController
 
     public function task(Task $task)
     {
-        $review = Review::where('reviewer_id', auth()->id())->where('task_id',$task->id)->first();
+        $review = null;
+        if ($task->reviews_count == 2) $review == true;
 
         return view('task.detailed-tasks', compact('task', 'review'));
     }
@@ -167,12 +168,14 @@ class SearchTaskController extends VoyagerBaseController
 
     public function changeTask(Task $task)
     {
+        taskGuard($task);
+
         return view('task.changetask', compact('task'));
     }
 
     public function update_task(Task $task, UpdateRequest $request)
     {
-
+        taskGuard($task);
         $data = $request->validated();
         $task->update($data);
 

@@ -44,7 +44,7 @@ return [
     'body_personalHelper' => "Cho'ntagingizda shaxsiy yordamchi",
     'body_downloadApp' => "Ilovamizni yuklab oling va Universal Services-dan foydalaning.",
     'body_whatOthersDoing' => "Ular hozir 'Universal Services' uchun nima buyurtma berishadi",
-    'body_showAllTasks' => "Barcha vazifalarni ko'rsatish",
+    'body_showAllTasks' => "Ko'proq vazifalarni ko'rsatish",
     'body_howToJoin' => "Qanday qilib ijrochi bo'lish mumkin",
     'body_security' => "Xavfsizlik va kafolatlar",
     'body_perForBusines' => "Biznes uchun ishonchli ijrochilar",
@@ -90,6 +90,8 @@ return [
 
     // detailed-tasks.blade start
     'detT_dealWithoutRisk' => "Xavfsiz savdo",
+    'detT_callbackpay2' => "va mijozga kontaktlarni yuboring",
+    'detT_callback23' => "javob - 0 so'm, mijoz bilan bog'lanish - 5000 so'm",
     'detT_insuredPer' => "Mijoz sug'urtalangan ijrochilarga ustunlik beradi",
     'detT_open' => "Ochiq",
     'detT_close' => "Yopiq",
@@ -132,6 +134,10 @@ return [
     'detT_otherTaskInCat' => "Kategoriyadagi boshqa vazifalar",
     'detT_ordererThisTask' => "Bu topshiriqning buyurtmachisi",
     'detT_task' => "Vazifa",
+    'detT_payment' => "Tolov trui",
+    'detT_card' => "Karta",
+    'detT_or' => "yoki",
+    'detT_cash' => "Naqt pul",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -611,6 +617,12 @@ return [
     // performers.bade start
     'perf_youreInUser' => "Siz hozir U-Ser ijrochilari bolimidasiz.",
     'perf_forOffer' => "Tanlangan ijrochiga ish taklif qilish uchun uning profilidagi 'Vazifa taklif qilish' tugmasini bosishingiz kerak.",
+    'perf_modalText' => "Ijrochiga taklif qilmoqchi bo'lgan vazifani tanlang",
+    'perf_newTask' => "yangi vazifa",
+    'perf_jobOffer' => "Ish taklif qilish",
+    'perf_modalText2' => "Har bir vazifani katalogdan besh nafar ijrochiga taklif qilish mumkin. ijrochilar sizning vazifangizga havola bilan SMS oladi.",
+    'perf_createNewTask' => "Yangi vazifa yaratish",
+    'perf_weSend' => "Biz unga xabarnoma yubordik.",
     // performers.bade end
 
     // budget.blade start

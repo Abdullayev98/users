@@ -905,3 +905,4 @@ $('.form-control-clear').click(function() {
     $(this).siblings('input[type="text"]').val('')
         .trigger('propertychange').focus();
 });
+

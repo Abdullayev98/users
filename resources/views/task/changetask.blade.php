@@ -21,7 +21,7 @@
                     <label class="text-sm">
                         Мне нужно
                         <input type="text" name="name"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full"
+                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full"
                                value="{{ $task->name }}">
                         @error('name')
                         <p class="text-red-500">{{ $message }}</p>
@@ -44,7 +44,7 @@
 
                                     {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
                                     <select id="where" name="{{$data->name}}[]"
-                                            class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                                            class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
                                             required>
 
                                         @foreach($data->options['options'] as $key => $option)
@@ -122,11 +122,11 @@
                                         <div name="glassSht" class="mb-3 xl:w-full">
 
 
-
                                             @foreach($data->options['options'] as $key => $option)
 
-                                                <input  {{ $data->custom_field_values()->where('task_id', $task->id)->first() ? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null  }} type="radio"
-                                                       id="{{$key}}" name="{{$data->name}}[]" value="{{$option}}">
+                                                <input
+                                                    {{ $data->custom_field_values()->where('task_id', $task->id)->first() ? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null  }} type="radio"
+                                                    id="{{$key}}" name="{{$data->name}}[]" value="{{$option}}">
                                                 <label for="{{$key}}">{{$option}}</label>
                                                 <br><br>
                                             @endforeach
@@ -159,8 +159,9 @@
                                     {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
                                     <input
                                         placeholder="{{ $data->getTranslatedAttribute('placeholder',Session::get('lang') , 'fallbackLocale') }}"
-                                        id="car" name="{{$data->name}}[]" type="text" value="{{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] : null }}"
-                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                                        id="car" name="{{$data->name}}[]" type="text"
+                                        value="{{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] : null }}"
+                                        class="shadow appearance-none border focus:outline-none  focus:border-yellow-500 rounded w-full py-2 px-3 text-gray-700 leading-tight"
                                         required>
 
                                 </div>
@@ -173,7 +174,7 @@
 
                 <div class="md:flex mt-5">
                     <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
                         <option disabled>@lang('lang.name_chooseOne')</option>
                         <option>{{ $task->category->name }}</option>
@@ -181,7 +182,7 @@
 
                     <select name="category_id"
                             onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
                         <option disabled>@lang('lang.name_chooseOne')</option>
                         @foreach($task->category->parent->childs as $category)
@@ -196,9 +197,9 @@
                 <div class="my-2">
                     <label class="text-xs text-gray-500">
                         Ценность покупки, SUM
-                        <input type="number"
+                        <input type="text" onkeypress='validate(event)'
                                name="budget" value="{{ $task->price }}"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">
+                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">
 
                     </label>
                 </div>
@@ -207,7 +208,7 @@
                         Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу
                         <textarea type="number"
                                   name="description"
-                                  class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">{{ $task->description }}</textarea>
+                                  class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">{{ $task->description }}</textarea>
                         @error('description')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
@@ -223,7 +224,7 @@
                         Дата и время <br>
                         <div>
                             <select name="date_type" id="periud"
-                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-yellow-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 "
                                     aria-label="Default select example">
                                 <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">Начать работу
                                 </option>
@@ -295,7 +296,7 @@
                                 <ymaps
                                     style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;"></ymaps>
                                 <input autocomplete="off" oninput="myFunction()" id="suggest0"
-                                       class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                                       class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
                                        type="text" placeholder="Город, Улица, Дом"
                                        value="{{ json_decode($task->address)->location }}" name="address">
                                 @error('address')
@@ -315,6 +316,7 @@
 
 
                             </div>
+
                             <input name="coordinates" type="hidden" id="coordinate"
                                    value="{{ json_decode($task->address)->latitude.",".json_decode($task->address)->longitude }}">
                             <div id="addinput" class="flex gap-y-2 flex-col">
@@ -323,6 +325,7 @@
                             </div>
                         </div>
                         <div>
+
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
 
@@ -355,11 +358,43 @@
                             Отдаю предпочтение застрахованным исполнительям ?
                         </label>
                     </div>
+                    <div>
+                        <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
+                            <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_Image')</h1>
+                            @foreach(json_decode($task->photos)??[] as $key => $image)
+                                {{--                                            @if ($loop->first)--}}
+
+                                <div class="relative boxItem">
+                                    <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
+                                       data-fancybox="img1"
+                                       data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                        <div class="mediateka_photo_content">
+                                            <img src="{{ asset('storage/'.$image) }}" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                                {{--                                            @endif--}}
+                            @endforeach
+                            @if($task->photos)
+                                <div class="relative boxItem">
+                                    @csrf
+                                    <a href="{{ route('task.images.delete', $task->id) }}" type="submit">
+                                        <div class="mediateka_photo_content text-center">
+                                            <i class="fas fa-trash text-black-50" style="font-size: 72px"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                        <div id="photos" class="w-full"></div>
+
+                    </div>
+
                 </div>
                 <div class="text-base my-6 bg-white rounded-md shadow-md p-4">
                     <h1 class="text-xl font-semibold py-4">На какой бюджет вы рассчитываете?</h1>
                     <div>
-                        <select class="border border-gray-300 rounded-md w-full focus:outline-none py-2 px-4"
+                        <select class="border border-gray-300 rounded-md w-full focus:outline-none focus:border-yellow-500 py-2 px-4"
                                 name="budget" id="budget">
                             <option value="{{$task->category->max/5}}">
                                 {{$task->category->max/5}} UZS
@@ -379,12 +414,6 @@
                         </select>
                     </div>
                     <div class="my-4 text-base">
-                    <span>
-                        или укажите другую сумму &nbsp
-                    </span>
-                        <input
-                            class="border border-gray-200 md:mx-4 md:px-2 py-2 pr-2 rounded-md focus:outline-none text-right"
-                            placeholder="SUMMA" name="budget" value="{{ $task->price }}">SUM
                         @error('budget')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
@@ -393,7 +422,7 @@
                 <div class="text-base my-4 ">
                     <h1 class="text-xl font-semibold py-2">Ваши контакты</h1>
                     <input id="phone_number"
-                           class="text-base border border-gray-200 md:w-1/2 focus:outline-none py-2 px-3 rounded-md"
+                           class="text-base border border-gray-200 md:w-1/2 focus:outline-none focus:border-yellow-500 py-2 px-3 rounded-md"
                            type="text" value="+998{{ $task->phone }}"
                            placeholder="+998(00)000-00-00">
                     <input type="hidden" id="phone" name="phone" value="{{ $task->phone }}">
@@ -432,10 +461,130 @@
         $('#start-date').css('display', 'inline-block');
         @endif
     </script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
+    <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
     <script src="{{ asset('js/changetask.js') }}"></script>
+    <script>
+        var element = document.getElementById('phone_number');
+        var maskOptions = {
+            mask: '+998(00)000-00-00',
+            lazy: false
+        }
+        var mask = new IMask(element, maskOptions);
+
+        $("#phone_number").keyup(function () {
+            var text = $(this).val()
+            text = text.replace(/[^0-9.]/g, "")
+            text = text.slice(3)
+            $("#phone").val(text)
+        })
+        var uppy = new Uppy.Core({
+            debug: true,
+            restrictions: {
+                minFileSize: null,
+                maxFileSize: 10000000,
+                maxTotalFileSize: null,
+                maxNumberOfFiles: 10,
+                minNumberOfFiles: 0,
+                allowedFileTypes: null,
+                requiredMetaFields: [],
+            },
+            meta: {},
+            onBeforeFileAdded: (currentFile, files) => currentFile,
+            onBeforeUpload: (files) => {
+            },
+            locale: {},
+            store: new Uppy.DefaultStore(),
+            logger: Uppy.justErrorsLogger,
+            infoTimeout: 5000,
+        })
+            .use(Uppy.Dashboard, {
+                trigger: '.UppyModalOpenerBtn',
+                inline: true,
+                target: '#photos',
+                showProgressDetails: true,
+                note: 'Все типы файлов, до 10 МБ',
+                width: 'auto',
+                height: '400px',
+                metaFields: [
+                    {id: 'name', name: 'Name', placeholder: 'file name'},
+                    {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
+                ],
+                browserBackButtonClose: true
+            })
+            .use(Uppy.XHRUpload, {
+                endpoint: '{{route('task.create.images.store', $task->id)}}',
+                formData: true,
+                fieldName: 'images',
+                headers: file => ({
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }),
+            });
+
+        uppy.on('upload-success', (file, response) => {
+            const httpStatus = response.status // HTTP status code
+            const httpBody = response.body   // extracted response data
+
+            // do something with file and response
+        });
+
+
+        uppy.on('file-added', (file) => {
+            uppy.setFileMeta(file.id, {
+                size: file.size,
+
+            })
+            console.log(file.name);
+        });
+        uppy.on('complete', result => {
+            console.log('successful files:', result.successful)
+            console.log('failed files:', result.failed)
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script
+        src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+    <script
+        src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-rotate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-video.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/fancybox.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/mediateka.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lightgallery.css') }}">
+
+    <div style="display: none;">
+
+        @foreach(json_decode($task->photos)??[] as $key => $image)
+            @if ($loop->first)
+
+            @else
+                <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
+                   data-fancybox="img1"
+                   data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                    <div class="mediateka_photo_content">
+                        <img src="{{ asset('storage/'.$image)  }}" alt="">
+                    </div>
+                </a>
+            @endif
+        @endforeach
+    </div>
 
 @endsection
+
+@section('javasript')
+
+
+@endsection
+

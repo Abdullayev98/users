@@ -20,7 +20,7 @@ class Task extends Model
 
     protected $guarded  = [];
 
-    protected $withCount = ['responses'];
+    protected $withCount = ['responses','reviews'];
 
     public function custom_field_values(){
         return $this->hasMany(CustomFieldsValue::class);
@@ -37,8 +37,8 @@ class Task extends Model
         return $this->belongsTo(User::class,'performer_id');
     }
 
-    public function review(){
-        return $this->hasOne(Review::class);
+    public function reviews(){
+        return $this->hasMany(Review::class);
     }
     public function responses(){
 //        return $this->hasMany(TaskResponse::class);

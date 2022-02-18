@@ -162,15 +162,15 @@ button{
     border-radius: 50%;!important;
     border: 2px solid #ffa200;!important;
     margin-top: -5px;!important;
-    overflow: visible;!important;
+    margin-left: -20px;!important;
 }
 
 .ui-slider .ui-slider-handle {
-    top: 8px;
+    top: 0px;
     width: 20px;
     height: 20px;
-    margin-left: -10px;
-    padding-left: 4px;
+    margin-left: -19px;
+    padding-left: 0px;
     background: rgba(255,255,255,0.7);
     text-align: center;
     font-family: 'Anonymous Pro', sans-serif;
@@ -226,7 +226,6 @@ p {
 #amount {
     position: relative;
     display: inline-block;
-    padding-bottom: 5rem;
     text-align: center;
     font-family: 'Exo', sans-serif;
     font-weight: 800;
