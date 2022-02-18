@@ -97,7 +97,7 @@
             </div>
             <div class="mb-4 mt-8 text-center text-base">
                 <a href="/categories/1">
-                    <button type="button" class="font-semibold border hover:border-black duration-300 rounded-md w-64 h-12">@lang('lang.body_allService')
+                    <button type="button" class="font-semibold text-yellow-500 hover:text-white border border-yellow-500 duration-300 hover:bg-yellow-500 rounded-md w-64 h-12">@lang('lang.body_allService')
                     </button>
                 </a>
             </div>
