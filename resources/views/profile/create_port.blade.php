@@ -12,7 +12,7 @@
                             class="fas fa-arrow-left"></i> @lang('lang.profile_text1')</a>
                     <h1 class="font-semibold md:text-2xl text-lg ">@lang('lang.profile_text2')</h1>
                 </div>
-                <div id="comdes" class="bg-yellow-50 p-8 rounded-md my-6">
+                <div id="comdes" class="bg-yellow-100 p-8 rounded-md my-6">
                     <label class="text-sm text-gray-500 " for="name">@lang('lang.profile_text3')</label><br>
                     <input name="comment"
                            class="border break-all focus:outline-none focus:border-yellow-500 mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2"
