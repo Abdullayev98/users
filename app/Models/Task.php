@@ -37,14 +37,13 @@ class Task extends Model
         return $this->belongsTo(User::class,'performer_id');
     }
 
-
     public function review(){
         return $this->hasOne(Review::class);
     }
     public function responses(){
-        return $this->hasMany(TaskResponse::class);
+//        return $this->hasMany(TaskResponse::class);
+        return $this->hasMany(Response::class);
     }
-
 
     public function getPriceAttribute(){
         return preg_replace('/[^0-9.]+/', '', $this->budget);
