@@ -117,7 +117,7 @@
             <div class="swiper-wrapper">
                 @foreach ($reklamas as $reklama )
                 <div class="swiper-slide w-full items-center  mt-12" >
-                    <div class="flex border-xl sm:w-10/12 w-3/4 lg:w-11/12 mx-auto">
+                    <div class="flex border-xl sm:w-10/12 h-36 w-3/4 lg:w-11/12 mx-auto">
                         <div class="w-1/2 lg:pl-8  md:pl-6 sm:pl-4 lg:w-5/12">
                             <h1 class="sm:text-lg text-base md:text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{ $reklama->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                             <p class="sm:text-base text-sm md:text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
