@@ -18,7 +18,7 @@
     <section class="bg-gray-500 py-8 mb-7">
         <div class="lg:w-8/12 mx-auto w-10/12">
                 <div class="sm:block lg:flex flex-column justify-between ">
-                    <a href="#"> <img class="lg:w-32 md:w-24 sm:w-20 w-16 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
+                    <a href="/"> <img class="lg:w-32 md:w-24 sm:w-20 w-16 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
 
                     <a href="/" class="lg:md:text-base sm:text-sm text-xs text-white hover:text-yellow-400">
                         <i class="fa fa-link"></i>
