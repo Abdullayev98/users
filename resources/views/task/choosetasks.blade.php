@@ -4,19 +4,19 @@
     <link rel="stylesheet" href="{{ asset ('/css/carousel.min.css')}}">
     <script src="{{ asset ('/js/carousel.min.js') }}"></script>
 
-    <div class="container w-10/12 mx-auto text-base">
-        <div class="w-10/12 md:w-8/12 mx-auto text-center">
+    <div class="container w-10/12 mx-auto sm:my-12 my-4 text-base">
+        <div class="text-center">
             <h1 class="text-3xl pt-5 md:text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
-            <h3 class="text-xl my-5 font-semibold text-gray-400">@lang('lang.chT_weHelp')</h3>
-            <div class="max-w-full container mx-auto md:hidden">
+            <h3 class="text-lg my-5 font-semibold text-gray-400 mb-8">@lang('lang.chT_weHelp')</h3>
+            <div class="max-w-full container mx-auto lg:hidden">
                 <div class="slider" >
                     <div class="slider__wrapper" >
-                        <div class="slider__items">
+                        <div class="slider__items sm:w-2/3 w-full">
                             @foreach($categories as $category)
                                 <button type="button"
-                                        class="slider__item bg-inherit hover:bg-yellow-300 border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
+                                        class="slider__item bg-inherit hover:text-yellow-500 border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
                                     <i class="fas sm:mr-4 mr-2 {{ $category->ico }}"></i>
-                                    <a href="{{route('categories',['id'=>$category->id])}}" class="text-sm text-center lg:text-lg">
+                                    <a href="{{route('categories',['id'=>$category->id])}}" class=" text-center text-lg">
                                         {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </a>
                                 </button>
@@ -29,11 +29,11 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden md:block">
+            <div class="hidden lg:block">
                 @foreach($categories as $category)
                     <button type="button"
-                            class="bg-inherit hover:text-yellow-600 border py-1 rounded-full px-4 my-4 text-gray-500 border-gray-300 text-left md:text-center text-md md:inline-block block">
-                        <i class="fas {{ $category->ico }}"></i>
+                            class="bg-inherit hover:text-yellow-500 border py-1 rounded-full px-4 my-2 mx-2 text-gray-500 border-gray-300 text-left md:text-center text-md md:inline-block block">
+                        <i class="fas {{ $category->ico }} mr-2"></i>
                         <a class="text-sm" href="{{route('categories',['id'=>$category->id])}}">
                             {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                         </a>
@@ -49,16 +49,17 @@
             <h4 class="font-bold text-3xl mt-14 ">{{$choosed->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}</h4>
             @endforeach
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 mt-8">
+        <div class="flex flex-wrap  mt-8">
             @foreach($child_categories as $category)
-                <div class="w-full text-left text-left border-b border-solid md:border-0 mt-1 border-gray-200">
-                    <a href="/task/create?category_id={{$category->id}}"
-                       class="text-gray-500 hover:text-yellow-600 block ml-4 md:ml-0 pb-1 hover:underline">{{$category->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale')}}</a>
+                <div class="lg:w-1/3 w-full text-left my-2">
+                    <a href="/task/create?category_id={{$category->id}}">
+                        <span class="text-gray-900 hover:text-yellow-600 block hover:underline">{{$category->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale')}}</span>
+                    </a><hr class="mt-4 lg:hidden block">
                 </div>
             @endforeach
 
         </div>
     </div>
-    <script src="{{ asset('js/changetask.js') }}"></script>
+    <script src="{{ asset('js/tasks/changetask.js') }}"></script>
 
 @endsection
