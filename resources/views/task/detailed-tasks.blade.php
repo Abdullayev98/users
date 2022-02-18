@@ -169,12 +169,12 @@
                                     <div>
                                         <div class="w-full flex flex-col sm:flex-row sm:p-6 p-2">
                                             <!-- This is an example component -->
-                                            <div class="sm:w-3/5 w-full">
+                                            <div class="w-full text-center">
                                                 @auth
                                                     @if(getAuthUserBalance() >= 4000 || $task->responses_count< setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
                                                             <button
-                                                                class="w-full font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-green-600 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300"
+                                                                class="sm:w-4/5 w-full font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-green-600 px-8 pt-1 pb-2 mt-6 rounded-lg transition-all duration-300"
                                                                 id="btn1"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
@@ -184,7 +184,7 @@
                                                             </span>
                                                             </button>
                                                             <button
-                                                                class="w-full font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-yellow-600 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300"
+                                                                class="sm:w-4/5 w-full font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-yellow-600 px-8 pt-1 pb-2 mt-6 rounded-lg transition-all duration-300"
                                                                 id="btn2"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
@@ -199,14 +199,14 @@
                                                             <a href="#" class="open-modal"
                                                                data-modal="#modal1">
                                                                 <button
-                                                                    class='w-1/2 font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                    class='w-1/2 font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
                                                                     @lang('lang.detT_callbackpay')
                                                                 </button>
                                                             </a>
                                                             <a href="#" class="open-modal"
                                                                data-modal="#modal1">
                                                                 <button
-                                                                    class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                    class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
                                                                     @lang('lang.detT_callback')
                                                                 </button>
                                                             </a>
@@ -228,7 +228,7 @@
                                                 @else
                                                     <a href="/login">
                                                         <button
-                                                            class="font-sans mt-8 text-lg  font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-10 py-4 rounded">
+                                                            class="sm:w-4/5 w-full mx-auto font-sans mt-8 text-lg  font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-10 py-4 rounded-lg">
                                                             @lang('lang.detailedT_text18')
                                                         </button>
                                                     </a>
@@ -236,7 +236,7 @@
                                                 @auth
                                                     @if ($task->performer_id == auth()->user()->id || $task->user_id == auth()->user()->id)
                                                         <button id="sendbutton"
-                                                                class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                                class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded-lg transition-all duration-300 m-2"
                                                                 type="button">
                                                             @lang('lang.detailedT_text19')
                                                         </button>
@@ -248,13 +248,13 @@
                                                             @if(!$review)
                                                                 <button
                                                                     id="modal-open-id5"
-                                                                    class=" sm:w-2/5 w-9/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6  pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                                    class=" sm:w-2/5 w-9/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6  pt-2 pb-3 rounded-lg transition-all duration-300 m-2"
                                                                     type="submit">
                                                                     Завершен
                                                                 </button>
                                                                 <button
                                                                     id="modal-open-id4"
-                                                                    class="not_done  sm:w-2/5 w-9/12 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-5 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                                    class="not_done  sm:w-2/5 w-9/12 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-5 ml-6 pt-2 pb-3 rounded-lg transition-all duration-300 m-2"
                                                                     type="button">
                                                                     Не завершен
                                                                 </button>
