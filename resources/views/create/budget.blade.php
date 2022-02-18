@@ -46,9 +46,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="tooltip-light" role="tooltip" class="inline-block absolute visible py-2 px-1 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-100 tooltip" style="z-index: 100;!important;">
+                                                    <div id="tooltip-light" role="tooltip" class="inline-block shadow-xl absolute visible py-2 px-1 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-sm opacity-100 tooltip" style="z-index: 100;!important;">
                                                         <input class="focus:outline-none text-center text-yellow-500 text-xl" type="text" id="amount2" name="amount" readonly >
-                                                        <div class="tooltip-arrow" data-popper-arrow></div>
                                                     </div>
                                                     <div class="handle__27597">
 

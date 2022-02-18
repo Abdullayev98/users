@@ -19,7 +19,7 @@
                 <div class="sm:block lg:flex flex-column justify-between ">
                     <a href="/"> <img class="lg:w-32 md:w-24 sm:w-20 w-16 mb-4 lg:mb-0" src="{{asset('images/logo.png')}}"></a>
 
-                    <a href="/" class="lg:md:text-base sm:text-sm text-xs text-white hover:text-gray-400">
+                    <a href="/" class="lg:md:text-base sm:text-sm text-xs text-white hover:text-yellow-400">
                         <i class="fa fa-link"></i>
                             @lang('lang.faq_text')
                     </a>
