@@ -2,7 +2,7 @@
 
 @section("content")
     {{--@foreach($users as $user)--}}
-    <div class="xl:w-9/12 w-10/12 mx-auto flex">
+    <div class="xl:w-9/12 w-10/12 mx-auto lg:flex">
         <div class="grid grid-cols-3 grid-flow-row mt-10">
             {{-- left sidebar start --}}
             <div class="lg:col-span-2 col-span-3">
