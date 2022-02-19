@@ -12,11 +12,13 @@
                 @else
                 src="{{asset("storage/{$user->avatar}")}}"
                 @endif alt="avatar">
-                <input type="file" name="file" id="file" class="mt-2">
-                <button onclick="btn2" class="my-2 bg-gray-300 px-3 py-1 rounded-md hidden">
-                    <i class="fas fa-camera mr-1"></i>
-                    <span>@lang('lang.cash_changeImg')</span>
-                </button>
+                <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
+                    <input type="file" name="file" id="file" onclick="fileupdate()" class="hidden">
+                    <label for="file" class="p-1 cursor-pointer">
+                        <i class="fas fa-camera mx-1"></i>
+                        <span>@lang('lang.cash_changeImg')</span>
+                    </label>
+                </div>
         </div>
 
         <div class="sm:w-2/3 w-full text-base text-gray-500 ml-4">
