@@ -90,15 +90,16 @@
         }
     }
     .preloader{
-
-        position: fixed;
+        display:flex;
+        align-items:center;
+        justify-content:center;
         z-index: 200;
     }
 </style>
 <div class="preloader-wrapper">
-    <div class="preloader">
+    <div class="preloader" style="width: 400px; height: 400px;">
         <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-             x="0px" y="0px" viewBox="0 0 200 70" style="enable-background:new 0 0 200 70; width: 300px; height: 300px;" xml:space="preserve">
+             x="0px" y="0px" viewBox="0 0 200 70" style="enable-background:new 0 0 200 70;" xml:space="preserve" width="100%" height="100%">
 
             <g>
                 <g>
