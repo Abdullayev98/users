@@ -293,10 +293,10 @@
     <script>
 
 
-        function first_ajax(id, filter, address, price) {
+        function first_ajax(id) {
             $.ajax({
                 url: "{{route('tasks.search')}}",
-                data: {orderBy: id, fltr: filter, addr: address, prc: price},
+                data: {orderBy: id},
                 type: 'GET',
                 success: function (data) {
                     if (id == 'all') {
@@ -304,20 +304,18 @@
                         dataAjaxCheck=1
                         sixInOne();
                     }
-                    if (id == 'klyuch') {
-                        dataAjax2 = $.parseJSON(JSON.stringify(data));
-                        dataAjaxCheck=2
-                        sixInOne();
-                    }
                 },
                 error: function () {
-                    alert("Ajax ishida xatolik...");
+                    alert("Ajax orqali yuklashda xatolik...");
                 }
             });
         }
         first_ajax('all');
 
     </script>
+<<<<<<< HEAD
+
+=======
     <script>
         $('#byDate').click(function(){
             $(this).addClass('font-bold')
@@ -328,4 +326,5 @@
             $('#byDate').removeClass('font-bold')
         })
     </script>
+>>>>>>> 1790764dcda52e6521a6e07b9c43708da0e277cb
 @endsection

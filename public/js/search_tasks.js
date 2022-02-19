@@ -71,12 +71,12 @@ function dataAjaxCopy(dataA){
     }
 }
 
-function ajaxFilter() {
+function jqFilter() {
     nameVal1 = $('#filter').val()
     nameVal2 = $('#suggest').val()
     nameVal3 = $('#price').val()
     if ($.trim(nameVal1) != '' || $.trim(nameVal2) != '' || $.trim(nameVal3) != ''){
-        first_ajax('klyuch', nameVal1, nameVal2, nameVal3)
+        dataAjaxFindThree(dataAjax, nameVal1, nameVal2, nameVal3)
     }
     if ($.trim(nameVal1) == '' && $.trim(nameVal2) == '' && $.trim(nameVal3) == ''){
         dataAjaxCheck = 1;
@@ -87,7 +87,7 @@ function ajaxFilter() {
 $("#filter").keyup(function() {
     if ($('#filter').val().trim().length == 0) {
         $('#svgClose').hide();
-        ajaxFilter()
+        jqFilter()
     }else{
         $('#svgClose').show();
     }
@@ -95,21 +95,22 @@ $("#filter").keyup(function() {
 
 $('#filter').on('keypress',function(e) {
     if(e.which == 13) {
-        ajaxFilter()
+        jqFilter()
     }
 });
 
 $("#svgClose").click(function() {
     $('#filter').val('');
     $('#svgClose').hide();
-    ajaxFilter();
+    jqFilter();
 });
+
 
 $("#suggest").keyup(function() {
     if ($('#suggest').val().trim().length == 0) {
         $('#closeBut').hide();
         $('#geoBut').show();
-        ajaxFilter()
+        jqFilter()
     }else{
         $('#geoBut').hide();
         $('#closeBut').show();
@@ -118,14 +119,14 @@ $("#suggest").keyup(function() {
 
 $('#suggest').on('keypress',function(e) {
     if(e.which == 13) {
-        ajaxFilter()
+        jqFilter()
     }
 });
 
 $("#price").keyup(function() {
     if ($('#price').val().trim().length == 0) {
         $('#prcClose').hide();
-        ajaxFilter()
+        jqFilter()
     }else{
         $('#prcClose').show();
     }
@@ -133,12 +134,12 @@ $("#price").keyup(function() {
 
 $('#price').on('keypress',function(e) {
     if(e.which == 13) {
-        ajaxFilter()
+        jqFilter()
     }
 });
 
 $("#findBut").click(function() {
-    ajaxFilter();
+    jqFilter();
 });
 
 $("#geoBut").click(function() {
@@ -150,7 +151,7 @@ $("#closeBut").click(function() {
     $('#suggest').val('');
     $('#closeBut').hide();
     $('#geoBut').show();
-    ajaxFilter()
+    jqFilter()
 });
 
 $("#selectGeo").change(function() {
@@ -161,7 +162,7 @@ $("#selectGeo").change(function() {
 $("#prcClose").click(function() {
     $('#price').val('');
     $('#prcClose').hide();
-    ajaxFilter();
+    jqFilter();
 });
 
 $("#remJob").click(function() {
@@ -208,6 +209,68 @@ function dataAjaxSortByDS(arr, numb) {
 
 }
 
+function dataAjaxFindThree(dataA, str1, str2, num) {
+    dataAjax2 = [];
+        $.each(dataA, function (index, data) {
+            if (str1 == ''){nmeVl1 = false}
+            else {
+                nmeVl1 = data.name.toLowerCase().includes(str1.toLowerCase())
+            }
+            if (str2 == ''){nmeVl2 = false}
+            else {
+                nmeVl2 = data.address.toLowerCase().includes(str2.toLowerCase())
+            }
+            if (num == ''){nmeVl3 = false}
+            else {
+                nmeVl3 = data.budget.includes(num)
+            }
+            if (str1 != '' && str2 == '' && num == '') {
+                if (nmeVl1) {
+                    dataAjax2.push(data);
+                }
+            }
+            if (str1 != '' && str2 != '' && num == '') {
+                if (nmeVl1 && nmeVl2) {
+                    dataAjax2.push(data);
+                }
+            }
+            if (str1 != '' && str2 != '' && num != '') {
+                if (nmeVl1 && nmeVl2 && nmeVl3) {
+                    dataAjax2.push(data);
+                }
+            }
+            if (str1 == '' && str2 != '' && num != '') {
+                if (nmeVl2 && nmeVl3) {
+                    dataAjax2.push(data);
+                }
+            }
+            if (str1 == '' && str2 != '' && num == '') {
+                if (nmeVl2) {
+                    dataAjax2.push(data);
+                }
+            }
+            if (str1 == '' && str2 == '' && num != '') {
+                if (nmeVl3) {
+                    dataAjax2.push(data);
+                }
+            }
+            if (str1 != '' && str2 == '' && num != '') {
+                if (nmeVl1 && nmeVl3) {
+                    dataAjax2.push(data);
+                }
+            }
+        });
+        if (dataAjax2.length != 0){
+            dataAjaxCheck = 2
+            sixInOne()
+        }else{
+            resetCounters()
+            tasks_list_all(dataAjaxPrint)
+            tasks_show()
+        }
+
+}
+
 function tasks_list_all(data) {
     $(".show_tasks").empty();
     $.each(data, function(index, data) {
@@ -215,18 +278,19 @@ function tasks_list_all(data) {
         let json = JSON.parse(data.address);
         $(".show_tasks").append(
             `<div class="sort-table print_block" id="` + data.id + `" hidden>
-                <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-36 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
-                    <div class="md:w-11/12 w-full sm:ml-0.5  md:m-4 sm:m-2 m-0 ml-2">
+                <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-38 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
+                    <div class="md:w-11/12 w-full sm:ml-0.5 sm:m-2 m-0 ml-2">
                         <div class="sm:float-left sm:w-7/12 w-full" id="results">
                             <i class="` + data.icon + ` text-2xl float-left text-blue-400 sm:mr-4 mr-3"></i>
                             <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-base font-semibold text-blue-500 hover:text-red-600">` + data.name + `</a>
                             <p class="text-sm sm:ml-12 ml-10 sm:mt-4 sm:mt-1 mt-0 location ">` + (data.address != null ? json.location : 'Можно выполнить удаленно') + `</p>
                             <p class="text-sm sm:ml-8 ml-6 sm:mt-1 mt-0 pl-4 ">Начать ` + data.start_date + `</p>
                         </div>
-                        <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 sm:mt-1 mt-0" id="about">
+                        <div class="sm:float-right sm:w-4/12 w-full sm:text-right sm:p-0 sm:ml-0 ml-10 mt-0" id="about">
                             <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
-                            <p class="text-sm sm:mt-5 sm:mt-1 mt-0">` + (dataAjaxCheck==1 ? data.category_name : data.category.name) + `</p>
-                            <a href="/performers/` + data.user_id + `" class="text-sm sm:mt-1 mt-0 hover:text-red-600 ">` + (dataAjaxCheck==1 ? data.user_name : data.user.name) + `</a>
+                            <span  class="text-sm sm:mt-5 sm:mt-1 mt-0">Откликов - ` + data.responses.length + `</span>
+                            <p class="text-sm sm:mt-1 mt-0">` + data.category_name + `</p>
+                            <a href="/performers/` + data.user_id + `" class="text-sm sm:mt-1 mt-0 hover:text-red-600 ">` + data.user_name + `</a>
                         </div>
                     </div>
                 </div>
@@ -262,7 +326,8 @@ function sixInOne(){
     }
     if(dataAjaxCheck == 1) {
         dataAjaxCopy(dataAjax)
-    }else {
+    }
+    if (dataAjaxCheck == 2){
         dataAjaxCopy(dataAjax2)
     }
     if(dataAjaxPrint.length == 0){

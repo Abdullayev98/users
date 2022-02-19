@@ -239,7 +239,6 @@
             <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-56">
                 <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
                     <div class="w-full overflow-y-scroll h-screen">
-
                         @foreach($tasks as $task)
                             <div class="w-full border-b-2 h-28 hover:bg-blue-100 overflow-hidden">
                                 <div class="icon pt-4">
@@ -255,8 +254,6 @@
                                 </div>
                             </div>
                         @endforeach
-
-
                     </div>
                     <div class="mt-8 flex justify-center">
                         <a href="{{route('task.search')}}" type="button"

@@ -184,9 +184,13 @@ class CreateController extends Controller
     {
         $data = $request->validate([
             'description' => 'required|string',
-            'oplata' => 'required'
+            'oplata' => 'required',
         ]);
-
+        if ($request['docs'] == "on"){
+            $data['docs'] = 1;
+        }else{
+            $data['docs'] = 0;
+        }
         $task->update($data);
         return redirect()->route("task.create.contact", $task->id);
     }
