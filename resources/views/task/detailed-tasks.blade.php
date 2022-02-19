@@ -163,7 +163,15 @@
 {{--                                            @endif--}}
                                         @endforeach
                                     </div>
-
+                                    @if($task->docs == 1)
+                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                        <h1 class="font-bold h-auto w-48">Предоставил(а) документы</h1>
+                                    </div>
+                                    @else
+                                        <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                            <h1 class="font-bold h-auto w-48">Не предоставил(а) документы</h1>
+                                        </div>
+                                    @endif
                                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                     <div>
