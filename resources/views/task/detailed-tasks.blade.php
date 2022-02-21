@@ -3,7 +3,8 @@
 
 
 @section("content")
-
+    <script type="text/javascript" src="http://connect.mail.ru/js/loader.js">
+    </script>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb" type="text/javascript"></script>
     <script>
         ymaps.ready(init);
@@ -163,7 +164,15 @@
 {{--                                            @endif--}}
                                         @endforeach
                                     </div>
-
+                                    @if($task->docs == 1)
+                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                        <h1 class="font-bold h-auto w-48">Предоставил(а) документы</h1>
+                                    </div>
+                                    @else
+                                        <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                            <h1 class="font-bold h-auto w-48">Не предоставил(а) документы</h1>
+                                        </div>
+                                    @endif
                                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                     <div>
@@ -522,7 +531,7 @@
                                     >
                                         <!-- Modal inner -->
                                         <div
-                                            class="max-w-3xl px-6 py-4 mx-auto text-left bg-white h-24 rounded shadow-lg"
+                                            class="max-w-3xl px-6 py-4 mx-auto text-left bg-white h-44 rounded shadow-lg"
                                             @click.away="showModal = false"
                                             x-transition:enter="motion-safe:ease-out duration-300"
                                             x-transition:enter-start="opacity-0 scale-90"
@@ -540,9 +549,19 @@
                                             </div>
 
                                             <!-- content -->
-                                            <div class="grid grid-cols-3">
+                                            <div class="grid gap-2 grid-cols-3">
                                                 <div>
                                                     <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>
+                                                </div>
+
+                                                <div>
+                                                    <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                                                    <script type="IN/Share" data-url="https://www.linkedin.com"></script>
+                                                    <style>.IN-6a618b64-337f-4c9b-bc33-c6d76fb9fde2-1G9ISYhSF8XoOmdcl0yKDu  {font-size: 15px!important;
+                                                            height: 28px!important;
+                                                            line-height: 22px!important;
+                                                            padding: 4px 11px!important;
+                                                    </style>
                                                 </div>
                                                 <div>
                                                     <iframe src="https://www.facebook.com/plugins/share_button.php?href={{Request::url()}}&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
@@ -550,10 +569,13 @@
                                                 <div>
                                                     <a href="mailto:?subject=Universal Services&amp;body={{Request::url()}}"
                                                        title="Share by Email">
-                                                        <button class="w-20 rounded h-7 bg-red-500">
+                                                        <button class=" px-2 rounded h-7 bg-red-500" style="width: 76px" >
                                                             <img src="https://www.ee.iitb.ac.in/web//images/mailiconwhite.png" class="w-7 mx-auto">
                                                         </button>
                                                     </a>
+                                                </div>
+                                                <div>
+                                                    <iframe src="https://twitter.com/intent/tweet?url={url}&text={title}&via={user_id}&hashtags={hash_tags}" frameborder="0"></iframe>
                                                 </div>
                                                 </div>
                                             </div>
