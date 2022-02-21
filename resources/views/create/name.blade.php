@@ -121,7 +121,7 @@
 
     <script>
         $('.select2').select2({
-            minimumResultsForSearch: Infinity,
+            //minimumResultsForSearch: Infinity,
         }).maximizeSelect2Height()
 
         let parentCategory = $(".parent-category").val();
