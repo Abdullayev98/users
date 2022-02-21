@@ -23,7 +23,7 @@
                 </div>
                 @if (Route::has('login'))
                     @auth
-                        <div class="w-2/12 flex justify-center lg:hidden">
+                        <div class="w-2/12 flex justify-center lg:hidden mr-2">
                             {{-- icon-1 --}}
                             <div class=" float-left">
                                 <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-center">1</div>
