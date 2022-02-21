@@ -4,6 +4,7 @@ namespace PayUz\Commons;
 
 use App\Models\PaynetTransaction;
 use App\Models\User;
+use App\Models\WalletBalance;
 use PayUz\DataFormat;
 use PayUz\PaymentException;
 use PayUz\Commons\Merchant;
@@ -121,7 +122,10 @@ class Paynet
             'transactionable_type'  => get_class($model),
             'transactionable_id'    => $model->id
         ]);
-
+        if(!is_null($transaction)){
+            WalletBalanceL::walletBalanceUpdateOrCreate($transaction->transactionable_id, $transaction->amount);
+        }
+        
         return  "<ns2:PerformTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
             "<errorMsg>Success</errorMsg>".
             "<status>0</status>".
