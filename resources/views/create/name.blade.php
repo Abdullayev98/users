@@ -66,7 +66,7 @@
                             <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
                             <div id="categories">
                                 <div class="flex">
-                                    <div class="w-1/2 pr-8 py-5">
+                                    <div class="w-1/2 pr-3 py-5">
                                         <select class="select2 parent-category "
                                                 style="width: 100%"
                                         >
@@ -75,7 +75,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="w-1/2 pl-8 py-5">
+                                    <div class="w-1/2 pl-3 py-5">
                                         @foreach(getCategoriesByParent(null) as $category)
 
                                             <div class="hidden child-category child-category-{{ $category->id }}">
@@ -140,17 +140,17 @@
 
     <style>
         .select2-selection{
-            height: 50px!important;
+            height: 40px!important;
         }
         .select2-selection__rendered{
-            padding: 10px;
+            padding: 5px 30px!important;
+            font-size:16px;
         }
         ul.select2-results__options {
             min-height: 400px;
         }
         .select2-selection__arrow{
-            margin: 10px;
-            font-size: 32px;
+            margin: 5px;
         }
         .select2-results__option{
             font-size:16px;
