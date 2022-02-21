@@ -97,7 +97,7 @@
 
                         </div>
                         <input type="submit"
-                               class="bg-green-500 hover:bg-green-500 w-11/12 md:ml-5 ml-2 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
+                               class="bg-green-500 hover:bg-green-500 w-full mx-0 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
                                name="" value="@lang('lang.name_next')">
 
 
@@ -150,6 +150,10 @@
         }
         .select2-selection__arrow{
             margin: 10px;
+            font-size: 32px;
+        }
+        .select2-results__option{
+            font-size:16px;
         }
     </style>
 
