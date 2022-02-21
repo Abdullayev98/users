@@ -29,8 +29,8 @@
 
     {{--    Created Road map for Create a New Tast--}}
     <div class="mx-auto lg:w-2/3 w-4/5 my-16">
-        <div class="grid grid-cols-3  lg:gap-x-20 md:gap-x-14 h-full">
-            <div class="md:col-span-2 col-span-3">
+        <div class="grid grid-cols-3   lg:gap-x-8 md:gap-x-0.5 h-full">
+            <div class="md:col-span-2  col-span-3">
                 <div class="w-full text-center md:text-2xl text-xl">
                     @lang('lang.name_helpToFind')
                 </div>
@@ -43,7 +43,7 @@
                              class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                     </div>
                 </div>
-                <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
+                <div class="shadow-2xl w-full lg:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
                         @lang('lang.name_howCanWeHelpU')
                     </div>
@@ -65,7 +65,7 @@
                             </div>
                             <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
                             <div id="categories">
-                                <div class="flex">
+                                <div class="flex ">
                                     <div class="w-1/2 pr-3 py-5">
                                         <select class="select2 parent-category "
                                                 style="width: 100%"
@@ -99,7 +99,7 @@
                         <input type="submit"
                                class="bg-green-500 hover:bg-green-500 w-full mx-0 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
                                name="" value="@lang('lang.name_next')">
-
+                        </div>
 
                     </form>
                 </div>
