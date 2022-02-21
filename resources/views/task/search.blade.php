@@ -313,9 +313,7 @@
         first_ajax('all');
 
     </script>
-<<<<<<< HEAD
 
-=======
     <script>
         $('#byDate').click(function(){
             $(this).addClass('font-bold')
@@ -326,5 +324,4 @@
             $('#byDate').removeClass('font-bold')
         })
     </script>
->>>>>>> 1790764dcda52e6521a6e07b9c43708da0e277cb
 @endsection
