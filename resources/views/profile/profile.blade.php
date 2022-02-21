@@ -8,120 +8,7 @@
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
             {{-- user ma'lumotlari --}}
             <div class="col-span-2 w-full mx-auto">
-                <figure class="w-full">
-
-                    <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
-                    <div class="flex flex-row 2xl:w-11/12 w-full mt-6">
-
-                    <div class="flex flex-row w-full mt-6">
-                        <div class="sm:w-1/3 w-full">
-                            <img class="border border-3 border-gray-400 h-40 w-40"
-                                 @if ($user->avatar == Null)
-                                 src='{{asset("storage/images/default.jpg")}}'
-                                 @else
-                                 src="{{asset("storage/{$user->avatar}")}}"
-                                 @endif alt="avatar">
-                            <form action="{{route('update.photo')}}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
-                                <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
-                                    <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
-                                    <label for="file" class="p-1">
-                                        <i class="fas fa-camera"></i>
-                                        <span>@lang('lang.cash_changeImg')</span>
-                                    </label>
-                                </div>
-                                <div class="rounded-md bg-green-400 w-40 hidden mt-3 py-1" type="button" id="buttons" onclick="fileadd()">
-                                    <input type="submit" id="sub1" class="hidden">
-                                    <label for="sub1" class="p-1">
-                                        <i class="fas fa-save"></i>
-                                        <span>@lang('lang.cash_addImg')</span>
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="sm:w-2/3 w-full text-base text-gray-500 ml-4">
-                            @if($user->age != "")
-                                <p class="inline-block mr-2">
-                                    {{$user->age}}
-                                    @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
-                                    @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) @lang('lang.cash_rusYearGoda')
-                                    @else @lang('lang.cash_rusYearLet')
-                                    @endif
-                                </p>
-                            @endif
-
-                            <span class="inline-block">
-                                <p class="inline-block text-m">
-                                    @if($user->location!="")
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        @lang('lang.cash_city') {{$user->location}}
-                                    @else @lang('lang.cash_cityNotGiven')
-                                    @endif
-                                </p>
-                            </span>
-
-                            <p class="mt-2">@lang('lang.cash_created') <a href="#">
-                                <span>
-                                    @if ($task == Null) 0
-                                    @else {{$task}}
-                                    @endif
-                                </span> @lang('lang.cash_task')</a></p>
-                            {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
-                                <div class="flex mt-6">
-                                    <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
-                                        <img @if ($user->is_email_verified != Null && $user->is_phone_number_verified != Null && $user->is_phone_number_verified != 0 && $user->is_email_verified != 0)
-                                             src="{{ asset('images/verify.png') }}"
-                                             @else
-                                             src="{{ asset('images/verify_gray.png') }}"
-                                             @endif  alt="" class="w-24">
-                                        <div id="tooltip-animation_1" role="tooltip" class="inline-block sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                            <p class="text-center">
-                                                @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
-                                                    @lang('lang.profile_icon_verify')
-                                                @else
-                                                    @lang('lang.profile_icon_not_verify')
-                                                @endif
-                                            </p>
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                        </div>
-                                    </div>
-                                    @if($user->role_id == 2)
-                                    @foreach($about as $rating)
-                                        @if($rating->id == $user->id)
-                                            <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
-                                                <img src="{{ asset('images/best.png') }}"alt="" class="w-24">
-                                                <div id="tooltip-animation_2" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                                    <p class="text-center">
-                                                        @lang('lang.profile_icon_best')
-                                                    </p>
-                                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                                </div>
-                                            </div>
-                                        @else
-                                            @continue
-                                        @endif
-                                    @endforeach
-                                    <div data-tooltip-target="tooltip-animation_3" class="mx-4 pt-1 sm:pt-2" >
-                                        @if($task_count >= 50)
-                                        <img src="{{ asset('images/50.png') }}" alt="" class="w-24">
-                                        @else
-                                            <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-24">
-                                        @endif
-                                        <div id="tooltip-animation_3" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                            <p class="text-center">
-                                                @lang('lang.profile_icon_50')
-                                            </p>
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                        </div>
-                                    </div>
-                                        @endif
-                                </div>
-                        </div>
-                    </div>
-                    </div>
-                </figure>
+                @include('components.profileFigure')
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 ">
                     <div class= "grid md:grid-cols-10 w-full">
@@ -174,12 +61,12 @@
                         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mx-auto">
                         @foreach($comment as $comments)
                             <a href="/profile/portfolio/{{$comments->id}}" class="border my-6 border-gray-400 mr-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
-                                <img src="{{ asset('storage/'.json_decode($comments->image)[0])  }}" alt="#" class="w-56 h-48">
+                                <img src="{{ asset('storage/'.$comments->image == null ?? json_decode($comments->image)[0])  }}" alt="#" class="w-56 h-48">
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
                                     <p class="w-2/3 text-center text-base text-white">{{$comments->comment}}</p>
                                    <div class="w-1/3 flex items-center">
                                         <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
-                                        <span class="text-white">{{count(json_decode($comments->image))}}</span>
+                                        <span class="text-white">{{count(json_decode($comments->image)??[])}}</span>
                                    </div>
                                 </div>
                             </a>

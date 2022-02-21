@@ -3,6 +3,8 @@
 
 
 @section("content")
+    <script type="text/javascript" src="http://connect.mail.ru/js/loader.js">
+    </script>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb" type="text/javascript"></script>
     <script>
         ymaps.ready(init);
@@ -162,18 +164,26 @@
 {{--                                            @endif--}}
                                         @endforeach
                                     </div>
-
+                                    @if($task->docs == 1)
+                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                        <h1 class="font-bold h-auto w-48">Предоставил(а) документы</h1>
+                                    </div>
+                                    @else
+                                        <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                            <h1 class="font-bold h-auto w-48">Не предоставил(а) документы</h1>
+                                        </div>
+                                    @endif
                                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                     <div>
-                                        <div class="w-full flex flex-col sm:flex-row justify-center">
+                                        <div class="w-full flex flex-col sm:flex-row sm:p-6 p-2">
                                             <!-- This is an example component -->
-                                            <div class="w-full mx-auto mt-4">
+                                            <div class="w-full text-center">
                                                 @auth
                                                     @if(getAuthUserBalance() >= 4000 || $task->responses_count< setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
                                                             <button
-                                                                class="w-full font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-green-600 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300"
+                                                                class="sm:w-4/5 w-full font-sans text-lg pay font-semibold bg-green-500 text-white hover:bg-green-600 px-8 pt-1 pb-2 mt-6 rounded-lg transition-all duration-300"
                                                                 id="btn1"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
@@ -183,7 +193,7 @@
                                                             </span>
                                                             </button>
                                                             <button
-                                                                class="w-full font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-yellow-600 px-8 pt-1 pb-2 mt-6 rounded transition-all duration-300"
+                                                                class="sm:w-4/5 w-full font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-yellow-600 px-8 pt-1 pb-2 mt-6 rounded-lg transition-all duration-300"
                                                                 id="btn2"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
@@ -198,14 +208,14 @@
                                                             <a href="#" class="open-modal"
                                                                data-modal="#modal1">
                                                                 <button
-                                                                    class='w-1/2 font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                    class='w-1/2 font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
                                                                     @lang('lang.detT_callbackpay')
                                                                 </button>
                                                             </a>
                                                             <a href="#" class="open-modal"
                                                                data-modal="#modal1">
                                                                 <button
-                                                                    class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded transition-all duration-300 m-2'>
+                                                                    class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
                                                                     @lang('lang.detT_callback')
                                                                 </button>
                                                             </a>
@@ -227,7 +237,7 @@
                                                 @else
                                                     <a href="/login">
                                                         <button
-                                                            class="font-sans mt-8 text-lg  font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-10 py-4 rounded">
+                                                            class="sm:w-4/5 w-full mx-auto font-sans mt-8 text-lg  font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-10 py-4 rounded-lg">
                                                             @lang('lang.detailedT_text18')
                                                         </button>
                                                     </a>
@@ -235,7 +245,7 @@
                                                 @auth
                                                     @if ($task->performer_id == auth()->user()->id || $task->user_id == auth()->user()->id)
                                                         <button id="sendbutton"
-                                                                class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                                class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded-lg transition-all duration-300 m-2"
                                                                 type="button">
                                                             @lang('lang.detailedT_text19')
                                                         </button>
@@ -247,13 +257,13 @@
                                                             @if(!$review)
                                                                 <button
                                                                     id="modal-open-id5"
-                                                                    class=" sm:w-2/5 w-9/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6  pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                                    class=" sm:w-2/5 w-9/12 text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 ml-6  pt-2 pb-3 rounded-lg transition-all duration-300 m-2"
                                                                     type="submit">
                                                                     Завершен
                                                                 </button>
                                                                 <button
                                                                     id="modal-open-id4"
-                                                                    class="not_done  sm:w-2/5 w-9/12 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-5 ml-6 pt-2 pb-3 rounded transition-all duration-300 m-2"
+                                                                    class="not_done  sm:w-2/5 w-9/12 text-lg font-semibold bg-red-500 text-white hover:bg-red-400 px-5 ml-6 pt-2 pb-3 rounded-lg transition-all duration-300 m-2"
                                                                     type="button">
                                                                     Не завершен
                                                                 </button>
@@ -504,13 +514,74 @@
                         <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
                                 <h1 class="text-xl font-medium mb-4">@lang('lang.detT_task') № {{$task->id}}</h1>
-{{--                                <button--}}
-{{--                                    class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400">--}}
-{{--                                    <i class="fas fa-link text-gray-500"></i>--}}
-{{--                                </button>--}}
-{{--                                <div class="fb-share-button" data-href="{{Request::url()}}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>--}}
-                                <div class="sharethisbutton sharethis-inline-share-buttons"></div>
-{{--                                <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>--}}
+                                <div
+                                    x-data="{ 'showModal': false }"
+                                    @keydown.escape="showModal = false"
+                                >
+                                    <!-- Trigger for Modal -->
+                                    <button
+                                        class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400" @click="showModal = true">
+                                        <i class="fas fa-link text-gray-500"></i>
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div
+                                        class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50"
+                                        x-show="showModal"
+                                    >
+                                        <!-- Modal inner -->
+                                        <div
+                                            class="max-w-3xl px-6 py-4 mx-auto text-left bg-white h-44 rounded shadow-lg"
+                                            @click.away="showModal = false"
+                                            x-transition:enter="motion-safe:ease-out duration-300"
+                                            x-transition:enter-start="opacity-0 scale-90"
+                                            x-transition:enter-end="opacity-100 scale-100"
+                                        >
+                                            <!-- Title / Close-->
+                                            <div class="flex items-center justify-between">
+                                                <h5 class="mr-3 text-black max-w-none">Поделиться заданием</h5>
+
+                                                <button type="button" class="z-50 cursor-pointer" @click="showModal = false">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+
+                                            <!-- content -->
+                                            <div class="grid gap-2 grid-cols-3">
+                                                <div>
+                                                    <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>
+                                                </div>
+
+                                                <div>
+                                                    <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                                                    <script type="IN/Share" data-url="https://www.linkedin.com"></script>
+                                                    <style>.IN-6a618b64-337f-4c9b-bc33-c6d76fb9fde2-1G9ISYhSF8XoOmdcl0yKDu  {font-size: 15px!important;
+                                                            height: 28px!important;
+                                                            line-height: 22px!important;
+                                                            padding: 4px 11px!important;
+                                                    </style>
+                                                </div>
+                                                <div>
+                                                    <iframe src="https://www.facebook.com/plugins/share_button.php?href={{Request::url()}}&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                                                </div>
+                                                <div>
+                                                    <a href="mailto:?subject=Universal Services&amp;body={{Request::url()}}"
+                                                       title="Share by Email">
+                                                        <button class=" px-2 rounded h-7 bg-red-500" style="width: 76px" >
+                                                            <img src="https://www.ee.iitb.ac.in/web//images/mailiconwhite.png" class="w-7 mx-auto">
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <iframe src="https://twitter.com/intent/tweet?url={url}&text={title}&via={user_id}&hashtags={hash_tags}" frameborder="0"></iframe>
+                                                </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+
                             </div>
                             <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
                             <div class="flex flex-row mt-4">
@@ -557,8 +628,8 @@
                         <div class=" text-center  rounded-t">
                             <button id="close-id4"
                                     class=" w-100 h-16 absolute top-1 right-4">
-                                {{--                            <i class="fas fa-times text-gray-500 text-slate-400 hover:text-slate-600 text-xl w-full"--}}
-                                {{--                            ></i>--}}
+{{--                                                            <i class="fas fa-times text-gray-500 text-slate-400 hover:text-slate-600 text-xl w-full"--}}
+{{--                                                            ></i>--}}
                             </button>
                             <h3 class="font-semibold text-gray-700 text-3xl block">
                                 Оставить отзыв
@@ -600,14 +671,12 @@
         </div>
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
 
+{{--        share in webpages--}}
+
+
         <input type="hidden" id="task" value="{{ $task->id }}">
-        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=620cba4733b7500019540f3c&product=inline-share-buttons' async='async'></script>
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
 
-        <div id="fb-root"></div>
-            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0" nonce="Ah8xKkvU"></script>
-
-            @endsection
 
 
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>

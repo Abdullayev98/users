@@ -6,123 +6,7 @@
             {{-- user ma'lumotlari --}}
             <div class="col-span-2 w-full mx-auto">
 
-                <figure class="w-full">
-                    <div class="float-right mr-8 text-gray-500">
-                        <i class="far fa-eye"> {{ $views }} @lang('lang.profile_view')</i>
-                    </div>
-                    <br>
-                    <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{ $user->name }}!</h2>
-                    <div class="flex flex-row mt-6">
-                        <div class="sm:w-1/3 w-full">
-                            <img class="border border-3 border-gray-400 h-40 w-40"
-                                 @if ($user->avatar == Null)
-                                 src='{{asset("storage/images/default.jpg")}}'
-                                 @else
-                                 src="{{asset("storage/{$user->avatar}")}}"
-                                 @endif alt="">
-                            <form action="{{ route('update.photo') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
-                                <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
-                                    <input type="file" id="file" name="avatar" onclick="fileupdate()"
-                                        class="hidden">
-                                    <label for="file" class="p-1">
-                                        <i class="fas fa-camera"></i>
-                                        <span>@lang('lang.cash_changeImg')</span>
-                                    </label>
-                                </div>
-                                <div class="rounded-md bg-green-400 w-40 hidden mt-3 py-1" type="button" id="buttons"
-                                    onclick="fileadd()">
-                                    <input type="submit" id="sub1" class="hidden">
-                                    <label for="sub1" class="p-1">
-                                        <i class="fas fa-save"></i>
-                                        <span>@lang('lang.cash_addImg')</span>
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="sm:w-2/3 w-full text-base text-gray-500 ml-4">
-                            @if ($user->age != '')
-                                <p class="inline-block mr-2">
-                                    {{ $user->age }}
-                                    @if ($user->age > 20 && $user->age % 10 == 1)
-                                        @lang('lang.cash_rusYearGod')
-                                    @elseif ($user->age > 20 && ($user->age % 10 == 2 || $user->age % 10 == 3 || $user->age % 10 == 1)) @lang('lang.cash_rusYearGoda')
-                                    @else @lang('lang.cash_rusYearLet')
-                                    @endif
-                                </p>
-                            @endif
-
-                            <span class="inline-block">
-                                <p class="inline-block text-m">
-                                    @if ($user->location != '')
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        @lang('lang.cash_city') {{ $user->location }}
-
-                                    @else @lang('lang.cash_cityNotGiven')
-                                    @endif
-                                </p>
-                            </span>
-                            <p class="mt-2">@lang('lang.cash_created') <a href="#">
-                                    <span>
-                                        @if ($task == null) 0
-                                        @else {{ $task }}
-                                        @endif
-                                    </span> @lang('lang.cash_task')</a>
-                            </p>
-                                <div class="flex mt-6">
-                                    <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
-                                        <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
-                                             src="{{ asset('images/verify.png') }}"
-                                             @else
-                                             src="{{ asset('images/verify_gray.png') }}"
-                                             @endif  alt="" class="w-24">
-                                        <div id="tooltip-animation_1" role="tooltip" class="inline-block sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                            <p class="text-center">
-                                                @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
-                                                    @lang('lang.profile_icon_verify')
-                                                @else
-                                                    @lang('lang.profile_icon_not_verify')
-                                                @endif
-                                            </p>
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                        </div>
-                                    </div>
-                                    @if($user->role_id == 2)
-                                        @foreach($about as $rating)
-                                            @if($rating->id == $user->id)
-                                                <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
-                                                    <img src="{{ asset('images/best.png') }}"alt="" class="w-24">
-                                                    <div id="tooltip-animation_2" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                                        <p class="text-center">
-                                                            @lang('lang.profile_icon_best')
-                                                        </p>
-                                                        <div class="tooltip-arrow" data-popper-arrow></div>
-                                                    </div>
-                                                </div>
-                                            @else
-                                                @continue
-                                            @endif
-                                        @endforeach
-                                        <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
-                                            @if($task_count >= 50)
-                                                <img src="{{ asset('images/50.png') }}" alt="" class="w-24">
-                                            @else
-                                                <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-24">
-                                            @endif
-                                            <div id="tooltip-animation_3" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                                <p class="text-center">
-                                                    @lang('lang.profile_icon_50')
-                                                </p>
-                                                <div class="tooltip-arrow" data-popper-arrow></div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                        </div>
-                    </div>
-                </figure>
+                @include('components.profileFigure')
 
                 <div class="content  mt-20 ">
                     <div class="grid md:grid-cols-10 w-full">
@@ -264,13 +148,13 @@
                     <p>@lang('lang.profile_since')</p>
                 </div>
                 <div class="contacts">
-                    <div class="ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
+                    <div class="ml-4 h-20 grid grid-cols-4 content-center">
+                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
                             style="background-color: orange;">
-                            <i class="fas fa-phone-alt text-white"></i>
+                            <i class="fas fa-phone-alt text-white text-2xl"></i>
                         </div>
                         <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2">@lang('lang.profile_phone')</h5>
+                            <h5 class="font-bold text-gray-700 block">@lang('lang.profile_phone')</h5>
                             @if ($user->phone_number != '')
                                 <p class="text-gray-600 block ">{{ $user->phone_number }}</p>
                             @else
@@ -278,36 +162,36 @@
                             @endif
                         </div>
                     </div>
-                    <div class="telefon ml-4 h-20 grid grid-cols-4">
-                        <div class="w-14 h-14 text-center mx-auto my-auto py-3 rounded-xl col-span-1"
+                    <div class="telefon ml-4 h-20 grid grid-cols-4 content-center">
+                        <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
                             style="background-color: #0091E6;">
-                            <i class="far fa-envelope text-white"></i>
+                            <i class="far fa-envelope text-white text-2xl"></i>
                         </div>
                         <div class="ml-3 col-span-3">
-                            <h5 class="font-bold text-gray-700 block mt-2">Email</h5>
+                            <h5 class="font-bold text-gray-700 block">Email</h5>
                             <p class="text-sm break-all">{{ $user->email }}</p>
                         </div>
                     </div>
                 </div>
                 <p class="mx-5 my-4">@lang('lang.cash_boost')</p>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                <div class="telefon ml-4 h-20 grid grid-cols-4 content-center">
                     <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
                         style="background-color: #4285F4;">
-                        <i class="fab fa-google text-white"></i>
+                        <i class="fab fa-google text-white text-2xl"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
+                        <h5 class="font-bold text-gray-700 block text-md">Google</h5>
                         <a href="https://www.google.com/" target="_blank"
                             class="block text-sm">@lang('lang.cash_bind')</a></p></a>
                     </div>
                 </div>
-                <div class="telefon ml-4 h-20 grid grid-cols-4">
+                <div class="telefon ml-4 h-20 grid grid-cols-4 content-center">
                     <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
                         style="background-color: #4285F4;">
-                        <i class="fab fa-facebook-f text-white"></i>
+                        <i class="fab fa-facebook-f text-white text-2xl"></i>
                     </div>
                     <div class="ml-3 col-span-3">
-                        <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
+                        <h5 class="font-bold text-gray-700 block text-md">Facebook</h5>
                         <a href="https://www.facebook.com/" target="_blank"
                             class="block text-sm">@lang('lang.cash_bind')</a>
                     </div>

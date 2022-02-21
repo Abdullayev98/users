@@ -90,14 +90,14 @@
             </div>
             <div class="flex flex-wrap w-11/12 mt-14 mx-auto">
                 @foreach ($categories as $category2)
-                    <a  class="flex flex-row lg:w-1/3 w-full items-center my-4 lg:border-0 border-b text-gray-500 hover:text-yellow-500 " href="{{route('categories', ['id'=> $category2->id])}}">
+                    <a  class="flex flex-row lg:w-1/3 w-full items-center px-2 my-4 lg:border-0 border-b text-gray-500 hover:text-yellow-500 " href="{{route('categories', ['id'=> $category2->id])}}">
                         <i class="{{ $category2->ico }} text-xl md:text-3xl"></i><span class="ml-6 text-sm md:text-lg"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
                     </a>
                 @endforeach
             </div>
             <div class="mb-4 mt-8 text-center text-base">
                 <a href="/categories/1">
-                    <button type="button" class="font-semibold border hover:border-black duration-300 rounded-md w-64 h-12">@lang('lang.body_allService')
+                    <button type="button" class="font-semibold text-yellow-500 hover:text-white border border-yellow-500 duration-300 hover:bg-yellow-500 rounded-md w-64 h-12">@lang('lang.body_allService')
                     </button>
                 </a>
             </div>
@@ -117,15 +117,15 @@
             <div class="swiper-wrapper">
                 @foreach ($reklamas as $reklama )
                 <div class="swiper-slide w-full items-center  mt-12" >
-                    <div class="flex border-xl sm:w-10/12 w-3/4 lg:w-11/12 mx-auto">
+                    <div class="flex border-xl sm:w-10/12 h-36 w-3/4 lg:w-11/12 mx-auto">
                         <div class="w-1/2 lg:pl-8  md:pl-6 sm:pl-4 lg:w-5/12">
                             <h1 class="sm:text-lg text-base md:text-2xl font-semibold mb-4 lg:mr-0 md:mr-12">{{ $reklama->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                             <p class="sm:text-base text-sm md:text-lg mb-4">{{ $reklama->getTranslatedAttribute('comment',Session::get('lang') , 'fallbackLocale') }}</p>
                             <a href="/categories/1" class="py-2 sm:px-4 px-2 border-solid md:text-base text-xs bg-green-200 rounded-md">@lang('lang.navbar_createTask')</a>
                         </div>
-                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12 ">
+                        <div class="w-1/2 lg:pr-8 md:pr-6 sm:pr-4 lg:w-7/12 rounded-lg">
                             <img src="{{ asset('storage/'.$reklama->image) }}"
-                                 class="object-cover object-right-bottom w-full h-full  "
+                                 class="object-cover rounded-lg object-right-bottom w-full h-full  "
                                  alt="">
                         </div>
                     </div>
@@ -239,7 +239,6 @@
             <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-56">
                 <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
                     <div class="w-full overflow-y-scroll h-screen">
-
                         @foreach($tasks as $task)
                             <div class="w-full border-b-2 h-28 hover:bg-blue-100 overflow-hidden">
                                 <div class="icon pt-4">
@@ -255,8 +254,6 @@
                                 </div>
                             </div>
                         @endforeach
-
-
                     </div>
                     <div class="mt-8 flex justify-center">
                         <a href="{{route('task.search')}}" type="button"
