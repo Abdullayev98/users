@@ -43,7 +43,7 @@
                              class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                     </div>
                 </div>
-                <div class="shadow-2xl w-full lg:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
+                <div class="shadow-2xl w-full lg:p-8 p-4 mx-auto my-4 rounded-2xl	w-full">
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
                         @lang('lang.name_howCanWeHelpU')
                     </div>
@@ -65,8 +65,8 @@
                             </div>
                             <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
                             <div id="categories">
-                                <div class="flex ">
-                                    <div class="w-1/2 pr-3 py-5">
+                                <div class="flex lg:flex-row flex-col">
+                                    <div class="lg:w-1/2 w-full lg:pr-3 py-5">
                                         <select class="select2 parent-category "
                                                 style="width: 100%"
                                         >
@@ -75,7 +75,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="w-1/2 pl-3 py-5">
+                                    <div class="lg:w-1/2 w-full lg:pl-3 py-5">
                                         @foreach(getCategoriesByParent(null) as $category)
 
                                             <div class="hidden child-category child-category-{{ $category->id }}">
@@ -96,9 +96,12 @@
 
 
                         </div>
-                        <input type="submit"
-                               class="bg-green-500 hover:bg-green-500 w-full mx-0 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
-                               name="" value="@lang('lang.name_next')">
+                        <div class="flex  mx-auto" >
+                            <input type="submit"
+                                   class="bg-green-500 hover:bg-green-500 w-9/12 mx-auto my-4 cursor-pointer text-white font-bold  py-5  px-5 rounded"
+                                   name="" value="@lang('lang.name_next')">
+                        </div>
+
                         </div>
 
                     </form>
