@@ -1,4 +1,4 @@
-let r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
+let dl=0, k=1, m=1, p=10, r=0, s=0;
 let dataAjaxCheck = 1, allCheck = 1, remJobCheck = 0, bezOtkCheck = 0;
 let dataAjax = [], dataAjax2 = [], dataAjaxPrint = [];
 let dataGeo = [], userCoordinates = [[],[]];
