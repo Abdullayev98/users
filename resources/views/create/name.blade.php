@@ -1,6 +1,22 @@
 @extends("layouts.app")
 
+@section('style')
 
+    <style>
+        .selectboxit-container .selectboxit, .selectboxit-container .selectboxit-options {
+            width: 600px; /* Width of the dropdown button */
+            border-radius: 0;
+            max-height: 240px;
+        }
+
+        .selectboxit-options .selectboxit-option .selectboxit-option-anchor {
+            white-space: normal;
+            min-height: 30px;
+            height: auto;
+        }
+
+    </style>
+@endsection
 
 @section("content")
 
@@ -44,85 +60,39 @@
                                     class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none
                                     focus:border-yellow-500 "
                                     id="username" type="text"
-                                    placeholder="@lang('lang.name_example') {{ $current_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}"
+                                    placeholder="@lang('lang.name_example') {{ $current_category->getTranslatedAttribute('name') }}"
                                     required name="name" value="{{session('neym')}}">
                             </div>
                             <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
                             <div id="categories">
-
-                                <div class="justify-center flex md:flex-row flex-col">
-                                    <div class="my-3 xl:w-50 pr-0 md:pr-2">
-                                        <select
-                                            onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                                            class="form-select
-      block
-      w-full
-      px-3
-      py-1.5
-      text-base
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none" aria-label="Default select example">
-
-                                            <option disabled>@lang('lang.name_chooseOne')</option>
-                                            @foreach (getCategoriesByParent(null) as $cat_for_p)
-                                                <option
-                                                    {{$current_category->parent_id == $cat_for_p->id? 'selected':''}} value="{{$cat_for_p->id}}">{{ $cat_for_p->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
+                                <div class="flex">
+                                    <div class="w-1/2 pr-8 py-5">
+                                        <select class="select2 parent-category "
+                                                style="width: 100%"
+                                        >
+                                            @foreach(getCategoriesByParent(null) as $parentCategory)
+                                                <option value="{{ $parentCategory->id }}">{{ $parentCategory->getTranslatedAttribute('name') }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    @foreach (categories() as $cat_for_ch)
-                                        <div id="for_filter_select{{ $cat_for_ch[0]->parent_id }}"
-                                             class="my-3 xl:w-50 for_all_hid_ch">
-                                            <select
-                                                onchange="window.location.href = this.options[this.selectedIndex].value"
-                                                class="form-select
-      block
-      w-full
-      px-3
-      py-1.5
-      text-base
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-yellow-600 focus:outline-none" aria-label="Default select example">
-                                                <option disabled>Выберите один из пунктов</option>
-                                                @foreach ($cat_for_ch as $category2)
-                                                    <option
-                                                        {{$current_category->id == $category2->id? 'selected':''}} value="/task/create?category_id={{ $category2->id }}">{{ $category2->getTranslatedAttribute('name') }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    @endforeach
+                                    <div class="w-1/2 pl-8 py-5">
+                                        @foreach(getCategoriesByParent(null) as $category)
+
+                                            <div class="hidden child-category child-category-{{ $category->id }}">
+                                                <select class="select2  child-category1"
+                                                        style="width: 100%"
+                                                >
+                                                    @foreach($category->childs as $child)
+                                                        <option value="{{ $child->id }}" class="hidden" data-parent="{{ $child->parent_id }}">{{ $child->getTranslatedAttribute('name') }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                        @endforeach
+
+                                    </div>
                                 </div>
 
-                                <script>
-
-                                    func_for_select(Number(<? echo $current_category->parent_id ?>));
-
-                                    function func_for_select(id) {
-
-                                        $('.for_all_hid_ch').addClass('hidden');
-
-                                        $('#for_filter_select' + id + '').removeClass('hidden');
-                                    };
-                                </script>
-
-                            </div>
-                                @foreach($current_category->customFieldsInName as $data)
-                                    @include('create.custom-fields')
-                                @endforeach
 
 
                         </div>
@@ -142,6 +112,46 @@
     </div>
     <!-- </form> -->
 
+    <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('plugins/select2/js/maximize-select2-height.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+
+    <script>
+        $('.select2').select2({
+            minimumResultsForSearch: Infinity,
+        }).maximizeSelect2Height()
+
+        let parentCategory = $(".parent-category").val();
+
+        $(".parent-category").change(function (){
+            $('.child-category').removeClass('hidden')
+            $('.child-category').addClass('hidden')
+            $('.child-category-'+$(this).val()).removeClass('hidden')
+
+        })
+        $('.child-category1').change(function (){
+            window.location.href = "/task/create?category_id=" + $(this).val();
+
+        })
+
+        $('.child-category-'+parentCategory+'').removeClass('hidden')
+
+    </script>
+
+    <style>
+        .select2-selection{
+            height: 50px!important;
+        }
+        .select2-selection__rendered{
+            padding: 10px;
+        }
+        ul.select2-results__options {
+            min-height: 400px;
+        }
+        .select2-selection__arrow{
+            margin: 10px;
+        }
+    </style>
 
 @endsection
 
