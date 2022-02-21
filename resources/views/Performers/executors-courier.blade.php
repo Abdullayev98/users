@@ -202,7 +202,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="lg:col-span-1 col-span-2 w-80">
+            <div class="lg:col-span-1 col-span-2 w-80 ml-2">
                 <div class="mt-16 border p-8 rounded-lg border-gray-300">
                     <div>
                         <h1 class="font-medium text-2xl">@lang('lang.exe_performer')</h1>
