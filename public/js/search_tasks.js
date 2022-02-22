@@ -1,4 +1,4 @@
-let r=0, m=1, p=10, s=0, sGeo=0, dl=0, k=1;
+let dl=0, k=1, m=1, p=10, r=0, s=0;
 let dataAjaxCheck = 1, allCheck = 1, remJobCheck = 0, bezOtkCheck = 0;
 let dataAjax = [], dataAjax2 = [], dataAjaxPrint = [];
 let dataGeo = [], userCoordinates = [[],[]];
@@ -530,32 +530,48 @@ function map_pos(mm) {
 
         ymaps.ready(init);
         function init() {
-
-            var myInput = document.getElementById("suggest");
-            var location = ymaps.geolocation;
-
-            location.get({
-                mapStateAutoApply: true
-            })
-                .then(
-                    function(result) {
-                        let userCoord = result.geoObjects.get(0).geometry.getCoordinates();
+            let location = ymaps.geolocation;
+            sugVal = document.getElementById("suggest").value;
+            if (sugVal != '') {
+                var myGeo = ymaps.geocode(sugVal);
+                myGeo.then(
+                    function (res) {
+                        let userCoord = res.geoObjects.get(0).geometry.getCoordinates();
                         userCoordinates = userCoord;
-
-                    },
-                    function(err) {
-                        console.log('Ошибка: ' + err)
+                        myMap2.geoObjects.add(result.geoObjects)
+                        // myMap.setCenter( res.geoObjects.get(0).geometry.getCoordinates());
                     }
                 );
+            }else {
+                // var suggestView = new ymaps.SuggestView('suggest');
+                // let myInput = new ymaps.SuggestView('suggest');
+                // console.log(myInput)
+                // let myInput = document.getElementById("suggest");
 
+                location.get({
+                    mapStateAutoApply: true
+                })
+                    .then(
+                        function (result) {
+                            let userCoord = result.geoObjects.get(0).geometry.getCoordinates();
+                            userCoordinates = userCoord;
+                            // myMap2.geoObjects.add(result.geoObjects)
+
+                        },
+                        function (err) {
+                            console.log('Ошибка: ' + err)
+                        }
+                    );
+            }
             $("#geoBut").click(function(){
                 location.get({
                     mapStateAutoApply: true
                 })
                     .then(
                         function(result) {
-                            myInput.value = result.geoObjects.get(0).properties.get('text');
+                            document.getElementById("suggest").value = result.geoObjects.get(0).properties.get('text');
                             userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
+                            jqFilter()
                             // myMap2.geoObjects.add(result.geoObjects)
                         },
                         function(err) {
@@ -564,17 +580,14 @@ function map_pos(mm) {
                     );
             });
             // var suggestView1 = new ymaps.SuggestView('suggest');
-            var myMap2 = new ymaps.Map('map2', {
+            let myMap2 = new ymaps.Map('map2', {
                 center: [userCoordinates[0], userCoordinates[1]],
                 zoom: 10,
-                controls: ['geolocationControl'],
-                behaviors: ['default', 'scrollZoomNo']
+                controls: ['zoomControl','geolocationControl'],
+                behaviors: ['default', 'scrollZoom']
             }, {
                 searchControlProvider: 'yandex#search'
             });
-
-            circle = new ymaps.Circle([userCoordinates, r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
-            myMap2.geoObjects.add(circle);
 
             clusterer = new ymaps.Clusterer({
                 preset: 'islands#invertedGreenClusterIcons',
@@ -611,8 +624,12 @@ function map_pos(mm) {
             clusterer.add(geoObjects);
             myMap2.geoObjects.add(clusterer);
             myMap2.setBounds(clusterer.getBounds(), {
-                checkZoomRange: true
+                boundsAutoApply: false,
+                checkZoomRange: false
             });
+
+            circle = new ymaps.Circle([userCoordinates, r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
+            myMap2.geoObjects.add(circle);
 
             // circle.events.add('visible', function () {
             //     var objectsInsideCircle = objects.searchInside(circle);

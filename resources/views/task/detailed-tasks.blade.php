@@ -3,7 +3,8 @@
 
 
 @section("content")
-
+    <script type="text/javascript" src="http://connect.mail.ru/js/loader.js">
+    </script>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb" type="text/javascript"></script>
     <script>
         ymaps.ready(init);
@@ -11,8 +12,10 @@
         function init() {
             var myMap = new ymaps.Map("map", {
                     center: [{{$task->coordinates}}],
-                    zoom: 10,
-                    controls: []
+                    zoom: 17,
+                    controls: [],
+                    type: 'yandex#satellite',
+                    restrictMapArea: [59.838,29.511]
                 }),
 
                 // Создаем геообъект с типом геометрии "Точка".
@@ -51,7 +54,7 @@
                                 <div class="md:flex flex-row">
                                     <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg bg-yellow-400">{{$task->budget}}</p>
                                     @auth()
-                                        @if($task->user_id == auth()->user()->id && $task->status < 2)
+                                        @if($task->user_id == auth()->user()->id)
                                             <a href="{{ route('task.changetask', $task->id) }}"
                                                class="py-2 px-2 text-gray-500 hover:text-red-500">
                                                 <i class="fas fa-pencil-alt"></i>
@@ -77,8 +80,8 @@
                                         <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_close')</p>
                                     @endif
                                     <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
-                                    <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</p>
-                                    @if($task->user_id == auth()->id() && $task->status < 2)
+                                    <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name') }}</p>
+                                    @if($task->user_id == auth()->id())
                                         <form action="{{route("delete.task", $task->id)}}" method="post">
                                             @csrf
                                             @method('delete')
@@ -530,7 +533,7 @@
                                     >
                                         <!-- Modal inner -->
                                         <div
-                                            class="max-w-3xl px-6 py-4 mx-auto text-left bg-white h-24 rounded shadow-lg"
+                                            class="max-w-3xl px-6 py-4 mx-auto text-left bg-white h-60 rounded shadow-lg"
                                             @click.away="showModal = false"
                                             x-transition:enter="motion-safe:ease-out duration-300"
                                             x-transition:enter-start="opacity-0 scale-90"
@@ -546,24 +549,10 @@
                                                     </svg>
                                                 </button>
                                             </div>
+                                            <div class="p-6 space-y-2">
+                                                <div class="sharethis-inline-share-buttons"></div>
+                                            </div>
 
-                                            <!-- content -->
-                                            <div class="grid grid-cols-3">
-                                                <div>
-                                                    <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>
-                                                </div>
-                                                <div>
-                                                    <iframe src="https://www.facebook.com/plugins/share_button.php?href={{Request::url()}}&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                                                </div>
-                                                <div>
-                                                    <a href="mailto:?subject=Universal Services&amp;body={{Request::url()}}"
-                                                       title="Share by Email">
-                                                        <button class="w-20 rounded h-7 bg-red-500">
-                                                            <img src="https://www.ee.iitb.ac.in/web//images/mailiconwhite.png" class="w-7 mx-auto">
-                                                        </button>
-                                                    </a>
-                                                </div>
-                                                </div>
                                             </div>
                                     </div>
                                 </div>
@@ -659,11 +648,23 @@
 
 {{--        share in webpages--}}
 
-
+        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=620cba4733b7500019540f3c&product=inline-share-buttons' async='async'></script>
         <input type="hidden" id="task" value="{{ $task->id }}">
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
 
-
+        <script>
+            $(document).ready(function(){
+                $( ".st-remove-label" ).each(function() {
+                    $( this ).removeAttr("style");
+                    $( this ).addClass("my-4");
+                    var tweet = $( this ).attr("data-network");
+                    if (tweet == 'twitter'){
+                        $(this).after('<br>');
+                    }
+                });
+            });
+        </script>
+        </script>
 
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
 
@@ -701,5 +702,6 @@
             @endif
         @endforeach
     </div>
+
 @endsection
 

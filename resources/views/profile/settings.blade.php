@@ -12,118 +12,7 @@
 
             {{-- user ma'lumotlari --}}
             <div class="md:col-span-2 col-span-3 px-2 mx-3">
-                <figure class="w-full">
-                    <div class="hidden md:block float-right mr-8 text-gray-500">
-                        <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
-                    </div>
-                    <br>
-                    <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
-                    <div class="flex flex-row mt-6">
-                        <div class="sm:w-1/3 w-full">
-                            <img class="border border-3 border-gray-400 h-40 w-40"
-                                 @if ($user->avatar != Null)
-                                 src="{{asset("storage/{$user->avatar}")}}"
-                                 @else
-                                 src='{{asset("storage/images/default.jpg")}}'
-                                 @endif alt="">
-                            <form action="{{route('update.photo')}}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
-                                <div class="rounded-md bg-gray-200 w-40 mt-2 py-1 text-base" type="button">
-                                    <input type="file" id="file" name="avatar" onclick="fileupdate()" class="hidden">
-                                    <label for="file" class="p-1">
-                                        <i class="fas fa-camera"></i>
-                                        <span>@lang('lang.cash_changeImg')</span>
-                                    </label>
-                                </div>
-                                <div class="rounded-md bg-green-400 w-40 hidden mt-3 py-1" type="button" id="buttons"
-                                     onclick="fileadd()">
-                                    <input type="submit" id="sub1" class="hidden">
-                                    <label for="sub1" class="p-1">
-                                        <i class="fas fa-save"></i>
-                                        <span>@lang('lang.cash_addImg')</span>
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="sm:w-2/3 w-full text-base text-gray-500 ml-4">
-                            @isset($user->age)
-                                <p class="inline-block mr-2">
-                                    {{$user->age}}
-                                    @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
-                                    @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) @lang('lang.cash_rusYearGoda')
-                                    @else @lang('lang.cash_rusYearLet')
-                                    @endif
-                                </p>
-                            @endisset
-
-                            <span class="inline-block">
-                                <p class="inline-block text-m">
-                                    @isset($user->location)
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        @lang('lang.cash_city') {{$user->location}}
-                                    @else @lang('lang.cash_cityNotGiven')
-                                    @endisset
-                                </p>
-                            </span>
-                            <p class="mt-2">@lang('lang.cash_created') <a href="#">
-                                <span>
-                                    {{count($user->tasks??[])}}
-                                </span> @lang('lang.cash_task')</a></p>
-                            {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
-                            <div class="flex mt-6 items-center">
-                                <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
-                                    <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
-                                         src="{{ asset('images/verify.png') }}"
-                                         @else
-                                         src="{{ asset('images/verify_gray.png') }}"
-                                         @endif  alt="" class="w-24">
-                                    <div id="tooltip-animation_1" role="tooltip" class="inline-block sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                        <p class="text-center">
-                                            @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
-                                                @lang('lang.profile_icon_verify')
-                                            @else
-                                                @lang('lang.profile_icon_not_verify')
-                                            @endif
-                                        </p>
-                                        <div class="tooltip-arrow" data-popper-arrow></div>
-                                    </div>
-                                </div>
-                                @if($user->role_id == 2)
-                                    @foreach($about as $rating)
-                                        @if($rating->id == $user->id)
-                                            <div data-tooltip-target="tooltip-animation_2" class="mx-4 tooltip-2" >
-                                                <img src="{{ asset('images/best.png') }}"alt="" class="w-24">
-                                                <div id="tooltip-animation_2" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                                    <p class="text-center">
-                                                        @lang('lang.profile_icon_best')
-                                                    </p>
-                                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                                </div>
-                                            </div>
-                                        @else
-                                            @continue
-                                        @endif
-                                    @endforeach
-                                    <div data-tooltip-target="tooltip-animation_3" class="mx-4" >
-                                        @if($task_count >= 50)
-                                            <img src="{{ asset('images/50.png') }}" alt="" class="w-24">
-                                        @else
-                                            <img src="{{ asset('images/50_gray.png') }}" alt="" class="w-24">
-                                        @endif
-                                        <div id="tooltip-animation_3" role="tooltip" class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                            <p class="text-center">
-                                                @lang('lang.profile_icon_50')
-                                            </p>
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </figure>
+                @include('components.profileFigure')
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 ">
                     <div class="grid grid-cols-10">
@@ -176,7 +65,7 @@
                                                 <div class="w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="name">@lang('lang.settings_name')</label>
-                                                    <div class="focus:outline-none w-full rounded-xl border py-2 px-3 w-full text-grey-900">
+                                                    <div class="focus:outline-none w-full focus:border-yellow-500 rounded-xl border py-2 px-3 w-full text-grey-900">
                                                         <p>{{$user->name}}</p>
                                                     </div>
                                                 </div>
@@ -184,7 +73,7 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="email">Email</label>
                                                     <input
-                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            class="focus:outline-none focus:border-yellow-500  rounded-xl border py-2 px-3 w-full text-grey-900"
                                                             type="email" name="email" id="email"
                                                             value="{{ $user->email??old('email')}}">
                                                     @error('email')
@@ -195,7 +84,7 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="phone_number">@lang('lang.settings_phone')</label>
                                                     <input
-                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            class="focus:outline-none focus:border-yellow-500 rounded-xl border py-2 px-3 w-full text-grey-900"
                                                             type="text" id="phone_number"
                                                             @if (!$user->phone_number) placeholder="+998(00)000-00-00"
                                                             @else
@@ -211,7 +100,7 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="age">@lang('lang.settings_age')</label>
                                                     <input
-                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            class="focus:outline-none focus:border-yellow-500 rounded-xl border py-2 px-3 w-full text-grey-900"
                                                             min="18" type="number" name="age" id="age"
                                                             value="{{$user->age}}">
                                                     @error('age')
@@ -232,7 +121,7 @@
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="location">@lang('lang.settings_city')</label>
-                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900 outline-none"
+                                                    <select class="border rounded-xl py-2 px-3 w-full focus:border-yellow-500 text-grey-900 outline-none"
                                                             name="location">
                                                         <option value="">@lang('lang.settings_choose')</option>
 

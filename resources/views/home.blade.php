@@ -105,7 +105,7 @@
                 @foreach ($trusts as $trust)
                     <div class="text-center">
                         <img src="{{ asset('storage/'.$trust->image) }}"
-                            class="mx-auto lg:h-72 lg:w-72 w-52 h-52" alt="">
+                            class="mx-auto w-52 h-52" alt="">
                         <h1 class="font-bold my-4">{{ $trust->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                         <p class="text-sm">{{ $trust->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}</p>
                     </div>
