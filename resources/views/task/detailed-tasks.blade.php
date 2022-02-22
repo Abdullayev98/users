@@ -549,35 +549,8 @@
                                             </div>
 
                                             <!-- content -->
-                                            <div class="grid gap-2 grid-cols-3">
-                                                <div>
-                                                    <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="{{Request::url()}}" data-size="large" data-text="notext"></script>
-                                                </div>
 
-                                                <div>
-                                                    <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
-                                                    <script type="IN/Share" data-url="https://www.linkedin.com"></script>
-                                                    <style>.IN-6a618b64-337f-4c9b-bc33-c6d76fb9fde2-1G9ISYhSF8XoOmdcl0yKDu  {font-size: 15px!important;
-                                                            height: 28px!important;
-                                                            line-height: 22px!important;
-                                                            padding: 4px 11px!important;
-                                                    </style>
-                                                </div>
-                                                <div>
-                                                    <iframe src="https://www.facebook.com/plugins/share_button.php?href={{Request::url()}}&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                                                </div>
-                                                <div>
-                                                    <a href="mailto:?subject=Universal Services&amp;body={{Request::url()}}"
-                                                       title="Share by Email">
-                                                        <button class=" px-2 rounded h-7 bg-red-500" style="width: 76px" >
-                                                            <img src="https://www.ee.iitb.ac.in/web//images/mailiconwhite.png" class="w-7 mx-auto">
-                                                        </button>
-                                                    </a>
-                                                </div>
-                                                <div>
-                                                    <iframe src="https://twitter.com/intent/tweet?url={url}&text={title}&via={user_id}&hashtags={hash_tags}" frameborder="0"></iframe>
-                                                </div>
-                                                </div>
+                                                <div class="sharethis-inline-share-buttons"></div>
                                             </div>
                                     </div>
                                 </div>
@@ -673,7 +646,7 @@
 
 {{--        share in webpages--}}
 
-
+        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=620cba4733b7500019540f3c&product=inline-share-buttons' async='async'></script>
         <input type="hidden" id="task" value="{{ $task->id }}">
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
 

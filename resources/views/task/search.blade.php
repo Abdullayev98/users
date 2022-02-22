@@ -193,7 +193,7 @@
                             <div class="no_tasks" hidden>
                                 {{--Show no tasks image --}}
                                 <div class=" w-3/5 h-3/5 mx-auto">
-                                    <img src="images/notlike.png" class="w-full h-full">
+                                    <img src="images/notlikes.png" class="w-full h-full">
                                     <div class="text-center w-full h-full">
                                         <p className="text-4xl"><b>@lang('lang.search_tasksNotFound')</b></p>
                                         <p className="text-xl">@lang('lang.search_tryAnOther')</p>
@@ -313,9 +313,7 @@
         first_ajax('all');
 
     </script>
-<<<<<<< HEAD
 
-=======
     <script>
         $('#byDate').click(function(){
             $(this).addClass('font-bold')
@@ -326,5 +324,4 @@
             $('#byDate').removeClass('font-bold')
         })
     </script>
->>>>>>> 1790764dcda52e6521a6e07b9c43708da0e277cb
 @endsection

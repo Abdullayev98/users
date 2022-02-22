@@ -56,7 +56,7 @@ function getAllCategories(){
 }
 
 function getCategoriesByParent($parent){
-    return Category::withTranslations()->where('parent_id', $parent)->get();
+    return Category::withTranslations(['uz','ru'])->where('parent_id', $parent)->get();
 }
 function getFaqCategories(){
     return FaqCategories::all();

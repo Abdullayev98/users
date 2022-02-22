@@ -65,7 +65,7 @@
                                                 <div class="w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="name">@lang('lang.settings_name')</label>
-                                                    <div class="focus:outline-none w-full rounded-xl border py-2 px-3 w-full text-grey-900">
+                                                    <div class="focus:outline-none w-full focus:border-yellow-500 rounded-xl border py-2 px-3 w-full text-grey-900">
                                                         <p>{{$user->name}}</p>
                                                     </div>
                                                 </div>
@@ -73,7 +73,7 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="email">Email</label>
                                                     <input
-                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            class="focus:outline-none focus:border-yellow-500  rounded-xl border py-2 px-3 w-full text-grey-900"
                                                             type="email" name="email" id="email"
                                                             value="{{ $user->email??old('email')}}">
                                                     @error('email')
@@ -84,7 +84,7 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="phone_number">@lang('lang.settings_phone')</label>
                                                     <input
-                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            class="focus:outline-none focus:border-yellow-500 rounded-xl border py-2 px-3 w-full text-grey-900"
                                                             type="text" id="phone_number"
                                                             @if (!$user->phone_number) placeholder="+998(00)000-00-00"
                                                             @else
@@ -100,7 +100,7 @@
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="age">@lang('lang.settings_age')</label>
                                                     <input
-                                                            class="focus:outline-none  rounded-xl border py-2 px-3 w-full text-grey-900"
+                                                            class="focus:outline-none focus:border-yellow-500 rounded-xl border py-2 px-3 w-full text-grey-900"
                                                             min="18" type="number" name="age" id="age"
                                                             value="{{$user->age}}">
                                                     @error('age')
@@ -121,7 +121,7 @@
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="location">@lang('lang.settings_city')</label>
-                                                    <select class="border rounded-xl py-2 px-3 w-full text-grey-900 outline-none"
+                                                    <select class="border rounded-xl py-2 px-3 w-full focus:border-yellow-500 text-grey-900 outline-none"
                                                             name="location">
                                                         <option value="">@lang('lang.settings_choose')</option>
 
