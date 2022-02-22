@@ -123,7 +123,7 @@ class Paynet
             'transactionable_id'    => $model->id
         ]);
         if(!is_null($transaction)){
-            WalletBalanceL::walletBalanceUpdateOrCreate($transaction->transactionable_id, $transaction->amount);
+            WalletBalance::walletBalanceUpdateOrCreate($transaction->transactionable_id, $transaction->amount);
         }
         
         return  "<ns2:PerformTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
