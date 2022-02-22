@@ -24,9 +24,9 @@
                             <div class="md:inline-flex  block w-full col-span-4 ">
                                 <div class="w-8/12 md:w-4/5 relative">
                                     <label class="lg:text-base md:text-sm mb-1 text-neutral-400">@lang('lang.search_location')</label>
-                                    <div class="relative bg-white address float-left py-1 px-2 text-black-700 border-2 rounded-md focus:shadow-sm w-full text-black-700">
+                                    <div class="">
                                         <input
-                                            class="focus:outline-none  float-left bg-transparent border-0 w-11/12 mr-3.5 h-full"
+                                            class="relative bg-white address float-left py-1 px-2 text-black-700 border-2 rounded-md focus:shadow-sm w-full text-black-700 focus:border-yellow-500 focus:outline-none  float-left bg-transparent border-0 mr-3.5 h-full"
                                         type="text" id="suggest">
                                             <svg class="absolute right-2 bottom-1.5 h-4 w-4 text-purple-500" id="geoBut" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                             <img src="images/close.png" class="absolute right-2 bottom-1.5 cursor-pointer" id="closeBut" hidden>
