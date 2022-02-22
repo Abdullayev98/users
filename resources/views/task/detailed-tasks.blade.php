@@ -12,8 +12,10 @@
         function init() {
             var myMap = new ymaps.Map("map", {
                     center: [{{$task->coordinates}}],
-                    zoom: 10,
-                    controls: []
+                    zoom: 17,
+                    controls: [],
+                    type: 'yandex#satellite',
+                    restrictMapArea: [59.838,29.511]
                 }),
 
                 // Создаем геообъект с типом геометрии "Точка".
@@ -531,7 +533,7 @@
                                     >
                                         <!-- Modal inner -->
                                         <div
-                                            class="max-w-3xl px-6 py-4 mx-auto text-left bg-white h-44 rounded shadow-lg"
+                                            class="max-w-3xl px-6 py-4 mx-auto text-left bg-white h-60 rounded shadow-lg"
                                             @click.away="showModal = false"
                                             x-transition:enter="motion-safe:ease-out duration-300"
                                             x-transition:enter-start="opacity-0 scale-90"
@@ -547,10 +549,10 @@
                                                     </svg>
                                                 </button>
                                             </div>
-
-                                            <!-- content -->
-
+                                            <div class="p-6 space-y-2">
                                                 <div class="sharethis-inline-share-buttons"></div>
+                                            </div>
+
                                             </div>
                                     </div>
                                 </div>
@@ -650,7 +652,19 @@
         <input type="hidden" id="task" value="{{ $task->id }}">
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
 
-
+        <script>
+            $(document).ready(function(){
+                $( ".st-remove-label" ).each(function() {
+                    $( this ).removeAttr("style");
+                    $( this ).addClass("my-4");
+                    var tweet = $( this ).attr("data-network");
+                    if (tweet == 'twitter'){
+                        $(this).after('<br>');
+                    }
+                });
+            });
+        </script>
+        </script>
 
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
 
@@ -688,5 +702,6 @@
             @endif
         @endforeach
     </div>
+
 @endsection
 
