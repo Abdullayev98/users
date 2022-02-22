@@ -177,15 +177,5 @@ class SearchTaskController extends VoyagerBaseController
         return view('task.changetask', compact('task'));
     }
 
-    public function update_task(Task $task, UpdateRequest $request)
-    {
-        taskGuard($task);
-        $data = $request->validated();
-        $task->update($data);
-
-        dd($data);
-
-    }
-
 
 }
