@@ -162,6 +162,10 @@ class SearchTaskController extends VoyagerBaseController
 
     public function delete_task(Task $task)
     {
+        taskGuard($task);
+        $task->responses()->delete();
+        $task->reviews()->delete();
+        $task->custom_field_values()->delete();
         $task->delete();
         return redirect('/');
     }
