@@ -3,13 +3,13 @@
         <div class="md:w-11/12 w-5/5 sm:pl-0 pl-4 md:mt-48 md:mb-3 mt-0 md:mx-auto mx-4 md:mt-0 mt-14 md:bg-transparent pb-24">
             <h4 class="font-semibold text-3xl text-white md:text-gray-500">@lang('lang.body_personalHelper')</h4>
             <p class="text-base mt-8 text-white md:text-black">@lang('lang.body_downloadApp')</p>
-            <a href="#">
+            <a >
                 <button type="button" class="w-3/10 bg-black hover:bg-yellow-500 rounded-md mt-8"><img
                         src="{{asset('images/download_ios.svg')}}"
                         alt="">
                 </button>
             </a>
-            <a href="#">
+            <a >
                 <button type="button" class="w-3/10 bg-black hover:bg-yellow-500 rounded-md mt-8"><img
                         src="{{asset('images/download_android.svg')}}"
                         alt="">

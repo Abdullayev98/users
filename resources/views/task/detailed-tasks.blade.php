@@ -207,14 +207,14 @@
                                                         @endif
                                                     @elseif(getAuthUserBalance() < 4000 || $response_count_user >= setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
-                                                            <a href="#" class="open-modal"
+                                                            <a  class="open-modal"
                                                                data-modal="#modal1">
                                                                 <button
                                                                     class='w-1/2 font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
                                                                     @lang('lang.detT_callbackpay')
                                                                 </button>
                                                             </a>
-                                                            <a href="#" class="open-modal"
+                                                            <a  class="open-modal"
                                                                data-modal="#modal1">
                                                                 <button
                                                                     class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
@@ -571,7 +571,7 @@
                                        class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
                                     </a>
                                     <br>
-                                    <a href="#" class="text-xl text-gray-500">
+                                    <a  class="text-xl text-gray-500">
                                         @if($task->user->age != "")
                                             <p class="inline-block text-m mr-2">
                                                 {{$task->user->age}}

@@ -125,7 +125,7 @@
                                        <button class="cursor-pointer rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white"> @lang('lang.exe_giveTask')</button>
                                     </a>
                                 @else
-                                    <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
+                                    <a   onclick="toggleModal12('modal-id12')" class="hidden lg:block">
                                         <button class="rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
                                     </a>
                                 @endif

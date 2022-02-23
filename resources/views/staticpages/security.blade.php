@@ -35,8 +35,8 @@
                     <div class="flex lg:flex-row flex-col mt-10  mx-auto">
                         <div class="lg:w-1/2 w-full my-auto text-left" >
                             <h3 class="text-2xl font-normal mb-4">@lang('lang.secure_testPerfs')</h3>
-                            <p class="w-full ">@lang('lang.secure_testPerfsDet')</p>                          
-                            <a href="#" class="  text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_testDocs')</a>
+                            <p class="w-full ">@lang('lang.secure_testPerfsDet')</p>
+                            <a  class="  text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_testDocs')</a>
                         </div>
 
                         <div class="lg:w-1/2 w-full">
