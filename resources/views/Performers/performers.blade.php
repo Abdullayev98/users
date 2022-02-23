@@ -121,8 +121,8 @@
                             <div class="mt-6">
                                 @auth
                                 @if($tasks->count() > 0)
-                                    <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
-                                        @lang('lang.exe_giveTask')
+                                    <a id="open{{$user->id}}">
+                                       <button class="cursor-pointer rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white"> @lang('lang.exe_giveTask')</button>
                                     </a>
                                 @else
                                     <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
@@ -138,7 +138,7 @@
             </div>
         </div>
         <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black bg-opacity-50 hidden text-center">
-            <div class="modal relative bg-white w-5/12 mx-auto p-10 rounded-md justify-center mt-28 ease-in transition duration-500">
+            <div class="modal relative bg-white md:w-5/12 w-4/5 mx-auto p-10 rounded-md justify-center mt-28 ease-in transition duration-500">
                 <h1 class="text-3xl font-semibold">@lang('lang.perf_modalText')</h1>
                 @foreach($tasks as $task)
                     <label>

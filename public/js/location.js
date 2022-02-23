@@ -12,7 +12,7 @@ function init_map(){
     myMap = new ymaps.Map('map', {
         center: [ 41.311151, 69.279737],
         zoom: 13,
-        controls: ['zoomControl', 'searchControl'],
+        controls: ['zoomControl'],
     });
 
 
@@ -250,7 +250,7 @@ function myFunction() {
     myMap = new ymaps.Map('map', {
         center: [ 41.311151,69.279737],
         zoom: 13,
-        controls: ['zoomControl', 'searchControl']
+        controls: ['zoomControl']
 
     });
 

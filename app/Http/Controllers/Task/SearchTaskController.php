@@ -162,6 +162,10 @@ class SearchTaskController extends VoyagerBaseController
 
     public function delete_task(Task $task)
     {
+        taskGuard($task);
+        $task->responses()->delete();
+        $task->reviews()->delete();
+        $task->custom_field_values()->delete();
         $task->delete();
         return redirect('/');
     }
@@ -171,16 +175,6 @@ class SearchTaskController extends VoyagerBaseController
         taskGuard($task);
 
         return view('task.changetask', compact('task'));
-    }
-
-    public function update_task(Task $task, UpdateRequest $request)
-    {
-        taskGuard($task);
-        $data = $request->validated();
-        $task->update($data);
-
-        dd($data);
-
     }
 
 
