@@ -11,63 +11,24 @@ use Exception;
 
 class PerformerAPIController extends Controller
 {
-    public function  service()
+    public function service()
     {
-       try{
-           $categories = DB::table('categories')->get();
-           $child_categories= DB::table('categories')->get();
-           $users= User::where('role_id',2)->paginate(50);
-           $data = ["categories"=>$categories, "child_categories"=>$child_categories,"users"=>$users];
-           return response()->json($data);
-       }catch (Exception $e) {
-           $this->sendError($e->getMessage(), 200);
-           return response()->json(['status' => 'false', 'message' => $e->getMessage(),200]);
-       }
+
+        return User::where('role_id', 2)->paginate(50);
     }
-    public function performer($id)
+
+    public function performer(User $performer)
     {
+        setView($performer);
 
-        try {
-            if(session('view_count') == NULL){
-
-                $def_count = UserView::where('user_id', $id)->first();
-
-                if(isset($def_count)){
-
-                    $ppi = $def_count->count + 1;
-
-                    UserView::where('user_id', $id)->update(['count' => $ppi]);
-
-                }else{
-
-                    UserView::create([
-                        'user_id'=> $id,
-                        'count'=> 1,
-                    ]);
-
-                }
-                session()->put('view_count', '1');
-            }
-            $users= User::where('id',$id)->get();
-            $vcs = UserView::where('user_id', $id)->get();
-            $data = ['view counts'=>$vcs, 'users'=>$users,];
-            return response()->json($data);
-        }catch (Exception $e) {
-            $this->sendError($e->getMessage(), 200);
-            return response()->json(['status' => 'false', 'message' => $e->getMessage(),200]);
-        }
-
+        return $performer->role_id == 5? $performer:abort(404);
     }
 
 
+    public function getByCategories()
+    {
 
 
-
-    public function getByCategories(){
-
-
-
-
-        return response()->json(['id'=>request()->category_id]);
+        return response()->json(['id' => request()->category_id]);
     }
 }

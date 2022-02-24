@@ -11,20 +11,18 @@ use TCG\Voyager\Models\Category;
 
 class TaskAPIController extends Controller
 {
-    public function task($id)
+    public function task(Task $task)
     {
-        $tasks = Task::where('id',$id)->get();
 
-        return response()->json($tasks);
+        return $task;
     }
+
     public function search(Request $request)
     {
         $s = $request->s;
-        if ($request->s) {
-            $tasks = Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
-        }
-        return response()->json($tasks);
+        return   Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
     }
+
     public function create(Request $request)
     {
         $rule = $request->validate([

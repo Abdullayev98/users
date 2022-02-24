@@ -8,7 +8,7 @@
             <div class="lg:col-span-2 col-span-3">
                 <figure class="w-full">
                     <div class="float-right text-gray-500 text-sm">
-                        <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
+                        <i class="far fa-eye"> {{ $user->performer_views_count }}  @lang('lang.profile_view')</i>
                     </div>
                     <div>
                         @if($user->active_status == 1)
@@ -241,7 +241,7 @@
                     <h1 class="text-3xl font-medium">@lang('lang.exe_typeOfDone')</h1>
                     <ul>
                         @foreach(explode(',', $user->category_id) as $user_cat)
-                            @foreach($categories as $cat)
+                            @foreach(getAllCategories() as $cat)
                                 @if($cat->id == $user_cat)
                                     <li class="mt-2 text-gray-500"><a class="hover:text-red-500 underline underline-offset-4"  href="{{route('categories',$cat->parent_id)}}">{{ $cat->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</a> </li>
                                 @endif

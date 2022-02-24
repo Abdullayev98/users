@@ -45,7 +45,6 @@ class Controller extends BaseController
     {
         $user = User::find(Auth::user()->id);
         $vcs = UserView::where('user_id', $user->id)->get();
-        $user->update();
         return view('profile.profile', compact('user', 'vcs'));
     }
     public function update(Request $request, $id)

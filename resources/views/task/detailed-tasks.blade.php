@@ -485,7 +485,7 @@
                                                                         </a>
 
                                                                     </div>
-                                                                @elseif($task->status <= 2)
+                                                                @elseif($task->status <= 2 && auth()->user()->id == $task->user_id)
                                                                     <form
                                                                         action="{{ route('performer.select', $response->id) }}"
                                                                         method="post">
