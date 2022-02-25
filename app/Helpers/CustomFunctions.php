@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\FaqCategories;
+use App\Models\UserView;
 
 if (!function_exists('amount_format')) {
     function amount_format($amount)
@@ -14,6 +15,22 @@ function getMyText(){
     return 'Hello World';
 }
 
+function setView($user)
+{
+    if (auth()->check()) {
+        $user->performer_views()->where('user_id', auth()->user()->id)->first();
+
+        if (!$user->performer_views()->where('user_id', auth()->user()->id)->first()) {
+            $view = new UserView();
+            $view->user_id = auth()->user()->id;
+            $view->performer_id = $user->id;
+            $view->save();
+            return $view;
+        }
+    }
+    return false;
+
+}
 
 function categories(){
 

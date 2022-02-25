@@ -40,26 +40,21 @@ Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
 
 // FAQ
 Route::get('faq', [FaqAPIController::class, 'index']);
-Route::get('faq/{id}', [FaqAPIController::class, 'questions']);
+Route::get('faq/{faqs}', [FaqAPIController::class, 'questions']);
 //News
 Route::get('news', [NewsAPIController::class, 'index']);
 Route::post('news/create', [NewsAPIController::class, 'create']);
 Route::get('news/show/{id}', [NewsAPIController::class, 'show']);
-//Profile
-Route::get('profile/{id}', [ProfileAPIController::class, 'index']);
-Route::patch('profile/{id}', [ProfileAPIController::class, 'update']);
+
+
 //Tasks
-Route::prefix("task")->group(function (){
-    Route::get('/{id}', [TaskAPIController::class, 'task']);
-    Route::get('/search/{s}', [TaskAPIController::class, 'search']);
-});
+Route::get('task/{task}', [TaskAPIController::class, 'task']);
+Route::get('find', [TaskAPIController::class, 'search']);
+
+
 //Categories
-Route::get('/categories' , [CategoriesAPIController::class, 'index']);
+Route::get('/categories', [CategoriesAPIController::class, 'index']);
 //Performers
 Route::get('/performers', [PerformerAPIController::class, 'service']);
-Route::get('/performer/{id}', [PerformerAPIController::class, 'performer']);
+Route::get('/performers/{performer}', [PerformerAPIController::class, 'performer']);
 
-////PaynetTransactions
-//Route::any('/paynet',function(){
-//    (new PaynetTransactionAPIController)->driver('paynet')->handle();
-//});

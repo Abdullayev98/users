@@ -6,12 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "joy/voyager-api": "^1.0",
         "joy/voyager-api-auth": "^1.0",
         "laravel/framework": "^8.78",
-        "laravel/passport": "^10.2",
+        "laravel/passport": "^10.3",
         "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
@@ -19,8 +20,7 @@
         "realrashid/sweet-alert": "^4.1",
         "tcg/voyager": "^1.5",
         "teamprodev/playmobile-sms": "^1.0",
-        "temprodev/laravel-one-auth": "dev-main",
-      "ext-json": "*"
+        "temprodev/laravel-one-auth": "dev-main"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

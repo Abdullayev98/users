@@ -52,7 +52,7 @@
                                 </span>
                                 <div class="text-base -mt-2 text-gray-400">
                                     <span class="align-middle">
-                                        <a href="#">@lang('lang.authors_timeAgo')</a>
+                                        <a >@lang('lang.authors_timeAgo')</a>
                                     </span>
                                 </div>
                             </div>

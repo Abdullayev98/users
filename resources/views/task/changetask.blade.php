@@ -435,7 +435,7 @@
                             class="text-2xl mr-5 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-md ">
                         Сохранить
                     </button>
-                    <a href="#"
+                    <a
                        class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">Отмена</a>
                 </div>
             </div>

@@ -45,7 +45,7 @@ Route::get('/executors-courier', function () {
 });
 Route::group(['prefix' => 'performers'], function () {
 Route::get('/', [PerformersController::class, 'service'])->name('performers');
-Route::get('/{id}', [PerformersController::class, 'performer'])->name('performer.main');
+Route::get('/{user}', [PerformersController::class, 'performer'])->name('performer.main');
 Route::get('/chat/{id}', [PerformersController::class, 'performer_chat'])->name('personal.chat');
 
 });

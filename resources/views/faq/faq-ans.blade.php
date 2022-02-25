@@ -55,8 +55,8 @@
                             <!-- <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover "> -->
 
                                 <!-- <div class="flex flex-col">
-                                    <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                    <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
+                                    <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a>
+                                    <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span>
                                 </div> -->
                         </div>
                     </div>
@@ -67,7 +67,7 @@
             <div class="w-full bg-white border border-gray-300 rounded-t-md lg:p-[25px] md:p-[20px] sm:p-[15px] p-[10px] divide-y">
               @foreach($fq as $faq)
                 <div class="w-full lg:py-4 md:py-3 sm:py-2 py-1">
-                    <!-- <a href="#"> -->
+                    <!-- <a > -->
                         <h2 class="text-gray-800 lg:md:text-base sm:text-sm text-xs">{{$faq->getTranslatedAttribute('question',Session::get('lang') , 'fallbackLocale')}}</h2>
                     <!-- </a> -->
                     <p class="text-gray-600 lg:md:text-base sm:text-sm text-xs">{{$faq->getTranslatedAttribute('q_descript',Session::get('lang') , 'fallbackLocale')}}</p>
@@ -76,35 +76,35 @@
 
                                 <!-- <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover "> -->
                             <!-- <div class="flex flex-col"> -->
-                                <!-- <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a> -->
-                                <!-- <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span> -->
+                                <!-- <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a> -->
+                                <!-- <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span> -->
                             <!-- </div> -->
                     </div>
                  </div>
                  @endforeach
                 <!-- <div class="w-full py-4">
-                    <a href="#">
+                    <a >
                         <h2 class="text-gray-800 text-xl">Как зарегистрироваться на сайте</h2>
                     </a>
                     <p class="text-gray-600">О возможных вариантах регистрации и этапах этого процесса</p>
                     <div class="flex flex-row items-center">
                                 <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
                             <div class="flex flex-col">
-                                <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
+                                <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a>
+                                <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span>
                             </div>
                     </div>
                 </div>
                 <div class="w-full py-4">
-                    <a href="#">
+                    <a >
                         <h2 class="text-gray-800 text-xl">Как зарегистрироваться на сайте</h2>
                     </a>
                     <p class="text-gray-600">О возможных вариантах регистрации и этапах этого процесса</p>
                     <div class="flex flex-row items-center">
                                 <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
                             <div class="flex flex-col">
-                                <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
+                                <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a>
+                                <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span>
                             </div>
                     </div>
                 </div> -->

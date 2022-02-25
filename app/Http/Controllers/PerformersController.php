@@ -47,30 +47,15 @@ class PerformersController extends Controller
         return view('Performers/performers', compact('users', 'tasks'));
     }
 
-    public function performer(User $id, Request $request)
+
+
+    public function performer(User $user, Request $request)
     {
-        $user = $id;
-        $view = UserView::query()->where('performer_id', $user->id);
-
-        if (auth()->check()) {
-            $view->where('user_id', \auth()->user()->id);
-        }
-        $view->first();
-
-        if (!$view) {
-            $view = new UserView();
-            $view->user_id = \auth()->user()->id;
-            $view->performer_id = $user->id;
-            $view->save();
-        }
-        $views = count(UserView::query()->where('performer_id', $user->id)->get());
-        $categories = Category::withTranslations(['ru', 'uz'])->get();
-        $child_categories = Category::withTranslations(['ru', 'uz'])->get();
-        $task_count = Task::where('performer_id', $user->id)->count();
-        $tasks = Task::get();
+        setView($user);
+        $task_count = $user->performer_tasks_count;
         $about = User::where('role_id', 2)->orderBy('reviews', 'desc')->take(20)->get();
         $reviews = $user->reviews()->get();
-        return view('Performers/executors-courier', compact('reviews','about', 'user', 'views', 'tasks', 'categories', 'child_categories', 'task_count'));
+        return view('Performers/executors-courier', compact('reviews', 'about', 'user', 'task_count'));
     }
 
 
@@ -120,8 +105,8 @@ class PerformersController extends Controller
     public function deleteNotification(Notification $notification)
     {
         $notification->delete();
-        return redirect()->route('tasks.detail',$notification->task_id);
-   }
+        return redirect()->route('tasks.detail', $notification->task_id);
+    }
 
     public function del_all_notif()
     {

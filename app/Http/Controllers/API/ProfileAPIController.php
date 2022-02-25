@@ -11,9 +11,8 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileAPIController extends Controller
 {
-    public function index($id){
-        $user = User::where('id',$id)->get();
-        return response()->json($user);
+    public function index(User $user){
+        return $user;
     }
     public function update(Request $request, $id)
     {

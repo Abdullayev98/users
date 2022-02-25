@@ -25,8 +25,8 @@
             <div class="lg:w-4/5 w-full text-base lg:mt-0 mt-4">
                 <div class="w-full">
                     <h1 class="font-medium text-4xl">@lang('lang.badgets_ratingAndRew')</h1>
-                    <p class="mt-5"><a href="#" class="text-blue-600 hover:text-red-400">@lang('lang.badgets_ratingOfPer')</a>@lang('lang.badgets_text1')</p>
-                    <p class="mt-5">@lang('lang.badgets_text2')<a href="#" class="text-blue-600 hover:text-red-400">@lang('lang.badgets_detailedRating')</a></p>
+                    <p class="mt-5"><a  class="text-blue-600 hover:text-red-400">@lang('lang.badgets_ratingOfPer')</a>@lang('lang.badgets_text1')</p>
+                    <p class="mt-5">@lang('lang.badgets_text2')<a  class="text-blue-600 hover:text-red-400">@lang('lang.badgets_detailedRating')</a></p>
                     <p class="mt-5">@lang('lang.badgets_icons')<a href="" class="text-blue-600 hover:text-red-400">@lang('lang.badgets_ratingPage')</a>@lang('lang.badgets_text3')</p>
                     <div class="bg-gray-200 p-5">
                         <h2 class="text-3xl p-5">@lang('lang.badgets_typeOfCustomers')</h2>
