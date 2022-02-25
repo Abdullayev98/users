@@ -59,15 +59,14 @@
                                 </div>
                             </div>
                             <div class="inline-flex  block w-full col-span-4">
-                            <label class="inline-flex items-center mt-3">
-                                <input type="checkbox" id="remJob" class="focus:outline-none form-checkbox checkboxByAs  h-5 w-5 text-orange-400">
-                                <span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_remoteJob')</span>
-                            </label>
-                            <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
-                                <input type="checkbox" id="noResp" class="focus:outline-none form-checkbox  h-5 w-5 text-orange-400">
-                                <span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_noCallback')</span>
-                            </label>
-
+                                <label class="inline-flex items-center mt-3">
+                                    <input type="checkbox" id="remJob" class="focus:outline-none form-checkbox checkboxByAs  h-5 w-5 text-orange-400">
+                                    <span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_remoteJob')</span>
+                                </label>
+                                <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
+                                    <input type="checkbox" id="noResp" class="focus:outline-none form-checkbox  h-5 w-5 text-orange-400">
+                                    <span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_noCallback')</span>
+                                </label>
                             </div>
                         </div>
                         <!-- </form> -->
@@ -84,7 +83,7 @@
                                placeholder="@lang('lang.search_byKey')">
 
                         <button
-                            class="col-span-2 md:w-4/12 w-2/3 md:mt-0 mt-2 bg-green-500 hover:bg-green-600 rounded-md text-white"
+                            id="findBut2" class="col-span-2 md:w-4/12 w-2/3 md:mt-0 mt-2 bg-green-500 hover:bg-green-600 rounded-md text-white"
                         >@lang('lang.search_find')</button>
                         <div class="col-span-1 flex justify-evenly inline-block md:mt-0 mt-2">
                             <button id="show_2" class=" w-10 md:ml-2  focus:outline-none">
@@ -113,7 +112,7 @@
                                 <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_location')</label>
                                 <div class="bg-white address float-left py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700">
                                     <input class="float-left bg-transparent border-0 w-11/12 h-full focus:outline-none focus:border-yellow-500"
-                                        type="text" id="suggest2">
+                                        type="text" id="suggest2" placeholder="Mobile">
 {{--                                    <button class="flex-shrink-0 focus:outline-none float-right text-teal-500 mt-1 text-sm rounded" type="button">--}}
                                         <svg class="h-4 w-4 text-purple-500" id="geobut2" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>
                                         <img src="images/close.png" class="absolute right-2 bottom-1.5 cursor-pointer" id="closeBut2" hidden>
