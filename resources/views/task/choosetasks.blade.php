@@ -21,8 +21,8 @@
                                     </a>
                                 </button>
                             <div class="hidden">
-                                <a href="#" class="slider__control" data-slide="prev"></a>
-                                <a href="#" class="slider__control" data-slide="next"></a>
+                                <a  class="slider__control" data-slide="prev"></a>
+                                <a  class="slider__control" data-slide="next"></a>
                             </div>
                             @endforeach
                         </div>

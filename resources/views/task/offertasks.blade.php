@@ -30,14 +30,14 @@
                                     <div class="w-full border hover:bg-blue-100">
                                       <div class="w-11/12 h-12 m-4">
                                         <div class="float-left w-9/12">
-                                          <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a href="#" class="text-blue-400 hover:text-red-400">
+                                          <i class="fas fa-user-circle text-4xl float-left text-blue-400"></i><a  class="text-blue-400 hover:text-red-400">
                                           @lang('lang.offerT_rateByPhone')
                                           </a>
                                           <p class="text-sm ml-12mt-4">
                                           @lang('lang.offerT_warning')
                                           </p>
                                         </div><div class="float-right w-1/4 text-right">
-                                          <a href="#" class="text-lg">100 000 sum</a><p class="text-sm ml-12mt-4">@lang('lang.offerT_sportMaster')</p>
+                                          <a  class="text-lg">100 000 sum</a><p class="text-sm ml-12mt-4">@lang('lang.offerT_sportMaster')</p>
                                           <p class="text-sm ml-12mt-4">@lang('lang.offerT_noFeedback')</p>
                                         </div>
                                       </div>

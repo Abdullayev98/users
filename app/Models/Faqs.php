@@ -12,4 +12,6 @@ class Faqs extends Model
     use Translatable;
     protected $translatable = ['question','q_descript', 'answer_text'];
 
+
+
 }

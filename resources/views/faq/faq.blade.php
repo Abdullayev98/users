@@ -51,8 +51,8 @@
                     <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
 
                         <div class="flex flex-col">
-                            <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                            <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
+                            <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a>
+                            <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span>
                         </div>
                 </div> -->
             </div>

@@ -28,7 +28,7 @@ class User extends \TCG\Voyager\Models\User
 
 
 
-    protected $withCount = ['views', 'tasks'];
+    protected $withCount = ['views', 'tasks','performer_views','performer_tasks'];
 
 
     /*
@@ -62,8 +62,16 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Review::class,'user_id','id');
     }
     public function views(){
+        return $this->hasMany(UserView::class,'user_id');
+    }
+
+    public function performer_views(){
         return $this->hasMany(UserView::class,'performer_id');
     }
+    public function performer_tasks(){
+        return $this->hasMany(Task::class,'performer_id');
+    }
+
     public function transactions(){
         return $this->hasMany(All_transaction::class)->orderBy('created_at',"DESC");
     }

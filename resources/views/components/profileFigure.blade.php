@@ -41,7 +41,7 @@
                                     @endisset
                                 </p>
                             </span>
-            <p class="mt-2">@lang('lang.cash_created') <a href="#">
+            <p class="mt-2">@lang('lang.cash_created') <a >
                                 <span>
                                     {{count($user->tasks??[])}}
                                 </span> @lang('lang.cash_task')</a></p>

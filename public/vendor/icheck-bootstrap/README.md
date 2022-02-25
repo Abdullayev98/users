@@ -1,6 +1,6 @@
 # icheck-bootstrap
 
-<a href="#" target="_blank"><img src="https://img.shields.io/badge/bower-v3.0.1-blue.svg" alt="bower version"></a>
+<a  target="_blank"><img src="https://img.shields.io/badge/bower-v3.0.1-blue.svg" alt="bower version"></a>
 <a href="https://www.npmjs.com/package/icheck-bootstrap" target="_blank"><img src="https://img.shields.io/badge/npm-v3.0.1-blue.svg" alt="npm version"></a>
 <a href="https://www.nuget.org/packages/icheck-bootstrap" target="_blank"><img src="https://img.shields.io/badge/nuget-v3.0.1-blue.svg" alt="nuget version"></a>
 [![](https://data.jsdelivr.com/v1/package/npm/icheck-bootstrap/badge)](https://www.jsdelivr.com/package/npm/icheck-bootstrap)

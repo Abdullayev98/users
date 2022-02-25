@@ -45,7 +45,6 @@ class Controller extends BaseController
     {
         $user = User::find(Auth::user()->id);
         $vcs = UserView::where('user_id', $user->id)->get();
-        $user->update();
         return view('profile.profile', compact('user', 'vcs'));
     }
     public function update(Request $request, $id)
@@ -108,14 +107,14 @@ class Controller extends BaseController
     }
     public function my_tasks()
     {
-        $tasks = Task::where('user_id', Auth::id())->get();
-        $task_count = Task::where('user_id', Auth::id())->count();
-        $perform_tasks = Task::where('performer_id', auth()->id())->get();
-        $categories = Category::get();
-        $datas = new Collection; //Create empty collection which we know has the merge() method
+        $user = auth()->user();
+        $tasks = $user->tasks;
+        $perform_tasks = $user->performer_tasks;
+        $datas = new Collection(); //Create empty collection which we know has the merge() method
         $datas = $datas->merge($tasks);
         $datas = $datas->merge($perform_tasks);
-        return view('task.mytasks', compact('tasks', 'task_count', 'categories','perform_tasks','datas'));
+        $categories = getAllCategories();
+        return view('task.mytasks',compact('tasks','perform_tasks','categories','datas'));
     }
 
     public function category($id)

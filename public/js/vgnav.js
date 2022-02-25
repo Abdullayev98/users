@@ -87,7 +87,7 @@ class VGNav {
 				mTitle = '<span class="' + _this.classes.hamburger + '--title">'+ _this.settings.mobileTitle +'</span>';
 			}
 
-			$container.insertAdjacentHTML('afterbegin','<a href="#" class="' + _this.classes.hamburger + '">' + mTitle + '<span class="' + _this.classes.hamburger + '--lines"><span></span><span></span><span></span></span></a>');
+			$container.insertAdjacentHTML('afterbegin','<a  class="' + _this.classes.hamburger + '">' + mTitle + '<span class="' + _this.classes.hamburger + '--lines"><span></span><span></span><span></span></span></a>');
 		}
 
 		// Слои мобильной навигации
