@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<!-- test -->
 @section('content')
     @if ($message = Session::get('success'))
         <div  id="modal-id2" class="alert alert-success alert-block">

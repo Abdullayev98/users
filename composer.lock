@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77031345baac663f3fa95c9a1a7e515c",
+    "content-hash": "1509c49f1713fb5e664c6b3a76583b06",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -8650,6 +8650,54 @@
             "time": "2021-11-09T08:33:29+00:00"
         },
         {
+            "name": "teamprodev/laravel_payment_clickuz",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teamprodev/laravel_payment_clickuz.git",
+                "reference": "b4c8c79ab1b1c85dbd93c47d75e8efdd8441a632"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teamprodev/laravel_payment_clickuz/zipball/b4c8c79ab1b1c85dbd93c47d75e8efdd8441a632",
+                "reference": "b4c8c79ab1b1c85dbd93c47d75e8efdd8441a632",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Teamprodev\\Laravel_Payment_Clickuz\\Providers\\ClickuzServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Teamprodev\\Laravel_Payment_Clickuz\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abram73",
+                    "email": "abram4ik73@gmail.com",
+                    "homepage": "https://github.com/Abram73"
+                }
+            ],
+            "description": "description",
+            "support": {
+                "issues": "https://github.com/teamprodev/laravel_payment_clickuz/issues",
+                "source": "https://github.com/teamprodev/laravel_payment_clickuz/tree/1.0.1"
+            },
+            "time": "2022-02-21T14:19:26+00:00"
+        },
+        {
             "name": "teamprodev/playmobile-sms",
             "version": "1.0.0",
             "source": {
@@ -11600,5 +11648,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
