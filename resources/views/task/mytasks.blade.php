@@ -168,7 +168,7 @@
             type="text/javascript"></script>
     <script type="text/javascript">
         let mytaskCoordinates = [];
-        mytaskCoordinates = $.parseJSON(JSON.stringify({!! $datas !!}));
+        mytaskCoordinates = $.parseJSON(JSON.stringify({!! $tasks !!}));
         console.log(mytaskCoordinates.length);
 
         ymaps.ready(function () {
@@ -219,7 +219,7 @@
                     };
                 },
                 points = [
-                        @foreach($datas as $data)
+                        @foreach($tasks as $data)
                             [{{$data->coordinates}}],
                         @endforeach
                 ],

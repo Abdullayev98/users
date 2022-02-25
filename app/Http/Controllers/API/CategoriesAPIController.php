@@ -13,4 +13,7 @@ class CategoriesAPIController extends Controller
 
         return Category::with('translations')->get();
     }
+    public function show(Category $category){
+        return $category;
+    }
 }

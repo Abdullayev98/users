@@ -14,6 +14,13 @@ if (!function_exists('amount_format')) {
 function getMyText(){
     return 'Hello World';
 }
+function getAddress($data){
+    $address['location'] = $data['address'];
+    $address['latitude'] = explode(',',$data['coordinates'])[0];
+    $address['longitude'] = explode(',',$data['coordinates'])[1];
+    $data['address'] = $address;
+    return $data;
+}
 
 function setView($user)
 {
