@@ -110,7 +110,7 @@ $("#suggest").keyup(function() {
     if ($('#suggest').val().trim().length == 0) {
         $('#closeBut').hide();
         $('#geoBut').show();
-        jqFilter()
+        // jqFilter()
     }else{
         $('#geoBut').hide();
         $('#closeBut').show();
@@ -142,15 +142,32 @@ $("#findBut").click(function() {
     jqFilter();
 });
 
+$("#findBut2").click(function() {
+    jqFilter();
+});
+
 $("#geoBut").click(function() {
     $('#closeBut').show();
     $('#geoBut').hide();
+});
+
+$("#geoBut2").click(function() {
+    console.log('Ishlavoti...')
+    $('#closeBut2').show();
+    $('#geoBut2').hide();
 });
 
 $("#closeBut").click(function() {
     $('#suggest').val('');
     $('#closeBut').hide();
     $('#geoBut').show();
+    jqFilter()
+});
+
+$("#closeBut2").click(function() {
+    $('#suggest2').val('');
+    $('#closeBut2').hide();
+    $('#geoBut2').show();
     jqFilter()
 });
 
@@ -206,7 +223,6 @@ function dataAjaxSortByDS(arr, numb) {
         tasks_list_all(dataAjaxPrint)
         tasks_show()
     }
-
 }
 
 function dataAjaxFindThree(dataA, str1, str2, num) {
@@ -582,7 +598,7 @@ function map_pos(mm) {
             // var suggestView1 = new ymaps.SuggestView('suggest');
             let myMap2 = new ymaps.Map('map2', {
                 center: [userCoordinates[0], userCoordinates[1]],
-                zoom: 10,
+                zoom: 13,
                 controls: ['zoomControl','geolocationControl'],
                 behaviors: ['default', 'scrollZoom']
             }, {
@@ -624,8 +640,8 @@ function map_pos(mm) {
             clusterer.add(geoObjects);
             myMap2.geoObjects.add(clusterer);
             myMap2.setBounds(clusterer.getBounds(), {
-                boundsAutoApply: false,
-                checkZoomRange: false
+                boundsAutoApply: true,
+                checkZoomRange: true
             });
 
             circle = new ymaps.Circle([userCoordinates, r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
@@ -729,7 +745,7 @@ function map1_show (){
                 }
             );
 
-        $("#geoBut2").click(function(){
+        $("#geoBut5").click(function(){
             location.get({
                 mapStateAutoApply: true
             })

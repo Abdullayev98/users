@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UserRegisterRequest extends FormRequest
 {
@@ -15,7 +17,6 @@ class UserRegisterRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -28,7 +29,7 @@ class UserRegisterRequest extends FormRequest
             'email' => 'required|email|unique:users',
             'phone_number' =>  'unique:users|min:9',
             'password' => 'required|confirmed|min:8',
-        ];  
+        ];
     }
     public function messages()
     {
