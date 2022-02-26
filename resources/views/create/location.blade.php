@@ -4,6 +4,7 @@
 
 @section('content')
 <script>
+  let userAddress;
   var myMap;
   var multiRoute;
   var place, place1="", place2="", place3="", place4="", place5="", place6="", place7="", place8="", place9="";
@@ -11,8 +12,8 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 
-    <script id="map_api" src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')&onload=onLoad" type="text/javascript">
-    </script>
+{{--<script id="map_api" src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')&onload=onLoad" type="text/javascript"></script>--}}
+<script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
 
 <!-- Information section -->
 
