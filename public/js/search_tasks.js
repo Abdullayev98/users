@@ -600,8 +600,7 @@ function map_pos(mm) {
                         function(result) {
                             document.getElementById("suggest").value = result.geoObjects.get(0).properties.get('text');
                             userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
-                            // jqFilter();
-                            // myMap2.geoObjects.add(result.geoObjects)
+                            myMap2.geoObjects.add(result.geoObjects)
                             myMap2.setCenter(result.geoObjects.get(0).geometry.getCoordinates());
                         },
                         function(err) {
