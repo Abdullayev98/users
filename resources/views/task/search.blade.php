@@ -14,16 +14,16 @@
                             <!-- <input class="focus:outline-none  w-10/12 text-black-700 border border-black rounded mr-4 px-1" type="text" placeholder="Поиск по ключевым словам" name="s" value="{{$s ?? ''}}" aria-label="Full name"> -->
                                 <input id="filter" type="text"
                                        class="focus:outline-none focus:border-yellow-500 focus:placeholder-transparent w-4/5 py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:shadow-sm focus:shadow-sky-500 mr-4"
-                                       placeholder="@lang('lang.search_byKey')">
+                                       placeholder="{{__('Поиск по ключевым словам')}}">
                                 <img src="images/close.png" class="fill-current absolute left-3/4 top-2 cursor-pointer" id="svgClose" hidden>
                                 <button
                                     class="sm:w-2/12 w-4/12 bg-green-500 hover:bg-green-600 ml-1 py-1 px-1 rounded-md sm:mt-0 text-white" id="findBut"
-                                >@lang('lang.search_find')</button>
+                                >{{__('Найти')}}</button>
                             </div>
 
                             <div class="md:inline-flex  block w-full col-span-4 ">
                                 <div class="w-8/12 md:w-4/5 relative">
-                                    <label class="lg:text-base md:text-sm mb-1 text-neutral-400">@lang('lang.search_location')</label>
+                                    <label class="lg:text-base md:text-sm mb-1 text-neutral-400">{{__('Город, адрес, метро, район...')}}</label>
                                     <div class="">
                                         <input
                                             class="relative bg-white address float-left py-1 px-2 text-black-700 border-2 rounded-md focus:shadow-sm w-full text-black-700 focus:border-yellow-500 focus:outline-none  float-left bg-transparent border-0 mr-3.5 h-full"
@@ -36,24 +36,24 @@
                             </div>
                             <div class="md:inline-flex  block w-full col-span-4 ">
                                 <div class="md:w-2/5 pr-5">
-                                    <label class="lg:text-base md:text-sm mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
+                                    <label class="lg:text-base md:text-sm mb-1 text-neutral-400">{{__('Радиус поиска')}}</label>
                                     <select name="" id="selectGeo" class="focus:outline-none  py-1 px-2 w-full text-gray-700 border-2 rounded-md focus:shadow-sm focus:border-yellow-500 text-lg-left text-black-700 rounded" onchange="">
-                                        <option value="0">@lang('lang.search_byMapRadiusNo')</option>
-                                        <option value="1.5">1.5 @lang('lang.search_km')</option>
-                                        <option value="3">3 @lang('lang.search_km')</option>
-                                        <option value="5">5 @lang('lang.search_km')</option>
-                                        <option value="10">10 @lang('lang.search_km')</option>
-                                        <option value="15">15 @lang('lang.search_km')</option>
-                                        <option value="20">20 @lang('lang.search_km')</option>
-                                        <option value="30">30 @lang('lang.search_km')</option>
-                                        <option value="50">50 @lang('lang.search_km')</option>
-                                        <option value="75">75 @lang('lang.search_km')</option>
-                                        <option value="100">100 @lang('lang.search_km')</option>
-                                        <option value="200">200 @lang('lang.search_km')</option>
+                                        <option value="0">{{__('Без ограничений')}}</option>
+                                        <option value="1.5">1.5 {{__('км')}}</option>
+                                        <option value="3">3 {{__('км')}}</option>
+                                        <option value="5">5 {{__('км')}}</option>
+                                        <option value="10">10 {{__('км')}}</option>
+                                        <option value="15">15 {{__('км')}}</option>
+                                        <option value="20">20 {{__('км')}}</option>
+                                        <option value="30">30 {{__('км')}}</option>
+                                        <option value="50">50 {{__('км')}}</option>
+                                        <option value="75">75 {{__('км')}}</option>
+                                        <option value="100">100 {{__('км')}}</option>
+                                        <option value="200">200 {{__('км')}}</option>
                                     </select>
                                 </div>
                                 <div class="relative pl-5 md:w-2/5">
-                                    <label class="lg:text-base md:text-sm mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
+                                    <label class="lg:text-base md:text-sm mb-1 text-neutral-400">{{__('Стоимость заданий')}}</label>
                                     <input type="number" min="1" max="999999999" class="focus:outline-none focus:border-yellow-500 focus:placeholder-transparent w-full border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price">
                                     <img src="images/close.png" class="absolute right-2 bottom-2.5 cursor-pointer" id="prcClose" hidden>
                                 </div>
@@ -61,11 +61,11 @@
                             <div class="inline-flex  block w-full col-span-4">
                                 <label class="inline-flex items-center mt-3">
                                     <input type="checkbox" id="remJob" class="focus:outline-none form-checkbox checkboxByAs  h-5 w-5 text-orange-400">
-                                    <span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_remoteJob')</span>
+                                    <span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">{{__('Удалённая работа')}}</span>
                                 </label>
                                 <label class="inline-flex items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
                                     <input type="checkbox" id="noResp" class="focus:outline-none form-checkbox  h-5 w-5 text-orange-400">
-                                    <span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_noCallback')</span>
+                                    <span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">{{__('Задания без откликов')}}</span>
                                 </label>
                             </div>
                         </div>
@@ -80,11 +80,11 @@
                     <div class="inline-flex block w-full grid grid-cols-3">
                         <input id="filter2" type="text"
                                class="col-span-3 focus:outline-none focus:border-yellow-500 focus:placeholder-transparent text-base md:w-10/12 px-4 py-1 text-black border-2 rounded-md border-neutral-400 focus:shadow-sm focus:shadow-sky-500 md:mr-4 mr-0 bg-gray-200"
-                               placeholder="@lang('lang.search_byKey')">
+                               placeholder="{{__('Поиск по ключевым словам')}}">
 
                         <button
                             id="findBut2" class="col-span-2 md:w-4/12 w-2/3 md:mt-0 mt-2 bg-green-500 hover:bg-green-600 rounded-md text-white"
-                        >@lang('lang.search_find')</button>
+                        >{{__('Найти')}}</button>
                         <div class="col-span-1 flex justify-evenly inline-block md:mt-0 mt-2">
                             <button id="show_2" class=" w-10 md:ml-2  focus:outline-none">
                                 <i class="fas fa-bars fa-2x ml-1.5 text-gray-500"></i>
@@ -109,7 +109,7 @@
                     <div class="bg-yellow-50 pb-4">
                         <div class=" w-11/12 mx-auto ">
                             <div class="w-full relative">
-                                <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_location')</label>
+                                <label class="text-xs mb-1 text-neutral-400">{{__('Город, адрес, метро, район...')}}</label>
                                 <div class="bg-white address float-left py-1 px-3 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500  w-full text-black-700">
                                     <input class="float-left bg-transparent border-0 w-11/12 h-full focus:outline-none focus:border-yellow-500"
                                         type="text" id="suggest2" placeholder="Mobile">
@@ -120,9 +120,9 @@
                                 </div>
                             </div>
                             <div class="w-full">
-                                <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_byMapRadius')</label>
+                                <label class="text-xs mb-1 text-neutral-400">{{__('Радиус поиска')}}</label>
                                 <select id="selectGeo2" class="w-full py-1 px-1 text-black-700 border-2 rounded-md border-neutral-400 focus:border-sky-500 focus:shadow-sm focus:shadow-sky-500 text-lg-left text-black-700 rounded">
-                                    <option value="0">@lang('lang.search_byMapRadiusNo')</option>
+                                    <option value="0">{{__('Без ограничений')}}</option>
                                     <option value="1.5">1.5 km</option>
                                     <option value="3">3 km</option>
                                     <option value="5">5 km</option>
@@ -141,7 +141,7 @@
 
 
                     <div class=" w-11/12 mx-auto border-b pb-4">
-                        <label class="text-xs mb-1 text-neutral-400">@lang('lang.search_priceBy')</label>
+                        <label class="text-xs mb-1 text-neutral-400">{{__('Стоимость заданий')}}</label>
                         <input type="text" maxlength="7" class="w-full focus:placeholder-transparent border-md py-1 px-2 text-black-700 border-2 rounded-md border-neutral-400 focus:outline-none focus:border-yellow-500 focus:shadow-sm focus:shadow-sky-500  text-black-700" placeholder="UZS" id="price2">
                         <img src="images/close.png" class="absolute right-2 bottom-2.5 cursor-pointer" id="prcClose2" hidden>
                     </div>
@@ -149,11 +149,11 @@
                     <div class="w-11/12 mx-auto">
                         <label class="block w-full border-b pb-4 items-center mt-3">
                             <input type="checkbox" id="remJob2" class="form-checkbox checkboxByAs mr-4  h-5 w-5 text-orange-400"
-                            ><span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_remoteJob')</span>
+                            ><span class="sm:ml-2 ml-0.5 text-gray-700 lg:text-sm">{{__('Удалённая работа')}}</span>
                         </label>
                         <label class="block w-full border-b pb-4 items-center mt-3 xl:ml-3 sm:ml-2 ml-0.5">
                             <input type="checkbox" id="noResp2" class="form-checkbox mr-4  h-5 w-5 text-orange-400"
-                            ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">@lang('lang.search_noCallback')</span>
+                            ><span class="sm:ml-2  ml-0.5 text-gray-700 lg:text-sm">{{__('Задания без откликов')}}</span>
                         </label>
 {{--                        </label>--}}
                     </div>
@@ -176,9 +176,9 @@
                     </div>
                     <div class="b-tasks-sorting hidden md:block">
                         <div class="inline-flex items-center my-5">
-                            <span class="title__994cd">@lang('lang.search_filter')</span>
-                            <button id="byDate" class="mx-5 active">@lang('lang.search_byDate')</button>
-                            <button id="bySroch" class="mx-5 ">@lang('lang.search_byHurry')</button>
+                            <span class="title__994cd">{{__('Сортировать:')}}</span>
+                            <button id="byDate" class="mx-5 active">{{__'по дате публикации')}}</button>
+                            <button id="bySroch" class="mx-5 ">{{__('по срочности')}}</button>
                         </div>
                     </div>
                     <div id="scrollbar" class="w-full h-full blog1">
@@ -194,8 +194,8 @@
                                 <div class=" w-3/5 h-3/5 mx-auto">
                                     <img src="images/notlikes.png" class="w-full h-full">
                                     <div class="text-center w-full h-full">
-                                        <p className="text-4xl"><b>@lang('lang.search_tasksNotFound')</b></p>
-                                        <p className="text-xl">@lang('lang.search_tryAnOther')</p>
+                                        <p className="text-4xl"><b>{{__('Задания не найдены')}}</b></p>
+                                        <p className="text-xl">{{__('Попробуйте уточнить запрос или выбрать другие категории')}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -203,8 +203,8 @@
 
                         <div class="w-full h-full lM mt-5" hidden>
                             <ul class="text-center">
-                                <li class="text-center">@lang('lang.search_shown')&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
-                                <li><button id="loadMore" class="butt mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show(), maps_show();">@lang('lang.search_showMore')</button></li>
+                                <li class="text-center">{{__('Показано')}}&nbsp;<span id="pnum"></span>&nbsp;из&nbsp;<span id="snum"></span></li>
+                                <li><button id="loadMore" class="butt mt-2 px-5 py-1 border border-black rounded hover:cursor-pointer" onclick="tasks_show(), maps_show();">{{__('Показать ещё')}}</button></li>
                             </ul>
                         </div>
                     </div>
@@ -218,7 +218,7 @@
                     <div class="max-w-lg mx-auto">
                         <label class="inline-flex items-center mt-3">
                             <input type="checkbox" class="form-checkbox all_cat ml-5 h-5 w-5 text-orange-400">
-                            <span class="ml-2 text-gray-700">@lang('lang.search_allCat')</span>
+                            <span class="ml-2 text-gray-700">{{__('Все категории')}}</span>
                         </label>
                         <div class="w-full my-1 for_check">
                             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
@@ -287,7 +287,7 @@
 @section("javasript")
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}" type="text/javascript"></script>
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script>
 

@@ -11,10 +11,10 @@
 
                     <ul  id="tabs" class="flex rounded-sm sm:w-96 w-full divide-x shadow bg-gray-200">
                         <div id="first_tab" class="w-full text-center">
-                            <a id="default-tab" href="#first" class="inline-block relative py-1 w-full">@lang('lang.mytasks_iAmPerformer')</a>
+                            <a id="default-tab" href="#first" class="inline-block relative py-1 w-full">{{__('Я исполнитель')}}</a>
                         </div>
                         <div id="second_tab" class="w-full text-center">
-                            <a href="#second" class="inline-block relative py-1 w-full">@lang('lang.mytasks_iAmCustomer')</a>
+                            <a href="#second" class="inline-block relative py-1 w-full">{{__('Я заказчик')}}</a>
                         </div>
                     </ul>
                 </div>
@@ -43,11 +43,11 @@
                                                 {{substr($task->description, 0, 100)}}...
                                             </p>
                                             @if ($task->status == 3)
-                                                <p class="text-amber-500 font-normal">@lang('lang.detT_inProsses')</p>
+                                                <p class="text-amber-500 font-normal">{{__('В исполнении')}}</p>
                                             @elseif($task->status < 3)
-                                                <p class="text-green-400 font-normal">@lang('lang.detT_open')</p>
+                                                <p class="text-green-400 font-normal">{{__('Открыто')}}</p>
                                             @else
-                                                <p class="text-red-400 font-normal">@lang('lang.detT_close')</p>
+                                                <p class="text-red-400 font-normal">{{__('Закрыто')}}</p>
                                             @endif
                                         </div>
                                         <div class="col-span-3 md:text-right categoryid">
@@ -57,7 +57,7 @@
                                                     <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                                                 @endif
                                             @endforeach
-                                            <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
+                                            <p class="text-sm text-gray-500"> {{__("Количество откликов :")}} {{$task->responses->where('task_id',$task->id)->count()}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -91,11 +91,11 @@
                                                     {{$task->description}}
                                                 </p>
                                                 @if ($task->status == 3)
-                                                    <p class="text-amber-500 font-normal">@lang('lang.detT_inProsses')</p>
+                                                    <p class="text-amber-500 font-normal">{{__('В исполнении')}}</p>
                                                 @elseif($task->status < 3)
-                                                    <p class="text-green-400 font-normal">@lang('lang.detT_open')</p>
+                                                    <p class="text-green-400 font-normal">{{__('Открыто')}}</p>
                                                 @else
-                                                    <p class="text-red-400 font-normal">@lang('lang.detT_close')</p>
+                                                    <p class="text-red-400 font-normal">{{__('Закрыто')}}</p>
                                                 @endif
                                             </div>
                                             <div class="col-span-3 md:text-right categoryid">
@@ -105,7 +105,7 @@
                                                         <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                                                     @endif
                                                 @endforeach
-                                                    <p class="text-sm text-gray-500"> @lang("lang.detT_callback3") {{$task->responses->where('task_id',$task->id)->count()}}</p>
+                                                    <p class="text-sm text-gray-500"> {{__("Количество откликов :")}} {{$task->responses->where('task_id',$task->id)->count()}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
 
             <div>
                 {{-- <div class="text-4xl font-semibold my-6">
-                    @lang('lang.mytask_onTask') {{$task_count}} @lang('lang.mytask_callbacks')
+                    {{__('У задания')}} {{$task_count}} {{__('откликов')}}
                 </div> --}}
                 <hr>
                 <div>
@@ -133,7 +133,7 @@
                 <div id="map" class="h-60 rounded-lg w-full">
                 </div>
                 <div class="w-full h-full mt-5">
-                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center mb-1 allshow" type="button">@lang('lang.mytasks_allCat')</button>
+                    <button class="font-medium hover:text-red-500 rounded-lg text-sm text-center inline-flex items-center mb-1 allshow" type="button">{{__('Все категории')}}</button>
 
                     <div class="w-full my-1">
                         @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', null)->get() as $category)
@@ -323,9 +323,9 @@
         $(document).ready(function(){
             var category = $(".category");
             var category2 = $(".category2");
-            $(".lenght2").text(`@lang("lang.mytask_avarage")` + category2.length);
+            $(".lenght2").text(`{{__("Количество заданий :")}}` + category2.length);
             if (category.is(":visible")){
-                    $(".lenght").text(`@lang("lang.mytask_avarage")` + category.length);
+                    $(".lenght").text(`{{__("Количество заданий :")}}` + category.length);
                 }
         });
     </script>
