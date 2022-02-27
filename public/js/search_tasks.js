@@ -72,13 +72,13 @@ function dataAjaxCopy(dataA){
 }
 
 function jqFilter() {
-    nameVal1 = $('#filter').val()
-    nameVal2 = $('#suggest').val()
-    nameVal3 = $('#price').val()
-    if ($.trim(nameVal1) != '' || $.trim(nameVal2) != '' || $.trim(nameVal3) != ''){
-        dataAjaxFindThree(dataAjax, nameVal1, nameVal2, nameVal3)
+    filterVal = $('#filter').val()
+    suggestVal = $('#suggest').val()
+    priceVal = $('#price').val()
+    if ($.trim(filterVal) != '' || $.trim(suggestVal) != '' || $.trim(priceVal) != ''){
+        dataAjaxFindThree(dataAjax, filterVal, suggestVal, priceVal)
     }
-    if ($.trim(nameVal1) == '' && $.trim(nameVal2) == '' && $.trim(nameVal3) == ''){
+    if ($.trim(filterVal) == '' && $.trim(suggestVal) == '' && $.trim(priceVal) == ''){
         dataAjaxCheck = 1;
         sixInOne();
     }
@@ -279,12 +279,13 @@ function dataAjaxFindThree(dataA, str1, str2, num) {
         if (dataAjax2.length != 0){
             dataAjaxCheck = 2
             sixInOne()
-        }else{
-            resetCounters()
-            tasks_list_all(dataAjaxPrint)
-            tasks_show()
         }
-
+        // else{
+            // resetCounters()
+            // tasks_list_all(dataAjaxPrint)
+            // tasks_show()
+            // maps_show()
+        // }
 }
 
 function tasks_list_all(data) {
@@ -579,6 +580,18 @@ function map_pos(mm) {
                         }
                     );
             }
+
+            // var suggestView1 = new ymaps.SuggestView('suggest');
+            let myMap2 = new ymaps.Map('map2', {
+                center: [userCoordinates[0], userCoordinates[1]],
+                zoom: 13,
+                controls: [],
+                // controls: ['zoomControl','geolocationControl'],
+                behaviors: ['default', 'scrollZoom']
+            }, {
+                searchControlProvider: 'yandex#search'
+            });
+
             $("#geoBut").click(function(){
                 location.get({
                     mapStateAutoApply: true
@@ -587,23 +600,16 @@ function map_pos(mm) {
                         function(result) {
                             document.getElementById("suggest").value = result.geoObjects.get(0).properties.get('text');
                             userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
-                            jqFilter()
-                            // myMap2.geoObjects.add(result.geoObjects)
+                            myMap2.geoObjects.add(result.geoObjects)
+                            myMap2.setCenter(result.geoObjects.get(0).geometry.getCoordinates());
                         },
                         function(err) {
                             console.log('Ошибка: ' + err)
                         }
                     );
             });
-            // var suggestView1 = new ymaps.SuggestView('suggest');
-            let myMap2 = new ymaps.Map('map2', {
-                center: [userCoordinates[0], userCoordinates[1]],
-                zoom: 13,
-                controls: ['zoomControl','geolocationControl'],
-                behaviors: ['default', 'scrollZoom']
-            }, {
-                searchControlProvider: 'yandex#search'
-            });
+
+
 
             clusterer = new ymaps.Clusterer({
                 preset: 'islands#invertedGreenClusterIcons',
