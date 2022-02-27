@@ -12,10 +12,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="md:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
-                        @lang('lang.buyd_text') "{{$task->name}}"
+                        {{__('Ищем исполнителя для задания')}} "{{$task->name}}"
                     </div>
                     <div class="w-full text-center my-4 text-gray-400">
-                        @lang('lang.design_text')
+                        {{__('Задание заполнено на 25%')}}
                     </div>
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -33,7 +33,7 @@
                                 <a onclick="myFunction()"
                                    class="w-1/3 cursor-pointer border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                     <!-- <button type="button"> -->
-                                @lang('lang.notes_back')
+                                {{__('Назад')}}
                                 <!-- </button> -->
                                     <script>
                                         function myFunction() {
@@ -43,7 +43,7 @@
                                 </a>
                                 <input type="submit"
                                        class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                       name="" value="@lang('lang.name_next')">
+                                       name="" value="{{__('Далее')}}">
 
                             </div>
 

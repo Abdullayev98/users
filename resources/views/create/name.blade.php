@@ -32,10 +32,10 @@
         <div class="grid grid-cols-3   lg:gap-x-8 md:gap-x-0.5 h-full">
             <div class="md:col-span-2  col-span-3">
                 <div class="w-full text-center md:text-2xl text-xl">
-                    @lang('lang.name_helpToFind')
+                    {{__('Поможем найти исполнителя для вашего задания')}}
                 </div>
                 <div class="w-full text-center my-4 text-gray-400">
-                    @lang('lang.name_percent')
+                    {{__('Задание заполнено на 14%')}}
                 </div>
                 <div class="pt-1">
                     <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200 mx-auto ">
@@ -45,7 +45,7 @@
                 </div>
                 <div class="shadow-2xl w-full lg:p-8 p-4 mx-auto my-4 rounded-2xl	w-full">
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
-                        @lang('lang.name_howCanWeHelpU')
+                        {{__('Чем вам помочь?')}}
                     </div>
                     <form action="{{route("task.create.name.store")}}" method="post">
                         @csrf
@@ -54,16 +54,16 @@
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
                             <div class="mb-4">
                                 <label class="block text-gray-400 text-sm mb-2" for="username">
-                                    @lang('lang.name_taskName')
+                                    {{__('Название задания')}}
                                 </label>
                                 <input
                                     class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none
                                     focus:border-yellow-500 "
                                     id="username" type="text"
-                                    placeholder="@lang('lang.name_example') {{ $current_category->getTranslatedAttribute('name') }}"
+                                    placeholder="{{__('Например, ')}} {{ $current_category->getTranslatedAttribute('name') }}"
                                     required name="name" value="{{session('neym')}}">
                             </div>
-                            <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
+                            <p class="text-base text-gray-600 mt-10">{{__('Если хотите выбрать другую категорию')}}</p>
                             <div id="categories">
                                 <div class="flex lg:flex-row flex-col">
                                     <div class="lg:w-1/2 w-full lg:pr-3 py-5">
@@ -99,7 +99,7 @@
                         <div class="flex  mx-auto" >
                             <input type="submit"
                                    class="bg-green-500 hover:bg-green-500 w-9/12 mx-auto my-4 cursor-pointer text-white font-bold  py-5  px-5 rounded"
-                                   name="" value="@lang('lang.name_next')">
+                                   name="" value="{{__('Далее')}}">
                         </div>
 
                         </div>
