@@ -1,9 +1,9 @@
 <div class="container md:text-left text-left mx-auto md:px-16 px-4 sm:pt-40 pt-36">
     <div class="text-4xl font-bold text-center">
-        @lang('lang.header_over') {{$users_count}}  @lang('lang.header_performers')
+        {{__('Более')}} {{$users_count}}  {{__('исполнителей')}}
     </div>
     <div class="text-base text-center mt-4">
-        @lang('lang.body_helpers')
+        {{__('Исполнители готовы помочь вам в решении самых разнообразных задач')}}
     </div>
     <div class="flex flex-wrap w-11/12 mt-14 mx-auto">
         @foreach ($categories as $category2)
@@ -14,7 +14,8 @@
     </div>
     <div class="mb-4 mt-8 text-center text-base">
         <a href="/categories/1">
-            <button type="button" class="font-semibold text-yellow-500 hover:text-white border border-yellow-500 duration-300 hover:bg-yellow-500 rounded-md w-64 h-12">@lang('lang.body_allService')
+            <button type="button" class="font-semibold text-yellow-500 hover:text-white border border-yellow-500 duration-300 hover:bg-yellow-500 rounded-md w-64 h-12">
+                {{__('Посмотреть все услуги')}}
             </button>
         </a>
     </div>

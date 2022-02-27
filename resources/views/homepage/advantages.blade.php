@@ -1,7 +1,7 @@
 <div class="bg-blue-100">
     <div class="w-11/12 md:w-9/12 mx-auto pb-24">
         <div class="text-3xl md:text-4xl mx-auto py-16 text-center">
-            @lang('lang.body_benefit')
+            {{__('Основные преимущества Universal Services')}}
         </div>
         <div class="grid lg:grid-cols-4 grid-cols-4 grid-cols-1 w-full md:w-11/12 mx-auto gap-y-12">
             @foreach ($advants as $advant )

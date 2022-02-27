@@ -2,7 +2,7 @@
 <div class="w-full bg-gradient-to-r from-white via-gray-100 to-white">
     <div class="container text-center mx-auto px-16">
         <div class="text-4xl mx-auto py-10 md:py-16">
-            @lang('lang.body_economy')
+            {{__('С Universal Services вы экономите на услугах до 70%.<br> Как это возможно')}}
         </div>
         <div class="grid md:grid-cols-2 grid-cols-1 mt-8 w-11/12 mx-auto">
 
@@ -18,7 +18,8 @@
                     <div class="md:text-left text-center">
                         <h3 class="text-3xl my-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
                         <a href="/categories/1" class="">
-                            <button class="bg-transparent hover:bg-yellow-500 text-yellow-500 hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">@lang('lang.body_createTask')</button>
+                            <button class="bg-transparent hover:bg-yellow-500 text-yellow-500 hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">
+                                {{__('Создать задания')}}</button>
                         </a>
                     </div>
 
@@ -37,9 +38,9 @@
                              src="{{ asset('storage/'.$howitwork->image) }}"
                              alt="">
                     </div>
-                    <div class="md:text-left text-center md:hidden block">
+                    <div class="md:text-left text-center md:hidden block">и найдите <br> исполнителя за несколько минут
                         <h3 class="text-3xl mt-8">{{ $howitwork->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h3>
-                        <a href="/categories/1" class="text-blue-500 underline text-xl">@lang('lang.body_createTask')</a>
+                        <a href="/categories/1" class="text-blue-500 underline text-xl">{{__('Создать задания')}}</a>
                     </div>
                 @endif
                 @php $cnt_for_hiw++; @endphp
@@ -49,11 +50,11 @@
     <div class="text-center w-full mx-auto mt-12 pb-8">
         <a href="/task/create?category_id=31">
             <button class="text-center text-white py-4 px-5  bg-yellow-500 border-yellow-500 text-3xl rounded">
-                @lang('lang.body_putTask')
+                {{__('Разместите задание прямо сейчас')}}
             </button>
         </a>
         <div class="text-center text-xl mt-4">
-            @lang('lang.body_findPerformer')
+            {{__('и найдите <br> исполнителя за несколько минут')}}
         </div>
     </div>
 </div>
