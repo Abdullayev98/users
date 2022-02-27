@@ -5,8 +5,8 @@
                 <div class="grid grid-cols-3 h-full">
                     <div class="step w-full text-center h-full text-8xl pt-4 text-gray-500">1</div>
                     <div class="w-full col-span-2">
-                        <div class="text-left text-sm lg:text-base xl:text-xl font-bold pt-4 lg:w-full w-8/12 h-1/2 text-gray-800">@lang('lang.roadmap_describeatask')</div>
-                        <div class="text-left text-sm w-full h-1/2 text-gray-600">@lang('lang.roadmap_text')</div>
+                        <div class="text-left text-sm lg:text-base xl:text-xl font-bold pt-4 lg:w-full w-8/12 h-1/2 text-gray-800">{{__('Опишите задание')}}</div>
+                        <div class="text-left text-sm w-full h-1/2 text-gray-600">{{__('Мы оповестим о нём подходящих исполнителей.')}}</div>
                     </div>
                 </div>
             </div>
@@ -14,8 +14,8 @@
                 <div class="grid grid-cols-3 h-full">
                     <div class="step w-full text-center h-full  text-8xl pt-4 text-gray-500">2</div>
                     <div class="w-full col-span-2">
-                        <div class="text-left text-sm lg:text-base xl:text-xl font-bold pt-4 lg:w-full w-8/12 h-1/2 text-gray-800">@lang('lang.roadmap_text1')</div>
-                        <div class="text-left text-sm w-full h-1/2 text-gray-600">@lang('lang.roadmap_text2')</div>
+                        <div class="text-left text-sm lg:text-base xl:text-xl font-bold pt-4 lg:w-full w-8/12 h-1/2 text-gray-800">{{__('Получите отклики')}}</div>
+                        <div class="text-left text-sm w-full h-1/2 text-gray-600">{{__('Заинтересованные исполнители предложат свои услуги.')}}</div>
                     </div>
                 </div>
             </div>
@@ -23,8 +23,8 @@
                 <div class="grid grid-cols-3 h-full">
                     <div class="step w-full text-center h-full  text-8xl pt-4 text-gray-500">3</div>
                     <div class="w-full col-span-2">
-                        <div class="text-left text-sm lg:text-base xl:text-xl font-bold pt-4 lg:w-full w-8/12 h-1/2 text-gray-800">@lang('lang.roadmap_text3')</div>
-                        <div class="text-left text-sm w-full h-1/2 text-gray-600">@lang('lang.roadmap_text4')</div>
+                        <div class="text-left text-sm lg:text-base xl:text-xl font-bold pt-4 lg:w-full w-8/12 h-1/2 text-gray-800">{{__('Выберите исполнителя')}}</div>
+                        <div class="text-left text-sm w-full h-1/2 text-gray-600">{{__('Обращайте внимание на проверенных исполнителей.')}}</div>
                     </div>
                 </div>
             </div>
