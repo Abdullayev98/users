@@ -19,7 +19,7 @@ return [
     'body_helpers' => "Ijrochilar sizga turli xil vazifalarni hal qilishda yordam berishga tayyor",
     'body_allService' => "Barcha xizmatlarni ko'rish",
     'body_comfortPay' => "Qulay va xavfsiz to'lov",
-    'body_securePay' => "Risksiz tranzaksiya orqali toʻlovni amalga oshirayotganda, agar biror narsa notoʻgʻri boʻlsa, Universal Services pulingizni qaytarib beradi.",
+    'body_securePay' => "Risksiz tranzaksiya orqali to'lovni amalga oshirayotganda, agar biror narsa noto'g'ri bo'lsa, Universal Services pulingizni qaytarib beradi.",
     'body_loyalPerformer' => "Ishonchli ijrochilar",
     'body_performerDocs' => "«Tasdiqlangan ijrochilar 'Universal services uchun hujjatlarini tasdiqladilar'",
     'body_feedback' => "Ishonchli sharhlar",
@@ -353,7 +353,7 @@ return [
     'authors_CusFeedAboutUser' => "Universal xizmatlar mijozlar sharhlari",
     'authors_FeedbackInf' => "Har kuni Internetda biz foydalanuvchilarning Universal xizmatlar haqida o'nlab sharhlarini uchratamiz. Ularning eng yorqin va eng hissiylari ushbu sahifada to'plangan. Biz ularni siz bilan baham ko'rishdan xursandmiz!",
     'authors_timeAgo' => "taxminan 2 yil oldin",
-    'authors_feedback' => "Men vaqti-vaqti bilan Universal xizmatlardan foydalanaman, bu foydali narsa. Kecha kurer poyezdga posilka yetkazib berdi. Bahorda tajribali hamshira singan oyog‘iga polimer bandaj qo‘ydi. Va men u yerda tozalashni buyuraman. - yuqori sifatli va arzon. Umuman olganda, tavsiya qilaman.",
+    'authors_feedback' => "Men vaqti-vaqti bilan Universal xizmatlardan foydalanaman, bu foydali narsa. Kecha kurer poyezdga posilka yetkazib berdi. Bahorda tajribali hamshira singan oyog'iga polimer bandaj qo'ydi. Va men u yerda tozalashni buyuraman. - yuqori sifatli va arzon. Umuman olganda, tavsiya qilaman.",
     'authors_createTask' => "Vazifa yaratish",
     'authors_codeText1' => "Parolingizni qayta tiklang",
     'authors_codeText2' => " Sahifangizga biriktirilgan telefon raqamingizni kiriting, va biz faol kodni yuboramiz",
@@ -525,15 +525,15 @@ return [
     'settings_save' => "Saqlash",
     'settings_chooseCat' => "Kategoriyalarni tanlang",
     'settings_location' => "Geolokatsiya",
-    'settings_chooseRegion' => "Yangi topshiriqlar haqida xabardor boʻlishni istagan tumanlarni tanlang:",
+    'settings_chooseRegion' => "Yangi topshiriqlar haqida xabardor bo'lishni istagan tumanlarni tanlang:",
     'settings_changeRegion' => "Hududni o'zgartirish",
     'settings_chooseR' => "Hududni tanlang",
     'settings_remain' => "So'rov qoldiring",
     'settings_close' => "Yopish",
     'settings_tashkent' => "Toshkent viloyati",
-    'settings_sendNotif' => "Yonimda yangi vazifa boʻlsa, bildirishnoma yuboring. Agar telefoningizda mobil ilova oʻrnatilgan boʻlsa.",
+    'settings_sendNotif' => "Yonimda yangi vazifa bo'lsa, bildirishnoma yuboring. Agar telefoningizda mobil ilova o'rnatilgan bo'lsa.",
     'settings_howMuch' => "Hamyoningizni qancha to'ldirmoqchisiz?",
-    'settings_minimum' => "To‘ldirish miqdori, minimal",
+    'settings_minimum' => "To'ldirish miqdori, minimal",
     'settings_order' => "15 000 so'mga 7 kunlik siyosat berish",
     'settings_toPay' => "X so'm to'lash uchun",
     'settings_in' => "To'lov topshirig'i, cheklovlar va to'liq shartlar shu yerda belgilangan",
@@ -560,7 +560,7 @@ return [
     'settings_newPassword' => "Yangi parol",
     'settings_repeatPassword' => "Parolni takrorlang",
     'settings_saveNewPass' => "Yangi parolni saqlash",
-    'settings_delete' => "Haqiqatan ham oʻchirib tashlamoqchimisiz?",
+    'settings_delete' => "Haqiqatan ham o'chirib tashlamoqchimisiz?",
     'settings_Success' => "Saqlandi",
     'settings_Successfully' => "Muvaffaqiyatli yangilandi",
     // settings.blade end
@@ -627,7 +627,7 @@ return [
 
     // budget.blade start
     'budget_lookingFor' => "Vazifa uchun tayinlovchi qidirilmoqda",
-    'budget_percent' => "Ish 75% toʻlgan",
+    'budget_percent' => "Ish 75% to'lgan",
     'budget_yourBudget' => "Siz qaysi byudjetni ko'ryapsiz?",
     'budget_sum' => "150 so'mgacha",
     'budget_back' => "Orqaga",
@@ -639,7 +639,7 @@ return [
     // budget.blade end
 
     // cargo.blade start
-    'cargo_percent' => "Vazifa 60% toʻldi",
+    'cargo_percent' => "Vazifa 60% to'ldi",
     'cargo_howBig' => "Yuk qanchalik katta?",
     'cargo_measure' => "Ijrochilar to'g'ri transport vositasini topishlari uchun vazn va o'lchamlarni belgilang.",
     'cargo_weight' => "Yuk vazni, kg",
@@ -649,7 +649,7 @@ return [
     // cargo.blade end
 
     // contacts.blade start
-    'contact_percent' => "Vazifa toʻldi",
+    'contact_percent' => "Vazifa to'ldi",
     'contact_details' => "Tafsilotlarni ko'rsating",
     'contact_name' => "Ism",
     'contact_number' => "Telefon raqami",
@@ -672,14 +672,14 @@ return [
     // date.blade end
 
     // location.blade start
-    'loc_percent' => "Ish 55% toʻlgan",
+    'loc_percent' => "Ish 55% to'lgan",
     'loc_whereTask' => "Vazifani qayerda bajarishim mumkin?",
     'loc_giveLocation' => "Atrofingizdagi rassomni topish uchun manzil yoki manzilni kiriting.",
     'loc_add' => "Boshqa manzil qo'shing",
     // location.blade end
 
     // movers.blade start
-    'movers_percent' => "Vazifa 68% toʻldi",
+    'movers_percent' => "Vazifa 68% to'ldi",
     'movers_loadFlat' => "Qavat yuklanmoqda",
     'movers_elevator' => "Lift",
     'movers_noElevator' => "Lift yo'q",
@@ -690,7 +690,7 @@ return [
 
     // name.blade start
     'name_helpToFind' => "Biz sizga vazifangiz uchun ijrochi topishga yordam beramiz",
-    'name_percent' => "Vazifa 14% toʻldi",
+    'name_percent' => "Vazifa 14% to'ldi",
     'name_howCanWeHelpU' => "Sizga qanday yordam bera olaman?",
     'name_taskName' => "Vazifa nomi",
     'name_example' => "Masalan, ",
@@ -707,7 +707,7 @@ return [
     // name.blade end
 
     // notes.blade start
-    'notes_percent' => "Vazifa 90% toʻldi",
+    'notes_percent' => "Vazifa 90% to'ldi",
     'notes_details' => "Tafsilotlarni ko'rsating",
     'notes_destcript' => "Ta'rif",
     'notes_example' => "Masalan: ",
@@ -731,7 +731,7 @@ return [
     // peopleT.blade end
 
     // services.blade start
-    'service_percent' => "Ish 89% toʻlgan",
+    'service_percent' => "Ish 89% to'lgan",
     'service_details' => "Tafsilotlarni ko'rsating",
     // services.blade end
 

@@ -5,7 +5,7 @@
     <div class="mt-3 text-center text-base">
         <div class="mx-auto flex items-center justify-center w-full">
             <h3 class="font-bold text-2xl block my-4 text-gray-700">
-                @lang('lang.signup_enter')
+            {{__('Зарегистрироваться через:')}}
             </h3>
         </div>
         <div class="mt-4 flex flex-row justify-center mb-3">
@@ -17,7 +17,7 @@
         </div>
         <div class="mx-auto flex items-center justify-center w-full">
             <h3 class="font-bold text-2xl block mb-4 text-gray-700">
-                @lang('lang.signup_endedregistration')
+                {{__('Заполните форму')}}
             </h3>
         </div>
         <form action="{{ route('user.registration') }}" method="POST">
@@ -79,7 +79,7 @@
 
                     <button type="submit"
                             class="sm:w-80 w-72 h-12 rounded-lg bg-green-500 text-white uppercase font-semibold hover:bg-green-500 transition mb-4">
-                        @lang('lang.signup_registration')
+                        {{__('Зарегистрироваться')}}
                     </button>
                 </div>
 

@@ -5,7 +5,7 @@
         <div class="mt-3 text-center text-base">
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4 text-gray-700">
-                   @lang('lang.signin_enter')
+                   {{__('Зарегистрироваться через:')}}
                 </h3>
             </div>
             <div class="mt-4 flex flex-row justify-center">
@@ -17,7 +17,7 @@
             </div>
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4 mt-4 text-gray-700">
-                 @lang('lang.signin_elpocta')
+                 {{__('Войти в профиль пользователя')}}
                 </h3>
             </div>
             <div>
@@ -56,7 +56,7 @@
                         <button type="submit"
                                 class="sm:w-80 w-72 h-12 rounded-lg bg-green-500 text-white uppercase
                         font-semibold hover:bg-green-500 transition mb-4">
-                            @lang('lang.singin_button')
+                            {{__('Войти')}}
                         </button>
                     </div>
 
@@ -64,13 +64,13 @@
 
                 <p class="mb-4">
                     <a class="text-sky-500" href="{{ route('reset') }}">
-                    @lang('lang.signin_passwordforgot')
+                    {{__('Забыли пароль?')}}
                     </a>
                 </p>
                 <p class="mb-4">
-                    @lang('lang.singin_withoutUs')
+                   {{__('Еще не с нами?')}}
                     <a class="text-sky-500" href="{{ route('register') }}">
-                    @lang('lang.signin_registration')
+                    {{__('Зарегистрируйтесь')}}
                     </a>
                 </p>
             </div>
