@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UserLoginRequest extends FormRequest
 {
@@ -15,7 +17,6 @@ class UserLoginRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -41,7 +42,7 @@ class UserLoginRequest extends FormRequest
                 'email.unique' => __('login.email.unique'),
                 'password.required' => __('login.password.required'),
                 'password.min' => __('login.password.min'),
-                'password.confirmed' => __('login.password.confirmed'),        
+                'password.confirmed' => __('login.password.confirmed'),
             ];
     }
 }

@@ -12,10 +12,10 @@
         <div class="grid md:grid-cols-3 lg:gap-x-20 md:gap-x-14">
             <div class="col-span-2">
                 <div class="w-full text-center text-2xl">
-                    @lang('lang.budget_lookingFor') "{{$task->name}}"
+                    {{__('Ищем исполнителя для задания')}} "{{$task->name}}"
                 </div>
                 <div class="w-full text-center my-4 text-gray-400">
-                    @lang('lang.contact_percent') 99%
+                    {{__('Задание заполнено на')}} 99%
                 </div>
                 <div class="relative pt-1">
                     <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
@@ -26,10 +26,10 @@
                 <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-2 md:p-6 px-8">
                     <div class="py-4 mx-auto px-auto text-center text-3xl font-semibold">
                         @auth()
-                            @lang('lang.contact_yourContacts')
+                            {{__('Ваши контакты')}}
                         @endauth
                         @guest()
-                            @lang('lang.contact_auth')
+                            {{__('Авторизация')}}
                         @endguest
                     </div>
                     <div class="w-10/12 mx-auto">
@@ -48,7 +48,7 @@
                                        leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active"
                                        id="tabs-home-tab3" data-bs-toggle="pill" data-bs-target="#tabs-home3" role="tab"
                                        aria-controls="tabs-home3"
-                                       aria-selected="true">@lang('lang.navbar_reg')</a>
+                                       aria-selected="true">{{__('Регистрация')}}</a>
                                 </li>
                                 <li class="nav-item w-1/2" role="presentation">
                                     <a href="#tabs-profile3"
@@ -61,7 +61,7 @@
                                        id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3"
                                        role="tab"
                                        aria-controls="tabs-profile3"
-                                       aria-selected="false">@lang('lang.navbar_enter')</a>
+                                       aria-selected="false">{{__('Вход')}}</a>
                                 </li>
                             </ul>
                         @endguest
@@ -83,7 +83,7 @@
                                                             @csrf
 
                                                             <label class="text-sm text-gray-500 mb-2"
-                                                                   for="phone">@lang('lang.contact_number')</label>
+                                                                   for="phone">{{__('Номер телефона')}}</label>
                                                             <input type="text"
                                                                    value="+998{{auth()->user()->phone_number}}"
                                                                    placeholder="+998(00)000-00-00" id="phone"
@@ -100,7 +100,7 @@
                                                                     <a onclick="myFunction()"
                                                                        class="w-1/3 text-xl  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                                                         <!-- <button type="button"> -->
-                                                                    @lang('lang.notes_back')
+                                                                    {{__('Назад')}}
                                                                     <!-- </button> -->
                                                                         <script>
                                                                             function myFunction() {
@@ -110,7 +110,7 @@
                                                                     </a>
                                                                     <input type="submit"
                                                                            class="bg-green-500 text-xl hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                                                           name="" value="@lang('lang.contact_send')">
+                                                                           name="" value="{{__('Отправить')}}">
                                                                 </div>
 
 
@@ -127,10 +127,10 @@
                                                             @csrf
 
                                                             <label class="text-sm text-gray-500 mb-2"
-                                                                   for="name">@lang('lang.contact_name')</label>
+                                                                   for="name">{{__('Имя')}}</label>
 
                                                             <input type="text" name="name"
-                                                                   placeholder="@lang('lang.contact_name')"
+                                                                   placeholder="{{__('Имя')}}"
                                                                    value="{{old('name')}}"
                                                                    class="mb-5 shadow appearance-none border   focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500 "/>
                                                             @error('name')
@@ -146,7 +146,7 @@
                                                             <p class="text-red-500">{{$message}}</p>
                                                             @enderror
                                                             <label class="text-sm text-gray-500 mb-2"
-                                                                   for="phone">@lang('lang.contact_number')</label>
+                                                                   for="phone">{{__('Номер телефона')}}</label>
                                                             <input type="text"
                                                                    value="+998{{old('phone_number')}}" id="phone"
                                                                    class="shadow appearance-none border phone focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500 "/>
@@ -162,7 +162,7 @@
                                                                     <a onclick="myFunction()"
                                                                        class="w-1/3 text-xl  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                                                         <!-- <button type="button"> -->
-                                                                    @lang('lang.notes_back')
+                                                                    {{__('Назад')}}
                                                                     <!-- </button> -->
                                                                         <script>
                                                                             function myFunction() {
@@ -172,7 +172,7 @@
                                                                     </a>
                                                                     <input type="submit"
                                                                            class="bg-green-500 text-xl hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                                                           name="" value="@lang('lang.contact_send')">
+                                                                           name="" value="{{__('Отправить')}}">
                                                                 </div>
 
 
@@ -201,7 +201,7 @@
                                                 Telefon nomer
                                             </span>
                                             <input type="text"
-                                                   placeholder="@lang('lang.contact_number')" id="phone2"
+                                                   placeholder="{{__('Номер телефона')}}" id="phone2"
                                                    value="+998{{ old('phone_number') }}"
                                                    class="mt-2 shadow appearance-none phone border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"/>
                                             <input type="hidden" name="phone_number" value="{{ old('phone_number') }}"
@@ -219,7 +219,7 @@
                                                 <a onclick="myFunction()"
                                                    class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                                     <!-- <button type="button"> -->
-                                                @lang('lang.notes_back')
+                                                {{__('Назад')}}
                                                 <!-- </button> -->
                                                     <script>
                                                         function myFunction() {
@@ -229,7 +229,7 @@
                                                 </a>
                                                 <input type="submit"
                                                        class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                                       name="" value="@lang('lang.contact_send')">
+                                                       name="" value="{{__('Отправить')}}">
                                             </div>
                                         </div>
                                     </form>

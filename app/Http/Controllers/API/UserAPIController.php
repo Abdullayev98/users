@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserLoginRequest;
+use App\Http\Requests\UserRegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -20,50 +22,37 @@ class UserAPIController extends Controller
         return response()->json($users);
     }
 
-    function login(Request $request)
+    function login(UserLoginRequest $request)
     {
-        try {
-            $this->validate($request, [
-                'email' => 'required|email',
-                'password' => 'required',
-            ]);
-            if (auth()->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-                $user = auth()->user();
-                $token = $user->createToken('authToken')->accessToken;
-                $user->device_token = $request->input('device_token', '');
-                $user->save();
-                return response()->json(['user' => $user,'token'=>$token, 'message' => 'User logged in successfully']);
-            } else {
-                return response()->json(['status' => 200, 'message' => 'Credentials are not valid']);
-            }
-        } catch (ValidationException $e) {
-            return response()->json(array_values($e->errors()));
+        $data = $request->validated();
+
+        if (!auth()->attempt($data)) {
+            return response(['message' => 'Invalid Email or Password']);
         }
+        $accessToken = auth()->user()->createToken('authToken')->accessToken;
+
+        return response(['user' => auth()->user(), 'access_token'=>$accessToken]);
 
     }
 
-    public function register(Request $request)
+    public function register(UserRegisterRequest $request)
     {
         try {
-            $request->validate([
-                'name' => 'required|min:5|max:255',
-                'email' => 'required|email|unique:users',
-                'password' => 'required|min:8|max:16',
-            ]);
-            $user = new User;
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
-            $user->phone_number = $request->input('phone_number');
-            $user->password = Hash::make($request->input('password'));
+            $data = $request->validated();
+            $data['password'] = Hash::make($data['password']);
+            $user = User::create($data);
             $user->api_token = Str::random(60);
             $user->remember_token = Str::random(60);
+
             $user->save();
-            return response()->json(['user'=>$user,'status' => 'true', 'message' => 'User successfully registered!']);
+            Auth::login($user);
+            $accessToken = auth()->user()->createToken('authToken')->accessToken;
+
+            return response(['user' => auth()->user(), 'access_token'=>$accessToken]);
         } catch (ValidationException $e) {
             return response()->json(array_values($e->errors()));
         }
     }
-
 
 
     public function update(Request $request, $id)
@@ -90,15 +79,11 @@ class UserAPIController extends Controller
         return response()->json(['status' => 'true', 'message' => 'User data deleted!']);
     }
 
-    function logout(Request $request)
+    function logout()
     {
-        try {
-            auth()->logout();
-        } catch (Exception $e) {
-            $this->sendError($e->getMessage(), 200);
-            return response()->json(['status' => 'false', 'message' => $e->getMessage(),200]);
-        }
-        return response()->json(['message'=> 'User logout successfully']);
 
+        auth()->user()->tokens->each(function ($token, $key) {
+            $token->delete();
+        });
     }
 }

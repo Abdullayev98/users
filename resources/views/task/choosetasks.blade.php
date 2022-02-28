@@ -6,8 +6,8 @@
 
     <div class="container w-10/12 mx-auto sm:my-12 my-4 text-base">
         <div class="text-center">
-            <h1 class="text-3xl pt-5 md:text-5xl font-bold">@lang('lang.chT_chooseCat')</h1>
-            <h3 class="text-lg my-5 font-semibold text-gray-400 mb-8">@lang('lang.chT_weHelp')</h3>
+            <h1 class="text-3xl pt-5 md:text-5xl font-bold">{{__('Выберите категорию задания')}}</h1>
+            <h3 class="text-lg my-5 font-semibold text-gray-400 mb-8">{{__('Мы готовы помочь вам в решении самых разнообразных задач')}}</h3>
             <div class="max-w-full container mx-auto lg:hidden">
                 <div class="slider" >
                     <div class="slider__wrapper" >
@@ -21,8 +21,8 @@
                                     </a>
                                 </button>
                             <div class="hidden">
-                                <a href="#" class="slider__control" data-slide="prev"></a>
-                                <a href="#" class="slider__control" data-slide="next"></a>
+                                <a  class="slider__control" data-slide="prev"></a>
+                                <a  class="slider__control" data-slide="next"></a>
                             </div>
                             @endforeach
                         </div>

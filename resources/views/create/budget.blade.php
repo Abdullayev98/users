@@ -13,10 +13,10 @@
             <div class="grid grid-cols-3 gap-x-20">
                 <div class="lg:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
-                        @lang('lang.budget_lookingFor') "{{$task->name}}"
+                        {{__('Ищем исполнителя для задания')}} "{{$task->name}}"
                     </div>
                     <div class="w-full text-center my-4 text-gray-400">
-                        @lang('lang.budget_percent')
+                        {{__('Задание заполнено на 75%')}}
                     </div>
                     <div class="relative pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="shadow-xl w-full mx-auto md:mt-7 rounded-2xl  w-full p-6 md:px-20">
                         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            @lang('lang.budget_yourBudget')
+                            {{__('На какой бюджет вы рассчитываете?')}}
                         </div>
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4">
@@ -91,7 +91,7 @@
                                 <div class="w-[100px]  md:w-[200px] xl:hidden">
                                     <select id="" name="amount" class="border md:ml-14 bg-green-400  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-yellow-600">
                                         <option value="0">
-                                            @lang('lang.budget_text')
+                                            {{__('Выберите бюджет')}}
                                         </option>
                                         <option value="от {{$category->max/5}} UZS">
                                             от {{$category->max/5}} UZS
@@ -117,7 +117,7 @@
                                     <div class="flex w-full gap-x-4 mt-4">
                                         <a onclick="myFunction()" class="w-1/3 cursor-pointer border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
-                                        @lang('lang.notes_back')
+                                         {{__('Назад')}}
                                         <!-- </button> -->
                                             <script>
                                                 function myFunction() {
@@ -128,7 +128,7 @@
 
                                         <input type="submit"
                                                class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                               name="" value="@lang('lang.name_next')">
+                                               name="" value="{{__('Далее')}}">
                                     </div>
                                 </div>
                             </div>

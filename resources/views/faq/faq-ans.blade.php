@@ -22,10 +22,11 @@
 
                     <a href="/" class="lg:md:text-base sm:text-sm text-xs text-white hover:text-yellow-400">
                         <i class="fa fa-link"></i>
-                            @lang('lang.faq-ans_text')
+                        {{__('Перейти на сайт Universal Services')}}
                     </a>
                 </div>
-                <h1 class="text-white lg:text-3xl md:text-2xl sm:text-xl font-light  my-6">@lang('lang.faq-ans_text1')</h1>
+                <h1 class="text-white lg:text-3xl md:text-2xl sm:text-xl font-light  my-6">
+                    {{__('Ответы на частые вопросы и рекомендации от Universal Services')}}</h1>
                 {{-- input --}}
             <form class="">
                 <div class="flex relative mx-auto w-full">
@@ -41,7 +42,7 @@
     </section>
 
     <div class="lg:w-8/12 mx-auto w-10/12 text-gray-500">
-        <span class="lg:md:text-base sm:text-sm text-xs">@lang('lang.faq-ans_allcollection')  <i class="fa fa-angle-right text-sm"></i> {{$fc->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</span>
+        <span class="lg:md:text-base sm:text-sm text-xs">{{__('Все коллекции')}}  <i class="fa fa-angle-right text-sm"></i> {{$fc->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale')}}</span>
     </div>
 
      <section class="mt-7">
@@ -55,19 +56,19 @@
                             <!-- <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover "> -->
 
                                 <!-- <div class="flex flex-col">
-                                    <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                    <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
+                                    <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a>
+                                    <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span>
                                 </div> -->
                         </div>
                     </div>
             </div>
             <div class="w-full">
-                <h5 class="lg:md:text-base sm:text-sm text-xs font-semibold mb-3">@lang('lang.faq-ans_allquestions')</h5>
+                <h5 class="lg:md:text-base sm:text-sm text-xs font-semibold mb-3">{{__('Общие вопросы')}}</h5>
             </div>
             <div class="w-full bg-white border border-gray-300 rounded-t-md lg:p-[25px] md:p-[20px] sm:p-[15px] p-[10px] divide-y">
               @foreach($fq as $faq)
                 <div class="w-full lg:py-4 md:py-3 sm:py-2 py-1">
-                    <!-- <a href="#"> -->
+                    <!-- <a > -->
                         <h2 class="text-gray-800 lg:md:text-base sm:text-sm text-xs">{{$faq->getTranslatedAttribute('question',Session::get('lang') , 'fallbackLocale')}}</h2>
                     <!-- </a> -->
                     <p class="text-gray-600 lg:md:text-base sm:text-sm text-xs">{{$faq->getTranslatedAttribute('q_descript',Session::get('lang') , 'fallbackLocale')}}</p>
@@ -76,35 +77,35 @@
 
                                 <!-- <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover "> -->
                             <!-- <div class="flex flex-col"> -->
-                                <!-- <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a> -->
-                                <!-- <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span> -->
+                                <!-- <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a> -->
+                                <!-- <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span> -->
                             <!-- </div> -->
                     </div>
                  </div>
                  @endforeach
                 <!-- <div class="w-full py-4">
-                    <a href="#">
+                    <a >
                         <h2 class="text-gray-800 text-xl">Как зарегистрироваться на сайте</h2>
                     </a>
                     <p class="text-gray-600">О возможных вариантах регистрации и этапах этого процесса</p>
                     <div class="flex flex-row items-center">
                                 <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
                             <div class="flex flex-col">
-                                <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
+                                <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a>
+                                <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span>
                             </div>
                     </div>
                 </div>
                 <div class="w-full py-4">
-                    <a href="#">
+                    <a >
                         <h2 class="text-gray-800 text-xl">Как зарегистрироваться на сайте</h2>
                     </a>
                     <p class="text-gray-600">О возможных вариантах регистрации и этапах этого процесса</p>
                     <div class="flex flex-row items-center">
                                 <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
                             <div class="flex flex-col">
-                                <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                                <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
+                                <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a>
+                                <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span>
                             </div>
                     </div>
                 </div> -->

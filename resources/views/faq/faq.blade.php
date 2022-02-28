@@ -21,10 +21,11 @@
 
                     <a href="/" class="lg:md:text-base sm:text-sm text-xs text-white hover:text-yellow-400">
                         <i class="fa fa-link"></i>
-                            @lang('lang.faq_text')
+                        {{__('Перейти на сайт Universal Services')}}
                     </a>
                 </div>
-                <h1 class="lg:text-3xl md:text-2xl sm:text-xl text-white  font-light  my-6">@lang('lang.faq_text1')</h1>
+                <h1 class="lg:text-3xl md:text-2xl sm:text-xl text-white  font-light  my-6">
+                    {{__('Ответы на частые вопросы и рекомендации от Universal Services')}}</h1>
                 {{-- input --}}
             <form action="{{ route('faq.index') }}" method="GET">
                 @csrf
@@ -51,8 +52,8 @@
                     <img src="{{asset('images/avatar-avtor-image.png')}}" alt="avatar" class="h-8 rounded-full mr-3 object-cover ">
 
                         <div class="flex flex-col">
-                            <a href="#" class="text-slate-500 text-sm">16 статей в этой коллекции </a>
-                            <span class="text-sm">Автор:<a href="#" class="text-slate-600"> Агния</a> </span>
+                            <a  class="text-slate-500 text-sm">16 статей в этой коллекции </a>
+                            <span class="text-sm">Автор:<a  class="text-slate-600"> Агния</a> </span>
                         </div>
                 </div> -->
             </div>
@@ -62,7 +63,7 @@
 
     <footer class="lg:md:text-base sm:text-sm text-xs bg-white w-full flex flex-col p-8 justify-center items-center mt-8">
         <h2>user.uz</h2>
-        <p>@lang('lang.faq_text2')</p>
+        <p>{{__('Мы используем Intercom')}}</p>
     </footer>
     <script src="{{ asset('js/faq/faq.js') }}"></script>
 </body>

@@ -72,13 +72,13 @@ function dataAjaxCopy(dataA){
 }
 
 function jqFilter() {
-    nameVal1 = $('#filter').val()
-    nameVal2 = $('#suggest').val()
-    nameVal3 = $('#price').val()
-    if ($.trim(nameVal1) != '' || $.trim(nameVal2) != '' || $.trim(nameVal3) != ''){
-        dataAjaxFindThree(dataAjax, nameVal1, nameVal2, nameVal3)
+    filterVal = $('#filter').val()
+    suggestVal = $('#suggest').val()
+    priceVal = $('#price').val()
+    if ($.trim(filterVal) != '' || $.trim(suggestVal) != '' || $.trim(priceVal) != ''){
+        dataAjaxFindThree(dataAjax, filterVal, suggestVal, priceVal)
     }
-    if ($.trim(nameVal1) == '' && $.trim(nameVal2) == '' && $.trim(nameVal3) == ''){
+    if ($.trim(filterVal) == '' && $.trim(suggestVal) == '' && $.trim(priceVal) == ''){
         dataAjaxCheck = 1;
         sixInOne();
     }
@@ -110,7 +110,7 @@ $("#suggest").keyup(function() {
     if ($('#suggest').val().trim().length == 0) {
         $('#closeBut').hide();
         $('#geoBut').show();
-        jqFilter()
+        // jqFilter()
     }else{
         $('#geoBut').hide();
         $('#closeBut').show();
@@ -142,15 +142,32 @@ $("#findBut").click(function() {
     jqFilter();
 });
 
+$("#findBut2").click(function() {
+    jqFilter();
+});
+
 $("#geoBut").click(function() {
     $('#closeBut').show();
     $('#geoBut').hide();
+});
+
+$("#geoBut2").click(function() {
+    console.log('Ishlavoti...')
+    $('#closeBut2').show();
+    $('#geoBut2').hide();
 });
 
 $("#closeBut").click(function() {
     $('#suggest').val('');
     $('#closeBut').hide();
     $('#geoBut').show();
+    jqFilter()
+});
+
+$("#closeBut2").click(function() {
+    $('#suggest2').val('');
+    $('#closeBut2').hide();
+    $('#geoBut2').show();
     jqFilter()
 });
 
@@ -206,7 +223,6 @@ function dataAjaxSortByDS(arr, numb) {
         tasks_list_all(dataAjaxPrint)
         tasks_show()
     }
-
 }
 
 function dataAjaxFindThree(dataA, str1, str2, num) {
@@ -263,12 +279,13 @@ function dataAjaxFindThree(dataA, str1, str2, num) {
         if (dataAjax2.length != 0){
             dataAjaxCheck = 2
             sixInOne()
-        }else{
-            resetCounters()
-            tasks_list_all(dataAjaxPrint)
-            tasks_show()
         }
-
+        // else{
+            // resetCounters()
+            // tasks_list_all(dataAjaxPrint)
+            // tasks_show()
+            // maps_show()
+        // }
 }
 
 function tasks_list_all(data) {
@@ -530,23 +547,50 @@ function map_pos(mm) {
 
         ymaps.ready(init);
         function init() {
-
-            var myInput = document.getElementById("suggest");
-            var location = ymaps.geolocation;
-
-            location.get({
-                mapStateAutoApply: true
-            })
-                .then(
-                    function(result) {
-                        let userCoord = result.geoObjects.get(0).geometry.getCoordinates();
+            let location = ymaps.geolocation;
+            sugVal = document.getElementById("suggest").value;
+            if (sugVal != '') {
+                var myGeo = ymaps.geocode(sugVal);
+                myGeo.then(
+                    function (res) {
+                        let userCoord = res.geoObjects.get(0).geometry.getCoordinates();
                         userCoordinates = userCoord;
-
-                    },
-                    function(err) {
-                        console.log('Ошибка: ' + err)
+                        myMap2.geoObjects.add(result.geoObjects)
+                        // myMap.setCenter( res.geoObjects.get(0).geometry.getCoordinates());
                     }
                 );
+            }else {
+                // var suggestView = new ymaps.SuggestView('suggest');
+                // let myInput = new ymaps.SuggestView('suggest');
+                // console.log(myInput)
+                // let myInput = document.getElementById("suggest");
+
+                location.get({
+                    mapStateAutoApply: true
+                })
+                    .then(
+                        function (result) {
+                            let userCoord = result.geoObjects.get(0).geometry.getCoordinates();
+                            userCoordinates = userCoord;
+                            // myMap2.geoObjects.add(result.geoObjects)
+
+                        },
+                        function (err) {
+                            console.log('Ошибка: ' + err)
+                        }
+                    );
+            }
+
+            // var suggestView1 = new ymaps.SuggestView('suggest');
+            let myMap2 = new ymaps.Map('map2', {
+                center: [userCoordinates[0], userCoordinates[1]],
+                zoom: 13,
+                controls: [],
+                // controls: ['zoomControl','geolocationControl'],
+                behaviors: ['default', 'scrollZoom']
+            }, {
+                searchControlProvider: 'yandex#search'
+            });
 
             $("#geoBut").click(function(){
                 location.get({
@@ -554,27 +598,18 @@ function map_pos(mm) {
                 })
                     .then(
                         function(result) {
-                            myInput.value = result.geoObjects.get(0).properties.get('text');
+                            document.getElementById("suggest").value = result.geoObjects.get(0).properties.get('text');
                             userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
-                            // myMap2.geoObjects.add(result.geoObjects)
+                            myMap2.geoObjects.add(result.geoObjects)
+                            myMap2.setCenter(result.geoObjects.get(0).geometry.getCoordinates());
                         },
                         function(err) {
                             console.log('Ошибка: ' + err)
                         }
                     );
             });
-            // var suggestView1 = new ymaps.SuggestView('suggest');
-            var myMap2 = new ymaps.Map('map2', {
-                center: [userCoordinates[0], userCoordinates[1]],
-                zoom: 10,
-                controls: ['geolocationControl'],
-                behaviors: ['default', 'scrollZoomNo']
-            }, {
-                searchControlProvider: 'yandex#search'
-            });
 
-            circle = new ymaps.Circle([userCoordinates, r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
-            myMap2.geoObjects.add(circle);
+
 
             clusterer = new ymaps.Clusterer({
                 preset: 'islands#invertedGreenClusterIcons',
@@ -611,8 +646,12 @@ function map_pos(mm) {
             clusterer.add(geoObjects);
             myMap2.geoObjects.add(clusterer);
             myMap2.setBounds(clusterer.getBounds(), {
+                boundsAutoApply: true,
                 checkZoomRange: true
             });
+
+            circle = new ymaps.Circle([userCoordinates, r*1000], null, { draggable: false, fill: false, outline: true, strokeColor: '#32CD32', strokeWidth: 3});
+            myMap2.geoObjects.add(circle);
 
             // circle.events.add('visible', function () {
             //     var objectsInsideCircle = objects.searchInside(circle);
@@ -712,7 +751,7 @@ function map1_show (){
                 }
             );
 
-        $("#geoBut2").click(function(){
+        $("#geoBut5").click(function(){
             location.get({
                 mapStateAutoApply: true
             })

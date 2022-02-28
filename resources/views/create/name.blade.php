@@ -32,10 +32,10 @@
         <div class="grid grid-cols-3   lg:gap-x-8 md:gap-x-0.5 h-full">
             <div class="md:col-span-2  col-span-3">
                 <div class="w-full text-center md:text-2xl text-xl">
-                    @lang('lang.name_helpToFind')
+                    {{__('Поможем найти исполнителя для вашего задания')}}
                 </div>
                 <div class="w-full text-center my-4 text-gray-400">
-                    @lang('lang.name_percent')
+                    {{__('Задание заполнено на 14%')}}
                 </div>
                 <div class="pt-1">
                     <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200 mx-auto ">
@@ -43,9 +43,9 @@
                              class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                     </div>
                 </div>
-                <div class="shadow-2xl w-full lg:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
+                <div class="shadow-2xl w-full lg:p-8 p-4 mx-auto my-4 rounded-2xl	w-full">
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
-                        @lang('lang.name_howCanWeHelpU')
+                        {{__('Чем вам помочь?')}}
                     </div>
                     <form action="{{route("task.create.name.store")}}" method="post">
                         @csrf
@@ -54,19 +54,19 @@
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
                             <div class="mb-4">
                                 <label class="block text-gray-400 text-sm mb-2" for="username">
-                                    @lang('lang.name_taskName')
+                                    {{__('Название задания')}}
                                 </label>
                                 <input
                                     class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none
                                     focus:border-yellow-500 "
                                     id="username" type="text"
-                                    placeholder="@lang('lang.name_example') {{ $current_category->getTranslatedAttribute('name') }}"
+                                    placeholder="{{__('Например, ')}} {{ $current_category->getTranslatedAttribute('name') }}"
                                     required name="name" value="{{session('neym')}}">
                             </div>
-                            <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
+                            <p class="text-base text-gray-600 mt-10">{{__('Если хотите выбрать другую категорию')}}</p>
                             <div id="categories">
-                                <div class="flex ">
-                                    <div class="w-1/2 pr-3 py-5">
+                                <div class="flex lg:flex-row flex-col">
+                                    <div class="lg:w-1/2 w-full lg:pr-3 py-5">
                                         <select class="select2 parent-category "
                                                 style="width: 100%"
                                         >
@@ -75,7 +75,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="w-1/2 pl-3 py-5">
+                                    <div class="lg:w-1/2 w-full lg:pl-3 py-5">
                                         @foreach(getCategoriesByParent(null) as $category)
 
                                             <div class="hidden child-category child-category-{{ $category->id }}">
@@ -96,9 +96,12 @@
 
 
                         </div>
-                        <input type="submit"
-                               class="bg-green-500 hover:bg-green-500 w-full mx-0 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
-                               name="" value="@lang('lang.name_next')">
+                        <div class="flex  mx-auto" >
+                            <input type="submit"
+                                   class="bg-green-500 hover:bg-green-500 w-9/12 mx-auto my-4 cursor-pointer text-white font-bold  py-5  px-5 rounded"
+                                   name="" value="{{__('Далее')}}">
+                        </div>
+
                         </div>
 
                     </form>
@@ -118,7 +121,7 @@
 
     <script>
         $('.select2').select2({
-            minimumResultsForSearch: Infinity,
+            //minimumResultsForSearch: Infinity,
         }).maximizeSelect2Height()
 
         let parentCategory = $(".parent-category").val();

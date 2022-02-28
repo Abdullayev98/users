@@ -3,8 +3,9 @@
 @section('content')
 
     <div class="text-sm w-full bg-gray-200 my-4 py-3">
-        <p class="w-8/12 mx-auto text-gray-500 font-normal">@lang('lang.perf_youreInUser') <br>
-            @lang('lang.perf_forOffer')</p>
+        <p class="w-8/12 mx-auto text-gray-500 font-normal">{{__('Вы находитесь в разделе исполнителей U-Ser.')}} <br>
+            {{__('Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его
+            профиле.')}}</p>
     </div>
     <div class="xl:w-8/12 mx-auto mt-16 text-base">
         <div class="grid grid-cols-3 ">
@@ -18,7 +19,7 @@
                     <div class="w-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
                     </div>
                     <div class=" text-xs text-gray-700 text-left my-auto">
-                        @lang('lang.perfCat_becomePerf')
+                        {{__('Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.')}}
                     </div>
                 </a>
 
@@ -47,13 +48,13 @@
             <div class="lg:col-span-2 col-span-3 lg:mt-0 mt-16">
                 <div class="bg-gray-100 h-40 rounded-xl w-full sm:mx-0 mx-auto">
                     <div class="font-bold text-2xl mx-8 py-4">
-                        <p>@lang('lang.perfCat_allPerf')</p>
+                        <p>{{__('Все исполнители')}}</p>
                     </div>
                     <div class="form-check flex flex-row mx-8 mt-10">
                         <input class="focus:outline-none  form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black-600 checked:border-black-600 focus:outline-none focus:border-yellow-500 transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                type="checkbox" value="1" onchange="check()" id="online">
                         <label class="form-check-label inline-block text-gray-800" for="online">
-                            @lang('lang.perfCat_nowInSite')
+                            {{__('Сейчас на сайте')}}
                         </label>
                     </div>
                 </div>
@@ -68,15 +69,15 @@
                     <div class="w-12/12 m-5 h-[200px] flex md:flex-none overflow-hidden md:overflow-visible mb-10 " id="{{$user->id}}">
                         <div class="w-34 float-left">
                             <img class="rounded-lg w-32 h-32 bg-black mb-4 mr-4"
-                                @if ($user->avatar == Null)
-                                src='{{asset("AvatarImages/images/default_img.jpg")}}'
-                                @else
-                                src="{{asset("AvatarImages/{$user->avatar}")}}"
-                                @endif alt="">
+                                 @if ($user->avatar == Null)
+                                 src='{{asset("storage/images/default.jpg")}}'
+                                 @else
+                                 src="{{asset("storage/{$user->avatar}")}}"
+                                 @endif alt="avatar">
                             <div class="flex flex-row text-[12px]">
-                                <p>@lang('lang.perfCat_feedbacks')</p>
-                                <i class="far fa-thumbs-up m-1 text-gray-400 like{{$user->id}}">{{$user->reviews->where('good_bad',1)->count()}}</i>
-                                <i class="far fa-thumbs-down m-1 text-gray-400 dislike{{$user->id}}">{{$user->reviews->where('good_bad',0)->count()}}</i>
+                                <p>{{__('Отзывы:')}}</p>
+                                <i class="far fa-thumbs-up m-1 text-gray-400 like{{$user->id}}">{{$user->reviews()->where('good_bad',1)->count()}}</i>
+                                <i class="far fa-thumbs-down m-1 text-gray-400 dislike{{$user->id}}">{{$user->reviews()->where('good_bad',0)->count()}}</i>
                             </div>
                             <div class="flex flex-row stars{{$user->id}}">
                             </div>
@@ -114,10 +115,11 @@
                             </div>
                             <div>
                                 @if($user->active_status == 1)
-                                    <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 mr-2 mt-1"> </i> @lang('lang.exe_online')</p>
+                                    <p class="text-sm text-green-500 my-3"><i class="fa fa-circle text-xs text-green-500 mr-2 mt-1"> </i>
+                                        {{__('Онлайн')}}</p>
 
                                 @else
-                                    <p class="text-sm text-gray-500 my-3">@lang('lang.exe_offline')</p>
+                                    <p class="text-sm text-gray-500 my-3">{{__('Офлайн')}}</p>
                                 @endif
 
                             </div>
@@ -133,8 +135,9 @@
                                             Предложить задание
                                         </a>
                                     @else
-                                        <a href="#"  onclick="toggleModal12('modal-id12')" class="hidden lg:block">
-                                            <button class="rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">@lang('lang.exe_giveTbtn')</button>
+                                        <a   onclick="toggleModal12('modal-id12')" class="hidden lg:block">
+                                            <button class="rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white mt-3">
+                                                {{__('Предложить задание')}}</button>
                                         </a>
                                     @endif
                                 @endauth
@@ -222,19 +225,19 @@
                             <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                         </button>
                         <h3 class="font-medium text-4xl block mt-4">
-                            @lang('lang.exe_youHaventT')
+                            {{__('У вас пока нет опубликованных <br> заданий')}}
                         </h3>
                     </div>
                     <!--body-->
                     <div class="relative p-6 flex-auto">
                         <p class="my-4  text-lg  text-center">
-                            @lang('lang.exe_createTFirst')
+                            {{__('Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.')}}
                         </p>
                     </div>
                     <!--footer-->
                     <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                         <div class="mt-4 ">
-                            <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-600  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
+                            <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-600  h-12 rounded-md text-xl" href="/categories/1" >{{__('Создать задание')}}</a>
                         </div>
                     </div>
                 </div>
@@ -274,19 +277,19 @@
                         <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                     </button>
                     <h3 class="font-medium text-4xl block mt-4">
-                        @lang('lang.exe_youHaventT')
+                        {{__('У вас пока нет опубликованных <br> заданий')}}
                     </h3>
                 </div>
                 <!--body-->
                 <div class="relative p-6 flex-auto">
                     <p class="my-4   text-center">
-                        @lang('lang.exe_createTFirst')
+                        {{__('Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.')}}
                     </p>
                 </div>
                 <!--footer-->
                 <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
                     <div class="mt-4 ">
-                        <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" href="/categories/1" >@lang('lang.exe_createTask')</a>
+                        <a class="px-10 py-4 text-center font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" href="/categories/1" >{{__('Создать задание')}}</a>
                     </div>
                 </div>
             </div>
@@ -336,7 +339,7 @@
         @foreach($users as $user)
         $("#open{{$user->id}}").click(function(){
             var username = $(".{{$user->id}}").text();
-            var namem = $(".namem").text('@lang('lang.modal_alert')'+username );
+            var namem = $(".namem").text('{{__('Вы предложили задание исполнителю')}}'+username );
             $(".modal_content").show();
             let user_id = $('.{{$user->id}}').attr('id');
             $.ajax({

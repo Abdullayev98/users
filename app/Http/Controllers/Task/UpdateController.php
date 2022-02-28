@@ -27,9 +27,8 @@ class UpdateController extends Controller
     public function __invoke(UpdateRequest $request, Task $task)
     {
         taskGuard($task);
-
         $data = $request->validated();
-        $data = $this->getAddress($data);
+        $data = getAddress($data);
         $task->update($data);
         $this->service->syncCustomFields($task);
         Alert::success('Success');
@@ -38,18 +37,6 @@ class UpdateController extends Controller
 
 
     }
-
-    public function getAddress($data){
-        $address['location'] = $data['address'];
-        $address['latitude'] = explode(',',$data['coordinates'])[0];
-        $address['longitude'] = explode(',',$data['coordinates'])[1];
-        $data['address'] = $address;
-        return $data;
-    }
-
-
-
-
 
     public function completed(Task $task){
         $data = [

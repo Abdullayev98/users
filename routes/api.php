@@ -1,14 +1,14 @@
 <?php
 
+use App\Http\Controllers\API\CategoriesAPIController;
+use App\Http\Controllers\API\CustomFieldAPIController;
 use App\Http\Controllers\API\FaqAPIController;
 use App\Http\Controllers\API\NewsAPIController;
-use App\Http\Controllers\API\ProfileAPIController;
-use App\Http\Controllers\API\UserAPIController;
-use App\Http\Controllers\API\PaynetTransactionAPIController;
-use App\Http\Controllers\API\TaskAPIController;
-use Illuminate\Http\Request;
-use App\Http\Controllers\API\CategoriesAPIController;
 use App\Http\Controllers\API\PerformerAPIController;
+use App\Http\Controllers\API\ProfileAPIController;
+use App\Http\Controllers\API\TaskAPIController;
+use App\Http\Controllers\API\UserAPIController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,43 +23,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::middleware('auth:api')->group(function () {
+    Route::post('logout', [UserAPIController::class, 'logout']);
+
     Route::post('task/create', [TaskAPIController::class, 'create']);
     Route::get('settings', [ProfileAPIController::class, 'settings']);
+
+
+    Route::get('/my-tasks', [TaskAPIController::class, 'my_tasks']);
+    Route::post('/change-task/{task}', [TaskAPIController::class, 'changeTask']);
+    Route::get('/custom-field-by-category/{category}',[CustomFieldAPIController::class,'getByCategoryId']);
+    Route::get('/custom-field-by-task/{task}',[CustomFieldAPIController::class,'getByTaskId']);
+
 });
 //User Routes
-Route::get('users', [UserAPIController::class, 'index']);
 Route::post('login', [UserAPIController::class, 'login']);
 Route::post('register', [UserAPIController::class, 'register']);
 Route::put('update/{id}', [UserAPIController::class, 'update']);
-Route::get('logout', [UserAPIController::class, 'logout']);
 Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
 
 // FAQ
 Route::get('faq', [FaqAPIController::class, 'index']);
-Route::get('faq/{id}', [FaqAPIController::class, 'questions']);
+Route::get('faq/{faqs}', [FaqAPIController::class, 'questions']);
 //News
 Route::get('news', [NewsAPIController::class, 'index']);
 Route::post('news/create', [NewsAPIController::class, 'create']);
 Route::get('news/show/{id}', [NewsAPIController::class, 'show']);
-//Profile
-Route::get('profile/{id}', [ProfileAPIController::class, 'index']);
-Route::patch('profile/{id}', [ProfileAPIController::class, 'update']);
+
+
 //Tasks
-Route::prefix("task")->group(function (){
-    Route::get('/{id}', [TaskAPIController::class, 'task']);
-    Route::get('/search/{s}', [TaskAPIController::class, 'search']);
-});
+Route::get('task/{task}', [TaskAPIController::class, 'task']);
+Route::get('find', [TaskAPIController::class, 'search']);
+
+
 //Categories
-Route::get('/categories' , [CategoriesAPIController::class, 'index']);
+Route::get('/categories', [CategoriesAPIController::class, 'index']);
+Route::get('/categories/{category}', [CategoriesAPIController::class, 'show']);
 //Performers
 Route::get('/performers', [PerformerAPIController::class, 'service']);
-Route::get('/performer/{id}', [PerformerAPIController::class, 'performer']);
+Route::get('/performers/{performer}', [PerformerAPIController::class, 'performer']);
 
-////PaynetTransactions
-//Route::any('/paynet',function(){
-//    (new PaynetTransactionAPIController)->driver('paynet')->handle();
-//});

@@ -13,10 +13,10 @@
 <div class="grid md:grid-cols-3 lg:gap-x-20 md:gap-x-14">
   <div class="col-span-2">
     <div class="w-full text-center text-2xl">
-    @lang('lang.budget_lookingFor') "{{$task->name}}"
+    {{__('Ищем исполнителя для задания')}} "{{$task->name}}"
     </div>
     <div class="w-full text-center my-4 text-gray-400">
-      @lang('lang.notes_percent')
+      {{__('Задание заполнено на 90%')}}
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
@@ -25,7 +25,7 @@
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl px-6 mb-6 p-6 md:px-20">
       <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-        @lang('lang.notes_details')
+        {{__('Уточните детали')}}
       </div>
 
       <div class="py-4 mx-auto  text-left ">
@@ -35,10 +35,10 @@
         <div class="">
             <div class="mb-3 xl:w-full">
                 <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">
-                    @lang('lang.notes_destcript')</label>
+                    {{__('Описание')}}</label>
                 <textarea name="description"
                   class="form-control block resize-none w-full h-36  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none focus:border-yellow-500"
-                   placeholder="@lang('lang.notes_example'){{$task->category->placeholder}}"></textarea>
+                   placeholder="{{__('Например')}}{{$task->category->placeholder}}"></textarea>
               </div>
         </div>
 
@@ -51,20 +51,20 @@
                 <label class="md:w-2/3 block mt-6">
                     <input class="focus:outline-none  mr-2 h-4 w-4" type="checkbox" name="docs">
                     <span class="text-slate- 900">
-                        @lang('lang.notes_giveDocs')
-                        <br><p class="text-sm text-slate-500">@lang('lang.notes_forAccess')</p>
+                        {{__('Предоставить документы')}}
+                        <br><p class="text-sm text-slate-500">{{__('Для оформления расписки/доверенности')}}</p>
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" checked name="oplata" value="@lang('lang.cardpay')">
+                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" checked name="oplata" value="{{__('Оплата через карту')}}">
                     <span class="text-slate- 900">
-                        @lang('lang.cardpay')
+                        {{__('Оплата через карту')}}
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" name="oplata" value="@lang('lang.nalpay')">
+                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" name="oplata" value="{{__('Оплата наличными')}}">
                     <span class="text-slate- 900">
-                        @lang('lang.nalpay')
+                        {{__('Оплата наличными')}}
                     </span>
                   </label>
                  @foreach($task->category->customFieldsInNote as $data)
@@ -74,7 +74,7 @@
              <div class="flex w-full gap-x-4 mt-4">
              <a onclick="myFunction()" class="w-1/3 cursor-pointer  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
-                                            @lang('lang.notes_back')
+                                            {{__('Назад')}}
                                             <!-- </button> -->
                                             <script>
                                                 function myFunction() {
@@ -85,7 +85,7 @@
 
                <input type="submit"
                 class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                               name="" value="@lang('lang.name_next')">
+                               name="" value="{{__('Далее')}}">
              </div>
 
 

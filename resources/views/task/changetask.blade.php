@@ -176,7 +176,7 @@
                     <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
                             class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
-                        <option disabled>@lang('lang.name_chooseOne')</option>
+                        <option disabled>{{__('Выберите один из пунктов')}}</option>
                         <option>{{ $task->category->name }}</option>
                     </select>
 
@@ -184,7 +184,7 @@
                             onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
                             class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
-                        <option disabled>@lang('lang.name_chooseOne')</option>
+                        <option disabled>{{__('Выберите один из пунктов')}}</option>
                         @foreach($task->category->parent->childs as $category)
                             <option
                                 value="{{ $category->id }}" {{ $category->id == $task->category_id ? 'selected' : null }} >{{ $category->name }}</option>
@@ -345,7 +345,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         </svg>
-                                        <span class="text-base">@lang('lang.loc_add')</span>
+                                        <span class="text-base">{{__('Добавить ещё адрес')}}</span>
                                     </button>
                                     <div id="map" class="h-60 mt-4 rounded-lg w-full"></div>
                                 </div>
@@ -360,7 +360,7 @@
                     </div>
                     <div>
                         <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
-                            <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_Image')</h1>
+                            <h1 class="font-bold h-auto w-48">{{__('Рисунок')}}</h1>
                             @foreach(json_decode($task->photos)??[] as $key => $image)
                                 {{--                                            @if ($loop->first)--}}
 
@@ -435,7 +435,7 @@
                             class="text-2xl mr-5 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-md ">
                         Сохранить
                     </button>
-                    <a href="#"
+                    <a
                        class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">Отмена</a>
                 </div>
             </div>
@@ -453,7 +453,7 @@
 
     </script>
     <script id="map_api"
-            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')&onload=onLoad"
+            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}&onload=onLoad"
             type="text/javascript">
     </script>
     <script>

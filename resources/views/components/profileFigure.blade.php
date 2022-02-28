@@ -1,9 +1,9 @@
 <figure class="w-full">
     <div class="hidden md:block float-right mr-8 text-gray-500">
-        <i class="far fa-eye"> {{$views}}  @lang('lang.profile_view')</i>
+        <i class="far fa-eye"> {{$views}}  {{__('просмотр')}}</i>
     </div>
     <br>
-    <h2 class="font-bold text-2xl text-gray-800 mb-2">@lang('lang.cash_hello'), {{$user->name}}!</h2>
+    <h2 class="font-bold text-2xl text-gray-800 mb-2">{{__('Здравствуйте')}}, {{$user->name}}!</h2>
     <div class="flex flex-row mt-6">
         <div class="sm:w-1/3 w-full">
             <img class="border border-3 border-gray-400 h-40 w-40"
@@ -16,7 +16,7 @@
                 <input type="file" name="file" id="file" onclick="fileupdate()" class="hidden">
                 <label for="file" class="p-1 cursor-pointer">
                     <i class="fas fa-camera mx-1"></i>
-                    <span>@lang('lang.cash_changeImg')</span>
+                    <span>{{__('Изменить фото')}}</span>
                 </label>
             </div>
         </div>
@@ -25,9 +25,9 @@
             @isset($user->age)
                 <p class="inline-block mr-2">
                     {{$user->age}}
-                    @if($user->age>20 && $user->age%10==1) @lang('lang.cash_rusYearGod')
-                    @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) @lang('lang.cash_rusYearGoda')
-                    @else @lang('lang.cash_rusYearLet')
+                    @if($user->age>20 && $user->age%10==1) {{__('года')}}
+                    @elseif ($user->age>20 && ($user->age%10==2 || $user->age%10==3 || $user->age%10==1)) {{__('года')}}
+                    @else {{__('лет')}}
                     @endif
                 </p>
             @endisset
@@ -36,16 +36,16 @@
                                 <p class="inline-block text-m">
                                     @isset($user->location)
                                         <i class="fas fa-map-marker-alt"></i>
-                                        @lang('lang.cash_city') {{$user->location}}
-                                    @else @lang('lang.cash_cityNotGiven')
+                                        {{__('Местоположение')}} {{$user->location}}
+                                    @else {{__('город не включен')}}
                                     @endisset
                                 </p>
                             </span>
-            <p class="mt-2">@lang('lang.cash_created') <a href="#">
+            <p class="mt-2">{{__('Создал')}} <a >
                                 <span>
                                     {{count($user->tasks??[])}}
-                                </span> @lang('lang.cash_task')</a></p>
-            {{-- <p class="mt-4">@lang('lang.cash_rate'): 3.6 </p> --}}
+                                </span> {{__('задание')}}</a></p>
+            {{-- <p class="mt-4">{{__('Оценка')}}: 3.6 </p> --}}
             <div class="flex mt-6 items-center">
                 <div data-tooltip-target="tooltip-animation_1" class="mx-4 tooltip-1">
                     <img @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
@@ -57,9 +57,9 @@
                          class="inline-block sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                         <p class="text-center">
                             @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
-                                @lang('lang.profile_icon_verify')
+                                {{__('Номер телефона и Е-mail пользователя подтверждены')}}
                             @else
-                                @lang('lang.profile_icon_not_verify')
+                                {{__('Номер телефона и Е-mail пользователя неподтверждены')}}
                             @endif
                         </p>
                         <div class="tooltip-arrow" data-popper-arrow></div>
@@ -73,7 +73,7 @@
                                 <div id="tooltip-animation_2" role="tooltip"
                                      class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                     <p class="text-center">
-                                        @lang('lang.profile_icon_best')
+                                        {{__('Невходит в ТОП-20 всех исполнителей User.uz')}}
                                     </p>
                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                 </div>
@@ -91,7 +91,7 @@
                         <div id="tooltip-animation_3" role="tooltip"
                              class="inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                             <p class="text-center">
-                                @lang('lang.profile_icon_50')
+                                {{__('Более 50 выполненных заданий')}}
                             </p>
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
@@ -111,7 +111,7 @@
         preview: '.image-previewer',
         setRatio: 1,
         allowedExtensions: ['jpg', 'jpeg', 'png'],
-        buttonsText: ['@lang('lang.profile_save')', '@lang('lang.profile_cancel')'],
+        buttonsText: ['{{__('Сохранить')}}', '{{__('Отмена')}}'],
         buttonsColor: ['#30bf7d', '#ee5155', -15],
         processUrl: '{{ route('profile.image.store') }}',
         withCSRF: ['_token', '{{ csrf_token() }}'],
