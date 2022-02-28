@@ -177,7 +177,7 @@
                     <div class="b-tasks-sorting hidden md:block">
                         <div class="inline-flex items-center my-5">
                             <span class="title__994cd">{{__('Сортировать:')}}</span>
-                            <button id="byDate" class="mx-5 active">{{__'по дате публикации')}}</button>
+                            <button id="byDate" class="mx-5 active">{{__('по дате публикации')}}</button>
                             <button id="bySroch" class="mx-5 ">{{__('по срочности')}}</button>
                         </div>
                     </div>
