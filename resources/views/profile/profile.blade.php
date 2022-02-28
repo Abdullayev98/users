@@ -50,7 +50,7 @@
                                     >@if ($user->description){{$user->description}}@endif</textarea><br>
                                     <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="{{__('Сохранить')}}">
                                     <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">{{__('Отмена')}}
-                                        }</a>
+                                        </a>
                                 </form>
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">{{__('Примеры работ')}}</h4>
