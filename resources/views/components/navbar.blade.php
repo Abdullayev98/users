@@ -105,7 +105,7 @@
                                 @auth
 
                                     <li class="mb-1">
-                                        <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">{{__('Мои заказы')</a>
+                                        <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">{{__('Мои заказы')}}</a>
                                     </li>
 
                                     {{-- icon-3 --}}
@@ -239,7 +239,7 @@
                                 {{--                                    <a  class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>{{__('Осталось только установить пароль')}}</a>--}}
                                 {{--                                </li>--}}
                                 <li>
-                                    <a href="{{ route('editData')}}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('В раздел 'Настройки')}}</a>
+                                    <a href="{{ route('editData')}}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__("В раздел 'Настройки'")}}</a>
                                 </li>
                                 <li>
                                     <a  class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2 see_all">{{__('Отметить все как прочитанное')}}</a>
@@ -667,7 +667,7 @@
                 // console.log(for_del_task_in);
                 $(this).removeAttr('href');
                 Swal.fire({
-                    title: '{{__('Введённые данные будут потеряны. <br> Удалить задание?')}}',
+                    title: '{!!__('Введённые данные будут потеряны. <br> Удалить задание?')!!}',
                     showDenyButton: true,
                     confirmButtonText: '{{__('Продолжить создание')}}',
                     denyButtonText: '{{__('Удалить')}}',

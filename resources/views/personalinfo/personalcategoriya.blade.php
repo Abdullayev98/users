@@ -7,9 +7,10 @@
     @endphp
     <div сlass="grid-rows-12">
         <div class="container p-5">
-            <h3 class="text-2xl font-semibold text-center">@lang('lang.personalinfo_text19')</h3>
+            <h3 class="text-2xl font-semibold text-center">{{__('Чем вы хотите заниматься?')}}</h3>
             <p class="text-base text-center my-5">
-            @lang('lang.personalinfo_text20')
+                {{__('Выберите категории заданий, в которых хотите работать. Можно сразу несколько — изменить их всегда можно в профиле.')}
+                }
             </p>
                 <form action="{{route('verification.category.store')}}" method="post">
                     @csrf
@@ -41,17 +42,17 @@
                             </div>
                         @endforeach
                     </div>
-                   
+
                 <div class="flex w-full gap-x-4 mt-4">
                     <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                         <!-- <button type="button"> -->
-                        @lang('lang.personalinfo_text11')
-    
+                        {{__('Назад')}}
+
                         <!-- </button> -->
                     </a>
-    
-                    <input type="submit"  class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 sm:px-5 px-1 rounded" name="" value="@lang('lang.personalinfo_text21')">
-    
+
+                    <input type="submit"  class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 sm:px-5 px-1 rounded" name="" value="{{__('Стать исполнителем')}}">
+
                 </div>
             </form>
         </div>

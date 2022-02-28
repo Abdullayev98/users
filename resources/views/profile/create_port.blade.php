@@ -9,26 +9,26 @@
             <div class="w-full">
                 <div>
                     <a class="text-sm text-blue-500 hover:text-red-500" href="/profile"><i
-                            class="fas fa-arrow-left"></i> @lang('lang.profile_text1')</a>
-                    <h1 class="font-semibold md:text-2xl text-lg ">@lang('lang.profile_text2')</h1>
+                            class="fas fa-arrow-left"></i> {{__('Венруться в профиль')}}</a>
+                    <h1 class="font-semibold md:text-2xl text-lg ">{{__('Создание нового альбома')}}</h1>
                 </div>
                 <div id="comdes" class="bg-yellow-100 p-8 rounded-md my-6">
-                    <label class="text-sm" for="name">@lang('lang.profile_text3')</label><br>
+                    <label class="text-sm" for="name">{{__('Название')}}</label><br>
                     <input name="comment"
                            class="border break-all focus:outline-none focus:border-yellow-500 mb-6 text-sm border-gray-200 rounded-md w-full px-4 py-2"
-                           type="text" placeholder='@lang('lang.profile_text5')'>
+                           type="text" placeholder='{{__('Например: Ремонт кухни')}}'>
                     @error('comment')
                     <p>{{ $message }}</p>
                     @enderror
 
-                    <label class="text-sm" for="textarea">@lang('lang.profile_text4')</label><br>
-                    <textarea name="description" placeholder='@lang('lang.profile_text6')' required
+                    <label class="text-sm" for="textarea">{{__('Описание')}}</label><br>
+                    <textarea name="description" placeholder='{{__('Опишите какие работы представлены в этом альбоме, в чем их особенность, когда они были выполнены, в каких целях и т.д.')}}' required
                               class="border break-all text-sm mb-8 focus:outline-none focus:border-yellow-500 border-gray-200 rounded-md w-full px-4 py-2"
                               cols="30" rows="10"></textarea>
                     <div class="text-center mx-auto text-base">
                         <input id="button1" type="button"
                                class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 mb-4 rounded"
-                               value="@lang('lang.profile_text7')">
+                               value="{{__('Далее')}}">
                         @error('comment')
                         <p>{{ $message }}</p>
                         @enderror
@@ -41,7 +41,7 @@
                         <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
                         <input type="submit"
                                class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 w-4/12 mb-4 rounded"
-                               value="@lang('lang.profile_save')">
+                               value="{{__('Сохранить')}}">
                     </div>
                 </div>
             </div>

@@ -13,9 +13,11 @@
                 <div class="content mt-20 ">
                     <div class= "grid md:grid-cols-10 w-full">
                         <ul class=" md:col-span-9 items-center w-3/4 md:w-full" id="tabs">
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile" class=" md:text-[18px] text-[14px] font-bold block text-gray-700" id="default-tab">@lang('lang.cash_aboutMe')</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile/cash" class=" md:text-[18px] text-[14px] text-gray-600">@lang('lang.cash_check')</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px] text-gray-600" id="settingsText">@lang('lang.cash_settings')</a></li>
+                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile" class=" md:text-[18px] text-[14px] font-bold block text-gray-700" id="default-tab">{{__('Обо мне')}}</a></li>
+                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile/cash" class=" md:text-[18px] text-[14px] text-gray-600">{{__('Счет')}}
+                                    </a></li>
+                            <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px] text-gray-600" id="settingsText">{{__('Настройки')}}
+                                    </a></li>
 
                         </ul>
                         <div class="md:col-span-1 md:block hidden text-gray-600" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl" ></i></a></div>
@@ -25,17 +27,18 @@
                     {{-- ABOUT-ME start --}}
                     <div class="about-me block" id="tab-profile">
                         <div class="about-a-bit mt-10">
-                            <h4 class="inline font-bold text-lg text-gray-700">@lang('lang.profile_aboutMe')</h4>
+                            <h4 class="inline font-bold text-lg text-gray-700">{{__('Немного о себе')}}</h4>
                                 @if ($user->description == Null)
                                     <span class="ml-10">
                                         <i class="fas fa-pencil-alt inline text-gray-700"></i>
-                                        <p class="inline text-gray-500 cursor-pointer" id="padd">@lang('lang.profile_add')</p>
+                                        <p class="inline text-gray-500 cursor-pointer" id="padd">{{__('Добавить')}}</p>
                                     </span>
-                                    <p class="text-red-400 desc mt-4" >@lang('lang.profile_description')</p>
+                                    <p class="text-red-400 desc mt-4" >
+                                        {{__('Заказчики ничего о вас не знают. Добавьте информацию о вашем опыте.')}}</p>
                                 @else
                                     <span class="ml-10">
                                         <i class="fas fa-pencil-alt inline text-gray-700"></i>
-                                        <p class="inline text-gray-500 cursor-pointer" id="padd">@lang('lang.profile_edit')</p>
+                                        <p class="inline text-gray-500 cursor-pointer" id="padd">{{__('Редактировать')}}</p>
                                     </span>
                                     <p class="mt-3 w-4/5 desc">{{$user->description}}</p>
                                 @endif
@@ -43,18 +46,19 @@
                                     @csrf
                                     <textarea name="description" name="description"
                                               class="w-full h-32 border border-gray-400 focus:outline-none focus:border-yellow-500 py-2 px-4 mt-3"
-                                              @if (!$user->description) placeholder="@lang('lang.profile_enterDesc')"@endif
+                                              @if (!$user->description) placeholder="{{__('Введите описание')}}"@endif
                                     >@if ($user->description){{$user->description}}@endif</textarea><br>
-                                    <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="@lang('lang.profile_save')">
-                                    <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">@lang('lang.profile_cancel')</a>
+                                    <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="{{__('Сохранить')}}">
+                                    <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">{{__('Отмена')}}
+                                        </a>
                                 </form>
                         </div>
-                        <h4 class="font-bold mt-5 text-gray-700">@lang('lang.profile_workExample')</h4>
+                        <h4 class="font-bold mt-5 text-gray-700">{{__('Примеры работ')}}</h4>
                         <div class="example-of-works w-full my-10">
                            <a href="/profile/create">
                                <button class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl">
                                    <i class="fas fa-camera"></i>
-                                   <span>@lang('lang.profile_createAlbum')</span>
+                                   <span>{{__('Создать фотоальбом')}}</span>
                                </button>
                            </a>
                         </div>
@@ -77,7 +81,7 @@
                     </div>
                     <div class="mt-8">
                                 <p class="text-2xl font-semibold">
-                                    @lang('lang.exe_typeOfDone')
+                                    {{__('Виды выполняемых работ')}}
                                 </p>
                                 <div class="my-4">
                                     <ul class="pl-10 leading-7">
@@ -109,7 +113,7 @@
     @if($user->role_id == 2)
         <script>
         if($('.tooltip-2').length === 0){
-            $( "<div data-tooltip-target='tooltip-animation_2' class='mx-4 tooltip-2' ><img src='{{ asset("images/best_gray.png") }}'alt='' class='w-24'><div id='tooltip-animation_2' role='tooltip' class='inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700'><p class='text-center'>@lang('lang.profile_icon_best')</p><div class='tooltip-arrow' data-popper-arrow></div> </div></div>" ).insertAfter( $( ".tooltip-1" ) );
+            $( "<div data-tooltip-target='tooltip-animation_2' class='mx-4 tooltip-2' ><img src='{{ asset("images/best_gray.png") }}'alt='' class='w-24'><div id='tooltip-animation_2' role='tooltip' class='inline-block  sm:w-2/12 w-1/2 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700'><p class='text-center'>{{__('Невходит в ТОП-20 всех исполнителей User.uz')}}</p><div class='tooltip-arrow' data-popper-arrow></div> </div></div>" ).insertAfter( $( ".tooltip-1" ) );
         }
     </script>
     @endif

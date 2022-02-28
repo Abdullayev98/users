@@ -62,22 +62,22 @@
                                         @endif
                                     @endauth
                                     @if ($task->email_confirm == 1)
-                                        <h1 class="my-2 text-green-400">@lang('lang.detT_dealWithoutRisk')</h1>
+                                        <h1 class="my-2 text-green-400">{{__('Сделка без риска')}}</h1>
                                         <i class="far fa-credit-card text-green-400 mx-3 my-1 text-2xl"></i>
                                     @endif
                                 </div>
                                 <div class="md:flex flex-row float-left">
                                     @if ($task->show_only_to_performers == 1)
-                                        <p class="mt-4 text-gray-400 font-normal">@lang('lang.detT_insuredPer')</p>
+                                        <p class="mt-4 text-gray-400 font-normal">{{__('Заказчик отдает предпочтение застрахованным исполнителям')}}</p>
                                     @endif
                                 </div>
                                 <div class="md:flex flex-row text-gray-400 mt-4">
                                     @if ($task->status == 3)
-                                        <p class="text-amber-500 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_inProsses')</p>
+                                        <p class="text-amber-500 font-normal md:border-r-2 border-gray-400 pr-2">{{__('В исполнении')}}</p>
                                     @elseif($task->status < 3)
-                                        <p class="text-green-400 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_open')</p>
+                                        <p class="text-green-400 font-normal md:border-r-2 border-gray-400 pr-2">{{__('Открыто')}}</p>
                                     @else
-                                        <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">@lang('lang.detT_close')</p>
+                                        <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">{{__('Закрыто')}}</p>
                                     @endif
                                     <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
                                     <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name') }}</p>
@@ -97,23 +97,23 @@
                                     class="mt-12 border-2 py-2 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
                                     <div id="map" class="h-64 mb-4 -mt-2" ></div>
                                     <div class="ml-4 md:ml-12 flex flex-row my-4">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_spot')</h1>
+                                        <h1 class="font-bold h-auto w-48">{{__('Место')}}</h1>
                                         @if($task->address !== NULL)
                                             <p class=" h-auto w-96">{{json_decode($task->address, true)['location']}}</p>
                                         @endif
                                     </div>
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                     @if($task->date_type == 1)
-                                            <h1 class="font-bold h-auto w-48">@lang('lang.date_startTask')</h1>
+                                            <h1 class="font-bold h-auto w-48">{{__('Начать работу')}}</h1>
                                         @elseif($task->date_type == 2)
-                                            <h1 class="font-bold h-auto w-48">@lang('lang.date_finishTask')</h1>
+                                            <h1 class="font-bold h-auto w-48">{{__('Закончить работу')}}</h1>
                                         @else
-                                            <h1 class="font-bold h-auto w-48">@lang('lang.date_givePeriod')</h1>
+                                            <h1 class="font-bold h-auto w-48">{{__('Указать период')}}</h1>
                                         @endif
                                         <p class=" h-auto w-96">{{date('d-m-Y', strtotime($task->start_date))}}</p>
                                     </div>
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_budget')</h1>
+                                        <h1 class="font-bold h-auto w-48">{{__('Бюджет')}}</h1>
                                         <p class=" h-auto w-96">{{$task->budget}}</p>
                                     </div>
 
@@ -138,19 +138,19 @@
 
 
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_payment')</h1>
+                                        <h1 class="font-bold h-auto w-48">{{__('Оплата задания')}}</h1>
                                         <div class=" h-auto w-96">
-                                            <a class="cursor-pointer underline text-blue-400" href="#">@lang('lang.detT_card')</a> @lang('lang.detT_or') <a class="cursor-pointer underline text-blue-400" href="#">@lang('lang.detT_cash')</a>
+                                            <a class="cursor-pointer underline text-blue-400" href="#">{{__('Карта')}}</a> {{__('или')}} <a class="cursor-pointer underline text-blue-400" href="#">{{__('Наличные')}}</a>
                                         </div>
                                     </div>
 
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detT_need')</h1>
+                                        <h1 class="font-bold h-auto w-48">{{__('Нужно')}}</h1>
                                         <p class=" h-auto w-96">{{$task->description}}</p>
                                     </div>
 
                                     <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
-                                        <h1 class="font-bold h-auto w-48">@lang('lang.detailedT_Image')</h1>
+                                        <h1 class="font-bold h-auto w-48">{{__('Рисунок')}}</h1>
                                         @foreach(json_decode($task->photos)??[] as $key => $image)
 {{--                                            @if ($loop->first)--}}
 
@@ -189,9 +189,9 @@
                                                                 id="btn1"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
-                                                                @lang('lang.detT_callbackpay')<br>
+                                                                {{__('Откликнуться за 4000 UZS')}}<br>
                                                                 <span class="text-sm">
-                                                                @lang('lang.detT_callbackpay2')<br>
+                                                                {{__('и отправить контакты заказчику')}}<br>
                                                             </span>
                                                             </button>
                                                             <button
@@ -199,9 +199,9 @@
                                                                 id="btn2"
                                                                 type="button"
                                                                 data-modal-toggle="authentication-modal">
-                                                                @lang('lang.detT_callback')<br>
+                                                                {{__('Откликнуться на задание бесплатно')}}<br>
                                                                 <span class="text-sm">
-                                                                @lang('lang.detT_callback23')
+                                                                {{__('отклик - 0 UZS, контакт с заказчиком - 5000 UZS')}}
                                                             </span>
                                                             </button>
                                                         @endif
@@ -211,14 +211,14 @@
                                                                data-modal="#modal1">
                                                                 <button
                                                                     class='w-1/2 font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
-                                                                    @lang('lang.detT_callbackpay')
+                                                                    {{__('Откликнуться за 4000 UZS')}}
                                                                 </button>
                                                             </a>
                                                             <a  class="open-modal"
                                                                data-modal="#modal1">
                                                                 <button
                                                                     class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
-                                                                    @lang('lang.detT_callback')
+                                                                    {{__('Откликнуться на задание бесплатно')}}
                                                                 </button>
                                                             </a>
                                                             <div class='modal' id='modal1'>
@@ -226,12 +226,12 @@
                                                                     <img
                                                                         src="{{asset('images/cashback.svg')}}"
                                                                         alt="">
-                                                                    <h1 class="title">@lang('lang.detT_fill')</h1>
+                                                                    <h1 class="title">{{__('Пополните баланс')}}</h1>
                                                                     <p>
-                                                                        @lang('lang.detT_balanceReq')
+                                                                        {{__('Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.')}}
                                                                     </p>
                                                                     <a class='btn'
-                                                                       href="/profile/cash">@lang('lang.detT_fill2')</a>
+                                                                       href="/profile/cash">{{__('Пополнить')}}</a>
                                                                 </div>
                                                             </div>
                                                         @endif
@@ -240,7 +240,7 @@
                                                     <a href="/login">
                                                         <button
                                                             class="sm:w-4/5 w-full mx-auto font-sans mt-8 text-lg  font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-10 py-4 rounded-lg">
-                                                            @lang('lang.detailedT_text18')
+                                                            {{__('Откликнуться на это задание')}}
                                                         </button>
                                                     </a>
                                                 @endauth
@@ -249,7 +249,7 @@
                                                         <button id="sendbutton"
                                                                 class="font-sans w-full text-lg font-semibold bg-green-500 hidden text-white hover:bg-green-400 px-12 ml-6 pt-2 pb-3 rounded-lg transition-all duration-300 m-2"
                                                                 type="button">
-                                                            @lang('lang.detailedT_text19')
+                                                            {{__('Оставить отзыв')}}
                                                         </button>
 
                                                         @if($task->status == 3)
@@ -301,7 +301,7 @@
                                                                 method="post">
                                                                 @csrf
                                                                 <header>
-                                                                    <h2 class="font-semibold text-2xl mb-4">@lang('lang.detT_addOffers')</h2>
+                                                                    <h2 class="font-semibold text-2xl mb-4">{{__('Добавить предложение к заказу')}}</h2>
                                                                 </header>
                                                                 <main>
                                                                 <textarea required
@@ -318,7 +318,7 @@
                                                                         <label class=" px-2">
                                                                             <input type="checkbox"
                                                                                    name="notification_on"
-                                                                                   class="mr-2 my-3 focus:outline-none  focus:border-yellow-500">@lang('lang.detT_notifMe')
+                                                                                   class="mr-2 my-3 focus:outline-none  focus:border-yellow-500">{{__('Уведомить меня, если исполнителем')}}
                                                                             <br>
                                                                         </label>
                                                                         <label class="px-2">
@@ -327,7 +327,7 @@
                                                                                 type="checkbox"
                                                                                 name="coupon_question"
                                                                                 value="1"
-                                                                                onchange="valueChanged()"/>@lang('lang.detT_pointTime')
+                                                                                onchange="valueChanged()"/>{{__('Указать время актуальности предложения')}}
                                                                         </label>
                                                                         <br>
                                                                         <select name="response_time"
@@ -335,23 +335,23 @@
                                                                                 class="answer text-[16px] focus:outline-none border-gray-500 border rounded-lg hover:bg-gray-100 my-2 py-2 px-5 text-gray-500"
                                                                                 style="display: none">
                                                                             <option value="1" class="">
-                                                                                1 @lang('lang.detT_hour')</option>
+                                                                                1 {{__('часов')}}</option>
                                                                             <option value="2" class="">
-                                                                                2 @lang('lang.detT_hour')</option>
+                                                                                2 {{__('часов')}}</option>
                                                                             <option value="4" class="">
-                                                                                4 @lang('lang.detT_hour')</option>
+                                                                                4 {{__('часов')}}</option>
                                                                             <option value="6" class="">
-                                                                                6 @lang('lang.detT_hour')</option>
+                                                                                6 {{__('часов')}}</option>
                                                                             <option value="8" class="">
-                                                                                8 @lang('lang.detT_hour')</option>
+                                                                                8 {{__('часов')}}</option>
                                                                             <option value="10" class="">
-                                                                                10 @lang('lang.detT_hour')</option>
+                                                                                10 {{__('часов')}}</option>
                                                                             <option value="12" class="">
-                                                                                12 @lang('lang.detT_hour')</option>
+                                                                                12 {{__('часов')}}</option>
                                                                             <option value="24" class="">
-                                                                                24 @lang('lang.detT_hour')</option>
+                                                                                24 {{__('часов')}}</option>
                                                                             <option value="48" class="">
-                                                                                48 @lang('lang.detT_hour')</option>
+                                                                                48 {{__('часов')}}</option>
                                                                         </select>
                                                                     </div>
                                                                     <label>
@@ -373,7 +373,7 @@
                                                                     class="flex justify-center bg-transparent">
                                                                     <button type="submit"
                                                                             class=" bg-yellow-500 font-semibold text-white py-3 w-full rounded-md my-4 hover:bg-orange-500 focus:outline-none shadow-lg hover:shadow-none transition-all duration-300">
-                                                                        @lang('lang.detT_next')
+                                                                        {{__('Далее')}}
                                                                     </button>
                                                                 </footer>
 
@@ -396,7 +396,7 @@
                                                 <!-- modal header -->
                                                 <i class="far fa-check-circle fa-4x py-4"></i>
                                                 <div class="mx-12">
-                                                    @lang('lang.detT_callbackSucces')
+                                                    {{__('Ваш отклик успешно отправлен!')}}
                                                 </div>
                                             </div>
                                         </div>
@@ -406,12 +406,12 @@
                                 @else
                                     <div
                                         class="mt-12 border-2 p-6 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-lg">
-                                        <h1 class="text-3xl font-semibold py-3">@lang('lang.detT_needForHelper')</h1>
-                                        <p class="mb-10">@lang('lang.detT_fastHelp')</p>
+                                        <h1 class="text-3xl font-semibold py-3">{{__('Хотите найти надежного помощника?')}}</h1>
+                                        <p class="mb-10">{{__('Universal Services помогает быстро решать любые бытовые и бизнес-задачи.')}}</p>
                                         <a href="/categories/1">
                                             <button
                                                 class="font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 rounded">
-                                                @lang('lang.detT_createOwnTask')
+                                                {{__('Создайте свое задание')}}
                                             </button>
                                         </a>
                                     </div>
@@ -424,17 +424,17 @@
                                             <div class="text-4xl font-semibold my-6">
                                                 @if ($task->responses_count <= 4)
                                                     @if ($task->responses_count == 1)
-                                                        @lang('lang.detT_onTask') {{$task->responses_count}} отклик
+                                                        {{__('У задания')}} {{$task->responses_count}} отклик
                                                     @else
-                                                        @lang('lang.detT_onTask') {{$task->responses_count}} откликa
+                                                        {{__('У задания')}} {{$task->responses_count}} откликa
                                                     @endif
                                                 @else
-                                                    @lang('lang.detT_onTask') {{$task->responses_count}} откликов
+                                                    {{__('У задания')}} {{$task->responses_count}} откликов
                                                 @endif
                                             </div>
                                             @else
                                                 <div class="text-4xl font-semibold my-6">
-                                                    @lang('lang.detT_noCallbacks')
+                                                    {{__('У задания нет откликов')}}
                                                 </div>
                                             @endif
                                             <hr>
@@ -458,14 +458,14 @@
                                                             <img class="w-7 h-7 ml-2"
                                                                  src="{{asset('images/shield.svg')}}" alt="">
                                                             <div class="text-gray-700">
-                                                                <i class="fas fa-star text-yellow-200 mr-1"></i>@lang('lang.detT_numByNum')
+                                                                <i class="fas fa-star text-yellow-200 mr-1"></i>{{__('4,96 по 63 отзывам')}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="bg-gray-100 rounded-[10px] p-4">
                                                         <div class="ml-0">
                                                             <div
-                                                                class="text-[17px] text-gray-500 font-semibold">@lang('lang.detT_price') {{$response->price}}
+                                                                class="text-[17px] text-gray-500 font-semibold">{{__('Стоимость')}} {{$response->price}}
                                                                 UZS
                                                             </div>
 
@@ -473,7 +473,7 @@
                                                                 class="text-[17px] text-gray-500 my-5">{{$response->description}}</div>
                                                             @if($response->not_free == 1)
                                                                 <div
-                                                                    class="text-[17px] text-gray-500 font-semibold my-4">@lang('lang.detT_phoneNum') {{$response->user->phone_number}}</div>
+                                                                    class="text-[17px] text-gray-500 font-semibold my-4">{{__('Телефон исполнителя:')}} {{$response->user->phone_number}}</div>
                                                             @endif
 
                                                             @auth()
@@ -481,7 +481,7 @@
                                                                     <div class="w-10/12 mx-auto">
                                                                         <a href="{{ route('personal.chat', $response->user->id) }}"
                                                                            class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
-                                                                            @lang('lang.detT_writeOnChat')
+                                                                            {{__('Написать в чат')}}
                                                                         </a>
 
                                                                     </div>
@@ -495,7 +495,7 @@
                                                                             class="cursor-pointer text-semibold text-center w-[200px]
                                                                  md:w-[320px] md:ml-4 inline-block py-3 px-4 bg-white transition
                                                                  duration-200 text-white bg-green-500 hover:bg-green-500 font-medium
-                                                                 border border-transparent rounded-md"> @lang('lang.detT_choose')</button>
+                                                                 border border-transparent rounded-md"> {{__('Выбрать исполнителем')}}</button>
 
                                                                     </form>
                                                                 @endif
@@ -503,7 +503,7 @@
                                                             @endauth
 
                                                             <div class="text-gray-400 text-[14px] my-6">
-                                                                @lang('lang.detT_choosePerf')
+                                                                {{__('Выберите исполнителя, чтобы потом оставить отзыв о работе.')}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -515,7 +515,7 @@
                         {{-- right sidebar start --}}
                         <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
-                                <h1 class="text-xl font-medium mb-4">@lang('lang.detT_task') № {{$task->id}}</h1>
+                                <h1 class="text-xl font-medium mb-4">{{__('Задание')}} № {{$task->id}}</h1>
                                 <div
                                     x-data="{ 'showModal': false }"
                                     @keydown.escape="showModal = false"
@@ -558,7 +558,7 @@
                                 </div>
 
                             </div>
-                            <h1 class="text-lg">@lang('lang.detT_ordererThisTask')</h1>
+                            <h1 class="text-lg">{{__('Заказчик этого задания')}}</h1>
                             <div class="flex flex-row mt-4">
                                 <div class="mr-4">
                                     <img
@@ -575,9 +575,9 @@
                                         @if($task->user->age != "")
                                             <p class="inline-block text-m mr-2">
                                                 {{$task->user->age}}
-                                                @if($task->user->age>20 && $task->user->age%10==1) @lang('lang.cash_rusYearGod')
-                                                @elseif ($task->user->age>20 && ($task->user->age%10==2 || $task->user->age%10==3 || $task->user->age%10==1)) @lang('lang.cash_rusYearGoda')
-                                                @else @lang('lang.cash_rusYearLet')
+                                                @if($task->user->age>20 && $task->user->age%10==1) {{__('год')}}
+                                                @elseif ($task->user->age>20 && ($task->user->age%10==2 || $task->user->age%10==3 || $task->user->age%10==1)) {{__('года')}}
+                                                @else {{__('лет')}}
                                                 @endif
                                             </p>
                                         @endif
@@ -636,7 +636,7 @@
                                 <button
                                     class="send-comment font-sans w-full text-lg font-semibold bg-green-500 text-white hover:bg-green-400 px-12 pt-2 pb-3 rounded transition-all duration-300 mt-8"
                                     type="submit">
-                                    @lang('lang.contact_send')
+                                    {{__('Отправить')}}
                                 </button>
                             </div>
                         </div>

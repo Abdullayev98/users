@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b7a71bc56b2dc358532eb3f16c52588",
+    "content-hash": "ab0136b48812b3fb8e9946a3085618bb",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -7390,6 +7390,66 @@
             "time": "2021-12-08T09:12:39+00:00"
         },
         {
+            "name": "vemcogroup/laravel-translation",
+            "version": "3.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vemcogroup/laravel-translation.git",
+                "reference": "273cb5db83f335faadb06589909d743905592332"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/273cb5db83f335faadb06589909d743905592332",
+                "reference": "273cb5db83f335faadb06589909d743905592332",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.3|^7.0",
+                "laravel/framework": "^6.0|^7.0|^8.0|^9.0",
+                "php": "^7.3|^8.0",
+                "symfony/finder": "^4.3|^5.0|^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Vemcogroup\\Translation\\TranslationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vemcogroup\\Translation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Henrik B Hansen",
+                    "email": "hbh@vemcount.com",
+                    "homepage": "https://www.vemcogroup.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Translation package for Laravel to scan for localisations and up/download to poeditor",
+            "homepage": "https://github.com/vemcogroup/laravel-translation",
+            "keywords": [
+                "Poeditor",
+                "i18n",
+                "laravel",
+                "translations"
+            ],
+            "support": {
+                "issues": "https://github.com/vemcogroup/laravel-translation/issues",
+                "source": "https://github.com/vemcogroup/laravel-translation/tree/3.0.7"
+            },
+            "time": "2022-02-10T09:59:00+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.4.1",
             "source": {
@@ -8007,6 +8067,177 @@
             "time": "2022-01-07T12:00:00+00:00"
         },
         {
+            "name": "google/apiclient",
+            "version": "v2.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-api-php-client.git",
+                "reference": "1530583a711f4414407112c4068464bcbace1c71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/1530583a711f4414407112c4068464bcbace1c71",
+                "reference": "1530583a711f4414407112c4068464bcbace1c71",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "~2.0||~3.0||~4.0||~5.0",
+                "google/apiclient-services": "~0.200",
+                "google/auth": "^1.10",
+                "guzzlehttp/guzzle": "~5.3.3||~6.0||~7.0",
+                "guzzlehttp/psr7": "^1.7||^2.0.0",
+                "monolog/monolog": "^1.17||^2.0",
+                "php": "^5.6|^7.0|^8.0",
+                "phpseclib/phpseclib": "~2.0||^3.0.2"
+            },
+            "require-dev": {
+                "cache/filesystem-adapter": "^0.3.2|^1.1",
+                "composer/composer": "^1.10.22",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+                "phpcompatibility/php-compatibility": "^9.2",
+                "phpspec/prophecy-phpunit": "^1.1||^2.0",
+                "phpunit/phpunit": "^5.7.21 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "squizlabs/php_codesniffer": "~2.3",
+                "symfony/css-selector": "~2.1",
+                "symfony/dom-crawler": "~2.1",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "suggest": {
+                "cache/filesystem-adapter": "For caching certs and tokens (using Google\\Client::setCache)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/aliases.php"
+                ],
+                "psr-4": {
+                    "Google\\": "src/"
+                },
+                "classmap": [
+                    "src/aliases.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Client library for Google APIs",
+            "homepage": "http://developers.google.com/api-client-library/php",
+            "keywords": [
+                "google"
+            ],
+            "support": {
+                "issues": "https://github.com/googleapis/google-api-php-client/issues",
+                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.12.1"
+            },
+            "time": "2021-12-02T03:34:25+00:00"
+        },
+        {
+            "name": "google/apiclient-services",
+            "version": "v0.237.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-api-php-client-services.git",
+                "reference": "c10652adc29b4242237075acde318e83f88ab918"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/c10652adc29b4242237075acde318e83f88ab918",
+                "reference": "c10652adc29b4242237075acde318e83f88ab918",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7||^8.5.13"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ],
+                "psr-4": {
+                    "Google\\Service\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Client library for Google APIs",
+            "homepage": "http://developers.google.com/api-client-library/php",
+            "keywords": [
+                "google"
+            ],
+            "support": {
+                "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.237.0"
+            },
+            "time": "2022-02-23T22:58:02+00:00"
+        },
+        {
+            "name": "google/auth",
+            "version": "v1.18.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-auth-library-php.git",
+                "reference": "21dd478e77b0634ed9e3a68613f74ed250ca9347"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/21dd478e77b0634ed9e3a68613f74ed250ca9347",
+                "reference": "21dd478e77b0634ed9e3a68613f74ed250ca9347",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "~2.0|~3.0|~4.0|~5.0",
+                "guzzlehttp/guzzle": "^5.3.1|^6.2.1|^7.0",
+                "guzzlehttp/psr7": "^1.7|^2.0",
+                "php": ">=5.4",
+                "psr/cache": "^1.0|^2.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/promises": "0.1.1|^1.3",
+                "kelvinmo/simplejwt": "^0.2.5|^0.5.1",
+                "phpseclib/phpseclib": "^2.0.31",
+                "phpunit/phpunit": "^4.8.36|^5.7",
+                "sebastian/comparator": ">=1.2.3"
+            },
+            "suggest": {
+                "phpseclib/phpseclib": "May be used in place of OpenSSL for signing strings or for token management. Please require version ^2."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\Auth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Google Auth Library for PHP",
+            "homepage": "http://github.com/google/google-auth-library-php",
+            "keywords": [
+                "Authentication",
+                "google",
+                "oauth2"
+            ],
+            "support": {
+                "docs": "https://googleapis.github.io/google-auth-library-php/master/",
+                "issues": "https://github.com/googleapis/google-auth-library-php/issues",
+                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.18.0"
+            },
+            "time": "2021-08-24T18:03:18+00:00"
+        },
+        {
             "name": "hamcrest/hamcrest-php",
             "version": "v2.0.1",
             "source": {
@@ -8243,6 +8474,66 @@
                 }
             ],
             "time": "2020-11-13T09:40:50+00:00"
+        },
+        {
+            "name": "nikaia/translation-sheet",
+            "version": "v1.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikaia/translation-sheet.git",
+                "reference": "0b26bf14b9f72b54d5b30cc44aa0393d128183aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikaia/translation-sheet/zipball/0b26bf14b9f72b54d5b30cc44aa0393d128183aa",
+                "reference": "0b26bf14b9f72b54d5b30cc44aa0393d128183aa",
+                "shasum": ""
+            },
+            "require": {
+                "google/apiclient": "^2.1",
+                "illuminate/console": "~5.8.0|^6.0|^7.0|^8.0",
+                "illuminate/filesystem": "~5.8.0|^6.0|^7.0|^8.0",
+                "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.26.2",
+                "friendsofphp/php-cs-fixer": "^2.11",
+                "orchestra/testbench": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nikaia\\TranslationSheet\\TranslationSheetServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "^8.0": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nikaia\\TranslationSheet\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nassif Bourguig",
+                    "email": "nbourguig@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Translation via Google Spreadsheet",
+            "homepage": "https://github.com/nikaia/translation-sheet",
+            "support": {
+                "issues": "https://github.com/nikaia/translation-sheet/issues",
+                "source": "https://github.com/nikaia/translation-sheet/tree/v1.4.5"
+            },
+            "time": "2020-09-25T14:56:39+00:00"
         },
         {
             "name": "nunomaduro/collision",
@@ -9089,6 +9380,55 @@
                 }
             ],
             "time": "2022-02-23T17:10:58+00:00"
+        },
+        {
+            "name": "psr/cache",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/master"
+            },
+            "time": "2016-08-06T20:24:11+00:00"
         },
         {
             "name": "sebastian/cli-parser",

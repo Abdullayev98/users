@@ -22,26 +22,27 @@
                 <h3 class="text-2xl font-semibold my-3">
                     {{$user->name}}
                 </h3>
-            
+
                 <form action="{{route('verification.photo.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <label for="profilephoto" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">@lang('lang.personalinfo_text18')</label>
+                    <label for="profilephoto" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">{{__('Загрузить фото')}
+                        }</label>
                     <input type="file" id="profilephoto" name="avatar" class="hidden">
                     <p class="text-base my-5">
-                    @lang('lang.personalinfo_text17')
+                    {{__('Пользователям с хорошей фотографией больше доверяют. Фото можно добавить потом.')}}
                     </p>
                     <div class="flex w-full gap-x-4 mt-4">
                         <a onclick="myFunction()" class="w-1/3  border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
                             <!-- <button type="button"> -->
-                            @lang('lang.personalinfo_text11')
+                            {{__('Назад')}}
                             <script>
                                 function myFunction() {
                                     window.history.back();
                                 }
                             </script>
                         </a>
-                        <input type="submit" class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" value="@lang('lang.personalinfo_text10')">
+                        <input type="submit" class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded" value="{{__('Далее')}}">
                     </div>
                 </form>
             </div>
