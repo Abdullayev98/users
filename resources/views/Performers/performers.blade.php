@@ -19,7 +19,7 @@
                     <div class="w-1/2 h-24 bg-contain bg-no-repeat bg-center" style="background-image: url({{asset('images/like.png')}});">
                     </div>
                     <div class="font-bold text-xs text-gray-700 text-left my-auto">
-                        {{__('Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.')}}
+                        {!!__('Станьте исполнителем <br> U-ser. И начните <br> зарабатывать.')!!}
                     </div>
                 </a>
 
@@ -218,7 +218,7 @@
                     <!--body-->
                     <div class="relative p-6 flex-auto">
                         <p class="my-4  text-lg  text-center">
-                            {{__('Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.')}}
+                            {!!__('Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.')!!}
                         </p>
                     </div>
                     <div class="flex mx-auto items-center justify-end p-6 rounded-b mb-8">
@@ -259,13 +259,13 @@
                         <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                     </button>
                     <h3 class="font-medium text-4xl block mt-4">
-                        {{__('У вас пока нет опубликованных <br> заданий')}}
+                        {!!__('У вас пока нет опубликованных <br> заданий')!!}
                     </h3>
                 </div>
                 <!--body-->
                 <div class="relative p-6 flex-auto">
                     <p class="my-4   text-center">
-                        {{__('Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.')}}
+                        {!!__('Создайте задание, после чего вы сможете предложить <br> выполнить его исполнителям.')!!}
                     </p>
                 </div>
                 <!--footer-->

@@ -2,7 +2,7 @@
 <div class="w-full bg-gradient-to-r from-white via-gray-100 to-white">
     <div class="container text-center mx-auto px-16">
         <div class="text-4xl mx-auto py-10 md:py-16">
-            {{__('С Universal Services вы экономите на услугах до 70%.<br> Как это возможно')}}
+            {!!__('С Universal Services вы экономите на услугах до 70%.<br> Как это возможно')!!}
         </div>
         <div class="grid md:grid-cols-2 grid-cols-1 mt-8 w-11/12 mx-auto">
 
