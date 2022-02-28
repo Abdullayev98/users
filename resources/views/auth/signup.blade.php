@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="my-3">
-                        <input type="text" name="email" placeholder="@lang('lang.signup_elpocta')"
+                        <input type="text" name="email" placeholder="{{__('Электронная почта')}}"
                                value="{{ request()->input('email', old('email')) }}"
                                id="email_address"
                                class=" focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded sm:w-80 w-72 py-2 px-3 text-gray-700 leading-tight hover:border-amber-500">
@@ -58,7 +58,7 @@
 
                     <div class="my-3">
 
-                        <input type="password" name="password" placeholder="@lang('lang.signup_password')"
+                        <input type="password" name="password" placeholder="{{__('Пароль')}}"
                                id="password" maxlength="20"
                                class=" focus:outline-none focus:border-yellow-500 ml-6 shadow appearance-none border border-slate-300 rounded sm:w-80 w-72 py-2 px-3 text-gray-700 leading-tight hover:border-amber-500"
                                required>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="my-3">
                         <input type="password" name="password_confirmation"
-                               placeholder="@lang('lang.signup_password_confirm')"
+                               placeholder="{{__(' Подтвердите пароль')}}"
                                id="password_confirmation" maxlength="20"
                                class="ml-6 focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded sm:w-80 w-72 py-2 px-3 text-gray-700 mb-3 leading-tight hover:border-amber-500"
                                required>
