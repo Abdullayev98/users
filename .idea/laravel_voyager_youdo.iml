@@ -153,6 +153,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/temprodev/laravel-one-auth" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/teamprodev/laravel_payment_clickuz" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/vemcogroup/laravel-translation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/google/auth" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/google/apiclient-services" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/google/apiclient" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nikaia/translation-sheet" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
