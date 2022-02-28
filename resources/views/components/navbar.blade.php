@@ -667,7 +667,7 @@
                 // console.log(for_del_task_in);
                 $(this).removeAttr('href');
                 Swal.fire({
-                    title: '{{__('Введённые данные будут потеряны. <br> Удалить задание?')}}',
+                    title: '{!!__('Введённые данные будут потеряны. <br> Удалить задание?')!!}',
                     showDenyButton: true,
                     confirmButtonText: '{{__('Продолжить создание')}}',
                     denyButtonText: '{{__('Удалить')}}',
