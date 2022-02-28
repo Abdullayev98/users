@@ -19,7 +19,8 @@
         "tcg/voyager": "^1.5",
         "teamprodev/laravel_payment_clickuz": "^1.0",
         "teamprodev/playmobile-sms": "^1.0",
-        "temprodev/laravel-one-auth": "dev-main"
+        "temprodev/laravel-one-auth": "dev-main",
+        "vemcogroup/laravel-translation": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
