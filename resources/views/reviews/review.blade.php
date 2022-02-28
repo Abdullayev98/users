@@ -10,7 +10,7 @@
                         <a class="text-blue-500 hover:text-red-500" href="/geotaskshint">{{__('Как это работает')}}</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500" href="/security">{{__('lang.review_security')}}</a>
+                        <a class="text-blue-500 hover:text-red-500" href="/security">{{__('Безопасность и гарантии')}}</a>
                     </li>
                     <li>
                         <a class="text-blue-500 hover:text-red-500" href="/badges">{{__('Награды и рейтинг')}}</a>

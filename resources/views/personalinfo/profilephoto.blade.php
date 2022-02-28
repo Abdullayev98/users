@@ -26,8 +26,7 @@
                 <form action="{{route('verification.photo.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <label for="profilephoto" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">{{__('Загрузить фото')}
-                        }</label>
+                    <label for="profilephoto" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">{{__('Загрузить фото')}}</label>
                     <input type="file" id="profilephoto" name="avatar" class="hidden">
                     <p class="text-base my-5">
                     {{__('Пользователям с хорошей фотографией больше доверяют. Фото можно добавить потом.')}}

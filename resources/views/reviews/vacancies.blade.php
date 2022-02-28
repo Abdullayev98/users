@@ -28,7 +28,7 @@
                         <a class="text-blue-500 hover:text-red-500" href="">{{__('Реклама на сервисе')}}</a>
                     </li>
                     <li>
-                        <a class="text-blue-500 hover:text-red-500" href="/contacts">{{__('review_contacts')}}</a>
+                        <a class="text-blue-500 hover:text-red-500" href="/contacts">{{__('Контакты')}}</a>
                     </li>
                     <li>
                         <a class="text-black font-semibold" href="/vacancies">{{__('Вакансии')}}</a>
@@ -74,7 +74,7 @@
                     <li class="my-2">{{__('Возможность работать как в офисе (офис находится в 7 — 10 минутах пешком от метро Фрунзенская / Парк Культуры), так и удаленно из дома;')}}</li>
                     <li class="my-2">
                         {{__('Современная техника — компьютеры с 32Gb оперативной памяти, SSD, два монитора;')}}</li>
-                    <li class="my-2">{{__('lang.vac_offer10')}}</li>
+                    <li class="my-2">{{__('Корпоративные мероприятия;')}}</li>
                     <li class="my-2">{{__('Оплачиваемое участие в профильных конференциях.')}}</li>
                 </div>
 
