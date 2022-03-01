@@ -17,6 +17,8 @@ class VerifyCsrfToken extends Middleware
         '/paycom',
         '/prepare',
         '/complete',
+        '/clprepare',
+        '/clcomplete',
         '/sms/*',
         "task/create/note/*/images/store"
 //        '/send-review/*'

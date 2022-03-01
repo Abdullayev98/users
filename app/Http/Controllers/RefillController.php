@@ -17,16 +17,19 @@ public function ref(Request $request){
     $payment = $request->get("paymethod");
     switch($payment){
         case 'Click':
-            $new_article = All_transaction::create([
-                'user_id' => Auth::id(),
-                'amount'  => $request->get("amount"),
-                'method'  => "Click",
-            ]);
+            // $new_article = All_transaction::create([
+            //     'user_id' => Auth::id(),
+            //     'amount'  => $request->get("amount"),
+            //     'method'  => "Click",
+            // ]);
 
-            $amount = $request->get("amount");
-            $article_id = $new_article->id;
+            // $amount = $request->get("amount");
+            // $article_id = $new_article->id;
 
-            return redirect()->to("https://my.click.uz/services/pay?service_id=19839&merchant_id=14364&amount=$amount.00&transaction_param=$article_id&return_url=https://user.uz/profile");
+            // return redirect()->to("https://my.click.uz/services/pay?service_id=19839&merchant_id=14364&amount=$amount.00&transaction_param=$article_id&return_url=https://user.uz/profile");
+        
+        return ClickuzController::pay($request);
+
         break;
         case 'PayMe':
             $tr = new All_transaction();

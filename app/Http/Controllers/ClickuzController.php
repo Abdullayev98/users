@@ -1,11 +1,12 @@
 <?php
 
-namespace Teamprodev\Laravel_Payment_Clickuz\Http\Controllers;
+namespace  App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Teamprodev\Laravel_Payment_Clickuz\Models\Complete;
 use Teamprodev\Laravel_Payment_Clickuz\Models\ClickTransaction;
 use Illuminate\Support\Facades\Auth;
+use App\Models\WalletBalance;
 
 class ClickuzController extends Controller
 {
@@ -18,7 +19,7 @@ class ClickuzController extends Controller
         ]);
 
         $amount = $request->get("amount");
-        $article_id = $new_article;
+        $article_id = $new_article->id;
         $return_url = env('CLICKUZ_RETURN_URL');
         $service_id = env('CLICKUZ_SERVICE_ID');
         $merchant_id = env('CLICKUZ_MERCHANT_ID');
@@ -82,7 +83,19 @@ return ClickuzController::statusup($new_complete);
 
         // A certain area for writing additional operations
         // Beginning
+        $user = ClickTransaction::where('id', $merchant_trans_id)->first();
 
+        $balance = WalletBalance::where('user_id', $user->user_id)->first();
+    
+        if(isset($balance)){
+            $summa = 1*$balance->balance + 1*$user->amount;
+            WalletBalance::where('user_id', $user->user_id)->update(['balance' => 1*$summa]);
+        }else{
+            WalletBalance::create([
+                'user_id' => $user->user_id,
+                'balance'  => 1*$user->amount,
+            ]);
+        }
         // The end
         
         ClickTransaction::where('id', $merchant_trans_id)->update(['status' => 1]);
