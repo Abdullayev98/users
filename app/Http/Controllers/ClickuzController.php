@@ -1,6 +1,6 @@
 <?php
 
-namespace  App\Http\Controllers;
+namespace Teamprodev\Laravel_Payment_Clickuz\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Teamprodev\Laravel_Payment_Clickuz\Models\Complete;
