@@ -1,5 +1,5 @@
-<footer class=" w-full mx-auto" style="background-color: #242325;">
-    <div class="flex md:flex-row flex-col w-2/3 mx-auto rounded-xl relative bottom-20" style="background-color: #F9FAFB">
+<footer class=" w-full mx-auto mt-32" style="background-color: #242325;">
+    <div class="flex md:flex-row flex-col w-4/5 mx-auto rounded-xl relative bottom-20" style="background-color: #F9FAFB">
         <div class="m-5 md:w-2/3 w-11/12">
             <h1 class="font-bold text-xl text-black">С Universal Services вы экономите на услугах до 70%. <br/>
                 Как это возможно?</h1>
@@ -15,9 +15,9 @@
         </div>
     </div>
 
-   <div class="flex lg:flex-row flex-col w-2/3 mx-auto mb-12">
-       <div class="lg:w-1/3 w-full">
-            <img src="{{asset('/images/logo.png')}}" class="w-1/2 h-1/3">
+   <div class="grid grid-cols-3 gap-2 w-4/5 mx-auto mb-12"> 
+       <div class="lg:col-span-1 col-span-3">
+            <img src="{{asset('/images/logo.png')}}" class="w-40 h-20">
             <p class="text-base text-gray-300 my-6 w-11/12 ml-4">У частных исполнителей нет расходов на офис, рекламу, зарплату секретарю и других затрат,
                  которые сервисные компании обычно включают в стоимость своих услуг.</p>
             <div class="">
@@ -35,7 +35,7 @@
                 </a>
             </div>
        </div>
-       <div class="lg:w-1/3 w-full flex flex-col mx-auto lg:my-0 my-8">       
+       <div class="md:col-span-1 col-span-3 flex flex-col md:mx-auto md:mx-0 lg:mt-0 mt-8">       
                <div class="mb-3">
                     <div><i class="fas fa-phone-alt  text-gray-300"></i><span class="font-bold text-gray-300 text-lg ml-4">Телефон</span></div>
                     <h1 class="text-lg text-gray-300">+998(90)123 12 12</h1>
@@ -49,8 +49,8 @@
                     <h1 class="text-lg text-gray-300">Улица Хуршида, Ташкент, <br/> Узбекистан</h1>
                </div>
        </div>
-       <div class="lg:w-1/3 w-full flex flex-col mx-auto">
-            <a class="text-gray-300 hover:text-yellow-400 text-lg my-2" href="/verification">{{__('Как')}}&nbsp;{{__('стать')}}&nbsp;{{__('исполнителем')}}</a>
+       <div class="md:col-span-1 col-span-3 flex flex-col md:mx-auto md:mx-0 lg:mt-0 mt-8">
+            <a class="text-gray-300 hover:text-yellow-400 text-lg mb-2" href="/verification">{{__('Как')}}&nbsp;{{__('стать')}}&nbsp;{{__('исполнителем')}}</a>
             <a class="text-gray-300 hover:text-yellow-400 text-lg my-2" href="/faq">{{__('Часто задаваемые вопросы')}}</a>
             <a class="text-gray-300 hover:text-yellow-400 text-lg my-2" href="/contacts">{{__('Контакты')}}</a>
             <a class="text-gray-300 hover:text-yellow-400 text-lg my-2" href="/author-reviews">{{__('Отзывы заказчиков')}}</a>

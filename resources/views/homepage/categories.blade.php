@@ -1,8 +1,8 @@
 <div class="container md:text-left text-left mx-auto md:px-16 px-4 sm:pt-40 pt-36">
-    <div class="text-4xl font-bold text-center">
+    <div class="text-3xl font-bold">
         {{__('Более')}} {{$users_count}}  {{__('исполнителей')}}
     </div>
-    <div class="text-base text-center mt-4">
+    <div class="text-lg mt-4">
         {{__('Исполнители готовы помочь вам в решении самых разнообразных задач')}}
     </div>
     <div class="flex flex-wrap w-11/12 mt-14 mx-auto">
