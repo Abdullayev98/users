@@ -87,7 +87,7 @@
                                             @method('delete')
                                             <button type="submit"
                                                     class="mr-3 border-l-2  pl-2 pl-3 border-gray-400 text-red-500">
-                                                Отменить
+                                                {{__('Отменить')}}
                                             </button>
                                         </form>
                                     @endif
@@ -172,7 +172,7 @@
                                     </div>
                                     @else
                                         <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                            <h1 class="font-bold h-auto w-48">Не предоставил(а) документы</h1>
+                                            <h1 class="font-bold h-auto w-48">{{__('Не предоставил(а) документы')}}</h1>
                                         </div>
                                     @endif
                                     <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
@@ -424,12 +424,12 @@
                                             <div class="text-4xl font-semibold my-6">
                                                 @if ($task->responses_count <= 4)
                                                     @if ($task->responses_count == 1)
-                                                        {{__('У задания')}} {{$task->responses_count}} отклик
+                                                        {{__('У задания')}} {{$task->responses_count}} {{__('отклик')}}
                                                     @else
-                                                        {{__('У задания')}} {{$task->responses_count}} откликa
+                                                        {{__('У задания')}} {{$task->responses_count}} {{__('откликa')}}
                                                     @endif
                                                 @else
-                                                    {{__('У задания')}} {{$task->responses_count}} откликов
+                                                    {{__('У задания')}} {{$task->responses_count}} {{__('откликов')}}
                                                 @endif
                                             </div>
                                             @else
