@@ -89,9 +89,9 @@ class ProfileController extends Controller
     public function profileData()
     {
         $user = Auth::user();
-        $views = $user->views()->count();
-        $task = $user->tasks()->count();
-        $task_count = Task::where('performer_id', $user->id)->where('status', 4)->count();
+        $views = $user->views_count;
+        $task = $user->tasks_count;
+        $task_count = $user->performer_tasks()->where('status', 4)->count();
         $ports = $user->portfoliocomments;
         $comment = $user->portfolios()->where('image', '!=', null)->get();
         if ($comment != null) {
@@ -102,7 +102,7 @@ class ProfileController extends Controller
             $image = [0, 1];
             $images = [0, 1];
         }
-        $about = User::where('role_id', 2)->orderBy('reviews', 'desc')->take(20)->get();
+        $about = User::where('role_id', 2)->take(20)->get();
         //dd($a);
         $file = "Portfolio/{$user->name}";
         if (!file_exists($file)) {

@@ -20,7 +20,7 @@ class ResponseController extends Controller
             'description' => 'required|string',
             'price' => 'required|int',
         ]);
-        $data['notificate'] = $request->notificate ? 1 : 0;
+        $data['notification_on'] = $request->notificate ? 1 : 0;
         $data['task_id'] = $task->id;
         $data['user_id'] = $task->user_id;
         $data['creator_id'] = auth()->user()->id;
@@ -33,7 +33,10 @@ class ResponseController extends Controller
         $ballance = WalletBalance::where('user_id', auth()->user()->id)->first();
         if ($ballance) {
             if ($ballance->balance < 4000) {
-                Alert::error("Balance", 'Hisobingizda yetarli mablag\' mavjud emas!');
+                Alert::error('Hisobingizda yetarli mablag\' mavjud emas!');
+            }else if($task->responses()->where('creator_id', auth()->user()->id)->first()){
+                Alert::error("Balance", 'Allaqachon mavjud!');
+
             } else {
                 Alert::success("Success", 'asdweqweqw');
                 $ballance->balance = $ballance->balance - $request->pay;
