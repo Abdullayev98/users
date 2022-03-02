@@ -92,13 +92,13 @@
                                 @endauth
                             @endif
                             <li class="mb-1">
-                                <a href="/categories/1" class="delete-task block p-4 text-sm rounded  text-gray-500 hover:text-yellow-500">{{__('Создать задание')}}</a>
+                                <a href="/categories/1" class="delete-task block p-4 text-sm rounded hover:text-yellow-500">{{__('Создать задание')}}</a>
                             </li>
                             <li class="mb-1">
-                                <a href="{{ route('task.search') }}" class="task block delete-task cursor-pointer p-4 text-sm rounded text-gray-500 hover:text-yellow-500">{{__('Найти задания')}}</a>
+                                <a href="{{ route('task.search') }}" class="task block delete-task cursor-pointer p-4 text-sm rounded hover:text-yellow-500">{{__('Найти задания')}}</a>
                             </li>
                             <li class="mb-1">
-                                <a href="/performers" class="performer delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">{{__('Исполнители')}}</a>
+                                <a href="/performers" class="performer delete-task cursor-pointer block p-4 text-sm rounded hover:text-yellow-500">{{__('Исполнители')}}</a>
                             </li>
 
                             @if (Route::has('login'))
@@ -130,15 +130,15 @@
                                         </div>
                                     </li>
 
-                                    <div class="text-gray-500 hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
+                                    <div class="hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
                                         <a href="{{ route('logout') }}" class="delete-task ml-4">{{__('Выход')}}</a>
                                     </div>
 
                                 @else
-                                    <div class="text-gray-500  relative top-60 block w-[400px] ml-4">
-                                        <a href="{{ route('login') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">{{__('Вход')}}
-                                            }</a> {{__('или')}}
-                                        <a href="{{ route('register') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
+                                    <div class="relative top-60 block w-[400px] ml-4">
+                                        <a href="{{ route('login') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500 ">{{__('Вход')}}
+                                            </a> {{__('или')}}
+                                        <a href="{{ route('register') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
                                     </div>
                         @endauth
                         @endif
@@ -151,7 +151,7 @@
         @endforeach
         <div class="hidden w-7/12 lg:inline-block xl:ml-12 lg:ml-12 md:text-sm xl:text-base">
             <div class="group inline-block mr-4">
-                <button class="text-gray-500 hover:text-yellow-500 focus:outline-none">
+                <button class="hover:text-yellow-500 focus:outline-none">
                     <span class="pr-1 flex-1">{{__('Создать задание')}}</span>
                     <span></span>
                 </button>
@@ -180,11 +180,11 @@
                     @endforeach
                 </ul>
             </div>
-            <a href="{{ route('task.search') }}" class="task cursor-pointer delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">{{__('Найти задания')}}</a>
-            <a href="/performers" class="performer delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">{{__('Исполнители')}}</a>
+            <a href="{{ route('task.search') }}" class="task cursor-pointer delete-task hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">{{__('Найти задания')}}</a>
+            <a href="/performers" class="performer delete-task cursor-pointer hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">{{__('Исполнители')}}</a>
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">{{__('Мои заказы')}}</a>
+                    <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer hover:text-yellow-500 text-[14px] xl:text-[16px] ">{{__('Мои заказы')}}</a>
                 @else
                 @endauth
             @endif
@@ -310,8 +310,8 @@
 
             @else
                 <div class="w-3/12 text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4 text-sm xl:text-base">
-                    <a href="{{ route('login') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">{{__('Вход')}}</a> {{__('или')}}
-                    <a href="{{ route('register') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
+                    <a href="{{ route('login') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500 ">{{__('Вход')}}</a> {{__('или')}}
+                    <a href="{{ route('register') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
                 </div>
                 <!-- language blog -->
                 <div class="flex justify-center text-gray-500 hidden lg:block md:text-sm xl:text-base pr-4">
