@@ -18,16 +18,13 @@
                     <div class="grid grid-cols-10">
                         <ul class=" md:col-span-9 col-span-10 md:items-left sitems-center">
                             <li class="inline md:mr-5 mr-1"><a href="/profile"
-                                                               class=" text-[14px] md:text-[18px] text-gray-600">{{__('Обо мне')}
-                                    }</a>
+                                                               class=" text-[14px] md:text-[18px] text-gray-600">{{__('Обо мне')}}</a>
                             </li>
                             <li class="inline md:mr-5 mr-1"><a href="/profile/cash"
-                                                               class=" text-[14px] md:text-[18px] text-gray-600">{{__('Счет')}
-                                    }</a>
+                                                               class=" text-[14px] md:text-[18px] text-gray-600">{{__('Счет')}}</a>
                             </li>
                             <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings"
-                                                                               class="md:text-[18px] text-[14px] text-gray-700"
-                                                                               id="settingsText">{{__('Настройки')}}</a>
+                                                                               class="md:text-[18px] text-[14px] text-gray-700" id="settingsText">{{__('Настройки')}}</a>
                             </li>
 
                         </ul>
