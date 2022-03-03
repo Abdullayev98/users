@@ -1,6 +1,5 @@
-<div class="w-full bg-gradient-to-r from-white via-gray-400 to-white h-1 rounded-full"></div>
-<div class="w-full bg-gradient-to-r from-white via-gray-100 to-white">
-    <div class="container text-center mx-auto px-16">
+<div class="w-4/5 mx-auto bg-gradient-to-r from-white via-gray-100 to-white">
+    <div class="container text-center mx-auto">
         <div class="text-4xl mx-auto py-10 md:py-16">
             {!!__('С Universal Services вы экономите на услугах до 70%.<br> Как это возможно')!!}
         </div>
@@ -45,7 +44,7 @@
 {{--            @endforeach--}}
 {{--        </div>--}}
 
-        <div class="grid md:grid-cols-3 grid-col-1 w-10/12 mx-auto">
+        <div class="grid md:grid-cols-3 grid-col-1 w-full mx-auto">
             <div class="grid-cols-1 text-left ">
                 <div class="border border-gray-300  mx-3 p-4 rounded-xl">
                     <span class="font-semibold">

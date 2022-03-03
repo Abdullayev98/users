@@ -28,7 +28,7 @@
         @include('homepage.blogs')
 
 {{--        reklamas section--}}
-        @include('homepage.reklama')
+        {{-- @include('homepage.reklama') --}}
 
 {{--        How is this possible section--}}
         @include('homepage.home_economy')

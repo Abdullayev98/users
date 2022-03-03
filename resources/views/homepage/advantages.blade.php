@@ -16,7 +16,7 @@
 {{--        </div>--}}
 {{--    </div>--}}
 {{--</div>--}}
-<div class="w-10/12 mx-auto grid md:grid-cols-2 grid-cols-1">
+<div class="w-4/5 mx-auto grid md:grid-cols-2 grid-cols-1 mt-12">
     <div class="grid-col-1 w-11/12">
         <img src="{{ asset('/images/advantages.png') }}" alt="">
     </div>

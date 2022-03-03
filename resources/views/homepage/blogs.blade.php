@@ -1,4 +1,4 @@
-<div class="grid grid-cols-2 gap-4 my-10 w-4/5 mx-auto">
+<div class="grid grid-cols-2 gap-4 my-20 w-4/5 mx-auto">
     <div class="lg:col-span-1 col-span-2 flex sm:flex-row flex-col m-3">
         <div class="w-1/3 sm:block hidden">
             <img src="{{asset('images/Rectangle1.png')}}" alt="#">
