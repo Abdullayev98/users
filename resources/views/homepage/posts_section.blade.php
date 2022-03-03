@@ -3,7 +3,7 @@
         <h1 class="text-2xl font-bold">{{__('Что заказывают на «Универсал Сервис» прямо сейчас')}}</h1>
     </div>
     <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-56">
-        <div id="scrollbar" class="col-span-2 md:w-10/12 w-full h-screen blog1 mt-8">
+        <div id="scrollbar" class="lg:col-span-2 col-span-3 md:w-10/12 w-full h-screen blog1 mt-8">
             <div class="w-full overflow-y-scroll h-screen border rounded-lg px-4 scrollbar" id="style-3">
                 @foreach($tasks as $task)
                     <div class="w-full border rounded-lg my-2 h-28 overflow-hidden force-overflow">
@@ -29,7 +29,7 @@
 
             </div>
         </div>
-        <div class="w-full md:col-span-1  col-span-2 mt-10">
+        <div class="w-full md:col-span-1  col-span-2 mt-10 lg:block hidden">
             <a href="{{route('verification')}}">
                 <div class="w-96 h-48 rounded-xl" style="background: url({{asset('images/kak1.png')}});">
                     <div class="w-full text-center">

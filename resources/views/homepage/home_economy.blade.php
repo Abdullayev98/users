@@ -61,7 +61,7 @@
                     </a>
                 </div>
             </div>
-            <div class="grid-cols-1 text-left">
+            <div class="grid-cols-1 text-left md:my-0 my-3">
                 <div class="border border-gray-300  mx-3 p-4 rounded-xl">
                     <span class="font-semibold">
                     <span class="text-yellow-500">
@@ -104,7 +104,7 @@
 
         </div>
 
-        <div class="w-8/12 mx-auto -mt-16">
+        <div class="w-8/12 mx-auto -mt-16 lg:block hidden">
             <img src="{{ asset('/images/Vector.png') }}" alt="">
         </div>
     </div>
