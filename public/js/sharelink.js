@@ -183,7 +183,6 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
 
     st.FLEX = "-moz-flex: 1;\n-ms-flex: 1;\n-webkit-flex: 1;\nflex: 1;";
 
-    st.FONT_FAMILY = "font-family: \"Helvetica Neue\", Verdana, Helvetica, Arial, sans-serif;";
 
     st.TRANSFORM = function(value) {
         return "-ms-transform: " + value + ";\n-webkit-transform: " + value + ";\ntransform: " + value + ";";

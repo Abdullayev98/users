@@ -1,6 +1,4 @@
 @font-face {
-  font-family: 'lg';
-  src: url("../fonts/lg.ttf?22t19m") format("truetype"), url("../fonts/lg.woff?22t19m") format("woff"), url("../fonts/lg.svg?22t19m#lg") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -8,7 +6,6 @@
 
 .lg-icon {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'lg' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -784,7 +781,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   display: block;
   white-space: pre;
   padding: 4px 12px;
-  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 12px;
 }
 

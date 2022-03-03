@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset ('/css/header.css') }}">
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="{{ asset('/css/bundle.min.css') }}"/>
 
 
 {{--<div class="HomepageHeaderSection">--}}
@@ -35,7 +35,7 @@
                 <div class="mx-auto">
                     <div class="lg:w-10/12 w-full flex-1 mt-8">
                         <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="{{__('Чем вам помочь...')}}"
-                               class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-xl focus:placeholder-transparent focus:outline-none focus:border-yellow-500 flex-1 md:text-xl text-lg">
+                               class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-xl focus:placeholder-transparent focus:outline-none focus:border-yellow-500 flex-1 md:text-xl border-0 text-lg">
                         <datalist id="TypeList">
                             @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                 <option
@@ -81,9 +81,82 @@
             <div class="grid-cols-1">
                 <div>
                     <img src="{{ asset('/images/bg_line.png') }}" alt="Line" class="absolute z-1 h-full" style=" height: 500px;">
-                    <img src="{{ asset('/images/Ellipse1.png') }}" alt="" class="relative z-10 top-6 ml-16" style=" height: 450px;">
+{{--                    <img src="{{ asset('/images/Ellipse1.png') }}" alt="" class="relative z-10 top-6 ml-16" style=" height: 450px;">--}}
                 </div>
+                <div class="relative z-10 top- left-72" style=" height: 500px;">
+                    <div>
+                        <!-- first -->
+                        <div class="">
+                            <input class="sr-only peer" type="radio" name="carousel" id="carousel-1" checked />
+                            <!-- content #1 -->
+                            <div
+                                class="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
+                                <img class="rounded-full" style="height: 450px; width: 450px;" src="{{ asset('/images/Ellipse1.png') }}" alt="" />
+                                <!-- controls -->
+                                <div class="absolute top-1/2 w-full flex justify-between z-20">
+                                    <label for="carousel-3" class="inline-block text-red-600 cursor-pointer -translate-x-5 bg-white rounded-full shadow-md active:translate-y-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                                        </svg>
+                                    </label>
+                                    <label for="carousel-2" class="inline-block text-red-600 cursor-pointer translate-x-5 bg-white rounded-full shadow-md active:translate-y-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- second -->
+                        <div class="">
+                            <input class="sr-only peer" type="radio" name="carousel" id="carousel-2" />
+                            <!-- content #2 -->
+                            <div
+                                class="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
+                                <img class="rounded-full" style="height: 450px; width: 450px;" src="{{ asset('/images/Rectangle.png') }}" alt="" />
+                                <!-- controls -->
+                                <div class="absolute top-1/2 w-full flex justify-between z-20">
+                                    <label for="carousel-1" class="inline-block text-blue-600 cursor-pointer -translate-x-5 bg-white rounded-full shadow-md active:translate-y-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                                        </svg>
+                                    </label>
+                                    <label for="carousel-3" class="inline-block text-blue-600 cursor-pointer translate-x-5 bg-white rounded-full shadow-md active:translate-y-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- three -->
+                        <div class="">
+                            <input class="sr-only peer" type="radio" name="carousel" id="carousel-3" />
+                            <!-- content #3 -->
+                            <div
+                                class="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
+                                <img class="rounded-t-lg" style="height: 450px; width: 450px;" src="{{ asset('/images/Ellipse1.png') }}" alt="" />
+                                <!-- controls -->
+                                <div class="absolute top-1/2 w-full flex justify-between z-20">
+                                    <label for="carousel-2" class="inline-block text-yellow-600 cursor-pointer -translate-x-5 bg-white rounded-full shadow-md active:translate-y-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                                        </svg>
+                                    </label>
+                                    <label for="carousel-1" class="inline-block text-yellow-600 cursor-pointer translate-x-5 bg-white rounded-full shadow-md active:translate-y-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
         </main>
     </div>
 </div>
+<script src="{{ asset('/js/jit_cdn.js') }}"></script>
