@@ -88,7 +88,7 @@
         @elseif(!session()->has('code'))
 
             @if(!auth()->user()->is_phone_number_verified)
-                <div x-data="{ showModal : true }" class="md:py-8 py-6">
+                <div x-data="{ showModal : true }" class="">
 
                     <!-- Modal Background -->
                     <div x-show="showModal"
