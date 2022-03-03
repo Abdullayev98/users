@@ -29,26 +29,6 @@
 
             </div>
         </div>
-            <div class="w-full md:col-span-1  col-span-2">
-                <a href="{{route('verification')}}">
-                    <div
-                        class="w-full  md:my-8 mt-32 mb-8" style="background: url({{asset('images/kak1.png')}});">
-                        <div class="w-full  bg-black bg-opacity-40 text-center">
-                            <i class="fas fa-user text-green-300 text-5xl pt-8"></i>
-                            <p class="lg:text-4xl xl:text-4xl md:text-2xl text-4xl font-medium text-white">
-                                {{__('Как стать исполнителем')}}</p>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <div class="mt-8 flex justify-center">
-                <a href="{{route('task.search')}}" type="button"
-                   class="text-center p-4 bg-blue-500 border-blue-500 text-white text-base  rounded-lg">
-                    {{__('Показать ещё задания')}}
-                </a>
-
-            </div>
-        </div>
         <div class="w-full md:col-span-1  col-span-2">
             <a href="{{route('verification')}}">
                 <div
@@ -82,4 +62,3 @@
         </div>
     </div>
 </div>
-
