@@ -37,7 +37,7 @@
         @include('homepage.advantages')
 
 {{--        mobile buttons section--}}
-        @include('homepage.mobile_section')
+{{--        @include('homepage.mobile_section')--}}
 
 {{--        What is being ordered at Universal Service right now--}}
         @include('homepage.posts_section')
