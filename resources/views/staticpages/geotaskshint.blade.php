@@ -2,44 +2,10 @@
 
 @section('content')
 
-<div class="container w-4/5 mx-auto">
+<div class="container w-4/5 mx-auto mt-12">
 
         <div class="flex lg:flex-row flex-col justify-center mt-6">
-            <div class="lg:w-1/5 w-full text-base">
-                <ul class="mb-5">
-                    <li><a  href="/geotaskshint" class="hover:text-red-500 text-md font-bold cursor-pointer">
-                        {{__('Как это работает')}}
-                    </a></li>
-                    <li><a  href="/security" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">
-                        {{__('Безопасность и гарантии')}}
-                    </a></li>
-                    <li><a  href="/badges" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">
-                        {{__('Награды и рейтинг')}}
-                </a></li>
-                </ul>
-                <ul class="mb-5">
-                    <li><a  href="/reviews" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">
-                        {{__('Отзывы исполнителей')}}
-                    </a></li>
-                    <li><a  href="/reviews/authors" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">
-                        {{__('Отзывы заказчиков')}}
-                    </a></li>
-                    <li><a  href="/press" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">
-                        {{__('СМИ о нас')}}
-                    </a></li>
-                </ul>
-                <ul>
-                    <li><a  href="/geotaskshint" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">
-                        {{__('Реклама на сервисе')}}
-                    </a></li>
-                    <li><a  href="/contacts" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">
-                        {{__('Контакты')}}
-                    </a></li>
-                    <li><a  href="/job" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">
-                        {{__('Вакансии')}}
-                    </a></li>
-                </ul>
-            </div>
+            @include('components.footerpage')
             <div class="lg:w-4/5 w-full lg:mt-0 mt-4">
                 <div class="w-full">
                     <h1 class="font-semibold text-4xl">

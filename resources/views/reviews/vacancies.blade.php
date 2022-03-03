@@ -2,44 +2,9 @@
 
 
 @section('content')
-    <div class="container w-4/5 mx-auto">
+    <div class="container w-4/5 mx-auto mt-12">
         <div class="flex lg:flex-row flex-col justify-center mt-6">
-            <div class="lg:w-1/5 w-full text-base">
-                <ul>
-                    <li>
-                        <a class="text-blue-500 hover:text-red-500" href="/geotaskshint">{{__('Как это работает')}}</a>
-                    </li>
-                    <li>
-                        <a class="text-blue-500 hover:text-red-500" href="/security">{{__('Безопасность и гарантии')}}</a>
-                    </li>
-                    <li>
-                        <a class="text-blue-500 hover:text-red-500" href="/badges">{{__('Награды и рейтинг')}}</a>
-                    </li>
-                    <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500" href="/reviews">{{__('Отзывы исполнителей')}}</a>
-                    </li>
-                    <li>
-                        <a class="text-blue-500 hover:text-red-500" href="/author-reviews">{{__('Отзывы заказчиков')}}</a>
-                    </li>
-                    <li>
-                        <a class="text-blue-500 hover:text-red-500" href="/press">{{__('СМИ о нас')}}</a>
-                    </li>
-                    <li class="mt-5">
-                        <a class="text-blue-500 hover:text-red-500" href="">{{__('Реклама на сервисе')}}</a>
-                    </li>
-                    <li>
-                        <a class="text-blue-500 hover:text-red-500" href="/contacts">{{__('Контакты')}}</a>
-                    </li>
-                    <li>
-                        <a class="text-black font-semibold" href="/vacancies">{{__('Вакансии')}}</a>
-                    </li>
-                </ul>
-                <a href class="bg-no-repeat" style="background: url('{{asset('images/shield.svg')}}');"></a>
-                <a href="/verification" class="w-10/12 px-10 pb-[15px] block rounded-md shadow-xl hover:shadow-md text-base leading-md tracking-sm text-gray-700 mt-5 text-center">
-                    <img src="{{asset('images/shield.svg')}}" class="mx-auto pb-3" alt="">
-                    {{__('Станьте исполнителем Универсал Сервис. И начните зарабатывать.')}}
-                </a>
-            </div>
+            @include('components.footerpage')
             <div class="lg:w-4/5 w-full text-base lg:mt-0 mt-4">
                 <h1 class="text-2xl font-semibold ">
                     {{__('Вакансии')}}

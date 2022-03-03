@@ -98,9 +98,6 @@ Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');
 
-Route::get('/contacts', function() {
-    return view('contacts.contacts');
-});
 
 Route::get('/choose-task', function() {
     return view('task.choosetasks');
