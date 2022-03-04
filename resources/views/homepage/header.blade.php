@@ -14,7 +14,7 @@
                 </p>
                 <div class="mx-auto">
                     <div class="lg:w-10/12 w-full flex-1 mt-8">
-                        <input name="TypeList" list="TypeList" type="text" id="header_input" placeholder="{{__('Чем вам помочь...')}}"
+                        <input name="TypeList" list="TypeList" type="text" id="header_input" maxlength="26" placeholder="{{__('Чем вам помочь...')}}"
                                class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-xl focus:placeholder-transparent focus:outline-none focus:border-yellow-500 flex-1 md:text-xl border-0 text-lg">
                         <datalist id="TypeList">
                             @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
