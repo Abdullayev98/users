@@ -7,12 +7,12 @@
     </div>
     <div class="float-left my-14 w-full md:block hidden">
         @foreach ($categories as $category2)
-            <a class="float-left items-center px-2 m-2 rounded-md ml-2 h-12 lg:border-0 border shadow-lg text-gray-600 hover:text-yellow-500 "
+            <a class="float-left items-center p-2 m-2 rounded-md ml-2 lg:border-0 border shadow-lg text-gray-600 hover:text-yellow-500 "
                href="{{route('categories', ['id'=> $category2->id])}}" style="box-shadow: 2px 2px gray;">
                 {{--                <img src="{{ asset('/images/icons/') }}{{$category2->ico }}" alt="">--}}
-                <span class="flex w-full flex-wrap content-center">
-                                    <img src="{{ asset('storage/'.$category2->ico) }}" alt=""><span
-                        class="ml-6 text-sm md:text-base text-gray-600"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
+                <span class="flex w-full flex-wrap content-center items-center">
+                        <img src="{{ asset('storage/'.$category2->ico) }}" alt="" class="h-8 w-8">
+                        <span class="ml-6 text-sm md:text-base text-gray-700 hover:text-yellow-500"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
                 </span>
 
             </a>
@@ -31,7 +31,7 @@
                href="{{route('categories', ['id'=> $category2->id])}}">
                 {{-- <img src="{{ asset('/images/icons/') }}{{$category2->ico }}" alt="">--}}
                 <span class="flex w-full flex-wrap content-center">
-                <img src="{{ asset('storage/'.$category2->ico) }}" alt=""></i><span
+                <img src="{{ asset('storage/'.$category2->ico) }}" alt="" class="h-8 w-8"></i><span
                     class="ml-6 text-lg text-gray-600"> {{ $category2->getTranslatedAttribute('name', Session::get('lang') , 'fallbackLocale' )}}</span>
                 </span>
             </a>
