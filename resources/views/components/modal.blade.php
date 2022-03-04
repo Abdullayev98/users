@@ -2,7 +2,7 @@
 
     @auth()
         @if(!auth()->user()->is_email_verified || auth()->user()->is_email_verified == 0)
-            <div x-data="{ showModal : true }" class="md:py-8 py-6">
+            <div x-data="{ showModal : true }" class="">
 
                 <!-- Modal Background -->
                 <div x-show="showModal"
@@ -175,7 +175,7 @@
 
         @elseif(session()->has('code'))
 
-            <div x-data="{ showModal : true }" class="md:py-8 py-6">
+            <div x-data="{ showModal : true }" class="">
 
                 <!-- Modal Background -->
                 <div x-show="showModal"

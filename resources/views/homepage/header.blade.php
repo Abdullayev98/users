@@ -6,7 +6,7 @@
     <div class="w-xl">
         <main class="w-4/5 mx-auto grid grid-cols-2 gap-2">
             <div class="pt-24 lg:col-span-1 col-span-2">
-                <h1 class="font-bold text-4xl lg:text-5xl">
+                <h1 class="font-bold text-4xl">
                     <span class="block">{{__('Освободим вас от забот')}}</span>
                 </h1>
                 <p class="mt-3 text-sm md:text-base sm:mt-5 sm:mx-auto md:mt-3 md:md:mt-2 mb-3">
@@ -27,7 +27,7 @@
                             {{__('Заказать услугу')}}
                         </a>
                         <a href="" type="submit" id="createhref"
-                           class="float-right sm:hidden block  md:text-xl  text-lg border bg-blue-900 z-0 border-transparent rounded-xl md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
+                           class="float-right hidden  md:text-xl  text-lg border bg-blue-900 z-0 border-transparent rounded-xl md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
                             Заказать
                         </a>
                         <div class="mt-8">

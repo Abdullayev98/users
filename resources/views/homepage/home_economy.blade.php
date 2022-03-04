@@ -53,7 +53,7 @@
                     </span> Создать задания
                 </span>
                     <h1 class="my-2 pb-2">
-                        Опишите своими словами задачу, которую требуется выполнить Создать задание
+                        Опишите своими словами задачу, которую требуется выполнить
                     </h1>
                     <a href="/categories/1"
                        class="text-yellow-500 hover:text-white  p-3 rounded-lg transition duration-300 hover:bg-yellow-500">
