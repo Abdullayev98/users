@@ -151,10 +151,9 @@ $("#geoBut").click(function() {
     $('#geoBut').hide();
 });
 
-$("#geoBut2").click(function() {
-    console.log('Ishlavoti...')
+$("#geobut2").click(function() {
     $('#closeBut2').show();
-    $('#geoBut2').hide();
+    $('#geobut2').hide();
 });
 
 $("#closeBut").click(function() {
@@ -167,7 +166,7 @@ $("#closeBut").click(function() {
 $("#closeBut2").click(function() {
     $('#suggest2').val('');
     $('#closeBut2').hide();
-    $('#geoBut2').show();
+    $('#geobut2').show();
     jqFilter()
 });
 
@@ -737,7 +736,7 @@ function map1_show (){
     function init() {
 
         var myInput2 = document.getElementById("suggest2");
-        var location = ymaps.geolocation;
+        let location = ymaps.geolocation;
 
         location.get({
             mapStateAutoApply: true
@@ -759,6 +758,23 @@ function map1_show (){
                     function(result) {
                         myInput2.value = result.geoObjects.get(0).properties.get('text');
                         userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
+                    },
+                    function(err) {
+                        console.log('Ошибка: ' + err)
+                    }
+                );
+        });
+
+        $("#geobut2").click(function(){
+            location.get({
+                mapStateAutoApply: true
+            })
+                .then(
+                    function(result) {
+                        document.getElementById("suggest2").value = result.geoObjects.get(0).properties.get('text');
+                        userCoordinates = result.geoObjects.get(0).geometry.getCoordinates();
+                        myMap1.geoObjects.add(result.geoObjects);
+                        myMap1.setCenter(result.geoObjects.get(0).geometry.getCoordinates());
                     },
                     function(err) {
                         console.log('Ошибка: ' + err)
@@ -801,6 +817,7 @@ function map1_show (){
                     geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
                 }
             }
+            
 
         clusterer.options.set({
             gridSize: 80,
