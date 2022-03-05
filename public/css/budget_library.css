@@ -85,14 +85,14 @@ div{
 }
 
 .handle__27597 {
-    height: 0px;!inportant;
+    height: 0px !important;
     position: absolute;
     transform: translate(-50%,-50%);
     top: 144px;
     z-index: 5;
     cursor: pointer;
-    background-color: 0;!inportant;
-    box-shadow: 0;!inportant;
+    background-color: 0 !important;
+    box-shadow: 0 !important;
     border-radius: 50%;
 }
 .triangle__678999{
