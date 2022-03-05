@@ -24,7 +24,7 @@
         <div class="md:text-xl font-semibold mx-auto py-6 text-center">
             {{__('Основные преимущества Universal Services')}}
         </div>
-        <div>
+        <div class="lg:w-full w-4/5 mx-auto">
             <span class="font-semibold">Выгодные цены</span>
             <p class="text-base">
                 У частных исполнителей нет расходов на офис, рекламу, зарплату секретарю и других затрат, которые сервисные компании обычно включают в стоимость своих услуг.
@@ -45,8 +45,8 @@
             </p>
         </div>
         <hr>
-        <div>
-            <div class="float-left mr-5">
+        <div class="lg:w-full w-4/5 mx-auto flex flex-wrap">
+            <div class="float-left mr-5 my-2">
                 <span class="text-yellow-500 font-semibold">
                     2 419 658
                 </span>
@@ -54,7 +54,7 @@
                     заданий уже выполнены
                 </p>
             </div>
-            <div>
+            <div class="my-2">
                 <span class="text-yellow-500 font-semibold">
                     617 014
                 </span>
@@ -62,7 +62,7 @@
                     исполнителей готовы помочь вам
                 </p>
             </div>
-            <div class="mt-4">
+            <div class="my-2">
                 <span class="text-yellow-500 font-semibold">
                     35 секунд
                 </span>
