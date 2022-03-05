@@ -21,7 +21,7 @@
 
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;!important;
+            font-family: 'Montserrat', sans-serif !important;
         }
     </style>
 </head>
