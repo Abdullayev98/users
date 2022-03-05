@@ -29,7 +29,8 @@
         "mockery/mockery": "^1.4.4",
         "nikaia/translation-sheet": "^1.4",
         "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "phpunit/phpunit": "^9.5.10",
+        "rakutentech/laravel-request-docs": "^1.17"
     },
     "autoload": {
         "psr-4": {

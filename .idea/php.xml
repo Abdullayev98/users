@@ -158,6 +158,9 @@
       <path value="$PROJECT_DIR$/vendor/google/apiclient-services" />
       <path value="$PROJECT_DIR$/vendor/google/apiclient" />
       <path value="$PROJECT_DIR$/vendor/nikaia/translation-sheet" />
+      <path value="$PROJECT_DIR$/vendor/rakutentech/laravel-request-docs" />
+      <path value="$PROJECT_DIR$/vendor/kitloong/laravel-app-logger" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-http-logger" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4">
