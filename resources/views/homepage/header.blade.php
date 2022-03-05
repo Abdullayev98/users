@@ -31,16 +31,16 @@
                             Заказать
                         </a>
                         <div class="mt-8">
-                            <a class="cursor-pointer">
+                            <a href="{{ setting('site.instagram_url') }}" class="cursor-pointer">
                                 <i class="fab fa-instagram text-yellow-500 mx-2"></i>
                             </a>
-                            <a class="cursor-pointer">
+                            <a href="{{ setting('site.telegram_url') }}" class="cursor-pointer">
                                 <i class="fab fa-telegram text-yellow-500 mx-2"></i>
                             </a>
-                            <a class="cursor-pointer">
+                            <a href="{{ setting('site.youtube_url') }}" class="cursor-pointer">
                                 <i class="fab fa-youtube text-yellow-500 mx-2"></i>
                             </a>
-                            <a class="cursor-pointer">
+                            <a href="{{ setting('site.facebook_url') }}" class="cursor-pointer">
                                 <i class="fab fa-facebook text-yellow-500 mx-2"></i>
                             </a>
                         </div>

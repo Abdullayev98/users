@@ -295,7 +295,7 @@ function tasks_list_all(data) {
         $(".show_tasks").append(
             `<div class="sort-table print_block" id="` + data.id + `" hidden>
                 <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-38 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
-                    <div class="md:w-11/12 w-full sm:ml-0.5 sm:m-2 m-0 ml-2">
+                    <div class="md:w-11/12 w-full mx-auto mt-3">
                         <div class="sm:float-left sm:w-7/12 w-full" id="results">
                             <i class="` + data.icon + ` text-2xl float-left text-blue-400 sm:mr-4 mr-3"></i>
                             <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-base font-semibold text-blue-500 hover:text-red-600">` + data.name + `</a>
