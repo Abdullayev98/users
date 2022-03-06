@@ -6,13 +6,13 @@
     <h2 class="font-bold text-2xl text-gray-800 mb-2">{{__('Здравствуйте')}}, {{$user->name}}!</h2>
     <div class="flex flex-row mt-6">
         <div class="sm:w-1/3 w-full">
-            <img class="border border-3 border-gray-400 h-40 w-40"
+            <img class="border border-3 border-gray-400 h-44 w-44"
                  @if ($user->avatar == Null)
                  src='{{asset("storage/images/default.jpg")}}'
                  @else
                  src="{{asset("storage/{$user->avatar}")}}"
                  @endif alt="avatar">
-            <div class="rounded-md bg-gray-200 w-40 mt-2 py-1" type="button">
+            <div class="rounded-md bg-gray-200 w-44 mt-2 py-1 border-2 border-gray-700" type="button">
                 <input type="file" name="file" id="file" onclick="fileupdate()" class="hidden">
                 <label for="file" class="p-1 cursor-pointer">
                     <i class="fas fa-camera mx-1"></i>

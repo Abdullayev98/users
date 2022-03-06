@@ -664,9 +664,7 @@
                 });
             });
         </script>
-        </script>
 
-        <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
 
     <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
     <script

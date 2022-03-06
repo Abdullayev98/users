@@ -4,14 +4,14 @@
     </div>
     <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-56">
         <div  class="lg:col-span-2 col-span-3 md:w-10/12 w-full h-screen blog1 mt-8">
-            <div class="w-full overflow-y-scroll h-screen border rounded-lg px-4 scrollbarr" id="style-3">
+            <div class="w-full overflow-y-scroll h-screen border rounded-lg px-4 ">
                 @foreach($tasks as $task)
                     <div class="w-full border rounded-lg my-2 h-28 overflow-hidden force-overflow">
                         <div class="icon pt-4">
                             <img src="{{ asset('storage/'.$task->category->ico) }}" alt="">
                         </div>
                         <div class="mx-auto w-2/3">
-                            <a href="/detailed-tasks/{{$task->id}}" class="xl:text-2xl md:text-xl text-xl">
+                            <a href="/detailed-tasks/{{$task->id}}" class="xl:text-2xl md:text-xl text-xl hover:text-yellow-500">
                                 {{$task->name}}
                             </a>
                             <p class="text-base mt-2 overflow-hidden whitespace-nowrap text-ellipsis text-gray-400">
