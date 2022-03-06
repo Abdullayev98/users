@@ -351,7 +351,7 @@
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                 </button>
                 <h3 class="font-medium text-3xl block mt-6">
-                    {{__('На какую сумму хотите пополнить <br> кошелёк')}}
+                    {!!__('На какую сумму хотите пополнить <br> кошелёк')!!}
                 </h3>
             </div>
             <div class="text-center h-64">

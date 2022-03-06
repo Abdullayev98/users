@@ -17,7 +17,7 @@
    <div class="grid grid-cols-3 gap-2 w-4/5 mx-auto mb-12">
        <div class="lg:col-span-1 col-span-3">
             <img src="{{asset('/images/User_white.png')}}" class="w-40 h-16">
-            <p class="text-base text-gray-300 my-6 w-11/12 ml-4">{{__('У частных исполнителей нет расходов на офис, рекламу, зарплату секретарю и других затрат, которые сервисные компании обычно включают в стоимость своих услуг.')}}</p>
+            <p class="text-base text-gray-300 my-6 w-11/12 ml-2">{{__('У частных исполнителей нет расходов на офис, рекламу, зарплату секретарю и других затрат, которые сервисные компании обычно включают в стоимость своих услуг.')}}</p>
             <div class="">
                 <a href="{{ setting('site.instagram_url') }}" class="cursor-pointer">
                     <i class="fab fa-instagram text-gray-300 hover:text-yellow-500 mx-2"></i>
