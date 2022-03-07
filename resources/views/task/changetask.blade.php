@@ -30,145 +30,7 @@
                 </div>
 
                 @foreach($task->category->custom_fields as $data)
-
-                    @if($data->type == 'select')
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-
-                                    {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
-                                    <select id="where" name="{{$data->name}}[]"
-                                            class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
-                                            required>
-
-                                        @foreach($data->options['options'] as $key => $option)
-                                            <option
-
-                                                {{ $data->custom_field_values()->where('task_id', $task->id)->first()?$data->custom_field_values()->where('task_id', $task->id)->first()->value == $option ? 'selected' : null : null }}
-
-                                                value="{{$option}}">{{$option}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-b-4"></div>
-                    @endif
-                    @if($data->type == 'checkbox')
-
-
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-
-                                    <div>
-
-                                        <div class="mb-3 xl:w-full">
-
-                                            @foreach($data->options['options'] as $key => $option)
-                                                <label class="md:w-2/3 block mt-6">
-                                                    <input @if($key == $data->values) checked
-                                                           @endif class="mr-2  h-4 w-4" type="checkbox"
-                                                           {{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null }}
-                                                           value="{{$option}}" name="{{$data->name}}[]">
-                                                    <span class="text-slate-900">
-                                                    {{$option}}
-                                                    </span>
-                                                </label>
-                                            @endforeach
-
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="border-b-4"></div>
-                    @endif
-                    @if($data->type == 'radio')
-
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-
-                                    <div>
-
-                                        <div name="glassSht" class="mb-3 xl:w-full">
-
-
-                                            @foreach($data->options['options'] as $key => $option)
-
-                                                <input
-                                                    {{ $data->custom_field_values()->where('task_id', $task->id)->first() ? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null  }} type="radio"
-                                                    id="{{$key}}" name="{{$data->name}}[]" value="{{$option}}">
-                                                <label for="{{$key}}">{{$option}}</label>
-                                                <br><br>
-                                            @endforeach
-
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="border-b-4"></div>
-                    @endif
-                    @if($data->type == 'input')
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-                                    {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
-                                    <input
-                                        placeholder="{{ $data->getTranslatedAttribute('placeholder',Session::get('lang') , 'fallbackLocale') }}"
-                                        id="car" name="{{$data->name}}[]" type="text"
-                                        value="{{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] : null }}"
-                                        class="shadow appearance-none border focus:outline-none  focus:border-yellow-500 rounded w-full py-2 px-3 text-gray-700 leading-tight"
-                                        required>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-b-4"></div>
-                    @endif
+                    @include('create.custom-fields')
                 @endforeach
 
 
@@ -193,15 +55,6 @@
                     {{--                    @error('category_id')--}}
                     {{--                    <p class="text-red-500">{{ $message }}</p>--}}
                     {{--                    @enderror--}}
-                </div>
-                <div class="my-2">
-                    <label class="text-xs text-gray-500">
-                        Ценность покупки, SUM
-                        <input type="text" onkeypress='validate(event)'
-                               name="budget" value="{{ $task->price }}"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">
-
-                    </label>
                 </div>
                 <div>
                     <label class="text-xs text-gray-500">
@@ -295,11 +148,13 @@
                                 </button>
                                 <ymaps
                                     style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;"></ymaps>
+
                                 <input autocomplete="off" oninput="myFunction()" id="suggest0"
                                        class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
-                                       type="text" placeholder="Город, Улица, Дом"
-                                       value="{{ json_decode($task->address)->location }}" name="address">
+                                       type="text" placeholder="Город, Улица, Дом" name="address"
+                                       value="{{ json_decode($task->address)->location }}">
                                 @error('address')
+
                                 <p class="text-red-500">{{ $message }}</p>
                                 @enderror
                                 <button id="getlocal"
@@ -318,7 +173,7 @@
                             </div>
 
                             <input name="coordinates" type="hidden" id="coordinate"
-                                   value="{{ json_decode($task->address)->latitude.",".json_decode($task->address)->longitude }}">
+                                   value="{{json_decode($task->address)->latitude.",". json_decode($task->address)->longitude }}">
                             <div id="addinput" class="flex gap-y-2 flex-col">
 
 
