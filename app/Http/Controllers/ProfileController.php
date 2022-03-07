@@ -173,7 +173,7 @@ class ProfileController extends Controller
             $data['is_phone_number_verified'] = 0;
         }
         Auth::user()->update($data);
-        Alert::success(__('lang.settings_Success'), __('lang.settings_Successfully'));
+        Alert::success(__('Success'), __('Successfully'));
         return redirect()->route('editData');
     }
 
