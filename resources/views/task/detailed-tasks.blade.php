@@ -449,12 +449,12 @@
                                                                  alt="">
                                                         </div>
                                                         <div class="">
-                                                            <a href="/performers/{{$response->user->id}}"
+                                                            <a href="/performers/{{Arr::get('id', $response->user)}}"
                                                                class="text-blue-500 text-xl font-semibold float-left">
-                                                                {{$response->user->name}}
+                                                                {{Arr::get('name', $response->user)}}
                                                             </a>
                                                             <input type="text" name="performer_id" class="hidden"
-                                                                   value="{{$response->user->id}}">
+                                                                   value="{{Arr::get('id', $response->user)}}">
                                                             <img class="w-7 h-7 ml-2"
                                                                  src="{{asset('images/shield.svg')}}" alt="">
                                                             <div class="text-gray-700">
