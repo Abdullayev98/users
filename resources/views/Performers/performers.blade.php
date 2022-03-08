@@ -238,7 +238,7 @@
             <!-- modal -->
             <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center py-12">
                 <!-- modal header -->
-                <h1 class="text-2xl font-bold">Вы предложили задание "Test" исполнителю Елена Б.</h1>
+                <h1 class="text-2xl font-bold">{{__('Вы предложили задание "Test" исполнителю Елена Б.')}}</h1>
                 <div class="mx-auto mt-8">
                     {{__('Мы отправили ему уведомление.')}}
                 </div>
