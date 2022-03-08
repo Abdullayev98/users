@@ -16,10 +16,10 @@
 
         <div class="xl:w-8/12 lg:10/12  mx-auto lg:flex mt-4 md:mt-8">
             <div class="lg:w-8/12 w-11/12 mx-auto bg-yellow-50 py-6 px-12 rounded-md ">
-                <h1 class="text-3xl font-semibold">Заполните заявку</h1>
+                <h1 class="text-3xl font-semibold">{{__('Заполните заявку')}}</h1>
                 <div>
                     <label class="text-sm">
-                        Мне нужно
+                        {{__('Мне нужно')}}
                         <input type="text" name="name"
                                class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full"
                                value="{{ $task->name }}">
@@ -30,145 +30,7 @@
                 </div>
 
                 @foreach($task->category->custom_fields as $data)
-
-                    @if($data->type == 'select')
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-
-                                    {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
-                                    <select id="where" name="{{$data->name}}[]"
-                                            class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
-                                            required>
-
-                                        @foreach($data->options['options'] as $key => $option)
-                                            <option
-
-                                                {{ $data->custom_field_values()->where('task_id', $task->id)->first()?$data->custom_field_values()->where('task_id', $task->id)->first()->value == $option ? 'selected' : null : null }}
-
-                                                value="{{$option}}">{{$option}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-b-4"></div>
-                    @endif
-                    @if($data->type == 'checkbox')
-
-
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-
-                                    <div>
-
-                                        <div class="mb-3 xl:w-full">
-
-                                            @foreach($data->options['options'] as $key => $option)
-                                                <label class="md:w-2/3 block mt-6">
-                                                    <input @if($key == $data->values) checked
-                                                           @endif class="mr-2  h-4 w-4" type="checkbox"
-                                                           {{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null }}
-                                                           value="{{$option}}" name="{{$data->name}}[]">
-                                                    <span class="text-slate-900">
-                                                    {{$option}}
-                                                    </span>
-                                                </label>
-                                            @endforeach
-
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="border-b-4"></div>
-                    @endif
-                    @if($data->type == 'radio')
-
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-
-                                    <div>
-
-                                        <div name="glassSht" class="mb-3 xl:w-full">
-
-
-                                            @foreach($data->options['options'] as $key => $option)
-
-                                                <input
-                                                    {{ $data->custom_field_values()->where('task_id', $task->id)->first() ? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null  }} type="radio"
-                                                    id="{{$key}}" name="{{$data->name}}[]" value="{{$option}}">
-                                                <label for="{{$key}}">{{$option}}</label>
-                                                <br><br>
-                                            @endforeach
-
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="border-b-4"></div>
-                    @endif
-                    @if($data->type == 'input')
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-                                    {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
-                                    <input
-                                        placeholder="{{ $data->getTranslatedAttribute('placeholder',Session::get('lang') , 'fallbackLocale') }}"
-                                        id="car" name="{{$data->name}}[]" type="text"
-                                        value="{{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] : null }}"
-                                        class="shadow appearance-none border focus:outline-none  focus:border-yellow-500 rounded w-full py-2 px-3 text-gray-700 leading-tight"
-                                        required>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-b-4"></div>
-                    @endif
+                    @include('create.custom-fields')
                 @endforeach
 
 
@@ -194,18 +56,9 @@
                     {{--                    <p class="text-red-500">{{ $message }}</p>--}}
                     {{--                    @enderror--}}
                 </div>
-                <div class="my-2">
-                    <label class="text-xs text-gray-500">
-                        Ценность покупки, SUM
-                        <input type="text" onkeypress='validate(event)'
-                               name="budget" value="{{ $task->price }}"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">
-
-                    </label>
-                </div>
                 <div>
                     <label class="text-xs text-gray-500">
-                        Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу
+                        {{__(' Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу')}}
                         <textarea type="number"
                                   name="description"
                                   class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">{{ $task->description }}</textarea>
@@ -216,23 +69,24 @@
                 </div>
                 <div>
                     <label class="text-sm text-gray-500">
-                        <input type="checkbox"> Забрать у получителя оплату за товар и вернуть заказчику?
+                        <input type="checkbox"> {{__('Забрать у получителя оплату за товар и вернуть заказчику?')}}
                     </label>
                 </div>
                 <div class="my-4">
                     <label class="text-sm text-gray-500">
-                        Дата и время <br>
+                        {{__('Дата и время')}} <br>
                         <div>
                             <select name="date_type" id="periud"
                                     class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-yellow-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 "
                                     aria-label="Default select example">
-                                <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">Начать работу
+                                <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">
+                                    {{__('Начать работу')}}
                                 </option>
-                                <option value="2" {{ $task->date_type == 2 ? 'selected' : null }}   id="2">Закончить
-                                    работу
+                                <option value="2" {{ $task->date_type == 2 ? 'selected' : null }}   id="2">
+                                    {{__('Закончить работу')}}
                                 </option>
-                                <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">Указать
-                                    период
+                                <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">
+                                   {{__(' Указать период')}}
                                 </option>
                             </select>
                         </div>
@@ -295,11 +149,13 @@
                                 </button>
                                 <ymaps
                                     style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;"></ymaps>
+
                                 <input autocomplete="off" oninput="myFunction()" id="suggest0"
                                        class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
-                                       type="text" placeholder="Город, Улица, Дом"
-                                       value="{{ json_decode($task->address)->location }}" name="address">
+                                       type="text" placeholder="Город, Улица, Дом" name="address"
+                                       value="{{ json_decode($task->address)->location }}">
                                 @error('address')
+
                                 <p class="text-red-500">{{ $message }}</p>
                                 @enderror
                                 <button id="getlocal"
@@ -318,7 +174,7 @@
                             </div>
 
                             <input name="coordinates" type="hidden" id="coordinate"
-                                   value="{{ json_decode($task->address)->latitude.",".json_decode($task->address)->longitude }}">
+                                   value="{{json_decode($task->address)->latitude.",". json_decode($task->address)->longitude }}">
                             <div id="addinput" class="flex gap-y-2 flex-col">
 
 
@@ -355,7 +211,7 @@
                     <div>
                         <label class="text-base">
                             <input type="checkbox">
-                            Отдаю предпочтение застрахованным исполнительям ?
+                            {{__('Отдаю предпочтение застрахованным исполнительям ?')}}
                         </label>
                     </div>
                     <div>
@@ -392,7 +248,7 @@
 
                 </div>
                 <div class="text-base my-6 bg-white rounded-md shadow-md p-4">
-                    <h1 class="text-xl font-semibold py-4">На какой бюджет вы рассчитываете?</h1>
+                    <h1 class="text-xl font-semibold py-4">{{__('На какой бюджет вы рассчитываете?')}}</h1>
                     <div>
                         <select class="border border-gray-300 rounded-md w-full focus:outline-none focus:border-yellow-500 py-2 px-4"
                                 name="budget" id="budget">
@@ -420,7 +276,7 @@
                     </div>
                 </div>
                 <div class="text-base my-4 ">
-                    <h1 class="text-xl font-semibold py-2">Ваши контакты</h1>
+                    <h1 class="text-xl font-semibold py-2">{{__('Ваши контакты')}}</h1>
                     <input id="phone_number"
                            class="text-base border border-gray-200 md:w-1/2 focus:outline-none focus:border-yellow-500 py-2 px-3 rounded-md"
                            type="text" value="+998{{ $task->phone }}"
@@ -433,10 +289,10 @@
                 <div class="text-base my-5 mt-8">
                     <button type="submit"
                             class="text-2xl mr-5 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-md ">
-                        Сохранить
+                        {{__('Сохранить')}}
                     </button>
                     <a
-                       class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">Отмена</a>
+                       class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">{{__('Отмена')}}</a>
                 </div>
             </div>
             <div class="w-4/12 md:block hidden">

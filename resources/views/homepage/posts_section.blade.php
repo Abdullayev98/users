@@ -34,7 +34,8 @@
                 <div class="w-96 h-48 rounded-xl" style="background: url({{asset('images/kak1.png')}});">
                     <div class="w-full text-center">
                         <p class="text-2xl font-bold text-yellow-400 pt-16">
-                           Как стать <br/> исполнителем</p>
+                            {!!__('Как стать <br/> исполнителем ')!!}
+                        </p>
                     </div>
                 </div>
             </a>
@@ -42,7 +43,7 @@
                 <div class="w-96 h-48 rounded-xl my-8" style="background: url({{asset('images/security.png')}});">
                     <div class="w-full text-center">
                         <p class="text-2xl font-bold text-yellow-400 pt-12">
-                           Безопасность и <br/> гарантии</p>
+                         {!!__('   Безопасность и <br/> гарантии ')!!}</p>
                     </div>
                 </div>
             </a>
@@ -50,7 +51,7 @@
                 <div class="w-96 h-48 rounded-xl" style="background: url({{asset('images/perform.png')}});">
                     <div class="w-full text-center">
                         <p class="text-2xl font-bold text-yellow-400 pt-12">
-                           Надежные <br/> исполнители <br/> бизнеса</p>
+                            {!!__('Надежные <br/> исполнители <br/> бизнеса')!!}</p>
                     </div>
                 </div>
             </a>
