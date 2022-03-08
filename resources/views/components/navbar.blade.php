@@ -207,7 +207,7 @@
                         @if($count_for_not > 0)
                             <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
                         @endif
-                        <button class="" type="button" data-dropdown-toggle="dropdown">
+                        <button class="focus:outline-none" type="button" data-dropdown-toggle="dropdown">
                             <i class="xl:text-2xl lg:text-xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                         </button>
                         <!-- Dropdown menu -->
@@ -264,7 +264,7 @@
 
                     {{-- icon-2 --}}
                     <div class="max-w-lg ml-5 float-left">
-                        <button class="" type="button" data-dropdown-toggle="dropdowndesk"><i class="xl:text-2xl lg:text-xl text-gray-500 hover:text-yellow-500 far fa-user"></i>
+                        <button class="focus:outline-none" type="button" data-dropdown-toggle="dropdowndesk"><i class="xl:text-2xl lg:text-xl text-gray-500 hover:text-yellow-500 far fa-user"></i>
                         </button>
                         <!-- Dropdown menu -->
                         <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdowndesk">
@@ -351,7 +351,7 @@
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                 </button>
                 <h3 class="font-medium text-3xl block mt-6">
-                    {{__('На какую сумму хотите пополнить <br> кошелёк')}}
+                    {!!__('На какую сумму хотите пополнить <br> кошелёк')!!}
                 </h3>
             </div>
             <div class="text-center h-64">

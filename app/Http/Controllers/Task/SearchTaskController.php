@@ -34,6 +34,11 @@ class SearchTaskController extends VoyagerBaseController
 //        dd($task, $otklik);
         return view('task.search');
     }
+    public function search(Request $request)
+    {
+        $s = $request->s;
+        return   Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
+    }
 
     public function ajax_tasks(Request $request)
     {

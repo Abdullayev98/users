@@ -132,6 +132,7 @@ json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->f
     <div class="border-b-4"></div>
 @endif
 @if($data->type == 'input')
+
     @if($data->title !== "")
         <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
             {{ $data->getTranslatedAttribute('title') }}
@@ -147,12 +148,22 @@ json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->f
         <div class="mb-4">
             <div id="formulario" class="flex flex-col gap-y-4">
                 {{ $data->getTranslatedAttribute('label') }}
+                <?php
+
+                $array = isset($task) && $task->custom_field_values()->where('custom_field_id', $data->id)->first() ? json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value,true):null;
+                if (array_key_exists('_token', $array))
+                    {
+                        $array = end($array);
+                    }
+
+                ?>
                 <input
                     placeholder="{{ $data->getTranslatedAttribute('placeholder') }}"
 
-                    id="car" name="{{$data->name}}[]" type="text" value="{{ isset($task) && $task->custom_field_values()->where('custom_field_id', $data->id)->first() ? json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)[0] :null }}"
+                    id="car" name="{{$data->name}}[]" type="text" value="{{$array[0]}}"
                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
                     required>
+
 
             </div>
         </div>

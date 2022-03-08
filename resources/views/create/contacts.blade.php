@@ -198,7 +198,7 @@
 
                                         <label>
                                             <span class="text-gray-500 text-sm">
-                                                Telefon nomer
+                                                {{__('Телефонный номер')}}
                                             </span>
                                             <input type="text"
                                                    placeholder="{{__('Номер телефона')}}" id="phone2"

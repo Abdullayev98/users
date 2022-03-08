@@ -10,7 +10,7 @@
     </ul>
     <ul class="mb-5">
         <li><a  href="/press" class="press hover:text-red-500 text-md text-blue-600 cursor-pointer">{{__('СМИ о нас')}}</a></li>
-        <li><a  href="/job" class="job hover:text-red-500 text-md text-blue-600 cursor-pointer">{{__('Вакансии')}}</a></li>
+        <li><a  href="/vacancies" class="job hover:text-red-500 text-md text-blue-600 cursor-pointer">{{__('Вакансии')}}</a></li>
     </ul>
 </div>
 
@@ -40,7 +40,7 @@
         $(".press").removeClass("text-blue-600");
         $(".press").addClass("text-red-400");
     }
-    else if(link[3] == 'job'){
+    else if(link[3] == 'vacancies'){
         $(".job").removeClass("text-blue-600");
         $(".job").addClass("text-red-400");
     }

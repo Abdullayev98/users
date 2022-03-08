@@ -27,7 +27,7 @@
                 </div>
                 <div class="ml-3 col-span-3">
                     <h5 class="font-bold text-gray-700 block mt-2 text-md">Google</h5>
-                    Подтвержден
+                    {{__('Подтвержден')}}
                 </div>
             </div>
         @endif
@@ -39,7 +39,7 @@
                 </div>
                 <div class="ml-3 col-span-3">
                     <h5 class="font-bold text-gray-700 block mt-2 text-md">Facebook</h5>
-                    <p>Подтвержден</p>
+                    <p>{{__('Подтвержден')}}</p>
                 </div>
             </div>
         @endif

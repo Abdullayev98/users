@@ -58,7 +58,7 @@ Route::get('find', [TaskAPIController::class, 'search']);
 
 //Categories
 Route::get('/categories', [CategoriesAPIController::class, 'index']);
-Route::get('/categories/{category}', [CategoriesAPIController::class, 'show']);
+Route::get('/categoriess/{category}', [CategoriesAPIController::class, 'show']);
 //Performers
 Route::get('/performers', [PerformerAPIController::class, 'service']);
 Route::get('/performers/{performer}', [PerformerAPIController::class, 'performer']);

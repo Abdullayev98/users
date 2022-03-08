@@ -50,10 +50,10 @@
                             <div class="text-base text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
                                 {{__('Выполнил')}}
-                                    <!-- -->
-                                    <!-- -->341 {{__('задание')}}
-                                    <!-- -->{{__('. Средняя оценка:}}')
-                                    <!-- -->5
+                                    
+                                    341 {{__('задание')}}
+                                    {{__('. Средняя оценка:')}}
+                                    5
                                 </span>
                                 <div class="inline-block align-middle w-20 h-[16px] bg-[length:16px_16px] relative" style="background-image: url('{{asset('images/star-yellow-light.svg')}}')">
                                     <div class="w-[100%] block h-[16px] absolute top-0 left-0 bg-[length:16px_16px]" style="url('{{asset('images/star-yellow.svg')}}')"></div>

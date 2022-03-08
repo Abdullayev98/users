@@ -159,10 +159,10 @@ button{
 }
 
 .ui-slider-handle {
-    border-radius: 50%;!important;
-    border: 2px solid #ffa200;!important;
-    margin-top: -5px;!important;
-    margin-left: -20px;!important;
+    border-radius: 50% !important;
+    border: 2px solid #ffa200 !important;
+    margin-top: -5px !important;
+    margin-left: -20px !important;
 }
 
 .ui-slider .ui-slider-handle {
@@ -340,18 +340,18 @@ p {
         z-index: 3;
         height: 150px;
         background: white;
-        overflow: visible;!important;
+        overflow: visible !important;
     }
 
     .handle__27597 {
-        height: 0px;!inportant;
+        height: 0px !important;
         position: absolute;
         transform: translate(-50%,-50%);
         top: 144px;
         z-index: 5;
         cursor: pointer;
-        background-color: 0;!inportant;
-        box-shadow: 0;!inportant;
+        background-color: 0 !important;
+        box-shadow: 0 !important;
         border-radius: 50%;
     }
     .triangle__678999{
@@ -454,14 +454,14 @@ p {
     }
 
     .handle__27597 {
-        height: 0px;!inportant;
+        height: 0px !important;
         position: absolute;
         transform: translate(-50%,-50%);
         top: 144px;
         z-index: 5;
         cursor: pointer;
-        background-color: 0;!inportant;
-        box-shadow: 0;!inportant;
+        background-color: 0 !important;
+        box-shadow: 0 !important;
         border-radius: 50%;
     }
     .container__dbb1e {
