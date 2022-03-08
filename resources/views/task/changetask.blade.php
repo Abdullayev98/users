@@ -16,10 +16,10 @@
 
         <div class="xl:w-8/12 lg:10/12  mx-auto lg:flex mt-4 md:mt-8">
             <div class="lg:w-8/12 w-11/12 mx-auto bg-yellow-50 py-6 px-12 rounded-md ">
-                <h1 class="text-3xl font-semibold">Заполните заявку</h1>
+                <h1 class="text-3xl font-semibold">{{__('Заполните заявку')}}</h1>
                 <div>
                     <label class="text-sm">
-                        Мне нужно
+                        {{__('Мне нужно')}}
                         <input type="text" name="name"
                                class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full"
                                value="{{ $task->name }}">
@@ -58,7 +58,7 @@
                 </div>
                 <div>
                     <label class="text-xs text-gray-500">
-                        Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу
+                        {{__(' Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу')}}
                         <textarea type="number"
                                   name="description"
                                   class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">{{ $task->description }}</textarea>
@@ -69,23 +69,24 @@
                 </div>
                 <div>
                     <label class="text-sm text-gray-500">
-                        <input type="checkbox"> Забрать у получителя оплату за товар и вернуть заказчику?
+                        <input type="checkbox"> {{__('Забрать у получителя оплату за товар и вернуть заказчику?')}}
                     </label>
                 </div>
                 <div class="my-4">
                     <label class="text-sm text-gray-500">
-                        Дата и время <br>
+                        {{__('Дата и время')}} <br>
                         <div>
                             <select name="date_type" id="periud"
                                     class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-yellow-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 "
                                     aria-label="Default select example">
-                                <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">Начать работу
+                                <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">
+                                    {{__('Начать работу')}}
                                 </option>
-                                <option value="2" {{ $task->date_type == 2 ? 'selected' : null }}   id="2">Закончить
-                                    работу
+                                <option value="2" {{ $task->date_type == 2 ? 'selected' : null }}   id="2">
+                                    {{__('Закончить работу')}}
                                 </option>
-                                <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">Указать
-                                    период
+                                <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">
+                                   {{__(' Указать период')}}
                                 </option>
                             </select>
                         </div>
@@ -210,7 +211,7 @@
                     <div>
                         <label class="text-base">
                             <input type="checkbox">
-                            Отдаю предпочтение застрахованным исполнительям ?
+                            {{__('Отдаю предпочтение застрахованным исполнительям ?')}}
                         </label>
                     </div>
                     <div>
@@ -247,7 +248,7 @@
 
                 </div>
                 <div class="text-base my-6 bg-white rounded-md shadow-md p-4">
-                    <h1 class="text-xl font-semibold py-4">На какой бюджет вы рассчитываете?</h1>
+                    <h1 class="text-xl font-semibold py-4">{{__('На какой бюджет вы рассчитываете?')}}</h1>
                     <div>
                         <select class="border border-gray-300 rounded-md w-full focus:outline-none focus:border-yellow-500 py-2 px-4"
                                 name="budget" id="budget">
@@ -275,7 +276,7 @@
                     </div>
                 </div>
                 <div class="text-base my-4 ">
-                    <h1 class="text-xl font-semibold py-2">Ваши контакты</h1>
+                    <h1 class="text-xl font-semibold py-2">{{__('Ваши контакты')}}</h1>
                     <input id="phone_number"
                            class="text-base border border-gray-200 md:w-1/2 focus:outline-none focus:border-yellow-500 py-2 px-3 rounded-md"
                            type="text" value="+998{{ $task->phone }}"
@@ -288,10 +289,10 @@
                 <div class="text-base my-5 mt-8">
                     <button type="submit"
                             class="text-2xl mr-5 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-md ">
-                        Сохранить
+                        {{__('Сохранить')}}
                     </button>
                     <a
-                       class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">Отмена</a>
+                       class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">{{__('Отмена')}}</a>
                 </div>
             </div>
             <div class="w-4/12 md:block hidden">
