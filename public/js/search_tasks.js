@@ -297,7 +297,8 @@ function tasks_list_all(data) {
                 <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-38 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
                     <div class="md:w-11/12 w-full sm:ml-0.5 sm:m-2 m-0 ml-2">
                         <div class="sm:float-left sm:w-7/12 w-full" id="results">
-                            <i class="` + data.icon + ` text-2xl float-left text-blue-400 sm:mr-4 mr-3"></i>
+<!--                            <i class="` + data.icon + ` text-2xl float-left text-blue-400 sm:mr-4 mr-3"></i>-->
+                            <img src="{{ asset('storage/'` + data.icon + `}}" class="text-2xl float-left text-blue-400 sm:mr-4 mr-3"/>
                             <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-base font-semibold text-blue-500 hover:text-red-600">` + data.name + `</a>
                             <p class="text-sm sm:ml-12 ml-10 sm:mt-4 sm:mt-1 mt-0 location ">` + (data.address != null ? json.location : 'Можно выполнить удаленно') + `</p>
                             <p class="text-sm sm:ml-8 ml-6 sm:mt-1 mt-0 pl-4 ">Начать ` + data.start_date + `</p>
@@ -817,7 +818,7 @@ function map1_show (){
                     geoObjects[i] = new ymaps.Placemark(dataGeo[i], getPointData(i), getPointOptions());
                 }
             }
-            
+
 
         clusterer.options.set({
             gridSize: 80,
