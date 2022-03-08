@@ -23,27 +23,27 @@
                 </div>
                 @if (Route::has('login'))
                     @auth
-                        <div class="w-2/12 flex justify-center lg:hidden">
+                        <div class="w-2/12 flex justify-center lg:hidden mr-2">
                             {{-- icon-1 --}}
                             <div class=" float-left">
-                                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-[12px] text-center">1</div>
+                                <div class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-center">1</div>
                                 <button class="" type="button" data-dropdown-toggle="notification">
                                     <i class="text-xl text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                                 </button>
                                 <!-- Dropdown menu -->
                                 <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="notification">
                                     <div class="px-4 py-3">
-                                        <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
+                                        <span class="block text-base font-bold">{{__('Уведомления')}}</span>
                                     </div>
                                     <ul class="py-1" aria-labelledby="notification">
-{{--                                        <li>--}}
-{{--                                            <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
-{{--                                        </li>--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <a  class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>{{__('Осталось только установить пароль')}}</a>--}}
+                                        {{--                                        </li>--}}
                                         <li>
-                                            <a href="/profile/settings" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
+                                            <a href="/profile/settings" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__("В раздел 'Настройки'")}}</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">@lang('lang.navbar_markAsRead')</a>
+                                            <a  class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2">{{__('Отметить все как прочитанное')}}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -92,27 +92,27 @@
                                 @endauth
                             @endif
                             <li class="mb-1">
-                                <a href="/categories/1" class="delete-task block p-4 text-sm rounded  text-gray-500 hover:text-yellow-500">@lang('lang.navbar_createTask')</a>
+                                <a href="/categories/1" class="delete-task block p-4 text-sm rounded hover:text-yellow-500">{{__('Создать задание')}}</a>
                             </li>
                             <li class="mb-1">
-                                <a href="{{ route('task.search') }}" class="task block delete-task cursor-pointer p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_findTask')</a>
+                                <a href="{{ route('task.search') }}" class="task block delete-task cursor-pointer p-4 text-sm rounded hover:text-yellow-500">{{__('Найти задания')}}</a>
                             </li>
                             <li class="mb-1">
-                                <a href="/performers" class="performer delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_perfs')</a>
+                                <a href="/performers" class="performer delete-task cursor-pointer block p-4 text-sm rounded hover:text-yellow-500">{{__('Исполнители')}}</a>
                             </li>
 
                             @if (Route::has('login'))
                                 @auth
 
                                     <li class="mb-1">
-                                        <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">@lang('lang.navbar_myTasks')</a>
+                                        <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">{{__('Мои заказы')}}</a>
                                     </li>
 
                                     {{-- icon-3 --}}
 
                                     <li class="">
                                         <div class="float-left mr-6">
-                                            <a href="#" onclick="toggleModal()">
+                                            <a  onclick="toggleModal()">
                                                 <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-6 HeaderBalance_icon__2FeBY"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 3.874c0-.953-.382-1.8-1.086-2.334-.7-.531-1.607-.667-2.488-.423h-.003L4.132 4.279a.973.973 0 00-.028.008c-1.127.35-1.986 1.287-2.093 2.563C2.004 6.9 2 6.95 2 7v11.344C2 20.334 3.608 22 5.607 22h12.785c2 0 3.608-1.666 3.608-3.657v-6.686c0-1.785-1.292-3.309-3-3.605V3.874zM4 18.343C4 19.265 4.748 20 5.607 20h12.785c.86 0 1.608-.735 1.608-1.657V16.25h-2a1.25 1.25 0 010-2.5h2v-2.093c0-.923-.748-1.657-1.608-1.657H4v8.343zM4 7.12c0 .507.41.88.813.88H17V3.874c0-.413-.153-.633-.294-.74-.145-.11-.391-.188-.746-.09h-.001L4.686 6.2c-.435.14-.686.46-.686.92z" fill="#5AB82E"></path></svg>
                                             </a>
                                         </div>
@@ -130,14 +130,15 @@
                                         </div>
                                     </li>
 
-                                    <div class="text-gray-500 hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
-                                        <a href="{{ route('logout') }}" class="delete-task ml-4">@lang('lang.navbar_exit')</a>
+                                    <div class="hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
+                                        <a href="{{ route('logout') }}" class="delete-task ml-4">{{__('Выход')}}</a>
                                     </div>
 
                                 @else
-                                    <div class="text-gray-500  relative top-60 block w-[400px] ml-4">
-                                        <a href="{{ route('login') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
-                                        <a href="{{ route('register') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
+                                    <div class="relative top-60 block w-[400px] ml-4">
+                                        <a href="{{ route('login') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500 ">{{__('Вход')}}
+                                            </a> {{__('или')}}
+                                        <a href="{{ route('register') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
                                     </div>
                         @endauth
                         @endif
@@ -145,17 +146,20 @@
                 </nav>
             </div>
         </div>
+        @foreach (categories() as $category)
+
+        @endforeach
         <div class="hidden w-7/12 lg:inline-block xl:ml-12 lg:ml-12 md:text-sm xl:text-base">
             <div class="group inline-block mr-4">
-                <button class="text-gray-500 hover:text-yellow-500 focus:outline-none">
-                    <span class="pr-1 flex-1">@lang('lang.navbar_createTask')</span>
+                <button class="hover:text-yellow-500 focus:outline-none">
+                    <span class="pr-1 flex-1">{{__('Создать задание')}}</span>
                     <span></span>
                 </button>
                 <ul class="bg-white border rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top z-10">
-                    @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $category)
+                    @foreach (categories() as $category)
                         <li class="py-2 px-4 rounded-sm hover:bg-gray-100">
                             <button class="w-full text-left flex items-center outline-none focus:outline-none">
-                                <span class="pr-1 flex-1 font-semibold text-sm hover:text-blue-700">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
+                                <span class="pr-1 flex-1 font-semibold text-sm hover:text-blue-700">{{ $category[0]->parent->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
                                 <span class="mr-auto">
                                 <svg class="fill-current h-4 w-4 transition duration-150 ease-in-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
@@ -164,9 +168,8 @@
                             </button>
                             <ul class="bg-white border rounded-sm absolute h-full overflow-y-auto top-0 right-0 transition duration-150 ease-in-out origin-top-left w-100">
 
-                                @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $category->id)->get() as $category2)
+                                @foreach ($category as $category2)
                                     <li class="rounded-sm">
-                                        {{--                                    <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="/task/create?category_id={{ $category2->id }}">--}}
                                         <a class=" py-3 px-5 w-full block hover:bg-gray-100" href="{{route("task.create.name", ['category_id'=>$category2->id])}}">
                                             {{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                         </a>
@@ -177,11 +180,11 @@
                     @endforeach
                 </ul>
             </div>
-            <a href="{{ route('task.search') }}" class="task cursor-pointer delete-task text-gray-500 hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">@lang('lang.navbar_findTask')</a>
-            <a href="/performers" class="performer delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">@lang('lang.navbar_perfs')</a>
+            <a href="{{ route('task.search') }}" class="task cursor-pointer delete-task hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">{{__('Найти задания')}}</a>
+            <a href="/performers" class="performer delete-task cursor-pointer hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">{{__('Исполнители')}}</a>
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer text-gray-500 hover:text-yellow-500 text-[14px] xl:text-[16px] ">@lang('lang.navbar_myTasks')</a>
+                    <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer hover:text-yellow-500 text-[14px] xl:text-[16px] ">{{__('Мои заказы')}}</a>
                 @else
                 @endauth
             @endif
@@ -202,45 +205,44 @@
 
                         @endforeach
                         @if($count_for_not > 0)
-                        <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
+                            <div id="content_count" class="w-4 h-4 absolute rounded-full bg-red-500 ml-3 text-white text-xs text-center">{{$count_for_not}}</div>
                         @endif
-                        <button class="" type="button" data-dropdown-toggle="dropdown">
+                        <button class="focus:outline-none" type="button" data-dropdown-toggle="dropdown">
                             <i class="xl:text-2xl lg:text-xl mr-6 text-gray-500 hover:text-yellow-500 far fa-bell"></i>
                         </button>
                         <!-- Dropdown menu -->
                         <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
                             <div class="px-4 py-3">
-                                <span class="block text-base font-bold">@lang('lang.navbar_notif')</span>
+                                <span class="block text-base font-bold">{{__('Уведомления')}}</span>
                             </div>
                             <ul class="py-1 overflow-y-auto max-h-96" id="notifs" aria-labelledby="dropdown">
 
                                 @foreach(auth()->user()->alerts as $notification)
-{{--                                    @switch($notification->type)--}}
+                                    {{--                                    @switch($notification->type)--}}
 
-{{--                                        @case(1)--}}
-                                        <li>
-                                            <form action="{{ route('notification.delete', $notification->id ) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</button>
+                                    {{--                                        @case(1)--}}
+                                    <li>
+                                        <form action="{{ route('notification.delete', $notification->id ) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</button>
+                                        </form>
+                                    </li>
+                                    {{--                                        @break--}}
 
-                                            </form>
-                                        </li>
-{{--                                        @break--}}
-
-{{--                                    @endswitch--}}
+                                    {{--                                    @endswitch--}}
                                 @endforeach
 
                                 <div id="for_append_notifications"></div>
 
-{{--                                <li>--}}
-{{--                                    <a href="#" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>@lang('lang.navbar_justSetPass')</a>--}}
-{{--                                </li>--}}
+                                {{--                                <li>--}}
+                                {{--                                    <a  class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>{{__('Осталось только установить пароль')}}</a>--}}
+                                {{--                                </li>--}}
                                 <li>
-                                    <a href="{{ route('editData')}}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_settings')</a>
+                                    <a href="{{ route('editData')}}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__("В раздел 'Настройки'")}}</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2 see_all">@lang('lang.navbar_markAsRead')</a>
+                                    <a  class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2 see_all">{{__('Отметить все как прочитанное')}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -254,7 +256,7 @@
                     </div>
 
                     <div class="max-w-lg ml-5 float-left">
-                        <a href="#" onclick="toggleModal()">
+                        <a onclick="toggleModal()">
                             <i class="xl:text-2xl lg:text-xl text-green-400 hover:text-yellow-500 fas fa-wallet"></i>
                         </a>
                     </div>
@@ -262,19 +264,19 @@
 
                     {{-- icon-2 --}}
                     <div class="max-w-lg ml-5 float-left">
-                        <button class="" type="button" data-dropdown-toggle="dropdowndesk"><i class="xl:text-2xl lg:text-xl text-gray-500 hover:text-yellow-500 far fa-user"></i>
+                        <button class="focus:outline-none" type="button" data-dropdown-toggle="dropdowndesk"><i class="xl:text-2xl lg:text-xl text-gray-500 hover:text-yellow-500 far fa-user"></i>
                         </button>
                         <!-- Dropdown menu -->
                         <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdowndesk">
                             <ul class="py-1" aria-labelledby="dropdowndesk">
                                 <li>
-                                    <a href="/profile" class="delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_profile')</a>
+                                    <a href="/profile" class="delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('Профиль')}}</a>
                                 </li>
                                 <li>
-                                    <a href="/profile/settings" class="delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_set')</a>
+                                    <a href="/profile/settings" class="delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('Настройки')}}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('logout') }}" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">@lang('lang.navbar_exit')</a>
+                                    <a href="{{ route('logout') }}" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('Выход')}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -308,8 +310,8 @@
 
             @else
                 <div class="w-3/12 text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4 text-sm xl:text-base">
-                    <a href="{{ route('login') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500 ">@lang('lang.navbar_enter')</a> @lang('lang.navbar_or')
-                    <a href="{{ route('register') }}"  class="delete-task border-b border-black border-dotted text-gray-500 hover:text-yellow-500 hover:border-yellow-500">@lang('lang.navbar_reg')</a>
+                    <a href="{{ route('login') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500 ">{{__('Вход')}}</a> {{__('или')}}
+                    <a href="{{ route('register') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
                 </div>
                 <!-- language blog -->
                 <div class="flex justify-center text-gray-500 hidden lg:block md:text-sm xl:text-base pr-4">
@@ -349,14 +351,14 @@
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                 </button>
                 <h3 class="font-medium text-3xl block mt-6">
-                    @lang('lang.navbar_howMuch')
+                    {!!__('На какую сумму хотите пополнить <br> кошелёк')!!}
                 </h3>
             </div>
             <div class="text-center h-64">
                 <div class="w-1/3 mx-auto h-16 border-b" id="demo" onclick="borderColor()">
-                    <input class="focus:outline-none  w-full h-full text-4xl text-center focus:outline-none" maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="4000">
+                    <input class="focus:outline-none focus:border-yellow-500  w-full h-full text-4xl text-center " maxlength="7" minlength="3" id="myText" oninput="inputFunction()" onkeypress='validate(event)' type="text" value="4000">
                 </div>
-                <p class="text-sm mt-2 leading-6 text-gray-400">@lang('lang.navbar_minimum')</p>
+                <p class="text-sm mt-2 leading-6 text-gray-400">{{__('Сумма пополнения, минимум — 4000 UZS')}}</p>
 
                 <!-- <div class="mt-8"> -->
                 <!-- <input type="checkbox" id="myCheck" onclick="checkFunction()"  class="w-5 h-5 rounded-md inline-block " /> -->
@@ -365,7 +367,7 @@
 
 
                 <div class="mt-16">
-                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" id="button" href="#" >@lang('lang.navbar_toPayment')</a>
+                    <a onclick="toggleModal1()" class="px-10 py-4 font-sans  text-xl  font-semibold bg-green-500 text-white hover:bg-green-500  h-12 rounded-md text-xl" id="button" href="#" >{{__('К оплате')}}</a>
                 </div>
             </div>
         </div>
@@ -381,7 +383,7 @@
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                 </button>
                 <h3 class="font-medium text-3xl block mt-6">
-                    @lang('lang.navbar_paymentWay')
+                    {{__('Способ оплаты')}}
                 </h3>
             </div>
 
@@ -406,7 +408,7 @@
                         </div>
                     </div>
                     <div class="text-center mt-8">
-                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-2xl font-bold py-3 px-8 rounded">@lang('lang.navbar_payment')</button>
+                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-2xl font-bold py-3 px-8 rounded">{{__('Оплата')}}</button>
                     </div>
                 </form>
             </div>
@@ -530,177 +532,174 @@
 
         });
     </script>
-@endif
+    @endif
 
-<script type="text/javascript">
-    function toggleModal(){
-        document.getElementById("modal-id").classList.toggle("hidden");
-        document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
-        document.getElementById("modal-id").classList.toggle("flex");
-        document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
-    }
-    function toggleModal1(){
-        var element = document.getElementById("modal-id-backdrop");
-        element.classList.add("hidden");
-        var element2 = document.getElementById("modal-id");
-        var b = document.getElementById("myText").value;
-        var u = document.getElementById("amount_u");
-        u.value = b;
-        element2.classList.add("hidden");
-        document.getElementById("modal-id1").classList.toggle("hidden");
-        document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
-        document.getElementById("modal-id1").classList.toggle("flex");
-        document.getElementById("modal-id1" + "-backdrop").classList.toggle("flex");
-    }
-    function borderColor() {
-        var element = document.getElementById("demo");
-        element.classList.add("border-amber-500");
-    }
-    function inputFunction() {
-        var x = document.getElementById("myText").value;
-        if(x < 4000){
-            document.getElementById('button').removeAttribute("onclick");
-            document.getElementById('button').classList.remove("bg-green-500");
-            document.getElementById('button').classList.add("bg-gray-500");
-            document.getElementById('button').classList.remove("hover:bg-green-500");
-            document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
-        }else{
-            document.getElementById('button').setAttribute("onclick","toggleModal1();");
-            document.getElementById('button').classList.remove("bg-gray-500");
-            document.getElementById('button').classList.add("bg-green-500");
-            document.getElementById('button').classList.add("hover:bg-green-500");
-            document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+    <script type="text/javascript">
+        function toggleModal(){
+            document.getElementById("modal-id").classList.toggle("hidden");
+            document.getElementById("modal-id" + "-backdrop").classList.toggle("hidden");
+            document.getElementById("modal-id").classList.toggle("flex");
+            document.getElementById("modal-id" + "-backdrop").classList.toggle("flex");
         }
-    }
-    function checkFunction() {
-        var x = document.getElementById("myText").value;
-        var checkBox = document.getElementById("myCheck");
-        if (checkBox.checked == true){
-            document.getElementById("button").innerHTML ="К оплате " + (parseInt(x) + 10000);
-        } else {
-            document.getElementById("button").innerHTML ="К оплате " + x  +"UZS";
+        function toggleModal1(){
+            var element = document.getElementById("modal-id-backdrop");
+            element.classList.add("hidden");
+            var element2 = document.getElementById("modal-id");
+            var b = document.getElementById("myText").value;
+            var u = document.getElementById("amount_u");
+            u.value = b;
+            element2.classList.add("hidden");
+            document.getElementById("modal-id1").classList.toggle("hidden");
+            document.getElementById("modal-id1" + "-backdrop").classList.toggle("hidden");
+            document.getElementById("modal-id1").classList.toggle("flex");
+            document.getElementById("modal-id1" + "-backdrop").classList.toggle("flex");
         }
-    }
-    function validate(evt) {
-        var theEvent = evt || window.event;
-        // Handle paste
-        if (theEvent.type === 'paste') {
-            key = event.clipboardData.getData('text/plain');
-        } else {
-            // Handle key press
-            var key = theEvent.keyCode || theEvent.which;
-            key = String.fromCharCode(key);
+        function borderColor() {
+            var element = document.getElementById("demo");
+            element.classList.add("border-amber-500");
         }
-        var regex = /[0-9]|\./;
-        if( !regex.test(key) ) {
-            theEvent.returnValue = false;
-            if(theEvent.preventDefault) theEvent.preventDefault();
-        }
-    }
-</script>
-{{-- pay modal end --}}
-
-<script>
-    // Burger menus
-    document.addEventListener('DOMContentLoaded', function() {
-        // open
-        const burger = document.querySelectorAll('.navbar-burger');
-        const menu = document.querySelectorAll('.navbar-menu');
-        if (burger.length && menu.length) {
-            for (var i = 0; i < burger.length; i++) {
-                burger[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
+        function inputFunction() {
+            var x = document.getElementById("myText").value;
+            if(x < 4000){
+                document.getElementById('button').removeAttribute("onclick");
+                document.getElementById('button').classList.remove("bg-green-500");
+                document.getElementById('button').classList.add("bg-gray-500");
+                document.getElementById('button').classList.remove("hover:bg-green-500");
+                document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
+            }else{
+                document.getElementById('button').setAttribute("onclick","toggleModal1();");
+                document.getElementById('button').classList.remove("bg-gray-500");
+                document.getElementById('button').classList.add("bg-green-500");
+                document.getElementById('button').classList.add("hover:bg-green-500");
+                document.getElementById("button").innerHTML ="К оплате " + x +"UZS";
             }
         }
-        // close
-        const close = document.querySelectorAll('.navbar-close');
-        const backdrop = document.querySelectorAll('.navbar-backdrop');
-        if (close.length) {
-            for (var i = 0; i < close.length; i++) {
-                close[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
+        function checkFunction() {
+            var x = document.getElementById("myText").value;
+            var checkBox = document.getElementById("myCheck");
+            if (checkBox.checked == true){
+                document.getElementById("button").innerHTML ="К оплате " + (parseInt(x) + 10000);
+            } else {
+                document.getElementById("button").innerHTML ="К оплате " + x  +"UZS";
             }
         }
-        if (backdrop.length) {
-            for (var i = 0; i < backdrop.length; i++) {
-                backdrop[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
+        function validate(evt) {
+            var theEvent = evt || window.event;
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+            } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /[0-9]|\./;
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
             }
         }
-    });
-</script>
+    </script>
+    {{-- pay modal end --}}
 
-<script >
-    $('.see_all').click(function(){
-        $.ajax({
-            url: "/del-notif",
-            type:"POST",
-            data:{
-                _token:$('meta[name="csrf-token"]').attr('content'),
-            },
-            success:function(response){
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-        $("#notifs").load(location.href + " #notifs");
-        $("#content_count").addClass('hidden');
-    });
-    var link = document.location.href.split('/');
-    if(link[3] == 'task'){
-        $('.delete-task').on('click', function () {
-
-            let for_del_task_in = $(this).attr("href");
-            // console.log(for_del_task_in);
-            $(this).removeAttr('href');
-            Swal.fire({
-                title: '@lang('lang.name_deleteAsk')',
-                showDenyButton: true,
-                confirmButtonText: '@lang('lang.name_continue')',
-                denyButtonText: '@lang('lang.name_delete')',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = document.location.href;
-                } else if (result.isDenied) {
-                    if(var_for_id_task != null){
-                        $.ajax({
-                            url: '/for_del_new_task/'+ var_for_id_task +'',
-                            method: 'get',
-                        });
-                    }
-                    window.location.href = for_del_task_in;
-                    return false;
+    <script>
+        // Burger menus
+        document.addEventListener('DOMContentLoaded', function() {
+            // open
+            const burger = document.querySelectorAll('.navbar-burger');
+            const menu = document.querySelectorAll('.navbar-menu');
+            if (burger.length && menu.length) {
+                for (var i = 0; i < burger.length; i++) {
+                    burger[i].addEventListener('click', function() {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
                 }
-            });
-
+            }
+            // close
+            const close = document.querySelectorAll('.navbar-close');
+            const backdrop = document.querySelectorAll('.navbar-backdrop');
+            if (close.length) {
+                for (var i = 0; i < close.length; i++) {
+                    close[i].addEventListener('click', function() {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
+            if (backdrop.length) {
+                for (var i = 0; i < backdrop.length; i++) {
+                    backdrop[i].addEventListener('click', function() {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
         });
-
-    }
-</script>
-<script >
-            var link = document.location.href.split('/');
-            if(link[3] == 'performers'){
-                $(".performer").addClass("text-yellow-400");
-            }
-            else if(link[3] == 'my-tasks'){
-                $(".mytask").addClass("text-yellow-400");
-            }
-            else if(link[3] == 'task-search'){
-                $(".task").addClass("text-yellow-400");
-            }
     </script>
 
-@section("javascript")
+    <script >
+        $('.see_all').click(function(){
+            $.ajax({
+                url: "/del-notif",
+                type:"POST",
+                data:{
+                    _token:$('meta[name="csrf-token"]').attr('content'),
+                },
+                success:function(response){
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+            $("#notifs").load(location.href + " #notifs");
+            $("#content_count").addClass('hidden');
+        });
+        var link = document.location.href.split('/');
+        if(link[3] == 'task'){
+            $('.delete-task').on('click', function () {
 
-@endsection
+                let for_del_task_in = $(this).attr("href");
+                // console.log(for_del_task_in);
+                $(this).removeAttr('href');
+                Swal.fire({
+                    title: '{!!__('Введённые данные будут потеряны. <br> Удалить задание?')!!}',
+                    showDenyButton: true,
+                    confirmButtonText: '{{__('Продолжить создание')}}',
+                    denyButtonText: '{{__('Удалить')}}',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = document.location.href;
+                    } else if (result.isDenied) {
+                        if(var_for_id_task != null){
+                            $.ajax({
+                                url: '/for_del_new_task/'+ var_for_id_task +'',
+                                method: 'get',
+                            });
+                        }
+                        window.location.href = for_del_task_in;
+                        return false;
+                    }
+                });
+
+            });
+
+        }
+    </script>
+    <script >
+        var link = document.location.href.split('/');
+        if(link[3] == 'performers'){
+            $(".performer").addClass("text-yellow-400");
+        }
+        else if(link[3] == 'my-tasks'){
+            $(".mytask").addClass("text-yellow-400");
+        }
+        else if(link[3] == 'task-search'){
+            $(".task").addClass("text-yellow-400");
+        }
+    </script>
+

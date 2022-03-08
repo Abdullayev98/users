@@ -1,6 +1,22 @@
 @extends("layouts.app")
 
+@section('style')
 
+    <style>
+        .selectboxit-container .selectboxit, .selectboxit-container .selectboxit-options {
+            width: 600px; /* Width of the dropdown button */
+            border-radius: 0;
+            max-height: 240px;
+        }
+
+        .selectboxit-options .selectboxit-option .selectboxit-option-anchor {
+            white-space: normal;
+            min-height: 30px;
+            height: auto;
+        }
+
+    </style>
+@endsection
 
 @section("content")
 
@@ -12,25 +28,24 @@
     <!-- <form class="" action="" method="post"> -->
 
     {{--    Created Road map for Create a New Tast--}}
-    <x-roadmap/>
     <div class="mx-auto lg:w-2/3 w-4/5 my-16">
-        <div class="grid grid-cols-3  lg:gap-x-20 md:gap-x-14 h-full">
-            <div class="md:col-span-2 col-span-3">
+        <div class="grid grid-cols-3   lg:gap-x-8 md:gap-x-0.5 h-full">
+            <div class="md:col-span-2  col-span-3">
                 <div class="w-full text-center md:text-2xl text-xl">
-                    @lang('lang.name_helpToFind')
+                    {{__('Поможем найти исполнителя для вашего задания')}}
                 </div>
                 <div class="w-full text-center my-4 text-gray-400">
-                    @lang('lang.name_percent')
+                    {{__('Задание заполнено на 14%')}}
                 </div>
                 <div class="pt-1">
                     <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200 mx-auto ">
                         <div style="width: 14%"
-                                 class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                             class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                     </div>
                 </div>
-                <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
+                <div class="shadow-2xl w-full lg:p-8 p-4 mx-auto my-4 rounded-2xl	w-full">
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
-                        @lang('lang.name_howCanWeHelpU')
+                        {{__('Чем вам помочь?')}}
                     </div>
                     <form action="{{route("task.create.name.store")}}" method="post">
                         @csrf
@@ -39,94 +54,111 @@
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
                             <div class="mb-4">
                                 <label class="block text-gray-400 text-sm mb-2" for="username">
-                                    @lang('lang.name_taskName')
+                                    {{__('Название задания')}}
                                 </label>
                                 <input
-                                    class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none "
-                                    id="username" type="text" placeholder="@lang('lang.name_example') {{ $current_category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}" required name="name" value="{{session('neym')}}">
+                                    class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none
+                                    focus:border-yellow-500 "
+                                    id="username" type="text"
+                                    placeholder="{{__('Например, ')}} {{ $current_category->getTranslatedAttribute('name') }}"
+                                    required name="name" value="{{session('neym')}}">
                             </div>
-                            <p class="text-base text-gray-600 mt-10">@lang('lang.name_chooseOtherCat')</p>
+                            <p class="text-base text-gray-600 mt-10">{{__('Если хотите выбрать другую категорию')}}</p>
                             <div id="categories">
+                                <div class="flex lg:flex-row flex-col">
+                                    <div class="lg:w-1/2 w-full lg:pr-3 py-5">
+                                        <select class="select2 parent-category "
+                                                style="width: 100%"
+                                        >
+                                            @foreach(getCategoriesByParent(null) as $parentCategory)
+                                                <option value="{{ $parentCategory->id }}">{{ $parentCategory->getTranslatedAttribute('name') }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="lg:w-1/2 w-full lg:pl-3 py-5">
+                                        @foreach(getCategoriesByParent(null) as $category)
 
-                            <div class="justify-center flex md:flex-row flex-col">
-  <div class="my-3 xl:w-50 pr-0 md:pr-2">
-    <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));" class="form-select
-      block
-      w-full
-      px-3
-      py-1.5
-      text-base
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                            <div class="hidden child-category child-category-{{ $category->id }}">
+                                                <select class="select2  child-category1"
+                                                        style="width: 100%"
+                                                >
+                                                    @foreach($category->childs as $child)
+                                                        <option value="{{ $child->id }}" class="hidden" data-parent="{{ $child->parent_id }}">{{ $child->getTranslatedAttribute('name') }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
 
-        <option  disabled>@lang('lang.name_chooseOne')</option>
-        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $cat_for_p)
-        <option  {{$current_category->parent_id == $cat_for_p->id? 'selected':''}} value="{{$cat_for_p->id}}">{{ $cat_for_p->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
-        @endforeach
-    </select>
-  </div>
-  @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get() as $cat_for_ch)
-  <div id="for_filter_select{{ $cat_for_ch->id }}" class="my-3 xl:w-50 for_all_hid_ch">
-    <select onchange="window.location.href = this.options[this.selectedIndex].value" class="form-select
-      block
-      w-full
-      px-3
-      py-1.5
-      text-base
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-        <option  disabled>Выберите один из пунктов</option>
-        @foreach (\TCG\Voyager\Models\Category::withTranslations(['ru', 'uz'])->where('parent_id', $cat_for_ch->id)->get() as $category2)
-        <option {{$current_category->id == $category2->id? 'selected':''}} value="/task/create?category_id={{ $category2->id }}">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</option>
-        @endforeach
-    </select>
-  </div>
-  @endforeach
-</div>
+                                        @endforeach
 
-<script>
-
-    func_for_select(Number(<? echo $current_category->parent_id ?>));
-
-function func_for_select(id) {
-
-$('.for_all_hid_ch').addClass('hidden');
-
-$('#for_filter_select'+ id +'').removeClass('hidden');
-};
-</script>
+                                    </div>
+                                </div>
 
 
-                            </div>
+
                         </div>
-                        <input type="submit"
-                               class="bg-green-500 hover:bg-green-500 w-11/12 md:ml-5 ml-2 my-4 cursor-pointer text-white font-bold md:py-5 py-1 px-5 rounded"
-                               name="" value="@lang('lang.name_next')">
+                        <div class="flex  mx-auto" >
+                            <input type="submit"
+                                   class="bg-green-500 hover:bg-green-500 w-9/12 mx-auto my-4 cursor-pointer text-white font-bold  py-5  px-5 rounded"
+                                   name="" value="{{__('Далее')}}">
+                        </div>
+
+                        </div>
+
                     </form>
                 </div>
             </div>
 
             <x-faq>
-            {{--            Created Component for Frequently Asked Questions--}}
+                {{--            Created Component for Frequently Asked Questions--}}
             </x-faq>
         </div>
     </div>
     <!-- </form> -->
 
+    <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('plugins/select2/js/maximize-select2-height.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+
+    <script>
+        $('.select2').select2({
+            //minimumResultsForSearch: Infinity,
+        }).maximizeSelect2Height()
+
+        let parentCategory = $(".parent-category").val();
+
+        $(".parent-category").change(function (){
+            $('.child-category').removeClass('hidden')
+            $('.child-category').addClass('hidden')
+            $('.child-category-'+$(this).val()).removeClass('hidden')
+
+        })
+        $('.child-category1').change(function (){
+            window.location.href = "/task/create?category_id=" + $(this).val();
+
+        })
+
+        $('.child-category-'+parentCategory+'').removeClass('hidden')
+
+    </script>
+
+    <style>
+        .select2-selection{
+            height: 40px!important;
+        }
+        .select2-selection__rendered{
+            padding: 5px 30px!important;
+            font-size:16px;
+        }
+        ul.select2-results__options {
+            min-height: 400px;
+        }
+        .select2-selection__arrow{
+            margin: 5px;
+        }
+        .select2-results__option{
+            font-size:16px;
+        }
+    </style>
 
 @endsection
 

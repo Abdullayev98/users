@@ -1,6 +1,6 @@
 <?php
 
-namespace Playmobile\SMS\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;

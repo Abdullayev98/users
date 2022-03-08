@@ -45,7 +45,7 @@ return [
     'body_downloadApp' => "Скачайте наше приложение и пользуйтесь Universal Services,
                         где бы вы ни находились.",
     'body_whatOthersDoing' => "Что заказывают на «Универсал Сервис» прямо сейчас",
-    'body_showAllTasks' => "Показать все задания",
+    'body_showAllTasks' => "Показать ещё задания",
     'body_howToJoin' => "Как стать исполнителем",
     'body_security' => "Безопасность и гарантии",
     'body_perForBusines' => "Надежные исполнители для бизнеса",
@@ -60,7 +60,7 @@ return [
     'modal_addres4' => " Указать другую почту",
     'modal_cencel' => "Отмена",
     'modal_send' => "Отправить",
-    'modal_address1' => "На ваш телефонный номер",
+    'modal_address1' => "На ваш телефонный номер ",
     'modal_phone1' => "Подтвердите номер телефона",
     'modal_address2' => " было отправлено письмо со кодом для подтверждения вашего аккаунта на Universal Services.",
     'modal_address3' => " Пройдите по ссылке и активируйте вашу телефонный номер.",
@@ -68,6 +68,7 @@ return [
     'modal_phone' => "Указать другой телефонный номер",
     'modal_alert' => "Вы предложили задание исполнителю",
     'modal_alert1' =>"Уведомления отправлено.",
+    'modal_code' => "Код",
     //modal blade end
 
     // pdf.blade start
@@ -103,8 +104,10 @@ return [
     'detT_otherTask' => "Другие задания в категории",
     'detT_ownerOfThisTask' => "Заказчик этого задания",
     'detT_inProsses' => "В исполнении",
-    'detT_callback' => "Откликнуться задание бесплатно",
-    'detT_callbackpay' => "Откликнуться задание платно",
+    'detT_callbackpay' => "Откликнуться за 4000 UZS",
+    'detT_callbackpay2' => "и отправить контакты заказчику",
+    'detT_callback' => "Откликнуться на задание бесплатно",
+    'detT_callback23' => "отклик - 0 UZS, контакт с заказчиком - 5000 UZS",
     'detT_fill' => "Пополните баланс",
     'detT_balanceReq' => "Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.",
     'detT_balanceReq2' => "При отклике сумма на балансе не блокируется — можно оставлять отклики и к другим заданиям.",
@@ -133,6 +136,10 @@ return [
     'detT_otherTaskInCat' => "Другие задания в категории",
     'detT_ordererThisTask' => "Заказчик этого задания",
     'detT_task' => "Задание",
+    'detT_payment' => "Оплата задания",
+    'detT_card' => "Карта",
+    'detT_or' => "или",
+    'detT_cash' => "Наличные",
     // detailed-tasks.blade end
 
     // mytasks.blade start
@@ -352,6 +359,9 @@ return [
     'authors_timeAgo' => "около 2 лет назад",
     'authors_feedback' => "Пользуюсь Universal Services время от времени, полезная штука. Вчера курьер доставил посылочку к поезду. Весной опытная медсестра наложила полимерный бинт на сломанную ногу. И уборку там заказываю - качественно и недорого. В общем, рекомендую.",
     'authors_createTask' => "Создать задание",
+    'authors_codeText1' => "Восстановление пароля",
+    'authors_codeText2' => " Укажите телефон, привязанный к вашей учетной записи. Мы отправим СМС с кодом.",
+
     // authors_reviews.blade end
 
     // CMI.blade start
@@ -498,6 +508,13 @@ return [
     'profile_enterDesc' => "Введите описание",
     'profile_newAlbum' => "Создать новый альбом",
     'profile_changeAlbum' => "Изменить альбом",
+    'profile_text1' => "Венруться в профиль",
+    'profile_text2' => "Создание нового альбома",
+    'profile_text3' => "Название",
+    'profile_text4' => "Описание",
+    'profile_text5' => 'Например: Ремонт кухни',
+    'profile_text6' => "Опишите какие работы представлены в этом альбоме, в чем их особенность, когда они были выполнены, в каких целях и т.д.",
+    'profile_text7' => "Далее",
     // profile.blade end
 
     // settings.blade start
@@ -548,6 +565,9 @@ return [
     'settings_newPassword' => "Новый пароль",
     'settings_repeatPassword' => "Повторите пароль",
     'settings_saveNewPass' => "Сохранить новый пароль",
+    'settings_delete' => "Вы уверены, что хотите удалить?",
+    'settings_Success' => "Успешно",
+    'settings_Successfully' => "Успешно обновлено",
     // settings.blade end
 
     // executors-courier.blade start
@@ -602,6 +622,12 @@ return [
     // performers.bade start
     'perf_youreInUser' => "Вы находитесь в разделе исполнителей U-Ser.",
     'perf_forOffer' => "Чтобы предложить работу выбранному исполнителю, нужно нажать на кнопку «Предложить задание» в его профиле.",
+    'perf_modalText' => "Выберите задание, которое хотите предложить исполнителью",
+    'perf_newTask' => "новое задание",
+    'perf_jobOffer' => "Предложить работу",
+    'perf_modalText2' => "Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.",
+    'perf_createNewTask' => "Создать новое задание",
+    'perf_weSend' => "Мы отправили ему уведомление.",
     // performers.bade end
 
     // budget.blade start
@@ -635,6 +661,10 @@ return [
     'contact_send' => "Отправить",
     'contact_yourContacts' => "Ваши контакты",
     'contact_auth' => "Авторизация",
+    'contact_verify' => "Код авторизация",
+    'contact_notVerify' => "Неверный код",
+    'contact_expired' => "Срок действия кода истек",
+    'contact_phone' => "Укажите номер",
     // contacts.blade end
 
     // date.blade start
@@ -685,7 +715,7 @@ return [
     'notes_percent' => "Задание заполнено на 90%",
     'notes_details' => "Уточните детали",
     'notes_destcript' => "Описание",
-    'notes_example' => "Например: построить одноэтажный детский домик из дерева, с крышей и двумя окнами. На участке часто собирается вода, понадобится дренаж из щебня.",
+    'notes_example' => "Например: ",
     'notes_addPhoto' => "Добавить фото",
     'notes_back' => "Назад",
     'notes_giveDocs' => "Предоставить документы",
@@ -1147,6 +1177,8 @@ return [
     'detailedT_training' => "Обучение",
     'detailedT_text18' => "Откликнуться на это задание",
     'detailedT_text19' => "Оставить отзыв",
+    'detailedT_Image' => "Рисунок",
+    'detailedT_ImageNot' => "Изображение не выбрано",
     //detailed tasks blade ended
     //data
     // personal info

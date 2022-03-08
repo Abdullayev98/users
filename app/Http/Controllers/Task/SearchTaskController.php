@@ -25,105 +25,60 @@ class SearchTaskController extends VoyagerBaseController
 {
     public function task_search()
     {
-//        $task = Task::orderBy('id','desc')->where('status',null)->count();
-//        $categories = Category::get()->all();
-//        return view('task.search', compact('tasks','categories'));
+//        $task = Task::whereIn('status', [2])
+//            ->orderBy('id', 'asc')->get();
+//        foreach ($task as $tasks){
+//            $otklik = Response::where('task_id', $tasks->id)->count();
+//        }
+
+//        dd($task, $otklik);
         return view('task.search');
+    }
+    public function search(Request $request)
+    {
+        $s = $request->s;
+        return   Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
     }
 
     public function ajax_tasks(Request $request)
     {
         if (isset($request->orderBy)) {
             if ($request->orderBy == 'all') {
-                $tasks = DB::table("tasks")->where('status', '=', 1)->orderBy('id', 'desc')
+            $tasks = Task::whereIn('status', [1,2])
+                    ->orderBy('id', 'asc')
                     ->join('users', 'tasks.user_id', '=', 'users.id')
                     ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name','users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
-                    ->get();
+                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.status', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
+                    ->get()->load('responses');
             }
-            if ($request->orderBy == 'sroch') {
-                $tasks = DB::table("tasks")->where('status', '=', 1)->orderBy('start_date', 'asc')
-                    ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
-                    ->get();
-            }
-            if ($request->orderBy == 'udal') {
-                $tasks = DB::table("tasks")->where([['address', '=', null], ['status', '=', null]])
-                    ->orderBy('id', 'desc')
-                    ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.*', 'categories.name as category_name', 'categories.ico as icon')
-                    ->get();
-            }
-            if ($request->orderBy == 'klyuch') {
-                $filter = $request->fltr;
-                $address = $request->addr;
-                $price = $request->prc;
-                $tasks = Task::where('status', '=', 1)
-                    ->where('name', 'LIKE', "%$filter%")
-                    ->where('address', 'LIKE', "%$address%")
-                    ->where('budget', 'LIKE', "%$price%")
-                    ->orderBy('id', 'asc')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.oplata', 'tasks.coordinates', 'tasks.user_id')
-                    ->get()->load('user','category');
-            }
-//            if ($request->orderBy == 'price') {
-////                $filter = $request->fltr;
-//                $tasks =  DB::table("tasks")->where('budget','LIKE',"%$filter%")->orderBy('name','desc')->get();
-//            }
         }
         return $tasks->all();
     }
 
     public function my_tasks()
     {
-        $tasks = Task::where('user_id', auth()->id())->get();
-        $perform_tasks = Task::where('performer_id', auth()->id())->get();
-        $all_tasks = Task::where('user_id', Auth::id())->where('performer_id', Auth::id())->get();
+        $user = auth()->user();
+        $tasks = $user->tasks();
+        $perform_tasks = Task::where('performer_id', $user->id())->get();
+        $all_tasks = Task::where('user_id', $user->id)->where('performer_id', $user->id)->get();
         $categories = Category::get();
         return view('/task/mytasks', compact('tasks', 'categories', 'perform_tasks', 'all_tasks'));
     }
 
-    public function search(Request $request)
-    {
-        $s = $request->s;
-        $a = $request->a;
-        $p = $request->p;
-        // dd($s);
-        if ($request->s) {
-            $tasks = Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
-        } elseif ($request->a) {
-            $tasks = Task::where('address', 'LIKE', "%$a%")->orderBy('name')->paginate(10);
-        } elseif ($request->p) {
-            $tasks = Task::where('budget', 'LIKE', "%$p%")->orderBy('name')->paginate(10);
-        } else {
-            $tasks = Task::where('name', 'LIKE', "%$s%")->orWhere('address', 'LIKE', "%$a%")->orWhere('budget', 'LIKE', "%$p%")->orderBy('name')->paginate(10);
-        }
-        $categories = Category::all();
-        return view('task.search', compact('tasks', 's', 'a', 'p', 'categories'));
-
-    }
-
     public function task(Task $task)
     {
-        $balance = WalletBalance::where('user_id', Auth::id())->first();
-        if ($balance) {
-            $balance = $balance->balance;
-        } else {
-            $balance = 0;
-        }
+        $review = null;
+        if ($task->reviews_count == 2) $review == true;
 
-        $users = User::all();
+        return view('task.detailed-tasks', compact('task', 'review'));
+    }
 
 
-        $arr = get_defined_vars();
-
-        if (Arr::exists($arr, 'response_users')) {
-            return view('task.detailed-tasks', compact('task',  'users',));
-        } else {
-            return view('task.detailed-tasks', compact('task',  'users',  'balance'));
-        }
+    public function selectPerformer(TaskResponse $response){
+        dd(23423);
 
     }
+
 
     public function task_response(Request $request)
     {
@@ -136,7 +91,7 @@ class SearchTaskController extends VoyagerBaseController
         $users_id = $request->input('user_id');
         $good = $request->input('good');
         if ($status) {
-            if ($status == 4) {
+            if ($status == 4 || $status == 2) {
                 Task::where('id', $task_id)->update([
                     'status' => $status
                 ]);
@@ -212,30 +167,20 @@ class SearchTaskController extends VoyagerBaseController
 
     public function delete_task(Task $task)
     {
-        DB::delete('DELETE FROM tasks WHERE id = ?', [$task->id]);
-        echo("User Record deleted successfully.");
+        taskGuard($task);
+        $task->responses()->delete();
+        $task->reviews()->delete();
+        $task->custom_field_values()->delete();
+        $task->delete();
         return redirect('/');
     }
 
     public function changeTask(Task $task)
     {
-        $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $categories2 = Category::withTranslations(['ru', 'uz'])->where('parent_id', "!=", null)->get();
-        return view('task.changetask', compact('categories', 'categories2', 'task', ));
+        taskGuard($task);
+
+        return view('task.changetask', compact('task'));
     }
-
-    public function update_task(Task $task, UpdateRequest $request)
-    {
-
-        $data = $request->validated();
-        $task->update($data);
-
-        dd($data);
-
-    }
-
-
-
 
 
 }

@@ -44,7 +44,6 @@ body {
   display: inline-flex;
   width: 100%;
   height: 100%;
-  font-family: sans-serif;
 }
 .messenger-listView {
   position: relative;
@@ -407,7 +406,6 @@ body {
   outline: none;
   resize: none;
   background: transparent;
-  font-family: sans-serif;
   height: 44px;
   max-height: 200px;
 }

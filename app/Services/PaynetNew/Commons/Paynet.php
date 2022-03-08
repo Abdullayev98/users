@@ -3,6 +3,8 @@
 namespace PayUz\Commons;
 
 use App\Models\PaynetTransaction;
+use App\Models\User;
+use App\Models\WalletBalance;
 use PayUz\DataFormat;
 use PayUz\PaymentException;
 use PayUz\Commons\Merchant;
@@ -86,7 +88,7 @@ class Paynet
                 "<providerTrnId>" . $this->request->params['transactionId'] . "</providerTrnId>".
                 "</ns2:PerformTransactionResult>";
         
-        $model = \App\Models\User::find($this->request->params['key']);
+        $model = User::find($this->request->params['key']);
         
         // TODO: check if user not found return status 302;
         
@@ -120,7 +122,10 @@ class Paynet
             'transactionable_type'  => get_class($model),
             'transactionable_id'    => $model->id
         ]);
-
+        if(!is_null($transaction)){
+            WalletBalance::walletBalanceUpdateOrCreate($transaction->transactionable_id, $transaction->amount);
+        }
+        
         return  "<ns2:PerformTransactionResult xmlns:ns2=\"http://uws.provider.com/\">".
             "<errorMsg>Success</errorMsg>".
             "<status>0</status>".
@@ -189,7 +194,7 @@ class Paynet
 
     private function GetInformation(){
 
-        $model = \App\Models\User::find($this->request->params['key']);
+        $model = User::find($this->request->params['key']);
         
         if ($model) {
             return  "<ns2:GetInformationResult xmlns:ns2=\"http://uws.provider.com/\">".

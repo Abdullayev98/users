@@ -5,55 +5,85 @@ namespace App\Http\Controllers\Task;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Task\UpdateRequest;
 use App\Models\CustomFieldsValue;
+use App\Models\Notification;
 use App\Models\Task;
+use App\Review;
+use Illuminate\Http\Request;
+use App\Services\Task\CreateService;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Exception;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UpdateController extends Controller
 {
+    protected $service;
+
+    public function __construct()
+    {
+        $this->service = new CreateService();
+    }
 
     public function __invoke(UpdateRequest $request, Task $task)
     {
+        taskGuard($task);
         $data = $request->validated();
-        $data = $this->getAddress($data);
+        $data = getAddress($data);
         $task->update($data);
+        $this->service->syncCustomFields($task);
+        Alert::success('Success');
 
-        $this->syncCustomFields($task);
+        return redirect()->route('tasks.detail', $task->id);
+
+
+    }
+
+    public function completed(Task $task){
+        $data = [
+            'status' => Task::STATUS_COMPLETE
+        ];
+        $task->update($data);
 
         Alert::success('Success');
 
         return back();
 
-
     }
 
-    public function getAddress($data){
-        $address['location'] = $data['address'];
-        $address['latitude'] = explode(',',$data['coordinates'])[0];
-        $address['longitude'] = explode(',',$data['coordinates'])[1];
-        $data['address'] = $address;
-        return $data;
-    }
 
-    public function syncCustomFields($task){
-        $this->deleteAllValues($task);
-
-        foreach ($task->category->custom_fields as $data) {
-            $value = new CustomFieldsValue();
-            $value->task_id = $task->id;
-            $value->custom_field_id = $data->id;
-            $arr = Arr::get(request()->all(), $data->name);
-            $value->value = is_array($arr) ? json_encode($arr) : $arr;
-            $value->save();
+    public function sendReview(Task $task, Request $request){
+        DB::beginTransaction();
+//        dd($request->all());
+        try {
+            $task->status = $request->input('status');
+            $l1 = Review::where('reviewer_id', $task->user_id)->where('user_id', $task->performer_id)->orWhere('reviewer_id', $task->performer_id)->where('user_id', $task->user_id)->count();
+            if($l1 == 1){
+                $task->save();
+            }
+            $review = new Review();
+            $review->description = $request->comment;
+            $review->good_bad = $request->good;
+            $review->task_id = $task->id;
+            $review->reviewer_id = auth()->id();
+            if ($task->reviews_count==2) $task->status = Task::STATUS_COMPLETE;
+            if($task->user_id == auth()->id()){
+                $review->user_id = $task->performer_id;
+            }else{
+                $review->user_id = $task->user_id;
+            }
+            Notification::create([
+                'user_id' => $task->user_id,
+                'task_id' => $task->id,
+                'name_task' => $task->name,
+                'description' => 1,
+                'type' => 2
+            ]);
+            $review->save();
+        }catch (Exception $exception){
+            DB::rollBack();
         }
-
-    }
-
-    public function deleteAllValues($task){
-        foreach ($task->custom_field_values as $custom_fields_value) {
-            $custom_fields_value->delete();
-
-        }
+        DB::commit();
+        return back();
     }
 
 

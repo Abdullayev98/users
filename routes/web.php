@@ -45,14 +45,17 @@ Route::get('/executors-courier', function () {
 });
 Route::group(['prefix' => 'performers'], function () {
 Route::get('/', [PerformersController::class, 'service'])->name('performers');
-Route::get('/{id}', [PerformersController::class, 'performer'])->name('performer.main');
-Route::get('/chat/{id}', [PerformersController::class, 'performer_chat']);
+Route::get('/{user}', [PerformersController::class, 'performer'])->name('performer.main');
+Route::get('/chat/{id}', [PerformersController::class, 'performer_chat'])->name('personal.chat');
 
 });
 
+
+
+
 Route::post('ajax-request', [SearchTaskController::class, 'task_response']);
 Route::post('give-task', [PerformersController::class, 'give_task']);
-Route::get('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('delete.task');
+Route::delete('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('delete.task');
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -72,8 +75,8 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail");
 
-Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask");
-Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("task.update");
+Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask")->middleware('auth');
+Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("task.update")->middleware('auth');
 
 Route::view('/offer-tasks','task.offertasks');
 Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){
@@ -86,7 +89,7 @@ Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){
     Route::post('/personalinfo/contact',[ProfileController::class, 'verificationContactStore'])->name('verification.contact.store');
 
     Route::get('/personalinfo/photo',[ProfileController::class, 'verificationPhoto'])->name('verification.photo');
-    Route::post('/personalinfo/photo',[ProfileController::class, 'verificationPhotoStore'])->name('verification.photo.store');
+    Route::put('/personalinfo/photo',[ProfileController::class, 'verificationPhotoStore'])->name('verification.photo.store');
 
     Route::get('/personalinfo/category',[ProfileController::class, 'verificationCategory'])->name('verification.category');
     Route::post('/personalinfo/category',[ProfileController::class, 'getCategory'])->name('verification.category.store');
@@ -95,9 +98,6 @@ Route::group(['middleware'=>'auth', 'prefix' => 'verification'], function (){
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send');
 
-Route::get('/contacts', function() {
-    return view('contacts.contacts');
-});
 
 Route::get('/choose-task', function() {
     return view('task.choosetasks');

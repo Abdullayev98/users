@@ -4,11 +4,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
-    {{--    <style>.flatpickr-calendar{width:230px;} </style>--}}
     <style>.flatpickr-calendar {
             max-width: 295px;
             width: 100%;
@@ -19,12 +16,12 @@
 
         <div class="xl:w-8/12 lg:10/12  mx-auto lg:flex mt-4 md:mt-8">
             <div class="lg:w-8/12 w-11/12 mx-auto bg-yellow-50 py-6 px-12 rounded-md ">
-                <h1 class="text-3xl font-semibold">Заполните заявку</h1>
+                <h1 class="text-3xl font-semibold">{{__('Заполните заявку')}}</h1>
                 <div>
                     <label class="text-sm">
-                        Мне нужно
+                        {{__('Мне нужно')}}
                         <input type="text" name="name"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full"
+                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full"
                                value="{{ $task->name }}">
                         @error('name')
                         <p class="text-red-500">{{ $message }}</p>
@@ -33,161 +30,24 @@
                 </div>
 
                 @foreach($task->category->custom_fields as $data)
-
-                    @if($data->type == 'select')
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-
-                                    {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
-                                    <select id="where" name="{{$data->name}}[]"
-                                            class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                                            required>
-
-                                        @foreach($data->options['options'] as $key => $option)
-                                            <option
-
-                                                {{ $data->custom_field_values()->where('task_id', $task->id)->first()?$data->custom_field_values()->where('task_id', $task->id)->first()->value == $option ? 'selected' : null : null }}
-
-                                                value="{{$option}}">{{$option}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-b-4"></div>
-                    @endif
-                    @if($data->type == 'checkbox')
-
-
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-
-                                    <div>
-
-                                        <div class="mb-3 xl:w-full">
-
-                                            @foreach($data->options['options'] as $key => $option)
-                                                <label class="md:w-2/3 block mt-6">
-                                                    <input @if($key == $data->values) checked
-                                                           @endif class="mr-2  h-4 w-4" type="checkbox"
-                                                           {{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null }}
-                                                           value="{{$option}}" name="{{$data->name}}[]">
-                                                    <span class="text-slate-900">
-                                                    {{$option}}
-                                                    </span>
-                                                </label>
-                                            @endforeach
-
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="border-b-4"></div>
-                    @endif
-                    @if($data->type == 'radio')
-
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-
-                                    <div>
-
-                                        <div name="glassSht" class="mb-3 xl:w-full">
-
-
-
-                                            @foreach($data->options['options'] as $key => $option)
-
-                                                <input  {{ $data->custom_field_values()->where('task_id', $task->id)->first() ? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] == $option ? 'checked' : null : null  }} type="radio"
-                                                       id="{{$key}}" name="{{$data->name}}[]" value="{{$option}}">
-                                                <label for="{{$key}}">{{$option}}</label>
-                                                <br><br>
-                                            @endforeach
-
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <!-- <span class="underline hover:text-gray-400 decoration-dotted cursor-pointer float-right">Приватная информация</span> -->
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="border-b-4"></div>
-                    @endif
-                    @if($data->type == 'input')
-                        <div class="py-4 mx-auto px-auto text-center text-3xl texl-bold">
-                            {{ $data->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-                        <div class="py-4 mx-auto px-auto text-center text-sm texl-bold">
-                            {{ $data->getTranslatedAttribute('description',Session::get('lang') , 'fallbackLocale') }}
-                        </div>
-
-                        <div class="py-4 mx-auto  text-left ">
-                            <div class="mb-4">
-                                <div id="formulario" class="flex flex-col gap-y-4">
-                                    {{ $data->getTranslatedAttribute('label',Session::get('lang') , 'fallbackLocale') }}
-                                    <input
-                                        placeholder="{{ $data->getTranslatedAttribute('placeholder',Session::get('lang') , 'fallbackLocale') }}"
-                                        id="car" name="{{$data->name}}[]" type="text" value="{{ $data->custom_field_values()->where('task_id', $task->id)->first()? json_decode($data->custom_field_values()->where('task_id', $task->id)->first()->value)[0] : null }}"
-                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                                        required>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-b-4"></div>
-                    @endif
+                    @include('create.custom-fields')
                 @endforeach
 
 
                 <div class="md:flex mt-5">
                     <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
-                        <option disabled>@lang('lang.name_chooseOne')</option>
+                        <option disabled>{{__('Выберите один из пунктов')}}</option>
                         <option>{{ $task->category->name }}</option>
                     </select>
 
                     <select name="category_id"
                             onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
-                        <option disabled>@lang('lang.name_chooseOne')</option>
-                        @foreach($categories2 as $category)
+                        <option disabled>{{__('Выберите один из пунктов')}}</option>
+                        @foreach($task->category->parent->childs as $category)
                             <option
                                 value="{{ $category->id }}" {{ $category->id == $task->category_id ? 'selected' : null }} >{{ $category->name }}</option>
                         @endforeach
@@ -196,21 +56,12 @@
                     {{--                    <p class="text-red-500">{{ $message }}</p>--}}
                     {{--                    @enderror--}}
                 </div>
-                <div class="my-2">
-                    <label class="text-xs text-gray-500">
-                        Ценность покупки, SUM
-                        <input type="number"
-                               name="budget" value="{{ $task->price }}"
-                               class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">
-
-                    </label>
-                </div>
                 <div>
                     <label class="text-xs text-gray-500">
-                        Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу
+                        {{__(' Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу')}}
                         <textarea type="number"
                                   name="description"
-                                  class="border border-gray-200 rounded-md shadow-sm focus:outline-none p-2 mb-4 w-full">{{ $task->description }}</textarea>
+                                  class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">{{ $task->description }}</textarea>
                         @error('description')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
@@ -218,23 +69,24 @@
                 </div>
                 <div>
                     <label class="text-sm text-gray-500">
-                        <input type="checkbox"> Забрать у получителя оплату за товар и вернуть заказчику?
+                        <input type="checkbox"> {{__('Забрать у получителя оплату за товар и вернуть заказчику?')}}
                     </label>
                 </div>
                 <div class="my-4">
                     <label class="text-sm text-gray-500">
-                        Дата и время <br>
+                        {{__('Дата и время')}} <br>
                         <div>
                             <select name="date_type" id="periud"
-                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-yellow-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 "
                                     aria-label="Default select example">
-                                <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">Начать работу
+                                <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">
+                                    {{__('Начать работу')}}
                                 </option>
-                                <option value="2" {{ $task->date_type == 2 ? 'selected' : null }}   id="2">Закончить
-                                    работу
+                                <option value="2" {{ $task->date_type == 2 ? 'selected' : null }}   id="2">
+                                    {{__('Закончить работу')}}
                                 </option>
-                                <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">Указать
-                                    период
+                                <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">
+                                   {{__(' Указать период')}}
                                 </option>
                             </select>
                         </div>
@@ -297,11 +149,13 @@
                                 </button>
                                 <ymaps
                                     style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;"></ymaps>
+
                                 <input autocomplete="off" oninput="myFunction()" id="suggest0"
-                                       class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                                       type="text" placeholder="Город, Улица, Дом"
-                                       value="{{ json_decode($task->address)->location }}" name="address">
+                                       class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
+                                       type="text" placeholder="Город, Улица, Дом" name="address"
+                                       value="{{ json_decode($task->address)->location }}">
                                 @error('address')
+
                                 <p class="text-red-500">{{ $message }}</p>
                                 @enderror
                                 <button id="getlocal"
@@ -318,14 +172,16 @@
 
 
                             </div>
+
                             <input name="coordinates" type="hidden" id="coordinate"
-                                   value="{{ json_decode($task->address)->latitude.",".json_decode($task->address)->longitude }}">
+                                   value="{{json_decode($task->address)->latitude.",". json_decode($task->address)->longitude }}">
                             <div id="addinput" class="flex gap-y-2 flex-col">
 
 
                             </div>
                         </div>
                         <div>
+
                             <div class="mb-4">
                                 <div id="formulario" class="flex flex-col gap-y-4">
 
@@ -345,7 +201,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         </svg>
-                                        <span class="text-base">@lang('lang.loc_add')</span>
+                                        <span class="text-base">{{__('Добавить ещё адрес')}}</span>
                                     </button>
                                     <div id="map" class="h-60 mt-4 rounded-lg w-full"></div>
                                 </div>
@@ -355,14 +211,46 @@
                     <div>
                         <label class="text-base">
                             <input type="checkbox">
-                            Отдаю предпочтение застрахованным исполнительям ?
+                            {{__('Отдаю предпочтение застрахованным исполнительям ?')}}
                         </label>
                     </div>
+                    <div>
+                        <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
+                            <h1 class="font-bold h-auto w-48">{{__('Рисунок')}}</h1>
+                            @foreach(json_decode($task->photos)??[] as $key => $image)
+                                {{--                                            @if ($loop->first)--}}
+
+                                <div class="relative boxItem">
+                                    <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
+                                       data-fancybox="img1"
+                                       data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                        <div class="mediateka_photo_content">
+                                            <img src="{{ asset('storage/'.$image) }}" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                                {{--                                            @endif--}}
+                            @endforeach
+                            @if($task->photos)
+                                <div class="relative boxItem">
+                                    @csrf
+                                    <a href="{{ route('task.images.delete', $task->id) }}" type="submit">
+                                        <div class="mediateka_photo_content text-center">
+                                            <i class="fas fa-trash text-black-50" style="font-size: 72px"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                        <div id="photos" class="w-full"></div>
+
+                    </div>
+
                 </div>
                 <div class="text-base my-6 bg-white rounded-md shadow-md p-4">
-                    <h1 class="text-xl font-semibold py-4">На какой бюджет вы рассчитываете?</h1>
+                    <h1 class="text-xl font-semibold py-4">{{__('На какой бюджет вы рассчитываете?')}}</h1>
                     <div>
-                        <select class="border border-gray-300 rounded-md w-full focus:outline-none py-2 px-4"
+                        <select class="border border-gray-300 rounded-md w-full focus:outline-none focus:border-yellow-500 py-2 px-4"
                                 name="budget" id="budget">
                             <option value="{{$task->category->max/5}}">
                                 {{$task->category->max/5}} UZS
@@ -382,21 +270,15 @@
                         </select>
                     </div>
                     <div class="my-4 text-base">
-                    <span>
-                        или укажите другую сумму &nbsp
-                    </span>
-                        <input
-                            class="border border-gray-200 md:mx-4 md:px-2 py-2 pr-2 rounded-md focus:outline-none text-right"
-                            placeholder="SUMMA" name="budget" value="{{ $task->price }}">SUM
                         @error('budget')
                         <p class="text-red-500">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
                 <div class="text-base my-4 ">
-                    <h1 class="text-xl font-semibold py-2">Ваши контакты</h1>
+                    <h1 class="text-xl font-semibold py-2">{{__('Ваши контакты')}}</h1>
                     <input id="phone_number"
-                           class="text-base border border-gray-200 md:w-1/2 focus:outline-none py-2 px-3 rounded-md"
+                           class="text-base border border-gray-200 md:w-1/2 focus:outline-none focus:border-yellow-500 py-2 px-3 rounded-md"
                            type="text" value="+998{{ $task->phone }}"
                            placeholder="+998(00)000-00-00">
                     <input type="hidden" id="phone" name="phone" value="{{ $task->phone }}">
@@ -407,10 +289,10 @@
                 <div class="text-base my-5 mt-8">
                     <button type="submit"
                             class="text-2xl mr-5 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-md ">
-                        Сохранить
+                        {{__('Сохранить')}}
                     </button>
-                    <a href="#"
-                       class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">Отмена</a>
+                    <a
+                       class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">{{__('Отмена')}}</a>
                 </div>
             </div>
             <div class="w-4/12 md:block hidden">
@@ -424,16 +306,27 @@
     <script src='https://unpkg.com/imask'></script>
 
     <script>
-        var myMap;
-        var multiRoute;
-        var place, place1 = "", place2 = "", place3 = "", place4 = "";
+
     </script>
     <script id="map_api"
-            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang=@lang('lang.lang_for_map')&onload=onLoad"
+            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}&onload=onLoad"
             type="text/javascript">
     </script>
     <script>
-        var element = document.getElementById('phone');
+        @if(!$errors->has('end_date'))
+        $('#start-date').css('display', 'inline-block');
+        @endif
+    </script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
+    <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
+    <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
+    <script src="{{ asset('js/changetask.js') }}"></script>
+    <script>
+        var element = document.getElementById('phone_number');
         var maskOptions = {
             mask: '+998(00)000-00-00',
             lazy: false
@@ -446,234 +339,108 @@
             text = text.slice(3)
             $("#phone").val(text)
         })
-        flatpickr.localize(flatpickr.l10ns.uz_latn);
-        flatpickr.localize(flatpickr.l10ns.ru);
-        flatpickr(".flatpickr",
-            {
-                wrap: true,
-                enableTime: true,
-                allowInput: true,
-                altInput: true,
-                minDate: "today",
-                dateFormat: "Y-m-d H:i:s",
-                altFormat: "Y-m-d H:i:s",
-
-                locale: "@lang('lang.dateLang')",
+        var uppy = new Uppy.Core({
+            debug: true,
+            restrictions: {
+                minFileSize: null,
+                maxFileSize: 10000000,
+                maxTotalFileSize: null,
+                maxNumberOfFiles: 10,
+                minNumberOfFiles: 0,
+                allowedFileTypes: null,
+                requiredMetaFields: [],
             },
-        )
-        $('#periud').change(function () {
-            switch ($(this).val()) {
-                case "1":
-                    $('#start-date').css('display', 'inline-block');
-                    $('#end-date').css('display', 'none');
-                    break;
-                case "2":
-                    $('#start-date').css('display', 'none');
-                    $('#end-date').css('display', 'inline-block');
-                    break;
-                case "3":
-                    $('#start-date').css('display', 'inline-block');
-                    $('#end-date').css('display', 'inline-block');
-                    break;
-            }
+            meta: {},
+            onBeforeFileAdded: (currentFile, files) => currentFile,
+            onBeforeUpload: (files) => {
+            },
+            locale: {},
+            store: new Uppy.DefaultStore(),
+            logger: Uppy.justErrorsLogger,
+            infoTimeout: 5000,
         })
+            .use(Uppy.Dashboard, {
+                trigger: '.UppyModalOpenerBtn',
+                inline: true,
+                target: '#photos',
+                showProgressDetails: true,
+                note: 'Все типы файлов, до 10 МБ',
+                width: 'auto',
+                height: '400px',
+                metaFields: [
+                    {id: 'name', name: 'Name', placeholder: 'file name'},
+                    {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
+                ],
+                browserBackButtonClose: true
+            })
+            .use(Uppy.XHRUpload, {
+                endpoint: '{{route('task.create.images.store', $task->id)}}',
+                formData: true,
+                fieldName: 'images',
+                headers: file => ({
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }),
+            });
 
-        @if(!$errors->has('end_date'))
-        $('#start-date').css('display', 'inline-block');
-        @endif
+        uppy.on('upload-success', (file, response) => {
+            const httpStatus = response.status // HTTP status code
+            const httpBody = response.body   // extracted response data
 
+            // do something with file and response
+        });
+
+
+        uppy.on('file-added', (file) => {
+            uppy.setFileMeta(file.id, {
+                size: file.size,
+
+            })
+            console.log(file.name);
+        });
+        uppy.on('complete', result => {
+            console.log('successful files:', result.successful)
+            console.log('failed files:', result.failed)
+        });
     </script>
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script
+        src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+    <script
+        src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-rotate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lg-video.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/fancybox.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/mediateka.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lightgallery.css') }}">
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
+    <div style="display: none;">
 
-    <script>
+        @foreach(json_decode($task->photos)??[] as $key => $image)
+            @if ($loop->first)
 
+            @else
+                <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
+                   data-fancybox="img1"
+                   data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                    <div class="mediateka_photo_content">
+                        <img src="{{ asset('storage/'.$image)  }}" alt="">
+                    </div>
+                </a>
+            @endif
+        @endforeach
+    </div>
 
-        function init_map() {
-
-            myMap = new ymaps.Map('map', {
-                center: [41.311151, 69.279737],
-                zoom: 13,
-                controls: ['zoomControl', 'searchControl']
-            });
-
-
-        }
-
-        ymaps.ready(init_map);
-
-
-        var x = 1;
-
-        function init() {
-
-            var suggestView0 = new ymaps.SuggestView('suggest0');
-
-            suggestView0.events.add('select', function () {
-                myFunction();
-            });
-
-            const alp = ["B", "C", "D", "E"];
-            $("#addbtn").click(function () {
-                if (x < 5) {
-                    $("#addinput").append('<div class="flex items-center gap-x-2">' +
-                        '<div class="bg-white hover:bg-gray-200 flex items-center rounded-lg border  w-full py-1"> ' +
-                        '<button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  ' + alp[x - 1] + ' </button>' +
-                        ' <input oninput="myFunction()" id="suggest' + (x) + '" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"' +
-                        ' type="text" name="location' + x + '" placeholder="Город, Улица, Дом" aria-label="Full name"> ' +
-                        '  </div><button id="remove_inputs" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> ' +
-                        ' <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.25 2.95v-.2A2.75 2.75 0 0 1 6 0h6a2.75 2.75 0 0 1 2.75 2.75v.2h2.45a.8.8 0 0 1 0 1.6H.8a.8.8 0 1 1 0-1.6h2.45zm10 .05v-.25c0-.69-.56-1.25-1.25-1.25H6c-.69 0-1.25.56-1.25 1.25V3h8.5z" fill="#666"/>' +
-                        '<path d="M14.704 6.72a.8.8 0 1 1 1.592.16l-.996 9.915a2.799 2.799 0 0 1-2.8 2.802h-7c-1.55 0-2.8-1.252-2.796-2.723l-1-9.994a.8.8 0 1 1 1.592-.16L4.3 16.794c0 .668.534 1.203 1.2 1.203h7c.665 0 1.2-.536 1.204-1.282l1-9.995z" fill="#666"/>' +
-                        '<path d="M12.344 7.178a.75.75 0 1 0-1.494-.13l-.784 8.965a.75.75 0 0 0 1.494.13l.784-8.965zm-6.779 0a.75.75 0 0 1 1.495-.13l.784 8.965a.75.75 0 0 1-1.494.13l-.785-8.965z" fill="#666"/></svg> </button> ' +
-                        '<input name="coordinates' + x + '" type="hidden" id="coordinate' + x + '"> </div>    ');
-                    x++;
-                } else {
-                    alert("max five field allowed");
-                }
-                var suggestView = [];
-                for (var i = 1; i <= x; i++) {
-                    suggestView[i] = new ymaps.SuggestView('suggest' + i);
-                    suggestView[i].events.add('select', function () {
-                        myFunction();
-                    });
-                }
-            });
-            $("#addinput").on("click", "#remove_inputs", function () {
-                $(this).parent("div").remove();
-
-                x--;
-                myFunction();
-            });
-
-
-            $("#getlocal").click(function () {
-
-                var geolocation = ymaps.geolocation;
-                geolocation.get({
-                    mapStateAutoApply: true,
-                }).then(function (result) {
-                        // Синим цветом пометим положение, полученное через браузер.
-                        // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
-                        var userAddress = result.geoObjects.get(0).properties.get('text');
-                        document.getElementById("suggest0").value = userAddress;
-                        document.getElementById("coordinate").value = result.geoObjects.get(0).geometry.getCoordinates();
-
-                    },
-                    function (err) {
-                        console.log('Ошибка: ' + err)
-                    });
-                myFunction();
-
-            });
-
-
-        }
-
-        // Mapga yuklash joyni
-
-        function myFunction() {
-
-
-            place = document.getElementById("suggest0").value;
-            var myGeocoder = ymaps.geocode(place);
-            myGeocoder.then(
-                function (res) {
-                    document.getElementById("coordinate").value = res.geoObjects.get(0).geometry.getCoordinates();
-                    myMap.setCenter(res.geoObjects.get(0).geometry.getCoordinates());
-                }
-            );
-
-
-            if (document.getElementById("suggest1")) {
-                place1 = document.getElementById("suggest1").value;
-                var myGeocoder1 = ymaps.geocode(place1);
-                myGeocoder1.then(
-                    function (res) {
-                        document.getElementById("coordinate1").value = res.geoObjects.get(0).geometry.getCoordinates();
-
-                    }
-                );
-            } else {
-                place1 = "";
-            }
-
-            // if(document.getElementById("suggest2")){
-            //   place2 = document.getElementById("suggest2").value;
-            //   var myGeocoder2 = ymaps.geocode(place2);
-            //   myGeocoder2.then(
-            //       function (res) {
-            //         document.getElementById("coordinate2").value = res.geoObjects.get(0).geometry.getCoordinates();
-
-            //       }
-            //   );
-            // }
-            // else {
-            //   place2 ="";
-            // }
-
-            // if(document.getElementById("suggest3")){
-            //   place3 = document.getElementById("suggest3").value;
-            //   var myGeocoder3 = ymaps.geocode(place3);
-            //   myGeocoder3.then(
-            //       function (res) {
-            //         document.getElementById("coordinate3").value = res.geoObjects.get(0).geometry.getCoordinates();
-
-            //       }
-
-            //   );
-            // }
-            // else {
-            //   place3 ="";
-            // }
-
-            // if(document.getElementById("suggest4")){
-            //   place4 = document.getElementById("suggest4").value;
-            //   var myGeocoder4 = ymaps.geocode(place4);
-            //   myGeocoder4.then(
-            //       function (res) {
-            //         document.getElementById("coordinate4").value = res.geoObjects.get(0).geometry.getCoordinates();
-
-            //       }
-            //   );
-            // } else {
-            //   place4 ="";
-            // }
-
-            myMap.destroy();
-
-            function getbound() {
-                if (place1 != "") {
-                    return true;
-                } else {
-                    return false
-                }
-            }
-
-            multiRoute = new ymaps.multiRouter.MultiRoute({
-                referencePoints: [place, place1 /*, place2, place3, place4*/],
-
-            }, {
-                // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
-                boundsAutoApply: getbound()
-            });
-
-
-            myMap = new ymaps.Map('map', {
-                center: [41.311151, 69.279737],
-                zoom: 13,
-                controls: ['zoomControl', 'searchControl']
-
-            });
-
-            myMap.geoObjects.add(multiRoute);
-
-        }
-
-        // end
-
-
-        ymaps.ready(init);
-    </script>
 @endsection
+
+@section('javasript')
+
+
+@endsection
+

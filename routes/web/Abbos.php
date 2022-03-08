@@ -7,16 +7,14 @@ Route::group(['middleware'=>'auth'], function (){
     Route::prefix('profile')->group(function () {
         //Profile
         Route::get('/', [ProfileController::class, 'profileData'])->name('userprofile');
-        Route::post('/updateuserphoto', [ProfileController::class, 'updates'])->name('updatephoto');
+        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('update.photo');
 
         //Profile cash
         Route::get('/cash', [ProfileController::class, 'profileCash'])->name('userprofilecash');
-        Route::post('/updateuserphoto', [ProfileController::class, 'updateCash'])->name('updatephotocash');
 
         // Profile settings
         Route::get('/settings', [ProfileController::class, 'editData'])->name('editData');
         Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('updateData');
-        Route::post('/updatephoto', [ProfileController::class, 'imageUpdate'])->name('updateSettingPhoto')->middleware('auth');
 
         // Profile delete
         Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('users.delete');
@@ -27,6 +25,7 @@ Route::group(['middleware'=>'auth'], function (){
         Route::post('/insertdistrict',[ProfileController::class, 'StoreDistrict'])->name('insert.district');
 
         Route::post('/storepicture',[ProfileController::class, 'UploadImage'])->name('storePicture');
+        Route::post('/store/profile/image',[ProfileController::class, 'storeProfileImage'])->name('profile.image.store');
         Route::post('/comment',[ProfileController::class, 'comment'])->name('comment');
         Route::post('/testBase',[ProfileController::class, 'testBase'])->name('testBase');
 
@@ -41,6 +40,8 @@ Route::group(['middleware'=>'auth'], function (){
         Route::post('/delete/portfolio/{id}', [ProfileController::class, 'delete'])->name('portfolio.delete');
     });
 });
+
+Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('portfolio.create')->middleware('auth');
 
 
 

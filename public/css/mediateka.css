@@ -1,0 +1,1404 @@
+.bookmark_for_media{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50px;
+    background-color: rgb(30,185,128,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.audio_cards_media .bookmark_for_media{
+    top: 0.2rem;
+    right: 0.2rem;
+}
+.bookmark_for_media:hover{
+    background-color: rgb(30,185,128,0.7);
+    width: 5rem;
+}
+.bookmark_for_media:hover .bookmark2_text{
+    display: inline;
+}
+.bookmark_for_media .iconify{
+    font-size: 1.5rem;
+    color: #fff !important;
+}
+
+.mediateka{
+    padding: 4rem 0 !important;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+}
+.mediateka_photo_cards, .mediateka_video_card{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.mediateka_photo_cards .boxItem {
+    width: 25%;
+    height: auto;
+    transition: 0.5s ease-in-out;
+
+}
+
+.boxItem .mediateka_photo_content{
+    width: 150px;
+    height: 100px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px;
+}
+.boxItem .mediateka_photo_content img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s ease-in-out;
+}
+.boxItem:hover img{
+    transform: scale(1.1);
+}
+.boxItem:hover p{
+    text-decoration: underline;
+}
+
+
+
+/* Mediateka video */
+.mediateka_video_card .mediateka_cards{
+    width: 25%;
+    flex-shrink: 1;
+}
+.mediateka_cards:hover{
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+.mediateka_cards .link-img-video{
+    height: 250px;
+}
+.mediateka_cards .link-img-video img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mediateka_cards span, .mediateka_cards .iconify,  .boxItem .media-date,  .boxItem .media-date .iconify{
+    color: #222222;
+
+    opacity: 0.65;
+}
+
+.mediateka_cards p,  .boxItem p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* dark */
+
+    color: #222222;
+}
+
+
+/* Media single video */
+.mediateka_video_card_single, .mediateka_photo_cards_single{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+    padding: 1.5rem 0;
+}
+
+
+.mediateka_audio_cards {
+    display: grid;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem;
+
+
+}
+.audio_cards_media{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 0.2rem;
+    text-align: center;
+    border: 1px solid rgb(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+.audio_cards_media .audio_cards_text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3rem;
+}
+.audio_cards_media .audio_cards_text p{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 1.1;
+        /* identical to box height */
+
+        letter-spacing: 0.02em;
+
+        color: #8090AD;
+        transition: 0.3s;
+}
+.audio_cards_text span{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.1;
+        color: #8090AD;
+        transition: 0.3s;
+}
+
+
+
+
+
+
+
+/*}*/
+/*.mediateka_audio_cards a{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    row-gap: 0.2rem;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    text-align: center;*/
+/*    transition: 0.4s ease-in-out;*/
+/*    padding: 0.4rem;*/
+/*}*/
+/*.mediateka_audio_cards .audio_img{*/
+/*    width: 10rem;*/
+/*    height: 10rem;*/
+/*}*/
+/*.mediateka_audio_cards .audio_img img{*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+/*.mediateka_audio_cards a p{*/
+/*    font-family: Roboto;*/
+/*    font-style: normal;*/
+/*    font-weight: 500;*/
+/*    font-size: 20px;*/
+/*    line-height: 1.1;*/
+/*    !* identical to box height *!*/
+
+/*    letter-spacing: 0.02em;*/
+
+/*    color: #8090AD;*/
+/*    transition: 0.3s;*/
+/*}*/
+/*.mediateka_audio_cards a span{*/
+/*    font-family: Roboto;*/
+/*    font-style: normal;*/
+/*    font-weight: normal;*/
+/*    font-size: 17px;*/
+/*    line-height: 1.1;*/
+/*    color: #8090AD;*/
+/*    transition: 0.3s;*/
+/*}*/
+/*.mediateka_audio_cards a:hover, .mediateka_audio_cards a:hover span, .mediateka_audio_cards a:hover p{*/
+/*    text-decoration: underline;*/
+/*    color: black !important;*/
+/*}*/
+
+
+/*Prezintation single*/
+
+
+
+.prezintation_single{
+    display: flex;
+    flex-direction: row;
+    column-gap: 4rem;
+    padding: 3rem 0;
+}
+.prezintation_single .first_prezintation_content{
+    width: 75%;
+}
+.second_prezintation_content{
+    width: 25%;
+}
+.inline_first_prezintation{
+    display: flex;
+    column-gap: 2rem;
+}
+.prez_one_inline{
+    width: 30%;
+}
+.prez_two_inline{
+    width: 70%;
+}
+.first_prezintation_content h1{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+    /* identical to box height */
+
+    letter-spacing: 0.02em;
+
+    /* gray */
+
+    color: #222222;
+    margin-bottom: 1rem;
+}
+.prez_one_inline .prezintation_img{
+    width: 100%;
+    height: 200px;
+    overflow-y: hidden;
+    border-radius: 10px;
+}
+.prezintation_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.prez-date{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    /* gray */
+
+    color: #46494F;
+    margin-top: 0.5rem;
+}
+.buttuns_prez{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    margin-top: 2rem;
+}
+.buttuns_prez a{
+    border: 1px solid #1EB980;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 0.5rem 0rem;
+    width: 60%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #1EB980;
+    color: #fff;
+    transition: 0.4s;
+    column-gap: 0.5rem;
+}
+.buttuns_prez a:hover{
+    background-color: #fff;
+    /* green */
+
+    color: #1EB980;
+}
+
+#prezbtns{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    border-bottom: 2px solid #1EB980;
+    width: 100%;
+}
+.prezbtn{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 37px;
+    letter-spacing: 0.02em;
+    color: #46494F;
+    padding: 0.2rem 1rem;
+    outline: none;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    column-gap: 0.2rem;
+}
+.prezbtn:focus{
+    outline: none;
+}
+.active_prez{
+    background-color: #1EB980;
+    color: #fff;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.filterprez.about p{
+    margin-top: 1rem;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.3;
+    display: flex;
+    flex-direction: column;
+
+    /* gray */
+
+    color: #222222;
+
+}
+.second_prezintation_content h1{
+    font-size: 20px;
+}
+.prez_related {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+.line_related_prez{
+    width: 100%;
+    height: 1.5px;
+    background-color: rgb(0,0,0,0.3);
+}
+
+.related_prez_con {
+    display: flex;
+    flex-direction: column;row-gap: 0.5rem;
+}
+.related_prez_con a, .date_related{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* dark */
+
+    color: #222222;
+
+}
+
+
+
+
+@media (max-width: 1536px){
+    .mediateka{
+        padding: 3rem 0 !important;
+        flex-direction: column;
+        row-gap: 2.5rem;
+    }
+    .mediateka_photo_cards, .mediateka_video_card{
+        flex-direction: row;
+        column-gap: 1.2rem;
+        margin-top: 1.2rem;
+    }
+    .mediateka_photo_cards .boxItem {
+        width: 25%;
+    }
+
+    /* Mediateka video */
+    .mediateka_video_card .mediateka_cards{
+        width: 25% ;
+    }
+    .mediateka_cards .link-img-video,  .boxItem .mediateka_photo_content{
+        height: 220px;
+    }
+
+    .mediateka_cards p,  .boxItem p{
+        font-size: 18px;
+    }
+    .mediateka_video_card_single, .mediateka_photo_cards_single{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 1.2rem;
+        row-gap: 1.2rem;
+        padding: 1.5rem 0;
+    }
+
+
+    .mediateka_audio_cards {
+        display: grid;
+        column-gap: 2rem;
+        row-gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 2rem;
+
+
+    }
+    .audio_cards_media{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 0.2rem;
+        text-align: center;
+        border: 1px solid rgb(0,0,0,0.2);
+        border-radius: 10px;
+        padding: 0.5rem;
+    }
+    .audio_cards_media .audio_cards_text {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.3rem;
+    }
+    .audio_cards_media .audio_cards_text p{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 1.1;
+        /* identical to box height */
+
+        letter-spacing: 0.02em;
+
+        color: #8090AD;
+        transition: 0.3s;
+    }
+    .audio_cards_text span{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.1;
+        color: #8090AD;
+        transition: 0.3s;
+    }
+
+    /*Prezintation*/
+    .prezintation_single{
+        flex-direction: row;
+        column-gap: 4rem;
+        padding: 3rem 0;
+    }
+    .prezintation_single .first_prezintation_content{
+        width: 75%;
+    }
+    .second_prezintation_content{
+        width: 25%;
+    }
+    .inline_first_prezintation{
+        column-gap: 1rem;
+    }
+    .prez_one_inline{
+        width: 25%;
+    }
+    .prez_two_inline{
+        width: 75%;
+    }
+    .first_prezintation_content h1{
+        font-size: 26px;
+        line-height: 37px;
+        margin-bottom: 1rem;
+    }
+    .prez_one_inline .prezintation_img{
+        height: 150px;
+     }
+    .prez-date{
+        font-size: 13px;
+        line-height: 16px;
+    }
+    .buttuns_prez{
+        row-gap: 1rem;
+        margin-top: 2rem;
+    }
+    .buttuns_prez a{
+        padding: 0.5rem 0rem;
+        width: 70%;
+        font-size: 15px;
+        line-height: 21px;
+        }
+
+    #prezbtns{
+        column-gap: 2rem;
+        border-bottom: 2px solid #1EB980;
+    }
+    .prezbtn{
+        font-size: 15px;
+        line-height: 1.2;
+        padding: 0.5rem 1rem;
+        column-gap: 0.2rem;
+    }
+
+    .filterprez.about p{
+        margin-top: 1rem;
+
+        font-size: 16px;
+        line-height: 1.3;
+    }
+    .second_prezintation_content h1{
+        font-size: 18px;
+    }
+    .prez_related {
+
+        row-gap: 0.8rem;
+    }
+
+
+    .related_prez_con {
+        row-gap: 0.3rem;
+    }
+    .related_prez_con a, .prez-date_related{
+        font-size: 15px;
+        line-height: 19px;
+    }
+
+
+}
+
+
+
+@media (max-width: 1280px){
+    .mediateka{
+        padding: 2.5rem 0 !important;
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+    .mediateka_photo_cards, .mediateka_video_card{
+        flex-direction: row;
+        column-gap: 1rem;
+        margin-top: 1rem;
+    }
+    .mediateka_photo_cards .boxItem {
+        width: 25%;
+    }
+
+    /* Mediateka video */
+    .mediateka_video_card .mediateka_cards{
+        width: 25% ;
+    }
+    .mediateka_cards .link-img-video,  .boxItem .mediateka_photo_content{
+        height: 180px;
+    }
+
+    .mediateka_cards p,  .boxItem p{
+        font-size: 14px;
+        line-height: 1.2;
+    }
+    .mediateka_video_card_single, .mediateka_photo_cards_single{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 1rem;
+        row-gap: 1rem;
+        padding: 1.2rem 0;
+    }
+
+
+    /*.mediateka_audio_cards{*/
+    /*    display: grid;*/
+    /*    column-gap: 1rem;*/
+    /*    row-gap: 2rem;*/
+    /*    grid-template-columns: repeat(6, 1fr);*/
+    /*    margin-top: 2rem;*/
+
+    /*}*/
+    /*.mediateka_audio_cards a{*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    row-gap: 0.2rem;*/
+    /*    align-items: center;*/
+    /*    justify-content: center;*/
+    /*    text-align: center;*/
+    /*    transition: 0.4s ease-in-out;*/
+    /*    padding: 0.4rem;*/
+    /*}*/
+    /*.mediateka_audio_cards .audio_img{*/
+    /*    width: 8rem;*/
+    /*    height: 8rem;*/
+    /*}*/
+    /*.mediateka_audio_cards a p{*/
+    /*    font-family: Roboto;*/
+    /*    font-style: normal;*/
+    /*    font-weight: 500;*/
+    /*    font-size: 18px;*/
+    /*    line-height: 1.1;*/
+    /*    !* identical to box height *!*/
+
+    /*    letter-spacing: 0.02em;*/
+
+    /*    color: #8090AD;*/
+    /*    transition: 0.3s;*/
+    /*}*/
+    /*.mediateka_audio_cards a span{*/
+    /*    font-family: Roboto;*/
+    /*    font-style: normal;*/
+    /*    font-weight: normal;*/
+    /*    font-size: 15px;*/
+    /*    line-height: 1.1;*/
+    /*    color: #8090AD;*/
+    /*    transition: 0.3s;*/
+    /*}*/
+
+    /*Prezintation*/
+    .prezintation_single{
+        flex-direction: row;
+        column-gap: 3rem;
+        padding: 2rem 0;
+    }
+    .prezintation_single .first_prezintation_content{
+        width: 75%;
+    }
+    .second_prezintation_content{
+        width: 25%;
+    }
+    .inline_first_prezintation{
+        column-gap: 1rem;
+    }
+    .prez_one_inline{
+        width: 25%;
+    }
+    .prez_two_inline{
+        width: 75%;
+    }
+    .first_prezintation_content h1{
+        font-size: 23px;
+        line-height: 37px;
+        margin-bottom: 1rem;
+    }
+    .prez_one_inline .prezintation_img{
+        height: 120px;
+    }
+    .prez-date{
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .buttuns_prez{
+        row-gap: 0.6rem;
+        margin-top: 1rem;
+    }
+    .buttuns_prez a{
+        padding: 0.4rem 0rem;
+        width: 80%;
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    #prezbtns{
+        column-gap: 1.5rem;
+        border-bottom: 2px solid #1EB980;
+    }
+    .prezbtn{
+        font-size: 14px;
+        line-height: 1.2;
+        padding: 0.5rem 1rem;
+        column-gap: 0.2rem;
+    }
+
+    .filterprez.about p{
+        margin-top: 1rem;
+
+        font-size: 15px;
+        line-height: 1.3;
+    }
+    .second_prezintation_content h1{
+        font-size: 16px;
+    }
+    .prez_related {
+
+        row-gap: 0.5rem;
+    }
+
+
+    .related_prez_con {
+        row-gap: 0.2rem;
+    }
+    .related_prez_con a, .prez-date_related{
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+}
+
+
+
+@media (max-width: 1024px){
+    .mediateka{
+        padding: 2rem 0 !important;
+        flex-direction: column;
+        row-gap: 1.7rem;
+    }
+    .mediateka_photo_cards, .mediateka_video_card{
+        flex-direction: row;
+        column-gap: 0.6rem;
+        margin-top: 0.6rem;
+    }
+    .mediateka_photo_cards .boxItem {
+        width: 25%;
+    }
+
+    /* Mediateka video */
+    .mediateka_video_card .mediateka_cards{
+        width: 25% ;
+    }
+    .mediateka_cards .link-img-video,  .boxItem .mediateka_photo_content{
+        height: 150px;
+    }
+
+    .mediateka_cards p,  .boxItem p{
+        font-size: 13px;
+        line-height: 1.2;
+    }
+
+    .mediateka_video_card_single, .mediateka_photo_cards_single{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 1rem;
+        row-gap: 1rem;
+        padding: 1rem 0;
+    }
+
+
+    .mediateka_audio_cards {
+        display: grid;
+        column-gap: 2rem;
+        row-gap: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: 2rem;
+
+
+    }
+    .audio_cards_media{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 0.2rem;
+        text-align: center;
+        border: 1px solid rgb(0,0,0,0.2);
+        border-radius: 10px;
+        padding: 0.5rem;
+    }
+    .audio_cards_media .audio_cards_text {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.3rem;
+    }
+    .audio_cards_media .audio_cards_text p{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 1.1;
+        /* identical to box height */
+
+        letter-spacing: 0.02em;
+
+        color: #8090AD;
+        transition: 0.3s;
+    }
+    .audio_cards_text span{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 1.1;
+        color: #8090AD;
+        transition: 0.3s;
+    }
+
+    .plyr__controls button[data-plyr="restart"], .plyr__controls input[data-plyr="volume"], .plyr__controls .plyr__menu {
+        display: none;
+    }
+
+
+    /*.mediateka_audio_cards{*/
+    /*    column-gap: 1rem;*/
+    /*    row-gap: 2rem;*/
+    /*    grid-template-columns: repeat(6, 1fr);*/
+    /*    margin-top: 2rem;*/
+
+    /*}*/
+    /*.mediateka_audio_cards a{*/
+    /*    row-gap: 0.2rem;*/
+    /*    padding: 0rem;*/
+    /*}*/
+    /*.mediateka_audio_cards .audio_img{*/
+    /*    width: 6rem;*/
+    /*    height: 6rem;*/
+    /*}*/
+
+    /*.mediateka_audio_cards a p{*/
+
+    /*    font-size: 16px;*/
+    /*    line-height: 1.1;*/
+    /*    !* identical to box height *!*/
+
+
+    /*}*/
+    /*.mediateka_audio_cards a span{*/
+
+    /*    font-size: 14px;*/
+    /*    line-height: 1.1;*/
+
+    /*}*/
+
+
+    /*Prezintation*/
+    .prezintation_single{
+        flex-direction: column;
+        column-gap: 3rem;
+        padding: 2rem 0;
+        row-gap: 4rem;
+    }
+    .prezintation_single .first_prezintation_content{
+        width: 100%;
+    }
+    .second_prezintation_content{
+        width: 100%;
+    }
+    .inline_first_prezintation{
+        column-gap: 1rem;
+    }
+    .prez_one_inline{
+        width: 30%;
+    }
+    .prez_two_inline{
+        width: 70%;
+    }
+    .first_prezintation_content h1{
+        font-size: 21px;
+        line-height: 37px;
+        margin-bottom: 1rem;
+    }
+    .prez_one_inline .prezintation_img{
+        height: 150px;
+    }
+    .prez-date{
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .buttuns_prez{
+        row-gap: 0.6rem;
+        margin-top: 1rem;
+    }
+    .buttuns_prez a{
+        padding: 0.4rem 0rem;
+        width: 80%;
+        font-size: 13px;
+        line-height: 21px;
+    }
+
+    #prezbtns{
+        column-gap: 1.5rem;
+        border-bottom: 2px solid #1EB980;
+    }
+    .prezbtn{
+        font-size: 13px;
+        line-height: 1.2;
+        padding: 0.5rem 1rem;
+        column-gap: 0.2rem;
+    }
+
+    .filterprez.about p{
+        margin-top: 1rem;
+
+        font-size: 15px;
+        line-height: 1.3;
+    }
+    .second_prezintation_content h1{
+        font-size: 19px;
+    }
+    .prez_related {
+
+        row-gap: 0.5rem;
+    }
+
+
+    .related_prez_con {
+        row-gap: 0.2rem;
+    }
+    .related_prez_con a, .related_prez_con .prez-date_related span{
+        font-size: 14px;
+        line-height: 19px;
+    }
+}
+
+@media (max-width: 768px){
+    .mediateka{
+        padding: 2rem 1rem !important;
+        flex-direction: column;
+        row-gap: 1.5rem;
+    }
+    .mediateka_photo_cards, .mediateka_video_card{
+        flex-direction: row;
+        column-gap: 0.6rem;
+        margin-top: 0.6rem;
+        flex-wrap: wrap;
+        row-gap: 1rem;
+    }
+    .mediateka_photo_cards .boxItem {
+        width: 48%;
+    }
+
+    /* Mediateka video */
+    .mediateka_video_card .mediateka_cards{
+        width: 48% ;
+    }
+    .mediateka_cards .link-img-video,  .boxItem .mediateka_photo_content{
+        height: 180px;
+    }
+
+    .mediateka_cards p,  .boxItem p, .mediateka_photo_cards_single a{
+        font-size: 13px;
+        line-height: 1.2;
+    }
+    .mediateka_video_card_single, .mediateka_photo_cards_single{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0.5rem;
+        row-gap: 0.8rem;
+        padding: 0.8rem 0;
+    }
+
+
+
+    /*.mediateka_audio_cards{*/
+    /*    column-gap: 1rem;*/
+    /*    row-gap: 2rem;*/
+    /*    grid-template-columns: repeat(3, 1fr);*/
+    /*    margin-top: 2rem;*/
+
+    /*}*/
+    /*.mediateka_audio_cards a{*/
+    /*    row-gap: 0.2rem;*/
+    /*    padding: 0rem;*/
+    /*}*/
+    /*.mediateka_audio_cards .audio_img{*/
+    /*    width: 8rem;*/
+    /*    height: 8rem;*/
+    /*}*/
+
+    /*.mediateka_audio_cards a p{*/
+
+    /*    font-size: 16px;*/
+    /*    line-height: 1.1;*/
+    /*    !* identical to box height *!*/
+
+
+    /*}*/
+    /*.mediateka_audio_cards a span{*/
+
+    /*    font-size: 14px;*/
+    /*    line-height: 1.1;*/
+
+    /*}*/
+
+    /*Prezintation*/
+    .prezintation_single{
+        flex-direction: column;
+        column-gap: 3rem;
+        padding: 2rem 0;
+        row-gap: 4rem;
+    }
+    .prezintation_single .first_prezintation_content{
+        width: 100%;
+    }
+    .second_prezintation_content{
+        width: 100%;
+    }
+    .inline_first_prezintation{
+        column-gap: 1rem;
+    }
+    .prez_one_inline{
+        width: 30%;
+    }
+    .prez_two_inline{
+        width: 70%;
+    }
+    .first_prezintation_content h1{
+        font-size: 21px;
+        line-height: 37px;
+        margin-bottom: 1rem;
+    }
+    .prez_one_inline .prezintation_img{
+        height: 150px;
+    }
+    .prez-date{
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .buttuns_prez{
+        row-gap: 0.6rem;
+        margin-top: 1rem;
+    }
+    .buttuns_prez a{
+        padding: 0.4rem 0rem;
+        width: 80%;
+        font-size: 13px;
+        line-height: 21px;
+    }
+
+    #prezbtns{
+        column-gap: 1.5rem;
+        border-bottom: 2px solid #1EB980;
+    }
+    .prezbtn{
+        font-size: 13px;
+        line-height: 1.2;
+        padding: 0.5rem 1rem;
+        column-gap: 0.2rem;
+    }
+
+    .filterprez.about p{
+        margin-top: 1rem;
+
+        font-size: 15px;
+        line-height: 1.3;
+    }
+    .second_prezintation_content h1{
+        font-size: 19px;
+    }
+    .prez_related {
+
+        row-gap: 0.5rem;
+    }
+
+
+    .related_prez_con {
+        row-gap: 0.2rem;
+    }
+    .related_prez_con a, .related_prez_con .prez-date_related span{
+        font-size: 14px;
+        line-height: 19px;
+    }
+}
+
+
+@media (max-width: 648px){
+    .mediateka{
+        padding: 2rem 1rem !important;
+        flex-direction: column;
+        row-gap: 1.5rem;
+    }
+    .mediateka_photo_cards, .mediateka_video_card{
+        flex-direction: row;
+        column-gap: 0.6rem;
+        margin-top: 0.6rem;
+        flex-wrap: wrap;
+        row-gap: 0.6rem;
+    }
+    .mediateka_photo_cards .boxItem {
+        width: 48%;
+    }
+
+    /* Mediateka video */
+    .mediateka_video_card .mediateka_cards{
+        width: 48% ;
+    }
+    .mediateka_cards .link-img-video,  .boxItem .mediateka_photo_content{
+        height: 160px;
+    }
+
+    .mediateka_cards p,  .boxItem p{
+        font-size: 13px;
+        line-height: 1.2;
+    }
+    .mediateka_video_card_single, .mediateka_photo_cards_single{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0.5rem;
+        row-gap: 1.5rem;
+        padding: 0.8rem 0;
+    }
+
+
+    /*.mediateka_audio_cards{*/
+    /*    column-gap: 0.5rem;*/
+    /*    row-gap: 1rem;*/
+    /*    grid-template-columns: repeat(3, 1fr);*/
+    /*    margin-top: 2rem;*/
+
+    /*}*/
+    /*.mediateka_audio_cards a{*/
+    /*    row-gap: 0.2rem;*/
+    /*    padding: 0rem;*/
+    /*}*/
+    /*.mediateka_audio_cards .audio_img{*/
+    /*    width: 5rem;*/
+    /*    height: 5rem;*/
+    /*}*/
+
+    /*.mediateka_audio_cards a p{*/
+
+    /*    font-size: 15px;*/
+    /*    line-height: 1.1;*/
+    /*    !* identical to box height *!*/
+
+
+    /*}*/
+    /*.mediateka_audio_cards a span{*/
+
+    /*    font-size: 13px;*/
+    /*    line-height: 1.1;*/
+
+    /*}*/
+
+
+    /*Prezintation*/
+    .prezintation_single{
+        flex-direction: column;
+        column-gap: 3rem;
+        padding: 1.5rem 0;
+        row-gap: 4rem;
+    }
+    .prezintation_single .first_prezintation_content{
+        width: 100%;
+    }
+    .second_prezintation_content{
+        width: 100%;
+    }
+    .inline_first_prezintation{
+        column-gap: 1rem;
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+    .prez_one_inline{
+        width: 100%;
+    }
+    .prez_two_inline{
+        width: 100%;
+    }
+    .first_prezintation_content h1{
+        font-size: 21px;
+        line-height: 37px;
+        margin-bottom: 1rem;
+    }
+    .prez_one_inline .prezintation_img{
+        height: 180px;
+    }
+    .prez-date{
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .buttuns_prez{
+        row-gap: 0.6rem;
+        margin-top: 1rem;
+    }
+    .buttuns_prez a{
+        padding: 0.4rem 0rem;
+        width: 70%;
+        font-size: 13px;
+        line-height: 21px;
+    }
+
+    #prezbtns{
+        column-gap: 1.5rem;
+        border-bottom: 2px solid #1EB980;
+    }
+    .prezbtn{
+        font-size: 13px;
+        line-height: 1.2;
+        padding: 0.5rem 1rem;
+        column-gap: 0.2rem;
+    }
+
+    .filterprez.about p{
+        margin-top: 1rem;
+
+        font-size: 15px;
+        line-height: 1.3;
+    }
+    .second_prezintation_content h1{
+        font-size: 18px;
+    }
+    .prez_related {
+
+        row-gap: 0.5rem;
+    }
+
+
+    .related_prez_con {
+        row-gap: 0.2rem;
+    }
+    .related_prez_con a, .related_prez_con .prez-date_related span{
+        font-size: 14px;
+        line-height: 19px;
+    }
+}
+
+
+
+.awesome-gally .fancybox-inner {
+    background: #0c1019;
+    /*background: rgba(0, 0, 0, .5);*/
+    height: 100%;
+    top: 50%;
+    right: 0 !important;
+    transform: translateY(-50%);
+}
+
+.awesome-gally .fancybox-thumbs {
+    top: auto;
+    width: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    padding: 10px 10px 5px 10px;
+    box-sizing: border-box;
+    background: none;
+    margin: 0 auto;
+}
+
+.awesome-gally .fancybox-thumbs .fancybox-thumbs__list {
+    margin: 0 auto;
+    max-width: 80% !important;
+    overflow: hidden;
+}
+
+.awesome-gally .fancybox-thumbs .fancybox-thumbs__list a {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    height: 50px;
+    width: 70px;
+}
+
+.awesome-gally .fancybox-thumbs .fancybox-thumbs__list a:hover {
+    opacity: 1;
+}
+
+.awesome-gally .fancybox-thumbs .fancybox-thumbs__list a.fancybox-thumbs-active {
+    opacity: 1;
+}
+
+.awesome-gally .fancybox-thumbs .fancybox-thumbs__list a::before {
+    border-width: 3px;
+    border-color: #0445b1;
+}
+
+.awesome-gally .fancybox-slide--image {
+    padding: 100px 0 40px 0 !important;
+}
+
+.awesome-gally .fancybox-caption {
+    top: 0;
+    text-align: center;
+    width: 100%;
+    margin: 20px auto;
+    padding: 0;
+    padding-left: 2rem;
+    background: none;
+    font-size: 16px;
+    color: #fff;
+}
+
+.awesome-gally .fancybox-caption .fancybox-caption__body {
+    position: absolute;
+    width: 200px;
+    bottom: 60px;
+    display: -webkit-box;
+    -webkit-line-clamp: 15;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: left;
+}
+.awesome-gally .fancybox-caption .fancybox-caption__body span{
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.awesome-gally .fancybox-navigation .fancybox-button {
+    background: none;
+}
+
+.awesome-gally .fancybox-navigation .fancybox-button div,
+.awesome-gally .fancybox-toolbar .fancybox-button {
+    background: none;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.awesome-gally .fancybox-navigation .fancybox-button:disabled div {
+    opacity: 0.5;
+}
+
+.awesome-gally .fancybox-navigation .fancybox-button:hover div,
+.awesome-gally .fancybox-toolbar .fancybox-button:hover {
+    border-color: #1EB980;
+    color: #1EB980;
+}
+
+.awesome-gally .fancybox-navigation .fancybox-button--arrow_right {
+    right: 200px;
+}
+
+.awesome-gally .fancybox-navigation .fancybox-button--arrow_left {
+    left: 200px;
+}
+
+.awesome-gally .fancybox-toolbar {
+    height: 100%;
+}
+
+.awesome-gally .fancybox-toolbar .fancybox-button {
+    background: none;
+}
+
+.awesome-gally .fancybox-toolbar .fancybox-button--close {
+    top: 30px;
+    right: 20px !important;
+}
+
+.awesome-gally .fancybox-toolbar .fancybox-button--share,
+.awesome-gally .fancybox-toolbar .fancybox-button--download,
+.awesome-gally .fancybox-toolbar .fancybox-button--close {
+    right: 50px;
+    position: absolute;
+    opacity: 0.7;
+    width: 38px;
+    height: 38px;
+    padding: 7px;
+}
+
+.awesome-gally .fancybox-toolbar .fancybox-button--share{
+    bottom: 200px;
+}
+
+.awesome-gally .fancybox-toolbar .fancybox-button--download{
+    bottom: 140px;
+}
+
+
+@media (max-width: 1024px){
+
+    .awesome-gally .fancybox-navigation .fancybox-button--arrow_right {
+        right: 20px;
+    }
+
+    .awesome-gally .fancybox-navigation .fancybox-button--arrow_left {
+        left: 20px;
+    }
+
+}
+
+@media(max-width: 768px){
+
+    .awesome-gally .fancybox-caption .fancybox-caption__body {
+        position: absolute;
+        width: 90%;
+        bottom: 60px;
+    }
+    .awesome-gally .fancybox-toolbar .fancybox-button--share,
+    .awesome-gally .fancybox-toolbar .fancybox-button--download,
+    .awesome-gally .fancybox-toolbar .fancybox-button--close {
+        right: 20px;
+
+    }
+}

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PortfolioRequest;
+use App\Http\Requests\User\PerformerCreateRequest;
 use App\Http\Requests\UserPasswordRequest;
 use App\Http\Requests\UserUpdateDataRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use \TCG\Voyager\Models\Category;
 use App\Models\Portfolio;
 use App\Models\PortfolioImage;
@@ -36,192 +39,148 @@ class ProfileController extends Controller
         return $dd;
 
     }
-    public function delete($id)
+
+    public function delete(Portfolio $id)
     {
-        $user = Auth::user();
-        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
-        foreach ($comment as $comments){
-            $directory = $comments->comment;
-        }
-        $file = File::deleteDirectory("Portfolio/{$user->name}/{$directory}");
-        if($file) {
-            Portfolio::where('id', $id)->where('user_id', $user->id)->delete();
-            return redirect()->route('userprofile');
-        }
+        $id->delete();
+        return redirect()->route('userprofile');
     }
+
     public function UploadImage(Request $request)
     {
-        $user = Auth::user();
-        $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
+        if ($request->hasFile('file')) {
 
-        if ($request->file()) {
-            $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')
-                ->move(public_path("Portfolio/{$user->name}/{$comment->comment}"), $fileName);
+            $files = $request->file('file');
+            $name = Storage::put('public/uploads', $files);
+            $name = str_replace('public/', '', $name);
+            $imgData[] = $name;
 
-            $fileModelname = time() . '_' . $request->file->getClientOriginalName();
-            return response()->json([
-                "success" => true,
-                "message" => "File successfully uploaded",
-                "file" => $fileName
-            ]);
         }
+        session()->put('images', $imgData);
+
     }
+
     public function testBase(Request $request)
     {
         $user = Auth::user();
-        $comment = Portfolio::where('user_id', $user->id)->orderBy('created_at', 'desc')->first();
+        $comment = $user->portfolios()->orderBy('created_at', 'desc')->first();
         $image = File::allFiles("Portfolio/{$user->name}/{$comment->comment}");
-        $json = implode(',',$image);
+        $json = implode(',', $image);
         $data['image'] = $json;
         $id = $comment->id;
         $base = new Portfolio;
-        if($base->where('id',$comment->id)->update($data)){
+        if ($base->where('id', $comment->id)->update($data)) {
             return redirect()->route('userprofile');
-        }else{
+        } else {
             return dd(false);
         }
 
 
     }
+
     public function portfolio($id)
     {
         $user = Auth::user();
-        $comment = Portfolio::where('id', $id)->where('user_id', $user->id)->get();
-        return view('profile/portfolio', compact('comment','user'));
+        $comment = $user->portfolios()->where('id', $id)->get();
+        return view('profile/portfolio', compact('comment', 'user'));
     }
+
     //profile
     public function profileData()
     {
         $user = Auth::user();
-        $views = count( UserView::where('performer_id', $user->id)->get());
-        $task = Task::where('user_id',Auth::user()->id)->count();
-        $task_count = Task::where('performer_id', Auth::id())->where('status',4)->count();
-        $ports = Portfoliocomment::where('user_id', Auth::user()->id)->get();
-        $comment = Portfolio::where('user_id', $user->id)->where('image', '!=', null)->get();
-        if($comment != null){
+        $views = $user->views_count;
+        $task = $user->tasks_count;
+        $task_count = $user->performer_tasks()->where('status', 4)->count();
+        $ports = $user->portfoliocomments;
+        $comment = $user->portfolios()->where('image', '!=', null)->get();
+        if ($comment != null) {
             //$image = $comment->image;
             //$images = explode(',',$image);
-            $image = File::glob(public_path("Portfolio/{$user->name}/{$comment}").'/*');
-        }else{
-            $image = [0,1];
-            $images = [0,1];
+            $image = File::glob(public_path("Portfolio/{$user->name}/{$comment}") . '/*');
+        } else {
+            $image = [0, 1];
+            $images = [0, 1];
         }
-
-        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
-
+        $about = User::where('role_id', 2)->take(20)->get();
         //dd($a);
         $file = "Portfolio/{$user->name}";
-        if(!file_exists($file)){
+        if (!file_exists($file)) {
             File::makeDirectory($file);
         }
-
         $b = File::directories(public_path("Portfolio/{$user->name}"));
         $directories = array_map('basename', $b);
         $categories = Category::withTranslations(['ru', 'uz'])->get();
 
-        return view('profile.profile', compact('categories','image','about','comment','directories','task_count','user','views','task','ports'));
+        return view('profile.profile', compact('categories', 'image', 'about', 'comment', 'directories', 'task_count', 'user', 'views', 'task', 'ports'));
     }
+
     public function updates(Request $request)
     {
         $request->validate([
             'avatar' => 'required|image'
         ]);
-        $user= Auth::user();
+        $user = Auth::user();
         $data = $request->all();
-        if($request->hasFile('avatar')){
-            $destination = 'AvatarImages/'.$user->avatar;
-            if(File::exists($destination))
-            {
+        if ($request->hasFile('avatar')) {
+            $destination = 'storage/' . $user->avatar;
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
             $filename = $request->file('avatar');
-            $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $imagename = "user-avatar/" . $filename->getClientOriginalName();
+            $filename->move(public_path() . '/storage/user-avatar/', $imagename);
             $data['avatar'] = $imagename;
         }
         $user->update($data);
-        return  redirect()->route('userprofile');
+        return redirect()->back();
     }
 
     //profile Cash
     public function profileCash()
     {
         $user = Auth()->user()->load('transactions');
-        $balance = WalletBalance::where('user_id', Auth::user()->id)->first();
-        $views   = UserView::where('performer_id', $user->id)->count();
-        $task    = Task::where('user_id',Auth::user()->id)->count();
-        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
-        $task_count = Task::where('performer_id', auth()->user()->id)->count();
 
-        return view('profile.cash', compact('user', 'views', 'balance', 'task','about','task_count'));
-    }
-    public function updateCash(Request $request)
-    {
-        $request->validate([
-            'avatar' => 'required|image'
-        ]);
-        $user= Auth::user();
-        $data = $request->all();
-        if($request->hasFile('avatar')){
-            $destination = 'AvatarImages/'.$user->avatar;
-            if(File::exists($destination))
-            {
-                File::delete($destination);
-            }
-            $filename = $request->file('avatar');
-            $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
-            $data['avatar'] =$imagename;
-        }
-        $user->update($data);
-        return  redirect()->route('userprofilecash');
+        $balance = $user->walletBalance;
+        $views = $user->views()->count();
+        $task = $user->tasks()->count();
+        $transactions = $user->transactions()->paginate(15);
+        $about = User::where('role_id', 2)->orderBy('reviews', 'desc')->take(20)->get();
+        $task_count = Task::where('performer_id', $user->id)->count();
+
+        return view('profile.cash', compact('user', 'views', 'balance', 'task', 'about', 'task_count', 'transactions'));
     }
 
-    //settings
+//settings
     public function editData()
     {
         $user = Auth::user();
-        $views = count( UserView::where('performer_id', $user->id)->get());
+        $views = $user->views()->count();
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $regions = Region::withTranslations(['ru','uz'])->get();
-        $about = User::where('role_id',2)->orderBy('reviews','desc')->take(20)->get();
+        $regions = Region::withTranslations(['ru', 'uz'])->get();
+        $about = User::where('role_id', 2)->orderBy('reviews', 'desc')->take(20)->get();
         $task_count = Task::where('performer_id', $user->id)->count();
-        return view('profile.settings', compact('user','categories','views','regions','about','task_count'));
+        return view('profile.settings', compact('user', 'categories', 'views', 'regions', 'about', 'task_count'));
     }
+
     public function updateData(UserUpdateDataRequest $request)
     {
         $data = $request->validated();
-        $data['is_phone_number_verified'] = 0;
-        $data['is_email_verified'] = 0;
-        Auth::user()->update($data);
-        Alert::success('Success', "Successfully Updated");
-        return  redirect()->route('editData');
-    }
-    public function imageUpdate(Request $request)
-    {
-        $request->validate([
-            'avatar' => 'required|image'
-        ]);
-        $user= Auth::user();
-        if($request->hasFile('avatar')){
-            $destination = 'storage/'.$user->avatar;
-            if(File::exists($destination))
-            {
-                File::delete($destination);
-            }
-            $filename = $request->file('avatar');
-            $imagename = "user-avatar/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/storage/user-avatar/',$imagename);
-            $data['avatar'] =$imagename;
+        if ($data['email'] != auth()->user()->email) {
+            $data['is_email_verified'] = 0;
         }
-        $user->update($data);
-        return  redirect()->route('editData');
+        if ($data['phone_number'] != auth()->user()->phone_number) {
+            $data['is_phone_number_verified'] = 0;
+        }
+        Auth::user()->update($data);
+        Alert::success(__('Настройки успешно сохранены'));
+        return redirect()->route('editData');
     }
-    public function destroy($id){
-        $user = User::where('id', $id)->first();
-        $user->delete();
-        return  redirect('/');
+
+    public function destroy($id)
+    {
+        auth()->user()->delete();
+        return redirect('/');
     }
 
     //getCategory
@@ -230,14 +189,15 @@ class ProfileController extends Controller
         $request->validate([
             'category' => 'required'
         ]);
-        $id = Auth::user()->id;
+        $user = Auth::user();
         $checkbox = implode(",", $request->get('category'));
-        User::where('id',$id)->update(['category_id'=>$checkbox]);
-        auth()->user()->role_id=2;
+        $user->update(['category_id' => $checkbox]);
+        $user->role_id = 2;
         return redirect()->route('userprofile');
     }
 
-    public function StoreDistrict(Request $request){
+    public function StoreDistrict(Request $request)
+    {
         $request->validate([
             'district' => 'required',
         ]);
@@ -258,10 +218,11 @@ class ProfileController extends Controller
     }
 
 
-    public function change_password(UserPasswordRequest $request){
+    public function change_password(UserPasswordRequest $request)
+    {
 
         $data = $request->validated();
-        if(!$data){
+        if (!$data) {
             return redirect()->route('settings#four');
         }
 
@@ -274,79 +235,109 @@ class ProfileController extends Controller
             'password' => 'password'
         ]);
     }
+
     //personal info Ijrochi uchun
 
     public function verificationIndex()
     {
         return view('verification.verification');
     }
+
     public function verificationInfo()
     {
         return view('personalinfo.personalinfo');
     }
-    public function verificationInfoStore(Request $request)
-    {
-        $request->validate([
-            'location' => 'required',
-            'name' => 'required',
-            'familya' => 'required',
-            'date' => 'required',
-        ]);
-        $user = Auth::user();
-        $user->location = $request->location;
-        $user->last_name = $request->familya;
-        $user->name = $request->name;
-        $user->born_date = $request->date;
-        $user->save();
 
-        return  redirect()->route('verification.contact');
+    public function verificationInfoStore(PerformerCreateRequest $request)
+    {
+        $data = $request->validated();
+        $user = auth()->user();
+        $user->update($data);
+        return redirect()->route('verification.contact');
     }
+
     public function verificationContact()
     {
         return view('personalinfo.contact');
     }
+
     public function verificationContactStore(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'email' => 'required',
-            'phone_number' => 'required',
+            'phone_number' => 'required|integer|min:9',
         ]);
-        $user = Auth::user();
-        $user->email = $request->email;
-        $user->phone_number = $request->phone_number;
-        $user->save();
+        $user = auth()->user();
+        $user->update($data);
 
-        return  redirect()->route('verification.photo');
+        return redirect()->route('verification.photo');
     }
+
     public function verificationPhoto()
     {
         return view('personalinfo.profilephoto');
     }
+
     public function verificationPhotoStore(Request $request)
     {
-        $request->validate([
-            'avatar' => 'required|image'
-        ]);
-        $user= Auth::user();
+        $user = Auth::user();
+        if (!$user->avatar) {
+            $request->validate([
+                'avatar' => 'required|image'
+            ]);
+        }
         $data = $request->all();
-        if($request->hasFile('avatar')){
-            $destination = 'AvatarImages/'.$user->avatar;
-            if(File::exists($destination))
-            {
+        if ($request->hasFile('avatar')) {
+            $destination = 'storage/' . $user->avatar;
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
             $filename = $request->file('avatar');
-            $imagename = "images/users/".$filename->getClientOriginalName();
-            $filename->move(public_path().'/AvatarImages/images/users/',$imagename);
+            $imagename = "user-avatar/" . $filename->getClientOriginalName();
+            $filename->move(public_path() . '/storage/user-avatar/', $imagename);
             $data['avatar'] = $imagename;
         }
         $user->update($data);
-        return  redirect()->route('verification.category');
+        return redirect()->route('verification.category');
     }
+
     public function verificationCategory()
     {
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         return view('personalinfo.personalcategoriya', compact('categories'));
     }
 
+    public function createPortfolio(PortfolioRequest $request)
+    {
+        $data = $request->validated();
+
+        $data['user_id'] = auth()->user()->id;
+        $data['image'] = json_encode(session()->has('images') ? session('images') : null);
+
+        Portfolio::create($data);
+        return redirect()->route('userprofile');
+
+
+    }
+
+
+    public function storeProfileImage(Request $request)
+    {
+        if ($request->hasFile('image')) {
+
+            $files = $request->file('image');
+            $name = Storage::put('public/uploads', $files);
+            $name = str_replace('public/', '', $name);
+            $user = auth()->user();
+            $user->avatar = $name;
+            $user->save();
+        }
+
+        if($name){
+            echo json_encode(['status'=>1, 'msg'=>'success', 'name'=>$name]);
+        }else{
+            echo json_encode(['status'=>0, 'msg'=>'failed']);
+        }
+    }
 }
+

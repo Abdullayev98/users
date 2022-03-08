@@ -10,7 +10,6 @@ div{
 
 .content__38cf1{
     width: 527px;
-    overflow: hidden
 }
 
 #rangeValue{
@@ -86,14 +85,14 @@ div{
 }
 
 .handle__27597 {
-    height: 0px;!inportant;
+    height: 0px !important;
     position: absolute;
     transform: translate(-50%,-50%);
     top: 144px;
     z-index: 5;
     cursor: pointer;
-    background-color: 0;!inportant;
-    box-shadow: 0;!inportant;
+    background-color: 0 !important;
+    box-shadow: 0 !important;
     border-radius: 50%;
 }
 .triangle__678999{
@@ -3400,7 +3399,6 @@ ymaps.ymaps-2-1-78-i-custom-scroll ::-webkit-scrollbar-thumb {
 .expireDivider__fdf1f {
     color: inherit;
     font-size: inherit;
-    font-family: inherit;
     margin: 0 4px;
     line-height: 38px
 }

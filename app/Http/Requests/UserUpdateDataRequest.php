@@ -24,7 +24,6 @@ class UserUpdateDataRequest extends FormRequest
     public function rules()
     {
         $validation = [
-            'name' => 'required',
             'email' => 'required|email|unique:users',
             'age' => 'nullable|int',
             'phone_number' => 'nullable|int|min:9|unique:users',
@@ -48,8 +47,10 @@ class UserUpdateDataRequest extends FormRequest
             'name.required' => __('login.name.required'),
             'email.required' => __('login.name.required'),
             'age.int' => __('login.name.required'),
-            'phone_number.int' => __('login.name.required'),
-            'phone_number.min' => __('login.name.required'),
+            'phone_number.int' => __('login.phone_number.int'),
+            'phone_number.min' => __('login.phone_number.min'),
+            'phone_number.required' => __('login.phone_number.required'),
+            'phone_number.unique' => __('login.phone_number.unique'),
             'role_id.required' => __('login.name.required'),
 
         ];

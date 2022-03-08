@@ -2,41 +2,24 @@
 
 @section('content')
 
-    <div class="container w-4/5 mx-auto">
+    <div class="container w-4/5 mx-auto mt-12">
 
         <div class="flex lg:flex-row flex-col justify-center mt-6">
-
-            <div class="lg:w-1/5 w-full text-base">
-                <ul class="mb-5">
-                    <li><a  href="/geotaskshint" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_howItWorks')</a></li>
-                    <li><a  href="/security" class="hover:text-red-500 text-md font-bold cursor-pointer">@lang('lang.secure_security')</a></li>
-                    <li><a  href="/badges" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_rewards')</a></li>
-                </ul>
-                <ul class="mb-5">
-                    <li><a  href="/reviews" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_perFeedback')</a></li>
-                    <li><a  href="/reviews/authors" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_cusFeedback')</a></li>
-                    <li><a  href="/press" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_aboutUs')</a></li>
-                </ul>
-                <ul>
-                    <li><a  href="/geotaskshint" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_addsInServ')</a></li>
-                    <li><a  href="/contacts" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_contacts')</a></li>
-                    <li><a  href="/job" class="hover:text-red-500 text-md text-blue-600 cursor-pointer">@lang('lang.secure_vacancy')</a></li>
-                </ul>
-            </div>
+            @include('components.footerpage')
 
             <div class="lg:w-4/5 w-full text-base lg:mt-0 mt-4">
                     <div class="">
-                        <h1 class="font-medium text-4xl">@lang('lang.secure_security')</h1>
+                        <h1 class="font-medium text-4xl">{{__('Безопасность и гарантии')}}</h1>
                         <br>
-                        <p class="">@lang('lang.secure_generalTask')</p>
+                        <p class="">{{__('Одна из главных задач нашего сервиса — создать сообщество надежных исполнителей и заказчиков, которые могут доверять друг другу.')}}</p>
                         <br>
-                        <p class="">@lang('lang.secure_weTry')</p>
+                        <p class="">{{__('Мы приложили максимум усилий, чтобы поиск исполнителя на Universal Services был удобным и безопасным.')}}</p>
                     </div>
                     <div class="flex lg:flex-row flex-col mt-10  mx-auto">
                         <div class="lg:w-1/2 w-full my-auto text-left" >
-                            <h3 class="text-2xl font-normal mb-4">@lang('lang.secure_testPerfs')</h3>
-                            <p class="w-full ">@lang('lang.secure_testPerfsDet')</p>                          
-                            <a href="#" class="  text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_testDocs')</a>
+                            <h3 class="text-2xl font-normal mb-4">{{__('Проверка исполнителей')}}</h3>
+                            <p class="w-full ">{{__('Все исполнители заполняют анкету и проходят проверку сервиса. Мы не регистрируем      подозрительные и мошеннические аккаунты. Те, кто прошел автоматическую проверку документов на Universal Services, получают значок «Документы подтверждены».')}}</p>
+                            <a  class="  text-blue-500 hover:text-red-500 mt-5">{{__('Подробнее о проверке документов')}}</a>
                         </div>
 
                         <div class="lg:w-1/2 w-full">
@@ -48,48 +31,48 @@
                             <img class="w-96 h-60 mt-16" src="{{asset('/images/img123.jpg')}}" alt="">
                         </div>
                         <div class="lg:w-1/2 w-full text-left ml-4 mt-4 lg:block hidden w-4/5">
-                            <h3 class="text-2xl font-normal mb-4">@lang('lang.secure_ratingAndFeed')</h3>
-                            <p class="w-full">@lang('lang.secure_finish1')</p>
-                            <p class="mt-5">@lang('lang.secure_finish2')</p>
-                            <a href="/" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_detailedAboutR')</a>
+                            <h3 class="text-2xl font-normal mb-4">{{__('Отзывы и рейтинг')}}</h3>
+                            <p class="w-full">{{__('После завершения работы мы просим заказчика и исполнителя поделиться отзывами. Отзывы о каждом пользователе можно увидеть в его профиле. Мы проверяем их достоверность и блокируем исполнителей, которые оказывают некачественные услуги или оставляют недостоверные отзывы.')}}</p>
+                            <p class="mt-5">{{__('Кроме отзывов оценить уровень исполнителей помогает рейтинг, который рассчитывается в каждой категории заданий. Самых активных исполнителей мы награждаем специальными значками за различные достижения.')}}</p>
+                            <a href="/" class="text-blue-500 hover:text-red-500 mt-5">{{__('Подробнее о рейтинге и наградах исполнителей')}}</a>
                         </div>
 
                         <div class="lg:w-1/2 w-full text-left mt-4 lg:hidden block">
-                            <h3 class="text-2xl font-normal mb-4">@lang('lang.secure_ratingAndFeed')</h3>
-                            <p class="w-full">@lang('lang.secure_finish1')</p>
-                            <p class="mt-5">@lang('lang.secure_finish2')</p>
-                            <a href="/" class="text-blue-500 hover:text-red-500 mt-5">@lang('lang.secure_detailedAboutR')</a>
+                            <h3 class="text-2xl font-normal mb-4">{{__('Отзывы и рейтинг')}}</h3>
+                            <p class="w-full">{{__('После завершения работы мы просим заказчика и исполнителя поделиться отзывами. Отзывы о каждом пользователе можно увидеть в его профиле. Мы проверяем их достоверность и блокируем исполнителей, которые оказывают некачественные услуги или оставляют недостоверные отзывы.')}}</p>
+                            <p class="mt-5">{{__('Кроме отзывов оценить уровень исполнителей помогает рейтинг, который рассчитывается в каждой категории заданий. Самых активных исполнителей мы награждаем специальными значками за различные достижения.')}}</p>
+                            <a href="/" class="text-blue-500 hover:text-red-500 mt-5">{{__('Подробнее о рейтинге и наградах исполнителей')}}</a>
                         </div>
                         <div class="lg:w-1/2 w-full lg:hidden block">
                             <img class="w-76 h-64 mx-auto" src="{{asset('/images/img123.jpg')}}" alt="">
                         </div>
                     </div>
                     <div class="w-full mt-10">
-                        <h3 class="text-3xl mb-5">@lang('lang.secure_recomends')</h3>
-                        <p>@lang('lang.secure_recomendsText')</p>
+                        <h3 class="text-3xl mb-5">{{__('Рекомендации по безопасности')}}</h3>
+                        <p>{{__('Исполнители не являются сотрудниками Universal Services и несут личную ответственность за качество своей работы. При сотрудничестве с любым исполнителем, даже если он подтвердил паспорт или вы нашли его не на нашем сервисе, мы рекомендуем всегда соблюдать базовые правила безопасности.')}}</p>
                         <ul class="mt-5 list-decimal">
-                            <li class="mr-5">@lang('lang.secure_carefull')</li>
-                            <li class="mr-5">@lang('lang.secure_carefull2')</li>
-                            <li class="mr-5">@lang('lang.secure_carefull3')</li>
-                            <li class="mr-5">@lang('lang.secure_carefull4')</li>
+                            <li class="mr-5">{{__('Внимательно изучите отзывы и примеры выполненных заданий.')}}</li>
+                            <li class="mr-5">{{__('Перед началом работы попросите исполнителя показать паспорт, сверьте имя в профиле на Universal Services и в документе.')}}</li>
+                            <li class="mr-5">{{__('Прописывайте все условия и этапы сотрудничества в договоре или смете (скачать образец договора), составляйте расписки о передаче денег (скачать образец расписки).')}}</li>
+                            <li class="mr-5">{{__('Прочитайте наши рекомендации, которые помогут вам избежать неприятных ситуаций:')}}</li>
                         </ul>
-                        <a class="block mt-7 text-blue-600 hover:text-orange-300">@lang('lang.secure_beAware')</a>
-                        <a class="block text-blue-600 hover:text-orange-300">@lang('lang.secure_beAware2')</a>
-                        <h3 class="mt-14 text-3xl mb-5">@lang('lang.secure_beAware3')</h3>
-                        <p>@lang('lang.secure_beAware4')</p>
-                        <p class="mt-5">@lang('lang.secure_beAware5')</p>
+                        <a class="block mt-7 text-blue-600 hover:text-orange-300">{{__('Как заказчику не нарваться на мошенника')}}</a>
+                        <a class="block text-blue-600 hover:text-orange-300">{{__('Как исполнителю не нарваться на мошенника')}}</a>
+                        <h3 class="mt-14 text-3xl mb-5">{{__('Служба поддержки')}}</h3>
+                        <p>{{__('Наша служба поддержки ежедневно работает с обращениями пользователей и следит за новыми заданиями. На сервисе запрещено публиковать задания, которые нарушают законодательство или противоречат моральным нормам.')}}</p>
+                        <p class="mt-5">{{__('Специалисты отдела мониторинга готовы подключиться к любой сложной ситуации и сделать все возможное, чтобы помочь пользователям ее разрешить.')}}</p>
                         <div class="flex lg:flex-row flex-col mt-10">
                             <div class="sm:w-1/2 w-full mx-auto">
                                 <a href="#replain-link">
                                     <button  class="font-sans  text-2xl mx-2 font-medium bg-green-400 text-white hover:bg-green-300 px-10 py-4 rounded">
-                                        @lang('lang.secure_writeToSupp')
+                                        {{__('Написать в поддержку')}}
                                     </button>
                                 </a>
                             </div>
                             <div class="sm:w-1/2 w-full mx-auto lg:mt-0 mt-6">
                                 <a href="/contacts">
                                     <button  class="font-sans  text-2xl mx-2 font-medium  text-black-400 ring-1 ring-gray-300 px-14 py-4 rounded">
-                                        @lang('lang.secure_goToContacts')
+                                        {{__('Перейти в контакты')}}
                                     </button>
                                 </a>
                             </div>

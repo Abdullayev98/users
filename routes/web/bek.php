@@ -14,7 +14,6 @@ Route::prefix("profile")->group(function(){
     Route::get('/', [Controller::class, 'home_profile'])->name('home.profile');
     Route::get('/settings', [Controller::class, 'profile_settings'])->name('profile.settings');
     Route::get('/cash', [Controller::class, 'profile_cash'])->name('profile.cash');
-    Route::get('/login', [Controller::class, 'profile_login'])->name('profile.login');
 });
 
 

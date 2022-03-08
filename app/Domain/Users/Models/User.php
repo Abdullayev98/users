@@ -72,7 +72,7 @@ use Laravel\Passport\HasApiTokens;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, Notifiable, Filterable;
+    use HasApiTokens, Notifiable;
     const ROLE_ADMIN = 'admin';
     const ROLE_PARTNER = 'partner';
     const ROLE_DRIVER = 'driver';

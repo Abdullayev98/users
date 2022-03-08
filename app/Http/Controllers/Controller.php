@@ -21,6 +21,32 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use TCG\Voyager\Models\Category;
 
+
+/**
+ * @OA\Info(
+ *      version="1.0.0",
+ *      title="Laravel OpenApi Demo Documentation",
+ *      description="L5 Swagger OpenApi description",
+ *      @OA\Contact(
+ *          email="admin@admin.com"
+ *      ),
+ *      @OA\License(
+ *          name="Apache 2.0",
+ *          url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ *      )
+ * )
+ *
+ * @OA\Server(
+ *      url=L5_SWAGGER_CONST_HOST,
+ *      description="Demo API Server"
+ * )
+
+ *
+ * @OA\Tag(
+ *     name="Projects",
+ *     description="API Endpoints of Projects"
+ * )
+ */
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -28,7 +54,7 @@ class Controller extends BaseController
     public function home(Request $request)
     {
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
-        $tasks  =  Task::where('status', 1)->orderBy('id', 'desc')->get();
+        $tasks  =  Task::where('status', 1)->orWhere('status',2)->orderBy('id', 'desc')->take(20)->get();
         $howitworks = How_work_it::all();
         if (!session()->has('lang')) {
             Session::put('lang', 'ru');
@@ -45,7 +71,6 @@ class Controller extends BaseController
     {
         $user = User::find(Auth::user()->id);
         $vcs = UserView::where('user_id', $user->id)->get();
-        $user->update();
         return view('profile.profile', compact('user', 'vcs'));
     }
     public function update(Request $request, $id)
@@ -108,14 +133,14 @@ class Controller extends BaseController
     }
     public function my_tasks()
     {
-        $tasks = Task::where('user_id', Auth::id())->get();
-        $task_count = Task::where('user_id', Auth::id())->count();
-        $perform_tasks = Task::where('performer_id', auth()->id())->get();
-        $categories = Category::get();
-        $datas = new Collection; //Create empty collection which we know has the merge() method
+        $user = auth()->user();
+        $tasks = $user->tasks;
+        $perform_tasks = $user->performer_tasks;
+        $datas = new Collection(); //Create empty collection which we know has the merge() method
         $datas = $datas->merge($tasks);
         $datas = $datas->merge($perform_tasks);
-        return view('task.mytasks', compact('tasks', 'task_count', 'categories','perform_tasks','datas'));
+        $categories = getAllCategories();
+        return view('task.mytasks',compact('tasks','perform_tasks','categories','datas'));
     }
 
     public function category($id)

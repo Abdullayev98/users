@@ -1,11 +1,17 @@
+div{
+    font-family: 'Montserrat', sans-serif;
+}
+a{
+    font-family: 'Montserrat', sans-serif;
+}
+button{
+    font-family: 'Montserrat', sans-serif;
+}
 
-
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,900);
-@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro);
-@import url(http://fonts.googleapis.com/css?family=Exo:300,800);
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Montserrat', sans-serif;
 }
 .cube {
     position: relative;
@@ -151,15 +157,21 @@
     position: relative;
     width: 600px;
 }
+
+.ui-slider-handle {
+    border-radius: 50% !important;
+    border: 2px solid #ffa200 !important;
+    margin-top: -5px !important;
+    margin-left: -20px !important;
+}
+
 .ui-slider .ui-slider-handle {
-    top: -8px;
-    width: 26px;
+    top: 0px;
+    width: 20px;
     height: 20px;
-    margin-left: -15px;
-    padding-left: 4px;
-    border: none;
+    margin-left: -19px;
+    padding-left: 0px;
     background: rgba(255,255,255,0.7);
-    border-radius: 2px;
     text-align: center;
     font-family: 'Anonymous Pro', sans-serif;
     font-size: 1.2rem;
@@ -214,7 +226,6 @@ p {
 #amount {
     position: relative;
     display: inline-block;
-    padding-bottom: 5rem;
     text-align: center;
     font-family: 'Exo', sans-serif;
     font-weight: 800;
@@ -329,18 +340,18 @@ p {
         z-index: 3;
         height: 150px;
         background: white;
-        overflow: visible;!important;
+        overflow: visible !important;
     }
 
     .handle__27597 {
-        height: 0px;!inportant;
+        height: 0px !important;
         position: absolute;
         transform: translate(-50%,-50%);
         top: 144px;
         z-index: 5;
         cursor: pointer;
-        background-color: 0;!inportant;
-        box-shadow: 0;!inportant;
+        background-color: 0 !important;
+        box-shadow: 0 !important;
         border-radius: 50%;
     }
     .triangle__678999{
@@ -443,14 +454,14 @@ p {
     }
 
     .handle__27597 {
-        height: 0px;!inportant;
+        height: 0px !important;
         position: absolute;
         transform: translate(-50%,-50%);
         top: 144px;
         z-index: 5;
         cursor: pointer;
-        background-color: 0;!inportant;
-        box-shadow: 0;!inportant;
+        background-color: 0 !important;
+        box-shadow: 0 !important;
         border-radius: 50%;
     }
     .container__dbb1e {
