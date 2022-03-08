@@ -168,7 +168,7 @@
                                     </div>
                                     @if($task->docs == 1)
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">Предоставил(а) документы</h1>
+                                        <h1 class="font-bold h-auto w-48">{{__('Предоставил(а) документы')}}</h1>
                                     </div>
                                     @else
                                         <div class="ml-4 md:ml-12 flex flex-row mt-8">
@@ -309,11 +309,8 @@
                                                                           type="text" id="form8" rows="4"
                                                                           name="description"></textarea>
                                                                     <p id="text1" class="hidden text-lg">
-                                                                        Если заказчик
-                                                                        захочет с вами связаться, мы
-                                                                        автоматически
-                                                                        спишем стоимость контакта с вашего
-                                                                        счёта</p>
+                                                                        {{__(' Если заказчик захочет с вами связаться, мы автоматически
+                                                                        спишем стоимость контакта с вашего счёта')}}</p>
                                                                     <div class="my-2">
                                                                         <label class=" px-2">
                                                                             <input type="checkbox"
@@ -541,7 +538,7 @@
                                         >
                                             <!-- Title / Close-->
                                             <div class="flex items-center justify-between">
-                                                <h5 class="mr-3 text-black max-w-none">Поделиться заданием</h5>
+                                                <h5 class="mr-3 text-black max-w-none">{{__('Поделиться заданием')}}</h5>
 
                                                 <button type="button" class="z-50 cursor-pointer" @click="showModal = false">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -607,7 +604,7 @@
 {{--                                                            ></i>--}}
                             </button>
                             <h3 class="font-semibold text-gray-700 text-3xl block">
-                                Оставить отзыв
+                                {{__(' Оставить отзыв')}}
                             </h3>
                         </div>
                         <div class="text-center h-56 w-full mx-auto text-base">

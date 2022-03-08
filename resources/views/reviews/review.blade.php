@@ -36,7 +36,8 @@
                             </div>
                         </div>
                         <div class="p-8 mt-[12px] mr-0 mb-[35px] bg-pink-50 shadow-md shadow-current rounded-lg relative text-gray-700 text-base border-pink-100 border-solid">
-                            Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков. Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.
+                            {{__(' Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков.
+                            Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.')}}
                         </div>
                     </li>
                     <li class="mt-8">
@@ -45,7 +46,7 @@
                         </a>
                         <div class="align-top ml-[50px] h-24">
                             <span>
-                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-blue-400 ">Сергей С.</a>
+                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-blue-400 ">{{__('Сергей С.')}}</a>
                             </span>
                             <div class="text-base text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
@@ -61,7 +62,8 @@
                             </div>
                         </div>
                         <div class="p-8 mt-[12px] mr-0 mb-[35px] bg-pink-50 shadow-md shadow-current rounded-lg relative text-gray-700 text-base border-pink-100 border-solid">
-                            Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков. Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.
+                            {{__(' Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков.
+                            Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.')}}
                         </div>
                     </li>
                     <li class="mt-8">
@@ -70,7 +72,7 @@
                         </a>
                         <div class="align-top ml-[50px] h-24">
                             <span>
-                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-blue-400 ">Сергей С.</a>
+                                <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="text-blue-400 ">{{__('Сергей С.')}}</a>
                             </span>
                             <div class="text-base text-[rgba(78,78,78,.5)]">
                                 <span class="align-middle">
@@ -86,7 +88,8 @@
                             </div>
                         </div>
                         <div class="p-8 mt-[12px] mr-0 mb-[35px] bg-pink-50 shadow-md shadow-current rounded-lg relative text-gray-700 text-base border-pink-100 border-solid">
-                            Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков. Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.
+                            {{__(' Разные задания&nbsp;— это очень интересно! Главное, есть куда расти в&nbsp;плане навыков.
+                            Чувствуешь свою значимость, но&nbsp;не&nbsp;боишься испачкаться.')}}
                         </div>
                     </li>
                 </ul>

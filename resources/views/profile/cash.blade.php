@@ -181,8 +181,7 @@
                     </div>
                 </div>
                 <p class="mx-5 my-4">
-                    {{__('Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.')}}
-}</p>
+                    {{__('Повысьте доверие пользователей к себе — привяжите ваши аккаунты социальных сетей к профилю Servicebox. Мы обязуемся не раскрывать ваши контакты.')}}</p>
                 <div class="telefon ml-4 h-20 grid grid-cols-4 content-center">
                     <div class="w-12 h-12 text-center mx-auto my-auto py-2 bg-gray-300 rounded-xl col-span-1"
                         style="background-color: #4285F4;">
