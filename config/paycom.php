@@ -1,19 +1,14 @@
 <?php
-
 return [
-    'merchant_id' => env('PAYCOM_MERCHANT'),
+    'login' => 'Paycom',
+    'merchant' => env('PAYCOM_MERCHANT', ''),
+    'key' => env('PAYCOM_KEY', ''),
+    'key_test' => env('PAYCOM_KEY_TEST', ''),
+    'is_test' => env('PAYCOM_TEST', 'true'),
+    'table' => [
+        'orders' => env('PAYCOM_ORDERS', 'orders'),
+        'transactions' => env('PAYCOM_TRANSACTIONS', 'paycom_transactions'),
+        'users' => env('PAYCOM_USERS', 'users'),
 
-    // Login is always "Paycom"
-    'login'       => 'Paycom',
-
-    // File with cashbox key (key can be found in cashbox settings)
-    'keyFile'     => env('PAYCOM_KEY'),
-
-    // Your database settings
-    'db'          => [
-        'host'     => env('DB_HOST'),
-        'database' => env('DB_DATABASE'),
-        'username' => env('DB_USERNAME'),
-        'password' => env('DB_PASSWORD'),
-    ],
+    ]
 ];
