@@ -26,7 +26,7 @@ class UserUpdateDataRequest extends FormRequest
         $validation = [
             'email' => 'required|email|unique:users',
             'age' => 'nullable|int',
-            'phone_number' => 'nullable|int|min:9|unique:users',
+            'phone_number' => 'required|numeric|min:9|unique:users',
             'description' => 'nullable',
             'location' => 'nullable',
         ];
@@ -34,9 +34,9 @@ class UserUpdateDataRequest extends FormRequest
             $validation['email'] = "required|email";
         }
         if (auth()->user()->phone_number == $this->request->get('phone_number')) {
-            $validation['phone_number'] = "nullable|int|min:9";
-
+            $validation['phone_number'] = "required|min:9";
         }
+
         return $validation;
     }
 
