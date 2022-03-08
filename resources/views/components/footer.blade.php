@@ -1,23 +1,10 @@
-<<<<<<< HEAD
-<footer class="ml-6 w-10/12 mx-auto">
-    <div class="md:flex sm:flex-row flex-col my-8 text-base">
-        <div class="w-1/2 w-full flex md:flex-row flex-col md:text-left text-center md:my-0 my-10">
-            <div class="w-3/4 flex flex-col lg:mx-8 mx-auto">
-                <a class="delete-task verification cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 verify" href="/verification">@lang('lang.footer_how')&nbsp;@lang('lang.footer_become')&nbsp;@lang('lang.footer_performer')</a>
-                <a class="delete-task faq cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="/faq">@lang('lang.footer_ownquestion')</a>
-                <a class="delete-task contact cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 contact" href="/contacts">@lang('lang.footer_contact')</a>
-            </div>
-            <div class="w-3/4 flex flex-col lg:mx-0 mx-auto">
-                <a class="delete-task review cursor-pointer text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500 rews" href="/author-reviews">@lang('lang.footer_costumersreviews')</a>
-                <a class="text-gray-700 hover:text-yellow-500 border-b-2 md:border-0 hover:border-yellow-500" href="#replain-link">@lang('lang.footer_text')</a>
-            </div>
-=======
+
 <footer class=" w-full mx-auto mt-32" style="background-color: #242325;">
     <div class="flex md:flex-row flex-col w-4/5 mx-auto rounded-xl relative bottom-20" style="background-color: #F9FAFB">
         <div class="m-5 md:w-2/3 w-11/12">
             <h1 class="font-bold text-xl text-black">{!!__('С Universal Services вы экономите на услугах до 70%. <br> Как это возможно?')!!}</h1>
             <p class="text-base">{{__('Скачайте наше приложение и пользуйтесь Universal Services, где бы вы ни находились.')}}</p>
->>>>>>> a6bde4284e89ddbbec7eab5085de9a4cbfb789c3
+
         </div>
         <div class="my-auto flex xl:flex-row flex-col md:w-1/3 w-full md:m-5 m-0">
             <a class="rounded-md mx-auto my-2 my-auto xl:mr-3" rel="noopener noreferrer" href="#" target="_blank">

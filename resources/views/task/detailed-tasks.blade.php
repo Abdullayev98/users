@@ -140,7 +140,13 @@
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                         <h1 class="font-bold h-auto w-48">{{__('Оплата задания')}}</h1>
                                         <div class=" h-auto w-96">
-                                            <a class="cursor-pointer underline text-blue-400" href="#">{{__('Карта')}}</a> {{__('или')}} <a class="cursor-pointer underline text-blue-400" href="#">{{__('Наличные')}}</a>
+                                            <a class="cursor-pointer underline text-blue-400" href="#">
+                                                @if($task->oplata == 1)
+                                                    {{__('Карта')}}
+                                                @else
+                                                    {{__('Наличные')}}
+                                                @endif
+                                            </a>
                                         </div>
                                     </div>
 
