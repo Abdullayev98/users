@@ -164,7 +164,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/munafio/chatify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/pusher/pusher-php-server" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/sodium_compat" />
+<<<<<<< HEAD
       <excludeFolder url="file://$MODULE_DIR$/vendor/joy/voyager-api-auth" />
+=======
+      <excludeFolder url="file://$MODULE_DIR$/vendor/temprodev/laravel-one-auth" />
+>>>>>>> 53cd3ebe089ba028adc0e5cb024dc502d7d40ad0
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
