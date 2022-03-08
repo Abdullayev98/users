@@ -37,11 +37,7 @@
                 </span>
             </a>
         @endforeach
-        <div class="float-left pt-5">
-            <a href="/categories/1" class="bg-blue-900 w-full text-white px-2 py-3 rounded-lg my-2">
-                {{__('Посмотреть все услуги')}}
-            </a>
-        </div>
+
 
     </div>
 </div>
