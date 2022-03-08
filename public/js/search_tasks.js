@@ -298,8 +298,8 @@ function tasks_list_all(data) {
                     <div class="md:w-11/12 w-full mx-auto mt-3">
                         <div class="sm:float-left sm:w-7/12 w-full" id="results">
 <!--                            <i class="` + data.icon + ` text-2xl float-left text-blue-400 sm:mr-4 mr-3"></i>-->
-<!--                            <img src="{{ asset('storage/'` + data.icon + `}}" class="text-2xl float-left text-blue-400 sm:mr-4 mr-3"/>-->
-                            <img src="public/storage/` + data.icon + `}}" class="text-2xl float-left text-blue-400 sm:mr-4 mr-3"/>
+                            <img src="{{ asset('storage/'` + data.icon + `}}" class="text-2xl float-left text-blue-400 sm:mr-4 mr-3"/>
+<!--                            <img src="public/storage/` + data.icon + `" class="text-2xl float-left text-blue-400 sm:mr-4 mr-3"/>-->
                             <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-base font-semibold text-blue-500 hover:text-red-600">` + data.name + `</a>
                             <p class="text-sm sm:ml-12 ml-10 sm:mt-4 sm:mt-1 mt-0 location ">` + (data.address != null ? json.location : 'Можно выполнить удаленно') + `</p>
                             <p class="text-sm sm:ml-8 ml-6 sm:mt-1 mt-0 pl-4 ">Начать ` + data.start_date + `</p>
