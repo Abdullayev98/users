@@ -105,7 +105,7 @@ class UserController extends Controller
     {
 
         $data = $request->validate([
-            'phone_number' => 'required|integer|exists:users,phone_number'
+            'phone_number' => 'required|integer|exists:users'
         ]);
         $user = User::query()->where('phone_number', $data['phone_number'])->first();
         if (!$user) {
@@ -125,15 +125,21 @@ class UserController extends Controller
 
     public function reset_code(Request $request)
     {
+        $data = $request->validate([
+            'code' => 'required|numeric|min:6'
+        ]);
         $phone_number = $request->session()->get('phone');
 
         $user = User::query()->where('phone_number', $phone_number)->first();
 
-        if ($request->code == $user->verify_code) {
+        if ($data['code'] == $user->verify_code) {
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
                 return redirect()->route('password.reset.password');
             } else {
+                abort(419);
             }
+        }else{
+            return back()->with(['error' => 'Error Code']);
         }
     }
 
