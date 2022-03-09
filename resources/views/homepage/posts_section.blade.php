@@ -43,7 +43,7 @@
                 <div class="w-96 h-48 rounded-xl my-8" style="background: url({{asset('images/security.png')}});">
                     <div class="w-full text-center">
                         <p class="text-2xl font-bold text-yellow-400 pt-12">
-                         {!!__('   Безопасность и <br/> гарантии ')!!}</p>
+                         {!!__('Безопасность и <br/> гарантии')!!}</p>
                     </div>
                 </div>
             </a>

@@ -21,7 +21,10 @@
                     @foreach($data->options['options'] as $key => $option)
                         <option
                             @if(isset($task) && $task->custom_field_values()->where('custom_field_id', $data->id)->first() &&
-json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)[0] == $option) selected
+    is_array( json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)) &&
+
+    array_key_exists($key-1, json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)) &&
+json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)[$key-1] == $option) selected
                             @endif
                             value="{{$option}}">{{$option}}</option>
                     @endforeach
@@ -53,19 +56,24 @@ json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->f
 
                     <div class="mb-3 xl:w-full">
 
-                        @foreach($data->options['options'] as $key => $option)
-                            <label class="md:w-2/3 block mt-6">
-                                <input
-                                    @if(isset($task) && $task->custom_field_values()->where('custom_field_id', $data->id)->first() &&
-json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)[$key-1] == $option) checked
-                                       @endif
-                                       class="mr-2  h-4 w-4" type="checkbox"
-                                       value="{{$option}}" name="{{$data->name}}[]">
-                                <span class="text-slate-900">
+                        @if(array_key_exists('options', $data->options))
+                            @foreach($data->options['options'] as $key => $option)
+                                <label class="md:w-2/3 block mt-6">
+                                    <input
+                                        @if(isset($task) && $task->custom_field_values()->where('custom_field_id', $data->id)->first() &&
+    is_array( json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)) &&
+    array_key_exists($key-1, json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)) &&
+    json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value, true)[$key-1] == $option) checked
+                                        @endif
+                                        class="mr-2  h-4 w-4" type="checkbox"
+                                        value="{{$option}}" name="{{$data->name}}[]">
+
+                                    <span class="text-slate-900">
                                                     {{$option}}
                                                     </span>
-                            </label>
-                        @endforeach
+                                </label>
+                            @endforeach
+                        @endif
 
                     </div>
                 </div>
@@ -105,10 +113,12 @@ json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->f
 
                         @foreach($data->options['options'] as $key => $option)
 
-                            <input @if($key == $data->values) checked
-                                   @endif type="radio"
+                            <input  type="radio"
                                    @if(isset($task) && $task->custom_field_values()->where('custom_field_id', $data->id)->first() &&
-json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)[0] == $option) checked
+    is_array( json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)) &&
+
+    array_key_exists($key-1, json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)) &&
+json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value)[$key-1] == $option) checked
                                    @endif
                                    id="radio_{{$key}}" name="{{$data->name}}[]"
                                    value="{{$option}}">
@@ -150,17 +160,19 @@ json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->f
                 {{ $data->getTranslatedAttribute('label') }}
                 <?php
 
-                $array = isset($task) && $task->custom_field_values()->where('custom_field_id', $data->id)->first() ? json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value,true):null;
-                if (array_key_exists('_token', $array))
-                    {
-                        $array = end($array);
-                    }
+                $array = isset($task) && $task->custom_field_values()->where('custom_field_id', $data->id)->first() ? json_decode($task->custom_field_values()->where('custom_field_id', $data->id)->first()->value, true) : null;
+                if (is_array($array) || is_array($array) && array_key_exists('_token', $array)) {
+
+                    $array = end($array);
+
+                }
+
 
                 ?>
                 <input
                     placeholder="{{ $data->getTranslatedAttribute('placeholder') }}"
 
-                    id="car" name="{{$data->name}}[]" type="text" value="{{$array[0]}}"
+                    id="car" name="{{$data->name}}[]" type="text" value="{{$array}}"
                     class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
                     required>
 

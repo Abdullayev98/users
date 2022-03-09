@@ -56,13 +56,13 @@
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" checked name="oplata" value="{{__('Оплата через карту')}}">
+                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" checked name="oplata" value="0">
                     <span class="text-slate- 900">
                         {{__('Оплата через карту')}}
                     </span>
                   </label>
                   <label class="md:w-2/3 block mt-6">
-                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" name="oplata" value="{{__('Оплата наличными')}}">
+                    <input class="focus:outline-none  mr-2 h-4 w-4" type="radio" name="oplata" value="1">
                     <span class="text-slate- 900">
                         {{__('Оплата наличными')}}
                     </span>

@@ -148,7 +148,8 @@
                                     A
                                 </button>
                                 <ymaps
-                                    style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;"></ymaps>
+                                    style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;">
+                                </ymaps>
 
                                 <input autocomplete="off" oninput="myFunction()" id="suggest0"
                                        class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
@@ -325,6 +326,7 @@
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
     <script src="{{ asset('js/changetask.js') }}"></script>
+    <script src="{{ asset('js/location.js') }}"></script>
     <script>
         var element = document.getElementById('phone_number');
         var maskOptions = {
