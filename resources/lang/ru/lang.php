@@ -1009,6 +1009,7 @@ return [
     'faq_text' => "Перейти на сайт Universal Services",
     'faq_text1' => "Ответы на частые вопросы и рекомендации от Universal Services",
     'faq_text2' => "Мы используем Intercom",
+    'faq_text3' => "Поиск ответов"
     //faq faq blade ended
 
     //age blade started

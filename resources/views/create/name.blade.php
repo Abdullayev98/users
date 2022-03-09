@@ -47,7 +47,7 @@
                     <div class="py-4 md:w-1/2 w-full mx-auto px-auto text-center md:text-3xl text-xl texl-bold">
                         {{__('Чем вам помочь?')}}
                     </div>
-                    <form action="{{route("task.create.name.store")}}" method="post">
+                    <form action="{{route('task.create.name.store')}}" method="post">
                         @csrf
                         <input type="hidden" name="category_id" value="{{$current_category->id}}">
 
