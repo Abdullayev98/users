@@ -11,7 +11,7 @@
                         1.
                     </span> {{__('Создать задания')}}
                 </span>
-                    <h1 class="my-2 pb-2">
+                    <h1 class="my-02 text-base pb-2">
                        {{__(' Опишите своими словами задачу, которую требуется выполнить')}}
                     </h1>
                     <a href="/categories/1"
@@ -27,7 +27,7 @@
                         2.
                     </span> {{__('Исполнители предложат вам свои услуги и цены')}}
                 </span>
-                    <h1 class="my-2">
+                    <h1 class="text-base my-02">
                         {{__('Уже через пару минут вы начнете получать отклики от исполнителей, готовых выполнить ваше задание.')}}
                     </h1>
                 </div>
@@ -39,24 +39,24 @@
                         3.
                     </span> {{__('Выберите лучший отклик')}}
                 </span>
-                    <h1 class="my-2">
+                    <h1 class="text-base my-02">
                         {{__('Вы сможете выбрать подходящего исполнителя, по разным критериям:')}}
                     </h1>
                     <div class="flex">
                         <i class="fas fa-thumbs-up text-yellow-400 mx-2 pr-3"></i>
-                        <p>{{__('Отзывы заказчиков')}}</p>
+                        <p class="text-lg">{{__('Отзывы заказчиков')}}</p>
                     </div>
                     <div class="flex">
                         <i class="fas fa-user-alt text-yellow-400 mx-2 pr-3"></i>
-                        <p>{{__('Примеры работ')}}</p>
+                        <p class="text-lg">{{__('Примеры работ')}}</p>
                     </div>
                     <div class="flex">
                         <i class="fas fa-dollar-sign text-yellow-400 mx-2 pl-1 pr-4"></i>
-                        <p>{{__('Стоимость услуг')}}</p>
+                        <p class="text-lg">{{__('Стоимость услуг')}}</p>
                     </div>
                     <div class="flex">
                         <i class="fas fa-star text-yellow-400 mx-2 pr-3"></i>
-                        <p>{{__('Рейтинг')}}</p>
+                        <p class="text-lg">{{__('Рейтинг')}}</p>
                     </div>
                 </div>
             </div>
