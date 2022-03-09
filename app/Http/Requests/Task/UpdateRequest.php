@@ -31,8 +31,8 @@ class UpdateRequest extends FormRequest
             'date_type' => 'required|string',
             'budget' => 'required|string',
             'category_id' => 'required',
-            'coordinates' => 'required',
-            'address' => 'required'
+            'coordinates0' => 'required',
+            'location0' => 'required'
         ];
     }
 

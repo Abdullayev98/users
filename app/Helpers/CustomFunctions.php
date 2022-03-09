@@ -3,6 +3,7 @@
 use App\Models\Category;
 use App\Models\FaqCategories;
 use App\Models\UserView;
+use App\Services\Task\CreateService;
 
 if (!function_exists('amount_format')) {
     function amount_format($amount)
@@ -15,11 +16,20 @@ function getMyText(){
     return 'Hello World';
 }
 function getAddress($data){
+    $array = (new CreateService())->addAdditionalAddress(request());
+    $data['address'] = $array['address'];
+    $data['address_add'] = $array['address_add'];
+    $data['coordinates'] = $data['coordinates0'];
+    unset($data['coordinates0']);
+    unset($data['location0']);
+    return $data;
+}
+function getAdditionalAddress($data){
     $address = [];
     $address['location'] = $data['address'];
     $address['latitude'] = explode(',',$data['coordinates'])[0];
     $address['longitude'] = explode(',',$data['coordinates'])[1];
-    $data['address'] = $address;
+
     return $data;
 }
 
