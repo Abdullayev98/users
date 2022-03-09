@@ -80,27 +80,8 @@ class CreateController extends Controller
     public function address_store(Request $request, Task $task)
     {
 
-        $data = [];
-        $data_inner = [];
-        for ($i = 0; $i < 5; $i++) {
-            $location = Arr::get($request->all(), 'location' . $i);
-            $coordinates = Arr::get($request->all(), 'coordinates' . $i);
-            if ($coordinates) {
-                $data_inner['location'] = $location;
-                $data_inner['longitude'] = explode(',', $coordinates)[1];
-                $data_inner['latitude'] = explode(',', $coordinates)[0];
-                if ($i != 0) {
-                    $data[] = $data_inner;
-                } else {
-                    $task->address = json_encode($data_inner);
-                }
-            }
-        }
-        $task->coordinates = $request->coordinates0;
-        $task->address_add = json_encode($data);
-        $task->save();
+        $task->update($this->service->addAdditionalAddress($request));
         $this->service->attachCustomFieldsByRoute($task, CustomField::ROUTE_ADDRESS);
-
         return redirect()->route("task.create.date", $task->id);
 
     }

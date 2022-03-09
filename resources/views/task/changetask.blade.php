@@ -153,9 +153,9 @@
 
                                 <input autocomplete="off" oninput="myFunction()" id="suggest0"
                                        class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
-                                       type="text" placeholder="Город, Улица, Дом" name="address"
+                                       type="text" placeholder="Город, Улица, Дом" name="location0"
                                        value="{{ json_decode($task->address)->location }}">
-                                @error('address')
+                                @error('location0')
 
                                 <p class="text-red-500">{{ $message }}</p>
                                 @enderror
@@ -174,7 +174,7 @@
 
                             </div>
 
-                            <input name="coordinates" type="hidden" id="coordinate"
+                            <input name="coordinates0" type="hidden" id="coordinate"
                                    value="{{json_decode($task->address)->latitude.",". json_decode($task->address)->longitude }}">
                             <div id="addinput" class="flex gap-y-2 flex-col">
 

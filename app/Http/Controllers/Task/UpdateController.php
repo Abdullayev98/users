@@ -26,6 +26,7 @@ class UpdateController extends Controller
 
     public function __invoke(UpdateRequest $request, Task $task)
     {
+
         taskGuard($task);
         $data = $request->validated();
         $data = getAddress($data);

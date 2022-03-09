@@ -35,4 +35,29 @@ class CreateService
             $value->save();
         }
     }
+
+
+    public function addAdditionalAddress($request){
+        $data = [];
+        $data_inner = [];
+        for ($i = 0; $i < 5; $i++) {
+            $location = Arr::get($request->all(), 'location' . $i);
+            $coordinates = Arr::get($request->all(), 'coordinates' . $i);
+            if ($coordinates) {
+                $data_inner['location'] = $location;
+                $data_inner['longitude'] = explode(',', $coordinates)[1];
+                $data_inner['latitude'] = explode(',', $coordinates)[0];
+                if ($i != 0) {
+                    $data[] = $data_inner;
+                } else {
+                    $dataMain['address'] = json_encode($data_inner);
+                }
+            }
+        }
+        $dataMain['address_add'] = $data;
+        return $dataMain;
+
+    }
+
+
 }
