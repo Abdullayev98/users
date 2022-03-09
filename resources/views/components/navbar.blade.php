@@ -347,7 +347,7 @@
     <div class="relative w-full my-6 mx-auto max-w-3xl" id="modal11">
         <div class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col sm:w-4/5 w-full bg-white outline-none focus:outline-none">
             <div class=" text-center p-6  rounded-t">
-                <button type="submit"  onclick="toggleModal()" class="rounded-md w-100 h-16 absolute top-1 right-4">
+                <button type="submit"  onclick="toggleModal()" class="rounded-md w-100 h-16 absolute top-1 right-4 focus:outline-none">
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                 </button>
                 <h3 class="font-medium text-3xl block mt-6">
@@ -379,7 +379,7 @@
     <div class="relative w-auto my-6 mx-auto max-w-3xl">
         <div class="border-2 shadow-2xl rounded-lg bg-gray-100 relative flex flex-col sm:w-4/5 w-full mx-auto mt-16 bg-white outline-none focus:outline-none">
             <div class=" text-center p-6  rounded-t">
-                <button type="submit"  onclick="toggleModal1()" class="rounded-md w-100 h-16 absolute top-1 right-4">
+                <button type="submit"  onclick="toggleModal1()" class="rounded-md w-100 h-16 absolute top-1 right-4 focus:outline-none">
                     <i class="fas fa-times  text-slate-400 hover:text-slate-600 text-xl w-full"></i>
                 </button>
                 <h3 class="font-medium text-3xl block mt-6">
