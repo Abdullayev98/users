@@ -15,7 +15,7 @@
                        {{__(' Опишите своими словами задачу, которую требуется выполнить')}}
                     </h1>
                     <a href="/categories/1"
-                       class="text-yellow-500 hover:text-white  p-3 rounded-lg transition duration-300 hover:bg-yellow-500">
+                       class="text-yellow-500 hover:text-white  p-1 rounded-lg transition duration-300 hover:bg-yellow-500">
                         {{__('Создать задания')}}
                     </a>
                 </div>
