@@ -36,7 +36,7 @@
                         </svg>
                     </button>
                     <input id="inp" class="bg-gray-400 border-none outline-none transition h-16 pl-16 pr-4 rounded-md focus:outline-none focus:bg-white w-full text-black lg:md:text-base text-base hover:bg-gray-300" type="search" name="search" placeholder="{{__('Поиск ответов')}}" />
-                    {{__('Поиск ответов')}}
+                    
                 </div>
             </form>
         </div>
