@@ -97,7 +97,7 @@
 
                         </div>
                         <div class="flex  mx-auto" >
-                            <input type="submit"
+                            <input type="submit" id="next"
                                    class="bg-green-500 hover:bg-green-500 w-9/12 mx-auto my-4 cursor-pointer text-white font-bold  py-5  px-5 rounded"
                                    name="" value="{{__('Далее')}}">
                         </div>
@@ -139,6 +139,22 @@
 
         $('.child-category-'+parentCategory+'').removeClass('hidden')
 
+        $('#username').keyup(function (){
+            sessionStorage.setItem("name", $(this).val())
+        })
+
+        var name = sessionStorage.getItem("name")
+        if (name !== 'null'){
+            $('#username').val(name)
+        }else {
+            $('#username').val("")
+        }
+
+        $('#next').click(function (){
+            sessionStorage.clear();
+        })
+
+
     </script>
 
     <style>
@@ -166,5 +182,7 @@
 @section("javasript")
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
 
 @endsection
