@@ -92,20 +92,20 @@
                                 @endauth
                             @endif
                             <li class="mb-1">
-                                <a href="/categories/1" class="delete-task block p-4 text-sm rounded hover:text-yellow-500">{{__('Создать задание')}}</a>
+                                <a href="/categories/1" class="delete-task block p-4 text-base rounded hover:text-yellow-500">{{__('Создать задание')}}</a>
                             </li>
                             <li class="mb-1">
-                                <a href="{{ route('task.search') }}" class="task block delete-task cursor-pointer p-4 text-sm rounded hover:text-yellow-500">{{__('Найти задания')}}</a>
+                                <a href="{{ route('task.search') }}" class="task block delete-task cursor-pointer p-4 text-base rounded hover:text-yellow-500">{{__('Найти задания')}}</a>
                             </li>
                             <li class="mb-1">
-                                <a href="/performers" class="performer delete-task cursor-pointer block p-4 text-sm rounded hover:text-yellow-500">{{__('Исполнители')}}</a>
+                                <a href="/performers" class="performer delete-task cursor-pointer block p-4 text-base rounded hover:text-yellow-500">{{__('Исполнители')}}</a>
                             </li>
 
                             @if (Route::has('login'))
                                 @auth
 
                                     <li class="mb-1">
-                                        <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-sm rounded text-gray-500 hover:text-yellow-500">{{__('Мои заказы')}}</a>
+                                        <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-base rounded text-gray-500 hover:text-yellow-500">{{__('Мои заказы')}}</a>
                                     </li>
 
                                     {{-- icon-3 --}}
@@ -137,7 +137,7 @@
                                 @else
                                     <div class="relative top-60 block w-[400px] ml-4">
                                         <a href="{{ route('login') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500 ">{{__('Вход')}}
-                                            </a> {{__('или')}}
+                                            </a> <p class="text-sm">{{__('или')}}</p>
                                         <a href="{{ route('register') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
                                     </div>
                         @endauth
