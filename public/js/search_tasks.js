@@ -297,8 +297,8 @@ function tasks_list_all(data) {
                 <div class="w-full border-b border-t  md:border sm:pt-3 md:p-0 hover:bg-blue-100 sm:h-32 h-38 item md:overflow-hidden" data-nomer="`+ data.start_date +`">
                     <div class="grid grid-cols-5 w-11/12 mx-auto sm:mt-3 mt-1">
                         <div class="sm:col-span-3 col-span-5 flex flex-row" id="results">
-                            <div class="mr-5 my-auto">
-                                <img src="storage/` + data.icon.replace("\\","/") + `" class="text-2xl float-left text-blue-400 sm:mr-4 mr-3"/>
+                            <div class="sm:mr-6 mr-3 my-auto">
+                                <img src="storage/` + data.icon.replace("\\","/") + `" class="text-2xl float-left text-blue-400 sm:mr-4 mr-3 h-14 w-14 bg-blue-200 p-2 rounded-xl"/>
                             </div>
                             <div class="">
                                 <a href="/detailed-tasks/` + data.id + `" class="sm:text-lg text-base font-semibold text-blue-500 hover:text-red-600">` + data.name + `</a>
@@ -306,7 +306,7 @@ function tasks_list_all(data) {
                                 <p class="text-sm ">Начать ` + data.start_date + `</p>
                             </div>
                         </div>
-                        <div class="sm:col-span-2 col-span-5 sm:text-right text-left sm:ml-0 ml-12" id="about">
+                        <div class="sm:col-span-2 col-span-5 sm:text-right text-left sm:ml-0 ml-20" id="about">
                             <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
                             <span  class="text-sm sm:mt-5 sm:mt-1 mt-0">Откликов - ` + data.responses.length + `</span>
                             <p class="text-sm sm:mt-1 mt-0">` + data.category_name + `</p>
