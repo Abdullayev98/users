@@ -3,7 +3,7 @@
         <img src="{{ asset('/images/advantages.png') }}" alt="">
     </div>
     <div class="grid-col-1 -ml-8">
-        <div class="md:text-xl font-semibold mx-auto py-6 text-center">
+        <div class="text-2xl font-bold mx-auto py-6 text-center">
             {{__('Основные преимущества Universal Services')}}
         </div>
         <div class="lg:w-full w-4/5 mx-auto">
