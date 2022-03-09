@@ -25,7 +25,7 @@
             <div>
                 <div class="mb-4">
                     <div class="my-3">
-                        <input type="text" name="name" placeholder="Имя Фамилия"
+                        <input type="text" name="name" placeholder= "{{__('Имя Фамилия')}}"
                                value="{{ request()->input('name', old('name')) }}"
                                id="name"
                                class="focus:outline-none focus:border-yellow-500 shadow appearance-none border border-slate-300 rounded sm:w-80 w-72 py-2 px-3 text-gray-700 leading-tight hover:border-amber-500">

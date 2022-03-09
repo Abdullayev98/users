@@ -20,7 +20,8 @@
                         {{__('пециальную проверку')}}
                     </a> 
                     {{__('администрацией сервиса, поэтому Universal Services')}}
-                    <a href="/security" class="text-blue-600 hover:text-orange-500">Станьте исполнителем <br> U-ser. И начните <br> зарабатывать {{__('безопасен для заказчиков.')}}</a></p>
+                    <a href="/security" class="text-blue-600 hover:text-orange-500">
+               {!!__('Станьте исполнителем <br> U-ser. И начните <br> зарабатывать')!!} {{__('безопасен для заказчиков.')}}</a></p>
                     <iframe class="w-full mb-10 h-96 mt-10" width="727" height="409" src="https://www.youtube.com/embed/_nb4qzvpEhE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                         
@@ -80,7 +81,7 @@
                         <img src="https://pixy.org/src/58/thumbs350/582432.jpg" class="mx-auto w-72 h-52"/>
                     </div>
                 </div>
-                <div class="sm:w-4/5 w-full mx-auto mt-20">badges
+                <div class="sm:w-4/5 w-full mx-auto mt-20">{{__('значки')}}
                     <hr>
                 </div>
                 <div class="flex lg:flex-row flex-col mt-10 sm:w-4/5 w-full mx-auto">

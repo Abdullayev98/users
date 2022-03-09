@@ -1,8 +1,10 @@
+
 <footer class=" w-full mx-auto mt-32" style="background-color: #242325;">
     <div class="flex md:flex-row flex-col w-4/5 mx-auto rounded-xl relative bottom-20" style="background-color: #F9FAFB">
         <div class="m-5 md:w-2/3 w-11/12">
             <h1 class="font-bold text-xl text-black">{!!__('С Universal Services вы экономите на услугах до 70%. <br> Как это возможно?')!!}</h1>
             <p class="text-base">{{__('Скачайте наше приложение и пользуйтесь Universal Services, где бы вы ни находились.')}}</p>
+
         </div>
         <div class="my-auto flex xl:flex-row flex-col md:w-1/3 w-full md:m-5 m-0">
             <a class="rounded-md mx-auto my-2 my-auto xl:mr-3" rel="noopener noreferrer" href="#" target="_blank">

@@ -19,7 +19,7 @@
                             </a>
                             <div class="align-top ml-12 min-h-20">
                                 <span>
-                                    <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="font-semibold ">Ольга Ивенская</a>
+                                    <a href="/u1053628" target="_blank" rel="noreferrer noopener" class="font-semibold ">{{__('Ольга Ивенская')}}</a>
                                 </span>
                                 <div class="text-base -mt-2 text-gray-400">
                                     <span class="align-middle">

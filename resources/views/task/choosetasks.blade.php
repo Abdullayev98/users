@@ -63,7 +63,6 @@
                     <hr class="mt-4 lg:hidden block">
                 </div>
             @endforeach
-
         </div>
     </div>
     <script src="{{ asset('js/tasks/changetask.js') }}"></script>

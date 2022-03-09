@@ -132,7 +132,7 @@
                                 @auth
                                     @if($tasks->count() > 0)
                                         <a id="open{{$user->id}}" class="cursor-pointer rounded-lg py-2 px-1 md:px-3 font-bold bg-yellow-500 hover:bg-yellow-600 transition duration-300 text-white">
-                                            Предложить задание
+                                            {{__('Предложить задание')}}
                                         </a>
                                     @else
                                         <a   onclick="toggleModal12('modal-id12')" class="hidden lg:block">
@@ -154,7 +154,7 @@
         </div>
         <div id="modal_content" class="modal_content fixed top-0 left-0 h-full w-full bg-black bg-opacity-50 hidden text-center">
             <div class="modal relative bg-white w-5/12 mx-auto p-10 rounded-md justify-center mt-48 ease-in transition duration-500">
-                <h1 class="text-3xl font-semibold">Выберите задание, которое хотите предложить исполнителью</h1>
+                <h1 class="text-3xl font-semibold">{{__('Выберите задание, которое хотите предложить исполнителью')}}</h1>
                 @foreach($tasks as $task)
                     <input type="text" name="tasks_id" class="hidden" value="{{ $task->id }}">
                 @endforeach
@@ -171,23 +171,24 @@
                         @endauth
                     @endforeach
                     <option value="1">
-                        + новое задание
+                        {{__('+ новое задание')}}
                     </option>
                 </select>
                 <input type="text" name="csrf" class="hidden" value="{{ csrf_token() }}">
 
                 <div id="hidden_div">
                     <button type="submit" onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
-                        Предложить работу
+                        {{__('Предложить работу')}}
                     </button>
-                    <p class="py-7">Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат СМС со ссылкой на ваше задание.</p>
+                    <p class="py-7">{{__('Каждое задание можно предложить пяти исполнителям из каталога. исполнители получат
+                        СМС со ссылкой на ваше задание.')}}</p>
                 </div>
                 {{--                </form>--}}
 
 
                 <a href="/categories/1">
                     <button id="hidden_div2" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto" style="display: none;">
-                        Создать новое задание
+                        {{__('Создать новое задание')}}
                     </button>
                 </a>
 
@@ -208,7 +209,7 @@
                     <!-- modal header -->
                     <h1 class="text-2xl font-bold namem"></h1>
                     <div class="mx-auto mt-8">
-                        Мы отправили ему уведомление.
+                        {{__(' Мы отправили ему уведомление.')}}
                     </div>
                     <button onclick="myFunction1()" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto">
                         ok
@@ -256,9 +257,9 @@
             <!-- modal -->
             <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3 text-center py-12">
                 <!-- modal header -->
-                <h1 class="text-2xl font-bold">Вы предложили задание "Test" исполнителю Елена Б.</h1>
+                <h1 class="text-2xl font-bold">{{__('Вы предложили задание "Test" исполнителю Елена Б.')}}</h1>
                 <div class="mx-auto mt-8">
-                    Мы отправили ему уведомление.
+                    {{__('Мы отправили ему уведомление.')}}
                 </div>
                 <button onclick="myFunction1()" class="cursor-pointer bg-green-500 text-white rounded-lg p-2 px-4 mt-6 mx-auto">
                     ok
