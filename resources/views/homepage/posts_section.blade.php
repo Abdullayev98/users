@@ -4,7 +4,7 @@
     </div>
     <div class="grid md:grid-cols-3 grid-cols-2 mx-auto mb-56">
         <div  class="lg:col-span-2 col-span-3 md:w-10/12 w-full h-screen blog1 mt-8">
-            <div class="w-full overflow-y-scroll h-screen border rounded-lg px-4 ">
+            <div class="w-full overflow-y-scroll h-screen border rounded-lg px-4 home-categories">
                 @foreach($tasks as $task)
                     <div class="w-full border rounded-lg my-2 h-28 overflow-hidden force-overflow">
                         <div class="icon pt-4">

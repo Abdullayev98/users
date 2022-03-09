@@ -140,13 +140,13 @@
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                         <h1 class="font-bold h-auto w-48">{{__('Оплата задания')}}</h1>
                                         <div class=" h-auto w-96">
-                                            <a class="cursor-pointer underline text-blue-400" href="#">
+                                            <p class="text-blue-400">
                                                 @if($task->oplata == 1)
-                                                    {{__('Карта')}}
+                                                    {{__('Оплата через карту')}}
                                                 @else
-                                                    {{__('Наличные')}}
+                                                    {{__(' Оплата наличными')}}
                                                 @endif
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
 
@@ -158,7 +158,7 @@
                                     <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
                                         <h1 class="font-bold h-auto w-48">{{__('Рисунок')}}</h1>
                                         @foreach(json_decode($task->photos)??[] as $key => $image)
-{{--                                            @if ($loop->first)--}}
+                                                  {{--@if ($loop->first)--}}
 
                                             <div class="relative boxItem">
                                                 <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
@@ -169,7 +169,7 @@
                                                     </div>
                                                 </a>
                                             </div>
-{{--                                            @endif--}}
+                                                                    {{--@endif--}}
                                         @endforeach
                                     </div>
                                     @if($task->docs == 1)
