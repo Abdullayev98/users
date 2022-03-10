@@ -296,7 +296,7 @@
                        class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">{{__('Отмена')}}</a>
                 </div>
             </div>
-            <div class="w-4/12 md:block hidden">
+            <div class="lg:w-4/12 w-full md:block hidden lg:m-0 m-10">
                 @include('components.faq')
             </div>
         </div>

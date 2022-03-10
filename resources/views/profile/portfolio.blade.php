@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="w-10/12 mx-auto mt-8">
-        <div class="w-7/12">
+        <div class="lg:w-7/12 w-full">
             <div class="bg-yellow-50 p-8 rounded-md my-6 flex flex-wrap">
                 @foreach($comment as $comments)
                 Portfilio Name
@@ -23,7 +23,7 @@
             <form action="{{ route('portfolio.delete', $comments->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
-                <input type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-10 w-4/12 mb-4 rounded" value="Удалить">
+                <input type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-10 mb-4 rounded" value="Удалить">
              </form>
                 @endforeach
         </div>

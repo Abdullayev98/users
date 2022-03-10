@@ -6,7 +6,7 @@
     <div class="w-10/12 mx-auto mt-8">
         <form action="{{ route('portfolio.create') }}" method="post">
             @csrf
-            <div class="w-full">
+            <div class="lg:w-3/5 w-full">
                 <div>
                     <a class="text-sm text-blue-500 hover:text-red-500" href="/profile"><i
                             class="fas fa-arrow-left"></i> {{__('Венруться в профиль')}}</a>
@@ -40,7 +40,7 @@
                         @csrf
                         <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
                         <input type="submit"
-                               class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 w-4/12 mb-4 rounded"
+                               class="bg-green-500 hover:bg-green-700 text-white py-2 px-10 mb-4 rounded"
                                value="{{__('Сохранить')}}">
                     </div>
                 </div>
