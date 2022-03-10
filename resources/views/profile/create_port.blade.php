@@ -59,8 +59,10 @@
                 inline: true,
                 target: '#photos',
                 showProgressDetails: true,
+                allowedFileTypes: ['image/*'],
+                debug: true,
                 note: 'Все типы файлов, до 10 МБ',
-                height: 600,
+                height: 400,
                 metaFields: [
                     {id: 'name', name: 'Name', placeholder: 'file name'},
                     {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
@@ -70,11 +72,10 @@
 
             .use(Uppy.ImageEditor, {target: Uppy.Dashboard})
             .use(Uppy.XHRUpload, {
-                endpoint: '/profile/storepicture',
-                fieldName: 'file',
-                headers: file => ({
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
-                }),
+                endpoint: '/storepicture',
+                fieldName: 'files[]',
+                method: 'post',
+                bundle: true,
             });
 
         uppy.on('upload-success', (file, response) => {
@@ -93,7 +94,6 @@
         });
         uppy.on('complete', result => {
             console.log('successful files:', result.successful)
-            console.log('failed files:', result.failed)
         });
 
     </script>

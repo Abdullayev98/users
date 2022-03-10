@@ -24,7 +24,6 @@ Route::group(['middleware'=>'auth'], function (){
 
         Route::post('/insertdistrict',[ProfileController::class, 'StoreDistrict'])->name('insert.district');
 
-        Route::post('/storepicture',[ProfileController::class, 'UploadImage'])->name('storePicture');
         Route::post('/store/profile/image',[ProfileController::class, 'storeProfileImage'])->name('profile.image.store');
         Route::post('/comment',[ProfileController::class, 'comment'])->name('comment');
         Route::post('/testBase',[ProfileController::class, 'testBase'])->name('testBase');
@@ -39,6 +38,7 @@ Route::group(['middleware'=>'auth'], function (){
         Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('portfolio.delete');
     });
 });
+Route::post('/storepicture',[ProfileController::class, 'UploadImage'])->name('storePicture');
 
 
 

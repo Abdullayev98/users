@@ -50,16 +50,18 @@ class ProfileController extends Controller
 
     public function UploadImage(Request $request)
     {
-        $imgData = session()->has('images')? session('images'):[];
-        if ($request->hasFile('file')) {
+        $imgData = session()->has('images') ? json_decode(session('images')):[];
+        $files = $request->file('files');
+        if ($request->hasFile('files')) {
+            foreach ($files as $file) {
+                $name = Storage::put('public/uploads', $file);
+                $name = str_replace('public/', '', $name);
+                array_push($imgData,$name);
 
-            $files = $request->file('file');
-            $name = Storage::put('public/uploads', $files);
-            $name = str_replace('public/', '', $name);
-            $imgData[] = $name;
-
+            }
         }
-        session()->put('images', $imgData);
+        session()->put('images', json_encode($imgData));
+
 
     }
 
@@ -81,11 +83,10 @@ class ProfileController extends Controller
 
     }
 
-    public function portfolio($portfolio)
+    public function portfolio(Portfolio $portfolio)
     {
         $user = Auth::user();
-        $comment = $user->portfolios;
-        return view('profile/portfolio', compact('comment', 'user'));
+        return view('profile/portfolio', compact('user', 'portfolio'));
     }
 
     //profile
@@ -307,7 +308,8 @@ class ProfileController extends Controller
         $data = $request->validated();
 
         $data['user_id'] = auth()->user()->id;
-        $data['image'] = json_encode(session()->has('images') ? session('images') : []);
+
+        $data['image'] = session()->has('images') ? session('images'):'[]';
 
         session()->forget('images');
         Portfolio::create($data);
@@ -329,10 +331,10 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        if($name){
-            echo json_encode(['status'=>1, 'msg'=>'success', 'name'=>$name]);
-        }else{
-            echo json_encode(['status'=>0, 'msg'=>'failed']);
+        if ($name) {
+            echo json_encode(['status' => 1, 'msg' => 'success', 'name' => $name]);
+        } else {
+            echo json_encode(['status' => 0, 'msg' => 'failed']);
         }
     }
 }
