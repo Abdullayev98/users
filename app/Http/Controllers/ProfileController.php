@@ -40,14 +40,17 @@ class ProfileController extends Controller
 
     }
 
-    public function delete(Portfolio $id)
+    public function delete(Portfolio $portfolio)
     {
-        $id->delete();
+        portfolioGuard($portfolio);
+
+        $portfolio->delete();
         return redirect()->route('userprofile');
     }
 
     public function UploadImage(Request $request)
     {
+        $imgData = session()->has('images')? session('images'):[];
         if ($request->hasFile('file')) {
 
             $files = $request->file('file');
@@ -78,10 +81,10 @@ class ProfileController extends Controller
 
     }
 
-    public function portfolio($id)
+    public function portfolio($portfolio)
     {
         $user = Auth::user();
-        $comment = $user->portfolios()->where('id', $id)->get();
+        $comment = $user->portfolios;
         return view('profile/portfolio', compact('comment', 'user'));
     }
 
@@ -93,17 +96,9 @@ class ProfileController extends Controller
         $task = $user->tasks_count;
         $task_count = $user->performer_tasks()->where('status', 4)->count();
         $ports = $user->portfoliocomments;
-        $comment = $user->portfolios()->where('image', '!=', null)->get();
-        if ($comment != null) {
-            //$image = $comment->image;
-            //$images = explode(',',$image);
-            $image = File::glob(public_path("Portfolio/{$user->name}/{$comment}") . '/*');
-        } else {
-            $image = [0, 1];
-            $images = [0, 1];
-        }
+        $portfolios = $user->portfolios()->where('image', '!=', null)->get();
+        // $image variable hech qatta ishlatilmayaptiku nega kiritgansizlar? Maqsad nima?
         $about = User::where('role_id', 2)->take(20)->get();
-        //dd($a);
         $file = "Portfolio/{$user->name}";
         if (!file_exists($file)) {
             File::makeDirectory($file);
@@ -112,7 +107,7 @@ class ProfileController extends Controller
         $directories = array_map('basename', $b);
         $categories = Category::withTranslations(['ru', 'uz'])->get();
 
-        return view('profile.profile', compact('categories', 'image', 'about', 'comment', 'directories', 'task_count', 'user', 'views', 'task', 'ports'));
+        return view('profile.profile', compact('categories', 'about', 'portfolios', 'directories', 'task_count', 'user', 'views', 'task', 'ports'));
     }
 
     public function updates(Request $request)
@@ -312,8 +307,9 @@ class ProfileController extends Controller
         $data = $request->validated();
 
         $data['user_id'] = auth()->user()->id;
-        $data['image'] = json_encode(session()->has('images') ? session('images') : null);
+        $data['image'] = json_encode(session()->has('images') ? session('images') : []);
 
+        session()->forget('images');
         Portfolio::create($data);
         return redirect()->route('userprofile');
 

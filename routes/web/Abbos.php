@@ -33,15 +33,13 @@ Route::group(['middleware'=>'auth'], function (){
         Route::post('/description',[ProfileController::class, 'EditDescription'])->name('edit.description');
 
         //create_port
-        Route::get('/create', function () {
-            return view('profile/create_port');
-        });
-        Route::get('/portfolio/{id}', [ProfileController::class, 'portfolio'])->name('portfolio');
-        Route::post('/delete/portfolio/{id}', [ProfileController::class, 'delete'])->name('portfolio.delete');
+        Route::view('/create','profile/create_port');
+        Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('portfolio.create');
+        Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('portfolio');
+        Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('portfolio.delete');
     });
 });
 
-Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('portfolio.create')->middleware('auth');
 
 
 
