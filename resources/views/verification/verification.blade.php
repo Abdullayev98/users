@@ -23,7 +23,7 @@
     <div class="container mx-auto px-2">
         <div class="w-10/12 mx-auto text-center mb-16">
             <h1 class="text-4xl font-bold">{{__('Преимущества')}}</h1>
-            <p class="font-bold mt-16">{!!('Станьте исполнителем и выполняйте интересные задания от заказчиков <br> в удобное для вас время.')!!}</p>
+            <p class="font-bold mt-16">{{__('Станьте исполнителем и выполняйте интересные задания от заказчиков  в удобное для вас время.')}}</p>
             <div class="grid md:grid-cols-4 grid-cols-1 gap-4 pt-16 container mx-auto font-bold text-xl">
                 <div>
                     <img class="mx-auto" src="{{asset('images/User_money.png')}}" alt="#">

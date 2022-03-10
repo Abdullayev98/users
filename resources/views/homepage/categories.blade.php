@@ -1,6 +1,6 @@
 <div class="w-4/5 mx-auto text-center pt-10">
-    <div class="text-2xl font-bold">
-        {{__('Более')}} {{$users_count}}  {{__('исполнителей')}}
+    <div class="text-3xl font-bold">
+        {{__('Более')}}  {{__('исполнителей')}}
     </div>
     <div class="text-base mt-4">
         {{__('Исполнители готовы помочь вам в решении самых разнообразных задач')}}
