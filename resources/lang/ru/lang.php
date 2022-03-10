@@ -196,6 +196,7 @@ return [
     'search_byHurry' => "по срочности",
     'search_byRemote' => "по удалённости",
     'search_km' => "км",
+    'search-none' => "нет"
     // search.blade end
 
     // search2.blade start
