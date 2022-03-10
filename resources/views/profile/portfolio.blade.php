@@ -11,7 +11,7 @@
 
 
             @foreach(json_decode($portfolio->image) as $image)
-                <img class="w-40 h-40 mx-2" src="{{asset('storage/'.$image)}}" alt="Images not found">
+                <img class="w-40 h-40 m-2" src="{{asset('storage/'.$image)}}" alt="Images not found">
                 {{--@dd($image);--}}
             @endforeach
             </div>
