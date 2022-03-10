@@ -58,7 +58,7 @@
 
                             </div>
                             <div class="text-gray-500 text-base mt-6">
-                                <span>{{__('создал')}} {{$task_count}}{{__('задания')}}</span> ,
+                                <span>{{__('создал')}} {{$task_count}} {{__('задания')}}</span> ,
                                 @switch($user->reviews()->count())
                                     @case(1)
                                     <span>{{__('Получил')}} {{$user->reviews()->count()}} {{__('Отзыв')}}</span>

@@ -6,11 +6,11 @@
         <div  class="lg:col-span-2 col-span-3 md:w-10/12 w-full h-screen blog1 mt-8">
             <div class="w-full overflow-y-scroll h-screen border rounded-lg px-4 home-categories">
                 @foreach($tasks as $task)
-                    <div class="w-full border rounded-lg my-2 h-28 overflow-hidden force-overflow">
-                        <div class="icon pt-4">
-                            <img src="{{ asset('storage/'.$task->category->ico) }}" alt="">
+                    <div class="w-full grid grid-cols-5 gap-2 items-center border rounded-lg my-2 h-28 overflow-hidden force-overflow">
+                        <div class="icon col-span-1 mx-auto">
+                            <img src="{{ asset('storage/'.$task->category->ico) }}" alt="" class="h-14 w-14 bg-blue-200 p-2 rounded-xl">
                         </div>
-                        <div class="mx-auto w-2/3">
+                        <div class="col-span-4">
                             <a href="/detailed-tasks/{{$task->id}}" class="xl:text-2xl md:text-xl text-xl hover:text-yellow-500">
                                 {{$task->name}}
                             </a>

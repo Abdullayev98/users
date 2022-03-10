@@ -115,7 +115,7 @@
                             @endforeach
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
-                                        <a onclick="myFunction()" class="w-1/3 cursor-pointer border border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                        <a onclick="myFunction()" class="w-1/3 cursor-pointer border border-black-700 hover:border-yellow-400 transition-colors rounded-lg py-2 text-lg text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
                                          {{__('Назад')}}
                                         <!-- </button> -->
@@ -127,7 +127,7 @@
                                         </a>
 
                                         <input type="submit"
-                                               class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                               class="bg-green-500 hover:bg-green-600 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
                                                name="" value="{{__('Далее')}}">
                                     </div>
                                 </div>
