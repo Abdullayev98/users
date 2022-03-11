@@ -1,12 +1,3 @@
-// var i = 0;
-// $('#suggest0').on('input',function(e){
-//         if($(".ymaps-2-1-79-i-custom-scroll").length && i<1){
-//             $("#getlocal").remove();
-//             var children = $(".ymaps-2-1-79-i-custom-scroll").children().last();
-//             $( '<hr><button id="getlocal" class=" flex-shrink-0 border-transparent w-24 getlocal border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">   <svg class="h-4 w-4 text-purple-500" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"></path>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3"></path></svg>  </button>' ).insertAfter( children );
-//             i++
-//         }
-// });
 function init_map(){
 
     myMap = new ymaps.Map('map', {
@@ -15,8 +6,8 @@ function init_map(){
         controls: ['zoomControl'],
     });
 
-
 }
+
 ymaps.ready(init_map);
 
 var x = 1;
@@ -67,8 +58,6 @@ function init() {
         myFunction();
     });
 
-
-
     $("#getlocal").click(function(){
 
         var geolocation = ymaps.geolocation;
@@ -112,7 +101,7 @@ function getLocals(xx) {
         });
 }
 
-// Mapga yuklash joyni
+// Mapga joyni yuklash
 
 function myFunction() {
     place = document.getElementById("suggest0").value;

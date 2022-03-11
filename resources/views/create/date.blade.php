@@ -57,8 +57,8 @@
                                 <div id="formulario" class="flex flex-col gap-y-4">
 
                                     <div class="flex items-center">
-                                        <select name="date_type" id="periud" class=" bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
-                                                aria-label="Default select example">
+                                        <select name="date_type" id="periud" class=" bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5" 
+                                        aria-label="Default select example focus:outline-none">
                                             <option {{ old('date_type') == "1" ? 'selected' :null }} value="1" id="1" class="text-base">{{__('Начать работу')}}</option>
                                             <option  {{ old('date_type') == "2" ? 'selected' :null }}  value="2" id="2" class="text-base">{{__('Закончить работу')}}</option>
                                             <option  {{ old('date_type') == "3" ? 'selected' :null }} value="3" id="3" class="text-base">{{__('Указать период')}}</option>
@@ -70,7 +70,7 @@
                                                 <input type="text" name="start_date"
                                                        placeholder="{{__('Какой месяц..')}}"
                                                        data-input
-                                                       class="w-full max-w-[295px] text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-base text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                       class="bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
                                                        required> <!-- input is mandatory -->
                                             </div>
                                             <div class="flatpickr-calendar max-w-[295px] w-full sm:text-sm text-[10px]"></div>
@@ -94,7 +94,7 @@
                                             <div class="flex">
                                                 <input type="text" name="end_date" placeholder="{{__('Какой месяц..')}}"
                                                        data-input
-                                                       class="w-full max-w-[295px] bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                       class="bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
                                                        required> <!-- input is mandatory -->
                                             </div>
 
@@ -120,7 +120,7 @@
                                 <div class="mt-4">
                                     <div class="flex w-full gap-x-4 mt-4">
                                         <a onclick="myFunction()"
-                                           class="w-1/3  border cursor-pointer border-black-700 hover:border-black transition-colors rounded-lg py-2 text-center flex justify-center items-center gap-2">
+                                           class="w-1/3  border cursor-pointer border-black-700 hover:border-yellow-500 transition-colors rounded-lg py-2 text-lg text-center flex justify-center items-center gap-2">
                                             <!-- <button type="button"> -->
                                         {{__('Назад')}}
                                         <!-- </button> -->
@@ -131,7 +131,7 @@
                                             </script>
                                         </a>
                                         <button type="submit"
-                                                class="bg-green-500 hover:bg-green-500 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
+                                                class="bg-green-500 hover:bg-green-700 w-2/3 cursor-pointer text-white font-semibold py-5 px-5 rounded"
                                         >{{__('Далее')}}</button>
 
                                     </div>

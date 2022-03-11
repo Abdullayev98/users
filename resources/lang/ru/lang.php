@@ -196,6 +196,7 @@ return [
     'search_byHurry' => "по срочности",
     'search_byRemote' => "по удалённости",
     'search_km' => "км",
+    'search-none' => "нет"
     // search.blade end
 
     // search2.blade start
@@ -746,7 +747,7 @@ return [
     'ver_uSerHelps' => "Universal Services поможет найти новых клиентов и зарабатывать <br> на выполнении любых услуг.",
     'ver_becomePrefBtn' => "СТАТЬ ИСПОЛНИТЕЛЕМ",
     'ver_advantage' => "Преимущества",
-    'ver_becomePref2' => "Станьте исполнителем и выполняйте интересные задания от заказчиков <br> в удобное для вас время.",
+    'ver_becomePref2' => "Станьте исполнителем и выполняйте интересные задания от заказчиков  в удобное для вас время.",
     'ver_goodSalary' => "Достойный заработок",
     'ver_freeTime' => "Свободный график",
     'ver_safeService' => "Безопасный сервис",

@@ -13,7 +13,7 @@
                 <a class="border-2 py-2 px-4 rounded-lg mx-3 text-2xl font-bold bg-yellow-500 text-white my-auto" href="{{ route('one.auth') }}">
                     ONE ID
                 </a>
-               <a class="border-2 py-2 px-6 rounded-lg bg-blue-700" href="{{route("auth.facebook")}}"> <i class="fab fa-facebook text-2xl text-white"></i></a>
+               <a class="border-2 py-2 px-6 rounded-lg bg-blue-700" href="{{route('auth.facebook')}}"> <i class="fab fa-facebook text-2xl text-white"></i></a>
             </div>
             <div class="mx-auto flex items-center justify-center w-full">
                 <h3 class="font-bold text-2xl block mb-4 mt-4 text-gray-700">

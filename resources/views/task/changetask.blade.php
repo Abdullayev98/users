@@ -6,7 +6,8 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
-    <style>.flatpickr-calendar {
+    <style>
+        .flatpickr-calendar {
             max-width: 295px;
             width: 100%;
         } </style>
@@ -86,7 +87,7 @@
                                     {{__('Закончить работу')}}
                                 </option>
                                 <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">
-                                   {{__(' Указать период')}}
+                                    {{__(' Указать период')}}
                                 </option>
                             </select>
                         </div>
@@ -155,6 +156,8 @@
                                        class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
                                        type="text" placeholder="Город, Улица, Дом" name="location0"
                                        value="{{ json_decode($task->address)->location }}">
+
+
                                 @error('location0')
 
                                 <p class="text-red-500">{{ $message }}</p>
@@ -170,14 +173,11 @@
                                             d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3"></path>
                                     </svg>
                                 </button>
-
-
                             </div>
 
                             <input name="coordinates0" type="hidden" id="coordinate"
                                    value="{{json_decode($task->address)->latitude.",". json_decode($task->address)->longitude }}">
                             <div id="addinput" class="flex gap-y-2 flex-col">
-
 
                             </div>
                         </div>
@@ -187,6 +187,7 @@
                                 <div id="formulario" class="flex flex-col gap-y-4">
 
                                     <div id="addinput" class="flex gap-y-2 flex-col bg-white hover:bg-gray-100 ">
+
 
 
                                     </div>
@@ -220,16 +221,17 @@
                             <h1 class="font-bold h-auto w-48">{{__('Рисунок')}}</h1>
                             @foreach(json_decode($task->photos)??[] as $key => $image)
                                 {{--                                            @if ($loop->first)--}}
-
-                                <div class="relative boxItem">
-                                    <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
-                                       data-fancybox="img1"
-                                       data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
-                                        <div class="mediateka_photo_content">
-                                            <img src="{{ asset('storage/'.$image) }}" alt="">
-                                        </div>
-                                    </a>
-                                </div>
+                                @if($loop->first)
+                                    <div class="relative boxItem">
+                                        <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
+                                           data-fancybox="img1"
+                                           data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                            <div class="mediateka_photo_content">
+                                                <img src="{{ asset('storage/'.$image) }}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endif
                                 {{--                                            @endif--}}
                             @endforeach
                             @if($task->photos)
@@ -251,8 +253,9 @@
                 <div class="text-base my-6 bg-white rounded-md shadow-md p-4">
                     <h1 class="text-xl font-semibold py-4">{{__('На какой бюджет вы рассчитываете?')}}</h1>
                     <div>
-                        <select class="border border-gray-300 rounded-md w-full focus:outline-none focus:border-yellow-500 py-2 px-4"
-                                name="budget" id="budget">
+                        <select
+                            class="border border-gray-300 rounded-md w-full focus:outline-none focus:border-yellow-500 py-2 px-4"
+                            name="budget" id="budget">
                             <option value="{{$task->category->max/5}}">
                                 {{$task->category->max/5}} UZS
                             </option>
@@ -293,10 +296,10 @@
                         {{__('Сохранить')}}
                     </button>
                     <a
-                       class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">{{__('Отмена')}}</a>
+                        class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">{{__('Отмена')}}</a>
                 </div>
             </div>
-            <div class="w-4/12 md:block hidden">
+            <div class="lg:w-4/12 w-full md:block hidden lg:m-0 m-10">
                 @include('components.faq')
             </div>
         </div>
@@ -326,7 +329,7 @@
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
     <script src="{{ asset('js/changetask.js') }}"></script>
-    <script src="{{ asset('js/location.js') }}"></script>
+    <script src="{{ asset('js/location.js') }}">myFunction();</script>
     <script>
         var element = document.getElementById('phone_number');
         var maskOptions = {
@@ -426,6 +429,8 @@
 
         @foreach(json_decode($task->photos)??[] as $key => $image)
             @if ($loop->first)
+
+                @continue
 
             @else
                 <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
