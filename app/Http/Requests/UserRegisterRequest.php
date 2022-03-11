@@ -40,7 +40,7 @@ class UserRegisterRequest extends FormRequest
                 'phone_number.regex' => __('login.phone_number.regex'),
                 'phone_number.unique' => __('login.phone_number.unique'),
                 'email.required' => __('login.email.required'),
-                'email.email' => __('login'),
+                'email.email' => __('login.email.email'),
                 'email.unique' => __('login.email.unique'),
                 'password.required' => __('login.password.required'),
                 'password.min' => __('login.password.min'),
