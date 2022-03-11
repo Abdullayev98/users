@@ -24,6 +24,12 @@ function getAddress($data){
     unset($data['location0']);
     return $data;
 }
+
+function portfolioGuard($portfolio){
+    if ($portfolio->user_id != auth()->user()->id){
+        abort(403);
+    }
+}
 function getAdditionalAddress($data){
     $address = [];
     $address['location'] = $data['address'];

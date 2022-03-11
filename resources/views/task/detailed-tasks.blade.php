@@ -5,7 +5,8 @@
 @section("content")
     <script type="text/javascript" src="http://connect.mail.ru/js/loader.js">
     </script>
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb"
+            type="text/javascript"></script>
     <script>
         ymaps.ready(init);
 
@@ -15,7 +16,7 @@
                     zoom: 17,
                     controls: [],
                     type: 'yandex#satellite',
-                    restrictMapArea: [59.838,29.511]
+                    restrictMapArea: [59.838, 29.511]
                 }),
 
                 // Создаем геообъект с типом геометрии "Точка".
@@ -95,7 +96,7 @@
 
                                 <div
                                     class="mt-12 border-2 py-2 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
-                                    <div id="map" class="h-64 mb-4 -mt-2" ></div>
+                                    <div id="map" class="h-64 mb-4 -mt-2"></div>
                                     <div class="ml-4 md:ml-12 flex flex-row my-4">
                                         <h1 class="font-bold h-auto w-48">{{__('Место')}}</h1>
                                         @if($task->address !== NULL)
@@ -103,7 +104,7 @@
                                         @endif
                                     </div>
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                    @if($task->date_type == 1)
+                                        @if($task->date_type == 1)
                                             <h1 class="font-bold h-auto w-48">{{__('Начать работу')}}</h1>
                                         @elseif($task->date_type == 2)
                                             <h1 class="font-bold h-auto w-48">{{__('Закончить работу')}}</h1>
@@ -117,24 +118,23 @@
                                         <p class=" h-auto w-96">{{$task->budget}}</p>
                                     </div>
 
-                                @isset($value)
-                                    @foreach($task->custom_field_values as $value)
+                                    @isset($value)
+                                        @foreach($task->custom_field_values as $value)
                                             <div class="ml-4 md:ml-12 flex flex-row mt-8">
 
                                                 <h1 class="font-bold h-auto w-48">{{ $value->custom_field->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                                                 <p class=" h-auto w-96">
-                                            @foreach(json_decode($value->value, true) as $value_obj)
-                                                @if ($loop->last)
-                                                        {{$value_obj}}
-                                                    @else
-                                                        {{$value_obj}},
-                                                @endif
-                                                @endforeach
+                                                    @foreach(json_decode($value->value, true) as $value_obj)
+                                                        @if ($loop->last)
+                                                            {{$value_obj}}
+                                                        @else
+                                                            {{$value_obj}},
+                                                        @endif
+                                                    @endforeach
                                                 </p>
                                             </div>
                                         @endforeach
                                     @endisset
-
 
 
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
@@ -158,30 +158,32 @@
                                     <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
                                         <h1 class="font-bold h-auto w-48">{{__('Рисунок')}}</h1>
                                         @foreach(json_decode($task->photos)??[] as $key => $image)
-                                                  {{--@if ($loop->first)--}}
+                                            {{--@if ($loop->first)--}}
 
-                                            <div class="relative boxItem">
-                                                <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
-                                                   data-fancybox="img1"
-                                                   data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
-                                                    <div class="mediateka_photo_content">
-                                                        <img src="{{ asset('storage/'.$image) }}" alt="">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                                                    {{--@endif--}}
+                                            @if($loop->first)
+                                                <div class="relative boxItem">
+                                                    <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
+                                                       data-fancybox="img1"
+                                                       data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                                        <div class="mediateka_photo_content">
+                                                            <img src="{{ asset('storage/'.$image) }}" alt="">
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endif
+                                            {{--@endif--}}
                                         @endforeach
                                     </div>
                                     @if($task->docs == 1)
-                                    <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                        <h1 class="font-bold h-auto w-48">{{__('Предоставил(а) документы')}}</h1>
-                                    </div>
+                                        <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                            <h1 class="font-bold h-auto w-48">{{__('Предоставил(а) документы')}}</h1>
+                                        </div>
                                     @else
                                         <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                             <h1 class="font-bold h-auto w-48">{{__('Не предоставил(а) документы')}}</h1>
                                         </div>
-                                    @endif
-                                    <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
+                                @endif
+                                <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                     <div>
                                         <div class="w-full flex flex-col sm:flex-row sm:p-6 p-2">
@@ -213,14 +215,14 @@
                                                         @endif
                                                     @elseif(getAuthUserBalance() < 4000 || $response_count_user >= setting('site.free_responses'))
                                                         @if($task->user_id != auth()->id() && $task->status < 3)
-                                                            <a  class="open-modal"
+                                                            <a class="open-modal"
                                                                data-modal="#modal1">
                                                                 <button
                                                                     class='w-1/2 font-sans text-lg font-semibold bg-green-500 text-white hover:bg-green-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
                                                                     {{__('Откликнуться за 4000 UZS')}}
                                                                 </button>
                                                             </a>
-                                                            <a  class="open-modal"
+                                                            <a class="open-modal"
                                                                data-modal="#modal1">
                                                                 <button
                                                                     class='font-sans text-lg font-semibold bg-yellow-500 text-white hover:bg-orange-500 px-8 pt-2 pb-3 mt-6 rounded-lg transition-all duration-300 m-2'>
@@ -525,7 +527,8 @@
                                 >
                                     <!-- Trigger for Modal -->
                                     <button
-                                        class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400" @click="showModal = true">
+                                        class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400"
+                                        @click="showModal = true">
                                         <i class="fas fa-link text-gray-500"></i>
                                     </button>
 
@@ -546,9 +549,12 @@
                                             <div class="flex items-center justify-between">
                                                 <h5 class="mr-3 text-black max-w-none">{{__('Поделиться заданием')}}</h5>
 
-                                                <button type="button" class="z-50 cursor-pointer" @click="showModal = false">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                <button type="button" class="z-50 cursor-pointer"
+                                                        @click="showModal = false">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                                                     </svg>
                                                 </button>
                                             </div>
@@ -556,7 +562,7 @@
                                                 <div class="sharethis-inline-share-buttons"></div>
                                             </div>
 
-                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -574,7 +580,7 @@
                                        class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
                                     </a>
                                     <br>
-                                    <a  class="text-xl text-gray-500">
+                                    <a class="text-xl text-gray-500">
                                         @if($task->user->age != "")
                                             <p class="inline-block text-m mr-2">
                                                 {{$task->user->age}}
@@ -606,8 +612,8 @@
                         <div class=" text-center  rounded-t">
                             <button id="close-id4"
                                     class=" w-100 h-16 absolute top-1 right-4">
-{{--                                                            <i class="fas fa-times text-gray-500 text-slate-400 hover:text-slate-600 text-xl w-full"--}}
-{{--                                                            ></i>--}}
+                                {{--                                                            <i class="fas fa-times text-gray-500 text-slate-400 hover:text-slate-600 text-xl w-full"--}}
+                                {{--                                                            ></i>--}}
                             </button>
                             <h3 class="font-semibold text-gray-700 text-3xl block">
                                 {{__(' Оставить отзыв')}}
@@ -649,19 +655,21 @@
         </div>
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
 
-{{--        share in webpages--}}
+        {{--        share in webpages--}}
 
-        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=620cba4733b7500019540f3c&product=inline-share-buttons' async='async'></script>
+        <script type='text/javascript'
+                src='https://platform-api.sharethis.com/js/sharethis.js#property=620cba4733b7500019540f3c&product=inline-share-buttons'
+                async='async'></script>
         <input type="hidden" id="task" value="{{ $task->id }}">
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
 
         <script>
-            $(document).ready(function(){
-                $( ".st-remove-label" ).each(function() {
-                    $( this ).removeAttr("style");
-                    $( this ).addClass("my-4");
-                    var tweet = $( this ).attr("data-network");
-                    if (tweet == 'twitter'){
+            $(document).ready(function () {
+                $(".st-remove-label").each(function () {
+                    $(this).removeAttr("style");
+                    $(this).addClass("my-4");
+                    var tweet = $(this).attr("data-network");
+                    if (tweet == 'twitter') {
                         $(this).after('<br>');
                     }
                 });
@@ -669,40 +677,40 @@
         </script>
 
 
-    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
-    <script
-        src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
-    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
-    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
-    <script
-        src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
-    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
-    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
-    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
-    <script type="text/javascript" src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/lg-rotate.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/lg-video.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/fancybox.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/mediateka.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fancybox.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/lightgallery.css') }}">
+        <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+        <script
+            src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+        <script
+            src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+        <script type="text/javascript" src="{{ asset('js/lg-thumbnail.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/lg-rotate.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/lg-video.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/fancybox.min.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('css/mediateka.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/fancybox.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/lightgallery.css') }}">
 
-    <div style="display: none;">
+        <div style="display: none;">
 
-        @foreach(json_decode($task->photos)??[] as $key => $image)
-            @if ($loop->first)
+            @foreach(json_decode($task->photos)??[] as $key => $image)
+                @if ($loop->first)
 
-            @else
-                <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
-                   data-fancybox="img1"
-                   data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
-                    <div class="mediateka_photo_content">
-                        <img src="{{ asset('storage/'.$image)  }}" alt="">
-                    </div>
-                </a>
-            @endif
-        @endforeach
-    </div>
+                @else
+                    <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
+                       data-fancybox="img1"
+                       data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                        <div class="mediateka_photo_content">
+                            <img src="{{ asset('storage/'.$image)  }}" alt="">
+                        </div>
+                    </a>
+                @endif
+            @endforeach
+        </div>
 
 @endsection
 

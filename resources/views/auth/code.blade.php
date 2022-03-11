@@ -23,8 +23,12 @@
                            class="shadow focus:outline-none focus:border-yellow-500 appearance-none border border-slate-300 rounded w-80 py-2 px-3 text-gray-700 mb-3 leading-tight ">
                     <br>
                     @error('code')
-                        <span class="text-danger" style="color: red">{{ $message  }}</span>
+                        <span class="text-red-500" >{{ $message  }}</span>
                     @enderror
+                    @if(session()->has('error'))
+                        <span class="text-red-500">{{ session('error')  }}</span>
+
+                    @endif
                 </div>
             </div>
             <button type="submit"

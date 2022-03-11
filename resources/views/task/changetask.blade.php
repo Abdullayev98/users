@@ -87,7 +87,7 @@
                                     {{__('Закончить работу')}}
                                 </option>
                                 <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">
-                                   {{__(' Указать период')}}
+                                    {{__(' Указать период')}}
                                 </option>
                             </select>
                         </div>
@@ -157,7 +157,6 @@
                                        type="text" placeholder="Город, Улица, Дом" name="location0"
                                        value="{{ json_decode($task->address)->location }}">
 
-                                @error('address')
 
 {{--                                @error('location0')--}}
 
@@ -222,16 +221,17 @@
                             <h1 class="font-bold h-auto w-48">{{__('Рисунок')}}</h1>
                             @foreach(json_decode($task->photos)??[] as $key => $image)
                                 {{--                                            @if ($loop->first)--}}
-
-                                <div class="relative boxItem">
-                                    <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
-                                       data-fancybox="img1"
-                                       data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
-                                        <div class="mediateka_photo_content">
-                                            <img src="{{ asset('storage/'.$image) }}" alt="">
-                                        </div>
-                                    </a>
-                                </div>
+                                @if($loop->first)
+                                    <div class="relative boxItem">
+                                        <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
+                                           data-fancybox="img1"
+                                           data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                            <div class="mediateka_photo_content">
+                                                <img src="{{ asset('storage/'.$image) }}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endif
                                 {{--                                            @endif--}}
                             @endforeach
                             @if($task->photos)
@@ -253,8 +253,9 @@
                 <div class="text-base my-6 bg-white rounded-md shadow-md p-4">
                     <h1 class="text-xl font-semibold py-4">{{__('На какой бюджет вы рассчитываете?')}}</h1>
                     <div>
-                        <select class="border border-gray-300 rounded-md w-full focus:outline-none focus:border-yellow-500 py-2 px-4"
-                                name="budget" id="budget">
+                        <select
+                            class="border border-gray-300 rounded-md w-full focus:outline-none focus:border-yellow-500 py-2 px-4"
+                            name="budget" id="budget">
                             <option value="{{$task->category->max/5}}">
                                 {{$task->category->max/5}} UZS
                             </option>
@@ -295,7 +296,7 @@
                         {{__('Сохранить')}}
                     </button>
                     <a
-                       class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">{{__('Отмена')}}</a>
+                        class="text-xl text-blue-500 hover:text-red-500 border-b border-dotted border-blue-500 hover:border-red-500">{{__('Отмена')}}</a>
                 </div>
             </div>
             <div class="lg:w-4/12 w-full md:block hidden lg:m-0 m-10">
@@ -429,6 +430,7 @@
         @foreach(json_decode($task->photos)??[] as $key => $image)
             @if ($loop->first)
 
+                @continue
 
             @else
                 <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"

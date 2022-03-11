@@ -53,34 +53,16 @@
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
     <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
     <script>
-        var uppy = new Uppy.Core({
-            debug: true,
-            autoProceed: true,
-            restrictions: {
-                minFileSize: null,
-                maxFileSize: 10000000,
-                maxTotalFileSize: null,
-                maxNumberOfFiles: 10,
-                minNumberOfFiles: 0,
-                allowedFileTypes: null,
-                requiredMetaFields: [],
-            },
-            meta: {},
-            onBeforeFileAdded: (currentFile, files) => currentFile,
-            onBeforeUpload: (files) => {
-            },
-            locale: {},
-            store: new Uppy.DefaultStore(),
-            logger: Uppy.justErrorsLogger,
-            infoTimeout: 5000,
-        })
+        var uppy = new Uppy.Core()
             .use(Uppy.Dashboard, {
                 trigger: '.UppyModalOpenerBtn',
                 inline: true,
                 target: '#photos',
                 showProgressDetails: true,
+                allowedFileTypes: ['image/*'],
+                debug: true,
                 note: 'Все типы файлов, до 10 МБ',
-                height: 300,
+                height: 400,
                 metaFields: [
                     {id: 'name', name: 'Name', placeholder: 'file name'},
                     {id: 'caption', name: 'Caption', placeholder: 'describe what the image is about'}
@@ -89,21 +71,17 @@
             })
 
             .use(Uppy.ImageEditor, {target: Uppy.Dashboard})
-            .use(Uppy.DropTarget, {target: document.body})
-            .use(Uppy.GoldenRetriever)
             .use(Uppy.XHRUpload, {
-                endpoint: '/profile/storepicture',
-                fieldName: 'file',
-                headers: file => ({
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
-                }),
+                endpoint: '/storepicture',
+                fieldName: 'files[]',
+                method: 'post',
+                bundle: true,
             });
 
         uppy.on('upload-success', (file, response) => {
             const httpStatus = response.status // HTTP status code
             const httpBody = response.body   // extracted response data
 
-            // do something with file and response
         });
 
 
@@ -116,7 +94,6 @@
         });
         uppy.on('complete', result => {
             console.log('successful files:', result.successful)
-            console.log('failed files:', result.failed)
         });
 
     </script>

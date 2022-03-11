@@ -63,14 +63,16 @@
                            </a>
                         </div>
                         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mx-auto">
-                        @foreach($comment as $comments)
-                            <a href="/profile/portfolio/{{$comments->id}}" class="border my-6 border-gray-400 mr-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
-                                <img src="{{ asset('storage/'.$comments->image == null ?? json_decode($comments->image)[0])  }}" alt="#" class="w-56 h-48">
+                        @foreach($portfolios as $portfolio)
+
+                                <a href="{{ route('portfolio', $portfolio->id) }}" class="border my-6 border-gray-400 mr-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
+                                <img src="{{  count(json_decode($portfolio->image)) == 0 ? '': asset('storage/'.json_decode($portfolio->image)[0])  }}" alt="#" class="w-56 h-48">
+
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">
-                                    <p class="w-2/3 text-center text-base text-white">{{$comments->comment}}</p>
+                                    <p class="w-2/3 text-center text-base text-white">{{$portfolio->comment}}</p>
                                    <div class="w-1/3 flex items-center">
                                         <i class="fas fa-camera float-right text-white text-2xl m-2"></i>
-                                        <span class="text-white">{{count(json_decode($comments->image)??[])}}</span>
+                                        <span class="text-white">{{count(json_decode($portfolio->image)??[])}}</span>
                                    </div>
                                 </div>
                             </a>
