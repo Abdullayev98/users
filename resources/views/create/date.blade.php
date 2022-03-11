@@ -41,7 +41,7 @@
                     <div class="pt-1">
                         <div class="overflow-hidden h-1 text-xs flex rounded bg-gray-200  mx-auto ">
                             <div style="width: 70%"
-                                 class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                                 class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
                         </div>
                     </div>
                     <div class="shadow-2xl w-full md:p-16 p-4 mx-auto my-4 rounded-2xl	w-full">
@@ -65,7 +65,7 @@
                                         </select>
                                     </div>
                                     <div id="start-date" class="@if(!$errors->has('start_date')) hidden @endif">
-                                        <div class="flatpickr inline-block flex">
+                                        <div class="flatpickr inline-block flex items-center">
                                             <div class="flex " >
                                                 <input type="text" name="start_date"
                                                        placeholder="{{__('Какой месяц..')}}"
@@ -74,13 +74,13 @@
                                                        required> <!-- input is mandatory -->
                                             </div>
                                             <div class="flatpickr-calendar max-w-[295px] w-full sm:text-sm text-[10px]"></div>
-                                            <div class="transform hover:scale-125">
-                                                <a class="input-button w-1 h-1  pl-1 " title="toggle" data-toggle>
-                                                    <i class="far fa-calendar-alt fill-current text-green-600"></i>
+                                            <div class="transform hover:scale-125 relative right-8">
+                                                <a class="input-button w-1 h-1" title="toggle" data-toggle>
+                                                    <i class="far fa-calendar-alt fill-current text-yellow-500"></i>
                                                 </a>
                                             </div>
                                             <div class="transform hover:scale-125">
-                                                <a class="input-button w-1 h-1 md:pl-2 pl-1 " title="clear" data-clear>
+                                                <a class="input-button w-1 h-1 " title="clear" data-clear>
                                                     <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
                                                 </a>
                                             </div>
@@ -98,13 +98,13 @@
                                                        required> <!-- input is mandatory -->
                                             </div>
 
-                                            <div class="transform hover:scale-125">
-                                                <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
+                                            <div class="transform hover:scale-125 relative right-8">
+                                                <a class="input-button w-1 h-1" title="toggle" data-toggle>
                                                     <i class="far fa-calendar-alt fill-current text-green-600"></i>
                                                 </a>
                                             </div>
                                             <div class="transform hover:scale-125">
-                                                <a class="input-button w-1 h-1 md:pl-2 pl-1  " title="clear" data-clear>
+                                                <a class="input-button w-1 h-1" title="clear" data-clear>
                                                     <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
                                                 </a>
                                             </div>
@@ -118,9 +118,9 @@
                                     @include('create.custom-fields')
                                 @endforeach
                                 <div class="mt-4">
-                                    <div class="flex w-full gap-x-4 mt-4">
+                                    <div class="flex w-full mt-4">
                                         <a onclick="myFunction()"
-                                           class="w-1/3  border cursor-pointer border-black-700 hover:border-yellow-500 transition-colors rounded-lg py-2 text-lg text-center flex justify-center items-center gap-2">
+                                           class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 px-8 rounded-2xl border border-2">
                                             <!-- <button type="button"> -->
                                         {{__('Назад')}}
                                         <!-- </button> -->
@@ -131,8 +131,9 @@
                                             </script>
                                         </a>
                                         <button type="submit"
-                                                class="bg-green-500 hover:bg-green-700 w-2/3 cursor-pointer text-white font-semibold py-5 px-5 rounded"
-                                        >{{__('Далее')}}</button>
+                                        style="background: linear-gradient(164.22deg, #FDC4A5 4.2%, #FE6D1D 87.72%);"
+                                        class="bg-yellow-500 hover:bg-yellow-600 m-4 cursor-pointer text-white font-normal text-2xl py-3 px-14 rounded-2xl "
+                                         name="">{{__('Далее')}}</button>
 
                                     </div>
 
