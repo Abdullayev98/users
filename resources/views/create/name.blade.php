@@ -14,9 +14,9 @@
     <!-- <form class="" action="" method="post"> -->
 
     {{--    Created Road map for Create a New Tast--}}
-    <div class="mx-auto lg:w-2/3 w-4/5 my-16">
+    <div class="mx-auto sm:w-9/12 w-11/12 my-16">
         <div class="grid grid-cols-3   lg:gap-x-8 md:gap-x-0.5 h-full">
-            <div class="md:col-span-2  col-span-3">
+            <div class="lg:col-span-2 col-span-3">
                 <div class="w-full text-center md:text-2xl text-xl">
                     {{__('Поможем найти исполнителя для вашего задания')}}
                 </div>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="flex  mx-auto" >
                             <input type="submit" id="next" style="background: linear-gradient(164.22deg, #FDC4A5 4.2%, #FE6D1D 87.72%);"
-                                   class="bg-yellow-500 hover:bg-yellow-600 my-4 cursor-pointer text-white font-normal text-2xl sm:py-4 py-3 px-8 rounded-2xl"
+                                   class="bg-yellow-500 hover:bg-yellow-600 my-4 cursor-pointer text-white font-normal text-2xl py-3 px-8 rounded-2xl"
                                    name="" value="{{__('Oтправить')}}">
                         </div>
 
@@ -95,7 +95,6 @@
             </div>
 
             <x-faq>
-                {{--            Created Component for Frequently Asked Questions--}}
             </x-faq>
         </div>
     </div>
