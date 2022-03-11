@@ -158,7 +158,7 @@
                                        value="{{ json_decode($task->address)->location }}">
 
 
-{{--                                @error('location0')--}}
+                                @error('location0')
 
                                 <p class="text-red-500">{{ $message }}</p>
                                 @enderror
