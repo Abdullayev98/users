@@ -161,7 +161,7 @@ class LoginController extends Controller
             ],
                 [
                     'email.required' => __('login.email.required'),
-                    'email.email' => __('login.email.email'),
+                    'email.email' => __('login'),
                     'email.unique' => __('login.email.unique'),
                 ]
             );
