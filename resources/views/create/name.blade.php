@@ -2,20 +2,6 @@
 
 @section('style')
 
-    <style>
-        .selectboxit-container .selectboxit, .selectboxit-container .selectboxit-options {
-            width: 600px; /* Width of the dropdown button */
-            border-radius: 0;
-            max-height: 240px;
-        }
-
-        .selectboxit-options .selectboxit-option .selectboxit-option-anchor {
-            white-space: normal;
-            min-height: 30px;
-            height: auto;
-        }
-
-    </style>
 @endsection
 
 @section("content")
@@ -40,7 +26,7 @@
                 <div class="pt-1">
                     <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200 mx-auto ">
                         <div style="width: 14%"
-                             class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                             class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
                     </div>
                 </div>
                 <div class="shadow-2xl w-full lg:p-8 p-4 mx-auto my-4 rounded-2xl	w-full">
@@ -53,17 +39,17 @@
 
                         <div class="py-4 w-11/12 mx-auto px-auto text-left my-4">
                             <div class="mb-4">
-                                <label class="block text-gray-400 text-sm mb-2" for="username">
+                                <label class="block text-gray-700 text-base mb-2" for="username">
                                     {{__('Название задания')}}
                                 </label>
                                 <input
-                                    class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none
+                                    class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none
                                     focus:border-yellow-500 "
                                     id="username" type="text"
                                     placeholder="{{__('Например, ')}} {{ $current_category->getTranslatedAttribute('name') }}"
                                     required name="name" value="{{session('neym')}}">
                             </div>
-                            <p class="text-base text-gray-600 mt-10">{{__('Если хотите выбрать другую категорию')}}</p>
+                            <p class="text-base text-gray-700 mt-10">{{__('Если хотите выбрать другую категорию')}}</p>
                             <div id="categories">
                                 <div class="flex lg:flex-row flex-col">
                                     <div class="lg:w-1/2 w-full lg:pr-3 py-5">
@@ -97,9 +83,9 @@
 
                         </div>
                         <div class="flex  mx-auto" >
-                            <input type="submit" id="next"
-                                   class="bg-green-500 hover:bg-green-500 w-9/12 mx-auto my-4 cursor-pointer text-white font-bold  py-5  px-5 rounded"
-                                   name="" value="{{__('Далее')}}">
+                            <input type="submit" id="next" style="background: linear-gradient(164.22deg, #FDC4A5 4.2%, #FE6D1D 87.72%);"
+                                   class="bg-yellow-500 hover:bg-yellow-600 my-4 cursor-pointer text-white font-normal text-2xl sm:py-4 py-3 px-8 rounded-2xl"
+                                   name="" value="{{__('Oтправить')}}">
                         </div>
 
                         </div>
@@ -173,6 +159,17 @@
         }
         .select2-results__option{
             font-size:16px;
+        }
+        .selectboxit-container .selectboxit, .selectboxit-container .selectboxit-options {
+            width: 600px; /* Width of the dropdown button */
+            border-radius: 0;
+            max-height: 240px;
+        }
+
+        .selectboxit-options .selectboxit-option .selectboxit-option-anchor {
+            white-space: normal;
+            min-height: 30px;
+            height: auto;
         }
     </style>
 
