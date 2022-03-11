@@ -89,7 +89,7 @@
 
                             </div>
                                 <div class="w-[100px]  md:w-[200px] md:hidden text-center">
-                                    <select id="" name="amount" class="border md:ml-14 bg-yellow-400  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 px-4 md:px-10 hover:bg-yellow-600">
+                                    <select id="" name="amount" class="border md:ml-14 bg-yellow-400  text-white font-semibold rounded-lg text-lg md:text-2xl my-4 py-3 px-10 hover:bg-yellow-600">
                                         <option value="0">
                                             {{__('Выберите бюджет')}}
                                         </option>
@@ -114,9 +114,9 @@
                                 @include('create.custom-fields')
                             @endforeach
                                 <div class="mt-4">
-                                    <div class="flex w-full gap-x-4 mt-4">
+                                    <div class="flex w-full mt-4">
                                         <a onclick="myFunction()" 
-                                        class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 sm:px-8 px-6 rounded-2xl border border-2">
+                                        class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 sm:px-8 px-4 rounded-2xl border border-2">
                                             <!-- <button type="button"> -->
                                          {{__('Назад')}}
                                         <!-- </button> -->

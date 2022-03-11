@@ -29,9 +29,9 @@
         @csrf
 
 
-        <div class="mx-auto w-9/12  my-16">
+        <div class="mx-auto sm:w-9/12 w-11/12 my-16">
             <div class="grid grid-cols-3 gap-x-20">
-                <div class="md:col-span-2 col-span-3">
+                <div class="lg:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
                         {{__('Ищем исполнителя для задания')}} "{{$task->name}}"
                     </div>
@@ -64,7 +64,8 @@
                                             <option  {{ old('date_type') == "3" ? 'selected' :null }} value="3" id="3" class="text-base">{{__('Указать период')}}</option>
                                         </select>
                                     </div>
-                                    <div id="start-date" class="@if(!$errors->has('start_date')) hidden @endif">
+                                   <div class="grid grid-cols-2 gap-4">
+                                    <div id="start-date" class="@if(!$errors->has('start_date')) xl:col-span-1 col-span-2 hidden @endif">
                                         <div class="flatpickr inline-block flex items-center">
                                             <div class="flex " >
                                                 <input type="text" name="start_date"
@@ -89,8 +90,8 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div id="end-date" class="@if(!$errors->has('end_date')) hidden @endif">
-                                        <div class="flatpickr inline-block flex ">
+                                    <div id="end-date" class="@if(!$errors->has('end_date')) xl:col-span-1 col-span-2 hidden @endif">
+                                        <div class="flatpickr inline-block flex items-center">
                                             <div class="flex">
                                                 <input type="text" name="end_date" placeholder="{{__('Какой месяц..')}}"
                                                        data-input
@@ -100,7 +101,7 @@
 
                                             <div class="transform hover:scale-125 relative right-8">
                                                 <a class="input-button w-1 h-1" title="toggle" data-toggle>
-                                                    <i class="far fa-calendar-alt fill-current text-green-600"></i>
+                                                    <i class="far fa-calendar-alt fill-current text-yellow-500"></i>
                                                 </a>
                                             </div>
                                             <div class="transform hover:scale-125">
@@ -113,6 +114,7 @@
                                             @enderror
                                         </div>
                                     </div>
+                                   </div>
                                 </div>
                                 @foreach($task->category->customFieldsInDate as $data)
                                     @include('create.custom-fields')
@@ -120,7 +122,7 @@
                                 <div class="mt-4">
                                     <div class="flex w-full mt-4">
                                         <a onclick="myFunction()"
-                                           class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 px-8 rounded-2xl border border-2">
+                                           class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 sm:px-8 px-4 rounded-2xl border border-2">
                                             <!-- <button type="button"> -->
                                         {{__('Назад')}}
                                         <!-- </button> -->
@@ -132,7 +134,7 @@
                                         </a>
                                         <button type="submit"
                                         style="background: linear-gradient(164.22deg, #FDC4A5 4.2%, #FE6D1D 87.72%);"
-                                        class="bg-yellow-500 hover:bg-yellow-600 m-4 cursor-pointer text-white font-normal text-2xl py-3 px-14 rounded-2xl "
+                                        class="bg-yellow-500 hover:bg-yellow-600 m-4 cursor-pointer text-white font-normal text-2xl py-3 sm:px-14 px-10 rounded-2xl "
                                          name="">{{__('Далее')}}</button>
 
                                     </div>

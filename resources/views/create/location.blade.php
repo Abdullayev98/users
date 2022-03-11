@@ -19,9 +19,9 @@
 
 <form action="{{route("task.create.address.store", $task->id)}}" method="post" >
   @csrf
-<div class="mx-auto w-9/12  my-16">
+<div class="mx-auto sm:w-9/12 w-11/12 my-16">
 <div class="grid grid-cols-3 gap-x-20">
-  <div class="md:col-span-2 col-span-3">
+  <div class="lg:col-span-2 col-span-3">
     <div class="w-full text-center text-2xl">
       {{__('Ищем исполнителя для задания')}} "{{$task->name}}"
     </div>
@@ -70,7 +70,7 @@
                   @include('create.custom-fields')
               @endforeach
              <div class="flex w-full mt-4">
-             <a onclick="backfunctionlocation()" class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 px-8 rounded-2xl border border-2">
+             <a onclick="backfunctionlocation()" class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 sm:px-8 px-4 rounded-2xl border border-2">
                                             <!-- <button type="button"> -->
                                             {{__('Назад')}}
                                             <!-- </button> -->
@@ -82,7 +82,7 @@
                                         </a>
 
                <input type="submit" style="background: linear-gradient(164.22deg, #FDC4A5 4.2%, #FE6D1D 87.72%);"
-                class="bg-yellow-500 hover:bg-yellow-600 m-4 cursor-pointer text-white font-normal text-2xl py-3 px-14 rounded-2xl "
+                class="bg-yellow-500 hover:bg-yellow-600 m-4 cursor-pointer text-white font-normal text-2xl py-3 sm:px-14 px-10 rounded-2xl "
                  name="" value="{{__('Далее')}}">
              </div>
 
