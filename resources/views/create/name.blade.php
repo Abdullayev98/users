@@ -84,7 +84,7 @@
                         </div>
                         <div class="flex  mx-auto" >
                             <input type="submit" id="next" style="background: linear-gradient(164.22deg, #FDC4A5 4.2%, #FE6D1D 87.72%);"
-                                   class="bg-yellow-500 hover:bg-yellow-600 my-4 cursor-pointer text-white font-normal text-2xl py-3 px-8 rounded-2xl"
+                                   class="bg-yellow-500 hover:bg-yellow-600 my-4 cursor-pointer text-white font-normal text-2xl py-3 px-14 px-8 rounded-2xl"
                                    name="" value="{{__('Oтправить')}}">
                         </div>
 
