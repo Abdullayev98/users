@@ -177,8 +177,8 @@ class SearchTaskController extends VoyagerBaseController
 
     public function changeTask(Task $task)
     {
-//        taskGuard($task);
-
+        taskGuard($task);
+//        dd($task);
         return view('task.changetask', compact('task'));
     }
 

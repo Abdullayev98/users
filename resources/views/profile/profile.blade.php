@@ -11,16 +11,16 @@
                 @include('components.profileFigure')
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 ">
-                    <div class= "grid md:grid-cols-10 w-full">
+                    <div class= "grid md:grid-cols-10 w-full items-center">
                         <ul class=" md:col-span-9 items-center w-3/4 md:w-full" id="tabs">
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile" class=" md:text-[18px] text-[14px] font-bold block text-gray-700" id="default-tab">{{__('Обо мне')}}</a></li>
-                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile/cash" class=" md:text-[18px] text-[14px] text-gray-600">{{__('Счет')}}
+                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile" class=" text-lg font-bold block text-gray-700 border-b-4 border-green-500 pb-3" id="default-tab">{{__('Обо мне')}}</a></li>
+                            <li class=" md:mr-5 mr-1 inline-block"><a href="/profile/cash" class=" text-lg text-gray-600">{{__('Счет')}}
                                     </a></li>
-                            <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="md:text-[18px] text-[14px] text-gray-600" id="settingsText">{{__('Настройки')}}
+                            <li class=" md:mr-5 mr-1 inline-block md:hidden block"><a href="/profile/settings" class="text-lg text-gray-600" id="settingsText">{{__('Настройки')}}
                                     </a></li>
 
                         </ul>
-                        <div class="md:col-span-1 md:block hidden text-gray-600" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-user-cog text-3xl" ></i></a></div>
+                        <div class="md:col-span-1 md:block hidden text-gray-600 ml-4" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-cog text-2xl"></i></a></div>
 
                     </div>
                     <hr>

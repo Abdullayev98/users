@@ -304,8 +304,8 @@
                         sixInOne();
                     }
                 },
-                error: function () {
-                    alert("Ajax orqali yuklashda xatolik...");
+                error: function (error) {
+                    console.error("Ajax orqali yuklashda xatolik..." , error);
                 }
             });
         }
