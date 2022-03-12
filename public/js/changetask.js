@@ -1,5 +1,7 @@
-ajax_location
+let ajax_location = [];
 var x = 1;
+var alp =  ["B", "C", "D", "E", "F","G","H","I","J"];
+
 
 function init_map(){
     myMap = new ymaps.Map('map', {
@@ -18,7 +20,6 @@ function init() {
     suggestView0.events.add('select', function () {
         myFunction();
     });
-    var alp =  ["B", "C", "D", "E", "F","G","H","I","J"];
 
     $("#addbtn").click(function(){
         if(x < 10){
