@@ -116,7 +116,7 @@
                                 <div class="mt-4">
                                     <div class="flex w-full mt-4">
                                         <a onclick="myFunction()" 
-                                        class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 sm:px-8 px-4 rounded-2xl border border-2">
+                                        class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-lg py-3 sm:px-8 px-4 rounded-2xl border border-2">
                                             <!-- <button type="button"> -->
                                          {{__('Назад')}}
                                         <!-- </button> -->
@@ -129,7 +129,7 @@
 
                                         <input type="submit"
                                         style="background: linear-gradient(164.22deg, #FDC4A5 4.2%, #FE6D1D 87.72%);"
-                                        class="bg-yellow-500 hover:bg-yellow-600 m-4 cursor-pointer text-white font-normal text-2xl py-3 sm:px-14 px-10 rounded-2xl "
+                                        class="bg-yellow-500 hover:bg-yellow-600 m-4 cursor-pointer text-white font-normal text-xl py-3 sm:px-14 px-10 rounded-2xl "
                                          name="" value="{{__('Далее')}}">
                                     </div>
                                 </div>
