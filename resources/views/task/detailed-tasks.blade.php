@@ -529,7 +529,12 @@
                                     <button
                                         class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400"
                                         @click="showModal = true">
-                                        <i class="fas fa-link text-gray-500"></i>
+                                        <i class="fas fa-share-alt text-grey-700"></i>
+                                    </button>
+                                    <button
+                                        class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400"
+                                        @click="showModal = true">
+                                        <i class="fas fa-flag text-grey-00"></i>
                                     </button>
 
                                     <!-- Modal -->
@@ -570,10 +575,10 @@
                             <h1 class="text-lg">{{__('Заказчик этого задания')}}</h1>
                             <div class="flex flex-row mt-4">
                                 <div class="mr-4">
-                                    <img
+                                    <img class="border-2 border-radius-500 border-gray-400 w-32 h-32 rounded-lg" alt="#"
                                         src="@if ($task->user->avatar == ''){{ asset("storage/images/default.png") }}
                                         @else{{asset("storage/{$task->user->avatar}") }}" @endif
-                                        class="border-2 border-gray-400 w-32 h-32 rounded-lg" alt="#">
+                                        >
                                 </div>
                                 <div class="">
                                     <a href="/performers/{{$task->user->id}}"
