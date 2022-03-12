@@ -1,9 +1,8 @@
-<div class="my-0 md:col-span-1 col-span-3 sm:mt-0 mt-4">
-    <div class=" md:text-left text-center text-2xl text-gray-500 md:ml-4 ml-0">
-{{--        <div class=" text-left  ml-4">--}}
-        {{__('Частые вопросы')}}
+<div class="lg:col-span-1 col-span-3 lg:mt-0 mt-4">
+    <div class="text-left md:ml-4 ml-0">
+        <p class="mb-6 font-semibold text-xl text-gray-600">{{__('Частые вопросы')}}</p>
         @foreach(getFaqCategories() as $faq)
-        <p><a href="/questions/{{$faq->id}}" class="text-blue-500 hover:text-yellow-500 hover:underline text-base">{{ $faq->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</a></p>
+       <p class="my-2"> <a href="/questions/{{$faq->id}}" class="my-4 text-gray-500 hover:text-yellow-500 hover:underline text-base">{{ $faq->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</a></p>
         @endforeach
     </div>
 </div>

@@ -27,8 +27,8 @@ function init() {
                 '<button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  '+ alp[x-1] +' </button>' +
                 ' <input oninput="myFunction()" id="suggest'+(x)+'" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"' +
                 ' type="search" name="location'+ x +'" placeholder="Город, Улица, Дом" aria-label="Full name"> ' +
-                '<button id="'+ x +'" onclick="getLocals(this.id)" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">'+
-                '<svg className="h-4 w-4 text-purple-500" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">'+
+                '<button id="'+ x +'" onclick="getLocals(this.id)" class="flex-shrink-0 border-transparent border-4 text-yellow-500 hover:text-yellow-600 text-sm py-1 px-2 rounded" type="button">'+
+                '<svg className="h-4 w-4 text-yellow-500" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">'+
                 '<path stroke="none" d="M0 0h24v24H0z"/><path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3"/></svg></button>'+
                 '</div><button id="remove_inputs" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> ' +
                 '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.25 2.95v-.2A2.75 2.75 0 0 1 6 0h6a2.75 2.75 0 0 1 2.75 2.75v.2h2.45a.8.8 0 0 1 0 1.6H.8a.8.8 0 1 1 0-1.6h2.45zm10 .05v-.25c0-.69-.56-1.25-1.25-1.25H6c-.69 0-1.25.56-1.25 1.25V3h8.5z" fill="#666"/>' +

@@ -8,10 +8,10 @@
         </div>
         <div class="my-auto flex xl:flex-row flex-col md:w-1/3 w-full md:m-5 m-0">
             <a class="rounded-md mx-auto my-2 my-auto xl:mr-3" rel="noopener noreferrer" href="#" target="_blank">
-                <button type="button" class="bg-black rounded-md hover:bg-yellow-500"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
+                <button type="button" class="bg-black rounded-md hover:bg-yellow-500 md:my-0 my-1"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
             </a>
             <a class="rounded-md mx-auto my-auto my-2" rel="noopener noreferrer" href="#" target="_blank">
-                <button type="button" class="bg-black rounded-md hover:bg-yellow-500"><img src="{{asset('images/download_android.svg')}}" alt=""> </button>
+                <button type="button" class="bg-black rounded-md hover:bg-yellow-500 md:my-0 my-1"><img src="{{asset('images/download_android.svg')}}" alt=""> </button>
             </a>
         </div>
     </div>

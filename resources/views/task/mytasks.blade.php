@@ -32,16 +32,16 @@
                                     <div class="md:grid md:grid-cols-10 p-2">
                                         @foreach ($categories as $category)
                                             @if ($category->id == $task->category_id)
-                                                <i class="{{$category->ico}} text-4xl float-left text-blue-400 mr-2"></i>
+                                                 <img src=" {{ asset('storage/'.$category->ico) }}" alt="" class="h-10 w-10 bg-blue-200 p-2 rounded-xl md:mb-0 mb-3">
                                             @endif
                                         @endforeach
                                         <div class="col-span-6">
                                             <a href="/detailed-tasks/{{$task->id}}" class="text-blue-500 text-xl hover:text-red-500">
                                                 {{$task->name}}
                                             </a>
-                                            <p class="text-sm mt-2">
-                                                {{substr($task->description, 0, 100)}}...
-                                            </p>
+                                            @if($task->address !== NULL)
+                                                <p class=" text-sm mt-2">{{json_decode($task->address, true)['location']}}</p>
+                                            @endif
                                             @if ($task->status == 3)
                                                 <p class="text-amber-500 font-normal">{{__('В исполнении')}}</p>
                                             @elseif($task->status < 3)
@@ -51,7 +51,13 @@
                                             @endif
                                         </div>
                                         <div class="col-span-3 md:text-right categoryid">
-                                            <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
+                                            <p class="text-xl font-medium text-gray-600">
+                                                @if ( __('до') == 'gacha' )
+                                                    {{$task->budget}} {{__('сум')}}{{__('до')}}
+                                                @else
+                                                    {{__('до')}} {{$task->budget}} {{__('сум')}}
+                                                @endif
+                                            </p>
                                             @foreach ($categories as $category)
                                                 @if($category->id == $task->category_id)
                                                     <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
@@ -80,16 +86,16 @@
                                         <div class="md:grid md:grid-cols-10 p-2">
                                             @foreach ($categories as $category)
                                                 @if ($category->id == $task->category_id)
-                                                    <i class="{{$category->ico}} text-4xl float-left text-blue-400 mr-2"></i>
+                                                <img src=" {{ asset('storage/'.$category->ico) }}" alt="" class="h-10 w-10 bg-blue-200 p-2 rounded-xl md:mb-0 mb-3">
                                                 @endif
                                             @endforeach
                                             <div class="col-span-6">
                                                 <a href="/detailed-tasks/{{$task->id}}" class="text-blue-500 text-xl hover:text-red-500">
                                                     {{$task->name}}
                                                 </a>
-                                                <p class="text-sm mt-2">
-                                                    {{$task->description}}
-                                                </p>
+                                                @if($task->address !== NULL)
+                                                     <p class=" text-sm mt-2">{{json_decode($task->address, true)['location']}}</p>
+                                                @endif
                                                 @if ($task->status == 3)
                                                     <p class="text-amber-500 font-normal">{{__('В исполнении')}}</p>
                                                 @elseif($task->status < 3)
@@ -99,7 +105,13 @@
                                                 @endif
                                             </div>
                                             <div class="col-span-3 md:text-right categoryid">
-                                                <p class="text-xl font-medium text-gray-600">{{$task->budget}}</p>
+                                                <p class="text-xl font-medium text-gray-600">
+                                                    @if ( __('до') == 'gacha' )
+                                                        {{$task->budget}} {{__('сум')}}{{__('до')}}
+                                                    @else
+                                                        {{__('до')}} {{$task->budget}} {{__('сум')}}
+                                                    @endif
+                                                </p>
                                                 @foreach ($categories as $category)
                                                     @if($category->id == $task->category_id)
                                                         <span class="text-sm text-gray-500 hover:text-red-600 my-3" about="{{$category->id}}">{{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}</span>
