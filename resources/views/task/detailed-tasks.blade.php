@@ -573,7 +573,7 @@
                                     <img
                                         src="@if ($task->user->avatar == ''){{ asset("storage/images/default.png") }}
                                         @else{{asset("storage/{$task->user->avatar}") }}" @endif
-                                        class="border-2 border-gray-400 w-32 h-32" alt="#">
+                                        class="border-2 border-gray-400 w-32 h-32 rounded-lg" alt="#">
                                 </div>
                                 <div class="">
                                     <a href="/performers/{{$task->user->id}}"

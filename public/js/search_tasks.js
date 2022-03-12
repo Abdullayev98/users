@@ -310,7 +310,7 @@ function tasks_list_all(data) {
                             <p  class="sm:text-lg text-sm font-semibold text-gray-700">` + data.budget + `</p>
                             <span  class="text-sm sm:mt-5 sm:mt-1 mt-0">Откликов - ` + data.responses.length + `</span>
                             <p class="text-sm sm:mt-1 mt-0">` + data.category_name + `</p>
-                            <a href="/performers/` + data.userid + `" class="text-sm sm:mt-1 mt-0 hover:text-red-600 ">` + data.user_name + `</a>
+                            <a href="/performers/` + data.userid + `" class="text-sm sm:mt-1 mt-0 hover:text-red-500 border-b-2 border-gray-500 hover:border-red-500">` + data.user_name + `</a>
                         </div>
                     </div>
                 </div>
