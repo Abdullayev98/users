@@ -32,7 +32,7 @@
                                     <div class="md:grid md:grid-cols-10 p-2">
                                         @foreach ($categories as $category)
                                             @if ($category->id == $task->category_id)
-                                                 <img src=" {{ asset('storage/'.$category2->ico) }}" alt="" class="h-10 w-10 bg-blue-200 p-2 rounded-xl md:mb-0 mb-3">
+                                                 <img src=" {{ asset('storage/'.$category->ico) }}" alt="" class="h-10 w-10 bg-blue-200 p-2 rounded-xl md:mb-0 mb-3">
                                             @endif
                                         @endforeach
                                         <div class="col-span-6">
@@ -54,7 +54,7 @@
                                             <p class="text-xl font-medium text-gray-600">
                                                 @if ( __('до') == 'gacha' )
                                                     {{$task->budget}} {{__('сум')}}{{__('до')}}
-                                                @else  
+                                                @else
                                                     {{__('до')}} {{$task->budget}} {{__('сум')}}
                                                 @endif
                                             </p>
@@ -108,7 +108,7 @@
                                                 <p class="text-xl font-medium text-gray-600">
                                                     @if ( __('до') == 'gacha' )
                                                         {{$task->budget}} {{__('сум')}}{{__('до')}}
-                                                    @else  
+                                                    @else
                                                         {{__('до')}} {{$task->budget}} {{__('сум')}}
                                                     @endif
                                                 </p>
