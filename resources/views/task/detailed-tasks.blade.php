@@ -72,7 +72,7 @@
                                         <p class="mt-4 text-gray-400 font-normal">{{__('Заказчик отдает предпочтение застрахованным исполнителям')}}</p>
                                     @endif
                                 </div>
-                                <div class="md:flex flex-row text-gray-400 mt-4">
+                                <div class="md:flex flex-row text-gray-400 mt-4 text-base">
                                     @if ($task->status == 3)
                                         <p class="text-amber-500 font-normal md:border-r-2 border-gray-400 pr-2">{{__('В исполнении')}}</p>
                                     @elseif($task->status < 3)
@@ -80,6 +80,7 @@
                                     @else
                                         <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">{{__('Закрыто')}}</p>
                                     @endif
+                                    <p class="font-normal md:border-r-2 border-gray-400 px-2">{{__('просмотров')}}</p>
                                     <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
                                     <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name') }}</p>
                                     @if($task->user_id == auth()->id())
@@ -523,20 +524,13 @@
                                 <h1 class="text-xl font-medium mb-4">{{__('Задание')}} № {{$task->id}}</h1>
                                 <div
                                     x-data="{ 'showModal': false }"
-                                    @keydown.escape="showModal = false"
-                                >
+                                    @keydown.escape="showModal = false">
                                     <!-- Trigger for Modal -->
                                     <button
                                         class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400"
                                         @click="showModal = true">
-                                        <i class="fas fa-share-alt text-grey-700"></i>
+                                        <i class="fas fa-share-alt text-grey-500"></i>
                                     </button>
-                                    <button
-                                        class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400"
-                                        @click="showModal = true">
-                                        <i class="fas fa-flag text-grey-00"></i>
-                                    </button>
-
                                     <!-- Modal -->
                                     <div
                                         class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50"
