@@ -39,6 +39,15 @@ function getAdditionalAddress($data){
     return $data;
 }
 
+function getLocale(){
+    $locale = app()->getLocale();
+
+    if ($locale == 'uz' ) $locale = 'uz_Latn';
+    return $locale;
+
+}
+
+
 function setView($user)
 {
     if (auth()->check()) {

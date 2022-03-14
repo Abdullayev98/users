@@ -11,10 +11,11 @@
                         <i class="far fa-eye"> {{ $user->performer_views_count }} {{__('просмотр')}}</i>
                     </div>
                     <div>
-                        @if($user->active_status == 1)
+
+                        @if($user->last_seen_at >= now()->toDateTimeString())
                             <p class="text-green-500"><i class="fa fa-circle text-xs text-green-500 float-left mr-2 mt-[5px]" > </i>{{__('Онлайн')}}</p>
                         @else
-                            <p class="text-gray-500">{{__('Офлайн')}}</p>
+                            <p class="text-gray-500">{{ $user->last_seen }}</p>
                         @endif
                         <h1 class="text-3xl font-bold ">{{$user->name}}</h1>
                     </div>
@@ -147,9 +148,9 @@
                     <ul class="d-flex flex-col gap-y-5">
                         @isset($reviews)
                             @foreach ($reviews as $review)
-                                @if($review->user_id == $user->id && $review->task)
+                                @if($review->user_id == $user->id && $review->task && $review->user)
                                     <li class="d-flex flex-col my-10 rounded-lg">
-                                        <a href="{{route('performer.main', $review->user->id)}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
+                                        <a href="{{route('performer.main', $review->user_id)}}" target="_blank" rel="noreferrer noopener" class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
                                             <img class="UsersReviews_picture__aB22p"
                                                  @if ($user->avatar == Null)
                                                  src='{{asset("storage/images/default.jpg")}}'
