@@ -20,7 +20,7 @@
                 <div class="relative pt-1">
                     <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
                         <div style="width: 99%"
-                             class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                             class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
                     </div>
                 </div>
                 <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl	w-full p-2 md:p-6 px-8">
@@ -161,7 +161,7 @@
                                                             <div class="mt-4">
                                                                 <div class="flex w-full mt-4">
                                                                     <a onclick="myFunction()"
-                                                                    class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 sm:px-8 px-4 rounded-2xl border border-2">
+                                                                    class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-base py-3 sm:px-6 px-2 rounded-2xl border border-2">
                                                                         <!-- <button type="button"> -->
                                                                     {{__('Назад')}}
                                                                     <!-- </button> -->
@@ -219,7 +219,7 @@
                                         <div class="mt-4">
                                             <div class="flex w-full mt-4">
                                                 <a onclick="myFunction()"
-                                                class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 sm:px-8 px-4 rounded-2xl border border-2">
+                                                class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-base py-3 sm:px-6 px-2 rounded-2xl border border-2">
                                                     <!-- <button type="button"> -->
                                                 {{__('Назад')}}
                                                 <!-- </button> -->
