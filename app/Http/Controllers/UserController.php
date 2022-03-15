@@ -219,11 +219,14 @@ class UserController extends Controller
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
                 $user->update(['is_phone_number_verified' => 1]);
                 Task::findOrFail($request->for_ver_func)->update(['status' => 1, 'user_id' => auth()->user()->id, 'phone' => auth()->user()->phone_number]);
+
                 return redirect()->route('userprofile');
             } else {
+                auth()->logout();
                 return back()->with('expired_message', __('lang.contact_expired'));
             }
         } else {
+            auth()->logout();
             return back()->with('incorrect_message', __('lang.contact_notVerify'));
         }
 
