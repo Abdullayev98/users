@@ -80,7 +80,7 @@
                                     @else
                                         <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">{{__('Закрыто')}}</p>
                                     @endif
-                                    <p class="font-normal md:border-r-2 border-gray-400 px-2">{{__('просмотров')}}</p>
+                                    <p class="font-normal md:border-r-2 border-gray-400 px-2">{{$task->views }}  {{__('просмотров')}}</p>
                                     <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
                                     <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name') }}</p>
                                     @if($task->user_id == auth()->id())
