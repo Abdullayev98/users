@@ -11,9 +11,7 @@
 </script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-
-{{--<script id="map_api" src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}&onload=onLoad" type="text/javascript"></script>--}}
-<script src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}" type="text/javascript"></script>
+<script id="map_api" src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}&onload=onLoad" type="text/javascript"></script>
 
 <!-- Information section -->
 
@@ -50,7 +48,7 @@
                 <button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">
                   A
                 </button>
-                <input autocomplete="off" oninput="myFunction()"  id="suggest0"  class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500" type="search" placeholder="{{__('Город, Улица, Дом')}}" value="{{session('location2')}}" name="location0" required>
+                <input autocomplete="off" oninput="myMapFunction()"  id="suggest0"  class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500" type="search" placeholder="{{__('Город, Улица, Дом')}}" value="{{session('location2')}}" name="location0" required>
                 <button id="getlocal" class="flex-shrink-0 border-transparent border-4 text-yellow-500 hover:text-yellow-600 text-sm py-1 px-2 rounded" type="button">   <svg class="h-4 w-4 text-yellow-500"  width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3" /></svg>  </button>
               </div>
               <input name="coordinates0" type="hidden" id="coordinate">

@@ -1,6 +1,12 @@
 @extends("layouts.app")
 
 @section("content")
+    <script>
+        let userAddress;
+        var myMap;
+        var multiRoute;
+        var place, place1="", place2="", place3="", place4="", place5="", place6="", place7="", place8="", place9="";
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -152,7 +158,7 @@
                                     style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;">
                                 </ymaps>
 
-                                <input autocomplete="off" oninput="myFunction()" id="suggest0"
+                                <input autocomplete="off" oninput="myMapFunction()" id="suggest0"
                                        class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
                                        type="text" placeholder="Город, Улица, Дом" name="location0"
                                        value="{{ json_decode($task->address)->location }}">
@@ -380,13 +386,17 @@
 {{--            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}&onload=onLoad"--}}
 {{--            type="text/javascript">--}}
 {{--    </script>--}}
-    <script id="map_api" src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}" type="text/javascript"></script>
+    <script id="map_api"
+            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}"
+            type="text/javascript">
+    </script>
 
     <script>
         @if(!$errors->has('end_date'))
         $('#start-date').css('display', 'inline-block');
         @endif
     </script>
+
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
     <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
@@ -405,14 +415,15 @@
                 "timeout": 0,
             };
             $.ajax(settings).done(function (response) {
-                ajax_location = $.parseJSON(JSON.stringify(response));
-                console.log(ajax_location);
+                ajax_location = $.parseJSON(response.address_add);
+                // console.log(ajax_location);
                 if (ajax_location.length != 0){
+                    for (let i=0; i<=ajax_location.length; i++){
                     $("#addinput").append('<div class="flex items-center gap-x-2">' +
                         '<div class="flex items-center rounded-lg border  w-full py-1"> ' +
-                        '<button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  '+ alp[x-1] +' </button>' +
-                        ' <input oninput="myFunction()" id="suggest'+(x)+'" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"' +
-                        ' type="search" name="location'+ x +'" placeholder="Город, Улица, Дом" aria-label="Full name" value="'+ajax_location[x] +'"> ' +
+                        '<button class="Alfavit flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  '+ alp[i] +' </button>' +
+                        ' <input oninput="myMapFunction()" id="suggest'+(x)+'" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"' +
+                        ' type="search" name="location'+ x +'" placeholder="Город, Улица, Дом" aria-label="Full name" value="'+ajax_location[i].location+'"> ' +
                         '<button id="'+ x +'" onclick="getLocals(this.id)" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">'+
                         '<svg className="h-4 w-4 text-purple-500" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">'+
                         '<path stroke="none" d="M0 0h24v24H0z"/><path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3"/></svg></button>'+
@@ -422,6 +433,7 @@
                         '<path d="M12.344 7.178a.75.75 0 1 0-1.494-.13l-.784 8.965a.75.75 0 0 0 1.494.13l.784-8.965zm-6.779 0a.75.75 0 0 1 1.495-.13l.784 8.965a.75.75 0 0 1-1.494.13l-.785-8.965z" fill="#666"/></svg> </button> ' +
                         '<input name="coordinates'+ x +'" type="hidden" id="coordinate'+ x +'"> </div>    ');
                     x++;
+                    }
                 }
             });
         }
