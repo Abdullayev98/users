@@ -23,14 +23,50 @@
                     </div>
 
                     <div class="flex sm:flex-row flex-col w-full mt-6">
-                        <div class="flex-initial sm:w-1/3 w-full">
+                        <div class="sm:w-1/3 pb-10 w-full">
                             <img class="h-48 w-44"
                                  @if ($user->avatar == Null)
                                  src='{{asset("storage/images/default.jpg")}}'
                                  @else
                                  src="{{asset("storage/{$user->avatar}")}}"
                                  @endif alt="avatar">
+                            <div>
+                                <div class="flex flex-row items-center text-base">
+                                    <p class="text-black ">{{__('Отзывы:')}}</p>
+                                    <i class="far fa-thumbs-up text-blue-500 ml-1 mb-1"></i>
+                                    <span class="text-gray-800 mr-2 like{{$user->id}}">{{ $user->reviews()->where('good_bad',1)->count()}}</span>
+                                    <i class="far fa-thumbs-down mt-0.5 text-blue-500"></i>
+                                    <span class="text-gray-800 dislike{{$user->id}}">{{ $user->reviews()->where('good_bad',0)->count()}}</span>
+                                </div>
+                                <div class="flex flex-row stars{{$user->id}}">
+                                </div>
+                                <script>
+                                    $(document).ready(function(){
+                                        var good = $(".like{{$user->id}}").text();
+                                        var bad = $(".dislike{{$user->id}}").text();
+                                        var allcount = good * 5;
+                                        var coundlikes = (good * 1) + (bad * 1);
+                                        var overallStars = allcount / coundlikes;
+                                        console.log(overallStars);
+                                        var star = overallStars.toFixed();
+                                        if (!isNaN(star)) {
+                                            for (let i = 0; i < star; i++) {
+                                                $(".stars{{$user->id}}").append('<i class="fas fa-star text-yellow-500"></i>');
+                                            }
+                                            for (let u = star; u < 5; u++) {
+                                                $(".stars{{$user->id}}").append('<i class="fas fa-star text-gray-500"></i>');
+                                            }
+                                        }else {
+                                            for (let e = 0; e < 5; e++) {
+                                                $(".stars{{$user->id}}").append('<i class="fas fa-star text-gray-500"></i>');
+                                            }
+                                        }
+                                    });
+                                </script>
+                            </div>
+
                         </div>
+
                         <div class="flex-initial sm:w-2/3 w-full sm:mt-0 mt-6 sm:ml-8 ml-0">
                             <div class="font-medium text-lg">
                                 @if($user->phone_verified_at && $user->email_verified_at)
@@ -92,6 +128,7 @@
                                         @endif  alt="" class="w-16">
                                     <div id="tooltip-animation_1" role="tooltip"
                                          class="inline-block w-2/12 absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+
                                         <p class="text-center">
                                             @if ($user->is_email_verified !== Null && $user->is_phone_number_verified !== Null)
                                                 {{__('Номер телефона и Е-mail пользователя подтверждены')}}
@@ -148,7 +185,9 @@
                             </a>
                         </div>
                     </div>
+
                 </figure>
+
 
                 {{-- right sidebar end --}}
                 <div class="col-span-2">
@@ -171,9 +210,12 @@
                                                  @else
                                                  src="{{asset("storage/{$review->user->avatar}")}}"
                                                  @endif alt="avatar">
+
                                         </a>
+
                                         <div class="align-top ml-12 h-16">
-                            <span>
+
+                                            <span>
                                 <a href="{{route('performer.main', $review->user->id)}}" target="_blank"
                                    rel="noreferrer noopener" class="text-blue-500 ">{{$review->user->name}}</a>
                             </span>
