@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\User\Active;
 use Illuminate\Support\ServiceProvider;
 use TCG\Voyager\Facades\Voyager;
 
@@ -28,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
         foreach (glob(__DIR__.'/../Helpers/*.php') as $filename) {
             require_once $filename;
         }
+
     }
 }

@@ -69,6 +69,10 @@ class SearchTaskController extends VoyagerBaseController
     {
         $review = null;
         if ($task->reviews_count == 2) $review == true;
+        if (auth()->check()){
+            $task->views++;
+            $task->save();
+        }
 
         return view('task.detailed-tasks', compact('task', 'review'));
     }
@@ -177,8 +181,8 @@ class SearchTaskController extends VoyagerBaseController
 
     public function changeTask(Task $task)
     {
-//        taskGuard($task);
-
+        taskGuard($task);
+//        dd($task);
         return view('task.changetask', compact('task'));
     }
 

@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Models\Portfolio;
 use App\Models\Portfoliocomment;
 use App\Models\Message;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -93,5 +94,11 @@ class User extends \TCG\Voyager\Models\User
     }
     public function portfolios(){
         return $this->hasMany(Portfolio::class);
+    }
+
+    public function getLastSeenAttribute(){
+        $value = $this->last_seen_at;
+        $value = Carbon::parse($value)->locale(getLocale());
+        return $value->diffForHumans();
     }
 }

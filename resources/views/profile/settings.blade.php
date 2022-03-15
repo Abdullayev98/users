@@ -16,23 +16,22 @@
                 {{-- user ma'lumotlari tugashi --}}
                 <div class="content mt-20 ">
                     <div class="grid grid-cols-10">
-                        <ul class=" md:col-span-9 col-span-10 md:items-left sitems-center">
+                        <ul class=" md:col-span-9 col-span-10 md:items-left items-center">
                             <li class="inline md:mr-5 mr-1"><a href="/profile"
-                                                               class=" text-[14px] md:text-[18px] text-gray-600">{{__('Обо мне')}}</a>
+                                                               class="text-lg text-gray-600">{{__('Обо мне')}}</a>
                             </li>
                             <li class="inline md:mr-5 mr-1"><a href="/profile/cash"
-                                                               class=" text-[14px] md:text-[18px] text-gray-600">{{__('Счет')}}</a>
+                                                               class="text-lg text-gray-600 md:mx-0 mx-3">{{__('Счет')}}</a>
                             </li>
                             <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings"
-                                                                               class="md:text-[18px] text-[14px] text-gray-700" id="settingsText">{{__('Настройки')}}</a>
+                                                                               class="text-lg border-b-4 border-green-500 pb-3 text-gray-700" id="settingsText">{{__('Настройки')}}</a>
                             </li>
 
                         </ul>
-                        <div class="md:col-span-1 md:block hidden" id="settingsIcon"><a href="/profile/settings"><i
-                                        class="fas fa-user-cog text-3xl text-gray-700"></i></a></div>
+                        <div class="md:col-span-1 md:block hidden ml-4" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-cog text-2xl border-b-4 border-green-500 pb-3"></i></a></div>
                     </div>
 
-                    <hr>
+                    <hr class="md:mt-0 mt-3">
 
 
                     {{-- settings start --}}
@@ -154,11 +153,11 @@
                                     <div class="md:w-4/5 w-full mt-5">
                                         <h3 class="font-bold text-3xl">{{__('Получать уведомления:')}}</h3>
                                         <div class="grid grid-cols-10 mt-5">
-                                            <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
+                                            <input checked type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
                                             <span class="col-span-9 ml-2">{{__('Системные уведомления')}}</span>
                                         </div>
                                         <div class="grid grid-cols-10 mt-5">
-                                            <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
+                                            <input checked type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
                                             <span class="col-span-9 ml-2">{{__('Я хочу получать новости сайта')}}</span>
                                         </div>
                                         <button
@@ -177,15 +176,15 @@
                                             <div class="acordion mt-16">
                                                 @foreach ($categories as $category )
 
-                                                    <div class="mb-4 rounded-md border shadow-md">
+                                                    <div class="mb-4 rounded-md border shadow-md py-2 pl-3 bg-yellow-100">
                                                         <div
-                                                                class="accordion text-gray-700 cursor-pointer p-[18px] w-full text-left text-[15px]">
+                                                                class="accordion text-gray-700 cursor-pointer w-full text-left text-lg">
                                                             {{ $category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                                         </div>
                                                         <div
-                                                                class="panel overflow-hidden hidden px-[18px] bg-white p-2">
+                                                                class="panel overflow-hidden hidden px-[18px] bg-white p-2 bg-yellow-100">
                                                             @foreach (\TCG\Voyager\Models\Category::query()->where('parent_id', $category->id)->get() as $category2)
-                                                                <label class="block">
+                                                                <label class="block my-1 text-base flex items-center">
                                                                     @php
                                                                         $cat_arr = explode(",",$user->category_id);
                                                                         $res_c_arr = array_search($category2->id,$cat_arr);
@@ -195,7 +194,7 @@
                                                                            @if($res_c_arr !== false) checked
                                                                            @endif name="category[]"
                                                                            value="{{$category2->id}}"
-                                                                           class="mr-2 required:border-yellow-500">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
+                                                                           class="mr-2 required:border-yellow-500 h-4 w-4">{{ $category2->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale') }}
                                                                 </label>
                                                             @endforeach
                                                         </div>
@@ -204,7 +203,7 @@
                                             </div>
                                             <input
                                                     class="focus:outline-none  block md:w-3/5 w-full text-center bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl mb-5"
-                                                    type="submit" name="submit" value="{{__('Сохранить новый пароль')}}">
+                                                    type="submit" name="submit" value="{{__('Сохранить')}}">
                                         </form>
                                         <script>
                                             var acc = document.getElementsByClassName("accordion");

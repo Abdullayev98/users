@@ -31,7 +31,7 @@
 
 
                             <div
-                                class="text-lg m-auto py-5 sm:text-2xl md:w-[500px] -mt-3 font-bold font-['Radiance,sans-serif,Noto Sans']">
+                                class="text-lg m-auto py-5 sm:text-2xl  -mt-3 font-bold font-['Radiance,sans-serif,Noto Sans']">
                                 {{__('Подтвердите адрес вашей почты')}}
                             </div>
                             <p class="text-sm sm:text-xl sm:my-8 xl:my-2 text-gray-700 traking-tight">

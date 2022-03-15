@@ -7,9 +7,9 @@
     <!-- Information section -->
     <form action="{{route('task.create.verification')}}" method="post">
         @csrf
-        <div class="mx-auto w-9/12  my-16">
+        <div class="mx-auto sm:w-9/12 w-11/12  my-16">
             <div class="grid md:grid-cols-3 gap-x-20">
-                <div class="col-span-2">
+                <div class="lg:col-span-2 col-span-3">
                     <div class="w-full text-center text-2xl">
                         {{__('Ищем исполнителя для задания')}} "{{$task->name}}"
                     </div>
@@ -43,14 +43,16 @@
                                             @elseif(session()->has('incorrect_message'))
                                                     <p class="text-red-500">{{Session::get('incorrect_message')}}</p>
                                             @endif
+                                                <input name="for_ver_func" type="hidden" value="{{$task->id}}">
 
                                      </div>
                                     </div>
                                 </div>
                             </div>
 
-                                <div class="flex w-full gap-x-4 mt-4">
-                                <a onclick="myFunction()" class="w-1/3 cursor-pointer  border border-black-700 hover:border-yellow-400 transition-colors rounded-lg py-2 text-lg text-center flex justify-center items-center gap-2">
+                                <div class="flex w-full mt-4">
+                                <a onclick="myFunction()"
+                                class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-2xl py-3 sm:px-8 px-6 rounded-2xl border border-2">
                                             <!-- <button type="button"> -->
                                             {{__('Назад')}}
                                             <!-- </button> -->
@@ -60,18 +62,19 @@
                                                 }
                                             </script>
                                         </a>
-                                        
+
                                         <input type="submit"
-                                            class="bg-green-500 hover:bg-green-600 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                                                name="" value="{{__('Далее')}}">
+                                        style="background: linear-gradient(164.22deg, #FDC4A5 4.2%, #FE6D1D 87.72%);"
+                                        class="bg-yellow-500 hover:bg-yellow-600 m-4 cursor-pointer text-white font-normal text-2xl py-3 sm:px-14 px-8 rounded-2xl "
+                                         name=""value="{{__('Далее')}}">
                                 </div>
                             </div>
                      </div>
                  </div>
 
-                <div class="lg:col-span-1 col-span-2 lg:mt-0 mt-8">
+
                     <x-faq/>
-                </div>
+
             </div>
 
         </div>

@@ -8,10 +8,10 @@
         </div>
         <div class="my-auto flex xl:flex-row flex-col md:w-1/3 w-full md:m-5 m-0">
             <a class="rounded-md mx-auto my-2 my-auto xl:mr-3" rel="noopener noreferrer" href="#" target="_blank">
-                <button type="button" class="bg-black rounded-md hover:bg-yellow-500"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
+                <button type="button" class="bg-black rounded-md hover:bg-yellow-500 md:my-0 my-1"><img src="{{asset('images/download_ios.svg')}}" alt=""> </button>
             </a>
             <a class="rounded-md mx-auto my-auto my-2" rel="noopener noreferrer" href="#" target="_blank">
-                <button type="button" class="bg-black rounded-md hover:bg-yellow-500"><img src="{{asset('images/download_android.svg')}}" alt=""> </button>
+                <button type="button" class="bg-black rounded-md hover:bg-yellow-500 md:my-0 my-1"><img src="{{asset('images/download_android.svg')}}" alt=""> </button>
             </a>
         </div>
     </div>
@@ -61,4 +61,18 @@
     <div class="text-center h-12" style="background-color: #1B1B1C">
             <h1 class="text-center text-sm py-4" style="color: #857F7F">© 2022 Universal Services (user.uz)</h1>
     </div>
+    <div class="w-full">
+        <button onclick="topFunction()" id="myBtn" title="Go to top" class="fixed z-10 hidden p-3 bg-gray-100 rounded-full shadow-md bottom-5 left-20 animate-bounce">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18">
+                </path>
+            </svg>
+        </button>
+    </div>
+   
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
+
 </footer>
+     

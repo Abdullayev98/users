@@ -1,6 +1,12 @@
 @extends("layouts.app")
 
 @section("content")
+    <script>
+        let userAddress;
+        var myMap;
+        var multiRoute;
+        var place, place1="", place2="", place3="", place4="", place5="", place6="", place7="", place8="", place9="";
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -152,7 +158,7 @@
                                     style="z-index: 40000; display: block; position: absolute; width: 521px; top: 483.5px; left: 285.35px;">
                                 </ymaps>
 
-                                <input autocomplete="off" oninput="myFunction()" id="suggest0"
+                                <input autocomplete="off" oninput="myMapFunction()" id="suggest0"
                                        class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-yellow-500"
                                        type="text" placeholder="Город, Улица, Дом" name="location0"
                                        value="{{ json_decode($task->address)->location }}">
@@ -177,9 +183,53 @@
 
                             <input name="coordinates0" type="hidden" id="coordinate"
                                    value="{{json_decode($task->address)->latitude.",". json_decode($task->address)->longitude }}">
-                            <div id="addinput" class="flex gap-y-2 flex-col">
-
-                            </div>
+{{--                            <div id="addinput" class="flex gap-y-2 flex-col">--}}
+{{--                                                                @foreach(json_decode($task->address_add) as $locate)--}}
+{{--                                    <div class="flex items-center gap-x-2">--}}
+{{--                                        <div class="flex items-center rounded-lg border  w-full py-1">--}}
+{{--                                            <button--}}
+{{--                                                class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none"--}}
+{{--                                                type="button">--}}
+{{--                                                <script>alp[{{$loop->index+1}}]</script>--}}
+{{--                                            </button>--}}
+{{--                                            <input oninput="myFunction()" id="suggest{{$loop->index+1}}"--}}
+{{--                                                   class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"--}}
+{{--                                                   type="search" name="location{{$loop->index+1}}"--}}
+{{--                                                   placeholder="Город, Улица, Дом" aria-label="Full name"--}}
+{{--                                                   value="{{ $locate->location }}">--}}
+{{--                                            <button id="{{$loop->index+1}}" onclick="getLocals(this.id)"--}}
+{{--                                                    class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded"--}}
+{{--                                                    type="button">--}}
+{{--                                                <svg className="h-4 w-4 text-purple-500" width="18" height="18"--}}
+{{--                                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"--}}
+{{--                                                     fill="none" stroke-linecap="round" stroke-linejoin="round">--}}
+{{--                                                    <path stroke="none" d="M0 0h24v24H0z"/>--}}
+{{--                                                    <path--}}
+{{--                                                        d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3"/>--}}
+{{--                                                </svg>--}}
+{{--                                            </button>--}}
+{{--                                        </div>--}}
+{{--                                        <button id="remove_inputs"--}}
+{{--                                                class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">--}}
+{{--                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" fill="none">--}}
+{{--                                                <path fill-rule="evenodd" clip-rule="evenodd"--}}
+{{--                                                      d="M3.25 2.95v-.2A2.75 2.75 0 0 1 6 0h6a2.75 2.75 0 0 1 2.75 2.75v.2h2.45a.8.8 0 0 1 0 1.6H.8a.8.8 0 1 1 0-1.6h2.45zm10 .05v-.25c0-.69-.56-1.25-1.25-1.25H6c-.69 0-1.25.56-1.25 1.25V3h8.5z"--}}
+{{--                                                      fill="#666"/>--}}
+{{--                                                <path--}}
+{{--                                                    d="M14.704 6.72a.8.8 0 1 1 1.592.16l-.996 9.915a2.799 2.799 0 0 1-2.8 2.802h-7c-1.55 0-2.8-1.252-2.796-2.723l-1-9.994a.8.8 0 1 1 1.592-.16L4.3 16.794c0 .668.534 1.203 1.2 1.203h7c.665 0 1.2-.536 1.204-1.282l1-9.995z"--}}
+{{--                                                    fill="#666"/>--}}
+{{--                                                <path--}}
+{{--                                                    d="M12.344 7.178a.75.75 0 1 0-1.494-.13l-.784 8.965a.75.75 0 0 0 1.494.13l.784-8.965zm-6.779 0a.75.75 0 0 1 1.495-.13l.784 8.965a.75.75 0 0 1-1.494.13l-.785-8.965z"--}}
+{{--                                                    fill="#666"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </button>--}}
+{{--                                        <input name="coordinates{{$loop->index+1}}" type="hidden"--}}
+{{--                                               id="coordinate{{$loop->index+1}}">--}}
+{{--                                    </div>--}}
+{{--                                    <script>x++--}}
+{{--                                        console.log(x)</script>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
                         </div>
                         <div>
 
@@ -188,7 +238,27 @@
 
                                     <div id="addinput" class="flex gap-y-2 flex-col bg-white hover:bg-gray-100 ">
 
-
+{{--                                        @php $loc_ch = array('B','C','D','E','F','G','H','I','J');--}}
+{{--                                        @endphp--}}
+{{--                                        @foreach(json_decode($task->address_add) as $locate)--}}
+{{--                                            <div class="flex items-center gap-x-2">--}}
+{{--                                                <div class="flex items-center rounded-lg border  w-full py-1">--}}
+{{--                                                    <button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">{{$loc_ch[$loop->index]}}</button>--}}
+{{--                                                    <input oninput="myFunction()" id="suggest{{$loop->index+1}}" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"--}}
+{{--                                                           type="search" name="location{{$loop->index+1}}" placeholder="Город, Улица, Дом" aria-label="Full name"--}}
+{{--                                                           value="{{ $locate->location }}">--}}
+{{--                                                    <button id="{{$loop->index+1}}" onclick="getLocals(this.id)" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">--}}
+{{--                                                        <svg className="h-4 w-4 text-purple-500" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">--}}
+{{--                                                            <path stroke="none" d="M0 0h24v24H0z"/><path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3"/></svg>--}}
+{{--                                                    </button>--}}
+{{--                                                </div>--}}
+{{--                                                <button id="remove_inputs" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">--}}
+{{--                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.25 2.95v-.2A2.75 2.75 0 0 1 6 0h6a2.75 2.75 0 0 1 2.75 2.75v.2h2.45a.8.8 0 0 1 0 1.6H.8a.8.8 0 1 1 0-1.6h2.45zm10 .05v-.25c0-.69-.56-1.25-1.25-1.25H6c-.69 0-1.25.56-1.25 1.25V3h8.5z" fill="#666"/>--}}
+{{--                                                        <path d="M14.704 6.72a.8.8 0 1 1 1.592.16l-.996 9.915a2.799 2.799 0 0 1-2.8 2.802h-7c-1.55 0-2.8-1.252-2.796-2.723l-1-9.994a.8.8 0 1 1 1.592-.16L4.3 16.794c0 .668.534 1.203 1.2 1.203h7c.665 0 1.2-.536 1.204-1.282l1-9.995z" fill="#666"/>--}}
+{{--                                                        <path d="M12.344 7.178a.75.75 0 1 0-1.494-.13l-.784 8.965a.75.75 0 0 0 1.494.13l.784-8.965zm-6.779 0a.75.75 0 0 1 1.495-.13l.784 8.965a.75.75 0 0 1-1.494.13l-.785-8.965z" fill="#666"/></svg> </button>--}}
+{{--                                                <input name="coordinates{{$loop->index+1}}" type="hidden" id="coordinate{{$loop->index+1}}">--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
 
                                     </div>
                                 </div>
@@ -225,7 +295,7 @@
                                     <div class="relative boxItem">
                                         <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
                                            data-fancybox="img1"
-                                           data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                           data-caption="<span>{{ $task->created_at }}</span>">
                                             <div class="mediateka_photo_content">
                                                 <img src="{{ asset('storage/'.$image) }}" alt="">
                                             </div>
@@ -312,15 +382,21 @@
     <script>
 
     </script>
+{{--    <script id="map_api"--}}
+{{--            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}&onload=onLoad"--}}
+{{--            type="text/javascript">--}}
+{{--    </script>--}}
     <script id="map_api"
-            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}&onload=onLoad"
+            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}"
             type="text/javascript">
     </script>
+
     <script>
         @if(!$errors->has('end_date'))
         $('#start-date').css('display', 'inline-block');
         @endif
     </script>
+
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
     <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
@@ -329,8 +405,43 @@
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
     <script src="{{ asset('js/changetask.js') }}"></script>
-    <script src="{{ asset('js/location.js') }}">myFunction();</script>
+
     <script>
+        function ch_task(){
+            @php $host = request()->getHost();@endphp
+            var settings = {
+                "url": "http://{{$host}}/api/task/{{$task->id}}",
+                "method": "GET",
+                "timeout": 0,
+            };
+            $.ajax(settings).done(function (response) {
+                ajax_location = $.parseJSON(response.address_add);
+                // console.log(ajax_location);
+                if (ajax_location.length != 0){
+                    for (let i=0; i<=ajax_location.length; i++){
+                    $("#addinput").append('<div class="flex items-center gap-x-2">' +
+                        '<div class="flex items-center rounded-lg border  w-full py-1"> ' +
+                        '<button class="Alfavit flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  '+ alp[i] +' </button>' +
+                        ' <input oninput="myMapFunction()" id="suggest'+(x)+'" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"' +
+                        ' type="search" name="location'+ x +'" placeholder="Город, Улица, Дом" aria-label="Full name" value="'+ajax_location[i].location+'"> ' +
+                        '<button id="'+ x +'" onclick="getLocals(this.id)" class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">'+
+                        '<svg className="h-4 w-4 text-purple-500" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">'+
+                        '<path stroke="none" d="M0 0h24v24H0z"/><path d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3"/></svg></button>'+
+                        '</div><button id="remove_inputs" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> ' +
+                        '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.25 2.95v-.2A2.75 2.75 0 0 1 6 0h6a2.75 2.75 0 0 1 2.75 2.75v.2h2.45a.8.8 0 0 1 0 1.6H.8a.8.8 0 1 1 0-1.6h2.45zm10 .05v-.25c0-.69-.56-1.25-1.25-1.25H6c-.69 0-1.25.56-1.25 1.25V3h8.5z" fill="#666"/>' +
+                        '<path d="M14.704 6.72a.8.8 0 1 1 1.592.16l-.996 9.915a2.799 2.799 0 0 1-2.8 2.802h-7c-1.55 0-2.8-1.252-2.796-2.723l-1-9.994a.8.8 0 1 1 1.592-.16L4.3 16.794c0 .668.534 1.203 1.2 1.203h7c.665 0 1.2-.536 1.204-1.282l1-9.995z" fill="#666"/>' +
+                        '<path d="M12.344 7.178a.75.75 0 1 0-1.494-.13l-.784 8.965a.75.75 0 0 0 1.494.13l.784-8.965zm-6.779 0a.75.75 0 0 1 1.495-.13l.784 8.965a.75.75 0 0 1-1.494.13l-.785-8.965z" fill="#666"/></svg> </button> ' +
+                        '<input name="coordinates'+ x +'" type="hidden" id="coordinate'+ x +'"> </div>    ');
+                    x++;
+                    }
+                }
+            });
+        }
+        ch_task();
+    </script>
+
+    <script>
+
         var element = document.getElementById('phone_number');
         var maskOptions = {
             mask: '+998(00)000-00-00',
@@ -435,7 +546,7 @@
             @else
                 <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
                    data-fancybox="img1"
-                   data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                   data-caption="<span>{{ $task->created_at }}</span>">
                     <div class="mediateka_photo_content">
                         <img src="{{ asset('storage/'.$image)  }}" alt="">
                     </div>
@@ -447,6 +558,7 @@
 @endsection
 
 @section('javasript')
+
 
 
 @endsection

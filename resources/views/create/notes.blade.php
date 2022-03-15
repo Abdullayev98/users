@@ -9,9 +9,9 @@
 <x-roadmap/>
 <form class="" action="{{route('task.create.note.store', $task->id)}}" method="post" enctype="multipart/form-data">
   @csrf
-<div class="mx-auto md:w-9/12  w-11/12 my-8">
+<div class="mx-auto sm:w-9/12 w-11/12 my-8">
 <div class="grid md:grid-cols-3 lg:gap-x-20 md:gap-x-14">
-  <div class="col-span-2">
+  <div class="lg:col-span-2 col-span-3">
     <div class="w-full text-center text-2xl">
     {{__('Ищем исполнителя для задания')}} "{{$task->name}}"
     </div>
@@ -20,7 +20,7 @@
     </div>
     <div class="relative pt-1">
       <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
-        <div style="width: 90%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+        <div style="width: 90%" class="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
       </div>
     </div>
     <div class="shadow-xl w-full mx-auto mt-7 rounded-2xl px-6 mb-6 p-6 md:px-20">
@@ -72,7 +72,8 @@
                  @endforeach
              </div>
              <div class="flex w-full gap-x-4 mt-4">
-             <a onclick="myFunction()" class="w-1/3 cursor-pointer  border border-black-700 hover:border-yellow-400 transition-colors rounded-lg py-2 text-lg text-center flex justify-center items-center gap-2">
+             <a onclick="myFunction()" 
+             class="bg-white my-4 cursor-pointer hover:border-yellow-500 text-gray-600 hover:text-yellow-500 transition duration-300 font-normal text-base py-3 sm:px-8 px-6 rounded-2xl  border border-2">
                                             <!-- <button type="button"> -->
                                             {{__('Назад')}}
                                             <!-- </button> -->
@@ -84,8 +85,9 @@
                                         </a>
 
                <input type="submit"
-                class="bg-green-500 hover:bg-green-600 w-2/3 cursor-pointer text-white font-bold py-5 px-5 rounded"
-                               name="" value="{{__('Далее')}}">
+               style="background: linear-gradient(164.22deg, #FDC4A5 4.2%, #FE6D1D 87.72%);"
+               class="bg-yellow-500 hover:bg-yellow-600 m-4 cursor-pointer text-white font-normal text-xl py-3 sm:px-14 px-8 rounded-2xl "
+                name="" value="{{__('Далее')}}">
              </div>
 
 
