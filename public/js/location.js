@@ -16,7 +16,7 @@ function init() {
     var suggestView0 = new ymaps.SuggestView('suggest0');
 
     suggestView0.events.add('select', function () {
-        myFunction();
+        myMapFunction();
     });
     var alp =  ["B", "C", "D", "E", "F","G","H","I","J"];
 
@@ -24,8 +24,8 @@ function init() {
         if(x < 10){
             $("#addinput").append('<div class="flex items-center gap-x-2">' +
                 '<div class="flex items-center rounded-lg border  w-full py-1"> ' +
-                '<button class="flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  '+ alp[x-1] +' </button>' +
-                ' <input oninput="myFunction()" id="suggest'+(x)+'" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"' +
+                '<button class="Alfavit flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  '+ alp[x-1] +' </button>' +
+                ' <input oninput="myMapFunction()" id="suggest'+(x)+'" class="appearance-none bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"' +
                 ' type="search" name="location'+ x +'" placeholder="Город, Улица, Дом" aria-label="Full name"> ' +
                 '<button id="'+ x +'" onclick="getLocals(this.id)" class="flex-shrink-0 border-transparent border-4 text-yellow-500 hover:text-yellow-600 text-sm py-1 px-2 rounded" type="button">'+
                 '<svg className="h-4 w-4 text-yellow-500" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">'+
@@ -45,7 +45,7 @@ function init() {
         for(var i=1; i<=x; i++){
             suggestView[i] = new ymaps.SuggestView('suggest'+i);
             suggestView[i].events.add('select', function () {
-                myFunction();
+                myMapFunction();
             });
         }
     });
@@ -55,7 +55,7 @@ function init() {
         if(x < 10){
             $("#addbtn").show();
         }
-        myFunction();
+        myMapFunction();
     });
 
     $("#getlocal").click(function(){
@@ -69,13 +69,13 @@ function init() {
                 userAddress = result.geoObjects.get(0).properties.get('text');
                 document.getElementById("suggest0").value = userAddress;
                 document.getElementById("coordinate").value = result.geoObjects.get(0).geometry.getCoordinates();
-                myFunction();
+                myMapFunction();
             },
             function(err) {
                 console.log('Ошибка: ' + err)
             });
 
-        // myFunction();
+        // myMapFunction();
         // $("#getlocal").hide();
 
     });
@@ -94,7 +94,7 @@ function getLocals(xx) {
             userAddress = result.geoObjects.get(0).properties.get('text');
             document.getElementById("suggest"+xx).value = userAddress;
             document.getElementById("coordinate"+xx).value = result.geoObjects.get(0).geometry.getCoordinates();
-            myFunction();
+            myMapFunction();
         },
         function (err) {
             console.log('Ошибка: ' + err)
@@ -103,7 +103,7 @@ function getLocals(xx) {
 
 // Mapga joyni yuklash
 
-function myFunction() {
+function myMapFunction() {
     place = document.getElementById("suggest0").value;
     var myGeocoder = ymaps.geocode(place);
     myGeocoder.then(
