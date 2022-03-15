@@ -295,7 +295,7 @@
                                     <div class="relative boxItem">
                                         <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
                                            data-fancybox="img1"
-                                           data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                           data-caption="<span>{{ $task->created_at }}</span>">
                                             <div class="mediateka_photo_content">
                                                 <img src="{{ asset('storage/'.$image) }}" alt="">
                                             </div>
@@ -546,7 +546,7 @@
             @else
                 <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
                    data-fancybox="img1"
-                   data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                   data-caption="<span>{{ $task->created_at }}</span>">
                     <div class="mediateka_photo_content">
                         <img src="{{ asset('storage/'.$image)  }}" alt="">
                     </div>

@@ -6,6 +6,8 @@ use App\Http\Requests\PortfolioRequest;
 use App\Http\Requests\User\PerformerCreateRequest;
 use App\Http\Requests\UserPasswordRequest;
 use App\Http\Requests\UserUpdateDataRequest;
+use App\Services\User\Active;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use \TCG\Voyager\Models\Category;
@@ -27,6 +29,19 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ProfileController extends Controller
 {
     //portfolio
+    public function __construct()
+    {
+
+//        if (auth()->check()){
+
+//            $user = Auth::user();
+//
+//        $user->last_seen_at = Carbon::now()->addMinutes(5);
+//            $user->save();
+//        }
+
+    }
+
     public function comment(Request $request)
     {
         $user = Auth::user();
@@ -93,6 +108,7 @@ class ProfileController extends Controller
     public function profileData()
     {
         $user = Auth::user();
+
         $views = $user->views_count;
         $task = $user->tasks_count;
         $task_count = $user->performer_tasks()->where('status', 4)->count();
