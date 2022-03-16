@@ -36,9 +36,6 @@
                                         <span class="block text-base font-bold">{{__('Уведомления')}}</span>
                                     </div>
                                     <ul class="py-1" aria-labelledby="notification">
-                                        {{--                                        <li>--}}
-                                        {{--                                            <a  class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="fas fa-star"></i>{{__('Осталось только установить пароль')}}</a>--}}
-                                        {{--                                        </li>--}}
                                         <li>
                                             <a href="/profile/settings" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__("В раздел 'Настройки'")}}</a>
                                         </li>

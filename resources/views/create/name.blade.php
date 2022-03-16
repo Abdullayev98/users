@@ -53,9 +53,8 @@
                             <div id="categories">
                                 <div class="flex lg:flex-row flex-col">
                                     <div class="lg:w-1/2 w-full lg:pr-3 py-5">
-                                        <select class="select2 parent-category "
-                                                style="width: 100%"
-                                        >
+                                        <select class="select2 parent-category"
+                                                style="width: 100%">
                                             @foreach(getCategoriesByParent(null) as $parentCategory)
                                                 <option value="{{ $parentCategory->id }}">{{ $parentCategory->getTranslatedAttribute('name') }}</option>
                                             @endforeach
@@ -66,8 +65,7 @@
 
                                             <div class="hidden child-category child-category-{{ $category->id }}">
                                                 <select class="select2  child-category1"
-                                                        style="width: 100%"
-                                                >
+                                                        style="width: 100%">
                                                     @foreach($category->childs as $child)
                                                         <option value="{{ $child->id }}" class="hidden" data-parent="{{ $child->parent_id }}">{{ $child->getTranslatedAttribute('name') }}</option>
                                                     @endforeach
