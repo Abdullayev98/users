@@ -143,3 +143,71 @@
     window.location.reload();
 });
 
+
+
+$(document).ready(function () {
+    $(".st-remove-label").each(function () {
+        $(this).removeAttr("style");
+        $(this).addClass("my-4");
+        var tweet = $(this).attr("data-network");
+        if (tweet == 'twitter') {
+            $(this).after('<br>');
+        }
+    });
+});
+
+function toggleModal44(){
+    document.getElementById("modal-id44").classList.toggle("hidden");
+    document.getElementById("modal-id44" + "-backdrop").classList.toggle("hidden");
+    document.getElementById("modal-id44").classList.toggle("flex");
+    document.getElementById("modal-id44" + "-backdrop").classList.toggle("flex");
+     }
+     function    toggleModal45(){
+    document.getElementById("modal-id45").classList.toggle("hidden");
+    document.getElementById("modal-id45" + "-backdrop").classList.toggle("hidden");
+    document.getElementById("modal-id45").classList.toggle("flex");
+    document.getElementById("modal-id45" + "-backdrop").classList.toggle("flex");
+     }
+        const telegram=document.querySelector(".telegram");
+        const twitter=document.querySelector(".twitter");
+        const whatsapp=document.querySelector(".whatsapp");
+        const facebook=document.querySelector(".facebook");
+        const linkedin=document.querySelector(".linkedin");
+        const instagram=document.querySelector(".instagram");
+        const email=document.querySelector(".email");
+        const google=document.querySelector(".google");
+
+        const pageUrl=location.href;
+        const telegramApi=`https://t.me/share/url?url=${pageUrl}`;
+        const twitterApi=`https://twitter.com/intent/tweet?text=${pageUrl}`;
+        const whatsappApi=`https://wa.me/?text=${pageUrl}`;
+        const facebookApi=`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+        const linkedinApi=`https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+        const instagramApi=`https://www.instagram.com/?url=${pageUrl}`;
+        const emailApi=`https://mail.google.com/mail/?url=${pageUrl}`;
+        const googleApi=`https://plus.google.com/share?url=${pageUrl}`;
+
+        telegram.addEventListener('click', ()=>{
+            window.open(url=telegramApi, target='blank')
+        })
+        twitter.addEventListener('click', ()=>{
+            window.open(url=twitterApi, target='blank')
+        })
+        whatsapp.addEventListener('click', ()=>{
+            window.open(url=whatsappApi, target='blank')
+        })
+        facebook.addEventListener('click', ()=>{
+            window.open(url=facebookApi, target='blank')
+        })
+        linkedin.addEventListener('click', ()=>{
+            window.open(url=linkedinApi, target='blank')
+        })
+        instagram.addEventListener('click', ()=>{
+            window.open(url=instagramApi, target='blank')
+        })
+        email.addEventListener('click', ()=>{
+            window.open(url=emailApi, target='blank')
+        })
+        google.addEventListener('click', ()=>{
+            window.open(url=googleApi, target='blank')
+        })

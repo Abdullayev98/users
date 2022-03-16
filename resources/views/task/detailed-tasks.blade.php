@@ -53,7 +53,7 @@
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
-                                    <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg bg-yellow-400">{{$task->budget}}</p>
+                                    <p class="p-2 md:px-3 text-black rounded-lg bg-yellow-400 w-1/4">{{$task->budget}}</p>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id)
                                             <a href="{{ route('task.changetask', $task->id) }}"
@@ -80,7 +80,7 @@
                                     @else
                                         <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">{{__('Закрыто')}}</p>
                                     @endif
-                                    <p class="font-normal md:border-r-2 border-gray-400 px-2">{{$task->views }}  {{__('просмотров')}}</p>
+                                    <p class="font-normal md:border-r-2 border-gray-400 md:px-2 px-0">{{$task->views }}  {{__('просмотров')}}</p>
                                     <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
                                     <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name') }}</p>
                                     @if($task->user_id == auth()->id())
@@ -661,12 +661,14 @@
                             {{__('Напишите свое возражение по созданной задаче')}}
                         </h1>
                     </div>
-                    <div class="text-center h-48 mt-6">
+                    <div class="text-center my-6">
                         
                         <form action="">
-                            <input type="hidden" id="task" value="{{ $task->id }}">
-                            <input type="text" class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500">
-                            <input type="submit" value="{{__('Отправить')}}" class="bg-yellow-500 mt-8 py-3 px-5 rounded-lg text-white text-xl cursor-pointer font-medium">
+                            <select name="" id="" class="w-4/5 border-2 border-gray-500 rounded-lg mb-4 py-2 px-2 focus:outline-none hover:border-yellow-500">
+                                <option value="">Span</option>
+                            </select>
+                            <textarea name="" id="" class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500"></textarea>
+                            <input type="submit" value="{{__('Отправить')}}" class="bg-yellow-500 mt-4 py-3 px-5 rounded-lg text-white text-xl cursor-pointer font-medium border-2 border-gray-500 hover:bg-yellow-600">
                         </form>
                    
                     </div>
@@ -681,80 +683,6 @@
                 async='async'></script>
         <input type="hidden" id="task" value="{{ $task->id }}">
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
-
-        <script>
-            $(document).ready(function () {
-                $(".st-remove-label").each(function () {
-                    $(this).removeAttr("style");
-                    $(this).addClass("my-4");
-                    var tweet = $(this).attr("data-network");
-                    if (tweet == 'twitter') {
-                        $(this).after('<br>');
-                    }
-                });
-            });
-        </script>
-        <script>
-             function toggleModal44(){
-            document.getElementById("modal-id44").classList.toggle("hidden");
-            document.getElementById("modal-id44" + "-backdrop").classList.toggle("hidden");
-            document.getElementById("modal-id44").classList.toggle("flex");
-            document.getElementById("modal-id44" + "-backdrop").classList.toggle("flex");
-             }
-         function toggleModal45(){
-            document.getElementById("modal-id45").classList.toggle("hidden");
-            document.getElementById("modal-id45" + "-backdrop").classList.toggle("hidden");
-            document.getElementById("modal-id45").classList.toggle("flex");
-            document.getElementById("modal-id45" + "-backdrop").classList.toggle("flex");
-             }
-             const telegram=document.querySelector(".telegram");
-        const twitter=document.querySelector(".twitter");
-        const whatsapp=document.querySelector(".whatsapp");
-        const facebook=document.querySelector(".facebook");
-        const linkedin=document.querySelector(".linkedin");
-        const instagram=document.querySelector(".instagram");
-        const email=document.querySelector(".email");
-        const google=document.querySelector(".google");
-
-        const pageUrl=location.href;
-        const telegramApi=`https://t.me/share/url?url=${pageUrl}`;
-        const twitterApi=`https://twitter.com/intent/tweet?text=${pageUrl}`;
-        const whatsappApi=`https://wa.me/?text=${pageUrl}`;
-        const facebookApi=`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-        const linkedinApi=`https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
-        const instagramApi=`https://www.instagram.com/?url=${pageUrl}`;
-        const emailApi=`https://mail.google.com/mail/?url=${pageUrl}`;
-        const googleApi=`https://plus.google.com/share?url=${pageUrl}`;
-
-        telegram.addEventListener('click', ()=>{
-            window.open(url=telegramApi, target='blank')
-        })
-
-        twitter.addEventListener('click', ()=>{
-            window.open(url=twitterApi, target='blank')
-        })
-
-        whatsapp.addEventListener('click', ()=>{
-            window.open(url=whatsappApi, target='blank')
-        })
-        facebook.addEventListener('click', ()=>{
-            window.open(url=facebookApi, target='blank')
-        })
-        linkedin.addEventListener('click', ()=>{
-            window.open(url=linkedinApi, target='blank')
-        })
-        instagram.addEventListener('click', ()=>{
-            window.open(url=instagramApi, target='blank')
-        })
-
-        email.addEventListener('click', ()=>{
-            window.open(url=emailApi, target='blank')
-        })
-        google.addEventListener('click', ()=>{
-            window.open(url=googleApi, target='blank')
-        })
-        </script>
-
         <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
         <script
             src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
