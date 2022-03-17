@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Task;
 
 use App\Http\Requests\Task\UpdateRequest;
+use App\Models\Compliance;
+use App\Models\CompliancesType;
 use App\Models\CustomField;
 use App\Models\CustomFieldsValue;
 use App\Models\WalletBalance;
@@ -67,16 +69,19 @@ class SearchTaskController extends VoyagerBaseController
 
     public function task(Task $task)
     {
+        $complianceType =CompliancesType::all();
         $review = null;
         if ($task->reviews_count == 2) $review == true;
         if (auth()->check()){
             $task->views++;
             $task->save();
         }
-
-        return view('task.detailed-tasks', compact('task', 'review'));
+        return view('task.detailed-tasks', compact('task', 'review','complianceType'));
     }
 
+    public function comlianse_save(Request $request){
+        dd($request);
+    }
 
     public function selectPerformer(TaskResponse $response){
         dd(23423);
@@ -185,6 +190,7 @@ class SearchTaskController extends VoyagerBaseController
 //        dd($task);
         return view('task.changetask', compact('task'));
     }
+
 
 
 }
