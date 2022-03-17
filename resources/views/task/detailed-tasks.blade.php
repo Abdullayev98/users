@@ -53,7 +53,7 @@
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
-                                    <p class="py-2 md:px-3 bg-amber-200 text-black-500 rounded-lg bg-yellow-400">{{$task->budget}}</p>
+                                    <p class="p-2 md:px-3 text-black rounded-lg bg-yellow-400 w-1/4">{{$task->budget}}</p>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id)
                                             <a href="{{ route('task.changetask', $task->id) }}"
@@ -80,7 +80,7 @@
                                     @else
                                         <p class="text-red-400 font-normal md:border-r-2 border-gray-400 pr-2">{{__('Закрыто')}}</p>
                                     @endif
-                                    <p class="font-normal md:border-r-2 border-gray-400 px-2">{{$task->views }}  {{__('просмотров')}}</p>
+                                    <p class="font-normal md:border-r-2 border-gray-400 md:px-2 px-0">{{$task->views }}  {{__('просмотров')}}</p>
                                     <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
                                     <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name') }}</p>
                                     @if($task->user_id == auth()->id())
@@ -522,47 +522,15 @@
                         <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
                                 <h1 class="text-xl font-medium mb-4">{{__('Задание')}} № {{$task->id}}</h1>
-                                <div
-                                    x-data="{ 'showModal': false }"
-                                    @keydown.escape="showModal = false">
-                                    <!-- Trigger for Modal -->
-                                    <button
-                                        class="copylink px-3 py-3 border border-3 ml-4 rounded-md border-gray-300 hover:border-gray-400"
-                                        @click="showModal = true">
-                                        <i class="fas fa-share-alt text-grey-500"></i>
+                                <div>
+                                    <button onclick="toggleModal44()"
+                                    class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
+                                    <i class="fas fa-share-alt"></i>
                                     </button>
-                                    <!-- Modal -->
-                                    <div
-                                        class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50"
-                                        x-show="showModal"
-                                    >
-                                        <!-- Modal inner -->
-                                        <div
-                                            class="max-w-3xl px-6 py-4 mx-auto text-left bg-white h-60 rounded shadow-lg"
-                                            @click.away="showModal = false"
-                                            x-transition:enter="motion-safe:ease-out duration-300"
-                                            x-transition:enter-start="opacity-0 scale-90"
-                                            x-transition:enter-end="opacity-100 scale-100"
-                                        >
-                                            <!-- Title / Close-->
-                                            <div class="flex items-center justify-between">
-                                                <h5 class="mr-3 text-black max-w-none">{{__('Поделиться заданием')}}</h5>
-
-                                                <button type="button" class="z-50 cursor-pointer"
-                                                        @click="showModal = false">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                              stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <div class="p-6 space-y-2">
-                                                <div class="sharethis-inline-share-buttons"></div>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                                    <button onclick="toggleModal45()"
+                                    class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
+                                    <i class="far fa-flag"></i>
+                                    </button>
                                 </div>
 
                             </div>
@@ -611,8 +579,6 @@
                         <div class=" text-center  rounded-t">
                             <button id="close-id4"
                                     class=" w-100 h-16 absolute top-1 right-4">
-                                {{--                                                            <i class="fas fa-times text-gray-500 text-slate-400 hover:text-slate-600 text-xl w-full"--}}
-                                {{--                                                            ></i>--}}
                             </button>
                             <h3 class="font-semibold text-gray-700 text-3xl block">
                                 {{__(' Оставить отзыв')}}
@@ -653,29 +619,70 @@
             </form>
         </div>
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id4-backdrop"></div>
-
         {{--        share in webpages--}}
+
+        {{-- share modal start --}}
+        <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none        justify-center items-center" style="background-color:rgba(0,0,0,0.5)" id="modal-id44">
+            <div class="relative w-full my-32 mx-auto max-w-3xl" id="modal44">
+                <div class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col sm:w-4/5 w-full bg-white outline-none focus:outline-none">
+                    <div class=" text-center p-6  rounded-t">
+                        <button type="submit"  onclick="toggleModal44()" class="rounded-md w-100 h-16 absolute top-1 right-4 focus:outline-none">
+                            <i class="fas fa-times text-xl w-full"></i>
+                        </button>
+                        <h1 class="font-bold text-3xl block mt-6">
+                            {{__('Рассказать о заказе')}}
+                        </h1>
+                        <p class="my-3">{{__('Расскажите об этом заказе в социальных сетях — оно заслуживает того, чтобы его увидели.')}}</p>
+                    </div>
+                        <div class="text-center mb-8 flex flex-wrap md:w-4/5 w-full mx-auto">
+                            <span class="telegram"><i class="fab fa-telegram px-4 py-3 bg-blue-500 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                            <span class="instagram"><i class="fab fa-instagram px-4 py-3 bg-red-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                            <span class="whatsapp"><i class="fab fa-whatsapp px-4 py-3 bg-green-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                            <span class="facebook"><i class="fab fa-facebook px-4 py-3 bg-blue-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                            <span class="email"><i class="fas fa-at px-4 py-3 bg-yellow-600 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                            <span class="twitter"><i class="fab fa-twitter px-3 py-2.5 text-blue-500 text-white rounded-lg m-4 text-4xl cursor-pointer border-2 border-blue-500"></i></span>
+                            <span class="linkedin"><i class="fab fa-linkedin px-4 py-3 bg-blue-400 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                            <span class="google"><i class="fab fa-google px-4 py-3 bg-red-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>    
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id45-backdrop"></div>
+        {{-- share modal end --}}
+        {{-- podelitsa modal start --}}
+        <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none        justify-center items-center" style="background-color:rgba(0,0,0,0.5)" id="modal-id45">
+            <div class="relative w-full my-6 mx-auto max-w-3xl" id="modal44">
+                <div class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col sm:w-4/5 w-full bg-white outline-none focus:outline-none">
+                    <div class=" text-center p-6  rounded-t">
+                        <button type="submit"  onclick="toggleModal45()" class="rounded-md w-100 h-16 absolute top-1 right-4 focus:outline-none">
+                            <i class="fas fa-times text-xl w-full"></i>
+                        </button>
+                        <h1 class="font-medium text-3xl block mt-6">
+                            {{__('Напишите свое возражение по созданной задаче')}}
+                        </h1>
+                    </div>
+                    <div class="text-center my-6">
+                        
+                        <form action="">
+                            <select name="" id="" class="w-4/5 border-2 border-gray-500 rounded-lg mb-4 py-2 px-2 focus:outline-none hover:border-yellow-500">
+                                <option value="">Span</option>
+                            </select>
+                            <textarea name="" id="" class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500"></textarea>
+                            <input type="submit" value="{{__('Отправить')}}" class="bg-yellow-500 mt-4 py-3 px-5 rounded-lg text-white text-xl cursor-pointer font-medium border-2 border-gray-500 hover:bg-yellow-600">
+                        </form>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id45-backdrop"></div>
+        {{-- podelitsa modal end --}}
 
         <script type='text/javascript'
                 src='https://platform-api.sharethis.com/js/sharethis.js#property=620cba4733b7500019540f3c&product=inline-share-buttons'
                 async='async'></script>
         <input type="hidden" id="task" value="{{ $task->id }}">
         <script src="{{asset('js/tasks/detailed-tasks.js')}}"></script>
-
-        <script>
-            $(document).ready(function () {
-                $(".st-remove-label").each(function () {
-                    $(this).removeAttr("style");
-                    $(this).addClass("my-4");
-                    var tweet = $(this).attr("data-network");
-                    if (tweet == 'twitter') {
-                        $(this).after('<br>');
-                    }
-                });
-            });
-        </script>
-
-
         <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
         <script
             src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
