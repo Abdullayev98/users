@@ -87,7 +87,7 @@
                 <div class="mx-auto">
                     <div class="w-full flex-1 mt-8">
                         <input name="TypeList" list="TypeList" type="text" id="header_input" maxlength="40" placeholder="{{__('Чем вам помочь...')}}"
-                               class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-xl focus:placeholder-transparent focus:outline-none focus:border-yellow-500 flex-1 text-lg border-0">
+                               class="input_text w-full md:px-4 px-2 py-2.5 md:py-3 rounded-xl relative z-10 focus:placeholder-transparent focus:outline-none focus:border-yellow-500 flex-1 text-lg border-0">
                         <datalist id="TypeList">
                             @foreach(\TCG\Voyager\Models\Category::query()->where('parent_id','!=',NULL)->get() as $category)
                                 <option
@@ -95,14 +95,14 @@
                             @endforeach
                         </datalist>
                         <a href="" type="submit" id="createhref"
-                           class="float-right sm:block hidden text-lg border bg-blue-900 z-0 border-transparent rounded-xl md:px-3.5 px-2 pt-2 pb-1.5 md:py-2.2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
+                           class="float-right sm:block hidden text-lg border bg-blue-900 z-10 border-transparent rounded-xl md:px-3.5 px-2 pt-2 pb-1.5 md:py-2.2 mr-1 md:mt-2 mt-2.5 -ml-24 md:-top-14 -top-14 relative text-white">
                             {{__('Заказать услугу')}}
                         </a>
                         <a href="" type="submit" id="createhref"
-                           class="float-right sm:hidden block text-lg border bg-blue-900 z-0 border-transparent rounded-xl md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 -top-14 relative text-white">
+                           class="float-right sm:hidden block text-lg border bg-blue-900 z-10 border-transparent rounded-xl md:px-3.5 px-2 pt-2 pb-1.5 md:py-2 mr-1 md:mt-2 mt-2.5 -ml-24 -top-14 relative text-white">
                             Заказать
                         </a>
-                        <div class="mt-8 float-right">
+                        <div class="mt-8 float-left relative z-10">
                             <a href="{{ setting('site.instagram_url') }}" class="">
                                 <i class="fab fa-instagram text-yellow-500 hover:text-yellow-600 mx-2"></i>
                             </a>
