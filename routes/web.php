@@ -74,6 +74,7 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 
 
 Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail");
+Route::post('/detailed-tasks', [SearchTaskController::class, 'comlianse_save'])->name("tasks.detailed");
 
 Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask")->middleware('auth');
 Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("task.update")->middleware('auth');

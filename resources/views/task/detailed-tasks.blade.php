@@ -527,10 +527,17 @@
                                     class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
                                     <i class="fas fa-share-alt"></i>
                                     </button>
-                                    <button onclick="toggleModal45()"
-                                    class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
-                                    <i class="far fa-flag"></i>
-                                    </button>
+                                    @if (Auth::check())
+                                        <button onclick="toggleModal45()"
+                                        class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
+                                        <i class="far fa-flag"></i>
+                                        </button>
+                                    @else
+                                        <button
+                                        class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-400">
+                                        <i class="far fa-flag"></i>
+                                        </button>
+                                    @endif
                                 </div>
 
                             </div>
@@ -663,11 +670,16 @@
                     </div>
                     <div class="text-center my-6">
                         
-                        <form action="">
-                            <select name="" id="" class="w-4/5 border-2 border-gray-500 rounded-lg mb-4 py-2 px-2 focus:outline-none hover:border-yellow-500">
-                                <option value="">Span</option>
+                        <form action="{{route('tasks.detailed')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="taskId" value="{{ $task->id }}">
+                            <input type="hidden" name="userId" value="{{ Auth::user()->id }}">
+                            <select name="c_type" id="" class="w-4/5 border-2 border-gray-500 rounded-lg mb-4 py-2 px-2 focus:outline-none hover:border-yellow-500">
+                               @foreach ($complianceType as $complType)
+                                    <option value="{{$complType->id}}">{{$complType->name}}</option>
+                               @endforeach
                             </select>
-                            <textarea name="" id="" class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500"></textarea>
+                            <textarea name="c_text" id="" class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500"></textarea>
                             <input type="submit" value="{{__('Отправить')}}" class="bg-yellow-500 mt-4 py-3 px-5 rounded-lg text-white text-xl cursor-pointer font-medium border-2 border-gray-500 hover:bg-yellow-600">
                         </form>
                    
