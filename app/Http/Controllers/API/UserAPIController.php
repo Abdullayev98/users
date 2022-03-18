@@ -64,11 +64,8 @@ class UserAPIController extends Controller
      */
     function login(UserLoginRequest $request)
     {
-        $data = $request->validated();
+        $request->authenticate();
 
-        if (!auth()->attempt($data)) {
-            return response(['message' => 'Invalid Email or Password']);
-        }
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
 
         return response(['user' => auth()->user(), 'access_token'=>$accessToken]);

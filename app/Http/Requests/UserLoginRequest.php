@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Validation\ValidationException;
 
 class UserLoginRequest extends FormRequest
 {
@@ -25,10 +29,28 @@ class UserLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'email' => 'required',
             'password'=> 'required'
         ];
     }
+    public function authenticate(){
+
+        $user = User::where('email',$this->email)
+            ->orWhere('phone_number', $this->email)
+            ->first();
+
+         if (!$user || !Hash::check($this->password, $user->password)){
+             throw ValidationException::withMessages([
+                 'email' => __('login.emailError') // Tarjima qilish kerak
+             ]);
+         }
+        auth()->login($user);
+    }
+
+
+
+
+
     public function messages()
     {
         return [

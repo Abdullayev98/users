@@ -48,12 +48,12 @@
                 @else
                     <div class="md:flex mx-auto w-full">
                         @endif
-                        <div class="mt-8 lg:flex mb-8">
+                        <div class="mt-8 lg:flex mb-8 w-full">
                             {{-- left sidebar start --}}
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
-                                    <p class="p-2 md:px-3 text-black rounded-lg bg-yellow-400 w-1/4">{{$task->budget}}</p>
+                                    <span class="text-black rounded-lg bg-yellow-400 p-2">{{$task->budget}}</span>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id)
                                             <a href="{{ route('task.changetask', $task->id) }}"
@@ -527,10 +527,17 @@
                                     class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
                                     <i class="fas fa-share-alt"></i>
                                     </button>
-                                    <button onclick="toggleModal45()"
-                                    class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
-                                    <i class="far fa-flag"></i>
-                                    </button>
+                                    @if (Auth::check())
+                                        <button onclick="toggleModal45()"
+                                        class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
+                                        <i class="far fa-flag"></i>
+                                        </button>
+                                    @else
+                                        <button
+                                        class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-400">
+                                        <i class="far fa-flag"></i>
+                                        </button>
+                                    @endif
                                 </div>
 
                             </div>
@@ -543,9 +550,16 @@
                                         >
                                 </div>
                                 <div class="">
+                                    @if ($task->user->id == auth()->user()->id)
+                                    <a href="/profile"
+                                        class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
+                                     </a>
+                                     @else
                                     <a href="/performers/{{$task->user->id}}"
                                        class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
                                     </a>
+                                    @endif
+
                                     <br>
                                     <a class="text-xl text-gray-500">
                                         @if($task->user->age != "")
@@ -663,11 +677,16 @@
                     </div>
                     <div class="text-center my-6">
                         
-                        <form action="">
-                            <select name="" id="" class="w-4/5 border-2 border-gray-500 rounded-lg mb-4 py-2 px-2 focus:outline-none hover:border-yellow-500">
-                                <option value="">Span</option>
+                        <form action="{{route('tasks.detailed')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="taskId" value="{{ $task->id }}">
+                            <input type="hidden" name="userId" value="{{ Auth::user()->id }}">
+                            <select name="c_type" id="" class="w-4/5 border-2 border-gray-500 rounded-lg mb-4 py-2 px-2 focus:outline-none hover:border-yellow-500">
+                               @foreach ($complianceType as $complType)
+                                    <option value="{{$complType->id}}">{{$complType->name}}</option>
+                               @endforeach
                             </select>
-                            <textarea name="" id="" class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500"></textarea>
+                            <textarea name="c_text" id="" class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500"></textarea>
                             <input type="submit" value="{{__('Отправить')}}" class="bg-yellow-500 mt-4 py-3 px-5 rounded-lg text-white text-xl cursor-pointer font-medium border-2 border-gray-500 hover:bg-yellow-600">
                         </form>
                    

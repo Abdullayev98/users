@@ -1,22 +1,21 @@
 @extends("layouts.app")
 
 @section("content")
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
+{{--    <style>.flatpickr-calendar{width:230px;} </style>--}}
+<style>.flatpickr-calendar{max-width: 295px; width: 100%;} </style>
     <script>
         let userAddress;
         var myMap;
         var multiRoute;
         var place, place1="", place2="", place3="", place4="", place5="", place6="", place7="", place8="", place9="";
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
-    <style>
-        .flatpickr-calendar {
-            max-width: 295px;
-            width: 100%;
-        } </style>
     <form action="{{ route('task.update', $task->id) }}" method="post">
         @csrf
         @method('put')
@@ -43,7 +42,7 @@
 
                 <div class="md:flex mt-5">
                     <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
+                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
                         <option disabled>{{__('Выберите один из пунктов')}}</option>
                         <option>{{ $task->category->name }}</option>
@@ -51,7 +50,7 @@
 
                     <select name="category_id"
                             onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
+                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none md:mt-0 mt-3"
                             aria-label="Default select example">
                         <option disabled>{{__('Выберите один из пунктов')}}</option>
                         @foreach($task->category->parent->childs as $category)
@@ -80,11 +79,11 @@
                     </label>
                 </div>
                 <div class="my-4">
-                    <label class="text-sm text-gray-500">
+                    <label class="text-sm text-gray-500 flex flex-col">
                         {{__('Дата и время')}} <br>
-                        <div>
+                        <div class="w-full">
                             <select name="date_type" id="periud"
-                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-yellow-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 "
+                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-yellow-500 w-full p-2.5 my-2"
                                     aria-label="Default select example">
                                 <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">
                                     {{__('Начать работу')}}
@@ -97,51 +96,53 @@
                                 </option>
                             </select>
                         </div>
-                        @if($task->start_date)
-                            <div id="start-date" class=" hidden " style="display: inline-block;">
-                                <div class="flatpickr inline-block flex">
-                                    <div class="flex ">
-                                        <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
-                                               class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
-                                               required="" value="{{ $task->start_date }}">
-                                    </div>
-                                    <div class="flatpickr-calendar w-full sm:text-sm"></div>
-                                    <div class="transform hover:scale-125">
-                                        <a class="input-button w-1 h-1  pl-1 " title="toggle" data-toggle="">
-                                            <i class="far fa-calendar-alt fa-2x mt-1 fill-current text-green-600"></i>
-                                        </a>
-                                    </div>
-                                    <div class="transform hover:scale-125">
-                                        <a class="input-button w-1 h-1 md:pl-2 pl-1 " title="clear" data-clear="">
-                                            <i class="fas fa-trash-alt fa-2x mt-1 stroke-current text-red-600 "></i>
-                                        </a>
+                        <div class="grid-cols-2 gap-4">
+                            @if($task->start_date)
+                                <div id="start-date" class="hidden col-span-1" style="display: inline-block;">
+                                    <div class="flatpickr inline-block flex items-center sm:mb-0 mb-4">
+                                        <div class="flex ">
+                                            <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
+                                                class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
+                                                required="" value="{{ $task->start_date }}">
+                                        </div>
+                                        <div class="flatpickr-calendar w-full sm:text-sm"></div>
+                                        <div class="transform hover:scale-125 relative right-8">
+                                            <a class="input-button w-1 h-1" title="toggle" data-toggle="">
+                                                <i class="far fa-calendar-alt fa-2x fill-current text-green-600"></i>
+                                            </a>
+                                        </div>
+                                        <div class="transform hover:scale-125 mr-4">
+                                            <a class="input-button w-1 h-1" title="clear" data-clear="">
+                                                <i class="fas fa-trash-alt fa-2x stroke-current text-red-600"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
 
-                        @if($task->end_date)
-                            <div id="start-date" class=" hidden " style="display: inline-block;">
-                                <div class="flatpickr inline-block flex">
-                                    <div class="flex ">
-                                        <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
-                                               class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
-                                               required="" value="{{ $task->end_date }}">
-                                    </div>
-                                    <div class="flatpickr-calendar w-full sm:text-sm"></div>
-                                    <div class="transform hover:scale-125">
-                                        <a class="input-button w-1 h-1  pl-1 " title="toggle" data-toggle="">
-                                            <i class="far fa-calendar-alt fa-2x mt-1 fill-current text-green-600"></i>
-                                        </a>
-                                    </div>
-                                    <div class="transform hover:scale-125">
-                                        <a class="input-button w-1 h-1 md:pl-2 pl-1 " title="clear" data-clear="">
-                                            <i class="fas fa-trash-alt fa-2x mt-1 stroke-current text-red-600 "></i>
-                                        </a>
+                            @if($task->end_date)
+                                <div id="start-date" class="hidden col-span-1" style="display: inline-block;">
+                                    <div class="flatpickr inline-block flex items-center">
+                                        <div class="flex ">
+                                            <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
+                                                class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
+                                                required="" value="{{ $task->end_date }}">
+                                        </div>
+                                        <div class="flatpickr-calendar w-full sm:text-sm"></div>
+                                        <div class="transform hover:scale-125 relative right-8">
+                                            <a class="input-button w-1 h-1" title="toggle" data-toggle="">
+                                                <i class="far fa-calendar-alt fa-2x fill-current text-green-600"></i>
+                                            </a>
+                                        </div>
+                                        <div class="transform hover:scale-125">
+                                            <a class="input-button w-1 h-1" title="clear" data-clear="">
+                                                <i class="fas fa-trash-alt fa-2x stroke-current text-red-600 "></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
+                        </div>
                     </label>
                 </div>
                 <div>
@@ -221,7 +222,7 @@
                     </div>
                     <div>
                         <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
-                            <h1 class="font-bold h-auto w-48">{{__('Рисунок')}}</h1>
+                            <h1 class="font-bold mb-2">{{__('Рисунок')}}</h1>
                             @foreach(json_decode($task->photos)??[] as $key => $image)
                                 {{--                                            @if ($loop->first)--}}
                                 @if($loop->first)
@@ -311,32 +312,14 @@
 
 
     <script src='https://unpkg.com/imask'></script>
-
-    <script>
-
-    </script>
-{{--    <script id="map_api"--}}
-{{--            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}&onload=onLoad"--}}
-{{--            type="text/javascript">--}}
-{{--    </script>--}}
     <script id="map_api"
             src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}"
             type="text/javascript">
     </script>
-
-    <script>
-        @if(!$errors->has('end_date'))
-        $('#start-date').css('display', 'inline-block');
-        @endif
-    </script>
-
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
     <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
     <script src="{{ asset('js/changetask.js') }}"></script>
 
     <script>
@@ -450,7 +433,46 @@
             console.log('successful files:', result.successful)
             console.log('failed files:', result.failed)
         });
+
+        flatpickr.localize(flatpickr.l10ns.uz_latn);
+        flatpickr.localize(flatpickr.l10ns.ru);
+        flatpickr(".flatpickr",
+            {
+                wrap: true,
+                enableTime: true,
+                allowInput: true,
+                altInput: true,
+                minDate: "today",
+                dateFormat: "Y-m-d H:i:s",
+                altFormat: "Y-m-d H:i:s",
+
+                locale: "{{__('ru')}}",
+            },
+        )
+        $('#periud').change(function () {
+            switch ($(this).val()) {
+                case "1":
+                    $('#start-date').css('display', 'inline-block');
+                    $('#end-date').css('display', 'none');
+                    break;
+                case "2":
+                    $('#start-date').css('display', 'none');
+                    $('#end-date').css('display', 'inline-block');
+                    break;
+                case "3":
+                    $('#start-date').css('display', 'inline-block');
+                    $('#end-date').css('display', 'inline-block');
+                    break;
+            }
+        })
+
+        @if(!$errors->has('end_date'))
+        $('#start-date').css('display', 'inline-block');
+        @endif
     </script>
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+      <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
     <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
     <script
         src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
@@ -490,9 +512,4 @@
 
 @endsection
 
-@section('javasript')
-
-
-
-@endsection
 
