@@ -171,36 +171,3 @@ $("#phone_number").keyup(function () {
     text = text.slice(3)
     $("#phone").val(text)
 })
-flatpickr.localize(flatpickr.l10ns.uz_latn);
-flatpickr.localize(flatpickr.l10ns.ru);
-flatpickr(".flatpickr",
-    {
-        wrap: true,
-        enableTime: true,
-        allowInput: true,
-        altInput: true,
-        minDate: "today",
-        dateFormat: "Y-m-d H:i:s",
-        altFormat: "Y-m-d H:i:s",
-
-        locale: "@lang('lang.dateLang')",
-    },
-)
-$('#periud').change(function () {
-    switch ($(this).val()) {
-        case "1":
-            $('#start-date').css('display', 'inline-block');
-            $('#end-date').css('display', 'none');
-            break;
-        case "2":
-            $('#start-date').css('display', 'none');
-            $('#end-date').css('display', 'inline-block');
-            break;
-        case "3":
-            $('#start-date').css('display', 'inline-block');
-            $('#end-date').css('display', 'inline-block');
-            break;
-    }
-})
-
-//

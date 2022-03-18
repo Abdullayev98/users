@@ -48,12 +48,12 @@
                 @else
                     <div class="md:flex mx-auto w-full">
                         @endif
-                        <div class="mt-8 lg:flex mb-8">
+                        <div class="mt-8 lg:flex mb-8 w-full">
                             {{-- left sidebar start --}}
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
-                                    <p class="p-2 md:px-3 text-black rounded-lg bg-yellow-400 w-1/4">{{$task->budget}}</p>
+                                    <span class="text-black rounded-lg bg-yellow-400 p-2">{{$task->budget}}</span>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id)
                                             <a href="{{ route('task.changetask', $task->id) }}"

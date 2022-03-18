@@ -7,16 +7,7 @@
         var multiRoute;
         var place, place1="", place2="", place3="", place4="", place5="", place6="", place7="", place8="", place9="";
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
-    <style>
-        .flatpickr-calendar {
-            max-width: 295px;
-            width: 100%;
-        } </style>
+   
     <form action="{{ route('task.update', $task->id) }}" method="post">
         @csrf
         @method('put')
@@ -311,14 +302,6 @@
 
 
     <script src='https://unpkg.com/imask'></script>
-
-    <script>
-
-    </script>
-{{--    <script id="map_api"--}}
-{{--            src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}&onload=onLoad"--}}
-{{--            type="text/javascript">--}}
-{{--    </script>--}}
     <script id="map_api"
             src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}"
             type="text/javascript">
@@ -334,9 +317,6 @@
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
     <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
     <script src="{{ asset('js/changetask.js') }}"></script>
 
     <script>

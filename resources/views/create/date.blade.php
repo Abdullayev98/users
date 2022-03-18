@@ -54,7 +54,7 @@
 
                         <div class="py-4 mx-auto  text-left ">
                             <div class="mb-4 ">
-                                <div id="formulario" class="flex flex-col gap-y-4">
+                                <div class="flex flex-col gap-y-4">
 
                                     <div class="flex items-center">
                                         <select name="date_type" id="periud" class=" bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5" 
