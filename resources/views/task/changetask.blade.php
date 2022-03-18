@@ -98,8 +98,8 @@
                         </div>
                         <div class="grid-cols-2 gap-4">
                             @if($task->start_date)
-                                <div id="start-date" class="hidden col-span-1" style="display: inline-block;">
-                                    <div class="flatpickr inline-block flex items-center sm:mb-0 mb-4">
+                                <div class="col-span-1">
+                                    <div class="flatpickr inline-block flex items-center sm:mb-0 mb-4 hidden" id="start-date">
                                         <div class="flex ">
                                             <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
                                                 class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
@@ -121,10 +121,10 @@
                             @endif
 
                             @if($task->end_date)
-                                <div id="start-date" class="hidden col-span-1" style="display: inline-block;">
-                                    <div class="flatpickr inline-block flex items-center">
-                                        <div class="flex ">
-                                            <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
+                                <div class="col-span-1 mt-1">
+                                    <div class="flatpickr inline-block flex items-center hidden" id="end-date">
+                                        <div class="flex">
+                                            <input type="hidden" name="end_date" placeholder="Какой месяц.." data-input=""
                                                 class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
                                                 required="" value="{{ $task->end_date }}">
                                         </div>
@@ -452,22 +452,22 @@
         $('#periud').change(function () {
             switch ($(this).val()) {
                 case "1":
-                    $('#start-date').css('display', 'inline-block');
-                    $('#end-date').css('display', 'none');
+                    $('#start-date').removeClass('hidden')
+                    $('#end-date').addClass('hidden')
                     break;
                 case "2":
-                    $('#start-date').css('display', 'none');
-                    $('#end-date').css('display', 'inline-block');
+                    $('#start-date').addClass('hidden')
+                    $('#end-date').removeClass('hidden')
                     break;
                 case "3":
-                    $('#start-date').css('display', 'inline-block');
-                    $('#end-date').css('display', 'inline-block');
+                    $('#start-date').removeClass('hidden')
+                    $('#end-date').removeClass('hidden')
                     break;
             }
         })
 
         @if(!$errors->has('end_date'))
-        $('#start-date').css('display', 'inline-block');
+        $('#start-date').removeClass('hidden')
         @endif
     </script>
       <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
