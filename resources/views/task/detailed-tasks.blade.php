@@ -550,9 +550,16 @@
                                         >
                                 </div>
                                 <div class="">
+                                    @if ($task->user->id == auth()->user()->id)
+                                    <a href="/profile"
+                                        class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
+                                     </a>
+                                     @else
                                     <a href="/performers/{{$task->user->id}}"
                                        class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
                                     </a>
+                                    @endif
+
                                     <br>
                                     <a class="text-xl text-gray-500">
                                         @if($task->user->age != "")

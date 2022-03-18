@@ -42,7 +42,7 @@
 
                 <div class="md:flex mt-5">
                     <select onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
+                            class="mr-4 form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
                             aria-label="Default select example">
                         <option disabled>{{__('Выберите один из пунктов')}}</option>
                         <option>{{ $task->category->name }}</option>
@@ -50,7 +50,7 @@
 
                     <select name="category_id"
                             onchange="func_for_select(Number(this.options[this.selectedIndex].value));"
-                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none"
+                            class="form-select block w-full  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-yellow-500 focus:outline-none md:mt-0 mt-3"
                             aria-label="Default select example">
                         <option disabled>{{__('Выберите один из пунктов')}}</option>
                         @foreach($task->category->parent->childs as $category)
@@ -58,6 +58,9 @@
                                 value="{{ $category->id }}" {{ $category->id == $task->category_id ? 'selected' : null }} >{{ $category->name }}</option>
                         @endforeach
                     </select>
+                    {{--                    @error('category_id')--}}
+                    {{--                    <p class="text-red-500">{{ $message }}</p>--}}
+                    {{--                    @enderror--}}
                 </div>
                 <div>
                     <label class="text-xs text-gray-500">
@@ -76,65 +79,71 @@
                     </label>
                 </div>
                 <div class="my-4">
-                    <div class="flex items-center">
-                        <select name="date_type" id="periud" class=" bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5" 
-                        aria-label="Default select example focus:outline-none">
-                            <option {{ old('date_type') == "1" ? 'selected' :null }} value="1" id="1" class="text-base">{{__('Начать работу')}}</option>
-                            <option  {{ old('date_type') == "2" ? 'selected' :null }}  value="2" id="2" class="text-base">{{__('Закончить работу')}}</option>
-                            <option  {{ old('date_type') == "3" ? 'selected' :null }} value="3" id="3" class="text-base">{{__('Указать период')}}</option>
-                        </select>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4 my-3">
-                        <div id="start-date" class="@if(!$errors->has('start_date')) xl:col-span-1 col-span-2 hidden @endif">
-                            <div class="flatpickr inline-block flex items-center">
-                                <div class="flex " >
-                                    <input type="text" name="start_date"
-                                           placeholder="{{__('Какой месяц..')}}"
-                                           data-input
-                                           class="bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
-                                           required> <!-- input is mandatory -->
-                                </div>
-                                <div class="flatpickr-calendar max-w-[295px] w-full sm:text-sm text-[10px]"></div>
-                                <div class="transform hover:scale-125 relative right-8">
-                                    <a class="input-button w-1 h-1" title="toggle" data-toggle>
-                                        <i class="far fa-calendar-alt fill-current text-yellow-500"></i>
-                                    </a>
-                                </div>
-                                <div class="transform hover:scale-125">
-                                    <a class="input-button w-1 h-1 " title="clear" data-clear>
-                                        <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
-                                    </a>
-                                </div>
-                                @error('start_date')
-                                <p class="lg:text-base md:text-xs text-xs pl-1 text-red-500">{{ $message }}</p>
-                                @enderror
-                            </div>
+                    <label class="text-sm text-gray-500 flex flex-col">
+                        {{__('Дата и время')}} <br>
+                        <div class="w-full">
+                            <select name="date_type" id="periud"
+                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-yellow-500 w-full p-2.5 my-2"
+                                    aria-label="Default select example">
+                                <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">
+                                    {{__('Начать работу')}}
+                                </option>
+                                <option value="2" {{ $task->date_type == 2 ? 'selected' : null }}   id="2">
+                                    {{__('Закончить работу')}}
+                                </option>
+                                <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">
+                                    {{__(' Указать период')}}
+                                </option>
+                            </select>
                         </div>
-                        <div id="end-date" class="@if(!$errors->has('end_date')) xl:col-span-1 col-span-2 hidden @endif">
-                            <div class="flatpickr inline-block flex items-center">
-                                <div class="flex">
-                                    <input type="text" name="end_date" placeholder="{{__('Какой месяц..')}}"
-                                           data-input
-                                           class="bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
-                                           required> <!-- input is mandatory -->
+                        <div class="grid-cols-2 gap-4">
+                            @if($task->start_date)
+                                <div id="start-date" class="hidden col-span-1" style="display: inline-block;">
+                                    <div class="flatpickr inline-block flex items-center sm:mb-0 mb-4">
+                                        <div class="flex ">
+                                            <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
+                                                class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
+                                                required="" value="{{ $task->start_date }}">
+                                        </div>
+                                        <div class="flatpickr-calendar w-full sm:text-sm"></div>
+                                        <div class="transform hover:scale-125 relative right-8">
+                                            <a class="input-button w-1 h-1" title="toggle" data-toggle="">
+                                                <i class="far fa-calendar-alt fa-2x fill-current text-green-600"></i>
+                                            </a>
+                                        </div>
+                                        <div class="transform hover:scale-125 mr-4">
+                                            <a class="input-button w-1 h-1" title="clear" data-clear="">
+                                                <i class="fas fa-trash-alt fa-2x stroke-current text-red-600"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
+                            @endif
 
-                                <div class="transform hover:scale-125 relative right-8">
-                                    <a class="input-button w-1 h-1" title="toggle" data-toggle>
-                                        <i class="far fa-calendar-alt fill-current text-yellow-500"></i>
-                                    </a>
+                            @if($task->end_date)
+                                <div id="start-date" class="hidden col-span-1" style="display: inline-block;">
+                                    <div class="flatpickr inline-block flex items-center">
+                                        <div class="flex ">
+                                            <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
+                                                class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
+                                                required="" value="{{ $task->end_date }}">
+                                        </div>
+                                        <div class="flatpickr-calendar w-full sm:text-sm"></div>
+                                        <div class="transform hover:scale-125 relative right-8">
+                                            <a class="input-button w-1 h-1" title="toggle" data-toggle="">
+                                                <i class="far fa-calendar-alt fa-2x fill-current text-green-600"></i>
+                                            </a>
+                                        </div>
+                                        <div class="transform hover:scale-125">
+                                            <a class="input-button w-1 h-1" title="clear" data-clear="">
+                                                <i class="fas fa-trash-alt fa-2x stroke-current text-red-600 "></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="transform hover:scale-125">
-                                    <a class="input-button w-1 h-1" title="clear" data-clear>
-                                        <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
-                                    </a>
-                                </div>
-                                @error('end_date')
-                                <p class="lg:text-base md:text-sm text-xs pl-1 text-red-500">{{ $message }}</p>
-                                @enderror
-                            </div>
+                            @endif
                         </div>
-                       </div>
+                    </label>
                 </div>
                 <div>
                     <div class="mb-4">
