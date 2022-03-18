@@ -86,7 +86,7 @@ class SearchTaskController extends VoyagerBaseController
         $comp->user_id=$request->input('userId');
         $comp->task_id=$request->input('taskId');
         $comp->save();
-        return redirect()->route('tasks.detail');
+        return redirect()->back();
     }
 
     public function selectPerformer(TaskResponse $response){
