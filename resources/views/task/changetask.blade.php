@@ -1,13 +1,21 @@
 @extends("layouts.app")
 
 @section("content")
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
+{{--    <style>.flatpickr-calendar{width:230px;} </style>--}}
+<style>.flatpickr-calendar{max-width: 295px; width: 100%;} </style>
     <script>
         let userAddress;
         var myMap;
         var multiRoute;
         var place, place1="", place2="", place3="", place4="", place5="", place6="", place7="", place8="", place9="";
     </script>
-   
     <form action="{{ route('task.update', $task->id) }}" method="post">
         @csrf
         @method('put')
@@ -50,9 +58,6 @@
                                 value="{{ $category->id }}" {{ $category->id == $task->category_id ? 'selected' : null }} >{{ $category->name }}</option>
                         @endforeach
                     </select>
-                    {{--                    @error('category_id')--}}
-                    {{--                    <p class="text-red-500">{{ $message }}</p>--}}
-                    {{--                    @enderror--}}
                 </div>
                 <div>
                     <label class="text-xs text-gray-500">
@@ -71,69 +76,65 @@
                     </label>
                 </div>
                 <div class="my-4">
-                    <label class="text-sm text-gray-500">
-                        {{__('Дата и время')}} <br>
-                        <div>
-                            <select name="date_type" id="periud"
-                                    class="bg-gray-50 focus:outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-yellow-500 block md:float-left mb-4 md:mb-0 w-full md:w-6/12 mr-4 p-2.5 "
-                                    aria-label="Default select example">
-                                <option value="1" {{ $task->date_type == 1 ? 'selected' : null }} id="1">
-                                    {{__('Начать работу')}}
-                                </option>
-                                <option value="2" {{ $task->date_type == 2 ? 'selected' : null }}   id="2">
-                                    {{__('Закончить работу')}}
-                                </option>
-                                <option value="3" {{ $task->date_type == 3 ? 'selected' : null }}  id="3">
-                                    {{__(' Указать период')}}
-                                </option>
-                            </select>
+                    <div class="flex items-center">
+                        <select name="date_type" id="periud" class=" bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5" 
+                        aria-label="Default select example focus:outline-none">
+                            <option {{ old('date_type') == "1" ? 'selected' :null }} value="1" id="1" class="text-base">{{__('Начать работу')}}</option>
+                            <option  {{ old('date_type') == "2" ? 'selected' :null }}  value="2" id="2" class="text-base">{{__('Закончить работу')}}</option>
+                            <option  {{ old('date_type') == "3" ? 'selected' :null }} value="3" id="3" class="text-base">{{__('Указать период')}}</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 my-3">
+                        <div id="start-date" class="@if(!$errors->has('start_date')) xl:col-span-1 col-span-2 hidden @endif">
+                            <div class="flatpickr inline-block flex items-center">
+                                <div class="flex " >
+                                    <input type="text" name="start_date"
+                                           placeholder="{{__('Какой месяц..')}}"
+                                           data-input
+                                           class="bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
+                                           required> <!-- input is mandatory -->
+                                </div>
+                                <div class="flatpickr-calendar max-w-[295px] w-full sm:text-sm text-[10px]"></div>
+                                <div class="transform hover:scale-125 relative right-8">
+                                    <a class="input-button w-1 h-1" title="toggle" data-toggle>
+                                        <i class="far fa-calendar-alt fill-current text-yellow-500"></i>
+                                    </a>
+                                </div>
+                                <div class="transform hover:scale-125">
+                                    <a class="input-button w-1 h-1 " title="clear" data-clear>
+                                        <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
+                                    </a>
+                                </div>
+                                @error('start_date')
+                                <p class="lg:text-base md:text-xs text-xs pl-1 text-red-500">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
-                        @if($task->start_date)
-                            <div id="start-date" class=" hidden " style="display: inline-block;">
-                                <div class="flatpickr inline-block flex">
-                                    <div class="flex ">
-                                        <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
-                                               class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
-                                               required="" value="{{ $task->start_date }}">
-                                    </div>
-                                    <div class="flatpickr-calendar w-full sm:text-sm"></div>
-                                    <div class="transform hover:scale-125">
-                                        <a class="input-button w-1 h-1  pl-1 " title="toggle" data-toggle="">
-                                            <i class="far fa-calendar-alt fa-2x mt-1 fill-current text-green-600"></i>
-                                        </a>
-                                    </div>
-                                    <div class="transform hover:scale-125">
-                                        <a class="input-button w-1 h-1 md:pl-2 pl-1 " title="clear" data-clear="">
-                                            <i class="fas fa-trash-alt fa-2x mt-1 stroke-current text-red-600 "></i>
-                                        </a>
-                                    </div>
+                        <div id="end-date" class="@if(!$errors->has('end_date')) xl:col-span-1 col-span-2 hidden @endif">
+                            <div class="flatpickr inline-block flex items-center">
+                                <div class="flex">
+                                    <input type="text" name="end_date" placeholder="{{__('Какой месяц..')}}"
+                                           data-input
+                                           class="bg-gray-50 border focus:outline-none text-gray-900 text-base rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
+                                           required> <!-- input is mandatory -->
                                 </div>
-                            </div>
-                        @endif
 
-                        @if($task->end_date)
-                            <div id="start-date" class=" hidden " style="display: inline-block;">
-                                <div class="flatpickr inline-block flex">
-                                    <div class="flex ">
-                                        <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
-                                               class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
-                                               required="" value="{{ $task->end_date }}">
-                                    </div>
-                                    <div class="flatpickr-calendar w-full sm:text-sm"></div>
-                                    <div class="transform hover:scale-125">
-                                        <a class="input-button w-1 h-1  pl-1 " title="toggle" data-toggle="">
-                                            <i class="far fa-calendar-alt fa-2x mt-1 fill-current text-green-600"></i>
-                                        </a>
-                                    </div>
-                                    <div class="transform hover:scale-125">
-                                        <a class="input-button w-1 h-1 md:pl-2 pl-1 " title="clear" data-clear="">
-                                            <i class="fas fa-trash-alt fa-2x mt-1 stroke-current text-red-600 "></i>
-                                        </a>
-                                    </div>
+                                <div class="transform hover:scale-125 relative right-8">
+                                    <a class="input-button w-1 h-1" title="toggle" data-toggle>
+                                        <i class="far fa-calendar-alt fill-current text-yellow-500"></i>
+                                    </a>
                                 </div>
+                                <div class="transform hover:scale-125">
+                                    <a class="input-button w-1 h-1" title="clear" data-clear>
+                                        <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
+                                    </a>
+                                </div>
+                                @error('end_date')
+                                <p class="lg:text-base md:text-sm text-xs pl-1 text-red-500">{{ $message }}</p>
+                                @enderror
                             </div>
-                        @endif
-                    </label>
+                        </div>
+                       </div>
                 </div>
                 <div>
                     <div class="mb-4">
@@ -212,7 +213,7 @@
                     </div>
                     <div>
                         <div class="ml-4 md:ml-12 flex flex-wrap mt-8">
-                            <h1 class="font-bold h-auto w-48">{{__('Рисунок')}}</h1>
+                            <h1 class="font-bold mb-2">{{__('Рисунок')}}</h1>
                             @foreach(json_decode($task->photos)??[] as $key => $image)
                                 {{--                                            @if ($loop->first)--}}
                                 @if($loop->first)
@@ -306,13 +307,6 @@
             src="https://api-maps.yandex.ru/2.1/?apikey=f4b34baa-cbd1-432b-865b-9562afa3fcdb&lang={{__('ru_RU')}}"
             type="text/javascript">
     </script>
-
-    <script>
-        @if(!$errors->has('end_date'))
-        $('#start-date').css('display', 'inline-block');
-        @endif
-    </script>
-
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.min.js"></script>
     <script src="https://releases.transloadit.com/uppy/v2.4.1/uppy.legacy.min.js" nomodule></script>
     <script src="https://releases.transloadit.com/uppy/locales/v2.0.5/ru_RU.min.js"></script>
@@ -430,7 +424,46 @@
             console.log('successful files:', result.successful)
             console.log('failed files:', result.failed)
         });
+
+        flatpickr.localize(flatpickr.l10ns.uz_latn);
+        flatpickr.localize(flatpickr.l10ns.ru);
+        flatpickr(".flatpickr",
+            {
+                wrap: true,
+                enableTime: true,
+                allowInput: true,
+                altInput: true,
+                minDate: "today",
+                dateFormat: "Y-m-d H:i:s",
+                altFormat: "Y-m-d H:i:s",
+
+                locale: "{{__('ru')}}",
+            },
+        )
+        $('#periud').change(function () {
+            switch ($(this).val()) {
+                case "1":
+                    $('#start-date').css('display', 'inline-block');
+                    $('#end-date').css('display', 'none');
+                    break;
+                case "2":
+                    $('#start-date').css('display', 'none');
+                    $('#end-date').css('display', 'inline-block');
+                    break;
+                case "3":
+                    $('#start-date').css('display', 'inline-block');
+                    $('#end-date').css('display', 'inline-block');
+                    break;
+            }
+        })
+
+        @if(!$errors->has('end_date'))
+        $('#start-date').css('display', 'inline-block');
+        @endif
     </script>
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+      <script src="https://npmcdn.com/flatpickr/dist/l10n/uz_latn.js"></script>
     <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
     <script
         src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
@@ -470,9 +503,4 @@
 
 @endsection
 
-@section('javasript')
-
-
-
-@endsection
 
