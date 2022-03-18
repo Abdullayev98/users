@@ -291,25 +291,24 @@
     <script src="{{asset('js/search_tasks.js')}}"></script>
     <script>
 
-
-        function first_ajax(id) {
+        function first_ajax() {
             $.ajax({
                 url: "{{route('tasks.search')}}",
-                data: {orderBy: id},
+                // data: {orderBy: id},
                 type: 'GET',
                 success: function (data) {
-                    if (id == 'all') {
+                    // if (id == 'all') {
                         dataAjax = $.parseJSON(JSON.stringify(data));
                         dataAjaxCheck=1
                         sixInOne();
-                    }
+                    // }
                 },
                 error: function (error) {
                     console.error("Ajax orqali yuklashda xatolik..." , error);
                 }
             });
         }
-        first_ajax('all');
+        first_ajax();
 
     </script>
 

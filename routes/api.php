@@ -8,6 +8,7 @@ use App\Http\Controllers\API\PerformerAPIController;
 use App\Http\Controllers\API\ProfileAPIController;
 use App\Http\Controllers\API\TaskAPIController;
 use App\Http\Controllers\API\UserAPIController;
+use App\Http\Controllers\API\SearchAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/change-task/{task}', [TaskAPIController::class, 'changeTask']);
     Route::get('/custom-field-by-category/{category}',[CustomFieldAPIController::class,'getByCategoryId']);
     Route::get('/custom-field-by-task/{task}',[CustomFieldAPIController::class,'getByTaskId']);
+    Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks'])->name('tasks.search');
 
 });
 //User Routes

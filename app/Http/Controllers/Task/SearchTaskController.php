@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
+use App\Services\Task\SearchService;
 
 
 class SearchTaskController extends VoyagerBaseController
@@ -40,19 +41,11 @@ class SearchTaskController extends VoyagerBaseController
         return   Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
     }
 
-    public function ajax_tasks(Request $request)
+    public function ajax_tasks()
     {
-        if (isset($request->orderBy)) {
-            if ($request->orderBy == 'all') {
-            $tasks = Task::whereIn('status', [1,2])
-                    ->orderBy('id', 'asc')
-                    ->join('users', 'tasks.user_id', '=', 'users.id')
-                    ->join('categories', 'tasks.category_id', '=', 'categories.id')
-                    ->select('tasks.id', 'tasks.name', 'tasks.address', 'tasks.start_date', 'tasks.budget', 'tasks.category_id', 'tasks.status', 'tasks.oplata', 'tasks.coordinates', 'users.name as user_name', 'users.id as userid', 'categories.name as category_name', 'categories.ico as icon')
-                    ->get()->load('responses');
-            }
-        }
-        return $tasks->all();
+        $search = new SearchService();
+        $searchR = $search->ajaxReq();
+        return $searchR->all();
     }
 
     public function my_tasks()

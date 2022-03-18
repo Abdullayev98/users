@@ -5,13 +5,21 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\User;
+use Google\Service\CustomSearchAPI\Search;
+use App\Services\Task\SearchService;
 use Illuminate\Http\Request;
 use TCG\Voyager\Models\Category;
 
 class SearchAPIController extends Controller
 {
-    public function task_search(){
 
+    public function __construct()
+    {
+        $this->service = new SearchService();
+
+    }
+
+    public function task_search(){
 
         $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->paginate(20);
         $categories = Category::withTranslations(['ru', 'uz'])->get();
@@ -19,13 +27,11 @@ class SearchAPIController extends Controller
         return view('task.search', compact('tasks','categories'));
     }
 
-    public function ajax_tasks(Request $request){
-        if (isset($request->orderBy)) {
-            if ($request->orderBy == 'all') {
-                $tasks = new Task();
-            }
-        }
-        return $tasks->all();
+    public function ajax_tasks(Request $request)
+    {
+        $search = new SearchService();
+        $searchR = $search->ajaxReq();
+        return $searchR->all();
     }
 
     public function my_tasks(){
