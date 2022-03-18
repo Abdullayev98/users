@@ -1797,16 +1797,16 @@
         },
         {
             "name": "joy/core",
-            "version": "v1.1.2",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rxcod9/joy-core.git",
-                "reference": "3bbb6308b9766dc47e0fd596b9c6c8e8d23952b3"
+                "reference": "56ecc402d605749e8cda181887c180ec8f9b075c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rxcod9/joy-core/zipball/3bbb6308b9766dc47e0fd596b9c6c8e8d23952b3",
-                "reference": "3bbb6308b9766dc47e0fd596b9c6c8e8d23952b3",
+                "url": "https://api.github.com/repos/rxcod9/joy-core/zipball/56ecc402d605749e8cda181887c180ec8f9b075c",
+                "reference": "56ecc402d605749e8cda181887c180ec8f9b075c",
                 "shasum": ""
             },
             "require": {
@@ -1847,7 +1847,7 @@
                     "name": "Ramakant Gangwar",
                     "email": "gangwar.ramakant@gmail.com",
                     "homepage": "https://github.com/rxcod9",
-                    "role": "Tech Lead"
+                    "role": "Tech Lead & Architect"
                 }
             ],
             "description": "This Laravel/Voyager module adds Core support to Laravel.",
@@ -1860,7 +1860,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rxcod9/joy-core/issues",
-                "source": "https://github.com/rxcod9/joy-core/tree/v1.1.2"
+                "source": "https://github.com/rxcod9/joy-core/tree/v1.2.2"
             },
             "funding": [
                 {
@@ -1868,20 +1868,20 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-03-08T20:11:15+00:00"
+            "time": "2022-03-17T21:12:01+00:00"
         },
         {
             "name": "joy/voyager-api",
-            "version": "v1.1.2",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rxcod9/joy-voyager-api.git",
-                "reference": "06eaf706315314198161a231ce3495d2952e64b9"
+                "reference": "15766d561a2262fe189c961257bf87750b9d1913"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rxcod9/joy-voyager-api/zipball/06eaf706315314198161a231ce3495d2952e64b9",
-                "reference": "06eaf706315314198161a231ce3495d2952e64b9",
+                "url": "https://api.github.com/repos/rxcod9/joy-voyager-api/zipball/15766d561a2262fe189c961257bf87750b9d1913",
+                "reference": "15766d561a2262fe189c961257bf87750b9d1913",
                 "shasum": ""
             },
             "require": {
@@ -1928,7 +1928,7 @@
                     "name": "Ramakant Gangwar",
                     "email": "gangwar.ramakant@gmail.com",
                     "homepage": "https://github.com/rxcod9",
-                    "role": "Tech Lead"
+                    "role": "Tech Lead & Architect"
                 }
             ],
             "description": "This Laravel/Voyager module adds REST Api with swagger support to Voyager.",
@@ -1946,7 +1946,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rxcod9/joy-voyager-api/issues",
-                "source": "https://github.com/rxcod9/joy-voyager-api/tree/v1.1.2"
+                "source": "https://github.com/rxcod9/joy-voyager-api/tree/v1.2.2"
             },
             "funding": [
                 {
@@ -1954,20 +1954,20 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-03-08T20:11:49+00:00"
+            "time": "2022-03-13T14:12:24+00:00"
         },
         {
             "name": "joy/voyager-api-auth",
-            "version": "v1.1.2",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rxcod9/joy-voyager-api-auth.git",
-                "reference": "5802b449985f3ae9d35bfb600e0f8ba868cf317c"
+                "reference": "0d2a73c75720a56825427b5db03c977bc0fa4e63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rxcod9/joy-voyager-api-auth/zipball/5802b449985f3ae9d35bfb600e0f8ba868cf317c",
-                "reference": "5802b449985f3ae9d35bfb600e0f8ba868cf317c",
+                "url": "https://api.github.com/repos/rxcod9/joy-voyager-api-auth/zipball/0d2a73c75720a56825427b5db03c977bc0fa4e63",
+                "reference": "0d2a73c75720a56825427b5db03c977bc0fa4e63",
                 "shasum": ""
             },
             "require": {
@@ -2012,7 +2012,7 @@
                     "name": "Ramakant Gangwar",
                     "email": "gangwar.ramakant@gmail.com",
                     "homepage": "https://github.com/rxcod9",
-                    "role": "Tech Lead"
+                    "role": "Tech Lead & Architect"
                 }
             ],
             "description": "This Laravel/Voyager module adds REST Api Auth to Voyager.",
@@ -2030,7 +2030,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rxcod9/joy-voyager-api-auth/issues",
-                "source": "https://github.com/rxcod9/joy-voyager-api-auth/tree/v1.1.2"
+                "source": "https://github.com/rxcod9/joy-voyager-api-auth/tree/v1.2.2"
             },
             "funding": [
                 {
@@ -2038,144 +2038,36 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-03-08T20:12:20+00:00"
+            "time": "2022-03-17T21:12:01+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "joy/voyager-core",
-            "version": "v1.1.2",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rxcod9/joy-voyager-core.git",
-                "reference": "c5618e24c54487794da212912bf65b99311c6160"
+                "reference": "666d41ea56d0262dd4f49c194b7c482cc4a102b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rxcod9/joy-voyager-core/zipball/c5618e24c54487794da212912bf65b99311c6160",
-                "reference": "c5618e24c54487794da212912bf65b99311c6160",
+                "url": "https://api.github.com/repos/rxcod9/joy-voyager-core/zipball/666d41ea56d0262dd4f49c194b7c482cc4a102b7",
+                "reference": "666d41ea56d0262dd4f49c194b7c482cc4a102b7",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^7|^8",
                 "joy/core": "^1.0",
-=======
-            "name": "joy/core",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rxcod9/joy-core.git",
-                "reference": "4e7c52f7390bd93a23e55c2fbee1c415845e01c5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rxcod9/joy-core/zipball/4e7c52f7390bd93a23e55c2fbee1c415845e01c5",
-                "reference": "4e7c52f7390bd93a23e55c2fbee1c415845e01c5",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^7|^8",
-                "larapack/hooks": "^1.0.5",
                 "php": "^7.3|^8.0",
                 "tcg/voyager": "^1.4"
             },
             "require-dev": {
-                "doctrine/dbal": "2.13.2",
                 "ext-pdo_sqlite": "*",
                 "ext-zip": "*",
-                "friendsofphp/php-cs-fixer": "3.0.0",
+                "friendsofphp/php-cs-fixer": "^3.0",
                 "guzzlehttp/guzzle": "^6.3|^7.0",
-                "mockery/mockery": "1.4.3",
+                "mockery/mockery": "^1.3",
                 "orchestra/testbench": "^5.0|^6.0",
-                "phpunit/phpunit": "9.5.6"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Joy\\Core\\CoreServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/helper.php"
-                ],
-                "psr-4": {
-                    "Joy\\Core\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ramakant Gangwar",
-                    "email": "gangwar.ramakant@gmail.com",
-                    "homepage": "https://github.com/rxcod9",
-                    "role": "Tech Lead"
-                }
-            ],
-            "description": "This Laravel/Voyager module adds Core support to Voyager.",
-            "homepage": "https://github.com/rxcod9/joy-core",
-            "keywords": [
-                "cms",
-                "core",
-                "joy",
-                "joy-core",
-                "laravel",
-                "voyager",
-                "voyager-core"
-            ],
-            "support": {
-                "issues": "https://github.com/rxcod9/joy-core/issues",
-                "source": "https://github.com/rxcod9/joy-core/tree/v1.0.2"
-            },
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/ramakant",
-                    "type": "patreon"
-                }
-            ],
-            "time": "2021-07-01T06:52:39+00:00"
-        },
-        {
-            "name": "joy/voyager-api",
-            "version": "v1.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rxcod9/joy-voyager-api.git",
-                "reference": "fbc44928dbe38cacb7ab359cd26ead5f5a127948"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rxcod9/joy-voyager-api/zipball/fbc44928dbe38cacb7ab359cd26ead5f5a127948",
-                "reference": "fbc44928dbe38cacb7ab359cd26ead5f5a127948",
-                "shasum": ""
-            },
-            "require": {
-                "cebe/php-openapi": "^1.5",
-                "darkaonline/l5-swagger": "^7.0|^8.0",
-                "illuminate/support": "^7|^8",
-                "joy/voyager-api-auth": "^1.0",
-                "joy/voyager-core": "^1.0",
-                "larapack/hooks": "^1.0.5",
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
-                "php": "^7.3|^8.0",
-                "tcg/voyager": "^1.4"
-            },
-            "require-dev": {
-<<<<<<< HEAD
-=======
-                "doctrine/dbal": "2.13.7",
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
-                "ext-pdo_sqlite": "*",
-                "ext-zip": "*",
-                "friendsofphp/php-cs-fixer": "3.6.0",
-                "guzzlehttp/guzzle": "^6.3|^7.0",
-                "mockery/mockery": "1.5.0",
-                "orchestra/testbench": "^5.0|^6.0",
-                "phpunit/phpunit": "9.5.17"
+                "phpunit/phpunit": "^9.1"
             },
             "type": "library",
             "extra": {
@@ -2202,183 +2094,7 @@
                     "name": "Ramakant Gangwar",
                     "email": "gangwar.ramakant@gmail.com",
                     "homepage": "https://github.com/rxcod9",
-                    "role": "Tech Lead"
-                }
-            ],
-            "description": "This Laravel/Voyager module adds VoyagerCore support to Voyager.",
-            "homepage": "https://github.com/rxcod9/joy-voyager-core",
-            "keywords": [
-                "cms",
-                "joy",
-                "joy-voyager-core",
-                "laravel",
-                "voyager",
-                "voyager-core",
-                "voyager-voyager-core"
-            ],
-            "support": {
-<<<<<<< HEAD
-                "issues": "https://github.com/rxcod9/joy-voyager-core/issues",
-                "source": "https://github.com/rxcod9/joy-voyager-core/tree/v1.1.2"
-=======
-                "issues": "https://github.com/rxcod9/joy-voyager-api/issues",
-                "source": "https://github.com/rxcod9/joy-voyager-api/tree/v1.0.9"
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
-            },
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/ramakant",
-                    "type": "patreon"
-                }
-            ],
-<<<<<<< HEAD
-            "time": "2022-03-08T20:12:43+00:00"
-=======
-            "time": "2022-03-07T06:51:33+00:00"
-        },
-        {
-            "name": "joy/voyager-api-auth",
-            "version": "v1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rxcod9/joy-voyager-api-auth.git",
-                "reference": "6f9276b8bd49403b8ab2bb33fc20f2f0f1ccd22e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rxcod9/joy-voyager-api-auth/zipball/6f9276b8bd49403b8ab2bb33fc20f2f0f1ccd22e",
-                "reference": "6f9276b8bd49403b8ab2bb33fc20f2f0f1ccd22e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^7|^8",
-                "joy/voyager-core": "^1.0",
-                "larapack/hooks": "^1.0.5",
-                "laravel/passport": "^9|^10",
-                "php": "^7.3|^8.0",
-                "tcg/voyager": "^1.4"
-            },
-            "require-dev": {
-                "doctrine/dbal": "2.13.7",
-                "ext-pdo_sqlite": "*",
-                "ext-zip": "*",
-                "friendsofphp/php-cs-fixer": "3.6.0",
-                "guzzlehttp/guzzle": "^6.3|^7.0",
-                "mockery/mockery": "1.5.0",
-                "orchestra/testbench": "^5.0|^6.0",
-                "phpunit/phpunit": "9.5.17"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Joy\\VoyagerApiAuth\\VoyagerApiAuthServiceProvider",
-                        "Joy\\VoyagerApiAuth\\ResourcesServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/helper.php"
-                ],
-                "psr-4": {
-                    "Joy\\VoyagerApiAuth\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ramakant Gangwar",
-                    "email": "gangwar.ramakant@gmail.com",
-                    "homepage": "https://github.com/rxcod9",
-                    "role": "Tech Lead"
-                }
-            ],
-            "description": "This Laravel/Voyager module adds REST Api Auth to Voyager.",
-            "homepage": "https://github.com/rxcod9/joy-voyager-api-auth",
-            "keywords": [
-                "api",
-                "cms",
-                "joy",
-                "joy-voyager-api-auth",
-                "laravel",
-                "swagger",
-                "swagger-ui",
-                "voyager",
-                "voyager-api-auth"
-            ],
-            "support": {
-                "issues": "https://github.com/rxcod9/joy-voyager-api-auth/issues",
-                "source": "https://github.com/rxcod9/joy-voyager-api-auth/tree/v1.0.3"
-            },
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/ramakant",
-                    "type": "patreon"
-                }
-            ],
-            "time": "2022-03-07T06:56:25+00:00"
-        },
-        {
-            "name": "joy/voyager-core",
-            "version": "v1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rxcod9/joy-voyager-core.git",
-                "reference": "deeaf00b4b5e1d93253cbb7ed9bffd92376d33a4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rxcod9/joy-voyager-core/zipball/deeaf00b4b5e1d93253cbb7ed9bffd92376d33a4",
-                "reference": "deeaf00b4b5e1d93253cbb7ed9bffd92376d33a4",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^7|^8",
-                "joy/core": "^1.0",
-                "larapack/hooks": "^1.0.5",
-                "php": "^7.3|^8.0",
-                "tcg/voyager": "^1.4"
-            },
-            "require-dev": {
-                "doctrine/dbal": "2.13.2",
-                "ext-pdo_sqlite": "*",
-                "ext-zip": "*",
-                "friendsofphp/php-cs-fixer": "3.0.0",
-                "guzzlehttp/guzzle": "^6.3|^7.0",
-                "mockery/mockery": "1.4.3",
-                "orchestra/testbench": "^5.0|^6.0",
-                "phpunit/phpunit": "9.5.7"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Joy\\VoyagerCore\\VoyagerCoreServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/helper.php"
-                ],
-                "psr-4": {
-                    "Joy\\VoyagerCore\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ramakant Gangwar",
-                    "email": "gangwar.ramakant@gmail.com",
-                    "homepage": "https://github.com/rxcod9",
-                    "role": "Tech Lead"
+                    "role": "Tech Lead & Architect"
                 }
             ],
             "description": "This Laravel/Voyager module adds VoyagerCore support to Voyager.",
@@ -2394,7 +2110,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rxcod9/joy-voyager-core/issues",
-                "source": "https://github.com/rxcod9/joy-voyager-core/tree/v1.0.3"
+                "source": "https://github.com/rxcod9/joy-voyager-core/tree/v1.2.2"
             },
             "funding": [
                 {
@@ -2402,8 +2118,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-03-07T06:57:35+00:00"
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
+            "time": "2022-03-17T21:12:02+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -3104,31 +2819,30 @@
         },
         {
             "name": "lcobucci/clock",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/clock.git",
-                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3"
+                "reference": "903513d28e85376a33385ebc601afd2ee69e5653"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/clock/zipball/353d83fe2e6ae95745b16b3d911813df6a05bfb3",
-                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/903513d28e85376a33385ebc601afd2ee69e5653",
+                "reference": "903513d28e85376a33385ebc601afd2ee69e5653",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4 || ^8.0"
+                "php": "^8.0"
             },
             "require-dev": {
-                "infection/infection": "^0.17",
-                "lcobucci/coding-standard": "^6.0",
-                "phpstan/extension-installer": "^1.0",
+                "infection/infection": "^0.25",
+                "lcobucci/coding-standard": "^8.0",
+                "phpstan/extension-installer": "^1.1",
                 "phpstan/phpstan": "^0.12",
                 "phpstan/phpstan-deprecation-rules": "^0.12",
                 "phpstan/phpstan-phpunit": "^0.12",
                 "phpstan/phpstan-strict-rules": "^0.12",
-                "phpunit/php-code-coverage": "9.1.4",
-                "phpunit/phpunit": "9.3.7"
+                "phpunit/phpunit": "^9.5"
             },
             "type": "library",
             "autoload": {
@@ -3149,7 +2863,7 @@
             "description": "Yet another clock abstraction",
             "support": {
                 "issues": "https://github.com/lcobucci/clock/issues",
-                "source": "https://github.com/lcobucci/clock/tree/2.0.x"
+                "source": "https://github.com/lcobucci/clock/tree/2.1.0"
             },
             "funding": [
                 {
@@ -3161,7 +2875,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-08-27T18:56:02+00:00"
+            "time": "2021-10-31T21:32:07+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -4833,20 +4547,20 @@
         },
         {
             "name": "psr/cache",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/cache.git",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/213f9dbc5b9bfbc4f8db86d2838dc968752ce13b",
+                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
@@ -4866,7 +4580,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for caching libraries",
@@ -4876,9 +4590,9 @@
                 "psr-6"
             ],
             "support": {
-                "source": "https://github.com/php-fig/cache/tree/master"
+                "source": "https://github.com/php-fig/cache/tree/2.0.0"
             },
-            "time": "2016-08-06T20:24:11+00:00"
+            "time": "2021-02-03T23:23:37+00:00"
         },
         {
             "name": "psr/container",
@@ -5140,30 +4854,30 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.4",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
+                "reference": "ef29f6d262798707a9edd554e2b82517ef3a9376"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
-                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/ef29f6d262798707a9edd554e2b82517ef3a9376",
+                "reference": "ef29f6d262798707a9edd554e2b82517ef3a9376",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Psr\\Log\\": "Psr/Log/"
+                    "Psr\\Log\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5184,9 +4898,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/1.1.4"
+                "source": "https://github.com/php-fig/log/tree/2.0.0"
             },
-            "time": "2021-05-03T11:20:27+00:00"
+            "time": "2021-07-14T16:41:46+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -5927,21 +5641,20 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v5.4.3",
+            "version": "v6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "b0a190285cd95cb019237851205b8140ef6e368e"
+                "reference": "1955d595c12c111629cc814d3f2a2ff13580508a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/b0a190285cd95cb019237851205b8140ef6e368e",
-                "reference": "b0a190285cd95cb019237851205b8140ef6e368e",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/1955d595c12c111629cc814d3f2a2ff13580508a",
+                "reference": "1955d595c12c111629cc814d3f2a2ff13580508a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "symfony/polyfill-php80": "^1.16"
+                "php": ">=8.0.2"
             },
             "type": "library",
             "autoload": {
@@ -5973,7 +5686,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v5.4.3"
+                "source": "https://github.com/symfony/css-selector/tree/v6.0.3"
             },
             "funding": [
                 {
@@ -5989,29 +5702,29 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:53:40+00:00"
+            "time": "2022-01-02T09:55:41+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.5.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "6f981ee24cf69ee7ce9736146d1c57c2780598a8"
+                "reference": "c726b64c1ccfe2896cb7df2e1331c357ad1c8ced"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/6f981ee24cf69ee7ce9736146d1c57c2780598a8",
-                "reference": "6f981ee24cf69ee7ce9736146d1c57c2780598a8",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/c726b64c1ccfe2896cb7df2e1331c357ad1c8ced",
+                "reference": "c726b64c1ccfe2896cb7df2e1331c357ad1c8ced",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=8.0.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "3.0-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -6040,7 +5753,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.0"
             },
             "funding": [
                 {
@@ -6056,7 +5769,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-12T14:48:14+00:00"
+            "time": "2021-11-01T23:48:49+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -6131,40 +5844,38 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v5.4.3",
+            "version": "v6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "dec8a9f58d20df252b9cd89f1c6c1530f747685d"
+                "reference": "6472ea2dd415e925b90ca82be64b8bc6157f3934"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/dec8a9f58d20df252b9cd89f1c6c1530f747685d",
-                "reference": "dec8a9f58d20df252b9cd89f1c6c1530f747685d",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/6472ea2dd415e925b90ca82be64b8bc6157f3934",
+                "reference": "6472ea2dd415e925b90ca82be64b8bc6157f3934",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.1|^3",
-                "symfony/event-dispatcher-contracts": "^2|^3",
-                "symfony/polyfill-php80": "^1.16"
+                "php": ">=8.0.2",
+                "symfony/event-dispatcher-contracts": "^2|^3"
             },
             "conflict": {
-                "symfony/dependency-injection": "<4.4"
+                "symfony/dependency-injection": "<5.4"
             },
             "provide": {
                 "psr/event-dispatcher-implementation": "1.0",
-                "symfony/event-dispatcher-implementation": "2.0"
+                "symfony/event-dispatcher-implementation": "2.0|3.0"
             },
             "require-dev": {
                 "psr/log": "^1|^2|^3",
-                "symfony/config": "^4.4|^5.0|^6.0",
-                "symfony/dependency-injection": "^4.4|^5.0|^6.0",
-                "symfony/error-handler": "^4.4|^5.0|^6.0",
-                "symfony/expression-language": "^4.4|^5.0|^6.0",
-                "symfony/http-foundation": "^4.4|^5.0|^6.0",
+                "symfony/config": "^5.4|^6.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/error-handler": "^5.4|^6.0",
+                "symfony/expression-language": "^5.4|^6.0",
+                "symfony/http-foundation": "^5.4|^6.0",
                 "symfony/service-contracts": "^1.1|^2|^3",
-                "symfony/stopwatch": "^4.4|^5.0|^6.0"
+                "symfony/stopwatch": "^5.4|^6.0"
             },
             "suggest": {
                 "symfony/dependency-injection": "",
@@ -6196,7 +5907,7 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/event-dispatcher/tree/v5.4.3"
+                "source": "https://github.com/symfony/event-dispatcher/tree/v6.0.3"
             },
             "funding": [
                 {
@@ -6212,24 +5923,24 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:53:40+00:00"
+            "time": "2022-01-02T09:55:41+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "v2.5.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher-contracts.git",
-                "reference": "66bea3b09be61613cd3b4043a65a8ec48cfa6d2a"
+                "reference": "aa5422287b75594b90ee9cd807caf8f0df491385"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/66bea3b09be61613cd3b4043a65a8ec48cfa6d2a",
-                "reference": "66bea3b09be61613cd3b4043a65a8ec48cfa6d2a",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/aa5422287b75594b90ee9cd807caf8f0df491385",
+                "reference": "aa5422287b75594b90ee9cd807caf8f0df491385",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=8.0.2",
                 "psr/event-dispatcher": "^1"
             },
             "suggest": {
@@ -6238,7 +5949,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "3.0-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -6275,7 +5986,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v2.5.0"
+                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.0.0"
             },
             "funding": [
                 {
@@ -6291,76 +6002,9 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-12T14:48:14+00:00"
+            "time": "2021-07-15T12:33:35+00:00"
         },
         {
-<<<<<<< HEAD
-=======
-            "name": "symfony/filesystem",
-            "version": "v5.4.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/filesystem.git",
-                "reference": "d53a45039974952af7f7ebc461ccdd4295e29440"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/d53a45039974952af7f7ebc461ccdd4295e29440",
-                "reference": "d53a45039974952af7f7ebc461ccdd4295e29440",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-mbstring": "~1.8",
-                "symfony/polyfill-php80": "^1.16"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Filesystem\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Provides basic utilities for the filesystem",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/filesystem/tree/v5.4.6"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-03-02T12:42:23+00:00"
-        },
-        {
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
             "name": "symfony/finder",
             "version": "v5.4.3",
             "source": {
@@ -7750,22 +7394,21 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.5.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc"
+                "reference": "d664541b99d6fb0247ec5ff32e87238582236204"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc",
-                "reference": "1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/d664541b99d6fb0247ec5ff32e87238582236204",
+                "reference": "d664541b99d6fb0247ec5ff32e87238582236204",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "psr/container": "^1.1",
-                "symfony/deprecation-contracts": "^2.1"
+                "psr/container": "^1.1"
             },
             "conflict": {
                 "ext-psr": "<1.1|>=2"
@@ -7776,7 +7419,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "2.4-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -7813,7 +7456,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v2.5.0"
+                "source": "https://github.com/symfony/service-contracts/tree/v2.4.1"
             },
             "funding": [
                 {
@@ -7829,38 +7472,37 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-04T16:48:04+00:00"
+            "time": "2021-11-04T16:37:19+00:00"
         },
         {
             "name": "symfony/string",
-            "version": "v5.4.3",
+            "version": "v6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "92043b7d8383e48104e411bc9434b260dbeb5a10"
+                "reference": "522144f0c4c004c80d56fa47e40e17028e2eefc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/92043b7d8383e48104e411bc9434b260dbeb5a10",
-                "reference": "92043b7d8383e48104e411bc9434b260dbeb5a10",
+                "url": "https://api.github.com/repos/symfony/string/zipball/522144f0c4c004c80d56fa47e40e17028e2eefc2",
+                "reference": "522144f0c4c004c80d56fa47e40e17028e2eefc2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=8.0.2",
                 "symfony/polyfill-ctype": "~1.8",
                 "symfony/polyfill-intl-grapheme": "~1.0",
                 "symfony/polyfill-intl-normalizer": "~1.0",
-                "symfony/polyfill-mbstring": "~1.0",
-                "symfony/polyfill-php80": "~1.15"
+                "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
-                "symfony/translation-contracts": ">=3.0"
+                "symfony/translation-contracts": "<2.0"
             },
             "require-dev": {
-                "symfony/error-handler": "^4.4|^5.0|^6.0",
-                "symfony/http-client": "^4.4|^5.0|^6.0",
-                "symfony/translation-contracts": "^1.1|^2",
-                "symfony/var-exporter": "^4.4|^5.0|^6.0"
+                "symfony/error-handler": "^5.4|^6.0",
+                "symfony/http-client": "^5.4|^6.0",
+                "symfony/translation-contracts": "^2.0|^3.0",
+                "symfony/var-exporter": "^5.4|^6.0"
             },
             "type": "library",
             "autoload": {
@@ -7899,7 +7541,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v5.4.3"
+                "source": "https://github.com/symfony/string/tree/v6.0.3"
             },
             "funding": [
                 {
@@ -7915,11 +7557,10 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:53:40+00:00"
+            "time": "2022-01-02T09:55:41+00:00"
         },
         {
             "name": "symfony/translation",
-<<<<<<< HEAD
             "version": "v6.0.6",
             "source": {
                 "type": "git",
@@ -7930,50 +7571,36 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation/zipball/f6639cb9b5e0c57fe31e3263b900a77eedb0c908",
                 "reference": "f6639cb9b5e0c57fe31e3263b900a77eedb0c908",
-=======
-            "version": "v5.4.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/translation.git",
-                "reference": "a7ca9fdfffb0174209440c2ffa1dee228e15d95b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/a7ca9fdfffb0174209440c2ffa1dee228e15d95b",
-                "reference": "a7ca9fdfffb0174209440c2ffa1dee228e15d95b",
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.1|^3",
+                "php": ">=8.0.2",
                 "symfony/polyfill-mbstring": "~1.0",
-                "symfony/polyfill-php80": "^1.16",
-                "symfony/translation-contracts": "^2.3"
+                "symfony/translation-contracts": "^2.3|^3.0"
             },
             "conflict": {
-                "symfony/config": "<4.4",
-                "symfony/console": "<5.3",
-                "symfony/dependency-injection": "<5.0",
-                "symfony/http-kernel": "<5.0",
-                "symfony/twig-bundle": "<5.0",
-                "symfony/yaml": "<4.4"
+                "symfony/config": "<5.4",
+                "symfony/console": "<5.4",
+                "symfony/dependency-injection": "<5.4",
+                "symfony/http-kernel": "<5.4",
+                "symfony/twig-bundle": "<5.4",
+                "symfony/yaml": "<5.4"
             },
             "provide": {
-                "symfony/translation-implementation": "2.3"
+                "symfony/translation-implementation": "2.3|3.0"
             },
             "require-dev": {
                 "psr/log": "^1|^2|^3",
-                "symfony/config": "^4.4|^5.0|^6.0",
+                "symfony/config": "^5.4|^6.0",
                 "symfony/console": "^5.4|^6.0",
-                "symfony/dependency-injection": "^5.0|^6.0",
-                "symfony/finder": "^4.4|^5.0|^6.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/finder": "^5.4|^6.0",
                 "symfony/http-client-contracts": "^1.1|^2.0|^3.0",
-                "symfony/http-kernel": "^5.0|^6.0",
-                "symfony/intl": "^4.4|^5.0|^6.0",
+                "symfony/http-kernel": "^5.4|^6.0",
+                "symfony/intl": "^5.4|^6.0",
                 "symfony/polyfill-intl-icu": "^1.21",
                 "symfony/service-contracts": "^1.1.2|^2|^3",
-                "symfony/yaml": "^4.4|^5.0|^6.0"
+                "symfony/yaml": "^5.4|^6.0"
             },
             "suggest": {
                 "psr/log-implementation": "To use logging capability in translator",
@@ -8009,11 +7636,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/translation/tree/v6.0.6"
-=======
-                "source": "https://github.com/symfony/translation/tree/v5.4.6"
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
             },
             "funding": [
                 {
@@ -8029,28 +7652,24 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-03-02T12:58:14+00:00"
-=======
-            "time": "2022-03-02T12:56:28+00:00"
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v2.5.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "d28150f0f44ce854e942b671fc2620a98aae1b1e"
+                "reference": "1b6ea5a7442af5a12dba3dbd6d71034b5b234e77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/d28150f0f44ce854e942b671fc2620a98aae1b1e",
-                "reference": "d28150f0f44ce854e942b671fc2620a98aae1b1e",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/1b6ea5a7442af5a12dba3dbd6d71034b5b234e77",
+                "reference": "1b6ea5a7442af5a12dba3dbd6d71034b5b234e77",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5"
+                "php": ">=8.0.2"
             },
             "suggest": {
                 "symfony/translation-implementation": ""
@@ -8058,7 +7677,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "3.0-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -8095,7 +7714,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/translation-contracts/tree/v2.5.0"
+                "source": "https://github.com/symfony/translation-contracts/tree/v3.0.0"
             },
             "funding": [
                 {
@@ -8111,7 +7730,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-17T14:20:01+00:00"
+            "time": "2021-09-07T12:43:40+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -9434,7 +9053,6 @@
         },
         {
             "name": "google/apiclient-services",
-<<<<<<< HEAD
             "version": "v0.239.0",
             "source": {
                 "type": "git",
@@ -9445,18 +9063,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/ce8e34d618bdef9e824fd1728d505a468818712c",
                 "reference": "ce8e34d618bdef9e824fd1728d505a468818712c",
-=======
-            "version": "v0.238.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "a9866fd963f53e9a7d26d36f20c471f73a90a719"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/a9866fd963f53e9a7d26d36f20c471f73a90a719",
-                "reference": "a9866fd963f53e9a7d26d36f20c471f73a90a719",
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
                 "shasum": ""
             },
             "require": {
@@ -9485,15 +9091,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-<<<<<<< HEAD
                 "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.239.0"
             },
             "time": "2022-03-13T01:20:35+00:00"
-=======
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.238.1"
-            },
-            "time": "2022-03-07T18:23:49+00:00"
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
         },
         {
             "name": "google/auth",
@@ -10598,7 +10198,6 @@
         },
         {
             "name": "phpunit/phpunit",
-<<<<<<< HEAD
             "version": "9.5.19",
             "source": {
                 "type": "git",
@@ -10609,18 +10208,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/35ea4b7f3acabb26f4bb640f8c30866c401da807",
                 "reference": "35ea4b7f3acabb26f4bb640f8c30866c401da807",
-=======
-            "version": "9.5.18",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1b5856028273bfd855e60a887278857d872ec67a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1b5856028273bfd855e60a887278857d872ec67a",
-                "reference": "1b5856028273bfd855e60a887278857d872ec67a",
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
                 "shasum": ""
             },
             "require": {
@@ -10698,11 +10285,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.19"
-=======
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.18"
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
             },
             "funding": [
                 {
@@ -10714,11 +10297,7 @@
                     "type": "github"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-03-15T09:57:31+00:00"
-=======
-            "time": "2022-03-08T06:52:28+00:00"
->>>>>>> fd094cea96fb000b9088fe996133703ea3e1e207
         },
         {
             "name": "sebastian/cli-parser",
@@ -11747,5 +11326,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }
