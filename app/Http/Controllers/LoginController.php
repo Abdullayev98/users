@@ -6,6 +6,7 @@ use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Mail\VerifyEmail;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Http\Request;
@@ -26,17 +27,13 @@ class LoginController extends Controller
 
     public function loginPost(UserLoginRequest $request)
     {
-        $request->validated();
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('userprofile');
-        }
 
-        return redirect()->route('login')->with(
-            [
-                'message' => 'Email or Password is not correct. Try again',
-            ]
-        );
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+
+        return redirect()->route('userprofile');
 
     }
 
