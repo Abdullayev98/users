@@ -232,8 +232,8 @@
                                                             </a>
                                                             <div class='modal' id='modal1'>
                                                                 <div class='content'>
-                                                                    <img
-                                                                        src="{{asset('images/cashback.svg')}}"
+                                                                    <img class="w-64 h-64"
+                                                                        src="{{asset('images/cash_icon.png')}}"
                                                                         alt="">
                                                                     <h1 class="title">{{__('Пополните баланс')}}</h1>
                                                                     <p>
