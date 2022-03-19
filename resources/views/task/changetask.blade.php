@@ -16,7 +16,7 @@
         var multiRoute;
         var place, place1="", place2="", place3="", place4="", place5="", place6="", place7="", place8="", place9="";
     </script>
-    <form action="{{ route('task.update', $task->id) }}" method="post">
+    <form action="{{ route('task.update', $task->id) }}" method="post" novalidate >
         @csrf
         @method('put')
 
@@ -66,7 +66,7 @@
                     <label class="text-xs text-gray-500">
                         {{__(' Опишите пожелания и детали, чтобы исполнители лучше оценили вашеу задачу')}}
                         <textarea type="number"
-                                  name="description"
+                                  name="description" style="resize: none"
                                   class="border border-gray-200 rounded-md shadow-sm focus:outline-none  focus:border-yellow-500 p-2 mb-4 w-full">{{ $task->description }}</textarea>
                         @error('description')
                         <p class="text-red-500">{{ $message }}</p>
@@ -101,9 +101,9 @@
                                 <div class="col-span-1">
                                     <div class="flatpickr inline-block flex items-center sm:mb-0 mb-4 hidden" id="start-date">
                                         <div class="flex ">
-                                            <input type="hidden" name="start_date" placeholder="Какой месяц.." data-input=""
+                                            <input type="hidden" name="start_date" placeholder="{{ $task->getRawOriginal('start_date') }}" data-input="{{ $task->getRawOriginal('start_date') }}"
                                                 class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
-                                                required="" value="{{ $task->start_date }}">
+                                                   value="{{ $task->getRawOriginal('start_date') }}">
                                         </div>
                                         <div class="flatpickr-calendar w-full sm:text-sm"></div>
                                         <div class="transform hover:scale-125 relative right-8">
@@ -124,9 +124,9 @@
                                 <div class="col-span-1 mt-1">
                                     <div class="flatpickr inline-block flex items-center hidden" id="end-date">
                                         <div class="flex">
-                                            <input type="hidden" name="end_date" placeholder="Какой месяц.." data-input=""
+                                            <input type="hidden" name="end_date" placeholder="{{ $task->getRawOriginal('end_date') }}" data-input="{{ $task->getRawOriginal('end_date') }}"
                                                 class="focus:outline-none w-full text-left bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flatpickr-input"
-                                                required="" value="{{ $task->end_date }}">
+                                                required="" value="{{ $task->getRawOriginal('end_date') }}">
                                         </div>
                                         <div class="flatpickr-calendar w-full sm:text-sm"></div>
                                         <div class="transform hover:scale-125 relative right-8">
@@ -296,7 +296,7 @@
                 </div>
                 <div class="text-base my-5 mt-8">
                     <button type="submit"
-                            class="text-2xl mr-5 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-md ">
+                            class="text-2 xl mr-5 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-md ">
                         {{__('Сохранить')}}
                     </button>
                     <a
@@ -347,7 +347,7 @@
                         '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.25 2.95v-.2A2.75 2.75 0 0 1 6 0h6a2.75 2.75 0 0 1 2.75 2.75v.2h2.45a.8.8 0 0 1 0 1.6H.8a.8.8 0 1 1 0-1.6h2.45zm10 .05v-.25c0-.69-.56-1.25-1.25-1.25H6c-.69 0-1.25.56-1.25 1.25V3h8.5z" fill="#666"/>' +
                         '<path d="M14.704 6.72a.8.8 0 1 1 1.592.16l-.996 9.915a2.799 2.799 0 0 1-2.8 2.802h-7c-1.55 0-2.8-1.252-2.796-2.723l-1-9.994a.8.8 0 1 1 1.592-.16L4.3 16.794c0 .668.534 1.203 1.2 1.203h7c.665 0 1.2-.536 1.204-1.282l1-9.995z" fill="#666"/>' +
                         '<path d="M12.344 7.178a.75.75 0 1 0-1.494-.13l-.784 8.965a.75.75 0 0 0 1.494.13l.784-8.965zm-6.779 0a.75.75 0 0 1 1.495-.13l.784 8.965a.75.75 0 0 1-1.494.13l-.785-8.965z" fill="#666"/></svg> </button> ' +
-                        '<input name="coordinates'+ x +'" type="hidden" id="coordinate'+ x +'"> </div>    ');
+                        '<input name="coordinates'+ x +'" type="hidden" id="coordinate'+ x +'" value="'+ajax_location[i].latitude +','+ajax_location[i].longitude+'"> </div>    ');
                     x++;
                     }
                 }
