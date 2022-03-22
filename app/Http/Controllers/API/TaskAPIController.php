@@ -69,7 +69,7 @@ class TaskAPIController extends Controller
         $task->update($data);
         $this->service->syncCustomFields($task);
 
-        return ['success' => true, 'message' => "Successfully Updated", 'task' => $task];
+        return ['success' => true, 'message' => 'Successfully Updated', 'task' => $task];
 
     }
 }

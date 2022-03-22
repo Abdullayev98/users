@@ -550,7 +550,8 @@
                                         >
                                 </div>
                                 <div class="">
-                                    @if ($task->user->id == auth()->user()->id)
+                                    @if (Auth::check() && Auth::user()->id == $task->user->id)
+{{--                                @if ($task->user->id == auth()->user()->id)--}}
                                     <a href="/profile"
                                         class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
                                      </a>
@@ -656,7 +657,7 @@
                             <span class="email"><i class="fas fa-at px-4 py-3 bg-yellow-600 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
                             <span class="twitter"><i class="fab fa-twitter px-3 py-2.5 text-blue-500 text-white rounded-lg m-4 text-4xl cursor-pointer border-2 border-blue-500"></i></span>
                             <span class="linkedin"><i class="fab fa-linkedin px-4 py-3 bg-blue-400 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
-                            <span class="google"><i class="fab fa-google px-4 py-3 bg-red-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>    
+                            <span class="google"><i class="fab fa-google px-4 py-3 bg-red-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
                         </div>
                 </div>
             </div>
@@ -676,11 +677,11 @@
                         </h1>
                     </div>
                     <div class="text-center my-6">
-                        
+
                         <form action="{{route('tasks.detailed')}}" method="POST">
                             @csrf
                             <input type="hidden" name="taskId" value="{{ $task->id }}">
-                            <input type="hidden" name="userId" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="userId" value="{{ Auth::check() ? Auth::user()->id : $task->user->id}}">
                             <select name="c_type" id="" class="w-4/5 border-2 border-gray-500 rounded-lg mb-4 py-2 px-2 focus:outline-none hover:border-yellow-500">
                                @foreach ($complianceType as $complType)
                                     <option value="{{$complType->id}}">{{$complType->name}}</option>
@@ -689,7 +690,7 @@
                             <textarea name="c_text" id="" class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500"></textarea>
                             <input type="submit" value="{{__('Отправить')}}" class="bg-yellow-500 mt-4 py-3 px-5 rounded-lg text-white text-xl cursor-pointer font-medium border-2 border-gray-500 hover:bg-yellow-600">
                         </form>
-                   
+
                     </div>
                 </div>
             </div>
