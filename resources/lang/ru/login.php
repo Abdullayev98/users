@@ -16,5 +16,4 @@ return [
     'password.required' => 'Требуется заполнение!',
     'password.min' => 'Пароли должны содержать не менее 6-ми символов',
     'password.confirmed' => 'Пароль не совпадает',
-    'emailError' => 'Электронная почта или пароль неверны. Попробуй снова',
-];
+    'emailError' => 'Elektron pochta yoki parol notogri. Qayta urinib koring'];

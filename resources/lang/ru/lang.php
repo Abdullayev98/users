@@ -831,6 +831,7 @@ return [
     'signin_registration' => "  Зарегистрируйтесь",
     'singin_withoutUs' => "Еще не с нами?",
     'singin_button' => "Войти",
+    'singin_emailError' => "Электронная почта или пароль неверны. Попробуй снова"
     // signin blade ended
 
     // signup blade start
