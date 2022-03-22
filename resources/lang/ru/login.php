@@ -15,5 +15,5 @@ return [
     'email.unique' => 'Пользователь с такой почтой уже существует!',
     'password.required' => 'Требуется заполнение!',
     'password.min' => 'Пароли должны содержать не менее 6-ми символов',
-    'password.confirmed' => 'Пароль не совпадает',
+    'password.confirmed' => 'Parol bir xil emas',
     'emailError' => 'Elektron pochta yoki parol notogri. Qayta urinib koring'];
