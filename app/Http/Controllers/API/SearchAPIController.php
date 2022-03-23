@@ -68,5 +68,10 @@ class SearchAPIController extends Controller
         // dd($current_user);
         return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
     }
+    public function comlianse_save(Request $request){
+        $comp = new SearchService();
+        $comp->comlianse_saveS($request);
+        return redirect()->back();
+    }
 
 }
