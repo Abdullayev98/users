@@ -6,6 +6,7 @@ use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Mail\VerifyEmail;
 use App\Models\User;
+use App\Models\WalletBalance;
 use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -46,6 +47,10 @@ class LoginController extends Controller
 
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
+        $wallBal = new WalletBalance();
+        $wallBal->balance = setting('admin.bonus');
+        $wallBal->user_id = $user->id;
+        $wallBal->save();
         auth()->login($user);
 
         self::send_verification('email');

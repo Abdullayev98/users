@@ -47,16 +47,15 @@ Route::group(['prefix' => 'performers'], function () {
 Route::get('/', [PerformersController::class, 'service'])->name('performers');
 Route::get('/{user}', [PerformersController::class, 'performer'])->name('performer.main');
 Route::get('/chat/{id}', [PerformersController::class, 'performer_chat'])->name('personal.chat');
-
 });
 
-
-
+Route::post('give-task', [PerformersController::class, 'give_task']);
 
 Route::post('ajax-request', [SearchTaskController::class, 'task_response']);
-Route::post('give-task', [PerformersController::class, 'give_task']);
 Route::delete('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('delete.task');
-
+Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail");
+Route::post('/detailed-tasks', [SearchTaskController::class, 'comlianse_save'])->name("tasks.detailed");
+Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask")->middleware('auth');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -68,15 +67,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send");
 });
 
-
 Route::get('/', [Controller::class, 'home'])->name('home');
 
 
 
-Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail");
-Route::post('/detailed-tasks', [SearchTaskController::class, 'comlianse_save'])->name("tasks.detailed");
-
-Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask")->middleware('auth');
 Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("task.update")->middleware('auth');
 
 Route::view('/offer-tasks','task.offertasks');
