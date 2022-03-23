@@ -73,12 +73,8 @@ class SearchTaskController extends VoyagerBaseController
     }
 
     public function comlianse_save(Request $request){
-        $comp = new Compliance();
-        $comp->compliance_type_id=$request->input('c_type');
-        $comp->text=$request->input('c_text');
-        $comp->user_id=$request->input('userId');
-        $comp->task_id=$request->input('taskId');
-        $comp->save();
+        $comp = new SearchService();
+        $comp->comlianse_saveS($request);
         return redirect()->back();
     }
 
