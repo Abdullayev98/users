@@ -46,7 +46,7 @@ class ProfileController extends Controller
     public function comment(Request $request)
     {
         $profC = new ProfileService();
-        return $profC->profServ($request);
+        return $profC->commentServ($request);
 
     }
 
@@ -60,19 +60,8 @@ class ProfileController extends Controller
 
     public function UploadImage(Request $request)
     {
-        $imgData = session()->has('images') ? json_decode(session('images')):[];
-        $files = $request->file('files');
-        if ($request->hasFile('files')) {
-            foreach ($files as $file) {
-                $name = Storage::put('public/uploads', $file);
-                $name = str_replace('public/', '', $name);
-                array_push($imgData,$name);
-
-            }
-        }
-        session()->put('images', json_encode($imgData));
-
-
+        $uploadImg = new ProfileService();
+        return $uploadImg->uploadImageServ($request);
     }
 
     public function testBase(Request $request)
@@ -89,8 +78,6 @@ class ProfileController extends Controller
         } else {
             return dd(false);
         }
-
-
     }
 
     public function portfolio(Portfolio $portfolio)
