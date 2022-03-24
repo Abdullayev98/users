@@ -123,8 +123,3 @@ Route::get('/press',[MassmediaController::class, 'index'])->name('massmedia');
 
 Route::view('/vacancies','reviews.vacancies');
 
-
-Route::group(['prefix' => 'blog'], function () {
-    Route::get('/', [NewsController::class, 'home']);
-    Route::get('/{id}', [NewsController::class, 'get'])->name("Site.blog");
-});
