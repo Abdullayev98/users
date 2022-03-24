@@ -386,7 +386,9 @@
 
             <div class="container mb-12">
                 <form action="/ref" method="GET">
-                    <input type="hidden" name="user_id" value="1">
+                @isset(Auth::user()->id)
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                @endisset
                     <div class="my-3 w-3/5 mx-auto">
                         <div class="custom-control custom-radio mb-4 text-3xl flex flex-row items-center">
                             <input id="credit" onclick="doBlock()" name="paymethod" checked type="radio" value="PayMe" class="custom-control-input w-5 h-5 ">
