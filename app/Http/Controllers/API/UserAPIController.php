@@ -17,7 +17,7 @@ use Illuminate\Validation\ValidationException;
 class UserAPIController extends Controller
 {
     /**
-     * @OA\Get(
+     * @OA\Post (
      *      path="/users",
      *      operationId="getUsersList",
      *      tags={"Users"},

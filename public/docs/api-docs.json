@@ -1,26 +1,39 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Laravel OpenApi Demo Documentation",
-        "description": "L5 Swagger OpenApi description",
-        "contact": {
-            "email": "admin@admin.com"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        },
+        "title": "Laravel",
+        "description": "Joy VoyagerApi module adds REST Api end points to Voyager with Passport and Swagger support https://github.com/rxcod9/joy-voyager-api.",
         "version": "1.0.0"
     },
     "servers": [
         {
-            "url": "http://user.uz/api/",
-            "description": "Demo API Server"
+            "url": "http://user.uz",
+            "description": "Primary API Server"
         }
     ],
     "paths": {
-        "/users": {
+        "/api/faq": {
             "get": {
+                "tags": [
+                    "FAQ"
+                ],
+                "summary": "Get list of FAQ",
+                "operationId": "627dff87644e5af795264e88d68c6a93",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "post": {
                 "tags": [
                     "Users"
                 ],
@@ -49,67 +62,10 @@
                     }
                 }
             }
-        },
-        "/api/profile": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Profile",
-                "operationId": "user",
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "user": {
-                                            "$ref": "#/components/schemas/User"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
         }
     },
     "components": {
         "schemas": {
-            "User": {
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "readOnly": "true",
-                        "example": "1"
-                    },
-                    "name": {
-                        "description": "User Name",
-                        "type": "string"
-                    },
-                    "email": {
-                        "description": "User unique email address",
-                        "type": "string",
-                        "format": "email",
-                        "example": "user@gmail.com"
-                    }
-                },
-                "type": "object"
-            },
             "Links": {
                 "properties": {
                     "first": {
@@ -200,12 +156,6 @@
             }
         }
     },
-    "tags": [
-        {
-            "name": "Projects",
-            "description": "API Endpoints of Projects"
-        }
-    ],
     "security": [
         []
     ]
