@@ -5,6 +5,8 @@ namespace App\Services\Profile;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Portfolio;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 
 
 class ProfileService
@@ -31,6 +33,21 @@ public function uploadImageServ($request){
         }
     }
     session()->put('images', json_encode($imgData));
+}
+
+public function testBaseServ($request){
+    $user = Auth::user();
+    $comment = $user->portfolios()->orderBy('created_at', 'desc')->first();
+    $image = File::allFiles("Portfolio/{$user->name}/{$comment->comment}");
+    $json = implode(',', $image);
+    $data['image'] = $json;
+    $id = $comment->id;
+    $base = new Portfolio();
+    if ($base->where('id', $id)->update($data)) {
+        return redirect()->route('userprofile');
+    } else {
+        return dd(false);
+    }
 }
 
 }

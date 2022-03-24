@@ -66,18 +66,9 @@ class ProfileController extends Controller
 
     public function testBase(Request $request)
     {
-        $user = Auth::user();
-        $comment = $user->portfolios()->orderBy('created_at', 'desc')->first();
-        $image = File::allFiles("Portfolio/{$user->name}/{$comment->comment}");
-        $json = implode(',', $image);
-        $data['image'] = $json;
-        $id = $comment->id;
-        $base = new Portfolio;
-        if ($base->where('id', $comment->id)->update($data)) {
-            return redirect()->route('userprofile');
-        } else {
-            return dd(false);
-        }
+        $testBaseS = new ProfileService();
+        return $testBaseS->testBaseServ($request);
+
     }
 
     public function portfolio(Portfolio $portfolio)
