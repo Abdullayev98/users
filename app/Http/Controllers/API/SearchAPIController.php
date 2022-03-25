@@ -33,8 +33,12 @@ class SearchAPIController extends Controller
      *     tags={"Ajax-Search-Tasks"},
      *     summary="Get list of Tasks",
      *     @OA\Response(
-     *          response=200,
-     *          description="Successful operation"
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas")
+     *         )
      *     ),
      *     @OA\Response(
      *          response=500,
