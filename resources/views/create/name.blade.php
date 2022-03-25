@@ -56,7 +56,7 @@
                                         <select class="select2 parent-category"
                                                 style="width: 100%">
                                             @foreach(getCategoriesByParent(null) as $parentCategory)
-                                                <option value="{{ $parentCategory->id }}">{{ $parentCategory->getTranslatedAttribute('name') }}</option>
+                                                <option value="{{ $parentCategory->id }}" {{ $parentCategory->id == $current_category->parent_id ? 'selected': '' }}> {{ $parentCategory->getTranslatedAttribute('name') }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -67,7 +67,7 @@
                                                 <select class="select2  child-category1"
                                                         style="width: 100%">
                                                     @foreach($category->childs as $child)
-                                                        <option value="{{ $child->id }}" class="hidden" data-parent="{{ $child->parent_id }}">{{ $child->getTranslatedAttribute('name') }}</option>
+                                                        <option value="{{ $child->id }}" {{ $current_category->id == $child->id ? 'selected': '' }} class="hidden" data-parent="{{ $child->parent_id }}">{{ $child->getTranslatedAttribute('name') }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
