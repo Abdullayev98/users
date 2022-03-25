@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http://user.uz",
+            "url": "http://user.test",
             "description": "Primary API Server"
         }
     ],
@@ -17,8 +17,38 @@
                 "tags": [
                     "FAQ"
                 ],
-                "summary": "Get list of FAQ",
+                "summary": "Get of FAQ",
                 "operationId": "627dff87644e5af795264e88d68c6a93",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/faq/{faqs}": {
+            "get": {
+                "tags": [
+                    "FAQ"
+                ],
+                "summary": "Get of questions in FAQ",
+                "operationId": "b146ec5aa1ebb27f27519ebdfeb0bda2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation"

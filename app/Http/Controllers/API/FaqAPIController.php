@@ -14,7 +14,7 @@ class FaqAPIController extends Controller
      * @OA\Get(
      *     path="/api/faq",
      *     tags={"FAQ"},
-     *     summary="Get list of FAQ",
+     *     summary="Get of FAQ",
      *     @OA\Response (
      *          response=200,
      *          description="Successful operation"
@@ -32,8 +32,35 @@ class FaqAPIController extends Controller
     public function index(){
         return FaqCategories::all();
     }
-    public function questions(Faqs $faqs){
-        return $faqs;
+    /**
+     * @OA\Get(
+     *     path="/api/faq/{faqs}",
+     *     tags={"FAQ"},
+     *     summary="Get of questions in FAQ",
+     *     @OA\Parameter (
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema (
+     *              type="string"
+     *          )
+     *     ),
+     *     @OA\Response (
+     *          response=200,
+     *          description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *     ),
+     *     @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *     )
+     * )
+     */
+    public function questions(Faqs $id){
+        return $id;
 
     }
 }
