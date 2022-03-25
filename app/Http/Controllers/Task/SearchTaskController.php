@@ -46,8 +46,7 @@ class SearchTaskController extends VoyagerBaseController
     public function ajax_tasks()
     {
         $search = new SearchService();
-        $searchR = $search->ajaxReq();
-        return $searchR->all();
+        return $search->ajaxReq();        
     }
 
     public function my_tasks()

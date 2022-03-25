@@ -27,11 +27,25 @@ class SearchAPIController extends Controller
         return view('task.search', compact('tasks','categories'));
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/tasks-search",
+     *     tags={"Ajax-Search-Tasks"},
+     *     summary="Get list of Tasks",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="Ajax error"
+     *     )
+     * )
+     */
     public function ajax_tasks(Request $request)
     {
         $search = new SearchService();
-        $searchR = $search->ajaxReq();
-        return $searchR->all();
+        return $search->ajaxReq();
     }
 
     public function my_tasks(){
