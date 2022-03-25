@@ -16,52 +16,14 @@ use Illuminate\Validation\ValidationException;
 
 class UserAPIController extends Controller
 {
-    /**
-     * @OA\Post (
-     *      path="/users",
-     *      operationId="getUsersList",
-     *      tags={"Users"},
-     *      summary="Get list of users",
-     *      description="Returns list of users",
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     * )
-     *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
-     */
+    
     public function index()
     {
         $users = User::all();
         return response()->json($users);
     }
 
-    /**
-     * @OA\Post(
-     *      path="/login",
-     *      operationId="postLogin",
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
-     */
+    
     function login(UserLoginRequest $request)
     {
         $request->authenticate();
