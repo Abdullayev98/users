@@ -21,6 +21,33 @@ class TaskAPIController extends Controller
         $this->service = new CreateService();
 
     }
+    /**
+     * @OA\Get(
+     *     path="/api/task/{id}",
+     *     tags={"Tasks"},
+     *     summary="Get list in Tasks",
+     *     @OA\Parameter(
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *     ),
+     *     @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *     )
+     * )
+     */
     public function task(Task $task)
     {
 
@@ -38,6 +65,25 @@ class TaskAPIController extends Controller
         return compact('tasks','perform_tasks','datas');
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/find",
+     *     tags={"Tasks"},
+     *     summary="Get list in Tasks",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *     ),
+     *     @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *     )
+     * )
+     */
     public function search(Request $request)
     {
         $s = $request->s;
