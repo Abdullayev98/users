@@ -109,7 +109,7 @@ class Controller extends BaseController
     public function my_tasks()
     {
         $user = auth()->user();
-        $tasks = $user->tasks;
+        $tasks = $user->tasks()->orderBy('created_at','desc')->get();
         $perform_tasks = $user->performer_tasks;
         $datas = new Collection(); //Create empty collection which we know has the merge() method
         $datas = $datas->merge($tasks);
