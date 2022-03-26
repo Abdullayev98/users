@@ -11,12 +11,44 @@ use Exception;
 
 class PerformerAPIController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/performers",
+     *     tags={"Performers"},
+     *     summary="Get list of Performers",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *     )
+     * )
+     *
+     */
     public function service()
     {
 
         return User::where('role_id', 2)->paginate(50);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/performers/{id}",
+     *     tags={"Performers"},
+     *     summary="Get list of Performers",
+     *     @OA\Parameter(
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *     )
+     * )
+     *
+     */
     public function performer(User $performer)
     {
         setView($performer);
