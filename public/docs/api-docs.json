@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http:\/\/yourdo.demo",
+            "url": "https:\/\/user.uz",
             "description": "Primary API Server"
         }
     ],
@@ -171,7 +171,7 @@
                 },
                 "security": [
                     {
-                        "token": []
+                        "passport": []
                     }
                 ]
             }
@@ -252,6 +252,10 @@
                                         "type": "string",
                                         "format": "email",
                                         "example": "user001@user.com"
+                                    },
+                                    "phone_number": {
+                                        "type": "string",
+                                        "example": "+998919876543"
                                     },
                                     "password": {
                                         "type": "string",
@@ -28267,11 +28271,19 @@
             }
         },
         "securitySchemes": {
-            "token": {
+            "passport": {
                 "type": "apiKey",
-                "description": "Bearer token",
-                "name": "Authorization",
-                "in": "header"
+                "description": "Laravel passport apiKey security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http:\/\/yourdo.demo\/\/oauth\/authorize",
+                        "tokenUrl": "http:\/\/yourdo.demo\/\/oauth\/token",
+                        "refreshUrl": "http:\/\/yourdo.demo\/\/token\/refresh",
+                        "scopes": []
+                    }
+                }
             }
         },
         "requestBodies": {
