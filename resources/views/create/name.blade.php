@@ -49,7 +49,7 @@
                                     placeholder="{{__('Например, ')}} {{ $current_category->getTranslatedAttribute('name') }}"
                                     required name="name" value="{{session('neym')}}">
                             </div>
-                            <div class="d-none" id="naprimer">{{__('Например, ')}} </div>
+                            <div class="hidden" id="naprimer">{{__('Например, ')}} </div>
                             <p class="text-base text-gray-700 mt-10">{{__('Если хотите выбрать другую категорию')}}</p>
                             <div id="categories">
                                 <div class="flex lg:flex-row flex-col">

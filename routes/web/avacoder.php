@@ -33,9 +33,9 @@ Route::prefix("task")->group(function () {
         Route::get('/contact/{task}', [CreateController::class, 'contact'])->name('task.create.contact');
         Route::post('/contact/{task}/store', [CreateController::class, 'contact_store'])->name('task.create.contact.store.phone')->middleware('auth');
         Route::post('/contact/{task}/store/register', [CreateController::class, 'contact_register'])->name('task.create.contact.store.register')->middleware('guest');
-        Route::post('/contact/{task}/store/login', [CreateController::class, 'contact_login'])->name('task.create.contact.store.login')->middleware('guest');
-        Route::get('/verify/{task}', [CreateController::class, 'verify'])->name('task.create.verify');
-        Route::post('/verify', [UserController::class, 'verifyProfil'])->name('task.create.verification')->middleware('auth');
+        Route::post('/contact/{task}/store/login/', [CreateController::class, 'contact_login'])->name('task.create.contact.store.login')->middleware('guest');
+        Route::get('/verify/{task}/{user}', [CreateController::class, 'verify'])->name('task.create.verify');
+        Route::post('/verify/{user}', [UserController::class, 'verifyProfil'])->name('task.create.verification');
         Route::post('/upload', [CreateController::class, 'uploadImage']);
         Route::get('task/{task}/images/delete', [CreateController::class, 'deleteAllImages'])->name('task.images.delete')->middleware('auth');
 

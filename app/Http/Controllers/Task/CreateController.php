@@ -199,7 +199,7 @@ class CreateController extends Controller
         $task->user_id = $user->id;
         $task->phone = $user->phone_number;
         $task->save();
-        return redirect()->route('userprofile');
+        return redirect()->route('tasks.detail', $task->id);
     }
 
     public function contact_register(Task $task, UserRequest $request)
@@ -213,7 +213,7 @@ class CreateController extends Controller
         auth()->login($user);
 
 
-        LoginController::send_verification('phone');
+        LoginController::send_verification('phone', auth()->user());
         return redirect()->route('task.create.verify', $task->id);
 
     }
@@ -222,15 +222,14 @@ class CreateController extends Controller
     {
         $request->validated();
         $user = User::query()->where('phone_number', $request->phone_number)->first();
-        auth()->login($user);
-        LoginController::send_verification('phone');
-        return redirect()->route('task.create.verify', $task->id)->with(['not-show', 'true']);
+        LoginController::send_verification('phone', $user);
+        return redirect()->route('task.create.verify', ['task' =>$task->id, 'user' => $user->id])->with(['not-show', 'true']);
 
     }
 
-    public function verify(Task $task)
+    public function verify(Task $task,User $user)
     {
-        return view('create.verify', compact('task'));
+        return view('create.verify', compact('task', 'user'));
     }
 
     public function deletetask(Task $task)

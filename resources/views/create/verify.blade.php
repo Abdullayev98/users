@@ -5,7 +5,7 @@
 @section('content')
 
     <!-- Information section -->
-    <form action="{{route('task.create.verification')}}" method="post">
+    <form action="{{route('task.create.verification', $user)}}" method="post">
         @csrf
         <div class="mx-auto sm:w-9/12 w-11/12  my-16">
             <div class="grid md:grid-cols-3 gap-x-20">
@@ -32,12 +32,10 @@
                                 <div id="formulario" class="flex flex-col gap-y-4">
                                     <div>
                                         <div class="mb-3 xl:w-full">
-                                            @if(auth()->check())
                                                 <label for="phone">{{__('Код авторизация')}}</label>
                                                 <input type="text" onkeypress='validate(event)'
                                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500 "
                                                        name="sms_otp">
-                                            @endif
                                             @if(session()->has('expired_message'))
                                                 <p class="text-red-500">{{Session::get('expired_message')}}</p>
                                             @elseif(session()->has('incorrect_message'))

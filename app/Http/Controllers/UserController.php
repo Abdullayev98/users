@@ -202,10 +202,9 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function verifyProfil(Request $request)
+    public function verifyProfil(Request $request,User $user)
     {
 
-        $user = auth()->user();
 
         $request->validate([
             'sms_otp' => 'required',
@@ -218,9 +217,9 @@ class UserController extends Controller
         if ($request->sms_otp == $user->verify_code) {
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
                 $user->update(['is_phone_number_verified' => 1]);
-                Task::findOrFail($request->for_ver_func)->update(['status' => 1, 'user_id' => auth()->user()->id, 'phone' => auth()->user()->phone_number]);
-
-                return redirect()->route('userprofile');
+                Task::findOrFail($request->for_ver_func)->update(['status' => 1, 'user_id' => $user->id, 'phone' => $user->phone_number]);
+                auth()->login($user);
+                return redirect()->route('tasks.detail',$request->for_ver_func);
             } else {
                 auth()->logout();
                 return back()->with('expired_message', __('lang.contact_expired'));

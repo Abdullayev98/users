@@ -53,7 +53,7 @@ class LoginController extends Controller
         $wallBal->save();
         auth()->login($user);
 
-        self::send_verification('email');
+        self::send_verification('email', auth()->user());
 
 
         return redirect()->route('userprofile');
@@ -61,10 +61,8 @@ class LoginController extends Controller
 
     }
 
-    public static function send_verification($needle)
+    public static function send_verification($needle,$user)
     {
-        $user = auth()->user();
-
         if ($needle == 'email') {
             $code = sha1(time());
             $data = [
@@ -85,14 +83,14 @@ class LoginController extends Controller
 
     public function send_email_verification()
     {
-        self::send_verification('email');
+        self::send_verification('email',auth()->user());
         Alert::info('Email sent', 'Your verification link has been successfully sent!');
         return redirect()->route('userprofile');
     }
 
     public function send_phone_verification()
     {
-        self::send_verification('phone');
+        self::send_verification('phone', auth()->user());
         return redirect()->back()->with([
             'code' => 'Код отправлено!'
         ]);
@@ -111,7 +109,7 @@ class LoginController extends Controller
                 $user->save();
                 $result = true;
                 if ($needle != 'is_phone_number_verified')
-                    self::send_verification('phone');
+                    self::send_verification('phone',auth()->user());
             } else {
                 $result = false;
             }
@@ -201,7 +199,7 @@ class LoginController extends Controller
             );
             $user->phone_number = $request->phone_number;
             $user->save();
-            self::send_verification('phone_number');
+            self::send_verification('phone_number', auth()->user());
 
             return redirect()->back()->with([
                 'code' => 'Код отправлено!'
