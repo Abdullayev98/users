@@ -184,6 +184,30 @@
                                             <h1 class="font-bold h-auto w-48">{{__('Не предоставил(а) документы')}}</h1>
                                         </div>
                                 @endif
+                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                    <h1 class="font-bold text-gray-600 h-auto w-48">{{__('JSBADikseb')}}</h1>
+                                    <div class=" h-auto w-96">
+                                        <p class="text-gray-500">
+                                           Description
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                    <h1 class="font-bold text-gray-600 h-auto w-48">{{__('sdhfbsdifb')}}</h1>
+                                    <div class=" h-auto w-96">
+                                        <p class="text-gray-500">
+                                           Description
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                    <h1 class="font-bold text-gray-600 h-auto w-48">{{__('HJSDjsjfsdff')}}</h1>
+                                    <div class=" h-auto w-96">
+                                        <p class="text-gray-500">
+                                           Description
+                                        </p>
+                                    </div>
+                                </div>
                                 <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                     <div>
