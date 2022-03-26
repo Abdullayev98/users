@@ -26,6 +26,13 @@ use App\Services\Task\SearchService;
 
 class SearchTaskController extends VoyagerBaseController
 {
+
+public function __construct()
+{
+    $this->service = new SearchService();
+
+}
+
     public function task_search()
     {
 //        $task = Task::whereIn('status', [2])
@@ -45,8 +52,9 @@ class SearchTaskController extends VoyagerBaseController
 
     public function ajax_tasks()
     {
-        $search = new SearchService();
-        return $search->ajaxReq();        
+//        $search = new SearchService();
+//        return $search->ajaxReq();
+        return $this->service->ajaxReq();
     }
 
     public function my_tasks()

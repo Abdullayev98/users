@@ -35,7 +35,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/change-task/{task}', [TaskAPIController::class, 'changeTask']);
     Route::get('/custom-field-by-category/{category}',[CustomFieldAPIController::class,'getByCategoryId']);
     Route::get('/custom-field-by-task/{task}',[CustomFieldAPIController::class,'getByTaskId']);
-    Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks'])->name('tasks.search');
 
 });
 //User Routes
@@ -53,6 +52,7 @@ Route::get('faq/{faqs}', [FaqAPIController::class, 'questions']);
 //Tasks
 Route::get('task/{task}', [TaskAPIController::class, 'task']);
 Route::get('find', [TaskAPIController::class, 'search']);
+Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks'])->name('tasks.search');
 
 
 //Categories

@@ -35,10 +35,6 @@ class SearchAPIController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",
-     *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(ref="#/components/schemas")
-     *         )
      *     ),
      *     @OA\Response(
      *          response=500,
@@ -46,10 +42,10 @@ class SearchAPIController extends Controller
      *     )
      * )
      */
-    public function ajax_tasks(Request $request)
+    public function ajax_tasks()
     {
-        $search = new SearchService();
-        return $search->ajaxReq();
+//        $search = new SearchService();
+        return $this->service->ajaxReq();
     }
 
     public function my_tasks(){
