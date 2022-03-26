@@ -49,6 +49,7 @@
                                     placeholder="{{__('Например, ')}} {{ $current_category->getTranslatedAttribute('name') }}"
                                     required name="name" value="{{session('neym')}}">
                             </div>
+                            <div class="d-none" id="naprimer">{{__('Например, ')}} </div>
                             <p class="text-base text-gray-700 mt-10">{{__('Если хотите выбрать другую категорию')}}</p>
                             <div id="categories">
                                 <div class="flex lg:flex-row flex-col">
@@ -113,11 +114,10 @@
             $('.child-category').removeClass('hidden')
             $('.child-category').addClass('hidden')
             $('.child-category-'+$(this).val()).removeClass('hidden')
-
+            $('#username').attr('placeholder',$('#naprimer').text() + $('*[data-parent="' + $(this).val() + '"]:first').text())
         })
         $('.child-category1').change(function (){
             window.location.href = "/task/create?category_id=" + $(this).val();
-
         })
 
         $('.child-category-'+parentCategory+'').removeClass('hidden')
