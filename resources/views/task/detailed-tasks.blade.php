@@ -183,31 +183,21 @@
                                         <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                             <h1 class="font-bold h-auto w-48">{{__('Не предоставил(а) документы')}}</h1>
                                         </div>
-                                @endif
-                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                    <h1 class="font-bold text-gray-600 h-auto w-48">{{__('JSBADikseb')}}</h1>
-                                    <div class=" h-auto w-96">
-                                        <p class="text-gray-500">
-                                           Description
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                    <h1 class="font-bold text-gray-600 h-auto w-48">{{__('sdhfbsdifb')}}</h1>
-                                    <div class=" h-auto w-96">
-                                        <p class="text-gray-500">
-                                           Description
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="ml-4 md:ml-12 flex flex-row mt-8">
-                                    <h1 class="font-bold text-gray-600 h-auto w-48">{{__('HJSDjsjfsdff')}}</h1>
-                                    <div class=" h-auto w-96">
-                                        <p class="text-gray-500">
-                                           Description
-                                        </p>
-                                    </div>
-                                </div>
+                                    @endif
+
+                                    @foreach($task->custom_field_values as $value)
+                                        @if($value->value)
+                                            <div class="ml-4 md:ml-12 flex flex-row mt-8">
+                                                <h1 class="font-bold text-gray-600 h-auto w-48">{{$value->custom_field->title}}</h1>
+                                                <div class=" h-auto w-96">
+                                                    <p class="text-gray-500">
+                                                        {{ json_decode($value->value)[0]  }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                    @endif
+                                @endforeach
+
                                 <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
                                     <div>
@@ -257,8 +247,8 @@
                                                             <div class='modal' id='modal1'>
                                                                 <div class='content'>
                                                                     <img class="w-64 h-64"
-                                                                        src="{{asset('images/cash_icon.png')}}"
-                                                                        alt="">
+                                                                         src="{{asset('images/cash_icon.png')}}"
+                                                                         alt="">
                                                                     <h1 class="title">{{__('Пополните баланс')}}</h1>
                                                                     <p>
                                                                         {{__('Для отклика на вашем балансе должно быть 4000 UZS. Если заказчик захочет с вами связаться, мы автоматически спишем стоимость контакта с вашего счёта.')}}
@@ -548,18 +538,18 @@
                                 <h1 class="text-xl font-medium mb-4">{{__('Задание')}} № {{$task->id}}</h1>
                                 <div>
                                     <button onclick="toggleModal44()"
-                                    class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
-                                    <i class="fas fa-share-alt"></i>
+                                            class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
+                                        <i class="fas fa-share-alt"></i>
                                     </button>
                                     @if (Auth::check())
                                         <button onclick="toggleModal45()"
-                                        class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
-                                        <i class="far fa-flag"></i>
+                                                class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-500 hover:border-gray-400">
+                                            <i class="far fa-flag"></i>
                                         </button>
                                     @else
                                         <button
-                                        class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-400">
-                                        <i class="far fa-flag"></i>
+                                            class="px-3 py-3 border border-3 ml-4 rounded-md border-gray-400">
+                                            <i class="far fa-flag"></i>
                                         </button>
                                     @endif
                                 </div>
@@ -569,20 +559,20 @@
                             <div class="flex flex-row mt-4">
                                 <div class="mr-4">
                                     <img class="border-2 border-radius-500 border-gray-400 w-32 h-32 rounded-lg" alt="#"
-                                        src="@if ($task->user->avatar == ''){{ asset("storage/images/default.png") }}
-                                        @else{{asset("storage/{$task->user->avatar}") }}" @endif
-                                        >
+                                         src="@if ($task->user->avatar == ''){{ asset("storage/images/default.png") }}
+                                         @else{{asset("storage/{$task->user->avatar}") }}" @endif
+                                    >
                                 </div>
                                 <div class="">
                                     @if (Auth::check() && Auth::user()->id == $task->user->id)
-{{--                                @if ($task->user->id == auth()->user()->id)--}}
-                                    <a href="/profile"
-                                        class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
-                                     </a>
-                                     @else
-                                    <a href="/performers/{{$task->user->id}}"
-                                       class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
-                                    </a>
+                                        {{--                                @if ($task->user->id == auth()->user()->id)--}}
+                                        <a href="/profile"
+                                           class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
+                                        </a>
+                                    @else
+                                        <a href="/performers/{{$task->user->id}}"
+                                           class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
+                                        </a>
                                     @endif
 
                                     <br>
@@ -661,11 +651,15 @@
         {{--        share in webpages--}}
 
         {{-- share modal start --}}
-        <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none        justify-center items-center" style="background-color:rgba(0,0,0,0.5)" id="modal-id44">
+        <div
+            class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none        justify-center items-center"
+            style="background-color:rgba(0,0,0,0.5)" id="modal-id44">
             <div class="relative w-full my-32 mx-auto max-w-3xl" id="modal44">
-                <div class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col sm:w-4/5 w-full bg-white outline-none focus:outline-none">
+                <div
+                    class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col sm:w-4/5 w-full bg-white outline-none focus:outline-none">
                     <div class=" text-center p-6  rounded-t">
-                        <button type="submit"  onclick="toggleModal44()" class="rounded-md w-100 h-16 absolute top-1 right-4 focus:outline-none">
+                        <button type="submit" onclick="toggleModal44()"
+                                class="rounded-md w-100 h-16 absolute top-1 right-4 focus:outline-none">
                             <i class="fas fa-times text-xl w-full"></i>
                         </button>
                         <h1 class="font-bold text-3xl block mt-6">
@@ -673,27 +667,39 @@
                         </h1>
                         <p class="my-3">{{__('Расскажите об этом заказе в социальных сетях — оно заслуживает того, чтобы его увидели.')}}</p>
                     </div>
-                        <div class="text-center mb-8 flex flex-wrap md:w-4/5 w-full mx-auto">
-                            <span class="telegram"><i class="fab fa-telegram px-4 py-3 bg-blue-500 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
-                            <span class="instagram"><i class="fab fa-instagram px-4 py-3 bg-red-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
-                            <span class="whatsapp"><i class="fab fa-whatsapp px-4 py-3 bg-green-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
-                            <span class="facebook"><i class="fab fa-facebook px-4 py-3 bg-blue-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
-                            <span class="email"><i class="fas fa-at px-4 py-3 bg-yellow-600 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
-                            <span class="twitter"><i class="fab fa-twitter px-3 py-2.5 text-blue-500 text-white rounded-lg m-4 text-4xl cursor-pointer border-2 border-blue-500"></i></span>
-                            <span class="linkedin"><i class="fab fa-linkedin px-4 py-3 bg-blue-400 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
-                            <span class="google"><i class="fab fa-google px-4 py-3 bg-red-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
-                        </div>
+                    <div class="text-center mb-8 flex flex-wrap md:w-4/5 w-full mx-auto">
+                        <span class="telegram"><i
+                                class="fab fa-telegram px-4 py-3 bg-blue-500 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                        <span class="instagram"><i
+                                class="fab fa-instagram px-4 py-3 bg-red-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                        <span class="whatsapp"><i
+                                class="fab fa-whatsapp px-4 py-3 bg-green-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                        <span class="facebook"><i
+                                class="fab fa-facebook px-4 py-3 bg-blue-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                        <span class="email"><i
+                                class="fas fa-at px-4 py-3 bg-yellow-600 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                        <span class="twitter"><i
+                                class="fab fa-twitter px-3 py-2.5 text-blue-500 text-white rounded-lg m-4 text-4xl cursor-pointer border-2 border-blue-500"></i></span>
+                        <span class="linkedin"><i
+                                class="fab fa-linkedin px-4 py-3 bg-blue-400 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                        <span class="google"><i
+                                class="fab fa-google px-4 py-3 bg-red-700 text-white rounded-lg m-4 text-4xl cursor-pointer"></i></span>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id45-backdrop"></div>
         {{-- share modal end --}}
         {{-- podelitsa modal start --}}
-        <div class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none        justify-center items-center" style="background-color:rgba(0,0,0,0.5)" id="modal-id45">
+        <div
+            class="hidden overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none        justify-center items-center"
+            style="background-color:rgba(0,0,0,0.5)" id="modal-id45">
             <div class="relative w-full my-6 mx-auto max-w-3xl" id="modal44">
-                <div class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col sm:w-4/5 w-full bg-white outline-none focus:outline-none">
+                <div
+                    class="border-0 rounded-lg shadow-2xl px-10 relative flex mx-auto flex-col sm:w-4/5 w-full bg-white outline-none focus:outline-none">
                     <div class=" text-center p-6  rounded-t">
-                        <button type="submit"  onclick="toggleModal45()" class="rounded-md w-100 h-16 absolute top-1 right-4 focus:outline-none">
+                        <button type="submit" onclick="toggleModal45()"
+                                class="rounded-md w-100 h-16 absolute top-1 right-4 focus:outline-none">
                             <i class="fas fa-times text-xl w-full"></i>
                         </button>
                         <h1 class="font-medium text-3xl block mt-6">
@@ -705,14 +711,18 @@
                         <form action="{{route('tasks.detailed')}}" method="POST">
                             @csrf
                             <input type="hidden" name="taskId" value="{{ $task->id }}">
-                            <input type="hidden" name="userId" value="{{ Auth::check() ? Auth::user()->id : $task->user->id}}">
-                            <select name="c_type" id="" class="w-4/5 border-2 border-gray-500 rounded-lg mb-4 py-2 px-2 focus:outline-none hover:border-yellow-500">
-                               @foreach ($complianceType as $complType)
+                            <input type="hidden" name="userId"
+                                   value="{{ Auth::check() ? Auth::user()->id : $task->user->id}}">
+                            <select name="c_type" id=""
+                                    class="w-4/5 border-2 border-gray-500 rounded-lg mb-4 py-2 px-2 focus:outline-none hover:border-yellow-500">
+                                @foreach ($complianceType as $complType)
                                     <option value="{{$complType->id}}">{{$complType->name}}</option>
-                               @endforeach
+                                @endforeach
                             </select>
-                            <textarea name="c_text" id="" class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500"></textarea>
-                            <input type="submit" value="{{__('Отправить')}}" class="bg-yellow-500 mt-4 py-3 px-5 rounded-lg text-white text-xl cursor-pointer font-medium border-2 border-gray-500 hover:bg-yellow-600">
+                            <textarea name="c_text" id=""
+                                      class="border-2 border-gray-500 rounded-lg p-2 w-4/5 focus:outline-none hover:border-yellow-500"></textarea>
+                            <input type="submit" value="{{__('Отправить')}}"
+                                   class="bg-yellow-500 mt-4 py-3 px-5 rounded-lg text-white text-xl cursor-pointer font-medium border-2 border-gray-500 hover:bg-yellow-600">
                         </form>
 
                     </div>
