@@ -44,7 +44,7 @@
                                                     <p class="text-red-500">{{Session::get('incorrect_message')}}</p>
                                             @endif
                                                 @error('sms_otp')
-                                                    <p class="text-red-500">{{ $message }}</p>
+                                                    <p class="text-red-500"> {{__('Требуется заполнение!')}}</p>
                                                 @enderror
                                                 <input name="for_ver_func" type="hidden" value="{{$task->id}}">
 
