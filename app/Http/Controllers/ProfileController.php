@@ -153,9 +153,11 @@ class ProfileController extends Controller
         $data = $request->validated();
         if ($data['email'] != auth()->user()->email) {
             $data['is_email_verified'] = 0;
+            $data['email_old'] = auth()->user()->email;
         }
         if ($data['phone_number'] != auth()->user()->phone_number) {
             $data['is_phone_number_verified'] = 0;
+            $data['phone_number_old'] = auth()->user()->phone_number;
         }
         Auth::user()->update($data);
         Alert::success(__('Настройки успешно сохранены'));

@@ -74,7 +74,7 @@
                                                     <input
                                                             class="focus:outline-none focus:border-yellow-500  rounded-xl border py-2 px-3 w-full text-grey-900"
                                                             type="email" name="email" id="email"
-                                                            value="{{ $user->email??old('email')}}">
+                                                            value="{{ $user->is_email_verified?$user->email??old('email'):$user->email_old}}">
                                                     @error('email')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
@@ -87,13 +87,13 @@
                                                             type="text" id="phone_number"
                                                             @if (!$user->phone_number) placeholder="+998(00)000-00-00"
                                                             @else
-                                                            value="+998{{$user->phone_number}}"
+                                                            value="+998{{$user->is_phone_number_verified?$user->phone_number:$user->phone_number_old}}"
                                                             @endif >
                                                     @error('phone_number')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
                                                     <input type="hidden" name="phone_number"
-                                                           value="{{$user->phone_number}}" id="phone">
+                                                           value="{{$user->phone_number_old}}" id="phone">
                                                 </div>
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
