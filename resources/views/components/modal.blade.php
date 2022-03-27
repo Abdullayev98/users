@@ -35,7 +35,7 @@
                                 {{__('Подтвердите адрес вашей почты')}}
                             </div>
                             <p class="text-sm sm:text-xl sm:my-8 xl:my-2 text-gray-700 traking-tight">
-                                {{__('На ваш электронный адрес')}} <strong>{{auth()->user()->email}}</strong>
+                                {{__('На ваш электронный адрес')}} <strong>{{auth()->user()->email}}</strong> 
                                 {{__('было отправлено письмо со ссылкой для подтверждения вашей почты на Universal Services.')}}
                             </p>
                             <p class="text-sm sm:text-xl my-2 sm:my-8 text-gray-700 traking-tight">
@@ -121,8 +121,8 @@
                                     {{__('Подтвердите номер телефона')}}
                                 </div>
                                 <p class="my-8 text-gray-700 traking-tight">
-                                    {{__('На ваш телефонный номер')}}<strong>{{auth()->user()->phone_number}}</strong>
-                                    {{__('было отправлено письмо со кодом для подтверждения вашего аккаунта на Universal Services.')}}
+                                    {{__('На ваш телефонный номер')}}  <strong>{{auth()->user()->phone_number}}  </strong>  
+                                      {{__('было отправлено письмо со кодом для подтверждения вашего аккаунта на Universal Services.')}}
                                 </p>
                                 <p class="my-8 text-gray-700 traking-tight">
                                     {{__('Отправить новый код для подтверждения телефонный номер')}}
