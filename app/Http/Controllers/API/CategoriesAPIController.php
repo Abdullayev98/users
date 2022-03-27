@@ -11,7 +11,7 @@ class CategoriesAPIController extends Controller
     /**
      * @OA\Get(
      *     path="/api/categories",
-     *     tags={"Categories"},
+     *     tags={"Category"},
      *     summary="Get list of Category",
      *     @OA\Response(
      *          response=200,
@@ -27,8 +27,8 @@ class CategoriesAPIController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/categoriess/{id}",
-     *     tags={"Categories"},
+     *     path="/api/categories/{id}",
+     *     tags={"Category"},
      *     summary="Get list of Category",
      *     @OA\Response(
      *          response=200,
@@ -44,7 +44,13 @@ class CategoriesAPIController extends Controller
      *     ),
      * )
      */
-    public function show(Category $category){
-        return $category;
+    public function show($id){
+        
+        $data = Category::find($id);
+        
+        if($data){
+            return response()->json($data, 200);
+        }
+        return response()->json('Бундай id ли категория йок', 404);
     }
 }

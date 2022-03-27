@@ -9,14 +9,86 @@ use Illuminate\Support\Facades\DB;
 
 class CustomFieldAPIController extends Controller
 {
-    public function getByCategoryId(Category $category)
+    /**
+     * @OA\Get(
+     *     path="/api/custom-field-by-category/{id}",
+     *     tags={"Custom"},
+     *     summary="Get by category ID",
+     *     security={
+     *      {"token": {}},
+     *     },
+     *     @OA\Parameter(
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *      response=401,
+     *       description="Unauthenticated"
+     *     ),
+     *     @OA\Response(
+     *         response=403,
+     *         description="Forbidden"
+     *     )
+     * )
+     */
+    public function getByCategoryId($id)
     {
 
-        return $category->custom_fields;
+        //return $category->custom_fields;
+        $data = Category::find($id);
+        
+        if($data){
+            return response()->json($data, 200);
+        }
+        return response()->json('Бундай id ли категория йок', 404);
     }
-    public function getByTaskId(Task $task)
-    {
 
-        return $task->custom_fields;
+    /**
+     * @OA\Get(
+     *     path="/api/custom-field-by-task/{id}",
+     *     tags={"Custom"},
+     *     summary="Get by task ID",
+     *     security={
+     *      {"token": {}},
+     *     },
+     *     @OA\Parameter(
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *      response=401,
+     *       description="Unauthenticated"
+     *     ),
+     *     @OA\Response(
+     *         response=403,
+     *         description="Forbidden"
+     *     )
+     * )
+     */
+    public function getByTaskId($id)
+    {
+        //return $task->custom_fields;
+        $data = Task::find($id);
+        
+        if($data){
+            return response()->json($data, 200);
+        }
+        return response()->json('Бундай id ли task йок', 404);
     }
 }

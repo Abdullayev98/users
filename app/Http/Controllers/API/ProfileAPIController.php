@@ -29,6 +29,21 @@ class ProfileAPIController extends Controller
         $user->update($data);
         return  response()->json(['status'=>true,'message'=>"avatar successfully changed"]);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/settings",
+     *     tags={"Settings"},
+     *     summary="Get list of Settings",
+     *     security={
+     *      {"token": {}},
+     *     },
+     *     @OA\Response(
+     *          response=200,
+     *          description="successful operation",
+     *     )
+     * )
+     */
     public function settings()
     {
         $user = User::find(Auth::user()->id);

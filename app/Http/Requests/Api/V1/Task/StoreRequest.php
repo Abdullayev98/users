@@ -37,7 +37,7 @@ class StoreRequest extends FormRequest
             'budget' => 'required',
             'description' => 'required',
             'category_id' => 'required|numeric',
-            'phone' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/'
+            //'phone' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/'
         ];
     }
 }

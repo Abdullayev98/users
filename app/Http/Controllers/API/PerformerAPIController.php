@@ -26,7 +26,7 @@ class PerformerAPIController extends Controller
     public function service()
     {
 
-        return User::where('role_id', 2)->paginate(50);
+        return User::where('role_id', 2)->get();
     }
 
     /**

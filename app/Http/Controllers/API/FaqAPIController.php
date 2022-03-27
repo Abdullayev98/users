@@ -34,7 +34,7 @@ class FaqAPIController extends Controller
     }
     /**
      * @OA\Get(
-     *     path="/api/faq/{faqs}",
+     *     path="/api/faq/{id}",
      *     tags={"FAQ"},
      *     summary="Get of questions in FAQ",
      *     @OA\Parameter (
@@ -59,8 +59,12 @@ class FaqAPIController extends Controller
      *     )
      * )
      */
-    public function questions(Faqs $id){
-        return $id;
-
+    public function questions($id){
+        $data = Faqs::find($id);
+        
+        if($data){
+            return response()->json($data, 200);
+        }
+        return response()->json('Бундай малумот йок', 404);
     }
 }

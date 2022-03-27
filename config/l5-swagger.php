@@ -148,12 +148,12 @@ return [
                 /*
                  * Examples of Security schemes
                 */
-                /*'token' => [ // Unique name of security
+                'token' => [ // Unique name of security
                     'type' => 'apiKey', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
                     'description' => 'Bearer token',
                     'name' => 'Authorization', // The name of the header or query parameter to be used.
                     'in' => 'header', // The location of the API key. Valid values are "query" or "header".
-                ],*/
+                ],
                 /*
                 'oauth2_security_example' => [ // Unique name of security
                     'type' => 'oauth2', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
@@ -169,7 +169,7 @@ return [
                 */
 
                 // Open API 3.0 support
-                'passport' => [ // Unique name of security
+                /* 'passport' => [ // Unique name of security
                     'type' => 'apiKey', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
                     'description' => 'Laravel passport apiKey security.',
                     'in' => 'header',
@@ -182,7 +182,7 @@ return [
                             "scopes" => []
                         ],
                     ],
-                ],
+                ], */
 
             ],
             'security' => [
@@ -247,7 +247,8 @@ return [
          * Uncomment to add constants which can be used in annotations
          */
         'constants' => [
-            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://user.uz'),
+            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://userdo.demo'),
+            'L5_SWAGGER_CONST_HOST2' => env('L5_SWAGGER_CONST_HOST2', 'http://my-default-host.com'),
             'APP_NAME' => env('APP_NAME', 'Joy Voyager Api'),
         ],
     ],
