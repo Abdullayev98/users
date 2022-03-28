@@ -123,7 +123,8 @@ class Controller extends BaseController
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();
         $choosed_category = Category::withTranslations(['ru', 'uz'])->where('id', $id)->get();
         $child_categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', $id)->get();
-        return view('task/choosetasks', compact('child_categories', 'categories', 'choosed_category'));
+        $idR = $id;
+        return view('task/choosetasks', compact('child_categories', 'categories', 'choosed_category', 'idR'));
     }
     public function lang($lang)
     {
