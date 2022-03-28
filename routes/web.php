@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\API\PerformerAPIController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Task\ResponseController;
 use App\Http\Controllers\Task\UpdateController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\NewsController;
@@ -70,6 +74,10 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', [Controller::class, 'home'])->name('home');
 
 
+Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('task.search');
+//Route::get('tasks-search', [SearchTaskController::class, 'ajax_tasks'])->name('tasks.search');
+// Route::get('my-tasks', [SearchTaskController::class, 'my_tasks'])->name('task.mytasks');
+Route::get('search', [SearchTaskController::class, 'search'])->name('search');
 
 Route::put('/change-task/{task}', [UpdateController::class,'__invoke'])->name("task.update")->middleware('auth');
 
@@ -123,3 +131,102 @@ Route::get('/press',[MassmediaController::class, 'index'])->name('massmedia');
 
 Route::view('/vacancies','reviews.vacancies');
 
+
+Route::get('/geotaskshint', [Controller::class, 'geotaskshint'])->name('geotaskshint');
+Route::get('/security', [Controller::class, 'security'])->name('security');
+Route::get('/badges', [Controller::class, 'badges'])->name('badges');
+
+Route::group(['middleware'=>'auth'], function (){
+    Route::prefix('profile')->group(function () {
+        //Profile
+        Route::get('/', [ProfileController::class, 'profileData'])->name('userprofile');
+        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('update.photo');
+
+        //Profile cash
+        Route::get('/cash', [ProfileController::class, 'profileCash'])->name('userprofilecash');
+
+        // Profile settings
+        Route::get('/settings', [ProfileController::class, 'editData'])->name('editData');
+        Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('updateData');
+
+        // Profile delete
+        Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('users.delete');
+
+        //added category id
+        Route::post('/getcategory',[ProfileController::class, 'getCategory'])->name('get.category');
+
+        Route::post('/insertdistrict',[ProfileController::class, 'StoreDistrict'])->name('insert.district');
+
+        Route::post('/store/profile/image',[ProfileController::class, 'storeProfileImage'])->name('profile.image.store');
+        Route::post('/comment',[ProfileController::class, 'comment'])->name('comment');
+        Route::post('/testBase',[ProfileController::class, 'testBase'])->name('testBase');
+
+        //description
+        Route::post('/description',[ProfileController::class, 'EditDescription'])->name('edit.description');
+
+        //create_port
+        Route::view('/create','profile/create_port');
+        Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('portfolio.create');
+        Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('portfolio');
+        Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('portfolio.delete');
+    });
+});
+Route::post('/storepicture',[ProfileController::class, 'UploadImage'])->name('storePicture');
+
+
+
+
+Route::prefix("task")->group(function () {
+    Route::prefix("create")->group(function () {
+        Route::get('/', [CreateController::class, 'name'])->name('task.create.name');
+        Route::post('/name', [CreateController::class, 'name_store'])->name('task.create.name.store');
+        Route::get('/custom/{task}', [CreateController::class, 'custom_get'])->name('task.create.custom.get');
+        Route::post('/custom/{task}/store', [CreateController::class, 'custom_store'])->name('task.create.custom.store');
+        Route::get('/address/{task}', [CreateController::class, 'address'])->name('task.create.address');
+        Route::post('/address/{task}/store', [CreateController::class, 'address_store'])->name('task.create.address.store');
+        Route::get('/date/{task}', [CreateController::class, 'date'])->name('task.create.date');
+        Route::post('/date/{task}/store', [CreateController::class, 'date_store'])->name('task.create.date.store');
+        Route::get('/budget/{task}', [CreateController::class, 'budget'])->name('task.create.budget');
+        Route::post('/budget/{task}/store', [CreateController::class, 'budget_store'])->name('task.create.budget.store');
+        Route::get('/note/{task}', [CreateController::class, 'note'])->name('task.create.note');
+        Route::post('/note/{task}/store', [CreateController::class, 'note_store'])->name('task.create.note.store');
+        Route::post('/note/{task}/images/store', [CreateController::class, 'images_store'])->name('task.create.images.store');
+        Route::get('/contact/{task}', [CreateController::class, 'contact'])->name('task.create.contact');
+        Route::post('/contact/{task}/store', [CreateController::class, 'contact_store'])->name('task.create.contact.store.phone')->middleware('auth');
+        Route::post('/contact/{task}/store/register', [CreateController::class, 'contact_register'])->name('task.create.contact.store.register')->middleware('guest');
+        Route::post('/contact/{task}/store/login/', [CreateController::class, 'contact_login'])->name('task.create.contact.store.login')->middleware('guest');
+        Route::get('/verify/{task}/{user}', [CreateController::class, 'verify'])->name('task.create.verify');
+        Route::post('/verify/{user}', [UserController::class, 'verifyProfil'])->name('task.create.verification');
+        Route::post('/upload', [CreateController::class, 'uploadImage']);
+        Route::get('task/{task}/images/delete', [CreateController::class, 'deleteAllImages'])->name('task.images.delete')->middleware('auth');
+
+
+        // Responses
+
+        Route::post("/detailed-task/{task}/response", [ResponseController::class, 'store'])->name('task.response.store');
+
+
+    });
+
+});
+
+Route::get('/performers-by-category', [PerformerAPIController::class, 'getByCategories']);
+Route::post('/reset', [UserController::class, 'reset_submit'])->name('password.reset');
+Route::get('/reset/password', [UserController::class, 'reset_password'])->name('password.reset.password');
+Route::post('/reset/password', [UserController::class, 'reset_password_save'])->name('password.reset.password.save');
+Route::get('/code', [UserController::class, 'reset_code_view'])->name('password.reset.code.view');
+Route::post('/code', [UserController::class, 'reset_code'])->name('password.reset.code');
+
+Route::get('/register/code', [UserController::class, 'code'])->name('register.code');
+Route::post('/register/code', [UserController::class, 'code_submit'])->name('register.code.submit');
+Route::post('/account/password/change', [ProfileController::class, 'change_password'])->name('account.password.reset');
+
+
+
+Route::post('select-performer/{response}', [ResponseController::class, 'selectPerformer'])->name('performer.select');
+Route::post('tasks/{task}/complete', [UpdateController::class, 'completed'])->name('task.completed');
+Route::post('send-review-user/{task}', [UpdateController::class, 'sendReview'])->name('send.review');
+
+
+Route::get('/faq',[FaqsController::class, 'index'])->name('faq.index');
+Route::get('/questions/{id}', [FaqsController::class,'questions'])->name('questions');
