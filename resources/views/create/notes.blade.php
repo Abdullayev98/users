@@ -36,7 +36,7 @@
             <div class="mb-3 xl:w-full">
                 <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">
                     {{__('Описание')}}</label>
-                <textarea name="description"
+                <textarea name="description" autofocus="autofocus"
                   class="form-control block resize-none w-full h-36  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none focus:border-yellow-500"
                    placeholder="{{__('Например')}}{{$task->category->placeholder}}"></textarea>
               </div>

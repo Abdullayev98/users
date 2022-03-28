@@ -84,7 +84,7 @@
 
                                                             <label class="text-sm text-gray-500 mb-2"
                                                                    for="phone">{{__('Номер телефона')}}</label>
-                                                            <input type="text"
+                                                            <input type="text"  autofocus="autofocus"
                                                                    value="+998{{auth()->user()->phone_number}}"
                                                                    placeholder="+998(00)000-00-00" id="phone"
                                                                    class="shadow appearance-none phone border phone  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"/>
@@ -130,7 +130,7 @@
                                                             <label class="text-sm text-gray-500 mb-2"
                                                                    for="name">{{__('Имя')}}</label>
 
-                                                            <input type="text" name="name"
+                                                            <input type="text" name="name" autofocus="autofocus"
                                                                    placeholder="{{__('Имя')}}"
                                                                    value="{{old('name')}}"
                                                                    class="mb-5 shadow appearance-none border   focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500 "/>
@@ -202,7 +202,7 @@
                                             <span class="text-gray-500 text-sm">
                                                 {{__('Телефонный номер')}}
                                             </span>
-                                            <input type="text"
+                                            <input type="text" 
                                                    placeholder="{{__('Номер телефона')}}" id="phone2"
                                                    value="+998{{ old('phone_number') }}"
                                                    class="mt-2 shadow appearance-none phone border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"/>
