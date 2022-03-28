@@ -14,7 +14,7 @@
                         {{__('Ищем исполнителя для задания')}} "{{$task->name}}"
                     </div>
                     <div class="w-full text-center my-4 text-gray-400">
-                        {{__('Задание заполнено на')}}99%
+                        {{__('Задание заполнено на')}} 99%
                     </div>
                     <div class="relative pt-1">
                         <div class="overflow-hidden h-1  flex rounded bg-gray-200  mx-auto ">
@@ -33,7 +33,7 @@
                                     <div>
                                         <div class="mb-3 xl:w-full">
                                                 <label for="phone">{{__('Код авторизация')}}</label>
-                                                <input type="text" onkeypress='validate(event)'
+                                                <input type="text" onkeypress='validate(event)' autofocus="autofocus"
                                                        class="shadow appearance-none border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500 "
                                                        name="sms_otp">
                                             @if(session()->has('expired_message'))

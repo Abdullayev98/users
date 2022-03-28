@@ -45,7 +45,7 @@
                                 <input
                                     class="shadow sm:text-base text-sm  border focus:shadow-orange-500 rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none
                                     focus:border-yellow-500 "
-                                    id="username" type="text"
+                                    id="username" type="text" autofocus="autofocus"
                                     placeholder="{{__('Например, ')}} {{ $current_category->getTranslatedAttribute('name') }}"
                                     required name="name" value="{{session('neym')}}">
                             </div>
