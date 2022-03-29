@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Task;
 
 use App\Http\Requests\Task\UpdateRequest;
 use App\Models\Compliance;
-use App\Models\CompliancesType;
+use App\Models\ComplianceType;
 use App\Models\CustomField;
 use App\Models\CustomFieldsValue;
 use App\Models\WalletBalance;
@@ -69,7 +69,7 @@ public function __construct()
 
     public function task(Task $task)
     {
-        $complianceType =CompliancesType::all();
+        $complianceType =ComplianceType::all();
         $review = null;
         if ($task->reviews_count == 2) $review == true;
         if (auth()->check()){
