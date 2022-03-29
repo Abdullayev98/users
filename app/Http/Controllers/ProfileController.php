@@ -177,9 +177,9 @@ class ProfileController extends Controller
             'category' => 'required'
         ]);
         $user = Auth::user();
+        $user->role_id = 2;
         $checkbox = implode(",", $request->get('category'));
         $user->update(['category_id' => $checkbox]);
-        $user->role_id = 2;
         return redirect()->route('userprofile');
     }
 

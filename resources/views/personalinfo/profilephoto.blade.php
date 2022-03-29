@@ -13,21 +13,23 @@
                 @endphp
                 <div class="flex justify-center">
                     <img class="w-20 h-20"
-                         @if ($user->avatar == Null)
-                         src='{{asset("storage/images/default.jpg")}}'
-                         @else
-                         src="{{asset("storage/{$user->avatar}")}}"
-                         @endif alt="avatar">
+                        @if ($user->avatar == Null)
+                        src='{{asset("storage/images/default.jpg")}}'
+                        @else
+                        src="{{asset("storage/{$user->avatar}")}}"
+                        @endif alt="avatar">
                 </div>
                 <h3 class="text-2xl font-semibold my-3">
                     {{$user->name}}
                 </h3>
-
+                <input type="file" name="file" id="file" onclick="fileupdate()" class="hidden">
+                <label for="file" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">
+                    <i class="fas fa-camera mr-1"></i>
+                    <span>{{__('Загрузить фото')}}</span>
+                </label>
                 <form action="{{route('verification.photo.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <label for="profilephoto" class="border cursor-pointer text-sm rounded-2xl	py-1.5 px-4">{{__('Загрузить фото')}}</label>
-                    <input type="file" id="profilephoto" name="avatar" class="hidden">
                     <p class="text-base my-5">
                     {{__('Пользователям с хорошей фотографией больше доверяют. Фото можно добавить потом.')}}
                     </p>
@@ -48,4 +50,26 @@
         </div>
     </div>
 </div>
+<link rel="stylesheet" href="{{ asset('path/ijaboCropTool.min.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ asset('path/ijaboCropTool.min.js') }}"></script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.css" rel="stylesheet">
+<script>
+    $('#file').ijaboCropTool({
+        preview: '.image-previewer',
+        setRatio: 1,
+        allowedExtensions: ['jpg', 'jpeg', 'png'],
+        buttonsText: ['{{__('Сохранить')}}', '{{__('Отмена')}}'],
+        buttonsColor: ['#30bf7d', '#ee5155', -15],
+        processUrl: '{{ route('profile.image.store') }}',
+        withCSRF: ['_token', '{{ csrf_token() }}'],
+        fileName: 'image',
+        onSuccess: function (message, element, status) {
+            window.location.href = "{{ route('verification.photo') }}";
+        },
+        onError: function (message, element, status) {
+            alert(message);
+        }
+    });
+</script>
 @endsection
