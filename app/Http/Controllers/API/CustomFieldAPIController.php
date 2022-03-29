@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\CustomField;
 use App\Models\Task;
 use Illuminate\Support\Facades\DB;
 
@@ -39,16 +40,15 @@ class CustomFieldAPIController extends Controller
      *     )
      * )
      */
-    public function getByCategoryId($id)
+    public function getByCategoryId(Category $category)
     {
 
-        //return $category->custom_fields;
-        $data = Category::find($id);
-        
-        if($data){
-            return response()->json($data, 200);
-        }
-        return response()->json('Бундай id ли категория йок', 404);
+        return $category->custom_fields;
+    }
+    public function getByCustomFieldId(CustomField $custom_field)
+    {
+
+        return $custom_field->custom_field_values;
     }
 
     /**
@@ -81,14 +81,14 @@ class CustomFieldAPIController extends Controller
      *     )
      * )
      */
-    public function getByTaskId($id)
+    public function getByTaskId(Task $task)
     {
-        //return $task->custom_fields;
-        $data = Task::find($id);
-        
-        if($data){
-            return response()->json($data, 200);
-        }
-        return response()->json('Бундай id ли task йок', 404);
+        return $task->custom_field_values;
+//        $data = Task::find($id);
+//
+//        if($data){
+//            return response()->json($data, 200);
+//        }
+//        return response()->json('Бундай id ли task йок', 404);
     }
 }

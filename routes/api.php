@@ -33,13 +33,16 @@ Route::middleware('custom.auth:api')->group(function () {
 
     Route::get('/my-tasks', [TaskAPIController::class, 'my_tasks']); //end
     Route::put('/change-task/{task}', [TaskAPIController::class, 'changeTask']);
-    Route::get('/custom-field-by-category/{id}',[CustomFieldAPIController::class,'getByCategoryId']); //end
-    Route::get('/custom-field-by-task/{id}',[CustomFieldAPIController::class,'getByTaskId']); //end
+    Route::get('/custom-field-by-category/{category}',[CustomFieldAPIController::class,'getByCategoryId']); //end
+    Route::get('/custom-field-values-by-task/{task}',[CustomFieldAPIController::class,'getByTaskId']); //end
+    Route::get('/custom-field-values-by-custom-field/{custom_field}',[CustomFieldAPIController::class,'getByCustomFieldId']); //end
 
 });
+
+
 //User Routes
 Route::post('login', [UserAPIController::class, 'login']); //end
-Route::post('register', [UserAPIController::class, 'register']); //end 
+Route::post('register', [UserAPIController::class, 'register']); //end
 Route::put('update/{id}', [UserAPIController::class, 'update']);
 Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
 

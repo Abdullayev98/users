@@ -59,7 +59,7 @@ Route::post('give-task', [PerformersController::class, 'give_task']);
 Route::post('ajax-request', [SearchTaskController::class, 'task_response']);
 Route::delete('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('delete.task');
 Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail");
-Route::post('/detailed-tasks', [SearchTaskController::class, 'comlianse_save'])->name("tasks.detailed");
+Route::post('/detailed-tasks', [SearchTaskController::class, 'comlianse_save'])->name("tasks.detailed"); // avacoder
 Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask")->middleware('auth');
 
 Route::group(['prefix' => 'admin'], function () {
@@ -115,12 +115,12 @@ Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name
 
 Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@paycom')->name('paycom');
 //social login facebook
-Route::get('login/facebook',[SocialController::class,'facebookRedirect'])->name('auth.facebook');
-Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook']);
+Route::get('login/facebook',[SocialController::class,'facebookRedirect'])->name('auth.facebook'); // avacoder
+Route::get('login/facebook/callback',[SocialController::class,'loginWithFacebook']); // avacoder
 
 //social login google
-Route::get('login/google',[SocialController::class,'googleRedirect'])->name('auth.google');
-Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']);
+Route::get('login/google',[SocialController::class,'googleRedirect'])->name('auth.google'); // avacoder
+Route::get('login/google/callback',[SocialController::class,'loginWithGoogle']); // avacoder
 
 Route::view('/faq','faq.faq');
 
@@ -141,14 +141,14 @@ Route::group(['middleware'=>'auth'], function (){
     Route::prefix('profile')->group(function () {
         //Profile
         Route::get('/', [ProfileController::class, 'profileData'])->name('userprofile');
-        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('update.photo');
+        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('update.photo'); // avacoder
 
         //Profile cash
         Route::get('/cash', [ProfileController::class, 'profileCash'])->name('userprofilecash');
 
         // Profile settings
-        Route::get('/settings', [ProfileController::class, 'editData'])->name('editData');
-        Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('updateData');
+        Route::get('/settings', [ProfileController::class, 'editData'])->name('editData'); // avacoder
+        Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('updateData'); // avacoder
 
         // Profile delete
         Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('users.delete');
@@ -172,12 +172,13 @@ Route::group(['middleware'=>'auth'], function (){
         Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('portfolio.delete');
     });
 });
-Route::post('/storepicture',[ProfileController::class, 'UploadImage'])->name('storePicture');
+Route::post('/storepicture',[ProfileController::class, 'UploadImage'])->name('storePicture'); // avacoder
 
 
 
 
 Route::prefix("task")->group(function () {
+    // bu tayyor qilingan
     Route::prefix("create")->group(function () {
         Route::get('/', [CreateController::class, 'name'])->name('task.create.name');
         Route::post('/name', [CreateController::class, 'name_store'])->name('task.create.name.store');
@@ -201,7 +202,7 @@ Route::prefix("task")->group(function () {
         Route::post('/upload', [CreateController::class, 'uploadImage']);
         Route::get('task/{task}/images/delete', [CreateController::class, 'deleteAllImages'])->name('task.images.delete')->middleware('auth');
 
-
+        // bu tayyor qilingan
         // Responses
 
         Route::post("/detailed-task/{task}/response", [ResponseController::class, 'store'])->name('task.response.store');
@@ -211,16 +212,16 @@ Route::prefix("task")->group(function () {
 
 });
 
-Route::get('/performers-by-category', [PerformerAPIController::class, 'getByCategories']);
-Route::post('/reset', [UserController::class, 'reset_submit'])->name('password.reset');
-Route::get('/reset/password', [UserController::class, 'reset_password'])->name('password.reset.password');
-Route::post('/reset/password', [UserController::class, 'reset_password_save'])->name('password.reset.password.save');
-Route::get('/code', [UserController::class, 'reset_code_view'])->name('password.reset.code.view');
-Route::post('/code', [UserController::class, 'reset_code'])->name('password.reset.code');
+Route::get('/performers-by-category', [PerformerAPIController::class, 'getByCategories']); // avacoder
+Route::post('/reset', [UserController::class, 'reset_submit'])->name('password.reset'); // avacoder
+Route::get('/reset/password', [UserController::class, 'reset_password'])->name('password.reset.password'); // avacoder
+Route::post('/reset/password', [UserController::class, 'reset_password_save'])->name('password.reset.password.save'); // avacoder
+Route::get('/code', [UserController::class, 'reset_code_view'])->name('password.reset.code.view'); // avacoder
+Route::post('/code', [UserController::class, 'reset_code'])->name('password.reset.code'); // avacoder
 
-Route::get('/register/code', [UserController::class, 'code'])->name('register.code');
-Route::post('/register/code', [UserController::class, 'code_submit'])->name('register.code.submit');
-Route::post('/account/password/change', [ProfileController::class, 'change_password'])->name('account.password.reset');
+Route::get('/register/code', [UserController::class, 'code'])->name('register.code'); // avacoder
+Route::post('/register/code', [UserController::class, 'code_submit'])->name('register.code.submit'); // avacoder
+Route::post('/account/password/change', [ProfileController::class, 'change_password'])->name('account.password.reset'); // avacoder
 
 
 
@@ -238,29 +239,29 @@ Route::get('/lang/{lang}', [Controller::class, 'lang'])->name('lang');
 
 
 
-Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'loginPost'])->name('signin.custom')->middleware('guest');
+Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest'); // avacoder
+Route::post('/login', [LoginController::class, 'loginPost'])->name('signin.custom')->middleware('guest'); // avacoder
 
 
-Route::get('/register', [UserController::class, 'signup'])->name('register')->middleware('guest');
-Route::post('/register', [LoginController::class, 'customRegister'])->name('user.registration')->middleware('guest');
+Route::get('/register', [UserController::class, 'signup'])->name('register')->middleware('guest'); // avacoder
+Route::post('/register', [LoginController::class, 'customRegister'])->name('user.registration')->middleware('guest'); // avacoder
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');  // avacoder
 
-Route::get('/reset', [UserController::class, 'reset'])->name('reset');
+Route::get('/reset', [UserController::class, 'reset'])->name('reset');  // avacoder
 
-Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm');
+Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm'); // avacoder
 
 //Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth', 'is_verify_email']);
 
 
 
-Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth']);
-Route::get('account/verify/{user}/{hash}', [LoginController::class, 'verifyAccount'])->name('user.verify');
-Route::get('account/verification/email', [LoginController::class, 'send_email_verification'])->name('user.verify.send')->middleware('auth');
-Route::get('account/verification/phone', [LoginController::class, 'send_phone_verification'])->name('user.verify.phone.send')->middleware('auth');
-Route::post('account/verification/phone', [LoginController::class, 'verify_phone'])->name('user.verify.phone.submit')->middleware('auth');
-Route::post("account/change/email", [LoginController::class,'change_email'])->name('user.email.change')->middleware('auth');
-Route::post("account/change/phone", [LoginController::class,'change_phone_number'])->name('user.phone.change')->middleware('auth');
-Route::post("account/change/phone/send", [LoginController::class,'verify_phone'])->name('user.phone.verify')->middleware('auth');
+Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth']); // avacoder
+Route::get('account/verify/{user}/{hash}', [LoginController::class, 'verifyAccount'])->name('user.verify'); // avacoder
+Route::get('account/verification/email', [LoginController::class, 'send_email_verification'])->name('user.verify.send')->middleware('auth'); // avacoder
+Route::get('account/verification/phone', [LoginController::class, 'send_phone_verification'])->name('user.verify.phone.send')->middleware('auth'); // avacoder
+Route::post('account/verification/phone', [LoginController::class, 'verify_phone'])->name('user.verify.phone.submit')->middleware('auth'); // avacoder
+Route::post("account/change/email", [LoginController::class,'change_email'])->name('user.email.change')->middleware('auth'); // avacoder
+Route::post("account/change/phone", [LoginController::class,'change_phone_number'])->name('user.phone.change')->middleware('auth'); // avacoder
+Route::post("account/change/phone/send", [LoginController::class,'verify_phone'])->name('user.phone.verify')->middleware('auth'); // avacoder
 
