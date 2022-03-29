@@ -17,9 +17,15 @@
                                         class="slider__item bg-inherit hover:text-yellow-500 border py-1 rounded-full px-4 my-4 text-gray-500 text-left md:text-center text-md md:inline-block block">
                                     <span class="flex w-full flex-wrap content-center items-center">
                                     <img src=" {{ asset('storage/'.$category->ico) }}" alt="" class="h-8 w-8 hidden">
-                                        <a href="{{route('categories',['id'=>$category->id])}}" class=" text-center text-base p-3">
+                                    @if ($category->id == $idR)
+                                    <a class="text-yellow-500 text-sm p-3" href="{{route('categories',['id'=>$category->id])}}">
                                         {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
                                     </a>
+                                        @else
+                                            <a class="text-sm p-3" href="{{route('categories',['id'=>$category->id])}}">
+                                        {{$category->getTranslatedAttribute('name',Session::get('lang') , 'fallbackLocale')}}
+                                    </a>
+                                            @endif
                                     </span>
                                 </button>
                                 <div class="hidden">
