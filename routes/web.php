@@ -265,3 +265,8 @@ Route::post("account/change/email", [LoginController::class,'change_email'])->na
 Route::post("account/change/phone", [LoginController::class,'change_phone_number'])->name('user.phone.change')->middleware('auth'); // avacoder
 Route::post("account/change/phone/send", [LoginController::class,'verify_phone'])->name('user.phone.verify')->middleware('auth'); // avacoder
 
+
+
+Route::any('/paynet',function(){
+    (new PaynetTransactionController)->driver('paynet')->handle();
+});
