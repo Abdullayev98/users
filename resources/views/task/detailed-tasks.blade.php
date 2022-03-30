@@ -42,9 +42,13 @@
 
     </script>
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
-        <div class="grid grid-cols-3 w-11/12 mx-auto my-8 gap-x-4">
-            <div class="lg:col-span-2 col-span-3">
-                        
+    @if(isset($task->responses))
+        <div class="lg:flex container xl:w-9/12 w-11/12 mx-auto">
+            <div class="md:flex mx-auto w-full">
+                @else
+                    <div class="md:flex mx-auto w-full">
+                        @endif
+                        <div class="mt-8 lg:flex mb-8 w-full">
                             {{-- left sidebar start --}}
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
@@ -92,8 +96,8 @@
                                 </div>
 
                                 <div
-                                    class="mt-12 border-2 py-2 rounded-lg border-orange-100 shadow-2xl">
-                                    <div id="map" class="h-64 w-full mb-4 -mt-2 mr-2"></div>
+                                    class="mt-12 border-2 py-2 lg:w-[600px]  w-[400px] rounded-lg border-orange-100 shadow-2xl">
+                                    <div id="map" class="h-64 mb-4 -mt-2"></div>
                                     <div class="ml-4 md:ml-12 flex flex-row my-4">
                                         <h1 class="font-bold h-auto w-48">{{__('Место')}}</h1>
                                         @if($task->address !== NULL)
@@ -191,8 +195,8 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                        @endif
-                                    @endforeach
+                                    @endif
+                                @endforeach
 
                                 <!--  ------------------------ showModal Откликнуться на это задание  ------------------------  -->
 
@@ -527,9 +531,9 @@
                                             @endforeach
                                         </div>
                             </div>
-                        
+                        </div>
                         {{-- right sidebar start --}}
-                        <div class="lg:col-span-1 col-span-2">
+                        <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
                                 <h1 class="text-xl font-medium mb-4">{{__('Задание')}} № {{$task->id}}</h1>
                                 <div>
@@ -585,7 +589,7 @@
                                 </div>
                             </div>
                         </div>
-                
+                    </div>
             </div>
         </div>
 
