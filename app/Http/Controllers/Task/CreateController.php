@@ -79,8 +79,8 @@ class CreateController extends Controller
 
     public function address_store(Request $request, Task $task)
     {
-
         $task->update($this->service->addAdditionalAddress($request));
+
         $this->service->attachCustomFieldsByRoute($task, CustomField::ROUTE_ADDRESS);
         return redirect()->route("task.create.date", $task->id);
 
