@@ -4,6 +4,7 @@ use App\Http\Controllers\API\PerformerAPIController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PaynetTransactionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Task\ResponseController;
 use App\Http\Controllers\Task\UpdateController;
