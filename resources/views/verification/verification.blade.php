@@ -26,7 +26,7 @@
             <p class="font-bold mt-16">{{__('Станьте исполнителем и выполняйте интересные задания от заказчиков  в удобное для вас время.')}}</p>
             <div class="grid md:grid-cols-4 grid-cols-1 gap-4 pt-16 container mx-auto font-bold text-xl">
                 <div>
-                    <img class="mx-auto" src="{{asset('images/User_money.png')}}" alt="#">
+                    <img class="mx-auto" src="https://assets.youdo.com/_next/static/media/money.bd687ef7e0abebf2c7822c7c9e527522.png" alt="#">
                     <p>{{__('Достойный заработок')}}</p>
                 </div>
                 <div>

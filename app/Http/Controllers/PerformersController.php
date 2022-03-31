@@ -39,12 +39,14 @@ class PerformersController extends Controller
         }
     }
 
-    public function service(Request $request)
+    public function service( User $user,Request $request)
     {
         $tasks = Task::where('user_id', Auth::id())->get();
 
         $users = User::where('role_id', 2)->orderbyDesc('reviews')->paginate(50);
-        return view('Performers/performers', compact('users', 'tasks'));
+        $task_count =$user->performer_tasks_count;
+        $about = User::where('role_id', 2)->orderBy('reviews', 'desc')->take(20)->get();
+        return view('Performers/performers', compact('users', 'tasks' ,'about','task_count' ));
     }
 
 

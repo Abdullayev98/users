@@ -565,7 +565,6 @@
                                 </div>
                                 <div class="">
                                     @if (Auth::check() && Auth::user()->id == $task->user->id)
-                                        {{--                                @if ($task->user->id == auth()->user()->id)--}}
                                         <a href="/profile"
                                            class="text-2xl text-blue-500 hover:text-red-500">{{$task->user->name ?? $task->user_name}}
                                         </a>

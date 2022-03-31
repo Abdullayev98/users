@@ -77,14 +77,14 @@
                                 <input type="text" name="born_date" value="{{auth()->user()->born_date}}" placeholder="{{__('Какой месяц..')}}" data-input class=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm text-xs rounded-lg focus:outline-none focus:border-yellow-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-yellow-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required> <!-- input is mandatory -->
                             </div>
 
-                            <div class="transform hover:scale-125">
-                                <a class="input-button w-1 h-1  pl-1  " title="toggle" data-toggle>
-                                    <i class="far fa-calendar-alt fill-current text-green-600"></i>
+                            <div class="transform hover:scale-125 relative right-8 my-auto">
+                                <a class="input-button w-1 h-1" title="toggle" data-toggle>
+                                    <i class="far fa-calendar-alt fill-current text-yellow-500"></i>
                                 </a>
                             </div>
-                            <div class="transform hover:scale-125 ">
-                                <a class="input-button w-1 h-1 sm:pl-3 pl-1  " title="clear" data-clear>
-                                    <i class="fas fa-trash-alt stroke-current text-red-600 "></i>
+                            <div class="transform hover:scale-125 my-auto">
+                                <a class="input-button w-1 h-1" title="clear" data-clear>
+                                    <i class="fas fa-trash-alt stroke-current text-red-500 "></i>
                                 </a>
                             </div>
                             @error('born_date')
