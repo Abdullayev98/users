@@ -3,9 +3,11 @@
 use App\Http\Controllers\API\CategoriesAPIController;
 use App\Http\Controllers\API\CustomFieldAPIController;
 use App\Http\Controllers\API\FaqAPIController;
+use App\Http\Controllers\API\LoginAPIController;
 use App\Http\Controllers\API\NewsAPIController;
 use App\Http\Controllers\API\PerformerAPIController;
 use App\Http\Controllers\API\ProfileAPIController;
+use App\Http\Controllers\API\SocialAPIController;
 use App\Http\Controllers\API\TaskAPIController;
 use App\Http\Controllers\API\UserAPIController;
 use App\Http\Controllers\API\SearchAPIController;
@@ -14,6 +16,8 @@ use App\Http\Controllers\API\ConversationAPIController;
 use App\Http\Controllers\API\VoyagerUserAPIController;
 use App\Http\Controllers\API\RefillAPIController;
 use App\Http\Controllers\API\ReportAPIController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SocialController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +33,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/{paysys}',function($paysys){
-    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
-});
+//Route::any('/{paysys}',function($paysys){
+//    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
+//});
 Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
     $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);
     $url = request('redirect_url','/'); // redirect url after payment completed
@@ -53,6 +57,17 @@ Route::middleware('custom.auth:api')->group(function () {
     Route::get('/custom-field-by-category/{category}',[CustomFieldAPIController::class,'getByCategoryId']); //end
     Route::get('/custom-field-values-by-task/{task}',[CustomFieldAPIController::class,'getByTaskId']); //end
     Route::get('/custom-field-values-by-custom-field/{custom_field}',[CustomFieldAPIController::class,'getByCustomFieldId']); //end
+
+
+    Route::get('account/verification/email', [LoginAPIController::class, 'send_email_verification']);
+    Route::get('account/verification/phone', [LoginAPIController::class, 'send_phone_verification']);
+    Route::post('account/verification/phone', [LoginAPIController::class, 'verify_phone']);
+    Route::post("account/change/email", [LoginAPIController::class,'change_email']);
+    Route::post("account/change/phone", [LoginAPIController::class,'change_phone_number']);
+
+    Route::get('login/google/callback',[SocialAPIController::class,'loginWithGoogle']);
+
+    Route::get('login/facebook/callback',[SocialAPIController::class,'loginWithFacebook']);
 
 });
 
@@ -76,7 +91,7 @@ Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks'])->name('ta
 Route::delete('/for_del_new_task/{task}', [TaskAPIController::class, 'deletetask']);
 Route::get('task_search', [SearchAPIController::class, 'task_search']);
 Route::delete('delete-task/{task}', [SearchAPIController::class, 'delete_task']);
-Route::post('ajax-request', [SearchAPIController::class, 'task_response']); 
+Route::post('ajax-request', [SearchAPIController::class, 'task_response']);
 Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']);
 
 
