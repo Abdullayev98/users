@@ -77,8 +77,18 @@
                         @enderror
                     </div>
 
-                    <button type="submit"
-                            class="sm:w-80 w-72 h-12 rounded-lg bg-green-500 text-white uppercase font-semibold hover:bg-green-500 transition mb-4">
+                    <div class="w-full my-3">
+                        <p> <input type="checkbox" name="" id="checkbox1" class="w-4 h-4 mr-2"> Нажимая «Зарегистрироваться», <br> вы соглашаетесь с 
+                            <a class="text-blue-600 hover:text-red-500 cursor-pointer" 
+                            href="https://www.codegrepper.com" target="_blank">Правилами сайта</a></p>
+                    </div>
+
+                    <button type="button" id="btn11"
+                            class="sm:w-80 w-72 h-12 rounded-lg bg-gray-500 text-white uppercase font-semibold  transition mb-4">
+                        {{__('Зарегистрироваться')}}
+                    </button>
+                    <button type="submit" id="btn22"
+                            class="hidden sm:w-80 w-72 h-12 rounded-lg bg-green-500 hover:bg-green-600 text-white uppercase font-semibold  transition mb-4">
                         {{__('Зарегистрироваться')}}
                     </button>
                 </div>

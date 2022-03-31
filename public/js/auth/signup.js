@@ -44,3 +44,16 @@ $(function () {
     });
 
 });
+
+//remove and add button
+
+$("#checkbox1").change(function() {
+    if (this.checked) {
+       $('#btn11').addClass('hidden')
+       $('#btn22').removeClass('hidden')
+    }
+    else if (!this.checked){
+        $('#btn22').addClass('hidden')
+        $('#btn11').removeClass('hidden')
+    }
+});
