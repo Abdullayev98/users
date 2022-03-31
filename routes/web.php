@@ -4,7 +4,6 @@ use App\Http\Controllers\API\PerformerAPIController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PaynetTransactionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Task\ResponseController;
 use App\Http\Controllers\Task\UpdateController;
@@ -20,6 +19,7 @@ use App\Http\Controllers\Task\SearchTaskController;
 use App\Http\Controllers\admin\VoyagerUserController;
 use App\Http\Controllers\MassmediaController;
 use App\Http\Controllers\Task\CreateController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -268,6 +268,14 @@ Route::post("account/change/phone/send", [LoginController::class,'verify_phone']
 
 
 
-Route::any('/paynet',function(){
-    (new PaynetTransactionController)->driver('paynet')->handle();
+Route::any('/{paysys}',function($paysys){
+    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
+});
+Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
+    $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);
+    $url = request('redirect_url','/'); // redirect url after payment completed
+    $pay_uz = new Goodoneuz\PayUz\PayUz;
+    $pay_uz
+        ->driver($paysys)
+        ->redirect($model, $amount, 860, $url);
 });
