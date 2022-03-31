@@ -10,7 +10,7 @@ function init_map(){
 
 ymaps.ready(init_map);
 
-var x = 1;
+var x = $("#x").val();
 function init() {
 
     var suggestView0 = new ymaps.SuggestView('suggest0');
@@ -22,6 +22,7 @@ function init() {
 
     $("#addbtn").click(function(){
         if(x < 10){
+
             $("#addinput").append('<div class="flex items-center gap-x-2">' +
                 '<div class="flex items-center rounded-lg border  w-full py-1"> ' +
                 '<button class="Alfavit flex-shrink-0 border-transparent text-teal-500 text-md py-1 px-2 rounded focus:outline-none" type="button">  '+ alp[x-1] +' </button>' +
@@ -119,7 +120,6 @@ function myMapFunction() {
         myGeocoder1.then(
             function (res) {
                 document.getElementById("coordinate1").value = res.geoObjects.get(0).geometry.getCoordinates();
-
             }
         );
     } else {
