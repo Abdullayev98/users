@@ -184,16 +184,17 @@ class CreateController extends Controller
     }
 
 
-    public function contact_store(Task $task, UserPhoneRequest $request)
+    public function contact_store(Task $task, Request $request)
     {
-        $data = $request->validated();
+        $data = $request->validate([
+            'phone_number' => 'required|integer|min:9'
+        ]);
         $user = auth()->user();
         if (!$user->is_phone_number_verified || $user->phone_number != $data['phone_number']) {
             $data['is_phone_number_verified'] = 0;
             $user->update($data);
-
             LoginController::send_verification('phone',$user);
-            return redirect()->route('task.create.verify', $task->id);
+            return redirect()->route('task.create.verify',  ['task' =>$task->id, 'user' => $user->id]);
         }
 
         $task->status = 1;
