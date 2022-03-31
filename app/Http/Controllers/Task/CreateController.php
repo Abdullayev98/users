@@ -16,6 +16,7 @@ use App\Services\Task\CreateService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -206,15 +207,12 @@ class CreateController extends Controller
     {
         $data = $request->validated();
 
-        $data['password'] = bcrypt('login123');
+        $data['password'] = Hash::make('login123');
 
         $user = User::create($data);
+        LoginController::send_verification('phone', $user);
 
-        auth()->login($user);
-
-
-        LoginController::send_verification('phone', auth()->user());
-        return redirect()->route('task.create.verify', $task->id);
+        return redirect()->route('task.create.verify',  ['task' =>$task->id, 'user' => $user->id]);
 
     }
 
