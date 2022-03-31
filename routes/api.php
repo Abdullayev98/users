@@ -29,9 +29,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/{paysys}',function($paysys){
-    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
-});
 Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
     $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);
     $url = request('redirect_url','/'); // redirect url after payment completed
@@ -76,7 +73,7 @@ Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks'])->name('ta
 Route::delete('/for_del_new_task/{task}', [TaskAPIController::class, 'deletetask']);
 Route::get('task_search', [SearchAPIController::class, 'task_search']);
 Route::delete('delete-task/{task}', [SearchAPIController::class, 'delete_task']);
-Route::post('ajax-request', [SearchAPIController::class, 'task_response']); 
+Route::post('ajax-request', [SearchAPIController::class, 'task_response']);
 Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']);
 
 
