@@ -4,7 +4,7 @@ use App\Http\Controllers\API\PerformerAPIController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FaqsController; // javoxir
 use App\Http\Controllers\LoginController; //avacoder
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileController; //++
 use App\Http\Controllers\Task\ResponseController;
 use App\Http\Controllers\Task\UpdateController;
 use App\Http\Controllers\UserController; //avocoder
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController; // javoxir
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SocialController; // avocoder
-use App\Http\Controllers\PerformersController;
+use App\Http\Controllers\PerformersController; //++
 use App\Http\Controllers\ReportController; // javoxir
 use App\Http\Controllers\RefillController; // javoxir
 use App\Http\Controllers\Task\SearchTaskController; // javoxir
@@ -263,4 +263,6 @@ Route::post('account/verification/phone', [LoginController::class, 'verify_phone
 Route::post("account/change/email", [LoginController::class,'change_email'])->name('user.email.change')->middleware('auth');
 Route::post("account/change/phone", [LoginController::class,'change_phone_number'])->name('user.phone.change')->middleware('auth');
 Route::post("account/change/phone/send", [LoginController::class,'verify_phone'])->name('user.phone.verify')->middleware('auth');
+
+
 

@@ -15,7 +15,10 @@ use App\Http\Controllers\API\MassmediaAPIController;
 use App\Http\Controllers\API\ConversationAPIController;
 use App\Http\Controllers\API\VoyagerUserAPIController;
 use App\Http\Controllers\API\RefillAPIController;
+use App\Http\Controllers\API\ResponseAPIController;
+use App\Http\Controllers\API\ControllerAPI;
 use App\Http\Controllers\API\ReportAPIController;
+use App\Http\Controllers\API\UpdateAPIController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SocialController;
 use Illuminate\Http\Request;
@@ -116,4 +119,19 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/ref', [RefillAPIController::class, 'ref']);
 Route::post('/prepare', [RefillAPIController::class, 'prepare']);
 Route::post('/complete', [RefillAPIController::class, 'complete']);
+
+// ControllerAPi
+Route::get('/categories/{id}', [ControllerAPI::class, 'category']); // ++
+Route::get('/lang/{lang}', [ControllerAPI::class, 'lang']); // ++
+Route::get('/my-tasks', [ControllerAPI::class, 'my_tasks']); // ++
+
+// responce
+Route::post("/detailed-task/{task}/response", [ResponseAPIController::class, 'store']); // ++
+Route::post('select-performer/{response}', [ResponseAPIController::class, 'selectPerformer']); // ++
+
+// Update
+Route::put('/change-task/{task}', [UpdateAPIController::class,'__invoke']); // ++
+Route::post('tasks/{task}/complete', [UpdateAPIController::class, 'completed']); // ++
+Route::post('send-review-user/{task}', [UpdateAPIController::class, 'sendReview']); // ++
+
 
