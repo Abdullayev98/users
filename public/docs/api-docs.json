@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http:\/\/userdo.demo",
+            "url": "http:\/\/finishuseruz.demo",
             "description": "Primary API Server"
         },
         {
@@ -688,7 +688,8 @@
                                     "end_date": "2021-05-17 10:00",
                                     "budget": 10000,
                                     "description": "Juda zo`r",
-                                    "category_id": "31"
+                                    "category_id": "31",
+                                    "phone": "909598654"
                                 }
                             }
                         }
@@ -736,6 +737,10 @@
                                         "category_id": {
                                             "type": "integer",
                                             "example": "35"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "909598654"
                                         },
                                         "updated_at": {
                                             "type": "string",

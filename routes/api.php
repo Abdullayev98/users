@@ -9,6 +9,11 @@ use App\Http\Controllers\API\ProfileAPIController;
 use App\Http\Controllers\API\TaskAPIController;
 use App\Http\Controllers\API\UserAPIController;
 use App\Http\Controllers\API\SearchAPIController;
+use App\Http\Controllers\API\MassmediaAPIController;
+use App\Http\Controllers\API\ConversationAPIController;
+use App\Http\Controllers\API\VoyagerUserAPIController;
+use App\Http\Controllers\API\RefillAPIController;
+use App\Http\Controllers\API\ReportAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +58,11 @@ Route::get('faq/{id}', [FaqAPIController::class, 'questions']); //end
 Route::get('task/{task}', [TaskAPIController::class, 'task']); //end
 Route::get('find', [TaskAPIController::class, 'search']); //end
 Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks'])->name('tasks.search'); //end
+Route::delete('/for_del_new_task/{task}', [TaskAPIController::class, 'deletetask']);
+Route::get('task_search', [SearchAPIController::class, 'task_search']);
+Route::delete('delete-task/{task}', [SearchAPIController::class, 'delete_task']);
+Route::post('ajax-request', [SearchAPIController::class, 'task_response']); 
+Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']);
 
 
 //Categories
@@ -61,4 +71,22 @@ Route::get('/categories/{id}', [CategoriesAPIController::class, 'show']); //end
 //Performers
 Route::get('/performers', [PerformerAPIController::class, 'service']); //end
 Route::get('/performers/{performer}', [PerformerAPIController::class, 'performer']); //end
+
+//Massmedia
+Route::get('/press',[MassmediaAPIController::class, 'index']);
+
+//Conversation
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/messages/chat/{id}', [ConversationAPIController::class, 'showChat']);
+    Route::post('/messages/chat/rate/{message}', [ConversationAPIController::class, 'rating']);
+    Route::post('/messages/chat/close/{message}', [ConversationAPIController::class, 'close']);
+    Route::post('/messages/chat/{id}', [ConversationAPIController::class, 'send']);
+    Route::get("users/activitiy/{user}", [VoyagerUserAPIController::class, "activity"]);
+    Route::get('/reports', [ReportAPIController::class, 'index']);
+});
+
+//Refill
+Route::get('/ref', [RefillAPIController::class, 'ref']);
+Route::post('/prepare', [RefillAPIController::class, 'prepare']);
+Route::post('/complete', [RefillAPIController::class, 'complete']);
 

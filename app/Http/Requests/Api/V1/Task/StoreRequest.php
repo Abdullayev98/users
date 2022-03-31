@@ -38,6 +38,7 @@ class StoreRequest extends FormRequest
             'description' => 'required',
             'category_id' => 'required|numeric',
             //'phone' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/'
+            'phone' => 'required|numeric|min:9'
         ];
     }
 }

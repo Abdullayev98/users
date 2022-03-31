@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http:\/\/userdo.demo",
+            "url": "http:\/\/finishuseruz.demo",
             "description": "Primary API Server"
         }
     ],

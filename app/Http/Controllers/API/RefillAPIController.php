@@ -35,7 +35,8 @@ class RefillAPIController extends Controller
                 $tr->method  = $tr::DRIVER_PAYME;
                 $tr->state   = $tr::STATE_WAITING_PAY;
                 $tr->save();
-                return view('paycom.send', ['transaction' => $tr]);
+                
+                return response()->json(['transaction' => $tr]);
                 break;
             case 'Paynet':
                 dd('Paynet testing');
@@ -69,7 +70,15 @@ class RefillAPIController extends Controller
         $error = $new_prepare->error;
         $error_note = $new_prepare->error_note;
 
-        return ['click_trans_id' => $click_trans_id,'merchant_trans_id' => $merchant_trans_id,'merchant_prepare_id' => $merchant_prepare_id,'error' => $error,'error_note' => $error_note];
+        return response()->json([
+            'data' => [
+                'click_trans_id' => $click_trans_id,
+                'merchant_trans_id' => $merchant_trans_id,
+                'merchant_prepare_id' => $merchant_prepare_id,
+                'error' => $error,
+                'error_note' => $error_note
+            ]
+        ]);
 
     }
 
@@ -116,7 +125,15 @@ class RefillAPIController extends Controller
         WalletBalance::where('user_id', $user->user_id)->update(['balance' => $summa]);
         All_transaction::where('id', $user->id)->update(['status' => 1]);
 
-        return ['click_trans_id' => $click_trans_id,'merchant_trans_id' => $merchant_trans_id,'merchant_confirm_id' => $merchant_confirm_id,'error' => $error,'error_note' => $error_note];
+        return response()->json([
+            'data' => [
+                'click_trans_id' => $click_trans_id,
+                'merchant_trans_id' => $merchant_trans_id,
+                'merchant_confirm_id' => $merchant_confirm_id,
+                'error' => $error,
+                'error_note' => $error_note
+            ]
+        ]);
 
     }
 }

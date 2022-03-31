@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use TCG\Voyager\Models\Category;
+use App\Models\CustomFieldsValue;
 
 class TaskAPIController extends Controller
 {
@@ -50,8 +51,7 @@ class TaskAPIController extends Controller
      */
     public function task(Task $task)
     {
-
-        return $task;
+        return response()->json($task);
     }
 
     /**
@@ -81,7 +81,13 @@ class TaskAPIController extends Controller
         $datas = $datas->merge($tasks);
         $datas = $datas->merge($perform_tasks);
 
-        return compact('tasks','perform_tasks','datas');
+        return response()->json([
+            'data' => [
+                'tasks' => $tasks,
+                'perform_tasks' => $perform_tasks,
+                'datas' => $datas
+            ]
+        ]);
     }
 
     /**
@@ -106,7 +112,8 @@ class TaskAPIController extends Controller
     public function search(Request $request)
     {
         $s = $request->s;
-        return   Task::where('name', 'LIKE', "%$s%")->orderBy('name')->get();
+        $data = Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
+        return response()->json($data);
     }
 
 
@@ -168,6 +175,7 @@ class TaskAPIController extends Controller
      *                     "budget":10000,
      *                     "description":"Juda zo`r",
      *                     "category_id":"31",
+     *                     "phone":"909598654",
      *                }
      *             )
      *         )
@@ -185,6 +193,7 @@ class TaskAPIController extends Controller
      *              @OA\Property(property="budget", type="integer", example="100000"),
      *              @OA\Property(property="description", type="string", example="Zo`r"),
      *              @OA\Property(property="category_id", type="integer", example="35"),
+     *              @OA\Property(property="phone", type="string", example="909598654"),
      *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
      *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
      *          )
@@ -207,15 +216,15 @@ class TaskAPIController extends Controller
         $data["user_id"] = auth()->user()->id;
         $result = Task::create($data);
         if ($result)
-            return [
+            return response()->json([
                 'message' => 'Created successfuly',
                 'success' => true,
                 'data' => $result
-            ];
-        return [
+            ]);
+        return response()->json([
             'message' => 'Something wrong',
             'success' => false,
-        ];
+        ]);
     }
 
 
@@ -320,7 +329,25 @@ class TaskAPIController extends Controller
         $task->update($data);
         $this->service->syncCustomFields($task);
 
-        return ['success' => true, 'message' => 'Successfully Updated', 'task' => $task];
+        return response()->json(['success' => true, 'message' => 'Successfully Updated', 'task' => $task]);
 
+    }
+
+    public function deletetask(Task $task)
+    {
+        $task->delete();
+        CustomFieldsValue::where('task_id', $task)->delete();
+
+        if($task){
+            return response()->json([
+                'success' => true, 
+                'message' => 'Successfully Deleted'
+            ]);
+        }
+        return response()->json([
+            'success' => false, 
+            'message' => 'Not Deleted'
+        ], 404);
+        
     }
 }

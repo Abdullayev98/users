@@ -59,12 +59,25 @@ class FaqAPIController extends Controller
      *     )
      * )
      */
-    public function questions($id){
+    /* public function questions($id){
         $data = Faqs::find($id);
         
         if($data){
             return response()->json($data, 200);
         }
         return response()->json('Бундай малумот йок', 404);
+    } */
+
+    public function questions($id)
+    {
+        $fq = Faqs::withTranslations(['ru', 'uz'])->where('category_id', $id)->get();
+        $fc = FaqCategories::withTranslations(['ru', 'uz'])->where('id', $id)->first();
+        
+        return response()->json([
+            'data' => [
+                'faqs' => $fq,
+                'faqcategories' => $fc
+            ]
+        ]);
     }
 }
