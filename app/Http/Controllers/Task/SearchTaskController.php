@@ -70,6 +70,7 @@ public function __construct()
     public function task(Task $task)
     {
         $complianceType = CompliancesType::all();
+
         $review = null;
         if ($task->reviews_count == 2) $review == true;
         if (auth()->check()){
