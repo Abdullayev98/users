@@ -1,4 +1,4 @@
-<div class="bg-gray-200 py-24 min-h-screen">
+<div class="bg-gray-300">
     <div class="container mx-auto w-full h-full">
       <div class="max-w-screen-lg mx-auto w-full h-full flex flex-col items-center justify-center">
         <div x-data="dataTable()"
@@ -24,10 +24,10 @@
           </div>
           <table class="mt-5">
             <thead class="border-b-2">
-              <th width="20%">
+              <th width="33%">
                 <div class="flex space-x-2">
                   <span>
-                    Name
+                    Дата транзакции
                   </span>
                   </span>
                   <div class="flex flex-col">
@@ -36,10 +36,10 @@
                   </div>
                 </div>
               </th>
-              <th width="20%">
+              <th width="33%">
                 <div class="flex items-center space-x-2">
                   <span class="">
-                    Job
+                    Сумма транзакции
                   </span>
                   <div class="flex flex-col">
                     <svg @click="sort('job', 'asc')" fill="none" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-500 h-3 w-3 cursor-pointer fill-current" x-bind:class="{'text-blue-500': sorted.field === 'job' && sorted.rule === 'asc'}"><path d="M5 15l7-7 7 7"></path></svg>
@@ -47,36 +47,14 @@
                   </div>
                 </div>
               </th>
-              <th width="30%">
+              <th width="33%">
                 <div class="flex items-center space-x-2">
                   <span class="">
-                    Email
+                    Оператор
                   </span>
                   <div class="flex flex-col">
                     <svg @click="sort('email', 'asc')" fill="none" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-500 h-3 w-3 cursor-pointer fill-current" x-bind:class="{'text-blue-500': sorted.field === 'email' && sorted.rule === 'asc'}"><path d="M5 15l7-7 7 7"></path></svg>
                     <svg @click="sort('email', 'desc')" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-500 h-3 w-3 cursor-pointer fill-current" x-bind:class="{'text-blue-500': sorted.field === 'email' && sorted.rule === 'desc'}"><path d="M19 9l-7 7-7-7"></path></svg>
-                  </div>
-                </div>
-              </th>
-              <th width="10%">
-                <div class="flex items-center space-x-2">
-                  <span>
-                    Year
-                  </span>
-                  <div class="flex flex-col">
-                    <svg @click="sort('year', 'asc')" fill="none" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-500 h-3 w-3 cursor-pointer fill-current" x-bind:class="{'text-blue-500': sorted.field === 'year' && sorted.rule === 'asc'}"><path d="M5 15l7-7 7 7"></path></svg>
-                    <svg @click="sort('year', 'desc')" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-500 h-3 w-3 cursor-pointer fill-current" x-bind:class="{'text-blue-500': sorted.field === 'year' && sorted.rule === 'desc'}"><path d="M19 9l-7 7-7-7"></path></svg>
-                  </div>
-                </div>
-              </th>
-              <th width="15%">
-                <div class="flex items-center space-x-2">
-                  <span class="">
-                    Country
-                  </span>
-                  <div class="flex flex-col">
-                    <svg @click="sort('country', 'asc')" fill="none" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-500 h-3 w-3 cursor-pointer fill-current" x-bind:class="{'text-blue-500': sorted.field === 'country' && sorted.rule === 'asc'}"><path d="M5 15l7-7 7 7"></path></svg>
-                    <svg @click="sort('country', 'desc')" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-500 h-3 w-3 cursor-pointer fill-current" x-bind:class="{'text-blue-500': sorted.field === 'country' && sorted.rule === 'desc'}"><path d="M19 9l-7 7-7-7"></path></svg>
                   </div>
                 </div>
               </th>
@@ -92,12 +70,6 @@
                   </td>
                   <td class="py-3">
                     <span x-text="item.email"></span>
-                  </td>
-                  <td class="py-3">
-                    <span x-text="item.year"></span>
-                  </td>
-                  <td class="py-3">
-                    <span x-text="item.country"></span>
                   </td>
                 </tr>
               </template>
@@ -128,7 +100,7 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
   
   <script>
       let data=[

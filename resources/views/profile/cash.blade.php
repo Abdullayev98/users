@@ -91,9 +91,9 @@
                                     @include('datatable.datatable2')
                                 </div>
                                 <div id="third" class="hidden py-4">
-                                    @include('datatable.datatable2')
+                                    @include('datatable.datatable3')
                                 </div>
-                                <div id="four" class="py-4">
+                                <div id="four" class="hidden py-4">
                                     @include('datatable.datatable4')
                                 </div>
                             </div>
