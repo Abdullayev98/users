@@ -63,13 +63,13 @@
             <template x-for="(item, index) in items" :key="index">
               <tr x-show="checkView(index + 1)" class="hover:bg-gray-200 text-gray-900 text-xs">
                 <td class="py-3">
-                  <span x-text="item.name"></span>
+                  <span x-text="item.data"></span>
                 </td>
                 <td class="py-3">
-                  <span x-text="item.job"></span>
+                  <span x-text="item.summa"></span>
                 </td>
                 <td class="py-3">
-                  <span x-text="item.email"></span>
+                  <span x-text="item.operator"></span>
                 </td>
               </tr>
             </template>
@@ -105,11 +105,9 @@
 <script>
     let data=[
         {
-          "name":"Brielle Kuphal",
-          "email":"Brielle31@gmail.com",
-          "job":"Global Metrics Developer",
-          "country":"Tunisia",
-          "year":1969
+          "data":"Brielle Kuphal",
+          "summa":"Brielle31@gmail.com",
+          "operator":"Paynet",
         }
     ]
 
