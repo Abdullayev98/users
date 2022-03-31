@@ -46,79 +46,55 @@
                         <div class="relative mt-10 p-5 bg-gray-100 w-full block">
                             <h2 class="inline-block font-medium text-2xl text-gray-700">{{__('История операций')}}</h2>
                             <label class="text-left md:inline-block w-full  md:w-1/2">
-                                <select
+                                <select id="period"
                                     class="form-select block md:w-36 w-full h-10 rounded-xl focus:outline-none ring-1 ring-black md:0 md:ml-5">
                                     <option>{{__('за месяц')}}</option>
                                     <option>{{__('за неделю')}}</option>
                                     <option>{{__('за год')}}</option>
-                                    <option>{{__('за период')}}</option>
+                                    <option value="test">{{__('за период')}}</option>
                                 </select>
                             </label>
-
+                            <div class="hidden flex flex-row items-center my-4" id="ddr">
+                              <div>
+                                    <p class="text-xl">Период : </p>
+                              </div>
+                              <div class="mx-4">
+                                    <input type="date" class="p-1 rounded-lg border-2 border-gray-300 focus:outline-none">
+                              </div>
+                              <div>
+                                    <input type="date" class="p-1 rounded-lg border-2 border-gray-300 focus:outline-none">
+                              </div>
+                            </div>
                             <ul id="tabs" class="flex sm:flex-row flex-col rounded-sm w-full shadow bg-gray-200 mt-4">
                                 <div id="first_tab" class="w-full text-center">
                                     <a id="default-tab" href="#first"
-                                        class="inline-block relative py-1 w-full">{{__('Все операции')}}</a>
+                                        class="inline-block relative py-1 w-full">{{__('Пополнения')}} Payme</a>
                                 </div>
                                 <div class="w-full text-center">
                                     <a href="#second"
-                                        class="inline-block relative py-1 w-full">{{__('Пополнения счета')}}</a>
+                                        class="inline-block relative py-1 w-full">{{__('Пополнения')}} Click</a>
                                 </div>
                                 <div id="three_tab" class="w-full text-center">
                                     <a href="#third"
+                                        class="inline-block relative py-1 w-full">{{__('Пополнения')}} Paynet</a>
+                                </div>
+                                <div id="three_tab" class="w-full text-center">
+                                    <a href="#four"
                                         class="inline-block relative py-1 w-full">{{__('Списания со счета')}}</a>
                                 </div>
                             </ul>
                             <div id="tab-contents">
                                 <div id="first" class="py-4">
-                                    <table class="" id="example">
-                                        <thead>
-                                            <th class="text-center w-1/4 border">{{__('Дата транзакции')}}</th>
-                                            <th class="text-center w-1/4 border">{{__('Сумма транзакции')}}</th>
-                                            <th class="text-center w-1/4 border">{{__('Оператор')}}</th>
-                                        </thead>
-                                        <tbody>
-                                            @if ($transactions)
-                                                @foreach ($transactions as $transaction)
-                                                    <tr>
-                                                        <td class="text-center w-1/4 border">
-                                                            {{ $transaction->created_at->format('d.m.Y') }}</td>
-                                                        <td class="text-center w-1/4 border">{{ amount_format($transaction->amount) }}</td>
-                                                        <td class="text-center w-1/4 border">{{ $transaction->method }}
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
+                                   @include('datatable.datatable')
                                 </div>
                                 <div id="second" class="hidden py-4">
-                                    <table class="" id="example">
-                                        <thead>
-                                            <th class="text-center w-1/4 border">{{__('Дата транзакции')}}</th>
-                                            <th class="text-center w-1/4 border">{{__('Сумма транзакции')}}</th>
-                                            <th class="text-center w-1/4 border">{{__('Оператор')}}</th>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($transactions as $transaction)
-                                                <tr>
-
-                                                    <td class="text-center w-1/4 border">
-                                                        {{ $transaction->created_at->format('d.m.Y') }}</td>
-                                                    <td class="text-center w-1/4 border">{{ amount_format($transaction->amount) }}</td>
-                                                    <td class="text-center w-1/4 border">{{ $transaction->method }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                    @include('datatable.datatable2')
                                 </div>
                                 <div id="third" class="hidden py-4">
-                                    @foreach ($transactions as $transaction)
-                                        <td>{{ $transaction->action }}</td>
-                                    @endforeach
+                                    @include('datatable.datatable3')
                                 </div>
-                                <div id="third" class="py-4">
-                                    {{$transactions->links()}}
+                                <div id="four" class="hidden py-4">
+                                    @include('datatable.datatable4')
                                 </div>
                             </div>
                         </div>
@@ -152,9 +128,6 @@
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
-
-
-
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('js/profile/cash.js') }}"></script>
 @endsection

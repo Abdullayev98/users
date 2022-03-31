@@ -33,9 +33,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::any('/{paysys}',function($paysys){
-//    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
-//});
 Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
     $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);
     $url = request('redirect_url','/'); // redirect url after payment completed

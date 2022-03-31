@@ -7,11 +7,11 @@
     },
     "servers": [
         {
-            "url": "http:\/\/finishuseruz.demo",
+            "url": "http:\/\/servboxvoyager",
             "description": "Primary API Server"
         },
         {
-            "url": "http:\/\/my-default-host.com",
+            "url": "http:\/\/user.uz",
             "description": "Another API Server"
         }
     ],
@@ -1222,6 +1222,8 @@
                                 "passport_expire_date",
                                 "phone",
                                 "address",
+                                "email_old",
+                                "phone_number_old",
                                 "user_belongsto_role_relationship",
                                 "user_belongstomany_role_relationship"
                             ],
@@ -23853,608 +23855,10 @@
                 ]
             }
         },
-        "\/api\/compliances": {
+        "\/api\/compliance-types": {
             "get": {
                 "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances index",
-                "operationId": "compliances_index",
-                "parameters": [
-                    {
-                        "name": "q",
-                        "in": "query",
-                        "description": "Global search",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "length",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "order_by",
-                        "in": "query",
-                        "description": "Sort by column",
-                        "required": false,
-                        "schema": {
-                            "enum": [
-                                "id",
-                                "compliance_type_id",
-                                "text",
-                                "user_id",
-                                "task_id",
-                                "created_at",
-                                "updated_at"
-                            ],
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "sort_order",
-                        "in": "query",
-                        "description": "Sort by direction",
-                        "required": false,
-                        "schema": {
-                            "enum": [
-                                "asc",
-                                "desc"
-                            ],
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filters[compliance_type_id]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filters[text]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filters[user_id]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filters[task_id]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filters[created_at]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "2020-01-01 00:00,,2021-06-01 00:00"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#\/components\/schemas\/VoyagerCompliancesBrowseResource"
-                                            }
-                                        },
-                                        "links": {
-                                            "$ref": "#\/components\/schemas\/Links"
-                                        },
-                                        "meta": {
-                                            "$ref": "#\/components\/schemas\/Meta"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances store",
-                "operationId": "compliances_store",
-                "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerCompliancesStoreRequest"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances\/create": {
-            "get": {
-                "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances create",
-                "operationId": "compliances_create",
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": []
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances\/{id}": {
-            "get": {
-                "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances show",
-                "operationId": "compliances_show",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            },
-            "put": {
-                "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances update",
-                "operationId": "compliances_update",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerCompliancesUpdateRequest"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances delete",
-                "operationId": "compliances_delete",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances\/{id}\/single\/{field}": {
-            "put": {
-                "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances single update",
-                "operationId": "compliances_single_update",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "field",
-                        "in": "path",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "nullable": true,
-                            "enum": [
-                                "compliance_type_id",
-                                "text",
-                                "user_id",
-                                "task_id",
-                                "created_at"
-                            ]
-                        }
-                    },
-                    {
-                        "name": "fields[]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "compliance_type_id",
-                                    "text",
-                                    "user_id",
-                                    "task_id",
-                                    "created_at"
-                                ]
-                            }
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerCompliancesSingleUpdateRequest"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances\/{id}\/edit": {
-            "get": {
-                "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances edit",
-                "operationId": "compliances_edit",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances\/relation": {
-            "get": {
-                "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances relation",
-                "operationId": "compliances_relation",
-                "parameters": [
-                    {
-                        "name": "type",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "method",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "required",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": []
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances\/{id}\/restore": {
-            "get": {
-                "tags": [
-                    "compliances"
-                ],
-                "summary": "compliances restore",
-                "operationId": "compliances_restore",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliance-type": {
-            "get": {
-                "tags": [
-                    "compliance-type"
+                    "compliance-types"
                 ],
                 "summary": "compliance_type index",
                 "operationId": "compliance_type_index",
@@ -24506,6 +23910,23 @@
                             ],
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "filters[name]",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filters[created_at]",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "2020-01-01 00:00,,2021-06-01 00:00"
+                        }
                     }
                 ],
                 "responses": {
@@ -24548,10 +23969,10 @@
             },
             "post": {
                 "tags": [
-                    "compliance-type"
+                    "compliance-types"
                 ],
-                "summary": "compliance-type store",
-                "operationId": "compliance-type_store",
+                "summary": "compliance-types store",
+                "operationId": "compliance-types_store",
                 "requestBody": {
                     "$ref": "#\/components\/requestBodies\/VoyagerComplianceTypeStoreRequest"
                 },
@@ -24585,10 +24006,10 @@
                 ]
             }
         },
-        "\/api\/compliance-type\/create": {
+        "\/api\/compliance-types\/create": {
             "get": {
                 "tags": [
-                    "compliance-type"
+                    "compliance-types"
                 ],
                 "summary": "compliance_type create",
                 "operationId": "compliance_type_create",
@@ -24620,13 +24041,13 @@
                 ]
             }
         },
-        "\/api\/compliance-type\/{id}": {
+        "\/api\/compliance-types\/{id}": {
             "get": {
                 "tags": [
-                    "compliance-type"
+                    "compliance-types"
                 ],
-                "summary": "compliance-type show",
-                "operationId": "compliance-type_show",
+                "summary": "compliance-types show",
+                "operationId": "compliance-types_show",
                 "parameters": [
                     {
                         "name": "id",
@@ -24668,10 +24089,10 @@
             },
             "put": {
                 "tags": [
-                    "compliance-type"
+                    "compliance-types"
                 ],
-                "summary": "compliance-type update",
-                "operationId": "compliance-type_update",
+                "summary": "compliance-types update",
+                "operationId": "compliance-types_update",
                 "parameters": [
                     {
                         "name": "id",
@@ -24716,10 +24137,10 @@
             },
             "delete": {
                 "tags": [
-                    "compliance-type"
+                    "compliance-types"
                 ],
-                "summary": "compliance-type delete",
-                "operationId": "compliance-type_delete",
+                "summary": "compliance-types delete",
+                "operationId": "compliance-types_delete",
                 "parameters": [
                     {
                         "name": "id",
@@ -24760,1109 +24181,13 @@
                 ]
             }
         },
-        "\/api\/compliance-type\/{id}\/single\/{field}": {
+        "\/api\/compliance-types\/{id}\/single\/{field}": {
             "put": {
                 "tags": [
-                    "compliance-type"
+                    "compliance-types"
                 ],
-                "summary": "compliance-type single update",
-                "operationId": "compliance-type_single_update",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "field",
-                        "in": "path",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "nullable": true,
-                            "enum": []
-                        }
-                    },
-                    {
-                        "name": "fields[]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "enum": []
-                            }
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerComplianceTypeSingleUpdateRequest"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerComplianceTypeReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliance-type\/{id}\/edit": {
-            "get": {
-                "tags": [
-                    "compliance-type"
-                ],
-                "summary": "compliance-type edit",
-                "operationId": "compliance-type_edit",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerComplianceTypeReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliance-type\/relation": {
-            "get": {
-                "tags": [
-                    "compliance-type"
-                ],
-                "summary": "compliance-type relation",
-                "operationId": "compliance-type_relation",
-                "parameters": [
-                    {
-                        "name": "type",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "method",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "required",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": []
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliance-type\/{id}\/restore": {
-            "get": {
-                "tags": [
-                    "compliance-type"
-                ],
-                "summary": "compliance-type restore",
-                "operationId": "compliance-type_restore",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-type": {
-            "get": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances_type index",
-                "operationId": "compliances_type_index",
-                "parameters": [
-                    {
-                        "name": "q",
-                        "in": "query",
-                        "description": "Global search",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "length",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "order_by",
-                        "in": "query",
-                        "description": "Sort by column",
-                        "required": false,
-                        "schema": {
-                            "enum": [],
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "sort_order",
-                        "in": "query",
-                        "description": "Sort by direction",
-                        "required": false,
-                        "schema": {
-                            "enum": [
-                                "asc",
-                                "desc"
-                            ],
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#\/components\/schemas\/VoyagerCompliancesTypeBrowseResource"
-                                            }
-                                        },
-                                        "links": {
-                                            "$ref": "#\/components\/schemas\/Links"
-                                        },
-                                        "meta": {
-                                            "$ref": "#\/components\/schemas\/Meta"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances-type store",
-                "operationId": "compliances-type_store",
-                "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerCompliancesTypeStoreRequest"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypeReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-type\/create": {
-            "get": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances_type create",
-                "operationId": "compliances_type_create",
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": []
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-type\/{id}": {
-            "get": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances-type show",
-                "operationId": "compliances-type_show",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypeReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            },
-            "put": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances-type update",
-                "operationId": "compliances-type_update",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerCompliancesTypeUpdateRequest"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypeReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances-type delete",
-                "operationId": "compliances-type_delete",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-type\/{id}\/single\/{field}": {
-            "put": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances-type single update",
-                "operationId": "compliances-type_single_update",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "field",
-                        "in": "path",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "nullable": true,
-                            "enum": []
-                        }
-                    },
-                    {
-                        "name": "fields[]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "enum": []
-                            }
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerCompliancesTypeSingleUpdateRequest"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypeReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-type\/{id}\/edit": {
-            "get": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances-type edit",
-                "operationId": "compliances-type_edit",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypeReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-type\/relation": {
-            "get": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances-type relation",
-                "operationId": "compliances-type_relation",
-                "parameters": [
-                    {
-                        "name": "type",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "method",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "required",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": []
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-type\/{id}\/restore": {
-            "get": {
-                "tags": [
-                    "compliances-type"
-                ],
-                "summary": "compliances-type restore",
-                "operationId": "compliances-type_restore",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-types": {
-            "get": {
-                "tags": [
-                    "compliances-types"
-                ],
-                "summary": "compliances_types index",
-                "operationId": "compliances_types_index",
-                "parameters": [
-                    {
-                        "name": "q",
-                        "in": "query",
-                        "description": "Global search",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "length",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "order_by",
-                        "in": "query",
-                        "description": "Sort by column",
-                        "required": false,
-                        "schema": {
-                            "enum": [
-                                "id",
-                                "name",
-                                "created_at",
-                                "updated_at"
-                            ],
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "sort_order",
-                        "in": "query",
-                        "description": "Sort by direction",
-                        "required": false,
-                        "schema": {
-                            "enum": [
-                                "asc",
-                                "desc"
-                            ],
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filters[name]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filters[created_at]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "2020-01-01 00:00,,2021-06-01 00:00"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#\/components\/schemas\/VoyagerCompliancesTypesBrowseResource"
-                                            }
-                                        },
-                                        "links": {
-                                            "$ref": "#\/components\/schemas\/Links"
-                                        },
-                                        "meta": {
-                                            "$ref": "#\/components\/schemas\/Meta"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "compliances-types"
-                ],
-                "summary": "compliances-types store",
-                "operationId": "compliances-types_store",
-                "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerCompliancesTypesStoreRequest"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypesReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-types\/create": {
-            "get": {
-                "tags": [
-                    "compliances-types"
-                ],
-                "summary": "compliances_types create",
-                "operationId": "compliances_types_create",
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": []
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-types\/{id}": {
-            "get": {
-                "tags": [
-                    "compliances-types"
-                ],
-                "summary": "compliances-types show",
-                "operationId": "compliances-types_show",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypesReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            },
-            "put": {
-                "tags": [
-                    "compliances-types"
-                ],
-                "summary": "compliances-types update",
-                "operationId": "compliances-types_update",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerCompliancesTypesUpdateRequest"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypesReadResource"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "compliances-types"
-                ],
-                "summary": "compliances-types delete",
-                "operationId": "compliances-types_delete",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "security": [
-                    {
-                        "token": []
-                    }
-                ]
-            }
-        },
-        "\/api\/compliances-types\/{id}\/single\/{field}": {
-            "put": {
-                "tags": [
-                    "compliances-types"
-                ],
-                "summary": "compliances-types single update",
-                "operationId": "compliances-types_single_update",
+                "summary": "compliance-types single update",
+                "operationId": "compliance-types_single_update",
                 "parameters": [
                     {
                         "name": "id",
@@ -25902,7 +24227,7 @@
                     }
                 ],
                 "requestBody": {
-                    "$ref": "#\/components\/requestBodies\/VoyagerCompliancesTypesSingleUpdateRequest"
+                    "$ref": "#\/components\/requestBodies\/VoyagerComplianceTypeSingleUpdateRequest"
                 },
                 "responses": {
                     "200": {
@@ -25913,7 +24238,7 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypesReadResource"
+                                            "$ref": "#\/components\/schemas\/VoyagerComplianceTypeReadResource"
                                         }
                                     }
                                 }
@@ -25934,13 +24259,13 @@
                 ]
             }
         },
-        "\/api\/compliances-types\/{id}\/edit": {
+        "\/api\/compliance-types\/{id}\/edit": {
             "get": {
                 "tags": [
-                    "compliances-types"
+                    "compliance-types"
                 ],
-                "summary": "compliances-types edit",
-                "operationId": "compliances-types_edit",
+                "summary": "compliance-types edit",
+                "operationId": "compliance-types_edit",
                 "parameters": [
                     {
                         "name": "id",
@@ -25960,7 +24285,7 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#\/components\/schemas\/VoyagerCompliancesTypesReadResource"
+                                            "$ref": "#\/components\/schemas\/VoyagerComplianceTypeReadResource"
                                         }
                                     }
                                 }
@@ -25981,13 +24306,13 @@
                 ]
             }
         },
-        "\/api\/compliances-types\/relation": {
+        "\/api\/compliance-types\/relation": {
             "get": {
                 "tags": [
-                    "compliances-types"
+                    "compliance-types"
                 ],
-                "summary": "compliances-types relation",
-                "operationId": "compliances-types_relation",
+                "summary": "compliance-types relation",
+                "operationId": "compliance-types_relation",
                 "parameters": [
                     {
                         "name": "type",
@@ -26043,13 +24368,13 @@
                 ]
             }
         },
-        "\/api\/compliances-types\/{id}\/restore": {
+        "\/api\/compliance-types\/{id}\/restore": {
             "get": {
                 "tags": [
-                    "compliances-types"
+                    "compliance-types"
                 ],
-                "summary": "compliances-types restore",
-                "operationId": "compliances-types_restore",
+                "summary": "compliance-types restore",
+                "operationId": "compliance-types_restore",
                 "parameters": [
                     {
                         "name": "id",
@@ -28654,77 +26979,7 @@
                 "type": "object",
                 "properties": []
             },
-            "VoyagerCompliancesBrowseResource": {
-                "type": "object",
-                "properties": {
-                    "compliance_type_id": {
-                        "type": "string",
-                        "description": "Compliance Type Id"
-                    },
-                    "text": {
-                        "type": "string",
-                        "description": "Text"
-                    },
-                    "user_id": {
-                        "type": "string",
-                        "description": "User Id"
-                    },
-                    "task_id": {
-                        "type": "string",
-                        "description": "Task Id"
-                    },
-                    "created_at": {
-                        "pattern": "\/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})\/",
-                        "type": "date-time",
-                        "description": "Created At",
-                        "example": "2021-05-17 00:00"
-                    }
-                }
-            },
-            "VoyagerCompliancesReadResource": {
-                "type": "object",
-                "properties": {
-                    "compliance_type_id": {
-                        "type": "string",
-                        "description": "Compliance Type Id"
-                    },
-                    "text": {
-                        "type": "string",
-                        "description": "Text"
-                    },
-                    "user_id": {
-                        "type": "string",
-                        "description": "User Id"
-                    },
-                    "task_id": {
-                        "type": "string",
-                        "description": "Task Id"
-                    },
-                    "created_at": {
-                        "pattern": "\/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})\/",
-                        "type": "date-time",
-                        "description": "Created At",
-                        "example": "2021-05-17 00:00"
-                    }
-                }
-            },
             "VoyagerComplianceTypeBrowseResource": {
-                "type": "object",
-                "properties": []
-            },
-            "VoyagerComplianceTypeReadResource": {
-                "type": "object",
-                "properties": []
-            },
-            "VoyagerCompliancesTypeBrowseResource": {
-                "type": "object",
-                "properties": []
-            },
-            "VoyagerCompliancesTypeReadResource": {
-                "type": "object",
-                "properties": []
-            },
-            "VoyagerCompliancesTypesBrowseResource": {
                 "type": "object",
                 "properties": {
                     "name": {
@@ -28739,7 +26994,7 @@
                     }
                 }
             },
-            "VoyagerCompliancesTypesReadResource": {
+            "VoyagerComplianceTypeReadResource": {
                 "type": "object",
                 "properties": {
                     "name": {
@@ -33335,114 +31590,6 @@
                 },
                 "required": true
             },
-            "VoyagerCompliancesStoreRequest": {
-                "content": {
-                    "application\/x-www-form-urlencoded": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "dry-run": {
-                                    "type": "boolean",
-                                    "description": "Use dry-run only to validate"
-                                },
-                                "compliance_type_id": {
-                                    "type": "string",
-                                    "description": "Compliance Type Id"
-                                },
-                                "text": {
-                                    "type": "string",
-                                    "description": "Text"
-                                },
-                                "user_id": {
-                                    "type": "string",
-                                    "description": "User Id"
-                                },
-                                "task_id": {
-                                    "type": "string",
-                                    "description": "Task Id"
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": true
-            },
-            "VoyagerCompliancesUpdateRequest": {
-                "content": {
-                    "application\/x-www-form-urlencoded": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "dry-run": {
-                                    "type": "boolean",
-                                    "description": "Use dry-run only to validate"
-                                },
-                                "compliance_type_id": {
-                                    "type": "string",
-                                    "description": "Compliance Type Id"
-                                },
-                                "text": {
-                                    "type": "string",
-                                    "description": "Text"
-                                },
-                                "user_id": {
-                                    "type": "string",
-                                    "description": "User Id"
-                                },
-                                "task_id": {
-                                    "type": "string",
-                                    "description": "Task Id"
-                                },
-                                "created_at": {
-                                    "pattern": "\/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})\/",
-                                    "type": "date-time",
-                                    "description": "Created At",
-                                    "example": "2021-05-17 00:00"
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": true
-            },
-            "VoyagerCompliancesSingleUpdateRequest": {
-                "content": {
-                    "application\/x-www-form-urlencoded": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "dry-run": {
-                                    "type": "boolean",
-                                    "description": "Use dry-run only to validate"
-                                },
-                                "compliance_type_id": {
-                                    "type": "string",
-                                    "description": "Compliance Type Id"
-                                },
-                                "text": {
-                                    "type": "string",
-                                    "description": "Text"
-                                },
-                                "user_id": {
-                                    "type": "string",
-                                    "description": "User Id"
-                                },
-                                "task_id": {
-                                    "type": "string",
-                                    "description": "Task Id"
-                                },
-                                "created_at": {
-                                    "pattern": "\/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})\/",
-                                    "type": "date-time",
-                                    "description": "Created At",
-                                    "example": "2021-05-17 00:00"
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": true
-            },
             "VoyagerComplianceTypeStoreRequest": {
                 "content": {
                     "application\/x-www-form-urlencoded": {
@@ -33452,6 +31599,10 @@
                                 "dry-run": {
                                     "type": "boolean",
                                     "description": "Use dry-run only to validate"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name"
                                 }
                             }
                         }
@@ -33468,106 +31619,6 @@
                                 "dry-run": {
                                     "type": "boolean",
                                     "description": "Use dry-run only to validate"
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": true
-            },
-            "VoyagerComplianceTypeSingleUpdateRequest": {
-                "content": {
-                    "application\/x-www-form-urlencoded": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "dry-run": {
-                                    "type": "boolean",
-                                    "description": "Use dry-run only to validate"
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": true
-            },
-            "VoyagerCompliancesTypeStoreRequest": {
-                "content": {
-                    "application\/x-www-form-urlencoded": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "dry-run": {
-                                    "type": "boolean",
-                                    "description": "Use dry-run only to validate"
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": true
-            },
-            "VoyagerCompliancesTypeUpdateRequest": {
-                "content": {
-                    "application\/x-www-form-urlencoded": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "dry-run": {
-                                    "type": "boolean",
-                                    "description": "Use dry-run only to validate"
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": true
-            },
-            "VoyagerCompliancesTypeSingleUpdateRequest": {
-                "content": {
-                    "application\/x-www-form-urlencoded": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "dry-run": {
-                                    "type": "boolean",
-                                    "description": "Use dry-run only to validate"
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": true
-            },
-            "VoyagerCompliancesTypesStoreRequest": {
-                "content": {
-                    "application\/x-www-form-urlencoded": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "dry-run": {
-                                    "type": "boolean",
-                                    "description": "Use dry-run only to validate"
-                                },
-                                "name": {
-                                    "type": "string",
-                                    "description": "Name"
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": true
-            },
-            "VoyagerCompliancesTypesUpdateRequest": {
-                "content": {
-                    "application\/x-www-form-urlencoded": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "dry-run": {
-                                    "type": "boolean",
-                                    "description": "Use dry-run only to validate"
                                 },
                                 "name": {
                                     "type": "string",
@@ -33585,7 +31636,7 @@
                 },
                 "required": true
             },
-            "VoyagerCompliancesTypesSingleUpdateRequest": {
+            "VoyagerComplianceTypeSingleUpdateRequest": {
                 "content": {
                     "application\/x-www-form-urlencoded": {
                         "schema": {
