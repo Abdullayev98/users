@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Mail\VerifyEmail;
@@ -17,49 +18,11 @@ use Illuminate\Support\Facades\Mail;
 use PlayMobile\SMS\SmsService;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class LoginController extends Controller
+class LoginAPIController extends Controller
 {
 
 
-    public function login()
-    {
-        return view('auth.signin');
-    }
 
-    public function loginPost(UserLoginRequest $request)
-    {
-
-        $request->authenticate();
-
-        $request->session()->regenerate();
-
-
-        return redirect()->route('userprofile');
-
-    }
-
-
-    public function customRegister(UserRegisterRequest $request)
-    {
-
-        $data = $request->validated();
-
-
-        $data['password'] = Hash::make($request->password);
-        $user = User::create($data);
-        $wallBal = new WalletBalance();
-        $wallBal->balance = setting('admin.bonus');
-        $wallBal->user_id = $user->id;
-        $wallBal->save();
-        auth()->login($user);
-
-        self::send_verification('email', auth()->user());
-
-
-        return redirect()->route('userprofile');
-
-
-    }
 
     public static function send_verification($needle,$user)
     {
@@ -78,21 +41,19 @@ class LoginController extends Controller
         $user->verify_expiration = Carbon::now()->addMinutes(5);
         $user->save();
 
+        return redirect()->route('userprofile');
     }
 
     public function send_email_verification()
     {
         self::send_verification('email',auth()->user());
-        Alert::info('Email sent', 'Your verification link has been successfully sent!');
-        return redirect()->route('userprofile');
+        return response()->json(['message'=>'success']);
     }
 
     public function send_phone_verification()
     {
-        self::send_verification('phone', auth()->user());
-        return redirect()->back()->with([
-            'code' => 'Код отправлено!'
-        ]);
+        self::send_verification('phone',auth()->user());
+        return response()->json(['message'=>'success']);
     }
 
 
@@ -134,11 +95,10 @@ class LoginController extends Controller
             'code' => 'required'
         ]);
         if (self::verifyColum($request, 'phone_number', auth()->user(), $request->code)) {
-            Alert::success('Congrats', 'Your Phone have successfully verified');
-            return redirect()->route('userprofile');
+            return response()->json(['message'=>'success']);
         } else {
-            return back()->with([
-                'code' => 'Code Error!'
+            return response()->json([
+                'message' => 'Code Error!'
             ]);
 
         }
@@ -150,8 +110,8 @@ class LoginController extends Controller
         $user = auth()->user();
 
         if ($request->email == $user->email) {
-            return back()->with([
-                'email-message' => 'Your email',
+            return response()->json([
+                'email-message' => 'Error, Your email',
                 'email' => $request->email
             ]);
         } else {
@@ -169,9 +129,8 @@ class LoginController extends Controller
             self::send_verification('email',$user);
 
 
-            Alert::success('Congrats', 'Your Email have successfully changed and We have sent to verification link to ' . $user->email);
 
-            return redirect()->back();
+            return response()->json(['message'=> 'success']);
         }
     }
 
@@ -181,8 +140,8 @@ class LoginController extends Controller
         $user = auth()->user();
 
         if ($request->phone_number == $user->phone_number) {
-            return back()->with([
-                'email-message' => 'Your phone',
+            return response()->json([
+                'email-message' => 'Error, Your phone',
                 'email' => $request->email
             ]);
         } else {
@@ -200,17 +159,10 @@ class LoginController extends Controller
             $user->save();
             self::send_verification('phone_number', auth()->user());
 
-            return redirect()->back()->with([
+            return response()->json([
                 'code' => 'Код отправлено!'
             ]);
         }
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-
-        return redirect('/');
     }
 
 

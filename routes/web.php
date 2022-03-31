@@ -4,7 +4,7 @@ use App\Http\Controllers\API\PerformerAPIController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FaqsController; // javoxir
 use App\Http\Controllers\LoginController; //avacoder
-use App\Http\Controllers\ProfileController; 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Task\ResponseController;
 use App\Http\Controllers\Task\UpdateController;
 use App\Http\Controllers\UserController; //avocoder
@@ -166,7 +166,7 @@ Route::group(['middleware'=>'auth'], function (){
         Route::post('/description',[ProfileController::class, 'EditDescription'])->name('edit.description'); // javoxir
 
         //create_port
-        Route::view('/create','profile/create_port'); 
+        Route::view('/create','profile/create_port');
         Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('portfolio.create'); // javoxir
         Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('portfolio'); // javoxir
         Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('portfolio.delete'); // javoxir
