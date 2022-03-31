@@ -43,3 +43,12 @@ function inputCash() {
          });
      });
 
+// input cash transaction
+$('#period').change(function(){
+    if($(this).val() == 'test'){
+        $('#ddr').removeClass('hidden');
+    }
+    else{
+        $('#ddr').addClass('hidden');
+    }
+});
