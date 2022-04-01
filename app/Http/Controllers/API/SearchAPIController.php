@@ -195,7 +195,9 @@ class SearchAPIController extends Controller
      */
     public function delete_task(Task $task)
     {
-        taskGuard($task);
+        if ($task->user_id != auth()->user()->id){
+            abort(403);
+        }
         $task->responses()->delete();
         $task->reviews()->delete();
         $task->custom_field_values()->delete();
@@ -204,7 +206,7 @@ class SearchAPIController extends Controller
     }
 
 /**
-     * 
+     *
      * @OA\Post (
      *     path="/api/ajax-request",
      *     tags={"Search"},
@@ -389,6 +391,6 @@ class SearchAPIController extends Controller
         }
         return response()->json(['success' => $all_count]);
     }
-    
+
 
 }

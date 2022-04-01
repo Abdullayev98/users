@@ -82,7 +82,6 @@ Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']); //en
 
 Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks']); //end
 Route::get('search-task', [SearchAPIController::class, 'task_search']); //end
-Route::delete('delete-task/{task}', [SearchAPIController::class, 'delete_task']); //not
 Route::post('ajax-request', [SearchAPIController::class, 'task_response']); //not
 Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']); //end
 //Categories
