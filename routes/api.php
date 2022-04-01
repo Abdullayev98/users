@@ -14,6 +14,7 @@ use App\Http\Controllers\API\ConversationAPIController;
 use App\Http\Controllers\API\VoyagerUserAPIController; // javoxir -
 use App\Http\Controllers\API\RefillAPIController; // javoxir
 use App\Http\Controllers\API\ReportAPIController; // javoxir
+use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +46,6 @@ Route::middleware('custom.auth:api')->group(function () {
     Route::post('logout', [UserAPIController::class, 'logout']); //end
 
     Route::post('task/create', [TaskAPIController::class, 'create']); //end
-    Route::get('settings', [ProfileAPIController::class, 'settings']); //end
 
 
     Route::get('/my-tasks', [TaskAPIController::class, 'my_tasks']); //end
@@ -56,13 +56,13 @@ Route::middleware('custom.auth:api')->group(function () {
     Route::delete('/for_del_new_task/{task}', [TaskAPIController::class, 'deletetask']); //end
     Route::delete('/delete-task/{task}', [SearchAPIController::class, 'delete_task']); //not
     Route::delete('/delete', [UserAPIController::class, 'destroy']); //end
+    Route::post('/settings/update', [ProfileAPIController::class, 'updateData'])->name('updateData');
 
 });
 
 //User Routes
 Route::post('login', [UserAPIController::class, 'login']); //end
 Route::post('register', [UserAPIController::class, 'register']); //end
-Route::put('update/{id}', [UserAPIController::class, 'update']); //end
 
 // FAQ
 Route::get('faq', [FaqAPIController::class, 'index']); //end
