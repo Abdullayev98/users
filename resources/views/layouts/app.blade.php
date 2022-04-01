@@ -36,7 +36,8 @@
 <x-modal></x-modal>
 </body>
 
-
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     window.replainSettings = {id: '04dd17cf-659c-40c9-8b6e-007f91243f10'};
