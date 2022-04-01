@@ -23,19 +23,41 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|string',
-            'phone' => 'required|min:9',
-            'description' => 'required|string',
-            'start_date' => 'required|string',
-            'date_type' => 'required|string',
-            'budget' => 'required|string',
-            'category_id' => 'required',
-            'coordinates0' => 'required',
-            'location0' => 'required'
+        $rule = [
+            'name' => 'required',
+            'address' => 'required',
+            'date_type' => 'required',
+            'budget' => 'required',
+            'description' => 'required',
+            'category_id' => 'required|numeric',
+            //'phone' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/'
+            'phone' => 'required|numeric|min:9'
         ];
+        $rule = $this->dateRule($rule);
+        return $rule;
     }
 
+    public function dateRule($rule)
+    {
+        switch($rule['date_type']) {
+            case 1:
+                $rule['start_date'] = 'required|date';
+                $rule['date_type'] = 'required';
+                break;
+            case 2:
+                $rule['end_date'] = 'required|date';
+                $rule['date_type'] = 'required';
+                break;
+            case 3:
+                $rule['start_date'] = 'required|date';
+                $rule['end_date'] = 'required|date';
+                $rule['date_type'] = 'required';
+                break;
+
+        }
+        return $rule;
+
+    }
     public function messages()
     {
         return [

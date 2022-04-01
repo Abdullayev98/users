@@ -24,21 +24,45 @@ class StoreRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return void
      */
     public function rules()
     {
-        return [
-            'name' => 'required',
-            'address' => 'required',
-            'date_type' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
-            'budget' => 'required',
-            'description' => 'required',
-            'category_id' => 'required|numeric',
-            //'phone' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/'
-            'phone' => 'required|numeric|min:9'
-        ];
+       $rule = [
+           'name' => 'required',
+           'address' => 'required',
+           'date_type' => 'required',
+           'budget' => 'required',
+           'description' => 'required',
+           'category_id' => 'required|numeric',
+           //'phone' => 'required|regex:/^\+998(9[012345789])[0-9]{7}$/'
+           'phone' => 'required|numeric|min:9'
+       ];
+       $rule = $this->dateRule($rule);
+        return $rule;
     }
+
+    public function dateRule($rule)
+    {
+        switch($rule['date_type']) {
+            case 1:
+                 $rule['start_date'] = 'required|date';
+                  $rule['date_type'] = 'required';
+                  break;
+            case 2:
+                $rule['end_date'] = 'required|date';
+                $rule['date_type'] = 'required';
+                break;
+            case 3:
+                $rule['start_date'] = 'required|date';
+                $rule['end_date'] = 'required|date';
+                $rule['date_type'] = 'required';
+                break;
+
+        }
+        return $rule;
+
+    }
+
+
 }
