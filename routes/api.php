@@ -3,9 +3,11 @@
 use App\Http\Controllers\API\CategoriesAPIController; // javoxir
 use App\Http\Controllers\API\CustomFieldAPIController; // javoxir
 use App\Http\Controllers\API\FaqAPIController; // javoxir
+use App\Http\Controllers\API\LoginAPIController;
 use App\Http\Controllers\API\NewsAPIController;
 use App\Http\Controllers\API\PerformerAPIController; // javoxir
 use App\Http\Controllers\API\ProfileAPIController; // javoxir
+use App\Http\Controllers\API\SocialAPIController;
 use App\Http\Controllers\API\TaskAPIController; // javoxir
 use App\Http\Controllers\API\UserAPIController; // javoxir
 use App\Http\Controllers\API\SearchAPIController; // javoxir --
@@ -109,3 +111,14 @@ Route::get('/ref', [RefillAPIController::class, 'ref']); //end
 Route::post('/prepare', [RefillAPIController::class, 'prepare']); //end
 Route::post('/complete', [RefillAPIController::class, 'complete']); //end
 
+
+
+Route::get('account/verification/email', [LoginAPIController::class, 'send_email_verification']);
+Route::get('account/verification/phone', [LoginAPIController::class, 'send_phone_verification']);
+Route::post('account/verification/phone', [LoginAPIController::class, 'verify_phone']);
+Route::post("account/change/email", [LoginAPIController::class,'change_email']);
+Route::post("account/change/phone", [LoginAPIController::class,'change_phone_number']);
+
+Route::get('login/google/callback',[SocialAPIController::class,'loginWithGoogle']);
+
+Route::get('login/facebook/callback',[SocialAPIController::class,'loginWithFacebook']);
