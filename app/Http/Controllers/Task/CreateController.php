@@ -82,6 +82,7 @@ class CreateController extends Controller
     {
         $task->update($this->service->addAdditionalAddress($request));
 
+
         $this->service->attachCustomFieldsByRoute($task, CustomField::ROUTE_ADDRESS);
         return redirect()->route("task.create.date", $task->id);
 
