@@ -36,6 +36,5 @@ yarn-error.log
 /.vscode
 .vscode/extensions.json
 /public/AvatarImages
-/public/storage/user-avatar
 /storage
-/public/storage
+
