@@ -33,7 +33,7 @@ class ProfileAPIController extends Controller
     /**
      * @OA\Get(
      *     path="/api/settings",
-     *     tags={"Settings"},
+     *     tags={"Profile"},
      *     summary="Get list of Settings",
      *     security={
      *      {"token": {}},

@@ -25,6 +25,21 @@ class SearchAPIController extends Controller
 
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/search-task",
+     *     tags={"Search"},
+     *     summary="Get list of Tasks and Categories",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="Server error"
+     *     )
+     * )
+     */
     public function task_search(){
 
         $tasks = Task::withTranslations(['ru', 'uz'])->orderBy('id','desc')->paginate(20);
@@ -41,7 +56,7 @@ class SearchAPIController extends Controller
     /**
      * @OA\Get(
      *     path="/api/tasks-search",
-     *     tags={"Ajax-Search-Tasks"},
+     *     tags={"Search"},
      *     summary="Get list of Tasks",
      *     @OA\Response(
      *         response=200,
@@ -97,6 +112,27 @@ class SearchAPIController extends Controller
         return view('task.detailed-tasks',compact('tasks','same_tasks','users','categories','current_user'));
     } */
 
+
+    /**
+     * @OA\Get(
+     *     path="/api/detailed-tasks/{task}",
+     *     tags={"Search"},
+     *     summary="Get Task by ID",
+     *     @OA\Parameter(
+     *          in="path",
+     *          name="task",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *     )
+     * )
+     *
+     */
     public function task(Task $task)
     {
         $complianceType = CompliancesType::all();
@@ -127,6 +163,36 @@ class SearchAPIController extends Controller
         return view('task.changetask', compact('task'));
     }
 
+    /**
+     * @OA\DELETE(
+     *     path="/api/delete-task/{task}",
+     *     tags={"Search"},
+     *     summary="Delete Task",
+     *     security={
+     *         {"token": {}}
+     *     },
+     *     @OA\Parameter(
+     *          in="path",
+     *          name="task",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *     ),
+     *     @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *     )
+     * )
+     */
     public function delete_task(Task $task)
     {
         taskGuard($task);
@@ -137,6 +203,108 @@ class SearchAPIController extends Controller
         return response()->json('O`chirildi');
     }
 
+/**
+     * 
+     * @OA\Post (
+     *     path="/api/ajax-request",
+     *     tags={"Search"},
+     *     summary="Add new task",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="status",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="performer_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="task_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="response_desc",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="comment",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="name_task",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="user_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="good",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="notificate",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="response_time",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="response_price",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "status":2,
+     *                     "performer_id":77,
+     *                     "task_id":12,
+     *                     "response_desc":"Assalomu Aleykum",
+     *                     "comment":"Яхшимислар",
+     *                     "name_task":"Янги задача",
+     *                     "user_id":77,
+     *                     "good":"Яхши",
+     *                     "notificate":"Salom",
+     *                     "response_time":"77",
+     *                     "response_price":"300",
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="id", type="number", example=1),
+     *              @OA\Property(property="status", type="integer", example=1),
+     *              @OA\Property(property="performer_id", type="integer", example=20),
+     *              @OA\Property(property="task_id", type="integer", example=12),
+     *              @OA\Property(property="response_desc", type="string", example="Assalomu Aleykum"),
+     *              @OA\Property(property="comment", type="string", example="Яхшимислар"),
+     *              @OA\Property(property="name_task", type="string", example="Янги задача"),
+     *              @OA\Property(property="user_id", type="integer", example=2),
+     *              @OA\Property(property="good", type="string", example="Яхши"),
+     *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="invalid",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="msg", type="string", example="fail"),
+     *          )
+     *      ),
+     *     security={
+     *         {"token": {}}
+     *     },
+     * )
+     */
     public function task_response(Request $request)
     {
         $status = $request->input('status');

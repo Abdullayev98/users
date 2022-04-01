@@ -12,15 +12,15 @@ class CustomFieldAPIController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/custom-field-by-category/{id}",
-     *     tags={"Custom"},
+     *     path="/api/custom-field-by-category/{category}",
+     *     tags={"CustomField"},
      *     summary="Get by category ID",
      *     security={
      *      {"token": {}},
      *     },
      *     @OA\Parameter(
      *          in="path",
-     *          name="id",
+     *          name="category",
      *          required=true,
      *          @OA\Schema(
      *              type="string"
@@ -45,6 +45,38 @@ class CustomFieldAPIController extends Controller
 
         return $category->custom_fields;
     }
+
+
+    /**
+     * @OA\Get(
+     *     path="/api/custom-field-values-by-custom-field/{custom_field}",
+     *     tags={"CustomField"},
+     *     summary="Get custom-field by ID",
+     *     security={
+     *      {"token": {}},
+     *     },
+     *     @OA\Parameter(
+     *          in="path",
+     *          name="custom_field",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *      response=401,
+     *       description="Unauthenticated"
+     *     ),
+     *     @OA\Response(
+     *         response=403,
+     *         description="Forbidden"
+     *     )
+     * )
+     */
     public function getByCustomFieldId(CustomField $custom_field)
     {
 
@@ -53,15 +85,15 @@ class CustomFieldAPIController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/custom-field-by-task/{id}",
-     *     tags={"Custom"},
+     *     path="/api/custom-field-values-by-task/{task}",
+     *     tags={"CustomField"},
      *     summary="Get by task ID",
      *     security={
      *      {"token": {}},
      *     },
      *     @OA\Parameter(
      *          in="path",
-     *          name="id",
+     *          name="task",
      *          required=true,
      *          @OA\Schema(
      *              type="string"

@@ -1,19 +1,19 @@
 <?php
 
-use App\Http\Controllers\API\CategoriesAPIController;
-use App\Http\Controllers\API\CustomFieldAPIController;
-use App\Http\Controllers\API\FaqAPIController;
+use App\Http\Controllers\API\CategoriesAPIController; // javoxir
+use App\Http\Controllers\API\CustomFieldAPIController; // javoxir
+use App\Http\Controllers\API\FaqAPIController; // javoxir
 use App\Http\Controllers\API\NewsAPIController;
-use App\Http\Controllers\API\PerformerAPIController;
-use App\Http\Controllers\API\ProfileAPIController;
-use App\Http\Controllers\API\TaskAPIController;
-use App\Http\Controllers\API\UserAPIController;
-use App\Http\Controllers\API\SearchAPIController;
-use App\Http\Controllers\API\MassmediaAPIController;
+use App\Http\Controllers\API\PerformerAPIController; // javoxir
+use App\Http\Controllers\API\ProfileAPIController; // javoxir
+use App\Http\Controllers\API\TaskAPIController; // javoxir
+use App\Http\Controllers\API\UserAPIController; // javoxir
+use App\Http\Controllers\API\SearchAPIController; // javoxir --
+use App\Http\Controllers\API\MassmediaAPIController; // javoxir
 use App\Http\Controllers\API\ConversationAPIController;
-use App\Http\Controllers\API\VoyagerUserAPIController;
-use App\Http\Controllers\API\RefillAPIController;
-use App\Http\Controllers\API\ReportAPIController;
+use App\Http\Controllers\API\VoyagerUserAPIController; // javoxir -
+use App\Http\Controllers\API\RefillAPIController; // javoxir
+use App\Http\Controllers\API\ReportAPIController; // javoxir
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/{paysys}',function($paysys){
+/* Route::any('/{paysys}',function($paysys){
     (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
 });
 Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
@@ -39,10 +39,10 @@ Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
     $pay_uz
         ->driver($paysys)
         ->redirect($model, $amount, 860, $url);
-});
+}); */
 
 Route::middleware('custom.auth:api')->group(function () {
-    Route::post('logout', [UserAPIController::class, 'logout']);
+    Route::post('logout', [UserAPIController::class, 'logout']); //end
 
     Route::post('task/create', [TaskAPIController::class, 'create']); //end
     Route::get('settings', [ProfileAPIController::class, 'settings']); //end
@@ -53,15 +53,15 @@ Route::middleware('custom.auth:api')->group(function () {
     Route::get('/custom-field-by-category/{category}',[CustomFieldAPIController::class,'getByCategoryId']); //end
     Route::get('/custom-field-values-by-task/{task}',[CustomFieldAPIController::class,'getByTaskId']); //end
     Route::get('/custom-field-values-by-custom-field/{custom_field}',[CustomFieldAPIController::class,'getByCustomFieldId']); //end
+    Route::delete('/for_del_new_task/{task}', [TaskAPIController::class, 'deletetask']); //end
 
 });
-
 
 //User Routes
 Route::post('login', [UserAPIController::class, 'login']); //end
 Route::post('register', [UserAPIController::class, 'register']); //end
-Route::put('update/{id}', [UserAPIController::class, 'update']);
-Route::delete('delete/{id}', [UserAPIController::class, 'destroy']);
+Route::put('update/{id}', [UserAPIController::class, 'update']); //end
+Route::delete('delete/{id}', [UserAPIController::class, 'destroy']); //end
 
 // FAQ
 Route::get('faq', [FaqAPIController::class, 'index']); //end
@@ -72,12 +72,11 @@ Route::get('faq/{id}', [FaqAPIController::class, 'questions']); //end
 //Tasks
 Route::get('task/{task}', [TaskAPIController::class, 'task']); //end
 Route::get('find', [TaskAPIController::class, 'search']); //end
-Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks'])->name('tasks.search'); //end
-Route::delete('/for_del_new_task/{task}', [TaskAPIController::class, 'deletetask']);
-Route::get('task_search', [SearchAPIController::class, 'task_search']);
-Route::delete('delete-task/{task}', [SearchAPIController::class, 'delete_task']);
-Route::post('ajax-request', [SearchAPIController::class, 'task_response']); 
-Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']);
+Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks']); //end
+Route::get('search-task', [SearchAPIController::class, 'task_search']); //end
+Route::delete('delete-task/{task}', [SearchAPIController::class, 'delete_task']); //not
+Route::post('ajax-request', [SearchAPIController::class, 'task_response']); //not 
+Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']); //end
 
 
 //Categories
@@ -88,7 +87,7 @@ Route::get('/performers', [PerformerAPIController::class, 'service']); //end
 Route::get('/performers/{performer}', [PerformerAPIController::class, 'performer']); //end
 
 //Massmedia
-Route::get('/press',[MassmediaAPIController::class, 'index']);
+Route::get('/press',[MassmediaAPIController::class, 'index']); //end
 
 //Conversation
 Route::group(['prefix' => 'admin'], function () {
@@ -96,12 +95,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/rate/{message}', [ConversationAPIController::class, 'rating']);
     Route::post('/messages/chat/close/{message}', [ConversationAPIController::class, 'close']);
     Route::post('/messages/chat/{id}', [ConversationAPIController::class, 'send']);
-    Route::get("users/activitiy/{user}", [VoyagerUserAPIController::class, "activity"]);
-    Route::get('/reports', [ReportAPIController::class, 'index']);
+    Route::get("users/activitiy/{user}", [VoyagerUserAPIController::class, "activity"]); // so`rash kerak
+    Route::get('/reports', [ReportAPIController::class, 'index']); //end
 });
 
 //Refill
-Route::get('/ref', [RefillAPIController::class, 'ref']);
-Route::post('/prepare', [RefillAPIController::class, 'prepare']);
-Route::post('/complete', [RefillAPIController::class, 'complete']);
+Route::get('/ref', [RefillAPIController::class, 'ref']); //end
+Route::post('/prepare', [RefillAPIController::class, 'prepare']); //end
+Route::post('/complete', [RefillAPIController::class, 'complete']); //end
 

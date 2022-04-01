@@ -12,6 +12,24 @@ use Illuminate\Support\Facades\Auth;
 
 class RefillAPIController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/ref",
+     *     tags={"Refill"},
+     *     summary="Get list of Refill",
+     *     security={
+     *         {"token": {}}
+     *     },
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation"
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="Ajax error"
+     *     )
+     * )
+     */
     public function ref(Request $request){
 
         $payment = $request->get("paymethod");
@@ -45,6 +63,105 @@ class RefillAPIController extends Controller
 
     }
 
+    /**
+     * 
+     * @OA\Post (
+     *     path="/api/prepare",
+     *     tags={"Refill"},
+     *     summary="Create new Prepare",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="click_trans_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="service_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="click_paydoc_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="merchant_trans_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="amount",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="action",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="error",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="error_note",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="sign_time",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="sign_string",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "click_trans_id":1613910471,
+     *                     "service_id":19839,
+     *                     "click_paydoc_id":1747426201,
+     *                     "merchant_trans_id":201,
+     *                     "amount":6000,
+     *                     "action":0,
+     *                     "error":0,
+     *                     "error_note":"Success",
+     *                     "sign_time":"2022-02-14 20:56:40",
+     *                     "sign_string":"0fc2457d6db176d12f96b8af2aa25679",
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="id", type="number", example=1),
+     *              @OA\Property(property="click_trans_id", type="integer", example=1613910471),
+     *              @OA\Property(property="service_id", type="integer", example=19839),
+     *              @OA\Property(property="click_paydoc_id", type="integer", example=1747426201),
+     *              @OA\Property(property="merchant_trans_id", type="integer", example=201),
+     *              @OA\Property(property="amount", type="integer", example=6000),
+     *              @OA\Property(property="action", type="integer", example=0),
+     *              @OA\Property(property="error", type="integer", example=0),
+     *              @OA\Property(property="error_note", type="string", example="Success"),
+     *              @OA\Property(property="sign_time", type="string", example="2022-02-14 20:56:40"),
+     *              @OA\Property(property="sign_string", type="string", example="0fc2457d6db176d12f96b8af2aa25679"),
+     *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="invalid",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="msg", type="string", example="fail"),
+     *          )
+     *      ),
+     *     security={
+     *         {"token": {}}
+     *     },
+     * )
+     */
     public function prepare(Request $request){
 
         $new_prepare = Prepare::create([
@@ -83,6 +200,111 @@ class RefillAPIController extends Controller
     }
 
 
+    /**
+     * 
+     * @OA\Post (
+     *     path="/api/complete",
+     *     tags={"Refill"},
+     *     summary="Create new Complete",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="click_trans_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="service_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="click_paydoc_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="merchant_trans_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="merchant_prepare_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="amount",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="action",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="error",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="error_note",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="sign_time",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="sign_string",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "click_trans_id":1613910471,
+     *                     "service_id":19839,
+     *                     "click_paydoc_id":1747426201,
+     *                     "merchant_trans_id":201,
+     *                     "merchant_prepare_id":33,
+     *                     "amount":6000,
+     *                     "action":1,
+     *                     "error":0,
+     *                     "error_note":"Success",
+     *                     "sign_time":"2022-02-14 20:56:40",
+     *                     "sign_string":"0fc2457d6db176d12f96b8af2aa25679",
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="id", type="number", example=1),
+     *              @OA\Property(property="click_trans_id", type="integer", example=1613910471),
+     *              @OA\Property(property="service_id", type="integer", example=19839),
+     *              @OA\Property(property="click_paydoc_id", type="integer", example=1747426201),
+     *              @OA\Property(property="merchant_trans_id", type="integer", example=201),
+     *              @OA\Property(property="merchant_prepare_id", type="integer", example=33),
+     *              @OA\Property(property="amount", type="integer", example=6000),
+     *              @OA\Property(property="action", type="integer", example=0),
+     *              @OA\Property(property="error", type="integer", example=0),
+     *              @OA\Property(property="error_note", type="string", example="Success"),
+     *              @OA\Property(property="sign_time", type="string", example="2022-02-14 20:56:40"),
+     *              @OA\Property(property="sign_string", type="string", example="0fc2457d6db176d12f96b8af2aa25679"),
+     *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="invalid",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="msg", type="string", example="fail"),
+     *          )
+     *      ),
+     *     security={
+     *         {"token": {}}
+     *     },
+     * )
+     */
     public function complete(Request $request){
 
         $new_complete = Complete::create([

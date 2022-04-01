@@ -11,6 +11,22 @@ use App\Models\Task;
 
 class ReportAPIController extends Controller
 {
+
+    /**
+     * @OA\Get(
+     *     path="/api/admin/reports",
+     *     tags={"Report"},
+     *     summary="Get list of Reports",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="Server error"
+     *     )
+     * )
+     */
     public function index(Report $report)
     {
         $table = $report->getTable();

@@ -24,12 +24,12 @@ class TaskAPIController extends Controller
     }
     /**
      * @OA\Get(
-     *     path="/api/task/{id}",
-     *     tags={"Tasks"},
+     *     path="/api/task/{task}",
+     *     tags={"Task"},
      *     summary="Show tasks by ID",
      *     @OA\Parameter(
      *          in="path",
-     *          name="id",
+     *          name="task",
      *          required=true,
      *          @OA\Schema(
      *              type="string"
@@ -57,7 +57,7 @@ class TaskAPIController extends Controller
     /**
      * @OA\Get(
      *     path="/api/my-tasks",
-     *     tags={"My-tasks"},
+     *     tags={"Task"},
      *     summary="Get list of my Tasks",
      *     security={
      *      {"token": {}},
@@ -93,7 +93,7 @@ class TaskAPIController extends Controller
     /**
      * @OA\Get(
      *     path="/api/find",
-     *     tags={"Tasks"},
+     *     tags={"Task"},
      *     summary="Get list in Tasks",
      *     @OA\Response(
      *          response=200,
@@ -121,7 +121,7 @@ class TaskAPIController extends Controller
      * 
      * @OA\Post (
      *     path="/api/task/create",
-     *     tags={"Tasks"},
+     *     tags={"Task"},
      *     summary="Add new task",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -232,7 +232,7 @@ class TaskAPIController extends Controller
      * 
      * @OA\Put (
      *     path="/api/change-task/{task}",
-     *     tags={"Tasks"},
+     *     tags={"Task"},
      *     summary="Update Task",
      *     @OA\Parameter(
      *         in="path",
@@ -333,6 +333,37 @@ class TaskAPIController extends Controller
 
     }
 
+
+    /**
+     * @OA\DELETE(
+     *     path="/api/for_del_new_task/{task}",
+     *     tags={"Task"},
+     *     summary="Delete Task",
+     *     security={
+     *         {"token": {}}
+     *     },
+     *     @OA\Parameter(
+     *          in="path",
+     *          name="task",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *     ),
+     *     @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *     )
+     * )
+     */
     public function deletetask(Task $task)
     {
         $task->delete();

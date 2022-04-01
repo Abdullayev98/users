@@ -53,7 +53,64 @@ class UserAPIController extends Controller
         }
     }
 
-
+    /**
+     * 
+     * @OA\Put (
+     *     path="/api/update/{id}",
+     *     tags={"User"},
+     *     summary="Update User",
+     *     security={
+     *         {"token": {}}
+     *     },
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="email",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="password",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "name":"Javoxir",
+     *                     "email":"admin@admin.com",
+     *                     "password":"password",
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="id", type="number", example=1),
+     *              @OA\Property(property="name", type="string", example="Javoxir"),
+     *              @OA\Property(property="email", type="string", example="admin@admin.com"),
+     *              @OA\Property(property="password", type="string", example="password"),
+     *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *          )
+     *      )
+     * )
+     */
     public function update(Request $request, $id)
     {
         try {
@@ -66,21 +123,68 @@ class UserAPIController extends Controller
             $user = User::where('id', $id)->first();
             $user->update($request->all());
 
-            return response()->json(['status' => 'true', 'message' => 'User data updated!']);
+            return response()->json(['status' => true, 'message' => 'User data updated!']);
         } catch (ValidationException $e) {
             return response()->json(array_values($e->errors()));
         }
     }
 
+    /**
+     * @OA\DELETE(
+     *     path="/api/delete/{id}",
+     *     tags={"User"},
+     *     summary="Delete Task",
+     *     security={
+     *         {"token": {}}
+     *     },
+     *     @OA\Parameter(
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="string"
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *     ),
+     *     @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *     )
+     * )
+     */
     public function destroy($id)
     {
         $user = DB::table('users')->where('id', $id)->delete();
-        return response()->json(['status' => 'true', 'message' => 'User data deleted!']);
+        return response()->json(['status' => true, 'message' => 'User data deleted!']);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/logout",
+     *     tags={"User"},
+     *     summary="User logout",
+     *     security={
+     *         {"token": {}}
+     *     },
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *          description="Server error"
+     *     )
+     * )
+     */
     function logout()
     {
-
         auth()->user()->tokens->each(function ($token, $key) {
             $token->delete();
         });

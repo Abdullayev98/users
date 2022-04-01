@@ -31,12 +31,12 @@ class PerformerAPIController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/performers/{id}",
+     *     path="/api/performers/{performer}",
      *     tags={"Performers"},
      *     summary="Get list of Performers",
      *     @OA\Parameter(
      *          in="path",
-     *          name="id",
+     *          name="performer",
      *          required=true,
      *          @OA\Schema(
      *              type="string"
@@ -59,8 +59,6 @@ class PerformerAPIController extends Controller
 
     public function getByCategories()
     {
-
-
         return response()->json(['id' => request()->category_id]);
     }
 }
