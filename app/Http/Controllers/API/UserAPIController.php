@@ -16,14 +16,14 @@ use Illuminate\Validation\ValidationException;
 
 class UserAPIController extends Controller
 {
-    
+
     public function index()
     {
         $users = User::all();
         return response()->json($users);
     }
 
-    
+
     function login(UserLoginRequest $request)
     {
         $request->authenticate();
@@ -39,6 +39,7 @@ class UserAPIController extends Controller
         try {
             $data = $request->validated();
             $data['password'] = Hash::make($data['password']);
+            unset($data['password_confirmation']);
             $user = User::create($data);
             $user->api_token = Str::random(60);
             $user->remember_token = Str::random(60);
@@ -54,7 +55,7 @@ class UserAPIController extends Controller
     }
 
     /**
-     * 
+     *
      * @OA\Put (
      *     path="/api/update/{id}",
      *     tags={"User"},
@@ -159,9 +160,9 @@ class UserAPIController extends Controller
      *     )
      * )
      */
-    public function destroy($id)
+    public function destroy()
     {
-        $user = DB::table('users')->where('id', $id)->delete();
+        auth()->user()->delete();
         return response()->json(['status' => true, 'message' => 'User data deleted!']);
     }
 

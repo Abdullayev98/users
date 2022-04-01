@@ -118,7 +118,7 @@ class TaskAPIController extends Controller
 
 
     /**
-     * 
+     *
      * @OA\Post (
      *     path="/api/task/create",
      *     tags={"Task"},
@@ -229,7 +229,7 @@ class TaskAPIController extends Controller
 
 
     /**
-     * 
+     *
      * @OA\Put (
      *     path="/api/change-task/{task}",
      *     tags={"Task"},
@@ -371,14 +371,14 @@ class TaskAPIController extends Controller
 
         if($task){
             return response()->json([
-                'success' => true, 
+                'success' => true,
                 'message' => 'Successfully Deleted'
             ]);
         }
         return response()->json([
-            'success' => false, 
+            'success' => false,
             'message' => 'Not Deleted'
         ], 404);
-        
+
     }
 }

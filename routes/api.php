@@ -54,6 +54,8 @@ Route::middleware('custom.auth:api')->group(function () {
     Route::get('/custom-field-values-by-task/{task}',[CustomFieldAPIController::class,'getByTaskId']); //end
     Route::get('/custom-field-values-by-custom-field/{custom_field}',[CustomFieldAPIController::class,'getByCustomFieldId']); //end
     Route::delete('/for_del_new_task/{task}', [TaskAPIController::class, 'deletetask']); //end
+    Route::delete('/delete-task/{task}', [SearchAPIController::class, 'delete_task']); //not
+    Route::delete('/delete', [UserAPIController::class, 'destroy']); //end
 
 });
 
@@ -61,7 +63,6 @@ Route::middleware('custom.auth:api')->group(function () {
 Route::post('login', [UserAPIController::class, 'login']); //end
 Route::post('register', [UserAPIController::class, 'register']); //end
 Route::put('update/{id}', [UserAPIController::class, 'update']); //end
-Route::delete('delete/{id}', [UserAPIController::class, 'destroy']); //end
 
 // FAQ
 Route::get('faq', [FaqAPIController::class, 'index']); //end
@@ -74,8 +75,7 @@ Route::get('task/{task}', [TaskAPIController::class, 'task']); //end
 Route::get('find', [TaskAPIController::class, 'search']); //end
 Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks']); //end
 Route::get('search-task', [SearchAPIController::class, 'task_search']); //end
-Route::delete('delete-task/{task}', [SearchAPIController::class, 'delete_task']); //not
-Route::post('ajax-request', [SearchAPIController::class, 'task_response']); //not 
+Route::post('ajax-request', [SearchAPIController::class, 'task_response']); //not
 Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']); //end
 
 
@@ -91,6 +91,7 @@ Route::get('/press',[MassmediaAPIController::class, 'index']); //end
 
 //Conversation
 Route::group(['prefix' => 'admin'], function () {
+    // Admin Kerakmas, Kompda kirishadi
     Route::get('/messages/chat/{id}', [ConversationAPIController::class, 'showChat']);
     Route::post('/messages/chat/rate/{message}', [ConversationAPIController::class, 'rating']);
     Route::post('/messages/chat/close/{message}', [ConversationAPIController::class, 'close']);
