@@ -87,7 +87,7 @@
                                                             <input type="text"  autofocus="autofocus"
                                                                    value="+998{{auth()->user()->phone_number}}"
                                                                    placeholder="+998(00)000-00-00" id="phone"
-                                                                   class="shadow appearance-none phone border phone  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"/>
+                                                                   class="shadow appearance-none border phone  phone-1 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"/>
                                                             <input type="hidden" name="phone_number"
                                                                    value="{{auth()->user()->phone_number}}"
                                                                    class="phone-number">
@@ -202,7 +202,7 @@
                                             <span class="text-gray-500 text-sm">
                                                 {{__('Телефонный номер')}}
                                             </span>
-                                            <input type="text" 
+                                            <input type="text"
                                                    placeholder="{{__('Номер телефона')}}" id="phone2"
                                                    value="+998{{ old('phone_number') }}"
                                                    class="mt-2 shadow appearance-none phone border focus:shadow-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-yellow-500"/>
@@ -268,14 +268,21 @@
             mask: '+998(00)000-00-00',
             lazy: false
         }
-
         var mask = new IMask(element, maskOptions);
         // console.log(mask);
         //
-        if (element2)
-            console.log(element2);
-        var mask2 = new IMask(element2, maskOptions);
 
+        if (element2)
+        {
+            console.log(element2);
+            var mask2 = new IMask(element2, maskOptions);
+        }
+        $(".phone").keyup(function () {
+            var text = $(this).val()
+            text = text.replace(/[^0-9.]/g, "")
+            text = text.slice(3)
+            $(".phone-number").val(text)
+        })
         function setSelectionRange(input, selectionStart, selectionEnd) {
             if (input.setSelectionRange) {
                 input.focus();
@@ -292,13 +299,6 @@
         function setCaretToPos(input, pos) {
             setSelectionRange(input, pos, pos);
         }
-
-        $(".phone").keyup(function () {
-            var text = $(this).val()
-            text = text.replace(/[^0-9.]/g, "")
-            text = text.slice(3)
-            $(".phone-number").val(text)
-        })
 
 
 

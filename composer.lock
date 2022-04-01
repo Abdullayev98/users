@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66e522806ab0bcd11f26cb03c40bb448",
+    "content-hash": "9d64ad1ddeeebe3ab21b2b238a0033f2",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -1327,6 +1327,68 @@
             "time": "2022-02-23T14:25:13+00:00"
         },
         {
+            "name": "goodoneuz/pay-uz",
+            "version": "2.2.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shaxzodbek-uzb/pay-uz.git",
+                "reference": "0f10d49d18a555af7d0d365d324d3569eb77fe20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shaxzodbek-uzb/pay-uz/zipball/0f10d49d18a555af7d0d365d324d3569eb77fe20",
+                "reference": "0f10d49d18a555af7d0d365d324d3569eb77fe20",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.7.*|5.8.*|6.*|7.*|^8.0",
+                "php": "^7.1|^8.0",
+                "stripe/stripe-php": "^6.31|^7.60"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.7.*|^6.2",
+                "phpunit/phpunit": "^7.0|^9.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Goodoneuz\\PayUz\\PayUzServiceProvider"
+                    ],
+                    "aliases": {
+                        "PayUz": "Goodoneuz\\PayUz\\PayUzFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Goodoneuz\\PayUz\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shaxzodbek",
+                    "email": "shaxzodbek.qambaraliyev@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Payment: Click, Payme, Uzcard, Visa",
+            "homepage": "https://github.com/goodoneuz/pay-uz",
+            "keywords": [
+                "goodoneuz",
+                "pay-uz"
+            ],
+            "support": {
+                "issues": "https://github.com/shaxzodbek-uzb/pay-uz/issues",
+                "source": "https://github.com/shaxzodbek-uzb/pay-uz/tree/2.2.9"
+            },
+            "time": "2022-02-17T06:26:30+00:00"
+        },
+        {
             "name": "graham-campbell/result-type",
             "version": "v1.0.4",
             "source": {
@@ -2248,16 +2310,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.83.5",
+            "version": "v8.83.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "33b1b981266e3a19fbc826b60c4a6847e311ac95"
+                "reference": "dffcec0cb686eafaa3b8f33db11da2cd9d69af1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/33b1b981266e3a19fbc826b60c4a6847e311ac95",
-                "reference": "33b1b981266e3a19fbc826b60c4a6847e311ac95",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/dffcec0cb686eafaa3b8f33db11da2cd9d69af1c",
+                "reference": "dffcec0cb686eafaa3b8f33db11da2cd9d69af1c",
                 "shasum": ""
             },
             "require": {
@@ -2417,7 +2479,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-03-15T13:37:44+00:00"
+            "time": "2022-03-29T14:41:02+00:00"
         },
         {
             "name": "laravel/passport",
@@ -2498,20 +2560,21 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.14.2",
+            "version": "v2.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "dc5d749ba9bfcfd68d8f5c272238f88bea223e66"
+                "reference": "5be160413b6f37dcf8758663edeab12d0e806f56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/dc5d749ba9bfcfd68d8f5c272238f88bea223e66",
-                "reference": "dc5d749ba9bfcfd68d8f5c272238f88bea223e66",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/5be160413b6f37dcf8758663edeab12d0e806f56",
+                "reference": "5be160413b6f37dcf8758663edeab12d0e806f56",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
+                "illuminate/console": "^6.9|^7.0|^8.0|^9.0",
                 "illuminate/contracts": "^6.9|^7.0|^8.0|^9.0",
                 "illuminate/database": "^6.9|^7.0|^8.0|^9.0",
                 "illuminate/support": "^6.9|^7.0|^8.0|^9.0",
@@ -2558,7 +2621,7 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
-            "time": "2022-02-16T14:40:23+00:00"
+            "time": "2022-03-28T13:53:05+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -2690,16 +2753,16 @@
         },
         {
             "name": "laravel/tinker",
-            "version": "v2.7.1",
+            "version": "v2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "1e2d500585a4e546346fadd3adc6f9c1a97e15f4"
+                "reference": "dff39b661e827dae6e092412f976658df82dbac5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/1e2d500585a4e546346fadd3adc6f9c1a97e15f4",
-                "reference": "1e2d500585a4e546346fadd3adc6f9c1a97e15f4",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/dff39b661e827dae6e092412f976658df82dbac5",
+                "reference": "dff39b661e827dae6e092412f976658df82dbac5",
                 "shasum": ""
             },
             "require": {
@@ -2752,9 +2815,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/tinker/issues",
-                "source": "https://github.com/laravel/tinker/tree/v2.7.1"
+                "source": "https://github.com/laravel/tinker/tree/v2.7.2"
             },
-            "time": "2022-03-15T15:25:01+00:00"
+            "time": "2022-03-23T12:38:24+00:00"
         },
         {
             "name": "laravel/ui",
@@ -5405,17 +5468,77 @@
             "time": "2021-11-06T09:34:33+00:00"
         },
         {
-            "name": "swagger-api/swagger-ui",
-            "version": "v4.9.1",
+            "name": "stripe/stripe-php",
+            "version": "v7.121.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "56fe8a1c279be6b55cd9aef7ce5e06e0ec364880"
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "e36e7afb71ae5511aae23b52dca712a0ef06d981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/56fe8a1c279be6b55cd9aef7ce5e06e0ec364880",
-                "reference": "56fe8a1c279be6b55cd9aef7ce5e06e0ec364880",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/e36e7afb71ae5511aae23b52dca712a0ef06d981",
+                "reference": "e36e7afb71ae5511aae23b52dca712a0ef06d981",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "3.5.0",
+                "phpstan/phpstan": "^1.2",
+                "phpunit/phpunit": "^5.7 || ^9.0",
+                "squizlabs/php_codesniffer": "^3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "support": {
+                "issues": "https://github.com/stripe/stripe-php/issues",
+                "source": "https://github.com/stripe/stripe-php/tree/v7.121.0"
+            },
+            "time": "2022-03-30T15:51:23+00:00"
+        },
+        {
+            "name": "swagger-api/swagger-ui",
+            "version": "v4.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swagger-api/swagger-ui.git",
+                "reference": "6686f34a8671248ab5d21a6743ec063fa5eaff6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/6686f34a8671248ab5d21a6743ec063fa5eaff6f",
+                "reference": "6686f34a8671248ab5d21a6743ec063fa5eaff6f",
                 "shasum": ""
             },
             "type": "library",
@@ -5461,9 +5584,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swagger-api/swagger-ui/issues",
-                "source": "https://github.com/swagger-api/swagger-ui/tree/v4.9.1"
+                "source": "https://github.com/swagger-api/swagger-ui/tree/v4.10.0"
             },
-            "time": "2022-03-25T18:33:52+00:00"
+            "time": "2022-03-28T09:08:33+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -9061,16 +9184,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.240.0",
+            "version": "v0.241.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "c6d39cda24d7ada02ecf8c464a1c8adb02607ba7"
+                "reference": "b4ba0dbcffa9ae30cf09ad3f8597f1374098acbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/c6d39cda24d7ada02ecf8c464a1c8adb02607ba7",
-                "reference": "c6d39cda24d7ada02ecf8c464a1c8adb02607ba7",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/b4ba0dbcffa9ae30cf09ad3f8597f1374098acbf",
+                "reference": "b4ba0dbcffa9ae30cf09ad3f8597f1374098acbf",
                 "shasum": ""
             },
             "require": {
@@ -9099,9 +9222,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.240.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.241.0"
             },
-            "time": "2022-03-21T01:20:11+00:00"
+            "time": "2022-03-28T00:56:15+00:00"
         },
         {
             "name": "google/auth",
@@ -9214,16 +9337,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.13.7",
+            "version": "v1.13.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "2092e1ce6e4ba534bff443de8c3a7bb280aba121"
+                "reference": "b00f1b64afff9c16355d23bb1e0f83a7ea9bbb7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/2092e1ce6e4ba534bff443de8c3a7bb280aba121",
-                "reference": "2092e1ce6e4ba534bff443de8c3a7bb280aba121",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/b00f1b64afff9c16355d23bb1e0f83a7ea9bbb7e",
+                "reference": "b00f1b64afff9c16355d23bb1e0f83a7ea9bbb7e",
                 "shasum": ""
             },
             "require": {
@@ -9270,7 +9393,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-03-11T14:11:15+00:00"
+            "time": "2022-03-23T12:35:34+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -9772,16 +9895,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706"
+                "reference": "77a32518733312af16a44300404e945338981de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/93ebd0014cab80c4ea9f5e297ea48672f1b87706",
-                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/77a32518733312af16a44300404e945338981de3",
+                "reference": "77a32518733312af16a44300404e945338981de3",
                 "shasum": ""
             },
             "require": {
@@ -9816,9 +9939,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.0"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.1"
             },
-            "time": "2022-01-04T19:58:01+00:00"
+            "time": "2022-03-15T21:29:03+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -11335,5 +11458,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }

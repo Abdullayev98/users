@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CompliancesType extends Model
 {
     use HasFactory;
+
+    protected $table = 'compliance_types';
 }

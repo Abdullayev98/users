@@ -43,3 +43,50 @@ function inputCash() {
          });
      });
 
+// input cash transaction
+$('#period').change(function(){
+    if($(this).val() == 'test'){
+        $('#ddr').removeClass('hidden');
+    }
+    else{
+        $('#ddr').addClass('hidden');
+    }
+});
+
+// datatable js
+//1
+$(document).ready(function() {
+
+    var table1 = $('#example1').DataTable({
+        responsive: true
+      })
+      .columns.adjust()
+      .responsive.recalc();
+  });
+  //2
+  $(document).ready(function() {
+
+    var table2 = $('#example2').DataTable({
+        responsive: true
+      })
+      .columns.adjust()
+      .responsive.recalc();
+  });
+  //3
+  $(document).ready(function() {
+
+    var table3 = $('#example3').DataTable({
+        responsive: true
+      })
+      .columns.adjust()
+      .responsive.recalc();
+  });
+  //4
+  $(document).ready(function() {
+
+    var table4 = $('#example4').DataTable({
+        responsive: true
+      })
+      .columns.adjust()
+      .responsive.recalc();
+  });
