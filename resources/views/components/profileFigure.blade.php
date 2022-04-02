@@ -168,7 +168,7 @@
         allowedExtensions: ['jpg', 'jpeg', 'png'],
         buttonsText: ['{{__('Сохранить')}}', '{{__('Отмена')}}'],
         buttonsColor: ['#30bf7d', '#ee5155', -15],
-        processUrl: '{{ route('profile.storeProfileImage') }}',
+        processUrl: '{{ route('profile.image.store') }}',
         withCSRF: ['_token', '{{ csrf_token() }}'],
         fileName: 'image',
         onSuccess: function (message, element, status) {

@@ -41,7 +41,7 @@ class LoginAPIController extends Controller
         $user->verify_expiration = Carbon::now()->addMinutes(5);
         $user->save();
 
-        return redirect("/profile");
+        return redirect()->route('userprofile');
     }
 
     public function send_email_verification()
@@ -85,7 +85,7 @@ class LoginAPIController extends Controller
         self::verifyColum($request, 'email', $user, $hash);
         auth()->login($user);
         Alert::success('Congrats', 'Your Email have successfully verified');
-        return redirect("/profile");
+        return redirect()->route('userprofile');
 
     }
 

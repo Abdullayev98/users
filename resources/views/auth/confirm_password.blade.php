@@ -6,7 +6,7 @@
                 {{__('Восстановление пароля')}}
             </h3>
         </div>
-        <form action="{{route('user.reset_submit.password.save')}}" method="POST">
+        <form action="{{route('password.reset.password.save')}}" method="POST">
             @csrf
             <div>
                 <div class="mb-4">

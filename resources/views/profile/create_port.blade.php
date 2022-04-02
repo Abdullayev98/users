@@ -4,7 +4,7 @@
 
 
     <div class="w-10/12 mx-auto mt-8">
-        <form action="{{ route('profile.portfolio.create') }}" method="post">
+        <form action="{{ route('portfolio.create') }}" method="post">
             @csrf
             <div class="lg:w-3/5 w-full">
                 <div>

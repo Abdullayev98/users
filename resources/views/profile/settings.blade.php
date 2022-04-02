@@ -24,13 +24,11 @@
                                                                class="text-lg text-gray-600 md:mx-0 mx-3">{{__('Счет')}}</a>
                             </li>
                             <li class="inline md:mr-5 mr-1 md:hidden block"><a href="/profile/settings"
-                                                                               class="text-lg border-b-4 border-green-500 pb-3 text-gray-700"
-                                                                               id="settingsText">{{__('Настройки')}}</a>
+                                                                               class="text-lg border-b-4 border-green-500 pb-3 text-gray-700" id="settingsText">{{__('Настройки')}}</a>
                             </li>
 
                         </ul>
-                        <div class="md:col-span-1 md:block hidden ml-4" id="settingsIcon"><a href="/profile/settings"><i
-                                        class="fas fa-cog text-2xl border-b-4 border-green-500 pb-3"></i></a></div>
+                        <div class="md:col-span-1 md:block hidden ml-4" id="settingsIcon"><a href="/profile/settings"><i class="fas fa-cog text-2xl border-b-4 border-green-500 pb-3"></i></a></div>
                     </div>
 
                     <hr class="md:mt-0 mt-3">
@@ -46,11 +44,11 @@
                                     <a id="default-tab"
                                        href="#first">{{__('Общие настройки')}}</a></li>
                                 <li class="xl:px-4 md:px-2 py-2  tab-name md:ring-0 w-full md:w-inherit font-semibold text-gray-800 opacity-50">
-                                    <a href="#second">{{__('Уведомления')}}</a></li>
+                                    <a href="#second" >{{__('Уведомления')}}</a></li>
                                 <li class="xl:px-2 md:px-2 py-2 tab-name md:ring-0 w-full md:w-inherit font-semibold text-gray-800 opacity-50">
                                     <a href="#third">{{__('Подписка на задания')}}</a></li>
                                 <li class="xl:px-4 md:px-2 tab-name py-2  @if($errors->has('password')) error  @endif  md:ring-0 w-full md:w-inherit font-semibold text-gray-800 opacity-50">
-                                    <a href="#fourth">{{__('Безопасность')}}</a></li>
+                                    <a href="#fourth" >{{__('Безопасность')}}</a></li>
                             </ul>
 
                             <!-- Tab Contents -->
@@ -61,7 +59,7 @@
                                         <div class="md:w-3/5 w-full md:m-4 m-0">
                                             <h1 class="block w-3/5 text-left text-gray-800 text-3xl font-bold mb-6">
                                                 {{__('Личные данные')}}</h1>
-                                            <form action="{{url('/profile/settings/update')}}" class="w-full" method="POST">
+                                            <form action="{{route('updateData')}}" class="w-full" method="POST">
                                                 @csrf
                                                 <div class="w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
@@ -111,10 +109,9 @@
                                                 <div class="w-full block w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
                                                            for="textarea">{{__('Другие сведения')}}</label>
-                                                    <textarea
-                                                            class="border rounded-xl py-2 px-3 w-full  text-grey-900 focus:outline-none focus:border-yellow-500"
-                                                            name="description"
-                                                            id="textarea">{{old('description')??$user->description}}</textarea>
+                                                    <textarea class="border rounded-xl py-2 px-3 w-full  text-grey-900 focus:outline-none focus:border-yellow-500"
+                                                              name="description"
+                                                              id="textarea">{{old('description')??$user->description}}</textarea>
                                                     @error('description')
                                                     <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
@@ -145,7 +142,7 @@
                                                 <hr>
                                             </form>
 
-                                            <a href="{{ url("/profile/delete/{$user->id}")}}" onclick="ConfirmDelete()"
+                                            <a href="{{ route('users.delete', $user->id) }}" onclick="ConfirmDelete()"
                                                class="block xl:w-3/5 lg:w-3/4 sm:w-3/5 w-full text-center bg-red-400 hover:bg-red-600 text-white mt-5 uppercase p-4 rounded-xl">{{__('Удалить профиль')}}</a>
                                         </div>
                                     </div>
@@ -174,7 +171,7 @@
                                     <div class="sm:w-4/5 w-full mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. {{__('Выберите категории')}}</h3>
                                         {{-- choosing categories --}}
-                                        <form action="{{url('/getcategory')}}" method="post">
+                                        <form action="{{route('get.category')}}" method="post">
                                             @csrf
                                             <div class="acordion mt-16">
                                                 @foreach ($categories as $category )

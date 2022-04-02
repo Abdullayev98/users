@@ -58,7 +58,7 @@ Route::middleware('custom.auth:api')->group(function () {
     Route::delete('/for_del_new_task/{task}', [TaskAPIController::class, 'deletetask']); //end
     Route::delete('/delete-task/{task}', [SearchAPIController::class, 'delete_task']); //end
     Route::delete('/delete', [UserAPIController::class, 'destroy']); //end
-    Route::post('/settings/update', [ProfileAPIController::class, 'updateData']); //not
+    Route::post('/settings/update', [ProfileAPIController::class, 'updateData'])->name('updateData'); //not
 
 });
 

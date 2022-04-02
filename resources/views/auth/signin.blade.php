@@ -63,7 +63,7 @@
                 </form>
 
                 <p class="mb-4">
-                    <a class="text-blue-500 hover:text-red-500" href="{{ route('user.reset') }}">
+                    <a class="text-blue-500 hover:text-red-500" href="{{ route('reset') }}">
                     {{__('Забыли пароль?')}}
                     </a>
                 </p>

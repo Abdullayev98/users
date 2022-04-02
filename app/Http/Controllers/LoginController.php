@@ -34,7 +34,7 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
 
-        return redirect("/profile");
+        return redirect()->route('userprofile');
 
     }
 
@@ -56,7 +56,7 @@ class LoginController extends Controller
         self::send_verification('email', auth()->user());
 
 
-        return redirect("/profile");
+        return redirect()->route('userprofile');
 
 
     }
@@ -84,7 +84,7 @@ class LoginController extends Controller
     {
         self::send_verification('email',auth()->user());
         Alert::info('Email sent', 'Your verification link has been successfully sent!');
-        return redirect("/profile");
+        return redirect()->route('userprofile');
     }
 
     public function send_phone_verification()
@@ -124,7 +124,7 @@ class LoginController extends Controller
         self::verifyColum($request, 'email', $user, $hash);
         auth()->login($user);
         Alert::success('Congrats', 'Your Email have successfully verified');
-        return redirect("/profile");
+        return redirect()->route('userprofile');
 
     }
 
@@ -135,7 +135,7 @@ class LoginController extends Controller
         ]);
         if (self::verifyColum($request, 'phone_number', auth()->user(), $request->code)) {
             Alert::success('Congrats', 'Your Phone have successfully verified');
-            return redirect("/profile");
+            return redirect()->route('userprofile');
         } else {
             return back()->with([
                 'code' => 'Code Error!'

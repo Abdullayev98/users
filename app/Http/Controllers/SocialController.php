@@ -32,7 +32,7 @@ class SocialController extends Controller
             $findUser->save();
             Alert::success('Success', 'You\'ve Successfully linked your facebook account');
             Auth::login($findUser);
-            return redirect("/profile");
+            return redirect()->route('userprofile');
         } else {
             $new_user = new User();
             $new_user->name = $user->name;
@@ -42,7 +42,7 @@ class SocialController extends Controller
             $new_user->password = encrypt('123456');
             $new_user->save();
             Auth::login($new_user);
-            return redirect("/profile");
+            return redirect()->route('userprofile');
         }
     }
 
@@ -82,7 +82,7 @@ class SocialController extends Controller
                 $findUser->save();
                 Auth::login($findUser);
                 Alert::success('Success', 'You\'ve Successfully linked your google account');
-                return redirect("/profile");
+                return redirect()->route('userprofile');
             } else {
                 $new_user = new User();
                 $new_user->name = $user->name;
@@ -92,7 +92,7 @@ class SocialController extends Controller
                 $new_user->password = encrypt('123456');
                 $new_user->save();
                 Auth::login($new_user);
-                return redirect("/profile");
+                return redirect()->route('userprofile');
             }
         } catch (Exception $e) {
             dd($e);

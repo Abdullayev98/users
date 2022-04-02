@@ -55,7 +55,7 @@ class ProfileController extends Controller
         portfolioGuard($portfolio);
 
         $portfolio->delete();
-        return redirect("/profile");
+        return redirect()->route('userprofile');
     }
 
     public function UploadImage(Request $request)
@@ -64,7 +64,7 @@ class ProfileController extends Controller
         return $uploadImg->uploadImageServ($request);
     }
 
-    public function profile.testBase(Request $request)
+    public function testBase(Request $request)
     {
         $testBaseS = new ProfileService();
         return $testBaseS->testBaseServ($request);
@@ -161,7 +161,7 @@ class ProfileController extends Controller
         }
         Auth::user()->update($data);
         Alert::success(__('Настройки успешно сохранены'));
-        return redirect("/profile/settings");
+        return redirect()->route('editData');
     }
 
     public function destroy($id)
@@ -180,7 +180,7 @@ class ProfileController extends Controller
         $user->role_id = 2;
         $checkbox = implode(",", $request->get('category'));
         $user->update(['category_id' => $checkbox]);
-        return redirect("/profile");
+        return redirect()->route('userprofile');
     }
 
     public function StoreDistrict(Request $request)
@@ -304,7 +304,7 @@ class ProfileController extends Controller
 
         session()->forget('images');
         Portfolio::create($data);
-        return redirect("/profile");
+        return redirect()->route('userprofile');
 
 
     }

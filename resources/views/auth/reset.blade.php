@@ -11,7 +11,7 @@
                 {{__('Укажите телефон, привязанный к вашей учетной записи. Мы отправим СМС с кодом.')}}
             </p>
         </div>
-        <form action="{{route('user.reset_submit')}}" method="POST">
+        <form action="{{route('password.reset')}}" method="POST">
             @csrf
             <div>
                 <div class="mb-4">

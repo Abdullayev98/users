@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "https:\/\/user.uz",
+            "url": "http:\/\/servboxvoyager",
             "description": "Primary API Server"
         }
     ],
@@ -2037,8 +2037,7 @@
                                 "slug",
                                 "created_at",
                                 "updated_at",
-                                "ico",
-                                "double_address"
+                                "ico"
                             ],
                             "type": "string"
                         }
@@ -2106,14 +2105,6 @@
                     },
                     {
                         "name": "filters[max]",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filters[double_address]",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -2414,8 +2405,7 @@
                                 "services",
                                 "placeholder",
                                 "max",
-                                "min",
-                                "double_address"
+                                "min"
                             ]
                         }
                     },
@@ -2445,8 +2435,7 @@
                                     "services",
                                     "placeholder",
                                     "max",
-                                    "min",
-                                    "double_address"
+                                    "min"
                                 ]
                             }
                         }
@@ -23960,10 +23949,6 @@
                     "max": {
                         "type": "string",
                         "description": "Max"
-                    },
-                    "double_address": {
-                        "type": "string",
-                        "description": "Double Address"
                     }
                 }
             },
@@ -24048,10 +24033,6 @@
                     "min": {
                         "type": "string",
                         "description": "Min"
-                    },
-                    "double_address": {
-                        "type": "string",
-                        "description": "Double Address"
                     }
                 }
             },
@@ -26757,10 +26738,6 @@
                                 "min": {
                                     "type": "string",
                                     "description": "Min"
-                                },
-                                "double_address": {
-                                    "type": "string",
-                                    "description": "Double Address"
                                 }
                             }
                         }
@@ -26850,10 +26827,6 @@
                                 "min": {
                                     "type": "string",
                                     "description": "Min"
-                                },
-                                "double_address": {
-                                    "type": "string",
-                                    "description": "Double Address"
                                 }
                             }
                         }
@@ -26943,10 +26916,6 @@
                                 "min": {
                                     "type": "string",
                                     "description": "Min"
-                                },
-                                "double_address": {
-                                    "type": "string",
-                                    "description": "Double Address"
                                 }
                             }
                         }
