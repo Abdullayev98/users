@@ -287,3 +287,11 @@ Route::post("account/change/phone/send", [LoginController::class, 'verify_phone'
 
 
 
+// Show ClickUz transactions
+Route::get('profile/clickuz/transactions', function () {
+    $user = \Illuminate\Support\Facades\Auth::user();
+    $transactions = \App\Models\ClickTransaction::query()->where(['user_id' => $user->id])->get();
+    return response()->json([
+        'transactions' => $transactions,
+    ]);
+})->name('user.clickuz.transactions')->middleware('auth');

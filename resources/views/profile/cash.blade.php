@@ -3,6 +3,13 @@
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('css/admin/datatable.css')}}">
+<style>
+    .active {
+        background-color: rgb(156 163 175);
+        border-radius: 0.125rem;
+        color: white;
+    }
+</style>
     <div class="w-11/12  mx-auto text-base mt-4">
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
 
@@ -51,9 +58,9 @@
                             <label class="text-left md:inline-block w-full  md:w-1/2">
                                 <select id="period"
                                     class="form-select block md:w-36 w-full h-10 rounded-xl focus:outline-none ring-1 ring-black md:0 md:ml-5">
-                                    <option>{{__('за месяц')}}</option>
-                                    <option>{{__('за неделю')}}</option>
-                                    <option>{{__('за год')}}</option>
+                                    <option value="month">{{__('за месяц')}}</option>
+                                    <option value="week">{{__('за неделю')}}</option>
+                                    <option value="year">{{__('за год')}}</option>
                                     <option value="test">{{__('за период')}}</option>
                                 </select>
                             </label>
@@ -62,42 +69,44 @@
                                     <p class="text-xl">Период : </p>
                               </div>
                               <div class="mx-4">
-                                    <input type="date" class="p-1 rounded-lg border-2 border-gray-300 focus:outline-none">
+                                    <input id="from-date" type="date" class="p-1 rounded-lg border-2 border-gray-300 focus:outline-none">
                               </div>
                               <div>
-                                    <input type="date" class="p-1 rounded-lg border-2 border-gray-300 focus:outline-none">
+                                    <input id="to-date" type="date" class="p-1 rounded-lg border-2 border-gray-300 focus:outline-none">
                               </div>
                             </div>
                             <ul id="tabs" class="flex sm:flex-row flex-col rounded-sm w-full shadow bg-gray-200 mt-4">
-                                <div id="first_tab" class="w-full text-center">
-                                    <a id="default-tab" href="#first"
-                                        class="inline-block relative py-1 w-full">{{__('Пополнения')}} Payme</a>
+                                <div class="w-full text-center">
+                                    <a id="default-tab" href="#data-table" data-payment="{{ route('user.clickuz.transactions') }}"
+                                        class="inline-block relative py-1 w-full payment-type">{{__('Пополнения')}} Click</a>
                                 </div>
                                 <div class="w-full text-center">
-                                    <a href="#second"
-                                        class="inline-block relative py-1 w-full">{{__('Пополнения')}} Click</a>
+                                    <a href="#data-table"
+                                        class="inline-block relative py-1 w-full payment-type">{{__('Пополнения')}} Payme</a>
                                 </div>
-                                <div id="three_tab" class="w-full text-center">
-                                    <a href="#third"
-                                        class="inline-block relative py-1 w-full">{{__('Пополнения')}} Paynet</a>
+                                <div class="w-full text-center">
+                                    <a href="#data-table"
+                                        class="inline-block relative py-1 w-full payment-type">{{__('Пополнения')}} Paynet</a>
                                 </div>
-                                <div id="three_tab" class="w-full text-center">
-                                    <a href="#four"
-                                        class="inline-block relative py-1 w-full">{{__('Списания со счета')}}</a>
+                                <div class="w-full text-center">
+                                    <a href="#data-table"
+                                        class="inline-block relative py-1 w-full payment-type">{{__('Списания со счета')}}</a>
                                 </div>
                             </ul>
                             <div id="tab-contents">
-                                <div id="first" class="py-4">
-                                   @include('datatable.datatable')
-                                </div>
-                                <div id="second" class="hidden py-4">
-                                    @include('datatable.datatable2')
-                                </div>
-                                <div id="third" class="hidden py-4">
-                                    @include('datatable.datatable3')
-                                </div>
-                                <div id="four" class="hidden py-4">
-                                    @include('datatable.datatable4')
+                                <div id="data-table" class="py-4">
+                                    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+                                        <table id="example1" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                                            <thead>
+                                            <tr>
+                                                <th data-priority="1">Date</th>
+                                                <th data-priority="2">Amount</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -133,4 +142,36 @@
     </div>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('js/profile/cash.js') }}"></script>
+    <script>
+        $('document').ready(function () {
+            $('a.payment-type').on('click', function () {
+                $('div.w-full').removeClass('active')
+                $(this).parent().addClass('active');
+
+                var url = $(this).attr('data-payment');
+                var period = $('select#period').val()
+                var data = {period: period}
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: data,
+                    success: function (res) {
+                        var transactions = res['transactions']
+                        console.log(res['period'])
+                        transactions.forEach(transaction => {
+                            $('tbody').append(`
+                                <tr>
+                                    <td>${transaction['created_at']}</td>
+                                    <td>${transaction['amount']}</td>
+                                </tr>
+                            `);
+                        })
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
