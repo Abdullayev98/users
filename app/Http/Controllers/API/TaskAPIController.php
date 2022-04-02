@@ -236,7 +236,7 @@ class TaskAPIController extends Controller
      *     summary="Update Task",
      *     @OA\Parameter(
      *         in="path",
-     *         name="id",
+     *         name="task",
      *         required=true,
      *         @OA\Schema(
      *             type="string"
@@ -253,11 +253,7 @@ class TaskAPIController extends Controller
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="phone",
-     *                          type="string"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="description",
+     *                          property="address",
      *                          type="string"
      *                      ),
      *                      @OA\Property(
@@ -265,36 +261,30 @@ class TaskAPIController extends Controller
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="start_date",
-     *                          type="string"
-     *                      ),
-     *                      @OA\Property(
      *                          property="budget",
      *                          type="integer"
      *                      ),
      *                      @OA\Property(
+     *                          property="description",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
      *                          property="category_id",
-     *                          type="string"
+     *                          type="integer"
      *                      ),
      *                      @OA\Property(
-     *                          property="coordinates0",
+     *                          property="phone",
      *                          type="string"
      *                      ),
-     *                      @OA\Property(
-     *                          property="location0",
-     *                          type="string"
-     *                      )
      *                 ),
      *                 example={
      *                     "name":"Javoxir",
-     *                     "phone":"+99898745623",
-     *                     "description":"Juda zo`r",
+     *                     "address":"Xorazm viloyati",
      *                     "date_type":"1",
-     *                     "start_date":"2021-05-17 10:00",
-     *                     "budget":"10000",
+     *                     "budget":12000,
+     *                     "description":"Juda zo`r",
      *                     "category_id":"31",
-     *                     "coordinates0":"30.65006,35.546057",
-     *                     "location0":"31.65006,35.546057",
+     *                     "phone":"998987456",
      *                }
      *             )
      *         )
@@ -304,15 +294,13 @@ class TaskAPIController extends Controller
      *          description="success",
      *          @OA\JsonContent(
      *              @OA\Property(property="id", type="number", example=1),
-     *              @OA\Property(property="name", type="string", example="name"),
-     *              @OA\Property(property="phone", type="string", example="+99898745623"),
-     *              @OA\Property(property="description", type="string", example="Zo`r"),
+     *              @OA\Property(property="name", type="string", example="Javoxir"),
+     *              @OA\Property(property="address", type="string", example="Xorazm viloyati"),
      *              @OA\Property(property="date_type", type="string", example="1"),
-     *              @OA\Property(property="start_date", type="string", example="2021-05-17 00:00"),
-     *              @OA\Property(property="budget", type="string", example="100000"),
-     *              @OA\Property(property="category_id", type="integer", example="35"),
-     *              @OA\Property(property="coordinates0", type="string", example="30.65006,35.546057"),
-     *              @OA\Property(property="location0", type="string", example="31.65006,35.546057"),
+     *              @OA\Property(property="budget", type="integer", example="15000"),
+     *              @OA\Property(property="description", type="string", example="Juda zo`r"),
+     *              @OA\Property(property="category_id", type="integer", example="31"),
+     *              @OA\Property(property="phone", type="string", example="998987456"),
      *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
      *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
      *          )
@@ -325,7 +313,7 @@ class TaskAPIController extends Controller
     public function changeTask(UpdateRequest $request, Task $task){
         taskGuard($task);
         $data = $request->validated();
-        $data = getAddress($data);
+        $data = getAddress($data); // шуни комментировать килиб койса swagger да ишлайди
         $task->update($data);
         $this->service->syncCustomFields($task);
 

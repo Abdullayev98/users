@@ -54,64 +54,7 @@ class UserAPIController extends Controller
         }
     }
 
-    /**
-     *
-     * @OA\Put (
-     *     path="/api/update/{id}",
-     *     tags={"User"},
-     *     summary="Update User",
-     *     security={
-     *         {"token": {}}
-     *     },
-     *     @OA\Parameter(
-     *         in="path",
-     *         name="id",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
-     *     ),
-     *     @OA\RequestBody(
-     *         @OA\MediaType(
-     *             mediaType="application/json",
-     *             @OA\Schema(
-     *                 @OA\Property(
-     *                      type="object",
-     *                      @OA\Property(
-     *                          property="name",
-     *                          type="string"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="email",
-     *                          type="string"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="password",
-     *                          type="string"
-     *                      )
-     *                 ),
-     *                 example={
-     *                     "name":"Javoxir",
-     *                     "email":"admin@admin.com",
-     *                     "password":"password",
-     *                }
-     *             )
-     *         )
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="success",
-     *          @OA\JsonContent(
-     *              @OA\Property(property="id", type="number", example=1),
-     *              @OA\Property(property="name", type="string", example="Javoxir"),
-     *              @OA\Property(property="email", type="string", example="admin@admin.com"),
-     *              @OA\Property(property="password", type="string", example="password"),
-     *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
-     *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
-     *          )
-     *      )
-     * )
-     */
+    
     public function update(Request $request, $id)
     {
         try {
@@ -132,20 +75,12 @@ class UserAPIController extends Controller
 
     /**
      * @OA\DELETE(
-     *     path="/api/delete/{id}",
+     *     path="/api/delete",
      *     tags={"User"},
-     *     summary="Delete Task",
+     *     summary="Delete User",
      *     security={
      *         {"token": {}}
      *     },
-     *     @OA\Parameter(
-     *          in="path",
-     *          name="id",
-     *          required=true,
-     *          @OA\Schema(
-     *              type="string"
-     *          ),
-     *     ),
      *     @OA\Response(
      *          response=200,
      *          description="Successful operation"
