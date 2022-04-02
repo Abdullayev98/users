@@ -45,7 +45,7 @@ function inputCash() {
 
 // input cash transaction
 $('#period').change(function(){
-    if($(this).val() == 'test'){
+    if($(this).val() === 'date-period'){
         $('#ddr').removeClass('hidden');
     }
     else{
