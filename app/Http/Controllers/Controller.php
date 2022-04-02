@@ -67,7 +67,7 @@ class Controller extends BaseController
             $file->store('images/users', ['disk' => 'avatar']);
         }
         $user->update($data);
-        return  redirect()->route('userprofile');
+        return  redirect("/profile");
     }
     public function task_create()
     {

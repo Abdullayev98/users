@@ -20,7 +20,7 @@
                 {{__('Заполните форму')}}
             </h3>
         </div>
-        <form action="{{ route('user.registration') }}" method="POST">
+        <form action="{{ route('login.customRegister') }}" method="POST">
             @csrf
             <div>
                 <div class="mb-4">

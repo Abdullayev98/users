@@ -128,7 +128,7 @@
                                     </li>
 
                                     <div class="hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
-                                        <a href="{{ route('logout') }}" class="delete-task ml-4">{{__('Выход')}}</a>
+                                        <a href="{{ route('login.logout') }}" class="delete-task ml-4">{{__('Выход')}}</a>
                                     </div>
 
                                 @else
@@ -236,7 +236,7 @@
                                 {{--                                    <a  class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2"> <i class="xl:text-2xl lg:text-xl fas fa-star"></i>{{__('Осталось только установить пароль')}}</a>--}}
                                 {{--                                </li>--}}
                                 <li>
-                                    <a href="{{ route('editData')}}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__("В раздел 'Настройки'")}}</a>
+                                    <a href="{{ url('/settings')}}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__("В раздел 'Настройки'")}}</a>
                                 </li>
                                 <li>
                                     <a  class="bg-slate-100 text-sm italic text-green-600 hover:text-red-600 underline decoration-dotted  block px-4 py-2 see_all">{{__('Отметить все как прочитанное')}}</a>
@@ -273,7 +273,7 @@
                                     <a href="/profile/settings" class="delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('Настройки')}}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('logout') }}" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('Выход')}}</a>
+                                    <a href="{{ route('login.logout') }}" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('Выход')}}</a>
                                 </li>
                             </ul>
                         </div>

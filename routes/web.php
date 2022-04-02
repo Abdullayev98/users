@@ -167,35 +167,40 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('profile')->group(function () {
         //Profile
         Route::get('/', [ProfileController::class, 'profileData'])->name('userprofile'); // javoxir
-        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('update.photo');
+        Route::get('/', [ProfileController::class, 'profileData'])->name('profile.profileData'); // javoxir
+        Route::put('/updates', [ProfileController::class, 'updates'])->name('profile.updates');
 
         //Profile cash
-        Route::get('/cash', [ProfileController::class, 'profileCash'])->name('userprofilecash'); // javoxir
+        Route::get('/cash', [ProfileController::class, 'profileCash']); // javoxir
 
         // Profile settings
-        Route::get('/settings', [ProfileController::class, 'editData'])->name('editData');
-        Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('updateData');
+        Route::get('/settings', [ProfileController::class, 'editData']);
+        Route::post('/settings/update', [ProfileController::class, 'updateData']);
 
         // Profile delete
-        Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('users.delete'); // javoxir
+        Route::get('/delete/{id}', [ProfileController::class, 'destroy']); // javoxir
 
         //added category id
-        Route::post('/getcategory', [ProfileController::class, 'getCategory'])->name('get.category'); // javoxir
+        Route::post('/getcategory', [ProfileController::class, 'getCategory']); // javoxir
 
-        Route::post('/insertdistrict', [ProfileController::class, 'StoreDistrict'])->name('insert.district'); // javoxir
+        Route::post('/storedistrict', [ProfileController::class, 'StoreDistrict'])->name('profile.storedistrict'); // javoxir
 
-        Route::post('/store/profile/image', [ProfileController::class, 'storeProfileImage'])->name('profile.image.store'); // javoxir
+
+        Route::post('/store/profile/image', [ProfileController::class, 'storeProfileImage'])->name('profile.storeProfileImage'); // javoxir
+
         Route::post('/comment', [ProfileController::class, 'comment'])->name('comment'); // javoxir
-        Route::post('/testBase', [ProfileController::class, 'testBase'])->name('testBase'); // javoxir
+        Route::post('/profile.testBase', [ProfileController::class, 'profile.testBase'])->name('profile.testBase'); // javoxir
 
         //description
-        Route::post('/description', [ProfileController::class, 'EditDescription'])->name('edit.description'); // javoxir
+        Route::post('/description', [ProfileController::class, 'EditDescription'])->name('profile.edit.description'); // javoxir
 
         //create_port
         Route::view('/create', 'profile/create_port');
-        Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('portfolio.create'); // javoxir
-        Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('portfolio'); // javoxir
-        Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('portfolio.delete'); // javoxir
+        Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('profile.portfolio.create'); // javoxir
+
+        Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('profile.portfolio'); // javoxir
+        Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('profile.portfolio.delete'); // javoxir
+
     });
 });
 Route::post('/storepicture', [ProfileController::class, 'UploadImage'])->name('storePicture');
@@ -235,8 +240,24 @@ Route::prefix("task")->group(function () {
 
 });
 
-Route::get('/performers-by-category', [PerformerAPIController::class, 'getByCategories']);
-Route::post('/reset', [UserController::class, 'reset_submit'])->name('password.reset');
+#region User
+
+
+#endregion
+
+
+#region Task
+
+
+#endregion
+
+#region Profile
+
+
+#endregion
+
+Route::post('/reset', [UserController::class, 'reset_submit'])->name('user.reset_submit');
+
 Route::get('/reset/password', [UserController::class, 'reset_password'])->name('password.reset.password');
 Route::post('/reset/password', [UserController::class, 'reset_password_save'])->name('password.reset.password.save');
 Route::get('/code', [UserController::class, 'reset_code_view'])->name('password.reset.code.view');
@@ -259,17 +280,16 @@ Route::get('/questions/{id}', [FaqsController::class, 'questions'])->name('quest
 Route::get('/categories/{id}', [Controller::class, 'category'])->name("categories"); // javoxir
 Route::get('/lang/{lang}', [Controller::class, 'lang'])->name('lang'); // javoxir
 
-
 Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'loginPost'])->name('signin.custom')->middleware('guest');
 
 
 Route::get('/register', [UserController::class, 'signup'])->name('register')->middleware('guest');
-Route::post('/register', [LoginController::class, 'customRegister'])->name('user.registration')->middleware('guest');
+Route::post('/register', [LoginController::class, 'customRegister'])->name('login.customRegister')->middleware('guest');
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
-Route::get('/reset', [UserController::class, 'reset'])->name('reset');
+Route::get('/reset', [UserController::class, 'reset'])->name('user.reset');
 
 Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm');
 

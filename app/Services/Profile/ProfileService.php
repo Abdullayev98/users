@@ -44,7 +44,7 @@ public function testBaseServ($request){
     $id = $comment->id;
     $base = new Portfolio();
     if ($base->where('id', $id)->update($data)) {
-        return redirect()->route('userprofile');
+        return redirect("/profile");
     } else {
         return dd(false);
     }
