@@ -40,6 +40,8 @@ class CreateService
     public function addAdditionalAddress($request){
         $data = [];
         $data_inner = [];
+        $dataMain['coordinates'] = $request->coordinates0;
+
         for ($i = 0; $i < setting('site.max_address')??10; $i++) {
             $location = Arr::get($request->all(), 'location' . $i);
             $coordinates = Arr::get($request->all(), 'coordinates' . $i);

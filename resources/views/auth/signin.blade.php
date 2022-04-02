@@ -63,13 +63,13 @@
                 </form>
 
                 <p class="mb-4">
-                    <a class="text-sky-500" href="{{ route('reset') }}">
+                    <a class="text-blue-500 hover:text-red-500" href="{{ route('reset') }}">
                     {{__('Забыли пароль?')}}
                     </a>
                 </p>
                 <p class="mb-4">
                    {{__('Еще не с нами?')}}
-                    <a class="text-sky-500" href="{{ route('register') }}">
+                    <a class="text-blue-500 hover:text-red-500" href="{{ route('register') }}">
                     {{__('Зарегистрируйтесь')}}
                     </a>
                 </p>
