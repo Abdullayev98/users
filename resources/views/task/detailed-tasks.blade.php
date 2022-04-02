@@ -43,10 +43,10 @@
     </script>
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task->responses))
-        <div class="lg:flex container xl:w-9/12 w-11/12 mx-auto">
-            <div class="md:flex mx-auto w-full">
+        <div class="xl:flex container w-11/12 mx-auto">
+            <div class="md:flex mx-auto xl:w-9/12 w-full">
                 @else
-                    <div class="md:flex mx-auto w-full">
+                    <div class="md:flex mx-auto xl:w-9/12 w-full">
                         @endif
                         <div class="mt-8 lg:flex mb-8 w-full">
                             {{-- left sidebar start --}}
@@ -533,7 +533,7 @@
                             </div>
                         </div>
                         {{-- right sidebar start --}}
-                        <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
+                        <div class="lg:w-3/12 w-full mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
                                 <h1 class="text-xl font-medium mb-4">{{__('Задание')}} № {{$task->id}}</h1>
                                 <div>
