@@ -61,7 +61,7 @@
                                     <option value="month">{{__('за месяц')}}</option>
                                     <option value="week">{{__('за неделю')}}</option>
                                     <option value="year">{{__('за год')}}</option>
-                                    <option value="test">{{__('за период')}}</option>
+                                    <option value="date-period">{{__('за период')}}</option>
                                 </select>
                             </label>
                             <div class="hidden flex flex-row items-center my-4" id="ddr">
@@ -150,7 +150,14 @@
 
                 var url = $(this).attr('data-payment');
                 var period = $('select#period').val()
-                var data = {period: period}
+                if (period === 'date-period') {
+                    var data = {
+                        from_date: $('#from-date').val(),
+                        to_date: $('#to-date').val()
+                    }
+                } else {
+                    var data = {period: period}
+                }
                 $.ajax({
                     type: 'GET',
                     url: url,
