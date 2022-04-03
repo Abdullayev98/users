@@ -129,7 +129,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'verification'], function () {
 
 #region foterpage 
 Route::get('/faq', [FaqsController::class, 'index'])->name('faq.index'); // javoxir
-Route::get('/questions/{id}', [FaqsController::class, 'questions'])->name('questions'); // javoxir
+Route::get('/questions/{id}', [FaqsController::class, 'questions'])->name('faq.questions'); // javoxir
 Route::view('/faq', 'faq.faq');
 Route::view('/reviews', 'reviews.review');
 Route::view('/author-reviews', 'reviews.authors_reviews');
@@ -209,42 +209,42 @@ Route::prefix("task")->group(function () {
 #endregion 
 
 #region 
-Route::post('select-performer/{response}', [ResponseController::class, 'selectPerformer'])->name('performer.select'); // javoxir
-Route::post('tasks/{task}/complete', [UpdateController::class, 'completed'])->name('task.completed'); // javoxir
-Route::post('send-review-user/{task}', [UpdateController::class, 'sendReview'])->name('send.review'); // javoxir
+Route::post('select-performer/{response}', [ResponseController::class, 'selectPerformer'])->name('response.selectPerformer'); // javoxir
+Route::post('tasks/{task}/complete', [UpdateController::class, 'completed'])->name('update.completed'); // javoxir
+Route::post('send-review-user/{task}', [UpdateController::class, 'sendReview'])->name('update.sendReview'); // javoxir
 Route::get('/categories/{id}', [Controller::class, 'category'])->name("categories"); // javoxir
 Route::get('/lang/{lang}', [Controller::class, 'lang'])->name('lang'); // javoxir
 Route::get('/', [Controller::class, 'home'])->name('home'); // javoxir
 #endregion
 
 #region registration
-Route::get('login/facebook', [SocialController::class, 'facebookRedirect'])->name('auth.facebook');
+Route::get('login/facebook', [SocialController::class, 'facebookRedirect'])->name('social.facebookRedirect');
 Route::get('login/facebook/callback', [SocialController::class, 'loginWithFacebook']);
-Route::get('login/google', [SocialController::class, 'googleRedirect'])->name('auth.google');
+Route::get('login/google', [SocialController::class, 'googleRedirect'])->name('social.googleRedirect');
 Route::get('login/google/callback', [SocialController::class, 'loginWithGoogle']);
 Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'loginPost'])->name('signin.custom')->middleware('guest');
-Route::get('/register', [UserController::class, 'signup'])->name('register')->middleware('guest');
-Route::post('/register', [LoginController::class, 'customRegister'])->name('user.registration')->middleware('guest');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/reset', [UserController::class, 'reset'])->name('reset');
-Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm');
+Route::post('/login', [LoginController::class, 'loginPost'])->name('login.loginPost')->middleware('guest');
+Route::get('/register', [UserController::class, 'signup'])->name('user.signup')->middleware('guest');
+Route::post('/register', [LoginController::class, 'customRegister'])->name('login.customRegister')->middleware('guest');
+Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
+Route::get('/reset', [UserController::class, 'reset'])->name('user.reset');
+Route::get('/confirm', [UserController::class, 'confirm'])->name('user.confirm');
 Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth']);
-Route::get('account/verify/{user}/{hash}', [LoginController::class, 'verifyAccount'])->name('user.verify');
-Route::get('account/verification/email', [LoginController::class, 'send_email_verification'])->name('user.verify.send')->middleware('auth');
-Route::get('account/verification/phone', [LoginController::class, 'send_phone_verification'])->name('user.verify.phone.send')->middleware('auth');
-Route::post('account/verification/phone', [LoginController::class, 'verify_phone'])->name('user.verify.phone.submit')->middleware('auth');
-Route::post("account/change/email", [LoginController::class, 'change_email'])->name('user.email.change')->middleware('auth');
-Route::post("account/change/phone", [LoginController::class, 'change_phone_number'])->name('user.phone.change')->middleware('auth');
-Route::post("account/change/phone/send", [LoginController::class, 'verify_phone'])->name('user.phone.verify')->middleware('auth');
-Route::post('/reset', [UserController::class, 'reset_submit'])->name('password.reset');
-Route::get('/reset/password', [UserController::class, 'reset_password'])->name('password.reset.password');
-Route::post('/reset/password', [UserController::class, 'reset_password_save'])->name('password.reset.password.save');
-Route::get('/code', [UserController::class, 'reset_code_view'])->name('password.reset.code.view');
-Route::post('/code', [UserController::class, 'reset_code'])->name('password.reset.code');
-Route::get('/register/code', [UserController::class, 'code'])->name('register.code');
-Route::post('/register/code', [UserController::class, 'code_submit'])->name('register.code.submit');
-Route::post('/account/password/change', [ProfileController::class, 'change_password'])->name('account.password.reset');
+Route::get('account/verify/{user}/{hash}', [LoginController::class, 'verifyAccount'])->name('login.verifyAccount');
+Route::get('account/verification/email', [LoginController::class, 'send_email_verification'])->name('login.send_email_verification')->middleware('auth');
+Route::get('account/verification/phone', [LoginController::class, 'send_phone_verification'])->name('login.send_phone_verification')->middleware('auth');
+Route::post('account/verification/phone', [LoginController::class, 'verify_phone'])->name('login.verify_phone')->middleware('auth');
+Route::post("account/change/email", [LoginController::class, 'change_email'])->name('login.change_email')->middleware('auth');
+Route::post("account/change/phone", [LoginController::class, 'change_phone_number'])->name('login.change_phone_number')->middleware('auth');
+Route::post("account/change/phone/send", [LoginController::class, 'verify_phone'])->name('login.verify_phone')->middleware('auth');
+Route::post('/reset', [UserController::class, 'reset_submit'])->name('user.reset_submit');
+Route::get('/reset/password', [UserController::class, 'reset_password'])->name('user.reset_password');
+Route::post('/reset/password', [UserController::class, 'reset_password_save'])->name('user.reset_password_save');
+Route::get('/code', [UserController::class, 'reset_code_view'])->name('user.reset_code_view');
+Route::post('/code', [UserController::class, 'reset_code'])->name('user.reset_code');
+Route::get('/register/code', [UserController::class, 'code'])->name('user.code');
+Route::post('/register/code', [UserController::class, 'code_submit'])->name('user.code_submit');
+Route::post('/account/password/change', [ProfileController::class, 'change_password'])->name('profile.change_password');
 #endregion
 
 #region payments

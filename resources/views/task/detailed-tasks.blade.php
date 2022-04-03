@@ -507,7 +507,7 @@
                                                                     </div>
                                                                 @elseif($task->status <= 2 && auth()->user()->id == $task->user_id)
                                                                     <form
-                                                                        action="{{ route('performer.select', $response->id) }}"
+                                                                        action="{{ route('response.selectPerformer', $response->id) }}"
                                                                         method="post">
                                                                         @csrf
                                                                         <button
@@ -598,7 +598,7 @@
         <div
             class="hidden overflow-x-auto bg-black bg-opacity-50 overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
             id="modal-id4">
-            <form id="updatereview" action="{{route('send.review', $task->id)}}" method="POST">
+            <form id="updatereview" action="{{route('update.sendReview', $task->id)}}" method="POST">
                 @csrf
                 <div class="relative my-6 mx-auto max-w-xl" id="modal4">
                     <input type="text" hidden name="status" id="status" value="">

@@ -128,14 +128,14 @@
                                     </li>
 
                                     <div class="hover:text-yellow-500 hover:border-yellow-500 relative top-32 block w-full left-0">
-                                        <a href="{{ route('logout') }}" class="delete-task ml-4">{{__('Выход')}}</a>
+                                        <a href="{{ route('login.logout') }}" class="delete-task ml-4">{{__('Выход')}}</a>
                                     </div>
 
                                 @else
                                     <div class="relative top-60 block w-[400px] ml-4">
                                         <a href="{{ route('login') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500 ">{{__('Вход')}}
                                             </a> <p class="text-sm">{{__('или')}}</p>
-                                        <a href="{{ route('register') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
+                                        <a href="{{ route('user.signup') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
                                     </div>
                         @endauth
                         @endif
@@ -273,7 +273,7 @@
                                     <a href="/profile/settings" class="delete-task cursor-pointer text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('Настройки')}}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('logout') }}" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('Выход')}}</a>
+                                    <a href="{{ route('login.logout') }}" class="delete-task text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{__('Выход')}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -308,7 +308,7 @@
             @else
                 <div class="w-3/12 text-right inline-block float-right md:float-none mt-6 mb-6 lg:block hidden mr-4 text-sm xl:text-base">
                     <a href="{{ route('login') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500 ">{{__('Вход')}}</a> {{__('или')}}
-                    <a href="{{ route('register') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
+                    <a href="{{ route('user.signup') }}" class="delete-task border-b border-black border-dotted hover:text-yellow-500 hover:border-yellow-500">{{__('Регистрация')}}</a>
                 </div>
                 <!-- language blog -->
                 <div class="flex justify-center text-gray-500 hidden lg:block md:text-sm xl:text-base pr-4">

@@ -123,7 +123,7 @@ class UserController extends Controller
         (new SmsService())->send(preg_replace('/[^0-9]/', '', $user->phone_number), $sms_otp);
         session(['phone' => $data['phone_number']]);
 
-        return redirect()->route('password.reset.code.view');
+        return redirect()->route('user.reset_code_view');
     }
 
     public function reset_code(Request $request)
@@ -137,7 +137,7 @@ class UserController extends Controller
 
         if ($data['code'] == $user->verify_code) {
             if (strtotime($user->verify_expiration) >= strtotime(Carbon::now())) {
-                return redirect()->route('password.reset.password');
+                return redirect()->route('user.reset_password');
             } else {
                 abort(419);
             }
