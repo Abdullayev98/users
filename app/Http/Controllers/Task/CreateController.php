@@ -228,13 +228,13 @@ class CreateController extends Controller
 
         }
 
-        //    $user_id_fjs = NULL;
-        //    $id_task = $id->id;
-        //    $id_cat = $id->category_id;
-        //    $title_task = $id->name;
-        //    $type = 1;
+           $user_id_fjs = NULL;
+           $id_task = $task->id;
+           $id_cat = $task->category_id;
+           $title_task = $task->name;
+           $type = 1;
 
-        //        event(new MyEvent($id_task,$id_cat,$title_task,$type,$user_id_fjs));
+               event(new MyEvent($id_task,$id_cat,$title_task,$type,$user_id_fjs));
 
         return redirect()->route('searchTask.task', $task->id);
     }

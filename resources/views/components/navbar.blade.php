@@ -432,13 +432,13 @@
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
-        var pusher = new Pusher('1f89b665267dfe7451d6', {
+        var pusher = new Pusher('ec2f696b4a7b3e054939', {
             cluster: 'ap2'
         });
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
-
+alert(data)
             if(Number(data["type"]) === 1){
 
                 const for_check_cat_id = [<? echo $array_cats_user ?>];
