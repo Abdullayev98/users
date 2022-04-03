@@ -5,7 +5,10 @@ return [
 
     // Login is always "Paycom"
     'login'       => 'Paycom',
-
+    'table' => [
+        'transactions' => env('PAYCOM_TRANSACTION', 'paycom_transactions'),
+        'orders' => env('PAYCOM_ORDERS', 'all_transactions'),
+    ],
     // File with cashbox key (key can be found in cashbox settings)
     'keyFile'     => env('PAYCOM_KEY_TEST'),
 
