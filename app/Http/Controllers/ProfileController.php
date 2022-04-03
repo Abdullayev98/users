@@ -240,7 +240,7 @@ class ProfileController extends Controller
         $data = $request->validated();
         $user = auth()->user();
         $user->update($data);
-        return redirect()->route('verification.contact');
+        return redirect()->route('profile.verificationContact');
     }
 
     public function verificationContact()
@@ -257,7 +257,7 @@ class ProfileController extends Controller
         $user = auth()->user();
         $user->update($data);
 
-        return redirect()->route('verification.photo');
+        return redirect()->route('profile.verificationPhoto');
     }
 
     public function verificationPhoto()
@@ -285,7 +285,7 @@ class ProfileController extends Controller
             $data['avatar'] = $imagename;
         }
         $user->update($data);
-        return redirect()->route('verification.category');
+        return redirect()->route('profile.verificationCategory');
     }
 
     public function verificationCategory()

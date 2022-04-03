@@ -16,7 +16,7 @@
                     </p><br>
                     <p class="w-full text-base">
                         {{__('Исполнители проходят')}}
-                    <a href="/verification" class="text-blue-600 hover:text-orange-500">
+                    <a href="/verificationInfo" class="text-blue-600 hover:text-orange-500">
                         {{__('пециальную проверку')}}
                     </a> 
                     {{__('администрацией сервиса, поэтому Universal Services')}}
@@ -93,7 +93,7 @@
                         </a>
                     </div>
                     <div class="lg:w-1/2 w-full mx-auto lg:mt-0 mt-6">
-                        <p>{{__('Может быть вы хотите стать')}}<a href="/verification" class="text-blue-500 underline hover:text-orange-400">{{__('исполнителем Universal Services?')}}</a></p>
+                        <p>{{__('Может быть вы хотите стать')}}<a href="/verificationInfo" class="text-blue-500 underline hover:text-orange-400">{{__('исполнителем Universal Services?')}}</a></p>
                     </div>
                 </div>
             </div>

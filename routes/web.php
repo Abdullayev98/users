@@ -108,23 +108,25 @@ Route::get('search', [SearchTaskController::class, 'search'])->name('search'); /
 
 Route::put('/change-task/{task}', [UpdateController::class, '__invoke'])->name("task.update")->middleware('auth'); // javoxir
 
+#region verificationInfo
 Route::view('/offer-tasks', 'task.offertasks');
 Route::group(['middleware' => 'auth', 'prefix' => 'verification'], function () {
     Route::get('/', [ProfileController::class, 'verificationIndex'])->name('verification'); // javoxir
 
-    Route::get('/personalinfo', [ProfileController::class, 'verificationInfo'])->name('verification.info'); // javoxir
-    Route::post('/personalinfo', [ProfileController::class, 'verificationInfoStore'])->name('verification.info.store'); // javoxir
+    Route::get('/verificationInfo', [ProfileController::class, 'verificationInfo'])->name('profile.verificationInfo'); // javoxir
+    Route::post('/verificationInfoStore', [ProfileController::class, 'verificationInfoStore'])->name('profile.verificationInfoStore'); // javoxir
 
-    Route::get('/personalinfo/contact', [ProfileController::class, 'verificationContact'])->name('verification.contact'); // javoxir
-    Route::post('/personalinfo/contact', [ProfileController::class, 'verificationContactStore'])->name('verification.contact.store'); // javoxir
+    Route::get('/verificationInfo/contact', [ProfileController::class, 'verificationContact'])->name('profile.verificationContact'); // javoxir
 
-    Route::get('/personalinfo/photo', [ProfileController::class, 'verificationPhoto'])->name('verification.photo'); // javoxir
-    Route::put('/personalinfo/photo', [ProfileController::class, 'verificationPhotoStore'])->name('verification.photo.store'); // javoxir
+    Route::post('/verificationInfo/contact', [ProfileController::class, 'verificationContactStore'])->name('profile.verificationContactStore'); // javoxir
 
-    Route::get('/personalinfo/category', [ProfileController::class, 'verificationCategory'])->name('verification.category'); // javoxir
-    Route::post('/personalinfo/category', [ProfileController::class, 'getCategory'])->name('verification.category.store'); // javoxir
+    Route::get('/verificationInfo/photo', [ProfileController::class, 'verificationPhoto'])->name('profile.verificationPhoto'); // javoxir
+    Route::put('/verificationInfo/photo', [ProfileController::class, 'verificationPhotoStore'])->name('profile.verificationPhotoStore'); // javoxir
+
+    Route::get('/verificationInfo/category', [ProfileController::class, 'verificationCategory'])->name('profile.verificationCategory'); // javoxir
+    Route::post('/verificationInfo/category', [ProfileController::class, 'getCategory'])->name('profile.getCategory'); // javoxir
 });
-
+#endregion 
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send'); // javoxir
 
@@ -200,7 +202,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::post('/storepicture', [ProfileController::class, 'UploadImage'])->name('storePicture');
 
-
+#region creat task
 Route::prefix("task")->group(function () {
     Route::prefix("create")->group(function () {
         Route::get('/', [CreateController::class, 'name'])->name('task.create.name');
@@ -224,7 +226,7 @@ Route::prefix("task")->group(function () {
         Route::post('/verify/{user}', [UserController::class, 'verifyProfil'])->name('task.create.verification');
         Route::post('/upload', [CreateController::class, 'uploadImage']);
         Route::get('task/{task}/images/delete', [CreateController::class, 'deleteAllImages'])->name('task.images.delete')->middleware('auth');
-
+#endregion 
 
         // Responses
 

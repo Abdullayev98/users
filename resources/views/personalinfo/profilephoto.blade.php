@@ -27,7 +27,7 @@
                     <i class="fas fa-camera mr-1"></i>
                     <span>{{__('Загрузить фото')}}</span>
                 </label>
-                <form action="{{route('verification.photo.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('profile.verificationPhotoStore')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <p class="text-base my-5">
@@ -65,7 +65,7 @@
         withCSRF: ['_token', '{{ csrf_token() }}'],
         fileName: 'image',
         onSuccess: function (message, element, status) {
-            window.location.href = "{{ route('verification.photo') }}";
+            window.location.href = "{{ route('profile.verificationPhoto') }}";
         },
         onError: function (message, element, status) {
             alert(message);
