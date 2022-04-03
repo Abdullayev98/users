@@ -42,7 +42,7 @@ public function __construct()
 //        }
 
 //        dd($task, $otklik);
-        return view('searchTask.task_search');
+        return view('task.search');
     }
     public function search(Request $request)
     {
@@ -191,7 +191,7 @@ public function __construct()
     {
         taskGuard($task);
 //        dd($task);
-        return view('searchTask.changetask', compact('task'));
+        return view('task.search', compact('task'));
     }
 
 

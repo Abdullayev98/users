@@ -95,7 +95,7 @@
             </div>
             <div class="ml-3 col-span-3">
                 <h5 class="font-bold text-gray-700 block mt-4 text-md">Facebook</h5>
-                <a href="{{route('')}}" target="_blank"
+                <a href="{{route('social.facebookRedirect')}}" target="_blank"
                    class="block text-sm">
                 {{__('Привязать')}}
                 </a>
