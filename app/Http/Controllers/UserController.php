@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Session;
 use TCG\Voyager\Models\Category;
 use PlayMobile\SMS\SmsService;
 use Hash;
+use App\Models\Notification;
+use App\Events\MyEvent;
+
 
 class UserController extends Controller
 {
@@ -219,7 +222,39 @@ class UserController extends Controller
                 $user->update(['is_phone_number_verified' => 1]);
                 Task::findOrFail($request->for_ver_func)->update(['status' => 1, 'user_id' => $user->id, 'phone' => $user->phone_number]);
                 auth()->login($user);
-                return redirect()->route('tasks.detail',$request->for_ver_func);
+
+// dd($request, $user);
+                
+                // foreach(User::all() as $users){
+
+
+                //     $user_cat_ids = explode(",",$users->category_id);
+                //     $check_for_true = array_search($category,$user_cat_ids);
+        
+                //     if($check_for_true !== false){
+                //     Notification::create([
+        
+                //         'user_id'=>$users->id,
+                //         'description'=> 1,
+                //         'task_id'=>$id->id,
+                //         "cat_id"=>$category,
+                //         "name_task"=>$id->name,
+                //         "type"=> 1
+        
+                //     ]);
+                // }
+        
+                // }
+        
+                //    $user_id_fjs = NULL;
+                //    $id_task = $id->id;
+                //    $id_cat = $id->category_id;
+                //    $title_task = $id->name;
+                //    $type = 1;
+        
+                //        event(new MyEvent($id_task,$id_cat,$title_task,$type,$user_id_fjs));
+
+                return redirect()->route('searchTask.task',$request->for_ver_func);
             } else {
                 auth()->logout();
                 return back()->with('expired_message', __('lang.contact_expired'));

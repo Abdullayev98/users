@@ -210,7 +210,7 @@
                             @foreach ($reviews as $review)
                                 @if($review->user_id == $user->id && $review->task && $review->user)
                                     <li class="d-flex flex-col my-10 rounded-lg">
-                                        <a href="{{route('performer.main', $review->user_id)}}" target="_blank"
+                                        <a href="{{route('performers.performer', $review->user_id)}}" target="_blank"
                                            rel="noreferrer noopener"
                                            class="w-24 h-24 overflow-hidden rounded-full border-b-0 float-left">
                                             <img class="UsersReviews_picture__aB22p"
@@ -225,7 +225,7 @@
                                         <div class="align-top ml-12 h-16">
 
                                             <span>
-                                <a href="{{route('performer.main', $review->user->id)}}" target="_blank"
+                                <a href="{{route('performers.performer', $review->user->id)}}" target="_blank"
                                    rel="noreferrer noopener" class="text-blue-500 ">{{$review->user->name}}</a>
                             </span>
                                             <div class="text-4 text-[rgba(78,78,78,.5)]">

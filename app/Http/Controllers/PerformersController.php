@@ -107,7 +107,7 @@ class PerformersController extends Controller
     public function deleteNotification(Notification $notification)
     {
         $notification->delete();
-        return redirect()->route('tasks.detail', $notification->task_id);
+        return redirect()->route('searchTask.task', $notification->task_id);
     }
 
     public function del_all_notif()

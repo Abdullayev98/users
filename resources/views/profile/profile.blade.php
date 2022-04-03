@@ -42,7 +42,7 @@
                                     </span>
                                     <p class="mt-3 w-4/5 desc">{{$user->description}}</p>
                                 @endif
-                                <form action="{{route('edit.description')}}" method="POST" class="formdesc hidden">
+                                <form action="{{route('profile.EditDescription')}}" method="POST" class="formdesc hidden">
                                     @csrf
                                     <textarea name="description" name="description"
                                               class="w-full h-32 border border-gray-400 focus:outline-none focus:border-yellow-500 py-2 px-4 mt-3"
@@ -65,7 +65,7 @@
                         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mx-auto">
                         @foreach($portfolios as $portfolio)
 
-                                <a href="{{ route('portfolio', $portfolio->id) }}" class="border my-6 border-gray-400 mr-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
+                                <a href="{{ route('profile.portfolio', $portfolio->id) }}" class="border my-6 border-gray-400 mr-auto w-56 h-48 mr-6 sm:mb-0 mb-8">
                                 <img src="{{  count(json_decode($portfolio->image)) == 0 ? '': asset('storage/'.json_decode($portfolio->image)[0])  }}" alt="#" class="w-56 h-48">
 
                                 <div class="h-12 flex relative bottom-12 w-full bg-black opacity-75 hover:opacity-100 items-center">

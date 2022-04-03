@@ -57,56 +57,55 @@ use App\Http\Controllers\Task\CreateController;
 |
 */
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('task.mytasks'); // javoxir
-});
-
-
+#region performers
 Route::get('/for_del_new_task/{task}', [CreateController::class, 'deletetask']); // javoxir
 Route::group(['middleware' => 'auth'], function () {
-    Route::delete('/fordelnotif/{notification}/', [PerformersController::class, 'deleteNotification'])->name('notification.delete'); // javoxir
-
+    Route::delete('/fordelnotif/{notification}/', [PerformersController::class, 'deleteNotification'])->name('performers.deleteNotification'); // javoxir
 });
-
 Route::post('del-notif', [PerformersController::class, 'del_all_notif']); // javoxir
 Route::post('/performers', [PerformersController::class, 'service']); // javoxir
 Route::get('perf-ajax/{id}', [PerformersController::class, 'perf_ajax']); // javoxir
 Route::get('/executors-courier', function () {
     return view('Performers/executors-courier');
 }); // javoxir
-Route::group(['prefix' => 'performers'], function () {
-    Route::get('/', [PerformersController::class, 'service'])->name('performers'); // javoxir
-    Route::get('/{user}', [PerformersController::class, 'performer'])->name('performer.main'); // javoxir
-    Route::get('/chat/{id}', [PerformersController::class, 'performer_chat'])->name('personal.chat'); // javoxir
-});
-
 Route::post('give-task', [PerformersController::class, 'give_task']); // javoxir
+Route::group(['prefix' => 'performers'], function () {
+    Route::get('/', [PerformersController::class, 'service'])->name('performers.service'); // javoxir
+    Route::get('/{user}', [PerformersController::class, 'performer'])->name('performers.performer'); // javoxir
+    Route::get('/chat/{id}', [PerformersController::class, 'performer_chat'])->name('performers.performer_chat'); // javoxir
+});
+#endregion
 
-Route::post('ajax-request', [SearchTaskController::class, 'task_response']); // javoxir
-Route::delete('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('delete.task'); // javoxir
-Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail"); // javoxir
-Route::post('/detailed-tasks', [SearchTaskController::class, 'comlianse_save'])->name("tasks.detailed");
-Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask")->middleware('auth'); // javoxir
-
+#region chat
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::get('/reports', [ReportController::class, 'index'])->name("voyager.reports.index"); // javoxir
-    Route::get("users/activitiy/{user}", [VoyagerUserController::class, "activity"])->name("users.activity"); // javoxir
-    Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.index"); // javoxir
+    Route::get("users/activitiy/{user}", [VoyagerUserController::class, "activity"])->name("voyagerUser.activity"); // javoxir
+    Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.showChat"); // javoxir
     Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating"); // javoxir
-    Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("appeal.close"); // javoxir
+    Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("conversation.close"); // javoxir
     Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send"); // javoxir
 });
+#endregion 
 
-Route::get('/', [Controller::class, 'home'])->name('home'); // javoxir
-
-
-Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('task.search'); // javoxir
-Route::get('tasks-search', [SearchTaskController::class, 'ajax_tasks'])->name('tasks.search');
-Route::get('my-tasks', [SearchTaskController::class, 'my_tasks'])->name('task.mytasks');
+#region tasks
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('task.mytasks'); // javoxir
+});
+Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('searchTask.task_search'); // javoxir
+Route::get('tasks-search', [SearchTaskController::class, 'ajax_tasks'])->name('searchTask.ajax_tasks');
+Route::get('my-tasks', [SearchTaskController::class, 'my_tasks'])->name('searchTask.mytasks');
 Route::get('search', [SearchTaskController::class, 'search'])->name('search'); // javoxir
-
-Route::put('/change-task/{task}', [UpdateController::class, '__invoke'])->name("task.update")->middleware('auth'); // javoxir
+Route::post('ajax-request', [SearchTaskController::class, 'task_response']); // javoxir
+Route::delete('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('searchTask.delete_task'); // javoxir
+Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("searchTask.task"); // javoxir
+Route::post('/detailed-tasks', [SearchTaskController::class, 'comlianse_save'])->name("searchTask.comlianse_save");
+Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("searchTask.changetask")->middleware('auth'); // javoxir
+Route::put('/change-task/{task}', [UpdateController::class, '__invoke'])->name("update.__invoke")->middleware('auth'); // javoxir
+Route::get('/choose-task', function () {
+    return view('task.choosetasks');
+}); // javoxir
+#endregion 
 
 #region verificationInfo
 Route::view('/offer-tasks', 'task.offertasks');
@@ -128,79 +127,57 @@ Route::group(['middleware' => 'auth', 'prefix' => 'verification'], function () {
 });
 #endregion 
 
-Route::get('send', [RefillController::class, 'ref'])->name('paycom.send'); // javoxir
-
-
-Route::get('/choose-task', function () {
-    return view('task.choosetasks');
-}); // javoxir
-
-Route::get('/ref', 'App\Http\Controllers\RefillController@ref'); // javoxir
-
-Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare'); // javoxir
-
-Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete'); // javoxir
-
-Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@paycom')->name('paycom'); // javoxir
-//social login facebook
-Route::get('login/facebook', [SocialController::class, 'facebookRedirect'])->name('auth.facebook');
-Route::get('login/facebook/callback', [SocialController::class, 'loginWithFacebook']);
-
-//social login google
-Route::get('login/google', [SocialController::class, 'googleRedirect'])->name('auth.google');
-Route::get('login/google/callback', [SocialController::class, 'loginWithGoogle']);
-
+#region foterpage 
+Route::get('/faq', [FaqsController::class, 'index'])->name('faq.index'); // javoxir
+Route::get('/questions/{id}', [FaqsController::class, 'questions'])->name('questions'); // javoxir
 Route::view('/faq', 'faq.faq');
-
 Route::view('/reviews', 'reviews.review');
-
 Route::view('/author-reviews', 'reviews.authors_reviews');
-
 Route::get('/press', [MassmediaController::class, 'index'])->name('massmedia'); // javoxir
-
 Route::view('/vacancies', 'reviews.vacancies');
-
-
 Route::get('/geotaskshint', [Controller::class, 'geotaskshint'])->name('geotaskshint'); // javoxir
 Route::get('/security', [Controller::class, 'security'])->name('security'); // javoxir
 Route::get('/badges', [Controller::class, 'badges'])->name('badges'); // javoxir
+#endregion 
 
+#region Profile
 Route::group(['middleware' => 'auth'], function () {
     Route::prefix('profile')->group(function () {
         //Profile
-        Route::get('/', [ProfileController::class, 'profileData'])->name('userprofile'); // javoxir
-        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('update.photo');
+        Route::get('/', [ProfileController::class, 'profileData'])->name('profile.profileData'); // javoxir
+        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('profile.updates');
 
         //Profile cash
-        Route::get('/cash', [ProfileController::class, 'profileCash'])->name('userprofilecash'); // javoxir
+        Route::get('/cash', [ProfileController::class, 'profileCash'])->name('profile.profileCash'); // javoxir
 
         // Profile settings
-        Route::get('/settings', [ProfileController::class, 'editData'])->name('editData');
-        Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('updateData');
+        Route::get('/settings', [ProfileController::class, 'editData'])->name('profile.editData');
+        Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('profile.updateData');
 
         // Profile delete
-        Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('users.delete'); // javoxir
+        Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy'); // javoxir
 
         //added category id
-        Route::post('/getcategory', [ProfileController::class, 'getCategory'])->name('get.category'); // javoxir
+        Route::post('/getcategory', [ProfileController::class, 'getCategory'])->name('profile.getCategory'); // javoxir
 
-        Route::post('/insertdistrict', [ProfileController::class, 'StoreDistrict'])->name('insert.district'); // javoxir
+        Route::post('/storeDistrict', [ProfileController::class, 'StoreDistrict'])->name('profile.StoreDistrict'); // javoxir
 
-        Route::post('/store/profile/image', [ProfileController::class, 'storeProfileImage'])->name('profile.image.store'); // javoxir
-        Route::post('/comment', [ProfileController::class, 'comment'])->name('comment'); // javoxir
-        Route::post('/testBase', [ProfileController::class, 'testBase'])->name('testBase'); // javoxir
+        Route::post('/store/profile/image', [ProfileController::class, 'storeProfileImage'])->name('profile.storeProfileImage'); // javoxir
+        Route::post('/comment', [ProfileController::class, 'comment'])->name('profile.comment'); // javoxir
+        Route::post('/testBase', [ProfileController::class, 'testBase'])->name('profile.testBase'); // javoxir
 
         //description
-        Route::post('/description', [ProfileController::class, 'EditDescription'])->name('edit.description'); // javoxir
+        Route::post('/description', [ProfileController::class, 'EditDescription'])->name('profile.EditDescription'); // javoxir
 
         //create_port
         Route::view('/create', 'profile/create_port');
-        Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('portfolio.create'); // javoxir
-        Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('portfolio'); // javoxir
-        Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('portfolio.delete'); // javoxir
+        Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('profile.createPortfolio'); // javoxir
+        Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('profile.portfolio'); // javoxir
+        Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('profile.delete'); // javoxir
     });
 });
-Route::post('/storepicture', [ProfileController::class, 'UploadImage'])->name('storePicture');
+Route::post('/uploadImage', [ProfileController::class, 'UploadImage'])->name('profile.UploadImage');
+#endregion 
 
 #region creat task
 Route::prefix("task")->group(function () {
@@ -226,58 +203,32 @@ Route::prefix("task")->group(function () {
         Route::post('/verify/{user}', [UserController::class, 'verifyProfil'])->name('task.create.verification');
         Route::post('/upload', [CreateController::class, 'uploadImage']);
         Route::get('task/{task}/images/delete', [CreateController::class, 'deleteAllImages'])->name('task.images.delete')->middleware('auth');
+        Route::post("/detailed-task/{task}/response", [ResponseController::class, 'store'])->name('task.response.store'); // javoxir
+    });
+});
 #endregion 
 
-        // Responses
-
-        Route::post("/detailed-task/{task}/response", [ResponseController::class, 'store'])->name('task.response.store'); // javoxir
-
-
-    });
-
-});
-
-Route::get('/performers-by-category', [PerformerAPIController::class, 'getByCategories']);
-Route::post('/reset', [UserController::class, 'reset_submit'])->name('password.reset');
-Route::get('/reset/password', [UserController::class, 'reset_password'])->name('password.reset.password');
-Route::post('/reset/password', [UserController::class, 'reset_password_save'])->name('password.reset.password.save');
-Route::get('/code', [UserController::class, 'reset_code_view'])->name('password.reset.code.view');
-Route::post('/code', [UserController::class, 'reset_code'])->name('password.reset.code');
-
-Route::get('/register/code', [UserController::class, 'code'])->name('register.code');
-Route::post('/register/code', [UserController::class, 'code_submit'])->name('register.code.submit');
-Route::post('/account/password/change', [ProfileController::class, 'change_password'])->name('account.password.reset');
-
-
+#region 
 Route::post('select-performer/{response}', [ResponseController::class, 'selectPerformer'])->name('performer.select'); // javoxir
 Route::post('tasks/{task}/complete', [UpdateController::class, 'completed'])->name('task.completed'); // javoxir
 Route::post('send-review-user/{task}', [UpdateController::class, 'sendReview'])->name('send.review'); // javoxir
-
-
-Route::get('/faq', [FaqsController::class, 'index'])->name('faq.index'); // javoxir
-Route::get('/questions/{id}', [FaqsController::class, 'questions'])->name('questions'); // javoxir
-
-
 Route::get('/categories/{id}', [Controller::class, 'category'])->name("categories"); // javoxir
 Route::get('/lang/{lang}', [Controller::class, 'lang'])->name('lang'); // javoxir
+Route::get('/', [Controller::class, 'home'])->name('home'); // javoxir
+#endregion
 
-
+#region registration
+Route::get('login/facebook', [SocialController::class, 'facebookRedirect'])->name('auth.facebook');
+Route::get('login/facebook/callback', [SocialController::class, 'loginWithFacebook']);
+Route::get('login/google', [SocialController::class, 'googleRedirect'])->name('auth.google');
+Route::get('login/google/callback', [SocialController::class, 'loginWithGoogle']);
 Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'loginPost'])->name('signin.custom')->middleware('guest');
-
-
 Route::get('/register', [UserController::class, 'signup'])->name('register')->middleware('guest');
 Route::post('/register', [LoginController::class, 'customRegister'])->name('user.registration')->middleware('guest');
-
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
 Route::get('/reset', [UserController::class, 'reset'])->name('reset');
-
 Route::get('/confirm', [UserController::class, 'confirm'])->name('confirm');
-
-//Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth', 'is_verify_email']);
-
-
 Route::get('dashboard', [UserController::class, 'dashboardView'])->middleware(['auth']);
 Route::get('account/verify/{user}/{hash}', [LoginController::class, 'verifyAccount'])->name('user.verify');
 Route::get('account/verification/email', [LoginController::class, 'send_email_verification'])->name('user.verify.send')->middleware('auth');
@@ -286,9 +237,22 @@ Route::post('account/verification/phone', [LoginController::class, 'verify_phone
 Route::post("account/change/email", [LoginController::class, 'change_email'])->name('user.email.change')->middleware('auth');
 Route::post("account/change/phone", [LoginController::class, 'change_phone_number'])->name('user.phone.change')->middleware('auth');
 Route::post("account/change/phone/send", [LoginController::class, 'verify_phone'])->name('user.phone.verify')->middleware('auth');
+Route::post('/reset', [UserController::class, 'reset_submit'])->name('password.reset');
+Route::get('/reset/password', [UserController::class, 'reset_password'])->name('password.reset.password');
+Route::post('/reset/password', [UserController::class, 'reset_password_save'])->name('password.reset.password.save');
+Route::get('/code', [UserController::class, 'reset_code_view'])->name('password.reset.code.view');
+Route::post('/code', [UserController::class, 'reset_code'])->name('password.reset.code');
+Route::get('/register/code', [UserController::class, 'code'])->name('register.code');
+Route::post('/register/code', [UserController::class, 'code_submit'])->name('register.code.submit');
+Route::post('/account/password/change', [ProfileController::class, 'change_password'])->name('account.password.reset');
+#endregion
 
-
-
+#region payments
+Route::get('send', [RefillController::class, 'ref'])->name('paycom.send'); // javoxir
+Route::get('/ref', 'App\Http\Controllers\RefillController@ref'); // javoxir
+Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare'); // javoxir
+Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete'); // javoxir
+Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@paycom')->name('paycom'); // javoxir
 // Show ClickUz transactions
 Route::get('profile/clickuz/transactions', function () {
     $now = \Carbon\Carbon::now();
@@ -319,3 +283,4 @@ Route::get('profile/clickuz/transactions', function () {
         'transactions' => $transactions,
     ]);
 })->name('user.clickuz.transactions')->middleware('auth');
+#endregion
