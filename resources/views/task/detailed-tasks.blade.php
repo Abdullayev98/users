@@ -56,7 +56,7 @@
                                     <span class="text-black rounded-lg bg-yellow-400 p-2">{{$task->budget}}</span>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id)
-                                            <a href="{{ route('task.changetask', $task->id) }}"
+                                            <a href="{{ route('searchTask.changetask', $task->id) }}"
                                                class="py-2 px-2 text-gray-500 hover:text-red-500">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
@@ -84,7 +84,7 @@
                                     <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
                                     <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name') }}</p>
                                     @if($task->user_id == auth()->id())
-                                        <form action="{{route("delete.task", $task->id)}}" method="post">
+                                        <form action="{{route("searchTask.delete_task", $task->id)}}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"
@@ -499,7 +499,7 @@
                                                             @auth()
                                                                 @if($task->status == 3 && $response->user_id == $task->performer_id)
                                                                     <div class="w-10/12 mx-auto">
-                                                                        <a href="{{ route('personal.chat', $response->user->id) }}"
+                                                                        <a href="{{ route('performers.performer_chat', $response->user->id) }}"
                                                                            class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                                             {{__('Написать в чат')}}
                                                                         </a>
@@ -707,7 +707,7 @@
                     </div>
                     <div class="text-center my-6">
 
-                        <form action="{{route('tasks.detailed')}}" method="POST">
+                        <form action="{{route('searchTask.comlianse_save')}}" method="POST">
                             @csrf
                             <input type="hidden" name="taskId" value="{{ $task->id }}">
                             <input type="hidden" name="userId"

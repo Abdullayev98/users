@@ -32,7 +32,7 @@ class UpdateAPIController extends Controller
         $this->service->syncCustomFields($task);
         Alert::success('Success');
 
-        return response()->json(['message'=> 'Success']); //redirect()->route('tasks.detail', $task->id);
+        return response()->json(['message'=> 'Success']); //redirect()->route('searchTask.task', $task->id);
 
 
     }

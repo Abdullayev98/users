@@ -254,7 +254,7 @@ class UserController extends Controller
         
                 //        event(new MyEvent($id_task,$id_cat,$title_task,$type,$user_id_fjs));
 
-                return redirect()->route('tasks.detail',$request->for_ver_func);
+                return redirect()->route('searchTask.task',$request->for_ver_func);
             } else {
                 auth()->logout();
                 return back()->with('expired_message', __('lang.contact_expired'));

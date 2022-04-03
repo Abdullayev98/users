@@ -92,7 +92,7 @@
                                 <a href="/categories/1" class="delete-task block p-4 text-base rounded hover:text-yellow-500">{{__('Создать задание')}}</a>
                             </li>
                             <li class="mb-1">
-                                <a href="{{ route('task.search') }}" class="task block delete-task cursor-pointer p-4 text-base rounded hover:text-yellow-500">{{__('Найти задания')}}</a>
+                                <a href="{{ route('searchTask.task_search') }}" class="task block delete-task cursor-pointer p-4 text-base rounded hover:text-yellow-500">{{__('Найти задания')}}</a>
                             </li>
                             <li class="mb-1">
                                 <a href="/performers" class="performer delete-task cursor-pointer block p-4 text-base rounded hover:text-yellow-500">{{__('Исполнители')}}</a>
@@ -102,7 +102,7 @@
                                 @auth
 
                                     <li class="mb-1">
-                                        <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-base rounded text-gray-500 hover:text-yellow-500">{{__('Мои заказы')}}</a>
+                                        <a href="{{ route('searchTask.mytasks') }}" class="mytask delete-task cursor-pointer block p-4 text-base rounded text-gray-500 hover:text-yellow-500">{{__('Мои заказы')}}</a>
                                     </li>
 
                                     {{-- icon-3 --}}
@@ -177,11 +177,11 @@
                     @endforeach
                 </ul>
             </div>
-            <a href="{{ route('task.search') }}" class="task cursor-pointer delete-task hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">{{__('Найти задания')}}</a>
+            <a href="{{ route('searchTask.task_search') }}" class="task cursor-pointer delete-task hover:text-yellow-500 mr-4 text-[14px] xl:text-[16px] ">{{__('Найти задания')}}</a>
             <a href="/performers" class="performer delete-task cursor-pointer hover:text-yellow-500 text-[14px] mr-4 xl:text-[16px] ">{{__('Исполнители')}}</a>
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ route('task.mytasks') }}" class="mytask delete-task cursor-pointer hover:text-yellow-500 text-[14px] xl:text-[16px] ">{{__('Мои заказы')}}</a>
+                    <a href="{{ route('searchTask.mytasks') }}" class="mytask delete-task cursor-pointer hover:text-yellow-500 text-[14px] xl:text-[16px] ">{{__('Мои заказы')}}</a>
                 @else
                 @endauth
             @endif
@@ -219,7 +219,7 @@
 
                                     {{--                                        @case(1)--}}
                                     <li>
-                                        <form action="{{ route('notification.delete', $notification->id ) }}" method="post">
+                                        <form action="{{ route('performers.deleteNotification', $notification->id ) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">{{$notification->name_task}}</button>

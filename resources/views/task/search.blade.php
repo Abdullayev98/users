@@ -294,7 +294,7 @@
 
         function first_ajax() {
             $.ajax({
-                url: "{{route('tasks.search')}}",
+                url: "{{route('searchTask.ajax_tasks')}}",
                 // data: {orderBy: id},
                 type: 'GET',
                 success: function (data) {

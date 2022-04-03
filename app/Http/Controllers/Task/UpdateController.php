@@ -33,7 +33,7 @@ class UpdateController extends Controller
         $this->service->syncCustomFields($task);
         Alert::success('Success');
 
-        return redirect()->route('tasks.detail', $task->id);
+        return redirect()->route('searchTask.task', $task->id);
 
 
     }

@@ -115,7 +115,7 @@ class Controller extends BaseController
         $datas = $datas->merge($tasks);
         $datas = $datas->merge($perform_tasks);
         $categories = getAllCategories();
-        return view('task.mytasks',compact('tasks','perform_tasks','categories','datas'));
+        return view('searchTask.mytasks',compact('tasks','perform_tasks','categories','datas'));
     }
 
     public function category($id)

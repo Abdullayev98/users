@@ -60,8 +60,7 @@ use App\Http\Controllers\Task\CreateController;
 #region performers
 Route::get('/for_del_new_task/{task}', [CreateController::class, 'deletetask']); // javoxir
 Route::group(['middleware' => 'auth'], function () {
-    Route::delete('/fordelnotif/{notification}/', [PerformersController::class, 'deleteNotification'])->name('notification.delete'); // javoxir
-
+    Route::delete('/fordelnotif/{notification}/', [PerformersController::class, 'deleteNotification'])->name('performers.deleteNotification'); // javoxir
 });
 Route::post('del-notif', [PerformersController::class, 'del_all_notif']); // javoxir
 Route::post('/performers', [PerformersController::class, 'service']); // javoxir
@@ -69,10 +68,11 @@ Route::get('perf-ajax/{id}', [PerformersController::class, 'perf_ajax']); // jav
 Route::get('/executors-courier', function () {
     return view('Performers/executors-courier');
 }); // javoxir
+Route::post('give-task', [PerformersController::class, 'give_task']); // javoxir
 Route::group(['prefix' => 'performers'], function () {
-    Route::get('/', [PerformersController::class, 'service'])->name('performers'); // javoxir
-    Route::get('/{user}', [PerformersController::class, 'performer'])->name('performer.main'); // javoxir
-    Route::get('/chat/{id}', [PerformersController::class, 'performer_chat'])->name('personal.chat'); // javoxir
+    Route::get('/', [PerformersController::class, 'service'])->name('performers.service'); // javoxir
+    Route::get('/{user}', [PerformersController::class, 'performer'])->name('performers.performer'); // javoxir
+    Route::get('/chat/{id}', [PerformersController::class, 'performer_chat'])->name('performers.performer_chat'); // javoxir
 });
 #endregion
 
@@ -80,10 +80,10 @@ Route::group(['prefix' => 'performers'], function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::get('/reports', [ReportController::class, 'index'])->name("voyager.reports.index"); // javoxir
-    Route::get("users/activitiy/{user}", [VoyagerUserController::class, "activity"])->name("users.activity"); // javoxir
-    Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.index"); // javoxir
+    Route::get("users/activitiy/{user}", [VoyagerUserController::class, "activity"])->name("voyagerUser.activity"); // javoxir
+    Route::get('/messages/chat/{id}', [ConversationController::class, 'showChat'])->name("conversation.showChat"); // javoxir
     Route::post('/messages/chat/rate/{message}', [ConversationController::class, 'rating'])->name("conversation.rating"); // javoxir
-    Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("appeal.close"); // javoxir
+    Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("conversation.close"); // javoxir
     Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send"); // javoxir
 });
 #endregion 
@@ -92,17 +92,16 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('task.mytasks'); // javoxir
 });
-Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('task.search'); // javoxir
-Route::get('tasks-search', [SearchTaskController::class, 'ajax_tasks'])->name('tasks.search');
-Route::get('my-tasks', [SearchTaskController::class, 'my_tasks'])->name('task.mytasks');
+Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('searchTask.task_search'); // javoxir
+Route::get('tasks-search', [SearchTaskController::class, 'ajax_tasks'])->name('searchTask.ajax_tasks');
+Route::get('my-tasks', [SearchTaskController::class, 'my_tasks'])->name('searchTask.mytasks');
 Route::get('search', [SearchTaskController::class, 'search'])->name('search'); // javoxir
-Route::post('give-task', [PerformersController::class, 'give_task']); // javoxir
 Route::post('ajax-request', [SearchTaskController::class, 'task_response']); // javoxir
-Route::delete('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('delete.task'); // javoxir
-Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("tasks.detail"); // javoxir
-Route::post('/detailed-tasks', [SearchTaskController::class, 'comlianse_save'])->name("tasks.detailed");
-Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("task.changetask")->middleware('auth'); // javoxir
-Route::put('/change-task/{task}', [UpdateController::class, '__invoke'])->name("task.update")->middleware('auth'); // javoxir
+Route::delete('delete-task/{task}', [SearchTaskController::class, 'delete_task'])->name('searchTask.delete_task'); // javoxir
+Route::get('/detailed-tasks/{task}', [SearchTaskController::class, 'task'])->name("searchTask.task"); // javoxir
+Route::post('/detailed-tasks', [SearchTaskController::class, 'comlianse_save'])->name("searchTask.comlianse_save");
+Route::get('/change-task/{task}', [SearchTaskController::class, 'changeTask'])->name("searchTask.changetask")->middleware('auth'); // javoxir
+Route::put('/change-task/{task}', [UpdateController::class, '__invoke'])->name("update.__invoke")->middleware('auth'); // javoxir
 Route::get('/choose-task', function () {
     return view('task.choosetasks');
 }); // javoxir

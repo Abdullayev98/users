@@ -27,7 +27,7 @@ class  ActiveAction extends AbstractAction {
     public function getDefaultRoute()
     {
 
-        return route('users.activity', ['user' => $this->data->id]);
+        return route('voyagerUser.activity', ['user' => $this->data->id]);
     }
 
     public function shouldActionDisplayOnDataType()

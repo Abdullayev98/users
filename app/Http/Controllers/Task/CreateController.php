@@ -236,7 +236,7 @@ class CreateController extends Controller
 
         //        event(new MyEvent($id_task,$id_cat,$title_task,$type,$user_id_fjs));
 
-        return redirect()->route('tasks.detail', $task->id);
+        return redirect()->route('searchTask.task', $task->id);
     }
 
     public function contact_register(Task $task, UserRequest $request)
