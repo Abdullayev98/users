@@ -268,7 +268,7 @@
                                                                 </li>
                                                             </ul>
                                                             <form class="mt-8"
-                                                                  action="{{route('account.password.reset')}}"
+                                                                  action="{{route('profile.change_password')}}"
                                                                   method="post">
                                                                 @csrf
 
