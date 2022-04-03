@@ -11,7 +11,7 @@
             <p class="text-base text-center my-5">
                 {{__('Выберите категории заданий, в которых хотите работать. Можно сразу несколько — изменить их всегда можно в профиле.')}}
             </p>
-                <form action="{{route('verification.category.store')}}" method="post">
+                <form action="{{route('profile.getCategory')}}" method="post">
                     @csrf
                     <div class="acordion mt-16">
                         @foreach ($categories as $category )

@@ -168,11 +168,11 @@
         allowedExtensions: ['jpg', 'jpeg', 'png'],
         buttonsText: ['{{__('Сохранить')}}', '{{__('Отмена')}}'],
         buttonsColor: ['#30bf7d', '#ee5155', -15],
-        processUrl: '{{ route('profile.image.store') }}',
+        processUrl: '{{ route('profile.storeProfileImage') }}',
         withCSRF: ['_token', '{{ csrf_token() }}'],
         fileName: 'image',
         onSuccess: function (message, element, status) {
-            window.location.href = "{{ route('userprofile') }}";
+            window.location.href = "{{ route('profile.profileData') }}";
         },
         onError: function (message, element, status) {
             alert(message);

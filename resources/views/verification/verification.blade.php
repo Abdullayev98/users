@@ -8,7 +8,7 @@
             <p class="text-4xl lg:text-6xl font-bold text-white ">{{__('Станьте исполнителем Universal Services')}}</p>
             <p class="mt-8 mb-12 text-white text-xl lg:text-2xl">{!!__('Universal Services поможет найти новых клиентов и зарабатывать <br> на выполнении любых услуг.')!!}</p>
             @auth
-                <a href="{{ route('verification.info') }}">
+                <a href="{{ route('profile.verificationInfo') }}">
                     @else
                         <a href="/register">
                             @endauth
@@ -78,7 +78,7 @@
                 </div>
             </div>
             @auth
-                <a href="{{ route('verification.info') }}">
+                <a href="{{ route('profile.verificationInfo') }}">
                     @else
                         <a href="/register">
                             @endauth
@@ -101,7 +101,7 @@
                     <hr class="mt-8 mb-8">
                     <p class="mb-12">{{__('Максимальный заказ на Universal Services.com был почти на 100 000 uzs, я несколько дней решал проблему, за которую никто не хотел браться.')}}</p>
                     @auth
-                        <a href="{{ route('verification.info') }}">
+                        <a href="{{ route('profile.verificationInfo') }}">
                             @else
                                 <a href="/register">
                                     @endauth
@@ -122,7 +122,7 @@
                     <hr class="mt-8 mb-8">
                     <p class="mb-12">{{__('Сервис мне очень помог в наработке клиентской базы, что всегда очень сложно сделать в салоне. У меня уже есть заказчики, которые приходят на стрижку или окрашивание в третий, четвертый раз, то есть становятся постоянными клиентами.')}}</p>
                     @auth
-                        <a href="{{ route('verification.info') }}">
+                        <a href="{{ route('profile.verificationInfo') }}">
                             @else
                                 <a href="/register">
                                     @endauth
@@ -146,7 +146,7 @@
                     <hr class="mt-8 mb-8">
                     <p class="mb-12">{{__('Я считаю, что user.uz — это уникальный сервис возможностей. Его безусловное преимущество в том, что вы можете самостоятельно выбирать для себя график работы, заказы, клиентов, формировать свой доход.')}}</p>
                     @auth
-                        <a href="{{ route('verification.info') }}">
+                        <a href="{{ route('profile.verificationInfo') }}">
                             @else
                                 <a href="/register">
                                     @endauth
@@ -170,7 +170,7 @@
                     <hr class="mt-8 mb-8">
                     <p class="mb-12">{{__('Со Сделкой без риска не переживаешь, что оплата не поступит. Если что, задание закрывается автоматически')}}</p>
                     @auth
-                        <a href="{{ route('verification.info') }}">
+                        <a href="{{ route('profile.verificationInfo') }}">
                             @else
                                 <a href="/register">
                                     @endauth
@@ -191,7 +191,7 @@
                     <hr class="mt-12 mb-8">
                     <p class="mb-12">{{__('Сервис мне очень помог в наработке клиентской базы, что всегда очень сложно сделать в салоне. У меня уже есть заказчики, которые приходят на стрижку или окрашивание в третий, четвертый раз, то есть становятся постоянными клиентами.')}}</p>
                     @auth
-                        <a href="{{ route('verification.info') }}">
+                        <a href="{{ route('profile.verificationInfo') }}">
                             @else
                                 <a href="/register">
                                     @endauth
@@ -215,7 +215,7 @@
                     <hr class="mt-8 mb-8">
                     <p class="mb-12">{{__('Сервис мне очень помог в наработке клиентской базы, что всегда очень сложно сделать в салоне. У меня уже есть заказчики, которые приходят на стрижку или окрашивание в третий, четвертый раз, то есть становятся постоянными клиентами.')}}</p>
                     @auth
-                        <a href="{{ route('verification.info') }}">
+                        <a href="{{ route('profile.verificationInfo') }}">
                             @else
                                 <a href="/register">
                                     @endauth
@@ -279,7 +279,7 @@
                 <p class="text-lg font-medium mt-4">{!!__('Средний месячный доход <br> в категории «Курьерские услуги»')!!}</p>
                 <div class="mt-16">
                     @auth
-                        <a href="{{ route('verification.info') }}">
+                        <a href="{{ route('profile.verificationInfo') }}">
                             @else
                                 <a href="/register">
                                     @endauth
@@ -314,7 +314,7 @@
                 <p class="text-lg font-medium mt-4">{!!__('Средний месячный доход <br> в категории «Фото и видеоуслуги»')!!}</p>
                 <div class="mt-16">
                     @auth
-                        <a href="{{ route('verification.info') }}">
+                        <a href="{{ route('profile.verificationInfo') }}">
                             @else
                                 <a href="/register">
                                     @endauth
@@ -337,7 +337,7 @@
                 <p class="text-lg font-medium mt-4">{!!__('Средний месячный доход <br> в категории «Фото и видеоуслуги»')!!}</p>
                 <div class="mt-16">
                     @auth
-                        <a href="{{ route('verification.info') }}">
+                        <a href="{{ route('profile.verificationInfo') }}">
                             @else
                                 <a href="/register">
                                     @endauth

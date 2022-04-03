@@ -108,23 +108,25 @@ Route::get('search', [SearchTaskController::class, 'search'])->name('search'); /
 
 Route::put('/change-task/{task}', [UpdateController::class, '__invoke'])->name("task.update")->middleware('auth'); // javoxir
 
+#region verificationInfo
 Route::view('/offer-tasks', 'task.offertasks');
 Route::group(['middleware' => 'auth', 'prefix' => 'verification'], function () {
     Route::get('/', [ProfileController::class, 'verificationIndex'])->name('verification'); // javoxir
 
-    Route::get('/personalinfo', [ProfileController::class, 'verificationInfo'])->name('verification.info'); // javoxir
-    Route::post('/personalinfo', [ProfileController::class, 'verificationInfoStore'])->name('verification.info.store'); // javoxir
+    Route::get('/verificationInfo', [ProfileController::class, 'verificationInfo'])->name('profile.verificationInfo'); // javoxir
+    Route::post('/verificationInfoStore', [ProfileController::class, 'verificationInfoStore'])->name('profile.verificationInfoStore'); // javoxir
 
-    Route::get('/personalinfo/contact', [ProfileController::class, 'verificationContact'])->name('verification.contact'); // javoxir
-    Route::post('/personalinfo/contact', [ProfileController::class, 'verificationContactStore'])->name('verification.contact.store'); // javoxir
+    Route::get('/verificationInfo/contact', [ProfileController::class, 'verificationContact'])->name('profile.verificationContact'); // javoxir
 
-    Route::get('/personalinfo/photo', [ProfileController::class, 'verificationPhoto'])->name('verification.photo'); // javoxir
-    Route::put('/personalinfo/photo', [ProfileController::class, 'verificationPhotoStore'])->name('verification.photo.store'); // javoxir
+    Route::post('/verificationInfo/contact', [ProfileController::class, 'verificationContactStore'])->name('profile.verificationContactStore'); // javoxir
 
-    Route::get('/personalinfo/category', [ProfileController::class, 'verificationCategory'])->name('verification.category'); // javoxir
-    Route::post('/personalinfo/category', [ProfileController::class, 'getCategory'])->name('verification.category.store'); // javoxir
+    Route::get('/verificationInfo/photo', [ProfileController::class, 'verificationPhoto'])->name('profile.verificationPhoto'); // javoxir
+    Route::put('/verificationInfo/photo', [ProfileController::class, 'verificationPhotoStore'])->name('profile.verificationPhotoStore'); // javoxir
+
+    Route::get('/verificationInfo/category', [ProfileController::class, 'verificationCategory'])->name('profile.verificationCategory'); // javoxir
+    Route::post('/verificationInfo/category', [ProfileController::class, 'getCategory'])->name('profile.getCategory'); // javoxir
 });
-
+#endregion 
 
 Route::get('send', [RefillController::class, 'ref'])->name('paycom.send'); // javoxir
 
@@ -163,44 +165,46 @@ Route::get('/geotaskshint', [Controller::class, 'geotaskshint'])->name('geotasks
 Route::get('/security', [Controller::class, 'security'])->name('security'); // javoxir
 Route::get('/badges', [Controller::class, 'badges'])->name('badges'); // javoxir
 
+#region Profile
 Route::group(['middleware' => 'auth'], function () {
     Route::prefix('profile')->group(function () {
         //Profile
-        Route::get('/', [ProfileController::class, 'profileData'])->name('userprofile'); // javoxir
-        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('update.photo');
+        Route::get('/', [ProfileController::class, 'profileData'])->name('profile.profileData'); // javoxir
+        Route::put('/updateuserphoto', [ProfileController::class, 'updates'])->name('profile.updates');
 
         //Profile cash
-        Route::get('/cash', [ProfileController::class, 'profileCash'])->name('userprofilecash'); // javoxir
+        Route::get('/cash', [ProfileController::class, 'profileCash'])->name('profile.profileCash'); // javoxir
 
         // Profile settings
-        Route::get('/settings', [ProfileController::class, 'editData'])->name('editData');
-        Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('updateData');
+        Route::get('/settings', [ProfileController::class, 'editData'])->name('profile.editData');
+        Route::post('/settings/update', [ProfileController::class, 'updateData'])->name('profile.updateData');
 
         // Profile delete
-        Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('users.delete'); // javoxir
+        Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy'); // javoxir
 
         //added category id
-        Route::post('/getcategory', [ProfileController::class, 'getCategory'])->name('get.category'); // javoxir
+        Route::post('/getcategory', [ProfileController::class, 'getCategory'])->name('profile.getCategory'); // javoxir
 
-        Route::post('/insertdistrict', [ProfileController::class, 'StoreDistrict'])->name('insert.district'); // javoxir
+        Route::post('/storeDistrict', [ProfileController::class, 'StoreDistrict'])->name('profile.StoreDistrict'); // javoxir
 
-        Route::post('/store/profile/image', [ProfileController::class, 'storeProfileImage'])->name('profile.image.store'); // javoxir
-        Route::post('/comment', [ProfileController::class, 'comment'])->name('comment'); // javoxir
-        Route::post('/testBase', [ProfileController::class, 'testBase'])->name('testBase'); // javoxir
+        Route::post('/store/profile/image', [ProfileController::class, 'storeProfileImage'])->name('profile.storeProfileImage'); // javoxir
+        Route::post('/comment', [ProfileController::class, 'comment'])->name('profile.comment'); // javoxir
+        Route::post('/testBase', [ProfileController::class, 'testBase'])->name('profile.testBase'); // javoxir
 
         //description
-        Route::post('/description', [ProfileController::class, 'EditDescription'])->name('edit.description'); // javoxir
+        Route::post('/description', [ProfileController::class, 'EditDescription'])->name('profile.EditDescription'); // javoxir
 
         //create_port
         Route::view('/create', 'profile/create_port');
-        Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('portfolio.create'); // javoxir
-        Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('portfolio'); // javoxir
-        Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('portfolio.delete'); // javoxir
+        Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('profile.createPortfolio'); // javoxir
+        Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('profile.portfolio'); // javoxir
+        Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('profile.delete'); // javoxir
     });
 });
-Route::post('/storepicture', [ProfileController::class, 'UploadImage'])->name('storePicture');
+Route::post('/uploadImage', [ProfileController::class, 'UploadImage'])->name('profile.UploadImage');
+#endregion 
 
-
+#region creat task
 Route::prefix("task")->group(function () {
     Route::prefix("create")->group(function () {
         Route::get('/', [CreateController::class, 'name'])->name('task.create.name');
@@ -224,7 +228,7 @@ Route::prefix("task")->group(function () {
         Route::post('/verify/{user}', [UserController::class, 'verifyProfil'])->name('task.create.verification');
         Route::post('/upload', [CreateController::class, 'uploadImage']);
         Route::get('task/{task}/images/delete', [CreateController::class, 'deleteAllImages'])->name('task.images.delete')->middleware('auth');
-
+#endregion 
 
         // Responses
 
