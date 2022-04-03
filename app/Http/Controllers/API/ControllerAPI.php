@@ -71,7 +71,7 @@ class ControllerAPI extends Controller
         }
         $user->update($data);
         return response()->json(['message'=>'avatar changed']);
-        //return  redirect()->route('userprofile');
+        //return  redirect()->route('profile.profileData');
     }
 
     public function my_tasks()

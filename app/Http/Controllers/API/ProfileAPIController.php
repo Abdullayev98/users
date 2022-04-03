@@ -122,7 +122,7 @@ class ProfileAPIController extends Controller
         }
         Auth::user()->update($data);
         Alert::success(__('Настройки успешно сохранены'));
-        return redirect()->route('editData');
+        return redirect()->route('profile.editData');
     }
 
 }
