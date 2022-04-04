@@ -44,11 +44,11 @@
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task->responses))
         <div class="xl:flex container w-11/12 mx-auto">
-            <div class="xl:flex mx-auto w-full">
+            <div class="md:flex mx-auto xl:w-9/12 w-full">
                 @else
-                    <div class="xl:flex mx-auto w-full">
+                    <div class="md:flex mx-auto xl:w-9/12 w-full">
                         @endif
-                        <div class="mt-8 lg:flex mb-8 xl:w-9/12 w-full">
+                        <div class="mt-8 lg:flex mb-8 w-full">
                             {{-- left sidebar start --}}
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
@@ -556,8 +556,8 @@
 
                             </div>
                             <h1 class="text-lg">{{__('Заказчик этого задания')}}</h1>
-                            <div class="flex flex-row mt-4">
-                                <div class="mr-4">
+                            <div class="flex flex-col mt-4">
+                                <div class="mb-4">
                                     <img class="border-2 border-radius-500 border-gray-400 w-32 h-32 rounded-lg" alt="#"
                                          src="@if ($task->user->avatar == ''){{ asset("storage/images/default.png") }}
                                          @else{{asset("storage/{$task->user->avatar}") }}" @endif
