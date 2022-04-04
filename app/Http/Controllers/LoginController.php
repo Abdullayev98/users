@@ -46,6 +46,7 @@ class LoginController extends Controller
 
 
         $data['password'] = Hash::make($request->password);
+        unset( $data['password_confirmation']);
         $user = User::create($data);
         $wallBal = new WalletBalance();
         $wallBal->balance = setting('admin.bonus');
