@@ -189,10 +189,11 @@ class CreateController extends Controller
 
     public function contact_store(Task $task, Request $request)
     {
-        $data = $request->validate([
-            'phone_number' => 'required|integer|min:9|unique:users'
-        ]);
         $user = auth()->user();
+
+        $data = $request->validate([
+            'phone_number' => 'required|integer|min:9|unique:users,phone_number,'.$user->id
+        ]);
         if (!$user->is_phone_number_verified || $user->phone_number != $data['phone_number']) {
             $data['is_phone_number_verified'] = 0;
             $user->update($data);
