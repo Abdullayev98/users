@@ -46,6 +46,7 @@ class LoginController extends Controller
 
 
         $data['password'] = Hash::make($request->password);
+        unset( $data['password_confirmation']);
         $user = User::create($data);
         $wallBal = new WalletBalance();
         $wallBal->balance = setting('admin.bonus');
@@ -107,8 +108,8 @@ class LoginController extends Controller
                 $user->$needle = 1;
                 $user->save();
                 $result = true;
-                if ($needle != 'is_phone_number_verified')
-                    self::send_verification('phone',auth()->user());
+                if ($needle != 'is_phone_number_verified' && !$user->is_phone_number_verified)
+                    self::send_verification('phone',$user);
             } else {
                 $result = false;
             }

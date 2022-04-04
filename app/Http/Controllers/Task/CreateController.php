@@ -190,7 +190,7 @@ class CreateController extends Controller
     public function contact_store(Task $task, Request $request)
     {
         $data = $request->validate([
-            'phone_number' => 'required|integer|min:9'
+            'phone_number' => 'required|integer|min:9|unique:users'
         ]);
         $user = auth()->user();
         if (!$user->is_phone_number_verified || $user->phone_number != $data['phone_number']) {
@@ -206,7 +206,7 @@ class CreateController extends Controller
         $task->save();
 
         // dd($task);
-                
+
         foreach(User::all() as $users){
 
 
