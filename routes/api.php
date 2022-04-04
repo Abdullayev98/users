@@ -32,15 +32,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/{paysys}',function($paysys){
-    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
-});
-
 Route::middleware('custom.auth:api')->group(function () {
     Route::post('logout', [UserAPIController::class, 'logout']); //end
 
     Route::post('task/create', [TaskAPIController::class, 'create']); //end
 
+//    Route::any('/{paysys}',function($paysys){
+//        (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
+//    });
 
     Route::get('/my-tasks', [TaskAPIController::class, 'my_tasks']); //end
     Route::put('/change-task/{task}', [TaskAPIController::class, 'changeTask']); //end
