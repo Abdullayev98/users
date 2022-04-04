@@ -91,33 +91,6 @@ class TaskAPIController extends Controller
     }
 
     /**
-     * @OA\Get(
-     *     path="/api/find",
-     *     tags={"Task"},
-     *     summary="Get list in Tasks",
-     *     @OA\Response(
-     *          response=200,
-     *          description="Successful operation"
-     *     ),
-     *     @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *     ),
-     *     @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *     )
-     * )
-     */
-    public function search(Request $request)
-    {
-        $s = $request->s;
-        $data = Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
-        return response()->json($data);
-    }
-
-
-    /**
      *
      * @OA\Post (
      *     path="/api/task/create",
