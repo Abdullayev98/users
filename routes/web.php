@@ -88,14 +88,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 #endregion
 
-
-Route::get('/', [Controller::class, 'home'])->name('home'); // javoxir
-
-
-Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('task.search'); // javoxir
-Route::get('tasks-search', [SearchTaskController::class, 'ajax_tasks'])->name('tasks.search');
-Route::get('my-tasks', [SearchTaskController::class, 'my_tasks'])->name('task.mytasks');
-
 #region tasks
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/my-tasks', [Controller::class, 'my_tasks'])->name('task.mytasks'); // javoxir
