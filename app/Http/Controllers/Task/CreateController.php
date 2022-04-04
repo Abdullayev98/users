@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Notification;
+use App\Events\MyEvent;
 
 class CreateController extends Controller
 {
@@ -187,10 +189,11 @@ class CreateController extends Controller
 
     public function contact_store(Task $task, Request $request)
     {
-        $data = $request->validate([
-            'phone_number' => 'required|integer|min:9'
-        ]);
         $user = auth()->user();
+
+        $data = $request->validate([
+            'phone_number' => 'required|integer|min:9|unique:users,phone_number,'.$user->id
+        ]);
         if (!$user->is_phone_number_verified || $user->phone_number != $data['phone_number']) {
             $data['is_phone_number_verified'] = 0;
             $user->update($data);
@@ -202,7 +205,39 @@ class CreateController extends Controller
         $task->user_id = $user->id;
         $task->phone = $user->phone_number;
         $task->save();
-        return redirect()->route('tasks.detail', $task->id);
+
+        // dd($task);
+
+        foreach(User::all() as $users){
+
+
+            $user_cat_ids = explode(",",$users->category_id);
+            $check_for_true = array_search($task->category_id,$user_cat_ids);
+
+            if($check_for_true !== false){
+            Notification::create([
+
+                'user_id'=>$users->id,
+                'description'=> 1,
+                'task_id'=>$task->id,
+                "cat_id"=>$task->category_id,
+                "name_task"=>$task->name,
+                "type"=> 1
+
+            ]);
+        }
+
+        }
+
+           $user_id_fjs = NULL;
+           $id_task = $task->id;
+           $id_cat = $task->category_id;
+           $title_task = $task->name;
+           $type = 1;
+
+               event(new MyEvent($id_task,$id_cat,$title_task,$type,$user_id_fjs));
+
+        return redirect()->route('searchTask.task', $task->id);
     }
 
     public function contact_register(Task $task, UserRequest $request)

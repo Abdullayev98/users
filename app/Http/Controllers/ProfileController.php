@@ -55,7 +55,7 @@ class ProfileController extends Controller
         portfolioGuard($portfolio);
 
         $portfolio->delete();
-        return redirect()->route('userprofile');
+        return redirect()->route('profile.profileData');
     }
 
     public function UploadImage(Request $request)
@@ -161,7 +161,7 @@ class ProfileController extends Controller
         }
         Auth::user()->update($data);
         Alert::success(__('Настройки успешно сохранены'));
-        return redirect()->route('editData');
+        return redirect()->route('profile.editData');
     }
 
     public function destroy($id)
@@ -180,7 +180,7 @@ class ProfileController extends Controller
         $user->role_id = 2;
         $checkbox = implode(",", $request->get('category'));
         $user->update(['category_id' => $checkbox]);
-        return redirect()->route('userprofile');
+        return redirect()->route('profile.profileData');
     }
 
     public function StoreDistrict(Request $request)
@@ -240,7 +240,7 @@ class ProfileController extends Controller
         $data = $request->validated();
         $user = auth()->user();
         $user->update($data);
-        return redirect()->route('verification.contact');
+        return redirect()->route('profile.verificationContact');
     }
 
     public function verificationContact()
@@ -257,7 +257,7 @@ class ProfileController extends Controller
         $user = auth()->user();
         $user->update($data);
 
-        return redirect()->route('verification.photo');
+        return redirect()->route('profile.verificationPhoto');
     }
 
     public function verificationPhoto()
@@ -285,7 +285,7 @@ class ProfileController extends Controller
             $data['avatar'] = $imagename;
         }
         $user->update($data);
-        return redirect()->route('verification.category');
+        return redirect()->route('profile.verificationCategory');
     }
 
     public function verificationCategory()
@@ -304,7 +304,7 @@ class ProfileController extends Controller
 
         session()->forget('images');
         Portfolio::create($data);
-        return redirect()->route('userprofile');
+        return redirect()->route('profile.profileData');
 
 
     }

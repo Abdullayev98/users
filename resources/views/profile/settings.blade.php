@@ -59,7 +59,7 @@
                                         <div class="md:w-3/5 w-full md:m-4 m-0">
                                             <h1 class="block w-3/5 text-left text-gray-800 text-3xl font-bold mb-6">
                                                 {{__('Личные данные')}}</h1>
-                                            <form action="{{route('updateData')}}" class="w-full" method="POST">
+                                            <form action="{{route('profile.updateData')}}" class="w-full" method="POST">
                                                 @csrf
                                                 <div class="w-full mb-4">
                                                     <label class="mb-2 text-md md:block text-gray-400"
@@ -142,7 +142,7 @@
                                                 <hr>
                                             </form>
 
-                                            <a href="{{ route('users.delete', $user->id) }}" onclick="ConfirmDelete()"
+                                            <a href="{{ route('profile.destroy', $user->id) }}" onclick="ConfirmDelete()"
                                                class="block xl:w-3/5 lg:w-3/4 sm:w-3/5 w-full text-center bg-red-400 hover:bg-red-600 text-white mt-5 uppercase p-4 rounded-xl">{{__('Удалить профиль')}}</a>
                                         </div>
                                     </div>
@@ -171,7 +171,7 @@
                                     <div class="sm:w-4/5 w-full mt-10">
                                         <h3 class="font-bold text-3xl mb-7">1. {{__('Выберите категории')}}</h3>
                                         {{-- choosing categories --}}
-                                        <form action="{{route('get.category')}}" method="post">
+                                        <form action="{{route('profile.getCategory')}}" method="post">
                                             @csrf
                                             <div class="acordion mt-16">
                                                 @foreach ($categories as $category )
@@ -268,7 +268,7 @@
                                                                 </li>
                                                             </ul>
                                                             <form class="mt-8"
-                                                                  action="{{route('account.password.reset')}}"
+                                                                  action="{{route('profile.change_password')}}"
                                                                   method="post">
                                                                 @csrf
 

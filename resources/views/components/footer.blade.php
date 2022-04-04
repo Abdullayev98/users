@@ -50,7 +50,7 @@
                </div>
        </div>
        <div class="md:col-span-1 col-span-3 flex flex-col md:mx-auto md:mx-0 lg:mt-0 mt-8">
-            <a class="text-gray-300 hover:text-yellow-400 text-lg mb-2" href="/verification">{{__('Как стать исполнителем')}}</a>
+            <a class="text-gray-300 hover:text-yellow-400 text-lg mb-2" href="/verificationInfo">{{__('Как стать исполнителем')}}</a>
             <a class="text-gray-300 hover:text-yellow-400 text-lg my-2" href="/badges">{{__('Награды и рейтинг')}}</a>
             <a class="text-gray-300 hover:text-yellow-400 text-lg my-2" href="/geotaskshint">{{__('Как это работает')}}</a>
             <a class="text-gray-300 hover:text-yellow-400 text-lg my-2" href="/author-reviews">{{__('Отзывы заказчиков')}}</a>

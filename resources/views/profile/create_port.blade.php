@@ -4,7 +4,7 @@
 
 
     <div class="w-10/12 mx-auto mt-8">
-        <form action="{{ route('portfolio.create') }}" method="post">
+        <form action="{{ route('profile.createPortfolio') }}" method="post">
             @csrf
             <div class="lg:w-3/5 w-full">
                 <div>
@@ -72,7 +72,7 @@
 
             .use(Uppy.ImageEditor, {target: Uppy.Dashboard})
             .use(Uppy.XHRUpload, {
-                endpoint: '/storepicture',
+                endpoint: '/uploadImage',
                 fieldName: 'files[]',
                 method: 'post',
                 bundle: true,

@@ -48,28 +48,27 @@ class Controller extends BaseController
         $vcs = UserView::where('user_id', $user->id)->get();
         return view('profile.profile', compact('user', 'vcs'));
     }
-    // vaqtinchalik komentatriya ob turamiz kegin yana ochib qo'ysa bo'ladi
-//    public function update(Request $request, $id)
-//    {
-//        $request->validate([
-//            'avatar' => 'required|image'
-//        ]);
-//        $user = User::find($id);
-//        $data = $request->all();
-//
-//        if ($request->hasFile('avatar')) {
-//            Storage::delete($user->avatar);
-//            $data['avatar'] = $request->file('avatar')->store("images/users");
-//            // $filename = $request->file('avatar')->getClientOriginalName();
-//            // Storage::disk('avatar')->putFileAs('images/users', $request->file('avatar'), $filename);
-//            $filename = request()->file('avatar');
-//            $extention = File::extension($filename);
-//            $file = $filename;
-//            $file->store('images/users', ['disk' => 'avatar']);
-//        }
-//        $user->update($data);
-//        return  redirect()->route('userprofile');
-//    }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'avatar' => 'required|image'
+        ]);
+        $user = User::find($id);
+        $data = $request->all();
+
+        if ($request->hasFile('avatar')) {
+            Storage::delete($user->avatar);
+            $data['avatar'] = $request->file('avatar')->store("images/users");
+            // $filename = $request->file('avatar')->getClientOriginalName();
+            // Storage::disk('avatar')->putFileAs('images/users', $request->file('avatar'), $filename);
+            $filename = request()->file('avatar');
+            $extention = File::extension($filename);
+            $file = $filename;
+            $file->store('images/users', ['disk' => 'avatar']);
+        }
+        $user->update($data);
+        return  redirect()->route('profile.profileData');
+    }
     public function task_create()
     {
         return view('/create/name');
@@ -116,7 +115,7 @@ class Controller extends BaseController
         $datas = $datas->merge($tasks);
         $datas = $datas->merge($perform_tasks);
         $categories = getAllCategories();
-        return view('task.mytasks',compact('tasks','perform_tasks','categories','datas'));
+        return view('searchTask.mytasks',compact('tasks','perform_tasks','categories','datas'));
     }
 
     public function category($id)

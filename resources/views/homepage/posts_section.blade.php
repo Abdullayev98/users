@@ -22,7 +22,7 @@
                 @endforeach
             </div>
             <div class="mt-8 flex justify-center">
-                <a href="{{route('task.search')}}" type="button"
+                <a href="{{route('searchTask.task_search')}}" type="button"
                    class="text-center p-4 bg-blue-500 border-blue-500 text-white text-base  rounded-lg">
                     {{__('Показать ещё задания')}}
                 </a>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{route('performers')}}">
+            <a href="{{route('performers.service')}}">
                 <div class="w-96 h-48 rounded-xl" style="background: url({{asset('images/perform.png')}});">
                     <div class="w-full text-center">
                         <p class="text-2xl font-bold text-yellow-400 pt-12">

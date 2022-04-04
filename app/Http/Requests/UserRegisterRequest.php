@@ -27,7 +27,7 @@ class UserRegisterRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'phone_number' =>  'required|numeric|unique:users|min:9',
+            'phone_number' =>  'numeric|unique:users|min:9', // required olindi
             'password' => 'required|confirmed|min:8',
             'password_confirmation' => 'required|min:8',
         ];

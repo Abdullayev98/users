@@ -16,7 +16,7 @@
         var multiRoute;
         var place, place1="", place2="", place3="", place4="", place5="", place6="", place7="", place8="", place9="";
     </script>
-    <form action="{{ route('task.update', $task->id) }}" method="post" novalidate >
+    <form action="{{ route('update.__invoke', $task->id) }}" method="post" novalidate >
         @csrf
         @method('put')
 

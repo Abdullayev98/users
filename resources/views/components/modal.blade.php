@@ -43,13 +43,13 @@
                             </p>
 
                             <a class='text-sm sm:text-xl text-gray-800 send-email border-b sent-email border-dotted @if($errors->has('email') || session()->has('email-message')) hidden @endif border-gray-700 cursor-pointer'
-                               href="{{route('user.verify.send')}}">{{__('Отправить новое письмо для подтверждения почты')}}</a><br>
+                               href="{{route('login.send_email_verification')}}">{{__('Отправить новое письмо для подтверждения почты')}}</a><br>
 
 
                             <a class='text-sm sm:text-xl text-gray-800 border-b border-dotted border-gray-700 @if($errors->has('email') || session()->has('email-message') ) hidden @endif change-email cursor-pointer'>
                                 {{__('Указать другую почту')}}</a>
 
-                            <form action="{{route('user.email.change')}}" id="send-data-form"
+                            <form action="{{route('login.change_email')}}" id="send-data-form"
                                   class="@if(!($errors->has('email') || session()->has('email-message')) ) hidden @endif"
                                   method="post">
                                 @csrf
@@ -129,7 +129,7 @@
                                 </p>
 
                                 <a class='text-gray-800 send-email border-b sent-email border-dotted @if($errors->has('phone_number') || session()->has('email-message') || !auth()->user()->phone_number)) hidden @endif border-gray-700 cursor-pointer'
-                                   href="{{route('user.verify.phone.send')}}">
+                                   href="{{route('login.send_phone_verification')}}">
                                     {{__('Отправить новый код для подтверждения телефонный номер')}}</a><br>
 
 
@@ -137,7 +137,7 @@
                                     {{__('Указать другой телефонный номер')}}</a>
 
 
-                                <form action="{{route('user.phone.change')}}" id="send-data-form"
+                                <form action="{{route('login.change_phone_number')}}" id="send-data-form"
                                       class="@if(!($errors->has('phone_number') || session()->has('email-message') || !auth()->user()->phone_number) || session()->has('code') ) hidden @endif"
                                       method="post">
                                     @csrf
@@ -201,7 +201,7 @@
                                 </button>
                             </div>
 
-                            <form action="{{route('user.verify.phone.submit')}}" method="post">
+                            <form action="{{route('login.verify_phone')}}" method="post">
                                 @csrf
                                 <input type="text" placeholder="{{__('Код')}}" name="code"
                                        class="shadow focus:outline-none  focus:border-yellow-500 appearance-none border border-slate-300 rounded

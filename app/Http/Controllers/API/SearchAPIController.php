@@ -95,7 +95,7 @@ class SearchAPIController extends Controller
             $tasks = Task::where('name','LIKE',"%$s%")->orWhere('address','LIKE',"%$a%")->orWhere('budget','LIKE',"%$p%")->orderBy('name')->paginate(10);
         }
         $categories = Category::get()->all();
-        return view('task.search', compact('tasks','s','a','p','categories'));
+        return view('searchTask.task_search', compact('tasks','s','a','p','categories'));
 
     } */
 
@@ -160,7 +160,7 @@ class SearchAPIController extends Controller
     public function changeTask(Task $task)
     {
         taskGuard($task);
-        return view('task.changetask', compact('task'));
+        return view('searchTask.changetask', compact('task'));
     }
 
     /**

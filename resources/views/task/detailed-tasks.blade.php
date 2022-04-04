@@ -43,10 +43,10 @@
     </script>
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task->responses))
-        <div class="lg:flex container xl:w-9/12 w-11/12 mx-auto">
-            <div class="md:flex mx-auto w-full">
+        <div class="xl:flex container w-11/12 mx-auto">
+            <div class="md:flex mx-auto xl:w-9/12 w-full">
                 @else
-                    <div class="md:flex mx-auto w-full">
+                    <div class="md:flex mx-auto xl:w-9/12 w-full">
                         @endif
                         <div class="mt-8 lg:flex mb-8 w-full">
                             {{-- left sidebar start --}}
@@ -56,7 +56,7 @@
                                     <span class="text-black rounded-lg bg-yellow-400 p-2">{{$task->budget}}</span>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id)
-                                            <a href="{{ route('task.changetask', $task->id) }}"
+                                            <a href="{{ route('searchTask.changetask', $task->id) }}"
                                                class="py-2 px-2 text-gray-500 hover:text-red-500">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
@@ -84,7 +84,7 @@
                                     <p class="mr-3 md:pl-2 pr-3 md:border-r-2 border-gray-400">{{$task->created_at}}</p>
                                     <p class="pr-3 ">{{ $task->category->getTranslatedAttribute('name') }}</p>
                                     @if($task->user_id == auth()->id())
-                                        <form action="{{route("delete.task", $task->id)}}" method="post">
+                                        <form action="{{route("searchTask.delete_task", $task->id)}}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"
@@ -499,7 +499,7 @@
                                                             @auth()
                                                                 @if($task->status == 3 && $response->user_id == $task->performer_id)
                                                                     <div class="w-10/12 mx-auto">
-                                                                        <a href="{{ route('personal.chat', $response->user->id) }}"
+                                                                        <a href="{{ route('performers.performer_chat', $response->user->id) }}"
                                                                            class="text-semibold text-center w-[200px] mb-2 md:w-[320px] ml-0 inline-block py-3 px-4 hover:bg-gray-200 transition duration-200 bg-white text-black font-medium border border-gray-300 rounded-md">
                                                                             {{__('Написать в чат')}}
                                                                         </a>
@@ -507,7 +507,7 @@
                                                                     </div>
                                                                 @elseif($task->status <= 2 && auth()->user()->id == $task->user_id)
                                                                     <form
-                                                                        action="{{ route('performer.select', $response->id) }}"
+                                                                        action="{{ route('response.selectPerformer', $response->id) }}"
                                                                         method="post">
                                                                         @csrf
                                                                         <button
@@ -533,7 +533,7 @@
                             </div>
                         </div>
                         {{-- right sidebar start --}}
-                        <div class="lg:w-3/12 w-1/2 mt-8 lg:ml-8 ml-0">
+                        <div class="lg:w-3/12 w-full mt-8 lg:ml-8 ml-0">
                             <div class="mb-10">
                                 <h1 class="text-xl font-medium mb-4">{{__('Задание')}} № {{$task->id}}</h1>
                                 <div>
@@ -598,7 +598,7 @@
         <div
             class="hidden overflow-x-auto bg-black bg-opacity-50 overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
             id="modal-id4">
-            <form id="updatereview" action="{{route('send.review', $task->id)}}" method="POST">
+            <form id="updatereview" action="{{route('update.sendReview', $task->id)}}" method="POST">
                 @csrf
                 <div class="relative my-6 mx-auto max-w-xl" id="modal4">
                     <input type="text" hidden name="status" id="status" value="">
@@ -707,7 +707,7 @@
                     </div>
                     <div class="text-center my-6">
 
-                        <form action="{{route('tasks.detailed')}}" method="POST">
+                        <form action="{{route('searchTask.comlianse_save')}}" method="POST">
                             @csrf
                             <input type="hidden" name="taskId" value="{{ $task->id }}">
                             <input type="hidden" name="userId"
