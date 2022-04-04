@@ -80,42 +80,17 @@ class TaskAPIController extends Controller
         $datas = new Collection(); //Create empty collection which we know has the merge() method
         $datas = $datas->merge($tasks);
         $datas = $datas->merge($perform_tasks);
+        $categories = getAllCategories();
 
         return response()->json([
             'data' => [
                 'tasks' => $tasks,
                 'perform_tasks' => $perform_tasks,
-                'datas' => $datas
+                'datas' => $datas,
+                'categories'=>$categories
             ]
         ]);
     }
-
-    /**
-     * @OA\Get(
-     *     path="/api/find",
-     *     tags={"Task"},
-     *     summary="Get list in Tasks",
-     *     @OA\Response(
-     *          response=200,
-     *          description="Successful operation"
-     *     ),
-     *     @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *     ),
-     *     @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *     )
-     * )
-     */
-    public function search(Request $request)
-    {
-        $s = $request->s;
-        $data = Task::where('name', 'LIKE', "%$s%")->orderBy('name')->paginate(10);
-        return response()->json($data);
-    }
-
 
     /**
      *

@@ -74,19 +74,6 @@ class ControllerAPI extends Controller
         //return  redirect()->route('profile.profileData');
     }
 
-    public function my_tasks()
-    {
-        $user = auth()->user();
-        $tasks = $user->tasks()->orderBy('created_at','desc')->get();
-        $perform_tasks = $user->performer_tasks;
-        $datas = new Collection(); //Create empty collection which we know has the merge() method
-        $datas = $datas->merge($tasks);
-        $datas = $datas->merge($perform_tasks);
-        $categories = getAllCategories();
-        return response()->json(['tasks'=>$tasks,'perform_tasks'=>$perform_tasks,'categories'=>$categories,'datas'=>$datas]);
-        //return view('searchTask.mytasks',compact('tasks','perform_tasks','categories','datas'));
-    }
-
     public function category($id)
     {
         $categories = Category::withTranslations(['ru', 'uz'])->where('parent_id', null)->get();

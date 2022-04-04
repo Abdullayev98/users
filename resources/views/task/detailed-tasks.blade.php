@@ -556,8 +556,8 @@
 
                             </div>
                             <h1 class="text-lg">{{__('Заказчик этого задания')}}</h1>
-                            <div class="flex flex-row mt-4">
-                                <div class="mr-4">
+                            <div class="flex flex-col mt-4">
+                                <div class="mb-4">
                                     <img class="border-2 border-radius-500 border-gray-400 w-32 h-32 rounded-lg" alt="#"
                                          src="@if ($task->user->avatar == ''){{ asset("storage/images/default.png") }}
                                          @else{{asset("storage/{$task->user->avatar}") }}" @endif
