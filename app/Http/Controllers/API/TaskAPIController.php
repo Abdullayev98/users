@@ -80,12 +80,14 @@ class TaskAPIController extends Controller
         $datas = new Collection(); //Create empty collection which we know has the merge() method
         $datas = $datas->merge($tasks);
         $datas = $datas->merge($perform_tasks);
+        $categories = getAllCategories();
 
         return response()->json([
             'data' => [
                 'tasks' => $tasks,
                 'perform_tasks' => $perform_tasks,
-                'datas' => $datas
+                'datas' => $datas,
+                'categories'=>$categories
             ]
         ]);
     }
