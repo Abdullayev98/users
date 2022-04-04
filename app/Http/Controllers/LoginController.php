@@ -107,8 +107,8 @@ class LoginController extends Controller
                 $user->$needle = 1;
                 $user->save();
                 $result = true;
-                if ($needle != 'is_phone_number_verified')
-                    self::send_verification('phone',auth()->user());
+                if ($needle != 'is_phone_number_verified' && !$user->is_phone_number_verified)
+                    self::send_verification('phone',$user);
             } else {
                 $result = false;
             }
