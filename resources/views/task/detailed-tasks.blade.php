@@ -44,11 +44,11 @@
     <link rel="stylesheet" href="{{asset('css/modal.css')}}">
     @if(isset($task->responses))
         <div class="xl:flex container w-11/12 mx-auto">
-            <div class="md:flex mx-auto xl:w-9/12 w-full">
+            <div class="xl:flex mx-auto w-full">
                 @else
-                    <div class="md:flex mx-auto xl:w-9/12 w-full">
+                    <div class="xl:flex mx-auto w-full">
                         @endif
-                        <div class="mt-8 lg:flex mb-8 w-full">
+                        <div class="mt-8 lg:flex mb-8 xl:w-9/12 w-full">
                             {{-- left sidebar start --}}
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
