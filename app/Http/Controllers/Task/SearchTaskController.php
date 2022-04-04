@@ -191,7 +191,7 @@ public function __construct()
     {
         taskGuard($task);
 //        dd($task);
-        return view('task.changetask', compact('task'));
+        return view('task.search', compact('task'));
     }
 
 

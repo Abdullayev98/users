@@ -71,7 +71,7 @@ class ControllerAPI extends Controller
         }
         $user->update($data);
         return response()->json(['message'=>'avatar changed']);
-        //return  redirect()->route('userprofile');
+        //return  redirect()->route('profile.profileData');
     }
 
     public function my_tasks()
@@ -84,7 +84,7 @@ class ControllerAPI extends Controller
         $datas = $datas->merge($perform_tasks);
         $categories = getAllCategories();
         return response()->json(['tasks'=>$tasks,'perform_tasks'=>$perform_tasks,'categories'=>$categories,'datas'=>$datas]);
-        //return view('task.mytasks',compact('tasks','perform_tasks','categories','datas'));
+        //return view('searchTask.mytasks',compact('tasks','perform_tasks','categories','datas'));
     }
 
     public function category($id)

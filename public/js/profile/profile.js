@@ -20,7 +20,7 @@ $('#s2').click(function(event){
 $("#button_comment").click(function(event){
     let comment = $("input[name=comment]").val();
     $.ajax({
-        url: "{{route('comment')}}",
+        url: "{{route('profile.comment')}}",
         type:"POST",
         data:{
             comment:comment,

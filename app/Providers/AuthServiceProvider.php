@@ -25,9 +25,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        
-        if (! $this->app->routesAreCached()) {
+        Passport::routes();
+
+        //Passport::routes(); буни ташкарига чикариб койиш керак
+        /* if (! $this->app->routesAreCached()) {
             Passport::routes();
-        };
+        }; */
     }
 }

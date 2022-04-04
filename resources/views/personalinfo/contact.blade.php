@@ -11,7 +11,7 @@
             <p class="text-base mt-3 text-center md:px-10 px-1">
                 {{__('Заказчики будут контактировать с вами по телефону, либо в чате. На почту будем присылать уведомления.')}}
             </p>
-            <form action="{{route('verification.contact.store')}}" method="Post" class="my-10">
+            <form action="{{route('profile.verificationContactStore')}}" method="Post" class="my-10">
                 @csrf
                 <div class="mt-3 mb-3">
                     <label class="text-gray-500 text-sm" for="lastname"> {{__('Электронная почта')}}</label>

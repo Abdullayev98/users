@@ -67,7 +67,7 @@ class Controller extends BaseController
             $file->store('images/users', ['disk' => 'avatar']);
         }
         $user->update($data);
-        return  redirect()->route('userprofile');
+        return  redirect()->route('profile.profileData');
     }
     public function task_create()
     {
@@ -115,7 +115,7 @@ class Controller extends BaseController
         $datas = $datas->merge($tasks);
         $datas = $datas->merge($perform_tasks);
         $categories = getAllCategories();
-        return view('task.mytasks',compact('tasks','perform_tasks','categories','datas'));
+        return view('searchTask.mytasks',compact('tasks','perform_tasks','categories','datas'));
     }
 
     public function category($id)

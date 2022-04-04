@@ -32,20 +32,7 @@ class ProfileAPIController extends Controller
         return  response()->json(['status'=>true,'message'=>"avatar successfully changed"]);
     }
 
-    /**
-     * @OA\Get(
-     *     path="/api/settings",
-     *     tags={"Profile"},
-     *     summary="Get list of Settings",
-     *     security={
-     *      {"token": {}},
-     *     },
-     *     @OA\Response(
-     *          response=200,
-     *          description="successful operation",
-     *     )
-     * )
-     */
+    
     public function settings()
     {
         $user = User::find(Auth::user()->id);
@@ -59,6 +46,69 @@ class ProfileAPIController extends Controller
         ]);
     }
 
+
+    /**
+     *
+     * @OA\Post (
+     *     path="/api/settings/update",
+     *     tags={"Profile"},
+     *     summary="Update Settings",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="email",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="age",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="phone_number",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="description",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="location",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "email":"admin@admin.com",
+     *                     "age":17,
+     *                     "phone_number":"999098998",
+     *                     "description":"Assalomu aleykum",
+     *                     "location":"Xorazm viloyati",
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="id", type="number", example=1),
+     *              @OA\Property(property="email", type="string", example="admin@admin.com"),
+     *              @OA\Property(property="age", type="integer", example=20),
+     *              @OA\Property(property="phone_number", type="string", example="999098998"),
+     *              @OA\Property(property="description", type="string", example="Assalomu aleykum"),
+     *              @OA\Property(property="location", type="string", example="Xorazm viloyati"),
+     *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
+     *          )
+     *      ),
+     *     security={
+     *         {"token": {}}
+     *     },
+     * )
+     */
     public function updateData(UserUpdateDataRequest $request)
     {
         $data = $request->validated();
@@ -72,7 +122,7 @@ class ProfileAPIController extends Controller
         }
         Auth::user()->update($data);
         Alert::success(__('Настройки успешно сохранены'));
-        return redirect()->route('editData');
+        return redirect()->route('profile.editData');
     }
 
 }

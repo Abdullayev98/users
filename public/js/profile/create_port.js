@@ -3,7 +3,7 @@ $("#button1").click(function(){
     let comment = $("input[name=comment]").val();
     let description = $("input[name=description]").val();
     $.ajax({
-        url: "{{route('comment')}}",
+        url: "{{route('profile.comment')}}",
         type:"POST",
         data:{
             comment:comment,

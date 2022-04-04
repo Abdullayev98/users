@@ -6,11 +6,11 @@ use App\Http\Controllers\API\FaqAPIController; // javoxir
 use App\Http\Controllers\API\LoginAPIController;
 use App\Http\Controllers\API\NewsAPIController;
 use App\Http\Controllers\API\PerformerAPIController; // javoxir
-use App\Http\Controllers\API\ProfileAPIController; // javoxir
+use App\Http\Controllers\API\ProfileAPIController; // javoxir +
 use App\Http\Controllers\API\SocialAPIController;
 use App\Http\Controllers\API\TaskAPIController; // javoxir
 use App\Http\Controllers\API\UserAPIController; // javoxir
-use App\Http\Controllers\API\SearchAPIController; // javoxir --
+use App\Http\Controllers\API\SearchAPIController; // javoxir -
 use App\Http\Controllers\API\MassmediaAPIController; // javoxir
 use App\Http\Controllers\API\ConversationAPIController;
 use App\Http\Controllers\API\VoyagerUserAPIController; // javoxir -
@@ -32,17 +32,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::any('/{paysys}',function($paysys){
-    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
-});
-Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
-    $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);
-    $url = request('redirect_url','/'); // redirect url after payment completed
-    $pay_uz = new Goodoneuz\PayUz\PayUz;
-    $pay_uz
-        ->driver($paysys)
-        ->redirect($model, $amount, 860, $url);
-}); */
 
 Route::middleware('custom.auth:api')->group(function () {
     Route::post('logout', [UserAPIController::class, 'logout']); //end
@@ -51,14 +40,14 @@ Route::middleware('custom.auth:api')->group(function () {
 
 
     Route::get('/my-tasks', [TaskAPIController::class, 'my_tasks']); //end
-    Route::put('/change-task/{task}', [TaskAPIController::class, 'changeTask']);
+    Route::put('/change-task/{task}', [TaskAPIController::class, 'changeTask']); //end
     Route::get('/custom-field-by-category/{category}',[CustomFieldAPIController::class,'getByCategoryId']); //end
     Route::get('/custom-field-values-by-task/{task}',[CustomFieldAPIController::class,'getByTaskId']); //end
     Route::get('/custom-field-values-by-custom-field/{custom_field}',[CustomFieldAPIController::class,'getByCustomFieldId']); //end
     Route::delete('/for_del_new_task/{task}', [TaskAPIController::class, 'deletetask']); //end
-    Route::delete('/delete-task/{task}', [SearchAPIController::class, 'delete_task']); //not
+    Route::delete('/delete-task/{task}', [SearchAPIController::class, 'delete_task']); //end
     Route::delete('/delete', [UserAPIController::class, 'destroy']); //end
-    Route::post('/settings/update', [ProfileAPIController::class, 'updateData'])->name('updateData');
+    Route::post('/settings/update', [ProfileAPIController::class, 'updateData'])->name('profile.updateData'); //not
 
 });
 
@@ -70,8 +59,6 @@ Route::post('register', [UserAPIController::class, 'register']); //end
 Route::get('faq', [FaqAPIController::class, 'index']); //end
 Route::get('faq/{id}', [FaqAPIController::class, 'questions']); //end
 
-
-
 //Tasks
 Route::get('task/{task}', [TaskAPIController::class, 'task']); //end
 //Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks']); //end
@@ -79,13 +66,10 @@ Route::get('search-task', [SearchAPIController::class, 'task_search']); //end
 Route::post('ajax-request', [SearchAPIController::class, 'task_response']); //not
 Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']); //end
 
-Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks']); //end
-Route::get('search-task', [SearchAPIController::class, 'task_search']); //end
-Route::post('ajax-request', [SearchAPIController::class, 'task_response']); //not
-Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']); //end
 //Categories
 Route::get('/categories', [CategoriesAPIController::class, 'index']); //end
 Route::get('/categories/{id}', [CategoriesAPIController::class, 'show']); //end
+
 //Performers
 Route::get('/performers', [PerformerAPIController::class, 'service']); //end
 Route::get('/performers/{performer}', [PerformerAPIController::class, 'performer']); //end

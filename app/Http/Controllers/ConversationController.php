@@ -80,7 +80,7 @@ class ConversationController extends Controller
         $message = User::where('id', $user->id)->first();
         Auth::user()->hasRole('user') ? $message->update(["status" => 1]) : $message->update(["status" => 2]);
 
-        return redirect()->route('conversation.index', $message);
+        return redirect()->route('conversation.showChat', $message);
     }
     public function close($message)
     {

@@ -35,7 +35,7 @@
                 <p class="text-base mt-3 text-center ">
                     {{__('Эта данные нужны для работы на сервисе и связи с заказчиком. При этом заказчик увидит только ваше имя и телефон.')}}
                 </p>
-                <form class="mt-4 w-full" method="Post" action="{{route('verification.info.store')}}">
+                <form class="mt-4 w-full" method="Post" action="{{route('profile.verificationInfoStore')}}">
                     @csrf
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
                     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">

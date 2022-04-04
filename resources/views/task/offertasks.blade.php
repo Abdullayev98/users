@@ -16,7 +16,7 @@
 
                                     <div class="grid grid-cols-4 gap-4 mb-3">
                                       <a href="/offer-tasks" class="rounded border bg-gradient-to-b from-gray-300 to-gray-400 px-4 py-1">{{__('Я исполнитель')}}</a>
-                                      <a href="{{ route('task.mytasks') }}" class="rounded border bg-gradient-to-b from-gray-100 to-gray-200 px-4 py-1">{{__('Я заказчик')}}</a>
+                                      <a href="{{ route('searchTask.mytasks') }}" class="rounded border bg-gradient-to-b from-gray-100 to-gray-200 px-4 py-1">{{__('Я заказчик')}}</a>
 
 
                                     </div>
