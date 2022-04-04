@@ -74,8 +74,7 @@ Route::get('faq/{id}', [FaqAPIController::class, 'questions']); //end
 
 //Tasks
 Route::get('task/{task}', [TaskAPIController::class, 'task']); //end
-Route::get('find', [TaskAPIController::class, 'search']); //end
-Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks']); //end
+//Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks']); //end
 Route::get('search-task', [SearchAPIController::class, 'task_search']); //end
 Route::post('ajax-request', [SearchAPIController::class, 'task_response']); //not
 Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']); //end

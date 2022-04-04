@@ -104,7 +104,6 @@ Route::get('/', [Controller::class, 'home'])->name('home'); // javoxir
 Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('task.search'); // javoxir
 Route::get('tasks-search', [SearchTaskController::class, 'ajax_tasks'])->name('tasks.search');
 Route::get('my-tasks', [SearchTaskController::class, 'my_tasks'])->name('task.mytasks');
-Route::get('search', [SearchTaskController::class, 'search'])->name('search'); // javoxir
 
 Route::put('/change-task/{task}', [UpdateController::class, '__invoke'])->name("task.update")->middleware('auth'); // javoxir
 
