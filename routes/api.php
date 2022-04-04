@@ -32,17 +32,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::any('/{paysys}',function($paysys){
-    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
-});
-Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
-    $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);
-    $url = request('redirect_url','/'); // redirect url after payment completed
-    $pay_uz = new Goodoneuz\PayUz\PayUz;
-    $pay_uz
-        ->driver($paysys)
-        ->redirect($model, $amount, 860, $url);
-}); */
 
 Route::middleware('custom.auth:api')->group(function () {
     Route::post('logout', [UserAPIController::class, 'logout']); //end
@@ -72,8 +61,7 @@ Route::get('faq/{id}', [FaqAPIController::class, 'questions']); //end
 
 //Tasks
 Route::get('task/{task}', [TaskAPIController::class, 'task']); //end
-Route::get('find', [TaskAPIController::class, 'search']); //end
-Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks']); //end
+//Route::get('tasks-search', [SearchAPIController::class, 'ajax_tasks']); //end
 Route::get('search-task', [SearchAPIController::class, 'task_search']); //end
 Route::post('ajax-request', [SearchAPIController::class, 'task_response']); //not
 Route::get('/detailed-tasks/{task}', [SearchAPIController::class, 'task']); //end

@@ -86,7 +86,15 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/messages/chat/close/{message}', [ConversationController::class, 'close'])->name("conversation.close"); // javoxir
     Route::post('/messages/chat/{id}', [ConversationController::class, 'send'])->name("conversation.send"); // javoxir
 });
-#endregion 
+#endregion
+
+
+Route::get('/', [Controller::class, 'home'])->name('home'); // javoxir
+
+
+Route::get('task-search', [SearchTaskController::class, 'task_search'])->name('task.search'); // javoxir
+Route::get('tasks-search', [SearchTaskController::class, 'ajax_tasks'])->name('tasks.search');
+Route::get('my-tasks', [SearchTaskController::class, 'my_tasks'])->name('task.mytasks');
 
 #region tasks
 Route::group(['middleware' => 'auth'], function () {
@@ -105,7 +113,7 @@ Route::put('/change-task/{task}', [UpdateController::class, '__invoke'])->name("
 Route::get('/choose-task', function () {
     return view('task.choosetasks');
 }); // javoxir
-#endregion 
+#endregion
 
 #region verificationInfo
 Route::view('/offer-tasks', 'task.offertasks');
@@ -125,9 +133,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'verification'], function () {
     Route::get('/verificationInfo/category', [ProfileController::class, 'verificationCategory'])->name('profile.verificationCategory'); // javoxir
     Route::post('/verificationInfo/category', [ProfileController::class, 'getCategory'])->name('profile.getCategory'); // javoxir
 });
-#endregion 
+#endregion
 
-#region foterpage 
+#region foterpage
 Route::get('/faq', [FaqsController::class, 'index'])->name('faq.index'); // javoxir
 Route::get('/questions/{id}', [FaqsController::class, 'questions'])->name('faq.questions'); // javoxir
 Route::view('/faq', 'faq.faq');
@@ -138,7 +146,7 @@ Route::view('/vacancies', 'reviews.vacancies');
 Route::get('/geotaskshint', [Controller::class, 'geotaskshint'])->name('geotaskshint'); // javoxir
 Route::get('/security', [Controller::class, 'security'])->name('security'); // javoxir
 Route::get('/badges', [Controller::class, 'badges'])->name('badges'); // javoxir
-#endregion 
+#endregion
 
 #region Profile
 Route::group(['middleware' => 'auth'], function () {
@@ -177,7 +185,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 Route::post('/uploadImage', [ProfileController::class, 'UploadImage'])->name('profile.UploadImage');
-#endregion 
+#endregion
 
 #region creat task
 Route::prefix("task")->group(function () {
@@ -206,9 +214,9 @@ Route::prefix("task")->group(function () {
         Route::post("/detailed-task/{task}/response", [ResponseController::class, 'store'])->name('task.response.store'); // javoxir
     });
 });
-#endregion 
+#endregion
 
-#region 
+#region
 Route::post('select-performer/{response}', [ResponseController::class, 'selectPerformer'])->name('response.selectPerformer'); // javoxir
 Route::post('tasks/{task}/complete', [UpdateController::class, 'completed'])->name('update.completed'); // javoxir
 Route::post('send-review-user/{task}', [UpdateController::class, 'sendReview'])->name('update.sendReview'); // javoxir
