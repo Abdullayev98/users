@@ -57,6 +57,12 @@ use App\Http\Controllers\Task\CreateController;
 |
 */
 
+
+Route::any('/{paysys}',function($paysys){
+    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
+});
+
+
 #region performers
 Route::get('/for_del_new_task/{task}', [CreateController::class, 'deletetask']); // javoxir
 Route::group(['middleware' => 'auth'], function () {
