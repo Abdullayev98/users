@@ -21,7 +21,8 @@ class VerifyCsrfToken extends Middleware
         '/clcomplete',
         '/sms/*',
         "task/create/note/*/images/store",
-        '/uploadImage'
+        '/uploadImage',
+        '/paynet'
 //        '/send-review/*'
     ];
 }
