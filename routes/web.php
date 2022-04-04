@@ -58,8 +58,8 @@ use App\Http\Controllers\Task\CreateController;
 */
 
 
-Route::any('/{paysys}',function($paysys){
-    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
+Route::any('/paynet',function(){
+    (new Goodoneuz\PayUz\PayUz)->driver('paynet')->handle();
 });
 
 

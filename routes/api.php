@@ -31,10 +31,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::any('/{paysys}',function($paysys){
-    logger($paysys);
-    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
-});
 
 Route::middleware('custom.auth:api')->group(function () {
     Route::post('logout', [UserAPIController::class, 'logout']); //end
