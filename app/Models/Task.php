@@ -75,6 +75,7 @@ class Task extends Model
     public function getStartDateAttribute($value)
     {
         $value = Carbon::parse($value)->locale(getLocale());
-        return "$value->day-$value->monthName  $value->noZeroHour:$value->minute";
+        $value->minute<10 ? $minut = '0'.$value->minute : $minut = $value->minute;
+        return "$value->day-$value->monthName  $value->noZeroHour:$minut";
     }
 }
