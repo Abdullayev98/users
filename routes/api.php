@@ -17,6 +17,7 @@ use App\Http\Controllers\API\VoyagerUserAPIController; // javoxir -
 use App\Http\Controllers\API\RefillAPIController; // javoxir
 use App\Http\Controllers\API\ReportAPIController; // javoxir
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,13 @@ Route::middleware('custom.auth:api')->group(function () {
 //User Routes
 Route::post('login', [UserAPIController::class, 'login']); //end
 Route::post('register', [UserAPIController::class, 'register']); //end
+
+Route::post('/reset', [UserAPIController::class, 'reset_submit']);
+Route::post('/reset/password', [UserAPIController::class, 'reset_password_save'])->name('user.reset_password_save');
+Route::post('/code', [UserAPIController::class, 'reset_code'])->name('user.reset_code');
+
+
+
 
 // FAQ
 Route::get('faq', [FaqAPIController::class, 'index']); //end
