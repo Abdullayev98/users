@@ -133,7 +133,7 @@ class Controller extends BaseController
     }
     public function download()
     {
-        $filePath = public_path('[{"download_link":"settings\\April2022\\3AAMfgF9xBlrwM9qqRc5.pdf","original_name":"dom.pdf"}]');
+        $filePath = public_path('settings\\April2022\\3AAMfgF9xBlrwM9qqRc5.pdf');
         $headers = ['Content-Type: application/pdf'];
         $fileName ='Правила_сервиса.pdf';
         return response()->download($filePath, $fileName, $headers);
