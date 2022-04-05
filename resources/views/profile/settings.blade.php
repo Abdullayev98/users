@@ -152,19 +152,19 @@
                                     {{-- settings/ second tab -> enable notification start --}}
                                     <div class="md:w-4/5 w-full mt-5">
                                         <h3 class="font-bold text-3xl">{{__('Получать уведомления:')}}</h3>
-                                       <form  action="" class="w-full" method="GET">
+                                       {{-- <form  action="" class="w-full" method="GET"> --}}
                                             <div class="grid grid-cols-10 mt-5">
-                                                <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
+                                                <input type="checkbox" id="notif_checkbox1" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
                                                 <span class="col-span-9 ml-2">{{__('Системные уведомления')}}</span>
                                             </div>
                                             <div class="grid grid-cols-10 mt-5">
-                                                <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
+                                                <input type="checkbox" id="notif_checkbox2" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
                                                 <span class="col-span-9 ml-2">{{__('Я хочу получать новости сайта')}}</span>
                                             </div>
-                                            <button
+                                            <button onclick="ajax_func()"
                                                     class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl"
                                                     type="submit">{{__('Сохранить')}}</button>
-                                       </form>
+                                       {{-- </form> --}}
                                     </div>
                                     {{-- settings/ second tab -> enable notification end --}}
                                 </div>
@@ -358,6 +358,61 @@
             {{-- tugashi o'ng tomon ispolnitel --}}
         </div>
     </div>
+    <script>
+       // $('#notif_button').click(function(){
+            // let notif_11,notif_22;
+            // if($('#notif_checkbox1').is(":checked")){
+            //     notif_11=1;
+            // }
+            // else{
+            //     notif_11=0;
+            // }
+            // if($('#notif_checkbox2').is(":checked")){
+            //     notif_22=1;
+            // }
+            // else{
+            //     notif_22=0;
+            // }
+            // console.log(notif_11)
+            // console.log(notif_22)
+            // @php $id=auth()->user()->id  @endphp
+            // let id={{$id}}
+            // console.log(id);
+            //ajax_func(id,notif_11,notif_22);
+       // })
+        function ajax_func(){
+            let notif_11,notif_22;
+            if($('#notif_checkbox1').is(":checked")){
+                notif_11=1;
+            }
+            else{
+                notif_11=0;
+            }
+            if($('#notif_checkbox2').is(":checked")){
+                notif_22=1;
+            }
+            else{
+                notif_22=0;
+            }
+            console.log(notif_11)
+            console.log(notif_22)
+            @php $id=auth()->user()->id  @endphp
+            let id={{$id}}
+            console.log(id);
+            $.ajax({
+                url: `{{route('profile.notif_setting_ajax')}}`,
+                type: 'GET',
+                data: id,notif_11,notif_22,
+                success: function (data) {
+                   alert(data)
+                },
+                error: function (error) {
+                    console.error("Ajax orqali yuklashda xatolik..." , error);
+                }
+            });
+        }
+        ajax_func(id,notif_11,notif_22);
+    </script>
     <script src="https://unpkg.com/imask"></script>
     <script src="{{ asset('js/profile/setting.js') }}"></script>
 @endsection
