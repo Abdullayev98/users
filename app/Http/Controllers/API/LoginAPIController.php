@@ -98,7 +98,8 @@ class LoginAPIController extends Controller
             return response()->json(['message'=>'success']);
         } else {
             return response()->json([
-                'message' => 'Code Error!'
+                'message' => 'Code Error!',
+                'success' => false
             ]);
 
         }
@@ -111,7 +112,7 @@ class LoginAPIController extends Controller
 
         if ($request->email == $user->email) {
             return response()->json([
-                'email-message' => 'Error, Your email',
+                'email-message' => 'Error, Your email is given',
                 'email' => $request->email
             ]);
         } else {
@@ -130,7 +131,7 @@ class LoginAPIController extends Controller
 
 
 
-            return response()->json(['message'=> 'success']);
+            return response()->json(['message'=> 'Verification link is send to your email', 'success'=> true]);
         }
     }
 
@@ -160,7 +161,8 @@ class LoginAPIController extends Controller
             self::send_verification('phone_number', auth()->user());
 
             return response()->json([
-                'code' => 'Код отправлено!'
+                'message' => 'Код отправлено!',
+                'success' => true
             ]);
         }
     }
