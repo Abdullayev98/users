@@ -313,7 +313,7 @@ class ProfileController extends Controller
         $user->system_notification=$request->notif11;
         $user->news_notification=$request->notif22;
         $user->save();
-        return 'zor chiqdi';
+        return 'Malumotlar bazaga yozildi.';
     }
 
     public function storeProfileImage(Request $request)

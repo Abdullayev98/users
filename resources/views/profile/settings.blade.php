@@ -400,10 +400,14 @@
             let id={{$id}}
             console.log(id);
             $.ajax({
-                url: `{{route('profile.notif_setting_ajax')}}`,
+                url: "{{route('profile.notif_setting_ajax')}}",
                 type: 'GET',
-                data: id,notif_11,notif_22,
+                data: {id: id,
+                       notif11: notif_11,
+                       notif22: notif_22
+                },
                 success: function (data) {
+                    console.log(data)
                    alert(data)
                 },
                 error: function (error) {
@@ -411,7 +415,7 @@
                 }
             });
         }
-        ajax_func(id,notif_11,notif_22);
+
     </script>
     <script src="https://unpkg.com/imask"></script>
     <script src="{{ asset('js/profile/setting.js') }}"></script>
