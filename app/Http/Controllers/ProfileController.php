@@ -308,7 +308,13 @@ class ProfileController extends Controller
 
 
     }
-
+    public function notif_setting_ajax(Request $request){
+        $user = User::find($request->id);
+        $user->system_notification=$request->notif11;
+        $user->news_notification=$request->notif22;
+        $user->save();
+        return 'Malumotlar bazaga yozildi.';
+    }
 
     public function storeProfileImage(Request $request)
     {
