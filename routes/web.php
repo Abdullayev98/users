@@ -214,6 +214,8 @@ Route::post('send-review-user/{task}', [UpdateController::class, 'sendReview'])-
 Route::get('/categories/{id}', [Controller::class, 'category'])->name("categories"); // javoxir
 Route::get('/lang/{lang}', [Controller::class, 'lang'])->name('lang'); // javoxir
 Route::get('/', [Controller::class, 'home'])->name('home'); // javoxir
+Route::get('/terms', function () {  return view('auth.terms');});
+Route::get('/file-download', [Controller::class, 'download'])->name('file_download.download');
 #endregion
 
 #region registration
@@ -284,6 +286,3 @@ Route::get('profile/clickuz/transactions', function () {
 })->name('user.clickuz.transactions')->middleware('auth');
 #endregion
 
-Route::get('/terms', function () {
-    return view('auth.terms');
-});
