@@ -52,7 +52,7 @@ class TaskAPIController extends Controller
      */
     public function task(Task $task)
     {
-        return response()->json($task);
+        return new TaskIndexResource($task);
     }
 
     /**

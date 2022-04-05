@@ -17,6 +17,7 @@ use App\Http\Controllers\API\VoyagerUserAPIController; // javoxir -
 use App\Http\Controllers\API\RefillAPIController; // javoxir
 use App\Http\Controllers\API\ReportAPIController; // javoxir
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,11 +52,27 @@ Route::middleware('custom.auth:api')->group(function () {
     Route::delete('/delete', [UserAPIController::class, 'destroy']); //end
     Route::post('/settings/update', [ProfileAPIController::class, 'updateData'])->name('profile.updateData'); //not
 
+
+
+    Route::get('account/verification/email', [LoginAPIController::class, 'send_email_verification']);
+    Route::get('account/verification/phone', [LoginAPIController::class, 'send_phone_verification']);
+    Route::post('account/verification/phone', [LoginAPIController::class, 'verify_phone']);
+    Route::post("account/change/email", [LoginAPIController::class,'change_email']);
+    Route::post("account/change/phone", [LoginAPIController::class,'change_phone_number']);
+
+
 });
 
 //User Routes
 Route::post('login', [UserAPIController::class, 'login']); //end
 Route::post('register', [UserAPIController::class, 'register']); //end
+
+Route::post('/reset', [UserAPIController::class, 'reset_submit']);
+Route::post('/reset/password', [UserAPIController::class, 'reset_password_save'])->name('user.reset_password_save');
+Route::post('/code', [UserAPIController::class, 'reset_code'])->name('user.reset_code');
+
+
+
 
 // FAQ
 Route::get('faq', [FaqAPIController::class, 'index']); //end
@@ -96,12 +113,6 @@ Route::post('/prepare', [RefillAPIController::class, 'prepare']); //end
 Route::post('/complete', [RefillAPIController::class, 'complete']); //end
 
 
-
-Route::get('account/verification/email', [LoginAPIController::class, 'send_email_verification']);
-Route::get('account/verification/phone', [LoginAPIController::class, 'send_phone_verification']);
-Route::post('account/verification/phone', [LoginAPIController::class, 'verify_phone']);
-Route::post("account/change/email", [LoginAPIController::class,'change_email']);
-Route::post("account/change/phone", [LoginAPIController::class,'change_phone_number']);
 
 Route::get('login/google/callback',[SocialAPIController::class,'loginWithGoogle']);
 
