@@ -173,6 +173,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/portfolio/create', [ProfileController::class, 'createPortfolio'])->name('profile.createPortfolio'); // javoxir
         Route::get('/portfolio/{portfolio}', [ProfileController::class, 'portfolio'])->name('profile.portfolio'); // javoxir
         Route::post('/delete/portfolio/{portfolio}', [ProfileController::class, 'delete'])->name('profile.delete'); // javoxir
+        Route::get('/notif_setting', [ProfileController::class, 'notif_setting_ajax'])->name('profile.notif_setting_ajax');
     });
 });
 Route::post('/uploadImage', [ProfileController::class, 'UploadImage'])->name('profile.UploadImage');
@@ -214,6 +215,8 @@ Route::post('send-review-user/{task}', [UpdateController::class, 'sendReview'])-
 Route::get('/categories/{id}', [Controller::class, 'category'])->name("categories"); // javoxir
 Route::get('/lang/{lang}', [Controller::class, 'lang'])->name('lang'); // javoxir
 Route::get('/', [Controller::class, 'home'])->name('home'); // javoxir
+Route::get('/terms', function () {  return view('auth.terms');});
+Route::get('/file-download', [Controller::class, 'download'])->name('file_download.download');
 #endregion
 
 #region registration
@@ -284,6 +287,3 @@ Route::get('profile/clickuz/transactions', function () {
 })->name('user.clickuz.transactions')->middleware('auth');
 #endregion
 
-Route::get('/terms', function () {
-    return view('auth.terms');
-});
