@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\Task\StoreRequest;
 use App\Http\Requests\Task\UpdateRequest;
+use App\Http\Resources\TaskIndexResource;
 use App\Models\Task;
 use App\Models\User;
 use App\Services\Task\CreateService;
@@ -75,19 +76,12 @@ class TaskAPIController extends Controller
     public function my_tasks()
     {
         $user = auth()->user();
-        $tasks = $user->tasks;
-        $perform_tasks = $user->performer_tasks;
-        $datas = new Collection(); //Create empty collection which we know has the merge() method
-        $datas = $datas->merge($tasks);
-        $datas = $datas->merge($perform_tasks);
-        $categories = getAllCategories();
-
+        $tasks = TaskIndexResource::collection($user->tasks);
+        $perform_tasks = TaskIndexResource::collection($user->performer_tasks);
         return response()->json([
             'data' => [
                 'tasks' => $tasks,
                 'perform_tasks' => $perform_tasks,
-                'datas' => $datas,
-                'categories'=>$categories
             ]
         ]);
     }

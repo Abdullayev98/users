@@ -295,14 +295,11 @@
         function first_ajax() {
             $.ajax({
                 url: "{{route('searchTask.ajax_tasks')}}",
-                // data: {orderBy: id},
                 type: 'GET',
                 success: function (data) {
-                    // if (id == 'all') {
-                        dataAjax = $.parseJSON(JSON.stringify(data));
-                        dataAjaxCheck=1
-                        sixInOne();
-                    // }
+                    dataAjax = $.parseJSON(JSON.stringify(data));
+                    dataAjaxCheck=1
+                    sixInOne();
                 },
                 error: function (error) {
                     console.error("Ajax orqali yuklashda xatolik..." , error);
