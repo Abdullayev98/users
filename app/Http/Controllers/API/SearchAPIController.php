@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TaskIndexResource;
 use App\Models\Task;
 use App\Models\User;
 use Google\Service\CustomSearchAPI\Search;
@@ -47,7 +48,7 @@ class SearchAPIController extends Controller
 
         return response()->json([
             'data' => [
-                'tasks' => $tasks,
+                'tasks' => TaskIndexResource::collection($tasks),
                 'categories' => $categories
             ]
         ]);
@@ -72,7 +73,7 @@ class SearchAPIController extends Controller
     {
         // $search = new SearchService();
         $data = $this->service->ajaxReq();
-        return response()->json($data);
+        return TaskIndexResource::collection($data);
     }
 
     public function my_tasks(){
