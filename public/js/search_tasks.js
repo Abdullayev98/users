@@ -227,50 +227,50 @@ function dataAjaxSortByDS(arr, numb) {
 function dataAjaxFindThree(dataA, str1, str2, num) {
     dataAjax2 = [];
         $.each(dataA, function (index, data) {
-            if (str1 == ''){nmeVl1 = false}
+            if (str1 == ''){strVal1 = false}
             else {
-                nmeVl1 = data.name.toLowerCase().includes(str1.toLowerCase())
+                strVal1 = data.name.toLowerCase().includes(str1.toLowerCase())
             }
-            if (str2 == ''){nmeVl2 = false}
+            if (str2 == ''){strVal2 = false}
             else {
-                nmeVl2 = data.address.toLowerCase().includes(str2.toLowerCase())
+                strVal2 = data.address.toLowerCase().includes(str2.toLowerCase())
             }
-            if (num == ''){nmeVl3 = false}
+            if (num == ''){numVal = false}
             else {
-                nmeVl3 = data.budget.includes(num)
+                numVal = data.budget.includes(num)
             }
             if (str1 != '' && str2 == '' && num == '') {
-                if (nmeVl1) {
+                if (strVal1) {
                     dataAjax2.push(data);
                 }
             }
             if (str1 != '' && str2 != '' && num == '') {
-                if (nmeVl1 && nmeVl2) {
+                if (strVal1 && strVal2) {
                     dataAjax2.push(data);
                 }
             }
             if (str1 != '' && str2 != '' && num != '') {
-                if (nmeVl1 && nmeVl2 && nmeVl3) {
+                if (strVal1 && strVal2 && numVal) {
                     dataAjax2.push(data);
                 }
             }
             if (str1 == '' && str2 != '' && num != '') {
-                if (nmeVl2 && nmeVl3) {
+                if (strVal2 && numVal) {
                     dataAjax2.push(data);
                 }
             }
             if (str1 == '' && str2 != '' && num == '') {
-                if (nmeVl2) {
+                if (strVal2) {
                     dataAjax2.push(data);
                 }
             }
             if (str1 == '' && str2 == '' && num != '') {
-                if (nmeVl3) {
+                if (numVal) {
                     dataAjax2.push(data);
                 }
             }
             if (str1 != '' && str2 == '' && num != '') {
-                if (nmeVl1 && nmeVl3) {
+                if (strVal1 && numVal) {
                     dataAjax2.push(data);
                 }
             }
@@ -279,12 +279,6 @@ function dataAjaxFindThree(dataA, str1, str2, num) {
             dataAjaxCheck = 2
             sixInOne()
         }
-        // else{
-            // resetCounters()
-            // tasks_list_all(dataAjaxPrint)
-            // tasks_show()
-            // maps_show()
-        // }
 }
 
 function tasks_list_all(data) {

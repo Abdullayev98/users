@@ -152,17 +152,19 @@
                                     {{-- settings/ second tab -> enable notification start --}}
                                     <div class="md:w-4/5 w-full mt-5">
                                         <h3 class="font-bold text-3xl">{{__('Получать уведомления:')}}</h3>
-                                        <div class="grid grid-cols-10 mt-5">
-                                            <input checked type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
-                                            <span class="col-span-9 ml-2">{{__('Системные уведомления')}}</span>
-                                        </div>
-                                        <div class="grid grid-cols-10 mt-5">
-                                            <input checked type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
-                                            <span class="col-span-9 ml-2">{{__('Я хочу получать новости сайта')}}</span>
-                                        </div>
-                                        <button
-                                                class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl"
-                                                type="submit">{{__('Сохранить')}}</button>
+                                       <form  action="" class="w-full" method="GET">
+                                            <div class="grid grid-cols-10 mt-5">
+                                                <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
+                                                <span class="col-span-9 ml-2">{{__('Системные уведомления')}}</span>
+                                            </div>
+                                            <div class="grid grid-cols-10 mt-5">
+                                                <input type="checkbox" class="w-5 h-5 col-span-1 my-auto mx-auto"/>
+                                                <span class="col-span-9 ml-2">{{__('Я хочу получать новости сайта')}}</span>
+                                            </div>
+                                            <button
+                                                    class="block  md:w-1/2 w-full mt-10 bg-green-400 hover:bg-green-600 text-white uppercase p-4 rounded-xl"
+                                                    type="submit">{{__('Сохранить')}}</button>
+                                       </form>
                                     </div>
                                     {{-- settings/ second tab -> enable notification end --}}
                                 </div>

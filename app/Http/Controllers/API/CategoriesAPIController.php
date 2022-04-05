@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryIndexResource;
+use App\Http\Resources\CategoryShowResource;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CategoriesAPIController extends Controller
@@ -19,10 +22,10 @@ class CategoriesAPIController extends Controller
      *     )
      * )
      */
-    public function index()
+    public function index(Request $request)
     {
-
-        return Category::with('translations')->get();
+        $categories = Category::withTranslation($request->lang)->get();
+        return CategoryIndexResource::collection($categories);
     }
 
     /**
@@ -44,13 +47,9 @@ class CategoriesAPIController extends Controller
      *     ),
      * )
      */
-    public function show($id){
-        
-        $data = Category::find($id);
-        
-        if($data){
-            return response()->json($data, 200);
-        }
-        return response()->json('Бундай id ли категория йок', 404);
+    public function show(Category $id, Request $request){
+        $category = $id->translate($request->lang);
+        return new CategoryShowResource($category);
+
     }
 }
