@@ -27,7 +27,7 @@ public function ref(Request $request){
             // $article_id = $new_article->id;
 
             // return redirect()->to("https://my.click.uz/services/pay?service_id=19839&merchant_id=14364&amount=$amount.00&transaction_param=$article_id&return_url=https://user.uz/profile");
-        
+
         return ClickuzController::pay($request);
 
         break;
@@ -41,7 +41,7 @@ public function ref(Request $request){
             return view('paycom.send', ['transaction' => $tr]);
         break;
         case 'Paynet':
-            return redirect()->to("https://paynet.uz/");
+            return PaynetController::pay();
         break;
     }
 

@@ -137,7 +137,7 @@ class CreateController extends Controller
 
             $files = $request->file('images');
             $name = Storage::put('public/uploads', $files);
-            $name = str_replace('public/','', $name);
+            $name = str_replace('public/', '', $name);
             $imgData[] = $name;
 
         }
@@ -171,9 +171,9 @@ class CreateController extends Controller
             'description' => 'required|string',
             'oplata' => 'required',
         ]);
-        if ($request['docs'] == "on"){
+        if ($request['docs'] == "on") {
             $data['docs'] = 1;
-        }else{
+        } else {
             $data['docs'] = 0;
         }
         $task->update($data);
@@ -192,13 +192,13 @@ class CreateController extends Controller
         $user = auth()->user();
 
         $data = $request->validate([
-            'phone_number' => 'required|integer|min:9|unique:users,phone_number,'.$user->id
+            'phone_number' => 'required|integer|min:9|unique:users,phone_number,' . $user->id
         ]);
         if (!$user->is_phone_number_verified || $user->phone_number != $data['phone_number']) {
             $data['is_phone_number_verified'] = 0;
             $user->update($data);
-            LoginController::send_verification('phone',$user);
-            return redirect()->route('task.create.verify',  ['task' =>$task->id, 'user' => $user->id]);
+            LoginController::send_verification('phone', $user);
+            return redirect()->route('task.create.verify', ['task' => $task->id, 'user' => $user->id]);
         }
 
         $task->status = 1;
@@ -208,34 +208,34 @@ class CreateController extends Controller
 
         // dd($task);
 
-        foreach(User::all() as $users){
+        foreach (User::all() as $users) {
 
 
-            $user_cat_ids = explode(",",$users->category_id);
-            $check_for_true = array_search($task->category_id,$user_cat_ids);
+            $user_cat_ids = explode(",", $users->category_id);
+            $check_for_true = array_search($task->category_id, $user_cat_ids);
 
-            if($check_for_true !== false){
-            Notification::create([
+            if ($check_for_true !== false) {
+                Notification::create([
 
-                'user_id'=>$users->id,
-                'description'=> 1,
-                'task_id'=>$task->id,
-                "cat_id"=>$task->category_id,
-                "name_task"=>$task->name,
-                "type"=> 1
+                    'user_id' => $users->id,
+                    'description' => 1,
+                    'task_id' => $task->id,
+                    "cat_id" => $task->category_id,
+                    "name_task" => $task->name,
+                    "type" => 1
 
-            ]);
+                ]);
+            }
+
         }
 
-        }
+        $user_id_fjs = NULL;
+        $id_task = $task->id;
+        $id_cat = $task->category_id;
+        $title_task = $task->name;
+        $type = 1;
 
-           $user_id_fjs = NULL;
-           $id_task = $task->id;
-           $id_cat = $task->category_id;
-           $title_task = $task->name;
-           $type = 1;
-
-               event(new MyEvent($id_task,$id_cat,$title_task,$type,$user_id_fjs));
+        event(new MyEvent($id_task, $id_cat, $title_task, $type, $user_id_fjs));
 
         return redirect()->route('searchTask.task', $task->id);
     }
@@ -249,7 +249,7 @@ class CreateController extends Controller
         $user = User::create($data);
         LoginController::send_verification('phone', $user);
 
-        return redirect()->route('task.create.verify',  ['task' =>$task->id, 'user' => $user->id]);
+        return redirect()->route('task.create.verify', ['task' => $task->id, 'user' => $user->id]);
 
     }
 
@@ -258,11 +258,11 @@ class CreateController extends Controller
         $request->validated();
         $user = User::query()->where('phone_number', $request->phone_number)->first();
         LoginController::send_verification('phone', $user);
-        return redirect()->route('task.create.verify', ['task' =>$task->id, 'user' => $user->id])->with(['not-show', 'true']);
+        return redirect()->route('task.create.verify', ['task' => $task->id, 'user' => $user->id])->with(['not-show', 'true']);
 
     }
 
-    public function verify(Task $task,User $user)
+    public function verify(Task $task, User $user)
     {
         return view('create.verify', compact('task', 'user'));
     }
@@ -273,7 +273,8 @@ class CreateController extends Controller
         CustomFieldsValue::where('task_id', $task)->delete();
     }
 
-    public function deleteAllImages(Task $task){
+    public function deleteAllImages(Task $task)
+    {
         taskGuard($task);
         $task->photos = null;
         $task->save();

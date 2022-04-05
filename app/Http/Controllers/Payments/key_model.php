@@ -5,4 +5,6 @@
 // oldingida wunaqa qilingan ekan
 // lekin bu sizni paketiz emas menimca
 
-    return \App\Models\User::find($key);
+use App\Models\PaynetTransaction;
+
+return PaynetTransaction::find($key);
