@@ -26,16 +26,16 @@
 
                 <div class="panel panel-bordered">
                     <!-- form start -->
-                    <form role="form"
-                            class="form-edit-add"
-                            action="{{ $edit ? route('voyager.'.$dataType->slug.'.update', $dataTypeContent->getKey()) : route('voyager.'.$dataType->slug.'.store') }}"
-                            method="POST" enctype="multipart/form-data">
+                    <form role="form" id="system_notification_form"
+                          class="form-edit-add"
+                          action="{{ $edit ? route('voyager.'.$dataType->slug.'.update', $dataTypeContent->getKey()) : route('voyager.'.$dataType->slug.'.store') }}"
+                          method="POST" enctype="multipart/form-data">
                         <!-- PUT Method if we are editing -->
-                        @if($edit)
-                            {{ method_field("PUT") }}
-                        @endif
+                    @if($edit)
+                        {{ method_field("PUT") }}
+                    @endif
 
-                        <!-- CSRF TOKEN -->
+                    <!-- CSRF TOKEN -->
                         {{ csrf_field() }}
 
                         <div class="panel-body">
@@ -50,13 +50,13 @@
                                 </div>
                             @endif
 
-                            <!-- Adding / Editing -->
+                        <!-- Adding / Editing -->
                             @php
                                 $dataTypeRows = $dataType->{($edit ? 'editRows' : 'addRows' )};
                             @endphp
 
                             @foreach($dataTypeRows as $row)
-                                <!-- GET THE DISPLAY OPTIONS -->
+                            <!-- GET THE DISPLAY OPTIONS -->
                                 @php
                                     $display_options = $row->details->display ?? NULL;
                                     if ($dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')}) {
@@ -64,10 +64,12 @@
                                     }
                                 @endphp
                                 @if (isset($row->details->legend) && isset($row->details->legend->text))
-                                    <legend class="text-{{ $row->details->legend->align ?? 'center' }}" style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">{{ $row->details->legend->text }}</legend>
+                                    <legend class="text-{{ $row->details->legend->align ?? 'center' }}"
+                                            style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">{{ $row->details->legend->text }}</legend>
                                 @endif
 
-                                <div class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ $display_options->width ?? 12 }} {{ $errors->has($row->field) ? 'has-error' : '' }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                <div
+                                    class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ $display_options->width ?? 12 }} {{ $errors->has($row->field) ? 'has-error' : '' }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
                                     {{ $row->slugify }}
                                     <label class="control-label" for="name">{{ $row->getTranslatedAttribute('display_name') }}</label>
                                     @include('voyager::multilingual.input-hidden-bread-edit-add')
@@ -102,9 +104,9 @@
 
                     <iframe id="form_target" name="form_target" style="display:none"></iframe>
                     <form id="my_form" action="{{ route('voyager.upload') }}" target="form_target" method="post"
-                            enctype="multipart/form-data" style="width:0;height:0;overflow:hidden">
+                          enctype="multipart/form-data" style="width:0;height:0;overflow:hidden">
                         <input name="image" id="upload_file" type="file"
-                                 onchange="$('#my_form').submit();this.value='';">
+                               onchange="$('#my_form').submit();this.value='';">
                         <input type="hidden" name="type_slug" id="type_slug" value="{{ $dataType->slug }}">
                         {{ csrf_field() }}
                     </form>
@@ -120,7 +122,8 @@
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"
-                            aria-hidden="true">&times;</button>
+                            aria-hidden="true">&times;
+                    </button>
                     <h4 class="modal-title"><i class="voyager-warning"></i> {{ __('voyager::generic.are_you_sure') }}</h4>
                 </div>
 
@@ -140,25 +143,41 @@
 
 @section('javascript')
     <script>
+        let payment_form = $('#system_notification_form');
+        payment_form.submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "{{generate_url()}}",
+                data: {user_id: 1, project: "user", data: {url: ''}},
+                dataType: "json",
+                encode: true,
+            }).done(function (data) {
+                alert(data)
+                console.log(data);
+                // form.submit();
+            });
+        });
+
         var params = {};
         var $file;
 
         function deleteHandler(tag, isMulti) {
-          return function() {
-            $file = $(this).siblings(tag);
+            return function () {
+                $file = $(this).siblings(tag);
 
-            params = {
-                slug:   '{{ $dataType->slug }}',
-                filename:  $file.data('file-name'),
-                id:     $file.data('id'),
-                field:  $file.parent().data('field-name'),
-                multi: isMulti,
-                _token: '{{ csrf_token() }}'
-            }
+                params = {
+                    slug: '{{ $dataType->slug }}',
+                    filename: $file.data('file-name'),
+                    id: $file.data('id'),
+                    field: $file.parent().data('field-name'),
+                    multi: isMulti,
+                    _token: '{{ csrf_token() }}'
+                }
 
-            $('.confirm_delete_name').text(params.filename);
-            $('#confirm_delete_modal').modal('show');
-          };
+                $('.confirm_delete_name').text(params.filename);
+                $('#confirm_delete_modal').modal('show');
+            };
         }
 
         $('document').ready(function () {
@@ -174,16 +193,16 @@
                     elt.type = 'text';
                     $(elt).datetimepicker({
                         format: 'L',
-                        extraFormats: [ 'YYYY-MM-DD' ]
+                        extraFormats: ['YYYY-MM-DD']
                     }).datetimepicker($(elt).data('datepicker'));
                 }
             });
 
             @if ($isModelTranslatable)
-                $('.side-body').multilingual({"editing": true});
+            $('.side-body').multilingual({"editing": true});
             @endif
 
-            $('.side-body input[data-slug-origin]').each(function(i, el) {
+            $('.side-body input[data-slug-origin]').each(function (i, el) {
                 $(el).slugify();
             });
 
@@ -192,15 +211,17 @@
             $('.form-group').on('click', '.remove-multi-file', deleteHandler('a', true));
             $('.form-group').on('click', '.remove-single-file', deleteHandler('a', false));
 
-            $('#confirm_delete').on('click', function(){
+            $('#confirm_delete').on('click', function () {
                 $.post('{{ route('voyager.'.$dataType->slug.'.media.remove') }}', params, function (response) {
-                    if ( response
+                    if (response
                         && response.data
                         && response.data.status
-                        && response.data.status == 200 ) {
+                        && response.data.status == 200) {
 
                         toastr.success(response.data.message);
-                        $file.parent().fadeOut(300, function() { $(this).remove(); })
+                        $file.parent().fadeOut(300, function () {
+                            $(this).remove();
+                        })
                     } else {
                         toastr.error("Error removing file.");
                     }

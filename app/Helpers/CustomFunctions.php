@@ -121,3 +121,7 @@ function taskGuard($task){
               abort(403);
           }
 }
+
+function generate_url() {
+    return "http://127.0.0.1:7070/api/send-notification";
+}
