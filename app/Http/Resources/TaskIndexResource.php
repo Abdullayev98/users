@@ -29,6 +29,9 @@ class TaskIndexResource extends JsonResource
             'performer_id' => $this->performer_id,
             'user_id' => $this->user_id,
             'views' => $this->views,
+            'status' => $this->status,
+            'oplata' => $this->oplata,
+            'docs' => $this->docs,
             'photos' => json_decode(asset('storage/'.$this->photos)),
         ];
     }
