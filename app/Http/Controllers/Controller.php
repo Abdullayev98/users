@@ -131,4 +131,11 @@ class Controller extends BaseController
         Session::put('lang', $lang);
         return redirect()->back();
     }
+    public function download()
+    {
+        $filePath = public_path("storage/settings/April2022/dom.pdf");
+        $headers = ['Content-Type: application/pdf'];
+        $fileName ='Правила_сервиса.pdf';
+        return response()->download($filePath, $fileName, $headers);
+    }
 }
