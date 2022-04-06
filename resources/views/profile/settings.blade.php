@@ -408,7 +408,13 @@
                 },
                 success: function (data) {
                     console.log(data)
-                   alert(data)
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Saved',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                 },
                 error: function (error) {
                     console.error("Ajax orqali yuklashda xatolik..." , error);
