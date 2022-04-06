@@ -54,8 +54,12 @@
                     <i class="far fa-thumbs-down mt-0.5 text-blue-500"></i>
                     <span class="text-gray-800 dislike{{$user->id}}">{{ $user->reviews()->where('good_bad',0)->count()}}</span>
                 </div>
-                <div class="flex flex-row mt-2 stars{{$user->id}}">
+                <div class="flex flex-row items-center mt-3" id="str1">
+                   <div class="flex flex-row items-center"> <p>Средняя оценка:</p><span class="mx-1" id="num"></span></div>
+                    <div class="flex flex-row stars{{$user->id}}">
+                    </div>
                 </div>
+                <div class="mt-3 hidden" id="str2">Нет оценок</div>
                 <script>
                     $(document).ready(function(){
                         var good = $(".like{{$user->id}}").text();
@@ -64,6 +68,7 @@
                         var coundlikes = (good * 1) + (bad * 1);
                         var overallStars = allcount / coundlikes;
                         console.log(overallStars);
+                        $('#num').text(overallStars);
                         var star = overallStars.toFixed();
                         if (!isNaN(star)) {
                             for (let i = 0; i < star; i++) {
@@ -76,6 +81,8 @@
                             for (let e = 0; e < 5; e++) {
                                 $(".stars{{$user->id}}").append('<i class="fas fa-star text-gray-500"></i>');
                             }
+                            $('#str1').addClass('hidden');
+                            $('#str2').removeClass('hidden');
                         }
                     });
                 </script>
