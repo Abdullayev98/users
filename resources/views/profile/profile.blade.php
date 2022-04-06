@@ -54,6 +54,17 @@
                                 </form>
                         </div>
                         <h4 class="font-bold mt-5 text-gray-700">{{__('Примеры работ')}}</h4>
+                        <p class="mt-2">{{__('Если у вас есть примеры выполненной вами работы, обязательно прикрепите их, это покажет вас в лучшем свете в глазах автора задания.')}} {{__('А также вы будете вызывать больше доверия как исполнитель.')}}</p>
+
+                        <div class="border-dashed border-2 border-gray-500 rounded-xl mt-6 p-4">
+                            <h1 class="text-xl font-bold">{{__('Добавьте видеоролик о себе')}}</h1>
+                            <p class="text-lg mt-2">{{__('Профили с видео получают больше внимания и вызывают доверие заказчиков.')}}</p>
+                            <div class="flex sm:flex-row flex-col my-3">
+                                <input type="text" id="text" class="border border-gray-400 hover:border-yellow-500 focus:outline-none rounded-lg sm:w-2/3 w-full p-2" placeholder="{{__('Ссылка на ролик с YouTube')}}" required>
+                                <input type="submit" value="{{('Добавить')}}" class="sm:w-1/3 w-2/3 sm:mx-3 mx-0 rounded-lg bg-green-500 hover:bg-green-600 text-white py-2 px-4 cursor-pointer sm:mt-0 mt-3">
+                            </div>
+                        </div>
+
                         <div class="example-of-works w-full my-10">
                            <a href="/profile/create">
                                <button class="bg-green-500 px-8 py-3 rounded-md text-white text-2xl">

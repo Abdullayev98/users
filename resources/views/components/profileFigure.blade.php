@@ -55,11 +55,11 @@
                     <span class="text-gray-800 dislike{{$user->id}}">{{ $user->reviews()->where('good_bad',0)->count()}}</span>
                 </div>
                 <div class="flex flex-row items-center mt-3" id="str1">
-                   <div class="flex flex-row items-center"> <p>Средняя оценка:</p><span class="mx-1" id="num"></span></div>
-                    <div class="flex flex-row stars{{$user->id}}">
+                   <div class="flex flex-row items-center"> <p>{{__('Средняя оценка:')}}</p><span class="mx-1" id="num"></span></div>
+                    <div class="flex flex-row mb-0.5 ml-2 stars{{$user->id}}">
                     </div>
                 </div>
-                <div class="mt-3 hidden" id="str2">Нет оценок</div>
+                <div class="mt-3 hidden" id="str2">{{__('Нет оценок')}}</div>
                 <script>
                     $(document).ready(function(){
                         var good = $(".like{{$user->id}}").text();
