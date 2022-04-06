@@ -250,7 +250,7 @@
                 </label>
 
                 <div id="hidden_div">
-                        <button type="submit" onclick="myFunction()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
+                        <button type="submit" onclick="myFunc()" class="cursor-pointer bg-red-500 text-white rounded-lg p-2 px-4 mt-4">
                             {{__('Предложить работу')}}
                         </button>
                         <p class="py-7">
@@ -443,7 +443,7 @@
     </script>
 
     <script>
-        function myFunction() {
+        function myFunc() {
             document.getElementById('modal').style.display = "block";
             document.getElementById('modal_content').style.display = "none";
             let task_id = $( "#task_name" ).val();

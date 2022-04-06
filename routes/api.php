@@ -16,6 +16,7 @@ use App\Http\Controllers\API\ConversationAPIController;
 use App\Http\Controllers\API\VoyagerUserAPIController; // javoxir -
 use App\Http\Controllers\API\RefillAPIController; // javoxir
 use App\Http\Controllers\API\ReportAPIController; // javoxir
+use App\Http\Controllers\API\PaynetTransactionAPIController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -111,6 +112,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/ref', [RefillAPIController::class, 'ref']); //end
 Route::post('/prepare', [RefillAPIController::class, 'prepare']); //end
 Route::post('/complete', [RefillAPIController::class, 'complete']); //end
+Route::post('/paynet-transaction', [PaynetTransactionAPIController::class, 'create'])->name('paynet-transaction');
 
 
 
