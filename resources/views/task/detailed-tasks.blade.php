@@ -53,7 +53,7 @@
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
-                                    <span class="text-black rounded-lg bg-yellow-400 p-2">{{$task->budget}}</span>
+                                    <span class="text-black rounded-lg bg-yellow-400 p-2">До {{number_format($task->budget)}} сум</span>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id)
                                             <a href="{{ route('searchTask.changetask', $task->id) }}"
@@ -116,13 +116,14 @@
                                     </div>
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                         <h1 class="font-bold h-auto w-48">{{__('Бюджет')}}</h1>
-                                        <p class=" h-auto w-96">{{$task->budget}}</p>
+                                        <p class=" h-auto w-96">До {{number_format($task->budget)}} сум</p>
                                     </div>
 
                                     @isset($value)
                                         @foreach($task->custom_field_values as $value)
                                             <div class="ml-4 md:ml-12 flex flex-row mt-8">
 
+                                                @dd($value->custom_field)
                                                 <h1 class="font-bold h-auto w-48">{{ $value->custom_field->getTranslatedAttribute('title',Session::get('lang') , 'fallbackLocale') }}</h1>
                                                 <p class=" h-auto w-96">
                                                     @foreach(json_decode($value->value, true) as $value_obj)
@@ -132,6 +133,7 @@
                                                             {{$value_obj}},
                                                         @endif
                                                     @endforeach
+
                                                 </p>
                                             </div>
                                         @endforeach
@@ -192,6 +194,7 @@
                                                 <div class=" h-auto w-96">
                                                     <p class="text-gray-500">
                                                         {{ json_decode($value->value)[0]  }}
+                                                        <span class="ml-5">{{ $value->custom_field->label }}</span>
                                                     </p>
                                                 </div>
                                             </div>
