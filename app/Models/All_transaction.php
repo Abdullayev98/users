@@ -5,6 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property int $amount
+ * @property string $method
+ */
 class All_transaction extends Model
 {
     use HasFactory;
@@ -22,5 +28,15 @@ class All_transaction extends Model
     /** Transaction status is rejected. */
     const STATUS_REJECTED    = -1;
 
-    protected $fillable = ['user_id','amount','method'];
+    const METHODS = [
+        'Payme' => 'Payme',
+        'Click' => 'Click',
+        'Paynet' => 'Paynet'
+    ];
+
+    protected $fillable = [
+        'user_id',
+        'amount',
+        'method'
+    ];
 }
