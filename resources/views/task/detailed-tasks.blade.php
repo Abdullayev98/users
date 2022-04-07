@@ -112,7 +112,7 @@
                                         @else
                                             <h1 class="font-bold h-auto w-48">{{__('Указать период')}}</h1>
                                         @endif
-                                        <p class=" h-auto w-96">{{date('d-m-Y', strtotime($task->start_date))}}</p>
+                                        <p class=" h-auto w-96">{{ $task->start_date     }}</p>
                                     </div>
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                         <h1 class="font-bold h-auto w-48">{{__('Бюджет')}}</h1>
@@ -165,7 +165,7 @@
                                                 <div class="relative boxItem">
                                                     <a class="boxItem relative" href="{{ asset('storage/'.$image) }}"
                                                        data-fancybox="img1"
-                                                       data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                                                       data-caption="<span>{{  $task->created_at}}</span>">
                                                         <div class="mediateka_photo_content">
                                                             <img src="{{ asset('storage/'.$image) }}" alt="">
                                                         </div>
@@ -762,7 +762,7 @@
                 @else
                     <a style="display: none;" class="boxItem" href="{{ asset('storage/'.$image) }}"
                        data-fancybox="img1"
-                       data-caption="<span>{{ \Carbon\Carbon::parse($task->created_at)->format('H:m / d.m.Y') }}</span>">
+                       data-caption="<span>{{ $task->created_at }}</span>">
                         <div class="mediateka_photo_content">
                             <img src="{{ asset('storage/'.$image)  }}" alt="">
                         </div>

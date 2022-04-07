@@ -310,14 +310,5 @@
 
     </script>
 
-    <script>
-        $('#byDate').click(function(){
-            $(this).addClass('font-bold')
-            $('#bySroch').removeClass('font-bold')
-        })
-        $('#bySroch').click(function(){
-            $(this).addClass('font-bold')
-            $('#byDate').removeClass('font-bold')
-        })
-    </script>
+   
 @endsection

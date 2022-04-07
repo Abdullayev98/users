@@ -359,27 +359,6 @@
         </div>
     </div>
     <script>
-       // $('#notif_button').click(function(){
-            // let notif_11,notif_22;
-            // if($('#notif_checkbox1').is(":checked")){
-            //     notif_11=1;
-            // }
-            // else{
-            //     notif_11=0;
-            // }
-            // if($('#notif_checkbox2').is(":checked")){
-            //     notif_22=1;
-            // }
-            // else{
-            //     notif_22=0;
-            // }
-            // console.log(notif_11)
-            // console.log(notif_22)
-            // @php $id=auth()->user()->id  @endphp
-            // let id={{$id}}
-            // console.log(id);
-            //ajax_func(id,notif_11,notif_22);
-       // })
         function ajax_func(){
             let notif_11,notif_22;
             if($('#notif_checkbox1').is(":checked")){
@@ -408,7 +387,13 @@
                 },
                 success: function (data) {
                     console.log(data)
-                   alert(data)
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Saved',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                 },
                 error: function (error) {
                     console.error("Ajax orqali yuklashda xatolik..." , error);
