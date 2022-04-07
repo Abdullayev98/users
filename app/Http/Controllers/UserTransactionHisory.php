@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\All_transaction;
 use App\Models\ClickTransaction;
 use App\Models\PaynetTransaction;
+use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserTransactionHisory extends Controller
 {
-    public function getTransactions ()
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getTransactions (): JsonResponse
     {
         $user = \Illuminate\Support\Facades\Auth::user();
         switch ($_GET['method']) {
@@ -44,8 +49,15 @@ class UserTransactionHisory extends Controller
                 ->where('created_at', '<', $to)->get();
         }
 
+        $data = [];
+        foreach ($transactions as $transaction) {
+            $amount = $transaction->amount;
+            $created_at = $transaction->created_at;
+            $date = new \Carbon\Carbon($created_at);
+            array_push($data, ['amount' => $amount, 'created_at' => $date->toDateTimeString()]);
+        }
         return response()->json([
-            'transactions' => $transactions,
+            'transactions' => $data,
         ]);
     }
 }

@@ -3,6 +3,11 @@
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('css/admin/datatable.css')}}">
+<style>
+    td {
+        text-align: center;
+    }
+</style>
     <div class="w-11/12  mx-auto text-base mt-4">
         <div class="grid lg:grid-cols-3 grid-cols-2 lg:w-5/6 w-full mx-auto">
 
