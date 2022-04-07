@@ -53,7 +53,13 @@
                             <div class="w-full float-left">
                                 <h1 class="text-3xl font-bold mb-2">{{$task->name}}</h1>
                                 <div class="md:flex flex-row">
-                                    <span class="text-black rounded-lg bg-yellow-400 p-2">{{$task->budget}}</span>
+                                    <span class="text-black rounded-lg bg-yellow-400 p-2">
+                                        @if ( __('до') == 'gacha' )
+                                            {{$task->budget}} {{__('сум')}}{{__('до')}}
+                                        @else
+                                            {{__('до')}} {{$task->budget}} {{__('сум')}}
+                                        @endif
+                                    </span>
                                     @auth()
                                         @if($task->user_id == auth()->user()->id)
                                             <a href="{{ route('searchTask.changetask', $task->id) }}"
@@ -116,7 +122,13 @@
                                     </div>
                                     <div class="ml-4 md:ml-12 flex flex-row mt-8">
                                         <h1 class="font-bold h-auto w-48">{{__('Бюджет')}}</h1>
-                                        <p class=" h-auto w-96">{{$task->budget}}</p>
+                                        <p class=" h-auto w-96">
+                                            @if ( __('до') == 'gacha' )
+                                                {{$task->budget}} {{__('сум')}}{{__('до')}}
+                                            @else
+                                                {{__('до')}} {{$task->budget}} {{__('сум')}}
+                                            @endif
+                                        </p>
                                     </div>
 
                                     @isset($value)
