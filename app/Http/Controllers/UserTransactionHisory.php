@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\All_transaction;
 use App\Models\ClickTransaction;
 use App\Models\PaynetTransaction;
+use App\Models\UserExpense;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UserTransactionHisory extends Controller
 {
@@ -27,8 +27,11 @@ class UserTransactionHisory extends Controller
             case 'Paynet':
                 $transactionMethod = PaynetTransaction::query()->where(['transactionable_id' => $user->id]);
                 break;
+            case 'Expense':
+                $transactionMethod = UserExpense::query()->where(['user_id' => $user->id]);
+                break;
         }
-        $now = \Carbon\Carbon::now();
+        $now = Carbon::now();
         if (array_key_exists('period', $_GET)){
             switch ($_GET['period']) {
                 case 'month':
@@ -53,7 +56,7 @@ class UserTransactionHisory extends Controller
         foreach ($transactions as $transaction) {
             $amount = $transaction->amount;
             $created_at = $transaction->created_at;
-            $date = new \Carbon\Carbon($created_at);
+            $date = new Carbon($created_at);
             array_push($data, ['amount' => $amount, 'created_at' => $date->toDateTimeString()]);
         }
         return response()->json([
