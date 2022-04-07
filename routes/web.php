@@ -256,11 +256,5 @@ Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name
 Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@paycom')->name('paycom'); // javoxir
 // Show transactions history
 Route::get('profile/transactions/history', [\App\Http\Controllers\UserTransactionHisory::class, 'getTransactions'])->name('user.transactions.history')->middleware('auth');
-Route::get('profile/history/transactions', function () {
-    $transactions = \App\Models\ClickTransaction::query()->where(['user_id' => 1])->get();
-    return response()->json([
-        'transactions' => $transactions
-    ]);
-});
 #endregion
 
