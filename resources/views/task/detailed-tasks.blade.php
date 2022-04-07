@@ -55,9 +55,9 @@
                                 <div class="md:flex flex-row">
                                     <span class="text-black rounded-lg bg-yellow-400 p-2">
                                         @if ( __('до') == 'gacha' )
-                                            {{$task->budget}} {{__('сум')}}{{__('до')}}
+                                            {{ number_format($task->budget) }} {{__('сум')}}{{__('до')}}
                                         @else
-                                            {{__('до')}} {{$task->budget}} {{__('сум')}}
+                                            {{__('до')}} {{ number_format($task->budget) }} {{__('сум')}}
                                         @endif
                                     </span>
                                     @auth()
@@ -124,7 +124,7 @@
                                         <h1 class="font-bold h-auto w-48">{{__('Бюджет')}}</h1>
                                         <p class=" h-auto w-96">
                                             @if ( __('до') == 'gacha' )
-                                                {{$task->budget}} {{__('сум')}}{{__('до')}}
+                                                {{ number_format($task->budget) }} {{__('сум')}}{{__('до')}}
                                             @else
                                                 {{__('до')}} {{$task->budget}} {{__('сум')}}
                                             @endif
@@ -205,6 +205,7 @@
                                                 <div class=" h-auto w-96">
                                                     <p class="text-gray-500">
                                                         {{ json_decode($value->value)[0]  }}
+                                                        <span class="ml-4">{{ $value->custom_field->label  }}</span>
                                                     </p>
                                                 </div>
                                             </div>
