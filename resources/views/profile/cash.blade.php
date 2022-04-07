@@ -4,10 +4,8 @@
 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('css/admin/datatable.css')}}">
 <style>
-    .active {
-        background-color: rgb(156 163 175);
-        border-radius: 0.125rem;
-        color: white;
+    td {
+        text-align: center;
     }
 </style>
     <div class="w-11/12  mx-auto text-base mt-4">
@@ -76,27 +74,67 @@
                               </div>
                             </div>
                             <ul id="tabs" class="flex sm:flex-row flex-col rounded-sm w-full shadow bg-gray-200 mt-4">
-                                <div class="w-full text-center">
-                                    <a id="default-tab" href="#data-table" data-payment="{{ route('user.clickuz.transactions') }}"
+                                <div id="first_tab" class="w-full text-center">
+                                    <a id="default-tab" href="#first" data-method="Click" data-number="1"
                                         class="inline-block relative py-1 w-full payment-type">{{__('Пополнения')}} Click</a>
                                 </div>
                                 <div class="w-full text-center">
-                                    <a href="#data-table"
+                                    <a href="#second" data-method="Payme" data-number="2"
                                         class="inline-block relative py-1 w-full payment-type">{{__('Пополнения')}} Payme</a>
                                 </div>
                                 <div class="w-full text-center">
-                                    <a href="#data-table"
+                                    <a href="#third" data-method="Paynet" data-number="3"
                                         class="inline-block relative py-1 w-full payment-type">{{__('Пополнения')}} Paynet</a>
                                 </div>
                                 <div class="w-full text-center">
-                                    <a href="#data-table"
+                                    <a href="#fourth" data-method="Click" data-number="4"
                                         class="inline-block relative py-1 w-full payment-type">{{__('Списания со счета')}}</a>
                                 </div>
                             </ul>
                             <div id="tab-contents">
-                                <div id="data-table" class="py-4">
+                                <div id="first" class="hidden py-4">
                                     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-                                        <table id="example1" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                                        <table id="history-table1" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;" data-page-length='10'>
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="second" class="hidden py-4">
+                                    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+                                        <table id="history-table2" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                                            <thead>
+                                            <tr>
+                                                <th data-priority="1">Date</th>
+                                                <th data-priority="2">Amount</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="third" class="hidden py-4">
+                                    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+                                        <table id="history-table3" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                                            <thead>
+                                            <tr>
+                                                <th data-priority="1">Date</th>
+                                                <th data-priority="2">Amount</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="fourth" class="hidden py-4">
+                                    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+                                        <table id="history-table4" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                                             <thead>
                                             <tr>
                                                 <th data-priority="1">Date</th>
@@ -142,43 +180,4 @@
     </div>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('js/profile/cash.js') }}"></script>
-    <script>
-        $('document').ready(function () {
-            $('a.payment-type').on('click', function () {
-                $('div.w-full').removeClass('active')
-                $(this).parent().addClass('active');
-
-                var url = $(this).attr('data-payment');
-                var period = $('select#period').val()
-                if (period === 'date-period') {
-                    var data = {
-                        from_date: $('#from-date').val(),
-                        to_date: $('#to-date').val()
-                    }
-                } else {
-                    var data = {period: period}
-                }
-                $.ajax({
-                    type: 'GET',
-                    url: url,
-                    data: data,
-                    success: function (res) {
-                        var transactions = res['transactions']
-                        console.log(res['period'])
-                        transactions.forEach(transaction => {
-                            $('tbody').append(`
-                                <tr>
-                                    <td>${transaction['created_at']}</td>
-                                    <td>${transaction['amount']}</td>
-                                </tr>
-                            `);
-                        })
-                    },
-                    error: function (error) {
-                        console.log(error)
-                    }
-                });
-            });
-        });
-    </script>
 @endsection

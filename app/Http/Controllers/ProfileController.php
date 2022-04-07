@@ -74,7 +74,12 @@ class ProfileController extends Controller
     public function portfolio(Portfolio $portfolio)
     {
         $user = Auth::user();
-        return view('profile/portfolio', compact('user', 'portfolio'));
+
+        $isDelete = false;
+        if ($portfolio->user_id == $user->id){
+            $isDelete = true;
+        }
+        return view('profile/portfolio', compact('user', 'portfolio','isDelete'));
     }
 
     //profile

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\WalletBalance;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -41,6 +42,10 @@ class SocialController extends Controller
             $new_user->avatar = self::get_avatar($user);
             $new_user->password = encrypt('123456');
             $new_user->save();
+            $wallBal = new WalletBalance();
+            $wallBal->balance = setting('admin.bonus');
+            $wallBal->user_id = $new_user->id;
+            $wallBal->save();
             Auth::login($new_user);
             return redirect()->route('profile.profileData');
         }
@@ -91,6 +96,10 @@ class SocialController extends Controller
                 $new_user->avatar = self::get_avatar($user);
                 $new_user->password = encrypt('123456');
                 $new_user->save();
+                $wallBal = new WalletBalance();
+                $wallBal->balance = setting('admin.bonus');
+                $wallBal->user_id = $new_user->id;
+                $wallBal->save();
                 Auth::login($new_user);
                 return redirect()->route('profile.profileData');
             }

@@ -16,11 +16,13 @@
             @endforeach
             </div>
 
-            <form action="{{ route('profile.delete', $portfolio->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
-                <input type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-10 mb-4 rounded" value="Удалить">
-             </form>
+            @if($isDelete)
+                <form action="{{ route('profile.delete', $portfolio->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div id="photos" class="bg-yellow-50 p-8 rounded-md my-6"></div>
+                    <input type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-10 mb-4 rounded" value="Удалить">
+                </form>
+            @endif
         </div>
     </div>
 @endsection

@@ -57,7 +57,9 @@ class PerformersController extends Controller
         $task_count = $user->performer_tasks_count;
         $about = User::where('role_id', 2)->orderBy('reviews', 'desc')->take(20)->get();
         $reviews = $user->reviews()->get();
-        return view('Performers/executors-courier', compact('reviews', 'about', 'user', 'task_count'));
+        $portfolios = $user->portfolios()->where('image', '!=', null)->get();
+
+        return view('Performers/executors-courier', compact('reviews', 'about', 'user', 'task_count','portfolios'));
     }
 
 

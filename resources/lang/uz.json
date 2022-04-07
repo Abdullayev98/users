@@ -2,8 +2,7 @@
     " Подтвердите пароль": " Parolni tasdiqlang",
     " Присваивается исполнителям, которые заняли первое место в рейтинге по результатам года.": " Yil yakunlari bo'yicha reytingda birinchi o'rinni egallagan ijrochilarga tayinlanadi.",
     " считается в каждой категории отдельно и обновляется раз в сутки. От него зависит, на каком месте окажется отклик исполнителя в откликах на задание. Чем выше рейтинг в категории, тем выше размещается отклик и тем больше шансов получить задание.": " U har bir kategoriyada alohida va kuniga bir marta yangilanadi. Bu uning vazifalariga javob berish bo'yicha rassomning qaysi joyda javobi qanday bo'ladi? Kategoriyada reyting qanchalik yuqori bo'lsa, shuni yuqori shunchalik yuqori bo'lib, vazifani bajarish uchun ko'proq imkoniyatlar.",
-    ". Средняя оценка:": ". O'rtacha reyting:",
-    ". Средняя оценка:}}": ". O'rtacha reyting:}}",
+    "Средняя оценка:": "O'rtacha reyting:",
     "4,96 по 63 отзывам": "4.96 dan 63 ta sharh",
     "4000 UZS.": "4000 so'm.",
     "Facebook": "Facebook.",
@@ -577,6 +576,11 @@
     "Расскажите об этом заказе в социальных сетях — оно заслуживает того, чтобы его увидели.":"Ushbu buyurtmani ijtimoiy tarmoqlarda baham ko'ring - bu ko'rishga loyiqdir.",
     "Напишите свое возражение по созданной задаче":"Yaratilgan vazifa bo'yicha e'tirozingizni yozing",
     "Электронная почта или телефон":"Elektron pochta yoki telefon",
-    "У вас пока нет опубликованных заданий":"Sizda hali e'lon qilingan topshiriq yo'q"
-
+    "У вас пока нет опубликованных заданий":"Sizda hali e'lon qilingan topshiriq yo'q",
+    "Нет оценок":"Baholar yo'q",
+    "Если у вас есть примеры выполненной вами работы, обязательно прикрепите их, это покажет вас в лучшем свете в глазах автора задания.":"Agar sizda o'zingizning ishingizdan namunalar bo'lsa, ularni ilova qilishni unutmang, bu sizni topshiriq muallifining ko'z o'ngida eng yaxshi nurda ko'rsatadi.",
+    "А также вы будете вызывать больше доверия как исполнитель.":"Shuningdek, siz ijrochi sifatida ko'proq ishonch uyg'otasiz.",
+    "Ссылка на ролик с YouTube":"YouTube videosiga havola",
+    "Профили с видео получают больше внимания и вызывают доверие заказчиков.":"Videolar bilan profillar ko'proq e'tiborni tortadi va mijozlar ishonchini uyg'otadi.",
+    "Добавьте видеоролик о себе":"Добавьте видеоролик о себе"
 }

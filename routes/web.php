@@ -254,35 +254,7 @@ Route::get('/ref', 'App\Http\Controllers\RefillController@ref'); // javoxir
 Route::post('/prepare', "App\Http\Controllers\RefillController@prepare")->name('prepare'); // javoxir
 Route::post('/complete', "App\Http\Controllers\RefillController@complete")->name('complete'); // javoxir
 Route::post('/paycom', 'App\Http\Controllers\PaycomTransactionController@paycom')->name('paycom'); // javoxir
-// Show ClickUz transactions
-Route::get('profile/clickuz/transactions', function () {
-    $now = \Carbon\Carbon::now();
-    $user = \Illuminate\Support\Facades\Auth::user();
-    if (array_key_exists('period', $_GET)){
-        switch ($_GET['period']) {
-            case 'month':
-                $filter = $now->subMonth();
-                break;
-            case 'week':
-                $filter = $now->subWeek();
-                break;
-            case 'year':
-                $filter = $now->subYear();
-                break;
-        }
-        $transactions = \App\Models\ClickTransaction::query()->where(['user_id' => $user->id])
-                                                            ->where('created_at', '>', $filter)->get();
-    } else {
-        $from = $_GET['from_date'];
-        $to = $_GET['to_date'];
-        $transactions = \App\Models\ClickTransaction::query()->where(['user_id' => $user->id])
-                                                            ->where('created_at', '>', $from)
-                                                            ->where('created_at', '<', $to)->get();
-    }
-
-    return response()->json([
-        'transactions' => $transactions,
-    ]);
-})->name('user.clickuz.transactions')->middleware('auth');
+// Show transactions history
+Route::get('profile/transactions/history', [\App\Http\Controllers\UserTransactionHisory::class, 'getTransactions'])->name('user.transactions.history')->middleware('auth');
 #endregion
 

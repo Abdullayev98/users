@@ -445,116 +445,133 @@
 
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
-        // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
-        var pusher = new Pusher('ec2f696b4a7b3e054939', {
-            cluster: 'ap2'
+        let pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
+            cluster: '{{env("PUSHER_APP_CLUSTER")}}',
+            // encrypted: true,
+
+            wsHost:  'websocket.loc', // 'bidding.uztelecom.uz',
+            wsPort: 6001,
+            forceTLS: false,
+            disableStats: true,
+        });
+        let channel = pusher.subscribe('uztelecom-notification-send-' + {{auth()->id()}});
+        channel.bind('server-user', function(data) {
+            data = JSON.parse(data.data)
+            console.log(data)
         });
 
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function (data) {
-            alert(data)
-            if (Number(data["type"]) === 1) {
+        // Enable pusher logging - don't include this in production
+{{--        Pusher.logToConsole = true;--}}
 
-                const for_check_cat_id = [<? echo $array_cats_user ?>];
+{{--        var pusher = new Pusher('ec2f696b4a7b3e054939', {--}}
+{{--            cluster: 'ap2'--}}
+{{--        });--}}
 
-                let num_cat_id = Number(data["id_cat"]);
+{{--        var channel = pusher.subscribe('my-channel');--}}
+{{--        channel.bind('my-event', function (data) {--}}
+{{--            alert(data)--}}
+{{--            if (Number(data["type"]) === 1) {--}}
 
-                let check_arr = for_check_cat_id.includes(num_cat_id);
+{{--                const for_check_cat_id = [<? echo $array_cats_user ?>];--}}
 
-                if (check_arr === true) {
-                    var content_count = document.getElementById('content_count').innerHTML;
-                    let count_for_inner = Number(content_count) + 1;
-                    document.getElementById('content_count').innerHTML = count_for_inner;
+{{--                let num_cat_id = Number(data["id_cat"]);--}}
 
-                    let el_for_create = document.getElementById('for_append_notifications');
+{{--                let check_arr = for_check_cat_id.includes(num_cat_id);--}}
 
-                    el_for_create.insertAdjacentHTML('afterend', `
-<li>
-<a href="/detailed-tasks/` + Number(data["id_task"]) + `" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">` + data["title_task"] + `</a>
-</li>
- `);
+{{--                if (check_arr === true) {--}}
+{{--                    var content_count = document.getElementById('content_count').innerHTML;--}}
+{{--                    let count_for_inner = Number(content_count) + 1;--}}
+{{--                    document.getElementById('content_count').innerHTML = count_for_inner;--}}
 
-                }
+{{--                    let el_for_create = document.getElementById('for_append_notifications');--}}
 
-            }
+{{--                    el_for_create.insertAdjacentHTML('afterend', `--}}
+{{--<li>--}}
+{{--<a href="/detailed-tasks/` + Number(data["id_task"]) + `" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">` + data["title_task"] + `</a>--}}
+{{--</li>--}}
+{{-- `);--}}
 
-            if (Number(data["type"]) === 2) {
+{{--                }--}}
 
-                let user_id_for_js2 = Number(<? echo $array_cats_user ?>);
+{{--            }--}}
 
-                if (user_id_for_js2 === Number(data["user_id_fjs"])) {
-                    var content_count = document.getElementById('content_count').innerHTML;
-                    let count_for_inner = Number(content_count) + 1;
-                    document.getElementById('content_count').innerHTML = count_for_inner;
+{{--            if (Number(data["type"]) === 2) {--}}
 
-                    let el_for_create = document.getElementById('for_append_notifications');
+{{--                let user_id_for_js2 = Number(<? echo $array_cats_user ?>);--}}
 
-                    el_for_create.insertAdjacentHTML('afterend', `
-<li>
-<a href="/detailed-tasks/` + Number(data["id_task"]) + `" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">У вас новый отклик</a>
-</li>
- `);
+{{--                if (user_id_for_js2 === Number(data["user_id_fjs"])) {--}}
+{{--                    var content_count = document.getElementById('content_count').innerHTML;--}}
+{{--                    let count_for_inner = Number(content_count) + 1;--}}
+{{--                    document.getElementById('content_count').innerHTML = count_for_inner;--}}
 
-                }
+{{--                    let el_for_create = document.getElementById('for_append_notifications');--}}
 
-            }
-            if (Number(data["type"]) === 3) {
+{{--                    el_for_create.insertAdjacentHTML('afterend', `--}}
+{{--<li>--}}
+{{--<a href="/detailed-tasks/` + Number(data["id_task"]) + `" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">У вас новый отклик</a>--}}
+{{--</li>--}}
+{{-- `);--}}
 
-                let user_id_for_js3 = Number(<? echo $array_cats_user ?>);
+{{--                }--}}
 
-                if (user_id_for_js3 === Number(data["user_id_fjs"])) {
-                    var content_count = document.getElementById('content_count').innerHTML;
-                    let count_for_inner = Number(content_count) + 1;
-                    document.getElementById('content_count').innerHTML = count_for_inner;
+{{--            }--}}
+{{--            if (Number(data["type"]) === 3) {--}}
 
-                    let el_for_create = document.getElementById('for_append_notifications');
+{{--                let user_id_for_js3 = Number(<? echo $array_cats_user ?>);--}}
 
-                    el_for_create.insertAdjacentHTML('afterend', `
-<li>
-<a href="/detailed-tasks/` + Number(data["id_task"]) + `" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">Вы получили задание</a>
-</li>
-`);
+{{--                if (user_id_for_js3 === Number(data["user_id_fjs"])) {--}}
+{{--                    var content_count = document.getElementById('content_count').innerHTML;--}}
+{{--                    let count_for_inner = Number(content_count) + 1;--}}
+{{--                    document.getElementById('content_count').innerHTML = count_for_inner;--}}
 
-                }
+{{--                    let el_for_create = document.getElementById('for_append_notifications');--}}
 
-            }
-            if (Number(data["type"]) === 4) {
+{{--                    el_for_create.insertAdjacentHTML('afterend', `--}}
+{{--<li>--}}
+{{--<a href="/detailed-tasks/` + Number(data["id_task"]) + `" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">Вы получили задание</a>--}}
+{{--</li>--}}
+{{--`);--}}
 
-                const for_check_cat_id = [<? echo $user ?>];
+{{--                }--}}
 
-                let num_cat_id = Number(data["user_id"]);
+{{--            }--}}
+{{--            if (Number(data["type"]) === 4) {--}}
 
-                let check_arr = for_check_cat_id.includes(num_cat_id);
+{{--                const for_check_cat_id = [<? echo $user ?>];--}}
 
-                if (check_arr === true) {
-                    var content_count = document.getElementById('content_count').innerHTML;
-                    let count_for_inner = Number(content_count) + 1;
-                    document.getElementById('content_count').innerHTML = count_for_inner;
+{{--                let num_cat_id = Number(data["user_id"]);--}}
 
-                    let el_for_create = document.getElementById('for_append_notifications');
+{{--                let check_arr = for_check_cat_id.includes(num_cat_id);--}}
 
-                    el_for_create.insertAdjacentHTML('afterend', `
-<li>
-<a href="/detailed-tasks/` + Number(data["task_id"]) + `" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">` + data["task_name"] + `</a>
-</li>
-`);
+{{--                if (check_arr === true) {--}}
+{{--                    var content_count = document.getElementById('content_count').innerHTML;--}}
+{{--                    let count_for_inner = Number(content_count) + 1;--}}
+{{--                    document.getElementById('content_count').innerHTML = count_for_inner;--}}
 
-                }
+{{--                    let el_for_create = document.getElementById('for_append_notifications');--}}
 
-            }
+{{--                    el_for_create.insertAdjacentHTML('afterend', `--}}
+{{--<li>--}}
+{{--<a href="/detailed-tasks/` + Number(data["task_id"]) + `" class="text-sm font-bold hover:bg-gray-100 text-gray-700 block px-4 py-2">` + data["task_name"] + `</a>--}}
+{{--</li>--}}
+{{--`);--}}
 
-        });
+{{--                }--}}
+
+{{--            }--}}
+
+{{--        });--}}
     </script>
 @endauth
 
 <script type="text/javascript">
     let payment_form = $('#choose_payment_type');
     payment_form.submit(function (event){
-        event.preventDefault();
         let data = payment_form.serializeArray()
         if (data[1]['value'] == 'Paynet') {
+            // event.preventDefault();
             let form_data = {user_id: data[0]['value'], amount: data[2]['value']}
             $.ajax({
                 type: "POST",
@@ -569,7 +586,7 @@
             });
         }
         else {
-            form.submit();
+            payment_form.submit();
         }
     });
 
