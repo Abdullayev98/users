@@ -217,9 +217,6 @@
 
                 <div class="mt-8">
 
-                    <p class="text-2xl font-semibold">
-                        {{__('Виды выполняемых работ')}}
-                    </p>
                     <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mx-auto">
                         @foreach($portfolios as $portfolio)
 

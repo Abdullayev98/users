@@ -31,7 +31,7 @@
                                 @if ($user->description == Null)
                                     <span class="ml-10">
                                         <i class="fas fa-pencil-alt inline text-gray-700"></i>
-                                        <p class="inline text-gray-500 cursor-pointer" id="padd">{{__('Добавить')}}</p>
+                                        <p class="inline text-gray-500 cursor-pointer hover:text-red-500 border-b-2 hover:border-b-2 hover:border-red-500" id="padd">{{__('Добавить')}}</p>
                                     </span>
                                     <p class="text-red-400 desc mt-4" >
                                         {{__('Заказчики ничего о вас не знают. Добавьте информацию о вашем опыте.')}}</p>
@@ -48,7 +48,7 @@
                                               class="w-full h-32 border border-gray-400 focus:outline-none focus:border-yellow-500 py-2 px-4 mt-3"
                                               @if (!$user->description) placeholder="{{__('Введите описание')}}"@endif
                                     >@if ($user->description){{$user->description}}@endif</textarea><br>
-                                    <input type="submit" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-6 rounded cursor-" id="s1" value="{{__('Сохранить')}}">
+                                    <input type="submit" class="bg-green-500 cursor-pointer hover:bg-green-600 text-white py-2 px-6 rounded cursor-" id="s1" value="{{__('Сохранить')}}">
                                     <a id="s2" class="border-dotted border-b-2 mx-4 pb-1 text-gray-500 hover:text-red-500 hover:border-red-500" href="">{{__('Отмена')}}
                                         </a>
                                 </form>
