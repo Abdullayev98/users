@@ -129,7 +129,6 @@
                                                 {{__('до')}} {{$task->budget}} {{__('сум')}}
                                             @endif
                                         </p>
-                                        <p class=" h-auto w-96">До {{number_format($task->budget)}} сум</p>
                                     </div>
 
                                     @isset($value)
